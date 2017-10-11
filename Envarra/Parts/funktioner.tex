@@ -86,6 +86,32 @@ Låt $f:[0,\pi]\to [-1,1]$ sådan att $f(x)=\cos x$. Inversen till denna funktio
 
 Låt $f:(-\inf,\inf)\to \left[-\frac{\pi}{2}\right],\frac{\pi}{2}]$ sådan att $f(x)=\tan x$. Inversen till denna funktionen betecknas $f^{-1}(x)=\arctan x$.
 
+\paragraph{Exponentialfunktionen}
+
+I häftet definieras inte exponentialfunktionen $a^x, a>1$, utan den antas vara en strängt växande funktion med värdemängd $(0,\inf)$ som uppfyller
+\begin{align*}
+	&a^0 = 1\\
+	&a^1 = a\\
+	&a^{x + y} = a^x a^y\\
+	&a^{-x} = \frac{1}{a^x}\\
+	&\left(a^x\right)^y = a^{xy}
+\end{align*}
+
+\paragraph{Logaritmfunktionen}
+
+Låt $f:\mathbb{R}\to (0,\inf)$ sådan att $f(x) = a^x$ för något $a > 1$. Inversen till denna funktionen betecknas som $f^{-1}(x) = \log_a x$.
+
+\paragraph{Absolutbelopp}
+
+Absolutbeloppet definieras som $\abs{x} = \sqrt{x^2}$. Detta impliserar att
+\begin{align*}
+	\abs{x} =
+	\begin{cases}
+		-x, & x < 1\\
+		x,  & x \geq 1
+	\end{cases}
+\end{align*}
+ 
 \subsection{Satser}
 
 \paragraph{Trigonometriska funktioner med vinkelsummor}
@@ -100,3 +126,22 @@ Låt $a,b,c$ vara sidorna i en triangel och $\theta$ vinkeln där sidlängderna 
 \begin{align*}
 	c^2=a^2+b^2-2ab\cos\theta
 \end{align*}
+
+\paragraph{Logaritmfunktionens egenskaper}
+
+Låt $a > 1$. Då gäller att
+\begin{align}
+	&\log_a 1 = 0 \label{eq:log_1}\\
+	&\log_a\left(xy\right) = \log_a\left(x\right) + \log_a\left(y\right) \label{eq:log_prod}\\
+	&\log_a\left(x^y\right) = y\log_a\left(x\right) \label{eq:log_pow}
+\end{align}
+
+\subparagraph{Bevis}
+
+Alla identiteter är baserade på inverterbarheten till exponentialfunktionen - $a^{\log_a x} = x$ - och injektiviteten till exponentialfunktionen, samt reglerna som exponentialfunktionen uppfyllar.
+
+Ekvation \ref{eq:log_1} fås från att $a^{\log_a 1} = 1$ och att $a^0 = 1$. Eftersom exponentialfunktionen är injektiv, är det bevisad.
+
+Ekvation \ref{eq:log_prod} fås från att $a^{\log_a xy} = xy$ och att $a^{\log_a x + \log_a y} = a^{\log_a x}a^{\log_a y}=xy$.
+
+Ekvation \ref{eq:log_pow} fås från att $a^{\log_a x^y} = x^y$ och att $a^{y\log_a x} = \left(a^{\log_a x}\right)^y = x^y$.
