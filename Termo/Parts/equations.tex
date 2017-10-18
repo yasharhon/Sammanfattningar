@@ -1,0 +1,64 @@
+\section{Ekvationer}
+
+\subsection{Allmänna ekvationer}
+
+\paragraph{Konversion mellan $m$, $\nu$ och $N$}
+
+\begin{align*}
+	\nu = \frac{m}{M} = \frac{N}{N_\text{A}}
+\end{align*}
+
+$M$ är gasens molara massa, massan per mol partiklar. Flera relationer kan härledas vid att använda $R = N_\text{A}k$.
+
+\paragraph{Täthet}
+
+\begin{align*}
+	\rho = \frac{m}{V}
+\end{align*}
+
+Tätheten av en substans kan även definieras som
+
+\begin{align*}
+	\rho = \frac{N}{V}
+\end{align*}
+
+\subsection{Gaser}
+
+\paragraph{Ideala gaslagen}
+
+\begin{align*}
+	pV = \nu RT = NkT
+\end{align*}
+
+$p$ är gasens tryck, $V$ är gasens volym, $T$ är gasens temperatur, $N$ är antalet partiklar i gasen och $\nu$ är antalet mol partiklar i gasen.
+
+\paragraph{van der Waals' tillståndsekvation}
+
+\begin{align*}
+	p = \frac{NkT}{V - Nb} - a\left(\frac{N}{V}\right)^2\\
+	\left(p + \frac{a_0}{v^2}\right)(v - b_0) = RT
+\end{align*}
+
+Dessa är båda ekvivalenta versioner av van der Waals' tillståndsekvation, var man introduserar $a_0 = a N_\text{A}^2$, $b_0 = bN_\text{A}$ och $v = \frac{V}{\nu}$. $a$ innehåller information om växelverkan mellan partiklarna och $b$ innehåller information om partiklarnas volym.
+
+\paragraph{Maxwell-Boltzmann-fördelingen}
+
+Partiklarna i en ideal gas har olik fart. Antalet partiklar med en given fart $v$ per volym är fördelad enligt
+\begin{align*}
+	n(v) = Cv^2e^{-\frac{mv^2}{2kT}}
+\end{align*}
+var $m$ är en partikels massa. Vi krävjer att fördelingen är normaliserad, dvs.
+\begin{align*}
+	\int_0^{\infty}\dd{v}n(v) = \frac{N}{V}
+\end{align*}
+som ger
+\begin{align*}
+	K = 4\pi n \left(\frac{m}{2\pi kT}\right)^\frac{3}{2}
+\end{align*}
+
+Från detta kan man hitta en mest sannolik fart $v_\text{p}$, en förväntad fart $<v>$ och en RMS-fart $v_\text{RMS}$. Dessa är
+\begin{align*}
+	& v_\text{p} = \sqrt{\frac{2kT}{m}}\\
+	& \expval{v} = \sqrt{\frac{8kT}{\pi m}}\\
+	& v_\text{p} = \sqrt{\expval{v^2}} = \sqrt{\frac{3kT}{m}}\\
+\end{align*}
