@@ -50,16 +50,16 @@ Tätheten av en substans kan även definieras som
 
 \paragraph{Första huvudsatsen}
 \begin{align*}
-	\dd{U} = \idd Q - \idd W
+	\dd{U} = \idd{Q} - \idd{W}
 \end{align*}
 Vid att definiera första huvudsatsen så, definieras arbete gjort på systemet implisitt som positivt. Arbetet ges av
 \begin{align*}
-	\idd W = -p\dd{V}
+	\idd{W} = -p\dd{V}
 \end{align*}
 
 \paragraph{Andra huvudsatsen}
 \begin{align*}
-	\dd{S} = \frac{\idd Q}{T} \geq 0
+	\dd{S} = \frac{\idd{Q}}{T} \geq 0
 \end{align*}
 Likheten gäller för reversibla processer, och olikheten gäller för andra processer.
 
@@ -81,7 +81,7 @@ Vid att kombinera termodynamikens första och andra huvudsats får man
 	& F = U -TS\\
 	& \dd{F} = -S\dd{T} - p\dd{V}
 \end{align*}
-Vid isoterma processer är $\idd W = \dd{F}$.
+Vid isoterma processer är $\idd{W} = \dd{F}$.
 
 \paragraph{Entalpi}
 \begin{align*}
@@ -89,10 +89,44 @@ Vid isoterma processer är $\idd W = \dd{F}$.
 	& \dd{H} = T\dd{S} + V\dd{p}
 \end{align*}
 
+Ej kontinuerlig vid fasövergång.
+
 \paragraph{Fri entalpi}
 \begin{align*}
 	& G = H - TS \\	
 	& \dd{G} = -S\dd{T} + V \dd{p}
+\end{align*}
+
+Kontinuerlig vid fasövergång.
+
+\paragraph{Uppvärming av ett ämne}
+\begin{align*}
+	\idd{Q} = mc\dd{T}
+\end{align*}
+$c$ är ämnets specifika värmekapacitet.
+
+\paragraph{Molara värmekapaciteter}
+När man värmer upp ett ämne, ger värmekapaciteten information om hur mycke temperaturen ökar när en given mängd värme tillförs. Den molara värmekapaciteten är värmekapaciteten per stoffmängd av ämnet, och är den samma för samma substansen. Molara värmekapaciteter är definierade som
+\begin{align*}
+	C_V = \frac{1}{\nu}\left(\pdv{U}{T}\right)_V, \\
+	C_p = \frac{1}{\nu}\left(\pdv{H}{T}\right)_p.
+\end{align*}
+$C_V$ är den molara värmekapaciteten när värme tillförs vid konstant colym, och $C_p$ är den molara värmekapaciteten när värme tillförs vid konstant tryck.
+
+\paragraph{Utvidgning}
+Kroppar kan utvidga sig vid ändringar i omgivningarna. Utvidgningen relativt till originalvolymen kan kvantiseras vid att definiera relativa utvidgningskoefficienter som
+\begin{align*}
+	\kappa = -\frac{1}{V}\left(\pdv{V}{P}\right)_T, \\
+	\alpha_V = -\frac{1}{V}\left(\pdv{V}{T}\right)_P.
+\end{align*}
+Vid att addera sådana ändringar kan man få den totala relativa volymändringen vid en given process enligt
+\begin{align*}
+	\frac{\dd{V}}{V} = -\kappa\dd{p} + \alpha_V \dd{T}
+\end{align*}
+
+\paragraph{Molar värmekapacitet för fasta ämnen}
+\begin{align*}
+	C = 3R
 \end{align*}
 
 \subsection{Gaser}
@@ -156,3 +190,21 @@ Stöttalet är antalet partikler som kolliderar med en yta per enhet area och ti
 	\nu * = \frac{1}{4}n\expval{v} = \frac{p}{\sqrt{2\pi mkT}}
 \end{align*}
 var $n$ är partikeltätheten.
+
+\paragraph{Molara värmekapaciteter för ideala gaser}
+Vid att använda definitionerna av molara värmekapaciteter och uttrycket för indra energin till en ideal gas kan man visa att den molara värmekapaciteten är
+\begin{align*}
+	C_V = \frac{3}{2}R
+\end{align*}
+för en enatomig gas,
+\begin{align*}
+	C_V = \frac{5}{2}R
+\end{align*}
+för en tvåatomig gas och
+\begin{align*}
+	C_V = \frac{n}{2}R
+\end{align*}
+för en gas var partiklerna har $n$ kvadratiska frihetsgrader. Man kan även visa att generelt för ideala gaser är
+\begin{align*}
+	C_p = C_V + R
+\end{align*}
