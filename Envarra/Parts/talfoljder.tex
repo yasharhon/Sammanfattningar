@@ -28,8 +28,32 @@ En divergent talföljd är inte konvergent.
 \subsection{Satser}
 
 \paragraph{Gränsvärden för kombinationer av talföljder}
-
 Låt $\left(a_n\right)_{n = 1}^\infty, \left(b_n\right)_{n = 1}^\infty$ vara talföljder med gränsvärden $A$ och $B$. Då följer att
 \begin{enumerate}
 	\item[a)] $\left(a_n + b_n\right)_{n = 1}^\infty$ är konvergent med gränsvärdet $A + B$.
+	\item[b)] $\left(a_n b_n\right)_{n = 1}^\infty$ är konvergent med gränsvärdet $AB$.
+	\item[c)] om $B \neq 0$ är $\left(\frac{a_n}{b_n}\right)_{n = 1}^\infty$ konvergent med gränsvärdet $\frac{A}{B}$.
+	\item[d)] om $a_n \leq b_n$ för varje $n$ så gäller att $A \leq B$.
 \end{enumerate}
+
+\subparagraph{Bevis}
+Aa.
+
+\paragraph{Växande och uppåt begränsade talföljder}
+Om $\left(a_n\right)_{n = 1}^\infty$ är en växande och uppåt begränsad talföljd så är den konvergent och
+\begin{align*}
+	\lim_{n\to\infty} a_n = \sup{\{a_n: n \geq 1\}}
+\end{align*}
+Det analoga gäller för avtagande och nedåt begränsade mängder.
+
+\subparagraph{Bevis}
+Oo.
+
+\paragraph{Gränsvärde för potenser}
+\begin{align*}
+	\lim_{n\to\infty} n^p =
+	\begin{cases}
+		\infty, & p > 0\\
+		0,      & p < 0
+	\end{cases}
+\end{align*}
