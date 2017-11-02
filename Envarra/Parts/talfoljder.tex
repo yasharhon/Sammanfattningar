@@ -1,0 +1,99 @@
+\section{Talföljder}
+
+\subsection{Definitioner}
+
+\paragraph{Definitionen av en talföjld}
+En talföljd är en följd av tal $a_1, a_2, ...$ och betecknas $\left(a_n\right)_{n = 1}^\infty$.
+
+\paragraph{Växande och avtagande talföljder}
+En talföljd är växande om $a_{n + 1} \geq a_n$ för varje $n \geq 1$. Avtagande talföljder definieras analogt.
+
+\paragraph{Uppåt och nedåt begränsade talföljder}
+En talföljd är uppåt begränsad om det finns ett $M$ så att $a_n \leq M$ för alla $n \geq 1$.
+
+\paragraph{Begränsade talföljder}
+En talföljd är begränsad om den är både uppåt och nedåt begränsad.
+
+\paragraph{Konvergens av talföljder}
+En talföljd konvergerar mot ett gränsvärde $A$ om det för alla $\varepsilon > 0$ finns ett $N$ sådant att $\abs{a_n - A} < \varepsilon$ för varje $n > N$. Detta beteendet betecknas
+\begin{align*}
+	\lim_{n\to\infty} a_n = A.
+\end{align*}
+
+\paragraph{Divergenta talföljder}
+En divergent talföljd är inte konvergent.
+
+\paragraph{Binomialsatsen}
+För $n\in\Z$ har man
+\begin{align*}
+	(a + b)^n = \sum\limits_{k = 0}^{n} {{n}\choose{k}} a^kb^{n-k}.
+\end{align*}
+
+\paragraph{Binomialkoefficienter}
+\begin{align*}
+	{{n}\choose{k}} = \frac{n!}{(n-k)!k!}
+\end{align*}
+
+\paragraph{$e$, Eulers tal}
+\begin{align*}
+	e = \lim_{n\to\infty}\left(1 + \frac{1}{n}\right)^{n}
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Gränsvärden för kombinationer av talföljder}
+Låt $\left(a_n\right)_{n = 1}^\infty, \left(b_n\right)_{n = 1}^\infty$ vara talföljder med gränsvärden $A$ och $B$. Då följer att
+\begin{enumerate}
+	\item[a)] $\left(a_n + b_n\right)_{n = 1}^\infty$ är konvergent med gränsvärdet $A + B$.
+	\item[b)] $\left(a_n b_n\right)_{n = 1}^\infty$ är konvergent med gränsvärdet $AB$.
+	\item[c)] om $B \neq 0$ är $\left(\frac{a_n}{b_n}\right)_{n = 1}^\infty$ konvergent med gränsvärdet $\frac{A}{B}$.
+	\item[d)] om $a_n \leq b_n$ för varje $n$ så gäller att $A \leq B$.
+\end{enumerate}
+
+\subparagraph{Bevis}
+Aa.
+
+\paragraph{Växande och uppåt begränsade talföljder}
+Om $\left(a_n\right)_{n = 1}^\infty$ är en växande och uppåt begränsad talföljd så är den konvergent och
+\begin{align*}
+	\lim_{n\to\infty} a_n = \sup{\{a_n: n \geq 1\}}
+\end{align*}
+Det analoga gäller för avtagande och nedåt begränsade mängder.
+
+\subparagraph{Bevis}
+Oo.
+
+\paragraph{Gränsvärde för potenser}
+\begin{align*}
+	\lim_{n\to\infty} n^p =
+	\begin{cases}
+		\infty, & p > 0\\
+		0,      & p < 0
+	\end{cases}
+\end{align*}
+
+\subparagraph{Bevis}
+Meh.
+
+\paragraph{Standardgränsvärden}
+Låt $a > 1$ och $b > 0$. Då gäller att
+\begin{align*}
+	\lim_{n\to\infty}\frac{a^n}{n^b} = \infty \\
+	\lim_{n\to\infty}\frac{n!}{b^n} = \infty
+\end{align*}
+
+\subparagraph{Bevis}
+Nä.
+
+\paragraph{Endeligt värde av $e$}
+Talföljden $\left(a_n\right)_{n = 1}^\infty$ med
+\begin{align*}
+	a_n = \left(1 + \frac{1}{n}\right)^{n}
+\end{align*}
+är konvergent.
+
+\subparagraph{Bevis}
+Säkert någon gång.
+
+\paragraph{Bolzano-Weierstrass' sats}
+Låt $\left(a_n\right)_{n = 1}^\infty$ vara en begränsad talföljd. Då finns det konvergent delföljd. En delföljd av en talföljd är en del av talen som fortfarande är oändligt stor.
