@@ -23,7 +23,21 @@ En talföljd konvergerar mot ett gränsvärde $A$ om det för alla $\varepsilon 
 \paragraph{Divergenta talföljder}
 En divergent talföljd är inte konvergent.
 
-\paragraph{•}
+\paragraph{Binomialsatsen}
+För $n\in\Z$ har man
+\begin{align*}
+	(a + b)^n = \sum\limits_{k = 0}^{n} {{n}\choose{k}} a^kb^{n-k}.
+\end{align*}
+
+\paragraph{Binomialkoefficienter}
+\begin{align*}
+	{{n}\choose{k}} = \frac{n!}{(n-k)!k!}
+\end{align*}
+
+\paragraph{$e$, Eulers tal}
+\begin{align*}
+	e = \lim_{n\to\infty}\left(1 + \frac{1}{n}\right)^{n}
+\end{align*}
 
 \subsection{Satser}
 
@@ -57,3 +71,29 @@ Oo.
 		0,      & p < 0
 	\end{cases}
 \end{align*}
+
+\subparagraph{Bevis}
+Meh.
+
+\paragraph{Standardgränsvärden}
+Låt $a > 1$ och $b > 0$. Då gäller att
+\begin{align*}
+	\lim_{n\to\infty}\frac{a^n}{n^b} = \infty \\
+	\lim_{n\to\infty}\frac{n!}{b^n} = \infty
+\end{align*}
+
+\subparagraph{Bevis}
+Nä.
+
+\paragraph{Endeligt värde av $e$}
+Talföljden $\left(a_n\right)_{n = 1}^\infty$ med
+\begin{align*}
+	a_n = \left(1 + \frac{1}{n}\right)^{n}
+\end{align*}
+är konvergent.
+
+\subparagraph{Bevis}
+Säkert någon gång.
+
+\paragraph{Bolzano-Weierstrass' sats}
+Låt $\left(a_n\right)_{n = 1}^\infty$ vara en begränsad talföljd. Då finns det konvergent delföljd. En delföljd av en talföljd är en del av talen som fortfarande är oändligt stor.
