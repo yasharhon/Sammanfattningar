@@ -1,4 +1,4 @@
-\section{Matrices}
+\section{Matriser}
 
 \subsection{Definitioner}
 
@@ -35,9 +35,16 @@ Matrisproduktet $A\vectorbold{x}$ definieras som vektoren
 \end{align*}
 i $\R^m$.
 
+\paragraph{Homogena ekvationssystem}
+Ett homogent ekvationssystem kan skrivas på formen
+\begin{align*}
+	A\vect{x} = \vect{0}.
+\end{align*}
+Motsatsen är då inhomogena ekvationssystem.
+
 \subsection{Satser}
 
-\paragraph{Linjärt hölje av matriskolumner}
+\paragraph{Matriskolumner och linjära höljen}
 Följande påståenden är ekvivalenta:
 \begin{itemize}
 	\item[a)] $A\vectorbold{x} = \vect{b}$ har lösning för varje
@@ -60,3 +67,23 @@ Antag att c gäller och att A ej har $m$ ledande ettor. Då måste man vid Gauss
 	\end{array}\right]
 \end{align*}
 Eftersom Gauss-Jordan-elimination inte ändrar det linjära höljet av kolummnerna till en matris, borde man kunne hitta en kombination av elementerna i den sista raden i $A$ så att man får $1$, eftersom $\vect{b}'\in\R^m$. Då alla elementerna i denna raden är nållor, är detta omöjligt.
+
+\paragraph{Lösningen till inhomogena ekvationssystem}
+Om det inhomogena ekvationssystemet
+\begin{align*}
+	A\vect{x} = \vect{0}
+\end{align*}
+har lösningen $\vect{x}_\text{h}$, har det inhomogena ekvationssystemet
+\begin{align*}
+	A\vect{x} = \vect{b}
+\end{align*}
+lösningen $\vect{x} = \vect{x}_\text{h} + \vect{x}_\text{i}$, var $\vect{x}_\text{i}$ är någon vektor som uppfyllar ekvationssystemet.
+
+\subparagraph{Bevis}
+Ganska enkelt.
+
+\paragraph{Linjärt beroende av kolumner i en matris}
+Kolumnerna i en matris är linjärt oberoende omm (om och endast om) $A\vect{x} = \vect{0}$ endast har den triviala lösningen. Specielt gäller det att om antal rader är mindre än antal kolumner är kolumnvektorerna linjärt beroende.
+
+\subparagraph{Bevis}
+Någonting med radreduktion.

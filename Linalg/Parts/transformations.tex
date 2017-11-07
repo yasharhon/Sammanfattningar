@@ -1,0 +1,47 @@
+\section{Linjära avbildningar}
+
+\subsection{Definitioner}
+
+\paragraph{Linjära avbildningar}
+En avbildning $T(\vect{x})$ är linjär om
+\begin{itemize}
+	\item $T(\vect{x} + \vect{y}) = T(\vect{x}) + T(\vect{y})$ och
+	\item $T(c\vect{x}) = cT(\vect{x})$ för något $c$.
+\end{itemize}
+
+\paragraph{Bilden till en avbildning}
+För en avbildning $T(\vect{x})$ definierar man bildet till $T$ som
+\begin{align*}
+	Im(T) = \{\vect{y} : \vect{y} = T(\vect{x})\}.
+\end{align*}
+
+\paragraph{Nollrummet till en avbildning}
+För en avbildning $T(\vect{x})$ definierar man nollrummet till $T$ som
+\begin{align*}
+	\text{Null}(T) = \{\vect{x} : T(\vect{x})= \vect{0}\}.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Avildningar och enhetsvektorer}
+För en avbildning $T(\vect{x}): \R^n\to\R^m$ har man att
+\begin{align*}
+	T(\vect{x}) = \sum\limits_{i = 1}^{n} x_iT(\vect{e}_i)
+\end{align*}
+var $x_i$ är komponenterna av $\vect{x}$.
+
+\paragraph{Bevis}
+Borde gå.
+
+\paragraph{Avbildningar och matriser}
+För en avbildning $T(\vect{x}): \R^n\to\R^m$ kan man definiera matrisen
+\begin{align*}
+	A = \left[ T(\vect{e}_1) ~ T(\vect{e}_2) ~ \dots ~ T(\vect{e}_n) \right]
+\end{align*}
+var $\vect{e}_i$ är enhetsvektorerna i $\R^n$. Då kan avbildningen skrivas som
+\begin{align*}
+	T(\vect{x}) = A\vect{x}.
+\end{align*}
+
+\subparagraph{Bevis}
+Inte svårt alls.
