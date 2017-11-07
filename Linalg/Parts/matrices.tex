@@ -1,0 +1,89 @@
+\section{Matriser}
+
+\subsection{Definitioner}
+
+\paragraph{Matris-vektor-produkt}
+Betrakta $m\times n$-matrisen
+\begin{align*}
+	A =
+	\left[\begin{array}{cccc|c}
+    	a_{1,1} & a_{1,2} & \dots  & a_{1,n} & b_1 \\
+    	a_{2,1} & a_{2,2} & \dots  & a_{2,n} & b_2 \\
+    	\vdots  & \vdots  & \ddots & \vdots  & \vdots \\
+	    a_{m,1} & a_{m,2} & \dots  & a_{m,n} & b_n
+	\end{array}\right]
+\end{align*}
+och vektoren i $\R^n$
+\begin{align*}
+	\vectorbold{x} =
+	\left[\begin{array}{c}
+    	x_1    \\
+    	x_2    \\
+    	\vdots \\
+	    x_n
+	\end{array}\right]
+\end{align*}
+Matrisproduktet $A\vectorbold{x}$ definieras som vektoren
+\begin{align*}
+	A\vectorbold{x} =
+	\left[\begin{array}{c}
+    	a_{1,1}x_1 + a_{1,2}x_2 + \dots + a_{1,n}x_n \\
+    	a_{2,1}x_1 + a_{2,2}x_2 + \dots + a_{2,n}x_n \\
+    	\vdots                                       \\
+	    a_{m,1}x_1 + a_{m,2}x_2 + \dots + a_{m,n}x_n
+	\end{array}\right]
+\end{align*}
+i $\R^m$.
+
+\paragraph{Homogena ekvationssystem}
+Ett homogent ekvationssystem kan skrivas på formen
+\begin{align*}
+	A\vect{x} = \vect{0}.
+\end{align*}
+Motsatsen är då inhomogena ekvationssystem.
+
+\subsection{Satser}
+
+\paragraph{Matriskolumner och linjära höljen}
+Följande påståenden är ekvivalenta:
+\begin{itemize}
+	\item[a)] $A\vectorbold{x} = \vect{b}$ har lösning för varje
+	\item[b)] Varje $\vect{b}\in \R^{m}$ är en linjär kombination av kolumnerna i $A$.
+	\item[c)] $\Span{\vect{A_1}, \vect{A_2}, \dots, \vect{A_n}} = \R^m$.
+	\item[d)] Den reducerade matrisen till $A$ har $m$ ledande ettor.
+\end{itemize}
+
+\subparagraph{Bevis}
+Ekvivalensen till a, b och c är vel trivial eller någonting.
+
+Antag att c gäller och att A ej har $m$ ledande ettor. Då måste man vid Gauss-Jordan-elimination av $A$ få en rad med bara nollor. Antag att detta är sista raden i matrisen. Betrakta vektorn
+\begin{align*}
+	\vect{b}' =
+	\left[\begin{array}{c}
+    	0    \\
+    	0    \\
+    	\vdots \\
+	    1
+	\end{array}\right]
+\end{align*}
+Eftersom Gauss-Jordan-elimination inte ändrar det linjära höljet av kolummnerna till en matris, borde man kunne hitta en kombination av elementerna i den sista raden i $A$ så att man får $1$, eftersom $\vect{b}'\in\R^m$. Då alla elementerna i denna raden är nållor, är detta omöjligt.
+
+\paragraph{Lösningen till inhomogena ekvationssystem}
+Om det inhomogena ekvationssystemet
+\begin{align*}
+	A\vect{x} = \vect{0}
+\end{align*}
+har lösningen $\vect{x}_\text{h}$, har det inhomogena ekvationssystemet
+\begin{align*}
+	A\vect{x} = \vect{b}
+\end{align*}
+lösningen $\vect{x} = \vect{x}_\text{h} + \vect{x}_\text{i}$, var $\vect{x}_\text{i}$ är någon vektor som uppfyllar ekvationssystemet.
+
+\subparagraph{Bevis}
+Ganska enkelt.
+
+\paragraph{Linjärt beroende av kolumner i en matris}
+Kolumnerna i en matris är linjärt oberoende omm (om och endast om) $A\vect{x} = \vect{0}$ endast har den triviala lösningen. Specielt gäller det att om antal rader är mindre än antal kolumner är kolumnvektorerna linjärt beroende.
+
+\subparagraph{Bevis}
+Någonting med radreduktion.

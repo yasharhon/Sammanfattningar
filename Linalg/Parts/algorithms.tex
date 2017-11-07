@@ -1,0 +1,42 @@
+\twocolumn
+
+\section{Algoritmer}
+Dessa algoritmer kan vara smarta att kunna för att lösa problemer i linjär algebra.
+
+\paragraph{Gauss-Jordan-elimination}
+
+Ett ekvationssystem
+\begin{align*}
+	& a_{1,1}x_1 + a_{1,2}x_2 + ... + a_{1,m}x_n = b_1 \\
+	& a_{2,1}x_1 + a_{2,2}x_2 + ... + a_{2,m}x_n = b_2 \\
+	& \vdots \\
+	& a_{n,1}x_1 + a_{n,2}x_2 + ... + a_{n,m}x_n = b_n
+\end{align*}
+kan lösas vid att konstruera en totalmatris
+\begin{align*}
+	\left[\begin{array}{cccc|c}
+    	a_{1,1} & a_{1,2} & \dots  & a_{1,m} & b_1 \\
+    	a_{2,1} & a_{2,2} & \dots  & a_{2,m} & b_2 \\
+    	\vdots  & \vdots  & \ddots & \vdots  & \vdots \\
+	    a_{n,1} & a_{n,2} & \dots  & a_{n,m} & b_n
+	\end{array}\right]
+\end{align*}
+och göra Gauss-Jordan-elimination på denna.
+
+Syftet med Gauss-Jordan-elimination är att varje kolumn ska ha ett och endast ett pivotelement, även kallad en ledande etta. En ledande etta är en etta som inte har någon andra tal i samma kolumn eller till vänster i samma rad. För att få sådana, gör man operationer på radarna i matrisen enligt följande regler:
+\begin{itemize}
+	\item Radar kan multipliceras med konstanter. Forsöka, dock, att undveka $0$, eftersom det fjärnar information, vilket är otrevligt.
+	\item Radar kan adderas och subtraheras med andra rader, var båda  potensielt multiplicerad med en lämplig konstant.
+	\item Radar kan byta plats.
+\end{itemize}
+
+När man är klar, ska matrisen (förhoppingsvis) se ut så här:
+\begin{align*}
+	\left[\begin{array}{cccc|c}
+    	1      & 0      & \dots  & 0      & a_1 \\
+    	0      & 1      & \dots  & 0      & a_2 \\
+    	\vdots & \vdots & \ddots & \vdots & \vdots \\
+	    0      & 0      & \dots  & 1      & a_n
+	\end{array}\right]
+\end{align*}
+var alla $a_i$ är reella tal.
