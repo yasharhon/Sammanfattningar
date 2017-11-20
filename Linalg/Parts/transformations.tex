@@ -21,10 +21,17 @@ För en avbildning $T(\vect{x})$ definierar man nollrummet till $T$ som
 	\text{Null}(T) = \{\vect{x} : T(\vect{x})= \vect{0}\}.
 \end{align*}
 
+\paragraph{Linjära avbildningar}
+En avbildning $T$ är linjär om
+\begin{align*}
+	T(\vect{x} + \vect{y}) = T(\vect{x}) + T(\vect{y}), \\
+	T(c\vect{x}) = cT(\vect{x}), c\in\R.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Avildningar och enhetsvektorer}
-För en avbildning $T(\vect{x}): \R^n\to\R^m$ har man att
+För en linjär avbildning $T(\vect{x})$ har man att
 \begin{align*}
 	T(\vect{x}) = \sum\limits_{i = 1}^{n} x_iT(\vect{e}_i)
 \end{align*}
@@ -45,3 +52,12 @@ var $\vect{e}_i$ är enhetsvektorerna i $\R^n$. Då kan avbildningen skrivas som
 
 \subparagraph{Bevis}
 Inte svårt alls.
+
+\paragraph{Samansättning av linjära avbildningar}
+För två linjära avbildningar $S, T$ är avbildningen $S\circ T$ linjär.
+
+\subparagraph{Bevis}
+Vi använder oss av definitionen.
+
+\paragraph{Dimensionalitet och avbildningar}
+För en avbildning $T: \R^n\to\R^m$ är $\dim{\Im T} + \dim{\Null T} = n$.

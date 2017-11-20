@@ -42,6 +42,42 @@ Ett homogent ekvationssystem kan skrivas på formen
 \end{align*}
 Motsatsen är då inhomogena ekvationssystem.
 
+\paragraph{Addition av matriser}
+För två matriser $A = (a_{i,j}), B = (b_{i,j})$ har man
+\begin{align*}
+	A + B = (a_{i,j} + b_{i,j}).
+\end{align*} 
+
+\paragraph{Mutliplikation av matriser med konstanter}
+För en matris $A = (a_{i,j})$ har man
+\begin{align*}
+	cA = (ca_{i,j}), c\in\R.
+\end{align*}
+
+\paragraph{Diagonalmatriser}
+En matris $D = (d_{i,j})$ kallas en diagonal matris om $d_{i,j} = 0$ när $i\neq j$.
+
+\paragraph{Transponat}
+För en matris $A = (a_{i,j})$ definieras transponatet som $A^T = (a_{j,i})$.
+
+\paragraph{Matrismultiplikation}
+Matrismultiplikation av en $m\times p$-matris $A$ och en $p\times n$-matris $B$ ges av
+\begin{align*}
+	AB = C: c_{i,j} = \sum\limits_{k = 1}^{p} a_{i, k}b_{k,j}.
+\end{align*}
+
+\paragraph{Inversen av en matris}
+En matris $A$ sin invers $A^{-1}$ uppfyller
+\begin{align*}
+	AA^{-1} = A^{-1}A = I.
+\end{align*}
+
+\paragraph{Elementärmatriser}
+En matris $E$ är en elementärmatris om produktet $EA$ kan fås vid att göra en radoperation på $A$.
+
+\paragraph{Rang}
+Rangen till en matris, skrivit som $\rank A$, är $\dim{\Col A}$.
+
 \subsection{Satser}
 
 \paragraph{Matriskolumner och linjära höljen}
@@ -87,3 +123,12 @@ Kolumnerna i en matris är linjärt oberoende omm (om och endast om) $A\vect{x} 
 
 \subparagraph{Bevis}
 Någonting med radreduktion.
+
+\paragraph{Inverterbarhet av en matris}
+En matris $A$ är inverterbar om och endast om $\det A = 0$.
+
+\subparagraph{Bevis}
+Använd elementärmatriser.
+
+\paragraph{Rangsatsen}
+För en $n\times m$-matris $A$ är $\rank A + \dim{\Null A} = m$.

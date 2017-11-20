@@ -1,0 +1,53 @@
+\section{Vektorrum}
+
+\subsection{Definitioner}
+
+\paragraph{Gruper}
+En grupp definieras av en mängd $X$ och en binär operation $\cdot$ på två elementer i $X$ (kommer ej skrivas ut). Denna operationen ska uppfylla
+\begin{itemize}
+	\item operationen är assosiativ, dvs. $a(bc) = (ab)c$.
+	\item det finns ett enhetselement $e$ så att $ae = ea = a$.
+	\item det för varje element finns en invers så att $aa^{-1} = a^{-1}a = e$.
+\end{itemize}
+
+\paragraph{Abelska gruper}
+En grupp är abelsk om den uppfyllar $ab = ba$ för alla $b, a\in X$.
+
+\paragraph{Vektorrum}
+
+\paragraph{Delrum}
+En delmängd $V$ av ett vektorrum är ett delrum om
+\begin{itemize}
+	\item $e\in V$.
+	\item $x, y\in V\implies x + y\in V$.
+	\item $cx\in V$ för alla $c\in\R$.
+\end{itemize}
+
+\paragraph{Bas i $R^n$}
+$\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k\in V$ är en bas för $V$ om
+\begin{itemize}
+	\item $\Span(\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k) = V$.
+	\item vektorerna i basen är linjärt oberoende.
+\end{itemize}
+Alla vektorer i $V$ kan skrivas som basvektorer på följande sätt:
+\begin{align*}
+	\vect{x} = \sum\limits_{i = 0}^{k}c_i\vect{v}_i, \\
+	\vect{x}_\beta =
+	\left[\begin{array}{c}
+		c_1 \\
+		c_2 \\
+		\vdots \\
+		c_k
+	\end{array}\right].
+\end{align*}
+
+\paragraph{Dimension}
+Dimensionen till ett vektorrum är antalet vektorer i basis.
+
+\subsection{Bevis}
+
+\paragraph{Delrum i $\R^n$}
+Om $V$ är ett delrum i $R^n$ kan det skrivas som $\Span(\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k)$.
+
+\paragraph{Bevis}
+2 ez.
