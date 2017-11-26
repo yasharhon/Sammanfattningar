@@ -78,6 +78,17 @@ En matris $E$ är en elementärmatris om produktet $EA$ kan fås vid att göra e
 \paragraph{Rang}
 Rangen till en matris, skrivit som $\rank A$, är $\dim{\Col A}$.
 
+\paragraph{Determinant}
+För en $n\times n$-matris $A$ ges determinanten av
+\begin{align*}
+	\det{A} = \abs{A} &= \sum\limits_{i = 1}^{n}(-1)^{i + j}a_{ij}\det{A_ij} \\
+	&= \sum\limits_{j = 1}^{n}(-1)^{i + j}a_{ij}\det{A_ij},
+\end{align*}
+var $A_{ij}$ är matrisen $A$ utan rad $i$ och kolumn $j$. De två summorna visar att man kan räkna ut determinanten vid att utveckla den långs en given kolumn $j$ i första fallet eller en given rad $i$ i det andra fallet. Formelen är rekursiv, och base case är $n=2$, som ges av
+\begin{align*}
+	\mdet{a & d \\ c & b} = ab - cd.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Matriskolumner och linjära höljen}
@@ -132,3 +143,41 @@ Använd elementärmatriser.
 
 \paragraph{Rangsatsen}
 För en $n\times m$-matris $A$ är $\rank A + \dim{\Null A} = m$.
+
+\subparagraph{Bevis}
+Something something pivotkolumner.
+
+\paragraph{Determinanten för triangulära matriser}
+För en triangulär $n\times n$-matris $A$, dvs. en matris som har endast nollor över eller under diagonalen, ges determinanten av
+\begin{align*}
+	\det{A} = \prod\limits_{i = 1}^{n} a_{ii}.
+\end{align*}
+
+\subparagraph{Bevis}
+Inses lätt.
+
+\paragraph{Determinant och elementärmatriser}
+För en elementärmatris $E$ har man
+\begin{align*}
+	\det{E} =
+	\begin{cases}
+		-1, &E\text{ byter plats på två rader.} \\
+		1,  &E\text{ adderar en multippel av en rad till en annan.} \\
+		t,  &E\text{ multiplicerar en rad med en skalär} t\neq 0.
+	\end{cases}
+\end{align*}
+och att
+\begin{align*}
+	B = EA \implies \det{B} = \det{E}\det{A}
+\end{align*}
+
+\subparagraph{Bevis}
+Radreducera med matriser.
+
+\paragraph{Determinant för matrisprodukt}
+\begin{align*}
+	\det{AB} = \det{A}\det{B}
+\end{align*}
+
+\subparagraph{Bevis}
+Fallindelning och annat bra.

@@ -3,9 +3,10 @@
 \subsection{Definitioner}
 
 \paragraph{Gruper}
-En grupp definieras av en mängd $X$ och en binär operation $\cdot$ på två elementer i $X$ (kommer ej skrivas ut). Denna operationen ska uppfylla
+En grupp $G$ definieras av en mängd $X$ och en binär operation $\cdot$ på två elementer i $X$ (kommer ej skrivas ut). Denna operationen ska uppfylla
 \begin{itemize}
 	\item operationen är assosiativ, dvs. $a(bc) = (ab)c$.
+	\item grupen är stängd under operationen, dvs. för $a, b\in G$ är $ab\in G$.
 	\item det finns ett enhetselement $e$ så att $ae = ea = a$.
 	\item det för varje element finns en invers så att $aa^{-1} = a^{-1}a = e$.
 \end{itemize}
@@ -14,6 +15,14 @@ En grupp definieras av en mängd $X$ och en binär operation $\cdot$ på två el
 En grupp är abelsk om den uppfyllar $ab = ba$ för alla $b, a\in X$.
 
 \paragraph{Vektorrum}
+Om man definierar skalärmultiplikation med elementer i en abelsk grupp, bildar grupen ett vektorrum $V$ under addition om
+\begin{itemize}
+	\item $c\vect{x}\in V,~c\in\R,~\vect{x}\in V$.
+	\item $c(\vect{x} + \vect{y}) = c\vect{x} + c\vect{y},~c\in\R,~\vect{x},\vect{y}\in V$.
+	\item $(c + d)\vect{x} = c\vect{x} + d\vect{x},~c,d\in\R$.
+	\item $c(d\vect{x}) = (cd)\vect{x}$.
+	\item $1\vect{x} = \vect{x}$.
+\end{itemize}
 
 \paragraph{Delrum}
 En delmängd $V$ av ett vektorrum är ett delrum om
@@ -22,14 +31,15 @@ En delmängd $V$ av ett vektorrum är ett delrum om
 	\item $x, y\in V\implies x + y\in V$.
 	\item $cx\in V$ för alla $c\in\R$.
 \end{itemize}
+Om $V$ är ett delrum, kan det skrivas som $V = \Span(\vect{v}_1, \dots, \vect{v}_n)$.
 
-\paragraph{Bas i $R^n$}
+\paragraph{Bas}
 $\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k\in V$ är en bas för $V$ om
 \begin{itemize}
 	\item $\Span(\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k) = V$.
 	\item vektorerna i basen är linjärt oberoende.
 \end{itemize}
-Alla vektorer i $V$ kan skrivas som basvektorer på följande sätt:
+Om vi kallar basen till $V$ för $\beta$ kan alla vektorer i $V$ skrivas som basvektorer på följande sätt:
 \begin{align*}
 	\vect{x} = \sum\limits_{i = 0}^{k}c_i\vect{v}_i, \\
 	\vect{x}_\beta =

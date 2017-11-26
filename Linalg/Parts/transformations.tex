@@ -2,23 +2,16 @@
 
 \subsection{Definitioner}
 
-\paragraph{Linjära avbildningar}
-En avbildning $T(\vect{x})$ är linjär om
-\begin{itemize}
-	\item $T(\vect{x} + \vect{y}) = T(\vect{x}) + T(\vect{y})$ och
-	\item $T(c\vect{x}) = cT(\vect{x})$ för något $c$.
-\end{itemize}
-
 \paragraph{Bilden till en avbildning}
-För en avbildning $T(\vect{x})$ definierar man bildet till $T$ som
+För en avbildning $T(\vect{x}): V\to W$ definierar man bildet till $T$ som
 \begin{align*}
-	Im(T) = \{\vect{y} : \vect{y} = T(\vect{x})\}.
+	\Im{T} = \{\vect{y} : \vect{y} = T(\vect{x})\}\subset W.
 \end{align*}
 
-\paragraph{Nollrummet till en avbildning}
-För en avbildning $T(\vect{x})$ definierar man nollrummet till $T$ som
+\paragraph{Kärnan till en avbildning}
+För en avbildning $T(\vect{x}): V\to W$ definierar man kärnan till $T$ som
 \begin{align*}
-	\text{Null}(T) = \{\vect{x} : T(\vect{x})= \vect{0}\}.
+	\ker{T} = \{\vect{x} : T(\vect{x})= \vect{0}\}\subset V.
 \end{align*}
 
 \paragraph{Linjära avbildningar}
@@ -60,4 +53,4 @@ För två linjära avbildningar $S, T$ är avbildningen $S\circ T$ linjär.
 Vi använder oss av definitionen.
 
 \paragraph{Dimensionalitet och avbildningar}
-För en avbildning $T: \R^n\to\R^m$ är $\dim{\Im T} + \dim{\Null T} = n$.
+För en avbildning $T: \R^n\to\R^m$ är $\dim{\Im T} + \dim{\ker{T}} = n$.
