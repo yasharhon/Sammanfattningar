@@ -4,7 +4,6 @@
 Dessa algoritmer kan vara smarta att kunna för att lösa problemer i linjär algebra.
 
 \paragraph{Gauss-Jordan-elimination}
-
 Ett ekvationssystem
 \begin{align*}
 	& a_{1,1}x_1 + a_{1,2}x_2 + ... + a_{1,m}x_n = b_1 \\
@@ -21,8 +20,7 @@ kan lösas vid att konstruera en totalmatris
 	    a_{n,1} & a_{n,2} & \dots  & a_{n,m} & b_n
 	\end{array}\right]
 \end{align*}
-och göra Gauss-Jordan-elimination på denna.
-
+och göra Gauss-Jordan-elimination på denna. \\
 Syftet med Gauss-Jordan-elimination är att varje kolumn ska ha ett och endast ett pivotelement, även kallad en ledande etta. En ledande etta är en etta som inte har någon andra tal i samma kolumn eller till vänster i samma rad. För att få sådana, gör man operationer på radarna i matrisen enligt följande regler:
 \begin{itemize}
 	\item Radar kan multipliceras med konstanter. Forsöka, dock, att undveka $0$, eftersom det fjärnar information, vilket är otrevligt.
@@ -43,3 +41,27 @@ var alla $a_i$ är reella tal.
 
 \paragraph{Invertering av en matris}
 Ställ upp en totalmatris $[A | I]$. Vid att radreducera $A$ till identitetsmatrisen blir $I$ radreducerad till $A^{-1}$. Att visa detta är enkelt om man använder elementärmatriser.
+
+\paragraph{Basbyte}
+Om man har två baser $B = \{\vect{b}_1, \dots, \vect{b}_n\}$ och $C = \{\vect{c}_1, \dots, \vect{c}_n\}$ för ett delrum $W$, kan man bilda matrisen
+\begin{align*}
+	P = [[\vect{b}_1]_C \dots [\vect{b}_n]_C]
+\end{align*}
+så att
+\begin{align*}
+	[\vect{x}]_C = P[\vect{x}]_B.
+\end{align*}
+Då byter man bas mellan $B$ och $C$ vha. multiplikation med $P$ eller dens invers.
+
+\paragraph{Gram-Schmidts algoritm}
+Låt $\{\vect{x}_1, \dots, \vect{x}_n\}$ vara en basis för delrummet $W\neq\{0\}$. Gram-Schmidts algoritm ger dig ett sätt att få en ortogonal basis för $W$ från den gamla basen. Vektorerna i basen ges av
+\begin{align*}
+	\vect{w}_1 &= \vect{x}_1, \\
+	\vect{w}_2 &= \vect{x}_2 - \proj{W_1}{\vect{x_2}}, \\
+	\vdots \\
+	\vect{w}_i &= \vect{x}_i - \proj{W_i}{\vect{x_i}},
+\end{align*}
+var vi har definierat
+\begin{align*}
+	W_i = \Span{\vect{x}_1, \dots, \vect{x}_{i - 1}}.
+\end{align*}

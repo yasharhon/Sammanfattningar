@@ -89,6 +89,16 @@ var $A_{ij}$ är matrisen $A$ utan rad $i$ och kolumn $j$. De två summorna visa
 	\mdet{a & d \\ c & b} = ab - cd.
 \end{align*}
 
+\paragraph{Egenvektorer, egenvärden och matriser}
+Egenvektorer och egenvärden definieras analogt för matriser som för linjära avbildningar. För detaljer, se \ref{par:eigen_values}.
+
+\paragraph{Similära matriser och diagonalisering}
+Två matriser $A$ och $B$ är similära om det finns en matris $P$ så att
+\begin{align*}
+	A = PBP^{-1}.
+\end{align*}
+Om $B$ är en diagonalmatris säjs $A$ vara diagonaliserbar.
+
 \subsection{Satser}
 
 \paragraph{Matriskolumner och linjära höljen}
@@ -181,3 +191,9 @@ Radreducera med matriser.
 
 \subparagraph{Bevis}
 Fallindelning och annat bra.
+
+\paragraph{Kriterier för diagonalisering}
+En $n\times n$-matris $A$ är diagonaliserbar om och endast om den har $n$ linjärt oberoende egenvektorer. Detta ger även att kolumnerna i $P$ är egenvektorerna till $A$ och $D$ är en diagonalmatris med egenvärden motsvarande kolumnerna i $P$ på diagonalen.
+
+\subparagraph{Bevis}
+Gör saker.

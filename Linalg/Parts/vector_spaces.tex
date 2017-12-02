@@ -2,7 +2,7 @@
 
 \subsection{Definitioner}
 
-\paragraph{Gruper}
+\paragraph{Grupper}
 En grupp $G$ definieras av en mängd $X$ och en binär operation $\cdot$ på två elementer i $X$ (kommer ej skrivas ut). Denna operationen ska uppfylla
 \begin{itemize}
 	\item operationen är assosiativ, dvs. $a(bc) = (ab)c$.
@@ -11,7 +11,7 @@ En grupp $G$ definieras av en mängd $X$ och en binär operation $\cdot$ på tv�
 	\item det för varje element finns en invers så att $aa^{-1} = a^{-1}a = e$.
 \end{itemize}
 
-\paragraph{Abelska gruper}
+\paragraph{Abelska grupper}
 En grupp är abelsk om den uppfyllar $ab = ba$ för alla $b, a\in X$.
 
 \paragraph{Vektorrum}
@@ -42,7 +42,7 @@ $\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k\in V$ är en bas för $V$ om
 Om vi kallar basen till $V$ för $\beta$ kan alla vektorer i $V$ skrivas som basvektorer på följande sätt:
 \begin{align*}
 	\vect{x} = \sum\limits_{i = 0}^{k}c_i\vect{v}_i, \\
-	\vect{x}_\beta =
+	[\vect{x}]_\beta =
 	\left[\begin{array}{c}
 		c_1 \\
 		c_2 \\
@@ -50,6 +50,9 @@ Om vi kallar basen till $V$ för $\beta$ kan alla vektorer i $V$ skrivas som bas
 		c_k
 	\end{array}\right].
 \end{align*}
+
+\paragraph{Ortogonal bas}
+En ortogonal bas för ett vektorrum $W$ är en ortogonal mängd av vektorer som bildar en bas för $W$.
 
 \paragraph{Dimension}
 Dimensionen till ett vektorrum är antalet vektorer i basis.
@@ -59,5 +62,60 @@ Dimensionen till ett vektorrum är antalet vektorer i basis.
 \paragraph{Delrum i $\R^n$}
 Om $V$ är ett delrum i $R^n$ kan det skrivas som $\Span(\vect{v}_1, \vect{v}_2, \dots, \vect{v}_k)$.
 
-\paragraph{Bevis}
+\subparagraph{Bevis}
 2 ez.
+
+\paragraph{Linjärt beroende och basstorlek}
+Låt $\beta = \{\vect{v}_1, \dots, \vect{v}_n\}$ vara en bas för $V$ och $\{\vect{w}_1, \dots, \vect{w}_p\}$ vara vektorer i $V$ med $p > n$. Då är $\{\vect{w}_1, \dots, \vect{w}_p\}$ linjärt beroende.
+
+\subparagraph{Bevis}
+Basvektorer.
+
+\paragraph{Antal vektorer i en bas}
+Antalet vektorer i basen för ett delrum $V$ är oberoende av valet av bas.
+
+\subparagraph{Bevis}
+Typ det samma.
+
+\paragraph{Val av bas}
+För ett delrum med dimension $n$ är vilken som helst mängd av $n$ linjärt oberoende vektorer i $V$ en bas för $V$.
+
+\subparagraph{Bevis}
+Mer av det här?!
+
+\paragraph{Avbildningar med val av bas}
+Låt $B$ vara en bas för delrummet $V$, $C$ en bas för delrummet $W$ och $T$ en linjär avbildning från $V$ till $W$. Då ges avbildningen i koordinatvektorer av
+\begin{align*}
+	[T(\vect{x}]_C = A[\vect{x}]_B,
+\end{align*}
+var $A$ ges av
+\begin{align*}
+	A = [[T(\vect{b}_1)]_C \dots [T(\vect{b}_n)]_C].
+\end{align*}
+
+\paragraph{Vektorer och ortogonala baser}
+Låt $\{\vect{u}_1, \dots, \vect{u}_n\}$ vara en ortogonal bas för $W$. Alla vektorer $\vect{w}\in W$ kan skrivas som
+\begin{align*}
+	\vect{w} = \sum\limits_{i = 1}^n \frac{\vect{w}\cdot\vect{u}_i}{\abs{\vect{u}_i}^2}\vect{u}_i.
+\end{align*}
+
+\subparagraph{Bevis}
+Oklart.
+
+\paragraph{Projektion}
+Låt $\{\vect{u}_1, \dots, \vect{u}_n\}$ vara en ortogonal bas för $W$. Då gäller
+\begin{align*}
+	\proj{W}{\vect{x}} = \sum\limits_{i = 1}^n \frac{\vect{x}\cdot\vect{u}_i}{\abs{\vect{u}_i}^2}\vect{u}_i.
+\end{align*}
+
+\subparagraph{Bevis}
+Varför behövs det?
+
+\paragraph{Bästa approximationers sats}
+Låt $W$ vara ett delrum till $R^n$ och $\vect{x}\in\R^n$. Då gäller
+\begin{align*}
+	\abs{\vect{x} - \proj{W}{\vect{x}}} \leq \abs{\vect{x} - \vect{w}}, \vect{w}\in W.
+\end{align*}
+
+\subparagraph{Bevis}
+Schmart.
