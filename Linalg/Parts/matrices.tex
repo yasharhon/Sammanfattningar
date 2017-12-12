@@ -42,6 +42,69 @@ Ett homogent ekvationssystem kan skrivas på formen
 \end{align*}
 Motsatsen är då inhomogena ekvationssystem.
 
+\paragraph{Addition av matriser}
+För två matriser $A = (a_{i,j}), B = (b_{i,j})$ har man
+\begin{align*}
+	A + B = (a_{i,j} + b_{i,j}).
+\end{align*} 
+
+\paragraph{Mutliplikation av matriser med konstanter}
+För en matris $A = (a_{i,j})$ har man
+\begin{align*}
+	cA = (ca_{i,j}), c\in\R.
+\end{align*}
+
+\paragraph{Diagonalmatriser}
+En matris $D = (d_{i,j})$ kallas en diagonal matris om $d_{i,j} = 0$ när $i\neq j$.
+
+\paragraph{Transponat}
+För en matris $A = (a_{i,j})$ definieras transponatet som $A^T = (a_{j,i})$.
+
+\paragraph{Matrismultiplikation}
+Matrismultiplikation av en $m\times p$-matris $A$ och en $p\times n$-matris $B$ ges av
+\begin{align*}
+	AB = C: c_{i,j} = \sum\limits_{k = 1}^{p} a_{i, k}b_{k,j}.
+\end{align*}
+
+\paragraph{Inversen av en matris}
+En matris $A$ sin invers $A^{-1}$ uppfyller
+\begin{align*}
+	AA^{-1} = A^{-1}A = I.
+\end{align*}
+
+\paragraph{Elementärmatriser}
+En matris $E$ är en elementärmatris om produktet $EA$ kan fås vid att göra en radoperation på $A$.
+
+\paragraph{Rang}
+Rangen till en matris, skrivit som $\rank A$, är $\dim{\Col A}$.
+
+\paragraph{Determinant}
+För en $n\times n$-matris $A$ ges determinanten av
+\begin{align*}
+	\det{A} = \abs{A} &= \sum\limits_{i = 1}^{n}(-1)^{i + j}a_{ij}\det{A_ij} \\
+	&= \sum\limits_{j = 1}^{n}(-1)^{i + j}a_{ij}\det{A_ij},
+\end{align*}
+var $A_{ij}$ är matrisen $A$ utan rad $i$ och kolumn $j$. De två summorna visar att man kan räkna ut determinanten vid att utveckla den långs en given kolumn $j$ i första fallet eller en given rad $i$ i det andra fallet. Formelen är rekursiv, och base case är $n=2$, som ges av
+\begin{align*}
+	\mdet{a & d \\ c & b} = ab - cd.
+\end{align*}
+
+\paragraph{Egenvektorer, egenvärden och matriser}
+Egenvektorer och egenvärden definieras analogt för matriser som för linjära avbildningar. För detaljer, se \ref{par:eigen_values}.
+
+\paragraph{Similära matriser och diagonalisering}
+Två matriser $A$ och $B$ är similära om det finns en matris $P$ så att
+\begin{align*}
+	A = PBP^{-1}.
+\end{align*}
+Om $B$ är en diagonalmatris säjs $A$ vara diagonaliserbar.
+
+\paragraph{Ortogonal diagonaliserbarhet}
+$n\times n$-matrisen $A$ är ortogonalt diagonaliserbar om det finns en ortonormal bas av egenvektorer.
+
+\paragraph{Markovkedjor}
+En markovkedje representeras av en matris så att kolumnerna summeras till $1$. Sådana matriser kan användas t.ex. för att beskriva stokastiska processer (processer baserade på sannolikhet).
+
 \subsection{Satser}
 
 \paragraph{Matriskolumner och linjära höljen}
@@ -66,7 +129,7 @@ Antag att c gäller och att A ej har $m$ ledande ettor. Då måste man vid Gauss
 	    1
 	\end{array}\right]
 \end{align*}
-Eftersom Gauss-Jordan-elimination inte ändrar det linjära höljet av kolummnerna till en matris, borde man kunne hitta en kombination av elementerna i den sista raden i $A$ så att man får $1$, eftersom $\vect{b}'\in\R^m$. Då alla elementerna i denna raden är nållor, är detta omöjligt.
+Eftersom Gauss-Jordan-elimination inte ändrar det linjära höljet av kolummnerna till en matris, borde man kunne hitta en kombination av elementerna i den sista raden i $A$ så att man får $1$, eftersom $\vect{b}'\in\R^m$. Då alla elementerna i denna raden är nollor, är detta omöjligt.
 
 \paragraph{Lösningen till inhomogena ekvationssystem}
 Om det inhomogena ekvationssystemet
@@ -87,3 +150,71 @@ Kolumnerna i en matris är linjärt oberoende omm (om och endast om) $A\vect{x} 
 
 \subparagraph{Bevis}
 Någonting med radreduktion.
+
+\paragraph{Inverterbarhet av en matris}
+En matris $A$ är inverterbar om och endast om $\det A = 0$.
+
+\subparagraph{Bevis}
+Använd elementärmatriser.
+
+\paragraph{Rangsatsen}
+För en $n\times m$-matris $A$ är $\rank A + \dim{\Null A} = m$.
+
+\subparagraph{Bevis}
+Something something pivotkolumner.
+
+\paragraph{Determinanten för triangulära matriser}
+För en triangulär $n\times n$-matris $A$, dvs. en matris som har endast nollor över eller under diagonalen, ges determinanten av
+\begin{align*}
+	\det{A} = \prod\limits_{i = 1}^{n} a_{ii}.
+\end{align*}
+
+\subparagraph{Bevis}
+Inses lätt.
+
+\paragraph{Determinant och elementärmatriser}
+För en elementärmatris $E$ har man
+\begin{align*}
+	\det{E} =
+	\begin{cases}
+		-1, &E\text{ byter plats på två rader.} \\
+		1,  &E\text{ adderar en multippel av en rad till en annan.} \\
+		t,  &E\text{ multiplicerar en rad med en skalär} t\neq 0.
+	\end{cases}
+\end{align*}
+och att
+\begin{align*}
+	B = EA \implies \det{B} = \det{E}\det{A}
+\end{align*}
+
+\subparagraph{Bevis}
+Radreducera med matriser.
+
+\paragraph{Determinant för matrisprodukt}
+\begin{align*}
+	\det{AB} = \det{A}\det{B}
+\end{align*}
+
+\subparagraph{Bevis}
+Fallindelning och annat bra.
+
+\paragraph{Diagonaliserbarhet}
+En $n\times n$-matris $A$ är diagonaliserbar om och endast om den har $n$ linjärt oberoende egenvektorer. Detta ger även att kolumnerna i $P$ är egenvektorerna till $A$ och $D$ är en diagonalmatris med egenvärden motsvarande kolumnerna i $P$ på diagonalen.
+
+\subparagraph{Bevis}
+Gör saker.
+
+\paragraph{Ortogonal diagonaliserbarhet}
+En matris är ortogonalt diagonaliserbar om den är symmetrisk, d.v.s. $A = A^T$, och den är doagonaliserbar.
+
+\subparagraph{Bevis}
+Massa små roliga saker.
+
+\paragraph{Spektralsatsen}
+Låt $A$ vara en $n\times n$-matris. Då gäller att:
+\begin{itemize}
+	\item $A$ har $n$ reella egenvärden, upp till multiplicitet.
+	\item Dimensionen till egenrummet motsvarande ett givet egenvärde är lika med egenvärdets multiplicitet.
+	\item Egenrummen är ortogonala.
+	\item $A$ är ortogonalt diagonaliserbar.
+\end{itemize}

@@ -1,30 +1,68 @@
-\section{Linjära avbildningar}
+\section{Avbildningar}
 
 \subsection{Definitioner}
 
-\paragraph{Linjära avbildningar}
-En avbildning $T(\vect{x})$ är linjär om
-\begin{itemize}
-	\item $T(\vect{x} + \vect{y}) = T(\vect{x}) + T(\vect{y})$ och
-	\item $T(c\vect{x}) = cT(\vect{x})$ för något $c$.
-\end{itemize}
-
 \paragraph{Bilden till en avbildning}
-För en avbildning $T(\vect{x})$ definierar man bildet till $T$ som
+För en avbildning $T(\vect{x}): V\to W$ definierar man bildet till $T$ som
 \begin{align*}
-	Im(T) = \{\vect{y} : \vect{y} = T(\vect{x})\}.
+	\Im{T} = \{\vect{y} : \vect{y} = T(\vect{x})\}\subset W.
+\end{align*}
+Detta är ett delrum.
+
+\paragraph{Kärnan till en avbildning}
+För en avbildning $T(\vect{x}): V\to W$ definierar man kärnan till $T$ som
+\begin{align*}
+	\ker{T} = \{\vect{x} : T(\vect{x})= \vect{0}\}\subset V.
+\end{align*}
+Detta är ett delrum.
+
+\paragraph{Linjära avbildningar}
+En avbildning $T$ är linjär om
+\begin{align*}
+	T(\vect{x} + \vect{y}) = T(\vect{x}) + T(\vect{y}), \\
+	T(c\vect{x}) = cT(\vect{x}), c\in\R.
 \end{align*}
 
-\paragraph{Nollrummet till en avbildning}
-För en avbildning $T(\vect{x})$ definierar man nollrummet till $T$ som
+\paragraph{Egenvektorer och egenvärden}\label{par:eigen_values}
+Låt $T: V\to V$ vara en linjär avbildning. Egenvektorerna till $T$ är alla nollskilda vektorer $\vect{x}\in V$ så att
 \begin{align*}
-	\text{Null}(T) = \{\vect{x} : T(\vect{x})= \vect{0}\}.
+	T(\vect{x} = \lambda\vect{x}.
 \end{align*}
+$\lambda$ är det motsvarande egenvärdet till $\vect{x}$.
+
+\paragraph{Egenrum}
+Låt $\vect{x}$ vara en egenvektor med motsvarande egenvärde $\lambda$ till avbildningen $T$. Då definieras egenrummet motsvarande $\lambda$ enligt
+\begin{align*}
+	E_\lambda = \{\vect{x}\in V: T(\vect{x}) = \lambda\vect{x}\}.
+\end{align*}
+Merk att nollvektoren även inkluderas i $E_\lambda$.
+
+\paragraph{Karakteristisk polynom}
+Låt $T: \R^n\to\R^n$ med standardmatris $A$. Då är det karakteristiska polynomet (av grad $n$) till $T$
+\begin{align*}
+	C(\lambda) = \det{A - \lambda I},
+\end{align*}
+var $I$ är identitetsmatrisen.
+
+\paragraph{Multiplicitet för egenvärden}
+Ett egenvärdes algebraiska multipliciteten är multipliciteten till detta egenvärdet i det karakteristiska polynomet. Ett egenvärdes geometriska multiplicitet är dimensionen till egenrummet motsvarande detta egenvärdet. Det kommer ej göras en distinktion i denna sammanfattning.
+
+\paragraph{Kvadratiska former}
+En kvadratisk form är en avbildning på formen
+\begin{align*}
+	Q: \R^n\to\R, Q(\vect{x}) = \sum\limits_{1\leq i\leq j\leq n}d_{i, j}x_ix_j.
+\end{align*}
+
+\paragraph{Positiv och negativ definitet}
+En kvadratisk form är positivt definit om $Q(\vect{x}) > 0$ för alla $\vect{x}$, och negativt definit om $Q(\vect{x}) < 0$ för alla $\vect{x}$. Om den ej är positivt eller negativt definit, är den indefinit.
+
+\paragraph{Kvadratiska kurvor}
+En kvadratisk kurva är lösningsmängden till ett andragradspolynom i $n$ variabler.
 
 \subsection{Satser}
 
 \paragraph{Avildningar och enhetsvektorer}
-För en avbildning $T(\vect{x}): \R^n\to\R^m$ har man att
+För en linjär avbildning $T(\vect{x})$ har man att
 \begin{align*}
 	T(\vect{x}) = \sum\limits_{i = 1}^{n} x_iT(\vect{e}_i)
 \end{align*}
@@ -45,3 +83,43 @@ var $\vect{e}_i$ är enhetsvektorerna i $\R^n$. Då kan avbildningen skrivas som
 
 \subparagraph{Bevis}
 Inte svårt alls.
+
+\paragraph{Samansättning av linjära avbildningar}
+För två linjära avbildningar $S, T$ är avbildningen $S\circ T$ linjär.
+
+\subparagraph{Bevis}
+Vi använder oss av definitionen.
+
+\paragraph{Dimensionalitet och avbildningar}
+För en avbildning $T: \R^n\to\R^m$ är $\dim{\Im T} + \dim{\ker{T}} = n$.
+
+\subparagraph{Bevis}
+Oklart?
+
+\paragraph{Karakteristisk polynom och egenvärden}
+Låt $T:\R^n\to\R^n$. Egenvärden till $T$ är lösningerna till $C(\lambda) = 0$.
+
+\subparagraph{Bevis}
+Lösa för det.
+
+\paragraph{Egenrum och dimensionalitet}
+Låt $T$ vara en avbildning med $p$ distinkta egenvärden. Då gäller:
+\begin{itemize}
+	\item Dimensionen till egenrummet motsvarande något egenvärde är mindre än eller lika med multipliciteten till detta egenvärdet.
+	\item Standardmatrisen $A$, givet en avbildning mellan rum med samma dimensionalitet $n$, är diagonaliserbar om och endast om summan av egenrummens dimension är $n$.
+	\item Om standardmatrisen är diagoniserbar och $B_k$ är en bas för egenrummet till egenvärdet $\lambda_k$, bilder samlingen av basvektorerna till alla $B_I$ en bas för $\R^n$.
+\end{itemize}
+
+\paragraph{Diagonalisering och avbildningar}
+Låt $A = PDP^{-1}$ vara standardmatrisen för en avbildning, och $B$ en basis för $\R^n$ bildat av kolumnerna i $P$. Då är $D$ matrisen för avbildningen i bas $B$.
+
+\subparagraph{Bevis}
+Ganska enkelt.
+
+\paragraph{Definitet och egenvärden}
+Låt $Q$ vara en kvadratisk form. Då gäller:
+\begin{itemize}
+	\item Q är positivt definit om och endast om alla egenvärden år positiva.
+	\item Q är negativt definit om och endast om alla egenvärden år negativa.
+	\item Q är indefinit om det finns båda negativa och positiva egenvärden.
+\end{itemize}

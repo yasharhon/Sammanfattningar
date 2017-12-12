@@ -4,7 +4,6 @@
 Dessa algoritmer kan vara smarta att kunna för att lösa problemer i linjär algebra.
 
 \paragraph{Gauss-Jordan-elimination}
-
 Ett ekvationssystem
 \begin{align*}
 	& a_{1,1}x_1 + a_{1,2}x_2 + ... + a_{1,m}x_n = b_1 \\
@@ -21,8 +20,7 @@ kan lösas vid att konstruera en totalmatris
 	    a_{n,1} & a_{n,2} & \dots  & a_{n,m} & b_n
 	\end{array}\right]
 \end{align*}
-och göra Gauss-Jordan-elimination på denna.
-
+och göra Gauss-Jordan-elimination på denna. \\
 Syftet med Gauss-Jordan-elimination är att varje kolumn ska ha ett och endast ett pivotelement, även kallad en ledande etta. En ledande etta är en etta som inte har någon andra tal i samma kolumn eller till vänster i samma rad. För att få sådana, gör man operationer på radarna i matrisen enligt följande regler:
 \begin{itemize}
 	\item Radar kan multipliceras med konstanter. Forsöka, dock, att undveka $0$, eftersom det fjärnar information, vilket är otrevligt.
@@ -40,3 +38,65 @@ När man är klar, ska matrisen (förhoppingsvis) se ut så här:
 	\end{array}\right]
 \end{align*}
 var alla $a_i$ är reella tal.
+
+\paragraph{Invertering av en matris}
+Ställ upp en totalmatris $[A | I]$. Vid att radreducera $A$ till identitetsmatrisen blir $I$ radreducerad till $A^{-1}$. Att visa detta är enkelt om man använder elementärmatriser.
+
+\paragraph{Basbyte}
+Om man har två baser $B = \{\vect{b}_1, \dots, \vect{b}_n\}$ och $C = \{\vect{c}_1, \dots, \vect{c}_n\}$ för ett delrum $W$, kan man bilda matrisen
+\begin{align*}
+	P = [[\vect{b}_1]_C \dots [\vect{b}_n]_C]
+\end{align*}
+så att
+\begin{align*}
+	[\vect{x}]_C = P[\vect{x}]_B.
+\end{align*}
+Då byter man bas mellan $B$ och $C$ vha. multiplikation med $P$ eller dens invers.
+
+\paragraph{Gram-Schmidts algoritm}
+Låt $\{x_1, \dots, x_n\}$ vara en bas för delrummet $W\neq\{0\}$. Gram-Schmidts algoritm ger dig ett sätt att få en ortogonal basis för $W$ från den gamla basen. Vektorerna (var vi här använder begreppet vektor i en vid förstånd) i basen ges av
+\begin{align*}
+	w_1 &= x_1, \\
+	w_2 &= x_2 - \proj{W_1}{x_2}, \\
+	\vdots \\
+	w_i &= x_i - \proj{W_i}{x_i},
+\end{align*}
+var vi har definierat
+\begin{align*}
+	W_i = \Span{x_1, \dots, x_{i - 1}}.
+\end{align*}
+
+\paragraph{Minstakvadratmetoden}
+Givet ett delrum $W$ av $\R^n$ och $\vect{b}\in\R^n$, söker vi $\proj{W}{\vect{b}}$. Om $W=\Span{\vect{w}_1, \dots, \vect{w}_m}$ och $A = [\vect{w}_1 \dots \vect{w}_m]$ söker vi en $\vect{x}$ så att $A\vect{x} = \proj{W}{\vect{b}}$. Denna ges av 
+\begin{align*}
+	A^T\vect{b} = A^TA\vect{x}.
+\end{align*}
+
+\paragraph{Kvadratiska former}
+Given en kvadratisk form
+\begin{align*}
+	Q(\vect{x}) = \sum\limits_{1\leq i\leq j\leq n}d_{i, j}x_ix_j,
+\end{align*}
+bilda en matris $Q = (q_{i, j})$ så att
+\begin{align*}
+	q_{i, j} =
+	\begin{cases}
+		\frac{1}{2}d_{i, j}, &i\neq j\\
+		d_{i, j},            &i = j
+	\end{cases}
+\end{align*}
+Detta ger
+\begin{align*}
+	Q(\vect{x}) = \vect{x}^TQ\vect{x}.
+\end{align*}
+$Q$ är symmetrisk, och därmed ortogonalt diagonaliserbar. Låt matrisen $P$ vara övergångsmatrisen från en ortonormal bas till standardbasen, och definiera $\vect{x} = P\vect{s}$. Detta ger
+\begin{align*}
+	Q(\vect{s}) = \vect{s}^TD\vect{s},
+\end{align*}
+var $D$ är en diagonalmatris med egenvärden på diagonalen. Avbildningen kan då skrivas som
+\begin{align*}
+	Q(\vect{s}) = \sum\limits_{i = 1}^{n}\lambda_is_i^2.
+\end{align*}
+
+\paragraph{Kvadratiska kurvor}
+Givet ett andragradspolynom i $n$ variabler, hitta en matris $Q$ så att de kvadratiska termerna ges av $\vect{x}^TQ\vect{x}$ och en vektor $\vect{v}$ så att de linjära termerna kan skrivas som $\vect{v}^T\vect{x}$. Gör sen ett variabelbyte enligt beskrivningen ovan av kvadratiska formar, och skriv polynomet i dessa nya variablerna. Kvadratkomplettera sen, och du får en ekvation som beskriver lösningsmängden.
