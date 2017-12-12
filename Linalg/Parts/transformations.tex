@@ -45,7 +45,19 @@ Låt $T: \R^n\to\R^n$ med standardmatris $A$. Då är det karakteristiska polyno
 var $I$ är identitetsmatrisen.
 
 \paragraph{Multiplicitet för egenvärden}
-Ett egenvärdes algebraiska multipliciteten är multipliciteten till detta egenvärdet i det karakteristiska polynomet. Ett egenvärdes geometriska multiplicitet är dimensionen till egenrummet motsvarande detta egenvärdet.
+Ett egenvärdes algebraiska multipliciteten är multipliciteten till detta egenvärdet i det karakteristiska polynomet. Ett egenvärdes geometriska multiplicitet är dimensionen till egenrummet motsvarande detta egenvärdet. Det kommer ej göras en distinktion i denna sammanfattning.
+
+\paragraph{Kvadratiska former}
+En kvadratisk form är en avbildning på formen
+\begin{align*}
+	Q: \R^n\to\R, Q(\vect{x}) = \sum\limits_{1\leq i\leq j\leq n}d_{i, j}x_ix_j.
+\end{align*}
+
+\paragraph{Positiv och negativ definitet}
+En kvadratisk form är positivt definit om $Q(\vect{x}) > 0$ för alla $\vect{x}$, och negativt definit om $Q(\vect{x}) < 0$ för alla $\vect{x}$. Om den ej är positivt eller negativt definit, är den indefinit.
+
+\paragraph{Kvadratiska kurvor}
+En kvadratisk kurva är lösningsmängden till ett andragradspolynom i $n$ variabler.
 
 \subsection{Satser}
 
@@ -103,3 +115,11 @@ Låt $A = PDP^{-1}$ vara standardmatrisen för en avbildning, och $B$ en basis f
 
 \subparagraph{Bevis}
 Ganska enkelt.
+
+\paragraph{Definitet och egenvärden}
+Låt $Q$ vara en kvadratisk form. Då gäller:
+\begin{itemize}
+	\item Q är positivt definit om och endast om alla egenvärden år positiva.
+	\item Q är negativt definit om och endast om alla egenvärden år negativa.
+	\item Q är indefinit om det finns båda negativa och positiva egenvärden.
+\end{itemize}

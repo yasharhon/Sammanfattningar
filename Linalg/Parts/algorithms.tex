@@ -54,14 +54,49 @@ så att
 Då byter man bas mellan $B$ och $C$ vha. multiplikation med $P$ eller dens invers.
 
 \paragraph{Gram-Schmidts algoritm}
-Låt $\{\vect{x}_1, \dots, \vect{x}_n\}$ vara en basis för delrummet $W\neq\{0\}$. Gram-Schmidts algoritm ger dig ett sätt att få en ortogonal basis för $W$ från den gamla basen. Vektorerna i basen ges av
+Låt $\{x_1, \dots, x_n\}$ vara en bas för delrummet $W\neq\{0\}$. Gram-Schmidts algoritm ger dig ett sätt att få en ortogonal basis för $W$ från den gamla basen. Vektorerna (var vi här använder begreppet vektor i en vid förstånd) i basen ges av
 \begin{align*}
-	\vect{w}_1 &= \vect{x}_1, \\
-	\vect{w}_2 &= \vect{x}_2 - \proj{W_1}{\vect{x_2}}, \\
+	w_1 &= x_1, \\
+	w_2 &= x_2 - \proj{W_1}{x_2}, \\
 	\vdots \\
-	\vect{w}_i &= \vect{x}_i - \proj{W_i}{\vect{x_i}},
+	w_i &= x_i - \proj{W_i}{x_i},
 \end{align*}
 var vi har definierat
 \begin{align*}
-	W_i = \Span{\vect{x}_1, \dots, \vect{x}_{i - 1}}.
+	W_i = \Span{x_1, \dots, x_{i - 1}}.
 \end{align*}
+
+\paragraph{Minstakvadratmetoden}
+Givet ett delrum $W$ av $\R^n$ och $\vect{b}\in\R^n$, söker vi $\proj{W}{\vect{b}}$. Om $W=\Span{\vect{w}_1, \dots, \vect{w}_m}$ och $A = [\vect{w}_1 \dots \vect{w}_m]$ söker vi en $\vect{x}$ så att $A\vect{x} = \proj{W}{\vect{b}}$. Denna ges av 
+\begin{align*}
+	A^T\vect{b} = A^TA\vect{x}.
+\end{align*}
+
+\paragraph{Kvadratiska former}
+Given en kvadratisk form
+\begin{align*}
+	Q(\vect{x}) = \sum\limits_{1\leq i\leq j\leq n}d_{i, j}x_ix_j,
+\end{align*}
+bilda en matris $Q = (q_{i, j})$ så att
+\begin{align*}
+	q_{i, j} =
+	\begin{cases}
+		\frac{1}{2}d_{i, j}, &i\neq j\\
+		d_{i, j},            &i = j
+	\end{cases}
+\end{align*}
+Detta ger
+\begin{align*}
+	Q(\vect{x}) = \vect{x}^TQ\vect{x}.
+\end{align*}
+$Q$ är symmetrisk, och därmed ortogonalt diagonaliserbar. Låt matrisen $P$ vara övergångsmatrisen från en ortonormal bas till standardbasen, och definiera $\vect{x} = P\vect{s}$. Detta ger
+\begin{align*}
+	Q(\vect{s}) = \vect{s}^TD\vect{s},
+\end{align*}
+var $D$ är en diagonalmatris med egenvärden på diagonalen. Avbildningen kan då skrivas som
+\begin{align*}
+	Q(\vect{s}) = \sum\limits_{i = 1}^{n}\lambda_is_i^2.
+\end{align*}
+
+\paragraph{Kvadratiska kurvor}
+Givet ett andragradspolynom i $n$ variabler, hitta en matris $Q$ så att de kvadratiska termerna ges av $\vect{x}^TQ\vect{x}$ och en vektor $\vect{v}$ så att de linjära termerna kan skrivas som $\vect{v}^T\vect{x}$. Gör sen ett variabelbyte enligt beskrivningen ovan av kvadratiska formar, och skriv polynomet i dessa nya variablerna. Kvadratkomplettera sen, och du får en ekvation som beskriver lösningsmängden.

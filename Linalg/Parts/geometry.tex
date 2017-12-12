@@ -1,0 +1,113 @@
+\section{Geometri}
+
+\subsection{Definitioner}
+
+\paragraph{Linjer i $\R^2$}
+En linje i $R^2$ definieras av en ekvation på formen $ax + by + c = 0$. Linjen är normal på
+\begin{align*}
+	\vect{n} = 
+	\left[\begin{array}{c}
+		a \\
+		b
+	\end{array}\right].
+\end{align*}
+
+\paragraph{Plan i $R^3$}
+Ett plan i $R^3$ definieras av en ekvation på formen $ax + by + cz + d = 0$. Planet är normalt på
+\begin{align*}
+	\vect{n} = 
+	\left[\begin{array}{c}
+		a \\
+		b \\
+		c
+	\end{array}\right].
+\end{align*}
+
+\paragraph{Kryssprodukt i $\R^3$}
+Kryssproduktet av två vektorer ges av
+\begin{align*}
+	\vect{u}\times \vect{v} &=
+	\left[\begin{array}{c}
+		u_1 \\
+		u_2 \\
+		u_3
+	\end{array}\right]
+	\times
+	\left[\begin{array}{c}
+		v_1 \\
+		v_2 \\
+		v_3
+	\end{array}\right] \\
+	                        &=
+	\left[\begin{array}{c}
+		u_2v_3 - u_3v_2 \\
+		-(u_1v_3 - u_3v_1) \\
+		(u_1v_2 - u_2v_1)
+	\end{array}\right]
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Distanser till hyperplan i $\R^n$}
+Låt $H$ vara ett hyperplan definierad av ekvationen
+\begin{align*}
+	d + \sum\limits_{i = 1}^{n} a_ix_i = 0
+\end{align*}
+och
+\begin{align*}
+	N = \Span{
+	\left[\begin{array}{c}
+		a_1 \\
+		a_2 \\
+		\vdots \\
+		a_n
+	\end{array}\right]}
+\end{align*}
+vara dess ortogonala komplement. Då ges avstandet från en punkt $Q$ med koordinater $q_i, i = 1, 2, \dots, n$ av
+\begin{align*}
+	s = \frac{\sum\limits_{i = 1}^{n}a_iq_i}{\sqrt{\sum\limits_{i = 1}^{n}a_i^2}}
+\end{align*}
+
+\subparagraph{Bevis}
+Aa.
+
+\paragraph{Kryssproduktens egenskaper}
+\begin{align*}
+	(\vect{u}\times\vect{v})\cdot\vect{u} &= (\vect{u}\times\vect{v})\cdot\vect{v} = 0 \\
+	\vect{u}\times\vect{v}                &= -\vect{v}\times\vect{u}
+\end{align*}
+
+\subparagraph{Bevis}
+
+\paragraph{Plan med punkter}
+Givet tre punkter $P, Q, R$ är vektorn
+\begin{align*}
+	\vect{n} = (Q - P)\times (R - P)
+\end{align*}
+normal på planet som innehåller de tre punkterna.
+
+\subparagraph{Bevis}
+
+\paragraph{Area av parallellogrammer i $\R^3$}
+Arean av ett parallellogram i $\R^3$ definierad av två vektorer $\vect{u}, \vect{v}$ ges av
+\begin{align*}
+	A = \abs{\vect{u}\times\vect{v}}.
+\end{align*}
+
+\subparagraph{Bevis}
+
+\paragraph{Avstånd mellan linjer}
+Låt $L_1, L_2$ vara två linjer. \\
+Om linjerna är parallella är avståndet
+\begin{align*}
+	s = \abs{(\vect{l}_1 - \vect{l}_2) - \proj{L_2'}{\vect{l}_1 - \vect{l}_2}}
+\end{align*}
+där $L_2'$ är parallell med $L_2$ och går genom origo. \\
+Om linjerna är i parallella plan $H_1, H_2$ definierar man först
+\begin{align*}
+	P_1' = \{\vect{p}_1 + t\vect{n}_1, \vect{p}_1\in H_1\}\cap H_2
+\end{align*}
+som är parallell med $L_1$ och ligger i $H_2$ för ett smart val av $t$. Avståndet är då
+\begin{align*}
+	s = t\abs{\vect{n}}.
+\end{align*}
