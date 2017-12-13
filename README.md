@@ -1,7 +1,7 @@
 # Sammanfattningar
 Sammanfattningar från kurser läst av F-17 Förarlös.
 
-#Hur hittar man färdiga sammanfattningar
+# Hur hittar man färdiga sammanfattningar
 I listan av filer, välj mappen med rätt sammanfatning och välj pdf-filen.
 
 # Hur hittar man ofärdiga sammanfattningar
