@@ -5,11 +5,70 @@
 \paragraph{Derivatans definition}
 Låt $f$ vara en funktion definierad i en omgvning krin $x_0$. $f$ är deriverbar i $x_0$ om
 \begin{align*}
-	\eval{\dv{f}{x}}_{x = x_0} = f'(x_0) = \lim\limits_{h\to 0}\frac{f(x_0 + h) - f(x_0)}{h}
+	\eval{\dv{f}{x}}_{x = x_0} &= f'(x_0) \\
+	                           &= \lim\limits_{h\to 0}\frac{f(x_0 + h) - f(x_0)}{h}
 \end{align*}
 existerar. Värdet kallas derivatan i $x_0$.
 
 \paragraph{Deriverbara funktioner}
 Om en funktion $f$ är deriverbar i alla punkter i definitionsmängden, är funktionen deriverbar. Funktionen $f' = \dv{f}{x}$ med $D_{f'} = D_f$ kallas derivatan.
 
+\paragraph{Minima och maxima}
+En funktion $f$ har ett lokalt maximum i $x_0$ om det finns en omgivning $I$ till $x_0$ så att $f(x)\leq f(x_0)$ för alla $x\in I\cap D_f$. Det analoga gäller för ett lokalt minimum. Om $f$ har antingen ett lokalt maximum eller minimum i $x_0$ har $f$ ett lokalt extrempunkt i $f$.
+
+\paragraph{Stationära punkt}
+En funktion $f$ har ett stationärt punkt $x_0$ om $\dv{f}{x}\eval_{x_0} = 0$.
+
+\paragraph{Globala maxima och minima}
+En funktion $f$ har ett globalt maximum i $x_0$ om $f(x)\leq f(x_0$ för varje $x\in D_f$.
+
 \subsection{Satser}
+
+\paragraph{Derivata och kontinuitet}
+Låt $f$ vara deriverbar i $(a, b)$. Då är $f$ kontinuerlig i $(a, b)$.
+
+\proof
+Kan man tänka.
+
+\paragraph{Derivationsregler}
+Låt $f, g$ vara deriverbara i punkten $x$. Då följer att $f + g, fg$ är deriverbara i $x$. Derivatorna har sambandet
+\begin{align*}
+	\dv{x}(f + g)\eval_x &= \left(\dv{f}{x} + \dv{g}{x}\right)\eval_x, \\
+	\dv{x}(af)\eval_0    &= a\dv{f}{x}\eval_x, a\in\R, \\
+	\dv{x}(fg)\eval_x    &= \left(f\dv{g}{x} + g\dv{f}{x}\right)\eval_x. \\
+\end{align*}
+Om $g(x)\neq 0$ är även $\frac{f}{g}$ deriverbar i $x$ och
+\begin{align*}
+	\dv{x}\frac{f}{g}\eval_x = \frac{\left(g\dv{f}{x} - f\dv{g}{x}\right)\eval_x}{g^2(x)}.
+\end{align*}
+
+\proof
+Inte omöjligt.
+
+\paragraph{Kedjeregeln}
+Låt $f$ vara deriverbar i $y$, $g$ deriverbar i $x$ och $y = g(x)$. Då är den sammansatta funktionen $f\circ g$ deriverbar och
+\begin{align*}
+	\dv{x}(f\circ g)\eval_x = \dv{x}f\eval_{g(x)}\cdot\dv{x}g\eval_x.
+\end{align*}
+
+\paragraph{Derivatan av inversfunktioner}
+Låt $f$ vara en deriverbar och inverterbar funktion. Då är inversen $f^{-1}$ deriverbar i alla punkter $y = \dv{x}f\eval_x$ där $\dv{x}f\eval_x\neq 0$ med derivatan
+\begin{align*}
+	\dv{y}f^{-1}\eval_y = \frac{1}{\dv{x}f\eval_x}.
+\end{align*}
+
+\paragraph{Extrempunkt och derivata}
+Låt $f$ vara deriverbar i $x_0$ och ha en lokal extrempunkt i $x_0$. Då är $\dv{f}{x}\eval_{x_0} = 0$.
+
+\paragraph{Generaliserade medelvärdessatsen}
+Låt $f$ och $g$ vara reellvärda, kontinuerliga på $[a, b]$ och deriverbara på $(a, b)$. Då existerar $p\in (a, b)$ så att
+\begin{align*}
+	\dv{f}{x}\eval_p(g(b) - g(a)) = \dv{g}{x}\eval_p(f(b) - f(a)).
+\end{align*}
+Om $g(a)\neq g(b)$ och $\dv{g}{x}\eval_p\neq 0$, gäller
+\begin{align*}
+	\frac{\dv{f}{x}\eval_p}{\dv{g}{x}\eval_p} = \frac{f(b) - f(a)}{g(b) - g(a)}.
+\end{align*}
+
+\subparagraph{Medelvärdesatsen}
+Välj $g(x) = x$. Detta ger
