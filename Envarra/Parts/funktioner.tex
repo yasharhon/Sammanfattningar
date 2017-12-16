@@ -52,7 +52,7 @@ Betrakta enhetssirkeln i figur \ref{fig:unit_circle}, med radie $1$.
 
 \begin{figure}[!ht]
 	\includegraphics[width=\linewidth]{./Images/unit_circle/unit_circle.pdf}
-	\caption{Enhetssirkeln.}
+	\caption{Enhetscirkeln.}
 	\label{fig:unit_circle}
 \end{figure}
 
@@ -119,6 +119,47 @@ Låt $f$ vara en reellvärd funktion med $D_f\subset\R$, sådan att varje punkte
 \begin{align*}
 	\lim\limits_{x\to a}f(x) = f(a).
 \end{align*}
+
+\paragraph{Konvexitet}
+En funktion $f$ är konvex i $[a, b]$ om det för varje $x_1, x_2\in [a, b]$ gäller att
+\begin{align*}
+	f(tx_1 + (1 - t)x_2)\leq tf(x_1) + (1-t)f(x_2), t\in [0, 1].
+\end{align*}
+
+\paragraph{Konkavitet}
+En funktion $f$ är konkav  i $[a, b]$ om $-f$ är konvex i $[a, b]$.
+
+\paragraph{Lodräta asymptoter}
+Linjen $x = a$ är en lodrät asymptot till $f$ om $f(x)$ går mot $\infty$ eller $-\infty$ när $x\to a^{-}$ eller $x\to a^{+}$.
+
+\paragraph{Sneda asymptoter}
+Linjen $y = kx + m$ är en sned asymptot till $f$ om
+\begin{align*}
+	\limit{x}{\infty}(f(x) - (kx + m)) = 0
+\end{align*}
+eller
+\begin{align*}
+	\limit{x}{-\infty}(f(x) - (kx + m)) = 0.
+\end{align*}
+Givet att $f$ har en sned asymptot, ger definitionen
+\begin{align*}
+	k = \limit{x}{\infty}\frac{f(x)}{k}, m = \limit{x}{\infty}(f(x) - kx)
+\end{align*}
+eller analogt om asymptoten är vid $-\infty$.
+
+\paragraph{Stora ordo vid oändligheten}
+Låt $f, g$ vara funktioner definierade i $(a, \infty)$ för något $a$. $f$ till hör stora ordo av $g$ då $x\to\infty$, med notation $f(x) = \Ordo{g(x)}$, om det finns $M$ och $x_0$ så att
+\begin{align*}
+	\abs{f(x)}\leq M\abs{g(x)}
+\end{align*}
+för varje $x > x_0$.
+
+\paragraph{Stora ordo kring en punkt}
+Låt $f, g$ vara funktioner definierade i $(a, \infty)$ för något $a$. $f$ till hör stora ordo av $g$ då $x\to\infty$, med notation $f(x) = \Ordo{g(x)}$, om det finns $M$ och $x_0$ så att
+\begin{align*}
+	\abs{f(x)}\leq M\abs{g(x)}
+\end{align*}
+för varje $x > x_0$.
 
 \subsection{Satser}
 
