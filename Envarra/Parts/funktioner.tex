@@ -148,18 +148,18 @@ Givet att $f$ har en sned asymptot, ger definitionen
 eller analogt om asymptoten är vid $-\infty$.
 
 \paragraph{Stora ordo vid oändligheten}
-Låt $f, g$ vara funktioner definierade i $(a, \infty)$ för något $a$. $f$ till hör stora ordo av $g$ då $x\to\infty$, med notation $f(x) = \Ordo{g(x)}$, om det finns $M$ och $x_0$ så att
+Låt $f, g$ vara funktioner definierade i $(a, \infty)$ för något $a$. $f$ tillhör stora ordo av $g$ då $x\to\infty$, med notation $f(x) = \Ordo{g(x)}$, om det finns $M$ och $x_0$ så att
 \begin{align*}
 	\abs{f(x)}\leq M\abs{g(x)}
 \end{align*}
 för varje $x > x_0$.
 
 \paragraph{Stora ordo kring en punkt}
-Låt $f, g$ vara funktioner definierade i $(a, \infty)$ för något $a$. $f$ till hör stora ordo av $g$ då $x\to\infty$, med notation $f(x) = \Ordo{g(x)}$, om det finns $M$ och $x_0$ så att
+Låt $f, g$ vara funktioner definierade i en omgivning till $a$. $f$ tillhör stora ordo av $g$ kring $a$, med notation $f(x) = \Ordo{g(x)}$, om det finns $M$ och $\delta > 0$ så att
 \begin{align*}
 	\abs{f(x)}\leq M\abs{g(x)}
 \end{align*}
-för varje $x > x_0$.
+för varje $x\in(a - \delta, a + \delta)$.
 
 \subsection{Satser}
 
@@ -185,7 +185,7 @@ Låt $a > 1$. Då gäller att
 	&\log_a\left(x^y\right) = y\log_a\left(x\right) \label{eq:log_pow}
 \end{align}
 
-\subparagraph{Bevis}
+\proof
 
 Alla identiteter är baserade på inverterbarheten till exponentialfunktionen - $a^{\log_a x} = x$ - och injektiviteten till exponentialfunktionen, samt reglerna som exponentialfunktionen uppfyllar.
 
@@ -202,7 +202,7 @@ Ekvation \ref{eq:log_pow} fås från att $a^{\log_a x^y} = x^y$ och att $a^{y\lo
 	&\abs{x + y} \leq \abs{x} + \abs{y} \label{eq:abs_sum}
 \end{align}
 
-\subparagraph{Bevis}
+\proof
 
 Kommer kanskje någon gång.
 
@@ -213,43 +213,43 @@ Låt $f$ vara kontinuerlig i $b$ och låt $g(x)\to b$ när $x\to a$. Då gäller
 \end{align*}
 givet att vänsterledet är definierat.
 
-\subparagraph{Bevis}
+\proof
 Meh.
 
 \paragraph{Kontinuitet och begränsning}
 Låt $f: [a,b]\to\R$ vara en kontinuerlig funktion. Då är $f$ begränsad.
 
-\subparagraph{Bevis}
+\proof
 Kanske man borde starta på dessa.
 
 \paragraph{Inversfunktioners kontinuerlighet}
 Låt $f: A\to B$ vara en kontinuerlig, inverterbar och strängt växande funktion. Då gäller att inversen $f^{1}: B\to A$ är kontinuerlig och strängt växande.
 
-\subparagraph{Bevis}
+\proof
 Oo.
 
 \paragraph{Elementära funktioners kontinuerlighet}
 Elementära funktioner är kontinuerliga.
 
-\subparagraph{Bevis}
+\proof
 Många av dom.
 
 \paragraph{Kontinuerlighet av summa och produkt}
 Summan och produktet av kontinuerliga funktioner är kontinuerlig.
 
-\subparagraph{Bevis}
+\proof
 Inses lätt.
 
 \paragraph{Satsen om mellanliggande värde}
 Låt $f$ vara kontinuerlig i $[a, b]$. Då antar $f$ alla värden mellan $f(a)$ och $f(b)$.
 
-\subparagraph{Bevis}
+\proof
 Inte så långt.
 
 \paragraph{Största och minsta värden}
 Låt $f: [a,b]\to\R$ vara en kontinuerlig funktion. Då finns $x_1, x_2\in [a,b]$ så att $\sup{V_f} = f(x_1)$ och $\inf{V_f} = f(x_2)$.
 
-\subparagraph{Bevis}
+\proof
 yez.
 
 \paragraph{Standardgränsvärden}
@@ -259,5 +259,14 @@ yez.
 	&\lim\limits_{x\to 0}\frac{\sin{x}}{x} = 1
 \end{align*}
 
-\subparagraph{Bevis}
+\proof
 Too much.
+
+\paragraph{Stora ordos egenskaper}
+Låt $f, g$ vara funktioner sådana att $\Ordo{f(x)}, \Ordo{g(x)}$ är definierade kring en punkt eller vid $\infty$. Då gäller:
+\begin{align*}
+	\Ordo{f(x)}\Ordo{g(x)}    &= \Ordo{f(x)g(x)}, \\
+	\Ordo{f(x)} + \Ordo{g(x)} &= \Ordo{\abs{f(x)} + \abs{g(x)}}.
+\end{align*}
+
+\proof
