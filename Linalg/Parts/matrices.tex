@@ -6,11 +6,11 @@
 Betrakta $m\times n$-matrisen
 \begin{align*}
 	A =
-	\left[\begin{array}{cccc|c}
-    	a_{1,1} & a_{1,2} & \dots  & a_{1,n} & b_1 \\
-    	a_{2,1} & a_{2,2} & \dots  & a_{2,n} & b_2 \\
-    	\vdots  & \vdots  & \ddots & \vdots  & \vdots \\
-	    a_{m,1} & a_{m,2} & \dots  & a_{m,n} & b_n
+	\left[\begin{array}{cccc}
+    	a_{1,1} & a_{1,2} & \dots  & a_{1,n} \\
+    	a_{2,1} & a_{2,2} & \dots  & a_{2,n} \\
+    	\vdots  & \vdots  & \ddots & \vdots  \\
+	    a_{m,1} & a_{m,2} & \dots  & a_{m,n}
 	\end{array}\right]
 \end{align*}
 och vektoren i $\R^n$
@@ -40,7 +40,7 @@ Ett homogent ekvationssystem kan skrivas på formen
 \begin{align*}
 	A\vect{x} = \vect{0}.
 \end{align*}
-Motsatsen är då inhomogena ekvationssystem.
+Motsatsen kallas inhomogena ekvationssystem.
 
 \paragraph{Addition av matriser}
 För två matriser $A = (a_{i,j}), B = (b_{i,j})$ har man
@@ -81,12 +81,16 @@ Rangen till en matris, skrivit som $\rank A$, är $\dim{\Col A}$.
 \paragraph{Determinant}
 För en $n\times n$-matris $A$ ges determinanten av
 \begin{align*}
-	\det{A} = \abs{A} &= \sum\limits_{i = 1}^{n}(-1)^{i + j}a_{ij}\det{A_ij} \\
-	&= \sum\limits_{j = 1}^{n}(-1)^{i + j}a_{ij}\det{A_ij},
+	\det{A} = \abs{A} &= \sum\limits_{i = 1}^{n}(-1)^{i + j}a_{ij}\det{A_{ij}} \\
+	&= \sum\limits_{j = 1}^{n}(-1)^{i + j}a_{ij}\det{A_{ij}},
 \end{align*}
-var $A_{ij}$ är matrisen $A$ utan rad $i$ och kolumn $j$. De två summorna visar att man kan räkna ut determinanten vid att utveckla den långs en given kolumn $j$ i första fallet eller en given rad $i$ i det andra fallet. Formelen är rekursiv, och base case är $n=2$, som ges av
+där $A_{ij}$ är matrisen $A$ utan rad $i$ och kolumn $j$. De två summorna visar att man kan räkna ut determinanten vid att utveckla den långs en given kolumn $j$ i första fallet eller en given rad $i$ i det andra fallet. Formelen är rekursiv, och base case är $n=2$, som ges av
 \begin{align*}
-	\mdet{a & d \\ c & b} = ab - cd.
+	\mdet{a & d \\ c & b} = ab - cd
+\end{align*}
+eller $n = 1$, som ges av
+\begin{align*}
+	\mdet{a} = a.
 \end{align*}
 
 \paragraph{Egenvektorer, egenvärden och matriser}
@@ -100,7 +104,7 @@ Två matriser $A$ och $B$ är similära om det finns en matris $P$ så att
 Om $B$ är en diagonalmatris säjs $A$ vara diagonaliserbar.
 
 \paragraph{Ortogonal diagonaliserbarhet}
-$n\times n$-matrisen $A$ är ortogonalt diagonaliserbar om det finns en ortonormal bas av egenvektorer.
+$n\times n$-matrisen $A$ är ortogonalt diagonaliserbar om den är diagonaliserbar och det finns en ortonormal bas av egenvektorer. För mer om ortogonalitet, se \ref{par:orthogonality}.
 
 \paragraph{Ortogonala matriser}
 En ortogonal matris är en matris med ortonormala kolumner.
@@ -113,26 +117,18 @@ En markovkedje representeras av en matris så att kolumnerna summeras till $1$. 
 \paragraph{Matriskolumner och linjära höljen}
 Följande påståenden är ekvivalenta:
 \begin{itemize}
-	\item[a)] $A\vectorbold{x} = \vect{b}$ har lösning för varje
+	\item[a)] $A\vect{x} = \vect{b}$ har lösning för varje $\vect{b}$.
 	\item[b)] Varje $\vect{b}\in \R^{m}$ är en linjär kombination av kolumnerna i $A$.
-	\item[c)] $\Span{\vect{A_1}, \vect{A_2}, \dots, \vect{A_n}} = \R^m$.
-	\item[d)] Den reducerade matrisen till $A$ har $m$ ledande ettor.
+	\item[c)] $\Span{\vect{A_1}, \vect{A_2}, \dots, \vect{A_n}} = \R^m$, där $\vect{A_i}$ är kolumnerna i $A$.
+	\item[d)] $A$ kan reduceras till en matris med $m$ ledande ettor.
 \end{itemize}
 
 \proof
 Ekvivalensen till a, b och c är vel trivial eller någonting.
 
-Antag att c gäller och att A ej har $m$ ledande ettor. Då måste man vid Gauss-Jordan-elimination av $A$ få en rad med bara nollor. Antag att detta är sista raden i matrisen. Betrakta vektorn
-\begin{align*}
-	\vect{b}' =
-	\left[\begin{array}{c}
-    	0    \\
-    	0    \\
-    	\vdots \\
-	    1
-	\end{array}\right]
-\end{align*}
-Eftersom Gauss-Jordan-elimination inte ändrar det linjära höljet av kolummnerna till en matris, borde man kunne hitta en kombination av elementerna i den sista raden i $A$ så att man får $1$, eftersom $\vect{b}'\in\R^m$. Då alla elementerna i denna raden är nollor, är detta omöjligt.
+Låt $U$ vara en echelonform av $A$. Då kan ekvationssystemet $A\vect{x} = \vect{b}$ sin totalmatris $[A | \vect{b}]$ radreduceras till $[U | \vect{d}]$ för något $\vect{d}$.
+
+Om d är sann, har systemet en unik lösning, och a är även uppfyld. Om d ej är sann, låt den sista raden i $U$ endast vara nollor och låt det siste elementet i $\vect{d}$ vara $1$. Detta representerar ett inkonsekvent ekvationssystem. Radroperationerna kan reverseras till man får en totalmatris som representerar $A\vect{x} = \vect{b}$, som fortfarande är inkonsekvent. Då har systemet $A\vect{x} = \vect{b}$ ej en lösning, och a är falsk. Detta beviser ekvivalensen.
 
 \paragraph{Lösningen till inhomogena ekvationssystem}
 Om det inhomogena ekvationssystemet
@@ -143,28 +139,25 @@ har lösningen $\vect{x}_\text{h}$, har det inhomogena ekvationssystemet
 \begin{align*}
 	A\vect{x} = \vect{b}
 \end{align*}
-lösningen $\vect{x} = \vect{x}_\text{h} + \vect{x}_\text{i}$, var $\vect{x}_\text{i}$ är någon vektor som uppfyllar ekvationssystemet.
+lösningen $\vect{x} = \vect{x}_\text{h} + \vect{x}_\text{i}$, var $\vect{x}_\text{i}$ är någon vektor som uppfyllar det inhomogena ekvationssystemet.
 
 \proof
-Ganska enkelt.
+
 
 \paragraph{Linjärt beroende av kolumner i en matris}
 Kolumnerna i en matris är linjärt oberoende omm (om och endast om) $A\vect{x} = \vect{0}$ endast har den triviala lösningen. Specielt gäller det att om antal rader är mindre än antal kolumner är kolumnvektorerna linjärt beroende.
 
 \proof
-Någonting med radreduktion.
 
 \paragraph{Inverterbarhet av en matris}
-En matris $A$ är inverterbar om och endast om $\det A = 0$.
+En matris $A$ är inverterbar om och endast om $\det A\neq 0$.
 
 \proof
-Använd elementärmatriser.
 
 \paragraph{Rangsatsen}
 För en $n\times m$-matris $A$ är $\rank A + \dim{\Null A} = m$.
 
 \proof
-Something something pivotkolumner.
 
 \paragraph{Determinanten för triangulära matriser}
 För en triangulär $n\times n$-matris $A$, dvs. en matris som har endast nollor över eller under diagonalen, ges determinanten av
@@ -173,7 +166,6 @@ För en triangulär $n\times n$-matris $A$, dvs. en matris som har endast nollor
 \end{align*}
 
 \proof
-Inses lätt.
 
 \paragraph{Determinant och elementärmatriser}
 För en elementärmatris $E$ har man
@@ -191,7 +183,6 @@ och att
 \end{align*}
 
 \proof
-Radreducera med matriser.
 
 \paragraph{Determinant för matrisprodukt}
 \begin{align*}
@@ -199,19 +190,16 @@ Radreducera med matriser.
 \end{align*}
 
 \proof
-Fallindelning och annat bra.
 
 \paragraph{Diagonaliserbarhet}
 En $n\times n$-matris $A$ är diagonaliserbar om och endast om den har $n$ linjärt oberoende egenvektorer. Detta ger även att kolumnerna i $P$ är egenvektorerna till $A$ och $D$ är en diagonalmatris med egenvärden motsvarande kolumnerna i $P$ på diagonalen.
 
 \proof
-Gör saker.
 
 \paragraph{Ortogonal diagonaliserbarhet}
-En matris är ortogonalt diagonaliserbar om den är symmetrisk, d.v.s. $A = A^T$, och den är doagonaliserbar.
+En matris är ortogonalt diagonaliserbar om den är symmetrisk, d.v.s. $A = A^T$, och den är diagonaliserbar.
 
 \proof
-Massa små roliga saker.
 
 \paragraph{Ortogonala matriser och längd}
 Låt $A$ vara en ortogonal matris. Då är

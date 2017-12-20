@@ -18,7 +18,7 @@ Normen till ett element, starkt analogt med längd, definieras som
 	\norm{x} = \sqrt{\inprod{x}{x}}.
 \end{align*}
 
-\paragraph{Ortogonalitet}
+\paragraph{Ortogonalitet}\label{par:orthogonality}
 Två elementer $u, v$ är ortogonala om
 \begin{align*}
 	\inprod{u}{v} = 0.
@@ -30,4 +30,15 @@ Låt $L = \Span{x_1, \dots, x_n}$, var alla $x_i$ är ortogonala. Då ges projek
 	\proj{L}{u} = \sum\limits_{i = 1}^{n}\frac{\inprod{u}{x_i}}{\norm{x_i}^2}x_i.
 \end{align*}
 
+\paragraph{Ortogonal bas}
+En ortogonal bas för ett vektorrum $W$ är en ortogonal mängd av vektorer som bildar en bas för $W$.
+
 \subsection{Satser}
+
+\paragraph{Vektorer och ortogonala baser}
+Låt $\{u_1, \dots, u_n\}$ vara en ortogonal bas för $W$. Alla vektorer $w\in W$ kan skrivas som
+\begin{align*}
+	w = \sum\limits_{i = 1}^n \frac{\inprod{w}{u_i}}{\inprod{u_i}{u_i}}u_i.
+\end{align*}
+
+\proof
