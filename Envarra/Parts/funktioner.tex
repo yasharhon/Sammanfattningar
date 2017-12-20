@@ -240,11 +240,20 @@ Summan och produktet av kontinuerliga funktioner är kontinuerlig.
 \proof
 Inses lätt.
 
+\paragraph{Intervallhalvering}
+låt $[a_i, b_i]$ vara intervall så att $[a_{i + 1}, b_{i + 1}]$ vid att låta en vara mittpunktet på $[a_i, b_i]$ och den andra vara oändrat. Då finns det ett unikt $x$ så att $x\in [a_i, b_i]$ för alla $i\in\N$.
+
+\proof
+
 \paragraph{Satsen om mellanliggande värde}
 Låt $f$ vara kontinuerlig i $[a, b]$. Då antar $f$ alla värden mellan $f(a)$ och $f(b)$.
 
 \proof
-Inte så långt.
+I fallet $f(a) = f(b)$ är beviset trivialt.
+
+Anta att $f(a) < m < f(b)$ för något $m$ (ett analogt bevis gäller i motsatta fallet). Definiera $a_0 = a$ och $b_0 = b$, bilda intervallet $[a_0, b_0]$ och beräkna funktionsvärdet i mittpunktet. Om detta är större än $m$, välj $b_1$ till att vara mittpunktet och $a_1 = a_0$, eller motsatt i motsatt fall. Fortsätta så med intervallhalvering. Då har vi $f(a_i)\leq m\leq f(b)$ för varje $i\in\N$.
+
+Mängden av alla $a_i$ är växande och uppåt begränsad av $b_i$, och mängden av alla $b_i$ är avtagande och nedåt begränsad av $a_i$. Vi kan da låta $j\to\infty$, och får $f(x)\leq m\leq f(x)\implies f(x) = m$ för något $x\in [a, b]$. Detta gäller för alla $m$ som uppfyllar kravet, och beviset är klart.
 
 \paragraph{Största och minsta värden}
 Låt $f: [a,b]\to\R$ vara en kontinuerlig funktion. Då finns $x_1, x_2\in [a,b]$ så att $\sup{V_f} = f(x_1)$ och $\inf{V_f} = f(x_2)$.
