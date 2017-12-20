@@ -65,11 +65,10 @@ och
 \end{align*}
 vara dess ortogonala komplement. Då ges avstandet från en punkt $Q$ med koordinater $q_i, i = 1, 2, \dots, n$ av
 \begin{align*}
-	s = \frac{\sum\limits_{i = 1}^{n}a_iq_i}{\sqrt{\sum\limits_{i = 1}^{n}a_i^2}}
+	s = \frac{\abs{\sum\limits_{i = 1}^{n}a_iq_i}}{\sqrt{\sum\limits_{i = 1}^{n}a_i^2}}
 \end{align*}
 
-\subparagraph{Bevis}
-Aa.
+\proof
 
 \paragraph{Kryssproduktens egenskaper}
 \begin{align*}
@@ -77,7 +76,7 @@ Aa.
 	\vect{u}\times\vect{v}                &= -\vect{v}\times\vect{u}
 \end{align*}
 
-\subparagraph{Bevis}
+\proof
 
 \paragraph{Plan med punkter}
 Givet tre punkter $P, Q, R$ är vektorn
@@ -86,7 +85,7 @@ Givet tre punkter $P, Q, R$ är vektorn
 \end{align*}
 normal på planet som innehåller de tre punkterna.
 
-\subparagraph{Bevis}
+\proof
 
 \paragraph{Area av parallellogrammer i $\R^3$}
 Arean av ett parallellogram i $\R^3$ definierad av två vektorer $\vect{u}, \vect{v}$ ges av
@@ -94,10 +93,10 @@ Arean av ett parallellogram i $\R^3$ definierad av två vektorer $\vect{u}, \vec
 	A = \abs{\vect{u}\times\vect{v}}.
 \end{align*}
 
-\subparagraph{Bevis}
+\proof
 
 \paragraph{Avstånd mellan linjer}
-Låt $L_1, L_2$ vara två linjer. \\
+Låt $L_1, L_2$ vara två linjer och $\vect{l}_1, \vect{l}_2$ vara vektorer till två punkter på de två linjerna. \\
 Om linjerna är parallella är avståndet
 \begin{align*}
 	s = \abs{(\vect{l}_1 - \vect{l}_2) - \proj{L_2'}{\vect{l}_1 - \vect{l}_2}}
@@ -105,9 +104,8 @@ Om linjerna är parallella är avståndet
 där $L_2'$ är parallell med $L_2$ och går genom origo. \\
 Om linjerna är i parallella plan $H_1, H_2$ definierar man först
 \begin{align*}
-	P_1' = \{\vect{p}_1 + t\vect{n}_1, \vect{p}_1\in H_1\}\cap H_2
+	P_1' = \{\vect{p}_1 + t\vect{n}_1, \vect{p}_1\in L_1\}\cap H_2.
 \end{align*}
-som är parallell med $L_1$ och ligger i $H_2$ för ett smart val av $t$. Avståndet är då
-\begin{align*}
-	s = t\abs{\vect{n}}.
-\end{align*}
+Avståndet är då $\abs{\vect{p}_1' - \vect{p}_1}$.
+
+\proof

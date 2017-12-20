@@ -3,7 +3,7 @@
 \subsection{Definitioner}
 
 \paragraph{Grupper}
-En grupp $G$ definieras av en mängd $X$ och en binär operation $\cdot$ på två elementer i $X$ (kommer ej skrivas ut). Denna operationen ska uppfylla
+En grupp $G$ definieras av en mängd $X$ och en binär operation $\cdot$ på två elementer i $X$ (multiplikationstecknet kommer ej skrivas ut). Denna operationen ska uppfylla
 \begin{itemize}
 	\item operationen är assosiativ, dvs. $a(bc) = (ab)c$.
 	\item grupen är stängd under operationen, dvs. för $a, b\in G$ är $ab\in G$.
@@ -51,9 +51,6 @@ Om vi kallar basen till $V$ för $\beta$ kan alla vektorer i $V$ skrivas som bas
 \end{align*}
 Detta är en vektor i $\R^k$.
 
-\paragraph{Ortogonal bas}
-En ortogonal bas för ett vektorrum $W$ är en ortogonal mängd av vektorer som bildar en bas för $W$.
-
 \paragraph{Dimension}
 Dimensionen till ett vektorrum är antalet vektorer i basis.
 
@@ -62,54 +59,22 @@ Dimensionen till ett vektorrum är antalet vektorer i basis.
 \paragraph{Delrum i $\R^n$}
 Om $V$ är ett delrum i $R^n$ kan det skrivas som $\Span{v_1, \dots, v_k}$.
 
-\subparagraph{Bevis}
-2 ez.
+\proof
 
 \paragraph{Linjärt beroende och basstorlek}
 Låt $\beta = \{v_1, \dots, v_n\}$ vara en bas för $V$ och $\{w_1, \dots, w_p\}$ vara vektorer i $V$ med $p > n$. Då är $\{w_1, \dots, w_p\}$ linjärt beroende.
 
-\subparagraph{Bevis}
-Basvektorer.
+\proof
 
 \paragraph{Antal vektorer i en bas}
 Antalet vektorer i basen för ett delrum $V$ är oberoende av valet av bas.
 
-\subparagraph{Bevis}
-Typ det samma.
+\proof
 
 \paragraph{Val av bas}
 För ett delrum med dimension $n$ är vilken som helst mängd av $n$ linjärt oberoende vektorer i $V$ en bas för $V$.
 
-\subparagraph{Bevis}
-Mer av det här?!
-
-\paragraph{Avbildningar med val av bas}
-Låt $B = \{b_1, \dots, b_n\}$ vara en bas för delrummet $V$, $C$ en bas för delrummet $W$ och $T$ en linjär avbildning från $V$ till $W$. Då ges avbildningen i koordinatvektorer av
-\begin{align*}
-	[T(x)]_C = A[x]_B,
-\end{align*}
-där $A$ ges av
-\begin{align*}
-	A = [[T(b_1)]_C \dots [T(b_n)]_C].
-\end{align*}
-
-\paragraph{Vektorer och ortogonala baser}
-Låt $\{u_1, \dots, u_n\}$ vara en ortogonal bas för $W$. Alla vektorer $w\in W$ kan skrivas som
-\begin{align*}
-	w = \sum\limits_{i = 1}^n \frac{\inprod{w}{u_i}}{\inprod{u_i}{u_i}}u_i.
-\end{align*}
-
-\subparagraph{Bevis}
-Oklart.
-
-\paragraph{Projektion}
-Låt $\{u_1, \dots, u_n\}$ vara en ortogonal bas för $W$. Då gäller
-\begin{align*}
-	\proj{W}{x} = \sum\limits_{i = 1}^n\frac{\inprod{x}{u_i}}{\inprod{u_i}{u_i}}u_i.
-\end{align*}
-
-\subparagraph{Bevis}
-Varför behövs det?
+\proof
 
 \paragraph{Bästa approximationers sats}
 Låt $W$ vara ett delrum till $R^n$ och $\vect{x}\in\R^n$. Då gäller
@@ -117,5 +82,4 @@ Låt $W$ vara ett delrum till $R^n$ och $\vect{x}\in\R^n$. Då gäller
 	\abs{\vect{x} - \proj{W}{\vect{x}}} \leq \abs{\vect{x} - \vect{w}}, \vect{w}\in W.
 \end{align*}
 
-\subparagraph{Bevis}
-Schmart.
+\proof
