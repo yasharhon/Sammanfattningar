@@ -13,17 +13,8 @@ existerar. Värdet kallas derivatan i $x_0$.
 \paragraph{Deriverbara funktioner}
 Om en funktion $f$ är deriverbar i alla punkter i definitionsmängden, är funktionen deriverbar. Funktionen $f' = \dv{f}{x}$ med $D_{f'} = D_f$ kallas derivatan.
 
-\paragraph{Minima och maxima}
-En funktion $f$ har ett lokalt maximum i $x_0$ om det finns en omgivning $I$ till $x_0$ så att $f(x)\leq f(x_0)$ för alla $x\in I\cap D_f$. Det analoga gäller för ett lokalt minimum. Om $f$ har antingen ett lokalt maximum eller minimum i $x_0$ har $f$ ett lokalt extrempunkt i $f$.
-
 \paragraph{Stationära punkt}
 En funktion $f$ har ett stationärt punkt $x_0$ om $\dv{f}{x}\eval_{x_0} = 0$.
-
-\paragraph{Inflexionspunkt}
-Låt $f$ vara en funktion definierad på ett intervall $I$. En punkt $x_0\in I$ sägs vara en inflexionspunkt till $f$ om det finns ett $\delta > 0$ sådan att $f$ är konvex i $[x_0 - \delta, x_0]$ eller $[x_0, x_0 + \delta]$ och konkav i det andra.
-
-\paragraph{Globala maxima och minima}
-En funktion $f$ har ett globalt maximum i $x_0$ om $f(x)\leq f(x_0$ för varje $x\in D_f$.
 
 \paragraph{Taylorpolynomet}
 Låt $f$ vara $n$ gånger deriverbar. Polynomet
@@ -72,14 +63,32 @@ Låt $f$ vara en deriverbar och inverterbar funktion. Då är inversen $f^{-1}$ 
 \proof
 
 \paragraph{Extrempunkt och derivata}
-Låt $f$ vara deriverbar i $x_0$ och ha en lokal extrempunkt i $x_0$. Då är $\dv{f}{x}\eval_{x_0} = 0$.
+Låt $f$ vara deriverbar i $x_0$ och ha en lokal extrempunkt i $x_0$. Då är $\dv{f}{x} (x_0) = 0$.
 
 \proof
+Låt $f$ ha ett maximum i $x_0$. Detta ger $f(x_0)\geq f(x)$ i en omgivning till $x_0$. Betrakta
+\begin{align*}
+	\dv{f}{x} (x_0) = \limit{h}{0}\frac{f(x_0 + h) - f(x_0)}{h}.
+\end{align*}
+När $h\to 0$ från det positival hållet har man
+\begin{align*}
+	\frac{f(x_0 + h) - f(x_0)}{h}\leq 0
+\end{align*}
+eftersom nämnaren är negativ enligt antagandet. När $h\to 0$ från det negativa hållet har man
+\begin{align*}
+	\frac{f(x_0 + h) - f(x_0)}{h}\geq 0.
+\end{align*}
+Vi räknar ut gränsvärdet när $h$ går mot $0$. Eftersom det existerar, måste vi ha att $\dv{f}{x} (x_0) = 0$.
 
 \paragraph{Rolles sats}
 Låt $f$ vara kontinuerlig på $[a, b]$, deriverbar på $(a, b)$ så att $f(a) = f(b)$. Då existerar $p\in (a, b)$ så att $\dv{f}{x}\eval_p = 0$.
 
 \proof
+Om $f$ är konstant på $[a, b]$ är beviset trivialt.
+
+Annars, låt $f(x) > f(a)$ för något $x\in (a, b)$. Eftersom $f$ är kontinuerlig på $[a, b]$, antar den enligt sats ett största värde. Eftersom $f(a) = f(b)$ måste detta största värdet antas i något $q\in (a, b)$. Då $f$ är deriverbar i $q$, gäller det enligt sats att $\dv{f}{x} (q) = 0$. Detta är punkten vi söker.
+
+Ett analogt bevis gäller om $f(x) < f(a)$ för något $x\in (a, b)$.
 
 \paragraph{Generaliserade medelvärdessatsen}
 Låt $f$ och $g$ vara reellvärda, kontinuerliga på $[a, b]$ och deriverbara på $(a, b)$. Då existerar $p\in (a, b)$ så att
@@ -159,10 +168,11 @@ Låt $f$ vara $n$ gånger deriverbar och definierad i en omgivning av $0$, såda
 	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\dv[i]{f}{x} (0)}{i!}x^i + \frac{\dv[n]{f}{x} (\alpha)}{n!}x^n
 \end{align*}
 för något $\alpha\in [0, x]$. Kring en godtycklig punkt $a$ blir formeln
-\begin{align*}
+\begin{align}
 	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\dv[i]{f}{x} (a)}{i!}(x - a)^i + \frac{\dv[n]{f}{x} (\alpha)}{n!}(x - a)^n
-\end{align*}
-för något $\alpha\in (a, x)$.
+	\label{eq:taylor_formula}
+\end{align}
+för något $\alpha\in [a, x]$.
 
 \proof
 

@@ -46,6 +46,12 @@ Om en funktioner är antingen strängt växande respektiva strängt avtagande el
 
 En funktion $f$ är uppåt begränsad om $V_f$ är uppåt begränsad. Nedåt begränsade funktioner definieras analogt. Om funktioner saknar övre eller nedra begrensning är den uppåt eller nedåt obegränsad.
 
+\paragraph{Minima och maxima}
+En funktion $f$ har ett lokalt maximum i $x_0$ om det finns en omgivning $I$ till $x_0$ så att $f(x)\leq f(x_0)$ för alla $x\in I\cap D_f$. Det analoga gäller för ett lokalt minimum. Om $f$ har antingen ett lokalt maximum eller minimum i $x_0$ har $f$ ett lokalt extrempunkt i $f$.
+
+\paragraph{Globala maxima och minima}
+En funktion $f$ har ett globalt maximum i $x_0$ om $f(x)\leq f(x_0$ för varje $x\in D_f$.
+
 \paragraph{Trigonometriska funktioner}
 
 Betrakta enhetssirkeln i figur \ref{fig:unit_circle}, med radie $1$.
@@ -128,6 +134,9 @@ En funktion $f$ är konvex i $[a, b]$ om det för varje $x_1, x_2\in [a, b]$ gä
 
 \paragraph{Konkavitet}
 En funktion $f$ är konkav  i $[a, b]$ om $-f$ är konvex i $[a, b]$.
+
+\paragraph{Inflexionspunkt}
+Låt $f$ vara en funktion definierad på ett intervall $I$. En punkt $x_0\in I$ sägs vara en inflexionspunkt till $f$ om det finns ett $\delta > 0$ sådan att $f$ är konvex i $[x_0 - \delta, x_0]$ eller $[x_0, x_0 + \delta]$ och konkav i det andra.
 
 \paragraph{Lodräta asymptoter}
 Linjen $x = a$ är en lodrät asymptot till $f$ om $f(x)$ går mot $\infty$ eller $-\infty$ när $x\to a^{-}$ eller $x\to a^{+}$.
@@ -216,29 +225,25 @@ givet att vänsterledet är definierat.
 \proof
 Meh.
 
-\paragraph{Kontinuitet och begränsning}
+\paragraph{Kontinuitet och begränsning}\label{par:continuity_limited}
 Låt $f: [a,b]\to\R$ vara en kontinuerlig funktion. Då är $f$ begränsad.
 
 \proof
-Kanske man borde starta på dessa.
 
 \paragraph{Inversfunktioners kontinuerlighet}
 Låt $f: A\to B$ vara en kontinuerlig, inverterbar och strängt växande funktion. Då gäller att inversen $f^{1}: B\to A$ är kontinuerlig och strängt växande.
 
 \proof
-Oo.
 
 \paragraph{Elementära funktioners kontinuerlighet}
 Elementära funktioner är kontinuerliga.
 
 \proof
-Många av dom.
 
 \paragraph{Kontinuerlighet av summa och produkt}
 Summan och produktet av kontinuerliga funktioner är kontinuerlig.
 
 \proof
-Inses lätt.
 
 \paragraph{Intervallhalvering}
 låt $[a_i, b_i]$ vara intervall så att $[a_{i + 1}, b_{i + 1}]$ vid att låta en vara mittpunktet på $[a_i, b_i]$ och den andra vara oändrat. Då finns det ett unikt $x$ så att $x\in [a_i, b_i]$ för alla $i\in\N$.
@@ -259,7 +264,17 @@ Mängden av alla $a_i$ är växande och uppåt begränsad av $b_i$, och mängden
 Låt $f: [a,b]\to\R$ vara en kontinuerlig funktion. Då finns $x_1, x_2\in [a,b]$ så att $\sup{V_f} = f(x_1)$ och $\inf{V_f} = f(x_2)$.
 
 \proof
-yez.
+Vi vet enligt \ref{par:continuity_limited} att funktionens värdemängd är begränsad. Definiera $M = \sup V_f$, som då existerar, och anta att $M\neq f(x)$ på $[a, b]$. Då är funktionen $g$ så att
+\begin{align*}
+	g(x) = \frac{1}{M - f(x)}
+\end{align*}
+definierad på $[a, b]$, kontinuerlig och därmed begränsad. Då finns $C = \sup V_g$, och
+\begin{align*}
+	\frac{1}{M - f(x)}\leq X\implies f(x)\leq M - \frac{1}{C}.
+\end{align*}
+Enligt antagandet är $M > f(x)$, och då är $C$ positiv. Då är $M - \frac{1}{C} < M$, och vi har hittat en mindre övre begränsning för $f$. Detta motsäjer antagandet, och då måste det finns ett $x\in [a, b]$ så att $f(x) = M$.
+
+Ett analogt bevis gäller för att visa att $f$ antar ett minsta värde.
 
 \paragraph{Standardgränsvärden}
 \begin{align*}
