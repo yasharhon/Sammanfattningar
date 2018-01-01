@@ -54,6 +54,12 @@ Detta är en vektor i $\R^k$.
 \paragraph{Dimension}
 Dimensionen till ett vektorrum är antalet vektorer i basis.
 
+\paragraph{Ortogonala komplement}
+Låt $W$ vara ett delrum av $V$. Det ortogonala komplementet till $W$ är
+\begin{align*}
+	W^\perp = \left\{v\in V:\ \inprod{v}{w} = 0, \text{ alla } w\in W\right\}.
+\end{align*}
+
 \subsection{Bevis}
 
 \paragraph{Delrum i $\R^n$}
@@ -80,6 +86,15 @@ För ett delrum med dimension $n$ är vilken som helst mängd av $n$ linjärt ob
 Låt $W$ vara ett delrum till $R^n$ och $\vect{x}\in\R^n$. Då gäller
 \begin{align*}
 	\abs{\vect{x} - \proj{W}{\vect{x}}} \leq \abs{\vect{x} - \vect{w}}, \vect{w}\in W.
+\end{align*}
+
+\proof
+
+\paragraph{Ortogonala komplement och matrisers rum}
+Låt $A$ vara en $m\times n$-matris. Då gäller
+\begin{align*}
+	(\Row{A})^\perp = \Null{A}, \\
+	(\Col{A})^\perp = \Null{A^T}.
 \end{align*}
 
 \proof
