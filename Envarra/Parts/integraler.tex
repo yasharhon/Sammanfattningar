@@ -1,0 +1,113 @@
+\section{Integraler}
+
+\subsection{Definitioner}
+
+\paragraph{Trappfunktioner}
+En trappfunktion på intervallet $[a, b]$ är på formen
+\begin{align*}
+	\Psi(x) =
+	\begin{cases}
+		c_1, a\leq x\leq x_1 \\
+		c_2, x_1\leq x\leq x_2 \\
+		\vdots \\
+		c_n, x_{n - 1}\leq x\leq x_n \\
+	\end{cases}
+\end{align*}
+Mängden av alla $x_i$ kallas en uppdelning av intervallet och intervallerna $[x_{i - 1}, x_i]$ kallas delintervall av uppdelningen.
+
+\paragraph{Integralen av en trappfunktion}
+Låt $\Psi$ vara en trappfunktion. Då definieras integralen av denna som
+\begin{align*}
+	\integ{a}{b}{\Psi(x)}{x} = \sum\limits_{i = 1}^{n}c_i{x_i - x_{i - 1}}.
+\end{align*}
+
+\paragraph{Övertrappor och undertrappor}
+En övertrappa $\Psi$ för en funktion $f$ är en funktion så att
+\begin{align*}
+	f(x)\leq \Psi(x).
+\end{align*}
+Undertrappor definieras analogt. Integralerna av dessa kallas översummor och undersummor.
+
+\paragraph{Integrerbarhet}
+Låt $f$, definierad på $[a, b]$, vara en begränsad funktion, $L(f)$ vara mängden av alla undersummor till $f$ och $U(f)$ mängden av alla översummor till $f$. $L(f)$ är uppåt begränsad av talen i $U(f)$ och vice versa, så $\sup{L(f)}, \inf{U(f)}$ existerar. Om
+\begin{align*}
+	\sup{L(f)} = \inf{U(f)}
+\end{align*}
+är $f$ integrerbar.
+
+\paragraph{Integralen}
+Låt $f$ vara integrerbar på $[a, b]$. Då definieras integralen av $f$ på intervallet som
+\begin{align*}
+	\integ{a}{b}{f(x)}{x} = \sup{L(f)}.
+\end{align*}
+
+\paragraph{Byte av integrationsgränser}
+\begin{align*}
+	\integ{a}{b}{f(x)}{x} = -\integ{b}{a}{f(x)}{x}.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Integralen och $\varepsilon$}
+Låt $f$ vara begränsad på $[a, b]$. Då är $f$ integrerbar om och endast om det för varje $\varepsilon$ finns en övertrappa $\Psi$ och en undertrappa $\Phi$ till $f$ sådana att
+\begin{align*}
+	\integ{a}{b}{\Psi(x)}{x} - \integ{a}{b}{\Phi(x)}{x} < \varepsilon.
+\end{align*}
+
+\proof
+
+\paragraph{Summor mot integraler}
+Låt $f$ vara kontinuerlig på $[a, b]$, $\left\{x_i\right\}_{i = 0}^n$ vara en uppdelning, $\Delta_i = x_i - x_{i - 1}$ och $M_i = \max{f(x)}, m_i = \min{f(x)}$ på $[x_{i - 1}, x_i]$. Då gäller att
+\begin{align*}
+	&\sum\limits_{i = 0}^n M_i\Delta_i\to\integ{a}{b}{f(x)}{x}, \\
+	&\sum\limits_{i = 0}^n m_i\Delta_i\to\integ{a}{b}{f(x)}{x}
+\end{align*}
+då $\max{\Delta_i}\to 0$.
+
+\proof
+
+\paragraph{Integralens egenskaper}
+Låt $f$ vara integrerbar på $[a, b]$. Då gäller
+\begin{align*}
+	&\integ{a}{b}{(f(x) + g(x))}{x} = \integ{a}{b}{f(x)}{x} + \integ{a}{b}{g(x)}{x}, \\
+	&\integ{a}{b}{cf(x)}{x} = c\integ{a}{b}{f(x)}{x}, \\
+	&\integ{a}{b}{f(x)}{x} = \integ{a}{c}{f(x)}{x} + \integ{a}{b}{f(x)}{x}, \\
+	&\abs{\integ{a}{b}{f(x)}{x}}\leq \integ{a}{b}{\abs{f(x)}}{x}.
+\end{align*}
+Om $f(x)\leq g(x)$ på $[a, b]$ gäller
+\begin{align*}
+	\integ{a}{b}{f(x)}{x}\leq \integ{a}{b}{g(x)}{x}.
+\end{align*}
+
+\proof
+
+\paragraph{Medelvärdesatsen för integraler}
+Låt $f, g$ vara kontinuerliga på $[a, b]$ och $g\geq 0$. Då finns det ett $\alpha\in (a, b)$ sådant att
+\begin{align*}
+	\integ{a}{b}{f(x)g(x)}{x} = f(\alpha)\integ{a}{b}{g(x)}{x}.
+\end{align*}
+
+\subparagraph{Specialfall}
+Välj $g(x) = 1$. Då blir satsen
+\begin{align*}
+	\integ{a}{b}{f(x)}{x} = f(\alpha)(b - a).
+\end{align*}
+
+\proof
+
+\paragraph{Analysens huvudsats}
+Låt $f$ vara kontinuerlig på $[a, b]$. Då är
+\begin{align*}
+	F(x) = \integ{a}{x}{f(t)}{t}
+\end{align*}
+en primitiv funktion till $f$ på $[a, b]$.
+
+\proof
+
+\paragraph{Primitva funktioner och integralers värde}
+Låt $f$ vara kontinuerlig på $[a, b]$ och låt $F$ vara en primitiv funktion till $f$ på $[a, b]$. Då är
+\begin{align*}
+	\integ{a}{b}{f(t)}{t} = F(b) - F(a).
+\end{align*}
+
+\proof

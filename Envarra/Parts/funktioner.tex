@@ -57,7 +57,8 @@ En funktion $f$ har ett globalt maximum i $x_0$ om $f(x)\leq f(x_0$ för varje $
 Betrakta enhetssirkeln i figur \ref{fig:unit_circle}, med radie $1$.
 
 \begin{figure}[!ht]
-	\includegraphics[width=\linewidth]{./Images/unit_circle/unit_circle.pdf}
+	\centering
+	\includegraphics[width=0.5\linewidth]{./Images/unit_circle/unit_circle.pdf}
 	\caption{Enhetscirkeln.}
 	\label{fig:unit_circle}
 \end{figure}
@@ -126,6 +127,9 @@ Låt $f$ vara en reellvärd funktion med $D_f\subset\R$, sådan att varje punkte
 	\lim\limits_{x\to a}f(x) = f(a).
 \end{align*}
 
+\paragraph{Likformig kontinuitet}
+$f$ är likformig kontinuerlig på intervallet $I$ om det för varje $\varepsilon > 0$ existerar ett $\delta > 0$ sådant att $\abs{f(x) - f(y)} < \varepsilon$ för varje $x, y\in I$ som uppfyller att $\abs{x - y} < \delta$.
+
 \paragraph{Konvexitet}
 En funktion $f$ är konvex i $[a, b]$ om det för varje $x_1, x_2\in [a, b]$ gäller att
 \begin{align*}
@@ -169,6 +173,8 @@ Låt $f, g$ vara funktioner definierade i en omgivning till $a$. $f$ tillhör st
 	\abs{f(x)}\leq M\abs{g(x)}
 \end{align*}
 för varje $x\in(a - \delta, a + \delta)$.
+
+
 
 \subsection{Satser}
 
@@ -276,15 +282,10 @@ Enligt antagandet är $M > f(x)$, och då är $C$ positiv. Då är $M - \frac{1}
 
 Ett analogt bevis gäller för att visa att $f$ antar ett minsta värde.
 
-\paragraph{Standardgränsvärden}
-\begin{align*}
-	&\lim\limits_{x\to 0}\frac{\ln{1 + x}}{x} = 1 \\
-	&\lim\limits_{x\to 0}\frac{e^x - 1}{x} = 1 \\
-	&\lim\limits_{x\to 0}\frac{\sin{x}}{x} = 1
-\end{align*}
+\paragraph{Likformig kontinuitet och kontinuitet}
+Låt $f$ vara kontinuerlig på $[a, b]$. Då är $f$ likformigt kontinuerlig på $[a, b]$.
 
 \proof
-Too much.
 
 \paragraph{Stora ordos egenskaper}
 Låt $f, g$ vara funktioner sådana att $\Ordo{f(x)}, \Ordo{g(x)}$ är definierade kring en punkt eller vid $\infty$. Då gäller:
