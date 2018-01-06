@@ -5,6 +5,9 @@
 \paragraph{Definitionen av en talföjld}
 En talföljd är en följd av tal $a_1, a_2, ...$ och betecknas $\left(a_n\right)_{n = 1}^\infty$.
 
+\paragraph{Delföljder}
+En delföljd av en talföljd är en selektion av tal i följden som fortfarande är oändligt stor.
+
 \paragraph{Växande och avtagande talföljder}
 En talföljd är växande om $a_{n + 1} \geq a_n$ för varje $n \geq 1$. Avtagande talföljder definieras analogt.
 
@@ -23,15 +26,9 @@ En talföljd konvergerar mot ett gränsvärde $A$ om det för alla $\varepsilon 
 \paragraph{Divergenta talföljder}
 En divergent talföljd är inte konvergent.
 
-\paragraph{Binomialsatsen}
-För $n\in\Z$ har man
-\begin{align*}
-	(a + b)^n = \sum\limits_{k = 0}^{n} {{n}\choose{k}} a^kb^{n-k}.
-\end{align*}
-
 \paragraph{Binomialkoefficienter}
 \begin{align*}
-	{{n}\choose{k}} = \frac{n!}{(n-k)!k!}
+	\left(\frac{n}{k}\right) = \frac{n!}{(n-k)!k!}
 \end{align*}
 
 \paragraph{$e$, Eulers tal}
@@ -50,8 +47,7 @@ Låt $\left(a_n\right)_{n = 1}^\infty, \left(b_n\right)_{n = 1}^\infty$ vara tal
 	\item[d)] om $a_n \leq b_n$ för varje $n$ så gäller att $A \leq B$.
 \end{enumerate}
 
-\subparagraph{Bevis}
-Aa.
+\proof
 
 \paragraph{Växande och uppåt begränsade talföljder}
 Om $\left(a_n\right)_{n = 1}^\infty$ är en växande och uppåt begränsad talföljd så är den konvergent och
@@ -63,6 +59,14 @@ Det analoga gäller för avtagande och nedåt begränsade mängder.
 \proof
 Enligt supremumsegenskapen finns det ett $K = \sup{\left(a_n\right)_{n = 1}^\infty}$. Då finns det även $a_i$ godtyckligt nära $K$ - med andra ord finns det ett $N$ så att $\abs{a_N - K} < \varepsilon$ för något $\varepsilon > 0$. Eftersom talföljden är växande, är detta även sant när $n > N$, vilket fullbördar beviset.
 
+\paragraph{Binomialsatsen}
+För $n\in\Z$ har man
+\begin{align*}
+	(a + b)^n = \sum\limits_{k = 0}^{n}\left(\frac{n}{k}\right) a^kb^{n-k}.
+\end{align*}
+
+\proof
+
 \paragraph{Gränsvärde för potenser}
 \begin{align*}
 	\lim_{n\to\infty} n^p =
@@ -73,7 +77,6 @@ Enligt supremumsegenskapen finns det ett $K = \sup{\left(a_n\right)_{n = 1}^\inf
 \end{align*}
 
 \proof
-Meh.
 
 \paragraph{Standardgränsvärden}
 Låt $a > 1$ och $b > 0$. Då gäller att
@@ -83,9 +86,8 @@ Låt $a > 1$ och $b > 0$. Då gäller att
 \end{align*}
 
 \proof
-Nä.
 
-\paragraph{Endeligt värde av $e$}
+\paragraph{Ändligt värde av $e$}
 Talföljden $\left(a_n\right)_{n = 1}^\infty$ med
 \begin{align*}
 	a_n = \left(1 + \frac{1}{n}\right)^{n}
@@ -93,7 +95,8 @@ Talföljden $\left(a_n\right)_{n = 1}^\infty$ med
 är konvergent.
 
 \proof
-Säkert någon gång.
 
 \paragraph{Bolzano-Weierstrass' sats}
-Låt $\left(a_n\right)_{n = 1}^\infty$ vara en begränsad talföljd. Då finns det konvergent delföljd. En delföljd av en talföljd är en del av talen som fortfarande är oändligt stor.
+Låt $\left(a_n\right)_{n = 1}^\infty$ vara en begränsad talföljd. Då finns det konvergent delföljd.
+
+\proof
