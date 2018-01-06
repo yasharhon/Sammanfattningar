@@ -22,6 +22,8 @@
 \newcommand{\proof}{\subparagraph{Bevis}}
 \newcommand{\limit}[2]{\lim\limits_{#1\to #2}}
 \newcommand{\Ordo}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\deval}[4][]{\dv[#1]{#2}{#3} (#4)}
+\newcommand{\integ}[4]{\int\limits_{#1}^{#2}#3\dd{#4}}
 
 \title{Samanfatning av SF1673 Analys i en variabel}
 \author{Yashar Honarmandi}
@@ -46,8 +48,6 @@
 
 \pagenumbering{arabic}
 
-\twocolumn
-
 \section{Mängder}
 
 \input{./Parts/mangder.tex}
@@ -59,5 +59,13 @@
 \input{./Parts/gransvarden.tex}
 
 \input{./Parts/derivata.tex}
+
+\input{./Parts/serier.tex}
+
+\input{./Parts/integraler.tex}
+
+\input{./Parts/tillampningar.tex}
+
+\input{./Parts/diffekvationer.tex}
 
 \end{document}

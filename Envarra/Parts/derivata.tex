@@ -13,17 +13,8 @@ existerar. Värdet kallas derivatan i $x_0$.
 \paragraph{Deriverbara funktioner}
 Om en funktion $f$ är deriverbar i alla punkter i definitionsmängden, är funktionen deriverbar. Funktionen $f' = \dv{f}{x}$ med $D_{f'} = D_f$ kallas derivatan.
 
-\paragraph{Minima och maxima}
-En funktion $f$ har ett lokalt maximum i $x_0$ om det finns en omgivning $I$ till $x_0$ så att $f(x)\leq f(x_0)$ för alla $x\in I\cap D_f$. Det analoga gäller för ett lokalt minimum. Om $f$ har antingen ett lokalt maximum eller minimum i $x_0$ har $f$ ett lokalt extrempunkt i $f$.
-
 \paragraph{Stationära punkt}
 En funktion $f$ har ett stationärt punkt $x_0$ om $\dv{f}{x}\eval_{x_0} = 0$.
-
-\paragraph{Inflexionspunkt}
-Låt $f$ vara en funktion definierad på ett intervall $I$. En punkt $x_0\in I$ sägs vara en inflexionspunkt till $f$ om det finns ett $\delta > 0$ sådan att $f$ är konvex i $[x_0 - \delta, x_0]$ eller $[x_0, x_0 + \delta]$ och konkav i det andra.
-
-\paragraph{Globala maxima och minima}
-En funktion $f$ har ett globalt maximum i $x_0$ om $f(x)\leq f(x_0$ för varje $x\in D_f$.
 
 \paragraph{Taylorpolynomet}
 Låt $f$ vara $n$ gånger deriverbar. Polynomet
@@ -31,6 +22,9 @@ Låt $f$ vara $n$ gånger deriverbar. Polynomet
 	p_n(x) = \sum\limits_{i = 0}{n}\frac{\dv[i]{f}{x} (0)}{i!}(x - a)^i
 \end{align*}
 kallas Taylorpolynomet av grad $n$ till $f$ kring $a$. Specialfallet där $a = 0$ kallas Maclaurinpolynomet till $f$ av grad $n$.
+
+\paragraph{Primitiva funktioner}
+Låt $f$ vara definierad på $[a, b]$ och $F$ vara kontinuerlig på $[a, b]$. $F$ är en primitiv funktion till $f$ om $\deval{F}{x}{x} = f(x)$ för varje $x\in (a, b)$.
 
 \subsection{Satser}
 
@@ -43,9 +37,9 @@ Kan man tänka.
 \paragraph{Derivationsregler}
 Låt $f, g$ vara deriverbara i punkten $x$. Då följer att $f + g, fg$ är deriverbara i $x$. Derivatorna har sambandet
 \begin{align*}
-	\eval{\dv{x}(f + g)}_x &= \left(\dv{f}{x} + \dv{g}{x}\right)\eval_x, \\
-	\eval{\dv{x}(af)}_x    &= a\dv{f}{x}\eval_x, a\in\R, \\
-	\eval{\dv{x}(fg)}_x    &= \left(f\dv{g}{x} + g\dv{f}{x}\right)\eval_x. \\
+	&\deval{(f + g)}{x}{x} = \deval{f}{x}{x} + \deval{g}{x}{x}, \\
+	&\deval{(af)}{x}{x} = a\deval{f}{x}{x}, a\in\R, \\
+	&\deval{(fg)}{x}{x} = f(x)\deval{g}{x}{x} + g(x)\deval{f}{x}{x}. \\
 \end{align*}
 Om $g(x)\neq 0$ är även $\frac{f}{g}$ deriverbar i $x$ och
 \begin{align*}
@@ -53,7 +47,16 @@ Om $g(x)\neq 0$ är även $\frac{f}{g}$ deriverbar i $x$ och
 \end{align*}
 
 \proof
-Inte omöjligt.
+De två första följer nästan direkt från definitionen.
+
+\begin{align*}
+	                 &\frac{f(x + h)g(x + h) - f(x)g(x)}{h} \\
+	                 &= \frac{f(x + h)g(x + h) - f(x + h)g(x) + f(x + h)g(x) - f(x)g(x)}{h} \\
+	                 &= \left(\frac{f(x + h)g(x + h) - f(x + h)g(x)}{h} + \frac{f(x + h)g(x) - f(x)g(x)}{h}\right) \\
+	\deval{fg}{x}{x} &= \limit{h}{0}\frac{f(x + h)g(x + h) - f(x)g(x)}{h} \\
+	                 &= \limit{h}{0}\left(\frac{f(x + h)g(x + h) - f(x + h)g(x)}{h} + \frac{f(x + h)g(x) - f(x)g(x)}{h}\right) \\
+	                 &= f(x)\deval{g}{x}{x} + g(x)\deval{f}{x}{x}.
+\end{align*}
 
 \paragraph{Kedjeregeln}
 Låt $f$ vara deriverbar i $y$, $g$ deriverbar i $x$ och $y = g(x)$. Då är den sammansatta funktionen $f\circ g$ deriverbar och
@@ -72,23 +75,41 @@ Låt $f$ vara en deriverbar och inverterbar funktion. Då är inversen $f^{-1}$ 
 \proof
 
 \paragraph{Extrempunkt och derivata}
-Låt $f$ vara deriverbar i $x_0$ och ha en lokal extrempunkt i $x_0$. Då är $\dv{f}{x}\eval_{x_0} = 0$.
+Låt $f$ vara deriverbar i $x_0$ och ha en lokal extrempunkt i $x_0$. Då är $\dv{f}{x} (x_0) = 0$.
 
 \proof
+Låt $f$ ha ett maximum i $x_0$. Detta ger $f(x_0)\geq f(x)$ i en omgivning till $x_0$. Betrakta
+\begin{align*}
+	\dv{f}{x} (x_0) = \limit{h}{0}\frac{f(x_0 + h) - f(x_0)}{h}.
+\end{align*}
+När $h\to 0$ från det positival hållet har man
+\begin{align*}
+	\frac{f(x_0 + h) - f(x_0)}{h}\leq 0
+\end{align*}
+eftersom nämnaren är negativ enligt antagandet. När $h\to 0$ från det negativa hållet har man
+\begin{align*}
+	\frac{f(x_0 + h) - f(x_0)}{h}\geq 0.
+\end{align*}
+Vi räknar ut gränsvärdet när $h$ går mot $0$. Eftersom det existerar, måste vi ha att $\dv{f}{x} (x_0) = 0$.
 
 \paragraph{Rolles sats}
 Låt $f$ vara kontinuerlig på $[a, b]$, deriverbar på $(a, b)$ så att $f(a) = f(b)$. Då existerar $p\in (a, b)$ så att $\dv{f}{x}\eval_p = 0$.
 
 \proof
+Om $f$ är konstant på $[a, b]$ är beviset trivialt.
+
+Annars, låt $f(x) > f(a)$ för något $x\in (a, b)$. Eftersom $f$ är kontinuerlig på $[a, b]$, antar den enligt sats ett största värde. Eftersom $f(a) = f(b)$ måste detta största värdet antas i något $q\in (a, b)$. Då $f$ är deriverbar i $q$, gäller det enligt sats att $\dv{f}{x} (q) = 0$. Detta är punkten vi söker.
+
+Ett analogt bevis gäller om $f(x) < f(a)$ för något $x\in (a, b)$.
 
 \paragraph{Generaliserade medelvärdessatsen}
 Låt $f$ och $g$ vara reellvärda, kontinuerliga på $[a, b]$ och deriverbara på $(a, b)$. Då existerar $p\in (a, b)$ så att
 \begin{align*}
-	\dv{f}{x}\eval_p(g(b) - g(a)) = \dv{g}{x}\eval_p(f(b) - f(a)).
+	\deval{f}{x}{p}(g(b) - g(a)) = \deval{g}{x}{p}(f(b) - f(a)).
 \end{align*}
 Om $g(a)\neq g(b)$ och $\dv{g}{x}\eval_p\neq 0$, gäller
 \begin{align*}
-	\frac{\dv{f}{x}\eval_p}{\dv{g}{x}\eval_p} = \frac{f(b) - f(a)}{g(b) - g(a)}.
+	\frac{\deval{g}{x}{p}}{\deval{g}{x}{p}} = \frac{f(b) - f(a)}{g(b) - g(a)}.
 \end{align*}
 
 \subparagraph{Medelvärdesatsen}
@@ -98,19 +119,37 @@ Välj $g(x) = x$. Detta ger
 \end{align*}
 
 \proof
-Använd Rolles sats.
+Bilda
+\begin{align*}
+	h(x) = f(x)(g(b) - g(a)) - g(x)(f(b) - f(a)),
+\end{align*}
+som är kontinuerlig och deriverbar på intervallet enligt annan sats. Denna uppfyller $h(a) = h(b)$, och då existerar enligt Rolles sats ett $p\in (a, b)$ så att $\deval{h}{x}{p} = 0$. Vi har
+\begin{align*}
+	\deval{h}{x}{x} = \deval{f}{x}{x}(g(b) - g(a)) - \deval{g}{x}{x}(f(b) - f(a)),
+\end{align*}
+vilket ger
+\begin{align*}
+	\deval{f}{x}{p}(g(b) - g(a)) = \deval{g}{x}{p}(f(b) - f(a)).
+\end{align*}
 
 \paragraph{Följder av dessa satser}
 Låt $f$ vara deriverbar på $(a, b)$. Då gäller:
 \begin{itemize}
-	\item $\dv{f}{x}(x) = 0$ för varje $x\in (a, b)$ omm $f$ är konstant på $(a, b)$.
-	\item $\dv{f}{x}(x)\geq 0$ för varje $x\in (a, b)$ omm $f$ är växande på $(a, b)$.
-	\item $\dv{f}{x}(x) > 0$ implicerar att $f$ är strängt växande på $(a, b)$.
-	\item $\dv{f}{x}(x)\leq 0$ för varje $x\in (a, b)$ omm $f$ är avtagande på $(a, b)$.
-	\item $\dv{f}{x}(x) < 0$ implicerar att $f$ är strängt avtagande på $(a, b)$.
+	\item $\deval{f}{x}{x} = 0$ för varje $x\in (a, b)$ om och endast om $f$ är konstant på $(a, b)$.
+	\item $\deval{f}{x}{x}\geq 0$ för varje $x\in (a, b)$ om och endast om $f$ är växande på $(a, b)$.
+	\item $\deval{f}{x}{x} > 0$ implicerar att $f$ är strängt växande på $(a, b)$.
+	\item $\deval{f}{x}{x}\leq 0$ för varje $x\in (a, b)$ om och endast om $f$ är avtagande på $(a, b)$.
+	\item $\deval{f}{x}{x} < 0$ implicerar att $f$ är strängt avtagande på $(a, b)$.
 \end{itemize}
 
 \proof
+Om $f$ är konstantfunktionen, är första påståendet triviellt. Om $\dv{f}{x}(x) = 0$ på $(a, b)$, välj $x_0, x_1$ i intervallet så att $x_0 < x_1$. Då ger medelvärdesatsen att $f(x_1) - f(x_0) = \deval{f}{x}{x}(x_1 - x_0) = 0$, med $p\in (x_0, x_1)$, vilket bevisar omvändingen.
+
+Om nu $\deval{f}{x}{x} > 0$ på intervallet, ger medelvärdesatsen på samma sätt $f(x_1) - f(x_0) > 0$, med ett analogt argument om nollan inkluderas. Anta nu att $f$ är växande. Detta ger
+\begin{align*}
+	\deval{f}{x}{x} = \limit{h}{0}\frac{f(x + h) - f(x)}{h}\geq 0.
+\end{align*}
+Anledningen till att det inte är en ekvivalens när derivatan är strikt positiv är att detta gränsvärdet kan bli $0$ även om $f$ är växande. Med ett analogt bevis för de två sista påståenden är beviset klart.
 
 \paragraph{L'Hôpitals regel}
 Låt $f, g$ vara reellvärda, deriverbara funktioner i en omgivning $I$ av $a$ sådana att
@@ -156,15 +195,44 @@ Låt $f$ vara två gånger deriverbar och låt $\dv[2]{f}{x}$ vara kontinuerlig.
 \paragraph{Taylors formel}
 Låt $f$ vara $n$ gånger deriverbar och definierad i en omgivning av $0$, sådan att $\dv[n]{f}{x}$ är kontinuerlig. Då är
 \begin{align*}
-	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\dv[i]{f}{x} (0)}{i!}x^i + \frac{\dv[n]{f}{x} (\alpha)}{n!}x^n
+	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\deval[i]{f}{x}{0}}{i!}x^i + \frac{\deval[i]{f}{x}{\alpha}}{n!}x^n
 \end{align*}
 för något $\alpha\in [0, x]$. Kring en godtycklig punkt $a$ blir formeln
-\begin{align*}
-	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\dv[i]{f}{x} (a)}{i!}(x - a)^i + \frac{\dv[n]{f}{x} (\alpha)}{n!}(x - a)^n
-\end{align*}
-för något $\alpha\in (a, x)$.
+\begin{align}
+	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\deval[i]{f}{x}{a}}{i!}(x - a)^i + \frac{\deval[n]{f}{x}{\alpha}}{n!}(x - a)^n
+	\label{eq:taylor_formula}
+\end{align}
+för något $\alpha\in [a, x]$.
 
 \proof
+Vi beviser satsen först för $a = 0$. Det är klart att formeln stämmer för $x = 0$, så bilda
+\begin{align*}
+	C = \frac{f(x) - p(x)}{x^n}, x\neq 0.
+\end{align*}
+Då är beviset ekvivalent med att visa att $Cn! = \deval[n]{f}{x}{\alpha}$ för et lämpligt $\alpha$.
+
+Notera att $\deval[i]{f}{x}{0} = \deval[i]{p}{x}{0}, i = 0, \dots, n - 1$, och bilda
+\begin{align*}
+	g(t) = f(t) - p(t) - Ct^n\implies \deval[i]{g}{x}{0} = 0, i = 0, \dots, n - 1.
+\end{align*}
+Från definitionen är även $g(x) = 0$, och eftersom $g$ är kontinuerlig finns det enligt Rolles sats $x_1\in (0, x)$ så att $\deval{g}{x}{x_1} = 0$. Et motsvarande argument användt flera gånger ger att det finns $x_n\in (0, x_{n - 1})\subseteq [0, x]$ så att $\deval[n]{g}{x}{x_n} = 0$.
+\begin{align*}
+	\deval[n]{g}{x}{x_n} = \deval[n]{f}{x}{x_n} - Cn!,
+\end{align*}
+och nollstället ger önskad likhet.
+
+För att visa satsen kring något $a\neq 0$, bilda $g(t) = f(t + a)$. Denna uppfyller förutsättningarna för formeln vi har bevist, vilket ger
+\begin{align*}
+	g(t) = \sum\limits_{i = 0}^{n - 1}\frac{\deval[i]{g}{x}{0}}{i!}t^i + \frac{\deval[i]{g}{x}{\alpha_0}}{n!}t^n = f(t + a), \alpha_0\in [0, t].
+\end{align*}
+Vi använder att $\deval[i]{g}{t}{t} = \deval[i]{f}{t}{t + a}, i = 0, \dots, n$ för att få
+\begin{align*}
+	f(t + a) = \sum\limits_{i = 0}^{n - 1}\frac{\deval[i]{f}{t}{a}}{i!}t^i + \frac{\deval[i]{f}{t}{\alpha_0 + a}}{n!}t^n, \alpha\in [0, t].
+\end{align*}
+Definiera $x = t + a$ och $\alpha = \alpha_0 + a\in [a, x]$ för att få
+\begin{align*}
+	f(x) = \sum\limits_{i = 0}^{n - 1}\frac{\deval[i]{f}{t}{a}}{i!}t^i + \frac{\deval[i]{f}{t}{\alpha}}{n!}t^n, \alpha\in [a, x].
+\end{align*}
 
 \paragraph{Taylors formel och stora ordo}
 Låt $f$ vara $n$ gånger deriverbar och $\dv[n]{f}{x}$ vara kontinuerlig i en omgivning av $0$. Då är
