@@ -1,11 +1,62 @@
 \section{Vektorer}
+Begreppet vektor används här om elementer i vektorrum (eller inreproduktrum).
 
 \subsection{Definitioner}
 
 \paragraph{Linjärt hölje}
-Det linjära höljet av vektorerna $\vectorbold{v}_1, \vectorbold{v}_2, ..., \vectorbold{v}_n$ är
+Det linjära höljet av vektorerna $v_1, \dots, v_n$ är
 \begin{align*}
-	\Span\{\vectorbold{v}_1, \vectorbold{v}_2, ..., \vectorbold{v}_n\} = \left\{\sum\limits_{i = 1}^{n} t_i\vectorbold{v}_i\ |\ t_i\in\R \right\}
+	\Span{v_1, \dots, v_n} = \left\{\sum\limits_{i = 1}^{n} t_iv_i\ |\ t_i\in\R \right\}
 \end{align*}
 
+\paragraph{Linjärt oberoende vektorer}
+Vektorerna $v_1, \dots, v_n$ är linjärt oberoende om ekvationen
+\begin{align*}
+	\sum\limits_{i = 1}^{n}t_iv_i = 0
+\end{align*}
+endast har lösningen $t_i = 0$ för $i = 1, \dots, n$. $0$ refererar här till vektorrummets nollelement.
+
+\paragraph{Ortogonala mängder}
+Låt $\{u_1, \dots, u_n\}$ vara en mängd elementer så att $\inprod{u_i}{u_j} = 0$ för alla $i\neq j$. En slik mängd kallas en ortogonal mängd.
+
+\paragraph{Enhetsvektorer i $\R^m$}
+Vektorerna
+\begin{align*}
+	\vect{e}_1 =
+	\left[\begin{array}{c}
+    	1    \\
+    	0    \\
+    	\vdots \\
+	    0
+	\end{array}\right],
+	\vect{e}_2 =
+	\left[\begin{array}{c}
+    	0    \\
+    	1    \\
+    	\vdots \\
+	    0
+	\end{array}\right],
+	\dots, \vect{e}_m =
+	\left[\begin{array}{c}
+    	0    \\
+    	0    \\
+    	\vdots \\
+	    1
+	\end{array}\right]
+\end{align*}
+i $\R^m$ kallas enhetsvektorer. Man har att $\Span{\vect{e}_1, \vect{e}_2, \dots, \vect{e}_m} = \R^{m}$.
+
+\paragraph{Skalärprodukt}
+För två vektorer $\vect{u}, \vect{v}\in\R^n$ med koefficienter $u_i$ och $v_i$ definierar man
+\begin{align*}
+	\vect{u}\cdot\vect{v} = \sum\limits_{i = 1}^n u_iv_i.
+\end{align*}
+Detta är inreproduktet i $\R^n$.
+
 \subsection{Satser}
+
+\paragraph{Ortogonalitet och linjärt beroende}
+Vektorerna i en ortogonal mängd är linjärt oberoende.
+
+\subparagraph{Bevis}
+Många multiplikationer.

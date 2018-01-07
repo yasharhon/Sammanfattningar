@@ -1,0 +1,77 @@
+\section{Differentialekvationer}
+
+\subsection{Definitioner}
+
+\paragraph{Ordinära differentialekvationer}
+En ordinär differentialekvation (ODE) är en ekvation som innehåller en eller flere envariabelfunktioner och deras derivator.
+
+\paragraph{Ordning}
+En differentialekvations ordning är ordningen av dne högsta derivatan som är i ekvationen.
+
+\paragraph{Linjära ODE}
+En linjär differentialekvation är på formen
+\begin{align}
+	\dv[n]{y}{x} + \sum\limits_{i = 0}^{n - 1}f_i(x)\dv[i]{y}{x} = h.
+	\label{eq:linear_ODE}
+\end{align}
+
+\paragraph{Homogena och inhomogena ODE}
+Betrakta ekvation \ref{eq:linear_ODE}. Om $h = 0$ är ekvationen homogen. Annars är den inhomogen.
+
+\paragraph{Karakteristisk polynom för ODE av andra ordning}
+Låt $\dv[2]{y}{x} + a\dv{y}{x} + by = 0, a, b\in\R$ vara en differentialekvation. Dens karakteristiska polynom är
+\begin{align*}
+	r^2 + ar + b.
+\end{align*}
+
+\paragraph{Karakteristisk ekvation för ODE av andra ordning}
+Låt $\dv[2]{y}{x} + a\dv{y}{x} + by = 0, a, b\in\R$ vara en differentialekvation. Dens karakteristiska ekvation är
+\begin{align*}
+	r^2 + ar + b = 0.
+\end{align*}
+
+\paragraph{Separabla differentialekvationer}
+En separabel differentialekvation är på formen
+\begin{align*}
+	g(y(x))\deval{y}{x}{x} = f(x).
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Lösning av homogena ODE av första ordning}
+En funktion $y$ löser
+\begin{align*}
+	\dv{y}{x} + ay = 0, a\in\R
+\end{align*}
+om och endast om
+\begin{align*}
+	y = Ce^{-ax}, C\in\R.
+\end{align*}
+
+\proof
+
+\paragraph{Lösning av homogena ODE av andra ordning}
+Låt $\dv[2]{y}{x} + a\dv{y}{x} + by = 0, a, b\in\R$ vara en differentialekvation och $r_1, r_2$ rötterna till den karakteristika ekvationen. En funktion $y$ löser ekvationen om och endast om:
+\begin{itemize}
+	\item I fallet $r_1\neq r_2$ och båda är reella är
+	\begin{align*}
+		y(x) = C_1e^{r_1x} + C_2e^{r_2x},
+	\end{align*}
+	\item I fallet $r_1 = r_2$ är
+	\begin{align*}
+		y(x) = (C_1 + C_2x)e^{r_1x},
+	\end{align*}
+	\item I fallet $r_1 = c + di, r_2 = r_1*$, med $d\neq 0$, är
+	\begin{align*}
+		y(x) = e^{cx}(C_1\cos{(dx)} + C_2\sin{(dx)}),
+	\end{align*}
+\end{itemize}
+med $C_1, C_2\in\R$.
+
+\proof
+
+\paragraph{Lösning av separabla differentialekvationer}
+Låt $g(y(x))\deval{y}{x}{x} = f(x)$ vara en separabel differentialekvation sådan att $g$ har en inverterbar primitiv funktion $G$ och $f$ har en primitiv funktion $F$. Då är lösningen till differentialekvationen
+\begin{align*}
+	y(x) = G^{-1}(F(x) + C), C\in\R.
+\end{align*}
