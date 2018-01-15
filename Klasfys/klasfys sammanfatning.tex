@@ -1,8 +1,13 @@
 \documentclass[a4paper, 11pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[arrowdel]{physics}
 \usepackage[swedish]{babel}
 
-\title{Samanfatning av SK1104}
+\newcommand{\vect}[1]{\vectorbold{#1}}
+\newcommand{\deriv}{\subparagraph{Härledning}}
+
+\title{Sammanfattning av SK1104}
 \author{Yashar Honarmandi}
 \date{\today}
 
@@ -24,6 +29,12 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/notation.tex}
+
+\input{./Parts/harmonic_waves.tex}
+
+\input{./Parts/classical_waves.tex}
 
 \input{./Parts/signs.tex}
 

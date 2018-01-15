@@ -1,0 +1,52 @@
+\section{Klassiska vågor}
+
+\subsection{Ekvationer}
+
+\paragraph{Vågekvationen}
+\begin{align*}
+	\laplacian{s} = \frac{1}{c^2}\dv[2]{s}{t}
+\end{align*}
+Vågekvationen är fellesnämnaren för alla klassiska vågfenomen. Denna ekvation beskriver hur vågor med en väldefinierad fart $c$ propagerar i rymden över tid. $s$ är storheten som propagerar, t.ex. en tryckskillnad eller ett elektromagnetiskt fält.
+
+\deriv
+Låt störningen vara någon $f(\vect{n}\cdot\vect{r} - ct)$, der $\vect{n}$ är en enhetsvektor i samma riktning som vågens utbredning. $f$ har denna formen eftersom vågen efter en tid $t$ ser likadan ut om man beveger sig ett avstånd $ct$ i riktning av vågens utbredning. Med $u = \vect{n}\cdot\vect{r} - ct$ får man
+\begin{align*}
+	&\dv[2]{s}{x} = \dv{}{x}\dv{f}{u}\dv{u}{x} = n_x^2\dv[2]{f}{u}, \\
+	&\vdots \\
+	&\dv[2]{s}{t} = \dv{}{x}\dv{f}{u}\dv{u}{t} = c^2\dv[2]{f}{x}.
+\end{align*}
+Om man adderar derivatorna med avseende på rymdliga koordinater får man
+\begin{align*}
+	\laplacian{s} = \sum &\dv[2]{s}{x_i} = \sum n_i^2\dv[2]{f}{u} = \dv[2]{f}{u}\sum n_i^2 = \dv[2]{f}{u}
+\end{align*}
+då $\vect{n}$ är en enhetsvektor. Detta ger då
+\begin{align*}
+	\laplacian{s} = \frac{1}{c^2}\dv[2]{s}{t}.
+\end{align*}
+
+\paragraph{Dispersionsrelation för harmoniska vågor}
+\begin{align*}
+	\omega = ck
+\end{align*}
+
+\deriv
+Ta en harmonisk våg i en dimension, på formen $Ae^{i(kx - \omega t)}$, och testa om den uppfyller vågekvationen. Då ser du att detta uppfylls under förutsättningen att dispersionsrelationen är uppfylld.
+
+\paragraph{Harmoniska vågor}
+En lösning till vågekvationen är
+\begin{align*}
+	s = Ae^{i(\vect{k}\cdot\vect{r} - \omega t)},
+\end{align*}
+och detta kommer vara basisen för vidare analys av vågfenomen. Merk att $A$ kan vara komplex och innehålla information om fasförskjutningen till vågen.
+
+\deriv
+$s$ tillfredsställar vågekvationen om dispersionsrelationen är uppfylld. Under denna förutsettning, skriv
+\begin{align*}
+	s = Ae^{i(\vect{k}\cdot\vect{r} - \omega t)} = Ae^{ik(\vect{n}\cdot\vect{r} - ct)},
+\end{align*}
+vilket är en funktion av $\vect{n}\cdot\vect{r} - ct$, som vi ville.
+
+\subsection{Principer}
+
+\paragraph{Superposition}
+Eftersom vågekvationen är linjär, interagerar vågor vid att man adderar störningarna.
