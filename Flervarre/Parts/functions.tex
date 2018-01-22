@@ -1,0 +1,59 @@
+\section{Funktioner}
+
+\subsection{Definitioner}
+
+\paragraph{Grafen av en funktion}
+Låt $f: D\to\R$ med $D\subset\R^2$. Grafen av $f$ är
+\begin{align*}
+	\{(x, y, z)\in\R^3: z = f(x, y)\}.
+\end{align*}
+
+\paragraph{Kurvor i $\R^p$}
+En kurva i $\R^p$ är en funktion $t\to\vect{x}(t) = (x_1(t), \dots, x_p(t))$.
+
+\paragraph{Lokala gränsvärden}
+Låt $f: D\to\R^p$ med $D\subset\R^n$ och $\vect{a}$ vara en inre punkt eller randpunkt till $D$. $\limit{\vect{x}}{\vect{a}}f(\vect{x}) = \vect{b}$om det för varje $\varepsilon > 0$ finns ett $\delta > 0$ så att
+\begin{align*}
+	\abs{\vect{x} - \vect{a}} < \delta, \vect{x}\in D \implies\abs{f(\vect{x}) - \vect{b}} < \varepsilon.
+\end{align*}
+
+\paragraph{Gränsvärden mot oändligheten}
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $\limit{\abs{\vect{x}}}{\infty}f(\vect{x}) = \vect{b}$ om det för varje $\varepsilon > 0$ finns ett $\omega > 0$ så att
+\begin{align*}
+	\abs{\vect{x}} > \omega, \vect{x}\in D \implies\abs{f(\vect{x}) - \vect{b}} < \varepsilon.
+\end{align*}
+
+\paragraph{Kontinuitet}
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $f$ är kontinuerlig i $\vect{a}\in D$ om $\limit{\vect{x}}{\vect{a}}$ existerar och $\limit{\vect{x}}{\vect{a}} = f(\vect{a}$.
+
+\paragraph{Likformig kontinuitet}
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $f$ är likformigt kontinuerlig på $D$ om det för varje $\varepsilon > 0$ finns ett $\delta > 0$ så att
+\begin{align*}
+	\abs{\vect{x} - \vect{y}} < \delta, \vect{x}, \vect{y}\in D \implies\abs{f(\vect{x}) - f(\vect{y})} < \varepsilon.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Gränsvärden av funktioner och deras komponenter}
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $\limit{\vect{x}}{\vect{a}}f(\vect{x}) = \vect{b}$ är ekvivalent med att $\limit{\vect{x}}{\vect{a}}f_i(\vect{x}) = \vect{b}_i$, där subskriptet $i$ indikerar den $i$-te komponenten av varje vektor.
+
+\proof
+Detta följer direkt av att
+\begin{align*}
+	\abs{f_i(\vect{x}) - \vect{b}_i}\leq\abs{f(\vect{x}) - \vect{b}}\leq\sum\limits_{i = 1}^{p}\abs{f_i(\vect{x}) - \vect{b}_i}.
+\end{align*}
+
+\paragraph{Största och minsta värde för funktioner}
+Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara kompakt. Då antar $f$ ett största och ett minsta värde på $D$.
+
+\proof
+
+\paragraph{Definitionsmängd och likformig kontinuitet}
+Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara kompakt. Då är $f$ likformigt kontinuerlig på $D$.
+
+\proof
+
+\paragraph{Satsen om mellanliggande värden}
+Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara bågvis sammanhängande. Om $f$ antar värderna $f(\vect{a}), f(\vect{b})$ i $D$, antar $f$ också alla värden mellan $f(\vect{a})$ och $f(\vect{b})$.
+
+\proof
