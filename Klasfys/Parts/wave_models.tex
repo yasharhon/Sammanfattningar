@@ -10,5 +10,33 @@ där $B$ är mediets bulkmodul. Kompressionen kan tänkas få oändligt tunna vo
 
 Betrakta nu vätskan eller gasen mellan två punkter $x$ och $x + \dd{x}$. Tryckskillnaden mellan dessa två punkterna ges av
 \begin{align*}
-	\dd{p} = -B\frac{\dd{V}}{V} = \dd{p} = -B\frac{A(s(x + \dd{x}) - s(x)}{A\dd{x}}\to -B\dv{s}{x}
+	\dd{p} = -B\frac{\dd{V}}{V} = -B\frac{A(s(x + \dd{x}) - s(x)}{A\dd{x}}\to -B\dv{s}{x},
 \end{align*}
+där vi förutsätter att $s(x), s(x + \dd{x}) << \dd{x}$. Newtons andra lag ger då
+\begin{align*}
+	ma = A\Delta p. 
+\end{align*}
+Om vi stoppar in för $p, m, a$ får vi
+\begin{align*}
+	&\rho A\dd{x}\pdv[2]{s}{t} = AB\Delta\pdv{s}{x} \\
+	&\pdv[2]{s}{t} = \frac{B}{\rho}\frac{\pdv{s}{x}(x + \dd{x}) - \pdv{s}{x}(x)}{\dd{x}} = \frac{B}{\rho}\pdv[2]{s}{x},
+\end{align*}
+och vågfarten är $c = \sqrt{\frac{B}{\rho}}$.
+
+Om vi även antar att vågen propagerar via adiabatiska kompressioner, har vi
+\begin{align*}
+	&pV^{\gamma} = C \\
+	&\ln{p} + \gamma\ln{V} = c \\
+	&\frac{\dd{p}}{p} + \gamma\frac{\dd{V}}{V} = 0,
+\end{align*}
+vilket ger
+\begin{align*}
+	B = -\frac{\dd{p}}{\left(\frac{\dd{V}}{V}\right)} = \gamma p.
+\end{align*}
+Om man använder ideala gaslagen på detta, får man
+\begin{align*}
+	v = \sqrt{\frac{\gamma RT}{M}},
+\end{align*}
+där $M$ är gasens molära massa.
+
+\paragraph{Fasta materialer i bulk}
