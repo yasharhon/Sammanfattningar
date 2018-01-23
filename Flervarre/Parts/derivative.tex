@@ -7,6 +7,65 @@ Låt $f: D\to\R^p$ med $D\subset\R^n$. $f$ är partiellt deriverbar med avseende
 \begin{align*}
 	\limit{h}{0}\frac{f(\vect{a} + h\vect{e}_i) - f(\vect{a})}{h}
 \end{align*}
-existerar. Gränsvärdet kallas partiella derivatan av $f$ med avseende på $x_i$ i $\vect{a}$ och betecknas $\pdv{f}{x_i}(\vect{a})$.
+existerar. Gränsvärdet kallas partiella derivatan av $f$ med avseende på $x_i$ i $\vect{a}$ och betecknas $\pdeval{f}{x_i}{\vect{a}}$.
+
+\paragraph{Differentierbarhet}
+Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är differentierbar i $\vect{a}$ om $\exists A_1, \dots, A_n$ och en $\rho(\vect{h})$ så att
+\begin{align*}
+	f(\vect{a} + \vect{h}) - f(\vect{a}) = \sum\limits_{i = 1}^{n}A_ih_i + \abs{\vect{h}}\rho(\vect{h})
+\end{align*}
+och $\limit{\vect{h}}{\vect{0}}\rho(\vect{h}) = 0$. $f$ är differentierbar om detta är uppfylld för alla $\vect{a}\in D$.
+
+\paragraph{$C^1$}
+Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är klass $C^1$ om $f$ är partiellt deriverbar och alla de partiella derivatorna är kontinuerliga i $D$.
 
 \subsection{Satser}
+
+\paragraph{Differentierbarhet och kontinuitet}
+Låt $f$ vara differentierbar i $\vect{a}$. Då är $f$ kontinuerlig i $\vect{a}$.
+
+\proof
+Definitionen implicerar $\limit{\vect{h}}{\vect{0}}f(\vect{a} + \vect{h}) - f(\vect{a}) = 0$.
+
+\paragraph{Differentierbarhet och partiell deriverbarhet}
+Låt $f$ vara differentierbar i $\vect{a}$. Då är $f$ partiellt deriverbar med avseende på alla variabler i $\vect{a}$ och $\pdv{f}{x_i}(\vect{a}) = A_i$.
+
+\proof
+Med $\vect{h} = t\vect{e}_i$ ger definitionen av differentierbarhet
+\begin{align*}
+	\frac{f(\vect{a} + t\vect{e}_i) - f(\vect{a})}{t} = A_i + \frac{\abs{t}}{t}\rho(t\vect{e}_i).
+\end{align*}
+Gränsvärdet när $t$ går mot $0$ ger på den ena sidan definitionen av den partiella derivatan och $A_i$ på andra sidan.
+
+\paragraph{Differentierbarhet av funktioner i $C^1$}
+Varje $f\in C^1$ är differentierbar.
+
+\proof
+Låt $\vect{a}\in D$. Enligt envariabelsanalysens medelvärdesats har vi
+\begin{align*}
+	&f(\vect{a} + h_1\vect{e}_1) - f(\vect{a}) = \pdeval{f}{x_1}{\vect{a} + \theta _1h_1\vect{e}_1} \\
+	&f(\vect{a} + h_1\vect{e}_1 + h_2\vect{e}_2) - f(\vect{a} + h_1\vect{e}_1) = \pdeval{f}{x_2}{\vect{a} + h_1\vect{e}_1 + \theta_2h_2\vect{e}_2} \\
+	&\vdots \\
+	&f(\vect{a} + \sum\limits_{i = 1}^{n}h_i\vect{e}_i) - f(\vect{a} + \sum\limits_{i = 1}^{n - 1}h_i\vect{e}_i) = \pdeval{f}{x_n}{\vect{a} + \sum\limits_{i = 1}^{n - 1}h_i\vect{e}_i + \theta_nh_n\vect{e}_n},
+\end{align*}
+där alla $\theta_i\in [0, 1]$. Eftersom de partiella derivatorna är kontinuerliga kan vi skriva
+\begin{align*}
+	\pdeval{f}{x_k}{\vect{a} + \sum\limits_{i = 1}^{k - 1}h_i\vect{e}_i + \theta_kh_k\vect{e}_k} = \pdeval{f}{x_k}{\vect{a}} + \rho_k(\sum\limits_{i = 1}^{n}h_i\vect{e}_i) = \pdeval{f}{x_k}{\vect{a}} + \rho_k(\vect{h}),
+\end{align*}
+där $\limit{\vect{h}}{\vect{0}}\rho(\vect{h}) = 0$. Då får man
+\begin{align*}
+	f(\vect{a} + \vect{h}) = \sum\limits_{i = 1}^{n}\left(\pdeval{f}{x_i}{\vect{a}} + \rho_i(\vect{h})\right)h_i.
+\end{align*}
+
+Den sista delen av beviset använder
+\begin{align*}
+	\limit{\vect{h}}{\vect{0}}\frac{\sum\limits_{i = 1}^{n}\rho_i(\vect{h})h_i}{\abs{\vect{h}}}.
+\end{align*}
+
+\paragraph{Kedjeregeln i flere variabler}
+Låt $f$ vara en differentierbar funktion av $n$ variabler och $g: \R\to\R^n$, där alla $g_i$ är deriverbara på $\vect{a}\in D$. Då är $f\circ g$ deriverbar och
+\begin{align*}
+	\dv{f\circ g}{t}{t} = \sum\limits_{i = 1}{n}\pdeval{f}{x_i}{g(t)}\deval{g_i}{t}{t}.
+\end{align*}
+
+\proof
