@@ -19,6 +19,21 @@ och $\limit{\vect{h}}{\vect{0}}\rho(\vect{h}) = 0$. $f$ är differentierbar om d
 \paragraph{$C^1$}
 Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är klass $C^1$ om $f$ är partiellt deriverbar och alla de partiella derivatorna är kontinuerliga i $D$.
 
+\paragraph{$C^1$-kurvor}
+En kurva är klass $C^1$ om alla dess komponenter är $C^1$.
+
+\paragraph{Gradient}
+Låt $f$ vara reellvärd och differentierbar i $\vect{x}$. Gradienten definieras som
+\begin{align*}
+	\grad{f} = \sum\limits_{i = 1}^{n}\pdeval{f}{x_i}{\vect{x}}\vect{e}_i.
+\end{align*}
+
+\paragraph{Riktningsderivata}
+Låt $\abs{\vect{v}} = 1$. Derivatan av $f$ i punkten $\vect{a}$ i riktningen $\vect{v}$ är
+\begin{align*}
+	\grad_{\vect{u}}f = \limit{t}{0}\frac{f(\vect{a} + t\vect{v}) - f(\vect{a})}{t}.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Differentierbarhet och kontinuitet}
@@ -62,10 +77,58 @@ Den sista delen av beviset använder
 	\limit{\vect{h}}{\vect{0}}\frac{\sum\limits_{i = 1}^{n}\rho_i(\vect{h})h_i}{\abs{\vect{h}}}.
 \end{align*}
 
-\paragraph{Kedjeregeln i flere variabler}
-Låt $f$ vara en differentierbar funktion av $n$ variabler och $g: \R\to\R^n$, där alla $g_i$ är deriverbara på $\vect{a}\in D$. Då är $f\circ g$ deriverbar och
+\paragraph{Allmänna kedjeregeln}
+Låt $f: \R^n\to\R^p$ och $g: \R^q\to\R^n$ och låt alla komponenter av $f, g$ vara differentierbara. Då är alla komponenter av $f\circ g$ differentierbara. Med $u = f\circ g$ har vi
 \begin{align*}
-	\dv{f\circ g}{t}{t} = \sum\limits_{i = 1}{n}\pdeval{f}{x_i}{g(t)}\deval{g_i}{t}{t}.
+	\pdeval{u_i}{t_k}{\vect{t}} = \sum\limits_{i = 1}^{n}\pdeval{f}{x_i}{g(\vect{t})}\pdeval{g}{t_k}{\vect{t}}
+\end{align*}
+för varje komponent.
+
+\paragraph{Specialfall: $p = 1$}
+Låt $f$ vara en differentierbar funktion av $n$ variabler och $g: \R\to\R^n$, där alla $g_i$ är partiellt deriverbara. Då är $f\circ g$ deriverbar och
+\begin{align*}
+	\deval{f\circ g}{t}{t} = \sum\limits_{i = 1}^{n}\pdeval{f}{x_i}{g(t)}\deval{g_i}{t}{t}.
 \end{align*}
 
 \proof
+
+\paragraph{Konstantfunktioner och gradient}
+Låt $D\subset\R^n$ vara öppen och bågvis sammanhängande och $f\in C^1(D, R^n)$. Om $\grad{f(\vect{x})} = 0$ för alla $\vect{x}\in D$, är $f$ konstant i $D$.
+
+\proof
+Använd att
+\begin{align*}
+	\deval{f}{t}{\vect{x}(t)} = \grad{f(\vect{x}(t))}\cdot\deval{\vect{x}}{t}{t} = 0.
+\end{align*}
+
+\paragraph{Gradient och riktningsderivata}
+Gradienten i riktning $\vect{v}$ ges av
+\begin{align*}
+	\grad_{\vect{v}}f(\vect{a}) = \grad{f}(\vect{a})\cdot\vect{v}.
+\end{align*}
+
+\proof
+Bilda $u(t) = f(\vect{a} + t\vect{v}) = u(\vect{g}(t))$, vilket ger $\grad_{\vect{v}}f(\vect{a}) = \deval{u}{t}{0}$. Enligt kedjeregeln blir detta
+\begin{align*}
+	\sum\limits_{i = 1}^{n}\deval{f}{x_i}{0}\deval{g_i}{t}{0} = \grad{f}(\vect{a})\cdot\deval{(\vect{a} + t\vect{v})}{t}{0} = \grad{f}(\vect{a})\cdot\vect{v}.
+\end{align*}
+
+\paragraph{Maximal riktningsderivata}
+$\grad{f(\vect{a})}$ pekar i den riktning i vilken $f$ växar snabbast i $\vect{a}$, och den maximala tillväxthastigheten är $\abs{\grad{f(\vect{a})}}$.
+
+\proof
+Cauchy-Schwarz-olikheten ger
+\begin{align*}
+	\grad_{\vect{u}}f = \grad{f}(\vect{a})\cdot\vect{v}\leq\abs{\grad{f}(\vect{a})}\abs{\vect{v}},
+\end{align*}
+med likhet om och endast om $\vect{v}$ är parallell med gradienten.
+
+\paragraph{Gradient och nivåytor}
+Låt $f: \R^n\to\R$ och $\grad{f}(\vect{a})\neq\vect{0}$. Då är gradienten normal på nivåytan $f(\vect{x}) = f(\vect{a})$.
+
+\proof
+Låt $\vect{x}(t)$ vara en $C^1$-kurva i nivåytan $f(\vect{x}) = f(\vect{a})$ så att $\vect{x}(0) = \vect{a}$. Detta ger
+\begin{align*}
+	0 = \deval{f\circ \vect{x}}{t}{0} = \grad{f}(\vect{a})\cdot\deval{\vect{x}}{t}{0}.
+\end{align*}
+Eftersom $\deval{\vect{x}}{t}{0}$ är parallell med nivåytan är beviset klart.
