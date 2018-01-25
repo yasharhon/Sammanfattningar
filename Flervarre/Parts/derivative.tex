@@ -19,6 +19,9 @@ och $\limit{\vect{h}}{\vect{0}}\rho(\vect{h}) = 0$. $f$ är differentierbar om d
 \paragraph{$C^1$}
 Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är klass $C^1$ om $f$ är partiellt deriverbar och alla de partiella derivatorna är kontinuerliga i $D$.
 
+\paragraph{$C^k$}
+Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är klass $C^k$ om $f$ alla partiella derivator till och med ordning $k$ existerar och är kontinuerliga i $D$.
+
 \paragraph{$C^1$-kurvor}
 En kurva är klass $C^1$ om alla dess komponenter är $C^1$.
 
@@ -132,3 +135,23 @@ Låt $\vect{x}(t)$ vara en $C^1$-kurva i nivåytan $f(\vect{x}) = f(\vect{a})$ s
 	0 = \deval{f\circ \vect{x}}{t}{0} = \grad{f}(\vect{a})\cdot\deval{\vect{x}}{t}{0}.
 \end{align*}
 Eftersom $\deval{\vect{x}}{t}{0}$ är parallell med nivåytan är beviset klart.
+
+\paragraph{Symmetri av derivator i $C^2$}
+För varje $f\in C^2$ gäller att
+\begin{align*}
+	\pdv{f}{x_i}{x_j} = \pdv{f}{x_j}{x_i}.
+\end{align*}
+
+\proof
+Vi beviser endast för en tvåvariabelfunktion, då det allmänna fallet följer direkt från detta. Låt $q(h, k) = f(x + h, y + k) - f(x + h, y) - f(x, y + k) + f(x, y), \phi(t) = f(x + h, t) - f(x, t)$. Detta ger
+\begin{align*}
+	q(h, k) &= \phi(y + k) - \phi(y) \\
+	        &= k\deval{\phi}{t}{y + \theta k} \\
+	        &= k(\pdeval{f}{y}{x + h, y + \theta k} - \pdeval{f}{y}{x, y + \theta k}) \\
+	        &= kh\pdv{f}{x}{y} (x + \eta h, y + \theta k),
+\end{align*}
+där vi har användt medelvärdesatsen två gånger. Då har vi
+\begin{align*}
+	\limit{(h, k)}{(0, 0)}\frac{q(h, k)}{hk} = \pdv{f}{x}{y} (x, y).
+\end{align*}
+Beviset kan upprepas i motsatt ordning, och detta fullförar beviset.
