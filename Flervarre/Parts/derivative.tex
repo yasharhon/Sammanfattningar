@@ -37,6 +37,9 @@ Låt $\abs{\vect{v}} = 1$. Derivatan av $f$ i punkten $\vect{a}$ i riktningen $\
 	\grad_{\vect{u}}f = \limit{t}{0}\frac{f(\vect{a} + t\vect{v}) - f(\vect{a})}{t}.
 \end{align*}
 
+\paragraph{Stationära punkter}
+$\vect{a}$ är en stationär punkt till $f$ om $\grad{f}(\vect{a}) = \vect{0}$.
+
 \subsection{Satser}
 
 \paragraph{Differentierbarhet och kontinuitet}
@@ -155,3 +158,54 @@ där vi har användt medelvärdesatsen två gånger. Då har vi
 	\limit{(h, k)}{(0, 0)}\frac{q(h, k)}{hk} = \pdv{f}{x}{y} (x, y).
 \end{align*}
 Beviset kan upprepas i motsatt ordning, och detta fullförar beviset.
+
+\paragraph{Taylors formel}
+Låt $D\subset\R^2$ vara öppen, $(a, b)\in D$ och $f$ vara $C^3$. Då gäller:
+\begin{align*}
+	f(a + h, b + k) =& f(a, b) + \pdeval{f}{x}{a, b}h + \pdeval{f}{y}{a, b}k \\
+	                 &+ \frac{1}{2}\left(\pdeval[2]{f}{x}{a, b}h^2 + 2\pdv{f}{x}{y} (a, b)hk + \pdeval[2]{f}{y}{a, b}k^2\right) \\
+	                 &+ \left(\sqrt{h^2 + k^2}\right)^3B(h, k),
+\end{align*}
+där $B(h, k)$ är begränsad i en omgivning av origo.
+
+\proof
+Låt $F(t) = f(a + th, b + tk)$. Detta ger
+\begin{align*}
+	&\deval{F}{t}{t} = h\pdeval{f}{x}{a + th, b + tk} + k\pdeval{f}{y}{a + th, b + tk}, \\
+	&\deval[2]{F}{t}{t} = h\left(h\pdeval[2]{f}{x}{a + th, b + tk} + k\pdv{f}{x}{y} (a, b)\right) + k\left(h\pdeval[2]{f}{y}{a + th, b + tk} + h\pdv{f}{x}{y} (a, b)\right), \\
+	&\deval[3]{F}{t}{t} = \pdeval[3]{f}{x}{a, b}h^3 + 3\pdv{f}{x^2}{y} (a, b)h^2k + 3\pdv{f}{x}{y^2} (a, b)hk^2 + \pdeval[3]{f}{y}{a, b}k^3.
+\end{align*}
+$F$:s Taylorpolynom kring $0$ är
+\begin{align*}
+	F(t) = F(0) + \deval{F}{t}{0}t + \frac{1}{2!}\deval[2]{F}{t}{0}t^2 + \frac{1}{3!}\deval[2]{F}{t}{\theta}t^3.
+\end{align*}
+Vi evaluerar i $1$:
+\begin{align*}
+	F(1)            =& F(0) + \deval{F}{t}{0} + \frac{1}{2!}\deval[2]{F}{t}{0} + \frac{1}{3!}\deval[2]{F}{t}{\theta} \\
+	f(a + h, b + k) =& f(a, b) + \pdeval{f}{x}{a, b}h + \pdeval{f}{y}{a, b}k \\
+	                 &+ \frac{1}{2}\left(\pdeval[2]{f}{x}{a, b}h^2 + 2\pdv{f}{x}{y} (a, b)hk + \pdeval[2]{f}{y}{a, b}k^2\right) \\
+	                &+ \frac{1}{3!}\deval[2]{F}{t}{\theta}.
+\end{align*}
+Vi analyserar sen den sista termen:
+\begin{align*}
+	\frac{\deval[3]{F}{t}{t}}{\left(\sqrt{h^2 + k^2}\right)^3} = \frac{1}{\left(\sqrt{h^2 + k^2}\right)^3}\left(\pdeval[3]{f}{x}{a, b}h^3 + 3\pdv{f}{x^2}{y} (a, b)h^2k + 3\pdv{f}{x}{y^2} (a, b)hk^2 + \pdeval[3]{f}{y}{a, b}k^3\right).
+\end{align*}
+Vi ser att detta är konvergent eftersom vi t.ex. kan betrakta
+\begin{align*}
+	\abs{\frac{3\pdv{f}{x^2}{y} (a, b)h^2k}{\left(\sqrt{h^2 + k^2}\right)^3}}\leq C\frac{\abs{h}^2}{h^2 + k^2}\frac{\abs{k}}{\sqrt{h^2 + k^2}}\leq C.
+\end{align*}
+Derivatan är kontinuerlig, vilket enligt sats garanterar att den är begränsad. Därmed är den sista termen på rätt form, och beviset är klart.
+
+\paragraph{Lokala extrempunkter och partiella derivator}
+Om $f$ har ett lokalt extremvärde i $\vect{a}\in D$ och $f$ är partiellt deriverbar i $\vect{a}$ är $\pdeval{f}{x_i}{\vect{a}} = 0, i = 1, \dots, n$.
+
+\proof
+Följer av motsvarande sats i en variabel applicerad på $x_i\to f(a_1, \dots, x_i, \dots, a_n)$.
+
+\paragraph{Kvadratiska former och extrempunkt}
+Låt $(a, b)$ vara en inre punkt till $D$ och en stationär punkt till $f$. Om $f$:s Taylorpolynom kring $(a, b)$ ges av $f(a + h, b + k) = c + Q(h, k)$. Då gäller att:
+\begin{itemize}
+	\item Om $Q$ är positivt definit har $f$ ett strängt lokalt minimum i $(a, b)$.
+	\item Om $Q$ är negativt definit har $f$ ett strängt lokalt maximum i $(a, b)$.
+	\item Om $Q$ är indefinit har $f$ en sadelpunkt (varken ett maximum eller ett minimum) i $(a, b)$.
+\end{itemize}
