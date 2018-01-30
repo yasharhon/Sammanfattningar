@@ -22,9 +22,6 @@ Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är klass $C^1$ om $f$ är partiellt de
 \paragraph{$C^k$}
 Låt $f: D\to\R$ med $D\subset\R^n$. $f$ är klass $C^k$ om $f$ alla partiella derivator till och med ordning $k$ existerar och är kontinuerliga i $D$.
 
-\paragraph{$C^1$-kurvor}
-En kurva är klass $C^1$ om alla dess komponenter är $C^1$.
-
 \paragraph{Gradient}
 Låt $f$ vara reellvärd och differentierbar i $\vect{x}$. Gradienten definieras som
 \begin{align*}
@@ -39,6 +36,16 @@ Låt $\abs{\vect{v}} = 1$. Derivatan av $f$ i punkten $\vect{a}$ i riktningen $\
 
 \paragraph{Stationära punkter}
 $\vect{a}$ är en stationär punkt till $f$ om $\grad{f}(\vect{a}) = \vect{0}$.
+
+\paragraph{Differentialer}
+Låt $f:D\to\R$ med $D\subset\R^n$ öppen och låt $f$ vara differentierbar. Funktionen $\vect{h}\to\sum\pdeval{f}{x_i}{\vect{x}}h_i$ kallas differentialen av $f$ i $\vect{x}$ och betecknas $\dd{f} (\vect{x})$. Vid att skriva differentialen som en matris
+\begin{align*}
+	\dd{f} (\vect{x}) = \left[\pdeval{f}{x_1}{\vect{x}}\dots\pdeval{f}{x_n}{\vect{x}}\right]
+\end{align*}
+kan differentialet skrivas som en matrismultiplikation enligt
+\begin{align*}
+	\dd{f} (\vect{x})(\vect{h}) = \left[\pdeval{f}{x_1}{\vect{x}}\dots\pdeval{f}{x_n}{\vect{x}}\right]\vect{h}.
+\end{align*}
 
 \subsection{Satser}
 
