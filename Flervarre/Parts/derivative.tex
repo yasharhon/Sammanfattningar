@@ -47,6 +47,23 @@ kan differentialet skrivas som en matrismultiplikation enligt
 	\dd{f} (\vect{x})(\vect{h}) = \left[\pdeval{f}{x_1}{\vect{x}}\dots\pdeval{f}{x_n}{\vect{x}}\right]\vect{h}.
 \end{align*}
 
+\paragraph{Funktionalmatriser}
+Låt $f:D\to\R^p$ med $D\subset\R^n$. $f$:s funktionalmatris definieras som
+\begin{align*}
+	\left[\begin{array}{ccc}
+		\deval{f_1}{x_1}{\vect{x}} & \dots  & \deval{f_1}{x_n}{\vect{x}} \\
+		\vdots                     & \ddots & \vdots \\
+		\deval{f_p}{x_1}{\vect{x}} & \dots  & \deval{f_p}{x_n}{\vect{x}}
+	\end{array}\right]
+\end{align*}
+och betecknas $f'(\vect{x}) = \dd{f} (\vect{x}) = \deval{(f_1\dots f_p)}{(x_1\dots x_n)}{\vect{x}}$.
+
+\paragraph{Linjarisering}
+Linjariseringen av en funktion $f$ ges av
+\begin{align*}
+	f(\vect{x} + \vect{h}) = f(\vect{x}) + \dd{f} (\vect{x})\vect{h}.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Differentierbarhet och kontinuitet}
@@ -216,3 +233,21 @@ Låt $(a, b)$ vara en inre punkt till $D$ och en stationär punkt till $f$. Om $
 	\item Om $Q$ är negativt definit har $f$ ett strängt lokalt maximum i $(a, b)$.
 	\item Om $Q$ är indefinit har $f$ en sadelpunkt (varken ett maximum eller ett minimum) i $(a, b)$.
 \end{itemize}
+
+\paragraph{Små ändringar och funktionalmatriser}
+Låt $f:D\to\R^p$ med $D\subset\R^n$ vara $C^1$. Då kan vi för små $\abs{\vect{h}}$ skriva
+\begin{align*}
+	f(\vect{x} + \vect{h}) = f(\vect{x}) + \dd{f} (\vect{x})\vect{h} + \abs{\vect{h}}\rho (\vect{h})
+\end{align*}
+där $\rho$ tar värden i $\R^p$ och $\limit{\vect{h}}{\vect{0}}\rho (\vect{h}) = \vect{0}$.
+
+\proof
+Betrakta varje komponent.
+
+\paragraph{Kedjeregeln och funktionalmatriser}
+\begin{align*}
+	\dd{(f\circ g)} (\vect{t}) = \dd{f} (g(\vect{t}))\dd{g} (\vect{t})
+\end{align*}
+
+\proof
+Inses lätt.
