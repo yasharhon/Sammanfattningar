@@ -77,3 +77,26 @@ Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara kompakt. Då är $f$ lik
 Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara bågvis sammanhängande. Om $f$ antar värderna $f(\vect{a}), f(\vect{b})$ i $D$, antar $f$ också alla värden mellan $f(\vect{a})$ och $f(\vect{b})$.
 
 \proof
+
+\paragraph{Inversa funktionssatsen}
+Låt $f: D\to\R^p$, $D\subset\R^n$ vara öppen, $f$ vara $C^1$ och $\abs{\dd{f} (\vect{a})}\neq 0$. Då finns det öppna omgivningar $U, V$ till $\vect{a}, f(\vect{a})$ så att $f:U\to V$ är bijektiv och $f{-1}: V\to U$ är $C^1$.
+
+\proof
+
+\paragraph{Implicita funktionssatsen}
+Låt $F(\vect{x})$ vara $C^1$ och $\vect{a}$ vara på nivåkurvan $F(\vect{x}) = C$. Om $\pdeval{F}{x_n}{\vect{a}}\neq 0$ finns det en öppen omgivning $U$ av $\vect{a}$ så att restriktion av nivåkurvan till $U$ implicit definierar en $C^1$-funktion.
+
+\proof
+
+\paragraph{Derivatan av en implicit funktion}
+Låt $F(\vect{x})$ vara $C^1$, $\vect{a}$ vara på nivåkurvan $F(\vect{x}) = C$ och $F(\vect{x}) = C$ definiera en implicit funktion nära $\vect{a}$. Om $\pdeval{F}{x_n}{\vect{a}}\neq 0$ har man
+\begin{align*}
+	\pdeval{x_n}{x_i}{\vect{a}'} = -\frac{\pdeval{F}{x_i}{\vect{a}}}{\pdeval{F}{x_n}{\vect{a}}}.
+\end{align*}
+
+\proof
+Eftersom $F$ är konstant nära $\vect{a}$ använder vi kedjeregeln, vilket ger
+\begin{align*}
+	\pdeval{F}{x_i}{\vect{a}} + \pdeval{F}{x_n}{\vect{a}}\pdeval{x_n}{x_i}{\vect{a}'} = 0.
+\end{align*}
+Om $\pdeval{F}{x_n}{\vect{a}}\neq 0$ får man resultatet i satsen.
