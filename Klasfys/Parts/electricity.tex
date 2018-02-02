@@ -12,6 +12,20 @@
 	R = \frac{\rho L}{A}
 \end{align*}
 
+\paragraph{Seriekoppling av resistorer}
+\begin{align*}
+	R_\text{t} = \sum R_i
+\end{align*}
+
+\deriv
+
+\paragraph{Parallellkoppling av resistorer}
+\begin{align*}
+	\frac{1}{R_\text{t}} = \sum \frac{1}{R_i}
+\end{align*}
+
+\deriv
+
 \paragraph{Definitionen av kapacitans}
 \begin{align*}
 	C = \frac{Q}{V}
@@ -20,14 +34,14 @@ $Q$ är beloppet av laddningen som lagras i kondensatorn (endast den positiva el
 
 \paragraph{Seriekoppling av kondensatorer}
 \begin{align*}
-	\frac{1}{C_\text{t}} = \frac{1}{C_1} + \frac{1}{C_2}
+	\frac{1}{C_\text{t}} = \sum\frac{1}{C_i}
 \end{align*}
 
 \deriv
 
 \paragraph{Parallellkoppling av kondensatorer}
 \begin{align*}
-	C_\text{t} = C_1 + C_2
+	C_\text{t} = \sum C_i
 \end{align*}
 
 \paragraph{Dielektrisk konstant}
@@ -52,6 +66,20 @@ Den elektromotiva kraften $\varepsilon$ är spänningen som driver ström i kret
 \paragraph{Effektutveckling i resistiv komponent}
 \begin{align*}
 	P = I^2R = \frac{(\Delta V)^2}{R}
+\end{align*}
+
+\paragraph{Uppladdning av kondensator i RC-krets}
+\begin{align*}
+	&q = CV(1 - e^{-\frac{t}{RC}}), \\
+	&I = \frac{V}{R}e^{-\frac{t}{RC}}
+\end{align*}
+
+\deriv
+
+\paragraph{Utladdning av kondensator i RC-krets}
+\begin{align*}
+	&q = Q_0e^{-\frac{t}{RC}}), \\
+	&I = -\frac{Q_0}{RC}e^{-\frac{t}{RC}}
 \end{align*}
 
 \subsection{Principer}
