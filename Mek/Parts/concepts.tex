@@ -37,12 +37,38 @@ Man projicerar sen på axeln.
 \end{align*}
 där $\vect{e}_\lambda$ är parallell med axeln. Detta är eftersom $\vect{r}_{QP}$ är parallell med $\vect{e}_\lambda$, och kryssprodukten vi beräknar då måste vara normal på båda dessa.
 
+\paragraph{Stel kropp}
+En stel kropp är en kropp som uppfyller att
+\begin{align*}
+	\dv{\abs{\vect{r}_{AB}}}{t} = 0\ \forall\ A, B. 
+\end{align*}
+
 \paragraph{Masscentrum}
 Masscentrum definieras av
 \begin{align*}
 	\vect{r}_G = \frac{\sum m_i\vect{r}_i}{\sum m_i}.
 \end{align*}
-Detta är en punkt så att i ett homogent kraftfält är fältets verkan på partiklerna ekvivalent med att kraftsumman verkar i masscentrum.
+Detta är en punkt så att i ett homogent kraftfält är fältets verkan på partiklerna ekvivalent med att kraftsumman verkar i masscentrum. För en kontinuerlik kropp går detta mot
+\begin{align*}
+	\vect{r}_G = \frac{\int\dd{m}\vect{r}}{\int\dd{m}}.
+\end{align*}
+Detta kan skrivas som
+\begin{align*}
+	\vect{r}_G &= \frac{1}{M}\sum\int\limits_{V_i}\dd{m}\vect{r} \\
+	           &= \frac{1}{M}\sum\frac{M_i}{M_i}\int\limits_{V_i}\dd{m}\vect{r} \\
+	           &= \frac{1}{M}\sum M_i\vect{r}_{G, i}.
+\end{align*}
+Kroppen kan då partitioneras på lämpliga sätt, och man kan använda enkla resultat för att beräkna mer komplicerade masscentra.
 
 \paragraph{Tyngdpunkt}
 Tyngdpunktet spelar samma roll som masscentrum, fast i det allmäna tyngdfältet.
+
+\paragraph{Jämviktsläge}
+Jämviktsläge är ett läge som är konstant i tiden relativt en referensram. Två nödvändiga jämviktsvillkor är att
+\begin{align*}
+	\sum\vect{F} = 0, \sum\vect{M}_A = 0 \ \forall\ A.
+\end{align*}
+Villkoret är även tillräckligt om det gäller för alla delsystem av det totala systemet.
+
+\paragraph{Friläggning}
+Att frilägga en kropp består i att betrakta hela eller delar av system och alla krafter och moment som verkar på varje del. Här kan även inre krafter uppstå för delsystemerna som inte finns i det totala systemet.
