@@ -251,3 +251,17 @@ Betrakta varje komponent.
 
 \proof
 Inses lätt.
+
+\paragraph{Derivation under integraltecken}
+Antag att $f, \pdv{f}{s}$ är kontinuerliga i $\alpha < s < \beta, a\leq x\leq b$. Då är funktionen $F:\R\to\R, s\to\int\limits_{a}^{b}f(s, x)\dd{x}$ deriverbar i $\alpha < s < \beta$ och
+\begin{align*}
+	\deval{F}{s}{s} = \int\limits_{a}^{b}\deval{f}{s}{s, x}\dd{x}.
+\end{align*}
+
+\proof
+
+\paragraph{Utvidgad derivation under integraltecken}
+Antag att $f, \pdv{f}{s}$ är kontinuerliga i $\alpha < s < \beta, A\leq x\leq B$. Låt $b$ vara en $C^1$-funktion av $\alpha < s < \beta$ med $A < b(s) < B$. Då är $F:\R\to\R, s\to\int\limits_{a}^{b(s)}f(s, x)\dd{x}$ deriverbar och
+\begin{align*}
+	\deval{F}{s}{s} = \int\limits_{a}^{b}\deval{f}{s}{s, x}\dd{x} + f(s, b(s))\deval{b}{s}{s}.
+\end{align*}

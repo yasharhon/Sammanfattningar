@@ -1,8 +1,58 @@
 \section{Optimering}
-Låt $K\subset\R^n$ vara en kompakt mängd och $f: K\to\R$ vara kontinuerlig. Då antar $f$ ett största värde $M$ på $K$, förmodligen enligt sats. Om vi även antar att $f$ är $C^1$ på $K$ och att $f(\vect{a})= = M$, är $\vect{a}$ antingen
+
+\subsection{Optimering på mängder}
+
+Låt $K\subset\R^n$ vara en kompakt mängd och $f: K\to\R$ vara kontinuerlig. Då antar $f$ ett största värde $M$ på $K$, förmodligen enligt sats. Om vi även antar att $f$ är $C^1$ på $K$ och att $f(\vect{a}) = M$, är $\vect{a}$ antingen
 \begin{itemize}
 	\item en inre punkt av $K$ så att $\grad{f} (\vect{a}) = 0$, enligt sats.
 	\item en punkt på $\bound{K}$.
 \end{itemize}
 
 För att optimera på icke-kompakta mängder, kan man hitta en punkt $\vect{a}$ i dne icke-kompakta mängden $U$ så att $\grad{f} (\vect{a}) = 0$. Därefter väljer man en smart kompakt delmängd $K$ till $U$ kring denna punkten så att man kan visa att $f$ antar ett extremvärde på $K$ i $\vect{a}$. Om man har valt $K$ smart, kan man då även använda detta för att visa att $f$ antar ett globalt extremvärde för $U$ i $\vect{a}$.
+
+\subsection{Optimering med bivillkor}
+Låt $f:D_f\to\R, g:D_g\to\R$ med $D_f, D_g\subset\R^2$, och anta att $f$ optimeras under bivillkoret $g(x, y) = 0$ i någon inre punkt $(a, b)\in D_f\cap D_g$. Då är $\grad{f} (a, b), \grad{g} (a, b)$ parallella.
+
+För att bevisa detta antar vi $\grad{f} (a, b)\neq\vect{0}$. Implicita funktionssatsen säjer då att det finns en parametrisering $(x(t), y(t))$ av nivåkurvan $g(x, y) = 0$ nära $(a, b)$, som vi väljer så att den startar i $(a, b)$. Funktionen $\phi (t) = f(x(t), y(t))$ har ett lokalt extremvärde i $t = 0$, och vi har
+\begin{align*}
+	0 = \deval{\phi}{t}{0} = \grad{f} (a, b)\cdot (\deval{x}{t}{0}, \deval{y}{t}{0}).
+\end{align*}
+Eftersom gradienten är vinkelrät på nivåytan, är den parallell med $\grad{g} (a, b)$ enligt sats.
+
+\subsection{Optimering med flera bivillkor}
+Låt $f:D_f\to\R, g_i: D_{g_i}\to\R, i = 1, \dots, p$ med $D_f, D_{g_1}, \dots, D_{g_p}\subset\R^n$, och anta att $f$ optimeras under bivillkoret $g_1(\vect{x}) = \dots = g_n(\vect{x}) = 0$ i någon inre punkt $\vect{a}\in D_f\cap D_{g_1} \cap\dots\cap D_{g_p}$. Då är $\grad{f} (\vect{a}), \grad{g_1} (\vect{a}), \dots, \grad{g_p} (\vect{a})$ linjärt beroende.
+
+\subsection{Minsta kvadratmetoden}
+Låt $\{(a_i, b_i\}_{i = 1}^{n}$ vara en mängd punkter där minst två $a_i$ är olika. Vi vill välja en linje $y = kx + l$ så att
+\begin{align*}
+	Q(k, l) = \sum\limits_{i = 1}^{n}(b_i - (ka_i + l))^2
+\end{align*}
+minimeras.
+
+Vi vill visa att $Q$ har ett entydigt minimum och att detta minimum löser normalekvationerna
+\begin{align*}
+	&k\sum\limits_{i = 1}^{n}a_i^2 + l\sum\limits_{i = 1}^{n}a_i = \sum\limits_{i = 1}^{n}a_ib_i, \\
+	&k\sum\limits_{i = 1}^{n}a_i + nl = \sum\limits_{i = 1}^{n}b_i.
+\end{align*}
+Vi beviser detta vid att definiera $M = Q(K_0, l_0)$ och bilda strimlan $S_1$ som begränsas av linjerna
+\begin{align*}
+	ka_1 + l = b_1 \pm\sqrt{M}
+\end{align*}
+och strimlan $S_2$ som begränsas av linjerna
+\begin{align*}
+	ka_2 + l = b_2 \pm\sqrt{M}.
+\end{align*}
+Vi har då att $(ka_1 + l - b_1)^2\geq M$ för $(k, l)\not\in S_1$ och $(ka_2 + l - b_2)^2\geq M$ för $(k, l)\not\in S_2$. Då minst två $a_i$ är olika kan vi anta att $S_1, S_2$ inte är parallella. Då är $K = S_1\cap S_2$ kompakt och $Q(k, l) > M, (k, l)\not\in K$. Det minsta värdet av $Q$ på $K$ är även det minsta värdet på $\R^2$.
+
+För ett minimum på $K$ har vi
+\begin{align*}
+	\pdeval{Q}{k}{k, l} = \sum\limits_{i = 1}^{n}2(b_i - ka_i - l)(-a_i) = 2l\sum\limits_{i = 1}^{n}a_i + 2k\sum\limits_{i = 1}^{n}a_i^2 - 2\sum\limits_{i = 1}^{n}a_ib_i = 0, \\
+	\pdeval{Q}{l}{k, l} = 2k\sum\limits_{i = 1}^{n}a_i + 2nl - 2\sum\limits_{i = 1}^{n}b_i = 0,
+\end{align*}
+vilket ger normalekvationerna. Dessa har en lösning ty om man skriver systemet på matrisform, ges determinanten av vänsterledets matris av
+\begin{align*}
+	 &n\sum\limits_{i = 1}^{n}a_i^2 - \left(\sum\limits_{i = 1}^{n}a_i\right)^2 \\
+	=& \sum\limits_{i = 1}^{n}1^2\sum\limits_{i = 1}^{n}a_i^2 - \left(\sum\limits_{i = 1}^{n}a_i\right)^2 \\
+	=& \abs{(a_1, \dots, a_n)}^2\abs{(1, \dots, 1)}^2 - \abs{(a_1, \dots, a_n)\cdot (1, \dots, 1)}^2.
+\end{align*}
+Enligt Cauchy-Schwarz' olikhet är detta alltid nollskild ty minst två $a_i$ är olika, och de involverade vektorerna aldrig är parallella.
