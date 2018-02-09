@@ -265,3 +265,21 @@ Antag att $f, \pdv{f}{s}$ är kontinuerliga i $\alpha < s < \beta, A\leq x\leq B
 \begin{align*}
 	\deval{F}{s}{s} = \int\limits_{a}^{b}\deval{f}{s}{s, x}\dd{x} + f(s, b(s))\deval{b}{s}{s}.
 \end{align*}
+
+\paragraph{Derivation under integraltecken för generaliserade integraler}
+Antag att 
+\begin{itemize}
+	\item $f, \pdv{f}{s}$ är kontinuerliga i $\alpha < s < \beta, x\geq a$.
+	\item $F(s) = \int\limits_{a}^{\infty}f(s, x)\dd{x}$ är konvergent för $\alpha < s < \beta$.
+	\item Till varje kompakta delintervall $[\alpha_1, \beta_1]\subset (\alpha, \beta)$ finns en majorerande funktion $g$ så att
+	\begin{itemize}
+		\item $\abs{\pdeval{f}{s}{s, x}} < g(x)\ \forall\ s\in [\alpha_1, \beta_1], x\geq a$.
+		\item $\int\limits_{a}^{\infty}g(x)\dd{x}$ är konvergent.
+	\end{itemize}
+\end{itemize}
+Då är $F$ deriverbar och
+\begin{align*}
+	\deval{F}{s}{s} = \int\limits_{a}^{\infty}\deval{f}{s}{s, x}\dd{x}.
+\end{align*}
+
+\proof
