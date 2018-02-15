@@ -4,11 +4,11 @@
 En kraft $\vect{F}$ beskrivs av en vektor med belopp och rikting, samt en angrepspunkt.
 
 \paragraph{Kraftmoment}
-En kraft kan ha en viss vridningsförmåga med avseende på en punkt. Detta är kraftens kraftmoment. Dens storhet ges av
+En kraft kan ha en viss vridningsförmåga med avseende på en punkt. Detta är kraftens kraftmoment. Om en kraft vrider kring punkten $O$, ges kraftmomentet av
 \begin{align*}
 	\vect{M}_O = \vect{r}\times\vect{F},
 \end{align*}
-där $O$ är punkten vi tänker oss att kraften vrider kring, $\vect{r}$ är vektorn från $O$ till $\vect{F}$:s angrepspunkt och $\vect{F}$ är själva kraften.
+där $\vect{r}$ är vektorn från $O$ till $\vect{F}$:s angrepspunkt och $\vect{F}$ är själva kraften.
 
 Riktingen till kraftmomentet anger den positiva rotationsriktningen. Vad betyder detta? Jo, låt en linje gå genom $O$ och parallellt med $\vect{M}$. Då skapar $\vect{M}$ en vridning mot klockan kring denna linjen.
 
@@ -22,20 +22,26 @@ Kraftmomentet ändras inte av att kraften förskjutas längs med dens verkningsl
 \end{align*}
 då den andra vektoren är parallell med $\vect{F}$.
 
-Detta kan utvidgas till kraftmomentet kring en axel vid att välja en punkt $P$ på axeln och beräkna kraftmomentet med avseende på denna punkten. Projektionen på axeln av detta kraftmomentet är oberoende av valet av $P$. Detta ser man vid att välja en ny punkt $Q$ och beräkna
+Från detta kan vi räkna ut ett kraftmoments komponent med avseende på en axel vid att välja en punkt $P$ på axeln och beräkna kraftmomentet med avseende på denna punkten. Kraftmomentets komponent med avseende på axeln ges då av
+\begin{align*}
+	M_\lambda = \vect{M}_P\cdot\vect{e}_\lambda
+\end{align*}
+där $\vect{e}_\lambda$ är en enhetsvektor parallell med axeln.
+
+Denna komponenten är oberoende av valet av $P$. Detta ser man vid att välja en ny punkt $Q$ och beräkna
 \begin{align*}
 	\vect{M}_P &= \vect{r}_{PA}\times\vect{F} \\
 	\vect{M}_Q &= \vect{r}_{QA}\times\vect{F} \\
 	           &= (\vect{r}_{QP} + \vect{r}_{PA})\times\vect{F} \\
 	           &= \vect{r}_{QP}\times\vect{F} + \vect{r}_{PA}\times\vect{F}
 \end{align*}
-Man projicerar sen på axeln.
+Komponenten med avseende på axeln ges då av
 \begin{align*}
-	\vect{M}_Q\cdot\vect{e}_\lambda &= \vect{r}_{QP}\times\vect{F}\cdot\vect{e}_\lambda + \vect{r}_{PA}\times\vect{F}\cdot\vect{e}_\lambda \\
-	                                &= \vect{r}_{QP}\times\vect{F}\cdot\vect{e}_\lambda \\
+	\vect{M}_Q\cdot\vect{e}_\lambda &= (\vect{r}_{QP}\times\vect{F})\cdot\vect{e}_\lambda + (\vect{r}_{PA}\times\vect{F})\cdot\vect{e}_\lambda \\
+	                                &= (\vect{r}_{QP}\times\vect{F})\cdot\vect{e}_\lambda \\
 	                                &= \vect{M}_Q\cdot\vect{e}_\lambda,
 \end{align*}
-där $\vect{e}_\lambda$ är parallell med axeln. Detta är eftersom $\vect{r}_{QP}$ är parallell med $\vect{e}_\lambda$, och kryssprodukten vi beräknar då måste vara normal på båda dessa.
+eftersom $\vect{r}_{QP}$ är parallell med $\vect{e}_\lambda$, och kryssprodukten vi beräknar då måste vara normal på båda dessa.
 
 \paragraph{Stel kropp}
 En stel kropp är en kropp som uppfyller att
