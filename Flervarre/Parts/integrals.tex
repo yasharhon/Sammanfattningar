@@ -49,6 +49,41 @@ Låt $f$ vara en kontinuerlig funktion i ett öppet område $\Omega\subset\R^2$ 
 	\iint\limits_{\Omega}f(x, y)\dd{x}\dd{y} = \sup{M}.
 \end{align*}
 
+\paragraph{Dubbelintegraler av funktioner med varierande tecken}
+Givet funktionen $f$, bilda
+\begin{align*}
+	f^+(x, y) =
+	\begin{cases}
+		f(x, y), &f(x, y)\geq 0, \\
+		0,       &f(x, y)< 0
+	\end{cases},
+	f^-(x, y) =
+	\begin{cases}
+		0,       &f(x, y)\geq 0, \\
+		f(x, y), &f(x, y)< 0
+	\end{cases}.
+\end{align*}
+Detta ger egenskaperna $\abs{f(x, y)} = f^+(x, y) + f^-(x, y), f(x, y) = f^+(x, y) - f^-(x, y)$.
+
+Integralen $\iint_{\Omega}f(x, y)\dd{x}\dd{y}$ är konvergent om $\iint_{\Omega}f^+(x, y)\dd{x}\dd{y}$ och $\iint_{\Omega}f^-(x, y)\dd{x}\dd{y}$ är konvergenta. Vi sätter då
+\begin{align*}
+	\iint_{\Omega}f(x, y)\dd{x}\dd{y} = \iint_{\Omega}f^+(x, y)\dd{x}\dd{y}+ \iint_{\Omega}f^-(x, y)\dd{x}\dd{y}
+\end{align*}
+
+\paragraph{Multipelintegraler}
+För $D\subset\R^n$ definierar vi
+\begin{align*}
+	\int\limits_{D}f(\vect{x})\dd{\vect{x}}
+\end{align*}
+som ett gränsvärde av Riemannsummor.
+
+\paragraph{Volym i $\R^n$}
+Funktionen
+\begin{align*}
+	\mu (D) = \int\limits_{D}\dd{\vect{x}}
+\end{align*}
+är volymen av mängden $D\subset\R^n$.
+
 \subsection{Satser}
 
 \paragraph{Egenskaper för dubbelintegraler av trappfunktioner}
@@ -181,3 +216,32 @@ För generaliserade integraler med positiv integrand gäller att om den inre enk
 Låt dubbelintegralen av $f$ över $D$ vara så att både den yttre och inre integralen är konvergent. Då kan man byta ordning på integralen.
 
 \proof
+
+\paragraph{Konvergens av dubbelintegraler av funktioner med varierande tecken}
+$\iint_{\Omega}f(x, y)\dd{x}\dd{y}$ är konvergent om och endast om $\iint_{\Omega}\abs{f(x, y)}\dd{x}\dd{y}$ är konvergent.
+
+\proof
+
+\paragraph{Volym av $n$-dimensionella enhetsklotet}
+Låt $B_n$ vara enhetsklotet i $\R^n$. Detta uppfyller
+\begin{align*}
+	\mu (B_n) = \frac{2\pi}{n}\mu (B_{n - 2}).
+\end{align*}
+
+\proof
+\begin{align*}
+	\mu (B_n) &= \int_{B_n}\dd{\vect{x}} \\
+	          &= \idotsint\limits_{x_1^2 + \dots + x_{n -2}^2\leq 1}\left(\iint\limits_{x_{n - 1}^2 + x_n^2\leq 1 - (x_1^2 + \dots + x_{n -2}^2)}\dd{x_{n -1}}\dd{x_n}\right)\dd{x_1}\dots\dd{x_{n - 2}} \\
+	          &= \int\limits_{B_{n - 2}}\pi(1 - (x_1^2 + \dots + x_{n -2}^2))\dd{x_1}\dots\dd{x_{n - 2}} \\
+	          &= \int\limits_{0}^{1}\pi (1 - r^2)\deval{V}{r}{r}\dd{r}
+\end{align*}
+där $V(r) = r^{n - 2}\mu (B_{n - 2})$. Detta ger
+\begin{align*}
+	\mu (B_n) &= \pi (n - 2)\mu (B_{n - 2})\int\limits_{0}^{1}(1 - r^2)e^{n - 3}\dd{r} \\
+	          &= \pi (n - 2)\mu (B_{n - 2})\left(\frac{1}{n - 2} - \frac{1}{n}\right) \\
+	          &= \frac{2\pi}{n}\mu (B_{n - 2}).
+\end{align*}
+
+\begin{align*}
+	\inteval{D}{f}{{x, \dots ,z}}
+\end{align*}
