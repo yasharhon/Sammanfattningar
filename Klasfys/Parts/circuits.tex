@@ -2,6 +2,26 @@
 
 \subsection{Ekvationer}
 
+\paragraph{Effektutveckling i en krets}
+\begin{align*}
+	P = VI
+\end{align*}
+
+\paragraph{RMS-ström- och spänning}
+\begin{align*}
+	I_{\text{rms}} = \sqrt{\expval{I}},\ V_{\text{rms}} = \sqrt{\expval{V}}
+\end{align*}
+I en sinusoidal krets har man
+\begin{align*}
+	I_{\text{rms}} = \frac{I_{\text{max}}}{\sqrt{2}}
+\end{align*}
+och motsvarande för spänningen.
+
+\paragraph{Ohms lag}
+\begin{align*}
+	V = ZI
+\end{align*}
+
 \paragraph{Definitionen av resistivitet}
 \begin{align*}
 	\rho = \frac{\abs{\vect{E}}}{\abs{\vect{J}}}
@@ -26,11 +46,21 @@
 
 \deriv
 
+\paragraph{Effektutveckling i resistiv komponent}
+\begin{align*}
+	P = I^2R = \frac{(\Delta V)^2}{R}
+\end{align*}
+
 \paragraph{Definitionen av kapacitans}
 \begin{align*}
 	C = \frac{Q}{V}
 \end{align*}
 $Q$ är beloppet av laddningen som lagras i kondensatorn (endast den positiva eller endast den negativa), och $V$ är spänningen som upprätthållas av kondensatorn.
+
+\paragraph{Impedans i en kondensator}
+\begin{align*}
+	Z = i\frac{1}{\omega C}
+\end{align*}
 
 \paragraph{Seriekoppling av kondensatorer}
 \begin{align*}
@@ -58,16 +88,6 @@ Den elektromotiva kraften $\varepsilon$ är spänningen som driver ström i kret
 
 \deriv
 
-\paragraph{Effektutveckling i en krets}
-\begin{align*}
-	P = VI
-\end{align*}
-
-\paragraph{Effektutveckling i resistiv komponent}
-\begin{align*}
-	P = I^2R = \frac{(\Delta V)^2}{R}
-\end{align*}
-
 \paragraph{Uppladdning av kondensator i RC-krets}
 \begin{align*}
 	&q = CV(1 - e^{-\frac{t}{RC}}), \\
@@ -84,16 +104,31 @@ Den elektromotiva kraften $\varepsilon$ är spänningen som driver ström i kret
 
 \deriv
 
-\paragraph{Uppladdning av spola i LC-krets}
+\paragraph{Uppladdning av spola i RL-krets}
 \begin{align*}
 	I = \frac{V}{R}\left(1 -e^{-\frac{R}{L}t}\right)
 \end{align*}
 
 \deriv
 
-\paragraph{Utladdning av spola i LC-krets}
+\paragraph{Utladdning av spola i RL-krets}
 \begin{align*}
 	I = I_0e^{-\frac{R}{L}t}
+\end{align*}
+
+\paragraph{Impedans i en spola}
+\begin{align*}
+	Z = i\omega L
+\end{align*}
+
+\paragraph{Fasvinkel i AC-krets}
+\begin{align*}
+	\tan{\theta} = \frac{\omega L - \frac{1}{\omega C}}{R}
+\end{align*}
+
+\paragraph{Medeleffekt i AC-krets}
+\begin{align*}
+	\expval{P} = V_{\text{rms}}I_{\text{rms}}\cos{\phi}
 \end{align*}
 
 \paragraph{Egenfrekvens i LC-krets}
@@ -115,5 +150,21 @@ Kan vara fel.
 \end{align*}
 
 \deriv
+
+\paragraph{Spänningsrelation i transformator}
+\begin{align*}
+	\frac{V_2}{V_1} = \frac{N_2}{N_1}
+\end{align*}
+
+\paragraph{Spänningsrelation för transformator med motstånd}
+\begin{align*}
+	\frac{V_1}{I_1} = \frac{R}{\left(\frac{N_2}{N_1}\right)^2}
+\end{align*}
+
+\paragraph{Korrigerad medelström i ett galvanometer}
+\begin{align*}
+	I_{\text{rav}} = \frac{2}{\pi}I_{\text{max}}
+\end{align*}
+Med rätt kretsuppsätt ger detta strömmen i galvanometeret så att i löpet av en cykel får man samma laddningsflöde i galvanometeret som om den konstanta strömmen $I_{\text{rav}}$.
 
 \subsection{Principer}
