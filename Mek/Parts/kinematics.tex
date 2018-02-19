@@ -13,11 +13,8 @@ kallas hastighet och dens andraderivata
 \end{align*}
 kallas acceleration.
 
-\paragraph{Cirkelrörelse}
-För cirkelrörelse med konstant radius är hastigheten vinkelrät på ortsvektorn, och har storlek $v = R\dv{\theta}{t}$. Den tangentiala accelerationen har storlek $a_{\parallel} = \dv{v}{t}$ och den centripetala accelerationen, som är riktad in mot centrum av rörelsen, har storlek $a_{\perp} = \frac{v^2}{R}$.
-
 \paragraph{Naturliga komponenter}
-En lämplig beskrivning av en partikels bana är att skriva den som beroende av sträckan partikeln har förflyttat sig. Med $\vect{r}(t) = \vect{r}(s(t))$ får vi
+En lämplig beskrivning av en partikels bana är att skriva den som beroende av sträckan $s$ partikeln har förflyttat sig. Med $\vect{r}(t) = \vect{r}(s(t))$ får vi
 \begin{align*}
 	\vect{v} = \dv{\vect{r}}{t} = \dv{\vect{r}}{s}\dv{s}{t}.
 \end{align*}
@@ -27,8 +24,7 @@ Enligt definitionen är $\vect{e}_\text{t} = \dv{\vect{r}}{s}$ en enhetsvektor p
 \end{align*}
 Den nya vektorn $\dv{\vect{e}_\text{t}}{s}$ är av intresse. Vi har att
 \begin{align*}
-	&\vect{e}_\text{t}\cdot\vect{e}_\text{t} = 0 \\
-	&2\vect{e}_\text{t}\cdot\dv{\vect{e}_\text{t}}{s} = 0,
+	\vect{e}_\text{t}\cdot\vect{e}_\text{t} = 0 \implies 2\vect{e}_\text{t}\cdot\dv{\vect{e}_\text{t}}{s} = 0,
 \end{align*}
 så denna vektorn är normal på banan. Dens belopp ges av $\abs{\dv{\vect{e}_\text{t}}{t}} = \frac{1}{\rho}$, där $\rho$ är kurvans krökningsradie i någon given punkt. Vi använder definitionen av farten och skriver accelerationen som
 \begin{align*}
@@ -39,3 +35,6 @@ Vid att betrakta $\vect{v}\times\vect{a}$ och använda kedjeregeln kan banans kr
 	\rho = \frac{\abs{\dv{s}{u}}^3}{\abs{\dv{\vect{r}}{u}\times\dv[2]{\vect{r}}{u}}}
 \end{align*}
 där $u$ är någon godtycklig parameter.
+
+\paragraph{Cirkelrörelse}
+För cirkelrörelse med konstant radius är hastigheten vinkelrät på ortsvektorn, och har storlek $v = R\dv{\theta}{t}$. Den tangentiala accelerationen har storlek $a_{\parallel} = \dv{v}{t}$ och den centripetala accelerationen, som är riktad in mot centrum av rörelsen, har storlek $a_{\perp} = \frac{v^2}{R}$.

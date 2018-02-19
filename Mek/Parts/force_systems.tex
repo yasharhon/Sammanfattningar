@@ -1,5 +1,5 @@
 \section{Kraftsystem}
-Ett kraftsystem är ett system av krafter som verkar på en kropp och deras angrepspunkter.
+Ett kraftsystem är ett system av krafter som verkar på en kropp samt deras angrepspunkter.
 
 \paragraph{Ekvimomenta kraftsystem}
 Två kraftsystem är ekvimomenta om
@@ -17,21 +17,24 @@ Två ekvimomenta kraftsystem har samma moment i alla punkter eftersom
 \end{align*}
 
 \paragraph{Kraftpar}
-Ett kraftpar består av två lika stora och motsatt riktade krafter som ej ligger på samma linje. Kraftsumman är $\vect{0}$ och beloppet av det totala momentet är
+Ett kraftpar består av två lika stora och motsatt riktade krafter som ej ligger på samma linje. Kraftsumman är $\vect{0}$ och momentet till ett kraftpar med avseende på en godtycklig punkt $O$ ges av
 \begin{align*}
-	M_O = dF,
+	\vect{M}_O &= \vect{r}_{OA}\times\vect{F} + \vect{r}_{OB}\times (-\vect{F}) \\
+	           &= (\vect{r}_{OA}- \vect{r}_{OB})\times\vect{F} \\
+	           &= \vect{r}_{BA}\times\vect{F},
 \end{align*}
-där $F$ är kraftens belopp och $d$ är avståndet mellan linjerna de två krafterna ligger på. Man kan visa att momentvektorn ej beror på val av $O$, och därmed kan placeras var som hälst i kroppen.
+och beror ej av $O$. Kraftmomentets belopp är $M = dF$, där $d$ är avståndet mellan krafternas verkningslinjer.
 
 \paragraph{Förflyttning av krafter}
-För ett kraftsystem av $n$ krafter kan man flytta alla dessa till punkten $A$ vid att för varje kraft $\vect{F}_i$ lägga till $\vect{F}_i, -\vect{F}_i$ i punkten $A$. Kraften i $A$ och kraften i $P_i$ bildar då ett kraftpar med moment $\vect{M}_i = \vect{r}_{AP_i}\times \vect{F}_i$ i punkten $A$. Momentet kan placeras i $A$ eftersom beloppet av momentet för ett kraftpar ej beror av valet av punkt. Då finns även en $\vect{F}_i$ kvar. Resultatet blir att kraftsystemet är ekvivalent med en enkelt kraft och ett enkelt moment som ges av
+För ett kraftsystem av $n$ krafter kan man flytta alla dessa till punkten $A$ vid att för varje kraft $\vect{F}_i$ lägga till $\vect{F}_i, -\vect{F}_i$ i punkten $A$. Kraften i $P_i$ och en av krafterna i $A$ bildar då ett kraftpar med moment $\vect{M}_i = \vect{r}_{AP_i}\times\vect{F}_i$ m.a.p. punkten $A$ (eller någon annan punkt). Då finns även en $\vect{F}_i$ kvar i $A$. Efter att alla krafterna är flyttade blir resultatet en enkelt kraft och ett enkelt moment, båda i $A$, som ges av
 \begin{align*}
 	&\vect{F} = \sum\vect{F}_i, \\
 	&\vect{M} = \sum\vect{r}_{AP_i}\times\vect{F}_i.
 \end{align*}
+Detta kallas kraftsystemets reduktionsresultat.
 
 \paragraph{Förflyttning till ny punkt}
-Låt oss försöka flytta krafterna till en ny punkt. Det är klart att kraftsumman är den samma, och
+Låt oss jämföra reduktionsresultatet för två olika punkter. Det är klart att kraftsumman är den samma, och
 \begin{align*}
 	\vect{M}_A &= \sum\vect{r}_{AP_i}\times\vect{F}_i \\
 	           &= \sum(\vect{r}_{AB} + \vect{r}_{BP_i})\times\vect{F}_i \\
@@ -41,7 +44,12 @@ Låt oss försöka flytta krafterna till en ny punkt. Det är klart att kraftsum
 \end{align*}
 
 \paragraph{Kraftskruven}
-Om man vill förenkla ett system mest möjligt, dekomponera $\vect{M}$ i dens komponenter parallelt och vinkelrät på $\vect{F}$. Ersätt den vinkelräta komponenten med ett krafpar ett avstånd $d = \frac{M_\perp}{F}$ från den förra punkten. Då blir resultatet en kraft och ett kraftmoment på samma linje, och detta kallas en kraftskruv. Att det ursprungliga totala kraftmomentet och kraftsumman är ortogonala är ekvivalent med att systemet har en enkraftsresultant. Tillräckligheten kommer direkt från härledningen. Nödvendigheten visas om vi antar att det finns en enkraftsresultant, men $\vect{F}\cdot\vect{M}_A\neq 0$ i något $A$. Om enkraftsresultanten är i $B$ ger detta
+Om man vill förenkla ett system mest möjligt, dekomponera $\vect{M}$ i dens komponenter parallelt och vinkelrät på $\vect{F}$. Ersätt den vinkelräta komponenten med ett krafpar ett avstånd $d = \frac{M_\perp}{F}$ från den förra punkten. Då blir resultatet en kraft och ett kraftmoment på samma linje, och detta kallas en kraftskruv.
+
+\paragraph{Enkraftsresultant}
+Om systemet kan reduceras till en kraftskruv utan kraftmoment, är detta systemets enkraftsresultant.
+
+Om systemet har en enkraftsresultant, är detta ekvivalent med att det ursprungliga totala kraftmomentet och kraftsumman är ortogonala. Tillräckligheten kommer direkt från härledningen. Nödvendigheten visas om vi antar att det finns en enkraftsresultant i $B$, men $\vect{F}\cdot\vect{M}_A\neq 0$ i något $A$. Detta ger
 \begin{align*}
 	\vect{M}_A              &= \vect{M}_B + \vect{r}_{AB}\times\vect{F} = \vect{r}_{AB}\times\vect{F} \\
 	\vect{F}\cdot\vect{M}_A &= \vect{F}\cdot(\vect{r}_{AB}\times\vect{F}) = 0.

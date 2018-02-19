@@ -1,4 +1,4 @@
-\section{Fundamentala koncepter}
+\section{Fundamentala koncepter och begrepp}
 
 \paragraph{Krafter}
 En kraft $\vect{F}$ beskrivs av en vektor med belopp och rikting, samt en angrepspunkt.
@@ -49,39 +49,12 @@ En stel kropp är en kropp som uppfyller att
 	\dv{\abs{\vect{r}_{AB}}}{t} = 0\ \forall\ A, B. 
 \end{align*}
 
-\paragraph{Masscentrum}
-Masscentrum definieras av
-\begin{align*}
-	\vect{r}_G = \frac{\sum m_i\vect{r}_i}{\sum m_i}.
-\end{align*}
-Detta är en punkt så att i ett homogent kraftfält är fältets verkan på partiklerna ekvivalent med att kraftsumman verkar i masscentrum. För en kontinuerlik kropp går detta mot
-\begin{align*}
-	\vect{r}_G = \frac{\int\dd{m}\vect{r}}{\int\dd{m}}.
-\end{align*}
-Detta kan skrivas som
-\begin{align*}
-	\vect{r}_G &= \frac{1}{M}\sum\int\limits_{V_i}\dd{m}\vect{r} \\
-	           &= \frac{1}{M}\sum\frac{M_i}{M_i}\int\limits_{V_i}\dd{m}\vect{r} \\
-	           &= \frac{1}{M}\sum M_i\vect{r}_{G, i}.
-\end{align*}
-Kroppen kan då partitioneras på lämpliga sätt, och man kan använda enkla resultat för att beräkna mer komplicerade masscentra.
-
-\paragraph{Tyngdpunkt}
-Tyngdpunktet spelar samma roll som masscentrum, fast i det allmäna tyngdfältet.
-
-\paragraph{Jämviktsläge}
-Jämviktsläge är ett läge som är konstant i tiden relativt en referensram. Två nödvändiga jämviktsvillkor är att
-\begin{align*}
-	\sum\vect{F} = 0, \sum\vect{M}_A = 0 \ \forall\ A.
-\end{align*}
-Villkoret är även tillräckligt om det gäller för alla delsystem av det totala systemet.
-
 \paragraph{Friläggning}
-Att frilägga en kropp består i att betrakta hela eller delar av system och alla krafter och moment som verkar på varje del. Här kan även inre krafter uppstå för delsystemerna som inte finns i det totala systemet.
+Att frilägga en kropp består i att betrakta hela eller delar av system och alla krafter och moment som verkar på varje del. Här kan även inre krafter uppstå för delsystemerna som ignoreras för det totala systemet.
 
 \paragraph{Friktionskraft}
 Friktionskraften är en speciell kraft, och förtjäner en lite mer noggrann beskrivning.
 
-Friktionskraften är en kontaktkraft som uppstår när två ytor i kontakt rör sig med nollskild relativ hastighet. Friktion förekommer som statisk eller kinematisk friktion, beroende på om objektet som upplever friktion rör på sig eller inte. Friktionskraftens belopp beror av friktionskoefficienten $\mu$. Denna beror igen på t.ex. om friktionen är statisk eller kinematisk och egenskaperna till ytorna som är i kontakt. Friktionskraften pekar alltid i motsatt riktning av ytornas relativa rörsle.
+Friktionskraften är en kontaktkraft som uppstår när två ytor är i kontakt. Kraften uppstår på grund av interaktioner mellan materian i de två ytorna. Friktion förekommer som statisk eller kinematisk friktion, beroende på om objektet som upplever friktion rör på sig eller inte. Friktionskraftens belopp beror av friktionskoefficienten $\mu$. Denna beror igen på t.ex. om friktionen är statisk eller kinematisk och egenskaperna till ytorna som är i kontakt. Friktionskraften pekar alltid i motsatt riktning av ytornas relativa rörsle.
 
-Vad är så beloppet av friktionskraften? I det statiska fallet är friktionskraften alltid så att kraftsumman på objektet är noll, och dens belopp är mindre än $\mu N$, där $N$ är normalkraften på den ena ytan från den andra. I det kinematiska fallet är friktionskraftens belopp lika med $\mu N$.
+Vad är så beloppet av friktionskraften? I det statiska fallet är friktionskraften alltid så att kraftsumman på objektet är noll, och dens belopp är mindre än eller lika med $\mu N$, där $N$ är normalkraften på den ena ytan från den andra. I det kinematiska fallet är friktionskraftens belopp lika med $\mu N$.
