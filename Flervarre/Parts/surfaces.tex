@@ -8,8 +8,19 @@ En yta är en funktion $\vect{r}: D\to\R^3$ med $D\subset\R^2$.
 \paragraph{Tangentplan}
 Tangentplanet till en kurva spänns upp av vektorerna
 \begin{align*}
-	\vect{r}_s(s, t) = (\deval{r_1}{s}{s, t}, \deval{r_2}{s}{s, t}, \deval{r_3}{s}{s, t}), \\
-	\vect{r}_t(s, t) = (\deval{r_1}{t}{s, t}, \deval{r_2}{t}{s, t}, \deval{r_3}{t}{s, t}), \\.
+	\vect{r}_s(s, t) = \left(\deval{r_1}{s}{s, t}, \deval{r_2}{s}{s, t}, \deval{r_3}{s}{s, t}\right), \\
+	\vect{r}_t(s, t) = \left(\deval{r_1}{t}{s, t}, \deval{r_2}{t}{s, t}, \deval{r_3}{t}{s, t}\right), \\.
 \end{align*}
+
+\paragraph{Area av yta}
+Låt $\vect{r}: D\to\R^3$ vara en parametrisering av en yta $Y$. Då ges arean av
+\begin{align*}
+	A_Y = \inteval{D}{\abs{\dv{\vect{r}}{s}\times\dv{\vect{r}}{t}}}{{s, t}}. 
+\end{align*}
+Detta skrivs även
+\begin{align*}
+	A_Y = \iint_{Y}\dd{S},
+\end{align*}
+där $\dd{S} = \abs{\dv{\vect{r}}{s}\times\dv{\vect{r}}{t}}\dd{s}\dd{t}$.
 
 \subsection{Satser}
