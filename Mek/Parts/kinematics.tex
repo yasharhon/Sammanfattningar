@@ -38,3 +38,57 @@ där $u$ är någon godtycklig parameter.
 
 \paragraph{Cirkelrörelse}
 För cirkelrörelse med konstant radius är hastigheten vinkelrät på ortsvektorn, och har storlek $v = R\dv{\theta}{t}$. Den tangentiala accelerationen har storlek $a_{\parallel} = \dv{v}{t}$ och den centripetala accelerationen, som är riktad in mot centrum av rörelsen, har storlek $a_{\perp} = \frac{v^2}{R}$.
+
+\paragraph{Cylinderkoordinater}
+I cylinderkoordinater beskriver vi en partikels position med polära koordinater i $xy$-planet och en extra $z$-komponent. Vektorerna
+\begin{align*}
+	\vect{e}_{r} = 
+	\left[\begin{array}{c}
+		\cos{\phi} \\
+		\sin{\phi} \\
+		0
+	\end{array}\right],
+	\vect{e}_{\phi} = 
+	\left[\begin{array}{c}
+		-\sin{\phi} \\
+		\cos{\phi} \\
+		0
+	\end{array}\right],
+	\vect{e}_{z} = 
+	\left[\begin{array}{c}
+		0 \\
+		0 \\
+		0
+	\end{array}\right]
+\end{align*}
+kommer användas för att beskriva partikelns rörelse. Deras derivator ges av
+\begin{align*}
+	&\dv{\vect{e}_{r}}{t} =
+	\left[\begin{array}{c}
+		-\dv{\theta}{t}\sin{\phi} \\
+		\dv{\theta}{t}\cos{\phi} \\
+		0
+	\end{array}\right]
+	= \dv{\theta}{t}\vect{e}_{\theta}, \\
+	&\dv{\vect{e}_{\theta}}{t} =
+	\left[\begin{array}{c}
+		-\dv{\theta}{t}\cos{\phi} \\
+		-\dv{\theta}{t}\sin{\phi} \\
+		0
+	\end{array}\right]
+	= -\dv{\theta}{t}\vect{e}_{r}, \\
+	&\dv{\vect{e}_{z}}{t} = \vect{0}.
+\end{align*}
+
+$\vect{e}_{r}$ pekar från origo mot partikelns position, $\vect{e}_{\theta}$ pekar tangentiellt på den cirkeln i $xy$-planet partikeln ligger på, pekande moturs, och $\vect{e}_{z}$ pekar rakt uppåt. Med detta kan vi skriva partikelns position som
+\begin{align*}
+	\vect{r} = r\vect{e}_{r} + z\vect{e}_{z}.
+\end{align*}
+Då ges hastigheten av
+\begin{align*}
+	\vect{v} = \dv{\vect{r}}{t} = \dv{r}{t}\vect{e}_{r} + r\dv{\phi}{t}\vect{e}_{\phi} + \dv{z}{t}\vect{e}_{z}
+\end{align*}
+och accelerationen ges av
+\begin{align*}
+	\vect{a} = \dv[2]{\vect{r}}{t} = \left(\dv[2]{r}{t} - r\left(\dv{\phi}{t}\right)^2\right)\vect{e}_{r} + \left(r\dv[2]{\phi}{t} + 2r\left(\dv{\phi}{t}\right)^2\right)\vect{e}_{r}
+\end{align*}
