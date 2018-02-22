@@ -8,6 +8,12 @@ En kurva i $\R^p$ är en funktion $t\to\vect{x}(t) = (x_1(t), \dots, x_p(t))$.
 \paragraph{$C^1$-kurvor}
 En kurva är klass $C^1$ om alla dess komponenter är $C^1$.
 
+\paragraph{Enkla kurvor}
+En kurva är enkel om den inte skär sig själv.
+
+\paragraph{Slutna kurvor}
+En kurva är sluten om dens start- och slutpunkter sammanfaller.
+
 \paragraph{Tangentvektor}
 Låt $\vect{x}(t)$ vara en $C^1$-kurva definierad på $[\alpha, \beta]$, $\phi: [a, b]\to [\alpha, \beta]$ vara strängt växande och $\phi, \phi^{-1}$ vara $C^1$. Då definieras tangentvektorn till kurvan av
 \begin{align*}
@@ -19,5 +25,28 @@ Långden av en kurva ges av
 \begin{align*}
 	\int\limits_{\alpha}^{\beta}\abs{\deval{\vect{x}}{t}{t}}\dd{t}.
 \end{align*}
+
+\paragraph{Integral av skalärfunktioner längs med kurvor}
+Integralen av en funktion $f$ längs med kurvan med parametrisering $\vect{r}(t)$ ges av
+\begin{align*}
+	\int\limits_{\alpha}^{\beta}f(\vect{r}(t))\abs{\deval{\vect{r}}{t}{t}}\dd{t}.
+\end{align*}
+
+\paragraph{Kurvintegraler}
+Låt $F: D\to\R^2, \vect{F}(\vect{r}) = (P(\vect{r}), Q(\vect{r}))$ vara kontinuerlig på en öppen mängd $D\subset\R^2$ och låt $\gamma$ vara en $C^1$-kurva med parametrisering $\vect{r} = \vect{r}(t)$ för $\alpha\leq t\leq\beta$. Kurvintegralen av $\vect{F}$ längs $\gamma$ ges av
+\begin{align*}
+	\int_{\alpha}^{\beta}\vect{F}(\vect{r}(t))\cdot\deval{\vect{r}}{t}{t}\dd{t} = \int_{\alpha}^{\beta}P(\vect{r}(t))\deval{r_x}{t}{t} + Q(\vect{r}(t))\dd{t}\deval{r_y}{t}{t}
+\end{align*}
+och betecknas
+\begin{align*}
+	\cint{\gamma}{\vect{F}}{\vect{r}}
+\end{align*}
+eller, om du är en omoralsk människa,
+\begin{align*}
+	\int\limits_{\gamma}P(\vect{r})\dd{x} + Q(\vect{r})\dd{y}.
+\end{align*}
+
+\paragraph{Cirkulation}
+Låt $\gamma$ vara enkel och sluten. Då definieras $\cint[c]{\gamma}{\vect{F}}{\vect{r}}$ som cirkulationen av $\vect{F}$ längs $\gamma$.
 
 \subsection{Satser}

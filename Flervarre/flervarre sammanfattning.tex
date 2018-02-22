@@ -24,6 +24,13 @@
 			{\dd{\variable}}
 	}
 }
+\newcommand{\cint}[4][o]
+{
+	\ifthenelse{\equal{#1}{c}}
+		{\oint}
+		{\int}
+	\limits_{#2} #3\cdot\dd{#4}
+}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -64,12 +71,12 @@
 
 \input{./Parts/curves.tex}
 
-\input{./Parts/surfaces.tex}
-
 \input{./Parts/quadric_surfaces.tex}
 
 \input{./Parts/optimization.tex}
 
 \input{./Parts/integrals.tex}
+
+\input{./Parts/surfaces.tex}
 
 \end{document}
