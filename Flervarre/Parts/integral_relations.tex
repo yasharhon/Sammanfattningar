@@ -1,0 +1,34 @@
+\section{Samband mellan integraler}
+
+\paragraph{Greens sats}
+Låt
+\begin{itemize}
+	\item $\Omega\subset\R^2$ vara öppen.
+	\item $P, Q: \Omega\to\R$ är $C^1$.
+	\item $D\subset\Omega$ är kompakt.
+	\item $\bound{D}$ vara styckvis $C^1$.
+\end{itemize}
+
+Då gäller att
+\begin{align*}
+	\oint\limits_{\bound{D}}P\dd{x} + Q\dd{y} = \inteval{D}{\pdv{Q}{x} - \pdv{P}{y}}{{x, y}}.
+\end{align*}
+Märk att det första integralet kan skrivas som ett kurvintegral av ett vektorfält.
+
+\proof
+Beviset visas enbart för en rektangel. Det allmänna beviset involverar att betrakta flera små rektanglar.
+
+\begin{align*}
+	\inteval{D}{\pdv{Q}{x} - \pdv{P}{y}}{{x, y}} &= \int\limits_{c}^{d}\int\limits_{a}^{b}\pdv{Q}{x}(x, y)\dd{x}\dd{y} - \int\limits_{a}^{b}\int\limits_{c}^{d}\pdv{P}{y}(x, y)\dd{y}\dd{x} \\
+	                                           &= \int\limits_{c}^{d}Q(b, y) - Q(a, y)\dd{y} - \int\limits_{a}^{b}P(x, d) - P(x, c)\dd{x}.
+\end{align*}
+
+Dela randen till rektangeln upp i $\gamma_1, \gamma_2, \gamma_3, \gamma_4$, där dessa beskrivas av $x = b, y = d, x = a, y = c$ respektiva. Då kan det sista integralet skrivas som
+\begin{align*}
+	  \int\limits_{\gamma_1}Q(x, y)\dd{y} + \int\limits_{\gamma_2}P(x, y)\dd{x} + \int\limits_{\gamma_3}Q(x, y)\dd{y} + \int\limits_{\gamma_4}P(x, y)\dd{x}.
+\end{align*}	  
+Varje integral över randen involverar enbart en variabel och en funktion. Därmed kan vi lägga till integralet över den andra variabeln av den andra funktionen och få
+\begin{align*}
+	\left(\int\limits_{\gamma_1} + \int\limits_{\gamma_2} + \int\limits_{\gamma_3} + \int\limits_{\gamma_4}\right)P(x, y)\dd{x} + Q(x, y)\dd{y} = \int\limits_{\bound{D}}P(x, y)\dd{x} + Q(x, y)\dd{y},
+\end{align*}
+och beviset är klart.
