@@ -39,6 +39,48 @@ Om man använder ideala gaslagen på detta, får man
 \end{align*}
 där $M$ är gasens molära massa.
 
+För gaser görs även lite extra diskussioner, som både illustrerar hur man härledar saker för klassiska vågor och ger information om själva gassystemet.
+
+För en våg i en gas ges den akustiska impedansen av
+\begin{align*}
+	Z = \frac{\Delta p}{v_{\text{p}}} = \frac{-B\pdv{s}{x}}{\pdv{s}{t}} = \frac{Bk}{\omega} = \frac{\rho c^2}{c} = \rho c.
+\end{align*}
+
+Om vågen propagera längs med $x-$axeln, ges arbetet vågen gör av
+\begin{align*}
+	\dd{W} = F\dd{s} = \dd{p}A\dd{s}
+\end{align*}
+där $A$ nu är arean av tvärsnittsytan vågen träffer. Effekten ges av
+\begin{align*}
+	P = \dv{W}{t} = \dd{p}A\pdv{s}{t} = -BA\pdv{\Re{s}}{t}\pdv{\Re{s}}{x}
+\end{align*}
+där vi har användt ett resultat från tidigare. Med en harmonisk våg $Ce^{i(\vect{k}x - \omega t)}$ får man
+\begin{align*}
+	\expval{P} = -BA(ikC)(-i\omega C)\expval{\Re{e^{2i(\vect{k}\cdot\vect{r} - \omega t)}}}.
+\end{align*}
+Med hjälp av dispersionsrelationen för vågor omformulerar vi till
+\begin{align*}
+	\expval{P} &= \frac{BA}{c}(\omega C)^2\expval{\Re{e^{2i(\vect{k}\cdot\vect{r} - \omega t)}}} \\
+	           &= \rho vA(\omega C)^2\expval{\Re{e^{2i(\vect{k}\cdot\vect{r} - \omega t}}} \\
+	           &= \rho vA(\omega C)^2\expval{\cos^2{(\vect{k}\cdot\vect{r} - \omega t}} \\
+	           &= \frac{1}{2}\rho vA(\omega C)^2.
+\end{align*}
+
+Från detta kan man ersätta vissa storheter med andra för att få
+\begin{align*}
+	I = \frac{1}{2}\abs{Z}(\omega A)^2 = \frac{1}{2}\abs{Z}v_{\text{p, max}}^2 = \frac{(\Delta p_{\text{max}})^2}{2\abs{Z}}.
+\end{align*}
+Vid att införa
+\begin{align*}
+	\Delta p_{\text{eff}} = \frac{\Delta p_{\text{max}}}{\sqrt{2}}, v_{\text{p, eff}} = \frac{v_{\text{p, eff}}}{\sqrt{2}}
+\end{align*}
+kan man fjärna lite tvåor i uttrycken för intensitet. Märk analogien till ellära och Joules lag när man tar bort tvåorna.
+
+Eftersom $I\propto (\Delta p_{\text{eff}})^2$ kan intensiteten till en våg i en gas skrivas som
+\begin{align*}
+	L = 10\log{\frac{(\Delta p_{\text{eff}})^2}{(\Delta p_{\text{eff}, 0})^2}} = 20\log{\frac{\Delta p_{\text{eff}}}{\Delta p_{\text{eff}, 0}}}.
+\end{align*}
+
 \paragraph{Fasta materialer i bulk}
 Betrakta ett material som sträcks mellan $x, x + \dd{x}$. Materialet sträcks då en längd $s(x, t)$. Om $s(x, t)$ är litet jämfört med $\dd{x}$ upplevs samma kraft i båda punkter. Spänningen i materialet är då
 \begin{align*}

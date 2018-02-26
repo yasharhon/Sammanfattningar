@@ -46,7 +46,105 @@ $s$ tillfredsställar vågekvationen om dispersionsrelationen är uppfylld. Unde
 \end{align*}
 vilket är en funktion av $\vect{n}\cdot\vect{r} - ct$, som vi ville.
 
+\paragraph{Harmonisk sfärisk våg}
+\begin{align*}
+	s = \frac{A}{r}e^{i(kr - \omega t)}.
+\end{align*}
+Faktorn $\frac{1}{r}$ kommer eftersom vågens intensitet måste vara den samma överalt.
+
+\paragraph{Akustisk impedans}
+\begin{align*}
+	Z = \frac{\Delta p}{v_{\text{p}}}
+\end{align*}
+$v_{\text{p}}$ är partikelhastigheten i mediet.
+
+\paragraph{Svängningar}
+Om två vågor med samma amplitud men olika vågvektorer och frekvenser superponeras, uppstår en svängning. Störningen beskrivs av
+\begin{align*}
+	s = 2A\cos{\left(\frac{\vect{k}_{1} - \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} - \omega_{2}}{2}t\right)}e^{i\left(\frac{\vect{k}_{1} + \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} + \omega_{2}}{2}t\right)}.
+\end{align*}
+Denna består av två faktorer. Den sista faktorn är en ny våg som uppstår, och den första faktorn är en ny "amplitud" som även propagerar periodiskt. Det är denna amplituden som gör att den nya vågen varierar i intensitet, och denna variationen är upphovet till namnet.
+
+\deriv
+Om två vågor på formen $Ae^{i(\vect{k}_{1}\cdot\vect{r} - \omega_{1} t)}$ ges superpositionen av
+\begin{align*}
+	s &= A\left(e^{i(\vect{k}_{1}\cdot\vect{r} - \omega_{1} t)} + e^{i(\vect{k}_{2}\cdot\vect{r} - \omega_{2} t)}\right) \\
+	  &= Ae^{i\left(\frac{\vect{k}_{1} + \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} + \omega_{2}}{2}t\right)}\left(e^{i\left(\frac{\vect{k}_{1} - \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} - \omega_{2}}{2}t\right)} + e^{i\left(\frac{-\vect{k}_{1} + \vect{k}_{2}}{2}\cdot\vect{r} - \frac{-\omega_{1} + \omega_{2}}{2}t\right)}\right) \\
+	  &= Ae^{i\left(\frac{\vect{k}_{1} + \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} + \omega_{2}}{2}t\right)}\left(e^{i\left(\frac{\vect{k}_{1} - \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} - \omega_{2}}{2}t\right)} + e^{-i\left(\frac{\vect{k}_{1} - \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} - \omega_{2}}{2}t\right)}\right) \\
+	  &= 2A\cos{\left(\frac{\vect{k}_{1} - \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} - \omega_{2}}{2}t\right)}e^{i\left(\frac{\vect{k}_{1} + \vect{k}_{2}}{2}\cdot\vect{r} - \frac{\omega_{1} + \omega_{2}}{2}t\right)}.
+\end{align*}
+
+\paragraph{Definition av intensitet}
+Intensiteten till en våg ges av
+\begin{align*}
+	I = \frac{\expval{P}}{A}
+\end{align*}
+där $\expval{P}$ tidsmedelvärdet av den totala effekten vågen utövar och $A$ är arean av ytan vågen träffer.
+
+\paragraph{Intensitet för superposition}
+\begin{align*}
+	I = I_1 + I_2 + 2\sqrt{I_1I_2}\cos{(\Delta\phi)}
+\end{align*}
+Två vågor med fasskillnad $\Delta\phi$ har denna intensitet när de superponeras. Märk att om vågorna ej är koherenta, blir tidsmedelvärdet av den sista termen $0$, och intensiteterna kan adderas.
+
+\deriv
+
+\paragraph{Stående vågor}
+Om en våg reflekteras i $x = 0$
+
+\paragraph{Ljudintensitet i decibel}
+\begin{align*}
+	L = 10\log{\frac{I}{I_0}}
+\end{align*}
+$I_0$ är en referensintensitet.
+
+\paragraph{Dopplereffekt}
+\begin{align*}
+	f' = f_0\frac{v\pm v_{\text{o}}}{v\mp v_{\text{s}}}
+\end{align*}
+Detta är den fullständiga formeln som beskriver Dopplereffekten. Dopplereffekten uppstår om en mottagar rör sig relativt en källa med hastighet $v_{\text{o}}$ och källan, som skickar ut en frekvens $f_0$, även rör sig med hastigheten $v_{\text{s}}$ (alla betraktningar är här i en dimension). Mottagaren kommer då observera att vågen har en frekvens $f'$. Om de två närmar sig varandra, välj det överste tecknet.
+
+\deriv
+
+\paragraph{Relativistisk Dopplereffekt}
+\begin{align*}
+	f' = f_0\frac{1\pm\frac{v}{c}}{\sqrt{1 - \left(\frac{v}{c}\right)^2}}
+\end{align*}
+Denna ekvation beskriver Dopplereffekten med en relativistisk korrektion. $v$ är nu relativhastigheten mellan källa och mottagare. Igen, välj $+$ om avståndet minskar.
+
+\paragraph{Brytningslagen}
+Om en våg går från ett medium till ett annat, kommer banan ändra riktning. Om vågen träffer gränsytan med en vinkel $\theta_{\text{i}}$ relativ gränsytans normal, har man att
+\begin{align*}
+	\frac{\sin{\theta_{\text{i}}}}{\sin{\theta_{\text{b}}}} = \frac{c_{1}}{c_{2}}
+\end{align*}
+där $\theta_{\text{b}}$ är vinkeln banan har relativt gränsytan efter brytningen och vågfartens subskript anger vilket mediums vågfart det refereras till.
+
+\deriv
+
+\paragraph{Ljudabsorption}
+\begin{align*}
+	I = I_0e^{-\alpha x}
+\end{align*}
+Detta är ett sätt att beskriva energiförluster när vågen propagerar. $\alpha$ kallas för absorptionskoefficienten.
+
+\paragraph{Vinkel för Mach-kon}
+\begin{align*}
+	\sin{\alpha} = \frac{c}{v_{\text{s}}}
+\end{align*}
+Om en ljudkälla rör sig med en fart $v_{\text{s}}$ som är snabbare än ljuden, kommer det bildas en så kallad Mach-kon bakom planet, där den inre vinkeln från källans bana till konens yta ges av denna ekvationen.
+
+\deriv
+
 \subsection{Principer}
 
 \paragraph{Superposition}
 Eftersom vågekvationen är linjär, interagerar vågor vid att man adderar störningarna.
+
+\paragraph{Vågor i fas}
+Två vågor är i fas om de har en fasskillnad lika med ett heltalsmultippel av $2\pi$.
+
+\paragraph{Koherenta vågor}
+Två vågor är koherenta om de har konstant fasskillnad.
+
+\paragraph{Resonans}
+Om en yttre kraft driver en svängning med en frekvens som naturligt ger stående vågor, växer amplituden obegränsat och man får stående vågor.
