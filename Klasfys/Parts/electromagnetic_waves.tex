@@ -1,0 +1,61 @@
+\section{Elektromagnetiska vågor}
+Från Maxwells ekvationer kan man visa att flera storheter kopplade till elektromagnetism följer vågekvationen. Dessa vågor kallas för elektromagnetiska vågor. Experimenter visade att ljus propagerade med samma farten som den teoretiska farten till elektromagnetiska vågor, och därmed blev det snabbt etablerat att ljus är elektromagnetiska vågor. Därmed kommer vi ägna en hel sektion åt att diskutera de.
+
+\subsection{Principer}
+
+\paragraph{Essensiell information från Maxwells ekvationer}
+Från Maxwells ekvation får man veta att
+\begin{itemize}
+	\item elektromagnetiska vågor är transversella.
+	\item elektromagnetiska vågor utbredar sig med ljusfarten $c = \frac{1}{\sqrt{\varepsilon_0\mu_0}}$ i vakuum, och motsvarande i andra media.
+	\item $\vect{B}\perp\vect{E}$.
+	\item $B = \frac{1}{c}E$.
+	\item $\vect{E}\times\vect{B}$ pekar i utbridningsriktningen.
+\end{itemize}
+
+\subsection{Ekvationer}
+
+\paragraph{Vågekvationen för $\vect{E}$}
+\begin{align*}
+	\laplacian{\vect{E}} = \varepsilon\mu\pdv{\vect{E}}{t}
+\end{align*}
+
+\deriv
+
+\paragraph{Definitionen av brytningsindex}
+\begin{align*}
+	n = \frac{c_0}{c}
+\end{align*}
+Här är $c_0$ ljusfarten i vakuum. Per definition är $n\geq 1$ i linjära materialer. Definitionen ger
+\begin{align*}
+	n = \sqrt{\varepsilon_{\text{r}}\mu_{\text{r}}}
+\end{align*}
+där $\varepsilon_{\text{r}}, \mu_{\text{r}}$ är relativa permeabiliteter och permittiviteter.
+
+\paragraph{Våglängd i medium}
+\begin{align*}
+	\lambda = \frac{\lambda_0}{n}
+\end{align*}
+$\lambda_0$ är våglängden i vakuum. En direkt konsekvens av detta är att
+\begin{align*}
+	k = nk_0
+\end{align*}
+för vågvektorn, där $k_0$ är vågvektorns längd i vakuum.
+
+\deriv
+Vi har från innan att vid transmission mellan två medier ändras inte frekvens. Detta ger att
+\begin{align*}
+	\lambda = \frac{c}{f} = \frac{c_0}{nf} = \frac{\lambda_0}{n}
+\end{align*}
+där $c_0$ är vågfarten i vakuum.
+
+\paragraph{Definitionen av optisk väg}
+För en given bana definieras den optiska vägen ljus tar som
+\begin{align*}
+	L = \int\limits_{C}\dd{l}n,
+\end{align*}
+som för materialer med konstant brytningsindex reduceras till
+\begin{align*}
+	L = \sum L_in_i,
+\end{align*}
+där $L_i$ är sträckan vägen rör sig i materialet med brytningsindex $n_i$.

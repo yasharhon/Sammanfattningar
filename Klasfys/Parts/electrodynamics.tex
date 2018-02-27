@@ -4,10 +4,17 @@
 
 \paragraph{Maxwells ekvationer}
 \begin{align*}
+	\div{\vect{E}}  &= \frac{\rho}{\varepsilon_0}, \\
+	\div{\vect{B}}  &= 0, \\
+	\curl{\vect{E}} &= -\pdv{\vect{B}}{t}, \\
+	\curl{\vect{B}} &= \mu_0\vect{J} + \varepsilon_0\mu_0\pdv{\vect{E}}{t}.
+\end{align*}
+Alternativt på integralform:
+\begin{align*}
 	&\oint_{\partial V}\vect{E}\cdot\dd{\vect{A}} = \frac{1}{\varepsilon_0}\int_{V}\dd{V}\rho, \\
-	&\oint\vect{B}\cdot\dd{\vect{A}} = 0, \\
-	&\oint_{\partial A}\vect{E}\cdot\dd{\vect{l}} = -\dv{\Phi_{B}}{t}, \\
-	&\oint_{\partial A}\vect{B}\cdot\dd{\vect{l}} = \mu_0\left(\int_{A}\vect{J}\cdot\dd{\vect{A}} + \varepsilon\dv{\Phi_{E}}{t}\right).
+	&\oint\limits_{A}\vect{B}\cdot\dd{\vect{A}} = 0, \\
+	&\oint_{\partial A}\vect{E}\cdot\dd{\vect{l}} = -\dv{t}\int\limits_{A}\vect{B}\cdot\dd{\vect{A}}, \\
+	&\oint_{\partial A}\vect{B}\cdot\dd{\vect{l}} = \mu_0\left(\int_{A}\vect{J}\cdot\dd{\vect{A}} + \varepsilon_0\dv{t}\int\limits_{A}\vect{E}\cdot\dd{\vect{A}}\right).
 \end{align*}
 Man skulle kunna skriva en hel paragraf om varje ekvation för sig, men jag tyckte det blev snyggare att presentera de så här. $\Phi$ är flödet av fältet indikerat av subskriptet.
 
@@ -18,6 +25,8 @@ Den andra är Gauss' teorem för magnetfältet, även från statiken.
 Den tredje ekvationen är Faradays lag. I praktiken betyder den att man kan inducera spänningar i kretsslingar.
 
 Den fjärde ekvationen är Ampère-Maxwells lag, som även finns i statiken, men modifieras med en extra term.
+
+Alla ekvationerna är formulerade i vakuum.
 
 \paragraph{Inducerad spänning i kretsslinga}
 \begin{align*}

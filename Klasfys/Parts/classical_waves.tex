@@ -81,6 +81,12 @@ Intensiteten till en våg ges av
 \end{align*}
 där $\expval{P}$ tidsmedelvärdet av den totala effekten vågen utövar och $A$ är arean av ytan vågen träffer.
 
+\paragraph{Ljudintensitet i decibel}
+\begin{align*}
+	L = 10\log{\frac{I}{I_0}}
+\end{align*}
+$I_0$ är en referensintensitet.
+
 \paragraph{Intensitet för superposition}
 \begin{align*}
 	I = I_1 + I_2 + 2\sqrt{I_1I_2}\cos{(\Delta\phi)}
@@ -89,14 +95,83 @@ Två vågor med fasskillnad $\Delta\phi$ har denna intensitet när de superponer
 
 \deriv
 
-\paragraph{Stående vågor}
-Om en våg reflekteras i $x = 0$
-
-\paragraph{Ljudintensitet i decibel}
+\paragraph{Stående vågor i öppen pipa}
+Om en våg i en pipa reflekteras i $x = 0$ kommer den totala vågprofilen för $x < 0$ att vara
 \begin{align*}
-	L = 10\log{\frac{I}{I_0}}
+	s = 2A\cos{(\vect{k}\cdot\vect{r})}e^{-i\omega t}.
 \end{align*}
-$I_0$ är en referensintensitet.
+Denna har noder, ställen där störningen konstant är lika med $0$, där
+\begin{align*}
+	\vect{k}\cdot\vect{r} = (2n + 1)\frac{\pi}{2},
+\end{align*}
+som i en dimension reduceras till
+\begin{align*}
+	x = (2n + 1)\frac{\lambda}{4}.
+\end{align*}
+
+\deriv
+För en öppen pipa är trycket högare i röret än utanför, vilket gör att den akustiska impedansen i pipan är högre än utanför. I vår approximation är skillnaden extremt stor, och därmed kommer vågen att fasskiftas med $0$ och reflekteras i pipan öppning. Den totala vågprofilen blir
+\begin{align*}
+	s &= Ae^{i(\vect{k}\cdot\vect{r} - \omega t)} + Ae^{i(-\vect{k}\cdot\vect{r} - \omega t)} \\
+	  &= Ae^{-i\omega t}(e^{\vect{k}\cdot\vect{r}} + e^{-\vect{k}\cdot\vect{r}}) \\
+	  &= 2A\cos{(\vect{k}\cdot\vect{r})}e^{-i\omega t}.
+\end{align*}
+Det sista resultatet fås vid att hitta störningens nollställen, som endast fås om $\cos{(\vect{k}\cdot\vect{r})} = 0$.
+
+\paragraph{Stående vågor i sluten pipa}
+Om en våg reflekteras i $x = 0$ kommer den totala vågprofilen för $x < 0$ att vara
+\begin{align*}
+	s = 2A\sin{(\vect{k}\cdot\vect{r})}e^{-i\omega t}.
+\end{align*}
+Denna har noder, ställen där störningen konstant är lika med $0$, där
+\begin{align*}
+	\vect{k}\cdot\vect{r} = n\pi,
+\end{align*}
+som i en dimension reduceras till
+\begin{align*}
+	x = n\frac{\lambda}{2}.
+\end{align*}
+
+\deriv
+För en sluten pipa träffer vågen pipans ända, där impedansen är högre än i pipan. I vår approximation är skillnaden extremt stor, och därmed kommer vågen att fasskiftas med $\pi$ och reflekteras i rörets öppning. Den totala vågprofilen blir
+\begin{align*}
+	s &= Ae^{i(\vect{k}\cdot\vect{r} - \omega t)} + Ae^{i(-\vect{k}\cdot\vect{r} - \omega t + \pi)} \\
+	  &= Ae^{-i\omega t}(e^{\vect{k}\cdot\vect{r}} + e^{i\pi}e^{-\vect{k}\cdot\vect{r}}) \\
+	  &= Ae^{-i\omega t}(e^{\vect{k}\cdot\vect{r}} - e^{-\vect{k}\cdot\vect{r}}) \\
+	  &= 2iA\sin{(\vect{k}\cdot\vect{r})}e^{-i\omega t}\\
+	  &= 2A'\sin{(\vect{k}\cdot\vect{r})}e^{-i\omega t},
+\end{align*}
+där vi har dragit $i$ in i amplituden som en fasfaktor. Det sista resultatet fås vid att hitta störningens nollställen, som endast fås om $\sin{(\vect{k}\cdot\vect{r})} = 0$.
+
+\paragraph{Toner i öppen pipa}
+I en öppen pipa med längd $L$ är endast frekvenser motsvarande
+\begin{align*}
+	\lambda = \frac{n}{2}L
+\end{align*}
+tillåtna.
+
+\deriv
+Låt $x$-axeln gå längs med vågens utbredning, som även är parallell med pipans utsträckning. Vågen skickas från $x = -L$, som är en antinod. Detta hender endast om
+\begin{align*}
+	\abs{\cos{(-kL)}} = 1 \\
+	kL = n\pi \\
+	\lambda = \frac{n}{2}L.
+\end{align*}
+
+\paragraph{Toner i sluten pipa}
+I en sluten pipa med längd $L$ är endast frekvenser motsvarande
+\begin{align*}
+	\lambda = \frac{n}{2}L
+\end{align*}
+tillåtna.
+
+\deriv
+Låt $x$-axeln gå längs med vågens utbredning, som även är parallell med pipans utsträckning. Vågen skickas från $x = -L$, som är en antinod. Detta hender endast om
+\begin{align*}
+	\abs{\sin{(-kL)}} = 1 \\
+	kL = \left(n+ \frac{1}{2}\right)\pi \\
+	\lambda = \left(\frac{n}{2} + \frac{1}{4}\right)L.
+\end{align*}
 
 \paragraph{Dopplereffekt}
 \begin{align*}
@@ -145,6 +220,9 @@ Två vågor är i fas om de har en fasskillnad lika med ett heltalsmultippel av 
 
 \paragraph{Koherenta vågor}
 Två vågor är koherenta om de har konstant fasskillnad.
+
+\paragraph{Stående vågor}
+En stående våg bildas när en våg reflekteras och interfererar med sig själv. En sådan våg har inten netto transport av energi.
 
 \paragraph{Resonans}
 Om en yttre kraft driver en svängning med en frekvens som naturligt ger stående vågor, växer amplituden obegränsat och man får stående vågor.
