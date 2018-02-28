@@ -107,3 +107,19 @@ för alla kurvor $\gamma$ som går från $\vect{a}$ till $\vect{b}$. Speciellt g
 
 \paragraph{Integralers oberoende och potentialer}
 Låt $\vect{F}$ vara kontinuerlig i en bågvis sammanhängande mängd $\Omega$. Om $\cint{\gamma}{\vect{F}}{\vect{r}}$ är oberoende av vägen har $\vect{F}$ en potential i $\Omega$.
+
+\proof
+
+\paragraph{Komponenters derivata och potential}
+Om $\omega\subset\R^2$ är en enkelt sammanhängande mängd och
+\begin{align*}
+	\pdv{Q}{x} = \pdv{P}{y}
+\end{align*}
+i $\Omega$, har $\vect{F} = (P, Q)$ ett potential i $\Omega$.
+
+\proof
+Om $\gamma\subset\Omega$ är en sluten kurva finns $D\subset\Omega$ så att $\gamma = \bound{D}$. Alltså gäller
+\begin{align*}
+	\cint[c]{\gamma}{\vect{F}}{\vect{r}} = \int\limits_{\gamma}P\dd{x} + Q\dd{y} = \pm\inteval{D}{\left(\pdv{Q}{x} - \pdv{P}{y}\right)}{{x, y}} = 0.
+\end{align*}
+Alltså beror integralen ej på valet av $\gamma$.

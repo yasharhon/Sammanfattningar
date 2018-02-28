@@ -12,15 +12,51 @@ Tangentplanet till en kurva spänns upp av vektorerna
 	\vect{r}_t(s, t) = \left(\deval{r_1}{t}{s, t}, \deval{r_2}{t}{s, t}, \deval{r_3}{t}{s, t}\right), \\.
 \end{align*}
 
+\paragraph{Positiv sida av yta}
+Den positiva sidan av en yta är den sidan nromalvektorn $\pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}$ pekar mot.
+
+\paragraph{Enhetsnormal}
+\begin{align*}
+	\vect{N} = \frac{\pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}}{\abs{\pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}}} 
+\end{align*}
+är en ytas enhetsnormal.
+
+\paragraph{Areaelement}
+\begin{align*}
+	\dd{S} = \abs{\pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}}\dd{s}\dd{t}
+\end{align*}
+ör en ytas arealement.
+
+\paragraph{Vektoriellt arealement}
+\begin{align*}
+	\dd{\vect{S}} = \vect{N}\dd{S} = \pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}\dd{s}\dd{t}
+\end{align*}
+är ytans vektoriella areaelement.
+
 \paragraph{Area av yta}
 Låt $\vect{r}: D\to\R^3$ vara en parametrisering av en yta $Y$. Då ges arean av
 \begin{align*}
-	A_Y = \inteval{D}{\abs{\dv{\vect{r}}{s}\times\dv{\vect{r}}{t}}}{{s, t}}. 
+	A_Y = \inteval{D}{\abs{\pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}}}{{s, t}}. 
 \end{align*}
 Detta skrivs även
 \begin{align*}
-	A_Y = \iint_{Y}\dd{S},
+	A_Y = \iint_{Y}\dd{S}.
 \end{align*}
-där $\dd{S} = \abs{\dv{\vect{r}}{s}\times\dv{\vect{r}}{t}}\dd{s}\dd{t}$.
+
+\paragraph{Integration av skalärfunktioner över ytor}
+Låt $\vect{r}: D\to\R^3$ vara en parametrisering av en yta $Y$. Då ges integralet av funktionen $f$ över $Y$ av
+\begin{align*}
+	\inteval{D}{f(\vect{r}(s, t))\abs{\pdv{\vect{r}}{s}\times\pdv{\vect{r}}{t}}}{{s, t}}
+\end{align*}
+och betecknas
+\begin{align*}
+	\iint\limits_{Y}f(\vect{r})\dd{S}.
+\end{align*}
+
+\paragraph{Flöde genom yta}
+\begin{align*}
+	\fint{Y}{\vect{u}}{\vect{S}}
+\end{align*}
+ör flödet av $\vect{u}$ genom $Y$.
 
 \subsection{Satser}

@@ -16,7 +16,7 @@ Då gäller att
 Märk att det första integralet kan skrivas som ett kurvintegral av ett vektorfält.
 
 \proof
-Beviset visas enbart för en rektangel. Det allmänna beviset involverar att betrakta flera små rektanglar.
+Beviset ges enbart för en rektangel. Det allmäna beviset involverar att betrakta flera små rektanglar.
 
 \begin{align*}
 	\inteval{D}{\pdv{Q}{x} - \pdv{P}{y}}{{x, y}} &= \int\limits_{c}^{d}\int\limits_{a}^{b}\pdv{Q}{x}(x, y)\dd{x}\dd{y} - \int\limits_{a}^{b}\int\limits_{c}^{d}\pdv{P}{y}(x, y)\dd{y}\dd{x} \\
@@ -32,3 +32,30 @@ Varje integral över randen involverar enbart en variabel och en funktion. Därm
 	\left(\int\limits_{\gamma_1} + \int\limits_{\gamma_2} + \int\limits_{\gamma_3} + \int\limits_{\gamma_4}\right)P(x, y)\dd{x} + Q(x, y)\dd{y} = \int\limits_{\bound{D}}P(x, y)\dd{x} + Q(x, y)\dd{y},
 \end{align*}
 och beviset är klart.
+
+\paragraph{Divergenssatsen}
+Låt $\vect{u}$ vara ett $C^1$-vektorfält definierat i en öppen mängd $\Omega\subset\R^3$, $K\subset\Omega$ vara kompakt och $\bound{K}$ bestå av en eller flera $C^1$-ytor med utadriktad normal. Då gäller att
+\begin{align*}
+	\fint{\bound{K}}{\vect{u}}{\vect{S}} = \inteval{K}{\div{\vect{u}}}{{x, y, z}}.
+\end{align*}
+
+\proof
+Beviset ges enbart för ett rätblock. Det allmäna beviset involverar att betrakta flera rätblock, tror jag.
+
+Vi delar integralerna upp som
+\begin{align*}
+	&\fint{\bound{K}}{\vect{u}}{\vect{S}} = \sum\limits_{i}\fint{\bound{K}}{u_i\vect{e}_i}{\vect{S}}, \\
+	&\inteval{K}{\div{\vect{u}}}{{x, y, z}} = \sum\limits_{i}\inteval{K}{\div{u_i\vect{e}_i}}{{x, y, z}}
+\end{align*}
+och ser att det räcker att visa att
+\begin{align*}
+	\fint{\bound{K}}{u_i\vect{e}_i}{\vect{S}} = \inteval{K}{\div{u_i\vect{e}_i}}{{x, y, z}}, i = 1, 2, 3.
+\end{align*}
+I fallet $i = 1$ får man
+\begin{align*}
+	\fint{\bound{K}}{u_i\vect{e}_i}{\vect{S}} &= \int\limits_{e}^{f}\int\limits_{c}^{d}u_1(b, y, z)\dd{y}\dd{z} - \int\limits_{e}^{f}\int\limits_{c}^{d}u_1(a, y, z)\dd{y}\dd{z} \\
+	                                          &= \int\limits_{e}^{f}\int\limits_{c}^{d}\int\limits_{a}^{b}\pdeval{u_1}{x}{x, y, z}\dd{x}\dd{y}\dd{z}\\
+	                                          &= \int\limits_{e}^{f}\int\limits_{c}^{d}\int\limits_{a}^{b}\div{u_i\vect{e}_i}\dd{x}\dd{y}\dd{z}.
+\end{align*}
+
+Med ett motsvarande bevis för $i = 2, 3$ är beviset klart.
