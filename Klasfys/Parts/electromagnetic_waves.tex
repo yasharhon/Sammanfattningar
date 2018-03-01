@@ -13,6 +13,19 @@ Från Maxwells ekvation får man veta att
 	\item $\vect{E}\times\vect{B}$ pekar i utbridningsriktningen.
 \end{itemize}
 
+\paragraph{Dispersion}
+Dispersion är när ett mediums brytningsindex beror på vågens våglängd.
+
+\paragraph{Polarisation}
+Elektriskt och magnetiskt fält är vektorstorheter, och det betyder att de kan svänga i olika plan. Ljusets polarisation refererar till hur fälterna svängar i planet normalt på utbridgningen.
+
+Ljus kan vara
+\begin{itemize}
+	\item linjärpolariserat, så att fältet oscillerar på en linje i det normala planet.
+	\item elliptiskt polariserat, så att fältet oscillerar på en ellips i det normala planet.
+	\item opolariserat, så att fältet oscillerar godtyckligt utan preferens för någon riktning.
+\end{itemize}
+
 \subsection{Ekvationer}
 
 \paragraph{Vågekvationen för $\vect{E}$}
@@ -31,6 +44,11 @@ Här är $c_0$ ljusfarten i vakuum. Per definition är $n\geq 1$ i linjära mate
 	n = \sqrt{\varepsilon_{\text{r}}\mu_{\text{r}}}
 \end{align*}
 där $\varepsilon_{\text{r}}, \mu_{\text{r}}$ är relativa permeabiliteter och permittiviteter.
+
+\paragraph{Reflektionskoefficient för elektromagnetiska vågor}
+\begin{align*}
+	R = \left(\frac{n_1 - n_2}{n_1 + n_2}\right)^2
+\end{align*}
 
 \paragraph{Våglängd i medium}
 \begin{align*}
@@ -59,3 +77,51 @@ som för materialer med konstant brytningsindex reduceras till
 	L = \sum L_in_i,
 \end{align*}
 där $L_i$ är sträckan vägen rör sig i materialet med brytningsindex $n_i$.
+
+\paragraph{Poyntingvektorn}
+\begin{align*}
+	\vect{S} = \frac{1}{\mu_0}\vect{E}\times\vect{B}
+\end{align*}
+Poyntingvektorn ger information om energitransport från en elektromagnetisk våg. Dens riktning indikerar i vilken riktning energin transporteras, och dens belopp indikerar hur mycket energi som transporteras.
+
+\deriv
+I ett litet tidsintervall flödar energin
+\begin{align*}
+	\dd{U} = u\dd{V} = uAc\dd{t}
+\end{align*}
+genom arean $A$. För en elektromagnetisk våg har man
+\begin{align*}
+	u = \frac{1}{2}\varepsilon_0E^2 + \frac{1}{2\mu_0}B^2.
+\end{align*}
+Med relationen $B = \frac{E}{c}$ får man
+\begin{align*}
+	u = \varepsilon_0E^2,
+\end{align*}
+vilket ger
+\begin{align*}
+	\dd{U} = u\dd{V} = \varepsilon_0E^2Ac\dd{t}.
+\end{align*}
+Flödet per tidsenhet och area ges av
+\begin{align*}
+	S = \frac{1}{A}\dv{U}{t} = \frac{EB}{\mu_0}.
+\end{align*}
+Givet detta, definierar man
+\begin{align*}
+	\vect{S} = \frac{1}{\mu_0}\vect{E}\times\vect{B}
+\end{align*}
+som uppfyller
+\begin{align*}
+	\abs{\vect{S}} = \frac{EB}{\mu_0}
+\end{align*}
+och vars riktning även ger information om i vilken riktning energin transporteras.
+
+\paragraph{Intensitet för elektromagnetisk våg}
+\begin{align*}
+	I = \frac{1}{2}\varepsilon_0cE^2
+\end{align*}
+
+\deriv'
+Enligt definitionen är
+\begin{align*}
+	I = \expval{S}
+\end{align*}
