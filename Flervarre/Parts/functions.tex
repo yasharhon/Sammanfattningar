@@ -9,35 +9,35 @@ Låt $f: D\to\R$ med $D\subset\R^2$. Grafen av $f$ är
 \end{align*}
 
 \paragraph{Lokala gränsvärden}
-Låt $f: D\to\R^p$ med $D\subset\R^n$ och $\vect{a}$ vara en inre punkt eller randpunkt till $D$. $\limit{\vect{x}}{\vect{a}}f(\vect{x}) = \vect{b}$ om det för varje $\varepsilon > 0$ finns ett $\delta > 0$ så att
+Låt $f: D\to\R^p$ med $D\subset\R^n$ och $\vb{a}$ vara en inre punkt eller randpunkt till $D$. $\limit{\vb{x}}{\vb{a}}f(\vb{x}) = \vb{b}$ om det för varje $\varepsilon > 0$ finns ett $\delta > 0$ så att
 \begin{align*}
-	\abs{\vect{x} - \vect{a}} < \delta, \vect{x}\in D \implies\abs{f(\vect{x}) - \vect{b}} < \varepsilon.
+	\abs{\vb{x} - \vb{a}} < \delta, \vb{x}\in D \implies\abs{f(\vb{x}) - \vb{b}} < \varepsilon.
 \end{align*}
 
 \paragraph{Gränsvärden mot oändligheten}
-Låt $f: D\to\R^p$ med $D\subset\R^n$. $\limit{\abs{\vect{x}}}{\infty}f(\vect{x}) = \vect{b}$ om det för varje $\varepsilon > 0$ finns ett $\omega > 0$ så att
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $\limit{\abs{\vb{x}}}{\infty}f(\vb{x}) = \vb{b}$ om det för varje $\varepsilon > 0$ finns ett $\omega > 0$ så att
 \begin{align*}
-	\abs{\vect{x}} > \omega, \vect{x}\in D \implies\abs{f(\vect{x}) - \vect{b}} < \varepsilon.
+	\abs{\vb{x}} > \omega, \vb{x}\in D \implies\abs{f(\vb{x}) - \vb{b}} < \varepsilon.
 \end{align*}
 
 \paragraph{Kontinuitet}
-Låt $f: D\to\R^p$ med $D\subset\R^n$. $f$ är kontinuerlig i $\vect{a}\in D$ om $\limit{\vect{x}}{\vect{a}}$ existerar och $\limit{\vect{x}}{\vect{a}} = f(\vect{a})$.
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $f$ är kontinuerlig i $\vb{a}\in D$ om $\limit{\vb{x}}{\vb{a}}f(\vb{x})$ existerar och $\limit{\vb{x}}{\vb{a}} = f(\vb{a})$.
 
 \paragraph{Likformig kontinuitet}
 Låt $f: D\to\R^p$ med $D\subset\R^n$. $f$ är likformigt kontinuerlig på $D$ om det för varje $\varepsilon > 0$ finns ett $\delta > 0$ så att
 \begin{align*}
-	\abs{\vect{x} - \vect{y}} < \delta, \vect{x}, \vect{y}\in D \implies\abs{f(\vect{x}) - f(\vect{y})} < \varepsilon.
+	\abs{\vb{x} - \vb{y}} < \delta,\ \vb{x}, \vb{y}\in D \implies\abs{f(\vb{x}) - f(\vb{y})} < \varepsilon.
 \end{align*}
 
 \paragraph{Lokala extrempunkter}
-Låt $f: D\to\R$ med $D\subset\R^n$. $f$ har ett lokalt maximum i $\vect{a}$ om $\exists\delta > 0$ så att $f(\vect{x})\leq f(\vect{a})$ för alla $\vect{x}\in D$ så att $\abs{\vect{x} - \vect{a}} < \delta$. Lokala minima definieras analogt. Om $f(\vect{x}) < f(\vect{a})$ har $f$ ett strängt lokalt maximum i $\vect{a}$.
+Låt $f: D\to\R$ med $D\subset\R^n$. $f$ har ett lokalt maximum i $\vb{a}$ om $\exists\delta > 0$ så att $f(\vb{x})\leq f(\vb{a})$ för alla $\vb{x}\in D$ så att $\abs{\vb{x} - \vb{a}} < \delta$. Lokala minima definieras analogt. Om $f(\vb{x}) < f(\vb{a})$ har $f$ ett strängt lokalt maximum i $\vb{a}$.
 
 \paragraph{Kvadratiska former}
 Låt $A, B, C$ vara konstanter. En kvadratisk form från $\R^2$ är på formen
 \begin{align*}
 	Q(h, k) = Ah^2 + 2Bhk + Ck^2.
 \end{align*}
-För en mer allmän definition, se definitionen från sammanfattningen av SF1672.
+För en mer allmän definition, se definitionen från sammanfattningen av SF1672 Linjär algebra.
 
 \paragraph{Positivt och negativt definita kvadratiska former}
 En kvadratisk form är
@@ -62,12 +62,12 @@ Låt $f$ vara en kontinuerlig funktion i ett öppet område $\Omega\subset\R^2$.
 \subsection{Satser}
 
 \paragraph{Gränsvärden av funktioner och deras komponenter}
-Låt $f: D\to\R^p$ med $D\subset\R^n$. $\limit{\vect{x}}{\vect{a}}f(\vect{x}) = \vect{b}$ är ekvivalent med att $\limit{\vect{x}}{\vect{a}}f_i(\vect{x}) = b_i$, där subskriptet $i$ indikerar den $i$-te komponenten av varje vektor.
+Låt $f: D\to\R^p$ med $D\subset\R^n$. $\limit{\vb{x}}{\vb{a}}f(\vb{x}) = \vb{b}$ är ekvivalent med att $\limit{\vb{x}}{\vb{a}}f_i(\vb{x}) = b_i$, där subskriptet $i$ indikerar den $i$-te komponenten av varje vektor.
 
 \proof
 Detta följer direkt av att
 \begin{align*}
-	\abs{f_i(\vect{x}) - b_i}\leq\abs{f(\vect{x}) - \vect{b}}\leq\sum\limits_{i = 1}^{p}\abs{f_i(\vect{x}) - b_i}.
+	\abs{f_i(\vb{x}) - b_i}\leq\abs{f(\vb{x}) - \vb{b}}\leq\sum\limits_{i = 1}^{p}\abs{f_i(\vb{x}) - b_i}.
 \end{align*}
 
 \paragraph{Största och minsta värde för funktioner}
@@ -81,29 +81,29 @@ Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara kompakt. Då är $f$ lik
 \proof
 
 \paragraph{Satsen om mellanliggande värden}
-Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara bågvis sammanhängande. Om $f$ antar värderna $f(\vect{a}), f(\vect{b})$ i $D$, antar $f$ också alla värden mellan $f(\vect{a})$ och $f(\vect{b})$.
+Låt $f: D\to\R^p$ med $D\subset\R^n$ och låt $D$ vara bågvis sammanhängande. Om $f$ antar värderna $f(\vb{a}), f(\vb{b})$ i $D$, antar $f$ också alla värden mellan $f(\vb{a})$ och $f(\vb{b})$.
 
 \proof
 
 \paragraph{Inversa funktionssatsen}
-Låt $f: D\to\R^p$, $D\subset\R^n$ vara öppen, $f$ vara $C^1$ och $\abs{\dd{f} (\vect{a})}\neq 0$. Då finns det öppna omgivningar $U, V$ till $\vect{a}, f(\vect{a})$ så att $f:U\to V$ är bijektiv och $f^{-1}: V\to U$ är $C^1$.
+Låt $f: D\to\R^p$, $D\subset\R^n$ vara öppen, $f$ vara $C^1$ och $\abs{\dd{f} (\vb{a})}\neq 0$. Då finns det öppna omgivningar $U, V$ till $(\vb{a}, f(\vb{a}))$ så att $f:U\to V$ är bijektiv och $f^{-1}: V\to U$ är $C^1$.
 
 \proof
 
 \paragraph{Implicita funktionssatsen}
-Låt $F(\vect{x})$ vara $C^1$ och $\vect{a}$ vara på nivåkurvan $F(\vect{x}) = C$. Om $\pdeval{F}{x_n}{\vect{a}}\neq 0$ finns det en öppen omgivning $U$ av $\vect{a}$ så att restriktion av nivåkurvan till $U$ implicit definierar en $C^1$-funktion.
+Låt $F(\vb{x})$ vara $C^1$ och $\vb{a}$ vara på nivåkurvan $F(\vb{x}) = C$. Om $\pdeval{F}{x_n}{\vb{a}}\neq 0$ finns det en öppen omgivning $U$ av $\vb{a}$ så att restriktion av nivåkurvan till $U$ implicit definierar en $C^1$-funktion.
 
 \proof
 
 \paragraph{Derivatan av en implicit funktion}
-Låt $F(\vect{x})$ vara $C^1$, $\vect{a}$ vara på nivåkurvan $F(\vect{x}) = C$ och $F(\vect{x}) = C$ definiera en implicit funktion nära $\vect{a}$. Om $\pdeval{F}{x_n}{\vect{a}}\neq 0$ har man
+Låt $F(\vb{x})$ vara $C^1$, $\vb{a}$ vara på nivåkurvan $F(\vb{x}) = C$ och $F(\vb{x}) = C$ definiera en implicit funktion nära $\vb{a}$. Om $\pdeval{F}{x_n}{\vb{a}}\neq 0$ har man
 \begin{align*}
-	\pdeval{x_n}{x_i}{\vect{a}'} = -\frac{\pdeval{F}{x_i}{\vect{a}}}{\pdeval{F}{x_n}{\vect{a}}}.
+	\pdeval{x_n}{x_i}{\vb{a}'} = -\frac{\pdeval{F}{x_i}{\vb{a}}}{\pdeval{F}{x_n}{\vb{a}}}.
 \end{align*}
 
 \proof
-Eftersom $F$ är konstant nära $\vect{a}$ använder vi kedjeregeln, vilket ger
+Eftersom $F$ är konstant nära $\vb{a}$ använder vi kedjeregeln, vilket ger
 \begin{align*}
-	\pdeval{F}{x_i}{\vect{a}} + \pdeval{F}{x_n}{\vect{a}}\pdeval{x_n}{x_i}{\vect{a}'} = 0.
+	\pdeval{F}{x_i}{\vb{a}} + \pdeval{F}{x_n}{\vb{a}}\pdeval{x_n}{x_i}{\vb{a}'} = 0.
 \end{align*}
-Om $\pdeval{F}{x_n}{\vect{a}}\neq 0$ får man resultatet i satsen.
+Om $\pdeval{F}{x_n}{\vb{a}}\neq 0$ får man resultatet i satsen.
