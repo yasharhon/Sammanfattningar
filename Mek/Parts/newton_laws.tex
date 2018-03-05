@@ -10,3 +10,27 @@ Att kraftsumman på en partikel är lika med noll är ekvivalent med att partike
 
 \paragraph{Tredje lagen}
 Om en kropp utövar en kraft på en annan, komemr denna utöva en lika stor och motsatt riktad kraft på den första kroppen.
+
+\paragraph{Galileitransformationer}
+Vi söker ett samband mellan två referensramer. Låt en ram $S$ vara intertial och låt $S'$ röra sig relativt $S$ så att
+\begin{itemize}
+	\item hastigheten till origo i $S'$, betecknad $\vb{v}_{O'}$, är konstant.
+	\item $S'$ ej roterar relativt $S$.
+\end{itemize}
+
+Enligt definitionen har man
+\begin{align*}
+	\vb{r} = \vb{r}_{O'} + \vb{r}'.
+\end{align*}
+Derivation med avseende på tid ger
+\begin{align*}
+	\vb{v} &= \vb{v}_{O'} + \dv{t}\left(x'\vb{e}_{x'} + y'\vb{e}_{y'} + z'\vb{e}_{z'}\right) \\
+	       &= \vb{v}_{O'} + \dv{x'}{t}\vb{e}_{x'} + \dv{y'}{t}\vb{e}_{y'} + \dv{z'}{t}\vb{e}_{z'} \\
+	       &= \vb{v}_{O'} + \vb{v}'.
+\end{align*}
+Derivation en gång till ger
+\begin{align*}
+	\vb{a} = \vb{a}'.
+\end{align*}
+
+Konsekvensen är att Newtons andra lag blir på exakt samma sätt i $S'$ som i $S$.
