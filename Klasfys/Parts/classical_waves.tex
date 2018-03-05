@@ -1,5 +1,28 @@
 \section{Klassiska vågor}
 
+\subsection{Principer}
+
+\paragraph{Superposition}
+Eftersom vågekvationen är linjär, interagerar vågor vid att man adderar störningarna.
+
+\paragraph{Vågor i fas}
+Två vågor är i fas om de har en fasskillnad lika med ett heltalsmultippel av $2\pi$.
+
+\paragraph{Koherenta vågor}
+Två vågor är koherenta om de har konstant fasskillnad.
+
+\paragraph{Stående vågor}
+En stående våg bildas när en våg reflekteras och interfererar med sig själv. En sådan våg har inten netto transport av energi.
+
+\paragraph{Resonans}
+Om en yttre kraft driver en svängning med en frekvens som naturligt ger stående vågor, växer amplituden obegränsat och man får stående vågor.
+
+\paragraph{Fermats princip}
+Strålgången till en klassisk våg mellan två punkter följer den snabbaste vägen.
+
+\paragraph{Huygens' princip}
+Om en våg utbrigdar sig i ett medium, kan varje punkt i mediet anses som en ny vågkälla som skickar ut en ny våg när den ursprungliga vågen träffer den givna punkten.
+
 \subsection{Ekvationer}
 
 \paragraph{Vågekvationen}
@@ -195,6 +218,38 @@ Om en våg går från ett medium till ett annat, kommer banan ändra riktning. O
 där $\theta_{\text{b}}$ är vinkeln banan har relativt gränsytan efter brytningen och vågfartens subskript anger vilket mediums vågfart det refereras till.
 
 \deriv
+Betrakta figur \ref{fig:refraction}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=1]{./Images/refraction.eps}
+	\caption{Illustration av brytning i en platt yta.}
+	\label{fig:refraction}
+\end{figure}
+Tiden det tar för vågens strålgång att gå från $A$ till $B$ ges av
+\begin{align*}
+	t &= \frac{\sqrt{x^2 + h_1^2}}{c_1} + \frac{\sqrt{(d - x)^2 + h_1^2}}{c_2}.
+\end{align*}
+Derivatan med avseende på $x$ ges av
+\begin{align*}
+	\dv{t}{x} = \frac{x}{c_1\sqrt{x^2 + h_1^2}} - \frac{x - d}{c_2\sqrt{(d - x)^2 + h_1^2}}.
+\end{align*}
+Minimumet finns där derivatan är noll, vilket ger
+\begin{align*}
+	\frac{x}{c_1\sqrt{x^2 + h_1^2}} &= \frac{x - d}{c_2\sqrt{(d - x)^2 + h_1^2}} \\
+	\frac{c_1}{c_2}                 &= \frac{\sqrt{(d - x)^2 + h_1^2}}{x - d}\frac{x}{\sqrt{x^2 + h_1^2}}.
+\end{align*}
+Trigonometrin ger
+\begin{align*}
+	\frac{c_1}{c_2} = \frac{1}{\sin{\theta_{\text{b}}}}\sin{\theta_{\text{i}}} = \frac{\sin{\theta_{\text{i}}}}{\sin{\theta_{\text{b}}}}.
+\end{align*}
+
+\paragraph{Villkor för totalreflektion}
+\begin{align*}
+	\theta_{\text{i}} = \arcsin{\frac{v_1}{v_2}}
+\end{align*}
+
+\deriv
+Kommer direkt från brytningslagen när $\theta_{\text{i}} = \frac{\pi}{2}$.
 
 \paragraph{Definitionen av reflektionskoefficient}
 \begin{align*}
@@ -230,20 +285,3 @@ Detta är ett sätt att beskriva energiförluster när vågen propagerar. $\alph
 Om en ljudkälla rör sig med en fart $v_{\text{s}}$ som är snabbare än ljuden, kommer det bildas en så kallad Mach-kon bakom planet, där den inre vinkeln från källans bana till konens yta ges av denna ekvationen.
 
 \deriv
-
-\subsection{Principer}
-
-\paragraph{Superposition}
-Eftersom vågekvationen är linjär, interagerar vågor vid att man adderar störningarna.
-
-\paragraph{Vågor i fas}
-Två vågor är i fas om de har en fasskillnad lika med ett heltalsmultippel av $2\pi$.
-
-\paragraph{Koherenta vågor}
-Två vågor är koherenta om de har konstant fasskillnad.
-
-\paragraph{Stående vågor}
-En stående våg bildas när en våg reflekteras och interfererar med sig själv. En sådan våg har inten netto transport av energi.
-
-\paragraph{Resonans}
-Om en yttre kraft driver en svängning med en frekvens som naturligt ger stående vågor, växer amplituden obegränsat och man får stående vågor.

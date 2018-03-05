@@ -13,6 +13,9 @@ Från Maxwells ekvation får man veta att
 	\item $\vect{E}\times\vect{B}$ pekar i utbridningsriktningen.
 \end{itemize}
 
+\paragraph{Fermats princip}
+Strålgången till ljus mellan två punkter följer den snabbaste vägen.
+
 \paragraph{Dispersion}
 Dispersion är när ett mediums brytningsindex beror på vågens våglängd.
 
@@ -25,6 +28,12 @@ Ljus kan vara
 	\item elliptiskt polariserat, så att fältet oscillerar på en ellips i det normala planet.
 	\item opolariserat, så att fältet oscillerar godtyckligt utan preferens för någon riktning.
 \end{itemize}
+
+\paragraph{Dubbeltbrytande material}
+Ett dubbeltbrytande material har brytningsindex som beror på polarisationen.
+
+\paragraph{Optisk aktivitet}
+Det finns väl typ saker som kan vrida polarisationsriktningen på polariserat ljus, eller någonting.
 
 \subsection{Ekvationer}
 
@@ -82,7 +91,10 @@ där $L_i$ är sträckan vägen rör sig i materialet med brytningsindex $n_i$.
 \begin{align*}
 	\vect{S} = \frac{1}{\mu_0}\vect{E}\times\vect{B}
 \end{align*}
-Poyntingvektorn ger information om energitransport från en elektromagnetisk våg. Dens riktning indikerar i vilken riktning energin transporteras, och dens belopp indikerar hur mycket energi som transporteras.
+Poyntingvektorn ger information om energitransport från en elektromagnetisk våg. Dens riktning indikerar i vilken riktning energin transporteras, och dens belopp indikerar hur mycket energi som transporteras. I den kompleksa formalismen definieras den som
+\begin{align*}
+	\vect{S} = \frac{1}{2\mu_0}\vect{E}*\times\vect{B}.
+\end{align*}
 
 \deriv
 I ett litet tidsintervall flödar energin
@@ -113,15 +125,63 @@ som uppfyller
 \begin{align*}
 	\abs{\vect{S}} = \frac{EB}{\mu_0}
 \end{align*}
-och vars riktning även ger information om i vilken riktning energin transporteras.
+och vars riktning även ger information om i vilken riktning energin transporteras. Denna vektorn används som inspiration till definitionen i den komplexa beskrivningen.
 
 \paragraph{Intensitet för elektromagnetisk våg}
 \begin{align*}
 	I = \frac{1}{2}\varepsilon_0cE^2
 \end{align*}
 
-\deriv'
+\deriv
 Enligt definitionen är
 \begin{align*}
-	I = \expval{S}
+	I = \expval{S}.
 \end{align*}
+För enkla harmoniska fält har man
+\begin{align*}
+	\abs{\vect{S}} = \frac{1}{2\mu_0}\vect{E}*\times\vect{B} = \frac{E^2}{2c\mu_0}.
+\end{align*}
+Detta ger
+\begin{align*}
+	I = \expval{S} = \frac{E^2}{2c\mu_0}.
+\end{align*}
+
+\paragraph{Malus' lag}
+Om ljus med intensitet $I_0$ skickas in på en polariserande skärm, har ljuset på andra sidan intensitet
+\begin{align*}
+	I = I_0\cos^2{\theta}.
+\end{align*}
+$\theta$ är vinkeln det inkommande ljusets polarisation bildar med skärmens polarisationsriktning.
+
+\deriv
+Följer av att $I\propto E^2$ och att en polariserande skärm fjärnar komponenten av $\vb{E}$ som är normal på skärmens polarisationsriktning.
+
+\paragraph{Fresnels formler}
+\begin{align*}
+	\frac{E_{\text{rp}}}{E_{\text{ip}}} &= \frac{\tan{(\theta_{\text{i}} - \theta_{\text{b}})}}{\tan{(\theta_{\text{i}} + \theta_{\text{b}})}} \\
+	\frac{E_{\text{tp}}}{E_{\text{ip}}} &= \frac{2\sin{(\theta_{\text{b}})}\cos{(\theta_{\text{i}})}}{\sin{(\theta_{\text{i}} + \theta_{\text{b}})}\cos{(\theta_{\text{i}} - \theta_{\text{b}})}} \\
+	\frac{E_{\text{rs}}}{E_{\text{is}}} &= -\frac{\sin{(\theta_{\text{i}} - \theta_{\text{b}})}}{\sin{(\theta_{\text{i}} + \theta_{\text{b}})}} \\
+	\frac{E_{\text{ts}}}{E_{\text{is}}} &= \frac{2\sin{(\theta_{\text{b}})}\cos{\theta_{\text{i}})}}{\sin{(\theta_{\text{i}} + \theta_{\text{p}})}}
+\end{align*}
+Det första indexet indikerar om ljuset är reflekterat eller transmitterat. Det andra indexet indikerar om ljuset är polariserat parallellt eller normalt mot infallsplanet.
+
+\deriv
+Fås från gränsvillkoren för elektriskt och magnetiskt fält.
+
+\paragraph{Brewstervinkeln}
+När ljus skickas in på en gränsyta med infallsvinkeln $\theta_{\text{B}}$ så att
+\begin{align*}
+	\tan{\theta_{\text{B}}} = \frac{n_2}{n_1}
+\end{align*}
+är det reflekterade ljuset linjärpolariserat vinkelrät mot infallsplanet. Denna vinkeln kallas Brewstervinkeln.
+
+\deriv
+Fresnels formler ger att $E_{\text{rp}} = 0$ när $\theta_{\text{i}} + \theta_{\text{b}} = \frac{\pi}{2}$. Brytningslagen ger då
+\begin{align*}
+	\frac{\sin{\theta_{\text{i}}}}{\sin{\theta_{\text{b}}}} = \frac{\sin{\theta_{\text{i}}}}{\sin{\left(\frac{\pi}{2} - \theta_{\text{i}}\right)}} = \frac{\sin{\theta_{\text{i}}}}{\cos{\theta_{\text{i}}}} = \frac{c_{1}}{c_{2}}.
+\end{align*}
+Från definitionen av brytningsindex får man då
+\begin{align*}
+	\tan{\theta_{\text{i}}} = \frac{n_2}{n_1}.
+\end{align*}
+Vinkeln som uppfyller detta döps till $\theta_{\text{B}}$.
