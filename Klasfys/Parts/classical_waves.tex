@@ -23,6 +23,9 @@ Strålgången till en klassisk våg mellan två punkter följer den snabbaste v�
 \paragraph{Huygens' princip}
 Om en våg utbrigdar sig i ett medium, kan varje punkt i mediet anses som en ny vågkälla som skickar ut en ny våg när den ursprungliga vågen träffer den givna punkten.
 
+\paragraph{Rayleighs upplösningskriterium}
+Två föremål är nätt och jämnt upplösta då interferensmaximum från det ena föremålet ligger i första sidominimum från det andra föremålet.
+
 \subsection{Ekvationer}
 
 \paragraph{Vågekvationen}
@@ -221,7 +224,7 @@ där $\theta_{\text{b}}$ är vinkeln banan har relativt gränsytan efter brytnin
 Betrakta figur \ref{fig:refraction}.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=1]{./Images/refraction.eps}
+	\includegraphics[scale=1]{./Images/refraction/refraction.eps}
 	\caption{Illustration av brytning i en platt yta.}
 	\label{fig:refraction}
 \end{figure}
@@ -262,6 +265,9 @@ Subskriptet indikerar om det är intensiteten till den inkommande eller reflekte
 	T = \frac{I_\text{T}}{I_\text{I}} = 1 - R
 \end{align*}
 
+\paragraph{Fassprang i gränsytor}
+Om en våg går från ett medium med hög vågfart till ett med lägre, får den reflekterade vågen en fasförskjutning $\pi$. Om den går till ett medium med högre vågfart, har den reflekterade vågen samma fas.
+
 \paragraph{Reflektionskoefficient för akustisk våg}
 \begin{align*}
 	R = \left(\frac{\abs{Z_1} - \abs{Z_2}}{\abs{Z_1} + \abs{Z_2}}\right)^2
@@ -270,6 +276,71 @@ Subskriptet indikerar om det är intensiteten till den inkommande eller reflekte
 \paragraph{Transmissionskoefficient för akustisk våg}
 \begin{align*}
 	T = \left(\frac{2Z_1Z_2}{\abs{Z_1} + \abs{Z_2}}\right)^2
+\end{align*}
+
+\paragraph{Diffraktion från enkelt spalt}
+\begin{align*}
+	I = I_0I_0\left(\frac{\sin{\left(\frac{1}{2}ka\sin{\theta}\right)}}{\frac{1}{2}ka\sin{\theta}}\right)^2
+\end{align*}
+$a$ är spaltbrädden.
+
+\deriv
+
+\paragraph{Diffraktionsminima från enkelt spalt}
+\begin{align*}
+	a\sin{\theta} = m\lambda
+\end{align*}
+
+\deriv
+En konsekvens formeln för intensitet vid diffraktion från enkelt spalt.
+
+\paragraph{Diffraktion från flera spalter}
+\begin{align*}
+	I = I_0\frac{\sin^2{\left(\frac{1}{2}Nkd\sin{\theta}\right)}}{\sin{\left(\frac{1}{2}kd\sin{\theta}\right)}}
+\end{align*}
+$I_0$ är intensiteten från varje spalt, $N$ är antallet spalter, $d$ är avståndet mellan spalterna och $\theta$ är vinkeln observatören står i relativt normalen till gitteret.
+
+\deriv
+Varje källa har en vägskillnad $d\sin{\theta}$ relativt sin granne nedåt. Om man summerar vågorna får man
+\begin{align*}
+	s = \sum Ae^{i(kl - \omega t + (n -1)kd\sin{\theta})}
+\end{align*}
+för små $\theta$. Summeringen ger
+\begin{align*}
+	s &= Ae^{i(kl - \omega t)}\frac{1 - e^{iNkd\sin{\theta})}}{1 - e^{ikd\sin{\theta}}} \\
+	  &= Ae^{i(kl - \omega t)}\frac{e^{-\frac{1}{2}iNkd\sin{\theta})}}{e^{-\frac{1}{2}ikd\sin{\theta}}}\frac{e^{\frac{1}{2}iNkd\sin{\theta}} - e^{-\frac{1}{2}iNkd\sin{\theta}}}{e^{\frac{1}{2}ikd\sin{\theta})} + e^{-\frac{1}{2}ikd\sin{\theta}}} \\
+	  &= A\frac{e^{-\frac{1}{2}iNkd\sin{\theta})}}{e^{-\frac{1}{2}kd\sin{\theta}}}\frac{\sin{\left(\frac{1}{2}iNkd\sin{\theta}\right)}}{\sin{\left(\frac{1}{2}kd\sin{\theta}\right)}}e^{i(kl - \omega t)}.
+\end{align*}
+Den nya vågen har samma frekvens och våglängd, men en ny amplitud. Intensiteter beror på $\abs{A}^2$, vilket ger
+\begin{align*}
+	\frac{I}{I_0} = \frac{\sin^2{\left(\frac{1}{2}Nkd\sin{\theta}\right)}}{\sin^2{ \left(\frac{1}{2}kd\sin{\theta}\right)}}.
+\end{align*}
+
+\paragraph{Maxima vid diffraktion från flere spalter}
+\begin{align*}
+	d\sin{\theta} = m\lambda
+\end{align*}
+
+\deriv
+Intensiteten vid flerstråleinterferens uppnår ett maximum när $\sin^2{\frac{1}{2}ikd\sin{\theta})} = 0$. Från detta kommer villkoret.
+
+\paragraph{Första minimum vid diffraktion från en cirkulär spalt}
+\begin{align*}
+	\sin{\theta} = 1.22\frac{\lambda}{D}
+\end{align*}
+$D$ är spaltens diameter.
+
+\paragraph{Braggs diffraktionslag}
+\begin{align*}
+	2d\sin{\theta} = m\lambda
+\end{align*}
+$d$ är separationen mellan atomplan i en kristall.
+
+\deriv
+
+\paragraph{Upplösning för gitter-baserat våglängdmätning}
+\begin{align*}
+	R = \frac{\lambda}{\Delta\lambda}
 \end{align*}
 
 \paragraph{Ljudabsorption}
