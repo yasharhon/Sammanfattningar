@@ -1,0 +1,88 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}
+\usepackage{ifthen}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[swedish]{babel}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+
+\newcommand{\proof}{\subparagraph{Bevis}}
+\newcommand{\vect}[1]{\vectorbold{#1}}
+\newcommand{\bound}[1]{\partial #1}
+\newcommand{\limit}[2]{\lim\limits_{#1\to #2}}
+\newcommand{\deval}[4][]{\dv[#1]{#2}{#3} (#4)}
+\newcommand{\pdeval}[4][]{\pdv[#1]{#2}{#3} (#4)}
+\newcommand{\inteval}[3]
+{
+	\int\limits_{#1}{#2}(#3)
+	\foreach \variable in #3
+	{
+		\ifthenelse{\equal{\variable}{\dots}}
+			{}
+			{\dd{\variable}}
+	}
+}
+\newcommand{\cint}[4][o]
+{
+	\ifthenelse{\equal{#1}{c}}
+		{\oint}
+		{\int}
+	\limits_{#2} #3\cdot\dd{#4}
+}
+\newcommand{\fint}[3]
+{
+	\iint\limits_{#1} #2\cdot\dd{#3}
+}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\title{Sammanfattning av SF1674 Flervariabelanalys}
+\author{Yashar Honarmandi}
+\date{\today}
+
+\begin{document}\sloppy
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/vector_algebra.tex}
+
+\input{./Parts/sets.tex}
+
+\input{./Parts/functions.tex}
+
+\input{./Parts/derivative.tex}
+
+\input{./Parts/curves.tex}
+
+\input{./Parts/quadric_surfaces.tex}
+
+\input{./Parts/optimization.tex}
+
+\input{./Parts/integrals.tex}
+
+\input{./Parts/surfaces.tex}
+
+\input{./Parts/integral_relations.tex}
+
+\end{document}

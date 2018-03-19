@@ -1,0 +1,44 @@
+\section{Inreprodukt}
+
+\subsection{Definitioner}
+
+\paragraph{Definitionen av inreprodukt}
+Inreproduktet är en avbildning $V\times V\to\R$, var $V$ är ett vektorrum. Notationen är $\inprod{u}{v}$. Inreproduktet ska uppfylla
+\begin{align*}
+	\inprod{u + w}{v} &= \inprod{u}{v} + \inprod{w}{v}, \\
+	\inprod{cu}{v}    &= c\inprod{u}{v}, c\in\R, \\
+	\inprod{v}{u}     &= \inprod{u}{v}, \\
+	\inprod{u}{u}     &\geq 0
+\end{align*}
+där inreproduktet av ett element med sig själv är $0$ om och endast om elementet är nollelementet.
+
+\paragraph{Norm}
+Normen till ett element, starkt analogt med längd, definieras som
+\begin{align*}
+	\norm{x} = \sqrt{\inprod{x}{x}}.
+\end{align*}
+
+\paragraph{Ortogonalitet}\label{par:orthogonality}
+Två elementer $u, v$ är ortogonala om
+\begin{align*}
+	\inprod{u}{v} = 0.
+\end{align*}
+
+\paragraph{Projektion}
+Låt $L = \Span{x_1, \dots, x_n}$, var alla $x_i$ är ortogonala. Då ges projektionen av ett element $u$ på $L$ av
+\begin{align*}
+	\proj{L}{u} = \sum\limits_{i = 1}^{n}\frac{\inprod{u}{x_i}}{\norm{x_i}^2}x_i.
+\end{align*}
+
+\paragraph{Ortogonal bas}
+En ortogonal bas för ett vektorrum $W$ är en ortogonal mängd av vektorer som bildar en bas för $W$.
+
+\subsection{Satser}
+
+\paragraph{Vektorer och ortogonala baser}
+Låt $\{u_1, \dots, u_n\}$ vara en ortogonal bas för $W$. Alla vektorer $w\in W$ kan skrivas som
+\begin{align*}
+	w = \sum\limits_{i = 1}^n \frac{\inprod{w}{u_i}}{\inprod{u_i}{u_i}}u_i.
+\end{align*}
+
+\proof

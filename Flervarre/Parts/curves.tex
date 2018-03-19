@@ -1,0 +1,125 @@
+\section{Kurvor}
+
+\subsection{Definitioner}
+
+\paragraph{Kurvor i $\R^p$}
+En kurva i $\R^p$ är en funktion $t\to\vect{x}(t) = (x_1(t), \dots, x_p(t))$.
+
+\paragraph{$C^1$-kurvor}
+En kurva är klass $C^1$ om alla dess komponenter är $C^1$.
+
+\paragraph{Enkla kurvor}
+En kurva är enkel om den inte skär sig själv.
+
+\paragraph{Slutna kurvor}
+En kurva är sluten om dens start- och slutpunkter sammanfaller.
+
+\paragraph{Tangentvektor}
+Låt $\vect{x}(t)$ vara en $C^1$-kurva definierad på $[\alpha, \beta]$, $\phi: [a, b]\to [\alpha, \beta]$ vara strängt växande och $\phi, \phi^{-1}$ vara $C^1$. Då definieras tangentvektorn till kurvan av
+\begin{align*}
+	\deval{\vect{x}}{t}{t} = \limit{h}{0}\frac{\vect{x}(t + h) - \vect{x}(t)}{h}.
+\end{align*}
+
+\paragraph{Bågelement}
+Låt $\gamma$ vara en $C^1$-kurva med parametrisering $\vect{r}(t)$. Bågelementet definieras som
+\begin{align*}
+	\dd{s} = \abs{\deval{\vect{r}}{t}{t}}\dd{t}.
+\end{align*}
+
+\paragraph{Enhetstangent}
+Låt $\gamma$ vara en $C^1$-kurva med parametrisering $\vect{r}(t)$. Enhetstangenten definieras som
+\begin{align*}
+	\vect{T}(t) = \frac{\deval{\vect{r}}{t}{t}}{\abs{\deval{\vect{r}}{t}{t}}}.
+\end{align*}
+
+\paragraph{Högernormal}
+Låt $\gamma$ vara en $C^1$-kurva med parametrisering $\vect{r}(t) = (x(t), y(t))$. Högernormalen definieras som
+\begin{align*}
+	\vect{N}(t) = \frac{(\deval{y}{t}{t}, -\deval{x}{t}{t}}{\abs{\deval{\vect{x}}{t}{t}}}.
+\end{align*}
+
+\paragraph{Längd}
+Långden av en kurva ges av
+\begin{align*}
+	\int\limits_{\alpha}^{\beta}\abs{\deval{\vect{x}}{t}{t}}\dd{t}.
+\end{align*}
+
+\paragraph{Integral av skalärfunktioner längs med kurvor}
+Integralen av en funktion $f$ längs med kurvan med parametrisering $\vect{r}(t)$ ges av
+\begin{align*}
+	\int\limits_{\alpha}^{\beta}f(\vect{r}(t))\abs{\deval{\vect{r}}{t}{t}}\dd{t}.
+\end{align*}
+
+\paragraph{Kurvintegraler}
+Låt $F: D\to\R^2, \vect{F}(\vect{r}) = (P(\vect{r}), Q(\vect{r}))$ vara kontinuerlig på en öppen mängd $D\subset\R^2$ och låt $\gamma$ vara en $C^1$-kurva med parametrisering $\vect{r} = \vect{r}(t)$ för $\alpha\leq t\leq\beta$. Kurvintegralen av $\vect{F}$ längs $\gamma$ ges av
+\begin{align*}
+	\int_{\alpha}^{\beta}\vect{F}(\vect{r}(t))\cdot\deval{\vect{r}}{t}{t}\dd{t} = \int_{\alpha}^{\beta}P(\vect{r}(t))\deval{r_x}{t}{t} + Q(\vect{r}(t))\dd{t}\deval{r_y}{t}{t}
+\end{align*}
+och betecknas
+\begin{align*}
+	\cint{\gamma}{\vect{F}}{\vect{r}}
+\end{align*}
+eller, om du är en omoralsk människa,
+\begin{align*}
+	\int\limits_{\gamma}P(\vect{r})\dd{x} + Q(\vect{r})\dd{y}.
+\end{align*}
+
+\paragraph{Cirkulation}
+Låt $\gamma$ vara enkel och sluten. Då definieras $\cint[c]{\gamma}{\vect{F}}{\vect{r}}$ som cirkulationen av $\vect{F}$ längs $\gamma$.
+
+\paragraph{Flöde}
+Låt $\gamma$ vara en $C^1$-kurva med parametrisering $\vect{r}(t)$. Flödet av vektorfältet $\vect{u}$ genom $\gamma$ från vänster till höger definieras som
+\begin{align*}
+	\int_{\gamma}\vect{u}\cdot\vect{N}(t)\dd{s}.
+\end{align*}
+
+\paragraph{Integraler och väg}
+Låt $\Omega$ vara en öppen mängd. $\cint{\gamma}{\vect{F}}{\vect{r}}$ är oberoende av vägen i $\Omega$ om $\cint[c]{C}{\vect{F}}{\vect{r}} = 0$ för varje sluten kurva $\Omega$.
+
+\paragraph{Konservativa fält}
+Låt $\Omega$ vara en öppen mängd. $\vect{F}$ kallas ett konservatit fält, eller ett potentialfält, om det finns en $C^1$-funktion $U$ i $\Omega$ så att $\vect{F} = \grad{U}$. $U$ kallas då potentialet till $\vect{F}$.
+
+\paragraph{Exakta differentialformer}
+Låt $\Omega$ vara en öppen mängd. $P\dd{x} + Q\dd{y}$ är exakt i $\Omega$ om det finns en $C^1$-funktion $U$ så att $\dd{U} = P\dd{x} + Q\dd{y}$.
+
+\subsection{Satser}
+
+\paragraph{Greens formel och flöde}
+\begin{align*}
+	\int_{\bound{D}}\vect{u}\cdot\vect{N}(t)\dd{s} = \inteval{D}{\left(\dv{u_1}{x} + \dv{u_2}{x}\right)}{{x, y}}
+\end{align*}
+
+\proof
+
+\paragraph{Konservativa fält och exakta differentialformer}
+Att fältet $\vect{F} = (P, Q)$ är konservativt är ekvivalent med att dfferentialformen $P\dd{x} + Q\dd{y}$ är exakt.
+
+\proof
+
+\paragraph{Kurvintegraler av konservativa fält}
+Låt $\vect{F}$ vara ett konservativt fält med potential $U$. Då gäller att
+\begin{align*}
+	\cint{\gamma}{\vect{F}}{\vect{r}} = U(\vect{b}) - U(\vect{a})
+\end{align*}
+för alla kurvor $\gamma$ som går från $\vect{a}$ till $\vect{b}$. Speciellt gäller det att integraler är oberoende av vägen.
+
+\proof
+
+\paragraph{Integralers oberoende och potentialer}
+Låt $\vect{F}$ vara kontinuerlig i en bågvis sammanhängande mängd $\Omega$. Om $\cint{\gamma}{\vect{F}}{\vect{r}}$ är oberoende av vägen har $\vect{F}$ en potential i $\Omega$.
+
+\proof
+
+\paragraph{Komponenters derivata och potential}
+Om $\omega\subset\R^2$ är en enkelt sammanhängande mängd och
+\begin{align*}
+	\pdv{Q}{x} = \pdv{P}{y}
+\end{align*}
+i $\Omega$, har $\vect{F} = (P, Q)$ ett potential i $\Omega$.
+
+\proof
+Om $\gamma\subset\Omega$ är en sluten kurva finns $D\subset\Omega$ så att $\gamma = \bound{D}$. Alltså gäller
+\begin{align*}
+	\cint[c]{\gamma}{\vect{F}}{\vect{r}} = \int\limits_{\gamma}P\dd{x} + Q\dd{y} = \pm\inteval{D}{\left(\pdv{Q}{x} - \pdv{P}{y}\right)}{{x, y}} = 0.
+\end{align*}
+Alltså beror integralen ej på valet av $\gamma$.

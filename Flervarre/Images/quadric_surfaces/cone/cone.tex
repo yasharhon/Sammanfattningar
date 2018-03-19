@@ -1,0 +1,32 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\pgfplotsset{
+	compat = 1.8
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    view = {140}{10},
+	axis equal,
+	axis lines = center,
+    xlabel={$x$},ylabel={$y$},zlabel={$z$},
+    ticks = none,
+    colormap/cool,
+    set layers
+]
+\addplot3[
+	surf,
+    domain=0:2*pi,y domain=-2:2,
+    z buffer=sort,
+    on layer = axis background
+    ]
+    ({*y*cos(deg(x))}, {1.5*y*sin(deg(x))}, {y});
+]
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

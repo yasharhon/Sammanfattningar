@@ -1,0 +1,21 @@
+\subsection{Volymer}
+Denna delen diskuterar hur man beräknar storheten volym för objekter i $\R^n$. Ordet volym kommer att användas om area i $\R^2$, volym i $\R^3$ och en analog storhet i andra $\R^n$.
+
+\paragraph{En kropp i $R^n$}
+En kropp i $R^n$ är en mängd punkter. Ett enkelt exempel är ett prism $P$, som ges av
+\begin{align*}
+	P = \{\vect{x}~|~\vect{x} = \sum_{i = 1}^{n}c_i\vect{v}_i\}.
+\end{align*}
+Vektorerna $\vect{v}_1, \dots, \vect{v}_n$ definierar då prismet.
+
+\paragraph{Volym av ett prism}
+Ett prism $P$ i $\R^n$ definieras av vektorerna $\vect{v}_1, \dots, \vect{v}_n$. Konstruera en matris $A$ vars kolumner är vektorerna som definierar prismet. Då ges volymen till $P$ av
+\begin{align*}
+	V_P = \det{A}.
+\end{align*}
+
+\paragraph{Volym av en transformerad kropp}
+Om man använder en linjär avbildning $T$ med standardmatris $A$ på punkterna i en kropp $K$, ges volymen av kroppen som fås efter avbildningen av
+\begin{align*}
+	V_{T(K)} = \det{A} V_K.
+\end{align*}

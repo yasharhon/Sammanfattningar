@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+
+\pgfplotsset{
+	compat = 1.8
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    view = {145}{10},
+	axis equal,
+	axis lines = center,
+    xlabel={$x$},ylabel={$y$},zlabel={$z$},
+    ticks = none,
+    colormap/cool,
+    set layers
+]
+\addplot3[
+	surf,
+    domain=0:2*pi,y domain=-2:2,
+    z buffer=sort,
+    on layer = axis background
+    ]
+    ({sqrt(1+y^2)*cos(deg(x))}, {1.5*sqrt(1+y^2)*sin(deg(x))}, {y});
+]
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
