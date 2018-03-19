@@ -1,0 +1,113 @@
+\section{Modellering av systemer}
+Syftet i denna delen är att diskutera systemer som kan modelleras med teorin bak klassiska vågor.
+
+\subsection{Vätskor och gaser}
+Vi tänker oss att vi trycker på vätskan eller gasen i en behållare med tvärsnittsarea $A$ och volym $V$. Detta får mediet att komprimeras. För $\dd{p} << p_0$ har man
+\begin{align*}
+	\dd{p} = -B\frac{\dd{V}}{V},
+\end{align*}
+där $B$ är mediets bulkmodul. Kompressionen kan tänkas få oändligt tunna volymelementer i mediet att förflytta sig ett avstånd $s(x)$, där $x$ är en koordinat som indikerar hur djupt i behållaren volymelementet är.
+
+Betrakta nu vätskan eller gasen mellan två punkter $x$ och $x + \dd{x}$. Tryckskillnaden mellan dessa två punkterna ges av
+\begin{align*}
+	\dd{p} = -B\frac{\dd{V}}{V} = -B\frac{A(s(x + \dd{x}) - s(x)}{A\dd{x}}\to -B\dv{s}{x},
+\end{align*}
+där vi förutsätter att $s(x), s(x + \dd{x}) << \dd{x}$. Newtons andra lag ger då
+\begin{align*}
+	ma = A\Delta p. 
+\end{align*}
+Om vi stoppar in för $p, m, a$ får vi
+\begin{align*}
+	&\rho A\dd{x}\pdv[2]{s}{t} = AB\Delta\pdv{s}{x} \\
+	&\pdv[2]{s}{t} = \frac{B}{\rho}\frac{\pdv{s}{x}(x + \dd{x}) - \pdv{s}{x}(x)}{\dd{x}} = \frac{B}{\rho}\pdv[2]{s}{x},
+\end{align*}
+och vågfarten är $c = \sqrt{\frac{B}{\rho}}$.
+
+Om vi även antar att vågen propagerar via adiabatiska kompressioner, har vi
+\begin{align*}
+	&pV^{\gamma} = C \\
+	&\ln{p} + \gamma\ln{V} = c \\
+	&\frac{\dd{p}}{p} + \gamma\frac{\dd{V}}{V} = 0,
+\end{align*}
+vilket ger
+\begin{align*}
+	B = -\frac{\dd{p}}{\left(\frac{\dd{V}}{V}\right)} = \gamma p.
+\end{align*}
+Om man använder ideala gaslagen på detta, får man
+\begin{align*}
+	c = \sqrt{\frac{\gamma RT}{M}},
+\end{align*}
+där $M$ är gasens molära massa.
+
+För gaser görs även lite extra diskussioner, som både illustrerar hur man härledar saker för klassiska vågor och ger information om själva gassystemet.
+
+För en våg i en gas ges den akustiska impedansen av
+\begin{align*}
+	Z = \frac{\Delta p}{v_{\text{p}}} = \frac{-B\pdv{s}{x}}{\pdv{s}{t}} = \frac{Bk}{\omega} = \frac{\rho c^2}{c} = \rho c.
+\end{align*}
+
+Om vågen propagera längs med $x-$axeln, ges arbetet vågen gör av
+\begin{align*}
+	\dd{W} = F\dd{s} = \dd{p}A\dd{s}
+\end{align*}
+där $A$ nu är arean av tvärsnittsytan vågen träffer. Effekten ges av
+\begin{align*}
+	P = \dv{W}{t} = \dd{p}A\pdv{s}{t} = -BA\pdv{\Re{s}}{t}\pdv{\Re{s}}{x}
+\end{align*}
+där vi har användt ett resultat från tidigare. Med en harmonisk våg $Ce^{i(\vect{k}x - \omega t)}$ får man
+\begin{align*}
+	\expval{P} = -BA(ikC)(-i\omega C)\expval{\Re{e^{2i(\vect{k}\cdot\vect{r} - \omega t)}}}.
+\end{align*}
+Med hjälp av dispersionsrelationen för vågor omformulerar vi till
+\begin{align*}
+	\expval{P} &= \frac{BA}{c}(\omega C)^2\expval{\Re{e^{2i(\vect{k}\cdot\vect{r} - \omega t)}}} \\
+	           &= \rho vA(\omega C)^2\expval{\Re{e^{2i(\vect{k}\cdot\vect{r} - \omega t}}} \\
+	           &= \rho vA(\omega C)^2\expval{\cos^2{(\vect{k}\cdot\vect{r} - \omega t}} \\
+	           &= \frac{1}{2}\rho vA(\omega C)^2.
+\end{align*}
+
+Från detta kan man ersätta vissa storheter med andra för att få
+\begin{align*}
+	I = \frac{1}{2}\abs{Z}(\omega A)^2 = \frac{1}{2}\abs{Z}v_{\text{p, max}}^2 = \frac{(\Delta p_{\text{max}})^2}{2\abs{Z}}.
+\end{align*}
+Vid att införa
+\begin{align*}
+	\Delta p_{\text{eff}} = \frac{\Delta p_{\text{max}}}{\sqrt{2}}, v_{\text{p, eff}} = \frac{v_{\text{p, eff}}}{\sqrt{2}}
+\end{align*}
+kan man fjärna lite tvåor i uttrycken för intensitet. Märk analogien till ellära och Joules lag när man tar bort tvåorna.
+
+Eftersom $I\propto (\Delta p_{\text{eff}})^2$ kan intensiteten till en våg i en gas skrivas som
+\begin{align*}
+	L = 10\log{\frac{(\Delta p_{\text{eff}})^2}{(\Delta p_{\text{eff}, 0})^2}} = 20\log{\frac{\Delta p_{\text{eff}}}{\Delta p_{\text{eff}, 0}}}.
+\end{align*}
+
+\paragraph{Fasta materialer i bulk}
+Betrakta ett material som sträcks mellan $x, x + \dd{x}$. Materialet sträcks då en längd $s(x, t)$. Om $s(x, t)$ är litet jämfört med $\dd{x}$ upplevs samma kraft i båda punkter. Spänningen i materialet är då
+\begin{align*}
+	\sigma = \frac{F}{A} = \frac{E(s(x + \dd{x})  s(x)}{\dd{x}}\to E\pdv{s}{x},
+\end{align*}
+där vi har användt Hookes lag för fasta materialer, som ger $\frac{F}{A} = E\frac{\Delta l}{l_0}$, där $E$ är materialets elasticitetsmodul.
+
+Materialet mellan $x, x + \dd{x}$ har enligt ovan en position som ges av $s$. Då ger Newtons andra lag
+\begin{align*}
+	\rho A\dd{x}\pdv[2]{s}{t} &= \Delta F \\
+	\rho A\pdv[2]{s}{t}       &= \pdv{F}{x} = AE\pdv[2]{s}{x} \\
+	\pdv[2]{s}{x}             &= \frac{\rho}{E}\pdv[2]{s}{t}
+\end{align*}
+och vågfarten är
+\begin{align*}
+	c = \sqrt{\frac{E}{\rho}}.
+\end{align*}
+
+Märk att resonnemanget ovan är för longitudinella vågor. För transversella vågor ges farten av
+\begin{align*}
+	c = \sqrt{\frac{G}{\rho}}
+\end{align*}
+där $G$ är materialets skjuvmodul.
+
+\paragraph{Transversella vågor i snören}
+Av någon magisk årsak ges vågfarten av
+\begin{align*}
+	c = \sqrt{\frac{T}{\mu}}
+\end{align*}
+där $T$ är snörets spänning och $\mu$ är massan per längdenhet.

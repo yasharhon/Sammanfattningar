@@ -1,0 +1,247 @@
+\section{Integraler}
+
+\subsection{Definitioner}
+
+\paragraph{Dubbelintegraler av trappfunktioner}
+Dubbelintegralen av en trappfunktion $\Phi$ över $\Delta$ definieras som
+\begin{align*}
+	\iint\limits_{\Delta}\Phi (x, y)\dd{x}\dd{y} = \sum c_{i, j}A_{i, j},
+\end{align*}
+där $c_{i, j}$ är värdet $\Phi$ antar på $\Delta_{i, j}$ och $A_{i, j}$ är arean av $\Delta_{i, j}$.
+
+\paragraph{Riemann-integrerbarhet}
+En begränsad funktion $f$ är integrerbar över en rektangulär region $\Delta$ om det till varje $\varepsilon > 0$ finns trappfunktioner $\Phi, \Psi$ så att $\Phi\leq f\leq \Psi$ och $\iint\limits_{\Delta}\Psi\dd{x}\dd{y} - \iint\limits_{\Delta}\Phi\dd{x}\dd{y} < \varepsilon$.
+
+\paragraph{Dubbelintegraler}
+Låt $f$ vara integrerbar över rektanglet $\Delta$. Då finns det ett $\lambda$ så att $\iint\limits_{\Delta}\Phi\dd{x}\dd{y}\leq\lambda\leq\iint\limits_{\Delta}\Psi\dd{x}\dd{y}$ för alla trappfunktioner $\Phi, \Psi$ så att $\Phi\leq f\leq\Psi$. Detta $\lambda$ definieras som dubbelintegralen av $f$ över $\Delta$ och betecknas $\iint\limits_{\Delta}f(x, y)\dd{x}\dd{y}$.
+
+\paragraph{Integration över godtyckliga områden}
+Låt $D\in\R^2$ vara en begränsad mängd, $f: D\to\R$ vara en begränsad funktion och
+\begin{align*}
+	f_D(x, y) =
+	\begin{cases}
+		f(x, y), &(x, y)\in D, \\
+		0,       &(x, y)\not\in D
+	\end{cases}
+\end{align*}
+$f$ är integrerbar över $D$ om $f_D$ är integrerbar över någon rektangel $\Delta$ som innehåller $D$. Givet detta sätter vi
+\begin{align*}
+	\iint\limits_{D}f(x, y)\dd{x}\dd{y} = \iint\limits_{\Delta}f_D(x, y)\dd{x}\dd{y}.
+\end{align*}
+
+\paragraph{Riemannsummor}
+En Riemannsumma är på formen
+\begin{align*}
+	\sum_{i, j}f(\xi_i, \eta_j)A_{i, j}
+\end{align*}
+där $A_{i, j}$ betecknar arean till den lilla fyrkanten som $(\xi_i, \eta_j)$ ligger i. Summan är ment att approximera
+\begin{align*}
+	\iint\limits_{\Delta}f(x, y)\dd{x}\dd{y}.
+\end{align*}
+
+\paragraph{Generaliserade integraler}
+Låt $f$ vara en kontinuerlig funktion i ett öppet område $\Omega\subset\R^2$ med $f(x, y)\geq 0$ på $\Omega$. $\iint\limits_{\Omega}f(x, y)\dd{x}\dd{y}$ är konvergent om mängden
+\begin{align*}
+	M = \left\{\iint\limits_{D}f(x, y)\dd{x}\dd{y}\ |\ D~\text{är en avskärning av}~\Omega\right\}
+\end{align*}
+är uppåt begränsad och divergent annars. Om integralen är konvergent definierar vi
+\begin{align*}
+	\iint\limits_{\Omega}f(x, y)\dd{x}\dd{y} = \sup{M}.
+\end{align*}
+
+\paragraph{Dubbelintegraler av funktioner med varierande tecken}
+Givet funktionen $f$, bilda
+\begin{align*}
+	f^+(x, y) =
+	\begin{cases}
+		f(x, y), &f(x, y)\geq 0, \\
+		0,       &f(x, y)< 0
+	\end{cases},
+	f^-(x, y) =
+	\begin{cases}
+		0,       &f(x, y)\geq 0, \\
+		f(x, y), &f(x, y)< 0
+	\end{cases}.
+\end{align*}
+Detta ger egenskaperna $\abs{f(x, y)} = f^+(x, y) + f^-(x, y), f(x, y) = f^+(x, y) - f^-(x, y)$.
+
+Integralen $\iint_{\Omega}f(x, y)\dd{x}\dd{y}$ är konvergent om $\iint_{\Omega}f^+(x, y)\dd{x}\dd{y}$ och $\iint_{\Omega}f^-(x, y)\dd{x}\dd{y}$ är konvergenta. Vi sätter då
+\begin{align*}
+	\iint_{\Omega}f(x, y)\dd{x}\dd{y} = \iint_{\Omega}f^+(x, y)\dd{x}\dd{y}+ \iint_{\Omega}f^-(x, y)\dd{x}\dd{y}
+\end{align*}
+
+\paragraph{Multipelintegraler}
+För $D\subset\R^n$ definierar vi
+\begin{align*}
+	\int\limits_{D}f(\vect{x})\dd{\vect{x}}
+\end{align*}
+som ett gränsvärde av Riemannsummor.
+
+\paragraph{Volym i $\R^n$}
+Funktionen
+\begin{align*}
+	\mu (D) = \int\limits_{D}\dd{\vect{x}}
+\end{align*}
+är volymen av mängden $D\subset\R^n$.
+
+\subsection{Satser}
+
+\paragraph{Egenskaper för dubbelintegraler av trappfunktioner}
+För integralet av två trappfunktioner $\Phi, \Psi$ gäller att
+\begin{itemize}
+	\item $\iint\limits_{\Delta}\alpha\Phi\dd{x}\dd{y} = \alpha\iint\limits_{\Delta}\Phi\dd{x}\dd{y}, \alpha\in\R$.
+	\item $\iint\limits_{\Delta}(\Phi + \Psi)\dd{x}\dd{y} = \iint\limits_{\Delta}\Phi\dd{x}\dd{y} + \iint\limits_{\Delta}\Psi\dd{x}\dd{y}$.
+	\item Om $\Phi\leq\Psi$ på $\Delta$ är $\iint\limits_{\Delta}\Phi\dd{x}\dd{y}\leq\iint\limits_{\Delta}\Psi\dd{x}\dd{y}$.
+	\item $\abs{\iint\limits_{\Delta}\Phi\dd{x}\dd{y}}\leq\iint\limits_{\Delta}\abs{\Phi}\dd{x}\dd{y}$.
+	\item Om $\Delta$ har gränserna $a, b$ i $x$-led och $c, d$ i $y$-led är $\iint\limits_{\Delta}\Phi\dd{x}\dd{y} = \int\limits_{a}^{b}\left(\int\limits_{c}^{d}\Phi\dd{y}\right)\dd{x}$.
+\end{itemize}
+
+\proof
+
+\paragraph{Ordning av dubbelintegraler}
+Låt $f$ vara integrerbar över rektanglet $\Delta$. Då gäller att
+\begin{align*}
+	\iint\limits_{\Delta}f(x, y)\dd{x}\dd{y} = \int\limits_{a}^{b}\left(\int\limits_{c}^{d}f(x, y)\dd{y}\right)\dd{x} = \int\limits_{c}^{d}\left(\int\limits_{a}^{b}f(x, y)\dd{x}\right)\dd{y}.
+\end{align*}
+
+\proof
+
+\paragraph{Integration över områden begränsade av kurvor}
+Låt $f$ vara kontinuerlig på $D = \{(x, y)\in\R^2\ |\ a\leq x\leq b, \alpha(x)\leq y\leq\beta(x)\}$ och låt $\alpha, \beta$ vara kontinuerliga på $[a, b]$. Då är $f$ integrerbar över $D$ och
+\begin{align*}
+	\iint\limits_{D}f(x, y)\dd{x}\dd{y} = \int\limits_{a}^{b}\left(\int\limits_{\alpha(x)}^{\beta(x)}f(x, y)\dd{y}\right)\dd{x}.
+\end{align*}
+
+\proof
+
+\paragraph{Integration över nollmängder}
+Varje begränsad funktion $f$ är integrerbar över en nollmängd $N$ och
+\begin{align*}
+	\iint\limits_{N}f(x, y)\dd{x}\dd{y} = 0.
+\end{align*}
+
+\proof
+Låt $\Delta$ vara en rektangel så att $N\subset\Delta$, låt $\varepsilon > 0$ och låt $R$ vara unionen av ändligt många axelparallella rektanglar så att
+\begin{itemize}
+	\item $N\subset R$.
+	\item $R$ har area mindre än $\varepsilon$.
+	\item $R\subset\Delta$.
+\end{itemize}
+Definiera den utvidgade funktionen
+\begin{align*}
+	f_N(x, y) =
+	\begin{cases}
+		f(x, y), &(x, y)\in N, \\
+		0,       &(x, y)\not\in N.
+	\end{cases}
+\end{align*}
+Låt $m = \min\limits_{\Delta}f_N, M = \max\limits_{\Delta}f_N$ och välj trappfunktioner $\Phi, \Psi$ så att
+\begin{align*}
+	\Phi(x, y) =
+	\begin{cases}
+		m, &(x, y)\in R, \\
+		0, &(x, y)\in \Delta\setminus R,
+	\end{cases}
+	\Psi(x, y) =
+	\begin{cases}
+		M, &(x, y)\in R, \\
+		0, &(x, y)\in \Delta\setminus R.
+	\end{cases}
+\end{align*}
+Då är $\Phi\leq f\leq\Psi$. Vi har att
+\begin{align*}
+	\iint\limits_{\Delta}(\Psi - \Phi)\dd{x}\dd{y} = \iint\limits_{R}(\Psi - \Phi)\dd{x}\dd{y}\leq(M - m)\varepsilon,
+\end{align*}
+och därmed är $f$ integrerbar över $N$. Dessutom gäller att
+\begin{align*}
+	\iint\limits_{\Delta}\Phi\dd{x}\dd{y}\leq\iint\limits_{\Delta}f_{N}\dd{x}\dd{y}\leq\iint\limits_{\Delta}\Psi\dd{x}\dd{y},
+\end{align*}
+vilket implicerar att
+\begin{align*}
+	m\varepsilon\leq\iint\limits_{N}f\dd{x}\dd{y}\leq M\varepsilon.
+\end{align*}
+Detta implicerar att
+\begin{align*}
+	\iint\limits_{N}f\dd{x}\dd{y} = 0,
+\end{align*}
+och beviset är klart.
+
+\paragraph{Medelvärdesatsen för integraler}
+Antag att $f$ är kontinuerlig på en kompakt, kvadrerbar och bågvis sammanhängande mängd $D\subset\R^2$. Låt $m = \min\limits_{D}f, M = \max\limits_{D}f$. Integration ger
+\begin{align*}
+	mA_{D}\leq\iint\limits_{D}f\dd{x}\dd{y}\leq MA_{D}.
+\end{align*}
+Alltså finns ett $C\in [m, M]$ så att
+\begin{align*}
+	\frac{1}{A_{D}}\iint\limits_{D}f\dd{x}\dd{y} = C.
+\end{align*}
+
+\proof
+Satsen om mellanliggande värden ger att $\exists (\xi, \eta)\in D$ så att $f(\xi, \eta) = C$. Alltså
+\begin{align*}
+	\frac{1}{A_{D}}\iint\limits_{D}f\dd{x}\dd{y} = f(\xi, \eta).
+\end{align*}
+
+\paragraph{Variabelbyte i dubbelintegraler}
+Låt $(u, v)\to (g(u, v), h(u, v))$ vara en bijektiv $C^1$-avbildning $E\to D$, där $E$ och $D$ är öppna och kvadrerbara delmängder av $\R^2$, och antag $J(u,v) = \abs{\dv{(x, y)}{(u, v)}}\neq 0$. Då är
+\begin{align*}
+	\iint\limits_{D}f(x, y)\dd{x}\dd{y} = \iint\limits_{E}f(g(u, v), h(u, v))\abs{J(u, v)}\dd{u}\dd{v}.
+\end{align*}
+
+\proof
+
+\paragraph{Integration med nivåkurvor}
+Antag att
+\begin{itemize}
+	\item $D\subset\R^2$ är ett kvadrerbart område.
+	\item $g: D\to\R$ är $C^1$.
+	\item $h :[a, b]\to\R$ är $C^1$, där $a = \min\limits_{D}{g(x, y)}, b = \max\limits_{D}{g(x, y)}$.
+	\item Areafunktionen $A: [a, b]\to\R$ given av
+	\begin{align*}
+		A(u) = A_{G_u}, G_u = \{(x,y)\in D\ |\ g(x, y)\leq u\}
+	\end{align*}
+	är $C^1$. Då gäller att
+	\begin{align*}
+		&\iint\limits_{D}h(g(x, y))\dd{x}\dd{y} = \int\limits_{a}^{b}h(u)\deval{A}{u}{u}\dd{u}, \\
+		&\iint\limits_{D}g(x, y)\dd{x}\dd{y} = \int\limits_{a}^{b}u\deval{A}{u}{u}\dd{u}
+	\end{align*}
+\end{itemize}
+
+\paragraph{Konvergens av generaliserade integraler}
+För generaliserade integraler med positiv integrand gäller att om den inre enkelintegralen är konvergent, är dubbelintegralen konvergent om och endast om den yttre enkelintegralen är konvergent.
+
+\proof
+
+\paragraph{Ordningsbyte i generaliserade integraler}
+Låt dubbelintegralen av $f$ över $D$ vara så att både den yttre och inre integralen är konvergent. Då kan man byta ordning på integralen.
+
+\proof
+
+\paragraph{Konvergens av dubbelintegraler av funktioner med varierande tecken}
+$\iint_{\Omega}f(x, y)\dd{x}\dd{y}$ är konvergent om och endast om $\iint_{\Omega}\abs{f(x, y)}\dd{x}\dd{y}$ är konvergent.
+
+\proof
+
+\paragraph{Volym av $n$-dimensionella enhetsklotet}
+Låt $B_n$ vara enhetsklotet i $\R^n$. Detta uppfyller
+\begin{align*}
+	\mu (B_n) = \frac{2\pi}{n}\mu (B_{n - 2}).
+\end{align*}
+
+\proof
+\begin{align*}
+	\mu (B_n) &= \int_{B_n}\dd{\vect{x}} \\
+	          &= \idotsint\limits_{x_1^2 + \dots + x_{n -2}^2\leq 1}\left(\iint\limits_{x_{n - 1}^2 + x_n^2\leq 1 - (x_1^2 + \dots + x_{n -2}^2)}\dd{x_{n -1}}\dd{x_n}\right)\dd{x_1}\dots\dd{x_{n - 2}} \\
+	          &= \int\limits_{B_{n - 2}}\pi(1 - (x_1^2 + \dots + x_{n -2}^2))\dd{x_1}\dots\dd{x_{n - 2}} \\
+	          &= \int\limits_{0}^{1}\pi (1 - r^2)\deval{V}{r}{r}\dd{r}
+\end{align*}
+där $V(r) = r^{n - 2}\mu (B_{n - 2})$. Detta ger
+\begin{align*}
+	\mu (B_n) &= \pi (n - 2)\mu (B_{n - 2})\int\limits_{0}^{1}(1 - r^2)e^{n - 3}\dd{r} \\
+	          &= \pi (n - 2)\mu (B_{n - 2})\left(\frac{1}{n - 2} - \frac{1}{n}\right) \\
+	          &= \frac{2\pi}{n}\mu (B_{n - 2}).
+\end{align*}
+
+\begin{align*}
+	\inteval{D}{f}{{x, \dots ,z}}
+\end{align*}
