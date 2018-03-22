@@ -1,0 +1,41 @@
+\section{Grunläggande koncept inom slump}
+
+\subsection{Definitioner}
+
+\paragraph{Slumpförsök}
+Ett slumpförsök är en experiment där resultatet ej kan avgöras på förhand.
+
+\paragraph{Utfall}
+Ett utfall är resultatet av ett slumpförsök.
+
+\paragraph{Utfallsrum}
+Ett utfallsrum, betecknad $\Omega$, är mängden av alla möjliga utfall för ett givet slumpförsök.
+
+\paragraph{Händelser}
+En händelse är en uppsättning intressanta utfall, alltså en delmängd av utfallsrummet, och betecknas $A, B, C, \dots$.
+
+\paragraph{Sannolikheter}
+Sannolikheten för en given händelse $A$ uppfyller följande axiom:
+\begin{itemize}
+	\item För varje $A$ gäller det att $0\leq P(A)\leq 1$.
+	\item För hela $\Omega$ gäller att $P(\Omega) = 1$.
+	\item Om $A_1, A_2, \dots$ är en följd av parvis disjunkta händelser så gäller att $P(A_1\cup A_2\cup\dots) = \sum P(A_i)$.
+\end{itemize}
+
+\paragraph{Disjunkta händelser}
+Två händelser $A, B$ är disjunkta om $A\cap B = \emptyset$.
+
+\subsection{Satser}
+
+\paragraph{de Morgans lagar}
+När man ska hitta komplement till komplicerade mängder, byta alla delmängder med deras komplement och alla unioner $(\cup)$ till snitt $(\cap)$, och motsatt.
+
+\paragraph{Regler för sannolikhetskalkyl}
+\begin{align*}
+	P(A*) = 1 - P(A), \\
+	P(B) = P(B\cap A) + P(B\cap A*), \\
+	P(A\cup B) = P(A) + P(B) - P(A\cap B)
+\end{align*}
+
+\proof
+Följer från mängdlära.
