@@ -1,6 +1,11 @@
 \documentclass[a4paper, 11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+
+\newcommand{\integ}[3]{\int\limits_{#1}#2\cdot\dd{#3}}
+\newcommand{\rot}[1]{\text{rot}#1}
 
 \title{Sammanfattning av}
 \author{Yashar Honarmandi}
@@ -25,6 +30,8 @@
 
 \pagenumbering{arabic}
 
-\twocolumn
+\input{./Parts/integrals.tex}
+
+\input{./Parts/index.tex}
 
 \end{document}

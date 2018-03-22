@@ -1,0 +1,29 @@
+\section{Integraler}
+
+\paragraph{Linjeintegraler}
+En linjeintegral skrivs på formen
+\begin{align*}
+	\integ{C}{\vb{v}}{\vb{r}}.
+\end{align*}
+Det representerar hur mycket av ett vektorfält som är parallellt med en bana i rummet. Om det låter oklart, tänk att vektorfältet $\vb{v}$ puttar på en partikel som rär sig längs med banan $C$.
+
+\paragraph{Rotation}
+Från en linjeintegral kan rotationen definieras som
+\begin{align*}
+	\rot{\vb{v}}\cdot\vb{n} = \lim\limits_{A\to 0}\frac{1}{A}\integ{C}{\vb{v}}{\vb{r}},
+\end{align*}
+där $A$ är arean som omslutas av kurvan $C$ och $\vb{n}$ är normal på $C$. Denna tolkas fysikalisk som tätheten av virvlar i fältet $\vb{v}$ som roterar normalt på $\vb{n}$.
+
+\paragraph{Flödesintegraler}
+En flödesintegral skrivs på formen
+\begin{align*}
+	\integ{S}{\vb{v}}{\vb{S}}.
+\end{align*}
+Den representerar hur mycket av ett vektorfält som flöder genom ytan $S$.
+
+\paragraph{Divergens}
+Från en flödesintegral kan divergensen definieras som
+\begin{align*}
+	\div{\vb{v}} = \lim\limits_{V\to 0}\frac{1}{V}\integ{V}{\vb{v}}{\vb{S}},
+\end{align*}
+där $V$ är volymen som omslutas av ytan $S$. Denna tolkas fysikalisk som tätheten av källor till fältet $\vb{v}$.
