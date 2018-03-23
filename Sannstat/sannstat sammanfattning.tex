@@ -1,8 +1,10 @@
 \documentclass[a4paper, 11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
+\usepackage{amsmath}
 
 \newcommand{\proof}{\subparagraph{Bevis}}
+\newcommand{\given}[1][]{\:#1\vert\:}
 
 \title{Sammanfattning av}
 \author{Yashar Honarmandi}
@@ -27,6 +29,8 @@
 
 \pagenumbering{arabic}
 
-\twocolumn
+\input{./Parts/randomness.tex}
+
+\input{./Parts/combinatorics.tex}
 
 \end{document}

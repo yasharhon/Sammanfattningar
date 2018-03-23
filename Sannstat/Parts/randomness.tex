@@ -25,6 +25,26 @@ Sannolikheten för en given händelse $A$ uppfyller följande axiom:
 \paragraph{Disjunkta händelser}
 Två händelser $A, B$ är disjunkta om $A\cap B = \emptyset$.
 
+\paragraph{Betingade sannolikheter}
+Sannolikheten $P(B\given A)$ är sannolikheten för att $B$ händer givet att $A$ har händt, och definieras som
+\begin{align*}
+	P(B\given A) = \frac{P(A\cap B)}{P(A)}.
+\end{align*}
+För tre händelser definieras det som
+\begin{align*}
+	P(A\cap B\cap C) = P(A)P(B\given A)P(C\given (A\cap B))
+\end{align*}
+och motsvarande för flere händelser.
+
+\paragraph{Oberoende händelser}
+Två händelser är oberoende om $P(A\cap B) = P(A)P(B)$. Detta generaliseras till tre händelser om
+\begin{align*}
+	P(A\cap B) = P(A)P(B), \\
+	P(A\cap C) = P(A)P(C), \\
+	P(B\cap C) = P(B)P(C), \\
+	P(A\cap B\cap C) = P(A)P(B)P(C).
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{de Morgans lagar}
@@ -39,3 +59,27 @@ När man ska hitta komplement till komplicerade mängder, byta alla delmängder 
 
 \proof
 Följer från mängdlära.
+
+\paragraph{Lagen om total sannolikhet}
+Låt $H_1, \dots, H_n$ vara parvis oförenliga och låt $\bigcup\limits_{i = 1}^{n}H_i = \Omega$. Då gäller att
+\begin{align*}
+	P(A) = \sum\limits_{i = 1}^{n}P(H_i)P(A\given H_i).
+\end{align*}
+
+\proof
+
+\paragraph{Bayes' sats}
+Låt $H_1, \dots, H_n$ vara parvis oförenliga och låt $\bigcup\limits_{i = 1}^{n}H_i = \Omega$. Då gäller att
+\begin{align*}
+	P(H_i\given A) = \frac{P(H_i)P(A\given H_i)}{\sum P(H_j)P(A\given H_j)}.
+\end{align*}
+
+\proof
+
+\paragraph{Oberoende händelser där minst en inträffer}
+Låt $A_1, \dots, A_n$ vara oberoende och $P(A_i) = p_i$. Då ges sannolikheten för att minst en av dessa händer av
+\begin{align*}
+	1 - \prod\limits_{i = 1}^{n}(1 - p_i).
+\end{align*}
+
+\proof
