@@ -41,4 +41,23 @@ ej beror av integrationsvägen. För konservativa krafter inför vi den potentie
 \begin{align*}
 	V(\vb{r}) = -\int\limits_{\vb{r}_0}^{\vb{r}}\vb{F}\cdot\dd{\vb{r}},
 \end{align*}
-där $\vb{r}_0$ är ortsvektorn till en referenspunkt för potentialen. För en sådan är arbetet kraften gör längs med en sluten väg lika med $0$.
+där $\vb{r}_0$ är ortsvektorn till en referenspunkt för potentialen. För en sådan är arbetet kraften gör längs med en sluten väg lika med $0$. %Bevis?
+
+\paragraph{Energilagen}
+Betrakta arbetet
+\begin{align*}
+	U_{1 - 2} = \linteg{\vb{r}_1}{\vb{r}_2}{\vb{F}}{\vb{r}}.
+\end{align*}
+Vi går via en referenspunkt och får
+\begin{align*}
+	U_{1 - 2} = \linteg{\vb{r}_1}{\vb{r}_0}{\vb{F}}{\vb{r}} + \linteg{\vb{r}_0}{\vb{r}_2}{\vb{F}}{\vb{r}} = -\linteg{\vb{r}_0}{\vb{r}_1}{\vb{F}}{\vb{r}} + \linteg{\vb{r}_0}{\vb{r}_2}{\vb{F}}{\vb{r}} = V(\vb{r}_1) - V(\vb{r}_2).
+\end{align*}
+Vi jämför med det motsvarande resultatet för kinetisk energi och får
+\begin{align*}
+	T_2 - T_1 = V_1 - V_2\implies T_1 + V_1 = T_2 + V_2.
+\end{align*}
+Vi inför den totala energin
+\begin{align*}
+	E = T + V
+\end{align*}
+och ser att den är konstant i ett konservativt kraftfält.
