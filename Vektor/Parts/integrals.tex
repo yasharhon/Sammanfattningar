@@ -1,4 +1,4 @@
-\section{Integraler}
+\section{Integraler och derivator}
 
 \paragraph{Linjeintegraler}
 En linjeintegral skrivs på formen
@@ -27,3 +27,20 @@ Från en flödesintegral kan divergensen definieras som
 	\div{\vb{v}} = \lim\limits_{V\to 0}\frac{1}{V}\integ{V}{\vb{v}}{\vb{S}},
 \end{align*}
 där $V$ är volymen som omslutas av ytan $S$. Denna tolkas fysikalisk som tätheten av källor till fältet $\vb{v}$.
+
+\paragraph{Potentialer}
+Potentialer förekommer i två former: skalärpotentialer och vektorpotentialer.
+
+Ett vektorfält har ett skalärpotential om det kan skrivas som $\grad{f}$ för någon funktion $f$, som då betecknas som potentialet. För sådana fält gäller att $\rot{\vb{v}} = \vb{0}$. Ett vektorfält har ett vektorpotentiale om det kan skrivas som $\rot{\vb{A}}$ för något vektorfält $\vb{A}$, som betecknas vektorpotentialet. För sådana fält gäller att $\div{\vb{v}} = 0$.
+
+Om ett vektorfält kan skrivas som en derivata på några av dessa två sätten, är det ekvivalent med att fältet har en potential.
+
+\paragraph{Gauss' sats}
+\begin{align*}
+	\integ{\bound{V}}{\vb{v}}{\dd{\vb{S}}} = \integ{V}{\div{\vb{v}}}{\dd{V}}
+\end{align*}
+
+\paragraph{Stokes' sats}
+\begin{align*}
+	\integ{\bound{S}}{\vb{v}}{\dd{\vb{r}}} = \integ{S}{\rot{\vb{v}}}{\dd{\vb{S}}}
+\end{align*}
