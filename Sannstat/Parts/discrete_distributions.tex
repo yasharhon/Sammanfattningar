@@ -1,0 +1,45 @@
+\section{Diskreta sannolikhetsfunktioner}
+
+\paragraph{Enpunktsfördelningen}
+Enpunktsfördelningen ges av $p(a) = 1$ och $p(x) = 0, x\neq a$.
+
+\paragraph{Tvåpunktsfördelningen}
+Tvåpunktsfördelningen ges av $p(a) = p$, $p(b) = 1 - p$ och $p(x) = 0, x\neq a, b$.
+
+\paragraph{Likformiga fördelningen}
+Om $X$ antar $m$ olika värden, är $p(x) = \frac{1}{m}$ för dessa värden och $0$ annars.
+
+\paragraph{För-första-gången-fördelningen}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = (1 - p)^{k - 1}p.
+\end{align*}
+Om en stokastisk variabl är fördelat så, skrivs det som $X\in\text{ffg}(p)$.
+
+\paragraph{Geometrisk fördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = (1 - p)^{k}p.
+\end{align*}
+Om en stokastisk variabl är fördelat så, skrivs det som $X\in\text{Ge}(p)$.
+
+\paragraph{Binomisk fördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = \binom{n}{k}p^{k}(1 - p)^{n - k}.
+\end{align*}
+Om en stokastisk variabl är fördelat så, skrivs det som $X\in\text{Bin}(n, p)$.
+
+\paragraph{Hypergeometrisk fördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = \frac{\binom{K}{k}\binom{N - K}{n - k}}{\binom{N}{n}}.
+\end{align*}
+Om en stokastisk variabl är fördelat så, skrivs det som $X\in\text{Hyp}(N, n, K)$, där det kanske är andra variabler som är specifierat i notationen.
+
+\paragraph{Poissonfördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = \frac{\mu^k}{k!}e^{-\mu}.
+\end{align*}
+Om en stokastisk variabl är fördelat så, skrivs det som $X\in\text{Po}(\mu)$. Fun fact: Poisson betyder fisk på franska.
