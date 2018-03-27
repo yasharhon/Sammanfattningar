@@ -5,13 +5,27 @@
 \paragraph{Stokastiska variabler}
 En stokastisk variabel är en funktion definierad på ett utfallsrum.
 
-\paragraph{Diskret stokastiska variabler}
+\paragraph{Diskreta stokastiska variabler}
 En stokastisk variabel är diskret om den kan anta ett ändligt eller uppräkneligt oändligt antal värden.
 
+\paragraph{Kontinuerliga stokastiska variabler}
+En stokastisk variabel är kontinuerlig om det finns en funktion $f$ så att
+\begin{align*}
+	P(X\in A) = \integ{A}{}{f}{x}\forall A.
+\end{align*}
+
 \paragraph{Sannolikhetsfunktioner}
-Låt $X$ vara en stokastisk variabel. Då definieras sannolikhetsfunktionen som
+Låt $X$ vara en diskret stokastisk variabel. Då definieras sannolikhetsfunktionen som
 \begin{align*}
 	p(k) = P(X = k).
+\end{align*}
+För kontinuerliga stokastiska variabler definieras den enligt
+\begin{align*}
+	P(X\in A) = \integ{A}{}{f}{x}
+\end{align*}
+och uppfyller $f(x)\geq 0\ \forall\ x$ och
+\begin{align*}
+	\integ{\R}{}{f}{x} = 1.
 \end{align*}
 
 \paragraph{Fördelningsfunktioner}
@@ -21,6 +35,10 @@ Låt $X$ vara en stokastisk variabel. Funktionen $F: x\to P(X\leq x)$ är förde
 Låt $X$ vara en stokastisk variabel med sannolikhetsfunktion $p$. Då definieras variabelns väntevärde som
 \begin{align*}
 	\expec{E} = \sum kp(k).
+\end{align*}
+För en kontinuerlig stokastisk variabel definieras det som
+\begin{align*}
+	\expec{E} = \integ{\R}{}{xf(x)}{x}.
 \end{align*}
 
 \paragraph{Varians}
@@ -41,6 +59,13 @@ Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikels
 	R = \frac{\sigma}{\mu}.
 \end{align*}
 
+\paragraph{Kvantiler}
+Lösningen till
+\begin{align*}
+	F(x) = 1 - \alpha
+\end{align*}
+kallas $\alpha$-kvantilen till $X$.
+
 \subsection{Satser}
 
 \paragraph{Fördelningsfunktioners egenskaper}
@@ -54,7 +79,7 @@ Låt $F$ vara en fördelningsfunktion. Då gäller att
 			1, x\to\infty.
 		\end{cases}
 	\end{align*}
-	\item $F$ är växande.
+	\item $F$ är växande (eller icke-avtagande för kontinuerliga stokastiska variabler).
 	\item $F$ är kontinuerlig till höger för varje $X$.
 \end{itemize}
 Omvänt gäller även att alla funktioner som uppfyller dessa egenskaper är fördelningsfunktioner.
@@ -70,10 +95,10 @@ Låt $F$ vara en fördelningsfunktion för variabeln $X$. Då gäller att
 \proof
 
 \paragraph{Fördelningsfunktioner och sannolikhetsfunktioner}
-Låt $F$ och $p$ vara fördelnings- respektiva sannolikhetsfunktionen till en stokastisk variabel $X$. Då gäller att
+Låt $F$ och $p$ vara fördelnings- respektiva sannolikhetsfunktionen till en diskret stokastisk variabel $X$. Då gäller att
 \begin{align*}
-	F(x) = \sum\limits_{j\leq x}p(j), \\
-	p(x) =
+	F(x) &= \sum\limits_{j\leq x}p(j), \\
+	p(x) &=
 	\begin{cases}
 		F(x), x = 0, \\
 		F(x) - F(x - 1), \text{annars}.
@@ -81,6 +106,12 @@ Låt $F$ och $p$ vara fördelnings- respektiva sannolikhetsfunktionen till en st
 \end{align*}
 
 \proof
+
+\paragraph{Fördelningsfunktioner och täthetsfunktioner}
+Låt $F$ och $f$ vara fördelnings- respektiva täthetsfunktionen till en kontinuerlig stokastisk variabel $X$ och låt $f$ vara kontinuerlig i $x$. Då gäller att
+\begin{align*}
+	\dv{F}{x} (x) = f(x).
+\end{align*}
 
 \paragraph{Normalisering av sannolikhetsfunktioner}
 Låt $p$ vara en sannolikhetsfunktion. Då gäller att
