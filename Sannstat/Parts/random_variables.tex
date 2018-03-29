@@ -11,13 +11,28 @@ En stokastisk variabel är diskret om den kan anta ett ändligt eller uppräknel
 \paragraph{Kontinuerliga stokastiska variabler}
 En stokastisk variabel är kontinuerlig om det finns en funktion $f$ så att
 \begin{align*}
-	P(X\in A) = \integ{A}{}{f}{x}\forall A.
+	P(X\in A) = \integ{A}{}{f}{x}\forall A,
 \end{align*}
+eller motsvarande i flera variabler.
 
 \paragraph{Sannolikhetsfunktioner}
 Låt $X$ vara en diskret stokastisk variabel. Då definieras sannolikhetsfunktionen som
 \begin{align*}
 	p(k) = P(X = k).
+\end{align*}
+
+\paragraph{Täthetsfunktioner}
+Låt $X$ vara en kontinuerlig stokastisk variabel. Då definieras täthetsfunktionen som en funktion $f$ som uppfyller
+\begin{align*}
+	P(X\in A)          &= \integ{A}{}{f}{x}\ \forall\ A, \\
+	f(x)               &\geq 0\ \forall\ x, \\
+	\integ{\R}{}{f}{x} &= 1.
+\end{align*}
+
+\paragraph{Sannolikhetsfunktioner i flera variabler}
+Låt $(X, Y)$ vara en diskret stokastisk variabel. Då definieras sannolikhetsfunktionen som
+\begin{align*}
+	p(j, k) = P(X = j, Y = k).
 \end{align*}
 För kontinuerliga stokastiska variabler definieras den enligt
 \begin{align*}
@@ -28,8 +43,39 @@ och uppfyller $f(x)\geq 0\ \forall\ x$ och
 	\integ{\R}{}{f}{x} = 1.
 \end{align*}
 
+\paragraph{Täthetsfunktioner i flera variabler}
+Låt $(X, Y)$ vara en kontinuerlig stokastisk variabel. Då definieras täthetsfunktionen som en funktion $f$ som uppfyller
+\begin{align*}
+	P(X\in A)            &= \int\limits_{A}f(x, y)\dd{x}\dd{y}\ \forall\ A, \\
+	f(x, y)              &\geq 0\ \forall\ x, y, \\
+	\integ{\R^2}{}{f}{x} &= 1.
+\end{align*}
+
 \paragraph{Fördelningsfunktioner}
 Låt $X$ vara en stokastisk variabel. Funktionen $F: x\to P(X\leq x)$ är fördelningsfunktionen för $X$.
+
+\paragraph{Fördelningsfunktioner i flera variabler}
+Låt $(X, Y)$ vara en tvådimensionell stokastisk variabel. Funktionen $F_{X, Y}: (x, y)\to P(X\leq x, Y\leq y)$ är den simultana fördelningsfunktionen för $(X, Y)$.
+
+\paragraph{Marginalfördelningar}
+Låt $p_{X, Y}$ vara sannolikhetsfunktionen till den stokastiska variabeln $(X, Y)$. Marginalfördelningnen $p_{X}$ till $X$ definieras då som
+\begin{align*}
+	p_{X}(j) = \sum\limits_{k}p(j, k)
+\end{align*}
+i det kontinuerliga fallet och
+\begin{align*}
+	f_{X}(x) = \int\limits_{\R}f(x, y)\dd{y}.
+\end{align*}
+En konsekvens av definitionen i det kontinuerliga fallet är
+\begin{align*}
+	F_{X}(x) = \lim\limits_{y\to\infty}f(x, y).
+\end{align*}
+
+\paragraph{Oberoende stokastiska variabler}
+Variablerna $X, Y$ är oberoende om
+\begin{align*}
+	P(X\in C, Y\in D) = P(X\in C)P(Y\in D)\ \forall\ C, D.
+\end{align*}
 
 \paragraph{Väntevärde}
 Låt $X$ vara en stokastisk variabel med sannolikhetsfunktion $p$. Då definieras variabelns väntevärde som
@@ -104,13 +150,22 @@ Låt $F$ och $p$ vara fördelnings- respektiva sannolikhetsfunktionen till en di
 		F(x) - F(x - 1), \text{annars}.
 	\end{cases}
 \end{align*}
+En motsvarande relation till första ekvationen gäller även för sannolikhets- och fördelningsfunktioner i flera variabler.
 
 \proof
 
 \paragraph{Fördelningsfunktioner och täthetsfunktioner}
 Låt $F$ och $f$ vara fördelnings- respektiva täthetsfunktionen till en kontinuerlig stokastisk variabel $X$ och låt $f$ vara kontinuerlig i $x$. Då gäller att
 \begin{align*}
-	\dv{F}{x} (x) = f(x).
+	F(x)          &= \integ{-\infty}{x}{f}{u}, \\
+	\dv{F}{x} (x) &= f(x).
+\end{align*}
+
+\paragraph{Fördelningsfunktioner och täthetsfunktioner i flera variabler}
+Låt $F$ och $f$ vara fördelnings- respektiva täthetsfunktionen till en kontinuerlig stokastisk variabel $(X, Y)$ och låt $f$ vara kontinuerlig i $(x, y)$. Då gäller att
+\begin{align*}
+	F(x, y)          &= \int_{-\infty}{x}\int_{-\infty}{y}f(u, v)\dd{u}\dd{v}, \\
+	\pdv{F}{x}{y} (x, y) &= f(x, y).
 \end{align*}
 
 \paragraph{Normalisering av sannolikhetsfunktioner}
@@ -137,8 +192,9 @@ Låt $X$ vara en stokastisk variabel. Då har den stokastiska variabeln $Y = g(X
 \paragraph{Väntevärde för funktioner av stokastiska variabler}
 Låt $X$ vara en stokastisk variabel med sannolikhetsfunktion $p_{X}$. Då ges väntevärdet till $g(X)$ av
 \begin{align*}
-	\expec{g(X)} = \sum g(k)p_{X}(k).
+	\expec{g(X)} = \sum g(k)p_{X}(k),
 \end{align*}
+med en motsvarande relation i det kontinuerliga fallet och i det flerdimensionella fallet.
 
 \proof
 
@@ -146,6 +202,30 @@ Låt $X$ vara en stokastisk variabel med sannolikhetsfunktion $p_{X}$. Då ges v
 Låt $X$ vara en stokastisk variabel med väntevärde $\mu$. Då ges variansen till $X$ av
 \begin{align*}
 	\sigma^2 = \expec{X^2} - \mu^2.
+\end{align*}
+
+\proof
+
+\paragraph{Oberoende variabler och funktioner}
+$X, Y$ är oberoende om
+\begin{align*}
+	F_{X, Y}(x, y) = F_{X}(x)F_{Y}(y)
+\end{align*}
+eller
+\begin{align*}
+	p_{X, Y}(j, k) = p_{X}(j)p_{Y}(k)
+\end{align*}
+i det diskreta fallet och
+\begin{align*}
+	f_{X, Y}(x, y) = f_{X}(x)f_{Y}(y).
+\end{align*}
+
+\proof
+
+\paragraph{Oberoende variabler och väntevärde av produktet}
+Låt $X, Y$ vara oberoende. Då gäller att
+\begin{align*}
+	\expec{XY} = \expec{X}\expec{Y}.
 \end{align*}
 
 \proof
