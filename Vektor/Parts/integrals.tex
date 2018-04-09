@@ -10,7 +10,7 @@ Det representerar hur mycket av ett vektorfält som är parallellt med en bana i
 \paragraph{Rotation}
 Från en linjeintegral kan rotationen definieras som
 \begin{align*}
-	\rot{\vb{v}}\cdot\vb{n} = \lim\limits_{A\to 0}\frac{1}{A}\integ{C}{\vb{v}}{\vb{r}},
+	\curl{\vb{v}}\cdot\vb{n} = \lim\limits_{A\to 0}\frac{1}{A}\integ{C}{\vb{v}}{\vb{r}},
 \end{align*}
 där $A$ är arean som omslutas av kurvan $C$ och $\vb{n}$ är normal på $C$. Denna tolkas fysikalisk som tätheten av virvlar i fältet $\vb{v}$ som roterar normalt på $\vb{n}$.
 
@@ -31,7 +31,7 @@ där $V$ är volymen som omslutas av ytan $S$. Denna tolkas fysikalisk som täth
 \paragraph{Potentialer}
 Potentialer förekommer i två former: skalärpotentialer och vektorpotentialer.
 
-Ett vektorfält har ett skalärpotential om det kan skrivas som $\grad{f}$ för någon funktion $f$, som då betecknas som potentialet. För sådana fält gäller att $\rot{\vb{v}} = \vb{0}$. Ett vektorfält har ett vektorpotentiale om det kan skrivas som $\rot{\vb{A}}$ för något vektorfält $\vb{A}$, som betecknas vektorpotentialet. För sådana fält gäller att $\div{\vb{v}} = 0$.
+Ett vektorfält har ett skalärpotential om det kan skrivas som $\grad{f}$ för någon funktion $f$, som då betecknas som potentialet. För sådana fält gäller att $\curl{\vb{v}} = \vb{0}$. Ett vektorfält har ett vektorpotentiale om det kan skrivas som $\curl{\vb{A}}$ för något vektorfält $\vb{A}$, som betecknas vektorpotentialet. För sådana fält gäller att $\div{\vb{v}} = 0$.
 
 Om ett vektorfält kan skrivas som en derivata på några av dessa två sätten, är det ekvivalent med att fältet har en potential.
 
@@ -42,5 +42,5 @@ Om ett vektorfält kan skrivas som en derivata på några av dessa två sätten,
 
 \paragraph{Stokes' sats}
 \begin{align*}
-	\integ{\bound{S}}{\vb{v}}{\dd{\vb{r}}} = \integ{S}{\rot{\vb{v}}}{\dd{\vb{S}}}
+	\integ{\bound{S}}{\vb{v}}{\dd{\vb{r}}} = \integ{S}{\curl{\vb{v}}}{\dd{\vb{S}}}
 \end{align*}

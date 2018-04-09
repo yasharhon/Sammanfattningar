@@ -2,6 +2,33 @@
 
 I indexräkning använder man beteckningen
 \begin{align*}
-	\vb{a} = \sum a_i\vb{e}_i = a_i\vb{e}_i.
+	\vb{a} = \sum a_i\vb{e}_i = a_i\vb{e}_i,
 \end{align*}
-Indexet $i$ dyker upp två gånger, och därmed är konventionen att man summerar upp till dimensionaliteten.
+vilket förkortas till
+\begin{align*}
+	[\vb{a}]_i = a_i.
+\end{align*}
+Det är konvention att summan över $i$ görs från $1$ till $3$.
+
+Derivator är intressanta att göra även med indexräkning, och då använder vi beteckningen
+$\pdv{x_i} = \del{i}$.
+
+En viktig grej som dyker upp i indexräkning-samanhang är Levi-Civitas symbol, definierat som $\varepsilon_{i_1, \dots, i_n} = 1$ när $(i_1, \dots, i_n) = (1, \dots, n)$ eller när indexerna är en jämn permutation av denna första kombinationen, $-1$ om indexerna är en udda permutation av den första kombinationen och $0$ annars. Vad är jämna och udda permutationer? En permutation är jämn om den fås vid att byta plats på två element ett jämnt antal gånger, och en motsvarande definition gäller för udda permutationer.
+
+En annan viktig grej är Kronecker-deltat, definierat som
+\begin{align*}
+	\delta_{ij} =
+	\begin{cases}
+		1, i = j, \\
+		0, i\neq j.
+	\end{cases}
+\end{align*}
+
+Några viktiga konsekvenser av detta är
+\begin{align*}
+	\vb{a}\cdot\vb{b}      &= a_ib_i, \\
+	[\vb{a}\times\vb{b}]_i &= \leci{ijk}a_jb_k, \\
+	[\grad{\phi}]_i        &= \del{i}{\phi}, \\
+	\div{\vb{v}}           &= \del{i}{v_i}, \\
+	[\curl{\vb{v}}]_i      &= \leci{ijk}\del{j}{b_k}.
+\end{align*}
