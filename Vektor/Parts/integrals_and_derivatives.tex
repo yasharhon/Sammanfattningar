@@ -3,28 +3,28 @@
 \paragraph{Linjeintegraler}
 En linjeintegral skrivs på formen
 \begin{align*}
-	\integ{C}{\vb{v}}{\vb{r}}.
+	\vinteg{C}{\vb{v}}{\vb{r}}.
 \end{align*}
 Det representerar hur mycket av ett vektorfält som är parallellt med en bana i rummet. Om det låter oklart, tänk att vektorfältet $\vb{v}$ puttar på en partikel som rär sig längs med banan $C$.
 
 \paragraph{Rotation}
 Från en linjeintegral kan rotationen definieras som
 \begin{align*}
-	\curl{\vb{v}}\cdot\vb{n} = \lim\limits_{A\to 0}\frac{1}{A}\integ{C}{\vb{v}}{\vb{r}},
+	\curl{\vb{v}}\cdot\vb{n} = \lim\limits_{A\to 0}\frac{1}{A}\vinteg{C}{\vb{v}}{\vb{r}},
 \end{align*}
 där $A$ är arean som omslutas av kurvan $C$ och $\vb{n}$ är normal på $C$. Denna tolkas fysikalisk som tätheten av virvlar i fältet $\vb{v}$ som roterar normalt på $\vb{n}$.
 
 \paragraph{Flödesintegraler}
 En flödesintegral skrivs på formen
 \begin{align*}
-	\integ{S}{\vb{v}}{\vb{S}}.
+	\vinteg{S}{\vb{v}}{\vb{S}}.
 \end{align*}
 Den representerar hur mycket av ett vektorfält som flöder genom ytan $S$.
 
 \paragraph{Divergens}
 Från en flödesintegral kan divergensen definieras som
 \begin{align*}
-	\div{\vb{v}} = \lim\limits_{V\to 0}\frac{1}{V}\integ{V}{\vb{v}}{\vb{S}},
+	\div{\vb{v}} = \lim\limits_{V\to 0}\frac{1}{V}\vinteg{V}{\vb{v}}{\vb{S}},
 \end{align*}
 där $V$ är volymen som omslutas av ytan $S$. Denna tolkas fysikalisk som tätheten av källor till fältet $\vb{v}$.
 
@@ -35,12 +35,31 @@ Ett vektorfält har ett skalärpotential om det kan skrivas som $\grad{f}$ för 
 
 Om ett vektorfält kan skrivas som en derivata på några av dessa två sätten, är det ekvivalent med att fältet har en potential.
 
+\paragraph{Laplaceoperatorn}
+Vi definierar Laplaceoperatorn för skalärer och vektorer som
+\begin{align*}
+	\laplace{f}      &= \div{\grad{f}}, \\
+	\laplace{\vb{v}} &= \grad{\div{\vb{v}}} - \curl{\curl{\vb{v}}}.
+\end{align*}
+
 \paragraph{Gauss' sats}
 \begin{align*}
-	\integ{\bound{V}}{\vb{v}}{\dd{\vb{S}}} = \integ{V}{\div{\vb{v}}}{\dd{V}}
+	\vinteg{\bound{V}}{\vb{v}}{\vb{S}} = \integ{V}{V}{\div{\vb{v}}}
 \end{align*}
 
 \paragraph{Stokes' sats}
 \begin{align*}
-	\integ{\bound{S}}{\vb{v}}{\dd{\vb{r}}} = \integ{S}{\curl{\vb{v}}}{\dd{\vb{S}}}
+	\vinteg{\bound{S}}{\vb{v}}{\vb{r}} = \vinteg{S}{\curl{\vb{v}}}{\vb{S}}
 \end{align*}
+
+\paragraph{Gauss' sats på universalform}
+\begin{align*}
+	\integ{\bound{V}}{S_i}{f} = \integ{V}{V}{\del{i}{f}}.
+\end{align*}
+$f$ kan nu vara vad som helst.
+
+\paragraph{Stokes' sats på universalform}
+\begin{align*}
+	\integ{S}{S_i}{\leci{ijk}\del{j}{f}} = \integ{\bound{S}}{x_k}{f}.
+\end{align*}
+$f$ kan vara vad som helst.
