@@ -105,12 +105,30 @@ Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikels
 	R = \frac{\sigma}{\mu}.
 \end{align*}
 
+\paragraph{Kovarians}
+Låt $X, Y$ vara stokastiska variablerm ed väntevärden $\mu_{X}, \mu_{Y}$. Då definieras kovariansen mellan dessa som
+\begin{align*}
+	\cov{X}{Y} = \expec{(X - \mu_{X})(Y - \mu_{Y})}.
+\end{align*}
+
+\paragraph{Okorrellerade variabler}
+$X, Y$ är okorrelerade om $\cov{X}{Y} = 0$.
+
+\paragraph{Korrelationskoefficient}
+Låt $X, Y$ vara stokastiska variabler. Då definieras korrelationskoefficienten mellan dessa som
+\begin{align*}
+	\rho(X, Y) = \frac{\cov{X}{Y}}{\var{X}\var{Y}}.
+\end{align*}
+
 \paragraph{Kvantiler}
 Lösningen till
 \begin{align*}
 	F(x) = 1 - \alpha
 \end{align*}
 kallas $\alpha$-kvantilen till $X$.
+
+\paragraph{Standardiserade stokastiska variabler}
+Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikelse $\sigma$. Då är $Y = \frac{X - \mu}{sigma}$ en standardiserad variabel.
 
 \subsection{Satser}
 
@@ -206,6 +224,26 @@ Låt $X$ vara en stokastisk variabel med väntevärde $\mu$. Då ges variansen t
 
 \proof
 
+\paragraph{Förenklad formel för kovarians}
+Låt $X, Y$ vara stokastiska variabler. Då ges kovariansen till dessa av
+\begin{align*}
+	\cov{X}{Y} = \expec{XY} - \expec{X}\expec{Y}.
+\end{align*}
+
+\proof
+
+\paragraph{Väntevärde för linjärkombination av variabler}
+\begin{align*}
+	\expec{b + \sum a_iX_i} = b +\sum a_i\expec{X_i}.
+\end{align*}
+
+\proof
+
+\paragraph{Varians för linjärkombination av variabler}
+\begin{align*}
+	\var{b + \sum a_iX_i} = \sum a_i^2\var{X_i} + \sum\limits_{1\leq j < k}a_ja_k\cov{X_j}{X_k}.
+\end{align*}
+
 \paragraph{Oberoende variabler och funktioner}
 $X, Y$ är oberoende om
 \begin{align*}
@@ -229,3 +267,30 @@ Låt $X, Y$ vara oberoende. Då gäller att
 \end{align*}
 
 \proof
+
+\paragraph{Oberoende variabler och kovarians}
+Oberoende variabler är okorrelerade.
+
+\proof
+
+\paragraph{Stora talens lag}
+Låt $X_1, \dots, X_n$ vara likfördelade stokastiska variabler med samma väntevärde $\mu$ och inför variabeln $\overline{X} = \frac{1}{n}\sum X_i$. Då gäller att
+\begin{align*}
+	\lim\limits_{n\to\infty}P(\mu - \varepsilon < X < \mu + \varepsilon) = 1\ \forall\ \varepsilon.
+\end{align*}
+
+\proof
+
+\paragraph{Markovs olikhet}
+Låt $Y$ vara en stokastisk variabel och $a\geq 0, Y\geq 0$. Då gäller att
+\begin{align*}
+	P(Y\geq a))\leq\frac{\expec{Y}}{a}.
+\end{align*}
+
+\proof
+
+\paragraph{Tjebysjobs olikhet}
+Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikelse $\sigma$. Då gäller att
+\begin{align*}
+	P(\abs{X - \mu}\geq k\sigma)\leq\frac{1}{k^2}\ \forall\ k > 0.
+\end{align*}
