@@ -1,0 +1,52 @@
+\section{Koordinatsystem}
+
+Ett koordinatsystem kan tänkas på som en avbildning från $n$-dimensionella kartesiska koordinater till andra koordinater som beskrivs av parametrar $u_1, \dots, u_n$. Vi krävjer att avbildningen ska vara inverterbar.
+
+\paragraph{Ortogonalitet}
+Vi säjer att koordinatsystemet är ortogonalt om $\dv{\vb{r}}{u_i}\cdot\dv{\vb{r}}{u_j} = 0$ för alla $i\neq j$. En ekvivalent definition är att alla koordinatytor ska vara normala.
+
+\paragraph{Skalfaktorer}
+Koordinatsystemets skalfaktorer definieras som
+\begin{align*}
+	h_i = \abs{\dv{\vb{r}}{u_i}}.
+\end{align*}
+
+\paragraph{Enhetsvektorer}
+Koordinatsystemets enhetsvektorer definieras som
+\begin{align*}
+	\vb{e}_{u_i} = \frac{1}{h_i}\del{u_i}{\vb{r}}
+\end{align*}
+utan summation.
+
+\paragraph{Tillämpningar på linjeintegraler}
+Med detta kan vi skriva
+\begin{align*}
+	\dd{\vb{r}} = h_i\vb{e}_{u_i}\dd{u_i}.
+\end{align*}
+
+\paragraph{Tillämpningar på ytintegraler}
+Med detta kan vi skriva
+\begin{align*}
+	\dd{\vb{S}} = \pm\vb{e}_{u_3}hu_{1}\dd{u_{1}}hu_{2}\dd{u_{2}}.
+\end{align*}
+
+\paragraph{Tillämpningar på volymintegraler}
+Med detta kan vi skriva
+\begin{align*}
+	\dd{V} = \dd^3{\vb{r}} = \pdv{(x, y, z)}{(u_1, u_2, u_3)}\dd{u_1}\dd{u_2}\dd{u_3} = \prod\limits_{i = 1}^{3}h_{i}\dd{u_{i}}.
+\end{align*}
+
+\paragraph{Gradient i godtyckligt koordinatsystem}
+\begin{align*}
+	[\grad{f}]_i = \frac{1}{h_i}\del{u_i}{f}.
+\end{align*}
+
+\paragraph{Divergens i godtyckligt koordinatsystem}
+\begin{align*}
+	\div{\vb{v}} = \frac{1}{h_1h_2h_3}(\del{u_1}{v_{u_1}h_2h_3} + \del{u_2}{h_1v_{u_2}h_3} + \del{u_3}{h_1h_2v_{u_3}}).
+\end{align*}
+
+\paragraph{Rotation i godtyckligt koordinatsystem}
+\begin{align*}
+	[\curl{\vb{v}}]_i = \frac{1}{h_jh_k}\leci{ijk}\del{u_j}{h_kA_k}.
+\end{align*}
