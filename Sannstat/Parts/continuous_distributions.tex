@@ -1,0 +1,53 @@
+\section{Kontinuerliga sannolikhetsfunktioner}
+
+\paragraph{Standardnormalfördelningen}
+En standardiserad normalfördelning har täthetsfunktion
+\begin{align*}
+	\phi(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}
+\end{align*}
+och motsvarande fördelningsfunktion $\Phi$. Om en stokastisk variabel är fördelad så, skriver vi $X\in\text{N}(0,1)$.
+
+Vi definierar $\alpha$-kvantiler för en standardiserad normalfördelat variabel som $\lambda_\alpha$ så att
+\begin{align*}
+	P(X > \lambda_\alpha) = \alpha.
+\end{align*}
+
+\begin{itemize}
+	\item Väntevärde: $0$.
+	\item Varians: $1$.
+\end{itemize}
+
+\paragraph{Allmän normalfördelning}
+$X\in\text{N}(\mu, \sigma)$ om och endast om $Y = \frac{X - \mu}{\sigma}\in\text{N}(0, 1)$. Då gäller:
+\begin{align*}
+	f_X(x) = \frac{1}{\sigma}\phi\left(\frac{x - \mu}{\sigma}\right), F_X(x) = \Phi\left(\frac{x - \mu}{\sigma}\right).
+\end{align*}
+
+\begin{itemize}
+	\item Väntevärde: $\mu$.
+	\item Varians: $\sigma^2$.
+\end{itemize}
+
+\paragraph{Asymptotiskt normalfördelade variabler}
+Om $Z_n$ vara en oändlig följd av stokasitska variabler och det finns $A_n, B_n$ så att
+\begin{align*}
+	\lim\limits_{n\to\infty}P\left(a < \frac{Z_n - A_n}{B_n}\right) = \Phi(b) - \Phi(a)
+\end{align*}
+säjs $Z_n$ vara asymptotiskt normalfördelad. Beteckningen är $Z\in\text{AsN}(A_n, B_n)$.
+
+\subsection{Satser}
+
+\paragraph{Standardnormalfördelningens fördelningsfunktion och symmetri}
+Standardormalfördelningens fördelningsfunktion uppfyller
+\begin{align*}
+	\Phi(-x) = 1 - \Phi(x).
+\end{align*}
+
+\paragraph{Linjärkombinationer av normalfördelade variabler}
+Låt $X_1, \dots, X_n$ vara normalfördelade med väntevärde $\mu_i$ och varians $\sigma_i^2$. Då gäller att:
+\begin{align*}
+	\sum a_iX_i + b\in\text{N}\left(\sum a_i\mu_i + b, \sqrt{\sum a_i^2\sigma_i^2}\right).
+\end{align*}
+
+\paragraph{Fördelning av medelvärde}
+Låt $\bar{X} = \frac{1}{n}\sum X_i$ för oberoende och likafördelade $X_i$ med väntevärde $\mu$ och standardavvikelse $\sigma$. Då gäller att $\bar{X}\in\text{AsN}\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$.
