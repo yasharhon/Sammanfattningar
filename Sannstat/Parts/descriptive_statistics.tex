@@ -1,0 +1,58 @@
+\section{Deskriptiv statistik}
+Definitionerna som dyker upp i denna del kan virka redundanta, men det är underförstått att detta är punktskattningar av parametrar och inte själva parametrarna som definieras här.
+
+\subsection{Definitioner}
+
+\paragraph{Punktskattningar}
+En punktskattning av en parameter $\theta$ är en funktion av utfallen $x_1, \dots, x_n$ av dom stokastiska variablerna $X_1, \dots, X_n$ vars fördelning beror av $\theta$. Därmed är punktskattningen ett utfall av stickprovsvariabeln $\theta^*$.
+
+\paragraph{Väntevärdesriktighet}
+En punktskattning är väntevärdesriktig om $\expec{\theta^*} = \theta$.
+
+\paragraph{Konsistens}
+Punktskattningen $\theta^*$ är konsistent om det för varje $\theta$ och $\varepsilon > 0$ gäller att
+\begin{align*}
+	\lim\limits_{n\to\infty}P(\abs{\theta_{n}^* - \theta} > \varepsilon) = 0.
+\end{align*}
+
+\paragraph{Medelkvadratfel}
+Medelkvadratfelet definieras som $\expec{(\theta^* - \theta)^2}$.
+
+\paragraph{Medelfel}
+Medelfelet definieras som en skattning av $\dev{\theta^*}$, och betecknas $\text{d}(\theta^*)$.
+
+\paragraph{Effektivitet}
+Om två skattningar $\theta^*, \hat{\theta}$ uppfyller $\var{\theta^*}\leq\var{\hat{\theta}}$ är $\theta^*$ effektivare än $\hat{\theta}$.
+
+\paragraph{Medelvärde}
+Medelvärdet definieras som
+\begin{align*}
+	\bar{x} = \frac{1}{n}\sum x_i.
+\end{align*}
+
+\paragraph{Varians}
+Variansen definieras som
+\begin{align*}
+	s^2 = \frac{1}{n - 1}\sum (x_i - \bar{x})^2,
+\end{align*}
+med en analog definition av standardavvikelsen $s$.
+
+\paragraph{Kovarians}
+Kovariansen definieras som
+\begin{align*}
+	c_{xy} = \frac{1}{n - 1}\sum (x_i - \bar{x})(y_i - \bar{y}).
+\end{align*}
+
+\paragraph{Korrelationskoefficient}
+Korrelationskoefficienten definieras som
+\begin{align*}
+	r = \frac{c_{xy}}{s_{x}s_{y}}.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Medelvärdets egenskaper}
+Medelvärdet är en konsistent och väntevärdesriktig skattning av en stokastisk variabels väntevärde.
+
+\paragraph{Variansens egenskaper}
+Variansen är en konsistent och väntevärdesriktig skattning av en stokastisk variabels varians.
