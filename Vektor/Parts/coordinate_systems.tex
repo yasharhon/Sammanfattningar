@@ -41,6 +41,11 @@ Med detta kan vi skriva
 	[\grad{f}]_i = \frac{1}{h_i}\del{u_i}{f}.
 \end{align*}
 
+Vi kan även tillämpa detta för att få
+\begin{align*}
+	h_i = \frac{1}{\abs{\grad{u_i}}},\ \vb{e}_{u_i} = \frac{1}{\abs{\grad{u_i}}}\grad{u_i}.
+\end{align*}
+
 \paragraph{Divergens i godtyckligt koordinatsystem}
 \begin{align*}
 	\div{\vb{v}} = \frac{1}{h_1h_2h_3}(\del{u_1}{v_{u_1}h_2h_3} + \del{u_2}{h_1v_{u_2}h_3} + \del{u_3}{h_1h_2v_{u_3}}).
@@ -49,4 +54,27 @@ Med detta kan vi skriva
 \paragraph{Rotation i godtyckligt koordinatsystem}
 \begin{align*}
 	[\curl{\vb{v}}]_i = \frac{1}{h_jh_k}\leci{ijk}\del{u_j}{h_kA_k}.
+\end{align*}
+
+\paragraph{Allmäna koordinatsystem}
+I allmäna koordinatsystem inför vi $\vb{r} = \vb{r}(u^1, \dots, u^n)$, med indexet som superskript i stället för subskript. Vi definierar då vektorerna
+\begin{align*}
+	\vb{E}_{i} &= \dv{\vb{r}}{u^i} = \del{i}{\vb{r}}, \\
+	\vb{E}^{i} &= \grad{u^i},
+\end{align*}
+där dessa ej normeras. Det gäller att
+\begin{align*}
+	\vb{E}_{i} = h_i\vb{e}_{i},\ \vb{E}^{i} = \frac{1}{h_i}\vb{e}_{i}.
+\end{align*}
+Vi skriver då
+\begin{align*}
+	\vb{v} = v^i\vb{E}_i = v_i\vb{E}^i.
+\end{align*}
+Vi definierar även den metriska tensorn som
+\begin{align*}
+	g_{ij} = \vb{E}_i\cdot\vb{E}_i,\ g^{ij} = \vb{E}^i\cdot\vb{E}^i.
+\end{align*}
+I ortogonala koordinatsystem gäller att
+\begin{align*}
+	g_{ij} = h_i^2\delta_{ij}, g_{ij} = ^\frac{1}{h_i^2}\delta_{ij}.
 \end{align*}
