@@ -1,0 +1,44 @@
+\section{Allmäna gravitationslagen och dens konsekvenser}
+
+Vi vill i denna del försöka visa Keplers lagar, tagna från Tycho Brahes observationer, från Newtons allmäna gravitationslag $\vb{F} = -\frac{GmM}{r^2}\vb{e}_{r}$.
+
+Definiera ett koordinatsystem med origo i någon (statisk och sfärisk symmetrisk) kropp, och låt en annan kropp gå i bana kring denna. Den infinitesimala arean $\dd{A}$ som sveps ut av partikelns bana under den infinitesimala tiden $\dd{t}$ ges av
+\begin{align*}
+	\dd{A} = \frac{1}{2}\abs{\vb{r}\times\dd{\vb{r}}}.
+\end{align*}
+Tyngdkraften som verkar på partikeln är parallell med dens ortsvektor, vilket ger att den ej har ett kraftmoment. Därmed är partikelns rörelsemängdsmoment konstant. Rörelsemängdsmomentet ges av $\vb{H}_{O} = \vb{r}\times m\vb{v}$, och vi skriver då
+\begin{align*}
+	\dd{A} = \frac{1}{2}\abs{\vb{r}\times\dd{\vb{r}}} = \frac{1}{2}\abs{\frac{1}{m}\vb{H}_{O}\dd{t}}.
+\end{align*}
+Eftersom $\vb{H}_{O}$ är konstant, är även den utsvepta arean konstant.
+
+Eftersom arean är konstant, tillämpar vi cylindriska koordinater för att skriva
+\begin{align*}
+	\dd{A} = \frac{1}{2}r^2\dv{\phi}{t}\dd{t} = \frac{1}{2}h\dd{t}.
+\end{align*}
+
+Vi skriver nu Newtons andra lag i cylindriska koordinater. Den radiella komponenten ges av
+\begin{align*}
+	\dv[2]{r}{t} - r\left(\dv{\theta}{t}\right)^2 = -\frac{GM}{r^2}.
+\end{align*}
+Vi byter variabel från $t$ till $\phi$ och får
+\begin{align*}
+	\dv{r}{t} = \dv{r}{\phi}\dv{\phi}{t}.
+\end{align*}
+Med uttrycket för arean skriver vi detta som
+\begin{align*}
+	\dv{r}{t} = \frac{h}{r^2}\dv{r}{\phi}.
+\end{align*}
+Vidare substituerar vi $u = \frac{1}{r}$ och får
+\begin{align*}
+	\dv{r}{t} = hu^2\dv{\phi}\left(\frac{1}{u}\right) = hu^2\cdot -\frac{1}{u^2}\dv{u}{\phi} = -h\dv{u}{\phi}.
+\end{align*}
+En andra derivation med avseende på $t$ ger
+\begin{align*}
+	\dv[2]{r}{t} = \dv{t}\left(-h\dv{u}{\phi}\right) = -h\dv{t}\left(\dv{u}{\phi}\right) = -h\dv{\phi}{t}\dv[2]{u}{\phi} = -h^2u^2\dv[2]{u}{\phi}.
+\end{align*}
+Nu kan man skriva Newtons andra lag som
+\begin{align*}
+	-h^2u^2\dv[2]{u}{\phi} - \frac{1}{u}h^2u^4 = -h^2u^2\left(\dv[2]{u}{\phi} + u\right) = -GMu^2, \\
+	\dv[2]{u}{\phi} + u = \frav{GM}{h^2}.
+\end{align*}
