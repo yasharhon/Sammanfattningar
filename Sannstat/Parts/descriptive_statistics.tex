@@ -49,10 +49,35 @@ Korrelationskoefficienten definieras som
 	r = \frac{c_{xy}}{s_{x}s_{y}}.
 \end{align*}
 
+\paragraph{Konfidensintervall}
+Intervallet $I_{\theta}$ som med sannolikhet $1 - \alpha$ täcker över den okända parametern $\theta$ kallas konfidensintervallet för $\theta$ med konfidensgrad $1 - \alpha$.
+
 \subsection{Satser}
 
 \paragraph{Medelvärdets egenskaper}
 Medelvärdet är en konsistent och väntevärdesriktig skattning av en stokastisk variabels väntevärde.
 
+\proof
+
 \paragraph{Variansens egenskaper}
 Variansen är en konsistent och väntevärdesriktig skattning av en stokastisk variabels varians.
+
+\proof
+
+\paragraph{Konfidensintervall för väntevärde, känd varians}
+Låt $X_1, \dots, X_{n}$ vara normalfördelade med väntevärde $\mu$ och varians $\sigma$. Då är
+\begin{align*}
+	I_{\mu} = \left[\bar{x} - \lambda_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}, \bar{x} + \lambda_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right]
+\end{align*}
+ett konfidensintervall för väntevärdet med konfidensgrad $1 - \alpha$, där $\lambda_{\frac{\alpha}{2}}$ är $\frac{\alpha}{2}$-kvantilen i normalfördelningen.
+
+\proof
+
+\paragraph{Konfidensintervall för väntevärde, okänd varians}
+Låt $X_1, \dots, X_{n}$ vara normalfördelade med väntevärde $\mu$. Då är
+\begin{align*}
+	I_{\mu} = \left[\bar{x} - t_{\frac{\alpha}{2}}(n + 1)\frac{s}{\sqrt{n}}, \bar{x} + t_{\frac{\alpha}{2}}(n + 1)\frac{s}{\sqrt{n}}\right]
+\end{align*}
+ett konfidensintervall för väntevärdet, där där $t_{\frac{\alpha}{2}}(n + 1)$ är $\frac{\alpha}{2}$-kvantilen i $t$-fördelningen med $n - 1$ frihetsgrader.
+
+\proof
