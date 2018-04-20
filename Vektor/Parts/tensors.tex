@@ -1,7 +1,72 @@
 \section{Tensorer}
 
+Låt oss betrakta två observatörer $A$ och $B$. Dessa beskriver någon storhet som vektorn $\vb{v}$. I de två observatörerna sina koordinatsystem skrivs $\vb{v}$ som $v_i\vb{e}_{i}$ respektiva $v_i'\vb{e}_{i}'$. Vi söker någon metod att transformera oss mellan dessa.
+
+Vi kan skriva komponenten $v_i'$ som
+\begin{align*}
+	v_i' = \vb{e}_{i}\cdot\vb{v} = \vb{e}_{i}\cdot (v_j\vb{e}_{j}) = L_{ij}v_{j},
+\end{align*}
+där vi har användt indexnotation och definierat vinkeln
+\begin{align*}
+	L_{ij} = \vb{e}_{i}\cdot\vb{e}_{j}.
+\end{align*}
+Detta definierar en matris $\angle$ som låter oss transformera mellan koordinatsystemerna.
+
+En matris $\angle$ kan representera en koordinattransform om och endast om
+\begin{align*}
+	LL^{T} = L^{T}L = I.
+\end{align*}
+
+För att visa detta, skriv
+\begin{align*}
+	(LL^{T})_{ij} = L_{ik}L^{T}_{kj} = L_{ij}L_{jk}.
+\end{align*}
+Om $L$ har samma struktur som vi förväntade för koordinattransformationer, har man
+\begin{align*}
+	L_{ij}L_{jk} = (\vb{e}_{i}'\cdot\vb{e}_{k})(\vb{e}_{j}'\cdot\vb{e}_{k}).
+\end{align*}
+Vi kommer ihåg att vi har
+\begin{align*}
+	\vb{e}_{i}' = (\vb{e}_{i}'\cdot\vb{e}_{j})\vb{e}_{j}
+\end{align*}
+och kan då skriva
+\begin{align*}
+	L_{ij}L_{jk} = \vb{e}_{i}'\cdot\vb{e}_{j}'.
+\end{align*}
+Vi jobbar med ortogonala koordinatsystemer, vilket ger $\vb{e}_{i}'\cdot\vb{e}_{j}' = \delta_{ij}$, vilket skulle visas.
+
+Vi har även att $\det (L) = \pm 1$. För att visa detta, skriv
+\begin{align*}
+	1 = \det (I) = \det (LL^{T}) = \det (L)\det (L^{T}) = \det (L)^2.
+\end{align*}
+
+Mängden av alla koordinattransformationer som uppfyller dessa relationerna kallas $O(3)$, där $O$ står för ortogonal. Mängden av alla transformationer i $O(3)$ vars matriser har positiv determinant kallas $SO(3)$, där $S$ står för speciell. Vid att kombinera dessa med sammansättning av flera transformationer, definierar de en gruppstruktur. 
+
+Gruper uppfyller
+\begin{itemize}
+	\item Om $g, g'$ är i grupen $G$, är $gg'$ i $G$.
+	\item Det finns ett element $e$ i $G$ så att $eg = ge = g$ för alla $g$.
+	\item För alla $g$ finns det ett $g^{-1}$ så att $gg^{-1} = g^{-1}g = e$.
+	\item $a(bc) = (ab)c$ för $a, b, c$ i $G$.
+\end{itemize}
+
+Vi definierar rotationstransformen kring $\vb{e}_{i}$-axeln med en vinkel $\alpha$. Då gäller att alla transformationer i $SO(3)$ kan skrivas som $L = L_{\gamma}^{3}L_{\beta}^{1}L_{\alpha}^{3}$, där de tre vinklarna kallas Eulervinklar.
+
 \paragraph{Tensorprodukt}
 Tensorprodukten mellan två tensorer av ordning $1$ definieras som
 \begin{align*}
 	[\tenprod{\vb{a}}{\vb{b}}]_{ij} = a_ib_j.
+\end{align*}
+Vi tar det ssom ett axiom att tensorprodukten bevarar linjäritet.
+
+\paragraph{Generering av tensorer}
+Tensorer av ordning $2$ genereras med hjälp av tensorprodukten mellan två tensorer av ordning 1. Vi kan då skriva
+\begin{align*}
+	T = T_{ij}\tenprod{\vb{e}_i}{\vb{e}_j}.
+\end{align*}
+
+\paragraph{Transformation av tensorer}
+Vi har redan definierat hur man transformerar vektorer. Vi definierar transformationen av en tensor av ordning $2$ som
+\begin{align*}
+	T_{ij}' = L_{ik}L_{jl}T_{kl}.
 \end{align*}
