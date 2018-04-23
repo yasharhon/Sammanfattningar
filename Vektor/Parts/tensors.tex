@@ -4,15 +4,15 @@ Låt oss betrakta två observatörer $A$ och $B$. Dessa beskriver någon storhet
 
 Vi kan skriva komponenten $v_i'$ som
 \begin{align*}
-	v_i' = \vb{e}_{i}\cdot\vb{v} = \vb{e}_{i}\cdot (v_j\vb{e}_{j}) = L_{ij}v_{j},
+	v_i' = \vb{e}_{i}'\cdot\vb{v} = \vb{e}_{i}\cdot (v_j\vb{e}_{j}) = L_{ij}v_{j},
 \end{align*}
 där vi har användt indexnotation och definierat vinkeln
 \begin{align*}
-	L_{ij} = \vb{e}_{i}\cdot\vb{e}_{j}.
+	L_{ij} = \vb{e}_{i}'\cdot\vb{e}_{j}.
 \end{align*}
-Detta definierar en matris $\angle$ som låter oss transformera mellan koordinatsystemerna.
+Detta definierar en matris $L$ som låter oss transformera mellan koordinatsystemerna.
 
-En matris $\angle$ kan representera en koordinattransform om och endast om
+En matris $L$ kan representera en koordinattransform om och endast om
 \begin{align*}
 	LL^{T} = L^{T}L = I.
 \end{align*}
@@ -64,9 +64,14 @@ Tensorer av ordning $2$ genereras med hjälp av tensorprodukten mellan två tens
 \begin{align*}
 	T = T_{ij}\tenprod{\vb{e}_i}{\vb{e}_j}.
 \end{align*}
+Vi låter alla $\tenprod{\vb{e}_i}{\vb{e}_j}$ vara en bas för vektorrummet $\tenprod{V}{V}$.
 
 \paragraph{Transformation av tensorer}
 Vi har redan definierat hur man transformerar vektorer. Vi definierar transformationen av en tensor av ordning $2$ som
 \begin{align*}
 	T_{ij}' = L_{ik}L_{jl}T_{kl}.
+\end{align*}
+För tensorer av ordning $3$ definieras det som
+\begin{align*}
+	T_{ijk}' = L_{il}L_{jm}L_{kn}T_{lmn}.
 \end{align*}
