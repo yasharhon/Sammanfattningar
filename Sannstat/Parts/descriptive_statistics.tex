@@ -76,8 +76,62 @@ ett konfidensintervall för väntevärdet med konfidensgrad $1 - \alpha$, där $
 \paragraph{Konfidensintervall för väntevärde, okänd varians}
 Låt $X_1, \dots, X_{n}$ vara normalfördelade med väntevärde $\mu$. Då är
 \begin{align*}
-	I_{\mu} = \left[\bar{x} - t_{\frac{\alpha}{2}}(n + 1)\frac{s}{\sqrt{n}}, \bar{x} + t_{\frac{\alpha}{2}}(n + 1)\frac{s}{\sqrt{n}}\right]
+	I_{\mu} = \left[\bar{x} - t_{\frac{\alpha}{2}}(n - 1)\frac{s}{\sqrt{n}}, \bar{x} + t_{\frac{\alpha}{2}}(n - 1)\frac{s}{\sqrt{n}}\right]
 \end{align*}
 ett konfidensintervall för väntevärdet, där där $t_{\frac{\alpha}{2}}(n + 1)$ är $\frac{\alpha}{2}$-kvantilen i $t$-fördelningen med $n - 1$ frihetsgrader.
 
 \proof
+
+\paragraph{Konfidensintervall för standardavvikelse, okänd medelvärde}
+Låt $X_1, \dots, X_{n}$ vara normalfördelade med standardavvikelse $\sigma$. Då är
+\begin{align*}
+	I_{\mu} = \left[\sqrt{\frac{n - 1}{\chi_{\frac{\alpha}{2}}^2(n - 1)}}s, \sqrt{\frac{n - 1}{\chi_{1 - \frac{\alpha}{2}}^2(n - 1)}}s\right]
+\end{align*}
+ett konfidensintervall för väntevärdet, där $\chi_{\frac{\alpha}{2}}^2(n - 1)$ är $\frac{\alpha}{2}$-kvantilen i $\chi^2$-fördelningen med $n - 1$ frihetsgrader.
+
+För stora $n$ kan man skriva intervallen som
+\begin{align*}
+	\left[1 - \frac{\lambda_{\frac{\alpha}{2}}}{\sqrt{2(n - 1)}}, 1 + \frac{\lambda_{\frac{\alpha}{2}}}{\sqrt{2(n - 1)}}\right]
+\end{align*}
+
+\proof
+
+\paragraph{Konfidensintervall för differans melln väntevärden}
+Låt $X_1, \dots, X_{n_1}\in N(\mu_1, \sigma_1)$ och $Y_1, \dots, Y_{n_2}\in N(\mu_2, \sigma_2)$. Då gäller att:
+\begin{itemize}
+	\item Om $\sigma_1, \sigma_2$ är kända är
+	\begin{align*}
+		\left[\bar{x} - \bar{y} - \lambda_{\frac{\alpha}{2}}D, \bar{x} - \bar{y} + \lambda_{\frac{\alpha}{2}}D\right]
+	\end{align*}
+	ett konfidensintervall för $\mu_1 - \mu_2$ med konfidensgrad $1 - \alpha$, där $D = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$.
+	
+	\item Om $\sigma_1 = \sigma_2 = \sigma$ är okända är
+	\begin{align*}
+		\left[\bar{x} - \bar{y} - t_{\frac{\alpha}{2}}(f)d, \bar{x} - \bar{y} + t_{\frac{\alpha}{2}}(f)d\right]
+	\end{align*}
+	ett konfidensintervall för $\mu_1 - \mu_2$ med konfidensgrad $1 - \alpha$, där $d = s\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$ och $f = n_1 + n_2 - 2$.
+	
+	\item Om $\sigma_1, \sigma_2$ är okända är
+	\begin{align*}
+		\left[\bar{x} - \bar{y} - \lambda_{\frac{\alpha}{2}}d, \bar{x} - \bar{y} + \lambda_{\frac{\alpha}{2}}d\right]
+	\end{align*}
+	ett konfidensintervall för $\mu_1 - \mu_2$ med approximativ konfidensgrad $1 - \alpha$, där $d = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$.
+\end{itemize}
+
+\proof
+
+\paragraph{Allmän skattning av normalfördelade stokastiska variabler}
+Låt skattningen av en parameter $\theta$ vara normalfördelad med väntevärde $\theta$ och standardavvikelse $D$. Då beräknas konfidensintervall med approximativ konfidensgrad $1 - \alpha$ som
+\begin{itemize}
+	\item
+	\begin{align*}
+		\left[\theta* - \lambda_{\frac{\alpha}{2}}D, \theta* + \lambda_{\frac{\alpha}{2}}D\right]
+	\end{align*}
+	om $D$ ej beror av $\theta$.
+	
+	\item
+	\begin{align*}
+		\left[\theta* - \lambda_{\frac{\alpha}{2}}d, \theta* + \lambda_{\frac{\alpha}{2}}d\right]
+	\end{align*}
+	om $d$ beror av $\theta$, för något lämpligt val av $d$.
+\end{itemize}
