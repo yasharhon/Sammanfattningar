@@ -96,8 +96,8 @@ För stora $n$ kan man skriva intervallen som
 
 \proof
 
-\paragraph{Konfidensintervall för differans melln väntevärden}
-Låt $X_1, \dots, X_{n_1}\in N(\mu_1, \sigma_1)$ och $Y_1, \dots, Y_{n_2}\in N(\mu_2, \sigma_2)$. Då gäller att:
+\paragraph{Konfidensintervall för differans mellan väntevärden för olika objekt}
+Låt $X_1, \dots, X_{n_1}\in N(\mu_1, \sigma_1)$ och $Y_1, \dots, Y_{n_2}\in N(\mu_2, \sigma_2)$, där dessa kan betraktas som stickprov från två olika objekt. Då gäller att:
 \begin{itemize}
 	\item Om $\sigma_1, \sigma_2$ är kända är
 	\begin{align*}
@@ -110,7 +110,19 @@ Låt $X_1, \dots, X_{n_1}\in N(\mu_1, \sigma_1)$ och $Y_1, \dots, Y_{n_2}\in N(\
 		\left[\bar{x} - \bar{y} - t_{\frac{\alpha}{2}}(f)d, \bar{x} - \bar{y} + t_{\frac{\alpha}{2}}(f)d\right]
 	\end{align*}
 	ett konfidensintervall för $\mu_1 - \mu_2$ med konfidensgrad $1 - \alpha$, där $d = s\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$ och $f = n_1 + n_2 - 2$.
-	
+\end{itemize}
+
+\proof
+
+\paragraph{Konfidensintervall för differans mellan väntevärden för och efter}
+Låt $X_1, \dots, X_{n_1}\in N(\mu_1, \sigma_1)$ och $Y_1, \dots, Y_{n_2}\in N(\mu_2, \sigma_2)$, där samma $i$ motsvarar stickprov från två olika objekt. Då gäller att:
+\begin{itemize}
+	\item Om vi definierar $Z_i = X_i - Y_i$, är
+	\begin{align*}
+		I_{\mu} = \left[\bar{z} - t_{\frac{\alpha}{2}}(n - 1)\frac{s}{\sqrt{n}}, \bar{z} + t_{\frac{\alpha}{2}}(n - 1)\frac{s}{\sqrt{n}}\right]
+	\end{align*}
+	ett konfidensintervall för $\mu_1 - \mu_2$, där $s$ är skattningen av standardavvikelsen från de olika $Z_i$.
+
 	\item Om $\sigma_1, \sigma_2$ är okända är
 	\begin{align*}
 		\left[\bar{x} - \bar{y} - \lambda_{\frac{\alpha}{2}}d, \bar{x} - \bar{y} + \lambda_{\frac{\alpha}{2}}d\right]
