@@ -3,14 +3,14 @@
 \subsection{Definitioner}
 
 \paragraph{Permutationer}
-Permutationerna av $k$ element bland $n$ är antalet sätt du kan "dra" $k$ element från $n$ utan återläggning.
+Permutationerna av $k$ element bland $n$ är antalet sätt man kan ``dra'' $k$ element från $n$ utan återläggning.
 
 \paragraph{Kombinationer}
-Kombinationerna av $k$ element bland $n$ är antalet sätt du kan "dra" $k$ element från $n$ utan återläggning där ordningen ej spelar någon roll.
+Kombinationerna av $k$ element bland $n$ är antalet sätt man kan ``dra'' $k$ element från $n$ utan återläggning där ordningen ej spelar någon roll.
 
 \subsection{Satser}
 
-\paragraph{Multiplikationsprincipet}
+\paragraph{Multiplikationsprincipen}
 Låt åtgärd 1 kunna utföras på $a_1$ sätt och åtgärd 2 kunna utföras på $a_2$ sätt. Då kan båda utföras på $a_1a_2$ sätt.
 
 \proof
@@ -21,11 +21,16 @@ Dragning av $k$ element ur $n$ med återläggning kan utföras på $n^k$ sätt.
 \proof
 
 \paragraph{Dragning utan återläggning}
-Dragning av $k$ element ur $n$ utan återläggning kan utföras på $n(n - 1)\dots (n - k +1)$ sätt.
+Dragning av $k$ element ur $n$ utan återläggning kan utföras på $n(n - 1)\dots (n - k +1)$ 
+olika sätt.
 
 \proof
 
 \paragraph{Dragning utan återläggning eller ordning}
-Dragning av $k$ element ur $n$ utan återläggning och där ordning ej spelar någon roll kan utföras på $\binom{n}{k}$ sätt.
+Dragning av $k$ element ur $n$ utan återläggning och där ordning ej spelar någon roll kan utföras på
+\begin{align*}
+	\binom{n}{k} = \frac{n!}{k!(n - k)!}
+\end{align*}
+olika sätt.
 
 \proof

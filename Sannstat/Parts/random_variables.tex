@@ -11,7 +11,7 @@ En stokastisk variabel är diskret om den kan anta ett ändligt eller uppräknel
 \paragraph{Kontinuerliga stokastiska variabler}
 En stokastisk variabel är kontinuerlig om det finns en funktion $f$ så att
 \begin{align*}
-	P(X\in A) = \integ{A}{}{f}{x}\forall A,
+	P(X\in A) = \integ{A}{}{f}{x}\ \forall\ A,
 \end{align*}
 eller motsvarande i flera variabler.
 
@@ -26,21 +26,13 @@ Låt $X$ vara en kontinuerlig stokastisk variabel. Då definieras täthetsfunkti
 \begin{align*}
 	P(X\in A)          &= \integ{A}{}{f}{x}\ \forall\ A, \\
 	f(x)               &\geq 0\ \forall\ x, \\
-	\integ{\R}{}{f}{x} &= 1.
+	\integ{\Omega}{}{f}{x} &= 1.
 \end{align*}
 
 \paragraph{Sannolikhetsfunktioner i flera variabler}
 Låt $(X, Y)$ vara en diskret stokastisk variabel. Då definieras sannolikhetsfunktionen som
 \begin{align*}
 	p(j, k) = P(X = j, Y = k).
-\end{align*}
-För kontinuerliga stokastiska variabler definieras den enligt
-\begin{align*}
-	P(X\in A) = \integ{A}{}{f}{x}
-\end{align*}
-och uppfyller $f(x)\geq 0\ \forall\ x$ och
-\begin{align*}
-	\integ{\R}{}{f}{x} = 1.
 \end{align*}
 
 \paragraph{Täthetsfunktioner i flera variabler}
@@ -62,13 +54,13 @@ Låt $p_{X, Y}$ vara sannolikhetsfunktionen till den stokastiska variabeln $(X, 
 \begin{align*}
 	p_{X}(j) = \sum\limits_{k}p(j, k)
 \end{align*}
-i det kontinuerliga fallet och
+i det diskreta fallet och
 \begin{align*}
-	f_{X}(x) = \int\limits_{\R}f(x, y)\dd{y}.
+	f_{X}(x) = \int\limits_{\R}f(x, y)\dd{y}
 \end{align*}
-En konsekvens av definitionen i det kontinuerliga fallet är
+i det kontinuerliga fallet. En konsekvens av definitionen i det kontinuerliga fallet är
 \begin{align*}
-	F_{X}(x) = \lim\limits_{y\to\infty}f(x, y).
+	F_{X}(x) = \lim\limits_{y\to\infty}F_{X, Y}(x, y).
 \end{align*}
 
 \paragraph{Oberoende stokastiska variabler}
@@ -84,29 +76,29 @@ Låt $X$ vara en stokastisk variabel med sannolikhetsfunktion $p$. Då definiera
 \end{align*}
 För en kontinuerlig stokastisk variabel definieras det som
 \begin{align*}
-	\expec{E} = \integ{\R}{}{xf(x)}{x}.
+	\expec{E} = \integ{\R}{}{xf}{x}.
 \end{align*}
 
 \paragraph{Varians}
-Låt $X$ vara en stokastisk variabel med väntevärde $\mu$. Variansen till $X$ definieras som
+Låt $X$ vara en stokastisk variabel med väntevärde $\mu$. Variansen till $X$, med notationen $\var{X}$, definieras som
 \begin{align*}
 	\sigma^2 = \expec{(X - \mu)^2}.
 \end{align*}
 
 \paragraph{Standardavvikelse}
-Låt $X$ vara en stokastisk variabel med varians $\sigma^2$. Standardavvikelsen till $X$ definieras som
+Låt $X$ vara en stokastisk variabel med varians $\sigma^2$. Standardavvikelsen till $X$, med notationen $\dev{X}$, definieras som
 \begin{align*}
 	\sigma = \sqrt{\sigma^2}.
 \end{align*}
 
 \paragraph{Variationskoefficient}
-Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikelse$\sigma^2$. Variationskoeficienten till $X$ definieras som
+Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikelse $\sigma^2$. Variationskoeficienten till $X$ definieras som
 \begin{align*}
 	R = \frac{\sigma}{\mu}.
 \end{align*}
 
 \paragraph{Kovarians}
-Låt $X, Y$ vara stokastiska variablerm ed väntevärden $\mu_{X}, \mu_{Y}$. Då definieras kovariansen mellan dessa som
+Låt $X, Y$ vara stokastiska variabler med väntevärden $\mu_{X}, \mu_{Y}$. Då definieras kovariansen mellan dessa som
 \begin{align*}
 	\cov{X}{Y} = \expec{(X - \mu_{X})(Y - \mu_{Y})}.
 \end{align*}
@@ -117,18 +109,18 @@ $X, Y$ är okorrelerade om $\cov{X}{Y} = 0$.
 \paragraph{Korrelationskoefficient}
 Låt $X, Y$ vara stokastiska variabler. Då definieras korrelationskoefficienten mellan dessa som
 \begin{align*}
-	\rho(X, Y) = \frac{\cov{X}{Y}}{\var{X}\var{Y}}.
+	\rho(X, Y) = \frac{\cov{X}{Y}}{\dev{X}\dev{Y}}.
 \end{align*}
 
 \paragraph{Kvantiler}
 Lösningen till
 \begin{align*}
-	F(x) = 1 - \alpha
+	F_{X}(x) = 1 - \alpha
 \end{align*}
 kallas $\alpha$-kvantilen till $X$.
 
 \paragraph{Standardiserade stokastiska variabler}
-Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikelse $\sigma$. Då är $Y = \frac{X - \mu}{sigma}$ en standardiserad variabel.
+Låt $X$ vara en stokastisk variabel med väntevärde $\mu$ och standardavvikelse $\sigma$. Då är $Y = \frac{X - \mu}{\sigma}$ en standardiserad variabel.
 
 \subsection{Satser}
 
@@ -179,12 +171,16 @@ Låt $F$ och $f$ vara fördelnings- respektiva täthetsfunktionen till en kontin
 	\dv{F}{x} (x) &= f(x).
 \end{align*}
 
+\proof
+
 \paragraph{Fördelningsfunktioner och täthetsfunktioner i flera variabler}
 Låt $F$ och $f$ vara fördelnings- respektiva täthetsfunktionen till en kontinuerlig stokastisk variabel $(X, Y)$ och låt $f$ vara kontinuerlig i $(x, y)$. Då gäller att
 \begin{align*}
-	F(x, y)          &= \int_{-\infty}{x}\int_{-\infty}{y}f(u, v)\dd{u}\dd{v}, \\
+	F(x, y)          &= \int\limits_{-\infty}^{x}\int\limits_{-\infty}^{y}f(u, v)\dd{u}\dd{v}, \\
 	\pdv{F}{x}{y} (x, y) &= f(x, y).
 \end{align*}
+
+\proof
 
 \paragraph{Normalisering av sannolikhetsfunktioner}
 Låt $p$ vara en sannolikhetsfunktion. Då gäller att
@@ -244,6 +240,8 @@ Låt $X, Y$ vara stokastiska variabler. Då ges kovariansen till dessa av
 	\var{b + \sum a_iX_i} = \sum a_i^2\var{X_i} + \sum\limits_{1\leq j < k}a_ja_k\cov{X_j}{X_k}.
 \end{align*}
 
+\proof
+
 \paragraph{Oberoende variabler och funktioner}
 $X, Y$ är oberoende om
 \begin{align*}
@@ -255,8 +253,9 @@ eller
 \end{align*}
 i det diskreta fallet och
 \begin{align*}
-	f_{X, Y}(x, y) = f_{X}(x)f_{Y}(y).
+	f_{X, Y}(x, y) = f_{X}(x)f_{Y}(y)
 \end{align*}
+i det kontinuerliga fallet.
 
 \proof
 
@@ -274,9 +273,9 @@ Oberoende variabler är okorrelerade.
 \proof
 
 \paragraph{Stora talens lag}
-Låt $X_1, \dots, X_n$ vara likfördelade stokastiska variabler med samma väntevärde $\mu$ och inför variabeln $\overline{X} = \frac{1}{n}\sum X_i$. Då gäller att
+Låt $X_1, \dots, X_n$ vara likfördelade stokastiska variabler med samma väntevärde $\mu$ och inför variabeln $\mean{X} = \frac{1}{n}\sum X_i$. Då gäller att
 \begin{align*}
-	\lim\limits_{n\to\infty}P(\mu - \varepsilon < X < \mu + \varepsilon) = 1\ \forall\ \varepsilon.
+	\lim\limits_{n\to\infty}P(\mu - \varepsilon < \mean{X} < \mu + \varepsilon) = 1\ \forall\ \varepsilon.
 \end{align*}
 
 \proof

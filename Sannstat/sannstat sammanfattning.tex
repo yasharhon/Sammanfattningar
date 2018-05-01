@@ -6,19 +6,22 @@
 \usepackage[arrowdel]{physics}
 
 \newcommand{\proof}{\subparagraph{Bevis}}
+\newcommand{\comp}[1]{#1^{*}}
 \newcommand{\given}[1][]{\:#1\vert\:}
 \newcommand{\expec}[1]{\text{E}\left(#1\right)}
 \renewcommand{\var}[1]{\text{V}\left(#1\right)}
 \newcommand{\dev}[1]{\text{D}\left(#1\right)}
 \newcommand{\cov}[2]{\text{C}\left(#1, #2\right)}
-\newcommand{\integ}[4]{\int\limits_{#1}{#2}#3(#4)\dd{#4}}
+\newcommand{\integ}[4]{\int\limits_{#1}^{#2}#3\dd{#4}}
+\newcommand{\mean}[1]{\overline{#1}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 
-\title{Sammanfattning av}
+\title{Sammanfattning av SF1922 Sannolikhetsteori och statistik}
 \author{Yashar Honarmandi}
 \date{\today}
 
-\begin{document}\sloppy
+\begin{document}
 
 \maketitle
 
@@ -47,10 +50,6 @@
 
 \input{./Parts/continuous_distributions.tex}
 
-\input{./Parts/linear_combinations.tex}
-
 \input{./Parts/descriptive_statistics.tex}
-
-\input{./Parts/error.tex}
 
 \end{document}

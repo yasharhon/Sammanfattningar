@@ -4,7 +4,7 @@ Definitionerna som dyker upp i denna del kan virka redundanta, men det är under
 \subsection{Definitioner}
 
 \paragraph{Punktskattningar}
-En punktskattning av en parameter $\theta$ är en funktion av utfallen $x_1, \dots, x_n$ av dom stokastiska variablerna $X_1, \dots, X_n$ vars fördelning beror av $\theta$. Därmed är punktskattningen ett utfall av stickprovsvariabeln $\theta^*$.
+En punktskattning av en parameter $\theta$ är en funktion av utfallen $x_1, \dots, x_n$ av de stokastiska variablerna $X_1, \dots, X_n$ vars fördelning beror av $\theta$. Därmed är punktskattningen ett utfall av stickprovsvariabeln $\theta^*$.
 
 \paragraph{Väntevärdesriktighet}
 En punktskattning är väntevärdesriktig om $\expec{\theta^*} = \theta$.
@@ -58,6 +58,7 @@ Intervallet $I_{\theta}$ som med sannolikhet $1 - \alpha$ täcker över den okä
 Medelvärdet är en konsistent och väntevärdesriktig skattning av en stokastisk variabels väntevärde.
 
 \proof
+Väntevärdesriktigheten följer direkt från väntevärdets egenskaper.
 
 \paragraph{Variansens egenskaper}
 Variansen är en konsistent och väntevärdesriktig skattning av en stokastisk variabels varians.
@@ -72,6 +73,11 @@ Låt $X_1, \dots, X_{n}$ vara normalfördelade med väntevärde $\mu$ och varian
 ett konfidensintervall för väntevärdet med konfidensgrad $1 - \alpha$, där $\lambda_{\frac{\alpha}{2}}$ är $\frac{\alpha}{2}$-kvantilen i normalfördelningen.
 
 \proof
+Vi har att $\mean{X}\in\text{N}\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$. Detta betyder att
+\begin{align*}
+	P\left(-\lambda_{-\frac{\alpha}{2}} < \frac{\mean{X} - \mu}{\frac{\sigma}{\sqrt{n}}} < \lambda_{\frac{\alpha}{2}}\right) = 1 - \alpha.
+\end{align*}
+Från detta får vi två olikheter som ger det givna konfidensintervallet.
 
 \paragraph{Konfidensintervall för väntevärde, okänd varians}
 Låt $X_1, \dots, X_{n}$ vara normalfördelade med väntevärde $\mu$. Då är
@@ -81,6 +87,15 @@ Låt $X_1, \dots, X_{n}$ vara normalfördelade med väntevärde $\mu$. Då är
 ett konfidensintervall för väntevärdet, där där $t_{\frac{\alpha}{2}}(n + 1)$ är $\frac{\alpha}{2}$-kvantilen i $t$-fördelningen med $n - 1$ frihetsgrader.
 
 \proof
+Vi har att
+\begin{align*}
+	\frac{\mean{X} - \mu}{\frac{\sqrt{\frac{1}{n - 1}\sum (X_i - \mean{X})^2}}{\sqrt{n}}}\in t(n - 1).
+\end{align*}
+Därmed har vi
+\begin{align*}
+	P\left(-t_{-\frac{\alpha}{2}} < \frac{\mean{X} - \mu}{\frac{\sqrt{s^2}}{\sqrt{n}}}\in t(n - 1) < t_{\frac{\alpha}{2}}\right) = 1 - \alpha,
+\end{align*}
+där vi använder beteckningen $s^2$ för skattningen av standardavvikelsen och använder $t$-fördelningens symmetri. Detta ger två olikheter som ger det givna konfidensintervallet.
 
 \paragraph{Konfidensintervall för standardavvikelse, okänd medelvärde}
 Låt $X_1, \dots, X_{n}$ vara normalfördelade med standardavvikelse $\sigma$. Då är
@@ -147,3 +162,19 @@ Låt skattningen av en parameter $\theta$ vara normalfördelad med väntevärde 
 	\end{align*}
 	om $d$ beror av $\theta$, för något lämpligt val av $d$.
 \end{itemize}
+
+\proof
+
+\paragraph{Felförplantning}
+Givet medelfelet till någon skattning av en parameter $\theta$, önskar vi nu att estimera medelfelet och väntevärdet av skattningen av någon funktion av $\theta$. Vi skriver denna som $\psi = g(\theta)$.
+
+Första satsen vi har säjer att om $\theta^{*}$ är en approximativt väntevärdesriktig skattning av $\theta$ med medelfel $d(\theta^{*})$, är $\psi^{*} = g(\theta^{*})$ en approximativt väntevärdesriktig skattning av $\psi = g(\theta)$, eventuellt med korrektionstermen $\frac{1}{2}d^2(\theta^{*})\dv[2]{g}{{\theta^{*}}} (\theta^{*})$. Dens medelfel ges av
+\begin{align*}
+	d(\psi^{*})\approx\abs{\dv{g}{\theta^{*}} (\theta^{*})}d(\theta^{*}).
+\end{align*}
+I fallet där $\psi^{*}$ beror av två variabler $\theta^{*}$ och $\eta^{*}$, gäller ett motsvarande kriterie. Om kritereiet uppfylls, ges väntevärdet på motsvarande vis och medelfelet ges då av
+\begin{align*}
+	d^2(\psi^{*})\approx\left(\pdv[2]{g}{{\theta^{*}}} (\theta^{*}, \eta^{*})\right)^2d^2(\theta^{*}) + \left(\pdv[2]{g}{{\eta^{*}}} (\theta^{*}, \eta^{*})\right)^2d^2(\eta^{*}).
+\end{align*}
+
+\proof

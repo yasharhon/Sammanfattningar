@@ -23,7 +23,7 @@ Sannolikheten för en given händelse $A$ uppfyller följande axiom:
 \end{itemize}
 
 \paragraph{Disjunkta händelser}
-Två händelser $A, B$ är disjunkta om $A\cap B = \emptyset$.
+Två händelser $A, B$ är disjunkta, eller parvis oförenliga, om $A\cap B = \emptyset$.
 
 \paragraph{Betingade sannolikheter}
 Sannolikheten $P(B\given A)$ är sannolikheten för att $B$ händer givet att $A$ har händt, och definieras som
@@ -64,9 +64,9 @@ När man ska hitta komplement till komplicerade mängder, byta alla delmängder 
 
 \paragraph{Regler för sannolikhetskalkyl}
 \begin{align*}
-	P(A*) = 1 - P(A), \\
-	P(B) = P(B\cap A) + P(B\cap A*), \\
-	P(A\cup B) = P(A) + P(B) - P(A\cap B)
+	P(\comp{A}) &= 1 - P(A), \\
+	P(B)        &= P(B\cap A) + P(B\cap\comp{A}), \\
+	P(A\cup B)  &= P(A) + P(B) - P(A\cap B)
 \end{align*}
 
 \proof
@@ -79,14 +79,20 @@ Låt $H_1, \dots, H_n$ vara parvis oförenliga och låt $\bigcup\limits_{i = 1}^
 \end{align*}
 
 \proof
+Från mängdlära har man att
+\begin{align*}
+	A = \bigcup\limits_{i = 1}^{n}(A\cap H_i).
+\end{align*}
+Eftersom alla $H_i$ är parvis oförenliga, följer formeln för sannolikheten direkt.
 
 \paragraph{Bayes' sats}
-Låt $H_1, \dots, H_n$ vara parvis oförenliga och låt $\bigcup\limits_{i = 1}^{n}H_i = \Omega$. Då gäller att
+Låt $H_1, \dots, H_n$ vara disjunkta och låt $\bigcup\limits_{i = 1}^{n}H_i = \Omega$. Då gäller att
 \begin{align*}
-	P(H_i\given A) = \frac{P(H_i)P(A\given H_i)}{\sum P(H_j)P(A\given H_j)}.
+	P(H_i\given A) = \frac{P(H_i)P(A\given H_i)}{\sum\limits_{j} P(H_j)P(A\given H_j)}.
 \end{align*}
 
 \proof
+Direkt konsekvens av lagen om total sannolikhet och definitionen av betingad sannolikhet.
 
 \paragraph{Oberoende händelser där minst en inträffer}
 Låt $A_1, \dots, A_n$ vara oberoende och $P(A_i) = p_i$. Då ges sannolikheten för att minst en av dessa händer av
@@ -95,3 +101,8 @@ Låt $A_1, \dots, A_n$ vara oberoende och $P(A_i) = p_i$. Då ges sannolikheten 
 \end{align*}
 
 \proof
+Sannolikheten för att inga av de inträffer är
+\begin{align*}
+	\prod\limits_{i = 1}^{n}(1 - p_i),
+\end{align*}
+och den givna formeln följer direkt.
