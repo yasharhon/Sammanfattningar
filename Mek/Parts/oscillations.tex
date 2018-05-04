@@ -3,7 +3,7 @@
 \paragraph{Fri, odämpad svängning}
 Även betecknad som den harmoniska oskillatorn är detta det enklaste systemet som beskriver svängningsfenomen.
 
-Grundideen är att en partikel utsätts för en kraft proportionell till dens förskjutning från någon punkt och motsatt riktad förskjutningen. Formulerat med Newtons andra lag blir detta
+Grundideen är att en partikel utsätts för en kraft proportionell till dens förskjutning från någon punkt och motsatt riktad förskjutningen. Projicerat ned på en axel ger Newtons andra lag
 \begin{align*}
 	m\dv[2]{x}{t} = -kx.
 \end{align*}
@@ -22,4 +22,62 @@ Vi skriver den alternativt som
 där det gäller att
 \begin{align*}
 	A = C\cos{\alpha},\ B = C\sin{\alpha}.
+\end{align*}
+
+\paragraph{Fri, dämpad svängning}
+Vi vill nu addera en dämpande kraft $F = -c\dv{x}{t}$ till vår modell. Newtons andra lag blir
+\begin{align*}
+	\dv[2]{x}{t} + \frac{c}{m}\dv{x}{t} + \frac{k}{m}x = 0.
+\end{align*}
+Vi definierar dämpningskoefficienten $\zeta$ genom $2\omega_n\zeta = \frac{c}{m}$ och får
+\begin{align*}
+	\dv[2]{x}{t} + 2\omega_n\zeta\dv{x}{t} + \omega_n^2x = 0.
+\end{align*}
+Formen på lösningarna beror på hur stor $\zeta$ är.
+
+\subparagraph{Stark dämpning}
+Man har stark dämpning när $\zeta > 1$, och den allmänna lösningen är då
+\begin{align*}
+	x = Ae^{-\omega_n\left(\zeta + \sqrt{\zeta^2 - 1}\right)t} + Be^{-\omega_n\left(\zeta - \sqrt{\zeta^2 - 1}\right)t}.
+\end{align*}
+
+\subparagraph{Kritisk dämpning}
+Man har kritisk dämpning när $\zeta = 1$, och den allmänna lösningen är då
+\begin{align*}
+	x = (At + B)e^{-\omega_nt}.
+\end{align*}
+
+\subparagraph{Svag dämpning}
+Man har svag dämpning när $\zeta < 1$, och den allmänna lösningen är då
+\begin{align*}
+	x = \left(Ae^{i\omega_n\sqrt{1 - \zeta^2}t} + Be^{-i\omega_n\sqrt{1 - \zeta^2}t}\right)e^{-\omega_n\zeta t}.
+\end{align*}
+Vi definierar $\omega_d = \omega_n\sqrt{1 - \zeta^2}$ och får
+\begin{align*}
+	x = \left(Ae^{i\omega_dt} + Be^{-i\omega_dt}\right)e^{-\omega_n\zeta t}.
+\end{align*}
+Vi hoppas verkligen att detta kan skrivas som $x = Ce^{-\omega_n\zeta t}\sin{\left(\omega_dt + \alpha\right)}$. För att visa detta, skriv först om $x$ till
+\begin{align*}
+	x = \left((A + B)\cos{\omega_dt} + (A - B)i\sin{i\omega_dt}\right)e^{-\omega_n\zeta t}.
+\end{align*}
+Då har man som innan
+\begin{align*}
+	A = C\cos{\alpha},\ B = C\sin{\alpha}.
+\end{align*}
+
+Om man betraktar maxima nummer $n$ och $n - 1$ får man
+\begin{align*}
+	\frac{x_{n}}{x_{n + 1}} = \frac{Ce^{-\zeta\omega_nt}\sin{\omega_dt + \alpha}}{Ce^{-\zeta\omega_n(t + \tau_d}\sin{\omega_d(t + \tau_d) + \alpha}}.
+\end{align*}
+Vi använder rörelsens periodicitet och får
+\begin{align*}
+	\frac{x_{n}}{x_{n + 1}} = e^{\zeta\omega_n\tau_{d}}.
+\end{align*}
+Vidare får man
+\begin{align*}
+	\delta = \ln{\frac{x_n}{x_{n + 1}}} = \zeta\omega_n\frac{2\pi}{\omega_d} = \zeta\omega_n\frac{2\pi}{\omega_n\sqrt{1 - \zeta^2}}.
+\end{align*}
+Vi kan lösa detta och få
+\begin{align*}
+	\zeta = \frac{\delta}{\sqrt{\delta^2 + 4\pi^2}}.
 \end{align*}
