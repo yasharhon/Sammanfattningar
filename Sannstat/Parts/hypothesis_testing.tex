@@ -1,0 +1,11 @@
+\section{Hypotesprövning}
+Hypotesprövning baseras på stickproc $X_1, \dots, X_n$ från någon fördelning. Vi önskar pröva någon grundhypotes, eller nollhypotes, $H_0$ om hur fördelningen ser ut.
+
+Från stickproven får man någon teststorhet $t(X_1, \dots, X_n) = t_\text{obs}$. Man anger sen ett kritiskt område $C$, och gör ett signifikanstest:
+\begin{itemize}
+	\item Om $t_\text{obs}\in C$ förkastas $H_0$.
+	\item Om $t_\text{obs}\not\in C$ förkastas ej $H_0$.
+\end{itemize}
+Man väljer $C$ på ett sådant sätt att om $H_0$ är sann, är $P(t\in C) = \alpha$ för något $\alpha$ Detta $\alpha$ kallas testens signifikansnivå, eller felrisk, och anger sannolikheten för att $H_0$ förkastas om $H_0$ är sann. Denna önskas typisk låg.
+
+Man kan även definiera ett $P$-värde, eller observerad signifikansnivå. Detta definieras som $P = P(t\geq t_\text{obs})$ under förutsättningen att $H_0$ är sann. Om $P\leq\alpha$ förkastar man $H_0$.
