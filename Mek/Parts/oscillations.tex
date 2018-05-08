@@ -81,3 +81,49 @@ Vi kan lösa detta och få
 \begin{align*}
 	\zeta = \frac{\delta}{\sqrt{\delta^2 + 4\pi^2}}.
 \end{align*}
+
+\paragraph{Påtvungnen odämpat svänging}
+Vi vill nu undersöka odämpat svängning under påverkan av en harmonisk kraft $F = F_0\sin{\omega t}$. Newtons andra lag ger
+\begin{align}
+	m\dv[2]{x}{t} = -kx + F_0\sin{\omega t}.
+\end{align}
+Vi förenklar och får
+\begin{align*}
+	\dv[2]{x}{t} + \omega_n^2 = \frac{F_0}{m}\sin{\omega t},
+\end{align*}
+med samma definition av $\omega_n$. Denna har lösning $x = x_h + x_p$, alltså en kombination av en homogen och en partikulär lösning. Den homogena lösningen är redan känd. Vi gör ansatsen $x_p = X\sin{\omega t}$. Insatt i differentialekvationen får man att ansatsen är en lösning om
+\begin{align*}
+	X = \frac{\frac{F_0}{k}}{1 - \left(\frac{\omega}{\omega_n}\right)^2}.
+\end{align*}
+Vi definierar förstorningsfaktorn $M$ som $M = \frac{X}{X_0}$, där $X_0$ är amplituden motsvarande ingen påtvingningskraft, alltså $\omega = 0$. I detta enkla fallet får man
+\begin{align*}
+	M = \frac{1}{1 - \left(\frac{\omega}{\omega_n}\right)^2}.
+\end{align*}
+
+\paragraph{Påtvungen dämpat svängning}
+Vi vill nu undersöka dämpat svängning under påverkan av en dämpningskraft $F = -cdv{x}{t}$ och en harmonisk kraft $F = F_0\sin{\omega t}$. Newtons andra lag ger
+\begin{align}
+	m\dv[2]{x}{t} = -kx - c\dv{x}{t} + F_0\sin{\omega t}.
+\end{align}
+Vi förenklar och får
+\begin{align*}
+	\dv[2]{x}{t} + 2\zeta\omega_n\dv{x}{t} + \omega_n^2 = \frac{F_0}{m}\sin{\omega t},
+\end{align*}
+med samma definition av $\omega_n$ och $\zeta$. Denna har lösning $x = x_h + x_p$, alltså en kombination av en homogen och en partikulär lösning.
+
+Den homogena lösningen är redan känd, och har den trevliga egenskapen att den försvinner över tid. Vi refererar till denna som den transienta lösningen.
+
+Vi gör ansatsen $x_p = X\sin{(\omega t - \alpha)} = X(\sin{\omega t}\cos{\alpha} - \cos{\omega t}\sin{\alpha})$. Insatt i differentialekvationen får man att ansatsen är en lösning om
+\begin{align*}
+	X\left((\omega_n^2 - \omega^2)\cos{\alpha} + 2\zeta\omega_n\omega\sin{\alpha}\right) &= \frac{F_0}{m}, \\
+	X\left(-(\omega_n^2 - \omega^2)\sin{\alpha} + 2\zeta\omega_n\omega\cos{\alpha}\right) &= 0.
+\end{align*}
+Detta ger
+\begin{align*}
+	\tan{\alpha} &= \frac{2\zeta\frac{\omega}{\omega_n}}{1 - \left(\frac{\omega}{\omega_n}\right)^2}, \\
+	X            &= \frac{\frac{F_0}{k}}{\sqrt{\left(1 - \left(\frac{\omega}{\omega_n}\right)^2\right)^2 + 4\zeta^2\left(\frac{\omega}{\omega_n}\right)^2}}.
+\end{align*}
+Förstorningsfaktorn blir
+\begin{align*}
+	M = \frac{1}{\sqrt{\left(1 - \left(\frac{\omega}{\omega_n}\right)^2\right)^2 + 4\zeta^2\left(\frac{\omega}{\omega_n}\right)^2}}.
+\end{align*}
