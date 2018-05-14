@@ -24,6 +24,27 @@ Medelfelet definieras som en skattning av $\dev{\theta^*}$, och betecknas $\text
 \paragraph{Effektivitet}
 Om två skattningar $\theta^*, \hat{\theta}$ uppfyller $\var{\theta^*}\leq\var{\hat{\theta}}$ är $\theta^*$ effektivare än $\hat{\theta}$.
 
+\paragraph{Likelihood-funktionen}
+Funktionen
+\begin{align*}
+	L(\theta) =
+	\begin{cases}
+		P(X_1 = x_i, \dots, X_n = x_n),\ \text{diskret fall}, \\
+		f_{X_1, \dots, X_n}(x_1, \dots, x_1), \ \text{kontinuerligt fall},
+	\end{cases}
+\end{align*}
+givet att $\theta$ är den sanna parametern, är likelihood-funktionen.
+
+\paragraph{Maximum likelihood-skattningar}
+Maximumet till $L(\theta)$ är maximum likelihood-skattningen av parametern $\theta$.
+
+\paragraph{Minsta kvadrat-skattningar}
+Låt $x_1, \dots, x_n$ vara utfall av $X_1, \dots, X_n$ med väntevärden $\expec{X_i} = \mu_i(\theta)$ och definiera kvadratfelet
+\begin{align*}
+	Q = \sum\limits_{i = 1}^{n}(x_i - \mu_i(\theta).
+\end{align*}
+Det värdet av $\theta$ som minimerar $Q$ är minsta kvadrat-skattningen av $\theta$.
+
 \paragraph{Medelvärde}
 Medelvärdet definieras som
 \begin{align*}
