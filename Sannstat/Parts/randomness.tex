@@ -1,0 +1,108 @@
+\section{Grunläggande koncept inom slump}
+
+\subsection{Definitioner}
+
+\paragraph{Slumpförsök}
+Ett slumpförsök är en experiment där resultatet ej kan avgöras på förhand.
+
+\paragraph{Utfall}
+Ett utfall är resultatet av ett slumpförsök.
+
+\paragraph{Utfallsrum}
+Ett utfallsrum, betecknad $\Omega$, är mängden av alla möjliga utfall för ett givet slumpförsök.
+
+\paragraph{Händelser}
+En händelse är en uppsättning intressanta utfall, alltså en delmängd av utfallsrummet, och betecknas $A, B, C, \dots$.
+
+\paragraph{Sannolikheter}
+Sannolikheten för en given händelse $A$ uppfyller följande axiom:
+\begin{itemize}
+	\item För varje $A$ gäller det att $0\leq P(A)\leq 1$.
+	\item För hela $\Omega$ gäller att $P(\Omega) = 1$.
+	\item Om $A_1, A_2, \dots$ är en följd av parvis disjunkta händelser så gäller att $P(A_1\cup A_2\cup\dots) = \sum P(A_i)$.
+\end{itemize}
+
+\paragraph{Disjunkta händelser}
+Två händelser $A, B$ är disjunkta, eller parvis oförenliga, om $A\cap B = \emptyset$.
+
+\paragraph{Betingade sannolikheter}
+Sannolikheten $P(B\given A)$ är sannolikheten för att $B$ händer givet att $A$ har händt, och definieras som
+\begin{align*}
+	P(B\given A) = \frac{P(A\cap B)}{P(A)}.
+\end{align*}
+För tre händelser definieras det som
+\begin{align*}
+	P(A\cap B\cap C) = P(A)P(B\given A)P(C\given (A\cap B))
+\end{align*}
+och motsvarande för flere händelser.
+
+\paragraph{Oberoende händelser}
+Två händelser är oberoende om $P(A\cap B) = P(A)P(B)$. Detta generaliseras till tre händelser om
+\begin{align*}
+	P(A\cap B) = P(A)P(B), \\
+	P(A\cap C) = P(A)P(C), \\
+	P(B\cap C) = P(B)P(C), \\
+	P(A\cap B\cap C) = P(A)P(B)P(C).
+\end{align*}
+
+\paragraph{Slumpmässiga fel}
+Ett slumpmässigt fel är en differans mellan ett enkelt mätvärde och ett väntevärde.
+
+\paragraph{Systematiska fel}
+Ett systematiskt fel är en differanse mellan ett väntevärde och ett korrekt värde.
+
+\paragraph{Precision}
+Precision är när många mätningar motsvarar väntevärdet bra.
+
+\paragraph{Noggrannhet}
+Noggrannhet är när många mätningar motsvarar det korrekta värdet bra.
+
+\subsection{Satser}
+
+\paragraph{de Morgans lagar}
+När man ska hitta komplement till komplicerade mängder, byta alla delmängder med deras komplement och alla unioner $(\cup)$ till snitt $(\cap)$, och motsatt.
+
+\paragraph{Regler för sannolikhetskalkyl}
+\begin{align*}
+	P(\comp{A}) &= 1 - P(A), \\
+	P(B)        &= P(B\cap A) + P(B\cap\comp{A}), \\
+	P(A\cup B)  &= P(A) + P(B) - P(A\cap B)
+\end{align*}
+
+\proof
+Följer från mängdlära.
+
+\paragraph{Lagen om total sannolikhet}
+Låt $H_1, \dots, H_n$ vara parvis oförenliga och låt $\bigcup\limits_{i = 1}^{n}H_i = \Omega$. Då gäller att
+\begin{align*}
+	P(A) = \sum\limits_{i = 1}^{n}P(H_i)P(A\given H_i).
+\end{align*}
+
+\proof
+Från mängdlära har man att
+\begin{align*}
+	A = \bigcup\limits_{i = 1}^{n}(A\cap H_i).
+\end{align*}
+Eftersom alla $H_i$ är parvis oförenliga, följer formeln för sannolikheten direkt.
+
+\paragraph{Bayes' sats}
+Låt $H_1, \dots, H_n$ vara disjunkta och låt $\bigcup\limits_{i = 1}^{n}H_i = \Omega$. Då gäller att
+\begin{align*}
+	P(H_i\given A) = \frac{P(H_i)P(A\given H_i)}{\sum\limits_{j} P(H_j)P(A\given H_j)}.
+\end{align*}
+
+\proof
+Direkt konsekvens av lagen om total sannolikhet och definitionen av betingad sannolikhet.
+
+\paragraph{Oberoende händelser där minst en inträffer}
+Låt $A_1, \dots, A_n$ vara oberoende och $P(A_i) = p_i$. Då ges sannolikheten för att minst en av dessa händer av
+\begin{align*}
+	1 - \prod\limits_{i = 1}^{n}(1 - p_i).
+\end{align*}
+
+\proof
+Sannolikheten för att inga av de inträffer är
+\begin{align*}
+	\prod\limits_{i = 1}^{n}(1 - p_i),
+\end{align*}
+och den givna formeln följer direkt.
