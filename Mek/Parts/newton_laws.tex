@@ -1,0 +1,63 @@
+\section{Newtons lagar}
+
+\paragraph{Första lagen}
+En partikel förblir i sitt tillstånd av vila eller rätlinjig likformig rörelse då och endast då summan av alla krafter som verkar på partikeln är noll.
+
+Denna formuleras separat av två årsaker:
+\begin{itemize}
+	\item Historiska årsaker, då det var denna lagen som först stod i strid med Aristoteles' värdsuppfattning.
+	\item Teoretiska årsakar, då den ger ett enkelt sätt att definiera interialramer på.
+\end{itemize}
+
+\paragraph{Andra lagen}
+\begin{align*}
+	\vect{F} = \dv{\vect{p}}{t}
+\end{align*}
+
+\paragraph{Tredje lagen}
+Om en kropp utövar en kraft på en annan, kommer denna utöva en lika stor och motsatt riktad kraft på den första kroppen.
+
+\paragraph{Inertialsystem}
+Ett inertialsystem är ett koordinatsystem där Newtons andra lag gäller. Motsatsen är ett icke-inertialsystem.
+
+\paragraph{Galileitransformationer}
+Vi söker ett samband mellan två referensramer. Låt en ram $S$ vara en intertialram och låt $S'$ röra sig relativt $S$ så att
+\begin{itemize}
+	\item hastigheten till origo i $S'$ relativt $S$, betecknad $\vb{v}_{O'}$, är konstant.
+	\item $S'$ ej roterar relativt $S$.
+\end{itemize}
+
+Enligt definitionen kan man skriva ortsvektorer i $S$ som
+\begin{align*}
+	\vb{r} = \vb{r}_{O'} + \vb{r}'
+\end{align*}
+där $\vb{r}'$ är ortsvektorn i $S'$. Derivation med avseende på tid ger
+\begin{align*}
+	\vb{v} &= \vb{v}_{O'} + \dv{t}\left(x'\vb{e}_{x'} + y'\vb{e}_{y'} + z'\vb{e}_{z'}\right) \\
+	       &= \vb{v}_{O'} + \dv{x'}{t}\vb{e}_{x'} + \dv{y'}{t}\vb{e}_{y'} + \dv{z'}{t}\vb{e}_{z'} \\
+	       &= \vb{v}_{O'} + \vb{v}'.
+\end{align*}
+Derivation en gång till ger
+\begin{align*}
+	\vb{a} = \vb{a}'.
+\end{align*}
+
+Konsekvensen är att Newtons andra lag ser exakt likadan ut i $S'$ som i $S$.
+
+\paragraph{Momentekvationen}
+Tidsderivatan av rörelsemängdsmomentet ges av
+\begin{align*}
+	\dv{\vb{H}_{O}}{t} = \dv{t}(\vb{r}_{O}\times m\vb{v}) = \dv{\vb{r}}{t}\times m\vb{v} + \vb{r}\times m\dv{\vb{v}}{t}.
+\end{align*}
+Den första termen ger inget bidrag då de två vektorerna är parallella. Newtons andra lag ger då
+\begin{align*}
+	\dv{\vb{H}_{O}}{t} = \vb{r}\times\vb{F} = \vb{M}_{O}.
+\end{align*}
+Detta är momentekvationen.
+
+\paragraph{Impulslagarna}
+Integration av Newtons andra lag och momentekvationen ger
+\begin{align*}
+	\Delta\vb{p} = \integ{t_1}{t_2}{t}{\vb{F}},\ \Delta\vb{H}_{O} = \integ{t_1}{t_2}{t}{\vb{M}_{O}}.
+\end{align*}
+$\integ{t_1}{t_2}{t}{\vb{F}}$ kallas för impulsen och $\integ{t_1}{t_2}{t}{\vb{M}_{O}}$ kallas för momentimpuls.
