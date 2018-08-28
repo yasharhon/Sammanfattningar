@@ -1,0 +1,68 @@
+\section{Accelererande referensramar}
+
+Vi vill betrakta en referensram $S'$ som rör sig relativt en inertialram $S$. $S'$ rör sig med hastighet $\vb{v}_{O'}$ och roterar med vinkelhastighet $\omega$ kring en given axel (dessa två kommer slås i hop till en enda rotationsvektor $\vb*{\omega}$).
+
+\paragraph{Transformation av vektorstorheter}
+Betrakta en godtycklig vektorstorhet $\vb{A}$. Denna kan skrivas i båda koordinatsystem, vilket ger likheten
+\begin{align*}
+	\vb{A} &= A_{x}\vu{e}_{x} + A_{y}\vu{e}_{y} + A_{x}\vu{e}_{y} \\
+	       &= A_{x}'\vu{e}_{x}' + A_{y}'\vu{e}_{y}' + A_{z}'\vu{e}_{z}'.
+\end{align*}
+Vi beräknar nu tidsderivatan och får
+\begin{align*}
+	\del{t}{\vb{A}} &= \del{t}{A_{x}}\vu{e}_{x} + \del{t}{A_{y}}\vu{e}_{y} + \del{t}{A_{z}}\vu{e}_{y} \\
+	       &= \del{t}{A_{x}'}\vu{e}_{x}' + \del{t}{A_{y}'}\vu{e}_{y}' + \del{t}{A_{z}'}\vu{e}_{z}' + A_{x}'\del{t}{\vu{e}_{x}'} + A_{y}'\del{t}{\vu{e}_{y}'} + A_{z}\del{t}{\vu{e}_{z}'}.
+\end{align*}
+Vi inför nu den nya operatorn
+\begin{align*}
+	\relderiv{\vb{A}} = \del{t}{A_{x}'}\vu{e}_{x}' + \del{t}{A_{y}'}\vu{e}_{y}' + \del{t}{A_{z}'}\vu{e}_{z}',
+\end{align*}
+som låter oss skriva om de tre första termerna i sista raden. Vi kan vidare visa att tidsderivatorna av enhetsvektorerna har belopp som ges av $\abs{\del{t}{\vu{e}_{i}'}} = \omega\sin{\alpha_i}$, där $\alpha_i$ är vinkeln som bildas mellan rotationsvektorn $\vb{\omega}$ och den givna enhetsvektorn, samt att varje tidsderivata av en enhetsvektor är normal på $\vb{\omega}$ och själva enhetsvektoren. Därmed kan vi skriva $\del{t}{\vu{e}_{i}'} = \vb{\omega}\times\vu{e}_{i}'$, och slutligen
+\begin{align}
+	\del{t}{\vb{A}} = \relderiv{\vb{A}} + \vb*{\omega}\times\vb{A}
+	\label{eq:relderiv}
+\end{align}
+
+\paragraph{Hastighet}
+Ortsvektorn till en punkt kan skrivas som
+\begin{align*}
+	\vb{r} = \vb{r}_{O'} + \vb{r}',
+\end{align*}
+där $\vb{r}$ är ortsvektorn i $S$, $\vb{r}'$ är ortsvektorn i $S'$ och $\vb{r}_{O'}$ är ortsvektorn till origo i $S'$ relativt $S$. Vi tidsderiverar och får
+\begin{align*}
+	\del{t}{\vb{r}} = \del{t}{\vb{r}_{O'}} + \del{t}{\vb{r}'}.
+\end{align*}
+Vi känner igen hastigheten i $S$ och hastigheten till ramen $S'$. Vid att använda det härledda sambandet för transformation av vektorstorheter får man
+\begin{align*}
+	\vb{v} = \vb{v}_{O'} + \relderiv{\vb{r}'} + \vb*{\omega}\times\vb{r}'.
+\end{align*}
+Vi känner även igen hastigheten till punkten i $S'$, vilket ger
+\begin{align*}
+	\vb{v} = \vb{v}_{O'} + \vb{v}' + \vb*{\omega}\times\vb{r}'.
+\end{align*}
+
+För att tolka detta resultatet, inför vi systempunkten, som är en materiell punkt i $S'$ som sammanfaller med punkten vi betraktar i ögonblicket vi betraktar. Denna punkten är fix relativt $S'$, vilket ger den hastighet i $S$ lika med $\vb{v}_{O'} + \vb*{\omega}\times\vb{r}'$. Vi kan då skriva
+\begin{align*}
+	\vb{v} = \vb{v}_{\text{sp}} + \vb{v}',
+\end{align*}
+där $\vb{v}_{\text{sp}}$ är systempunktens hastighet.
+
+\paragraph{Acceleration}
+För att beräkna accelerationen, tidsderiverar vi hastigheten, och får
+\begin{align*}
+	\del{t}{\vb{v}} = \del{t}{\vb{v}_{O'}} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\del{t}{\vb{r}'} + \del{t}{\vb{v}'}.
+\end{align*}
+Vi använder ekvation \ref{eq:relderiv} på storheterna i $S'$ för att få
+\begin{align*}
+	\del{t}{\vb{v}} &= \del{t}{\vb{v}_{O'}} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\left(\relderiv{\vb{r}'} + \vb*{\omega}\times\vb{r}'\right) + \relderiv{\vb{v}'} + \vb*{\omega}\times\vb{v}' \\
+	                &= \del{t}{\vb{v}_{O'}} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + \vb*{\omega}\times\left(\relderiv{\vb{r}'} + \vb{v}'\right) + \relderiv{\vb{v}'}.
+\end{align*}
+Vi känner igen accelerationen mätt i $S$, accelerationen till ramen $S'$ och hastigheten mätt i $S'$, och får
+\begin{align*}
+	\vb{a} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + 2\vb*{\omega}\times\vb{v}' + \vb{a}'
+\end{align*}
+
+För att tolka detta, inför vi igen systempunkten. Eftersom denna är fix relativt $S'$, ger de två sista termerna inget bidrag till dennas acceleration, vilket ger $\vb{a}_{\text{sp}} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}'$. Den sista termen känner vi även igen som punktens acceleration $S'$. Dock återstår en sista term, som döps Coreolisaccelerationen $\vb{a}_{\text{cor}}$. Vi får då
+\begin{align*}
+	\vb{a} = \vb{a}_{\text{sp}} + \vb{a}_{\text{cor}} + \vb{a}'.
+\end{align*}
