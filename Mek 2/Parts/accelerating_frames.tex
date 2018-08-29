@@ -1,5 +1,7 @@
 \section{Accelererande referensramar}
 
+\subsection{Kinematik}
+
 Vi vill betrakta en referensram $S'$ som rör sig relativt en inertialram $S$. $S'$ rör sig med hastighet $\vb{v}_{O'}$ och roterar med vinkelhastighet $\omega$ kring en given axel (dessa två kommer slås i hop till en enda rotationsvektor $\vb*{\omega}$).
 
 \paragraph{Transformation av vektorstorheter}
@@ -62,7 +64,31 @@ Vi känner igen accelerationen mätt i $S$, accelerationen till ramen $S'$ och h
 	\vb{a} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + 2\vb*{\omega}\times\vb{v}' + \vb{a}'
 \end{align*}
 
-För att tolka detta, inför vi igen systempunkten. Eftersom denna är fix relativt $S'$, ger de två sista termerna inget bidrag till dennas acceleration, vilket ger $\vb{a}_{\text{sp}} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}'$. Den sista termen känner vi även igen som punktens acceleration $S'$. Dock återstår en sista term, som döps Coreolisaccelerationen $\vb{a}_{\text{cor}}$. Vi får då
+För att tolka detta, inför vi igen systempunkten. Eftersom denna är fix relativt $S'$, ger de två sista termerna inget bidrag till dennas acceleration, vilket ger $\vb{a}_{\text{sp}} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}'$. Den sista termen känner vi även igen som punktens acceleration $S'$. Dock återstår en sista term, som döps Coriolisaccelerationen $\vb{a}_{\text{cor}}$. Vi får då
 \begin{align*}
 	\vb{a} = \vb{a}_{\text{sp}} + \vb{a}_{\text{cor}} + \vb{a}'.
 \end{align*}
+
+\subsection{Dynamik}
+
+När vi nu tillämpar Newtons andra lag i $S$, får man
+\begin{align*}
+	\vb{F} = m\vb{a} = m\left(\vb{a}_{\text{sp}} + \vb{a}_{\text{cor}} + \vb{a}'\right).
+\end{align*}
+Vi definierar nu två tröghetskrafter: systempunktskraften $\vb{F}_{\text{sp}} = - m\vb{a}_{\text{sp}}$ och Corioliskraften $\vb{F}_{\text{cor}} = - m\vb{a}_{\text{cor}}$. Detta ger oss
+\begin{align*}
+	m\vb{a}' = \vb{F} + \vb{F}_{\text{sp}} + \vb{F}_{\text{cor}} = \vb{F}_{\text{rel}}.
+\end{align*}
+
+Från detta drar vi slutsatsen att partikeldynamiken kan översättas till accelererande system om
+\begin{itemize}
+	\item alla absoluta storheter och tidsderivator ersätts med motsvarande relativa storheter och derivator.
+	\item de fysiska krafterna kompletteras med de två tröghetskrafterna.
+\end{itemize}
+
+Vi kan nu undersöka termerna systempunktskraften består av. Dessa är
+\begin{itemize}
+	\item en translatorisk kraft $\vb{F}_{\text{tl}} = -m\vb{a}_{O'}$.
+	\item en transversell kraft $\vb{F}_{\text{tv}} = -m\vb{a}_{\text{tv}} = -m\del{t}{\vb*{\omega}}\times\vb{r}'$.
+	\item en centrifugalkraft $\vb{F}_{\text{c}} = -m\vb{a}_{\text{c}} = -m\vb*{\omega}\times\vb*{\omega}\times\vb{r}'$.
+\end{itemize}
