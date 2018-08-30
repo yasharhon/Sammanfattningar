@@ -1,0 +1,67 @@
+\section{Ordinarie differentialekvationer}
+
+\paragraph{Linjära differentialekvationer}
+Om en differentialekvation kan skrivas på formen $L(y) = g$, är den linjär om
+\begin{itemize}
+	\item $L(y_1 + y_2) = L(y_1) + L(y_2)$.
+	\item $L(\alpha y) = \alpha L(y),\ \alpha\in\R$.
+\end{itemize}
+
+\paragraph{Separabla ordinarie differentialekvationer}
+Antag att vi har en differentialekvation som kan skrivas på formen
+\begin{align*}
+	m(x) + n(y(x))\deval{y}{x}{x} = 0.
+\end{align*}
+Vi beräknar primitiv funktion på båda sidor och får
+\begin{align*}
+	M(x) + N(y(x)) = c,\ c\in\R.
+\end{align*}
+Om $N$ är inverterbar, får man då $y$ enligt
+\begin{align*}
+	y(x) = N^{-1}(c - M(x)).
+\end{align*}
+
+\paragraph{Linjära första ordningens ordinarie differentialekvationer}
+Antag att vi har en differentialekvation på formen
+\begin{align*}
+	\deval{y}{t}{t} + p(t)y(t) = g(t).
+\end{align*}
+Beräkna
+\begin{align*}
+	P(t) = \inteval{a}{t}{p}{x}
+\end{align*}
+och inför den integrerande faktorn $e^{P(t)}$. Multiplicera med den på båda sidor för att få
+\begin{align*}
+	e^{P(t)}\deval{y}{t}{t} + p(t)e^{P(t)}y(t) = e^{P(t)}g(t).
+\end{align*}
+Detta kan skrivas om till
+\begin{align*}
+	\dv{t}\left(ye^{P}\right)(t) = e^{P(t)}g(t) = \deval{H}{t}{t}.
+\end{align*}
+Analysens huvudsats ger då
+\begin{align*}
+	y(t)e^{P(t)} = H(t) + c
+\end{align*}
+och slutligen
+\begin{align*}
+	y(t) = ce^{-P(t)} + e^{-P(t)}H(t).
+\end{align*}
+
+Låt oss lägga till bivillkoret $y(a) = y_0$. Man kan då visa att lösningen kan skrivas som
+\begin{align*}
+	y(t) = y_0e^{-\inteval{a}{t}{p}{x}} + \inteval{a}{t}{g(x)e^{-\inteval{x}{t}{p}{s}}}{x}.
+\end{align*}
+
+\paragraph{Lipschitzkontinuerlighet}
+En funktion $f$ är Lipschitzkontinuerlig om det finns ett $K$ så att det för varje $x_1, x_2$ gäller att
+\begin{align*}
+	\abs{f(x_1) - f(x_2)} \leq K\abs{x_1 - x_2}.
+\end{align*}
+
+\paragraph{Entydighet av lösning av en första ordnings ordinarie differentialekvation}
+Betrakta differentialekvationen
+\begin{align*}
+	&\deval{y}{t}{t} = f(y(t)),\ 0 < t < \tau, \\
+	&y_0 = 0.
+\end{align*}
+Denna har en entydig lösning om $f$ är Lipschitzkontinuerlig.
