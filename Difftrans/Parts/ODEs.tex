@@ -58,6 +58,39 @@ En funktion $f$ är Lipschitzkontinuerlig om det finns ett $K$ så att det för 
 	\abs{f(x_1) - f(x_2)} \leq K\abs{x_1 - x_2}.
 \end{align*}
 
+\paragraph{Grönwalls lemma}
+Antag att det finns positiva $A, K$ så att $h: [0, T\to\R]$ uppfyller
+\begin{align*}
+	h(t) \leq K\inteval{0}{t}{h(s)}{s} + A.
+\end{align*}
+Då gäller att
+\begin{align*}
+	h(t) \leq Ae^{Kt}.
+\end{align*}
+
+\subparagraph{Bevis}
+Definiera
+\begin{align*}
+	I(t) = \inteval{0}{t}{h(s)}{s}.
+\end{align*}
+Då gäller att
+\begin{align*}
+	\deval{I}{t}{t} = h(t) \leq KI(t) + A.
+\end{align*}
+Denna differentialolikheten kan vi lösa vid att tillämpa integrerande faktor. Detta kommer att ge
+\begin{align*}
+	\dv{t}\left(e^{-Kt}I(t)\right) \leq Ae^{-Kt}.
+\end{align*}
+Vi integrerar från $0$ till $r$ och använder att $I(0) = 0$ för att få
+\begin{align*}
+	I(r) \leq \frac{A}{K}(e^{Kr} - 1).
+\end{align*}
+Derivation på båda sidor ger
+\begin{align*}
+	h(r) \leq Ae^{Kr},
+\end{align*}
+vilket skulle visas.
+
 \paragraph{Entydighet av lösning av en första ordnings ordinarie differentialekvation}
 Betrakta differentialekvationen
 \begin{align*}
@@ -65,3 +98,24 @@ Betrakta differentialekvationen
 	&y_0 = 0.
 \end{align*}
 Denna har en entydig lösning om $f$ är Lipschitzkontinuerlig.
+
+\subsection{Bevis}
+Betrakta två lösningar $y, z$ av denna ekvationen. Då gäller att
+\begin{align*}
+	y(t) - y_0 = \inteval{0}{t}{f(y(s))}{s}
+\end{align*}
+och motsvarande för $z$, vilket ger
+\begin{align*}
+	y(t) - z(t)       &= y_0 - z_0 + \inteval{0}{t}{f(y(s)) - f(z(s))}{s}, \\
+	\abs{y(t) - z(t)} &\leq \abs{y_0 - z_0} + \abs{\inteval{0}{t}{f(y(s)) - f(z(s))}{s}}.
+\end{align*}
+Vid att tillämpa kriteriet om Lipschitzkontinuitet av $f$ för att få
+\begin{align*}
+	\abs{y(t) - z(t)} &\leq \abs{y_0 - z_0} + \abs{\inteval{0}{t}{K(y(s) - z(s))}{s}} \\
+	                  &= \abs{y_0 - z_0} + K\abs{\inteval{0}{t}{y(s) - z(s)}{s}}.
+\end{align*}
+Vi tillämpar nu Grönwalls lemma och får
+\begin{align*}
+	\abs{y(t) - z(t)} \leq \abs{y_0 - z_0}e^{Kt}.
+\end{align*}
+Om nu startvärden $y_0, z_0$ är lika, får man att $y(t) = z(t)$ för alla $t$.
