@@ -1,0 +1,34 @@
+\section{Stela kroppar}
+En stel kropp är en massbelagd domän så att avståndet mellan två godtyckliga punkter är konstant.
+
+En stel kropp kan ha translationshastighet eller rotationshastighet. Translationshastighet karakteriseras av att $\vb{v}_{A} = \vb{v}_{B}$ för alla $A, B$. Rotationshastighet karakteriseras av att det finns ett $C$ som är stelt förenad med kroppen så att $\vb{v}_{C} = \vb{0}$ momentant. 
+
+För att beskriva rörelsen till en stel kropp, bilda en referensram med axlerna fixa relativt kroppen. betrakta två punkter $A, B$ i kroppen, där origo i den nya referensramen är $A$. Då gäller det att
+\begin{align*}
+	\vb{v}_{B} = \vb{v}_{B, \text{sp}} + \vb{v}_{B, \text{rel}}.
+\end{align*}
+Eftersom axlerna är fixa relativt kroppen, ger andra termen inget bidrag, vilket ger
+\begin{align*}
+	\vb{v}_{B} = \vb{v}_{A} + \vb*{\omega}\times\vb{r}_{AB}
+\end{align*}
+och bekräftar vårt påstående om att all rörelse för en stel kropp är antingen translation eller rotation.
+
+Betrakta vidare kroppens acceleration, som ges av
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{B, \text{sp}} + \vb{a}_{B, \text{cor}} + \vb{a}_{B, \text{rel}}.
+\end{align*}
+Fixa axler ger att de två sista termerna ej bidrar och
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \dv{\vb*{\omega}}{t}\times\vb{r}_{AB} + \vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AB}),
+\end{align*}
+där den första termen är ett translatoriskt bidrag och de två andra är rotationsbidrag.
+
+Plan rörelse för en stel kropp karakteriseras av att hastigheten i alla punkter är parallellt med ett och samma fixa plan. Om en stel kropp roterar under plan rörelse, finns det alltid en punkt $C$ med $\vb{v}_{C} = \vb{0}$, som kallas momentancentrum. Denna punkt uppfyller $\vb{v}_{A} = -\vb*{\omega}\times\vb{r}_{AC}$. För att hitta den, multiplicera med $\vb*{\omega}$ på båda sidor för att få
+\begin{align*}
+	\vb*{\omega}\times\vb{v}_{A} &= -\vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AC}) \\
+	                             &= -(\vb*{\omega}\cdot\vb{r}_{AC})\vb*{\omega} + \omega^2\vb{r}_{AC}.
+\end{align*}
+Eftersom rörelsen är plan, behöver vi bara betrakta ett snitt av kroppen i rörelsesplanet, vilket gör att den första skalärprodukten blir $0$. Detta ger då positionen till momentancentrumet enligt
+\begin{align*}
+	\vb{r}_{AC} = \frac{1}{\omega^2}\vb*{\omega}\times\vb{v}_{A}.
+\end{align*}
