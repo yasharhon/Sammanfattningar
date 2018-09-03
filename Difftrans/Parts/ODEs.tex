@@ -1,62 +1,13 @@
-\section{Ordinarie differentialekvationer}
-
-\paragraph{Linjära differentialekvationer}
-Om en differentialekvation kan skrivas på formen $L(y) = g$, är den linjär om
-\begin{itemize}
-	\item $L(y_1 + y_2) = L(y_1) + L(y_2)$.
-	\item $L(\alpha y) = \alpha L(y),\ \alpha\in\R$.
-\end{itemize}
-
-\paragraph{Separabla ordinarie differentialekvationer}
-Antag att vi har en differentialekvation som kan skrivas på formen
-\begin{align*}
-	m(x) + n(y(x))\deval{y}{x}{x} = 0.
-\end{align*}
-Vi beräknar primitiv funktion på båda sidor och får
-\begin{align*}
-	M(x) + N(y(x)) = c,\ c\in\R.
-\end{align*}
-Om $N$ är inverterbar, får man då $y$ enligt
-\begin{align*}
-	y(x) = N^{-1}(c - M(x)).
-\end{align*}
-
-\paragraph{Linjära första ordningens ordinarie differentialekvationer}
-Antag att vi har en differentialekvation på formen
-\begin{align*}
-	\deval{y}{t}{t} + p(t)y(t) = g(t).
-\end{align*}
-Beräkna
-\begin{align*}
-	P(t) = \inteval{a}{t}{p}{x}
-\end{align*}
-och inför den integrerande faktorn $e^{P(t)}$. Multiplicera med den på båda sidor för att få
-\begin{align*}
-	e^{P(t)}\deval{y}{t}{t} + p(t)e^{P(t)}y(t) = e^{P(t)}g(t).
-\end{align*}
-Detta kan skrivas om till
-\begin{align*}
-	\dv{t}\left(ye^{P}\right)(t) = e^{P(t)}g(t) = \deval{H}{t}{t}.
-\end{align*}
-Analysens huvudsats ger då
-\begin{align*}
-	y(t)e^{P(t)} = H(t) + c
-\end{align*}
-och slutligen
-\begin{align*}
-	y(t) = ce^{-P(t)} + e^{-P(t)}H(t).
-\end{align*}
-
-Låt oss lägga till bivillkoret $y(a) = y_0$. Man kan då visa att lösningen kan skrivas som
-\begin{align*}
-	y(t) = y_0e^{-\inteval{a}{t}{p}{x}} + \inteval{a}{t}{g(x)e^{-\inteval{x}{t}{p}{s}}}{x}.
-\end{align*}
+\section{Ordinarie differentialekvationer (ODE)}
 
 \paragraph{Lipschitzkontinuerlighet}
 En funktion $f$ är Lipschitzkontinuerlig om det finns ett $K$ så att det för varje $x_1, x_2$ gäller att
 \begin{align*}
 	\abs{f(x_1) - f(x_2)} \leq K\abs{x_1 - x_2}.
 \end{align*}
+
+\paragraph{Lipschitzkontinuitet och deriverbarhet}
+Låt $f\in C^{1}$. Då är $f$ Lipschitzkontinuerlig.
 
 \paragraph{Grönwalls lemma}
 Antag att det finns positiva $A, K$ så att $h: [0, T\to\R]$ uppfyller
@@ -91,31 +42,80 @@ Derivation på båda sidor ger
 \end{align*}
 vilket skulle visas.
 
-\paragraph{Entydighet av lösning av en första ordnings ordinarie differentialekvation}
-Betrakta differentialekvationen
-\begin{align*}
-	&\deval{y}{t}{t} = f(y(t)),\ 0 < t < \tau, \\
-	&y_0 = 0.
-\end{align*}
-Denna har en entydig lösning om $f$ är Lipschitzkontinuerlig.
+\paragraph{Linjära differentialekvationer}
+Om en differentialekvation kan skrivas på formen $F(t, y, \dv{y}{x}, \dots) = 0$, är den linjär om $F$ är linjär i alla sina argument förutom $t$.
 
-\subsection{Bevis}
-Betrakta två lösningar $y, z$ av denna ekvationen. Då gäller att
+\paragraph{Lösning av linjära ODE av första ordning}
+Antag att vi har en differentialekvation på formen
 \begin{align*}
-	y(t) - y_0 = \inteval{0}{t}{f(y(s))}{s}
+	\deval{y}{t}{t} + p(t)y(t) = g(t).
 \end{align*}
-och motsvarande för $z$, vilket ger
+Beräkna
 \begin{align*}
-	y(t) - z(t)       &= y_0 - z_0 + \inteval{0}{t}{f(y(s)) - f(z(s))}{s}, \\
-	\abs{y(t) - z(t)} &\leq \abs{y_0 - z_0} + \abs{\inteval{0}{t}{f(y(s)) - f(z(s))}{s}}.
+	P(t) = \inteval{a}{t}{p}{x}
 \end{align*}
-Vid att tillämpa kriteriet om Lipschitzkontinuitet av $f$ för att få
+och inför den integrerande faktorn $e^{P(t)}$. Multiplicera med den på båda sidor för att få
 \begin{align*}
-	\abs{y(t) - z(t)} &\leq \abs{y_0 - z_0} + \abs{\inteval{0}{t}{K(y(s) - z(s))}{s}} \\
-	                  &= \abs{y_0 - z_0} + K\abs{\inteval{0}{t}{y(s) - z(s)}{s}}.
+	e^{P(t)}\deval{y}{t}{t} + p(t)e^{P(t)}y(t) = e^{P(t)}g(t).
 \end{align*}
-Vi tillämpar nu Grönwalls lemma och får
+Detta kan skrivas om till
 \begin{align*}
-	\abs{y(t) - z(t)} \leq \abs{y_0 - z_0}e^{Kt}.
+	\dv{t}\left(ye^{P}\right)(t) = e^{P(t)}g(t) = \deval{H}{t}{t}.
 \end{align*}
-Om nu startvärden $y_0, z_0$ är lika, får man att $y(t) = z(t)$ för alla $t$.
+Analysens huvudsats ger då
+\begin{align*}
+	y(t)e^{P(t)} = H(t) + c
+\end{align*}
+och slutligen
+\begin{align*}
+	y(t) = ce^{-P(t)} + e^{-P(t)}H(t).
+\end{align*}
+
+\paragraph{Separabla ODE av första ordning}
+Antag att vi har en differentialekvation som kan skrivas på formen
+\begin{align*}
+	m(x) + n(y(x))\deval{y}{x}{x} = 0.
+\end{align*}
+Denna betecknas som en separabel ODE av första ordning.
+
+För att lösa den, beräkna primitiv funktion på båda sidor, vilket ger
+\begin{align*}
+	M(x) + N(y(x)) = c,\ c\in\R.
+\end{align*}
+Om $N$ är inverterbar, får man då $y$ enligt
+\begin{align*}
+	y(x) = N^{-1}(c - M(x)).
+\end{align*}
+
+Låt oss lägga till bivillkoret $y(a) = y_0$. Man kan då visa att lösningen kan skrivas som
+\begin{align*}
+	y(t) = y_0e^{-\inteval{a}{t}{p}{x}} + \inteval{a}{t}{g(x)e^{-\inteval{x}{t}{p}{s}}}{x}.
+\end{align*}
+
+\paragraph{Exakta differentialekvationer}
+Betrakta ekvationen
+\begin{align*}
+	M(x, y(x)) + N(x, y(x))\deval{y}{x}{x} = 0.
+\end{align*}
+Denna är exakt om den kan skrivas på formen
+\begin{align*}
+	\deval{\psi}{x}{x, y(x)} = 0.
+\end{align*}
+Det gåller då att
+\begin{align*}
+	\pdeval{\psi}{x}{x, y(x)} = M(x, y(x)),\ \pdeval{\psi}{y}{x, y(x)} = N(x, y(x)),
+\end{align*}
+och lösningarna ges implicit av
+\begin{align*}
+	\psi(x, y(x)) = c.
+\end{align*}
+
+\paragraph{Exakthet av differentialekvationer}
+Differentialekvationen
+\begin{align*}
+	M(x, y(x)) + N(x, y(x))\deval{y}{x}{x} = 0
+\end{align*}
+är exakt om
+\begin{align*}
+	\pdeval{M}{y}{x, y(x)} = \pdeval{N}{x}{x, y(x)}.
+\end{align*}
