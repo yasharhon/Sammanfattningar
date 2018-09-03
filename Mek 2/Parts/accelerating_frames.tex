@@ -17,13 +17,30 @@ Vi beräknar nu tidsderivatan och får
 \end{align*}
 Vi inför nu den nya operatorn
 \begin{align*}
-	\relderiv{\vb{A}} = \del{t}{A_{x}'}\vu{e}_{x}' + \del{t}{A_{y}'}\vu{e}_{y}' + \del{t}{A_{z}'}\vu{e}_{z}',
+	\relderiv{\vb{A}} = \dv{A_{x}'}{t}\vu{e}_{x}' + \dv{A_{y}'}{t}\vu{e}_{y}' + \dv{A_{z}'}{t}\vu{e}_{z}',
 \end{align*}
 som låter oss skriva om de tre första termerna i sista raden. Vi kan vidare visa att tidsderivatorna av enhetsvektorerna har belopp som ges av $\abs{\del{t}{\vu{e}_{i}'}} = \omega\sin{\alpha_i}$, där $\alpha_i$ är vinkeln som bildas mellan rotationsvektorn $\vb{\omega}$ och den givna enhetsvektorn, samt att varje tidsderivata av en enhetsvektor är normal på $\vb{\omega}$ och själva enhetsvektoren. Därmed kan vi skriva $\del{t}{\vu{e}_{i}'} = \vb{\omega}\times\vu{e}_{i}'$, och slutligen
 \begin{align}
-	\del{t}{\vb{A}} = \relderiv{\vb{A}} + \vb*{\omega}\times\vb{A}
+	\dv{\vb{A}}{t} = \relderiv{\vb{A}} + \vb*{\omega}\times\vb{A}
 	\label{eq:relderiv}
 \end{align}
+
+Definitionen av vinkelhastighet ges av
+\begin{align*}
+	\vb*{\omega} = \left(\dv{\vu{e}_{y'}}{t}\cdot\vu{e}_{z'}\right)\vu{e}_{x'} + \left(\dv{\vu{e}_{z'}}{t}\cdot\vu{e}_{x'}\right)\vu{e}_{y'} + \left(\dv{\vu{e}_{x'}}{t}\cdot\vu{e}_{y'}\right)\vu{e}_{z'}.
+\end{align*}
+För att visa att dessa är additiva, inför tre system $S_0, S_1, S_2$, vinkelhastigheten $\vb*{\omega}_{1, 0}$ av $S_1$ relativt $S_0$ och derivatan
+\begin{align*}
+	\left(\dv{\vb{A}}{t}\right)_{0} = \left(\dv{\vb{A}}{t}\right)_{1} + \vb*{\omega}_{1, 0}\times\vb{A}.
+\end{align*}
+Vid att använda derivationssambanden $1 - 2, 1 - 0, 2 - 0$ får man
+\begin{align*}
+	\left(\dv{\vb{A}}{t}\right)_{2} + \vb*{\omega}_{2, 1}\times\vb{A} + \vb*{\omega}_{1, 0}\times\vb{A} = \left(\dv{\vb{A}}{t}\right)_{2} + \vb*{\omega}_{2, 0}\times\vb{A},
+\end{align*}
+vilket implicerar
+\begin{align*}
+	\vb*{\omega}_{2, 0} = \vb*{\omega}_{2, 1} + \vb*{\omega}_{1, 0}.
+\end{align*}
 
 \paragraph{Hastighet}
 Ortsvektorn till en punkt kan skrivas som

@@ -17,13 +17,16 @@ Betrakta vidare kroppens acceleration, som ges av
 \begin{align*}
 	\vb{a}_{B} = \vb{a}_{B, \text{sp}} + \vb{a}_{B, \text{cor}} + \vb{a}_{B, \text{rel}}.
 \end{align*}
-Fixa axler ger att de två sista termerna ej bidrar och
+Fixa axler relativt kroppen ger att de två sista termerna ej bidrar och
 \begin{align*}
 	\vb{a}_{B} = \vb{a}_{A} + \dv{\vb*{\omega}}{t}\times\vb{r}_{AB} + \vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AB}),
 \end{align*}
 där den första termen är ett translatoriskt bidrag och de två andra är rotationsbidrag.
 
-Plan rörelse för en stel kropp karakteriseras av att hastigheten i alla punkter är parallellt med ett och samma fixa plan. Om en stel kropp roterar under plan rörelse, finns det alltid en punkt $C$ med $\vb{v}_{C} = \vb{0}$, som kallas momentancentrum. Denna punkt uppfyller $\vb{v}_{A} = -\vb*{\omega}\times\vb{r}_{AC}$. För att hitta den, multiplicera med $\vb*{\omega}$ på båda sidor för att få
+\paragraph{Plan rörelse}
+Plan rörelse för en stel kropp karakteriseras av att hastigheten i alla punkter är parallellt med ett och samma fixa plan. Om rörelsen är i $xy$-planet, kommer $\vb*{\omega}$ peka längs med $z$-axeln.
+
+Om en stel kropp roterar under plan rörelse, finns det alltid en punkt $C$ med $\vb{v}_{C} = \vb{0}$, som kallas momentancentrum. Denna punkt uppfyller $\vb{v}_{A} = -\vb*{\omega}\times\vb{r}_{AC}$. För att hitta den, multiplicera med $\vb*{\omega}$ på båda sidor för att få
 \begin{align*}
 	\vb*{\omega}\times\vb{v}_{A} &= -\vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AC}) \\
 	                             &= -(\vb*{\omega}\cdot\vb{r}_{AC})\vb*{\omega} + \omega^2\vb{r}_{AC}.
@@ -31,4 +34,17 @@ Plan rörelse för en stel kropp karakteriseras av att hastigheten i alla punkte
 Eftersom rörelsen är plan, behöver vi bara betrakta ett snitt av kroppen i rörelsesplanet, vilket gör att den första skalärprodukten blir $0$. Detta ger då positionen till momentancentrumet enligt
 \begin{align*}
 	\vb{r}_{AC} = \frac{1}{\omega^2}\vb*{\omega}\times\vb{v}_{A}.
+\end{align*}
+
+Vi studerar vidare accelerationssambandet för plan rörelse, som ger
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \dv{\vb*{\omega}}{t}\times\vb{r}_{AB} + \vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AB}).
+\end{align*}
+Vi skriver ut termerna och får
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \alpha\vu{e}_{z}\times\vb{r}_{AB} + (\vb*{\omega}\cdot\vb{r}_{AB})\vb*{\omega} - \omega^2\vb{r}_{AB}.
+\end{align*}
+Eftersom rörelsen är plan, blir skalärprodukten $0$, och man får slutligen
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \alpha\vu{e}_{z}\times\vb{r}_{AB} - \omega^2\vb{r}_{AB}.
 \end{align*}
