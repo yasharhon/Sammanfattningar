@@ -119,3 +119,43 @@ Differentialekvationen
 \begin{align*}
 	\pdeval{M}{y}{x, y(x)} = \pdeval{N}{x}{x, y(x)}.
 \end{align*}
+
+\paragraph{Form på lösning av andra ordningens ODE}
+Betrakta den andra ordningens ODE
+\begin{align*}
+	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) = L(t, y) = g(t).
+\end{align*}
+Låt $y_{\text{P}}$ vara en partikulär lösning till denna. Då är $y$ en lösning om och endast om
+\begin{align*}
+	y = y_{\text{H}} + y_{\text{P}},
+\end{align*}
+där $y_{\text{H}}$ löser den homogena ekvationen.
+
+\subparagraph{Bevis}
+Vi har
+\begin{align*}
+	L(t, y) = L(t, y_{\text{P}} + y_{\text{H}}) = L(t, y_{\text{P}}) + L(t, y_{\text{H}}) = g(t) + 0 = g(t),
+\end{align*}
+och därmed löser $y$ differentialekvationen. Vi har även
+\begin{align*}
+	L(t, y - y_{\text{P}}) = g(t) - g(t) = 0,
+\end{align*}
+och $y - y_{\text{P}}$ löser den homogena ekvationen. Eftersom detta är sant, har vi visat ekvivalens.
+
+\paragraph{Lösning av andra ordningens ODE med konstanta koefficienter}
+Låt $r_1, r_2$ vara lösningar till
+\begin{align*}
+	r^2 + pr + q = 0.
+\end{align*}
+Då ges lösningarna till
+\begin{align*}
+	\deval[2]{y}{t}{t} + p\deval{y}{t}{t} + qy(t) = L(t, y) = 0
+\end{align*}
+av
+\begin{align*}
+	y(t) = 
+	\begin{cases}
+		c_1e^{r_1t} + c_2e^{r_2t},\ &r_1\neq r_2, \\
+		(c_1t + c_2)e^{r_1t},\      &r_1 = r_2.
+	\end{cases}
+\end{align*}
