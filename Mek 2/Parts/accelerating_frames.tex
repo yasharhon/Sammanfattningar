@@ -12,19 +12,20 @@ Betrakta en godtycklig vektorstorhet $\vb{A}$. Denna kan skrivas i båda koordin
 \end{align*}
 Vi beräknar nu tidsderivatan och får
 \begin{align*}
-	\del{t}{\vb{A}} &= \del{t}{A_{x}}\vu{e}_{x} + \del{t}{A_{y}}\vu{e}_{y} + \del{t}{A_{z}}\vu{e}_{y} \\
-	       &= \del{t}{A_{x}'}\vu{e}_{x}' + \del{t}{A_{y}'}\vu{e}_{y}' + \del{t}{A_{z}'}\vu{e}_{z}' + A_{x}'\del{t}{\vu{e}_{x}'} + A_{y}'\del{t}{\vu{e}_{y}'} + A_{z}\del{t}{\vu{e}_{z}'}.
+	\dv{\vb{A}}{t} &= \dv{A_{x}}{t}\vu{e}_{x} + \dv{A_{y}}{t}\vu{e}_{y} + \dv{A_{z}}{t}\vu{e}_{y} \\
+	       &= \dv{A_{x}'}{t}\vu{e}_{x}' + \dv{A_{y}'}{t}\vu{e}_{y}' + \dv{A_{z}'}{t}\vu{e}_{z}' + A_{x}'\dv{\vu{e}_{x}'}{t} + A_{y}'\dv{\vu{e}_{y}'}{t} + A_{z}\dv{\vu{e}_{z}'}{t}.
 \end{align*}
 Vi inför nu den nya operatorn
 \begin{align*}
 	\relderiv{\vb{A}} = \dv{A_{x}'}{t}\vu{e}_{x}' + \dv{A_{y}'}{t}\vu{e}_{y}' + \dv{A_{z}'}{t}\vu{e}_{z}',
 \end{align*}
-som låter oss skriva om de tre första termerna i sista raden. Vi kan vidare visa att tidsderivatorna av enhetsvektorerna har belopp som ges av $\abs{\del{t}{\vu{e}_{i}'}} = \omega\sin{\alpha_i}$, där $\alpha_i$ är vinkeln som bildas mellan rotationsvektorn $\vb{\omega}$ och den givna enhetsvektorn, samt att varje tidsderivata av en enhetsvektor är normal på $\vb{\omega}$ och själva enhetsvektoren. Därmed kan vi skriva $\del{t}{\vu{e}_{i}'} = \vb{\omega}\times\vu{e}_{i}'$, och slutligen
+som låter oss skriva om de tre första termerna i sista raden. Vi kan vidare visa att tidsderivatorna av enhetsvektorerna har belopp som ges av $\abs{\dv{\vu{e}_{i}'}{t}} = \omega\sin{\alpha_i}$, där $\alpha_i$ är vinkeln som bildas mellan rotationsvektorn $\vb{\omega}$ och den givna enhetsvektorn, samt att varje tidsderivata av en enhetsvektor är normal på $\vb{\omega}$ och själva enhetsvektoren. Därmed kan vi skriva $\dv{\vu{e}_{i}'}{t} = \vb{\omega}\times\vu{e}_{i}'$, och slutligen
 \begin{align}
 	\dv{\vb{A}}{t} = \relderiv{\vb{A}} + \vb*{\omega}\times\vb{A}
 	\label{eq:relderiv}
 \end{align}
 
+\paragraph{Mer om vinkelhastighet}
 Definitionen av vinkelhastighet ges av
 \begin{align*}
 	\vb*{\omega} = \left(\dv{\vu{e}_{y'}}{t}\cdot\vu{e}_{z'}\right)\vu{e}_{x'} + \left(\dv{\vu{e}_{z'}}{t}\cdot\vu{e}_{x'}\right)\vu{e}_{y'} + \left(\dv{\vu{e}_{x'}}{t}\cdot\vu{e}_{y'}\right)\vu{e}_{z'}.
@@ -41,6 +42,25 @@ vilket implicerar
 \begin{align*}
 	\vb*{\omega}_{2, 0} = \vb*{\omega}_{2, 1} + \vb*{\omega}_{1, 0}.
 \end{align*}
+Det gäller speciellt att
+\begin{align*}
+	\vb*{\omega}_{2, 1} = -\vb*{\omega}_{1, 2}.
+\end{align*}
+
+Vi betraktar vidare vinkelaccelerationen, och inför
+\begin{align*}
+	\vb*{\alpha}_{1, 0} = \left(\dv{\vb*{\omega}_{1, 0}}{t}\right)_{0}.
+\end{align*}
+Vid att tidsderivera additionssambandet för vinkelhastigheter får man
+\begin{align*}
+	\vb*{\alpha}_{2, 0} &= \left(\dv{\vb*{\omega}_{1, 0}}{t}\right)_{0} + \left(\dv{\vb*{\omega}_{2, 1}}{t}\right)_{0} \\
+	                    &= \vb*{\alpha}_{1, 0} + \left(\dv{\vb*{\omega}_{2, 1}}{t}\right)_{1} + \vb*{\omega}_{1, 0}\times\vb*{\omega}_{2, 1} \\
+	                    &= \vb*{\alpha}_{1, 0} + \vb*{\alpha}_{2, 1} + \vb*{\omega}_{1, 0}\times\vb*{\omega}_{2, 1},
+\end{align*}
+alltså är vinkelaccelerationer allmänt ej additiva. Man kan dock visa att
+\begin{align*}
+	\vb*{\alpha}_{2, 1} =- \vb*{\alpha}_{1, 2}.
+\end{align*}
 
 \paragraph{Hastighet}
 Ortsvektorn till en punkt kan skrivas som
@@ -49,7 +69,7 @@ Ortsvektorn till en punkt kan skrivas som
 \end{align*}
 där $\vb{r}$ är ortsvektorn i $S$, $\vb{r}'$ är ortsvektorn i $S'$ och $\vb{r}_{O'}$ är ortsvektorn till origo i $S'$ relativt $S$. Vi tidsderiverar och får
 \begin{align*}
-	\del{t}{\vb{r}} = \del{t}{\vb{r}_{O'}} + \del{t}{\vb{r}'}.
+	\dv{\vb{r}}{t} = \dv{\vb{r}_{O'}}{t} + \dv{\vb{r}'}{t}.
 \end{align*}
 Vi känner igen hastigheten i $S$ och hastigheten till ramen $S'$. Vid att använda det härledda sambandet för transformation av vektorstorheter får man
 \begin{align*}
@@ -69,19 +89,19 @@ där $\vb{v}_{\text{sp}}$ är systempunktens hastighet.
 \paragraph{Acceleration}
 För att beräkna accelerationen, tidsderiverar vi hastigheten, och får
 \begin{align*}
-	\del{t}{\vb{v}} = \del{t}{\vb{v}_{O'}} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\del{t}{\vb{r}'} + \del{t}{\vb{v}'}.
+	\dv{\vb{v}}{t} = \dv{\vb{v}_{O'}}{t} + \dv{\vb*{\omega}}{t}\times\vb{r}' + \vb*{\omega}\times\dv{\vb{r}'}{t} + \dv{\vb{v}'}{t}.
 \end{align*}
 Vi använder ekvation \ref{eq:relderiv} på storheterna i $S'$ för att få
 \begin{align*}
-	\del{t}{\vb{v}} &= \del{t}{\vb{v}_{O'}} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\left(\relderiv{\vb{r}'} + \vb*{\omega}\times\vb{r}'\right) + \relderiv{\vb{v}'} + \vb*{\omega}\times\vb{v}' \\
-	                &= \del{t}{\vb{v}_{O'}} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + \vb*{\omega}\times\left(\relderiv{\vb{r}'} + \vb{v}'\right) + \relderiv{\vb{v}'}.
+	\dv{\vb{v}}{t} &= \dv{\vb{v}_{O'}}{t} + \dv{\vb*{\omega}}{t}\times\vb{r}' + \vb*{\omega}\times\left(\relderiv{\vb{r}'} + \vb*{\omega}\times\vb{r}'\right) + \relderiv{\vb{v}'} + \vb*{\omega}\times\vb{v}' \\
+	                &= \dv{\vb{v}_{O'}}{t} + \dv{\vb*{\omega}}{t}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + \vb*{\omega}\times\left(\relderiv{\vb{r}'} + \vb{v}'\right) + \relderiv{\vb{v}'}.
 \end{align*}
 Vi känner igen accelerationen mätt i $S$, accelerationen till ramen $S'$ och hastigheten mätt i $S'$, och får
 \begin{align*}
-	\vb{a} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + 2\vb*{\omega}\times\vb{v}' + \vb{a}'
+	\vb{a} = \vb{a}_{O'} + \dv{\vb*{\omega}}{t}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}' + 2\vb*{\omega}\times\vb{v}' + \vb{a}'
 \end{align*}
 
-För att tolka detta, inför vi igen systempunkten. Eftersom denna är fix relativt $S'$, ger de två sista termerna inget bidrag till dennas acceleration, vilket ger $\vb{a}_{\text{sp}} = \vb{a}_{O'} + \del{t}{\vb*{\omega}}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}'$. Den sista termen känner vi även igen som punktens acceleration $S'$. Dock återstår en sista term, som döps Coriolisaccelerationen $\vb{a}_{\text{cor}}$. Vi får då
+För att tolka detta, inför vi igen systempunkten. Eftersom denna är fix relativt $S'$, ger de två sista termerna inget bidrag till dennas acceleration, vilket ger $\vb{a}_{\text{sp}} = \vb{a}_{O'} + \dv{\vb*{\omega}}{t}\times\vb{r}' + \vb*{\omega}\times\vb*{\omega}\times\vb{r}'$. Den sista termen känner vi även igen som punktens acceleration $S'$. Dock återstår en sista term, som döps Coriolisaccelerationen $\vb{a}_{\text{cor}}$. Vi får då
 \begin{align*}
 	\vb{a} = \vb{a}_{\text{sp}} + \vb{a}_{\text{cor}} + \vb{a}'.
 \end{align*}
@@ -106,6 +126,6 @@ Från detta drar vi slutsatsen att partikeldynamiken kan översättas till accel
 Vi kan nu undersöka termerna systempunktskraften består av. Dessa är
 \begin{itemize}
 	\item en translatorisk kraft $\vb{F}_{\text{tl}} = -m\vb{a}_{O'}$.
-	\item en transversell kraft $\vb{F}_{\text{tv}} = -m\vb{a}_{\text{tv}} = -m\del{t}{\vb*{\omega}}\times\vb{r}'$.
+	\item en transversell kraft $\vb{F}_{\text{tv}} = -m\vb{a}_{\text{tv}} = -m\dv{\vb*{\omega}}{t}\times\vb{r}'$.
 	\item en centrifugalkraft $\vb{F}_{\text{c}} = -m\vb{a}_{\text{c}} = -m\vb*{\omega}\times\vb*{\omega}\times\vb{r}'$.
 \end{itemize}

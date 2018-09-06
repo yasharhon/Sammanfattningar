@@ -1,0 +1,43 @@
+\section{Partikelsystem}
+Ett partikelsystem är en samling av $N$ partiklar med (konstanta) massor $m_i$ och total massa $m$ som samverkar. Varje partikel påverkas av yttre krafter med summa $\vb{F}_{i}$ samt inre krafter $\vb{f}_{ij}$ med alla andra partikler i systemet.
+
+Vi antar att alla inre krafter verkar parallellt med linjen mellan partiklerna. Newtons andra lag ger $\vb{f}_{ij} = -\vb{f}_{ji}$, vilket även implicerar $\vb{f}_{ii}= \vb{0}$.
+
+Vi definierar kraftsummorna
+\begin{align*}
+	\vb{F}     &= \sum \vb{F}_{i}, \\
+	\vb{f}     &= \sum\limits_{i}\sum\limits_{j}\vb{f}_{ij}.
+\end{align*}
+Vi får
+\begin{align*}
+	\vb{f} = \sum\limits_{i}\sum\limits_{j}\vb{f}_{ij} = \sum\limits_{j}\sum\limits_{i}\vb{f}_{ij} = -\sum\limits_{j}\sum\limits_{i}\vb{f}_{ji} = -\vb{f},
+\end{align*}
+och därmed $\vb{f} = \vb{0}$.
+
+\paragraph{Masscentrum}
+Vi kommer ihåg att masscentrum för ett partikelsystem definieras som
+\begin{align*}
+	\vb{r}_{G} = \frac{1}{\sum m_i}\sum m_i\vb{r}_i.
+\end{align*}
+
+\paragraph{Rörelsemängd}
+Systemets totala rörelsemängd ges av
+\begin{align*}
+	\vb{p} = \sum m_i\vb{v}_{i} = \dv{t}\left(\sum m_i\vb{r}_{i}\right) = \dv{m\vb{r}_{G}}{t} = m\vb{v}_{G}.
+\end{align*}
+
+\paragraph{Kraftekvationen för ett partikelsystem}
+Kraftekvationen för en enda partikel ger
+\begin{align*}
+	m_{i}\dv[2]{\vb{r}_{i}}{t} = \vb{F}_{i} + \sum\limits_{j}\vb{f}_{ij}.
+\end{align*}
+Om vi adderar alla dessa ekvationer, får man
+\begin{align*}
+	\sum m_{i}\dv[2]{\vb{r}_{i}}{t} = \sum \vb{F}_{i} + \sum\limits_{i}\sum\limits_{j}\vb{f}_{ij}, \\
+	\dv[2]{t}\left(\sum m_{i}\vb{r}_{i}\right) = \vb{F} + \vb{f}, \\
+	\dv{t}\left(m\vb{v}_{G}\right) = \dv{\vb{p}}{t} = \vb{F},
+\end{align*}
+vilket är kraftekvationen som vi känner den. Med konstant massa kan detta även skrivas som
+\begin{align*}
+	m\vb{a}_{G} = \vb{F}.
+\end{align*}
