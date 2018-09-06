@@ -1,6 +1,8 @@
 \section{Ordinarie differentialekvationer (ODE)}
 
-\paragraph{Lipschitzkontinuerlighet}
+\subsection{Användbara defitioner och satser}
+
+\paragraph{Lipschitzkontinuitet}
 En funktion $f$ är Lipschitzkontinuerlig om det finns ett $K$ så att det för varje $x_1, x_2$ gäller att
 \begin{align*}
 	\abs{f(x_1) - f(x_2)} \leq K\abs{x_1 - x_2}.
@@ -45,6 +47,53 @@ vilket skulle visas.
 \paragraph{Linjära differentialekvationer}
 Om en differentialekvation kan skrivas på formen $F(t, y, \dv{y}{x}, \dots) = 0$, är den linjär om $F$ är linjär i alla sina argument förutom $t$.
 
+\paragraph{Wronskianen}
+Wronskianen definieras som
+\begin{align*}
+	W(y_1, y_2)(t) = \mdet{y_{1}(t) & y_{2}(t) \\ \deval{y_{1}}{t}{t} & \deval{y_{2}}{t}{t}}.
+\end{align*}
+
+\paragraph{Linjärt beroende funktioner}
+$f: I\to\R, g: I\to\R$ är linjärt beroende om det finns $k_{1}, k_{2}$ så att
+\begin{align*}
+	k_{1}f(t) + k_{2}g(t) = 0\ \forall\ t\in I.
+\end{align*}
+
+\subsection{Första ordningen}
+
+\paragraph{Entydighet av lösning}
+Betrakta differentialekvationen
+\begin{align*}
+	\deval{y}{t}{t} &= f(y), \\
+	y(0)            &= y_0.
+\end{align*}
+Detta har en unik lösning om $f$ är Lipschitzkontinuerlig.
+
+Observera att beviset kan även göras för en funktion $f(t, y)$ vid att skriva differentialekvationen som ett system och komma med en motsvarande sats för system av differentialekvationer.
+
+\subparagraph{Bevis}
+Betrakta två lösningar $y, z$ av differentialekvationen. Vi får
+\begin{align*}
+	y(\tau) - y_{0} = \inteval{0}{\tau}{f(y)}{t}
+\end{align*}
+och samma för $z$. Vi subtraherar dessa två resultat och får
+\begin{align*}
+	y(\tau) - z(\tau) = y_{0} - z_{0} + \inteval{0}{\tau}{f(y) - f(z)}{t}.
+\end{align*}
+Vid att beräkna absolutbeloppet av båda sidor och använda Cauchy-Schwarz' oliket får man vidare
+\begin{align*}
+	\abs{y(\tau) - z(\tau)} \leq \abs{y_{0} - z_{0}} + \inteval{0}{\tau}{\abs{f(y) - f(z)}}{t}.
+\end{align*}
+Kravet om Lipschitzkontinuitet av $f$ ger vidare
+\begin{align*}
+	\abs{y(\tau) - z(\tau)} \leq \abs{y_{0} - z_{0}} + \inteval{0}{\tau}{K\abs{y(t) - z(t)}}{t}.
+\end{align*}
+Grönwalls lemma ger slutligen
+\begin{align*}
+	\abs{y(\tau) - z(\tau)} \leq \abs{y_{0} - z_{0}}e^{K\tau}.
+\end{align*}
+Om $y_{0} = z_{0}$ är $y = z$, och beviset är klart.
+
 \paragraph{Lösning av linjära ODE av första ordning}
 Antag att vi har en differentialekvation på formen
 \begin{align*}
@@ -71,6 +120,11 @@ och slutligen
 	y(t) = ce^{-P(t)} + e^{-P(t)}H(t).
 \end{align*}
 
+Låt oss lägga till bivillkoret $y(a) = y_0$. Man kan då visa att lösningen kan skrivas som
+\begin{align*}
+	y(t) = y_0e^{-\inteval{a}{t}{p}{x}} + \inteval{a}{t}{g(x)e^{-\inteval{x}{t}{p}{s}}}{x}.
+\end{align*}
+
 \paragraph{Separabla ODE av första ordning}
 Antag att vi har en differentialekvation som kan skrivas på formen
 \begin{align*}
@@ -87,10 +141,103 @@ Om $N$ är inverterbar, får man då $y$ enligt
 	y(x) = N^{-1}(c - M(x)).
 \end{align*}
 
-Låt oss lägga till bivillkoret $y(a) = y_0$. Man kan då visa att lösningen kan skrivas som
+\subsection{Andra ordningen}
+
+\paragraph{Entydighet av lösning}
+Betrakta den andra ordningens ODE
 \begin{align*}
-	y(t) = y_0e^{-\inteval{a}{t}{p}{x}} + \inteval{a}{t}{g(x)e^{-\inteval{x}{t}{p}{s}}}{x}.
+	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) &= g(t),\ y > t_0, \\
+	y(t_0)                                              &= y_0, \\
+	\deval{y}{t}{t_{0}}                                 &= y'_{0}.
 \end{align*}
+Den har en entydig lösning om $p, q$ är Lipschitzkontinuerliga.
+
+\paragraph{Form på lösning av andra ordningens ODE}
+Betrakta den andra ordningens ODE
+\begin{align*}
+	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) = L(t, y) = g(t).
+\end{align*}
+Låt $y_{\text{P}}$ vara en partikulär lösning till denna. Då är $y$ en lösning om och endast om
+\begin{align*}
+	y = y_{\text{H}} + y_{\text{P}},
+\end{align*}
+där $y_{\text{H}}$ löser den homogena ekvationen.
+
+\subparagraph{Bevis}
+Vi har
+\begin{align*}
+	L(t, y) = L(t, y_{\text{P}} + y_{\text{H}}) = L(t, y_{\text{P}}) + L(t, y_{\text{H}}) = g(t) + 0 = g(t),
+\end{align*}
+och därmed löser $y$ differentialekvationen. Vi har även
+\begin{align*}
+	L(t, y - y_{\text{P}}) = g(t) - g(t) = 0,
+\end{align*}
+och $y - y_{\text{P}}$ löser den homogena ekvationen. Eftersom detta är sant, har vi visat ekvivalens.
+
+\paragraph{Linjär kombination av lösningar}
+Betrakta
+\begin{align*}
+	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) &= g(t),\ t > t_0, \\
+	y(t_0)                                              &= y_0, \\
+	\deval{y}{t}{t_{0}}                                 &= y'_{0}
+\end{align*}
+och anta att $y_{1}, y_{2}$ är lösningar. Då finns det $c_{1}, c_{2}$ så att $y = c_{1}y_{1} + c_{2}y_{2}$ är en lösning om $W(y_{1}, y_{2})(t_{0}) \neq 0$.
+
+\paragraph{Abels sats}
+Betrakta
+\begin{align*}
+	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) &= g(t),\ t\in I, \\
+	y(t_0)                                              &= y_0, \\
+	\deval{y}{t}{t_{0}}                                 &= y'_{0}
+\end{align*}
+och anta att $y_{1}, y_{2}$ är lösningar. Då gäller att
+\begin{align*}
+	W(y_{1}, y_{2})(t) = W(y_{1}, y_{2})(t_{0})e^{-\inteval{t_{0}}{t}{p(s)}{s}}.
+\end{align*}
+
+\subparagraph{Bevis}
+\begin{align*}
+	\deval{W}{t}{t} &= \deval{y_{1}}{t}{t}\deval{y_{2}}{t}{t} - \deval{y_{1}}{t}{t}\deval{y_{2}}{t}{t} + y_{1}\deval[2]{y_{2}}{t}{t} - y_{2}\deval[2]{y_{1}}{t}{t} \\
+	                &= y_{1}\left(-p(t)\deval{y_{2}}{t}{t} + q(t)y_{2}(t)\right) - y_{2}\left(-p(t)\deval{y_{1}}{t}{t} + q(t)y_{1}(t)\right) \\
+	                &= -p(t)W(y_{1}, y_{2})(t).
+\end{align*}
+Denna differentialekvationen har lösning
+\begin{align*}
+	W(y_{1}, y_{2})(t) = W(y_{1}, y_{2})(t_{0})e^{-\inteval{t_{0}}{t}{p(s)}{s}},
+\end{align*}
+vilket skulle visas.
+
+\paragraph{Linjärt beroende av lösningar}
+Betrakta
+\begin{align*}
+	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) &= g(t),\ t\in I, \\
+	y(t_0)                                              &= y_0, \\
+	\deval{y}{t}{t_{0}}                                 &= y'_{0}
+\end{align*}
+och anta att $y_{1}, y_{2}$ är lösningar. Då är dessa linjärt beroende på $I$ om och endast om $W(y_{1}, y_{2})(t) = 0$.
+
+\subparagraph{Bevis}
+Om dessa är linjärt beroende, ser man att Wronskianen blir lika med $0$, då kolumnerna i matrisen vars determinant ger Wronskianen kommer vara multipler av varandra.
+
+\paragraph{Lösning av andra ordningens ODE med konstanta koefficienter}
+Låt $r_1, r_2$ vara lösningar till
+\begin{align*}
+	r^2 + pr + q = 0.
+\end{align*}
+Då ges lösningarna till
+\begin{align*}
+	\deval[2]{y}{t}{t} + p\deval{y}{t}{t} + qy(t) = L(t, y) = 0
+\end{align*}
+av
+\begin{align*}
+	y(t) = 
+	\begin{cases}
+		c_1e^{r_1t} + c_2e^{r_2t},\ &r_1\neq r_2, \\
+		(c_1t + c_2)e^{r_1t},\      &r_1 = r_2.
+	\end{cases}
+\end{align*}
+
+\subsection{Annat}
 
 \paragraph{Exakta differentialekvationer}
 Betrakta ekvationen
@@ -120,42 +267,13 @@ Differentialekvationen
 	\pdeval{M}{y}{x, y(x)} = \pdeval{N}{x}{x, y(x)}.
 \end{align*}
 
-\paragraph{Form på lösning av andra ordningens ODE}
-Betrakta den andra ordningens ODE
+\paragraph{Eulers metod}
+Betrakta differentialekvationen
 \begin{align*}
-	\deval[2]{y}{t}{t} + p(t)\deval{y}{t}{t} + q(t)y(t) = L(t, y) = g(t).
+	\deval{y}{t}{t} &= f(t, y),\ 0 < t < T, \\
+	y(0)             &= y_0.
 \end{align*}
-Låt $y_{\text{P}}$ vara en partikulär lösning till denna. Då är $y$ en lösning om och endast om
+Vi gör indelningen $t_n = n\Delta t, n = 0, 1, \dots, N$ så att $\Delta t = \frac{T}{N}$ och inför $y_n = y(t_n)$. Vidare gör vi approximationen
 \begin{align*}
-	y = y_{\text{H}} + y_{\text{P}},
-\end{align*}
-där $y_{\text{H}}$ löser den homogena ekvationen.
-
-\subparagraph{Bevis}
-Vi har
-\begin{align*}
-	L(t, y) = L(t, y_{\text{P}} + y_{\text{H}}) = L(t, y_{\text{P}}) + L(t, y_{\text{H}}) = g(t) + 0 = g(t),
-\end{align*}
-och därmed löser $y$ differentialekvationen. Vi har även
-\begin{align*}
-	L(t, y - y_{\text{P}}) = g(t) - g(t) = 0,
-\end{align*}
-och $y - y_{\text{P}}$ löser den homogena ekvationen. Eftersom detta är sant, har vi visat ekvivalens.
-
-\paragraph{Lösning av andra ordningens ODE med konstanta koefficienter}
-Låt $r_1, r_2$ vara lösningar till
-\begin{align*}
-	r^2 + pr + q = 0.
-\end{align*}
-Då ges lösningarna till
-\begin{align*}
-	\deval[2]{y}{t}{t} + p\deval{y}{t}{t} + qy(t) = L(t, y) = 0
-\end{align*}
-av
-\begin{align*}
-	y(t) = 
-	\begin{cases}
-		c_1e^{r_1t} + c_2e^{r_2t},\ &r_1\neq r_2, \\
-		(c_1t + c_2)e^{r_1t},\      &r_1 = r_2.
-	\end{cases}
+	\frac{y_{n + 1} - y_{n}}{\Delta t} = f(t_n, y).
 \end{align*}
