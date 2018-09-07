@@ -1,6 +1,7 @@
 \section{Stela kroppar}
 En stel kropp är en massbelagd domän så att avståndet mellan två godtyckliga punkter är konstant.
 
+\subsection{Dynamik}
 En stel kropp kan ha translationshastighet eller rotationshastighet. Translationshastighet karakteriseras av att $\vb{v}_{A} = \vb{v}_{B}$ för alla $A, B$. Rotationshastighet karakteriseras av att det finns ett $C$ som är stelt förenad med kroppen så att $\vb{v}_{C} = \vb{0}$ momentant. 
 
 För att beskriva rörelsen till en stel kropp, bilda en referensram med axlerna fixa relativt kroppen. betrakta två punkter $A, B$ i kroppen, där origo i den nya referensramen är $A$. Då gäller det att
@@ -47,4 +48,20 @@ Vi skriver ut termerna och får
 Eftersom rörelsen är plan, blir skalärprodukten $0$, och man får slutligen
 \begin{align*}
 	\vb{a}_{B} = \vb{a}_{A} + \alpha\vu{e}_{z}\times\vb{r}_{AB} - \omega^2\vb{r}_{AB}.
+\end{align*}
+
+\subsection{Dynamik}
+
+\paragraph{Energilagen}
+Definiera effekten
+\begin{align*}
+	P_{ij} = \vb{f}_{ij}\cdot\vb{v}_{i} + \vb{f}_{ji}\cdot\vb{v}_{j} = \vb{f}_{ij}\cdot(\vb{v}_{i} - \vb{v}_{j}).
+\end{align*}
+Vi använder att $\vb{v}_{j} = \vb{v}_{i} + \vb*{\omega}\times(\vb{r}_{j} - \vb{v}_{i})$ och får
+\begin{align*}
+	P_{ij} = -\vb{f}_{ij}\cdot\vb*{\omega}\times(\vb{r}_{j} - \vb{v}_{i}) = 0
+\end{align*}
+eftersom $\vb{f}_{ij}$ verkar längs linjen mellan partikel $i$ och $j$. Därmed gör de indre krafterna inget arbete, och
+\begin{align*}
+	U_{0 - 1}^{\text{(e)}} = T_{1} - T_{0}.
 \end{align*}
