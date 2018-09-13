@@ -52,6 +52,7 @@ Wronskianen definieras som
 \begin{align*}
 	W(y_1, y_2)(t) = \mdet{y_{1}(t) & y_{2}(t) \\ \deval{y_{1}}{t}{t} & \deval{y_{2}}{t}{t}}.
 \end{align*}
+För vektorvärda funktioner definieras den som determinanten av matrisen vars kolumner är de olika funktionerna. 
 
 \paragraph{Linjärt beroende funktioner}
 $f: I\to\R, g: I\to\R$ är linjärt beroende om det finns $k_{1}, k_{2}$ så att
@@ -303,3 +304,88 @@ Vi gör indelningen $t_n = n\Delta t, n = 0, 1, \dots, N$ så att $\Delta t = \f
 \begin{align*}
 	\frac{y_{n + 1} - y_{n}}{\Delta t} = f(t_n, y).
 \end{align*}
+
+\subsection{System av ODE}
+
+\paragraph{Formulering}
+Betrakta ett system av funktioner $x_{1}, x_{2}, \dots$ som beskrivs av systemet
+\begin{align*}
+	\deval{x_{1}}{t}{t} &= g_{1}(t) + \sum p_{1i}x_{i}, \\
+	\deval{x_{2}}{t}{t} &= g_{2}(t) + \sum p_{2i}x_{i}, \\
+	\vdots
+\end{align*}
+av differentialekvationer. Definiera
+\begin{align*}
+	\vb{x}(t) =\left[
+	\begin{array}{c}
+		x_{1}(t) \\
+		x_{2}(t) \\
+		\vdots
+	\end{array}\right],
+	\vb{g}(t) =\left[
+	\begin{array}{c}
+		g_{1}(t) \\
+		g_{2}(t) \\
+		\vdots
+	\end{array}\right],
+	P(t) =\left[
+	\begin{array}{ccc}
+		p_{11}(t) & p_{12}(t) & \dots \\
+		p_{21}(t) & p_{22}(t) & \dots \\
+		\vdots    & \vdots    & \ddots
+	\end{array}\right].
+\end{align*}
+Då kan systemet skrivas som
+\begin{align*}
+	\deval{\vb{x}}{t}{t} = \vb{g}(t) + P\vb{x}(t).
+\end{align*}
+
+\paragraph{Form på lösning av system av ODE}
+Låt $\vb{x}_{\text{p}}$ lösa
+\begin{align*}
+	\deval{\vb{x}}{t}{t} = \vb{g}(t) + P\vb{x}(t).
+\end{align*}
+Då är alla lösningar på formen
+\begin{align*}
+	\vb{x} = \vb{x}_{\text{p}} + \vb{x}_{\text{h}}
+\end{align*}
+där $\vb{x}_{\text{h}}$ löser det motsvarande homogena systemet.
+
+\paragraph{Linjär kombination av lösningar}
+Låt $\vb{x}^{(1)}, \dots, \vb{x}^{(n)}\in\R,\ 0 < t < T$ vara linjärt oberoende lösningar till
+\begin{align*}
+	\deval{\vb{x}}{t}{t} = P(t)\vb{x}(t),\ t > 0,
+\end{align*}
+där $P$ är kontinuerlig. Då kan varje lösning till ekvationen skrivas som
+\begin{align*}
+	\vb{x} = \sum c_{i}\vb{x}^{(i)}
+\end{align*}
+på precis ett sätt.
+
+\subparagraph{Bevis}
+Begynnelsesvärdeproblemet implicerar att vår lösning måste uppfylla
+\begin{align*}
+	\left[\vb{x}^{(1)}(0) \dots \vb{x}^{(n)}(0)\right]
+	\left[\begin{array}{c}
+		c_{1} \\
+		\vdots \\
+		c_{n}
+	\end{array}\right]
+	= \vb{x}(0).
+\end{align*}
+Detta har bara en lösning om $\abs{\vb{x}^{(1)}(0) \dots \vb{x}^{(n)}(0)} \neq 0$. Eftersom alla lösningarna är linjärt oberoende, är detta uppfylld. Konstanterna $c_{i}$ ges då unikt, och beviset är klart.
+
+\paragraph{System av ODE med konstant matris}
+Betrakta
+\begin{align*}
+	\deval{\vb{x}}{t}{t} = P\vb{x}(t),
+\end{align*}
+där $P$ är en konstant matris. Vi gör ansatsen $\vb{x}(t) = e^{rt}\vb*{\xi}$ och får
+\begin{align*}
+	\deval{\vb{x}}{t}{t} - P\vb{x}(t) = e^{rt}(rI - A)\vb*{\xi}.
+\end{align*}
+Eftersom exponentialfunktionen alltid är nollskild, kan detta bara bli noll om
+\begin{align*}
+	P\vb*{\xi} = r\vb*{\xi}.
+\end{align*}
+Alltså är $\vb{x}$ bara en lösning om $\vb*{\xi}$ är en egenvektor till $P$ och $r$ är det motsvarande egenvärdet.
