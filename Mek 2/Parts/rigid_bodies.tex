@@ -1,7 +1,7 @@
 \section{Stela kroppar}
 En stel kropp är en massbelagd domän så att avståndet mellan två godtyckliga punkter är konstant.
 
-\subsection{Dynamik}
+\subsection{Kinematik}
 En stel kropp kan ha translationshastighet eller rotationshastighet. Translationshastighet karakteriseras av att $\vb{v}_{A} = \vb{v}_{B}$ för alla $A, B$. Rotationshastighet karakteriseras av att det finns ett $C$ som är stelt förenad med kroppen så att $\vb{v}_{C} = \vb{0}$ momentant. 
 
 För att beskriva rörelsen till en stel kropp, bilda en referensram med axlerna fixa relativt kroppen. betrakta två punkter $A, B$ i kroppen, där origo i den nya referensramen är $A$. Då gäller det att
@@ -64,4 +64,44 @@ Vi använder att $\vb{v}_{j} = \vb{v}_{i} + \vb*{\omega}\times(\vb{r}_{j} - \vb{
 eftersom $\vb{f}_{ij}$ verkar längs linjen mellan partikel $i$ och $j$. Därmed gör de indre krafterna inget arbete, och
 \begin{align*}
 	U_{0 - 1}^{\text{(e)}} = T_{1} - T_{0}.
+\end{align*}
+
+\paragraph{Rotation kring fix axel}
+Låt punkten $O$ vara på rotationsaxeln och välg cylindriska koordinater så att kroppen roterar kring $z$-axeln. För någon partikel i den stela kroppen har man
+\begin{align*}
+	\vb{v}_{i} = \vb{v}_{O} + \vb*{\omega}\times\vb{r}_{i} = \rho_{i}\omega\vu{e}_{\theta}.
+\end{align*}
+Den kinetiska energin ges nu av
+\begin{align*}
+	T = \frac{1}{2}\omega^2\sum m_{k}\rho_{i}^2
+\end{align*}
+och rörelsemängdsmomentet kring $O$ ges av
+\begin{align*}
+	\vb{H}_{O} &= \sum \vb{r}_{i}\times m_{i}\rho_{i}\omega\vu{e}_{\theta} \\
+	           &= \sum m_{i}\rho_{i}^2\omega\vu{e}_{z} - \sum m_{i}\rho_{i}z_{i}\omega\vu{e}_{r}.
+\end{align*}
+Vi inför nu tröghetsmomentet kring $z$-axeln
+\begin{align*}
+	I_{z} = \sum m_{k}\rho_{i}^2.
+\end{align*}
+Då gäller att
+\begin{align*}
+	T     &= \frac{1}{2}I_{z}\omega^2, \\
+	H_{z} &= I_{z}\omega.
+\end{align*}
+
+Kraftekvationens komponenter ger
+\begin{align*}
+	F_{r}      &= -ml\left(\dv{\theta}{t}\right)^2, \\
+	F_{\theta} &= ml\dv[2]{\theta}{t}.
+\end{align*}
+
+Momentekvationen ger
+\begin{align*}
+	\dv{t}\left(I_{z}\dv{\theta}{t}\right) = M_{z}.
+\end{align*}
+
+Arbetet som görs på kroppen ges av
+\begin{align*}
+	\dd{U_{i}} = \vb{F}_{i}\cdot\dd{\vb{r}_{i}} = F_{i, \theta}\rho_{i}\omega\dd{t} = M_{i, z}\dd{\theta}.
 \end{align*}

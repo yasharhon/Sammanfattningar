@@ -101,11 +101,11 @@ Multiplicera med ortsvektorn från vänster och summera över alla partikler fö
 \end{align*}
 Vi har att
 \begin{align*}
-	\dv{\vb{H}_{O}}{t} = \sum\dv{\vb{r}_{i}}{t}\times m_{i}\vb{v}_{i} + \sum\vb{r}_{i}\times m_{i}\dv{\vb{v}_{i}}{t} = \sum\vb{r}{i}\times m_{i}\vb{a}_{i}
+	\dv{\vb{H}_{O}}{t} = \sum\dv{\vb{r}_{i}}{t}\times m_{i}\vb{v}_{i} + \sum\vb{r}_{i}\times m_{i}\dv{\vb{v}_{i}}{t} = \sum\vb{r}_{i}\times m_{i}\vb{a}_{i}
 \end{align*}
 eftersom vektorerna i första termen är lika varandra. Vi har vidare att
 \begin{align*}
-	\vb{r}{i}\times\vb{f}_{ij} + \vb{r}{j}\times\vb{f}_{ji} = \vb{f}_{ij}\times (\vb{r}{i} - \vb{r}{j}) = \vb{0},
+	\vb{r}_{i}\times\vb{f}_{ij} + \vb{r}_{j}\times\vb{f}_{ji} = \vb{f}_{ij}\times (\vb{r}_{i} - \vb{r}_{j}) = \vb{0},
 \end{align*}
 då den inre kraften är parallell med linjen mellan partiklerna. Den återstående termen är det totala momentet till de yttre krafterna, och vi får
 \begin{align*}
@@ -116,8 +116,8 @@ då den inre kraften är parallell med linjen mellan partiklerna. Den återståe
 Betrakta rörelsemängdsmomentet kring två punkter $A, B$. Det gäller att
 \begin{align*}
 	\vb{H}_{A} &= \sum\vb{r}_{A, i}\times m_{i}\vb{v}_{i} \\
-	           &= \sum\vb({r}_{AB} + {r}_{B, i})\times m_{i}\vb{v}_{i} \\
-	           &= \vb{r}_{AB}\times\sum m_{i}\vb{v}_{i} + \sum {r}_{B, i}\times m_{i}\vb{v}_{i} \\
+	           &= \sum(\vb{r}_{AB} + \vb{r}_{B, i})\times m_{i}\vb{v}_{i} \\
+	           &= \vb{r}_{AB}\times\sum m_{i}\vb{v}_{i} + \sum \vb{r}_{B, i}\times m_{i}\vb{v}_{i} \\
 	           &= \vb{r}_{AB}\times m\vb{v}_{G} + \vb{H}_{B}.
 \end{align*}
 
