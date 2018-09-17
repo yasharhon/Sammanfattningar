@@ -82,9 +82,9 @@ och rörelsemängdsmomentet kring $O$ ges av
 \end{align*}
 Vi inför nu tröghetsmomentet kring $z$-axeln
 \begin{align*}
-	I_{z} = \sum m_{k}\rho_{i}^2.
+	I_{z} = \sum m_{k}\rho_{i}^2,
 \end{align*}
-Då gäller att
+med motsvarande definitioner kring andra axlar. Då gäller att
 \begin{align*}
 	T     &= \frac{1}{2}I_{z}\omega^2, \\
 	H_{z} &= I_{z}\omega.
@@ -105,3 +105,31 @@ Arbetet som görs på kroppen ges av
 \begin{align*}
 	\dd{U_{i}} = \vb{F}_{i}\cdot\dd{\vb{r}_{i}} = F_{i, \theta}\rho_{i}\omega\dd{t} = M_{i, z}\dd{\theta}.
 \end{align*}
+
+\paragraph{Mer om tröghetsmoment}
+Tröghetsmomentet dyker upp i många sammanhang som har att göra med stela kroppars dynamik, så vi vill lära oss känna denna storhet bättre.
+
+Låt oss först betrakta en plan kropp som roterar i planet. Då kan det visas att
+\begin{align*}
+	I_{z} = I_{x} + I_{y}.
+\end{align*}
+
+\subparagraph{Parallellförflyttningssatsen}
+Vi vill nu försöka att relatera tröghetsmomentet med avseende på en axel genom masscentrum till tröghetsmomentet med avseende på en godtycklig axel som är parallell med den första.
+
+Betrakta en stel kropp. Inför två referensramer $S, S'$, där det primmade koordinatsystemets $z'$-axel går genom kroppens masscentrum, $z$-axeln är parallell med $z'$-axeln och avståndet mellan dessa är $d$. Vi inför tröghetsmomenten
+\begin{align*}
+	I_{z} = \sum m_{i}(x_{i}^2 + y_{i}^2), \\
+	I_{z'} = \sum m_{i}(x_{i}'^2 + y_{i}'^2).
+\end{align*}
+Vi skriver om första enligt
+\begin{align*}
+	I_{z} &= \sum m_{i}(x_{G}^2 + 2x_{i}'x_{G} + x_{i}'^{2} + y_{G}^2 + 2y_{i}'y_{G} + y_{i}'^{2}) \\
+	      &= \sum m_{i}(x_{G}^2 + y_{G}^2) + \sum m_{i}(x_{i}'^{2} + y_{i}'^{2}) + 2x_{G}\sum m_{i}x_{i}' + 2y_{G}\sum m_{i}y_{i}' \\
+	      &= md^2 + I_{z'},
+\end{align*}
+där de två sista summorna försvinner eftersom $S'$ är ett masscentrumssystem. För att förtydiga, skriver vi nu
+\begin{align*}
+	I_{A} = I_{G} + md^2,
+\end{align*}
+där $d$ är avståndet mellan $A$ och $G$ vinkelrät på rotationsaxlerna.
