@@ -132,4 +132,61 @@ där de två sista summorna försvinner eftersom $S'$ är ett masscentrumssystem
 \begin{align*}
 	I_{A} = I_{G} + md^2,
 \end{align*}
-där $d$ är avståndet mellan $A$ och $G$ vinkelrät på rotationsaxlerna.
+där $d$ är avståndet mellan axlarna $A$ och $G$ och $G$ går genom masscentrum.
+
+\paragraph{Plan rörelse}
+Vi betraktar en kropp som undergår plan rörelse i ett koordinatsystem med masscentrum i origo som ej roterar.
+
+\subparagraph{Kinematik}
+Vid att införa cylindriska koordinater kring origo fås ortsvektorn till någon partikel i kroppen som $\vb{r}_{i}' = \rho_{i}\vu{e}_{\rho}$. Partikelns hastighet ges av
+\begin{align*}
+	\vb{v}_{i} &= \vb{v}_{G} + \vb*{\omega}\times\vb{r}_{i}' \\
+	           &= \vb{v}_{G} + \omega\rho_{i}\vu{e}_{\theta}.
+\end{align*}
+
+\subparagraph{Kinetisk energi}
+Den relativa kinetiska energin ges då av
+\begin{align*}
+	T' &= \frac{1}{2}\sum m_{i}\vb{v}_{i}'^{2} \\
+	   &= \frac{1}{2}\sum m_{i}\rho_{i}^{2}\omega^{2} \\
+	   &= \frac{1}{2}I_{G}\omega^{2}
+\end{align*}
+och den totala kinetiska energin ges av
+\begin{align*}
+	T = \frac{1}{2}mv_{G}^{2} + \frac{1}{2}I_{G}\omega^{2},
+\end{align*}
+som innehåller en banterm och en spinnterm.
+
+\subparagraph{Rörelsemängdsmoment}
+Det relativa rörelsemängdsmomentet ges av
+\begin{align*}
+	\vb{H}_{G}' &= \sum \vb{r}_{i}'\times m_{i}\vb{v}_{i}' \\
+	            &= \sum \rho_{i}^{2} m_{i}\vu{e}_{r}\times\vu{e}_{\theta} \\
+	            &= I_{G}\omega\vu{e}_{z}.
+\end{align*}
+Det totala rörelsemängdsmomentet är då
+\begin{align*}
+	\vb{H}_{O} = \vb{r}_{OG}\times m\vb{v}_{G} + I_{G}\omega\vu{e}_{z}
+\end{align*}
+som också består av en banterm och en spinnterm.
+
+\subparagraph{Dynamiska lagar}
+För en stel kropp i plan rörelse gäller att
+\begin{align*}
+	m\vb{a}_{G} = \vb{F}, I_{G}\alpha = M_{z}.
+\end{align*}
+
+\subparagraph{Arbete}
+Effekten som utövs under en kropps rörelse ges av
+\begin{align*}
+	P = \dv{T}{t} &= m\vb{a}_{G}\cdot\vb{v}_{G} + I\vb*{\alpha}\cdot\vb*{\omega} \\
+	              &= \vb{F}\cdot\vb{v}_{G} + \vb{M}_{G}\cdot\vb*{\omega}.
+\end{align*}
+Arbetet som görs ges då av
+\begin{align*}
+	\dd{U} &= P\dd{t} \\
+	       &= \vb{F}\cdot\vb{v}_{G}\dd{t} + \vb{M}_{G}\cdot\vb*{\omega}\dd{t} \\
+	       &= \vb{F}\cdot\vb{v}_{G}\dd{t} + \vb{M}_{G}\cdot\vb*{\omega}\dd{t} \\
+	       &= \vb{F}\cdot\dd{\vb{r}_{G}} + M_{z}\dd{\theta},
+\end{align*}
+där vi har användt att $\vb{M}_{G}$ pekar i $z$-riktning.
