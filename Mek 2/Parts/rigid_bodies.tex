@@ -66,7 +66,7 @@ eftersom $\vb{f}_{ij}$ verkar längs linjen mellan partikel $i$ och $j$. Därmed
 	U_{0 - 1}^{\text{(e)}} = T_{1} - T_{0}.
 \end{align*}
 
-\paragraph{Rotation kring fix axel}
+\paragraph{2D-rotation kring fix axel}
 Låt punkten $O$ vara på rotationsaxeln och välg cylindriska koordinater så att kroppen roterar kring $z$-axeln. För någon partikel i den stela kroppen har man
 \begin{align*}
 	\vb{v}_{i} = \vb{v}_{O} + \vb*{\omega}\times\vb{r}_{i} = \rho_{i}\omega\vu{e}_{\theta}.
@@ -190,3 +190,35 @@ Arbetet som görs ges då av
 	       &= \vb{F}\cdot\dd{\vb{r}_{G}} + M_{z}\dd{\theta},
 \end{align*}
 där vi har användt att $\vb{M}_{G}$ pekar i $z$-riktning.
+
+\paragraph{3D-rotation kring fix axel}
+Vi betraktar en stel kropps rotation kring en fix punkt $O$ parallellt med en axel $Q$. Vi inför vinklarna $\alpha, \beta, \gamma$ mellan $\vb*{\omega}$ och axlarna, enhetsvektorn
+\begin{align*}
+	\vu{e}_{Q} = \cos{\alpha}\vu{e}_{x} + \cos{\beta}\vu{e}_{y} + \cos{\gamma}\vu{e}_{z},
+\end{align*}
+vinkeln $\theta_k$ mellan $\vb*{\omega}$ och $\vb{r}_{k}$ och avståndet $\rho_{k}$ från rotationsaxeln till partikeln. Vi beräknar först
+\begin{align*}
+	\rho_{k}^2 =& r_{k}^2\sin^{2}{\theta} \\
+	           =& \abs{\vb{r_{k}}\times\vu{e}_{Q}}^2 \\
+	           =& \abs{(y_{k}\cos{\gamma} - z_{k}\cos{\beta})\vu{e}_{x} + (z_{k}\cos{\alpha} - x_{k}\cos{\gamma})\vu{e}_{y} + (x_{k}\cos{\beta} - y_{k}\cos{\alpha})\vu{e}_{z}}^2 \\
+	           =& (y_{k}\cos{\gamma} - z_{k}\cos{\beta})^2 + (z_{k}\cos{\alpha} - x_{k}\cos{\gamma})^2 + (x_{k}\cos{\beta} - y_{k}\cos{\alpha})^2 \\
+	           =& (y_{k}^2 + z_{k}^2)\cos^{2}{\alpha} + (x_{k}^2 + z_{k}^2)\cos^{2}{\beta} + (x_{k}^2 + y_{k}^2)\cos^{2}{\gamma} \\
+	            &- 2y_{k}z_{k}\cos{\beta}\cos{\gamma} - 2x_{k}z_{k}\cos{\alpha}\cos{\gamma} - 2x_{k}y_{k}\cos{\alpha}\cos{\beta}.
+\end{align*}
+
+Vi inför nu tröghetsmomentet
+\begin{align*}
+	I_{Q} =& \sum m_{i}\rho_{i}^2 \\
+	      =& \sum m_{i}(y_{k}^2 + z_{k}^2)\cos^{2}{\alpha} + \sum m_{i}(x_{k}^2 + z_{k}^2)\cos^{2}{\beta} + \sum m_{i}(x_{k}^2 + y_{k}^2)\cos^{2}{\gamma} \\
+	       &- 2\sum m_{i}y_{k}z_{k}\cos{\beta}\cos{\gamma} - 2\sum m_{i}x_{k}z_{k}\cos{\alpha}\cos{\gamma} - 2\sum m_{i}x_{k}y_{k}\cos{\alpha}\cos{\beta}
+\end{align*}
+och definierar tröghetstensorn $I$ med komponenter
+\begin{align*}
+	I_{xx} = \sum m_{i}y_{k}^2 + z_{k}^2, I _{xy} =\sum m_{i}x_{k}y_{k} 
+\end{align*}
+och motsvarande för andra subskript. Detta ger
+\begin{align*}
+	I_{Q} =& I_{xx}\cos^{2}{\alpha} + I_{yy}\cos^{2}{\beta} + I_{zz}\cos^{2}{\gamma} \\
+	       &- 2I_{yz}\cos{\beta}\cos{\gamma} - 2I_{xz}\cos{\alpha}\cos{\gamma} - 2I_{xy}\cos{\alpha}\cos{\beta} \\
+	      =& \vu{e}_{Q}\cdot I\vu{e}_{Q}.
+\end{align*}
