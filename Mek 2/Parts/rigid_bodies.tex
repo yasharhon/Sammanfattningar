@@ -214,11 +214,50 @@ Vi inför nu tröghetsmomentet
 \end{align*}
 och definierar tröghetstensorn $I$ med komponenter
 \begin{align*}
-	I_{xx} = \sum m_{i}y_{k}^2 + z_{k}^2, I _{xy} =\sum m_{i}x_{k}y_{k} 
+	I_{xx} = \sum m_{i}y_{i}^2 + z_{i}^2, I _{xy} = -\sum m_{i}x_{i}y_{i} 
 \end{align*}
 och motsvarande för andra subskript. Detta ger
 \begin{align*}
 	I_{Q} =& I_{xx}\cos^{2}{\alpha} + I_{yy}\cos^{2}{\beta} + I_{zz}\cos^{2}{\gamma} \\
-	       &- 2I_{yz}\cos{\beta}\cos{\gamma} - 2I_{xz}\cos{\alpha}\cos{\gamma} - 2I_{xy}\cos{\alpha}\cos{\beta} \\
+	       &+ 2I_{yz}\cos{\beta}\cos{\gamma} + 2I_{xz}\cos{\alpha}\cos{\gamma} + 2I_{xy}\cos{\alpha}\cos{\beta} \\
 	      =& \vu{e}_{Q}\cdot I\vu{e}_{Q}.
+\end{align*}
+Vi kan då skriva kinetiska energin som
+\begin{align*}
+	T &= \frac{1}{2}I_{Q}\omega^2 \\
+	  &= \frac{1}{2}\vu{e}_{Q}\cdot I\vu{e}_{Q}\omega^2 \\
+	  &= \frac{1}{2}\omega\vu{e}_{Q}\cdot I\omega\vu{e}_{Q} \\
+	  &= \frac{1}{2}\vb*{\omega}\cdot I\vb*{\omega}
+\end{align*}
+och rörelsemängdsmomentet som
+\begin{align*}
+	\vb{H}_{O} &= \sum \vb{r}_{i}\times m_{i}\vb{v}_{i} \\
+	           &= \sum m_{i}\vb{r}_{i}\times(\vb*{\omega}\times\vb{r}_{i}) \\
+	           &= \sum m_{i}((\vb{r}_{i}\cdot\vb{r}_{i})\vb*{\omega} - (\vb{r}_{i}\cdot\vb*{\omega})\vb{r}_{i}).
+\end{align*}
+Vi betraktar nu $x$-komponenten, som ges av
+\begin{align*}
+	H_{O, x} &= \sum m_{i}((x_{i}^2 + y_{i}^2 + z_{i}^2)\omega_{x} - (x_{i}\omega_{x} + y_{i}\omega_{y} + z_{i}\omega_{z})x_{i}) \\
+	         &= \sum m_{i}((y_{i}^2 + z_{i}^2)\omega_{x} - (y_{i}\omega_{y} + z_{i}\omega_{z})x_{i}) \\
+	         &= I_{xx}\omega_{x} + I_{xy}\omega_{y} + I_{xz}\omega_{z}.
+\end{align*}
+Från detta fås
+\begin{align*}
+	\vb{H}_{O} = I\vb*{\omega}
+\end{align*}
+och vidare
+\begin{align*}
+	T = \frac{1}{2}\vb*{\omega}\cdot I\vb*{\omega}.
+\end{align*}
+
+\paragraph{Mer om tröghetstensorn}
+Tröghetstensorn är symmetrisk, och kan därmed diagonaliseras.
+
+\subparagraph{Allmäna parallellförflyttningssatsen}
+Betrakta en stel kropp. Inför två referensramer $S, S'$, där den primmade ramen har origo i masscentrum, enhetsvektorerna är parallella och avståndet mellan dessa är $d$. Vi har
+\begin{align*}
+	I _{xy} &= -\sum m_{i}x_{i}y_{i} \\
+	        &= -\sum m_{i}(x_{G}y_{G} + x_{i}'y_{G} + x_{G}y_{i}' + x_{i}'y_{i}') \\
+	        &= -mx_{G}y_{G} - y_{G}\sum m_{i}x_{i} - x_{G}\sum m_{i}y_{i} - \sum m_{i}x_{i}'y_{i}' \\
+	        &= I_{x'y'} - mx_{G}y_{G}.
 \end{align*}
