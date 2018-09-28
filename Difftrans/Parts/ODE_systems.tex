@@ -3,8 +3,8 @@
 \paragraph{Formulering}
 Betrakta ett system av funktioner $x_{1}, x_{2}, \dots$ som beskrivs av systemet
 \begin{align*}
-	\deval{x_{1}}{t}{t} &= g_{1}(t) + \sum p_{1i}x_{i}, \\
-	\deval{x_{2}}{t}{t} &= g_{2}(t) + \sum p_{2i}x_{i}, \\
+	\deval{x_{1}}{t}{t} &= g_{1}(t) + \sum p_{1i}(t)x_{i}, \\
+	\deval{x_{2}}{t}{t} &= g_{2}(t) + \sum p_{2i}(t)x_{i}, \\
 	\vdots
 \end{align*}
 av differentialekvationer. Definiera
@@ -31,6 +31,16 @@ av differentialekvationer. Definiera
 Då kan systemet skrivas som
 \begin{align*}
 	\deval{\vb{x}}{t}{t} = \vb{g}(t) + P\vb{x}(t).
+\end{align*}
+Detta kan även generaliseras till
+\begin{align*}
+	\deval{\vb{x}}{t}{t} = \vb{f}(\vb{x}(t)) + \vb{g}(t).
+\end{align*}
+
+\paragraph{Autonoma system}
+Ett autonomt system är på formen
+\begin{align*}
+	\deval{\vb{x}}{t}{t} = \vb{f}(\vb{x}(t)).
 \end{align*}
 
 \paragraph{Form på lösning av system av ODE}
