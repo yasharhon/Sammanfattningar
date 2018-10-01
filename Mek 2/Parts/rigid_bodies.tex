@@ -251,7 +251,7 @@ och vidare
 \end{align*}
 
 \paragraph{Mer om tröghetstensorn}
-Tröghetstensorn är symmetrisk, och kan därmed diagonaliseras.
+Tröghetstensorn är symmetrisk, och kan därmed diagonaliseras. Axlarna så att tröghetsmatrisen är diagonal relativt dessa kallas huvudaxlar.
 
 \subparagraph{Allmäna parallellförflyttningssatsen}
 Betrakta en stel kropp. Inför två referensramer $S, S'$, där den primmade ramen har origo i masscentrum, enhetsvektorerna är parallella och avståndet mellan dessa är $d$. Vi har
@@ -260,4 +260,63 @@ Betrakta en stel kropp. Inför två referensramer $S, S'$, där den primmade ram
 	        &= -\sum m_{i}(x_{G}y_{G} + x_{i}'y_{G} + x_{G}y_{i}' + x_{i}'y_{i}') \\
 	        &= -mx_{G}y_{G} - y_{G}\sum m_{i}x_{i} - x_{G}\sum m_{i}y_{i} - \sum m_{i}x_{i}'y_{i}' \\
 	        &= I_{x'y'} - mx_{G}y_{G}.
+\end{align*}
+
+\paragraph{Eulers dynamiska ekvationer}
+Betrakta en stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en kroppsfix ram $Oxyz$. Det gäller att
+\begin{align*}
+	\dv{\vb{H}_{O}}{t} = \relderiv{\vb{H}_{O}} + \vb*{\omega}\times\vb{H}_{O}.
+\end{align*}
+Eftersom kroppen är stel, har vi vidare
+\begin{align*}
+	\relderiv{\vb{H}_{O}} = I_{O}\relderiv{\vb*{\omega}}.
+\end{align*}
+Rörelsemängdsmomentlagen ger då Eulers dynamiska ekvation
+\begin{align*}
+	I_{O}\relderiv{\vb*{\omega}} + \vb*{\omega}\times\vb{H}_{O} = \dv{\vb{M}_{O}}{t}.
+\end{align*}
+Med den kroppsfixa ramen orienterat längs med kroppens huvudaxler blir detta på komponentform
+\begin{align*}
+	I_{xx}\dv{\omega_{x}}{t} + (I_{zz} - I_{yy})\omega_{y}\omega_{z} &= M_{O, x}, \\
+	I_{yy}\dv{\omega_{y}}{t} + (I_{xx} - I_{zz})\omega_{z}\omega_{x} &= M_{O, y}, \\
+	I_{zz}\dv{\omega_{z}}{t} + (I_{yy} - I_{xx})\omega_{x}\omega_{y} &= M_{O, z}.
+\end{align*}
+
+\paragraph{Eulers kinematiska ekvation}
+Betrakta en stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en kroppsfix ram $Oxyz$. Låt linjen där $xy$-planet skär $XY$-planet vara parallell med $\vb{n}$, som igen är parallell med $\vu{e}_{Z}\times\vu{e}_{z}$. Introducera vinkeln $\theta$ mellan $Z$- och $z$-axeln, vinkeln $\psi$ mellan $X$-axeln och $\vb{n}$ och vinkeln $\phi$ mellan $\vb{n}$ och $x$-axeln. Dessa kallas för Eulervinklarna. Vinkelhastigheten är en summa av vinkelhastigheter motsvarande ändring av varje vinkel, och ges av
+\begin{align*}
+	\vb*{\omega} = \dv{\psi}{t}\vu{e}_{Z} + \dv{\theta}{t}\vu{e}_{n} + \dv{\phi}{t}\vu{e}_{z}.
+\end{align*}
+Projektion på det kroppsfixa systemet ger
+\begin{align*}
+	\vu{e}_{Z} &= \cos{\theta}\vu{e}_{z} + \sin{\theta}(\sin{\phi}\vu{e}_{x} + \cos{\phi}\vu{e}_{y}), \\
+	\vu{e}_{n} &= \cos{\phi}\vu{e}_{x} - \sin{\phi}\vu{e}_{y}.
+\end{align*}
+Från detta fås Eulers kinematiska ekvationer
+\begin{align*}
+	\omega_{x} &= \dv{\psi}{t}\sin{\theta}\sin{\phi} + \dv{\theta}{t}\cos{\phi}, \\
+	\omega_{y} &= \dv{\psi}{t}\sin{\theta}\cos{\phi} - \dv{\theta}{t}\sin{\phi}, \\
+	\omega_{z} &= \dv{\psi}{t}\cos{\theta} + \dv{\phi}{t}.
+\end{align*}
+
+\paragraph{3D-rotation av en axisymmetrisk kropp}
+Betrakta en axisymmetrisk stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en ram $Oxyz$, där $z$-axeln pekar längs med kroppens symmetriaxel och kroppen kan rotera fritt kring detta. Denna sortens ram kallas en resalram. Nu kan $x$-axeln väljas parallellt med $\vb{n}$. Kroppens rotation kan nu delas i resalramens vinkelhastighet
+\begin{align*}
+	\vb*{\omega}_{S} = \dv{\psi}{t}\vu{e}_{Z} + \dv{\theta}{t}\vu{e}_{n}
+\end{align*}
+och kroppens vinkelhastighet relativt resalramen
+\begin{align*}
+	\vb*{\omega}_{0} = \dv{\phi}{t}\vu{e}_{z}.
+\end{align*}
+Nu får vi
+\begin{align*}
+	\dv{\vb{H}_{O}}{t} = \relderiv{\vb{H}_{O}} + \vb*{\omega}_{S}\times\vb{H}_{O}
+\end{align*}
+och
+\begin{align*}
+	\relderiv{\vb{H}_{O}} = I_{O}\relderiv{\vb*{\omega}_{0}},
+\end{align*}
+vilket slutligen ger
+\begin{align*}
+	I_{O}\relderiv{\vb*{\omega}_{0}} + \vb*{\omega}_{S}\times\vb{H}_{O} = \dv{\vb{M}_{O}}{t}.
 \end{align*}
