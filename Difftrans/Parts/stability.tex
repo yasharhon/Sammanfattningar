@@ -27,6 +27,23 @@ Då gäller att
 	\item om $\deval{g}{y}{y_{0}} > 0$, är $y_{0}$ instabil.
 \end{itemize}
 
+\subparagraph{Bevis}
+Betrakta $(y - y_{0})^{2}$. Nära $y_{0}$ gäller att
+\begin{align*}
+	\dv{t}(y(t) - y_{0})^{2} &= 2(y(t) - y_{0})g(y(t)) \\
+	                         &\approx 2(y(t) - y_{0})\left(g(y_{0}) + \deval{g}{y}{y_{0}}(y(t) - y_{0}) + o((y(t) - y_{0})^{2})\right) \\
+	                         &= 2(y(t) - y_{0})\left(\deval{g}{y}{y_{0}}(y(t) - y_{0}) + o((y(t) - y_{0})^{2})\right)
+\end{align*}
+Vi får på något sätt
+\begin{align*}
+	\dv{t}(y(t) - y_{0})^{2} < \deval{g}{y}{y_{0}}(y(t) - y_{0})^{2},
+\end{align*}
+som kan lösas för att ge
+\begin{align*}
+	(y(t) - y_{0})^{2} < e^{\deval{g}{y}{y_{0}}t}(y(0) - y_{0})^{2},
+\end{align*}
+som går mot $0$ för stora $t$ enligt vårt antagande om $g$:s derivata.
+
 \paragraph{Karakterisering av jämviktspunkter för system}
 Betrakta systemet
 \begin{align*}
