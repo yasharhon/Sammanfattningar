@@ -28,13 +28,15 @@ Då gäller att
 \end{itemize}
 
 \subparagraph{Bevis}
+Här bevisas endast det första fallet.
+
 Betrakta $(y - y_{0})^{2}$. Nära $y_{0}$ gäller att
 \begin{align*}
 	\dv{t}(y(t) - y_{0})^{2} &= 2(y(t) - y_{0})g(y(t)) \\
 	                         &\approx 2(y(t) - y_{0})\left(g(y_{0}) + \deval{g}{y}{y_{0}}(y(t) - y_{0}) + o((y(t) - y_{0})^{2})\right) \\
-	                         &= 2(y(t) - y_{0})\left(\deval{g}{y}{y_{0}}(y(t) - y_{0}) + o((y(t) - y_{0})^{2})\right)
+	                         &= 2(y(t) - y_{0})\left(\deval{g}{y}{y_{0}}(y(t) - y_{0}) + o((y(t) - y_{0})^{2})\right).
 \end{align*}
-Vi får på något sätt
+Det gäller att $o((y(t) - y_{0})^{2}) < -\deval{g}{y}{y_{0}}(y(t) - y_{0})^{2}$ tillräckligt nära $y_{0}$ (man skulle även kunna välja en annan nollskild konstant än $-\deval{g}{y}{y_{0}}$, men detta valet gör beviset snyggare). Detta ger
 \begin{align*}
 	\dv{t}(y(t) - y_{0})^{2} < \deval{g}{y}{y_{0}}(y(t) - y_{0})^{2},
 \end{align*}

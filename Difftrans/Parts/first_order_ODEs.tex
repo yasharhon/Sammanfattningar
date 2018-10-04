@@ -1,5 +1,30 @@
 \subsection{Första ordningen}
 
+\paragraph{Existens av lösning}
+Betrakta differentialekvationen
+\begin{align*}
+	\deval{y}{t}{t} &= f(y), \\
+	y(0)            &= y_0.
+\end{align*}
+Detta har en lösning om $f$ är Lipschitzkontinuerlig.
+
+\subparagraph{Bevis}
+Bilda två diskreta approximationer $\bar{y}, \bar{\bar{y}}$ av $y$. Vi kan visa att
+\begin{align*}
+	\max\limits_{t\in [0, T]}\abs{\bar{y}, \bar{\bar{y}}}\leq K\Delta t
+\end{align*}
+där $\Delta t$ är det största tidsavståndet mellan två punkter i någon av de diskreta approximationerna. Detta implicerar konvergens mot ett gränsvärde $y(t)$ när $\Delta t\to 0$. Detta gränsvärdet uppfyller
+\begin{align*}
+	y(t) &= \lim\limits_{\Delta t\to 0}\bar{y}(t) \\
+	     &= \lim\limits_{\Delta t\to 0}\bar{y}(0) + \inteval{0}{t}{f(\bar{y}(s))}{s} \\
+	     &= y(0) + \inteval{0}{t}{f(y(s))}{s},
+\end{align*}
+där sista likheten kommer av integrandens Lipschitzkontinuitet. Integralkalkylens fundamentalsats ger då
+\begin{align*}
+	\deval{y}{t}{t} &= f(y),
+\end{align*}
+vilket skulle visas.
+
 \paragraph{Entydighet av lösning}
 Betrakta differentialekvationen
 \begin{align*}
