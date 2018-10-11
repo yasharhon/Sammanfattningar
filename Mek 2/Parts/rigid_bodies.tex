@@ -82,14 +82,14 @@ Betrakta en stel kropp. Inför två referensramer $S, S'$, där den primmade ram
 \begin{align*}
 	I _{xy} &= -\sum m_{i}x_{i}y_{i} \\
 	        &= -\sum m_{i}(x_{G}y_{G} + x_{i}'y_{G} + x_{G}y_{i}' + x_{i}'y_{i}') \\
-	        &= -mx_{G}y_{G} - y_{G}\sum m_{i}x_{i} - x_{G}\sum m_{i}y_{i} - \sum m_{i}x_{i}'y_{i}' \\
+	        &= -mx_{G}y_{G} - y_{G}\sum m_{i}x_{i}' - x_{G}\sum m_{i}y_{i}' - \sum m_{i}x_{i}'y_{i}' \\
 	        &= I_{x'y'} - mx_{G}y_{G}.
 \end{align*}
 
 \subparagraph{Kinetisk energi}
 Den relativa kinetiska energin ges av
 \begin{align*}
-	T' = \frac{1}{2}\sum m_{i}\vb{v}_{i}'^{2}.
+	T' = \frac{1}{2}\sum m_{i}v_{i}'^{2}.
 \end{align*}
 Med $\rho_{i}$ som avståndet till rotationsaxeln ger hastighetssambandet
 \begin{align*}
@@ -143,6 +143,23 @@ eftersom $\vb{f}_{ij}$ verkar längs linjen mellan partikel $i$ och $j$. Därmed
 \begin{align*}
 	U_{0 - 1}^{\text{(e)}} = T_{1} - T_{0}.
 \end{align*}
+
+\paragraph{Arbete}
+För att beräkna arbetet som görs på en stel kropp i allmän rörelse, betrakta
+\begin{align*}
+	T = \frac{1}{2}mv_{G}^{2} + \frac{1}{2}\vb*{\omega}\cdot I\vb*{\omega}.
+\end{align*}
+Med energilagen fås nettoeffekten $P$ på kroppen av
+\begin{align*}
+	P &= \dv{T}{t} \\
+	  &= m\dv{\vb{v}_{G}}{t}\cdot\vb{v}_{G} + \vb*{\omega}\cdot I\vb*{\alpha} \\
+	  &= \vb{F}\cdot\vb{v}_{G} + \vb{M}_{G}\cdot\vb*{\omega}.
+\end{align*}
+Arbetet ges då av
+\begin{align*}
+	\dd{U} = P\dd{t} = \vb{F}\cdot\dd{\vb{r}_{G}} + M_{G, n}\dd{\theta}
+\end{align*}
+där $M_{G, n}$ är momentets komponent normalt på rotationsplanet.
 
 \paragraph{Eulers dynamiska ekvationer}
 Betrakta en stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en kroppsfix ram $Oxyz$. Det gäller att
