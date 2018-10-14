@@ -12,7 +12,7 @@ Systemets antal frihetsgrader är det minsta antalet parametrar som entydigt bes
 Om systemet begränsas av $k$ holonoma tvång, har systemet $s = 3n - k$ frihetsgrader.
 
 \paragraph{Generaliserade koordinater}
-Systemets generaliserade koordinater är ett val av parametrar som beskriver systemets läge. Dessa betecknas som $q_{i}$.
+Systemets generaliserade koordinater är ett val av parametrar som beskriver systemets läge. Dessa betecknas som $q_{i}$. Det finns lika många av dessa som antal frihetsgrader i systemet.
 
 Med dessa inför vi även tidsderivatorna $\dot{q}_{i}$.
 
@@ -70,3 +70,52 @@ Om detta skall gälla för alla val av tidsintervall, ger detta Lagranges ekvati
 \begin{align*}
 	\pdv{L}{q_{i}} - \dv{t}\left(\pdv{L}{\dot{q}_{i}}\right) = 0.
 \end{align*}
+
+\paragraph{Generaliserade rörelsemängder}
+Vi inför nu generaliserade rörelsemängder
+\begin{align*}
+	p_{i} = \pdv{L}{\dot{q}_{i}}.
+\end{align*}
+
+\paragraph{Hamiltonfunktionen}
+Lagranges ekvationer är ett system av andra ordningens differentialekvationer. För att försöka att reducera det till ett system av första ordningens ekvationer, inför vi Hamiltonfunktionen
+\begin{align*}
+	H = \sum p_{i}\dot{q}_{i} - L.
+\end{align*}
+
+\paragraph{Hamiltons ekvationer}
+Variationen av Hamiltonfunktionen ges av
+\begin{align*}
+	\delta H &= \sum p_{i}\delta\dot{q}_{i} + \dot{q}_{i}\delta p_{i} - \pdv{L}{q_{i}}\delta q_{i} - \pdv{L}{\dot{q}_{i}}\delta\dot{q}_{i} \\
+	         &= \sum p_{i}\delta\dot{q}_{i} + \dot{q}_{i}\delta p_{i} - \pdv{L}{q_{i}}\delta q_{i} - p_{i}\delta\dot{q}_{i} \\
+	         &= \sum\dot{q}_{i}\delta p_{i} - \pdv{L}{q_{i}}\delta q_{i}.
+\end{align*}
+Med Lagranges ekvationer kan vi skriva
+\begin{align*}
+	\pdv{L}{q_{i}} = \dot{p}_{i},
+\end{align*}
+och Hamiltonfunktionens variation ges av
+\begin{align*}
+	\delta H = \sum\dot{q}_{i}\delta p_{i} - \dot{p}_{i}\delta q_{i}.
+\end{align*}
+
+Om vi jämför detta med variationen som fås vid att betrakta Hamiltonfunktionen som en funktion av de generaliserade koordinaterna och rörelsemängdsmomenterna, fås
+\begin{align*}
+	\delta H = \sum\pdv{H}{q_{i}}\delta q_{i} + \pdv{H}{p_{i}}\delta p_{i}.
+\end{align*}
+Detta ger Hamiltons ekvationer:
+\begin{align*}
+	\dot{q}_{i} = \pdv{H}{p_{i}}, \dot{p}_{i} = \pdv{H}{q_{i}},
+\end{align*}
+som är ett system med $2s$ ekvationer, där $s$ är antal frihetsgrader, av första ordningens differentialekvationer.
+
+\paragraph{Koppling till energien}
+Vi har att
+\begin{align*}
+	\sum p_{i}\dot{q}_{i} = \sum\pdv{L}{\dot{q}_{i}}\dot{q}_{i} = \sum\pdv{T}{\dot{q}_{i}}\dot{q}_{i} = 2T,
+\end{align*}
+där den sista likheten kommer av Eulers sats om homogena funktioner och att den kinetiska energin är en homogen funktion av ordning $2$. Detta ger
+\begin{align*}
+	H = 2T - L = T + V = E,
+\end{align*}
+och är alltså lika med den totala energin.
