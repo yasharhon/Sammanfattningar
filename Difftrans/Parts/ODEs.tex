@@ -66,6 +66,110 @@ Vi gör indelningen $t_n = n\Delta t, n = 0, 1, \dots, N$ så att $\Delta t = \f
 \begin{align*}
 	\frac{y_{n + 1} - y_{n}}{\Delta t} = f(t_n, y).
 \end{align*}
+Vi utvidgar nu Eulerapproximationen $\bar{y}$ till en styckvis linjär funktion som definieras enligt
+\begin{align*}
+	y(t) - y(t_{n}) = f(t_n, y)(t - t_{n}),\ t_n \leq t < t_{n + 1}.
+\end{align*}
+Denna uppfyller
+\begin{align*}
+	\dv{\bar{y}}{t} = f(\bar{y}_{n}) = \bar{f}(t, \bar{y}),\ t_n \leq t < t_{n + 1}.
+\end{align*}
+
+\paragraph{Konvergens av Eulers metod}
+Betrakta differentialekvationen
+\begin{align*}
+	\deval{y}{t}{t} &= f(t, y),\ 0 < t < T, \\
+	y(0)             &= y_0,
+\end{align*}
+där $f$ är Lipschitzkontinuerlig, låt $\bar{y}, \bar{\bar{y}}$ vara två Eulerapproximationer av denna, med indelningar $\bar{t}_n = n\frac{T}{N}, n = 0, 1, \dots, N$ respektive $\bar{\bar{t}}_{m} = m\frac{T}{M}, n = 0, 1, \dots, M$ och inför $\Delta t = \max\left(\frac{T}{N}, \frac{T}{M}\right)$. Antag vidare att det finns ett $C$ så att
+\begin{align*}
+	\max\left(\abs{f(0)}, \abs{y(0)}\right) &\leq C, \\
+	\abs{f(a) - f(b)}                       &\leq C\abs{a - b}.
+\end{align*}
+Då finns det $B_{1}, B_{2}$ så att
+\begin{align*}
+	\max\limits_{t\in [0, T]}\left(\abs{\bar{y}(t)}, \abs{\bar{\bar{y}}(t)}\right) &\leq B_{1}, \\
+	\max\limits_{t\in [0, T]}\abs{\bar{y}(t) - \bar{\bar{y}}(t)}                   &\leq B_{2}\Delta t.
+\end{align*}
+
+\subparagraph{Bevis}
+Vi beviser det första påståendet först.
+
+Lipschitzkontinuitet av $f$ ger
+\begin{align*}
+	\abs{f(z)} \leq C\abs{z} + \abs{f(0)} \leq C(1 + \abs{z}).
+\end{align*}
+Eulers metod ger
+\begin{align*}
+	\bar{y}(\bar{t}_{n}) = \bar{y}(\bar{t}_{n - 1}) + \frac{T}{N}f(\bar{y}(\bar{t}_{n - 1})).
+\end{align*}
+Dessa två ger till sammans
+\begin{align*}
+	\abs{\bar{y}(\bar{t}_{n})} &\leq \abs{\bar{y}(\bar{t}_{n - 1})} + \frac{T}{N}\abs{f(\bar{y}(\bar{t}_{n - 1}))} \\
+	                           &\leq \abs{\bar{y}(\bar{t}_{n - 1})} + C\frac{T}{N}(1 + \abs{\bar{y}(\bar{t}_{n - 1})}) \\
+	                           &= (1 + C\frac{T}{N})\abs{\bar{y}(\bar{t}_{n - 1})} + C\Delta t.
+\end{align*}
+Vi använder induktion på detta resultatet och får
+\begin{align*}
+	\abs{\bar{y}(\bar{t}_{n})} &\leq (1 + C\frac{T}{N})^{n}\abs{\bar{y}(0)} + C\frac{T}{N}\frac{(1 + C\frac{T}{N})^{n} - 1}{C\frac{T}{N}} \\
+	                           &= (1 + C\frac{T}{N})^{n}\abs{\bar{y}(0)} + (1 + C\frac{T}{N})^{n} - 1.
+\end{align*}
+Vi vet även att
+\begin{align*}
+	(1 + C\frac{T}{N})^{n} \leq e^{Cn\frac{T}{N}} = e^{C\bar{t}_{n}},
+\end{align*}
+vilket slutligen ger
+\begin{align*}
+	\abs{\bar{y}(\bar{t}_{n})} = e^{C\bar{t}_{n}}\abs{\bar{y}(0)} + e^{C\bar{t}_{n}} - 1.
+\end{align*}
+En motsvarande gräns kan fås för $\bar{\bar{y}}$, vilket slutför beviset.
+
+Vidare bevisar vi det andra påståendet. Skillnaden mellan de två approximationerna ges av
+\begin{align*}
+	\bar{y}(t) - \bar{\bar{y}}(t) &= \bar{y}(0) - \bar{\bar{y}}(0) + \inteval{0}{t}{\bar{f}(t, \bar{y}) - \bar{\bar{f}}(t, \bar{\bar{y}})}{t} \\
+	                              &= \inteval{0}{t}{\bar{f}(t, \bar{y}) - \bar{\bar{f}}(t, \bar{\bar{y}})}{t}.
+\end{align*}
+Betrakta ett $t\in [\bar{t}_{n}, \bar{t}_{n + 1})\cup [\bar{\bar{t}}_{m}, \bar{\bar{t}}_{m + 1})$. Vi adderar och subtraherar $f(\bar{y}(t))$ och $f(\bar{\bar{y}}(t))$ från integranden och får
+\begin{align*}
+	\bar{f}(t, \bar{y}) - \bar{\bar{f}}(t, \bar{\bar{y}} &= f(\bar{y}(\bar{t}_{n})) - f(\bar{\bar{y}}(\bar{\bar{t}}_{m})) \\
+	                                                     &= (f(\bar{y}(\bar{t}_{n})) - f(\bar{y}(t))) + (f(\bar{\bar{y}}(t))) - f(\bar{\bar{y}}(\bar{\bar{t}}_{m}))) + (f(\bar{y}(t)) - f(\bar{\bar{y}}(t))) \\
+	                                                     &= R_{1} + R_{2} + R_{3}.
+\end{align*}
+Lipschitzantagandet för $f$ ger
+\begin{align*}
+	\abs{f(\bar{y}(\bar{t}_{n})) - f(\bar{y}(t)} \leq C\abs{\bar{y}(\bar{t}_{n}) - \bar{y}(t)}.
+\end{align*}
+Med hjälpresultatet för $\abs{f(z)}$ kan vi skriva
+\begin{align*}
+	\abs{\bar{y}(\bar{t}_{n}) - \bar{y}(t)} = (t - t_{n})\abs{f(\bar{y}(\bar{t}_{n}))} \leq C(1 + \abs{\bar{y}(\bar{t}_{n})})(t - t_{n})
+\end{align*}
+och slutligen
+\begin{align*}
+	\abs{R_{1}} &\leq C^{2}(1 + \abs{\bar{y}(\bar{t}_{n})})(t - t_{n}), \\
+	\abs{R_{2}} &\leq C^{2}(1 + \abs{\bar{\bar{y}}(\bar{\bar{t}}_{m})})(t - t_{m}), \\
+	\abs{R_{3}} &\leq C\abs{\bar{y}(t) - \bar{\bar{y}}(t)},
+\end{align*}
+där antaganden igen har användts.
+
+Integranden kan nu skrivas som
+\begin{align*}
+	\abs{\bar{f}(t, \bar{y}) - \bar{\bar{f}}(t, \bar{\bar{y}})} &\leq C^{2}(1 + \abs{\bar{y}(\bar{t}_{n})})(t - t_{n}) + C^{2}(1 + \abs{\bar{\bar{y}}(\bar{\bar{t}}_{m})})(t - t_{m}) + \leq C\abs{\bar{y}(t) - \bar{\bar{y}}(t)}.
+\end{align*}
+Om vi antar att det första påsåtåendet i satsen stämmer, fås
+\begin{align*}
+	\abs{\bar{f}(t, \bar{y}) - \bar{\bar{f}}(t, \bar{\bar{y}})} &\leq C^{2}(1 + B_{1})\Delta t + C\abs{\bar{y}(t) - \bar{\bar{y}}(t)},
+\end{align*}
+och integralen kan skrivas som
+\begin{align*}
+	\bar{y}(t) - \bar{\bar{y}}(t) &\leq \inteval{0}{t}{C^{2}(1 + B_{1})\Delta t + C\abs{\bar{y}(t) - \bar{\bar{y}}(t)}}{t} \\
+	                              &\leq \inteval{0}{t}{C^{2}(1 + B_{1})\Delta t + C\abs{\bar{y}(t) - \bar{\bar{y}}(t)}}{t} \\
+	                              &\leq \inteval{0}{t}{C\abs{\bar{y}(t) - \bar{\bar{y}}(t)}}{t} + C^{2}(1 + B_{1})T\Delta t \\
+	                              &= \inteval{0}{t}{C\abs{\bar{y}(t) - \bar{\bar{y}}(t)}}{t} + C_{1}T\Delta t.
+\end{align*}
+Grönwalls lemma ger slutligen
+\begin{align*}
+	\bar{y}(t) - \bar{\bar{y}}(t) \leq C_{1}T\Delta te^{CT}.
+\end{align*}
 
 \paragraph{Linjära differentialekvationer}
 Om en differentialekvation kan skrivas på formen $F(t, y, \dv{y}{x}, \dots) = 0$, är den linjär om $F$ är linjär i alla sina argument förutom $t$.
