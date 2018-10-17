@@ -190,6 +190,39 @@ $f: I\to\R, g: I\to\R$ är linjärt beroende om det finns $k_{1}, k_{2}$ så att
 \paragraph{Fundamentalt sätt av lösningar}
 Betrakta någon ODE och ett sätt lösningar. Detta sättet är ett fundamentalt sätt av lösningar om och endast om deras wronskian är nollskild överallt i lösningsintervallet.
 
+\paragraph{Ordinarie punkter}
+Betrakta differentialekvationen
+\begin{align*}
+	P(x)\deval[2]{y}{x}{x} + Q(x)\deval{y}{x}{x} + R(x)y(x) = 0.
+\end{align*}
+Vi skriver denna om till
+\begin{align*}
+	\deval[2]{y}{x}{x} + p(x)\deval{y}{x}{x} + q(x)y(x) = 0.
+\end{align*}
+Om både $p$ och $q$ är analytiske kring punkten $x_{0}$, är $x_{0}$ en ordinarie punkt till differentialekvationen.
+
+\paragraph{Singulära punkter}
+Betrakta differentialekvationen
+\begin{align*}
+	P(x)\deval[2]{y}{x}{x} + Q(x)\deval{y}{x}{x} + R(x)y(x) = 0.
+\end{align*}
+Vi skriver denna om till
+\begin{align*}
+	\deval[2]{y}{x}{x} + p(x)\deval{y}{x}{x} + q(x)y(x) = 0.
+\end{align*}
+Om antingen $Q$ eller $R$ är nollskilda i $x_{0}$, medan $P(x_{0}) = 0$, är $x_{0}$ en singulär punkt till differentialekvationen.
+
+\paragraph{Regulära singulära punkter}
+Betrakta differentialekvationen
+\begin{align*}
+	P(x)\deval[2]{y}{x}{x} + Q(x)\deval{y}{x}{x} + R(x)y(x) = 0.
+\end{align*}
+Vi skriver denna om till
+\begin{align*}
+	x^{2}\deval[2]{y}{x}{x} + x(xp(x))\deval{y}{x}{x} + x^{2}q(x)y(x) = 0.
+\end{align*}
+Om antingen $p$ eller $q$ ej är analytiska kring $x_{0}$, men $xp$ och $x^{2}q$ är det, är $x_{0}$ en regulär singulär punkt till differentialekvationen.
+
 \input{./Parts/first_order_ODEs.tex}
 
 \input{./Parts/second_order_ODEs.tex}
@@ -227,10 +260,46 @@ Differentialekvationen
 \end{align*}
 
 \subsection{Potensserier}
+
+\paragraph{Kriterier för potensserielösning}
 I vissa fall kan man ansätta
 \begin{align*}
 	y(x) = \sum\limits_{i = 1}^{\infty}a_{x}x^{n}
 \end{align*}
 som en lösning av en differentialekvation. Detta kan endast göras om alla involverade koefficienter är analytiska.
+
+\paragraph{Singulära punkter och Euler-liknande ekvationer}
+Betrakta differentialekvationen
+\begin{align*}
+	P(x)\deval[2]{y}{x}{x} + Q(x)\deval{y}{x}{x} + R(x)y(x) = 0.
+\end{align*}
+Vi skriver denna om till
+\begin{align*}
+	x^{2}\deval[2]{y}{x}{x} + x(xp(x))\deval{y}{x}{x} + x^{2}q(x)y(x) = 0.
+\end{align*}
+Antag att antingen $p$ eller $q$ ej är analytiska kring $0$, men $xp$ och $x^{2}q$ är det. Då kan man med hjälp av ansatsen
+\begin{align*}
+	y(x) = \sum\limits_{n = 0}^{\infty}a_{x}x^{n + r}
+\end{align*}
+få att detta är en lösning om $r$ uppfyller
+\begin{align*}
+	r(r - 1) + p_{0}r + q_{0} = 0,
+\end{align*}
+där $p_{0} = \lim_{x\to 0}xp(x)$ och $q_{0} = \lim_{x\to 0}x^{2}q(x)$. Från detta fås vidare en rekursionsrelation för koefficienterna $a_{n}$.
+
+Låt nu $r_{1}, r_{2}$ vara värden av $r$ som ger lösningar, med $r_{1} > r_{2}$, och antag att $y_{1}$ är lösningen som fås vid att använda $r_{1}$ i ansatsen. Då kan följande ansatser göras för att hitta en ny lösning:
+\begin{itemize}
+	\item Om $r_{1} - r_{2}$ inte är ett heltal, kommer man få två olika rekursionsrelationer med hjälp av ansatsen.
+	\item Om $r_{1} = r_{2}$, gör man ansatsen
+	\begin{align*}
+		y_{2}(x) = y_{1}(x)\ln{x} + x^{r_{1}}\sum\limits_{n = 1}^{\infty}b_{n}x^{n},
+	\end{align*}
+	där koefficienterna $b_{n}$ måste bestämmas.
+	\item Om $r_{1} - r_{2}$ är ett positivt heltal, gör man ansatsen
+	\begin{align*}
+		y_{2}(x) = ay_{1}(x)\ln{x} + x^{r_{2}}\left(1 + \sum\limits_{n = 1}^{\infty}b_{n}x^{n}\right),
+	\end{align*}
+	för några tal $a, b_{n}$.
+\end{itemize}
 
 \input{./Parts/stability.tex}
