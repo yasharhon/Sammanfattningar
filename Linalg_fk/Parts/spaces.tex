@@ -1,0 +1,39 @@
+\section{Vektorrum}
+
+\subsection{Definitioner}
+
+\paragraph{Kroppar}
+En kropp är något som har definierat multiplikation och addition, och som fungerar som (är isomorft med) $\R, \C$ osv.
+
+\paragraph{Vektorrum}
+Ett vektorrum är en mängd med en operation som gör $V$ till en abelsk grupp och för vilken det finns en kropp $k$ med skalärer och en operation med skalären som uppfyller
+\begin{itemize}
+	\item $c(x + y) = cx + cy,~c\in\R,~x,y\in V$.
+	\item $(c + d)x = cx + dx,~c,d\in\R$.
+	\item $c(dx) = (cd)x$.
+	\item $1x = x$.
+\end{itemize}
+
+\paragraph{Delrum}
+En delmängd $V$ av ett vektorrum är ett delrum om
+\begin{itemize}
+	\item $0\in V$, där $0$ är nollelementet.
+	\item $x, y\in V\implies x + y\in V$.
+	\item $cx\in V$ för alla $c\in\R$.
+\end{itemize}
+
+\paragraph{Direktsumma}
+Vi definierar direktsumman
+\begin{align*}
+	\dirsum{i}{0}{\infty}{V_{i}} = \left\{\sum\limits_{i = 0}^{\infty}a_{i}, a_{i}\in V_{i}\right\}.
+\end{align*}
+
+\paragraph{Kvotrum}
+Om $W\subseteq V$ är delrum, kan vi bilda
+\begin{align*}
+	\frac{V}{W} = \left\{x + W, x\in V\right\},
+\end{align*}
+där vi har användt summan
+\begin{align*}
+	x + W = \left\{x + y, y\in W\right\}.
+\end{align*}
