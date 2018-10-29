@@ -1,0 +1,52 @@
+\section{Fourierserier}
+
+\subsection{Definitioner}
+
+\subsection{Satser}
+
+\paragraph{Formel för Fourierkoefficienter}
+Antag att en funktion $f$ kan skrivas som
+\begin{align*}
+	f(x) = \sum\limits_{n\in\Z}c_{n}e^{inx},
+\end{align*}
+där$\sum\limits_{n\in\Z}\abs{c_{n}}$ är begränsad. Då gäller det att
+\begin{align*}
+	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}.
+\end{align*}
+
+\subparagraph{Bevis}
+Om antagandet är sant, skulle det gälla att
+\begin{align*}
+	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}.
+\end{align*}
+Antag först att det finns ett $N$ så att $c_{n} = 0$ för $\abs{n} > N$. Detta ger
+\begin{align*}
+	\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t} = \sum\limits_{m\in\Z}c_{m}\inteval{-\pi}{\pi}{e^{i(m - n)t}}{t}.
+\end{align*}
+Den återstående integralen ges av
+\begin{align*}
+	\inteval{-\pi}{\pi}{e^{i(m - n)t}}{t} =
+	\begin{cases}
+		\inteval{-\pi}{\pi}{}{t} = 2\pi,                                       &m = n, \\
+		\frac{1}{i(m - n)}\left(e^{i(m - n)\pi} - e^{-i(m - n)\pi}\right) = \frac{e^{i(m - n)\pi}}{i(m - n)}\left(1 - e^{-2\pi i(m - n)}\right) = 0, &m\neq 0,
+	\end{cases}
+\end{align*}
+och satsen stämmer.
+
+Låt nu $n$ vara givet och välj ett $N$ så att $n < N$ och $\sum\limits_{\abs{n} > N}\abs{c_{n}} < \varepsilon$. Detta ger
+\begin{align*}
+	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}} &= \frac{1}{2\pi}\abs{\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}c_{m}e^{i(m - n)t}}{t}} \\
+	                                      &\leq \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}\abs{c_{m}e^{i(m - n)t}}}{t} \\
+	                                      &= \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}\abs{c_{m}}}{t} \\
+	                                      &= \frac{1}{2\pi}\sum\limits_{\abs{m} > N}2\pi\abs{c_{m}} \\
+	                                      &= \sum\limits_{\abs{m} > N}\abs{c_{m}} < \varepsilon.
+\end{align*}
+Enligt vårt tidigare argument gäller det även att
+\begin{align*}
+	\frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t} = c_{n},
+\end{align*}
+och vi har alltså visat
+\begin{align*}
+	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}} &= \frac{1}{2\pi}\abs{\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}c_{m}e^{i(m - n)t}}{t}} < \varepsilon,
+\end{align*}
+vilket ger att satsen stämmer.
