@@ -50,3 +50,71 @@ och vi har alltså visat
 	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}} &= \frac{1}{2\pi}\abs{\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}c_{m}e^{i(m - n)t}}{t}} < \varepsilon,
 \end{align*}
 vilket ger att satsen stämmer.
+
+\paragraph{Hjälpsats för konvergens av Fourierserier}
+Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ är Riemanntingegrerabar på $(-a, a)$ och att
+\begin{itemize}
+	\item $K_{n}(x)\geq 0, x\in (-a, a)$.
+	\item $\inteval{-a}{a}{K_{n}(x)}{x}$.
+	\item för varje $\delta > 0$ så gäller att $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$.
+\end{itemize}
+Då gäller att
+\begin{align*}
+	\lim\limits_{n\to\infty}\inteval{-a}{a}{K_{n}(x)f(x)}{x} = f(0).
+\end{align*}
+
+\proof
+Vi vill visa att för alla $\varepsilon > 0$ existerar ett $M > 0$ så att om $n > M$ så är
+\begin{align*}
+	\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)} < \varepsilon.
+\end{align*}
+
+Vi har att
+\begin{align*}
+         &\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)} \\
+	=    &\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)\inteval{-a}{a}{K_{n}(x)}{x}} \\
+	=    & \abs{\inteval{-a}{a}{K_{n}(x)(f(x) - f(0))}{x}} \\
+	=    & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x} + \inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}} \\
+	\leq & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}}.
+\end{align*}
+Eftersom $f$ är kontinuerlig, finns det ett $J > 0$ sådant att $\abs{f(x) - f(0)} < J$ när $\abs{x} < a$. Då kan vi skriva
+\begin{align*}
+	     &\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}} \\
+	\leq & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}}.
+\end{align*}
+Tills nu har vi inte specifierat vårat $\delta$. Välj nu det så att $\abs{x} < \delta\implies\abs{f(x) - f(0)} < \frac{1}{2}\varepsilon$. Använd vidare att eftersom $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$ finns det ett $M > 0$ så att $n > M\implies \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{\varepsilon}{2J}$. Alltså har vi för ett tillräckligt stort $n$ att
+\begin{align*}
+	\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{1}{2}\varepsilon\abs{\inteval{-\delta}{\delta}{K_{n}(x)}{x}} + J\frac{\varepsilon}{2J} = \varepsilon,
+\end{align*}
+och beviset är klart.
+
+\paragraph{Konvergens av Fourierserier}
+
+\proof
+Vi vill hitta ett villkor på $f$ så att för alla $\varepsilon > 0$ finns det ett $K > 0$ så att
+\begin{align*}
+	N > K \implies \abs{f(x) - \sum\limits_{n = -N}^{N}c_{n}e^{inx}} < \varepsilon,
+\end{align*}
+där
+\begin{align*}
+	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}.
+\end{align*}
+Vi definierar
+\begin{align*}
+	S_{N}(x) = \sum\limits_{n = -N}^{N}c_{n}e^{inx}
+\end{align*}
+och beräknar den som
+\begin{align*}
+	S_{N}(x) &= \frac{1}{2\pi}\sum\limits_{n = -N}^{N}\inteval{-\pi}{\pi}{f(t)e^{in(x - t)}}{t} \\
+	         &= \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)\frac{1 - e^{-i(2N + 1)(x - t)}}{1 - e^{-i(x - t)}}e^{-iN(x - t)}}{t}.
+\end{align*}
+Vi definierar Dirichletkärnan
+\begin{align*}
+	D_{N}(\alpha) &= \frac{1}{2\pi}\frac{1 - e^{i(2N + 1)\alpha}}{1 - e^{i\alpha}}e^{-iN\alpha} \\
+	              &= \frac{1}{2\pi}e^{-iN\alpha}\frac{e^{i\left(N + \frac{1}{2}\right)\alpha}}{e^{\frac{1}{2}i\alpha}}\frac{e^{-i\left(N + \frac{1}{2}\right)\alpha} - e^{i\left(N + \frac{1}{2}\right)\alpha}}{e^{-\frac{1}{2}i\alpha} - e^{\frac{1}{2}i\alpha}} \\
+	              &= \frac{1}{2\pi}\frac{\sin{\left(N + \frac{1}{2}\right)\alpha}}{\sin{\frac{1}{2}\alpha}}.
+\end{align*}
+Då kan vi skriva
+\begin{align*}
+	S_{N}(x) = \inteval{-\pi}{\pi}{f(t)D_{N}(x - t)}{t}.
+\end{align*}
