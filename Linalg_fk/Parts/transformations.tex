@@ -1,0 +1,43 @@
+\section{Avbildningar}
+
+\subsection{Definitioner}
+
+\paragraph{Isomorfir}
+En isomorfi är en bijektiv avbildning mellan vektorrum.
+
+\paragraph{Linjära avbildningar}
+En avbildning $T$ är linjär om
+\begin{align*}
+	T(x + y) = T(x) + T(y), \\
+	T(cx) = cT(x), c\in\R.
+\end{align*}
+Vi säjer att $T$ respekterar eller bevarar strukturen som vektorrum.
+
+\paragraph{Matriser för linjära avbildningar}
+Om $B$ är en bas för $V$ och $D$ är en bas för $W$ kan vi ordna en matris för $L: V\to W$ genom
+\begin{align*}
+	L(x_{i}) = \sum\limits_{j\in I}a_{ji}y_{j},
+\end{align*}
+där alla $x_{i}\in B$, alla $y_{i}\in D$ och $I$ är en mängd av index som det skall summeras över.
+
+\paragraph{Koordinater}
+Låt $B = \left\{x_{i}\right\}_{i\in I}$ vara en bas för vektorrummet $V$. Vi definierar då en avbildning
+\begin{align*}
+	V                  &\to k^{I}\equiv \dirsum{i\in I}{}{k}, \\
+	x = \sum a_{i}x{i} &\to \left\{a_{i}\right\}_{i\in I}.
+\end{align*}
+Detta är en isomorfi.
+
+\subsection{Satser}
+
+\paragraph{Basbyte}
+Låt $L$ vara en avbildning från $V$ till $W$. Låt $_{D}[L]_{B}$ vara representationen av avbildningen $L$ från basen $B$ till $D$, där $B$ är en bas för $V$ och $D$ en bas för $W$. Då gäller det att
+\begin{align*}
+	
+\end{align*}
+
+\paragraph{Isomorfisatsen}
+Låt $L: V\to W$ vara linjär. Då gäller det att
+\begin{align*}
+	\Im{L} \cong \frac{V}{\ker{L}}.
+\end{align*}

@@ -22,10 +22,16 @@ En delmängd $V$ av ett vektorrum är ett delrum om
 	\item $cx\in V$ för alla $c\in\R$.
 \end{itemize}
 
-\paragraph{Direktsumma}
-Vi definierar direktsumman
+\paragraph{Inre direkt summa}
+Vi definierar den inre direkta summan
 \begin{align*}
-	\dirsum{i}{0}{\infty}{V_{i}} = \left\{\sum\limits_{i = 0}^{\infty}a_{i}, a_{i}\in V_{i}\right\}.
+	\dirsum{i = 0}{\infty}{V_{i}} = \left\{\sum\limits_{i = 0}^{\infty}a_{i}, a_{i}\in V_{i}\right\}.
+\end{align*}
+
+\paragraph{Yttre direkt summa}
+Den yttre direkte summan av två vektorrum definieras som
+\begin{align*}
+	V\oplus W = \left\{(x, y), x\in V, y\in W\right\}.
 \end{align*}
 
 \paragraph{Kvotrum}
@@ -37,3 +43,37 @@ där vi har användt summan
 \begin{align*}
 	x + W = \left\{x + y, y\in W\right\}.
 \end{align*}
+Dessa kallas för sidoklasser.
+
+\paragraph{Operationer på sidoklasser}
+Till sidoklasser hör operationer
+\begin{align*}
+	(x + W) + (y + W) &= x + y + W, \\
+	a(x + W)          &= (ax) + W.
+\end{align*}
+
+\paragraph{Linjärt oberoende mängder}
+$S$ är en linjärt oberoende mängd om
+\begin{align*}
+	\sum a_{i}x_{i} = 0\implies a_{i} = 0 \forall i,
+\end{align*}
+där alla $x_{i}$ är elementer i $S$.
+
+\paragraph{Linjärt hölje}
+Det linjära höljet $\Span{S}$ av mängden $S$ är
+\begin{itemize}
+	\item mängden av alla linjärkombinationer av vektorer i $S$.
+	\item det minsta delrummet som innehåller $S$.
+	\item $\bigcap\limits_{S\subset W}W$.
+	\item $\sum\limits_{x\in S} \Span{x}$.
+\end{itemize}
+
+\paragraph{Bas}
+En bas $B$ för vektorrummet $W$ är en linjärt oberoende mängd så att $V = \Span{B}$, dvs. att alla vektorer i $V$ är linjärkombinationer av vektorer i $B$ på ett unikt sätt.
+
+\subsection{Satser}
+
+\paragraph{Operationer på sidoklasser}
+Operationer på sidoklasser är väldefinierade.
+
+\proof
