@@ -1,0 +1,58 @@
+\section{Egenvärden och olika polynom}
+
+\subsection{Definitioner}
+
+\paragraph{Egenvektorer}
+$x$ är en egenvektor till $L$ om det finns ett $\lambda\in k$ så att
+\begin{align*}
+	Lx = \lambda x.
+\end{align*}
+$\lambda$ kallas det motsvarande egenvärdet.
+
+\paragraph{Karakteristiskt polynom}
+Om $V$ är ändligdimensionellt ges det karakteristiska polynomet av
+\begin{align*}
+	p_{L}(x) = \det{xI - L}\in k[x],
+\end{align*}
+där $I$ är identitetsavbildningen.
+
+\paragraph{Minimalpolynom}
+Om $L$ är linjär, är minimalpolynomet $q_{L}(x)\in k[x]$ det moniska polynomet av lägst grad så att $q_{L}(x) = 0$.
+
+\subsection{Satser}
+
+\paragraph{Karakteristiska polynom och egenvärden}
+Om $lambda$ är ett egenvärde till $L$ så är $p_{L}(\lambda) = 0$.
+
+\proof
+Ez
+
+\paragraph{Existens av minimalpolynom}
+Om $V$ är ändligdimensionellt, har $L$ ett karakteristiskt polynom.
+
+\proof
+Betrakta matrisen $A$ för $L$ i någon bas. Det gäller att mängden $\{A^{0}, A^{1}, \dots, A^{n^2}\}$ är linjärt beroende, och därmed finns det koefficienter $a_{0}, \dots, a_{n}$ så att
+\begin{align*}
+	\sum a_{i}A^{i} = 0.
+\end{align*}
+
+\paragraph{Cayley-Hamiltons sats}
+$p_{L}(L) = 0$.
+
+\proof
+Om matrisen för $L$ är diagonal så är det uppenbart, ty
+\begin{align*}
+	A^{i} =
+	\left[\begin{array}{ccc}
+		\lambda_{1} & \dots  & 0 \\
+		\vdots      & \ddots & \vdots \\
+		0           & \dots  & \lambda_{n}
+	\end{array}\right]
+	\implies
+	p_{A}(A) =
+	\left[\begin{array}{ccc}
+		p_{A}(\lambda_{1}) & \dots  & 0 \\
+		\vdots             & \ddots & \vdots \\
+		0                  & \dots  & p_{A}(\lambda_{n})
+	\end{array}\right].
+\end{align*}

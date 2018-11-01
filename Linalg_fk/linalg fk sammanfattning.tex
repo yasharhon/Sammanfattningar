@@ -10,6 +10,13 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\set}[2]{
+\left\{#1
+\ifx&#2&
+\else
+   : #2
+\fi
+\right\}}
 \newcommand{\Span}[1]{\text{Span}\left(#1\right)}
 \renewcommand{\det}[1]{\text{det}(#1)}
 \renewcommand{\ker}[1]{\text{ker}(#1)}
