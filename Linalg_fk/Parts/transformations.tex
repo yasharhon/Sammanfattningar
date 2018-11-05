@@ -23,6 +23,18 @@ Om $B$ är en bas för $V$ och $D$ är en bas för $W$ kan vi ordna en matris f�
 \end{align*}
 där alla $x_{i}\in B$, alla $y_{i}\in D$ och $I$ är en mängd av index som det skall summeras över. Linjära kombinationer är per definition ändliga, och därmed summeras det över ett ändligt antal termer även om $I$ är oändlig.
 
+\paragraph{Analytiska funktioner av operatorer}
+En analytisk funktion av en operator $L$ definieras som
+\begin{align*}
+	f(L) = \sum a_{i}L^{i}.
+\end{align*}
+
+\paragraph{Matrisnorm}
+Normen av en matris definieras som
+\begin{align*}
+	\norm{A} = \sup\limits_{\norm{x} = 1}\norm{Ax}.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Basbyte}
@@ -86,3 +98,17 @@ Om $U\subseteq\ker{L}$ finns det en unik avbildning $\Phi: \frac{V}{U}\to W$ så
 
 \proof
 Definiera $\Phi(x + U) = L(x)$.
+
+\paragraph{Norm av potenser av matriser}
+\begin{align*}
+	\norm{A^{i}}\leq \norm{A}^{i}
+\end{align*}
+
+\proof
+
+\paragraph{Konvergens av funktioner av matriser}
+En funktion $f$ av en matris konvergerar om
+\begin{align*}
+	f(\norm{A}) = \sum a_{i}\norm{A}^{i}
+\end{align*}
+konvergerar.

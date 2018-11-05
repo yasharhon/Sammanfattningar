@@ -3,7 +3,10 @@
 \usepackage[swedish]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[arrowdel]{physics}
 \usepackage{hyperref}
+\usepackage{ifthen}
+\usepackage{pgffor}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -11,16 +14,25 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\set}[2]{
-\left\{#1
-\ifx&#2&
-\else
-   : #2
-\fi
-\right\}}
+	\left\{#1
+	\ifx&#2&
+	\else
+   	: #2
+	\fi
+	\right\}}
+\newcommand{\comp}[1]
+{
+	\foreach \i [count=\xi] in #1
+	{
+		\ifnum\xi>1
+			\circ
+		\fi
+		\i
+	}
+}
 \newcommand{\Span}[1]{\text{Span}\left(#1\right)}
 \renewcommand{\det}[1]{\text{det}(#1)}
 \renewcommand{\ker}[1]{\text{ker}(#1)}
-\newcommand{\rank}[1]{\text{rank}(#1)}
 \renewcommand{\dim}[1]{\text{dim}(#1)}
 \renewcommand{\Im}[1]{\text{Im}(#1)}
 \newcommand{\proj}[2]{\text{proj}_{#1}(#2)}

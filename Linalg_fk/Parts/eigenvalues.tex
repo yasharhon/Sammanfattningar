@@ -19,6 +19,12 @@ där $I$ är identitetsavbildningen.
 \paragraph{Minimalpolynom}
 Om $A$ är en matris, är minimalpolynomet $q_{A}(x)\in k[x]$ det moniska polynomet av lägst grad så att $q_{A}(A) = 0$.
 
+\paragraph{Diagonaliserbarhet}
+En operator är diagonaliserbar om det finns en bas så att operatorns matris i den basen är diagonal.
+
+\paragraph{Samtidig diagonaliserbarhet}
+Två operatorer $L_{1}$ och $L_{2}$ är samtidigt diagonaliserbara om båda är diagonaliserbara och det finns en gemensam bas av egenvektorer.
+
 \subsection{Satser}
 
 \paragraph{Karakteristiska polynom och egenvärden}
@@ -63,3 +69,46 @@ $q_{L}$ är en faktor i $p_{L}$.
 
 \paragraph{Multipliciteter och diagonaliserbarhet}
 Om $L$ är diagonaliserbar, är den geometriska multipliciteten lika med den algebraiska multipliciteten för alla $L$:s egenvärden.
+
+\proof
+
+\paragraph{Konjugerade matriser}
+Alla matriser är konjugerade med en övertriangulär matris med matrisens egenvärden på diagonalen.
+
+\paragraph{Samtidig diagonaliserbarhet och kommutativitet}
+Låt $V$ vara ett ändligdimensionellt vektorrum och $L_{1}, L_{2}$ två operatorer på detta. Då går det att diagonalisera $L_{1}$ och $L_{2}$ om de kommuterar.
+
+\proof
+
+\paragraph{Kommutativitet och egenrum}
+Låt $L_{1}$ och $L_{2}$ kommutera och $E_{1}$ vara egenrum till $L_{1}$. Då är $L_{2}(E_{1})\subset E_{1}$.
+
+\proof
+
+\paragraph{Jordans normalform}
+Om en operator har karakteristiskt polynom
+\begin{align*}
+	p_{L}(x) = \prod (x - \lambda_{i}),
+\end{align*}
+finns det en bas så att matrisen för $L$ är på formen
+\begin{align*}
+	\left[\begin{array}{cccc}
+		\Lambda_{1} & 0           & \dots  & 0 \\
+		0           & \Lambda_{2} & \dots  & \vdots \\
+		\vdots      & \vdots      & \ddots & \vdots \\
+		0           & \dots       & \dots  & \Lambda_{i}
+	\end{array}\right],
+\end{align*}
+med 
+\begin{align*}
+	\Lambda_{i} =
+	\left[\begin{array}{cccc}
+		\lambda_{i} & 1           & \dots       & 0 \\
+		0           & \lambda_{i} & \dots       & \vdots \\
+		\vdots      & \dots       & \ddots      & 1 \\
+		0           & \dots       & 0           & \lambda_{i}
+	\end{array}\right].
+\end{align*}
+En sådan matris är på Jordans normalform.
+
+\proof
