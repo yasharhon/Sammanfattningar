@@ -2,6 +2,26 @@
 
 \subsection{Definitioner}
 
+\paragraph{Cesaro-summerbarhet}
+Låt
+\begin{align*}
+	s_{n} = \sum\limits_{k = 0}^{n}a_{k}
+\end{align*}
+och
+\begin{align*}
+	\sigma_{N} = \frac{1}{N}\sum\limits_{k = 0}^{N - 1}s_{k}.
+\end{align*}
+Då är $\sum\limits_{k = 0}^{n}a_{k}$ Cesarosummerbar om $\sigma_{N}$ konvergerar.
+
+\paragraph{Summationskärnor}
+Borde definieras
+
+\paragraph{Feijerkärnan}
+Vi definierar Feijerkärnan som
+\begin{align*}
+	F_{N}(t) = \frac{1}{N}\sum\limits_{k = 0}^{N - 1}D_{k}(t).
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Formel för Fourierkoefficienter}
@@ -51,6 +71,34 @@ och vi har alltså visat
 \end{align*}
 vilket ger att satsen stämmer.
 
+\paragraph{Konvergens och Cesarosummerbarhet}
+Låt
+\begin{align*}
+	\sum\limits_{i = 0}^{\infty}a_{i} = s.
+\end{align*}
+Då är $\sum\limits_{i = 0}^{\infty}a_{i}$ och har värdet $s$ även i denna mening.
+
+\proof
+Vi har
+\begin{align*}
+	\abs{\sigma_{n} - s} &= \abs{\frac{1}{n}\sum\limits_{i = 0}^{\infty}s_{i} - s} \\
+	                     &= \abs{\frac{(s_{0} - s) + \dots + (s_{n - 1} - s)}{n}} \\
+	                     &\leq  \abs{\frac{(s_{0} - s) + \dots + (s_{N} - s)}{n}} + \abs{\frac{(s_{N + 1} - s) + \dots + (s_{n - 1} - s)}{n}}.
+\end{align*}
+Eftersom $s_{n}$ konvergerar, finns det ett $N$ så att när $n > N$ är $\abs{s_{n} - s} < \varepsilon$ för något $\varepsilon > 0$. Låt nu $N$ i ekvationen över vara så att när $n > N$ är $\abs{s_{n} - s} < \frac{\varepsilon}{2}$. Detta ger
+\begin{align*}
+	\abs{\frac{(s_{N + 1} - s) + \dots + (s_{n - 1} - s)}{n}} < \frac{n - N - 1}{n}\frac{\varepsilon}{2} < \frac{\varepsilon}{2}.
+\end{align*}
+Olikheten över kan då skrivas som
+\begin{align*}
+	\abs{\sigma_{n} - s} \leq \frac{C_{N}}{n} + \frac{\varepsilon}{2}.
+\end{align*}
+Välj nu $N$ igen så att $N = \frac{2C_{N}}{\varepsilon}$. Då blir olikheten:
+\begin{align*}
+	\abs{\sigma_{n} - s} \leq \varepsilon,
+\end{align*}
+och beviset är klart.
+
 \paragraph{Hjälpsats för konvergens av Fourierserier}
 Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ är Riemanntingegrerabar på $(-a, a)$ och att
 \begin{itemize}
@@ -87,6 +135,31 @@ Tills nu har vi inte specifierat vårat $\delta$. Välj nu det så att $\abs{x} 
 	\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{1}{2}\varepsilon\abs{\inteval{-\delta}{\delta}{K_{n}(x)}{x}} + J\frac{\varepsilon}{2J} = \varepsilon,
 \end{align*}
 och beviset är klart.
+
+\paragraph{Följdsats}
+Låt $K_{n}$ vara en positiv summationskärna, $f$ integrerbar och $f$ kontinuerlig i $x$. Då gäller det att
+\begin{align*}
+	\lim\limits_{n\to\infty}\inteval{-\pi}{\pi}{K_{n}(t)f(x - t)}{t} = f(x).
+\end{align*}
+
+\proof
+Tillämpa satsen ovan på $g(t) = f(x - t)$.
+
+\paragraph{Omskrivning av Feijerkärnan}
+\begin{align*}
+	F_{N}(t) = \frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}.
+\end{align*}
+
+\proof
+
+\paragraph{Hjälpsats för Feijerkärnan}
+$F_{N}$ är Riemannintegrerbar och uppfyller
+\begin{itemize}
+	\item $\inteval{-\pi}{\pi}{F_{n}(t)}{t} = 1$.
+	\item för varje $\delta > 0$ så gäller att $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < \pi}{}{F_{n}(t)}{t} = 0$.
+\end{itemize}
+
+\proof
 
 \paragraph{Konvergens av Fourierserier}
 
