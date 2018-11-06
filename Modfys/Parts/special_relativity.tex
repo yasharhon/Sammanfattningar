@@ -118,3 +118,129 @@ Betrakta två händelser som inträffer vid samma tidspunkt i inertialramen. Lor
 	\Delta x = \frac{1}{\gamma}\Delta x,
 \end{align*}
 och det mäts ett kortare avstånd mellan händelserna i inertialramen.
+
+\paragraph{Relativistisk Dopplereffekt}
+Betrakta återigen två olika system. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
+\begin{align*}
+	t_{1} = \gamma t_{1}', \\
+	t_{2} = \gamma t_{2}'
+\end{align*}
+och vid avstånd
+\begin{align*}
+	x_{1} = \gamma vt_{1}', \\
+	x_{2} = \gamma vt_{2}'.
+\end{align*}
+Ljuspulserna når därmed origo vid tid
+\begin{align*}
+	t_{O1} = t_{1} + \frac{x_{1}}{c} = \gamma t_{1}'(1 + \beta), \\
+	t_{O2} = t_{2} + \frac{x_{2}}{c} = \gamma t_{2}'(1 + \beta).
+\end{align*}
+Vi inför periodtiden $\Delta t' = t_{2}' - t_{1}'$, och får
+\begin{align*}
+	\Delta t_{O} = \gamma (1 + \beta)\Delta t'.
+\end{align*}
+Frekvensen för ljuspulsen ges då av
+\begin{align*}
+	f_{\text{obs}} = \frac{1}{\gamma(1 + \beta)}f_{\text{källa}}.
+\end{align*}
+
+\paragraph{Lorentztransformation av hastigheter}
+Vi använder differentialerna
+\begin{align*}
+	\dd{x} = \gamma(\dd{x'} + v\dd{t'}), \\
+	\dd{t} = \gamma(\dd{t'} + \frac{\beta}{c}\dd{x'})
+\end{align*}
+och får hastigheterna
+\begin{align*}
+	u_{x} &= \dv{x}{t} = \frac{\dd{x'} + v\dd{t'}}{\dd{t'} + \frac{\beta}{c}\dd{x'}} = \frac{u_{x}' + v}{1 + \frac{\beta}{c}u_{x}'}, \\
+	u_{y} &= \frac{u_{y}'}{1 + \frac{\beta}{c}u_{x}'}, \\
+	u_{z} &= \frac{u_{z}'}{1 + \frac{\beta}{c}u_{x}'}.
+\end{align*}
+
+\paragraph{Relativistisk rörelsemängd}
+Betrakta studsen som illustreras i figur \ref{fig:collision_inertial}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/collision_inertial.eps}
+	\caption{Illustration}
+	\label{fig:collision_inertial}
+\end{figure}
+
+Vi antar här att rörelsen kan vara relativistisk i $x$, men approximeras som klassisk i $y$. Om partiklerna har samma massa (och hastighet), är masscentrum statiskt i $C$.
+
+Vi kan alternativt betrakta studsen i ett system som följer partikeln $A$ i $x$-riktning, vilket illustreras i figur \ref{fig:collision_following}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/collision_following.eps}
+	\caption{Illustration}
+	\label{fig:collision_following}
+\end{figure}
+
+Båda system är inertialsystem, och därmed är rörelsesmängden bevarad i båda system.
+
+Vi definierar tiden $t_{0}$ som det tar för $A$ att röra sig avståndet $d$ upp och ned i $A$:s referensram. Ändringen i rörelsemängd ges då av
+\begin{align*}
+	\Delta p_{A, y} = -2m_{A}\frac{d}{t_{0}} - 2m_{A}\frac{d}{t_{0}} = -4m_{A}\frac{d}{t_{0}}, \\
+	\Delta p_{B, y} = 2m_{B}\frac{d}{t_{0}} + 2m_{B}\frac{d}{t_{0}} = 4m_{B}\frac{d}{t},
+\end{align*}
+där tiden $t$ är tiden det tar för $B$ att röra sig upp och ned i den betraktade referensramen. Eftersom rörelsen i $y$-riktning är klassisk, är denna tiden $t_{0}$ i $B$:s referensram. Vi transformerar därmed tillbaka och får
+\begin{align*}
+	\Delta p_{B, y} = 4m_{B}\frac{d}{\gamma t_{0}}.
+\end{align*}
+Fysikens lagar gäller i alla inertialsystem, vilket systemet vi betraktar är, och därmed är den totala ändringen i rörelsemängdsmoment lika med $0$, vilket ger
+\begin{align*}
+	m_{B} = \gamma m_{A}.
+\end{align*}
+Eftersom rörelsen i $y$-riktning är klassisk, kan $A$:s massa nu ersättas av vilomassan $m_{0}$, som är $A$:s massa mätt i sitt eget inertialsystem. Eftersom de två har samma vilomassa, ger detta
+\begin{align*}
+	m = \gamma m_{0}.
+\end{align*}
+Den relativistiska rörelsemängden ges därmed av
+\begin{align*}
+	p = mv = \gamma m_{o}v.
+\end{align*}
+
+\paragraph{Relativistisk energi}
+Newtons andra lag ger
+\begin{align*}
+	F = \dv{t}\left(mv\right).
+\end{align*}
+Om kraftsumman $F$ får verka på en partikel som börjar från vilo, ges dens kinetiska energi av
+\begin{align*}
+	T = \int F\cdot\dd{s} = \int\dv{t}\left(mv\right)\cdot v\dd{t} = \int v\cdot\dd{(mv)} = \int v^{2}\dd{m} + mv\cdot\dd{v}.
+\end{align*}
+Lorentztransformationen av massa ger
+\begin{align*}
+	m^{2}\gamma^{2} = m_{0}^{2}, m^{2}(c^{2} - v^{2}) = m_{0}^{2}c^{2}.
+\end{align*}
+Vid att beröäkna differentialen av båda sidor får
+\begin{align*}
+	2mc^{2}\dd{m} - 2mv^{2}\dd{m} - 2m^{2}v\cdot\dd{v} = 0, c^{2}m = v^{2}\dd{m} + mv\cdot\dd{v},
+\end{align*}
+vilket insatt i integralen ger
+\begin{align*}
+	T = \int c^{2}\dd{m} = c^{2}(m - m_{0}) = m_{0}c^{2}(\gamma - 1).
+\end{align*}
+Detta kan alternativt skrivas som
+\begin{align*}
+	mc^{2} = T + m_{0}c^{2},
+\end{align*}
+vilket tolkades som ett uttryck för totala energin som innehåller en konstant viloenergi $m_{0}c^{2}$ (obs: Ej en potentiell energi!). Därmed ges den totala energin av
+\begin{align*}
+	E = mc^{2} = T + m_{0}c^{2}.
+\end{align*}
+
+\paragraph{Relation mellan energi och rörelsemängd}
+Vi har nu fått
+\begin{align*}
+	p^{2} = \gamma^{2}m_{0}^{2}v^{2}, E^{2} = \gamma^{2}m_{0}^{2}c^{4}.
+\end{align*}
+Energin i kvadrat kan skrivas som
+\begin{align*}
+	E^{2} = \gamma^{2}m_{0}^{2}c^{4} = \gamma^{2}m_{0}^{2}c^{4}\left(\frac{1}{\gamma^{2}} + \beta^{2}\right),
+\end{align*}
+eftersom $\gamma = \frac{1}{\sqrt{1 - \beta^{2}}}$. Vi får vidare
+\begin{align*}
+	E^{2} &= m_{0}^{2}c^{4} + m_{0}^{2}v^{2}c^{2} \\
+	      &= m_{0}^{2}c^{4} + p^{2}c^{2}.
+\end{align*}
