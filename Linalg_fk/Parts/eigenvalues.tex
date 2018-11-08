@@ -85,6 +85,35 @@ Låt $L_{1}$ och $L_{2}$ kommutera och $E_{1}$ vara egenrum till $L_{1}$. Då ä
 
 \proof
 
+\paragraph{Nilpotens och blockdiagonalitet}
+Om $L$ är nilpotent finns det en bas för $V$ så att matrisen för $L$ blir blockdiagonal, där varje block är på formen
+\begin{align*}
+	\mqty[
+		0      & 1      & 0      & \dots  & 0 \\
+		0      & 0      & 1      & \dots  & \vdots \\
+		0      & 0      & 0      & \ddots & \vdots \\
+		\vdots & \vdots & \vdots & \ddots & \vdots \\
+		0      & \dots  & \dots  & \dots  & 0
+	].
+\end{align*}
+
+\proof
+Här kommer endast en bevisidé presenteras.
+
+Det finns ett $s$ så att $L^{s} = 0$ och $L^{s - 1} \neq 0$. Vi väljer då ett delrum $W_{s}$ så att
+\begin{align*}
+	V = \ker{L^{s}} = W_{s} \oplus \ker{L^{s - 1}}.
+\end{align*}
+Vi väljer vidare $W_{s - 1}\subseteq\ker{L^{s - 1}}$ så att
+\begin{align*}
+	\ker{L^{s - 1}} = W_{s - 1} \oplus L(W_{s}) \oplus \ker{L^{s - 2}}.
+\end{align*}
+Detta går eftersom $L(W_{s}) \subseteq \ker{L^{s - 2}}$ och $L(W_{s}) \cap \ker{L^{s - 2}} = \{0\}$. Upprepa prosedyren tills man får
+\begin{align*}
+	\ker{L} = \dirsum{i = 0}{s - 1}{L^{i}(W_{i + 1})}.
+\end{align*}
+Välj nu baser för alla $W_{i}$ och bilderna av alla potenser av $L$. Dissa bildar en bas för $V$. Med en lämplig ordning på basen fås $\dim{W_{i}}$ block på formen ovan i matrisen, varje med storlek $i\times i$.
+
 \paragraph{Jordans normalform}
 Om en operator har karakteristiskt polynom
 \begin{align*}
@@ -109,6 +138,6 @@ med
 		0           & \dots       & 0           & \lambda_{i}
 	\end{array}\right].
 \end{align*}
-En sådan matris är på Jordans normalform.
+En sådan matris är på Jordans normalform. Vi noterar att $\Lambda_{i} = \lambda_{i}I + N$, där $N$ är nilpotent.
 
 \proof
