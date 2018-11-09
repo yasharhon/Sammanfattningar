@@ -2,6 +2,14 @@
 
 \subsection{Definitioner}
 
+\paragraph{Positiva summationskärnor}
+En positiv summationskärna är en Riemannintegrerbar funktion $K_{n}$ på $(-a, a)$ som uppfyller
+\begin{itemize}
+	\item $K_{n}(x)\geq 0, x\in (-a, a)$.
+	\item $\inteval{-a}{a}{K_{n}(x)}{x} = 1$.
+	\item för varje $\delta > 0$ så gäller att $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$.
+\end{itemize}
+
 \paragraph{Cesaro-summerbarhet}
 Låt
 \begin{align*}
@@ -100,13 +108,7 @@ Välj nu $N$ igen så att $N = \frac{2C_{N}}{\varepsilon}$. Då blir olikheten:
 och beviset är klart.
 
 \paragraph{Hjälpsats för konvergens av Fourierserier}
-Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ är Riemanntingegrerabar på $(-a, a)$ och att
-\begin{itemize}
-	\item $K_{n}(x)\geq 0, x\in (-a, a)$.
-	\item $\inteval{-a}{a}{K_{n}(x)}{x}$.
-	\item för varje $\delta > 0$ så gäller att $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$.
-\end{itemize}
-Då gäller att
+Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ en positiv summationskärna på $(-a, a)$. Då gäller att
 \begin{align*}
 	\lim\limits_{n\to\infty}\inteval{-a}{a}{K_{n}(x)f(x)}{x} = f(0).
 \end{align*}
@@ -145,21 +147,90 @@ Låt $K_{n}$ vara en positiv summationskärna, $f$ integrerbar och $f$ kontinuer
 \proof
 Tillämpa satsen ovan på $g(t) = f(x - t)$.
 
-\paragraph{Omskrivning av Feijerkärnan}
+\paragraph{Hjälpsats för Feijerkärnan}
+$F_{N}$ är en positiv summationskärna på $[-\pi, \pi]$.
+
+\proof
+$F_{N}$ är en summa av Riemannintegrerbara funktioner, och är därmed Riemannintegrerbar.
+
+För att visa att $F_{N} \geq 0$, skriv
+\begin{align*}
+	F_{N}(x) &= \frac{1}{2\pi(N + 1}\sum\limits_{n = 0}^{N}\frac{\sin{\left(\frac{n + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}} \\
+	         &= \frac{1}{2\pi(N + 1}\sum\limits_{n = 0}^{N}\frac{\lambda^{n + 1} - \lambda^{-n - 1}}{\lambda - \lambda^{-1}},
+\end{align*}
+där $\lambda = e^{\frac{1}{2}ix}$. Det kan visas att detta ger
 \begin{align*}
 	F_{N}(t) = \frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}.
 \end{align*}
 
+För att visa det andra påståendet, använder vi att
+\begin{align*}
+	\inteval{-\pi}{\pi}{D_{n}(x)}{x} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{}^{}e^{ikx}}{x} = 1 + \frac{1}{2\pi}\sum\limits_{}^{}e^{ikx}... = 1,
+\end{align*}
+vilket ger
+\begin{align*}
+	\inteval{-\pi}{\pi}{F_{N}(t)}{t} = \frac{1}{N + 1}\inteval{-\pi}{\pi}{\sum\limits_{}^{}D_{n}(x)}{x} = \frac{1}{N + 1}\sum\limits_{}^{}1.
+\end{align*}
+
+För att visa det tredje påståendet, skriv
+\begin{align*}
+	\inteval{\delta < \abs{x} < \pi}{}{F_{N}(t)}{t} &= \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}}{t} \\
+	                                                &\leq \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2}}{t} \\
+	                                                &\leq \frac{1}{(N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2} \\
+	                                                &\to 0. 
+\end{align*}
+
+\paragraph{Följdsats}
+\begin{align*}
+	\inteval{-\pi}{\pi}{F_{N}(t)f(x - t)}{t} = f(x).
+\end{align*}
+
 \proof
 
-\paragraph{Hjälpsats för Feijerkärnan}
-$F_{N}$ är Riemannintegrerbar och uppfyller
-\begin{itemize}
-	\item $\inteval{-\pi}{\pi}{F_{n}(t)}{t} = 1$.
-	\item för varje $\delta > 0$ så gäller att $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < \pi}{}{F_{n}(t)}{t} = 0$.
-\end{itemize}
+\paragraph{Annan följdsats}
+Antag att $f$ är integrerbar på enhetscirkeln och att alla dens Fourierkoefficienter är $0$. Då är $f(x) = 0$ överallt där $f$ är kontinuerlig.
 
 \proof
+
+\paragraph{Riemann-Lebesgues lemma}
+Antag att $f$ är Riemannintegrerbar på $(-\pi, pi]$. Då är
+\begin{align*}
+	\lim\limits_{\lambda\to\infty}\inteval{-\pi}{\pi}{f(t)e^{i\lambda t}}{t} = 0.
+\end{align*}
+
+\proof
+Låt $s(x)$ vara en undertrappa till $f$. Eftersom $f$ är Riemannintegrerbar så finns det ett $s$ så att
+\begin{align*}
+	\inteval{-\pi}{\pi}{\abs{f(x) - s(x)}}{x} < \frac{\varepsilon}{2}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\abs{\inteval{-\pi}{\pi}{f(t)e^{i\lambda t}}{t}} &\leq \abs{\inteval{-\pi}{\pi}{s(t)e^{i\lambda t}}{t}} + \abs{\inteval{-\pi}{\pi}{(f(t) - s(t))e^{i\lambda t}}{t}} \\
+	                                                 &\leq \abs{\inteval{-\pi}{\pi}{s(t)e^{i\lambda t}}{t}} + \inteval{-\pi}{\pi}{\abs{f(t) - s(t)}}{t} \\
+	                                                 &\leq \abs{\inteval{-\pi}{\pi}{s(t)e^{i\lambda t}}{t}} + \frac{\varepsilon}{2}.
+\end{align*}
+Vi har vidare
+\begin{align*}
+	\abs{\inteval{-\pi}{\pi}{s(t)e^{i\lambda t}}{t}} &= \abs{\sum\limits_{j = 1}^{n}\inteval{x_{j - 1}}{x_{j}}{m_{j}e^{i\lambda t}}{t}} \\
+	                                                 &= \abs{\sum\limits_{j = 1}^{n}\frac{m_{j}}{i\lambda}(e^{i\lambda x_{j}} - e^{i\lambda x_{j - 1}})} \\
+	                                                 &\leq \sum\limits_{j = 1}^{n}\frac{2\abs{m_{j}}}{\lambda} \\
+	                                                 &\leq \frac{2nM}{\lambda},
+\end{align*}
+där $M = \sup{\{\abs{m_{1}}, \dots, \abs{m_{n}}\}}$. För $lambda > \frac{4nM}{\varepsilon}$ fås
+\begin{align*}
+	\abs{\inteval{-\pi}{\pi}{s(t)e^{i\lambda t}}{t}} \leq \varepsilon,
+\end{align*}
+och beviset är klart.
+
+%Gör en uppdelning $P = \{x_{0}, \dots, x_{n}\}$ av ett intervall $[a, b]$. Då fås undertrapporna av
+%\begin{align*}
+%	L(f, P) = \sum\limits_{i = 1)^{n}(x_{i} - x_{i - 1})m_{i}
+%\end{align*}
+%och undertrapporna av
+%\begin{align*}
+%	U(f, P) = \sum\limits_{i = 1)^{n}(x_{i} - x_{i - 1})M_{i}
+%\end{align*}
+%där alla $m_{i}$ och $M_{i}$
 
 \paragraph{Konvergens av Fourierserier}
 
