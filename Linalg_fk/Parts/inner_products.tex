@@ -1,0 +1,98 @@
+\section{Inreprodukt}
+
+\subsection{Definitioner}
+
+\paragraph{Inreprodukt över $\R$}
+En inreprodukt $\inprod{x}{y}$ på ett vektorrum $V$ över $\R$ är en avbildning $V\times V\to \R$ som är
+\begin{itemize}
+	\item bilinjär, dvs.
+	\begin{itemize}
+		\item $\inprod{x + y}{z} = \inprod{x}{z} + \inprod{y}{z}$.
+		\item $\inprod{ax}{y} = a\inprod{x}{y}$.
+		\item $\inprod{x}{y + z} = \inprod{x}{y} + \inprod{x}{z}$.
+		\item $\inprod{x}{ay} = a\inprod{x}{y}$.
+	\end{itemize}
+	\item symmetrisk, dvs. $\inprod{x}{y} = \inprod{y}{x}$.
+	\item positivt definit, dvs. $\inprod{x}{x} > 0$ om $x \neq 0$.
+\end{itemize}
+
+\paragraph{Inreprodukt över $\C$}
+En inreprodukt $\inprod{x}{y}$ på ett vektorrum $V$ över $\C$ är en avbildning $V\times V\to \C$ som är
+\begin{itemize}
+	\item seskvilinjär, dvs. bilinjär, men $\inprod{ax}{y} = \cc{a}\inprod{x}{y}$.
+	\item konjugatsymmetrisk, dvs. $\inprod{x}{y} = \cc{\inprod{y}{x}}$.
+	\item positivt definit, dvs. $\inprod{x}{x} > 0$ om $x \neq 0$. Notera att detta och konjugatsymmetrin implicerar att $\inprod{x}{x}$ har ingen imaginärdel.
+\end{itemize}
+
+\paragraph{Inreprodukt från matris}
+Vi kan få en inreprodukt i $\C^{n}$ från en matris genom
+\begin{align*}
+	\inprod{x}{y} = \sum a_{ij}\cc{x_{i}}{y_{j}} = (\cc{x})^{T}Ay.
+\end{align*}
+
+Om detta skall uppfylla konjugatsymmetri, ger det
+\begin{align*}
+	(\cc{x})^{T}Ay = \cc{(\cc{y})^{T}Ax} = y^{T}\cc{A}\cc{x}.
+\end{align*}
+
+Transponering av högersidan ger
+\begin{align*}
+	(\cc{x})^{T}Ay = (\cc{x})^{T}(\cc{A})^{T}y,
+\end{align*}
+och därmed uppfylls konjugatsymmetrin om
+\begin{align*}
+	A = (\cc{A})^{T}.
+\end{align*}
+Om matrisen uppfyller detta, säjs den vara konjugatsymmetrisk eller Hermitesk.
+
+\paragraph{Norm}
+Normen eller längden av en vektor definieras som
+\begin{align*}
+	\abs{x} = \sqrt{\inprod{x}{x}}.
+\end{align*}
+
+\paragraph{Vinkel}
+Vinkeln $\theta$ mellan två vektorer definieras som
+\begin{align*}
+	\cos{\theta} = \frac{\inprod{x}{x}}{\abs{x}\abs{y}}.
+\end{align*}
+
+\paragraph{Ortogonalitet}
+$x$ och $y$ är ortogonala om
+\begin{align*}
+	\inprod{x}{y} = 0.
+\end{align*}
+
+\paragraph{Ortogonalt komplement}
+Om $W\subseteq V$ är ett delrum så finns det ett ortogonalt komplement
+\begin{align*}
+	W^{\perp} = \left\{x\in V: \inprod{x}{y} = 0\forall y\in W\right\} \subseteq V.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Cauchy-Schwarz olikhet}
+
+\begin{align*}
+	\abs{\inprod{x}{y}} \leq \abs{x}\abs{y}.
+\end{align*}
+
+\proof
+
+\paragraph{Triangelolikheten}
+
+\begin{align*}
+	\abs{x + y} \leq \abs{x} + \abs{y}.
+\end{align*}
+
+\paragraph{Ortogonalt komplement och vektorrum}
+Om $V$ är ett ändligdimensionellt vektorrum, är
+\begin{align*}
+	W = W \oplus W^{\perp}.
+\end{align*}
+
+\proof
+Det gäller att
+\begin{align*}
+	W \cap W^{\perp} = \{0\}.
+\end{align*}

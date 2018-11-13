@@ -16,9 +16,8 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\set}[2]{
 	\left\{#1
-	\ifx&#2&
-	\else
-   	: #2
+	\ifx&#2&{}
+	\else{: #2}
 	\fi
 	\right\}}
 \newcommand{\comp}[1]
@@ -31,15 +30,18 @@
 		\i
 	}
 }
+\newcommand{\cc}[1]{#1^{*}}
+
 \newcommand{\Span}[1]{\text{Span}\left(#1\right)}
 \renewcommand{\det}[1]{\text{det}(#1)}
 \renewcommand{\ker}[1]{\text{ker}(#1)}
 \renewcommand{\dim}[1]{\text{dim}(#1)}
 \renewcommand{\Im}[1]{\text{Im}(#1)}
-\newcommand{\proj}[2]{\text{proj}_{#1}(#2)}
-\newcommand{\inprod}[2]{\expval{#1, #2}}
-\newcommand{\proof}{\subparagraph{Bevis}}
+%\newcommand{\proj}[2]{\text{proj}_{#1}(#2)}
+\newcommand{\inprod}[2]{\bra{#1}\ket{#2}}
 \newcommand{\dirsum}[3]{\bigoplus\limits_{#1}^{#2}#3}
+
+\newcommand{\proof}{\subparagraph{Bevis}}
 
 \title{Sammanfattning av SF1681 Linjär algebra, fortsättningskurs}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
