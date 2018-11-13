@@ -4,12 +4,16 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage[arrowdel]{physics}
+\usepackage[margin=0.5in]{geometry}
 
 \newcommand{\R}{\mathbf{R}}
 \newcommand{\Z}{\mathbf{Z}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\cc}[1]{#1^{*}}
 \newcommand{\deval}[4][]{\dv[#1]{#2}{#3} (#4)}
 \newcommand{\pdeval}[4][]{\pdv[#1]{#2}{#3} (#4)}
 \newcommand{\inteval}[4]{\int\limits_{#1}^{#2}#3\dd{#4}}
+\newcommand{\inprod}[2]{\bra{#1}\ket{#2}}
 \newcommand{\proof}{\subparagraph{Bevis}}
 
 \title{Sammanfattning av SG1183 Differentialekvationer och transformmetoder}
@@ -38,5 +42,7 @@
 \input{./Parts/ODEs.tex}
 
 \input{./Parts/fourier_series.tex}
+
+\input{./Parts/function_space.tex}
 
 \end{document}

@@ -1,0 +1,33 @@
+\section{Funktioner, vektorrum och dylikt}
+
+\subsection{Definitioner}
+
+\paragraph{Inreprodukt}
+På kontinuerliga funktioner $[-\pi, \pi] \to \C$ definierar vi inreprodukten
+\begin{align*}
+	\inprod{u}{v} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\cc{u}(t)v(t)}{t}.
+\end{align*}
+
+\paragraph{Fullständiga mängder}
+Låt $\left\{e_{i}\right\}_{i\in I}$ vara en ortonormal mängd vektorer i $V$. Då är $\left\{e_{i}\right\}_{i\in I}$ en fullständig mängd i $V$ om det för varje $u\in V$ och $\varepsilon >0 \exists N >0$ så att
+\begin{align*}
+	n > N\implies \abs{u - \sum\limits_{i\in I}\inprod{u}{e_{i}}e_{i}} < \varepsilon.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Projektion och minsta avstånd}
+Låt $e_{1}, \dots, e_{N}$ vara ortonormala vektorer i inreproduktrummet $V$, och låt
+\begin{align*}
+	V_{N} = \left\{\sum\limits_{i = 1}^{N}a_{i}e_{i}, i\in\C\right\}.
+\end{align*}
+Då ges
+\begin{align*}
+	\inf\limits_{\Phi\in V_{N}}\abs{u - \Phi}
+\end{align*}
+av
+\begin{align*}
+	\Phi = \sum\limits_{i = 1}^{N}\inprod{u}{e_{i}}e_{i}.
+\end{align*}
+
+\proof

@@ -61,7 +61,7 @@ Den återstående integralen ges av
 \end{align*}
 och satsen stämmer.
 
-Låt nu $n$ vara givet och välj ett $N$ så att $n < N$ och $\sum\limits_{\abs{n} > N}\abs{c_{n}} < \varepsilon$. Detta ger
+Låt nu $n$ vara givet och välj ett $N$ så att $n < N$ och $\sum\limits_{\abs{n} > N}\abs{c_{n}} < \varepsilon$, vilket är möjligt eftersom serien ovan är konvergent. Detta ger
 \begin{align*}
 	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}} &= \frac{1}{2\pi}\abs{\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}c_{m}e^{i(m - n)t}}{t}} \\
 	                                      &\leq \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}\abs{c_{m}e^{i(m - n)t}}}{t} \\
@@ -84,7 +84,7 @@ Låt
 \begin{align*}
 	\sum\limits_{i = 0}^{\infty}a_{i} = s.
 \end{align*}
-Då är $\sum\limits_{i = 0}^{\infty}a_{i}$ och har värdet $s$ även i denna mening.
+Då är $\sum\limits_{i = 0}^{\infty}a_{i}$ Cesarosummerbar och har värdet $s$ även i denna mening.
 
 \proof
 Vi har
@@ -107,93 +107,8 @@ Välj nu $N$ igen så att $N = \frac{2C_{N}}{\varepsilon}$. Då blir olikheten:
 \end{align*}
 och beviset är klart.
 
-\paragraph{Hjälpsats för konvergens av Fourierserier}
-Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ en positiv summationskärna på $(-a, a)$. Då gäller att
-\begin{align*}
-	\lim\limits_{n\to\infty}\inteval{-a}{a}{K_{n}(x)f(x)}{x} = f(0).
-\end{align*}
-
-\proof
-Vi vill visa att för alla $\varepsilon > 0$ existerar ett $M > 0$ så att om $n > M$ så är
-\begin{align*}
-	\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)} < \varepsilon.
-\end{align*}
-
-Vi har att
-\begin{align*}
-         &\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)} \\
-	=    &\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)\inteval{-a}{a}{K_{n}(x)}{x}} \\
-	=    & \abs{\inteval{-a}{a}{K_{n}(x)(f(x) - f(0))}{x}} \\
-	=    & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x} + \inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}} \\
-	\leq & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}}.
-\end{align*}
-Eftersom $f$ är kontinuerlig, finns det ett $J > 0$ sådant att $\abs{f(x) - f(0)} < J$ när $\abs{x} < a$. Då kan vi skriva
-\begin{align*}
-	     &\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}} \\
-	\leq & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}}.
-\end{align*}
-Tills nu har vi inte specifierat vårat $\delta$. Välj nu det så att $\abs{x} < \delta\implies\abs{f(x) - f(0)} < \frac{1}{2}\varepsilon$. Använd vidare att eftersom $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$ finns det ett $M > 0$ så att $n > M\implies \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{\varepsilon}{2J}$. Alltså har vi för ett tillräckligt stort $n$ att
-\begin{align*}
-	\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{1}{2}\varepsilon\abs{\inteval{-\delta}{\delta}{K_{n}(x)}{x}} + J\frac{\varepsilon}{2J} = \varepsilon,
-\end{align*}
-och beviset är klart.
-
-\paragraph{Följdsats}
-Låt $K_{n}$ vara en positiv summationskärna, $f$ integrerbar och $f$ kontinuerlig i $x$. Då gäller det att
-\begin{align*}
-	\lim\limits_{n\to\infty}\inteval{-\pi}{\pi}{K_{n}(t)f(x - t)}{t} = f(x).
-\end{align*}
-
-\proof
-Tillämpa satsen ovan på $g(t) = f(x - t)$.
-
-\paragraph{Hjälpsats för Feijerkärnan}
-$F_{N}$ är en positiv summationskärna på $[-\pi, \pi]$.
-
-\proof
-$F_{N}$ är en summa av Riemannintegrerbara funktioner, och är därmed Riemannintegrerbar.
-
-För att visa att $F_{N} \geq 0$, skriv
-\begin{align*}
-	F_{N}(x) &= \frac{1}{2\pi(N + 1)}\sum\limits_{n = 0}^{N}\frac{\sin{\left(\frac{n + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}} \\
-	         &= \frac{1}{2\pi(N + 1}\sum\limits_{n = 0}^{N}\frac{\lambda^{n + 1} - \lambda^{-n - 1}}{\lambda - \lambda^{-1}},
-\end{align*}
-där $\lambda = e^{\frac{1}{2}ix}$. Det kan visas att detta ger
-\begin{align*}
-	F_{N}(t) = \frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}.
-\end{align*}
-
-För att visa det andra påståendet, använder vi att
-\begin{align*}
-	\inteval{-\pi}{\pi}{D_{n}(x)}{x} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{}^{}e^{ikx}}{x} = 1 + \frac{1}{2\pi}\sum\limits_{}^{}e^{ikx}... = 1,
-\end{align*}
-vilket ger
-\begin{align*}
-	\inteval{-\pi}{\pi}{F_{N}(t)}{t} = \frac{1}{N + 1}\inteval{-\pi}{\pi}{\sum\limits_{}^{}D_{n}(x)}{x} = \frac{1}{N + 1}\sum\limits_{}^{}1.
-\end{align*}
-
-För att visa det tredje påståendet, skriv
-\begin{align*}
-	\inteval{\delta < \abs{x} < \pi}{}{F_{N}(t)}{t} &= \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}}{t} \\
-	                                                &\leq \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2}}{t} \\
-	                                                &\leq \frac{1}{(N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2} \\
-	                                                &\to 0. 
-\end{align*}
-
-\paragraph{Följdsats}
-\begin{align*}
-	\inteval{-\pi}{\pi}{F_{N}(t)f(x - t)}{t} = f(x).
-\end{align*}
-
-\proof
-
-\paragraph{Annan följdsats}
-Antag att $f$ är integrerbar på enhetscirkeln och att alla dens Fourierkoefficienter är $0$. Då är $f(x) = 0$ överallt där $f$ är kontinuerlig.
-
-\proof
-
 \paragraph{Riemann-Lebesgues lemma}
-Antag att $f$ är Riemannintegrerbar på $(-\pi, pi]$. Då är
+Antag att $f$ är Riemannintegrerbar på $(-\pi, \pi]$. Då är
 \begin{align*}
 	\lim\limits_{\lambda\to\pm\infty}\inteval{-\pi}{\pi}{f(t)e^{i\lambda t}}{t} = 0.
 \end{align*}
@@ -264,43 +179,45 @@ och
 \end{align*}
 och därmed konvergerar summan.
 
-\paragraph{Annan konvergenssats ig}
-Antag att $f$ uppfyller
-\begin{itemize}
-	\item $f$ är styckvis $C^{1}$ på $(-\pi, \pi]$.
-	\item Höger- och vänstergränsvärdet existerar även mellan de olika intervallen där $f$ är $C^{1}$.
-\end{itemize}
-Då konvergerar Fourierserien $S_{N}$ till
-\begin{itemize}
-	\item $\lim\limits_{N\to\infty}S_{N}(x) = f(x)$ på något av intervallen.
-	\item $\lim\limits_{N\to\infty}S_{N}(x) = \frac{f(x^{+}) + f(x^{-})}{2}$ på gränsen mellan två intervall.
-\end{itemize}
+\paragraph{Integraler med positiva summationskärnor}
+Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ är en positiv summationskärna på $(-a, a)$. Då gäller att
+\begin{align*}
+	\lim\limits_{n\to\infty}\inteval{-a}{a}{K_{n}(x)f(x)}{x} = f(0).
+\end{align*}
 
 \proof
-Vi vill att
+Vi vill visa att för alla $\varepsilon > 0$ existerar ett $M > 0$ så att om $n > M$ så är
 \begin{align*}
-	\abs{\inteval{-\pi}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{+}) + f(x^{-})}{2}}\to 0.
+	\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)} < \varepsilon.
 \end{align*}
-Om detta stämmer, gäller det att
-\begin{align*}
-	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} + \abs{\inteval{-\pi}{0}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{+})}{2}} \to 0.
-\end{align*}
-Vi betraktar ett av dessa uttrycken, då beviset är analogt för det andra.
 
-Det gäller att Dirichletkärnan är jämn och integreras till $1$ på $[-\pi, \pi]$. Detta ger
+Vi har att
 \begin{align*}
-	\frac{f(x^{-})}{2} = \inteval{0}{\pi}{f(x^{-})D_{N}(t)}{t},
+         &\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)} \\
+	=    &\abs{\inteval{-a}{a}{K_{n}(x)f(x)}{x} - f(0)\inteval{-a}{a}{K_{n}(x)}{x}} \\
+	=    & \abs{\inteval{-a}{a}{K_{n}(x)(f(x) - f(0))}{x}} \\
+	=    & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x} + \inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}} \\
+	\leq & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}}.
 \end{align*}
-och vi får
+Eftersom $f$ är kontinuerlig, finns det ett $J > 0$ sådant att $\abs{f(x) - f(0)} < J$ när $\abs{x} < a$. Då kan vi skriva
 \begin{align*}
-	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} &= \abs{\inteval{0}{\pi}{(f(x - t) - f(x^{-}))D_{N}(t)}{t}} \\
-	                                                                 &= \abs{\inteval{0}{\pi}{\frac{f(x - t) - f(x^{-})}{t}\frac{t}{\sin{\left(\frac{1}{2}t\right)}}\sin{\left(\frac{N + 1}{2}t\right)}}{t}}.
+	     &\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)(f(x) - f(0))}{x}} \\
+	\leq & \abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}}.
 \end{align*}
-Det första bråket är begränsad och kontinuerligt när $x - t$ ej är på gränsen mellan två intervall, och är därmed Riemannintegrerbar. Det samma är det andra bråket, och vi kan skriva detta som
+Tills nu har vi inte specifierat vårat $\delta$. Välj nu det så att $\abs{x} < \delta\implies\abs{f(x) - f(0)} < \frac{1}{2}\varepsilon$. Använd vidare att eftersom $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$ finns det ett $M > 0$ så att $n > M\implies \abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{\varepsilon}{2J}$. Alltså har vi för ett tillräckligt stort $n$ att
 \begin{align*}
-	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} = \abs{\inteval{0}{\pi}{R(t)\sin{\left(\frac{N + 1}{2}t\right)}}{t}},
+	\abs{\inteval{-\delta}{\delta}{K_{n}(x)(f(x) - f(0))}{x}} + J\abs{\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x}} < \frac{1}{2}\varepsilon\abs{\inteval{-\delta}{\delta}{K_{n}(x)}{x}} + J\frac{\varepsilon}{2J} = \varepsilon,
 \end{align*}
-där $R$ är Riemannintegrerbar. Enligt Riemann-Lebesgues lemma går detta mot $0$, och beviset är klart.
+och beviset är klart.
+
+\paragraph{Följdsats}
+Låt $K_{n}$ vara en positiv summationskärna och $f$ vara kontinuerlig och integrerbar i $x$. Då gäller det att
+\begin{align*}
+	\lim\limits_{n\to\infty}\inteval{-\pi}{\pi}{K_{n}(t)f(x - t)}{t} = f(x).
+\end{align*}
+
+\proof
+Tillämpa satsen ovan på $g(t) = f(x - t)$.
 
 \paragraph{Konvergens av Fourierserier}
 
@@ -332,3 +249,86 @@ Då kan vi skriva
 \begin{align*}
 	S_{N}(x) = \inteval{-\pi}{\pi}{f(t)D_{N}(x - t)}{t}.
 \end{align*}
+
+\paragraph{Hjälpsats för Feijerkärnan}
+$F_{N}$ är en positiv summationskärna på $[-\pi, \pi]$.
+
+\proof
+$F_{N}$ är en summa av Riemannintegrerbara funktioner, och är därmed Riemannintegrerbar.
+
+För att visa att $F_{N} \geq 0$, skriv
+\begin{align*}
+	F_{N}(x) &= \frac{1}{2\pi(N + 1)}\sum\limits_{n = 0}^{N}\frac{\sin{\left(\frac{n + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}} \\
+	         &= \frac{1}{2\pi(N + 1}\sum\limits_{n = 0}^{N}\frac{\lambda^{n + 1} - \lambda^{-n - 1}}{\lambda - \lambda^{-1}},
+\end{align*}
+där $\lambda = e^{\frac{1}{2}ix}$. Det kan visas att detta ger
+\begin{align*}
+	F_{N}(t) = \frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}.
+\end{align*}
+
+För att visa det andra påståendet, använder vi att
+\begin{align*}
+	\inteval{-\pi}{\pi}{D_{n}(x)}{x} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{}^{}e^{ikx}}{x} = 1 + \frac{1}{2\pi}\sum\limits_{}^{}e^{ikx}... = 1,
+\end{align*}
+vilket ger
+\begin{align*}
+	\inteval{-\pi}{\pi}{F_{N}(t)}{t} = \frac{1}{N + 1}\inteval{-\pi}{\pi}{\sum\limits_{}^{}D_{n}(x)}{x} = \frac{1}{N + 1}\sum\limits_{}^{}1.
+\end{align*}
+
+För att visa det tredje påståendet, skriv
+\begin{align*}
+	\inteval{\delta < \abs{x} < \pi}{}{F_{N}(t)}{t} &= \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}}{t} \\
+	                                                &\leq \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2}}{t} \\
+	                                                &\leq \frac{1}{(N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2} \\
+	                                                &\to 0. 
+\end{align*}
+
+\paragraph{Följdsats}
+\begin{align*}
+	\inteval{-\pi}{\pi}{F_{N}(t)f(x - t)}{t} = f(x).
+\end{align*}
+
+\proof
+
+\paragraph{Annan följdsats}
+Antag att $f$ är integrerbar på enhetscirkeln och att alla dens Fourierkoefficienter är $0$. Då är $f(x) = 0$ överallt där $f$ är kontinuerlig.
+
+\proof
+
+\paragraph{Yttersta konvergenssats för Fourierserier}
+Antag att $f$ uppfyller
+\begin{itemize}
+	\item $f$ är styckvis $C^{1}$ på $(-\pi, \pi]$.
+	\item Höger- och vänstergränsvärdet existerar även mellan de olika intervallen där $f$ är $C^{1}$.
+\end{itemize}
+Då konvergerar Fourierserien $S_{N}$ till
+\begin{itemize}
+	\item $\lim\limits_{N\to\infty}S_{N}(x) = f(x)$ på något av intervallen.
+	\item $\lim\limits_{N\to\infty}S_{N}(x) = \frac{f(x^{+}) + f(x^{-})}{2}$ på gränsen mellan två intervall, där $f(x^{\pm}) = \lim\limits_{t\to x^{\pm}}f(t)$.
+\end{itemize}
+
+\proof
+Vi vill att
+\begin{align*}
+	\abs{\inteval{-\pi}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{+}) + f(x^{-})}{2}}\to 0.
+\end{align*}
+Om detta stämmer, gäller det att
+\begin{align*}
+	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} + \abs{\inteval{-\pi}{0}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{+})}{2}} \to 0.
+\end{align*}
+Vi betraktar ett av dessa uttrycken, då beviset är analogt för det andra.
+
+Det gäller att Dirichletkärnan är jämn och integreras till $1$ på $[-\pi, \pi]$. Detta ger
+\begin{align*}
+	\frac{f(x^{-})}{2} = \inteval{0}{\pi}{f(x^{-})D_{N}(t)}{t},
+\end{align*}
+och vi får
+\begin{align*}
+	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} &= \abs{\inteval{0}{\pi}{(f(x - t) - f(x^{-}))D_{N}(t)}{t}} \\
+	                                                                 &= \abs{\inteval{0}{\pi}{\frac{f(x - t) - f(x^{-})}{t}\frac{t}{\sin{\left(\frac{1}{2}t\right)}}\sin{\left(\frac{N + 1}{2}t\right)}}{t}}.
+\end{align*}
+Det första bråket är begränsad och kontinuerligt när $x - t$ ej är på gränsen mellan två intervall, och är därmed Riemannintegrerbar. Det samma är det andra bråket, och vi kan skriva detta som
+\begin{align*}
+	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} = \abs{\inteval{0}{\pi}{R(t)\sin{\left(\frac{N + 1}{2}t\right)}}{t}},
+\end{align*}
+där $R$ är Riemannintegrerbar. Enligt Riemann-Lebesgues lemma går detta mot $0$, och beviset är klart.
