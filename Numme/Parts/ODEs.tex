@@ -29,6 +29,27 @@ En pseudokod-beskrivning av en lösning med startvillkor \verb|t0| och \verb|y0|
 	end
 \end{lstlisting}
 
+\subparagraph{Felanalys}
+Om vi betraktar det första steget i iterationen, har man lokalt
+\begin{align*}
+	y(t_{1}) &= y(t_{0}) + \deval{y}{t}{t_{0}}(t_{1} - t_{0}) + \frac{1}{2}\deval[2]{y}{t}{\alpha}(t_{1} - t_{0})^{2} \\
+	         &= y(t_{0}) + hf(t_{0}, y_{0}) + \frac{1}{2}\deval[2]{y}{t}{\alpha}h^{2}.
+\end{align*}
+Om andraderivatan av $y$ är begränsad, ger detta
+\begin{align*}
+	\abs{y_{1} - y(t_{1})} \leq Mh^{2},
+\end{align*}
+och det lokala felet är \Ordo{h^{2}}.
+
+Det globala felet kan nu uppskattas som det lokala felet multiplicetar med antal steg. Om vi försöker lösa ekvationen på intervallet $[a, T]$ med $N$ steg, har man
+\begin{align*}
+	Nh = T - a,
+\end{align*}
+och det globala felet kan uppskattas som
+\begin{align*}
+	\abs{y_{N} - y(t_{N})} \approx h^{2}\frac{T - a}{h} = Ch.
+\end{align*}
+
 \paragraph{Eulers metod för system av differentialekvationer}
 Betrakta begynnelsevärdesproblemet
 \begin{align*}

@@ -1,0 +1,35 @@
+\section{Användbar matte}
+
+\paragraph{Allmän begränsning av globalt fel}
+Betrakta begynnelsevärdesproblemet
+\begin{align*}
+	\deval{y}{t}{t} &= f(t, y(t)), \\
+	y(a)            &= b,
+\end{align*}
+löst på $[a, T]$, där $f$ är Lipschitzkontinuerlig. Betrakta en numerisk lösning med lokalt fel begränsad av $Mh^{p + 1}$. Då begränsas det globala felet av
+\begin{align*}
+	\abs{y(T) - y_{N}} \leq \frac{e^{L(T - a)}M}{L}h^{p}.
+\end{align*}
+
+\proof
+Vi inför $y(t; t_{n})$ som den exakta lösningen som startar i $(t_{n}, y_{n})$. Det globala felet ges då av
+\begin{align*}
+	\abs{y(T) - y_{N}} &= \abs{y(T) - y(T; t_{N - 1}) + y(T; t_{N - 1}) + \dots - y(T; t_{1}) + y(T; t_{1}) - y_{N}} \\
+	                   &\leq \abs{y(T) - y(T; t_{N - 1})} + \abs{y(T; t_{N - 1}) - y(T; t_{N - 2})} + \dots + \abs{y(T; t_{1}) - y_{N}}.
+\end{align*}
+Den första termen ges simpelthen av det lokala felet. Satsen om entydighet av lösning för en sådan differentialekvation ger vidare
+\begin{align*}
+	\abs{y(T; t_{i}) - y(T; t_{i - 1})} \leq e^{L(T - t_{i})}\abs{y(t_{i}; t_{i}) - y(t_{i}; t_{i - 1})}.
+\end{align*}
+Det som står kvar i absolutbeloppstecknet är det lokala felet, eftersom den vänstra termen är exakt och den högra kommer från en iteration. Detta ger
+\begin{align*}
+	\abs{y(T; t_{i}) - y(T; t_{i - 1})} \leq e^{L(T - t_{i})}Mh^{p + 1} = e^{L(N - i)h}Mh^{p + 1}
+\end{align*}
+och vidare
+\begin{align*}
+	\abs{y_{N} - y(T)} &\leq Mh^{p + 1} + Mh^{p + 1}e^{Lh} + \dots + Mh^{p + 1}e^{L(N - 1)h}. \\
+	                   &= Mh^{p + 1}\frac{1 - e^{LNh}}{1 - e^{Lh}} \\
+	                   &= Mh^{p + 1}\frac{e^{LNh} - 1}{e^{Lh} - 1} \\
+	                   &\leq Mh^{p + 1}\frac{e^{LNh}}{Lh},
+\end{align*}
+och beviset är klart.

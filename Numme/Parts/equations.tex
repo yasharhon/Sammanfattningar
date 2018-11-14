@@ -1,0 +1,31 @@
+\section{Lösning av ekvationer}
+
+\paragraph{Fixpunktsmetoden}
+Betrakta ekvationen
+\begin{align*}
+	x = g(x).
+\end{align*}
+
+Fixpunktsmetoden är en enkel iterationsmetod för att lösa denna ekvationen, med den enkla iterationsformeln
+\begin{align*}
+	x_{n + 1} = g(x_{n}).
+\end{align*}
+
+En pseudokod-beskrivning av en lösning med startvillkor \verb|x0| där det itereras tills lösningen stämmer med en tolerans \verb|t| är:
+\begin{lstlisting}
+	define g(x)
+	input x0
+	input t
+	while abs(x - g(x)) > t
+		x = g(x)
+	end
+\end{lstlisting}
+
+\subparagraph{Konvergens}
+Om $g\in C^{1}$, $\abs{\deval{g}{x}{\alpha}} < 1$ och $\alpha$ är en fixpunkt. finns det en omgivning till $\alpha$ så att om $x_{0}$ är i denna omgivningen, går $x_{n}\to\alpha$. Metoden konvergerar linjärt med reduktionsfaktor $S = \abs{\deval{g}{x}{\alpha}}$.
+
+För att visa detta, skriver vi
+\begin{align*}
+	x_{n + 1} - \alpha = g(x_{n}) - g(\alpha) = \deval{g}{x}{c}(x_{n} - \alpha),
+\end{align*}
+där vi har användt medelvärdesatsen och det faktum att $\alpha$ är en fixpunkt. Vidare, eftersom $g\in C^{1}$ finns det en omgivning till $\alpha$ så att $\abs{\deval{g}{x}{x}}\leq \frac{S + 1}{2}$. Om $x_{0}$
