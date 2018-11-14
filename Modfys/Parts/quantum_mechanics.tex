@@ -71,10 +71,61 @@ Vi skriver nu om till våglängd och får
 \begin{align*}
 	(\frac{c}{\lambda} - \frac{c}{\lambda'})m_{e, 0}c^{2} &= h\frac{c^{2}}{\lambda\lambda'}(1 - \cos{\phi}), \\
 	(\lambda' - \lambda)m_{e, 0}c                         &= h(1 - \cos{\phi}), \\
-	\lambda' - \lambda                                    &= \frac{h}{m_{e, 0}c}h(1 - \cos{\phi}),
+	\lambda' - \lambda                                    &= \frac{h}{m_{e, 0}c}(1 - \cos{\phi}),
 \end{align*}
 alternativt i termer av energi
 \begin{align*}
 	E' = \frac{1}{\frac{1 - \cos{\phi}}{m_{e, 0}c^{2}} + \frac{1}{E}},
 \end{align*}
 vilket stämde överens med experiment.
+
+\paragraph{Röntgendiffraktion}
+Röntgenstråler har ganska liten våglängd. För att få diffraktion med röntgenstråling, kan man använda plan av atomer i fasta material. Man kan visa att diffraktionsvillkoret är
+\begin{align*}
+	2d\sin{\theta} = n\lambda,
+\end{align*}
+där $\theta$ är infallsvinkeln för strålningen och $d$ är avståndet mellan atomplanen.
+
+\paragraph{Röntgenspektra}
+Om ett metall bestrålas av röntgenstrålning med olika våglängder, kan man använda en diffraktionsuppställning och mäta intensiteten som funktion av utgående vinkel. Eftersom man har ett spektrum av våglängder, får man konstruktiv interferens i ett intervall av vinklar. Braggs formel implicerar att den utgående vinkeln beror av våglängden till strålningen som interfererar konstruktivt, och det erhållna spektrumet från ett sådant experiment visas i figur \ref{fig:x-ray_spectrum}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/x-ray_spectrum.jpg}
+	\caption{Typiskt röntgenspektrum.}
+	\label{fig:x-ray_spectrum}
+\end{figure}
+
+Röntgenspektrumet är en superposition av ett kontinuerligt spektrum och vissa skarpa toppar. Den kontinuerliga delen kommer direkt från våglängdsspektrumet. De skarpa topparna 
+kommer från exitationer av elektroner i metallet. När metallernas elektroner exiteras, skapas det en foton när de hoppar tillbaka till tillståndet med lägre energi, och detta orsakar intensitetstopparna.
+
+\paragraph{de Broglie-våglängd}
+Kombinationen
+\begin{align*}
+	E = h\nu, p = \frac{E}{c}
+\end{align*}
+för fotoner fick de Broglie att hypotetisera att alla partiklar har en våglängd. Vid att kombinera resultaten ovan, var de Broglies hypotes att denna våglängden ges av
+\begin{align*}
+	\lambda = \frac{h}{p}.
+\end{align*}
+Detta kan i stället omformuleras till kinetisk energi vid att visa att
+\begin{align*}
+	p = \sqrt{2Tm_{0} + \left(\frac{T}{c}\right)^{2}},
+\end{align*}
+vilket ger
+\begin{align*}
+	\lambda &= \frac{h}{\sqrt{2Tm_{0} + \left(\frac{T}{c}\right)^{2}}} \\
+	        &= \frac{h}{\sqrt{2Tm_{0}}}\frac{1}{\sqrt{1 + \left(\frac{T}{c\sqrt{2Tm_{0}}}\right)^{2}}} \\
+	        &= \frac{h}{\sqrt{2Tm_{0}}}\frac{1}{\sqrt{1 + \left(\frac{\sqrt{T}}{c\sqrt{2m_{0}}}\right)^{2}}} \\
+	        &= \frac{h}{\sqrt{2Tm_{0}}}\frac{1}{\sqrt{1 + \frac{T}{2m_{0}c^{2}}}}.
+\end{align*}
+
+\paragraph{Davidsson-Germers experiment}
+I detta eperimentet besetrålades en nickelkatod normalt på sin yta med elektroner som accelererades med någon spänning, och reflekterade elktroner detekterades som funktion av vinkel ut från strålen. I detta experimentet uppmättes ett intensitetsmaximum vid en annan vinkel än $0$, och med Braggs formel samsvarar detta maximumet med avståndet mellan atomplan i nickel.
+
+\paragraph{Osäkerhetsprincipen}
+Partiklars vågnatur kombinerad med Fourieranalys implicerar
+\begin{align*}
+	\Delta p \Delta x \geq \frac{\hbar}{2\pi}, \\
+	\Delta E \Delta t \geq \frac{\hbar}{2\pi}.
+\end{align*}
