@@ -127,5 +127,197 @@ I detta eperimentet besetrålades en nickelkatod normalt på sin yta med elektro
 Partiklars vågnatur kombinerad med Fourieranalys implicerar
 \begin{align*}
 	\Delta p \Delta x \geq \frac{\hbar}{2\pi}, \\
-	\Delta E \Delta t \geq \frac{\hbar}{2\pi}.
+	\Delta E \Delta t \geq \frac{\hbar}{2\pi},
 \end{align*}
+där vi har infört den reducerade Plancks konstant $\hbar = \frac{h}{2\pi}$.
+
+\paragraph{Vågfunktionen}
+Baserad på dessa resultaten infördes vågfunktionen $\Psi$. Det postulerades vidare att för alla dynamiska system existerar en vågfunktion som innehåller all information om systemet.
+Denna är kontinuerligt deriverbar.
+
+\paragraph{Sannolikhet}
+Olika experiment började visa att partiklars position har ett icke-deterministiskt element i sig. Positionen beskrivs av en täthetsfunktion, som postulerades vara $\abs{\Psi}^{2}$.
+
+\paragraph{Schrödingerekvationen}
+För ett system av en partikel i en dimension som rör sig i en potential $V$ beskrivs vågfunktionen av
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\del{x}{\Psi} + V\Psi = i\hbar\del{t}{\Psi}.
+\end{align*}
+Detta kan utvidgas för mer allmäna system till
+\begin{align*}
+	\hat{H}\Psi = i\hbar\del{t}{\Psi},
+\end{align*}
+där $\hat{H}$ är systemets Hamiltonoperator, som kommer diskuteras sedan.
+
+\paragraph{Bundna tillstånd}
+Gör ansatsen $\Psi = \psi(x)\phi(t)$. Då ger Schrödingerekvationen för en enda partikel
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\phi\del{x}{\psi} + V\psi\phi = i\hbar\psi\del{t}{\phi}.
+\end{align*}
+Detta kan separeras till
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\frac{\del{x}{\psi}}{\psi} + V = i\hbar\frac{\del{t}{\phi}}{\phi}.
+\end{align*}
+Om potentialen är tidsoberoende, är vänstersidan bara en funktion av position och högersidan bara en funktion av tid. Därmed måste båda sidor vara lika med en konstant, som vi för tillfället kallar $E$.
+
+Tidsberoendet ger
+\begin{align*}
+	\del{t}{\phi} &= -i\frac{E}{\hbar}\phi, \\
+	\phi          &= Ae^{-i\frac{E}{\hbar}t}.
+\end{align*}
+Om vi tittar på frekvensen, får vi
+\begin{align*}
+	\nu = \frac{1}{2\pi}\frac{E}{\hbar} = \frac{E}{h},
+\end{align*}
+och vi ser att $E$ precis motsvarar systemets energi. Vi noterar vidare att $\abs{\phi}^{2}$ är tidsoberoende, så denna sortens tillstånd ändrar sig inte med tiden.
+
+Positionsberoendet ger nu
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\del{x}{\psi} + V\psi = E\psi.
+\end{align*}
+Alla lösningarna till denna ekvationen är egenfunktioner till operatorn $-\frac{\hbar^{2}}{2m}\del{x}{} + V$ med egenvärde $E$.
+
+\paragraph{Väntevärde}
+Eftersom kvantmekaniken handlar om sannolikheter, är även konceptet väntevärde relevant. I kvantmekaniken postulerar vi att det till varje observabel $q$ finns en operator $\hat{q}$, och dens väntevärde ges av
+\begin{align*}
+	\expval{q} = \integ{}{x}{\cc{\psi}\hat{q}\psi}.
+\end{align*}
+Exempel på grundläggande operatorer är
+\begin{itemize}
+	\item positionsoperatorn $\hat{x} = x$.
+	\item rörelsemängdsoperatorn $\hat{p} = -i\hbar\del{i}{}$.
+	\item kinetisk energi-operatorn $\hat{T} = \frac{1}{2m}\hat{p}^{2}$.
+	\item potentialoperatorn $\hat{V} = V$.
+	\item Hamiltonoperatorn $\hat{H} = \hat{T} + \hat{V}$.
+\end{itemize}
+
+\paragraph{Oändlig lådpotential}
+För att få en känsla för vilken sorts fysik som kommer ut av denna teorien, betraktar vi en partikel i en oändlig lådpotential, dvs.
+\begin{align*}
+	V = 
+	\begin{cases}
+		0,      &0 < x < a, \\
+		\infty, &\text{annars.}
+	\end{cases}
+\end{align*}
+Detta motsvarar en låda med oändligt starka väggar. Rumdelen av Schrödingerekvationen för stationära tillstånd ger inuti lådan
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\del{x}{\psi} &= E\psi, \\
+	\del{x}{\psi}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+\end{align*}
+Vi definierar nu
+\begin{align*}
+	k^{2} = \frac{2mE}{\hbar^{2}}
+\end{align*}
+och får
+\begin{align*}
+	\del{x}{\psi} = -k^{2}\psi.
+\end{align*}
+Detta har lösningar
+\begin{align*}
+	\psi = Ae^{ikx} + Be^{-ikx}.
+\end{align*}
+
+För att få mer information, behövs randvillkor. På grund av vågfunktionens krökningsegenskaper, som framkommer av Schrödingerekvationen, måste vi ha $\psi(0) = \psi(a) = 0$. Första randvillkoret ger
+\begin{align*}
+	A + B &= 0, \\
+	\psi  &= A\sin{kx}.
+\end{align*}
+Andra randvillkoret ger
+\begin{align*}
+	ka = n\pi.
+\end{align*}
+Nu kan energin bestämmas enligt
+\begin{align*}
+	\frac{n^{2}\pi^{2}}{a^{2}} &= \frac{2mE}{\hbar^{2}}, \\
+	E                          &= \frac{\hbar^{2}n^{2}\pi^{2}}{2ma^{2}},
+\end{align*}
+och vi ser att energin kan bara anta vissa diskreta värden. Vi ser även att grunntilståndets energi är nollskild, som indikerar att ett system som beskrivs av kvantmekaniken alltid kommer ha en viss rörelse.
+
+Slutligen ger normaliseringsvillkoret
+\begin{align*}
+	\inteval{0}{a}{\abs{B}^{2}\sin^{2}{kx}}{x} = 1.
+\end{align*}
+Integralen på vänstersidan är
+\begin{align*}
+	\abs{B}^{2}\inteval{0}{a}{\frac{1 - \cos{2kx}}{2}}{x}.
+\end{align*}
+Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
+\begin{align*}
+	\abs{B}^{2}\frac{a}{2} &= 1, \\
+	\abs{B}                &= \sqrt{\frac{2}{a}}.
+\end{align*}
+Observera att vi endast skriver absolutbeloppet eftersom $B$ kan vara en komplex konstant utan att det ändrar fysiken.
+
+\paragraph{Ändlig lådpotential}
+Betrakta en partikel i en ändlig lådpotential, dvs.
+\begin{align*}
+	V = 
+	\begin{cases}
+		0,      &0 < x < a, \\
+		V_{0},  &\text{annars.}
+	\end{cases}
+\end{align*}
+Detta motsvarar en låda med en viss \"flexibilitet\" i väggarna. Rumdelen av Schrödingerekvationen för stationära tillstånd ger inuti lådan
+\begin{align*}
+	\del{x}{\psi}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+\end{align*}
+och
+\begin{align*}
+	\del{x}{\psi}                      &= -\frac{2m(V_{0} - E)}{\hbar^{2}}\psi.
+\end{align*}
+Vi definierar som förut
+\begin{align*}
+	k^{2} = \frac{2mE}{\hbar^{2}}, \alpha^{2} = \frac{2m(V_{0} - E)}{\hbar^{2}}.
+\end{align*}
+Om $E < V_{0}$ är lösningarna
+\begin{align*}
+	\psi =
+	\begin{cases}
+		Ae^{\alpha x},        &x < 0, \\
+		Be^{ikx} + Ce^{-ikx}, &0 < x < a, \\
+		De^{-\alpha x},       &a < x.
+	\end{cases}
+\end{align*}
+Observera att vissa termer från den matematiska lösningen inte är med, då de skulle ge lösningar som inte är normaliserbara.
+
+%Skriv detta
+För att lösa detta, behöver vi de tre villkoren som fås från att $\psi$ är kontinuerligt deriverbar och att $\abs{\psi}^{2}$ är normaliserad.
+
+Vi ser från lösningen att en partikel kan penetrera lite in i en region där dens totala energi är negativ, det så kallade klassiskt förbjudna området. Vi kan även definiera ett penetrationsdjup
+\begin{align*}
+	\delta = \frac{1}{\alpha} = \frac{\hbar^{2}}{\sqrt{2m(E - V_{0})}}
+\end{align*}
+som ett mått på hur långt in i den klassiskt förbjudna sonen bundna tillstånd kan penetrera.
+
+\paragraph{Andra potentialer}
+Det finns andra intressanta potential att betrakta som kan användas för att beskriva fysikaliska system. Exempel är
+\begin{itemize}
+	\item det harmoniska potentialet $V = \frac{1}{2}Kx^{2}$, med energiegenvärden $E_{n} = \left(n + \frac{1}{2}\right)\hbar\omega_{0}$, där $\omega_{0} = \sqrt{\frac{K}{m}}$.
+\end{itemize}
+
+\paragraph{Bundna system}
+Ett bundet system är ett system som är lokaliserad i rummet.
+
+\paragraph{Obundna system}
+Ett obundet system är ett system som ej är lokaliserad i rummet.
+
+\paragraph{Ändlig barriär}
+Betrakta en partikel i en ändlig lådpotential, dvs.
+\begin{align*}
+	V = 
+	\begin{cases}
+		0,      &0 < x, \\
+		V_{0},  &\text{annars.}
+	\end{cases}
+\end{align*}
+Detta motsvarar en vägg med en viss \"flexibilitet\".
+
+Man kan definiera en transmissionskoefficient och en reflektionskoefficient lika med sannolikheten för att partiklar transmitteras och reflekteras av barriären.
+
+\paragraph{Tunneling}
+Klassiskt kan en partikel inte kryssa en barriär om den har för låg energi. Kvantmekaniskt ger Schrödingerekvationen
+\begin{align*}
+	T \approx 16\frac{E}{V_{0}}(1 - \frac{E}{V_{0}})e^{-2a\sqrt{2m(V_{0} - E)}}, E < V_{0}, a >> \delta
+\end{align*}
+Förklarar $\alpha$-sönderfall, STM och varför Solen brinner (fusion beskrivs av tunneling).
