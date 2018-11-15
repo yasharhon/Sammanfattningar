@@ -69,6 +69,40 @@ Om $W\subseteq V$ är ett delrum så finns det ett ortogonalt komplement
 	W^{\perp} = \left\{x\in V: \inprod{x}{y} = 0\forall y\in W\right\} \subseteq V.
 \end{align*}
 
+\paragraph{Projektion}
+Låt $V$ vara ett delrum med bas bas $B = \{e_{i}\}_{i= 0}^{n}$. Då definieras projektionen som
+\begin{align*}
+	\proj{V}{x} = \sum\limits_{i = 0}^{n}\frac{\inprod{x_{i}}{e_{j}}}{\norm{e_{i}}^{2}}e_{i}.
+\end{align*}
+
+\paragraph{Cauchyföljder}
+En Cauchyföljd är en följd som indexeras med naturliga talen och som uppfyller att för varje $\varepsilon > 0$ finns det ett $N$ så att
+\begin{align*}
+	i, j > N\implies \norm{x_{i} - x_{j}} < \varepsilon.
+\end{align*}
+
+\paragraph{Fullständiga rum}
+Ett rum $V$ är fullständigt om alla Cauchy-följder konvergerar.
+
+\paragraph{Hilbertrum}
+Ett Hilbertrum är ett inreproduktrum som är fullständigt.
+
+\paragraph{$\ell^{2}$}
+Vi definierar $\ell^{2}(\C)$ som mängden av alla följder av tal i $\C$ så att
+\begin{align*}
+	\sum\limits_{i = 0}^{N}\abs{a_{i}}^{2}
+\end{align*}
+är begränsad, med inreprodukten
+\begin{align*}
+	\inprod{A}{B} = \sum\limits_{i = 0}^{N}\cc{a_{i}}b_{i}.
+\end{align*}
+
+\paragraph{$L^{2}$}
+Vi definierar $L^{2}([0, 1], \C)$ som mängden av alla komplexvärda funktioner på $[0, 1]$ med inreprodukt
+\begin{align*}
+	\inprod{f}{g} = \inteval{0}{1}{\cc{f}(t)g(t)}{t}.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Cauchy-Schwarz olikhet}
@@ -96,3 +130,22 @@ Det gäller att
 \begin{align*}
 	W \cap W^{\perp} = \{0\}.
 \end{align*}
+
+\paragraph{Bra och dualrum}
+Om $V$ är ett inreproduktum, definierar båd $x\to\bra{x}$ och $x\to\bra{\cc{x}}$ en injektiv avbildning $V\to V^{*}$. Om $V$ är ändligdimensionellt, är detta dessutom en isomorfi.
+
+\proof
+
+\paragraph{Inreproduktrum och ortogonal bas}
+Ett ändligdimensionellt vektorrum har en ortogonal bas.
+
+\proof
+
+\paragraph{Gram-Schmidts metod}
+Låt $V$ vara ett vektorrum med ändlig dimension eller en uppräknelig bas $B = \{x_{i}\}_{i= 0}^{n}$. Då bildar vektorerna
+\begin{align*}
+	e_{i} = x_{i} - \sum\limits_{j = 0}^{i - 1}\frac{\inprod{e_{j}}{x_{i}}}{\norm{e_{j}}^{2}}e_{j}
+\end{align*}
+en ortogonal bas för $V$.
+
+\proof

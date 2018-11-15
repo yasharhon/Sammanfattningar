@@ -1,0 +1,28 @@
+\section{Linjär rekursion}
+
+\subsection{Definitioner}
+
+\paragraph{Linjär rekursion}
+En linjär rekursion definieras av en följd $\{x_{i}\}_{i \geq 0}$ av element i ett vektorrum, där
+\begin{align*}
+	x_{i} = \sum\limits_{j = 1}^{n}a_{j}x_{i - j}, i\geq n
+\end{align*}
+där $x_{0}, \dots, x_{n - 1}$ är givna. Detta kan alternativt skrivas på matrisform som
+\begin{align*}
+	y_{i} =
+	\mqty[
+		x_{i} \\
+		\vdots \\
+		x_{i - n + 1}
+	]
+	=
+	\mqty[
+		a_{1}  & a_{2}  & \dots  & a_{n} \\
+		1      & 0      & \dots  & 0 \\
+		\vdots & \vdots & 1      & 0
+	]
+	y_{i - 1}.
+\end{align*}
+Dessa matriserna kan ej diagonaliseras.
+
+\subsection{Satser}
