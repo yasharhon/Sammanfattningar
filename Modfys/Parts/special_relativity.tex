@@ -120,28 +120,30 @@ Betrakta två händelser som inträffer vid samma tidspunkt i inertialramen. Lor
 och det mäts ett kortare avstånd mellan händelserna i inertialramen.
 
 \paragraph{Relativistisk Dopplereffekt}
-Betrakta återigen två olika system. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
+Betrakta återigen två olika system, där det rörliga systemet rör sig med en vinkel $\theta$ från linjen mellan $O$ och $O'$, som är parallell med $x$axeln. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
 \begin{align*}
 	t_{1} = \gamma t_{1}', \\
-	t_{2} = \gamma t_{2}'
+	t_{2} = \gamma t_{2}'.
 \end{align*}
-och vid avstånd
+Om första pulsen skickas ut vid avstånd $x_{1}$, skickas den andra ut vid avstånd
 \begin{align*}
-	x_{1} = \gamma vt_{1}', \\
-	x_{2} = \gamma vt_{2}'.
+	x_{2} = x_{1} + \gamma v(t_{2}' - t_{1}')\cos{\theta},
 \end{align*}
-Ljuspulserna når därmed origo vid tid
+där vi har approximerat att avståndet $S'$ rör sig normalt på $x$axeln är litet. Ljuspulserna når därmed origo vid tid
 \begin{align*}
-	t_{O1} = t_{1} + \frac{x_{1}}{c} = \gamma t_{1}'(1 + \beta), \\
-	t_{O2} = t_{2} + \frac{x_{2}}{c} = \gamma t_{2}'(1 + \beta).
+	t_{O1} &= t_{1} + \frac{x_{1}}{c}, \\
+	t_{O2} &= t_{2} + \frac{x_{2}}{c} \\
+	       &= t_{2} + \frac{x_{1} + \gamma v(t_{2}' - t_{1}')\cos{\theta}}{c} \\
+	       &= \frac{x_{1}}{c} + \gamma t_{2}'(1 + \beta\cos{\theta}) - \gamma t_{1}'\beta\cos{\theta}.
 \end{align*}
 Vi inför periodtiden $\Delta t' = t_{2}' - t_{1}'$, och får
 \begin{align*}
-	\Delta t_{O} = \gamma (1 + \beta)\Delta t'.
+	\Delta t_{O} &= \gamma t_{2}'(1 + \beta\cos{\theta}) - \gamma t_{1}'(1 + \beta\cos{\theta}) \\
+	             &= \gamma (1 + \beta\cos{\theta})\Delta t'.
 \end{align*}
 Frekvensen för ljuspulsen ges då av
 \begin{align*}
-	f_{\text{obs}} = \frac{1}{\gamma(1 + \beta)}f_{\text{källa}}.
+	f_{\text{obs}} = \frac{1}{\gamma(1 + \beta\cos{\theta})}f_{\text{källa}}.
 \end{align*}
 
 \paragraph{Lorentztransformation av hastigheter}

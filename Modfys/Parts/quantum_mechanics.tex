@@ -236,11 +236,11 @@ och vi ser att energin kan bara anta vissa diskreta värden. Vi ser även att gr
 
 Slutligen ger normaliseringsvillkoret
 \begin{align*}
-	\inteval{0}{a}{\abs{B}^{2}\sin^{2}{kx}}{x} = 1.
+	\inteval{0}{a}{x}{\abs{B}^{2}\sin^{2}{kx}} = 1.
 \end{align*}
 Integralen på vänstersidan är
 \begin{align*}
-	\abs{B}^{2}\inteval{0}{a}{\frac{1 - \cos{2kx}}{2}}{x}.
+	\abs{B}^{2}\inteval{0}{a}{x}{\frac{1 - \cos{2kx}}{2}}.
 \end{align*}
 Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
 \begin{align*}
@@ -316,8 +316,11 @@ Detta motsvarar en vägg med en viss \"flexibilitet\".
 Man kan definiera en transmissionskoefficient och en reflektionskoefficient lika med sannolikheten för att partiklar transmitteras och reflekteras av barriären.
 
 \paragraph{Tunneling}
-Klassiskt kan en partikel inte kryssa en barriär om den har för låg energi. Kvantmekaniskt ger Schrödingerekvationen
+Klassiskt kan en partikel inte kryssa en barriär om den har för låg energi. Kvantmekaniskt kan man beräkna en transmissionssannolikhet för tunneling.
+
+Ett enkelt fall som illustrerar tunneling är potential som är konstant lika med $0$ förutom i en region med brädd $a$, där potentialen är $V_{0}$. Schrödingerekvationen ger för detta fallet
 \begin{align*}
-	T \approx 16\frac{E}{V_{0}}(1 - \frac{E}{V_{0}})e^{-2a\sqrt{2m(V_{0} - E)}}, E < V_{0}, a >> \delta
+	T \approx 16\frac{E}{V_{0}}\left(1 - \frac{E}{V_{0}}\right)e^{-2a\sqrt{2m(V_{0} - E)}}, E < V_{0}, a >> \delta.
 \end{align*}
-Förklarar $\alpha$-sönderfall, STM och varför Solen brinner (fusion beskrivs av tunneling).
+
+Tunneling som fenomen förklarar t.ex. $\alpha$-sönderfall, mikroskopitekniken STM och varför Solen brinner (fusion möjliggörs av att olika atomer kan tunnelera in i varandras kärnor).
