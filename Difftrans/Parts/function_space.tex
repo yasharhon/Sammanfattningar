@@ -27,6 +27,12 @@ Vi definierar $L^{2}([-\pi, \pi], \C)$ som mängden av alla komplexvärda Rieman
 \end{align*}
 I denna klassen definieras två funktioner som lika om $\norm{u - v} = 0$.
 
+\paragraph{Legendrepolynomen}
+Legendrepolynomen är en följd av polynom så att $p_{0}(x) = 1$, $p_{i}(1) = 1$ och $p_{n}$ är ortogonal på $p_{0}, \dots, p_{n - 1}$ med inreprodukten
+\begin{align*}
+	\inprod{u}{v} = \inteval{-1}{1}{u(x)\cc{v}(x)}{x}.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Projektion och minsta avstånd}
@@ -132,7 +138,7 @@ $e^{inx}, n\in\Z$ är ett fullständigt system av ortonormala vektorer i $L^{2}(
 \proof
 Låt $u\in L^{2}([-\pi, \pi], \C)$. Då finns det för alla $\varepsilon > 0$ en styckvist konstant funktion $s$ så att
 \begin{align*}
-	\inprod{u(x) - s(x)} < \frac{1}{3}\varepsilon.
+	\norm{u(x) - s(x)} < \frac{1}{3}\varepsilon.
 \end{align*}
 Vi kan skriva
 \begin{align*}
@@ -142,3 +148,47 @@ så beviset är klart om vi kan visa att det finns ett $N$ så att
 \begin{align*}
 	\norm{s - \sum\limits_{n = -N}^{N}c_{n}e^{inx}} < \frac{2}{3}\varepsilon.
 \end{align*}
+Vi approximerar $s$ med en kontinuerlig funktion $h$ så att $\norm{s - h} < \frac{1}{3}\varepsilon$. Enligt Fejers sats konvergerar $\conv{F_{N}}{h}$ mot $h$ likformigt. Alltså är
+\begin{align*}
+	\norm{\conv{F_{N}}{h} - h} < \frac{1}{3}\varepsilon
+\end{align*}
+för tillräckligt stora $N$. Eftersom $\conv{F_{N}}{h}$ är ett trigonometriskt polynom, kan vi välja det och skriva
+\begin{align*}
+	\norm{s - \conv{F_{N}}{h}} < \norm{\conv{F_{N}}{h} - h} + \norm{s - h} < \frac{2}{3}\varepsilon,
+\end{align*}
+och därmed är beviset klart.
+
+\paragraph{Polynomapproximation av funktioner}
+Låt $f: [a,b]\to\C$. Då finns det för varje $\varepsilon > 0$ ett polynom $p$ så att
+\begin{align*}
+	\sup\limits_{[a, b]}\abs{f(x) - p(x)} < \varepsilon.
+\end{align*}
+
+\proof
+Gör en Taylorapproximation av Fourierserien till $f$. Detta ger
+\begin{align*}
+	\abs{f(x) - p(x)} \leq \abs{f(x) - \sum\limits_{n = -N}^{N}c_{n}e^{inx}} + \abs{\sum\limits_{n = -N}^{N}c_{n}e^{inx} - p(x)} < \varepsilon. 
+\end{align*}
+
+\paragraph{Legendrepolynomens fullständighet}
+Legendrepolynomen är ett fullständigt system i $L^{2}([-1, 1], \C)$.
+
+\proof
+Ideen är att det finns ett polynom $p$ av grad $n$ så att en funktion $f$ kan approximeras godtyckligt väl av detta polynomet i norm-mening. Detta ger
+\begin{align*}
+	\norm{f - p}^{2} = \inteval{-1}{1}{\abs{f(x) - p(x)}^{2}}{x} \leq 2\varepsilon^{2}.
+\end{align*}
+Det räcker därmed att visa att alla polynom kan skrivas som en linjärkombination av Legendrepolynom. Detta stämmer eftersom man kan hitta $n + 1$ linjärt oberoende Legendrepolynom.
+
+\paragraph{Jämna och udda Legendrepolynom}
+$p_{n}$ är jämn om $n$ är jämn och udda om $n$ är udda.
+
+\proof
+Följer från Gram-Schmidt.
+
+\paragraph{Rodrigues' formel}
+\begin{align*}
+	p_{n}(x) = \frac{1}{2^{n}n!}\dv[n]{(x^{2} - 1) ^{n}}{x}.
+\end{align*}
+
+\proof
