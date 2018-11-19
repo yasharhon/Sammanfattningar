@@ -75,6 +75,18 @@ Låt $V$ vara ett delrum med bas bas $B = \{e_{i}\}_{i= 0}^{n}$. Då definieras 
 	\proj{V}{x} = \sum\limits_{i = 0}^{n}\frac{\inprod{x_{i}}{e_{j}}}{\norm{e_{i}}^{2}}e_{i}.
 \end{align*}
 
+\paragraph{Adjungerade operatorer}
+På ett inreproduktrum $V$ är $\adj{L}$ den adjungerade operatorn till $L$ om
+\begin{align*}
+	\inprod{\adj{L}(x)}{y} = \inprod{x}{L(y)}\forall x, y\in V.
+\end{align*}
+\paragraph{Självadjungerade operatorer}
+På ett inreproduktrum $V$ är $L$ självadjungerad om
+\begin{align*}
+	\inprod{L(x)}{y} = \inprod{x}{L(y)}\forall x, y\in V.
+\end{align*}
+Matrisen för en sådan operator sägs vara Hermitesk.
+
 \paragraph{Cauchyföljder}
 En Cauchyföljd är en följd som indexeras med naturliga talen och som uppfyller att för varje $\varepsilon > 0$ finns det ett $N$ så att
 \begin{align*}
@@ -149,3 +161,73 @@ Låt $V$ vara ett vektorrum med ändlig dimension eller en uppräknelig bas $B =
 en ortogonal bas för $V$.
 
 \proof
+
+\paragraph{Matrisen för en adjungerad operator}
+Låt $L$ beskrivas av matrisen $A$ i någon ortonormal bas. Då beskrivs $\adj{L}$ av matrisen $\cc{(A^{T})}$.
+
+\proof
+Vi har
+\begin{align*}
+	L(e_{i}) = \sum\limits_{j}a_{ij}e_{j},
+\end{align*}
+vilket ger
+\begin{align*}
+	\inprod{e_{i}}{L(e_{j})} = \inprod{e_{i}}{\sum\limits_{k}a_{jk}e_{k}} = \sum\limits_{k}\inprod{e_{i}}{a_{jk}e_{k}} = \sum\limits_{k}a_{jk}\inprod{e_{i}}{e_{k}} = \sum\limits_{k}a_{jk}\delta_{ik} = a_{ji}.
+\end{align*}
+Om $B$ är matrisen för $\adj{L}$, så vi nu att dens komponenter kan skrivas som $b_{ji} = \inprod{e_{i}}{\adj{L}(e_{j})}$. Vi utvecklar detta och får
+\begin{align*}
+	b_{ji} = \inprod{e_{i}}{\adj{L}(e_{j})} = \cc{\inprod{\adj{L}(e_{j})}{e_{i}}} = \cc{\inprod{e_{j}}{L(e_{i})}} = \cc{a_{ij}},
+\end{align*}
+och därmed är beviset klart.
+
+\paragraph{Egenvärden för självadjungerade operatorer}
+Självadjungerade operatorer har bara reella egenvärden.
+
+\proof
+\begin{align*}
+	\inprod{L(x)}{x} = \inprod{x}{L(x)}.
+\end{align*}
+Detta kan utvecklas om $x$ är en egenvektor för att ge
+\begin{align*}
+	\cc{\lambda}\inprod{x}{x} = \lambda\inprod{x}{x},
+\end{align*}
+och beviset är klart.
+
+\paragraph{Diagonalisering av självadjungerade operatorer}
+Alla självadjungerade operatorer på ändligdimensionella inreproduktrum kan diagonaliseras.
+
+\proof
+Vi gör induktion över $\dim{V}$.
+
+Det är trivialt för dimension $1$.
+
+Annars, om vi har en egenvektor $x$ motsvarande egenvärdet $\lambda$, bilda $W = \Span{x}$. Då har man $L(W)\subseteq W$. Vidare, om $y\in W^{\perp}$, har man
+\begin{align*}
+	\inprod{x}{y} = 0\implies \inprod{\lambda x}{y} = \inprod{L(x)}{y} = \inprod{x}{L(y)} = 0,
+\end{align*}
+och $L(W^{\perp})\subseteq W^{\perp}$. Man kan vidare bilda en bas för $V$ med basen för $W^{\perp}$ och $x$. Matrisen för $L$ med avseende på denna basen är
+\begin{align*}
+	\mqty[
+		\lambda & 0 \\
+		0       & X
+	].
+\end{align*}
+Per induktion finns det då en ortogonal bas för $W^{\perp}$ så att matrisen för $L$ på $W^{\perp}$ blir diagonal.
+
+\paragraph{Ortogonal bas och självadjungerade operatorer}
+Om $L$ är en självadjungerad operator på ett ändligdimensionellt vektorrum $V$, finns det en ortogonal bas av egenvektorer till $L$.
+
+\proof
+
+\paragraph{Självadjungerade operatorer och ortogonala egenvektorer}
+Låt $x$ vara en egenvektor till $L$ med egenvärdet $\lambda $och $y$ vara en egenvektor med egenvärde $\mu$. Om $\lambda - \mu \neq 0$ är $\inprod{x}{y} = 0$.
+
+\proof
+\begin{align*}
+	\inprod{L(x)}{y} = \inprod{x}{L(y)}.
+\end{align*}
+Vi använder att $x$ och $y$ är egenvektorer och får
+\begin{align*}
+	\cc{\lambda}\inprod{x}{y} = \mu\inprod{x}{y}.
+\end{align*}
+Enligt antagandet måste då $\inprod{x}{y} = 0$.
