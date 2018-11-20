@@ -123,6 +123,34 @@ vilket ger
 \paragraph{Davidsson-Germers experiment}
 I detta eperimentet besetrålades en nickelkatod normalt på sin yta med elektroner som accelererades med någon spänning, och reflekterade elktroner detekterades som funktion av vinkel ut från strålen. I detta experimentet uppmättes ett intensitetsmaximum vid en annan vinkel än $0$, och med Braggs formel samsvarar detta maximumet med avståndet mellan atomplan i nickel.
 
+\paragraph{Bohrs modell}
+För att förklara väteatomens kvantiserade emissionsspektrum, postulerade Bohr att
+\begin{itemize}
+	\item elektronerna kretsar i stabila banor runt kärnan.
+	\item en övergång mellan två banor ger en foton med energi $h\nu = \Delta E$.
+	\item elektronens integrerade rörelsemängd längs med banan kring kärnan är en heltalsmultipel av $h$.
+\end{itemize}
+Om elektronen har konstant rörelsemängd i banan, ger detta
+\begin{align*}
+	2\pi rp = nh \implies v = \frac{nh}{2\pi m_{e}r},
+\end{align*}
+där $r$ är banans radius. Accelerationen i radiell riktning ger vidare
+\begin{align*}
+	\frac{e^{2}}{4\pi\varepsilon_{0}r^{2}} = \frac{m_{e}v^{2}}{r}
+\end{align*}
+eftersom atomkärnan har samma laddning som elektronen, med motsatt tecken. Enligt Bohrs postulat är de tillåtna banradierna
+\begin{align*}
+	r_{n} = \frac{\varepsilon_{0}h^{2}}{\pi e^{2}m_{e}}n^{2}.
+\end{align*}
+Den totala energin ges av
+\begin{align*}
+	E &= \frac{1}{2}m_{e}v^{2} - \frac{e^{2}}{4\pi\varepsilon_{0}r} \\
+	  &= \frac{n^{2}h^{2}}{8\pi^{2}m_{e}r^{2}} - \frac{m_{e}e^{4}}{4\varepsilon_{0}^{2}h^{2}n^{2}} \\
+	  &= \frac{m_{e}e^{4}}{8\varepsilon_{0}^{2}h^{2}n^{2}} - \frac{m_{e}e^{4}}{4\varepsilon_{0}^{2}h^{2}n^{2}} \\
+	  &= -\frac{m_{e}e^{4}}{8\varepsilon_{0}^{2}h^{2}}\frac{1}{n^{2}}.
+\end{align*}
+Detta stämde med vätespektrumet.
+
 \paragraph{Osäkerhetsprincipen}
 Partiklars vågnatur kombinerad med Fourieranalys implicerar
 \begin{align*}
@@ -324,3 +352,52 @@ Ett enkelt fall som illustrerar tunneling är potential som är konstant lika me
 \end{align*}
 
 Tunneling som fenomen förklarar t.ex. $\alpha$-sönderfall, mikroskopitekniken STM och varför Solen brinner (fusion möjliggörs av att olika atomer kan tunnelera in i varandras kärnor).
+
+\paragraph{Schrödingerekvationen i högre dimensioner}
+I högre dimensioner utvidgas Schrödingerekvationen triviellt genom att utvidga definitionen av Hamiltonoperatorn till att verka i alla dimensioner. Även normaliseringen görs över alla dimensioner. Notera att separeringen i tid och rum är exakt likadan.
+
+Ett enkelt exempel är för en partikel, där Hamiltonoperatorn utvidgas till
+\begin{align*}
+	\hat{H} = -\frac{\hbar^{2}}{2m}\laplacian + V.
+\end{align*}
+
+\paragraph{Väteatomen}
+Vi vill nu beskriva ett system av en (fix) proton med en elektron i bana runt sig. I sfäriska koordinater med protonen i centrum blir Hamiltonoperatorn
+\begin{align*}
+	\hat{H} = -\frac{\hbar^{2}}{2m}\left(\frac{1}{r^{2}}\pdv{r}\left(r^{2}\pdv{r}\right) + \frac{1}{r^{2}\sin(\theta)}\pdv{\theta}\left(\sin(\theta)\pdv{\theta}\right) + \frac{1}{r^{2}\sin^{2}(\theta)}\pdv[2]{\phi}\right) - \frac{e^{2}}{4\pi\varepsilon_{0}r}.
+\end{align*}
+Att ens skriva upp Schrödingerekvationen är extremt jobbigt, så vi försöker i stället att separera den. Detta ger
+\begin{align*}
+	\frac{\sin^{2}(\theta)}{R}\pdv{r}\left(r^{2}\pdv{R}{r}\right) + \frac{\sin(\theta)}{\Theta}\pdv{\theta}\left(\sin{\theta}\pdv{\Theta}{\theta}\right) + \frac{1}{\Phi}\pdv[2]{\Phi}{\phi} + \frac{2mr^{2}\sin^{2}(\theta)}{\hbar^{2}}\left(E + \frac{e^{2}}{4\pi\varepsilon_{0}r}\right) = 0.
+\end{align*}
+Vi separerar först bort $\phi$-termen, och setter den lika med en konstant som vi kallar $-m_{l}^{2}$ (som kan vara vad som helst om vi inte exkluderar komplexa tal). Vidare får man
+\begin{align*}
+	\frac{1}{R}\pdv{r}\left(r^{2}\pdv{R}{r}\right) + \frac{1}{\sin(\theta)\Theta}\pdv{\theta}\left(\sin{\theta}\pdv{\Theta}{\theta}\right) - \frac{m_{l}^{2}}{\sin^{2}(\theta)} + \frac{2mr^{2}}{\hbar^{2}}\left(E + \frac{e^{2}}{4\pi\varepsilon_{0}r}\right) = 0
+\end{align*}
+Nu kan vi separera igen, med separationskonstant $l(l + 1)$. Vi får alltså tre ekvationer
+\begin{align*}
+	\frac{1}{\Phi}\pdv[2]{\Phi}{\phi}     &= -m_{l}^{2}, \\
+	\frac{1}{R}\pdv{r}\left(r^{2}\pdv{R}{r}\right) + \frac{2mr^{2}}{\hbar^{2}}\left(E + \frac{e^{2}}{4\pi\varepsilon_{0}r}\right) &= l(l + 1), \\
+	\frac{1}{\sin(\theta)\Theta}\pdv{\theta}\left(\sin{\theta}\pdv{\Theta}{\theta}\right) - \frac{m_{l}^{2}}{\sin^{2}(\theta)}      &= l(l + 1).
+\end{align*}
+Vi förenklar till
+\begin{align*}
+	\pdv[2]{\Phi}{\phi} + m_{l}^{2}\Phi                          &= 0, \\
+	\pdv{r}\left(r^{2}\pdv{R}{r}\right) + \frac{2mr^{2}}{\hbar^{2}}\left(E + \frac{e^{2}}{4\pi\varepsilon_{0}r} - l(l + 1)\right)R                        &= 0, \\
+	\frac{1}{\sin(\theta)}\pdv{\theta}\left(\sin{\theta}\pdv{\Theta}{\theta}\right) - \left(\frac{m_{l}^{2}}{\sin^{2}(\theta)} + l(l + 1)\right)\Theta &= 0.
+\end{align*}
+Det här är svårt att lösa, och lösningarna är så speciella att de är namngivna efter olika personer, men randvillkoren kommer att ge
+\begin{align*}
+	l     &= 0, 1, \dots, n - 1, \\
+	m_{l} &= 0, \pm 1, \dots, \pm l.
+\end{align*}
+$l$ kallas för bankvanttalet och $m_{l}$ kallas för det magnetiska kvanttalet. Det sista kvanttalet $n$ indikerar energin.
+
+Det återstår nu att lösa den radiella ekvationen. Vi gör heller inte det, men de tillåtna energierna är
+\begin{align*}
+	E = -\frac{m_{e}e^{4}}{8\varepsilon_{0}^{2}h^{2}}\frac{1}{n^{2}} = -\frac{m_{e}e^{4}}{2(4\pi\varepsilon_{0})^{2}\hbar^{2}}\frac{1}{n^{2}}.
+\end{align*}
+Från detta kan vi definiera Bohrradien
+\begin{align*}
+	a_{0} = \frac{4\pi\varepsilon_{0}\hbar^{2}}{m_{e}e^{2}}.
+\end{align*}
