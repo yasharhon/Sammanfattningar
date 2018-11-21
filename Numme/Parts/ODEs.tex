@@ -82,3 +82,19 @@ En pseudokod-beskrivning av en lösning med startvillkor \verb|t0| och \verb|y0|
 \end{lstlisting}
 
 Observera att \verb|f| nu är en lista av \verb|M| funktioner, och kom ihåg att högre ordningens ekvationer med en funktion kan skrivas som ett system av differentialekvationer.
+
+\paragraph{Eulers metod bakåt}
+Betrakta begynnelsevärdesproblemet
+\begin{align*}
+	\deval{y}{t}{t} &= f(t, y(t)), \\
+	y(a)            &= b.
+\end{align*}
+Eulers metod bakåt går ut på att
+\begin{enumerate}
+	\item Dela upp intervallet vi vill lösa problemet på i diskreta steg, där steg $n$ finns i punkten $t_{n} = a + nh$, där $h$ är steglängden.
+	\item Linjarisera problemet till
+	\begin{align*}
+		y_{n + 1} - y_{n} = f(t_{n + 1}, y_{n + 1})h,
+	\end{align*}
+	där $y_{n} = y(t_{n})$. Detta ger en ekvation i $y_{n + 1}$ som måste lösas numeriskt.
+\end{enumerate}

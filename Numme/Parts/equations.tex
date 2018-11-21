@@ -19,8 +19,10 @@ En pseudokod-beskrivning av en lösning med startvillkor \verb|x0| där det iter
 	while abs(x - g(x)) > t
 		x = g(x)
 	end
+	return x
 \end{lstlisting}
 
+%Bli klar med detta
 \subparagraph{Konvergens}
 Om $g\in C^{1}$, $\abs{\deval{g}{x}{\alpha}} < 1$ och $\alpha$ är en fixpunkt. finns det en omgivning till $\alpha$ så att om $x_{0}$ är i denna omgivningen, går $x_{n}\to\alpha$. Metoden konvergerar linjärt med reduktionsfaktor $S = \abs{\deval{g}{x}{\alpha}}$.
 
@@ -28,4 +30,124 @@ För att visa detta, skriver vi
 \begin{align*}
 	x_{n + 1} - \alpha = g(x_{n}) - g(\alpha) = \deval{g}{x}{c}(x_{n} - \alpha),
 \end{align*}
-där vi har användt medelvärdesatsen och det faktum att $\alpha$ är en fixpunkt. Vidare, eftersom $g\in C^{1}$ finns det en omgivning till $\alpha$ så att $\abs{\deval{g}{x}{x}}\leq \frac{S + 1}{2}$. Om $x_{0}$
+där vi har användt medelvärdesatsen och det faktum att $\alpha$ är en fixpunkt. Vidare, eftersom $g\in C^{1}$ finns det en omgivning till $\alpha$ så att $\abs{\deval{g}{x}{x}}\leq \frac{S + 1}{2}$. Om $x_{0}$ är i denna, är 
+\begin{align*}
+	e_{n + 1} \leq \frac{S + 1}{2}e_{n}.
+\end{align*}
+Detta implicerar att $x_{n} \to \alpha$ och att
+\begin{align*}
+	\frac{e_{n + 1}}{e_{n}} \to S.
+\end{align*}
+
+\paragraph{Fixpunktsmetoden för system}
+Betrakta ekvationssystemet
+\begin{align*}
+	\vb{x} = g(\vb{x}).
+\end{align*}
+
+Vi löser även detta med fixpunktsmetoden, och använder iterationsformeln
+\begin{align*}
+	\vb{x}_{n + 1} = g(\vb{x}_{n}).
+\end{align*}
+
+En pseudokod-beskrivning av en lösning med startvillkor \verb|x0| där det itereras tills lösningen stämmer med en tolerans \verb|t| är:
+\begin{lstlisting}
+	define g(x)
+	input x0
+	input t
+	while abs(x - g(x)) > t
+		x = g(x)
+	end
+	return x
+\end{lstlisting}
+där allt nu är listor. Toleransen ser kanske lite annorlunda ut, vafan vet jag.
+
+\paragraph{Intervallhalveringsalgoritmen}
+Betrakta ekvationen
+\begin{align*}
+	f(x) = 0.
+\end{align*}
+
+Intervallhalveringsalgoritmen utgår från två punkter $a, b$ så att $f(a)f(b) < 0$, och gör följande:
+\begin{enumerate}
+	\item Beräkna funktionsvärdet i punkten $m = \frac{b + a}{2}$.
+	\item Om $f(a)f(m) < 0$, sätt $a = m$. Annars, sätt $b = m$.
+	\item Sluta iterationen när intervallbredden $\frac{b - a}{2}$ är mindre än den givna toleransen.
+	\item Returnera $\frac{b + a}{2}$.
+\end{enumerate}
+
+En pseudokod-beskrivning av en lösning med startvillkor \verb|a| och \verb|a| där det itereras tills lösningen stämmer med en tolerans \verb|t| är:
+\begin{lstlisting}
+	define f(x)
+	input a, b
+	input t
+	while (b - a)/2 > t
+		m = (a + b)/2
+		if f(a)f(m) < 0
+			a = m
+		else
+			b = m
+		end
+	end
+	return (a + b)/2
+\end{lstlisting}
+
+\paragraph{Newton-Rhapsonsmetoden}
+Betrakta ekvationen
+\begin{align*}
+	f(x) = 0.
+\end{align*}
+Newton-Rhapsons metod utgår från tangenten till $f$. Om man startar i $x_{0}$, har tangenten ekvation $t(x) = \deval{f}{x}{x_{0}}(x - x_{0}) + f(x_{0})$. Dens nollställe ges av
+\begin{align*}
+	x = x_{0} - \frac{f(x_{0}}{\deval{f}{x}{x_{0}}}.
+\end{align*}
+Från detta gör vi iterationen
+\begin{align*}
+	x_{n + 1} = x_{n} - \frac{f(x_{n}}{\deval{f}{x}{x_{n}}}
+\end{align*}
+som avslutas när $\abs{x_{n + 1} - x_{n}}$ är mindre än någon tolerans. Vi ser att detta är en variant av fixpunktsmetoden med $g(x) = x - \frac{f(x}{\deval{f}{x}{x}}$.
+
+En pseudokod-beskrivning av en lösning med startvillkor \verb|x_0| där det itereras tills lösningen stämmer med en tolerans \verb|t| är:
+\begin{lstlisting}
+	define f(x)
+	define fderiv(x)
+	input x_0
+	input t
+	while f(x_0) > t
+		x = x - f(x)/fderiv(x)
+	end
+	return x
+\end{lstlisting}
+
+\subparagraph{Konvergens}
+Om $\alpha$ är ett nollställe till $f$, är det även ett nollställe till $g$. Vi har för $f\in C^{2}$ och $\deval{f}{x}{\alpha} \neq 0$ att
+\begin{align*}
+	\deval{g}{x}{\alpha} = 1 - \frac{\deval{f}{x}{\alpha}}{\deval{f}{x}{\alpha}} + \frac{f(\alpha)\deval[2]{f}{x}{\alpha}}{\deval{f}{x}{\alpha}^{2}} = 0.
+\end{align*}
+Därmed, om dessa villkor uppfylls, är Netwon-Rhapsons metod kvadratiskt konvergent med konstant $M = \frac{\deval[2]{f}{x}{\alpha}}{2\deval{f}{x}{\alpha}}$.
+
+För att visa detta, konstaterar vi att lokal konvergens följer av beviset som gjordes för fixpunktsmetoden. Vi Taylorutvecklar vidare nära $x_{n}$ och får
+\begin{align*}
+	f(\alpha)                            &= f(x_{n}) + \deval{f}{x}{x_{n}}(\alpha - x_{n}) + \frac{1}{2}\deval[2]{f}{x}{c_{n}}(\alpha - x_{n})^{2}, \\
+	\frac{f(\alpha)}{\deval{f}{x}{x_{n}}} &= \frac{f(x_{n})}{\deval{f}{x}{x_{n}}} + \alpha - x_{n} + \frac{1}{2}\frac{\deval[2]{f}{x}{c_{n}}}{\deval{f}{x}{x_{n}}}(\alpha - x_{n})^{2} = 0.
+\end{align*}
+Detta skriver vi om till
+\begin{align*}
+	x_{n} - \frac{f(x_{n})}{\deval{f}{x}{x_{n}}} - \alpha = \frac{1}{2}\frac{\deval[2]{f}{x}{c_{n}}}{\deval{f}{x}{x_{n}}}(\alpha - x_{n})^{2}.
+\end{align*}
+Detta implicerar
+\begin{align*}
+	\frac{e_{n + 1}}{e_{n}^{2}} = \abs{\frac{\deval[2]{f}{x}{c_{n}}}{2\deval{f}{x}{x_{n}}}} \to M,
+\end{align*}
+och beviset är klart.
+
+\paragraph{Newton-Rhapsons metod för system}
+Betrakta ekvationen
+\begin{align*}
+	\vb{f}(\vb{x}) = 0.
+\end{align*}
+Metoden är den samma för ett enda system, fast med iterationen
+\begin{align*}
+	\vb{x}_{n + 1} = \vb{x}_{n} - \dd{\vb{f}}(x_{n})^{-1}(x_{n}.
+\end{align*}
+Notera att beräkningsmässigt är det svårt att hitta en inversmatris, så det är smartare att hitta en vektor $\vb{h}$ så att $\dd{\vb{f}}(x_{n})\vb{h} = \vb{f}(x_{n})$ och anv
