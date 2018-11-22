@@ -33,6 +33,24 @@ Legendrepolynomen är en följd av polynom så att $p_{0}(x) = 1$, $p_{i}(1) = 1
 	\inprod{u}{v} = \inteval{-1}{1}{u(x)\cc{v}(x)}{x}.
 \end{align*}
 
+\paragraph{Hermiteska operatorer}
+En Hermitesk operator uppfyller $\inprod{Av}{w} = \inprod{v}{Aw}$. Se sammanfattningen från SF1681 för mer information.
+
+\paragraph{Sturm-Liouville-operatorn}
+Sturm-Liouville-operatorn är en operator $L: C^{2}([a, b], \C) \to L^{2}([a, b], \C)$ definierat som
+\begin{align*}
+	L(f) = \dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x) + \lambda w(x)f(x).
+\end{align*}
+
+\paragraph{Reguljära Sturm-Liouvilleproblem}
+Ekvationen
+\begin{align*}
+	&\dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x) + \lambda w(x)f(x) = 0,
+	&Af(a) + B\deval{f}{x}{a} = 0, \\
+	&Cf(b) + D\deval{f}{x}{b} = 0,
+\end{align*}
+där $p$, $q$ och $w$ är kontinuerliga reellvärda funktioner, är ett reguljärt Sturm-Liouvilleproblem på $[a, b]$ om $p(a) \neq 0$, $p(b) \neq 0$,  $w(x) > 0$, $(A, B) \neq (0, 0)$ och $(C, D) \neq (0, 0)$.
+
 \subsection{Satser}
 
 \paragraph{Projektion och minsta avstånd}
@@ -192,3 +210,118 @@ Följer från Gram-Schmidt.
 \end{align*}
 
 \proof
+
+\paragraph{Sturm-Liouvilleoperatorns symmetri}
+Operatorn
+\begin{align*}
+	L = \dv{x}\left(p(x)\dv{x}\right) + q(x) + \lambda w(x)
+\end{align*}
+med inreprodukten
+\begin{align*}
+	\inprod{f}{g} = \inteval{a}{b}{f(x)\cc{g}(x)w(x)}{x}
+\end{align*}
+på $C^{2}([a, b])$ har en icke-trivial kärna om det finns $(A, B) \neq (0, 0)$ och $(C, D) \neq (0, 0)$ så att
+\begin{align*}
+	Af(a) + B\deval{f}{x}{a} = 0, \\
+	Cf(b) + D\deval{f}{x}{b} = 0, \\
+	A\cc{g}(a) + B\deval{\cc{g}}{x}{a} = 0, \\
+	C\cc{g}(b) + D\deval{\cc{g}}{x}{b} = 0.
+\end{align*}
+
+\proof
+Vi betraktar i stället operatorn
+\begin{align*}
+	A = \frac{1}{w(x)}\left(\dv{x}\left(p(x)\dv{x}\right) + q(x)\right).
+\end{align*}
+Om denna är symmetrisk, har vi visat satsen. Vi får
+\begin{align*}
+	\inprod{Af}{g} &= \inteval{a}{b}{\frac{1}{w(x)}\left(\dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x)\right)\cc{g}(x)w(x)}{x} \\
+	               &= \inteval{a}{b}{\dv{x}\left(p(x)\deval{f}{x}{x}\right)\cc{g}(x)}{x} + \inteval{a}{b}{q(x)f(x)\cc{g}(x)}{x} \\
+	               &= \left[p(x)\deval{f}{x}{x}\cc{g}(x)\right]_{a}^{b} - \inteval{a}{b}{p(x)\deval{f}{x}{x}\deval{\cc{g}}{x}{x}}{x} + \inteval{a}{b}{q(x)f(x)\cc{g}(x)}{x}.
+\end{align*}
+Vi jämför detta med
+\begin{align*}
+	\inprod{f}{Ag}&= \inteval{a}{b}{f(x)\cc{\left(\frac{1}{w(x)}\dv{x}\left(p(x)\deval{\cc{g}}{x}{x}\right) + q(x)\cc{g}(x)\right)}w(x)}{x} \\
+	               &= \inteval{a}{b}{f(x)\dv{x}\left(p(x)\deval{\cc{g}}{x}{x}\right)}{x} + \inteval{a}{b}{q(x)f(x)\cc{g}(x)}{x} \\
+	               &= \left[p(x)f(x)\deval{\cc{g}}{x}{x}\right]_{a}^{b} - \inteval{a}{b}{p(x)\deval{f}{x}{x}\deval{\cc{g}}{x}{x}}{x} + \inteval{a}{b}{q(x)f(x)\cc{g}(x)}{x},
+\end{align*}
+där vi har utnyttjat att $p$, $q$ och $w$ är reellvärda. Detta ger
+\begin{align*}
+	\inprod{Af}{g} - \inprod{f}{Ag} = \left[p(x)\deval{f}{x}{x}\cc{g}(x)\right]_{a}^{b} - \left[p(x)f(x)\deval{\cc{g}}{x}{x}\right]_{a}^{b}.
+\end{align*}
+Detta ger att $A$ är symmetrisk om det finns $(A, B) \neq (0, 0)$ och $(C, D) \neq (0, 0)$ så att
+\begin{align*}
+	Af(a) + B\deval{f}{x}{a} = 0, \\
+	Cf(b) + D\deval{f}{x}{b} = 0, \\
+	A\cc{g}(a) + B\deval{\cc{g}}{x}{a} = 0, \\
+	C\cc{g}(b) + D\deval{\cc{g}}{x}{b} = 0.
+\end{align*}
+Inreprodukten över kan även skrivas som
+\begin{align*}
+	\inprod{Af}{g} - \inprod{f}{Ag} &= p(b)\deval{f}{x}{b}\cc{g}(b) - p(a)\deval{f}{x}{a}\cc{g}(a) - p(b)f(b)\deval{\cc{g}}{x}{b} + p(a)f(a)\deval{\cc{g}}{x}{a} \\
+	                                &= p(b)
+	                                \mqty[
+	                                	f(b) \\
+	                                	\deval{f}{x}{b})
+	                                ]
+	                                \cdot
+	                                \mqty[
+	                                	-\deval{\cc{g}}{x}{b} \\
+	                                	\cc{g}(b)
+	                                ]
+	                                - p(a)
+	                                \mqty[
+	                                	f(a) \\
+	                                	\deval{f}{x}{a})
+	                                ]
+	                                \cdot
+	                                \mqty[
+	                                	-\deval{\cc{g}}{x}{a} \\
+	                                	\cc{g}(a)
+	                                ]
+\end{align*}
+
+\paragraph{•}
+Låt $D_{L}$ vara alla $C^{2}$-funktioner på $[a, b]$ så att
+\begin{align*}
+	Af(a) + B\deval{f}{x}{a} = 0, \\
+	Cf(b) + D\deval{f}{x}{b} = 0.
+\end{align*}
+Då är Sturm-Liouville-operatorn symmetrisk om $(A, B) \neq (0, 0)$ och $(C, D) \neq (0, 0)$.
+
+\paragraph{Sturm-Liouvilles sats}
+Sturm-Liouville-operatorn har oändligt många reella egenvärden.
+
+Om $\phi_{n}$ är en egenfunktion som motsvarar $\lambda_{n}$ är $\phi_{n}$ unik och $\{\phi_{n}\}$ är en fullständig ortogonal mängd i $L^{2}([a, b], \C)$.
+
+\proof
+Vi visar inte fullständighet.
+
+För att visa att egenvärdena är reella, låter vi $L\phi_{n} = \lambda{n}\phi_{n}$. Detta ger
+\begin{align*}
+	\lambda_{n}\inprod{\phi_{n}}{\phi_{n}} = \inprod{L\phi_{n}}{\phi_{n}} = \inprod{\phi_{n}}{L\phi_{n}} = \inprod{\phi_{n}}{\lambda_{n}\phi_{n}} = \cc{\lambda_{n}}\inprod{\phi_{n}}{\phi_{n}},
+\end{align*}
+och beviset är klart.
+
+För att visa ortogonaliteten, låt $\lambda_{n} \neq \lambda_{m}$. Detta ger
+\begin{align*}
+	\lambda_{n}\inprod{\phi_{n}}{\phi_{m}} = \inprod{L\phi_{n}}{\phi_{m}} = \inprod{\phi_{n}}{L\phi_{m}} = \inprod{\phi_{n}}{\lambda_{m}\phi_{m}} = \cc{\lambda_{m}}\inprod{\phi_{n}}{\phi_{m}}.
+\end{align*}
+Om egenvektorerna inte är ortogonala, måste egenvärdena vara lika. Eftersom detta strider mot antagandet, måste egenvektorerna vara ortogonala.
+
+\paragraph{Följdsats}
+Reguljära Sturm-Liouvilleproblem har en lösning. Om
+\begin{align*}
+	g(x) = \dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x),
+\end{align*}
+ges lösningen av
+\begin{align*}
+	f(x) = \sum\limits_{i = 1}^{\infty}\frac{\inprod{\phi_{n}}{g}}{\inprod{\phi_{n}}{\phi_{n}}}\frac{1}{\lambda_{n}}\phi_{n}.
+\end{align*}
+
+\proof
+Följer vid att låta
+\begin{align*}
+	\dv{x}\left(p(x)\dv{x}\right) + q(x)
+\end{align*}
+verka på $f$.
