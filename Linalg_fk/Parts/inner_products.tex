@@ -115,6 +115,11 @@ Vi definierar $L^{2}([0, 1], \C)$ som mängden av alla komplexvärda funktioner 
 	\inprod{f}{g} = \inteval{0}{1}{\cc{f}(t)g(t)}{t}.
 \end{align*}
 
+\paragraph{Ortogonala och unitära operatorer}
+En ortogonal operator över ett reellt vektorrum $V$ är en inverterbar operator som uppfyller $\inprod{Lx}{Ly} = \inprod{x}{y}\forall x, y\in V$.
+
+En unitär operator över ett komplext vektorrum $V$ är en inverterbar operator som uppfyller $\inprod{Lx}{Ly} = \inprod{x}{y}\forall x, y\in V$.
+
 \subsection{Satser}
 
 \paragraph{Cauchy-Schwarz olikhet}
@@ -231,3 +236,48 @@ Vi använder att $x$ och $y$ är egenvektorer och får
 	\cc{\lambda}\inprod{x}{y} = \mu\inprod{x}{y}.
 \end{align*}
 Enligt antagandet måste då $\inprod{x}{y} = 0$.
+
+\paragraph{Längdbevarande operatorer}
+För en operator $L$ på ett reellt inreproduktrum $V$ är följande ekvivalent:
+\begin{itemize}
+	\item $\norm{Lx} = \norm{x}\forall x\in V$.
+	\item $\inprod{x}{y} = \inprod{Lx}{Ly}\forall x, y\in V$.
+\end{itemize}
+Om vektorrummet är ändligdimensionellt, är påståenden även ekvivalenta med
+\begin{itemize}
+	\item $L$ avbildar ortonormala baser på ortonormala baser.
+\end{itemize}
+
+\proof
+
+\paragraph{Längdbevarande operatorer som bijektioner}
+Längdbevarande operatorer på ändligdimensionella vektorrum är bijektiva.
+
+\proof
+Sådana operatorer är injektiva ty
+\begin{align*}
+	\norm{Lx} = 0 \implies x = 0.
+\end{align*}
+
+De är surjektiva ty matrisen för avbildningen i någon bas måste ha linjärt oberoende kolumner för att vara injektiv. Detta implicerar att avbildningen är surjektiv.
+
+\paragraph{Ortogonala grupper}
+\begin{itemize}
+	\item Mängden $O(V) = \{L: V\to V: L\text{ är ortogonal}\}$ är en grupp under sammansättning om $V$ är ett reellt inreproduktrum med en ortogonal bas.
+	\item Mängden $O_{n}(V) = \{A\in M_{n}(\R): A\text{ är ortogonal}\}$ är en grupp under matrismultiplikation.
+	\item Mängden $O_{n}(V) = \{A\in M_{n}(\R): \det{A} = 1, A\text{ är ortogonal}\}$ är en grupp under matrismultiplikation.
+\end{itemize}
+
+Satsen stämmer även för de komplexa motsvarigheterna.
+
+\proof
+
+\paragraph{Egenvärden och egenvektorer till ortogonala och unitära operatorer}
+Om $L$ är en unitär operator på ett ändligdimensionellt vektorrum, finns det en ortogonal bas av egenvektorer till $L$ och alla egenvärden till $L$ har belopp $1$.
+
+\proof
+Det finns (möjligtvis) minst ett egenvärde $\lambda$. Välj en motsvarande egenvektor $x$. Detta ger
+\begin{align*}
+	\norm{x} = \norm{Lx} \implies \abs{\lambda} = 1.
+\end{align*}
+Låt nu $W = \Span{x}$. Vi har att $L(W^{\perp})\to W^{\perp}$ eftersom $L$ bevarar inreprodukten. Detta ger (?) per induktion att det finns en bas för $W^{\perp}$ av egenvektorer till $L$. Unionen av $x$ och denna basen är därmed en bas för hela vektorrummet.
