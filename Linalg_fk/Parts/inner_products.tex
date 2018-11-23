@@ -281,3 +281,9 @@ Det finns (möjligtvis) minst ett egenvärde $\lambda$. Välj en motsvarande ege
 	\norm{x} = \norm{Lx} \implies \abs{\lambda} = 1.
 \end{align*}
 Låt nu $W = \Span{x}$. Vi har att $L(W^{\perp})\to W^{\perp}$ eftersom $L$ bevarar inreprodukten. Detta ger (?) per induktion att det finns en bas för $W^{\perp}$ av egenvektorer till $L$. Unionen av $x$ och denna basen är därmed en bas för hela vektorrummet.
+
+\paragraph{Exponentialavbidlningen och Hermiteska operatorer}
+Låt $H$ vara Hermitesk. Då är $e^{iH}$ unitär.
+
+\proof
+Eftersom $H$ är Hermitesk, finns det en ortogonal bas av egenvektorer. I denna basen är matrisen för $H$ en diagonalmatris. Därmed är matrisen för $e^{iH}$ en diagonalmatris med $e^{i\lambda}$ på diagonalen, där $\lambda$ är något egenvärde. Alltså finns det en ortogonal bas av egenvektorer till $e^{iH}$, där varje egenvärde har belopp $1$, och $e^{iH}$ är unitär.
