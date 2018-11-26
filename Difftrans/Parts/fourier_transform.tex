@@ -1,0 +1,60 @@
+\section{Fouriertransform}
+
+\subsection{Definitioner}
+
+\paragraph{Fouriertransformen}
+Låt $L^{1}(\R, \C)$ vara alla absolut integrerbara funktioner och $f\in L^{1}(\R, \C)$. Då definieras Fouriertransformen $\fou{f}$ som
+\begin{align*}
+	\fou{f}(\omega) = \inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x}.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Räkneregler för Fouriertransformen}
+Fouritertransformen uppfyller:
+\begin{itemize}
+	\item Fouriertransformen definierar en linjär operator.
+	\item Om $f_{a}(x) = f(x - a)$ är $\fou{f_{a}}(\omega) = e^{-ia\omega}\fou{f}(\omega)$.
+	\item Om $f_{a}(x) = f(\frac{x}{a})$ är $\fou{f_{a}}(\omega) = \frac{1}{a}\fou{f}(\frac{\omega}{a})$.
+	\item Om $f,\dv{f}{x}\in L^{1}(\R, \C)$ är $\fou{\dv{f}{x}}(\omega) = i\omega\fou{f}(\omega)$.
+\end{itemize}
+
+\proof
+Här visas endast andra och sista påståendet.
+
+Om $f_{a}(x) = f(x - a)$ är 
+\begin{align*}
+	\fou{f_{a}}(\omega) &= \inteval{-\infty}{\infty}{f(x - a)e^{-i\omega x}}{x} \\
+	                    &= \inteval{-\infty}{\infty}{f(x)e^{-i\omega(x + a)}}{x} \\
+	                    &= e^{-i\omega a)}\inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x} \\
+	                    &= e^{-i\omega a)}\fou{f}(\omega),
+\end{align*}
+vilket skulle visas.
+
+Om $f$ har kompakt stöd, dvs. det finns ett $M$ så att $\abs{x} > M\implies f(x) = 0$,  gäller det vidare att
+\begin{align*}
+	\fou{\dv{f}{x}}(\omega) &= \inteval{-\infty}{\infty}{\deval{f}{x}{x}e^{-i\omega x}}{x} \\
+	                        &= \left[f(x)e^{-i\omega x}\right]_{-2M}^{2M} + i\omega\inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x}.
+\end{align*}
+Jag är inte säker på att detta stämmer, men jag tror gränserna i sista raden valdes godtycklig som något större än $M$ och sedan skulle kunna skickas mot oändligheten. I alla fall ger denna inget bidrag, och beviset är klart.
+
+\paragraph{Fouriertransformens egenskaper}
+Låt $f\in L^{1}(\R, \C)$. Då gäller att
+\begin{itemize}
+	\item $\abs{\fou{f}(\omega)} \leq \inteval{\R}{}{\abs{f(x)}}{x}$.
+	\item $\fou{f}$ är kontinuerlig på $\R$.
+	\item $\lim\limits_{\abs{\omega}\to\infty}\fou{f}(\omega) = 0$.
+\end{itemize}
+
+\proof
+Första påståendet följer från Cauchy-Schwarz' olikhet.
+
+Andra påståendet är sant ty
+\begin{align*}
+	\abs{\fou{f}(\omega + h) - \fou{f}(\omega)} &= \abs{\inteval{-\infty}{\infty}{f(x)e^{-i(\omega + h)x}}{x} - \inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x}} \\
+	                                            &= \abs{\inteval{-\infty}{\infty}{f(x)e^{-i\omega x}(e^{-ihx} - 1)}{x}} \\
+	                                            &\leq \abs{\inteval{\abs{x} < M}{}{f(x)e^{-i\omega x}(e^{-ihx} - 1)}{x}} + \abs{\inteval{\abs{x} \geq M}{}{f(x)e^{-i\omega x}(e^{-ihx} - 1)}{x}}.
+\end{align*}
+För små $h$ är $\abs{e^{-ihx} - 1} < \varepsilon$
+
+Sista påståendet följer direkt från Riemann-Lebesgues lemma.
