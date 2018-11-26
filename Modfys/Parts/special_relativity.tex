@@ -119,6 +119,113 @@ Betrakta två händelser som inträffer vid samma tidspunkt i inertialramen. Lor
 \end{align*}
 och det mäts ett kortare avstånd mellan händelserna i inertialramen.
 
+\paragraph{Tvillingparadoxen}
+Betrakta två tvillingar, där tvilling $A$ stannar på Jorden hela sitt liv och tvilling $B$ reser till en planet långt borta och tillbaka med en relativistisk hastighet. $A$ får att hen har åldrats mer än sin tvilling eftersom denna har upplevd tidsdilatation. Men $B$ upplever att hen är statisk och att $A$ rör sig. Därmed upplever $B$ tidsdilatation enligt $A$, och $A$ åldrats mer. Hur kan båda tycka att de är äldst när $B$ kommer tillbaka?
+
+För att lösa paradoxen, antag att $A$ och $B$ skickar ut ljuspulser med något fast tidsintervall för att hålla koll på hur gamla varandra är. Eftersom ljuset har samma hastighet i alla inertialramer, måste antal pulser vara ett mått på ålder som både $A$ och $B$ kan enas om.
+
+Låt planeten vara ett avstånd $x = cT$ från Jorden, och låt $B$ röra sig med en hastighet $v = \beta c$ mot antingen planeten eller Jorden. Enligt $A$ tar det $t = \frac{T}{\beta}$ att nå planeten, och $t = \frac{2T}{\beta}$ att åka fram och tillbaka. $B$s position ges då enligt $A$ av
+\begin{align*}
+	s =
+	\begin{cases}
+		\beta ct,       &t < \frac{T}{\beta}, \\
+		c(2T - \beta t), &\frac{T}{\beta} < t < \frac{2T}{\beta}.
+	\end{cases}
+\end{align*}
+Om varje tvilling skickar ut en ljuspuls med tidsintervall $\Delta t$, mottar $B$ ljuspuls nummer $n$ enligt $A$ när
+\begin{align*}
+	c(t_{B, n} - n\Delta t) = s(t_{B, n}).
+\end{align*}
+Vi betraktar först ljuspulser som mottas när $B$ är på väg mot planeten. Dessa mottas vid tid
+\begin{align*}
+	t_{B, n} = \frac{n}{1 - \beta}\Delta t. 
+\end{align*}
+$A$ mottar ljuspulser som skickas ut med tidsintervall $\gamma\Delta t$ och ljuspuls nummer $n$ mottas när
+\begin{align*}
+	s(\gamma n\Delta t) - c(t_{A, n} - \gamma n\Delta t) = 0.
+\end{align*}
+Vi betraktar igen ljuspulser som mottas när $B$ är på väg mot planeten. Dessa mottas vid tid
+\begin{align*}
+	c\beta\gamma n\Delta t - c(t_{A, n} - \gamma n\Delta t) = 0, \\
+	t_{A, n} = (1 + \beta)\gamma n\Delta t.
+\end{align*}
+
+Vi betraktar vidare ljuspulser som mottas av $B$ på väg mot Jorden. Dessa mottas när
+\begin{align*}
+	c(t_{B, n} - n\Delta t) &= c(2T - \beta t_{B, n}), \\
+	t_{B, n}                &= \frac{2T + n\Delta t}{1 + \beta}.
+\end{align*}
+$A$ mottar ljuspuls nummer $n$ när
+\begin{align*}
+	c(2T - \beta\gamma n\Delta t) - c(t_{A, n} - \gamma n\Delta t) &= 0, \\
+	t_{A, n}                                                        &= 2T + (1 - \beta)\gamma n\Delta t.
+\end{align*}
+
+Skillnaden mellan de två kommer från att $B$ mottar sin sista puls på väg mot planeten vid $t = \frac{T}{\beta}$, medan $A$ mottar sista pulsen från färden till planeten vid tiden
+\begin{align*}
+	t = \frac{1 + \beta}{\beta}T.
+\end{align*}
+Därmed inträder ändringen tidigare för $B$ än $A$, och detta kommer ge att de är överens om hur gamla de är.
+
+För att kunna jämföra åldern, vill vi nu veta hur många pulser varje tvilling mottar under de två etapperna. Under resan till planeten mottar $B$
+\begin{align*}
+	n_{A\to B} = \frac{T}{\Delta t}\frac{1 - \beta}{\beta}
+\end{align*}
+pulser, medan $B$ har skickat ut
+\begin{align*}
+	n_{B} = \frac{T}{\beta\gamma\Delta t}
+\end{align*}
+pulser. Under resan tillbaka till Jorden mottar $B$
+\begin{align*}
+	n_{A\to B} = 2T\frac{1}{\beta\Delta t} - \frac{T}{\Delta t}\frac{1 - \beta}{\beta} = \frac{T}{\beta\Delta T}(2 - 1 + \beta) = \frac{T(1 + \beta)}{\beta\Delta t}
+\end{align*}
+pulser, medan $B$ har skickat ut
+\begin{align*}
+	n_{B} = \frac{T}{\beta\gamma\Delta t}
+\end{align*}
+pulser. Alltså upplever $B$ att den åldras långsammare med en faktor
+\begin{align*}
+	\frac{n_{A\to B}}{n_{B}} = \frac{\frac{T}{\Delta t}\frac{1 - \beta}{\beta}}{\frac{T}{\beta\gamma\Delta t}} = (1 - \beta)\gamma
+\end{align*}
+under resan till planeten, dvs. under tiden $\frac{T}{\beta\gamma}$ och snabbare med en faktor
+\begin{align*}
+	\frac{n_{A\to B}}{n_{B}} = \frac{\frac{T(1 + \beta)}{\beta\Delta t}}{\frac{T}{\beta\gamma\Delta t}} = (1 + \beta)\gamma
+\end{align*}
+under den resterande tiden. Alltså är det slutliga förhållandet i ålder
+\begin{align*}
+	\frac{(1 - \beta)\frac{T}{\beta} + (1 + \beta)\frac{T}{\beta}}{2\frac{T}{\gamma\beta}} = \frac{1 - \beta + 1 + \beta}{2}\gamma = \gamma.
+\end{align*}
+
+På andra sidan mottar $A$
+\begin{align*}
+	n_{B\to A} = \frac{T}{\gamma\beta\Delta t}
+\end{align*}
+pulser som skickades från färden till planeten under tiden $\frac{1 + \beta}{\beta}T$, medan $A$ har skickat ut
+\begin{align*}
+	n_{A} = \frac{1 + \beta}{\beta}\frac{T}{\Delta t}
+\end{align*}
+pulser under samma tiden. $A$ mottar även
+\begin{align*}
+	n_{B\to A} = \frac{2T}{\gamma\beta\Delta t} - \frac{T}{\gamma\beta\Delta t} = \frac{T}{\gamma\beta\Delta t}
+\end{align*}
+pulser från färden tillbaka till Jorden, medan $A$ har skickat ut
+\begin{align*}
+	n_{A} = \frac{\frac{2T}{\beta} - \frac{1 + \beta}{\beta}T}{\Delta t} = \frac{2T - (1 + \beta)T}{\beta\Delta t} = \frac{T(1 - \beta)}{\beta\Delta t}
+\end{align*}
+pulser under den återstående tiden. Alltså upplever $A$ att den äldas snabbare med en faktor
+\begin{align*}
+	\frac{n_{B\to A}}{n_{A}} = \frac{\frac{T}{\gamma\beta\Delta t}}{\frac{1 + \beta}{\beta}\frac{T}{\Delta t}} = \frac{1}{(1 + \beta)\gamma}
+\end{align*}
+när den får signaler från resan till planeten och långsammare med en faktor
+\begin{align*}
+	\frac{n_{B\to A}}{n_{A}} = \frac{\frac{T}{\gamma\beta\Delta t}}{\frac{T(1 - \beta)}{\beta\Delta t}} = \frac{1}{(1 - \beta)\gamma}
+\end{align*}
+när den får signaler från resan till Jorden. Det slutliga förhållandet i ålder blir då
+\begin{align*}
+	\frac{\frac{1}{(1 + \beta)\gamma}\frac{1 + \beta}{\beta}T + \frac{1}{(1 - \beta)\gamma}(\frac{2T}{\beta} - \frac{1 + \beta}{\beta}T)}{\frac{2T}{\beta}} = \frac{1 + \frac{1 - \beta}{1 - \beta}}{2}\frac{1}{\gamma} = \frac{1}{\gamma},
+\end{align*}
+och de två är överens om att tvillingen på Jorden åldras snabbast.
+
 \paragraph{Relativistisk Dopplereffekt}
 Betrakta återigen två olika system, där det rörliga systemet rör sig med en vinkel $\theta$ från linjen mellan $O$ och $O'$, som är parallell med $x$axeln. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
 \begin{align*}
