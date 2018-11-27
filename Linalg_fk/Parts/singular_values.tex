@@ -1,0 +1,33 @@
+\section{Singulärvärden}
+
+\subsection{Definitioner}
+
+\subsection{Satser}
+
+\paragraph{Möjlighet för singulärvärdesuppdelning}
+Låt $L: V\to W$. Då kan man välja baser för $V$ och $W$ så att matrisen för $L$ ges av
+\begin{align*}
+	\mqty[
+		I & 0 \\
+		0 & 0
+	].
+\end{align*}
+
+\subsection{Algoritmer}
+
+\paragraph{Singulärvärdesuppdelning}
+Låt $L: V\to W$. Vi vill hitta baser för $V$ och $W$ så att matrisen för $L$ blir på formen
+\begin{align*}
+	\mqty[
+		I & 0 \\
+		0 & 0
+	].
+\end{align*}
+Detta görs vid att
+\begin{itemize}
+	\item välja en bas för $\ker{L}$.
+	\item utvidga detta till en bas för $V$ vid att lägga till vektorer i början av basen.
+	\item välja en bas för $W$ vid att utgå från avbildningarna av vektorerna i basen för $V$ och lägga på vektorer.
+\end{itemize}
+
+Om $V$ och $W$ är inreproduktrum och du vill välja en ON-bas för båda, kommer du få en diagonalmatris i stället för identitetsmatrisen.

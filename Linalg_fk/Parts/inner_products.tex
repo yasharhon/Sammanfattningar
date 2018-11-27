@@ -80,6 +80,12 @@ På ett inreproduktrum $V$ är $\adj{L}$ den adjungerade operatorn till $L$ om
 \begin{align*}
 	\inprod{\adj{L}(x)}{y} = \inprod{x}{L(y)}\forall x, y\in V.
 \end{align*}
+
+Om $L: V\to W$ definieras den adjungerade operatorn som $\adj{L}: W\to V$ som uppfyller
+\begin{align*}
+	\inprod{y}{L(x)} = \inprod{x}{\adj{L}(y)}\forall x \in V, y\in W.
+\end{align*}
+
 \paragraph{Självadjungerade operatorer}
 På ett inreproduktrum $V$ är $L$ självadjungerad om
 \begin{align*}
@@ -168,7 +174,7 @@ en ortogonal bas för $V$.
 \proof
 
 \paragraph{Matrisen för en adjungerad operator}
-Låt $L$ beskrivas av matrisen $A$ i någon ortonormal bas. Då beskrivs $\adj{L}$ av matrisen $\cc{(A^{T})}$.
+Låt $L$ beskrivas av matrisen $A$ i någon ortonormal bas. Då beskrivs $\adj{L}$ av matrisen $\cc{(A^{T})}$, även om operatorn är mellan två olika vektorrum.
 
 \proof
 Vi har
