@@ -3,9 +3,21 @@
 \subsection{Definitioner}
 
 \paragraph{Fouriertransformen}
-Låt $L^{1}(\R, \C)$ vara alla absolut integrerbara funktioner och $f\in L^{1}(\R, \C)$. Då definieras Fouriertransformen $\fou{f}$ som
+Låt $f\in L^{1}(\R, \C)$. Då definieras Fouriertransformen $\fou{f}$ som
 \begin{align*}
-	\fou{f}(\omega) = \inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x}.
+	\fou{f}(\omega) = \inteval{\R}{}{f(x)e^{-i\omega x}}{x}.
+\end{align*}
+
+\paragraph{Inversa Fouriertransformen}
+Inversa Fouriertransformen definieras som
+\begin{align*}
+	\fouinv{f}(x) = \inteval{\R}{}{f(\omega)e^{i\omega x}}{\omega}.
+\end{align*}
+
+\paragraph{Faltning}
+Låt $f, g\in L^{1}(\R, \C)$. Då definieras faltningen av $f$ och $g$ som
+\begin{align*}
+	\conv{f}{g}(x) = \inteval{\R}{}{f(x - t)g(t)}{t} = \inteval{\R}{}{f(t)g(x - t)}{t}.
 \end{align*}
 
 \subsection{Satser}
@@ -58,3 +70,43 @@ Andra påståendet är sant ty
 För små $h$ är $\abs{e^{-ihx} - 1} < \varepsilon$
 
 Sista påståendet följer direkt från Riemann-Lebesgues lemma.
+
+\paragraph{Inversionsformeln}
+Låt $f\in L^{1}(\R, \C)$ vara styckvist $C^{1}$ och ha generaliserade vänster- och högerderivator i alla punkter. Då gäller att
+\begin{align*}
+	f(x) = \fouinv{f}(x) = \frac{1}{2\pi}\inteval{\R}{}{\fou{f}(\omega)e^{i\omega x}}{\omega}.
+\end{align*}
+
+\proof
+
+\paragraph{Faltningsformeln}
+Antag att $f, g\in L^{1}(\R, \C)$. Då gäller att
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega)           &= \fou{f}(\omega)\fou{g}(\omega), \\
+	\fouinv{\conv{\fou{f}}{\fou{g}}}(x) &= f(x)g(x).
+\end{align*}
+
+\proof
+Ett lite hälft bevis är:
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega) = \inteval{\R}{}{e^{-i\omega x}\inteval{\R}{}{f(x - t)g(t)}{t}}{x}.
+\end{align*}
+Utan att motivera varför, byter vi integrationsordning och skriver vi detta som
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega) &= \inteval{\R}{}{\inteval{\R}{}{e^{-i\omega x}f(x - t)g(t)}{t}}{x} \\
+	                          &= \inteval{\R}{}{\inteval{\R}{}{e^{-i\omega(x - t)}f(x - t)e^{-i\omega t}g(t)}{t}}{x} \\
+	                          &= \inteval{\R}{}{e^{-i\omega t}g(t)\inteval{\R}{}{e^{-i\omega(x - t)}f(x - t)}{x}}{t}.
+\end{align*}
+Vid att göra variabelbytet $u = x - t$ tas $t$-beroendet bort, och högra integralen blir $\fou{f}(\omega)$, vilket ger
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega) &= \inteval{\R}{}{e^{-i\omega t}g(t)\fou{f}(\omega)}{t} \\
+	                          &= \fou{f}(\omega)\inteval{\R}{}{e^{-i\omega t}g(t)}{t} \\
+	                          &= \fou{f}(\omega)\fou{g}(\omega).
+\end{align*}
+Ideen är motsvarande med inverstransformen.
+
+\paragraph{Planchevels sats}
+Låt $f\in L^{1}(\R, \C)$. Då gäller det att
+\begin{align*}
+	\inteval{\R}{}{\abs{f(x)}^{2}}{x} = \frac{1}{2\pi}\inteval{\R}{}{\abs{\fou{f}(\omega)}}{\omega}.
+\end{align*}
