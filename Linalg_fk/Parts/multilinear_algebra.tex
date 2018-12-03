@@ -1,0 +1,39 @@
+\section{Multilinjär algebra}
+
+Observera att Einsteinnotation kommer användas ofta i denna del.
+
+Olika definitioner
+
+\subsection{Definitioner}
+
+\paragraph{Tensorprodukt av vektorrum från produkter}
+Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ definieras som vektorrummet med bas $\{e_{i}\otimes f_{j}\}_{i\in I, j\in J}$ om $\{e_{i}\}_{i\in I}$ och $\{f_{j}\}_{j\in J}$ är baser för $V$ respektiva $W$.
+
+\paragraph{Basbyten under tensorprodukt}
+Betrakta $V\otimes W$, med baser om $\{e_{i}\}_{i\in I}$ och $\{f_{j}\}_{j\in J}$ för $V$ respektiva $W$. Vid basbytet
+\begin{align*}
+	e_{i}' = p{ik}e_{k}, f_{j}' = q{jl}f_{l}
+\end{align*}
+ges basvektorerna för $V\otimes W$ av
+\begin{align*}
+	e_{i}'\otimes f_{j}' = (p_{ik}e_{k})\otimes (q_{jl}f_{l}).
+\end{align*}
+Detta definieras som att det uppfyllar distributiva lagen, vilket ger
+\begin{align*}
+	e_{i}'\otimes f_{j}' = p_{ik}q_{jl}e_{k}\otimes f_{l}.
+\end{align*}
+
+\paragraph{Tensorprodukt av vektorrum från dualer}
+Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ som verkas på av kroppen $k$ definieras som $\{L: V^{*}\times W^{*}\to k:\ L\text{ är bilinjär}\}$.
+
+\paragraph{Bas för tensorprodukt}
+Vid att använda bilinjariteten till ett godtyckligt $L$ kan det skrivas som
+\begin{align*}
+	L(a_{i}e_{i}^{*}, b_{j}f_{j}^{*}) = a_{i}b_{j}L(e_{i}^{*}, f_{j}^{*}).
+\end{align*}
+Eftersom en linjär avbildning ges unikt av dens verkan på basvektorerna, tar vi varje $L(e_{i}^{*}, f_{j}^{*})$ som ett element i en bas för tensorprodukten. Vi låter även denna vara
+\begin{align*}
+	e_{i}\otimes f_{j} = L(e_{i}^{*}, f_{j}^{*}) = e_{i}^{*}(e_{k})f_{j}^{*}(f_{l}) = \delta_{ik}\delta_{jl}.
+\end{align*}
+
+\subsection{Satser}
