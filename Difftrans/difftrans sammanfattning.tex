@@ -7,10 +7,12 @@
 \usepackage[arrowdel]{physics}
 \usepackage[margin=0.5in]{geometry}
 
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\cc}[1]{#1^{*}}
+\newcommand{\supp}[1]{\text{supp}\left(#1\right)}
 \newcommand{\deval}[4][]{\dv[#1]{#2}{#3} (#4)}
 \newcommand{\pdeval}[4][]{\pdv[#1]{#2}{#3} (#4)}
 \newcommand{\inteval}[4]{\int\limits_{#1}^{#2}#3\dd{#4}}
@@ -52,5 +54,7 @@
 \input{./Parts/function_space.tex}
 
 \input{./Parts/fourier_transform.tex}
+
+\input{./Parts/distributions.tex}
 
 \end{document}
