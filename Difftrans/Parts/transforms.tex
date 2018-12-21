@@ -1,4 +1,4 @@
-\section{Fouriertransform}
+\section{Transformer}
 
 \subsection{Definitioner}
 
@@ -18,6 +18,19 @@ Inversa Fouriertransformen definieras som
 Låt $f, g\in L^{1}(\R, \C)$. Då definieras faltningen av $f$ och $g$ som
 \begin{align*}
 	\conv{f}{g}(x) = \inteval{\R}{}{f(x - t)g(t)}{t} = \inteval{\R}{}{f(t)g(x - t)}{t}.
+\end{align*}
+
+\paragraph{Laplacetransformen}
+Låt $f: [0, \infty)\to\R$ vara integrerbar på varje delintervall av $[0, \infty)$ så att det finns ett $\in R$ så att $\abs{f(t)}\leq Me^{kt}$ för något $M$ och alla $t \geq 0$. Då definieras Laplacetransformen av $f$ som
+\begin{align*}
+	\lap{f}(s) = \inteval{0}{\infty}{f(t)e^{-st}}{t}
+\end{align*}
+för alla $s > k$.
+
+\paragraph{Faltning för andra definitionsmängder}
+Låt $f$ och $g$ vara Riemannintegrerbara på $[0, \infty)$. Då definieras faltningen av $f$ och $g$ som
+\begin{align*}
+	\conv{f}{g}(x) = \inteval{0}{\infty}{f(x - t)g(t)}{t} = \inteval{0}{\infty}{f(t)g(x - t)}{t}.
 \end{align*}
 
 \subsection{Satser}
@@ -110,3 +123,31 @@ Låt $f\in L^{1}(\R, \C)$. Då gäller det att
 \begin{align*}
 	\inteval{\R}{}{\abs{f(x)}^{2}}{x} = \frac{1}{2\pi}\inteval{\R}{}{\abs{\fou{f}(\omega)}}{\omega}.
 \end{align*}
+
+\proof
+
+\paragraph{Räkneregler för Laplacetransformen}
+Låt $f: [0, \infty)\to\R$ ha en Laplacetransform. Då gäller att
+\begin{itemize}
+	\item Laplacetransformationen definierar en linjär operator.
+	\item $\lap{e^{at}f(t)}(s) = \lap{f}(s - a)$.
+	\item Om $f(t) = 0$ för $t < 0$, gäller det för $g(t) = f(t - a)$ att $\lap{g}{s} = e^{-as}\lap{f}(s)$.
+	\item Det gäller för $g(t) = f(at), a > 0$ att $\lap{g}(s) = \frac{1}{a}\lap{f}(\frac{s}{a})$.
+	\item $\lap{tf}(s) = \deval{\lap{f}}{s}{s}$.
+	\item Om $\dv{f}{t}$ även har en Laplacetransform, är $\lap{\dv{f}{t}}(s) = s\lap{f}(s) - f(0)$.
+\end{itemize}
+
+\proof
+
+\paragraph{Laplacetransformens entydighet}
+Låt $f$ och $g$ uppfylla $\lap{f} = \lap{g}$. Då är $f = g$.
+
+\proof
+
+\paragraph{Laplacetransformationen av en faltning}
+Låt $f$ och $g$ ha Laplacetransformer. Då gäller att
+\begin{align*}
+	\lap{\conv{f}{g}}(s) = \lap{f}(s)\lap{g}(s).
+\end{align*}
+
+\proof
