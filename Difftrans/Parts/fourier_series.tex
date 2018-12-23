@@ -2,13 +2,16 @@
 
 \subsection{Definitioner}
 
-\paragraph{Positiva summationskärnor}
-En positiv summationskärna är en Riemannintegrerbar funktion $K_{n}$ på $(-a, a)$ som uppfyller
+\paragraph{Summationskärnor}
+En summationskärna är en Riemannintegrerbar funktion $K_{n}$ på $(-a, a)$ som uppfyller
 \begin{itemize}
-	\item $K_{n}(x)\geq 0, x\in (-a, a)$.
 	\item $\inteval{-a}{a}{K_{n}(x)}{x} = 1$.
+	\item $\inteval{-a}{a}{\abs{K_{n}(x)}}{x} \leq M$ för något $M$.
 	\item för varje $\delta > 0$ så gäller att $\lim\limits_{n\to\infty}\inteval{\delta < \abs{x} < a}{}{K_{n}(x)}{x} = 0$.
 \end{itemize}
+
+\paragraph{Positiva summationskärnor}
+En positiv summationskärna är en summationskärna med positiva funktioner.
 
 \paragraph{Cesaro-summerbarhet}
 Låt
@@ -19,13 +22,16 @@ och
 \begin{align*}
 	\sigma_{N} = \frac{1}{N}\sum\limits_{k = 0}^{N - 1}s_{k}.
 \end{align*}
-Då är $\sum\limits_{k = 0}^{n}a_{k}$ Cesarosummerbar om $\sigma_{N}$ konvergerar.
+Då är $\sum\limits_{k = 0}^{n}a_{k}$ Cesarosummerbar om $\sigma_{N}$ konvergerar när $N\to\infty$.
 
-\paragraph{Summationskärnor}
-Borde definieras
+\paragraph{Dirichletkärnan}
+Dirichletkärnan är summationskärnan vars element ges av
+\begin{align*}
+	D_{n}(\alpha) = \sum\limits_{k = -n}^{n}e^{ik\alpha} = \frac{1}{2\pi}\frac{1 - e^{i(2n + 1)\alpha}}{1 - e^{i\alpha}}e^{-in\alpha}.
+\end{align*}
 
-\paragraph{Feijerkärnan}
-Vi definierar Feijerkärnan som
+\paragraph{Fejérkärnan}
+Vi definierar Fejérkärnan som
 \begin{align*}
 	F_{N}(t) = \frac{1}{N}\sum\limits_{k = 0}^{N - 1}D_{k}(t).
 \end{align*}
@@ -43,25 +49,25 @@ där$\sum\limits_{n\in\Z}\abs{c_{n}}$ är begränsad. Då gäller det att
 \end{align*}
 
 \subparagraph{Bevis}
-Om antagandet är sant, skulle det gälla att
+Om antagandet är sant, vill vi visa att
 \begin{align*}
 	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}.
 \end{align*}
-Antag först att det finns ett $N$ så att $c_{n} = 0$ för $\abs{n} > N$. Detta ger
+
+Vi får först
 \begin{align*}
-	\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t} = \sum\limits_{m\in\Z}c_{m}\inteval{-\pi}{\pi}{e^{i(m - n)t}}{t}.
+	\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t} = \sum\limits_{m\in\Z}c_{m}\inteval{-\pi}{\pi}{e^{i(m - n)t}}{t},
 \end{align*}
-Den återstående integralen ges av
+eftersom summan är absolutkonvergent. Den återstående integralen ges av
 \begin{align*}
 	\inteval{-\pi}{\pi}{e^{i(m - n)t}}{t} =
 	\begin{cases}
 		\inteval{-\pi}{\pi}{}{t} = 2\pi,                                       &m = n, \\
-		\frac{1}{i(m - n)}\left(e^{i(m - n)\pi} - e^{-i(m - n)\pi}\right) = \frac{e^{i(m - n)\pi}}{i(m - n)}\left(1 - e^{-2\pi i(m - n)}\right) = 0, &m\neq 0,
+		\frac{1}{i(m - n)}\left(e^{i(m - n)\pi} - e^{-i(m - n)\pi}\right) = \frac{e^{i(m - n)\pi}}{i(m - n)}\left(1 - e^{-2\pi i(m - n)}\right) = 0, &m\neq 0.
 	\end{cases}
 \end{align*}
-och satsen stämmer.
 
-Låt nu $n$ vara givet och välj ett $N$ så att $n < N$ och $\sum\limits_{\abs{n} > N}\abs{c_{n}} < \varepsilon$, vilket är möjligt eftersom serien ovan är konvergent. Detta ger
+Låt nu $n$ vara givet och välj ett $N$ så att $\abs{n} < N$ och $\sum\limits_{\abs{n} > N}\abs{c_{n}} < \varepsilon$. Detta ger
 \begin{align*}
 	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}} &= \frac{1}{2\pi}\abs{\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}c_{m}e^{i(m - n)t}}{t}} \\
 	                                      &\leq \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}\abs{c_{m}e^{i(m - n)t}}}{t} \\
@@ -75,7 +81,7 @@ Enligt vårt tidigare argument gäller det även att
 \end{align*}
 och vi har alltså visat
 \begin{align*}
-	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}} &= \frac{1}{2\pi}\abs{\inteval{-\pi}{\pi}{\sum\limits_{\abs{m} > N}c_{m}e^{i(m - n)t}}{t}} < \varepsilon,
+	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - c_{n}} < \varepsilon,
 \end{align*}
 vilket ger att satsen stämmer.
 
@@ -89,19 +95,21 @@ Då är $\sum\limits_{i = 0}^{\infty}a_{i}$ Cesarosummerbar och har värdet $s$ 
 \proof
 Vi har
 \begin{align*}
-	\abs{\sigma_{n} - s} &= \abs{\frac{1}{n}\sum\limits_{i = 0}^{\infty}s_{i} - s} \\
+	\abs{\sigma_{n} - s} &= \abs{\frac{1}{n}\sum\limits_{i = 0}^{n - 1}s_{i} - s} \\
 	                     &= \abs{\frac{(s_{0} - s) + \dots + (s_{n - 1} - s)}{n}} \\
-	                     &\leq  \abs{\frac{(s_{0} - s) + \dots + (s_{N} - s)}{n}} + \abs{\frac{(s_{N + 1} - s) + \dots + (s_{n - 1} - s)}{n}}.
+	                     &\leq  \abs{\frac{(s_{0} - s) + \dots + (s_{M} - s)}{n}} + \abs{\frac{(s_{M + 1} - s) + \dots + (s_{n - 1} - s)}{n}}.
 \end{align*}
-Eftersom $s_{n}$ konvergerar, finns det ett $N$ så att när $n > N$ är $\abs{s_{n} - s} < \varepsilon$ för något $\varepsilon > 0$. Låt nu $N$ i ekvationen över vara så att när $n > N$ är $\abs{s_{n} - s} < \frac{\varepsilon}{2}$. Detta ger
+Vi vill visa att det finns ett $N$ så att $n > N\implies \abs{\sigma_{n} - s} < \varepsilon$ för varje $\varepsilon > 0$.
+
+Låt nu $\varepsilon > 0$ vara givet. Eftersom $s_{n}$ konvergerar, finns det ett $M$ så att när $n > M$ är $\abs{s_{n} - s} < \chi$ för varje $\chi > 0$. Låt nu $M$ i ekvationen över vara så att när $n > M$ är $\abs{s_{n} - s} < \frac{\varepsilon}{2}$. Detta ger
 \begin{align*}
-	\abs{\frac{(s_{N + 1} - s) + \dots + (s_{n - 1} - s)}{n}} < \frac{n - N - 1}{n}\frac{\varepsilon}{2} < \frac{\varepsilon}{2}.
+	\abs{\frac{(s_{M + 1} - s) + \dots + (s_{n - 1} - s)}{n}} < \frac{n - M}{n}\frac{\varepsilon}{2} < \frac{\varepsilon}{2}.
 \end{align*}
 Olikheten över kan då skrivas som
 \begin{align*}
-	\abs{\sigma_{n} - s} \leq \frac{C_{N}}{n} + \frac{\varepsilon}{2}.
+	\abs{\sigma_{n} - s} \leq \frac{C_{M}}{n} + \frac{\varepsilon}{2}.
 \end{align*}
-Välj nu $N$ igen så att $N = \frac{2C_{N}}{\varepsilon}$. Då blir olikheten:
+Låt nu $N$ vara lika med $\frac{2C_{M}}{\varepsilon}$, och välj $n > N$. Då blir olikheten
 \begin{align*}
 	\abs{\sigma_{n} - s} \leq \varepsilon,
 \end{align*}
@@ -114,7 +122,7 @@ Antag att $f$ är Riemannintegrerbar på $(-\pi, \pi]$. Då är
 \end{align*}
 
 \proof
-Låt $s(x)$ vara en undertrappa till $f$. Eftersom $f$ är Riemannintegrerbar så finns det ett $s$ så att
+Låt $s$ vara en undertrappa till $f$. Eftersom $f$ är Riemannintegrerbar så finns det ett $s$ så att
 \begin{align*}
 	\inteval{-\pi}{\pi}{\abs{f(x) - s(x)}}{x} < \frac{\varepsilon}{2}.
 \end{align*}
@@ -136,48 +144,6 @@ där $M = \sup{\{\abs{m_{1}}, \dots, \abs{m_{n}}\}}$. För $\lambda > \frac{4nM}
 	\abs{\inteval{-\pi}{\pi}{s(t)e^{i\lambda t}}{t}} \leq \frac{1}{2}\varepsilon,
 \end{align*}
 och beviset är klart.
-
-\paragraph{Begränsning av Fourierkoefficienter}
-Låt $f\in C^{1}$ på enhetscirkeln. Då gäller att
-\begin{align*}
-	\abs{c_{n}} \leq \frac{C}{n},\ n \neq 0.
-\end{align*}
-
-\proof
-Vi har
-\begin{align*}
-	\abs{c_{n}\left(\dv{f}{x}\right)} &= \abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{\deval{f}{x}{t}e^{-int}}{t}} \\
-	                                  &= \frac{1}{2\pi}\abs{f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi} + in\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}}.
-\end{align*}
-Eftersom $f$ är konmtinuerlig på enhetscirkeln, ger detta
-\begin{align*}
-	f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi} = f(\pi)(e^{-in\pi} - e^{in\pi}) = -2f(\pi)\sin{n\pi} = 0,
-\end{align*}
-vilket ger
-\begin{align*}
-	\abs{c_{n}\left(\dv{f}{x}\right)} &= \frac{1}{2\pi}\abs{in\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}} \\
-	                                  &= \frac{\abs{n}}{2\pi}\abs{\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}} \\
-	                                  &= \abs{n}\abs{c_{n}(f)}.
-\end{align*}
-Riemann-Lebesgues sats ger att $\abs{c_{n}\left(\dv{f}{x}\right)}$ är begränsad, vilket ger
-\begin{align*}
-	C \geq \abs{c_{n}\left(\dv{f}{x}\right)} = \abs{n}\abs{c_{n}(f)},
-\end{align*}
-och beviset är klart.
-
-\subparagraph{Följdsats}
-Låt $f\in C^{2}$ på enhetscirkeln. Då konvergerar dens Fourierserie mot funktionen.
-
-\proof
-Med samma resonnemang som i förra satsen får man
-\begin{align*}
-	\abs{c_{n}} \leq \frac{C}{n^{2}},
-\end{align*}
-och
-\begin{align*}
-	\sum\limits_{i = -N}^{N}\abs{c_{n}(f)e^{inx}} \leq \sum\limits_{i = -N}^{N}\abs{c_{n}(f)} \leq \sum\limits_{i = -N}^{N}\frac{C}{n^{2}},
-\end{align*}
-och därmed konvergerar summan.
 
 \paragraph{Integraler med positiva summationskärnor}
 Låt $f$ vara en Riemannintegrerbar funktion på $(-a, a)$, specifikt så att $\abs{f(x)}\leq M, x\in (-a, a)$, och kontinuerlig i $x = 0$. Antag vidare att $K_{n}$ är en positiv summationskärna på $(-a, a)$. Då gäller att
@@ -219,7 +185,61 @@ Låt $K_{n}$ vara en positiv summationskärna och $f$ vara kontinuerlig och inte
 \proof
 Tillämpa satsen ovan på $g(t) = f(x - t)$.
 
+\paragraph{Omskrivning av Dirichletkärnan}
+Dirichletkärnan kan skrivas som
+\begin{align*}
+	D_{N}(\alpha) = \frac{1}{2\pi}\frac{\sin{\left(N + \frac{1}{2}\right)\alpha}}{\sin{\frac{1}{2}\alpha}}.
+\end{align*}
+
+\proof
+\begin{align*}
+	D_{N}(\alpha) &= \frac{1}{2\pi}\frac{1 - e^{i(2N + 1)\alpha}}{1 - e^{i\alpha}}e^{-iN\alpha} \\
+	              &= \frac{1}{2\pi}e^{-iN\alpha}\frac{e^{i\left(N + \frac{1}{2}\right)\alpha}}{e^{\frac{1}{2}i\alpha}}\frac{e^{-i\left(N + \frac{1}{2}\right)\alpha} - e^{i\left(N + \frac{1}{2}\right)\alpha}}{e^{-\frac{1}{2}i\alpha} - e^{\frac{1}{2}i\alpha}} \\
+	              &= \frac{1}{2\pi}\frac{\sin{\left(N + \frac{1}{2}\right)\alpha}}{\sin{\frac{1}{2}\alpha}}.
+\end{align*}
+
+\paragraph{Fejérkärnans positivitet}
+$F_{N}$ är en positiv summationskärna på $[-\pi, \pi]$.
+
+\proof
+$F_{N}$ är en summa av Riemannintegrerbara funktioner, och är därmed Riemannintegrerbar.
+
+För att visa att $F_{N} \geq 0$, skriv
+\begin{align*}
+	F_{N}(x) = \frac{1}{2\pi(N + 1)}\sum\limits_{n = 0}^{N}\frac{\lambda^{2n + 1} - \lambda^{-2n - 1}}{\lambda - \lambda^{-1}},
+\end{align*}
+där $\lambda = e^{\frac{1}{2}ix}$. Detta kan vidare skrivas om till
+\begin{align*}
+	F_{N}(x) &= \frac{1}{2\pi(N + 1)}\frac{1}{\lambda - \lambda^{-1}}\sum\limits_{n = 0}^{N}\lambda^{2n + 1} - \lambda^{-2n - 1} \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{1}{2i\sin{\frac{1}{2}t}}\sum\limits_{n = 0}^{N}\lambda^{2n + 1} - \lambda^{-2n - 1} \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{1}{(2i\sin{\frac{1}{2}t)^{2}}}\sum\limits_{n = 0}^{N}\lambda^{2n + 2} - \lambda^{2n} - \lambda^{-2n} + \lambda^{-2n - 2} \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{1}{(2i\sin{\frac{1}{2}t})^{2}}\sum\limits_{n = 0}^{N}\lambda^{2n}(\lambda^{2} - 1) + \lambda^{-2n}(\lambda^{-2} - 1) \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{1}{(2i\sin{\frac{1}{2}t})^{2}}\left(\frac{1 - \lambda^{2N + 2}}{1 - \lambda^{2}}(\lambda^{2} - 1) + \frac{1 - \lambda^{-2N - 2}}{1 - \lambda^{-2}}(\lambda^{-2} - 1)\right) \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{1}{(2i\sin{\frac{1}{2}t})^{2}}\left(- 1 + \lambda^{2N + 2} - 1 + \lambda^{-2N - 2}\right) \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{1}{(2i\sin{\frac{1}{2}t})^{2}}(\lambda^{N + 1} - \lambda^{-N - 1})^{2} \\
+	         &= \frac{1}{2\pi(N + 1)}\frac{(2i\sin{\frac{N + 1}{2}t})^{2}}{(2i\sin{\frac{1}{2}t})^{2}} \\
+	         &= \frac{1}{2\pi(N + 1)}\left(\frac{\sin{\frac{N + 1}{2}t}}{\sin{\frac{1}{2}t}}\right)^{2}.
+\end{align*}
+
+För att visa det andra påståendet, använder vi att
+\begin{align*}
+	\inteval{-\pi}{\pi}{D_{n}(x)}{x} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{k = -n}^{n}e^{ikx}}{x} = 1,
+\end{align*}
+vilket ger
+\begin{align*}
+	\inteval{-\pi}{\pi}{F_{N}(t)}{t} = \frac{1}{N + 1}\inteval{-\pi}{\pi}{\sum\limits_{n = 0}^{N}D_{n}(x)}{x} = \frac{1}{N + 1}\sum\limits_{n = 0}^{N}1 = 1.
+\end{align*}
+
+För att visa det tredje påståendet, skriv
+\begin{align*}
+	\inteval{\delta < \abs{x} < \pi}{}{F_{N}(t)}{t} &= \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}}{t} \\
+	                                                &\leq \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2}}{t} \\
+	                                                &\leq \frac{1}{(N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2} \\
+	                                                &\to 0. 
+\end{align*}
+
 \paragraph{Konvergens av Fourierserier}
+Det här är en högst oklar sats.
 
 \proof
 Vi vill hitta ett villkor på $f$ så att för alla $\varepsilon > 0$ finns det ett $K > 0$ så att
@@ -239,48 +259,9 @@ och beräknar den som
 	S_{N}(x) &= \frac{1}{2\pi}\sum\limits_{n = -N}^{N}\inteval{-\pi}{\pi}{f(t)e^{in(x - t)}}{t} \\
 	         &= \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)\frac{1 - e^{-i(2N + 1)(x - t)}}{1 - e^{-i(x - t)}}e^{-iN(x - t)}}{t}.
 \end{align*}
-Vi definierar Dirichletkärnan
-\begin{align*}
-	D_{N}(\alpha) &= \frac{1}{2\pi}\frac{1 - e^{i(2N + 1)\alpha}}{1 - e^{i\alpha}}e^{-iN\alpha} \\
-	              &= \frac{1}{2\pi}e^{-iN\alpha}\frac{e^{i\left(N + \frac{1}{2}\right)\alpha}}{e^{\frac{1}{2}i\alpha}}\frac{e^{-i\left(N + \frac{1}{2}\right)\alpha} - e^{i\left(N + \frac{1}{2}\right)\alpha}}{e^{-\frac{1}{2}i\alpha} - e^{\frac{1}{2}i\alpha}} \\
-	              &= \frac{1}{2\pi}\frac{\sin{\left(N + \frac{1}{2}\right)\alpha}}{\sin{\frac{1}{2}\alpha}}.
-\end{align*}
-Då kan vi skriva
+Vi känner igen ena faktorn i integranden som Dirichletkärnan, och skriver
 \begin{align*}
 	S_{N}(x) = \inteval{-\pi}{\pi}{f(t)D_{N}(x - t)}{t}.
-\end{align*}
-
-\paragraph{Hjälpsats för Feijerkärnan}
-$F_{N}$ är en positiv summationskärna på $[-\pi, \pi]$.
-
-\proof
-$F_{N}$ är en summa av Riemannintegrerbara funktioner, och är därmed Riemannintegrerbar.
-
-För att visa att $F_{N} \geq 0$, skriv
-\begin{align*}
-	F_{N}(x) &= \frac{1}{2\pi(N + 1)}\sum\limits_{n = 0}^{N}\frac{\sin{\left(\frac{n + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}} \\
-	         &= \frac{1}{2\pi(N + 1}\sum\limits_{n = 0}^{N}\frac{\lambda^{n + 1} - \lambda^{-n - 1}}{\lambda - \lambda^{-1}},
-\end{align*}
-där $\lambda = e^{\frac{1}{2}ix}$. Det kan visas att detta ger
-\begin{align*}
-	F_{N}(t) = \frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}.
-\end{align*}
-
-För att visa det andra påståendet, använder vi att
-\begin{align*}
-	\inteval{-\pi}{\pi}{D_{n}(x)}{x} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{}^{}e^{ikx}}{x} = 1 + \frac{1}{2\pi}\sum\limits_{}^{}e^{ikx}... = 1,
-\end{align*}
-vilket ger
-\begin{align*}
-	\inteval{-\pi}{\pi}{F_{N}(t)}{t} = \frac{1}{N + 1}\inteval{-\pi}{\pi}{\sum\limits_{}^{}D_{n}(x)}{x} = \frac{1}{N + 1}\sum\limits_{}^{}1.
-\end{align*}
-
-För att visa det tredje påståendet, skriv
-\begin{align*}
-	\inteval{\delta < \abs{x} < \pi}{}{F_{N}(t)}{t} &= \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{\sin{\left(\frac{N + 1}{2}t\right)}}{\sin{\left(\frac{1}{2}t\right)}}\right)^{2}}{t} \\
-	                                                &\leq \inteval{\delta < \abs{x} < \pi}{}{\frac{1}{2\pi (N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2}}{t} \\
-	                                                &\leq \frac{1}{(N + 1)}\left(\frac{1}{\sin{\left(\frac{1}{2}\delta\right)}}\right)^{2} \\
-	                                                &\to 0. 
 \end{align*}
 
 \paragraph{Följdsats}
@@ -332,3 +313,45 @@ Det första bråket är begränsad och kontinuerligt när $x - t$ ej är på gr�
 	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} = \abs{\inteval{0}{\pi}{R(t)\sin{\left(\frac{N + 1}{2}t\right)}}{t}},
 \end{align*}
 där $R$ är Riemannintegrerbar. Enligt Riemann-Lebesgues lemma går detta mot $0$, och beviset är klart.
+
+\paragraph{Begränsning av Fourierkoefficienter}
+Låt $f\in C^{1}$ på enhetscirkeln. Då gäller att
+\begin{align*}
+	\abs{c_{n}} \leq \frac{C}{n},\ n \neq 0.
+\end{align*}
+
+\proof
+Vi har
+\begin{align*}
+	\abs{c_{n}\left(\dv{f}{x}\right)} &= \abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{\deval{f}{x}{t}e^{-int}}{t}} \\
+	                                  &= \frac{1}{2\pi}\abs{f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi} + in\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}}.
+\end{align*}
+Eftersom $f$ är konmtinuerlig på enhetscirkeln, ger detta
+\begin{align*}
+	f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi} = f(\pi)(e^{-in\pi} - e^{in\pi}) = -2f(\pi)\sin{n\pi} = 0,
+\end{align*}
+vilket ger
+\begin{align*}
+	\abs{c_{n}\left(\dv{f}{x}\right)} &= \frac{1}{2\pi}\abs{in\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}} \\
+	                                  &= \frac{\abs{n}}{2\pi}\abs{\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}} \\
+	                                  &= \abs{n}\abs{c_{n}(f)}.
+\end{align*}
+Riemann-Lebesgues sats ger att $\abs{c_{n}\left(\dv{f}{x}\right)}$ är begränsad, vilket ger
+\begin{align*}
+	C \geq \abs{c_{n}\left(\dv{f}{x}\right)} = \abs{n}\abs{c_{n}(f)},
+\end{align*}
+och beviset är klart.
+
+\subparagraph{Följdsats}
+Låt $f\in C^{2}$ på enhetscirkeln. Då konvergerar dens Fourierserie mot funktionen.
+
+\proof
+Med samma resonnemang som i förra satsen får man
+\begin{align*}
+	\abs{c_{n}} \leq \frac{C}{n^{2}},
+\end{align*}
+och
+\begin{align*}
+	\sum\limits_{i = -N}^{N}\abs{c_{n}(f)e^{inx}} \leq \sum\limits_{i = -N}^{N}\abs{c_{n}(f)} \leq \sum\limits_{i = -N}^{N}\frac{C}{n^{2}},
+\end{align*}
+och därmed konvergerar summan.
