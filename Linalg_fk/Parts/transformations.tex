@@ -13,15 +13,12 @@ En avbildning $T$ är linjär om
 \end{align*}
 Vi säjer att $T$ respekterar eller bevarar strukturen som vektorrum.
 
-\paragraph{Isomorfir}
-En isomorfi är en linjär och bijektiv avbildning mellan vektorrum.
-
 \paragraph{Matriser för linjära avbildningar}
-Om $B$ är en bas för $V$ och $D$ är en bas för $W$ kan vi ordna en matris för $L: V\to W$ genom
+Om $B = \{x_{i}\}_{i\in I}$ är en bas för $V$ och $D = \{y_{j}\}_{j\in J}$ är en bas för $W$ definieras matrisen för $L: V\to W$ i de givna baserna genom
 \begin{align*}
-	L(x_{i}) = \sum\limits_{j\in I}a_{ji}y_{j},
+	L(x_{i}) = \sum\limits_{j\in J}a_{ji}y_{j}.
 \end{align*}
-där alla $x_{i}\in B$, alla $y_{i}\in D$ och $I$ är en mängd av index som det skall summeras över. Linjära kombinationer är per definition ändliga, och därmed summeras det över ett ändligt antal termer även om $I$ är oändlig.
+Linjära kombinationer är per definition ändliga, och därmed summeras det över ett ändligt antal termer även om $I$ är oändlig.
 
 \paragraph{Analytiska funktioner av operatorer}
 En analytisk funktion av en operator $L$ definieras som
@@ -41,7 +38,7 @@ En operator $L$ är nilpotent om $L^{n} = 0$ för något $n$.
 \subsection{Satser}
 
 \paragraph{Basbyte}
-Låt $L$ vara en avbildning från $V$ till $W$. Låt $]_{B, D}$ vara en avbildning mellan vektorrum från basen $B$ i definitionsmängden till $D$ i målmängden, och låt $P_{A, B}$ vara avbildningen som byter bas från $A$ till $B$ i samma vektorrum. Då gäller det att
+Låt $L$ vara en avbildning från $V$ till $W$. Låt $L_{B, D}$ vara en avbildning mellan vektorrum från basen $B$ i definitionsmängden till $D$ i målmängden, och låt $P_{A, B}$ vara avbildningen som byter bas från $A$ till $B$ i samma vektorrum. Då gäller det att
 \begin{align*}
 	L_{B, D} = P_{D', D}L_{B', D'}P_{B, B'}
 \end{align*}
@@ -49,7 +46,7 @@ Låt $L$ vara en avbildning från $V$ till $W$. Låt $]_{B, D}$ vara en avbildni
 \proof
 Kommutativt diagram
 
-\paragraph{Koordinater}
+\paragraph{Koordinatavbildning}
 Låt $B = \left\{x_{i}\right\}_{i\in I}$ vara en bas för vektorrummet $V$. Detta ger en isomorfi
 \begin{align*}
 	V                  &\to k^{I}\equiv \dirsum{i\in I}{}{k}, \\
@@ -59,18 +56,25 @@ Låt $B = \left\{x_{i}\right\}_{i\in I}$ vara en bas för vektorrummet $V$. Dett
 \proof
 Avbildningen
 \begin{align*}
-	\left\{a_{i}\right\}_{i\in I} &\to \sum a_{i}x{i}
+	\left\{a_{i}\right\}_{i\in I} &\to \sum a_{i}x_{i}
 \end{align*}
-ger en avbildning $k^{I}\to V$ som är injektiv eftersom $B$ är linjärt oberoende och surjektiv eftersom $B$ spänner upp $V$.
+ger en avbildning $k^{I}\to V$ som är injektiv eftersom $B$ är linjärt oberoende och surjektiv eftersom $B$ spänner upp $V$. Eftersom denna avbildningen är bijektiv, måste även den inversa avbildningen vara bijektiv.
 
 \paragraph{Kärna och injektivitet}
 En linjär avbildning är injektiv om och endast om $\ker{L} = \{0\}$.
 
 \proof
+Antag att $L$ är injektiv. Det gäller att
 \begin{align*}
 	L(x) = L(y)\implies L(x - y) = 0\implies x - y\in\ker{L}.
 \end{align*}
-Alltså kan alla element i kärnan skrivas som differansen av två element på detta sättet, och det enda som garanterar injektivitet är om bara identiteten finns i kärnan.
+Alltså kan alla element i kärnan skrivas som differansen av två element som ej nödvändigtvis är i kärnan. Eftersom $L$ är injektiv, är $x - y = 0$, och kärnan innehåller endast $0$.
+
+Antag nu att $\ker{L} = \{0\}$. Detta ger
+\begin{align*}
+	L(x) = L(y) \implies L(x - y) = 0 \implies x - y = 0,
+\end{align*}
+och beviset är klart.
 
 \paragraph{Kvotavbildning}
 Om $W\subseteq V$ är ett delrum , ger $x\to x + W$ en linjär kvotavbildning från $V$ till $\frac{V}{W}$.
@@ -89,7 +93,7 @@ och beviset är klart.
 \end{align*}
 
 \proof
-Avbildningen $\Phi(x + \ker{L}) = L(x)$ ger en väldefinierad avbildning från $\frac{V}{\ker{L}}$ till $\Im{L}$ eftersom $x + \ker{L} = y + \ker{L}$ implicerar $L(x) = L(y)$ ty $L$ är linjär. $\Phi$ är injektiv eftersom $\ker{\Phi} = \set{x + \ker{L}}{L(x) = 0} = \set{\ker{L}}{}$. $\Phi$ är surjektiv eftersom $y = L(x)$ för något $x$ ger $y = \Phi(x + \ker{L})$, och alltså finns det för alla $y\in\Im{L}$ ett $x$ så att $y = \Phi(x + \ker{L})$.
+Avbildningen $\Phi(x + \ker{L}) = L(x)$ ger en väldefinierad avbildning från $\frac{V}{\ker{L}}$ till $\Im{L}$ eftersom $x + \ker{L} = y + \ker{L}$ implicerar $L(x) = L(y)$ ty $L$ är linjär. $\Phi$ är injektiv eftersom $\ker{\Phi} = \set{x + \ker{L}}{L(x) = 0} = \set{\ker{L}}{}$. Detta implicerar att om $\Phi(x + \ker{L}) = \Phi(y + \ker{L})$, är $x - y\in\ker{L}$, och de två är ekvivalenta sidoklasser. $\Phi$ är surjektiv eftersom $y = L(x)$ för något $x$ ger $y = \Phi(x + \ker{L})$, och alltså finns det för alla $y\in\Im{L}$ ett $x$ så att $y = \Phi(x + \ker{L})$.
 
 \paragraph{Dimensionssatsen}
 Om $V$ är ändligdimensionellt är $\rank{L} + \dim{\ker{L}} = \dim{V}$.

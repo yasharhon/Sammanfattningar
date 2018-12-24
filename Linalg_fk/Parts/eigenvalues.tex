@@ -25,13 +25,19 @@ En operator är diagonaliserbar om det finns en bas så att operatorns matris i 
 \paragraph{Samtidig diagonaliserbarhet}
 Två operatorer $L_{1}$ och $L_{2}$ är samtidigt diagonaliserbara om båda är diagonaliserbara och det finns en gemensam bas av egenvektorer.
 
+\paragraph{Konjugerade matriser}
+Två matriser $A$ och $B$ är konjugerade om det finns en matris $P$ så att
+\begin{align*}
+	A = PBP^{1}.
+\end{align*}
+
 \subsection{Satser}
 
 \paragraph{Karakteristiska polynom och egenvärden}
-Om $lambda$ är ett egenvärde till $L$ så är $p_{L}(\lambda) = 0$.
+Om $\lambda$ är ett egenvärde till $L$ så är $p_{L}(\lambda) = 0$.
 
 \proof
-Ez
+Kärnan till avbildningen $A - \lambda I$ är icke-trivial i detta fallet.
 
 \paragraph{Existens av minimalpolynom}
 Om $V$ är ändligdimensionellt, har $L$ ett karakteristiskt polynom.
@@ -64,19 +70,24 @@ Om matrisen för $L$ är diagonal så är det uppenbart, ty
 \end{align*}
 I övrigt oklart.
 
-\subparagraph{Korrolar}
+\paragraph{Korrolar}
 $q_{L}$ är en faktor i $p_{L}$.
+
+\proof
+Följer av fundamentalsatser i algebra.
 
 \paragraph{Multipliciteter och diagonaliserbarhet}
 Om $L$ är diagonaliserbar, är den geometriska multipliciteten lika med den algebraiska multipliciteten för alla $L$:s egenvärden.
 
 \proof
 
-\paragraph{Konjugerade matriser}
+\paragraph{Konjugering med övertriangulära matriser}
 Alla matriser är konjugerade med en övertriangulär matris med matrisens egenvärden på diagonalen.
 
+\proof
+
 \paragraph{Samtidig diagonaliserbarhet och kommutativitet}
-Låt $V$ vara ett ändligdimensionellt vektorrum och $L_{1}, L_{2}$ två operatorer på detta. Då går det att diagonalisera $L_{1}$ och $L_{2}$ om de kommuterar.
+Låt $V$ vara ett ändligdimensionellt vektorrum och $L_{1}, L_{2}$ två operatorer på detta. Då går det att samtidigt diagonalisera $L_{1}$ och $L_{2}$ om de kommuterar.
 
 \proof
 
@@ -84,6 +95,11 @@ Låt $V$ vara ett ändligdimensionellt vektorrum och $L_{1}, L_{2}$ två operato
 Låt $L_{1}$ och $L_{2}$ kommutera och $E_{1}$ vara egenrum till $L_{1}$. Då är $L_{2}(E_{1})\subset E_{1}$.
 
 \proof
+Låt $x\in E_{1}$. Då är
+\begin{align*}
+	L_{1}(L_{2}(x)) = L_{2}(\lambda x) = \lambda L_{2}(x),
+\end{align*}
+och beviset är klart.
 
 \paragraph{Nilpotens och blockdiagonalitet}
 Om $L$ är nilpotent finns det en bas för $V$ så att matrisen för $L$ blir blockdiagonal, där varje block är på formen

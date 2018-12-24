@@ -24,26 +24,19 @@ En inreprodukt $\inprod{x}{y}$ på ett vektorrum $V$ över $\C$ är en avbildnin
 	\item positivt definit, dvs. $\inprod{x}{x} > 0$ om $x \neq 0$. Notera att detta och konjugatsymmetrin implicerar att $\inprod{x}{x}$ har ingen imaginärdel.
 \end{itemize}
 
-\paragraph{Inreprodukt från matris}
-Vi kan få en inreprodukt i $\C^{n}$ från en matris genom
+\paragraph{Metrik}
+Låt $x = \sum x_{i}e_{i}, y = \sum y_{i}e_{i}$ och $B = \set{e_{i}}{}_{i\in I}$ vara en bas för vektorrummet $V$ som $x$ och $y$ är i. Vi definierar en matris som beskriver inreprodukten genom
 \begin{align*}
-	\inprod{x}{y} = \sum a_{ij}\cc{x_{i}}{y_{j}} = (\cc{x})^{T}Ay.
+	\inprod{x}{y} = \sum a_{ij}\cc{x_{i}}y_{j} = (\cc{x})^{T}Ay,
 \end{align*}
+där $A_{ij} = \inprod{e_{i}}{e_{j}}$. $A$ kallas för metriken.
 
-Om detta skall uppfylla konjugatsymmetri, ger det
+\paragraph{Hermiteska matriser}
+Låt $A$ vara en matris. Om $A$ uppfyller
 \begin{align*}
-	(\cc{x})^{T}Ay = \cc{(\cc{y})^{T}Ax} = y^{T}\cc{A}\cc{x}.
+	A = (\cc{A})^{T},
 \end{align*}
-
-Transponering av högersidan ger
-\begin{align*}
-	(\cc{x})^{T}Ay = (\cc{x})^{T}(\cc{A})^{T}y,
-\end{align*}
-och därmed uppfylls konjugatsymmetrin om
-\begin{align*}
-	A = (\cc{A})^{T}.
-\end{align*}
-Om matrisen uppfyller detta, säjs den vara konjugatsymmetrisk eller Hermitesk.
+säjs den vara konjugatsymmetrisk eller Hermitesk.
 
 \paragraph{Norm}
 Normen eller längden av en vektor definieras som
@@ -140,6 +133,27 @@ En unitär operator över ett komplext vektorrum $V$ är en inverterbar operator
 
 \begin{align*}
 	\abs{x + y} \leq \abs{x} + \abs{y}.
+\end{align*}
+
+\proof
+
+
+\paragraph{Krav på metriken}
+Metriken är konjugatsymmetrisk.
+
+\proof
+Om metriken skall beskriva inreprodukten, måste den vara konjugatsymmetrisk. Detta ger
+\begin{align*}
+	(\cc{x})^{T}Ay = \cc{((\cc{y})^{T}Ax)} = y^{T}\cc{A}\cc{x}.
+\end{align*}
+
+Transponering av högersidan ger
+\begin{align*}
+	(\cc{x})^{T}Ay = (\cc{x})^{T}(\cc{A})^{T}y,
+\end{align*}
+och därmed uppfylls konjugatsymmetrin om
+\begin{align*}
+	A = (\cc{A})^{T}.
 \end{align*}
 
 \paragraph{Ortogonalt komplement och vektorrum}

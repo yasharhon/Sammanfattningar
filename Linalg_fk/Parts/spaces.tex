@@ -3,10 +3,18 @@
 \subsection{Definitioner}
 
 \paragraph{Kroppar}
-En kropp är något som har definierat multiplikation och addition, och som fungerar som (är isomorft med) $\R, \C$ osv.
+En kropp är en mängd $k$ med två binära operationer $+$ och $\cdot$ och två speciella element $0$ och $1$ som uppfyller
+\begin{itemize}
+	\item $k$ är en abelsk grupp under $+$ med $0$ som identitet.
+	\item $a\cdot(b\cdot c) = (a\cdot b)\cdot c\ \forall a, b, c\in k$.
+	\item $k$ är en abelsk grupp under $\cdot$ med $1$ som identitet.
+	\item för alla $a\neq 0$ i $k$ finns det ett $b\in k$ så att $a\cdot b = 1$.
+	\item $(a + b)\cdot c = a\cdot c + b\cdot c\ \forall a, b, c\in k$.
+\end{itemize}
+$\cdot$ kommer ej skrivas ut efter detta.
 
 \paragraph{Vektorrum}
-Ett vektorrum är en mängd med en operation som gör $V$ till en abelsk grupp och för vilken det finns en kropp $k$ med skalärer och en operation med skalären som uppfyller
+Ett vektorrum är en mängd $V$ med en operation $+$ så att den definierar en abelsk grupp. Till vektorrumet hör även en kropp $k$ med skalärer och en operation $\cdot$ med skalären som uppfyller
 \begin{itemize}
 	\item $c(x + y) = cx + cy,~c\in\R,~x,y\in V$.
 	\item $(c + d)x = cx + dx,~c,d\in\R$.
@@ -22,20 +30,21 @@ En delmängd $V$ av ett vektorrum är ett delrum om
 	\item $cx\in V$ för alla $c\in\R$.
 \end{itemize}
 
-\paragraph{Inre direkt summa}
-Vi definierar den inre direkta summan
-\begin{align*}
-	\dirsum{i = 0}{\infty}{V_{i}} = \left\{\sum\limits_{i = 0}^{\infty}a_{i}, a_{i}\in V_{i}\right\}.
-\end{align*}
-
 \paragraph{Yttre direkt summa}
 Den yttre direkte summan av två vektorrum definieras som
 \begin{align*}
 	V\oplus W = \left\{(x, y), x\in V, y\in W\right\}.
 \end{align*}
 
+\paragraph{Inre direkt summa}
+Vi definierar den inre direkta summan
+\begin{align*}
+	V = \dirsum{i = 0}{\infty}{V_{i}} = \left\{\sum\limits_{i = 0}^{\infty}a_{i}, a_{i}\in V_{i}\right\}
+\end{align*}
+som ett vektorrum så att om $v\in V$ är linjärkombinationen av element från alla $V_{i}$ unik.
+
 \paragraph{Kvotrum}
-Om $W\subseteq V$ är delrum, kan vi bilda
+Om $W\subseteq V$ är delrum, definieras
 \begin{align*}
 	\frac{V}{W} = \left\{x + W, x\in V\right\},
 \end{align*}
@@ -53,11 +62,10 @@ Till sidoklasser hör operationer
 \end{align*}
 
 \paragraph{Linjärt oberoende mängder}
-$S$ är en linjärt oberoende mängd om
+$S = \set{x_{1}, \dots, x_{n}}{}$ är en linjärt oberoende mängd om
 \begin{align*}
-	\sum a_{i}x_{i} = 0\implies a_{i} = 0 \forall i,
+	\sum a_{i}x_{i} = 0\implies a_{i} = 0 \forall i.
 \end{align*}
-där alla $x_{i}$ är elementer i $S$.
 
 \paragraph{Linjärt hölje}
 Det linjära höljet $\Span{S}$ av mängden $S$ är
@@ -72,10 +80,10 @@ Det linjära höljet $\Span{S}$ av mängden $S$ är
 En bas $B$ för vektorrummet $W$ är en linjärt oberoende mängd så att $V = \Span{B}$, dvs. att alla vektorer i $V$ är linjärkombinationer av vektorer i $B$ på ett unikt sätt.
 
 \paragraph{Duala rum}
-För ett vektorrum $V$ över kropp $k$ är duala rummet $V^{*}$ mängden av alla linjära former på $V$, dvs. alla linjära avbildningar $V\to k$.
+För ett vektorrum $V$ över kroppen $k$ är duala rummet $V^{*}$ mängden av alla linjära former på $V$, dvs. alla linjära avbildningar $V\to k$.
 
 \paragraph{Dual bas}
-Givet en bas $\{e_{i}\}_{i\in I}$ för $V$, väljer vi en bas $\{e_{i}^{*}\}_{i\in I}$ fför $V^{*}$ som uppfyller
+Givet en bas $\{e_{i}\}_{i\in I}$ för $V$, definieras basen $\{e_{i}^{*}\}_{i\in I}$ för $V^{*}$ som de linjära formarna som uppfyller
 \begin{align*}
 	e_{i}^{*}(e_{j}) = \delta_{ij}.
 \end{align*}
@@ -86,3 +94,8 @@ Givet en bas $\{e_{i}\}_{i\in I}$ för $V$, väljer vi en bas $\{e_{i}^{*}\}_{i\
 Operationer på sidoklasser är väldefinierade.
 
 \proof
+Vi vill visa att operationer på sidoklasser ger någonting som är entydigt.
+
+Antag att $(a + W) + (b + W) = a + b + W = a' + b' + W$. Detta implicerar att $(a' + b') - (a + b)\in W$, och varje sida är därmed ekvivalenta sidoklasser.
+
+Antag att $a(b + W) = ab + W = ab' + W, a\in k, a\neq 0$. Detta implicerar $a(b' - b)\in W$, och därmed är $b' + W$ och $b + W$ ekvivalenta sidoklasser.
