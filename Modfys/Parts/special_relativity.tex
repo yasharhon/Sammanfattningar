@@ -94,30 +94,42 @@ Lorentztransformationerna ges då av
 \end{align*}
 Den inversa Lorentztransformationen fås vid att lösa ut ekvationerna för $x$ och $t$, och ges av
 \begin{align*}
-	x = \gamma(x' + vt'), t = \gamma(t' + \frac{\beta}{c}x').
+	x = \gamma(x' + vt'), t = \gamma\left(t' + \frac{\beta}{c}x'\right).
 \end{align*}
 Med de givna skalfaktorerna ser vi att för små hastigheter går detta över i Galileitransformer, medan inga hastigheter över $c$ tillåts.
 
 \paragraph{Samtidighet}
-Betrakta två händelser som inträffer vid olika tidspunkter och positioner. Lorentztransformationen ger
+Betrakta två händelser som inträffer med en tidsskillnad $\Delta t$ mätt i inertialramen. Lorentztransformationen ger
 \begin{align*}
 	\Delta t = \gamma(\Delta t' + \frac{\beta}{c}\Delta x').
 \end{align*}
-Detta implicerar att om händelserna är samtidiga i en referensram, är de inte nödvändigtvis det i den andra.
+Detta implicerar att även om händelserna är samtidiga i en referensram, är de inte nödvändigtvis det i den andra. Om tidsskillnaden mäts i den rörliga ramen, kan den skrivas som
+\begin{align*}
+	\Delta t' = \gamma(\Delta t - \frac{\beta}{c}\Delta x).
+\end{align*}
 
 \paragraph{Tidsdilation}
 Betrakta två händelser som inträffer vid samma position i den rörliga ramen. Lorentztransformationen ger
 \begin{align*}
 	\Delta t = \gamma\Delta t',
 \end{align*}
-och det mäts en längre tidsskilland mellan händelserna i inertialramen.
+och det mäts en längre tidsskilland mellan händelserna i den statiska ramen. Symmetrierna i ekvationen ovan ger att om händelserna inträffer vid samma position i den statiska ramen, observeras tidsdilatation i den rörliga ramen.
+
+Med andra ord: Observatörer som ej är statiska relativt två händelser mäter en längre tidsskillnad mellan händelserna än observatörer som är statiska relativt händelsen.
 
 \paragraph{Längdkontraktion}
-Betrakta två händelser som inträffer vid samma tidspunkt i inertialramen. Lorentztransformationen ger
+Lorentztransformationen av avståndet mellan två händelser ges av
 \begin{align*}
-	\Delta x = \frac{1}{\gamma}\Delta x,
+	\Delta x' &= \gamma(\Delta x - v\Delta t), \\
+	\Delta x  &= \gamma(\Delta x' + v\Delta t')
 \end{align*}
-och det mäts ett kortare avstånd mellan händelserna i inertialramen.
+Betrakta två händelser som rör sig med den rörliga ramen och inträffer vid samma tidspunkt i den rörliga ramen. Lorentztransformationen ger
+\begin{align*}
+	\Delta x = \frac{1}{\gamma}\Delta x',
+\end{align*}
+och det mäts ett kortare avstånd mellan händelserna i inertialramen. Symmetrien ger ett motsvarande resultat om händelserna är samtidiga i den statiska ramen.
+
+Med andra ord: Observatörer som ej är statiska relativt två händelser mäter ett kortare avstånd mellan händelserna än observatörer som är statiska relativt händelsen.
 
 \paragraph{Tvillingparadoxen}
 Betrakta två tvillingar, där tvilling $A$ stannar på Jorden hela sitt liv och tvilling $B$ reser till en planet långt borta och tillbaka med en relativistisk hastighet. $A$ får att hen har åldrats mer än sin tvilling eftersom denna har upplevd tidsdilatation. Men $B$ upplever att hen är statisk och att $A$ rör sig. Därmed upplever $B$ tidsdilatation enligt $A$, och $A$ åldrats mer. Hur kan båda tycka att de är äldst när $B$ kommer tillbaka?
