@@ -47,7 +47,7 @@ Baserad på Michelson-Morleys experiment, kom Einstein med följande postulat:
 \end{itemize}
 
 \paragraph{Lorentztransformationen}
-Lorentztransformationen är en transformation för att byta mellan olika referensramer. Den skiljer sig från Galileitransformationer, som inte är tillräcklig för att beskriva denna nya fysiken.
+Lorentztransformationen är en transformation för att byta mellan olika referensramer. Den skiljer sig från Galileitransformationer, som inte är tillräcklig för att beskriva denna nya fysiken. Härledningen av denna kommer täckas här. Den är lite matematiskt involverad, så denna del av sammanfattningen är endast intressant för dig som tycker om sådant.
 
 För att härleda Lorentztransformationen, betrakta två referensramar som sammanfallar vid $t = 0$ där den ena rör sig med en hastighet $v$ i $x$-riktning. För att beskriva transformationen, ansätter vi
 \begin{align*}
@@ -76,21 +76,91 @@ Detta ger
 \end{align*}
 För att transformationen skall lyckas, ger detta
 \begin{align*}
-	k_{1}^{2} - c^{2}k_{t, 1}^{2} = 1, \\
-	vk_{1}^{2} + k_{t, 1}k_{t, 2}c^{2} = 0, \\
-	c^{2}k_{t, 2}^{2} - k_{1}^{2}v^{2} = 0.
+	k_{1}^{2} - c^{2}k_{t, 1}^{2}      &= 1, \\
+	vk_{1}^{2} + c^{2}k_{t, 1}k_{t, 2} &= 0, \\
+	c^{2}k_{t, 2}^{2} - v^{2}k_{1}^{2} &= c^{2}.
 \end{align*}
-Vid att införa
+Vi kollar först fallet $v = 0$, motsvarande identitetstransformationen. Denna lösningen motsvarar $k_{1} = 1, k_{t, 1} = 0, k_{t, 2} = 1$, och en lösning för andra $v$ bör återskapa detta resultatet.
+
+Vi inför nu
 \begin{align*}
-	\beta = \frac{v}{c}, \gamma = \frac{1}{\sqrt{1 - \beta^{2}}}
+	\beta = \frac{v}{c}, \gamma = \frac{1}{\sqrt{1 - \beta^{2}}},
 \end{align*}
-kan lösningarna skrivas som
+och ekvationssystemet kan skrivas om till
 \begin{align*}
-	k_{1} = k_{t, 2} = \gamma, k_{t, 1} = -\frac{\beta\gamma}{c}.
+	k_{1}^{2} - c^{2}k_{t, 1}^{2}       &= 1, \\
+	\beta k_{1}^{2} + ck_{t, 1}k_{t, 2} &= 0, \\
+	k_{t, 2}^{2} - \beta^{2}k_{1}^{2}   &= 1.
 \end{align*}
-Lorentztransformationerna ges då av
+Sista ekvationen kan skrivas som
 \begin{align*}
-	x' = \gamma(x - vt), t' = \gamma\left(t - \frac{\beta}{c}x\right).
+	k_{1}^{2} = \frac{k_{t, 2}^{2} - 1}{\beta^{2}}.
+\end{align*}
+Den andra ekvationen kan skrivas som
+\begin{align*}
+	\frac{k_{t, 2}^{2} - 1}{\beta} + ck_{t, 1}k_{t, 2} = 0.
+\end{align*}
+Detta är en andragradsekvation i $k_{t, 2}$ med lösningar
+\begin{align*}
+	k_{t, 2} = \frac{-\beta ck_{t, 1} \pm\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{2}.
+\end{align*}
+Vi kommer självklart se att transformationskoefficienterna är entydigt bestämda, men eftersom $k_{t, 1}$ fortfarande är okänd (basfallet ger inte ens tillräcklig information för att bestämma tecknet på den koeffeicienten) låter vi $\pm$-tecknet bli och fortsätter.
+
+Vi får nu
+\begin{align*}
+	k_{1}^{2} &= \frac{\frac{\beta^{2}c^{2}k_{t, 1}^{2} + \beta^{2}c^{2}k_{t, 1}^{2} + 4 \mp 2\beta ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{4} - 1}{\beta^{2}} \\
+	          &= \frac{2\beta^{2}c^{2}k_{t, 1}^{2} \mp 2\beta ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{4\beta^{2}} \\
+	          &= \frac{\beta c^{2}k_{t, 1}^{2} \mp ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{2\beta}.
+\end{align*}
+Nu ser vi att valet av tecknet på $k_{t, 1}$ och valet av $\mp$ spelar roll - mer specifikt, om $k_{t, 1} > 0$ måste man välja $+$ och vice versa (annars skulle man få en imaginär transformationskoefficient, vilket skulle vara absurd när den beskriver en transformation mellan två observabler). Vi noterar att om den andra ekvationen skall uppfyllas, måste $k_{t, 1}k_{t, 2}$ vara negativ. Eftersom basfallet gav $k_{t, 2} = 1$, gissar vi att $k_{t, 1}$ är negativ (vadå, har du en bättre gissning?). Första ekvationen ger nu
+\begin{align*}
+	\frac{\beta c^{2}k_{t, 1}^{2} - ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{2\beta} - c^{2}k_{t, 1}^{2} = 1.
+\end{align*}
+Vi får rotuttrycket för sig själv och får
+\begin{align*}
+	-\frac{ck_{t, 1}}{2\beta}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4} = 1 + \frac{1}{2}c^{2}k_{t, 1}^{2}.
+\end{align*}
+Vi har något positivt på båda sidor, och kan med ro i hjärtat kvadrera för att få
+\begin{align*}
+	\frac{c^{2}k_{t, 1}^{2}}{4\beta^{2}}(\beta^{2}c^{2}k_{t, 1}^{2} + 4) = 1 + c^{2}k_{t, 1}^{2} + \frac{1}{4}c^{4}k_{t, 1}^{4}.
+\end{align*}
+Gudarna är barmhärtiga, och detta förenklas till
+\begin{align*}
+	\left(\frac{1}{\beta^{2}} - 1\right)c^{2}k_{t, 1}^{2} &= 1, \\
+	c^{2}k_{t, 1}^{2}                                     &= \frac{1}{\frac{1}{\beta^{2}} - 1} \\
+	                                                      &= \frac{\beta^{2}}{1 - \beta^{2}}.
+\end{align*}
+Detta har (negativ) lösning
+\begin{align*}
+	k_{t, 1} = -\frac{\beta\gamma}{c}.
+\end{align*}
+Första ekvationen ger nu
+\begin{align*}
+	k_{1}^{2} &= 1 + c^{2}k_{t, 1}^{2} \\
+	          &= 1 + \beta^{2}\gamma^{2} \\
+	          &= \frac{1 - \beta^{2} + \beta^{2}}{1 - \beta^{2}} \\
+	          &= \gamma^{2}.
+\end{align*}
+Vi ser att $\gamma$ har samma tecken för alla $\beta$, och eftersom vi sökte en positiv lösning för $\beta = 0$, väljer vi $k_{1} = \gamma$.
+
+Sista ekvationen ger på helt samma sättet
+\begin{align*}
+	k_{1}^{2} = 1 + \beta^{2}k_{t, 2}^{2} = 1 + \beta^{2}\gamma^{2} = \gamma^{2},
+\end{align*}
+och med ett motsvarande argument får vi $k_{1} = \gamma$.
+
+Om du är en matematiker, ser du kanske att ekvationerna vi utgick från är invarianta under teckenbyte av vissa koefficienter, och du kan komma fram till en lika bra lösning på dessa vid att byta tecken på några transformationskoefficienter. Dessa löser ekvationerna, men ger absolut inget samsvar med gammal och vältestad teori, vilket man typiskt inte vill att ens nya revolutionära teori skall göra.
+
+Om du är en matematiker och ett petigt as, tycker du kanske att val av tecken kan bero av $\beta$. Det löser ju ekvationerna, trots allt. Detta är sant, men bara tanken på att förklara absurditeten i detta för dig gör ont. Om du tycker det är rimligt att göra så, kan du omöjligt ha smält konsekvenserna av dina tankar ordentligt. Jag skulle rekommendera dig att sätta dig med en kopp te och fundera både två och tre gånger över vad du föreslår. Nu är det sent, och jag vill lägga mig.
+
+\paragraph{Formler för Lorentztransformationen}
+Lorentztransformationen ges av
+\begin{align*}
+	x' = \gamma(x - vt), t' = \gamma\left(t - \frac{\beta}{c}x\right),
+\end{align*}
+med
+\begin{align*}
+	\beta = \frac{v}{c}, \gamma = \frac{1}{\sqrt{1 - \beta^{2}}}.
 \end{align*}
 Den inversa Lorentztransformationen fås vid att lösa ut ekvationerna för $x$ och $t$, och ges av
 \begin{align*}
