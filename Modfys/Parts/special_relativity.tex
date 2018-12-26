@@ -153,6 +153,65 @@ Om du är en matematiker, ser du kanske att ekvationerna vi utgick från är inv
 
 Om du är en matematiker och ett petigt as, tycker du kanske att val av tecken kan bero av $\beta$. Det löser ju ekvationerna, trots allt. Detta är sant, men bara tanken på att förklara absurditeten i detta för dig gör ont. Om du tycker det är rimligt att göra så, kan du omöjligt ha smält konsekvenserna av dina tankar ordentligt. Jag skulle rekommendera dig att sätta dig med en kopp te och fundera både två och tre gånger över vad du föreslår. Nu är det sent, och jag vill lägga mig.
 
+\subparagraph{Alternativ härledning}
+Wow, dessa tar ju aldrig slut.
+
+Vi kan i stället göra en härledning vid att låta Lorentztransformen vara linjär, och ställa följande krav på den:
+\begin{itemize}
+	\item Ljusets hastighet är den samma i båda referensramer, dvs. att $x = ct$ och $x' = ct'$ måste gälla samtidigt.
+	\item Den inversa transformen måste motsvara transformen när hastigheten $v$ till den rörliga referensramen byter tecken.
+\end{itemize}
+Vi skriver Lorentztransformen som
+\begin{align*}
+	x' = Ax + Bt, \\
+	t' = Cx + Dt.
+\end{align*}
+Om man betraktar punkten $x' = 0$, har denna uppenbarligen rörelse $x = vt$, vilket implicerar $\frac{B}{A} = -v$. Lorentztransformen kan då skrivas som
+\begin{align*}
+	x' = A(x - vt).
+\end{align*}
+Kravet som rör att ljushastigheten är konstant ger
+\begin{align*}
+	ct' &= A(c - v)t, \\
+	ct  &= A(c + v)t'
+\end{align*}
+för transformen och den inversa transformen av $x'$. Produkten av dessa två ekvationerna är
+\begin{align*}
+	c^{2}tt' = A^{2}(c^{2} - v^{2})tt',
+\end{align*}
+vilket implicerar
+\begin{align*}
+	A^{2}  = \gamma^{2}.
+\end{align*}
+Återigen skulle man kunna leka med tecknet, men vi bara väljer en positiv konstant och låter det bli med det.
+
+För att bestämma transformationskoefficienterna för tid, försöker vi att Lorentztransformera den inversa transformen. Den inversa transformen ges av
+\begin{align*}
+	x = \gamma(x' + vt'),
+\end{align*}
+och transformation av denna ger
+\begin{align*}
+	x = \gamma(x' + vCx + vDt).
+\end{align*}
+Vi löser denna för $x'$ och får
+\begin{align*}
+	x' = \left(\frac{1}{\gamma} - vC\right)x - vDt.
+\end{align*}
+Om detta skall motsvara den ursprungliga transformen, måste
+\begin{align*}
+	\frac{1}{\gamma} - vC &= \gamma, \\
+	-vD                   &= -v\gamma.
+\end{align*}
+Detta har lösningar
+\begin{align*}
+	D &= \gamma, \\
+	C &= \frac{1}{v}\frac{1 - \gamma^{2}}{\gamma} \\
+	  &= \frac{1}{v}\frac{1 - \frac{1}{1 - \beta^{2}}}{\gamma} \\
+	  &= -\frac{1}{v}\frac{\frac{\beta^{2}}{1 - \beta^{2}}}{\gamma} \\
+	  &= -\frac{\beta}{c}\frac{\gamma^{2}}{\gamma} \\
+	  &= -\frac{\beta\gamma}{c}.
+\end{align*}
+
 \paragraph{Formler för Lorentztransformationen}
 Lorentztransformationen ges av
 \begin{align*}
