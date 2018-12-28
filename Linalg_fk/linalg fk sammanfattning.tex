@@ -32,6 +32,10 @@
 }
 \newcommand{\cc}[1]{#1^{*}}
 \newcommand{\adj}[1]{#1^{\dagger}}
+\newcommand{\inprod}[2]{\bra{#1}\ket{#2}}
+\newcommand{\dirsum}[3]{\bigoplus\limits_{#1}^{#2}#3}
+\newcommand{\inteval}[4]{\int\limits_{#1}^{#2}#3\dd{#4}}
+\newcommand{\outal}[1][]{\bigwedge}
 
 \newcommand{\Span}[1]{\text{Span}\left(#1\right)}
 \renewcommand{\det}[1]{\text{det}(#1)}
@@ -39,10 +43,8 @@
 \renewcommand{\dim}[1]{\text{dim}(#1)}
 \renewcommand{\Im}[1]{\text{Im}(#1)}
 \newcommand{\proj}[2]{\text{proj}_{#1}(#2)}
-\newcommand{\inprod}[2]{\bra{#1}\ket{#2}}
-\newcommand{\dirsum}[3]{\bigoplus\limits_{#1}^{#2}#3}
-
-\newcommand{\inteval}[4]{\int\limits_{#1}^{#2}#3\dd{#4}}
+\newcommand{\Sym}[2][]{\text{Sym}^{#1}(#2)}
+\newcommand{\Alt}[2][]{\text{Alt}^{#1}(#2)}
 
 \newcommand{\proof}{\subparagraph{Bevis}}
 

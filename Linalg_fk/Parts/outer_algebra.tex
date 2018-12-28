@@ -1,5 +1,44 @@
 \section{Yttre algebra}
 
-Vi utgår från något vektorrum $V$ med en bas $\{e_{i}\}_{i = 1}^{n}$. Vi bildar ett nytt vektorrum $\wedge V$ med dimension $2^{n}$ vars bas ges av $\{e_{S}\}$. $S$ är alla delmängder av indexmängden. Vi skriver även $e_{\{1, 2\}} = e_{1}\wedge e_{2}$.
+\subsection{Definitioner}
 
-Vid att definiera $e_{1}\wedge e_{2} = -e_{2}\wedge e_{1}$.
+\paragraph{Yttre algebran}
+Låt $V$ vara ett vektorrum med bas $\{e_{i}\}_{i = 1}^{n}$. Den yttre algebran på $V$, betecknad $\outal{V}$, är vektorrummet vars bas ges av $\{e_{S}\}$, där $S$ är alla delmängder av indexmängden. Vi skriver även $e_{\{i, j\}} = e_{i}\wedge e_{j}$.
+
+\paragraph{Delrum av yttre algebran}
+Delrummet $\outal^{l}V$ av yttre algebran på $V$ definieras som delrummet vars basvektorer ges av $\set{e_{S}}{S\text{ har }l\text{ element}}$.
+
+\paragraph{$\wedge$-produkten}
+$\wedge$-produkten definieras som en bilinjär avbildning
+\begin{align*}
+	\wedge: \outal^{i}V\times\outal^{j}V &\to \outal^{i + j}V, \\
+	e_{S_{1}}\wedge e_{S_{2}}              &=
+	\begin{cases}
+		(-1)^{m(S_{1}, S_{2})}e_{S_{1}\cup S_{2}},\ &S_{1}\cap S_{2} = \emptyset, \\
+		0,                                          &\text{annars},
+	\end{cases}
+\end{align*}
+där $m(S_{1}, S_{2})$ är antal elemenet i mängden $\set{(i, j)}{i > j, i\in S_{1}, j\in S_{2}}$. I normala termer motsvarar detta att man ställer upp alla element i $S_{1}$ och $S_{2}$ på en linje och räknar antalet gånger man måste byta plats på två angränsande element för att alla element skall stå i växande ordning.
+
+\subsection{Satser}
+
+\paragraph{Yttre algebran som direkt summa}
+\begin{align*}
+	\outal V = \dirsum{i = 0}{n}{\outal^{i}V}
+\end{align*}
+
+\proof
+Att alla element i $\outal V$ kan skrivas som en linjärkombination av element från $\outal^{i}V$ följer av definitionen av yttre algebran. Vi ser även att om $e_{S}\in\outal^{i}V, e_{T}\in\outal^{j}V, i\neq j$ kan de två omöjligt vara lika eftersom $S$ och $T$ har olika antal element. Eftersom de två delrummen ej delar baselement, måste $\outal^{i}V\cap\outal^{j}V = \{0\}$om $i\neq j$, och beviset är klart.
+
+\paragraph{Dimension för yttre algebran}
+Låt $V$ ha dimension $n$. Då har $\outal V$ dimension $2^{n}$.
+
+\proof
+Med förra satsen vet vi att $\dim{\outal V} = \sum\limits_{i = 0}^{n}\dim{\outal^{i}V}$. 
+
+Betrakta nu $\outal^{i}V$. Att konstruera en bas för detta delrummet motsvarar att hitta alla delmängder av mängden av naturliga tal upp till $n$ med $i$ element, där ordningen inte spelar roll. Detta kan göras på $n\choose i$ olika sätt, och därmed är $\dim{\outal^{i}V} = {n\choose i}$. Detta ger vidare
+\begin{align*}
+	\dim{\outal V} &= \sum\limits_{i = 0}^{n}{n\choose i} \\
+	               &= (1 + 1)^{n},
+\end{align*}
+och beviset är klart.

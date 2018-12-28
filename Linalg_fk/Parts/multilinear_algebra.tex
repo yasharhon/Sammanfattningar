@@ -1,50 +1,92 @@
 \section{Multilinjär algebra}
 
-Observera att Einsteinnotation kommer användas ofta i denna del.
-
-Olika definitioner
+Observera att Einsteinnotation kommer användas i denna del.
 
 \subsection{Definitioner}
 
 \paragraph{Tensorprodukt av vektorrum från produkter}
-Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ definieras som vektorrummet med bas $\{e_{i}\otimes f_{j}\}_{i\in I, j\in J}$ om $\{e_{i}\}_{i\in I}$ och $\{f_{j}\}_{j\in J}$ är baser för $V$ respektiva $W$.
+Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ definieras här som vektorrummet med bas $\{e_{i}\otimes f_{j}\}_{i\in I, j\in J}$ om $\{e_{i}\}_{i\in I}$ och $\{f_{j}\}_{j\in J}$ är baser för $V$ respektiva $W$.
 
-\paragraph{Basbyten under tensorprodukt}
-Betrakta $V\otimes W$, med baser om $\{e_{i}\}_{i\in I}$ och $\{f_{j}\}_{j\in J}$ för $V$ respektiva $W$. Vid basbytet
+\paragraph{Basbyten med tensorprodukt från produkter}
+Vi utgår från definitionen av tensorprodukt ovan. Betrakta $V\otimes W$, med baser om $\{e_{i}\}_{i\in I}$ och $\{f_{j}\}_{j\in J}$ för $V$ respektiva $W$. Vid basbytet
 \begin{align*}
-	e_{i}' = p{ik}e_{k}, f_{j}' = q{jl}f_{l}
+	e_{i}' = p_{ik}e_{k}, f_{j}' = q_{jl}f_{l}
 \end{align*}
 ges basvektorerna för $V\otimes W$ av
 \begin{align*}
 	e_{i}'\otimes f_{j}' = (p_{ik}e_{k})\otimes (q_{jl}f_{l}).
 \end{align*}
-Detta definieras som att det uppfyllar distributiva lagen, vilket ger
+Tensorprodukten definieras här som att det uppfyllar distributiva lagen, vilket ger
 \begin{align*}
 	e_{i}'\otimes f_{j}' = p_{ik}q_{jl}e_{k}\otimes f_{l}.
 \end{align*}
 
 \paragraph{Tensorprodukt av vektorrum från dualer}
-Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ som verkas på av kroppen $k$ definieras som $\{L: V^{*}\times W^{*}\to k:\ L\text{ är bilinjär}\}$.
+Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ som verkas på av kroppen $k$ definieras här som $\{L: V^{*}\times W^{*}\to k:\ L\text{ är bilinjär}\}$. Elementen $x\otimes y$ i $V\otimes W$ definieras som $x\otimes y(\phi, psi) = \phi(x)\psi(y)$.
 
-\paragraph{Bas för tensorprodukt}
-Vid att använda bilinjariteten till ett godtyckligt $L$ kan det skrivas som
+\paragraph{Spåravbildningen}
+Givet universella egenskapen definierar vi $\Tr: V^{*}\otimes V\to k$ som den avbildningen som kommer från evalueringsavbildningen $V^{*}\times V\to k, (\phi, x)\to \phi(x)$.
+
+\paragraph{Symmetriska tensorer}
+Delrummet av symmetriska tensorer definieras som
 \begin{align*}
-	L(a_{i}e_{i}^{*}, b_{j}f_{j}^{*}) = a_{i}b_{j}L(e_{i}^{*}, f_{j}^{*}).
+	\Sym[2]{V} = \Span{x\otimes x,\ x\in V}.
 \end{align*}
-Eftersom en linjär avbildning ges unikt av dens verkan på basvektorerna, tar vi varje $L(e_{i}^{*}, f_{j}^{*})$ som ett element i en bas för tensorprodukten. Vi låter även denna vara
+
+\paragraph{Alternerande tensorer}
+Delrummet av alternerande tensorer definieras som
 \begin{align*}
-	e_{i}\otimes f_{j} = L(e_{i}^{*}, f_{j}^{*}) = e_{i}^{*}(e_{k})f_{j}^{*}(f_{l}) = \delta_{ik}\delta_{jl}.
+	\Alt[2]{V} = \Span{x\otimes y - y\otimes x,\ x, y\in V}.
 \end{align*}
 
 \subsection{Satser}
 
-\paragraph{Homomorfisats eller någonting}
+\paragraph{Bas för tensorprodukt från dualer}
+Om $B = \{e_{1}, \dots, e_{n}\}$ är en bas för $V$ och $V = \{f_{1}, \dots, f_{m}\}$ är en bas för $W$ ger $B = \{e_{i}\otimes f_{j}\}_{i = 1, j = 1}^{m, n}$ en bas för $V\otimes W$.
+
+\proof
+Alla avbildningar i $V\otimes W$ bestäms entydigt av hur de verkar på $(e_{i}*, f_{j}*)$ eftersom dessa är bilinjära. Låt $e_{k}\otimes f_{l}$ vara så att $e_{k}\otimes f_{l}(e_{i}*, f_{j}*) = \delta_{ki}\delta_{lj}$. Då kan en ny linjär avbildning $f$ som uppfyller $f(e_{i}*, f_{j}*) = a_{ij}$ skrivas som
+\begin{align*}
+	f = a_{kl}e_{k}\otimes f_{l}.
+\end{align*}
+Eftersom $f$ nu kan vara godtycklig, är beviset klart.
+
+\paragraph{Homomorfisats}
 Låt $\text{Hom}_{k}(V, W)$ vara mängden av alla linjära avbildningar från $V$ till $W$. Då är $\text{Hom}_{k}(V, W)\cong V^{*}\otimes W$.
 
 \proof
-$V^{*}\otimes W$ har bas $e_{i}^{*}\otimes f_{j}$ och ges av $(e_{i}^{*}\otimes f_{j})(x) = e_{i}^{*}(x) f_{j}$.
+$V^{*}\otimes W$ har bas med element $e_{i}^{*}\otimes f_{j}$. Varje sådant element motsvarar en linjär avbildning $V\to W$ genom $L_{ij}(x) = e_{i}^{*}(x) f_{j}$.
+
+Om $V^{*}$ har dimension $m$ och $W$ dimension $n$, skulle man nu kunna ställa upp en matris för en godtycklig avbildning i $\text{Hom}_{k}(V, W)$. Denna skulle haft storlek $n\times m$. Matrisen för $L_{ij}$ är av samma storlek, och har nollor i alla element förutom element $(i, j)$, som är en etta. Om matrisen för en godtycklig avbildning har element $a_{ij}$, kan denna avbildningen därmed skrivas som $a_{ji}L_{ij}$ (transponeringen kommer av att andra indexet i $L_{ij}$ motsvarar element i basen för $W$, vilket motsvarar radindex i matrisen för avbildningen). Denna summan innehåller lika många termer som det är i basen för $V^{*}\otimes W$, och därmed är beviset klart.
 
 \paragraph{Universella egenskapen}
-Om $f: V\times W\to U$ är bilinjär finns en unik linjär avbilding $\phi: V\otimes W\to U$ så att $f = \comp{{\psi, \phi}}$ där $\psi: V\times W\to V\otimes W$.
+Om $f: V\times W\to U$ är bilinjär finns en unik bilinjär avbilding $\phi: V\otimes W\to U$ så att $f = \comp{{\psi, \phi}}$, där $\psi: V\times W\to V\otimes W$, för alla $f: V\times W\to U$.
 
 \proof
+Avbildningen $\psi: V\times W\to V\otimes W, (x, y)\to x\otimes y$ är bilinjär. Om nu $f$ är bilinjär kan vi definiera en bilinjär avbildning $\phi: V\otimes W\to U$ som $\phi(e_{i}\otimes f_{j}) = f(e_{i}, f_{j})$, där $e_{i}$ och $f_{j}$ är i basen för $V$ respektiva $W$. Vi ser nu att $f = \comp{{\psi, \phi}}$.
+
+För att visa att $\phi$ är unik, anta att $F$ uppfyller $F(e_{i}\otimes f_{j}) = f(e_{i}, f_{j})$. Då är $\phi - F$ noll på hela basen för $V\otimes W$, och måste därmed vara noll som linjär avbildning.
+
+\paragraph{Tensorprodukt som direkt summa}
+Om $1 + 1\neq 0$ i kroppen $k$ som verkar på $V$ är
+\begin{align*}
+	V\otimes V = \Sym[2]{V} \oplus \Alt[2]{V}.
+\end{align*}
+
+\proof
+Vi vill först visa att ett godtyckligt $x\otimes y$ kan skrivas som en linjär kombination av element från de två delrummen. Definiera $a = x + y$ och $b = x - y$. Detta ger
+\begin{align*}
+	x\otimes y = \frac{a + b}{2}\otimes\frac{a - b}{2} = \frac{1}{4}(a\otimes a - a\otimes b + b\otimes a - b\otimes b).
+\end{align*}
+Det är klart att de två termerna i mitten till sammans är från $\Alt[2]{V}$, medan den första och sista är från $\Sym[2]{V}$, vilket visar första delen av påståendet.
+
+För att visa att linjärkombinationen är unik, visar vi att skärningen mellan delrummen endast är $0$. Vi kan utveckla termerna från de olika delrummen och få
+\begin{align*}
+	a\otimes a - b\otimes b &= (x + y)\otimes (x + y) - (x - y)\otimes (x - y) \\
+	                        &= x\otimes x + x\otimes y + y\otimes x + y\otimes y - x\otimes x + x\otimes y + y\otimes x - y\otimes y \\
+	                        &= (1 + 1)x\otimes y + (1 + 1)y\otimes x, \\
+	b\otimes a - a\otimes b &= (x - y)\otimes (x + y) - (x + y)\otimes (x - y) \\
+	                        &= x\otimes x + x\otimes y - y\otimes x - y\otimes y - x\otimes x + x\otimes y - y\otimes x + y\otimes y \\
+	                        &= (1 + 1)x\otimes y - (1 + 1)y\otimes x.
+\end{align*}
+Om $x\otimes y\in\Alt[2]{V}$ är termerna från $\Sym[2]{V}$ lika med noll, vilket medför $x\otimes y = -y\otimes x$, och om $x\otimes y\in\Sym[2]{V}$ är termerna från $\Alt[2]{V}$ lika med noll, vilket medför $x\otimes y = y\otimes x$. Om båda dessa skall uppfyllas samtidigt, måste $x\otimes y = 0$. Därmed är beviset klart.
