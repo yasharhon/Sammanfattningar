@@ -17,7 +17,7 @@ Max Planck sägs att ha upptäckt kvantmekaniken vid att härleda intensitetsfö
 Denna går både mot $0$ för höga frekvenser och beter sig som den klassiska förutsägelsen vid  låga frekvenser. Einstein gissade senare att $h\nu$ var energien för partiklarna som bygger upp ljus - fotoner.
 
 \subparagraph{Fotoelektriska effekten}
-Om man bestrålar metaller med elektromagnetisk strålning, frigörs elektroner (upptäckta vid det här laget) från metallet. Man kunne sätta metallet i närheten av en anod så att en spänningsskillnad mellan metallet och anoden kunde attrahera metaller till anoden. Vid at elektrisk koppla de två samman, kunde man mäta strömmen som orsakades av de frigjorda elektronerna. Det som observerades var:
+Om man bestrålar metaller med elektromagnetisk strålning, frigörs elektroner (upptäckta vid det här laget) från metallet. Man kunne sätta metallet i närheten av en anod så att en spänningsskillnad mellan metallet och anoden kunde attrahera metaller till anoden. Vid at elektriskt koppla de två samman, kunde man mäta strömmen som orsakades av de frigjorda elektronerna. Det som observerades var:
 \begin{itemize}
 	\item Det frigjordes bara elektroner om den inkommande strålningen hade en frekvens över en viss gränsfrekvens.
 	\item Under denna gränsfrekvensen spelade strålningsintensiteten ingen roll.
@@ -80,14 +80,14 @@ alternativt i termer av energi
 vilket stämde överens med experiment.
 
 \paragraph{Röntgendiffraktion}
-Röntgenstråler har ganska liten våglängd. För att få diffraktion med röntgenstråling, kan man använda plan av atomer i fasta material. Man kan visa att diffraktionsvillkoret är
+Röntgenstråler har ganska liten våglängd. För att få (klassisk) diffraktion med röntgenstråling, kan man använda plan av atomer i fasta material. Man kan visa att diffraktionsvillkoret är
 \begin{align*}
 	2d\sin{\theta} = n\lambda,
 \end{align*}
 där $\theta$ är infallsvinkeln för strålningen och $d$ är avståndet mellan atomplanen.
 
 \paragraph{Röntgenspektra}
-Om ett metall bestrålas av röntgenstrålning med olika våglängder, kan man använda en diffraktionsuppställning och mäta intensiteten som funktion av utgående vinkel. Eftersom man har ett spektrum av våglängder, får man konstruktiv interferens i ett intervall av vinklar. Braggs formel implicerar att den utgående vinkeln beror av våglängden till strålningen som interfererar konstruktivt, och det erhållna spektrumet från ett sådant experiment visas i figur \ref{fig:x-ray_spectrum}.
+Om ett metall bestrålas av röntgenstrålning med olika våglängder, kan man använda en diffraktionsuppställning och mäta intensiteten som funktion av utgående vinkel. Eftersom man har ett spektrum av våglängder, får man konstruktiv interferens i ett intervall av vinklar. Braggs formel implicerar att den utgående vinkeln beror av våglängden till strålningen som interfererar konstruktivt, varför man (typ) kan plotta ett spektrum från ett sådant experiment som i figur \ref{fig:x-ray_spectrum}.
 
 \begin{figure}[!ht]
 	\centering
@@ -108,9 +108,12 @@ för fotoner fick de Broglie att hypotetisera att alla partiklar har en våglän
 \begin{align*}
 	\lambda = \frac{h}{p}.
 \end{align*}
-Detta kan i stället omformuleras till kinetisk energi vid att visa att
+Detta kan i stället omformuleras till kinetisk energi vid att använda att
 \begin{align*}
-	p = \sqrt{2Tm_{0} + \left(\frac{T}{c}\right)^{2}},
+	p^{2} &= \frac{1}{c^{2}}E^{2} - m_{0}^{2}c^{2} \\
+	      &= \frac{1}{c^{2}}(T^{2} + m_{0}^{2}c^{4} + 2Tm_{0}c^{2}) - m_{0}^{2}c^{2} \\
+	      &= \frac{T^{2}}{c^{2}} + 2Tm_{0}, \\
+	p     &= \sqrt{2Tm_{0} + \left(\frac{T}{c}\right)^{2}},
 \end{align*}
 vilket ger
 \begin{align*}
@@ -121,18 +124,18 @@ vilket ger
 \end{align*}
 
 \paragraph{Davidsson-Germers experiment}
-I detta eperimentet besetrålades en nickelkatod normalt på sin yta med elektroner som accelererades med någon spänning, och reflekterade elktroner detekterades som funktion av vinkel ut från strålen. I detta experimentet uppmättes ett intensitetsmaximum vid en annan vinkel än $0$, och med Braggs formel samsvarar detta maximumet med avståndet mellan atomplan i nickel.
+I detta experimentet bestrålades en nickelkatod normalt på sin yta med elektroner som accelererades med någon spänning, och reflekterade elektroner detekterades som funktion av vinkel ut från strålen. I detta experimentet uppmättes ett intensitetsmaximum vid en annan vinkel än $0$, och med Braggs formel samsvarar detta maximumet med avståndet mellan atomplan i nickel.
 
 \paragraph{Osäkerhetsprincipen}
-Partiklars vågnatur kombinerad med Fourieranalys implicerar
+de Broglies hypotes säjer att $p$ beror av partikelvågors våglängd i $x$ och $E$ av partikelvågors våglängd i $t$. Vad är en våglängd i $t$? Jo, avståndet i tid mellan två lika punkter på vågen, vilket är perioden, som är direkt kopplad till frekvensen. Detta kombinerad med satser från Fourieranalys implicerar
 \begin{align*}
-	\Delta p \Delta x \geq \frac{\hbar}{2\pi}, \\
-	\Delta E \Delta t \geq \frac{\hbar}{2\pi},
+	\Delta p \Delta x \geq \frac{\hbar}{2}, \\
+	\Delta E \Delta t \geq \frac{\hbar}{2},
 \end{align*}
 där vi har infört den reducerade Plancks konstant $\hbar = \frac{h}{2\pi}$.
 
 \paragraph{Vågfunktionen}
-Baserad på dessa resultaten infördes vågfunktionen $\Psi$. Det postulerades vidare att för alla dynamiska system existerar en vågfunktion som innehåller all information om systemet.
+Baserad på dessa resultat infördes vågfunktionen $\Psi$. Det postulerades vidare att för alla dynamiska system existerar en vågfunktion som innehåller all information om systemet.
 Denna är kontinuerligt deriverbar.
 
 \paragraph{Sannolikhet}
@@ -169,15 +172,15 @@ Om vi tittar på frekvensen, får vi
 \begin{align*}
 	\nu = \frac{1}{2\pi}\frac{E}{\hbar} = \frac{E}{h},
 \end{align*}
-och vi ser att $E$ precis motsvarar systemets energi. Vi noterar vidare att $\abs{\phi}^{2}$ är tidsoberoende, så denna sortens tillstånd ändrar sig inte med tiden.
+och vi ser att $E$ precis motsvarar partikelvågens energi. Vi noterar vidare att $\abs{\phi}^{2}$ är tidsoberoende, så denna sortens tillstånd ändrar sig inte med tiden.
 
 Positionsberoendet ger nu
 \begin{align*}
 	-\frac{\hbar^{2}}{2m}\del{x}{\psi} + V\psi = E\psi.
 \end{align*}
-Alla lösningarna till denna ekvationen är egenfunktioner till operatorn $-\frac{\hbar^{2}}{2m}\del{x}{} + V$ med egenvärde $E$.
+Alla lösningarna till denna ekvationen är egenfunktioner till operatorn $-\frac{\hbar^{2}}{2m}\del{x}{} + V$ med egenvärde $E$. Utöver detta kan inget säjas utan information om potentialen.
 
-\paragraph{Väntevärde}
+\paragraph{Väntevärde och operatorer}
 Eftersom kvantmekaniken handlar om sannolikheter, är även konceptet väntevärde relevant. I kvantmekaniken postulerar vi att det till varje observabel $q$ finns en operator $\hat{q}$, och dens väntevärde ges av
 \begin{align*}
 	\expval{q} = \integ{}{x}{\cc{\psi}\hat{q}\psi}.
@@ -189,7 +192,7 @@ Exempel på grundläggande operatorer är
 	\item kinetisk energi-operatorn $\hat{T} = \frac{1}{2m}\hat{p}^{2}$.
 	\item potentialoperatorn $\hat{V} = V$.
 	\item Hamiltonoperatorn $\hat{H} = \hat{T} + \hat{V}$.
-	\item rörelsemängdsmomentoperatorn $\hat{L}_{i} = \leci{ijk}\hat{r}_{j}\hat{p}_{k}\equiv \hat{\vb{L}} = \hat{\vb{r}}\times\hat{\vb{p}}$.
+	\item rörelsemängdsmomentoperatorn $\hat{L}_{i} = \leci{ijk}\hat{r}_{j}\hat{p}_{k}\Leftrightarrow \hat{\vb{L}} = \hat{\vb{r}}\times\hat{\vb{p}}$.
 \end{itemize}
 
 \paragraph{Spinn}
@@ -205,13 +208,6 @@ Alternativt kan man titta på $z$-komponenten av spinnet, med egenvärden
 \end{align*}
 där $m_{s} = 0, \dots, \pm s$ är det spinnmagnetiska kvanttalet.
 
-\paragraph{Magnetiskt moment}
-Det magnetiska momentet som skapas av en strömslinga definieras som
-\begin{align*}
-	\vb{\mu} = IA\vb{n},
-\end{align*}
-där $I$ är strömmen i slingan, $A$ är ytan som slingan omkransar och $\vb{n}$ är en vektor normalt på slingan enligt högerhandsregeln.
-
 \paragraph{Fermioner och bosoner}
 Alla partiklar kan delas upp i bosoner och fermioner. Om man betraktar den simultana vågfunktionen $\Psi_{1, 2}$ till två lika partiklar, är dessa bosoner om $\Psi_{1, 2} = \Psi_{2, 1}$ och fermioner om $\Psi_{1, 2} = -\Psi_{2, 1}$.
 
@@ -219,6 +215,13 @@ Alla partiklar kan delas upp i bosoner och fermioner. Om man betraktar den simul
 Fermionerna uppfyller Pauliprincipen, som säger att två ej särskiljbara partiklar ej kan existera i samma individuella kvanttillstånd. Ett typiskt exempel på en fermion är en elektron.
 
 En konsekvens av detta är det faktum att grundämnerna delas upp i periodiska systemet på det sättet de gör.
+
+\paragraph{Magnetiskt moment}
+Det magnetiska momentet som skapas av en strömslinga ges av
+\begin{align*}
+	\vb{\bm{\mu}} = IA\vb{e}_{\text{n}},
+\end{align*}
+där $I$ är strömmen i slingan, $A$ är ytan som slingan omkransar och $\vb{e}_{\text{n}}$ är en enhetsvektor normalt på slingan enligt högerhandsregeln.
 
 \paragraph{Spinn-bankoppling}
 Betrakta en elektron i en cirkulär bana kring en proton. I elektronens system rör protonen sig åt motsatt håll, och dens rörelse orsakar en ström
@@ -228,7 +231,7 @@ Betrakta en elektron i en cirkulär bana kring en proton. I elektronens system r
 	  &= \frac{em_{e}vr}{2\pi m_{e}r^{2}} \\
 	  &= \frac{e}{2\pi m_{e}r^{2}}L,
 \end{align*}
-där $L$ är belopppet av elektronens rörelsemängd. Det orsakade magnetfältet har flödestäthet
+där $L$ är belopppet av elektronens rörelsemängdsmoment. Det orsakade magnetfältet har flödestäthet
 \begin{align*}
 	\vb{B} &= -\frac{\mu_{0} I}{2r}\vb{e}_{\text{n}} \\
 	       &= -\frac{\mu_{0}}{2r}\frac{e}{2\pi m_{e}r^{2}}\vb{L} \\

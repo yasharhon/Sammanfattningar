@@ -261,7 +261,7 @@ och det mäts ett kortare avstånd mellan händelserna i inertialramen. Symmetri
 Med andra ord: Observatörer som ej är statiska relativt två händelser mäter ett kortare avstånd mellan händelserna än observatörer som är statiska relativt händelsen.
 
 \paragraph{Tvillingparadoxen}
-Betrakta två tvillingar, där tvilling $A$ stannar på Jorden hela sitt liv och tvilling $B$ reser till en planet långt borta och tillbaka med en relativistisk hastighet. $A$ får att hen har åldrats mer än sin tvilling eftersom denna har upplevd tidsdilatation. Men $B$ upplever att hen är statisk och att $A$ rör sig. Därmed upplever $B$ tidsdilatation enligt $A$, och $A$ åldrats mer. Hur kan båda tycka att de är äldst när $B$ kommer tillbaka?
+Betrakta två tvillingar, där tvilling $A$ stannar på Jorden hela sitt liv och tvilling $B$ reser till en planet långt borta och tillbaka med en relativistisk hastighet. $A$ får att hen har åldrats mer än sin tvilling eftersom denna har upplevd tidsdilatation. Men $B$ upplever att hen är statisk och att $A$ rör sig. Därmed upplever $A$ tidsdilatation enligt $B$, och $B$ åldrats mer. Hur kan båda tycka att de är äldst när $B$ kommer tillbaka?
 
 För att lösa paradoxen, antag att $A$ och $B$ skickar ut ljuspulser med något fast tidsintervall för att hålla koll på hur gamla varandra är. Eftersom ljuset har samma hastighet i alla inertialramer, måste antal pulser vara ett mått på ålder som både $A$ och $B$ kan enas om.
 
@@ -306,7 +306,7 @@ Skillnaden mellan de två kommer från att $B$ mottar sin sista puls på väg mo
 \begin{align*}
 	t = \frac{1 + \beta}{\beta}T.
 \end{align*}
-Därmed inträder ändringen tidigare för $B$ än $A$, och detta kommer ge att de är överens om hur gamla de är.
+Pulserna från de olika etapperna når $A$ och $B$ med olika tidsintervall. Eftersom ændringen i tidsintervall inträder tidigare för $B$ än $A$, och detta kommer ge att de är överens om hur gamla de är.
 
 För att kunna jämföra åldern, vill vi nu veta hur många pulser varje tvilling mottar under de två etapperna. Under resan till planeten mottar $B$
 \begin{align*}
@@ -368,7 +368,7 @@ när den får signaler från resan till Jorden. Det slutliga förhållandet i å
 och de två är överens om att tvillingen på Jorden åldras snabbast.
 
 \paragraph{Relativistisk Dopplereffekt}
-Betrakta återigen två olika system, där det rörliga systemet rör sig med en vinkel $\theta$ från linjen mellan $O$ och $O'$, som är parallell med $x$axeln. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
+Betrakta återigen två olika system, där det rörliga systemet rör sig med en vinkel $\theta$ från linjen mellan $O$ och $O'$, som är parallell med $x$-axeln. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
 \begin{align*}
 	t_{1} = \gamma t_{1}', \\
 	t_{2} = \gamma t_{2}'.
@@ -377,7 +377,7 @@ Om första pulsen skickas ut vid avstånd $x_{1}$, skickas den andra ut vid avst
 \begin{align*}
 	x_{2} = x_{1} + \gamma v(t_{2}' - t_{1}')\cos{\theta},
 \end{align*}
-där vi har approximerat att avståndet $S'$ rör sig normalt på $x$axeln är litet. Ljuspulserna når därmed origo vid tid
+där vi har approximerat att avståndet $S'$ rör sig normalt på $x$-axeln är litet. Ljuspulserna når därmed origo vid tid
 \begin{align*}
 	t_{O1} &= t_{1} + \frac{x_{1}}{c}, \\
 	t_{O2} &= t_{2} + \frac{x_{2}}{c} \\
@@ -416,28 +416,29 @@ Betrakta studsen som illustreras i figur \ref{fig:collision_inertial}.
 	\label{fig:collision_inertial}
 \end{figure}
 
-Vi antar här att rörelsen kan vara relativistisk i $x$, men approximeras som klassisk i $y$. Om partiklerna har samma massa (och hastighet), är masscentrum statiskt i $C$.
+Vi antar här att rörelsen kan vara relativistisk i $x$, men approximeras som klassisk i $y$. Om partiklerna har samma massa (och hastighet), är masscentrum statiskt i $C$. Studsen är vidare symmetrisk kring masscentrum, och därmed måste både $A$ och $B$ ha samma hastighet i $x$-riktning.
 
-Vi kan alternativt betrakta studsen i ett system som följer partikeln $A$ i $x$-riktning, vilket illustreras i figur \ref{fig:collision_following}.
+Vi kan alternativt betrakta studsen i en referensram som följer partikeln $A$ i $x$-riktning, vilket illustreras i figur \ref{fig:collision_following}.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.5\textwidth]{./Images/collision_following.eps}
 	\caption{Illustration}
 	\label{fig:collision_following}
 \end{figure}
+Symmetriargumentet gäller även här.
 
 Båda system är inertialsystem, och därmed är rörelsesmängden bevarad i båda system.
 
 Vi definierar tiden $t_{0}$ som det tar för $A$ att röra sig avståndet $d$ upp och ned i $A$:s referensram. Ändringen i rörelsemängd ges då av
 \begin{align*}
 	\Delta p_{A, y} = -2m_{A}\frac{d}{t_{0}} - 2m_{A}\frac{d}{t_{0}} = -4m_{A}\frac{d}{t_{0}}, \\
-	\Delta p_{B, y} = 2m_{B}\frac{d}{t_{0}} + 2m_{B}\frac{d}{t_{0}} = 4m_{B}\frac{d}{t},
+	\Delta p_{B, y} = 2m_{B}\frac{d}{t} + 2m_{B}\frac{d}{t} = 4m_{B}\frac{d}{t},
 \end{align*}
-där tiden $t$ är tiden det tar för $B$ att röra sig upp och ned i den betraktade referensramen. Eftersom rörelsen i $y$-riktning är klassisk, är denna tiden $t_{0}$ i $B$:s referensram. Vi transformerar därmed tillbaka och får
+där tiden $t$ är tiden det tar för $B$ att röra sig upp och ned i denna referensramen. Eftersom rörelsen i $y$-riktning är klassisk, är denna tiden $t_{0}$ i en referensram som följer $B$ på samma sättet. Vi transformerar därmed från ramen som följer $A$ till ramen som följer $B$. Om ramen som följer $A$ rör sig med en hastighet $v$ relativt ramen som följer $B$, får man efter transformation att
 \begin{align*}
 	\Delta p_{B, y} = 4m_{B}\frac{d}{\gamma t_{0}}.
 \end{align*}
-Fysikens lagar gäller i alla inertialsystem, vilket systemet vi betraktar är, och därmed är den totala ändringen i rörelsemängdsmoment lika med $0$, vilket ger
+Den totala ändringen i rörelsemängdsmoment är lika med $0$, vilket ger
 \begin{align*}
 	m_{B} = \gamma m_{A}.
 \end{align*}
@@ -447,7 +448,7 @@ Eftersom rörelsen i $y$-riktning är klassisk, kan $A$:s massa nu ersättas av 
 \end{align*}
 Den relativistiska rörelsemängden ges därmed av
 \begin{align*}
-	p = mv = \gamma m_{o}v.
+	p = mv = \gamma m_{0}v.
 \end{align*}
 
 \paragraph{Relativistisk energi}
@@ -461,7 +462,7 @@ Om kraftsumman $F$ får verka på en partikel som börjar från vilo, ges dens k
 \end{align*}
 Lorentztransformationen av massa ger
 \begin{align*}
-	m^{2}\gamma^{2} = m_{0}^{2}, m^{2}(c^{2} - v^{2}) = m_{0}^{2}c^{2}.
+	m^{2}\gamma^{2} = m_{0}^{2},\ m^{2}(c^{2} - v^{2}) = m_{0}^{2}c^{2}.
 \end{align*}
 Vid att beröäkna differentialen av båda sidor får
 \begin{align*}
