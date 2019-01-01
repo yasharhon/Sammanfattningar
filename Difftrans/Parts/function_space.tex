@@ -50,13 +50,13 @@ En Hermitesk operator uppfyller $\inprod{Av}{w} = \inprod{v}{Aw}$. Se sammanfatt
 \paragraph{Sturm-Liouville-operatorn}
 Sturm-Liouville-operatorn är en operator $L: C^{2}([a, b], \C) \to L^{2}([a, b], \C)$ definierat som
 \begin{align*}
-	L(f) = \dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x) + \lambda w(x)f(x).
+	L(f) = \dv{x}\left(p\dv{f}{x}\right) + qf + \lambda wf.
 \end{align*}
 
 \paragraph{Reguljära Sturm-Liouvilleproblem}
 Ekvationen
 \begin{align*}
-	&\dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x) + \lambda w(x)f(x) = 0,
+	&\dv{x}\left(p\dv{f}{x}\right) + qf + \lambda wf = 0, \\
 	&Af(a) + B\deval{f}{x}{a} = 0, \\
 	&Cf(b) + D\deval{f}{x}{b} = 0,
 \end{align*}
@@ -278,7 +278,7 @@ Följer från Gram-Schmidt.
 \paragraph{Sturm-Liouvilleoperatorns symmetri}
 Operatorn
 \begin{align*}
-	L = \dv{x}\left(p(x)\dv{x}\right) + q(x) + \lambda w(x)
+	L = \dv{x}\left(p\dv{x}\right) + q + \lambda wx
 \end{align*}
 med inreprodukten
 \begin{align*}
@@ -295,9 +295,9 @@ på $C^{2}([a, b])$ har en icke-trivial kärna om det finns $(A, B) \neq (0, 0)$
 \proof
 Vi betraktar i stället operatorn
 \begin{align*}
-	A = \frac{1}{w(x)}\left(\dv{x}\left(p(x)\dv{x}\right) + q(x)\right).
+	A = \frac{1}{w}\left(\dv{x}\left(p\dv{x}\right) + q\right).
 \end{align*}
-Om denna är symmetrisk, har vi visat satsen. Vi får
+Egenvektorer till denna ligger i kärnan till $L$. Om denna är Hermitesk, vet vi att det finns oändilgt många egenvärden och att de motsvarande egenvektorerna bildar ett fullständigt system på $C^{2}([a, b])$, vilket bevisar satsen. Vi får
 \begin{align*}
 	\inprod{Af}{g} &= \inteval{a}{b}{\frac{1}{w(x)}\left(\dv{x}\left(p(x)\deval{f}{x}{x}\right) + q(x)f(x)\right)\cc{g}(x)w(x)}{x} \\
 	               &= \inteval{a}{b}{\dv{x}\left(p(x)\deval{f}{x}{x}\right)\cc{g}(x)}{x} + \inteval{a}{b}{q(x)f(x)\cc{g}(x)}{x} \\
@@ -320,38 +320,7 @@ Detta ger att $A$ är symmetrisk om det finns $(A, B) \neq (0, 0)$ och $(C, D) \
 	A\cc{g}(a) + B\deval{\cc{g}}{x}{a} = 0, \\
 	C\cc{g}(b) + D\deval{\cc{g}}{x}{b} = 0.
 \end{align*}
-Inreprodukten över kan även skrivas som
-\begin{align*}
-	\inprod{Af}{g} - \inprod{f}{Ag} &= p(b)\deval{f}{x}{b}\cc{g}(b) - p(a)\deval{f}{x}{a}\cc{g}(a) - p(b)f(b)\deval{\cc{g}}{x}{b} + p(a)f(a)\deval{\cc{g}}{x}{a} \\
-	                                &= p(b)
-	                                \mqty[
-	                                	f(b) \\
-	                                	\deval{f}{x}{b})
-	                                ]
-	                                \cdot
-	                                \mqty[
-	                                	-\deval{\cc{g}}{x}{b} \\
-	                                	\cc{g}(b)
-	                                ]
-	                                - p(a)
-	                                \mqty[
-	                                	f(a) \\
-	                                	\deval{f}{x}{a})
-	                                ]
-	                                \cdot
-	                                \mqty[
-	                                	-\deval{\cc{g}}{x}{a} \\
-	                                	\cc{g}(a)
-	                                ]
-\end{align*}
-
-\paragraph{•}
-Låt $D_{L}$ vara alla $C^{2}$-funktioner på $[a, b]$ så att
-\begin{align*}
-	Af(a) + B\deval{f}{x}{a} = 0, \\
-	Cf(b) + D\deval{f}{x}{b} = 0.
-\end{align*}
-Då är Sturm-Liouville-operatorn symmetrisk om $(A, B) \neq (0, 0)$ och $(C, D) \neq (0, 0)$.
+Detta är sant enligt antagandet, och därmed är beviset klart.
 
 \paragraph{Sturm-Liouvilles sats}
 Sturm-Liouville-operatorn har oändligt många reella egenvärden.
