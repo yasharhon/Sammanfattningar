@@ -119,6 +119,9 @@ En ortogonal operator över ett reellt vektorrum $V$ är en inverterbar operator
 
 En unitär operator över ett komplext vektorrum $V$ är en inverterbar operator som uppfyller $\inprod{Lx}{Ly} = \inprod{x}{y}\forall x, y\in V$.
 
+\paragraph{Adjungerade avbildningar}
+Om $L: V\to W$ är linjär och $V$ och $W$ är inreproduktrum, ges den adjungerade linjära avbildningen $\adj{L}: W\to V$ av $\inprod{\adj{L}y}{x} = \inprod{y}{Lx}\ \forall x\in V, y\in W$.
+
 \subsection{Satser}
 
 \paragraph{Cauchy-Schwarz olikhet}
@@ -128,15 +131,40 @@ En unitär operator över ett komplext vektorrum $V$ är en inverterbar operator
 \end{align*}
 
 \proof
+Fallet då någon av dessa är $0$ är trivialt. Antag då att detta inte stämmer, och definiera
+\begin{align*}
+	z = x + ty.
+\end{align*}
+Det gäller att
+\begin{align*}
+	\inprod{z}{y} = \inprod{x}{y} + t\norm{y}^{2}.
+\end{align*}
+För $t = -\frac{\inprod{x}{y}}{\norm{y}^{2}}$ (vilket motsvarar den ortogonala projektionen av $x$ på $y$) är detta lika med $0$. Vi kan skriva
+\begin{align*}
+	x = z - ty,
+\end{align*}
+och för vårat specifika val av $t$ får man
+\begin{align*}
+	\norm{x}^{2} &= \norm{z}^{2} + \frac{\inprod{x}{y}^{2}}{\norm{y}^{4}}\norm{y}^{2} \\
+	             &= \norm{z}^{2} + \frac{\inprod{x}{y}^{2}}{\norm{y}^{2}} \\
+	             &\geq \frac{\inprod{x}{y}^{2}}{\norm{y}^{2}},
+\end{align*}
+och beviset är klart.
 
 \paragraph{Triangelolikheten}
 
 \begin{align*}
-	\abs{x + y} \leq \abs{x} + \abs{y}.
+	\abs{u + v} \leq \abs{u} + \abs{v}.
 \end{align*}
 
 \proof
-
+\begin{align*}
+	\norm{u + v}^{2} &= \norm{u}^{2} + \norm{v}^{2} + 2\Re(\inprod{u}{v}) \\
+	                 &\leq \norm{u}^{2} + \norm{v}^{2} + 2\abs{\inprod{u}{v}} \\
+	                 &\leq \norm{u}^{2} + \norm{v}^{2} + 2\norm{u}\norm{v} \\
+	                 &= (\norm{u} + \norm{v})^{2}.
+\end{align*}
+Eftersom båda sidor är kvadrater av positiva storheter, är beviset klart.
 
 \paragraph{Krav på metriken}
 Metriken är konjugatsymmetrisk.
@@ -323,3 +351,22 @@ Låt $H$ vara Hermitesk. Då är $e^{iH}$ unitär.
 
 \proof
 Eftersom $H$ är Hermitesk, finns det en ortogonal bas av egenvektorer. I denna basen är matrisen för $H$ en diagonalmatris. Därmed är matrisen för $e^{iH}$ en diagonalmatris med $e^{i\lambda}$ på diagonalen, där $\lambda$ är något egenvärde. Alltså finns det en ortogonal bas av egenvektorer till $e^{iH}$, där varje egenvärde har belopp $1$, och $e^{iH}$ är unitär.
+
+\paragraph{Matrisen för adjungerade avbildningar}
+Låt $L: V\to W$ ha matris $A$ för något val av ortonormala baser för $V$ och $W$, där $V$ och $W$ är inreproduktrum. Då har $\adj{L}$ matris $\adj{A} = (\cc{A})^{T}$.
+
+\proof
+Vi tittar på avbildningar av baselement. Låt $\{e_{i}\}$ vara basen för $V$ och $\{f_{i}\}$ vara basen för $W$.
+
+Definitionen ger att $L(e_{i}) = \sum\limits_{k}A_{ik}f_{k}$. Tillämpad på inreprodukten ger detta
+\begin{align*}
+	\inprod{f_{j}}{L(e_{i})} &= \inprod{f_{j}}{\sum\limits_{k}A_{ik}f_{k}} \\
+	                         &= \sum\limits_{k}A_{ik}\inprod{f_{j}}{f_{k}} \\
+	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\delta_{il} \\
+	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\inprod{e_{l}}{e_{i}} \\
+	                         &= \sum\limits_{l}\sum\limits_{k}A_{lk}\inprod{e_{l}}{e_{i}}\delta_{jk} \\
+	                         &= \sum\limits_{l}A_{lj}\inprod{e_{l}}{e_{i}} \\
+	                         &= \inprod{\sum\limits_{l}\cc{(A_{lj})}e_{l}}{e_{i}} \\
+	                         &= \inprod{\sum\limits_{l}(\cc{(A_{lj})})^{T}e_{l}}{e_{i}}.
+\end{align*}
+Vi vill att bra:en skall motsvara $\adj{L}(f_{j})$. Denna ges av $\adj{L}(f_{j}) = \sum\limits_{l}B_{jl}e_{j}$, där $B$ är matrisen för $\adj{L}$. Jämförelse med inreprodukten ovan fullför beviset.

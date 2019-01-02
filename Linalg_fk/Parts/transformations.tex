@@ -35,6 +35,9 @@ Normen av en matris definieras som
 \paragraph{Nilpotenta operatorer}
 En operator $L$ är nilpotent om $L^{n} = 0$ för något $n$.
 
+\paragraph{Duala avbildningar}
+Om $L: V\to W$ är linjär, ges den duala avbildningen $L^{*}: W^{*}\to V^{*}$ av $L^{*}(\phi) = \comp{{\phi, L}}$.
+
 \subsection{Satser}
 
 \paragraph{Basbyte}
@@ -119,3 +122,21 @@ En funktion $f$ av en matris konvergerar om
 	f(\norm{A}) = \sum a_{i}\norm{A}^{i}
 \end{align*}
 konvergerar.
+
+\proof
+
+\paragraph{Matris för duala avbildningar}
+Låt $L: V\to W$ ha matris $A$ för något val av baser för $V$ och $W$. Då har $L^{*}$ matris $A^{T}$ för ett motsvarande val av dual bas.
+
+\proof
+Vi tittar på avbildningar av baselement. Låt $\{e_{i}\}$ vara basen för $V$ och $\{f_{i}\}$ vara basen för $W$. Det motsvarande valet av bas för dualrummen är $\{e_{i}^{*}\}$ och $\{f_{i}^{*}\}$.
+
+Definitionen ger att $L(e_{i}) = \sum\limits_{k}A_{ik}f_{k}$, vilket implicerar $L = \sum\limits_{k}\sum\limits_{l}A_{kl}f_{l}e_{k}^{*}$. Definitionen av $L^{*}$ ger vidare
+\begin{align*}
+	L^{*}(f_{i}^{*}) &= \comp{{f_{i}^{*}, \sum\limits_{k}\sum\limits_{l}A_{kl}f_{l}e_{k}^{*}}} \\
+	                 &= \sum\limits_{k}\sum\limits_{l}A_{kl}f_{i}^{*}(f_{l})e_{k}^{*} \\
+	                 &= \sum\limits_{k}\sum\limits_{l}A_{kl}\delta_{il}e_{k}^{*} \\
+	                 &= \sum\limits_{k}A_{ki}e_{k}^{*} \\
+	                 &= \sum\limits_{k}A_{ik}^{T}e_{k}^{*},
+\end{align*}
+vilket bevisar satsen.
