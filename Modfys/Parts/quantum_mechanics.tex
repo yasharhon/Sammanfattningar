@@ -144,7 +144,7 @@ Olika experiment började visa att partiklars position har ett icke-deterministi
 \paragraph{Schrödingerekvationen}
 För ett system av en partikel i en dimension som rör sig i en potential $V$ beskrivs vågfunktionen av
 \begin{align*}
-	-\frac{\hbar^{2}}{2m}\del{x}{\Psi} + V\Psi = i\hbar\del{t}{\Psi}.
+	-\frac{\hbar^{2}}{2m}\del{x}{\del{x}{\Psi}} + V\Psi = i\hbar\del{t}{\Psi}.
 \end{align*}
 Detta kan utvidgas för mer allmäna system till
 \begin{align*}
@@ -152,14 +152,14 @@ Detta kan utvidgas för mer allmäna system till
 \end{align*}
 där $\hat{H}$ är systemets Hamiltonoperator, som kommer diskuteras sedan.
 
-\paragraph{Bundna tillstånd}
+\paragraph{Stationära tillstånd}
 Gör ansatsen $\Psi = \psi(x)\phi(t)$. Då ger Schrödingerekvationen för en enda partikel
 \begin{align*}
-	-\frac{\hbar^{2}}{2m}\phi\del{x}{\psi} + V\psi\phi = i\hbar\psi\del{t}{\phi}.
+	-\frac{\hbar^{2}}{2m}\phi\del{x}{\del{x}{\psi}} + V\psi\phi = i\hbar\psi\del{t}{\phi}.
 \end{align*}
 Detta kan separeras till
 \begin{align*}
-	-\frac{\hbar^{2}}{2m}\frac{\del{x}{\psi}}{\psi} + V = i\hbar\frac{\del{t}{\phi}}{\phi}.
+	-\frac{\hbar^{2}}{2m}\frac{\del{x}{\del{x}{\psi}}}{\psi} + V = i\hbar\frac{\del{t}{\phi}}{\phi}.
 \end{align*}
 Om potentialen är tidsoberoende, är vänstersidan bara en funktion av position och högersidan bara en funktion av tid. Därmed måste båda sidor vara lika med en konstant, som vi för tillfället kallar $E$.
 
@@ -176,7 +176,7 @@ och vi ser att $E$ precis motsvarar partikelvågens energi. Vi noterar vidare at
 
 Positionsberoendet ger nu
 \begin{align*}
-	-\frac{\hbar^{2}}{2m}\del{x}{\psi} + V\psi = E\psi.
+	-\frac{\hbar^{2}}{2m}\del{x}{\del{x}{\psi}} + V\psi = E\psi.
 \end{align*}
 Alla lösningarna till denna ekvationen är egenfunktioner till operatorn $-\frac{\hbar^{2}}{2m}\del{x}{} + V$ med egenvärde $E$. Utöver detta kan inget säjas utan information om potentialen.
 
@@ -188,7 +188,7 @@ Eftersom kvantmekaniken handlar om sannolikheter, är även konceptet väntevär
 Exempel på grundläggande operatorer är
 \begin{itemize}
 	\item positionsoperatorn $\hat{x} = x$.
-	\item rörelsemängdsoperatorn $\hat{p} = -i\hbar\del{i}{}$.
+	\item rörelsemängdsoperatorn $\hat{p}_{i} = -i\hbar\del{i}{}$.
 	\item kinetisk energi-operatorn $\hat{T} = \frac{1}{2m}\hat{p}^{2}$.
 	\item potentialoperatorn $\hat{V} = V$.
 	\item Hamiltonoperatorn $\hat{H} = \hat{T} + \hat{V}$.
@@ -244,7 +244,7 @@ Detta orsakar en potential
 Vi ser alltså att den orsakade potentialen beror av elektronens spinn och dens rörelsemängdsmoment. Detta är spinn-bankoppling.
 
 \paragraph{Oändlig lådpotential}
-För att få en känsla för vilken sorts fysik som kommer ut av denna teorien, betraktar vi en partikel i en oändlig lådpotential, dvs.
+För att få en känsla för vilken sorts fysik som kommer ut av kvantmekaniken, betraktar vi en partikel i en oändlig lådpotential, dvs.
 \begin{align*}
 	V = 
 	\begin{cases}
@@ -254,8 +254,8 @@ För att få en känsla för vilken sorts fysik som kommer ut av denna teorien, 
 \end{align*}
 Detta motsvarar en låda med oändligt starka väggar. Rumdelen av Schrödingerekvationen för stationära tillstånd ger inuti lådan
 \begin{align*}
-	-\frac{\hbar^{2}}{2m}\del{x}{\psi} &= E\psi, \\
-	\del{x}{\psi}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+	-\frac{\hbar^{2}}{2m}\del{x}{\del{x}{\psi}} &= E\psi, \\
+	\del{x}{\del{x}{\psi}}                      &= -\frac{2mE}{\hbar^{2}}\psi.
 \end{align*}
 Vi definierar nu
 \begin{align*}
@@ -263,7 +263,7 @@ Vi definierar nu
 \end{align*}
 och får
 \begin{align*}
-	\del{x}{\psi} = -k^{2}\psi.
+	\del{x}{\del{x}{\psi}} = -k^{2}\psi.
 \end{align*}
 Detta har lösningar
 \begin{align*}
@@ -299,7 +299,7 @@ Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
 	\abs{B}^{2}\frac{a}{2} &= 1, \\
 	\abs{B}                &= \sqrt{\frac{2}{a}}.
 \end{align*}
-Observera att vi endast skriver absolutbeloppet eftersom $B$ kan vara en komplex konstant utan att det ändrar fysiken.
+Observera att vi endast skriver absolutbeloppet eftersom $B$ kan innehålla en komplex fas utan att det ändrar fysiken.
 
 \paragraph{Ändlig lådpotential}
 Betrakta en partikel i en ändlig lådpotential, dvs.
@@ -310,37 +310,59 @@ Betrakta en partikel i en ändlig lådpotential, dvs.
 		V_{0},  &\text{annars.}
 	\end{cases}
 \end{align*}
-Detta motsvarar en låda med en viss \"flexibilitet\" i väggarna. Rumdelen av Schrödingerekvationen för stationära tillstånd ger inuti lådan
+Detta motsvarar en låda med en viss ``flexibilitet'' i väggarna. Rumdelen av Schrödingerekvationen för stationära tillstånd ger inuti lådan
 \begin{align*}
-	\del{x}{\psi}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+	\del{x}{\del{x}{\psi}} = -\frac{2mE}{\hbar^{2}}\psi.
 \end{align*}
-och
+och utanför lådan
 \begin{align*}
-	\del{x}{\psi}                      &= -\frac{2m(V_{0} - E)}{\hbar^{2}}\psi.
+	\del{x}{\del{x}{\psi}} = -\frac{2m(V_{0} - E)}{\hbar^{2}}\psi.
 \end{align*}
 Vi definierar som förut
 \begin{align*}
-	k^{2} = \frac{2mE}{\hbar^{2}}, \alpha^{2} = \frac{2m(V_{0} - E)}{\hbar^{2}}.
+	k^{2} = \frac{2mE}{\hbar^{2}},\ \alpha^{2} = \frac{2m(V_{0} - E)}{\hbar^{2}}.
 \end{align*}
 Om $E < V_{0}$ är lösningarna
 \begin{align*}
 	\psi =
 	\begin{cases}
-		Ae^{\alpha x},        &x < 0, \\
-		Be^{ikx} + Ce^{-ikx}, &0 < x < a, \\
-		De^{-\alpha x},       &a < x.
+		Ae^{\alpha x} + A'e^{-\alpha x}, &x < 0, \\
+		B\sin{kx} + C\cos{kx},           &0 < x < a, \\
+		De^{-\alpha x} + D'e^{\alpha x}, &a < x.
 	\end{cases}
 \end{align*}
-Observera att vissa termer från den matematiska lösningen inte är med, då de skulle ge lösningar som inte är normaliserbara.
-
-%Skriv detta
-För att lösa detta, behöver vi de tre villkoren som fås från att $\psi$ är kontinuerligt deriverbar och att $\abs{\psi}^{2}$ är normaliserad.
+Vi sätter direkt $A' = D' = 0$ eftersom dessa termerna skulle ge lösningar som inte är normaliserbara.
 
 Vi ser från lösningen att en partikel kan penetrera lite in i en region där dens totala energi är negativ, det så kallade klassiskt förbjudna området. Vi kan även definiera ett penetrationsdjup
 \begin{align*}
 	\delta = \frac{1}{\alpha} = \frac{\hbar^{2}}{\sqrt{2m(E - V_{0})}}
 \end{align*}
 som ett mått på hur långt in i den klassiskt förbjudna sonen bundna tillstånd kan penetrera.
+
+Vi är vidare intresserade av villkoret för energin. För att få detta, använder vi att $\psi$ är kontinuerligt deriverbar, vilket ger:
+\begin{align*}
+	&A = C, \\
+	&B\sin{ka} + C\cos{ka} = De^{-\alpha a}, \\
+	&A\alpha = kB, \\
+	&k(B\cos{ka} - C\sin{ka}) = -\alpha De^{-\alpha a}.
+\end{align*}
+Insättning av första och tredje ekvationen i andra och fjärde ger
+\begin{align*}
+	\frac{\alpha}{k}A\sin{ka} + A\cos{ka} = De^{-\alpha a}, \\
+	\alpha A\cos{ka} - kA\sin{ka} = -\alpha De^{-\alpha a}.
+\end{align*}
+Kvoten av dessa är
+\begin{align*}
+	\frac{\alpha\cos{ka} - k\sin{ka}}{\frac{\alpha}{k}\sin{ka} + \cos{ka}} = -\alpha.
+\end{align*}
+Vi definierar $x = \frac{k}{\alpha}$ och får
+\begin{align*}
+	\frac{\cos{ka} - x\sin{ka}}{\frac{1}{x}\sin{ka} + \cos{ka}} &= -1, \\
+	\frac{\cot{ka} - x}{\frac{1}{x} + \cot{ka}}                 &= -1, \\
+	\cot{ka} - x                                                &= -\frac{1}{x} - \cot{ka}, \\
+	2\cot{ka}                                                   &= \frac{k}{\alpha} - \frac{\alpha}{k}.
+\end{align*}
+Detta är ett lite komplicerad kvantiseringsvillkor, men ändå ett sådant.
 
 \paragraph{Andra potentialer}
 Det finns andra intressanta potential att betrakta som kan användas för att beskriva fysikaliska system. Exempel är
