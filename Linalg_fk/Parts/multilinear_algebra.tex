@@ -24,6 +24,9 @@ Tensorprodukten definieras här som att det uppfyllar distributiva lagen, vilket
 \paragraph{Tensorprodukt av vektorrum från dualer}
 Tensorprodukten $V\otimes W$ av vektorrummen $V$ och $W$ som verkas på av kroppen $k$ definieras här som $\{L: V^{*}\times W^{*}\to k:\ L\text{ är bilinjär}\}$. Elementen $x\otimes y$ i $V\otimes W$ definieras som $x\otimes y(\phi, psi) = \phi(x)\psi(y)$.
 
+\paragraph{Tensorprodukt av avbildningar}
+Låt $L_{1}$ och $L_{2}$ vara linjära avbildningar på $V_{1}$ respektiva $V_{2}$. Givet universella egenskapen finns det en unik avbildning $L_{1}\otimes L_{2}: V_{1}\otimes V_{2}\to W_{1}\otimes W_{2}$ som definieras av $f(x, y) = L_{1}(x)\otimes L_{2}(y)$ och ges av $L_{1}\otimes L_{2}(x, y) = L_{1}(x)\otimes L_{2}(y)$. Denna definieras som tensorprodukten av $L_{1}$ och $L_{2}$.
+
 \paragraph{Spåravbildningen}
 Givet universella egenskapen definierar vi $\Tr: V^{*}\otimes V\to k$ som den avbildningen som kommer från evalueringsavbildningen $V^{*}\times V\to k, (\phi, x)\to \phi(x)$.
 
@@ -60,12 +63,50 @@ $V^{*}\otimes W$ har bas med element $e_{i}^{*}\otimes f_{j}$. Varje sådant ele
 Om $V^{*}$ har dimension $m$ och $W$ dimension $n$, skulle man nu kunna ställa upp en matris för en godtycklig avbildning i $\text{Hom}_{k}(V, W)$. Denna skulle haft storlek $n\times m$. Matrisen för $L_{ij}$ är av samma storlek, och har nollor i alla element förutom element $(i, j)$, som är en etta. Om matrisen för en godtycklig avbildning har element $a_{ij}$, kan denna avbildningen därmed skrivas som $a_{ji}L_{ij}$ (transponeringen kommer av att andra indexet i $L_{ij}$ motsvarar element i basen för $W$, vilket motsvarar radindex i matrisen för avbildningen). Denna summan innehåller lika många termer som det är i basen för $V^{*}\otimes W$, och därmed är beviset klart.
 
 \paragraph{Universella egenskapen}
-Om $f: V\times W\to U$ är bilinjär finns en unik bilinjär avbilding $\phi: V\otimes W\to U$ så att $f = \comp{{\psi, \phi}}$, där $\psi: V\times W\to V\otimes W$, för alla $f: V\times W\to U$.
+Om $f: V\times W\to U$ är bilinjär finns en unik bilinjär avbilding $\phi: V\otimes W\to U$ så att $f = \comp{{\phi, \psi}}$, där $\psi: V\times W\to V\otimes W$, för alla $f: V\times W\to U$.
 
 \proof
 Avbildningen $\psi: V\times W\to V\otimes W, (x, y)\to x\otimes y$ är bilinjär. Om nu $f$ är bilinjär kan vi definiera en bilinjär avbildning $\phi: V\otimes W\to U$ som $\phi(e_{i}\otimes f_{j}) = f(e_{i}, f_{j})$, där $e_{i}$ och $f_{j}$ är i basen för $V$ respektiva $W$. Vi ser nu att $f = \comp{{\psi, \phi}}$.
 
 För att visa att $\phi$ är unik, anta att $F$ uppfyller $F(e_{i}\otimes f_{j}) = f(e_{i}, f_{j})$. Då är $\phi - F$ noll på hela basen för $V\otimes W$, och måste därmed vara noll som linjär avbildning.
+
+\paragraph{Tensorprodukt av avbildningar}
+Låt $L_{1}$ och $L_{2}$ vara linjära avbildningar på $V_{1}$ respektiva $V_{2}$ med matriser $A_{1}$ respektiva $A_{2}$ för några val av baser för $V_{1}$ och $V_{2}$. Då ges matrisen för $L_{1}\otimes L_{2}$ av
+\begin{align*}
+	\mqty[
+		A_{1, 11}A_{2}             & A_{1, 12}A_{2}             & \dots  & A_{1, 1, \dim{V_{1}}}A_{2} \\
+		A_{1, 21}A_{2}             & A_{1, 22}A_{2}             & \dots  & A_{1, 2, \dim{V_{1}}}A_{2} \\
+		\vdots                     & \vdots                     & \ddots & \vdots \\
+		A_{1, \dim{V_{1}}, 1}A_{2} & A_{1, \dim{V_{1}}, 2}A_{2} & \dots  & A_{1, \dim{V_{1}}, \dim{V_{1}}}A_{2}
+	].
+\end{align*}
+
+\proof
+Låt $V_{1}$ och $V_{2}$ ha baser $\set{e_{i}}{}_{i\in I}$ respektiva $\set{f_{j}}{}_{j\in J}$, och $W_{1}$ och $W_{2}$ ha baser $\set{g_{k}}{}_{k\in K}$ respektiva $\set{h_{m}}{}_{m\in M}$. De linjära avbildningarna ges av
+\begin{align*}
+	L_{1}(e_{i}) &= A_{1, ki}g_{k}, \\
+	L_{2}(f_{j}) &= A_{2, mj}h_{m}.
+\end{align*}
+Med definitionen av tensorprodukten av $L_{1}$ och $L_{2}$ fås
+\begin{align*}
+	L_{1}\otimes L_{2}(e_{i}, f_{j}) &= L_{1}(e_{i})\otimes L_{2}(f_{j}) \\
+	                                 &= A_{1, ki}g_{k}\otimes A_{2, mj}h_{m} \\
+	                                 &= A_{1, ki}A_{2, mj}g_{k}\otimes h_{m}
+\end{align*}
+För att kunna fortsätta, behöver vi en idé om ordning i båda baserna. Vi ordnar dessa först efter indexet till vänster och därefter efter indexet till höger, så att ordningen blir $e_{1}\otimes f_{1}, e_{1}\otimes f_{2}, \dots, e_{2}\otimes f_{1}, e_{2}\otimes f_{2}, \dots$ i $V_{1}\otimes V_{2}$ och motsvarande i $W_{1}\otimes W_{2}$. Lite fundering ger då att $e_{i}\otimes f_{j}$ är element nummer $\dim{V_{2}}(i - 1) + j$ i basen. Om nu $L_{1}\otimes L_{2}$ har matris $B$ med det givna valet av baser, ger detta
+\begin{align*}
+	B_{\dim{W_{2}}(k - 1) + m, \dim{V_{2}}(i - 1) + j} = A_{1, ki}A_{2, mj}.
+\end{align*}
+Det här kanske säjer inte så mycket, men fixera nu alla index förutom $m$. Koefficienten framför nästa basvektor fås vid att röra sig ned rätt kolumn i $A_{2}$. På samma sättet ser vi att fixering av alla index förutom $j$ motsvarar att röra sig längsmed rätt rad i $A_{2}$. I båda fall multipliceras det med ett element från $A_{1}$, vilket ger att matrisen för $L_{1}\otimes L_{2}$ med det givna valet av bas blir
+\begin{align*}
+	B =
+	\mqty[
+		A_{1, 11}A_{2}             & A_{1, 12}A_{2}             & \dots  & A_{1, 1, \dim{V_{1}}}A_{2} \\
+		A_{1, 21}A_{2}             & A_{1, 22}A_{2}             & \dots  & A_{1, 2, \dim{V_{1}}}A_{2} \\
+		\vdots                     & \vdots                     & \ddots & \vdots \\
+		A_{1, \dim{V_{1}}, 1}A_{2} & A_{1, \dim{V_{1}}, 2}A_{2} & \dots  & A_{1, \dim{V_{1}}, \dim{V_{1}}}A_{2}
+	].
+\end{align*}
 
 \paragraph{Tensorprodukt som direkt summa}
 Om $1 + 1\neq 0$ i kroppen $k$ som verkar på $V$ är
