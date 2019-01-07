@@ -2,6 +2,17 @@
 
 \subsection{Definitioner}
 
+\paragraph{Cesàro-summerbarhet}
+Låt
+\begin{align*}
+	s_{n} = \sum\limits_{k = 0}^{n}a_{k}
+\end{align*}
+och
+\begin{align*}
+	\sigma_{N} = \frac{1}{N + 1}\sum\limits_{k = 0}^{N}s_{k}.
+\end{align*}
+Då är $\sum\limits_{k = 0}^{n}a_{k}$ Cesàrosummerbar om $\sigma_{N}$ konvergerar när $N\to\infty$.
+
 \paragraph{Summationskärnor}
 En summationskärna är en Riemannintegrerbar funktion $K_{n}$ på $(-a, a)$ som uppfyller
 \begin{itemize}
@@ -13,17 +24,6 @@ En summationskärna är en Riemannintegrerbar funktion $K_{n}$ på $(-a, a)$ som
 \paragraph{Positiva summationskärnor}
 En positiv summationskärna är en summationskärna med positiva funktioner.
 
-\paragraph{Cesaro-summerbarhet}
-Låt
-\begin{align*}
-	s_{n} = \sum\limits_{k = 0}^{n}a_{k}
-\end{align*}
-och
-\begin{align*}
-	\sigma_{N} = \frac{1}{N}\sum\limits_{k = 0}^{N - 1}s_{k}.
-\end{align*}
-Då är $\sum\limits_{k = 0}^{n}a_{k}$ Cesarosummerbar om $\sigma_{N}$ konvergerar när $N\to\infty$.
-
 \paragraph{Dirichletkärnan}
 Dirichletkärnan är summationskärnan vars element ges av
 \begin{align*}
@@ -33,10 +33,40 @@ Dirichletkärnan är summationskärnan vars element ges av
 \paragraph{Fejérkärnan}
 Vi definierar Fejérkärnan som
 \begin{align*}
-	F_{N}(t) = \frac{1}{N}\sum\limits_{k = 0}^{N - 1}D_{k}(t).
+	F_{N}(t) = \frac{1}{N + 1}\sum\limits_{k = 0}^{N}D_{k}(t).
 \end{align*}
 
 \subsection{Satser}
+
+\paragraph{Konvergens och Cesarosummerbarhet}
+Låt
+\begin{align*}
+	\sum\limits_{i = 0}^{\infty}a_{i} = s.
+\end{align*}
+Då är $\sum\limits_{i = 0}^{\infty}a_{i}$ Cesarosummerbar och har värdet $s$ även i denna mening.
+
+\proof
+Vi har
+\begin{align*}
+	\abs{\sigma_{n} - s} &= \abs{\frac{1}{n}\sum\limits_{i = 0}^{n - 1}s_{i} - s} \\
+	                     &= \abs{\frac{(s_{0} - s) + \dots + (s_{n - 1} - s)}{n}} \\
+	                     &\leq  \abs{\frac{(s_{0} - s) + \dots + (s_{M} - s)}{n}} + \abs{\frac{(s_{M + 1} - s) + \dots + (s_{n - 1} - s)}{n}}.
+\end{align*}
+Vi vill visa att det finns ett $N$ så att $n > N\implies \abs{\sigma_{n} - s} < \varepsilon$ för varje $\varepsilon > 0$.
+
+Låt nu $\varepsilon > 0$ vara givet. Eftersom $s_{n}$ konvergerar, finns det ett $M$ så att när $n > M$ är $\abs{s_{n} - s} < \chi$ för varje $\chi > 0$. Låt nu $M$ i ekvationen över vara så att när $n > M$ är $\abs{s_{n} - s} < \frac{\varepsilon}{2}$. Detta ger
+\begin{align*}
+	\abs{\frac{(s_{M + 1} - s) + \dots + (s_{n - 1} - s)}{n}} < \frac{n - M}{n}\frac{\varepsilon}{2} < \frac{\varepsilon}{2}.
+\end{align*}
+Olikheten över kan då skrivas som
+\begin{align*}
+	\abs{\sigma_{n} - s} \leq \frac{C_{M}}{n} + \frac{\varepsilon}{2}.
+\end{align*}
+Låt nu $N$ vara lika med $\frac{2C_{M}}{\varepsilon}$, och välj $n > N$. Då blir olikheten
+\begin{align*}
+	\abs{\sigma_{n} - s} \leq \varepsilon,
+\end{align*}
+och beviset är klart.
 
 \paragraph{Formel för Fourierkoefficienter}
 Antag att en funktion $f$ kan skrivas som
@@ -48,7 +78,7 @@ där$\sum\limits_{n\in\Z}\abs{c_{n}}$ är begränsad. Då gäller det att
 	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}.
 \end{align*}
 
-\subparagraph{Bevis}
+\proof
 Om antagandet är sant, vill vi visa att
 \begin{align*}
 	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\sum\limits_{m\in\Z}c_{m}e^{imt}e^{-int}}{t}.
@@ -84,36 +114,6 @@ och vi har alltså visat
 	\abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t} - c_{n}} < \varepsilon,
 \end{align*}
 vilket ger att satsen stämmer.
-
-\paragraph{Konvergens och Cesarosummerbarhet}
-Låt
-\begin{align*}
-	\sum\limits_{i = 0}^{\infty}a_{i} = s.
-\end{align*}
-Då är $\sum\limits_{i = 0}^{\infty}a_{i}$ Cesarosummerbar och har värdet $s$ även i denna mening.
-
-\proof
-Vi har
-\begin{align*}
-	\abs{\sigma_{n} - s} &= \abs{\frac{1}{n}\sum\limits_{i = 0}^{n - 1}s_{i} - s} \\
-	                     &= \abs{\frac{(s_{0} - s) + \dots + (s_{n - 1} - s)}{n}} \\
-	                     &\leq  \abs{\frac{(s_{0} - s) + \dots + (s_{M} - s)}{n}} + \abs{\frac{(s_{M + 1} - s) + \dots + (s_{n - 1} - s)}{n}}.
-\end{align*}
-Vi vill visa att det finns ett $N$ så att $n > N\implies \abs{\sigma_{n} - s} < \varepsilon$ för varje $\varepsilon > 0$.
-
-Låt nu $\varepsilon > 0$ vara givet. Eftersom $s_{n}$ konvergerar, finns det ett $M$ så att när $n > M$ är $\abs{s_{n} - s} < \chi$ för varje $\chi > 0$. Låt nu $M$ i ekvationen över vara så att när $n > M$ är $\abs{s_{n} - s} < \frac{\varepsilon}{2}$. Detta ger
-\begin{align*}
-	\abs{\frac{(s_{M + 1} - s) + \dots + (s_{n - 1} - s)}{n}} < \frac{n - M}{n}\frac{\varepsilon}{2} < \frac{\varepsilon}{2}.
-\end{align*}
-Olikheten över kan då skrivas som
-\begin{align*}
-	\abs{\sigma_{n} - s} \leq \frac{C_{M}}{n} + \frac{\varepsilon}{2}.
-\end{align*}
-Låt nu $N$ vara lika med $\frac{2C_{M}}{\varepsilon}$, och välj $n > N$. Då blir olikheten
-\begin{align*}
-	\abs{\sigma_{n} - s} \leq \varepsilon,
-\end{align*}
-och beviset är klart.
 
 \paragraph{Riemann-Lebesgues lemma}
 Antag att $f$ är Riemannintegrerbar på $(-\pi, \pi]$. Då är
@@ -238,40 +238,34 @@ För att visa det tredje påståendet, skriv
 	                                                &\to 0. 
 \end{align*}
 
-\paragraph{Konvergens av Fourierserier}
-Det här är en högst oklar sats.
+\paragraph{Fejérs sats}
+Låt $f$ vara styckvis kontinuerlig på $[-\pi, \pi]$ och kontinuerlig i $t$, och definiera
+\begin{align*}
+	s_{N}      &= \sum\limits_{n = -N}^{N}c_{n}e^{int}, \\
+	\sigma_{N} &= \frac{1}{N + 1}\sum\limits_{n = 0}^{N}s_{n},
+\end{align*}
+där $c_{n}$ är Fourierkoefficienterna till $f$. Då är $\lim\limits_{N\to\infty}\sigma_{N} = f(t)$.
 
 \proof
-Vi vill hitta ett villkor på $f$ så att för alla $\varepsilon > 0$ finns det ett $K > 0$ så att
 \begin{align*}
-	N > K \implies \abs{f(x) - \sum\limits_{n = -N}^{N}c_{n}e^{inx}} < \varepsilon,
-\end{align*}
-där
-\begin{align*}
-	c_{n} = \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}.
-\end{align*}
-Vi definierar
-\begin{align*}
-	S_{N}(x) = \sum\limits_{n = -N}^{N}c_{n}e^{inx}
-\end{align*}
-och beräknar den som
-\begin{align*}
-	S_{N}(x) &= \frac{1}{2\pi}\sum\limits_{n = -N}^{N}\inteval{-\pi}{\pi}{f(t)e^{in(x - t)}}{t} \\
+	s_{N}(x) &= \frac{1}{2\pi}\sum\limits_{n = -N}^{N}\inteval{-\pi}{\pi}{f(t)e^{in(x - t)}}{t} \\
 	         &= \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)\frac{1 - e^{-i(2N + 1)(x - t)}}{1 - e^{-i(x - t)}}e^{-iN(x - t)}}{t}.
 \end{align*}
 Vi känner igen ena faktorn i integranden som Dirichletkärnan, och skriver
 \begin{align*}
-	S_{N}(x) = \inteval{-\pi}{\pi}{f(t)D_{N}(x - t)}{t}.
+	s_{N}(x) &= \inteval{-\pi}{\pi}{f(t)D_{N}(x - t)}{t} \\
+	         &= -\inteval{x + \pi}{x - \pi}{f(x - u)D_{N}(u)}{u} \\
+	         &= \inteval{-\pi}{\pi}{f(x - u)D_{N}(u)}{u},
 \end{align*}
-
-\paragraph{Följdsats}
+där vi har utnyttjat integrandens periodicitet. Cesàrosumman av detta är
 \begin{align*}
-	\inteval{-\pi}{\pi}{F_{N}(t)f(x - t)}{t} = f(x).
+	\sigma_{N} &= \frac{1}{N + 1}\sum\limits_{n = 0}^{N}\inteval{-\pi}{\pi}{f(x - t)D_{N}(t)}{t} \\
+	           &= \inteval{-\pi}{\pi}{f(x - t)\frac{1}{N + 1}\sum\limits_{n = 0}^{N}D_{N}(t)}{t} \\
+	           &= \inteval{-\pi}{\pi}{F_{N}(t)f(x - t)}{t}.
 \end{align*}
+Enligt satsen om integraler med positiva summationskärnor är detta lika med $f(t)$, och beviset är klart.
 
-\proof
-
-\paragraph{Annan följdsats}
+\paragraph{$0$-funktionen och dens Fourierkoefficienter}
 Antag att $f$ är integrerbar på enhetscirkeln och att alla dens Fourierkoefficienter är $0$. Då är $f(x) = 0$ överallt där $f$ är kontinuerlig.
 
 \proof
