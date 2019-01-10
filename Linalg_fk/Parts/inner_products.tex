@@ -76,15 +76,17 @@ På ett inreproduktrum $V$ är $\adj{L}$ den adjungerade operatorn till $L$ om
 
 Om $L: V\to W$ definieras den adjungerade operatorn som $\adj{L}: W\to V$ som uppfyller
 \begin{align*}
-	\inprod{y}{L(x)} = \inprod{x}{\adj{L}(y)}\forall x \in V, y\in W.
+	\inprod{\adj{L}y}{x} = \inprod{y}{Lx}\ \forall x\in V, y\in W.
 \end{align*}
 
+\paragraph{Adjungerade matriser}
+Den adjungerade matrisen definieras som $\adj{A} = (\cc{A})^{T}$.
+
 \paragraph{Självadjungerade operatorer}
-På ett inreproduktrum $V$ är $L$ självadjungerad om
-\begin{align*}
-	\inprod{L(x)}{y} = \inprod{x}{L(y)}\forall x, y\in V.
-\end{align*}
-Matrisen för en sådan operator sägs vara Hermitesk.
+På ett inreproduktrum $V$ är $L$ självadjungerad om $\adj{L} = L$.
+
+\paragraph{Hermiteska matriser}
+En matris är Hermitesk om $\adj{A} = A$.
 
 \paragraph{Cauchyföljder}
 En Cauchyföljd är en följd som indexeras med naturliga talen och som uppfyller att för varje $\varepsilon > 0$ finns det ett $N$ så att
@@ -187,7 +189,7 @@ och därmed uppfylls konjugatsymmetrin om
 \paragraph{Ortogonalt komplement och vektorrum}
 Om $V$ är ett ändligdimensionellt vektorrum, är
 \begin{align*}
-	W = W \oplus W^{\perp}.
+	V = W \oplus W^{\perp}.
 \end{align*}
 
 \proof
@@ -249,6 +251,22 @@ Om $B$ är matrisen för $\adj{L}$, så vi nu att dens komponenter kan skrivas s
 \end{align*}
 och därmed är beviset klart.
 
+\subparagraph{Alternativt bevis}
+Vi tittar på avbildningar av baselement. Låt $\{e_{i}\}$ vara basen för $V$ och $\{f_{i}\}$ vara basen för $W$.
+
+Definitionen ger att $L(e_{i}) = \sum\limits_{k}A_{ik}f_{k}$. Tillämpad på inreprodukten ger detta
+\begin{align*}
+	\inprod{f_{j}}{L(e_{i})} &= \inprod{f_{j}}{\sum\limits_{k}A_{ik}f_{k}} \\
+	                         &= \sum\limits_{k}A_{ik}\inprod{f_{j}}{f_{k}} \\
+	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\delta_{il} \\
+	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\inprod{e_{l}}{e_{i}} \\
+	                         &= \sum\limits_{l}\sum\limits_{k}A_{lk}\inprod{e_{l}}{e_{i}}\delta_{jk} \\
+	                         &= \sum\limits_{l}A_{lj}\inprod{e_{l}}{e_{i}} \\
+	                         &= \inprod{\sum\limits_{l}\cc{(A_{lj})}e_{l}}{e_{i}} \\
+	                         &= \inprod{\sum\limits_{l}(\cc{(A_{lj})})^{T}e_{l}}{e_{i}}.
+\end{align*}
+Vi vill att bra:en skall motsvara $\adj{L}(f_{j})$. Denna ges av $\adj{L}(f_{j}) = \sum\limits_{l}B_{jl}e_{j}$, där $B$ är matrisen för $\adj{L}$. Jämförelse med inreprodukten ovan fullför beviset.
+
 \paragraph{Egenvärden för självadjungerade operatorer}
 Självadjungerade operatorer har bara reella egenvärden.
 
@@ -261,6 +279,19 @@ Detta kan utvecklas om $x$ är en egenvektor för att ge
 	\cc{\lambda}\inprod{x}{x} = \lambda\inprod{x}{x},
 \end{align*}
 och beviset är klart.
+
+\paragraph{Självadjungerade operatorer och ortogonala egenvektorer}
+Låt $x$ vara en egenvektor till $L$ med egenvärdet $\lambda $och $y$ vara en egenvektor med egenvärde $\mu$. Om $\lambda - \mu \neq 0$ är $\inprod{x}{y} = 0$.
+
+\proof
+\begin{align*}
+	\inprod{L(x)}{y} = \inprod{x}{L(y)}.
+\end{align*}
+Vi använder att $x$ och $y$ är egenvektorer och får
+\begin{align*}
+	\cc{\lambda}\inprod{x}{y} = \mu\inprod{x}{y}.
+\end{align*}
+Enligt antagandet måste då $\inprod{x}{y} = 0$.
 
 \paragraph{Diagonalisering av självadjungerade operatorer}
 Alla självadjungerade operatorer på ändligdimensionella inreproduktrum kan diagonaliseras.
@@ -287,19 +318,6 @@ Per induktion finns det då en ortogonal bas för $W^{\perp}$ så att matrisen f
 Om $L$ är en självadjungerad operator på ett ändligdimensionellt vektorrum $V$, finns det en ortogonal bas av egenvektorer till $L$.
 
 \proof
-
-\paragraph{Självadjungerade operatorer och ortogonala egenvektorer}
-Låt $x$ vara en egenvektor till $L$ med egenvärdet $\lambda $och $y$ vara en egenvektor med egenvärde $\mu$. Om $\lambda - \mu \neq 0$ är $\inprod{x}{y} = 0$.
-
-\proof
-\begin{align*}
-	\inprod{L(x)}{y} = \inprod{x}{L(y)}.
-\end{align*}
-Vi använder att $x$ och $y$ är egenvektorer och får
-\begin{align*}
-	\cc{\lambda}\inprod{x}{y} = \mu\inprod{x}{y}.
-\end{align*}
-Enligt antagandet måste då $\inprod{x}{y} = 0$.
 
 \paragraph{Längdbevarande operatorer}
 För en operator $L$ på ett reellt inreproduktrum $V$ är följande ekvivalent:
@@ -351,22 +369,3 @@ Låt $H$ vara Hermitesk. Då är $e^{iH}$ unitär.
 
 \proof
 Eftersom $H$ är Hermitesk, finns det en ortogonal bas av egenvektorer. I denna basen är matrisen för $H$ en diagonalmatris. Därmed är matrisen för $e^{iH}$ en diagonalmatris med $e^{i\lambda}$ på diagonalen, där $\lambda$ är något egenvärde. Alltså finns det en ortogonal bas av egenvektorer till $e^{iH}$, där varje egenvärde har belopp $1$, och $e^{iH}$ är unitär.
-
-\paragraph{Matrisen för adjungerade avbildningar}
-Låt $L: V\to W$ ha matris $A$ för något val av ortonormala baser för $V$ och $W$, där $V$ och $W$ är inreproduktrum. Då har $\adj{L}$ matris $\adj{A} = (\cc{A})^{T}$.
-
-\proof
-Vi tittar på avbildningar av baselement. Låt $\{e_{i}\}$ vara basen för $V$ och $\{f_{i}\}$ vara basen för $W$.
-
-Definitionen ger att $L(e_{i}) = \sum\limits_{k}A_{ik}f_{k}$. Tillämpad på inreprodukten ger detta
-\begin{align*}
-	\inprod{f_{j}}{L(e_{i})} &= \inprod{f_{j}}{\sum\limits_{k}A_{ik}f_{k}} \\
-	                         &= \sum\limits_{k}A_{ik}\inprod{f_{j}}{f_{k}} \\
-	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\delta_{il} \\
-	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\inprod{e_{l}}{e_{i}} \\
-	                         &= \sum\limits_{l}\sum\limits_{k}A_{lk}\inprod{e_{l}}{e_{i}}\delta_{jk} \\
-	                         &= \sum\limits_{l}A_{lj}\inprod{e_{l}}{e_{i}} \\
-	                         &= \inprod{\sum\limits_{l}\cc{(A_{lj})}e_{l}}{e_{i}} \\
-	                         &= \inprod{\sum\limits_{l}(\cc{(A_{lj})})^{T}e_{l}}{e_{i}}.
-\end{align*}
-Vi vill att bra:en skall motsvara $\adj{L}(f_{j})$. Denna ges av $\adj{L}(f_{j}) = \sum\limits_{l}B_{jl}e_{j}$, där $B$ är matrisen för $\adj{L}$. Jämförelse med inreprodukten ovan fullför beviset.
