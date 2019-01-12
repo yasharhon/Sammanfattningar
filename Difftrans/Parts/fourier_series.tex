@@ -238,6 +238,18 @@ För att visa det tredje påståendet, skriv
 	                                                &\to 0. 
 \end{align*}
 
+\paragraph{Omskrivning av Fourierserier}
+\begin{align*}
+	\sum\limits_{n = -N}^{N}c_{n}e^{int} = \inteval{-\pi}{\pi}{f(x - u)D_{N}(u)}{u}.
+\end{align*}
+
+\proof
+\begin{align*}
+	s_{N}(x) &= \frac{1}{2\pi}\sum\limits_{n = -N}^{N}\inteval{-\pi}{\pi}{f(t)e^{in(x - t)}}{t} \\
+	         &= \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)\frac{1 - e^{-i(2N + 1)(x - t)}}{1 - e^{-i(x - t)}}e^{-iN(x - t)}}{t}.
+\end{align*}
+Vi känner igen ena faktorn i integranden som Dirichletkärnan, och därmed är beviset klart.
+
 \paragraph{Fejérs sats}
 Låt $f$ vara styckvis kontinuerlig på $[-\pi, \pi]$ och kontinuerlig i $t$, och definiera
 \begin{align*}
@@ -247,11 +259,7 @@ Låt $f$ vara styckvis kontinuerlig på $[-\pi, \pi]$ och kontinuerlig i $t$, oc
 där $c_{n}$ är Fourierkoefficienterna till $f$. Då är $\lim\limits_{N\to\infty}\sigma_{N} = f(t)$.
 
 \proof
-\begin{align*}
-	s_{N}(x) &= \frac{1}{2\pi}\sum\limits_{n = -N}^{N}\inteval{-\pi}{\pi}{f(t)e^{in(x - t)}}{t} \\
-	         &= \frac{1}{2\pi}\inteval{-\pi}{\pi}{f(t)\frac{1 - e^{-i(2N + 1)(x - t)}}{1 - e^{-i(x - t)}}e^{-iN(x - t)}}{t}.
-\end{align*}
-Vi känner igen ena faktorn i integranden som Dirichletkärnan, och skriver
+Vi utgår från förra satsen, och skriver
 \begin{align*}
 	s_{N}(x) &= \inteval{-\pi}{\pi}{f(t)D_{N}(x - t)}{t} \\
 	         &= -\inteval{x + \pi}{x - \pi}{f(x - u)D_{N}(u)}{u} \\
@@ -287,7 +295,7 @@ Vi vill att
 \begin{align*}
 	\abs{\inteval{-\pi}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{+}) + f(x^{-})}{2}}\to 0.
 \end{align*}
-Om detta stämmer, gäller det att
+Detta är sant om
 \begin{align*}
 	\abs{\inteval{0}{\pi}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{-})}{2}} + \abs{\inteval{-\pi}{0}{f(x - t)D_{N}(t)}{t} - \frac{f(x^{+})}{2}} \to 0.
 \end{align*}
@@ -315,22 +323,22 @@ Låt $f\in C^{1}$ på enhetscirkeln. Då gäller att
 \end{align*}
 
 \proof
-Vi har
+Riemann-Lebesgues sats ger att $\dv{f}{x}$ har begränsade Fourierkoefficienter, vilket ger
 \begin{align*}
 	\abs{c_{n}\left(\dv{f}{x}\right)} &= \abs{\frac{1}{2\pi}\inteval{-\pi}{\pi}{\deval{f}{x}{t}e^{-int}}{t}} \\
 	                                  &= \frac{1}{2\pi}\abs{f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi} + in\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}}.
 \end{align*}
-Eftersom $f$ är konmtinuerlig på enhetscirkeln, ger detta
+Eftersom $f$ är kontinuerlig på enhetscirkeln, ger detta
 \begin{align*}
 	f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi} = f(\pi)(e^{-in\pi} - e^{in\pi}) = -2f(\pi)\sin{n\pi} = 0,
 \end{align*}
-vilket ger
+och
 \begin{align*}
 	\abs{c_{n}\left(\dv{f}{x}\right)} &= \frac{1}{2\pi}\abs{in\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}} \\
 	                                  &= \frac{\abs{n}}{2\pi}\abs{\inteval{-\pi}{\pi}{f(t)e^{-int}}{t}} \\
 	                                  &= \abs{n}\abs{c_{n}(f)}.
 \end{align*}
-Riemann-Lebesgues sats ger att $\abs{c_{n}\left(\dv{f}{x}\right)}$ är begränsad, vilket ger
+Eftersom vänstersidan är begränsad av en konstant $C$, ger detta
 \begin{align*}
 	C \geq \abs{c_{n}\left(\dv{f}{x}\right)} = \abs{n}\abs{c_{n}(f)},
 \end{align*}
