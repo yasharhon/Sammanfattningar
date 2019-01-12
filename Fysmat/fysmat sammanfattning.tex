@@ -1,0 +1,43 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+
+\newcommand{\integ}[3]{\int\limits_{#1}\dd{#2}#3}
+\newcommand{\vinteg}[3]{\int\limits_{#1}#2\cdot\dd{#3}}
+\renewcommand{\curl}[1]{\text{rot}#1}
+\renewcommand{\grad}[1]{\text{grad}#1}
+\renewcommand{\div}[1]{\text{div}#1}
+\newcommand{\laplace}[1]{\Delta #1}
+\newcommand{\bound}[1]{\partial #1}
+\newcommand{\del}[2]{\partial_{#1}#2}
+\newcommand{\leci}[1]{\varepsilon_{#1}}
+\newcommand{\tenprod}[2]{#1\otimes #2}
+
+\title{Sammanfattning av}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\end{document}
