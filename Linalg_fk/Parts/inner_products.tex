@@ -1,0 +1,371 @@
+\section{Inreprodukt}
+
+\subsection{Definitioner}
+
+\paragraph{Inreprodukt över $\R$}
+En inreprodukt $\inprod{x}{y}$ på ett vektorrum $V$ över $\R$ är en avbildning $V\times V\to \R$ som är
+\begin{itemize}
+	\item bilinjär, dvs.
+	\begin{itemize}
+		\item $\inprod{x + y}{z} = \inprod{x}{z} + \inprod{y}{z}$.
+		\item $\inprod{ax}{y} = a\inprod{x}{y}$.
+		\item $\inprod{x}{y + z} = \inprod{x}{y} + \inprod{x}{z}$.
+		\item $\inprod{x}{ay} = a\inprod{x}{y}$.
+	\end{itemize}
+	\item symmetrisk, dvs. $\inprod{x}{y} = \inprod{y}{x}$.
+	\item positivt definit, dvs. $\inprod{x}{x} > 0$ om $x \neq 0$.
+\end{itemize}
+
+\paragraph{Inreprodukt över $\C$}
+En inreprodukt $\inprod{x}{y}$ på ett vektorrum $V$ över $\C$ är en avbildning $V\times V\to \C$ som är
+\begin{itemize}
+	\item seskvilinjär, dvs. bilinjär, men $\inprod{ax}{y} = \cc{a}\inprod{x}{y}$.
+	\item konjugatsymmetrisk, dvs. $\inprod{x}{y} = \cc{\inprod{y}{x}}$.
+	\item positivt definit, dvs. $\inprod{x}{x} > 0$ om $x \neq 0$. Notera att detta och konjugatsymmetrin implicerar att $\inprod{x}{x}$ har ingen imaginärdel.
+\end{itemize}
+
+\paragraph{Metrik}
+Låt $x = \sum x_{i}e_{i}, y = \sum y_{i}e_{i}$ och $B = \set{e_{i}}{}_{i\in I}$ vara en bas för vektorrummet $V$ som $x$ och $y$ är i. Vi definierar en matris som beskriver inreprodukten genom
+\begin{align*}
+	\inprod{x}{y} = \sum a_{ij}\cc{x_{i}}y_{j} = (\cc{x})^{T}Ay,
+\end{align*}
+där $A_{ij} = \inprod{e_{i}}{e_{j}}$. $A$ kallas för metriken.
+
+\paragraph{Hermiteska matriser}
+Låt $A$ vara en matris. Om $A$ uppfyller
+\begin{align*}
+	A = (\cc{A})^{T},
+\end{align*}
+säjs den vara konjugatsymmetrisk eller Hermitesk.
+
+\paragraph{Norm}
+Normen eller längden av en vektor definieras som
+\begin{align*}
+	\abs{x} = \sqrt{\inprod{x}{x}}.
+\end{align*}
+
+\paragraph{Vinkel}
+Vinkeln $\theta$ mellan två vektorer definieras som
+\begin{align*}
+	\cos{\theta} = \frac{\inprod{x}{x}}{\abs{x}\abs{y}}.
+\end{align*}
+
+\paragraph{Ortogonalitet}
+$x$ och $y$ är ortogonala om
+\begin{align*}
+	\inprod{x}{y} = 0.
+\end{align*}
+
+\paragraph{Ortogonalt komplement}
+Om $W\subseteq V$ är ett delrum så finns det ett ortogonalt komplement
+\begin{align*}
+	W^{\perp} = \left\{x\in V: \inprod{x}{y} = 0\forall y\in W\right\} \subseteq V.
+\end{align*}
+
+\paragraph{Projektion}
+Låt $V$ vara ett delrum med bas bas $B = \{e_{i}\}_{i= 0}^{n}$. Då definieras projektionen som
+\begin{align*}
+	\proj{V}{x} = \sum\limits_{i = 0}^{n}\frac{\inprod{x_{i}}{e_{j}}}{\norm{e_{i}}^{2}}e_{i}.
+\end{align*}
+
+\paragraph{Adjungerade operatorer}
+På ett inreproduktrum $V$ är $\adj{L}$ den adjungerade operatorn till $L$ om
+\begin{align*}
+	\inprod{\adj{L}(x)}{y} = \inprod{x}{L(y)}\forall x, y\in V.
+\end{align*}
+
+Om $L: V\to W$ definieras den adjungerade operatorn som $\adj{L}: W\to V$ som uppfyller
+\begin{align*}
+	\inprod{\adj{L}y}{x} = \inprod{y}{Lx}\ \forall x\in V, y\in W.
+\end{align*}
+
+\paragraph{Adjungerade matriser}
+Den adjungerade matrisen definieras som $\adj{A} = (\cc{A})^{T}$.
+
+\paragraph{Självadjungerade operatorer}
+På ett inreproduktrum $V$ är $L$ självadjungerad om $\adj{L} = L$.
+
+\paragraph{Hermiteska matriser}
+En matris är Hermitesk om $\adj{A} = A$.
+
+\paragraph{Cauchyföljder}
+En Cauchyföljd är en följd som indexeras med naturliga talen och som uppfyller att för varje $\varepsilon > 0$ finns det ett $N$ så att
+\begin{align*}
+	i, j > N\implies \norm{x_{i} - x_{j}} < \varepsilon.
+\end{align*}
+
+\paragraph{Fullständiga rum}
+Ett rum $V$ är fullständigt om alla Cauchy-följder konvergerar.
+
+\paragraph{Hilbertrum}
+Ett Hilbertrum är ett inreproduktrum som är fullständigt.
+
+\paragraph{$\ell^{2}$}
+Vi definierar $\ell^{2}(\C)$ som mängden av alla följder av tal i $\C$ så att
+\begin{align*}
+	\sum\limits_{i = 0}^{N}\abs{a_{i}}^{2}
+\end{align*}
+är begränsad, med inreprodukten
+\begin{align*}
+	\inprod{A}{B} = \sum\limits_{i = 0}^{N}\cc{a_{i}}b_{i}.
+\end{align*}
+
+\paragraph{$L^{2}$}
+Vi definierar $L^{2}([0, 1], \C)$ som mängden av alla komplexvärda funktioner på $[0, 1]$ med inreprodukt
+\begin{align*}
+	\inprod{f}{g} = \inteval{0}{1}{\cc{f}(t)g(t)}{t}.
+\end{align*}
+
+\paragraph{Ortogonala och unitära operatorer}
+En ortogonal operator över ett reellt vektorrum $V$ är en inverterbar operator som uppfyller $\inprod{Lx}{Ly} = \inprod{x}{y}\forall x, y\in V$.
+
+En unitär operator över ett komplext vektorrum $V$ är en inverterbar operator som uppfyller $\inprod{Lx}{Ly} = \inprod{x}{y}\forall x, y\in V$.
+
+\paragraph{Adjungerade avbildningar}
+Om $L: V\to W$ är linjär och $V$ och $W$ är inreproduktrum, ges den adjungerade linjära avbildningen $\adj{L}: W\to V$ av $\inprod{\adj{L}y}{x} = \inprod{y}{Lx}\ \forall x\in V, y\in W$.
+
+\subsection{Satser}
+
+\paragraph{Cauchy-Schwarz olikhet}
+
+\begin{align*}
+	\abs{\inprod{x}{y}} \leq \abs{x}\abs{y}.
+\end{align*}
+
+\proof
+Fallet då någon av dessa är $0$ är trivialt. Antag då att detta inte stämmer, och definiera
+\begin{align*}
+	z = x + ty.
+\end{align*}
+Det gäller att
+\begin{align*}
+	\inprod{z}{y} = \inprod{x}{y} + t\norm{y}^{2}.
+\end{align*}
+För $t = -\frac{\inprod{x}{y}}{\norm{y}^{2}}$ (vilket motsvarar den ortogonala projektionen av $x$ på $y$) är detta lika med $0$. Vi kan skriva
+\begin{align*}
+	x = z - ty,
+\end{align*}
+och för vårat specifika val av $t$ får man
+\begin{align*}
+	\norm{x}^{2} &= \norm{z}^{2} + \frac{\inprod{x}{y}^{2}}{\norm{y}^{4}}\norm{y}^{2} \\
+	             &= \norm{z}^{2} + \frac{\inprod{x}{y}^{2}}{\norm{y}^{2}} \\
+	             &\geq \frac{\inprod{x}{y}^{2}}{\norm{y}^{2}},
+\end{align*}
+och beviset är klart.
+
+\paragraph{Triangelolikheten}
+
+\begin{align*}
+	\abs{u + v} \leq \abs{u} + \abs{v}.
+\end{align*}
+
+\proof
+\begin{align*}
+	\norm{u + v}^{2} &= \norm{u}^{2} + \norm{v}^{2} + 2\Re(\inprod{u}{v}) \\
+	                 &\leq \norm{u}^{2} + \norm{v}^{2} + 2\abs{\inprod{u}{v}} \\
+	                 &\leq \norm{u}^{2} + \norm{v}^{2} + 2\norm{u}\norm{v} \\
+	                 &= (\norm{u} + \norm{v})^{2}.
+\end{align*}
+Eftersom båda sidor är kvadrater av positiva storheter, är beviset klart.
+
+\paragraph{Krav på metriken}
+Metriken är konjugatsymmetrisk.
+
+\proof
+Om metriken skall beskriva inreprodukten, måste den vara konjugatsymmetrisk. Detta ger
+\begin{align*}
+	(\cc{x})^{T}Ay = \cc{((\cc{y})^{T}Ax)} = y^{T}\cc{A}\cc{x}.
+\end{align*}
+
+Transponering av högersidan ger
+\begin{align*}
+	(\cc{x})^{T}Ay = (\cc{x})^{T}(\cc{A})^{T}y,
+\end{align*}
+och därmed uppfylls konjugatsymmetrin om
+\begin{align*}
+	A = (\cc{A})^{T}.
+\end{align*}
+
+\paragraph{Ortogonalt komplement och vektorrum}
+Om $V$ är ett ändligdimensionellt vektorrum, är
+\begin{align*}
+	V = W \oplus W^{\perp}.
+\end{align*}
+
+\proof
+Det gäller att
+\begin{align*}
+	W \cap W^{\perp} = \{0\}.
+\end{align*}
+
+\paragraph{Inreprodukt och minsta norm}
+Låt $e_{1}, \dots, e_{N}$ vara ortonormala basvektorer i inreproduktrummet $V$, och låt
+\begin{align*}
+	V_{N} = \left\{\sum\limits_{i = 1}^{N}a_{i}e_{i}\right\}.
+\end{align*}
+Då ges
+\begin{align*}
+	\inf\limits_{\Phi\in V_{N}}\norm{u - \Phi}
+\end{align*}
+av
+\begin{align*}
+	\Phi = \sum\limits_{i = 1}^{N}\inprod{u}{e_{i}}e_{i}.
+\end{align*}
+
+\proof
+
+\paragraph{Bra och dualrum}
+Om $V$ är ett inreproduktum, definierar båd $x\to\bra{x}$ och $x\to\bra{\cc{x}}$ en injektiv avbildning $V\to V^{*}$. Om $V$ är ändligdimensionellt, är detta dessutom en isomorfi.
+
+\proof
+
+\paragraph{Inreproduktrum och ortogonal bas}
+Ett ändligdimensionellt vektorrum har en ortogonal bas.
+
+\proof
+
+\paragraph{Gram-Schmidts metod}
+Låt $V$ vara ett vektorrum med ändlig dimension eller en uppräknelig bas $B = \{x_{i}\}_{i= 0}^{n}$. Då bildar vektorerna
+\begin{align*}
+	e_{i} = x_{i} - \sum\limits_{j = 0}^{i - 1}\frac{\inprod{e_{j}}{x_{i}}}{\norm{e_{j}}^{2}}e_{j}
+\end{align*}
+en ortogonal bas för $V$.
+
+\proof
+
+\paragraph{Matrisen för en adjungerad operator}
+Låt $L$ beskrivas av matrisen $A$ i någon ortonormal bas. Då beskrivs $\adj{L}$ av matrisen $\cc{(A^{T})}$, även om operatorn är mellan två olika vektorrum.
+
+\proof
+Vi har
+\begin{align*}
+	L(e_{i}) = \sum\limits_{j}a_{ij}e_{j},
+\end{align*}
+vilket ger
+\begin{align*}
+	\inprod{e_{i}}{L(e_{j})} = \inprod{e_{i}}{\sum\limits_{k}a_{jk}e_{k}} = \sum\limits_{k}\inprod{e_{i}}{a_{jk}e_{k}} = \sum\limits_{k}a_{jk}\inprod{e_{i}}{e_{k}} = \sum\limits_{k}a_{jk}\delta_{ik} = a_{ji}.
+\end{align*}
+Om $B$ är matrisen för $\adj{L}$, så vi nu att dens komponenter kan skrivas som $b_{ji} = \inprod{e_{i}}{\adj{L}(e_{j})}$. Vi utvecklar detta och får
+\begin{align*}
+	b_{ji} = \inprod{e_{i}}{\adj{L}(e_{j})} = \cc{\inprod{\adj{L}(e_{j})}{e_{i}}} = \cc{\inprod{e_{j}}{L(e_{i})}} = \cc{a_{ij}},
+\end{align*}
+och därmed är beviset klart.
+
+\subparagraph{Alternativt bevis}
+Vi tittar på avbildningar av baselement. Låt $\{e_{i}\}$ vara basen för $V$ och $\{f_{i}\}$ vara basen för $W$.
+
+Definitionen ger att $L(e_{i}) = \sum\limits_{k}A_{ik}f_{k}$. Tillämpad på inreprodukten ger detta
+\begin{align*}
+	\inprod{f_{j}}{L(e_{i})} &= \inprod{f_{j}}{\sum\limits_{k}A_{ik}f_{k}} \\
+	                         &= \sum\limits_{k}A_{ik}\inprod{f_{j}}{f_{k}} \\
+	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\delta_{il} \\
+	                         &= \sum\limits_{k}\sum\limits_{l}A_{lk}\inprod{f_{j}}{f_{k}}\inprod{e_{l}}{e_{i}} \\
+	                         &= \sum\limits_{l}\sum\limits_{k}A_{lk}\inprod{e_{l}}{e_{i}}\delta_{jk} \\
+	                         &= \sum\limits_{l}A_{lj}\inprod{e_{l}}{e_{i}} \\
+	                         &= \inprod{\sum\limits_{l}\cc{(A_{lj})}e_{l}}{e_{i}} \\
+	                         &= \inprod{\sum\limits_{l}(\cc{(A_{lj})})^{T}e_{l}}{e_{i}}.
+\end{align*}
+Vi vill att bra:en skall motsvara $\adj{L}(f_{j})$. Denna ges av $\adj{L}(f_{j}) = \sum\limits_{l}B_{jl}e_{j}$, där $B$ är matrisen för $\adj{L}$. Jämförelse med inreprodukten ovan fullför beviset.
+
+\paragraph{Egenvärden för självadjungerade operatorer}
+Självadjungerade operatorer har bara reella egenvärden.
+
+\proof
+\begin{align*}
+	\inprod{L(x)}{x} = \inprod{x}{L(x)}.
+\end{align*}
+Detta kan utvecklas om $x$ är en egenvektor för att ge
+\begin{align*}
+	\cc{\lambda}\inprod{x}{x} = \lambda\inprod{x}{x},
+\end{align*}
+och beviset är klart.
+
+\paragraph{Självadjungerade operatorer och ortogonala egenvektorer}
+Låt $x$ vara en egenvektor till $L$ med egenvärdet $\lambda $och $y$ vara en egenvektor med egenvärde $\mu$. Om $\lambda - \mu \neq 0$ är $\inprod{x}{y} = 0$.
+
+\proof
+\begin{align*}
+	\inprod{L(x)}{y} = \inprod{x}{L(y)}.
+\end{align*}
+Vi använder att $x$ och $y$ är egenvektorer och får
+\begin{align*}
+	\cc{\lambda}\inprod{x}{y} = \mu\inprod{x}{y}.
+\end{align*}
+Enligt antagandet måste då $\inprod{x}{y} = 0$.
+
+\paragraph{Diagonalisering av självadjungerade operatorer}
+Alla självadjungerade operatorer på ändligdimensionella inreproduktrum kan diagonaliseras.
+
+\proof
+Vi gör induktion över $\dim{V}$.
+
+Det är trivialt för dimension $1$.
+
+Annars, om vi har en egenvektor $x$ motsvarande egenvärdet $\lambda$, bilda $W = \Span{x}$. Då har man $L(W)\subseteq W$. Vidare, om $y\in W^{\perp}$, har man
+\begin{align*}
+	\inprod{x}{y} = 0\implies \inprod{\lambda x}{y} = \inprod{L(x)}{y} = \inprod{x}{L(y)} = 0,
+\end{align*}
+och $L(W^{\perp})\subseteq W^{\perp}$. Man kan vidare bilda en bas för $V$ med basen för $W^{\perp}$ och $x$. Matrisen för $L$ med avseende på denna basen är
+\begin{align*}
+	\mqty[
+		\lambda & 0 \\
+		0       & X
+	].
+\end{align*}
+Per induktion finns det då en ortogonal bas för $W^{\perp}$ så att matrisen för $L$ på $W^{\perp}$ blir diagonal.
+
+\paragraph{Ortogonal bas och självadjungerade operatorer}
+Om $L$ är en självadjungerad operator på ett ändligdimensionellt vektorrum $V$, finns det en ortogonal bas av egenvektorer till $L$.
+
+\proof
+
+\paragraph{Längdbevarande operatorer}
+För en operator $L$ på ett reellt inreproduktrum $V$ är följande ekvivalent:
+\begin{itemize}
+	\item $\norm{Lx} = \norm{x}\forall x\in V$.
+	\item $\inprod{x}{y} = \inprod{Lx}{Ly}\forall x, y\in V$.
+\end{itemize}
+Om vektorrummet är ändligdimensionellt, är påståenden även ekvivalenta med
+\begin{itemize}
+	\item $L$ avbildar ortonormala baser på ortonormala baser.
+\end{itemize}
+
+\proof
+
+\paragraph{Längdbevarande operatorer som bijektioner}
+Längdbevarande operatorer på ändligdimensionella vektorrum är bijektiva.
+
+\proof
+Sådana operatorer är injektiva ty
+\begin{align*}
+	\norm{Lx} = 0 \implies x = 0.
+\end{align*}
+
+De är surjektiva ty matrisen för avbildningen i någon bas måste ha linjärt oberoende kolumner för att vara injektiv. Detta implicerar att avbildningen är surjektiv.
+
+\paragraph{Ortogonala grupper}
+\begin{itemize}
+	\item Mängden $O(V) = \{L: V\to V: L\text{ är ortogonal}\}$ är en grupp under sammansättning om $V$ är ett reellt inreproduktrum med en ortogonal bas.
+	\item Mängden $O_{n}(V) = \{A\in M_{n}(\R): A\text{ är ortogonal}\}$ är en grupp under matrismultiplikation.
+	\item Mängden $O_{n}(V) = \{A\in M_{n}(\R): \det{A} = 1, A\text{ är ortogonal}\}$ är en grupp under matrismultiplikation.
+\end{itemize}
+
+Satsen stämmer även för de komplexa motsvarigheterna.
+
+\proof
+
+\paragraph{Egenvärden och egenvektorer till ortogonala och unitära operatorer}
+Om $L$ är en unitär operator på ett ändligdimensionellt vektorrum, finns det en ortogonal bas av egenvektorer till $L$ och alla egenvärden till $L$ har belopp $1$.
+
+\proof
+Det finns (möjligtvis) minst ett egenvärde $\lambda$. Välj en motsvarande egenvektor $x$. Detta ger
+\begin{align*}
+	\norm{x} = \norm{Lx} \implies \abs{\lambda} = 1.
+\end{align*}
+Låt nu $W = \Span{x}$. Vi har att $L(W^{\perp})\to W^{\perp}$ eftersom $L$ bevarar inreprodukten. Detta ger (?) per induktion att det finns en bas för $W^{\perp}$ av egenvektorer till $L$. Unionen av $x$ och denna basen är därmed en bas för hela vektorrummet.
+
+\paragraph{Exponentialavbidlningen och Hermiteska operatorer}
+Låt $H$ vara Hermitesk. Då är $e^{iH}$ unitär.
+
+\proof
+Eftersom $H$ är Hermitesk, finns det en ortogonal bas av egenvektorer. I denna basen är matrisen för $H$ en diagonalmatris. Därmed är matrisen för $e^{iH}$ en diagonalmatris med $e^{i\lambda}$ på diagonalen, där $\lambda$ är något egenvärde. Alltså finns det en ortogonal bas av egenvektorer till $e^{iH}$, där varje egenvärde har belopp $1$, och $e^{iH}$ är unitär.
