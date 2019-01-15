@@ -335,7 +335,7 @@ Vi sätter direkt $A' = D' = 0$ eftersom dessa termerna skulle ge lösningar som
 
 Vi ser från lösningen att en partikel kan penetrera lite in i en region där dens totala energi är negativ, det så kallade klassiskt förbjudna området. Vi kan även definiera ett penetrationsdjup
 \begin{align*}
-	\delta = \frac{1}{\alpha} = \frac{\hbar^{2}}{\sqrt{2m(E - V_{0})}}
+	\delta = \frac{1}{\alpha} = \frac{\hbar}{\sqrt{2m(E - V_{0})}}
 \end{align*}
 som ett mått på hur långt in i den klassiskt förbjudna sonen bundna tillstånd kan penetrera.
 
@@ -381,21 +381,29 @@ Betrakta en partikel i en ändlig lådpotential, dvs.
 \begin{align*}
 	V = 
 	\begin{cases}
-		0,      &0 < x, \\
-		V_{0},  &\text{annars.}
+		V_{0}, &0 < x < a, \\
+		0,     &\text{annars.}
 	\end{cases}
 \end{align*}
-Detta motsvarar en vägg med en viss \"flexibilitet\".
-
-Man kan definiera en transmissionskoefficient och en reflektionskoefficient lika med sannolikheten för att partiklar transmitteras och reflekteras av barriären.
+Man kan definiera en transmissionskoefficient och en reflektionskoefficient lika med sannolikheten för att partiklar transmitteras och reflekteras av barriären. För $E > V_{0}$ ges dessa av
+\begin{align*}
+	R &= \frac{\sin[2](\frac{\sqrt{2m(E - V_{0})}a}{\hbar})}{\sin[2](\frac{\sqrt{2m(E - V_{0})}a}{\hbar}) + 4\frac{E}{V_{0}}\left(\frac{E}{V_{0}} - 1\right)}, \\
+	T &= \frac{4\frac{E}{V_{0}}\left(\frac{E}{V_{0}} - 1\right)}{\sin[2](\frac{\sqrt{2m(E - V_{0})}a}{\hbar}) + 4\frac{E}{V_{0}}\left(\frac{E}{V_{0}} - 1\right)}.
+\end{align*}
+För $E < V_{0}$ ges de av
+\begin{align*}
+	R &= \frac{\sinh[2](\frac{\sqrt{2m(E - V_{0})}a}{\hbar})}{\sinh[2](\frac{\sqrt{2m(E - V_{0})}a}{\hbar}) + 4\frac{E}{V_{0}}\left(1 - \frac{E}{V_{0}}\right)}, \\
+	T &= \frac{4\frac{E}{V_{0}}\left(1 - \frac{E}{V_{0}}\right)}{\sinh[2](\frac{\sqrt{2m(E - V_{0})}a}{\hbar}) + 4\frac{E}{V_{0}}\left(1 - \frac{E}{V_{0}}\right)}.
+\end{align*}
 
 \paragraph{Tunneling}
 Klassiskt kan en partikel inte kryssa en barriär om den har för låg energi. Kvantmekaniskt kan man beräkna en transmissionssannolikhet för tunneling.
 
 Ett enkelt fall som illustrerar tunneling är potential som är konstant lika med $0$ förutom i en region med brädd $a$, där potentialen är $V_{0}$. Schrödingerekvationen ger för detta fallet
 \begin{align*}
-	T \approx 16\frac{E}{V_{0}}\left(1 - \frac{E}{V_{0}}\right)e^{-2a\sqrt{2m(V_{0} - E)}}, E < V_{0}, a >> \delta.
+	T \approx 16\frac{E}{V_{0}}\left(1 - \frac{E}{V_{0}}\right)e^{-\frac{2a\sqrt{2m(V_{0} - E)}}{\hbar}}, E < V_{0}, a >> \delta,
 \end{align*}
+där $\delta$ är penetrationsdjupet som definierades i delen om ändlig lådpotential.
 
 Tunneling som fenomen förklarar t.ex. $\alpha$-sönderfall, mikroskopitekniken STM och varför Solen brinner (fusion möjliggörs av att olika atomer kan tunnelera in i varandras kärnor).
 
