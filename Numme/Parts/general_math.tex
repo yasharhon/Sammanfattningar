@@ -33,3 +33,19 @@ och vidare
 	                   &\leq Mh^{p + 1}\frac{e^{LNh}}{Lh},
 \end{align*}
 och beviset är klart.
+
+\paragraph{Möjlighet för polynominterpolation}
+Givet $n + 1$ punkter $(x_{i}, y_{i})$, där $x_{i}\neq x_{j}$ om $i\neq j$, finns det ett entydigt polynom $p$ av grad (högst) $n$ så att $p(x_{i}) = y_{i}\ \forall i= 1, \dots, n + 1$.
+
+\proof
+För att visa existensen av $p$, kan vi välja det som
+\begin{align*}
+	p(x) = \sum\limits_{i = 1}^{n + 1}y_{i}\prod\limits_{j\neq i}\frac{x - x_{j}}{x_{i} - x_{j}}.
+\end{align*}
+Denna metoden kallas för Lagrangeinterpolation. Vi ser att $p$ har grad $n$ och
+\begin{align*}
+	p(x_{k}) = \sum\limits_{i = 1}^{n + 1}y_{i}\prod\limits_{j\neq i}\frac{x_{k} - x_{j}}{x_{i} - x_{j}}.
+\end{align*}
+För alla termer i summan där $i\neq k$ kommer det finnas en faktor $x_{k} - x_{k}$ i nämnaren, och dessa ger inget bidrag. För $i = k$ blir produkten bara $1$, och $p(x_{k}) = y_{k}$.
+
+För att visa att $p$ är entydig, antag att $q$ är ett annat interpolationspolynom och bilda $v = q - p$, med grad högst $n$. Detta ger att $v$ har $n + 1$ nollställen. Detta är endast möjligt om $v = 0$, och därmed måste $p$ vara unikt.

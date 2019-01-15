@@ -99,13 +99,13 @@ Betrakta ekvationen
 \end{align*}
 Newton-Rhapsons metod utgår från tangenten till $f$. Om man startar i $x_{0}$, har tangenten ekvation $t(x) = \deval{f}{x}{x_{0}}(x - x_{0}) + f(x_{0})$. Dens nollställe ges av
 \begin{align*}
-	x = x_{0} - \frac{f(x_{0}}{\deval{f}{x}{x_{0}}}.
+	x = x_{0} - \frac{f(x_{0})}{\deval{f}{x}{x_{0}}}.
 \end{align*}
 Från detta gör vi iterationen
 \begin{align*}
-	x_{n + 1} = x_{n} - \frac{f(x_{n}}{\deval{f}{x}{x_{n}}}
+	x_{n + 1} = x_{n} - \frac{f(x_{n})}{\deval{f}{x}{x_{n}}}
 \end{align*}
-som avslutas när $\abs{x_{n + 1} - x_{n}}$ är mindre än någon tolerans. Vi ser att detta är en variant av fixpunktsmetoden med $g(x) = x - \frac{f(x}{\deval{f}{x}{x}}$.
+som avslutas när $\abs{x_{n + 1} - x_{n}}$ är mindre än någon tolerans. Vi ser att detta är en variant av fixpunktsmetoden med $g(x) = x - \frac{f(x)}{\deval{f}{x}{x}}$.
 
 En pseudokod-beskrivning av en lösning med startvillkor \verb|x_0| där det itereras tills lösningen stämmer med en tolerans \verb|t| är:
 \begin{lstlisting}
@@ -146,8 +146,12 @@ Betrakta ekvationen
 \begin{align*}
 	\vb{f}(\vb{x}) = 0.
 \end{align*}
-Metoden är den samma för ett enda system, fast med iterationen
+Metoden är den samma för ett enda system. Den utgår från den linjära approximationen
 \begin{align*}
-	\vb{x}_{n + 1} = \vb{x}_{n} - \dd{\vb{f}}(x_{n})^{-1}(x_{n}.
+	\vb{f}(\vb{x}) = \vb{f}(\vb{x}_{0}) + \dd{\vb{f}}(\vb{x}_{0})(\vb{x} - \vb{x}_{0})
 \end{align*}
-Notera att beräkningsmässigt är det svårt att hitta en inversmatris, så det är smartare att hitta en vektor $\vb{h}$ så att $\dd{\vb{f}}(x_{n})\vb{h} = \vb{f}(x_{n})$ och anv
+och ger iterationen
+\begin{align*}
+	\vb{x}_{n + 1} = \vb{x}_{n} - \dd{\vb{f}}(\vb{x}_{n})^{-1}f(\vb{x}_{n}).
+\end{align*}
+Notera att beräkningsmässigt är det svårt att hitta en inversmatris, så det är smartare att hitta en vektor $\vb{h}$ så att $\dd{\vb{f}}(x_{n})\vb{h} = \vb{f}(x_{n})$ och använda den i stället.
