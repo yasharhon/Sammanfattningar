@@ -58,10 +58,34 @@ Vi utvidgar även definitionen av töjning till töjningar som fördelas ojämnt
 \begin{align*}
 	\varepsilon = \lim\limits_{\Delta x\to 0}\frac{u(x + \Delta x) - u(x)}{\Delta x} = \dv{u}{x}.
 \end{align*}
+Vi ser av detta att töjningen är linjär, så vi kan addera bidrag till den.
 
-\paragraph{Tvärkontraktion}
-När man gör ett dragningsprov på en stång, genomgår den deformation i längdriktning samtidigt som tjockleken minskar. Detta kallas tvärkontraktion. Töjningen $\varepsilon_{t}$ av tjockleken är relaterad till töjningen i längdriktning genom
+\paragraph{Termoelasticitet}
+Låt $T$ beteckna en stångs temperatur. En temperaturändring orsakar en termisk töjning
 \begin{align*}
-	\varepsilon_{t} = -v\varepsilon,
+	\varepsilon_{T} = \alpha\Delta T,
 \end{align*}
-där $v$ är Poissons konstant.
+där $\alpha$ är längdutvidgningskoefficienten. Man behöver givetvis utgå från en referenstemperatur.
+
+\paragraph{Allmänt enaxligt tillstånd}
+Från det vi har sett hittils, kan vi skriva upp en differentialekvation som beskriver det enaxliga tillståndet.
+
+Betrakta en stång med variabel tvärsnittsyta där det överallt i kroppen verkar en volymskraft $K(x)$ (kraft per volym), samt krafter $P_{\text{V}}$ respektiva $P_{\text{H}}$ i varje ända. Vi betraktar ett litet element med tjocklek $\dd{x}$. I ena ändan verkar kraften $K(x)A\dd{x}$ och en normalkraft $N(x)$ på grund av krafterna på volymelementet till vänster, och i andra ändan verkar en normalkraft $N(x + \dd{x})$ på grund av krafterna på volyemelementet till höger.
+
+Kraftjämvikten ger
+\begin{align*}
+	N(x + \dd{x}) - N(x) + K(x)A\dd{x} &= 0, \\
+	\dd{N}{x} + K(x)                   &= 0.
+\end{align*}
+Vi inför nu definitionen av töjninc och skriver den som en linjärkombination av bidrag från spänning och termoelasticitet, vilket ger
+\begin{align*}
+	\varepsilon = \frac{\sigma}{E} + \alpha\Delta T, \\
+	\sigma = E(\varepsilon - \alpha\Delta T).
+\end{align*}
+Kombinerad med definitionen av töjning ger det
+\begin{align*}
+	\dv{x} (\sigma A) + K(x)A &= 0, \\
+	\dv{x} (EA(\varepsilon - \alpha\Delta T)) + K(x)A &= 0, \\
+	\dv{x}\left(EA\dv{u}{x}\right) + K(x)A &= \dv{x}(EA\alpha\Delta T).
+\end{align*}
+Detta kommer med randvillkor, och är typiskt randvillkor i deformationen eller i spänningen. Eftersom spänningen är proportionell mot derivatan av deformationen, motsvarar dessa Dirichlet- respektiva Neumannvillkor.
