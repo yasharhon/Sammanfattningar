@@ -1,0 +1,31 @@
+\section{Derivator}
+
+\paragraph{Numerisk derivering}
+En derivata kan approximeras med framåtdifferensen
+\begin{align*}
+	\deval{f}{x}{x} \approx \frac{f(x + h) - f(x)}{h}.
+\end{align*}
+För att få en skattning av felet, använder vi Taylorutveckling för att få
+\begin{align*}
+	f(x + h) - f(x) \approx \deval{f}{x}{x}h + \frac{1}{2}\deval[2]{f}{x}{c}h^{2},
+\end{align*}
+och
+\begin{align*}
+	\frac{f(x + h) - f(x)}{h} - \deval{f}{x}{x} = \frac{1}{2}\deval[2]{f}{x}{c}h.
+\end{align*}
+
+Man kan alternativt försöka med en central differens
+\begin{align*}
+	\deval{f}{x}{x} \approx \frac{f(x + h) - f(x - h)}{2h}.
+\end{align*}
+Vi Taylorutvecklar igen och får
+\begin{align*}
+	f(x + h) &\approx f(x) + \deval{f}{x}{x}h + \frac{1}{2}\deval[2]{f}{x}{x}h^{2} + \frac{1}{6}\deval[3]{f}{x}{c_{1}}h^{3}, \\
+	f(x - h) &\approx f(x) - \deval{f}{x}{x}h + \frac{1}{2}\deval[2]{f}{x}{x}h^{2} - \frac{1}{6}\deval[3]{f}{x}{c_{2}}h^{3}.
+\end{align*}
+Då blir centrala differensen
+\begin{align*}
+	\frac{f(x + h) - f(x - h)}{2h} - \deval{f}{x}{x} &\approx \frac{1}{12}h^{2}\left(\deval[3]{f}{x}{c_{1}} + \deval[3]{f}{x}{c_{2}}\right) \\
+	                                                 &\approx \frac{1}{6}\deval[3]{f}{x}{c}h^{2},
+\end{align*}
+där vi i sista raden har använt medelvärdesatsen.
