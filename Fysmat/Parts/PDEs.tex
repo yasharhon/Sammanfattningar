@@ -73,3 +73,23 @@ Denna ansatsen gör förhoppningsvis att differentialekvationen kan skrivas som
 	\frac{1}{X_{1}}L_{1}X_{1} = \frac{1}{\prod\limits_{i = 1}^{n}X_{i}}L'\prod\limits_{i = 1}^{n}X_{i}.
 \end{align*}
 Varje sida beror av olika variabler, varför de måste vara lika med en konstant. På detta sättet kan det ursprungliga problemet förhoppningsvis separeras i delproblem som är enkla att lösa.
+
+\paragraph{Lösningsstrategi för inhomogena problem}
+Om man har ett problem med inhomogeniteter i differentialekvationen och/eller villkoren, finns det olika strategier för att lösa detta problemet:
+\begin{itemize}
+	\item dela upp lösningen i en homogen och partikulär lösning. Den partikulära lösningen fås då vid att gissa en lösning.
+	\item flytta inhomogeniteten från villkoren till differentialekvationen, för sen att försöka lösa det.
+	\item serieutveckla ekvationen och lösningen, vilket ger ett ODE-problem för basfunktionerna.
+\end{itemize}
+Här specifieras hur metod två fungerar.
+
+För att utdypa kring andra metoden, betrakta ekvationen
+\begin{align*}
+	Lu            &= 0, \\
+	Au(\vb{x}, t) &= f(\vb{x}, t), x\in\bound{\Omega},
+\end{align*}
+där både $L$ och $A$ är linjära operatorer. Antag att man hittar en funktion $w$ som uppfyller $Aw = f$ på randen, och inför $v = u - w$, där $u$ är en lösning. Denna uppfyller
+\begin{align*}
+	\del{t}{v} + Lv = \del{t}{u} + Lu - \del{t}{w} - Lw = -\del{t}{w} - Lw,
+	Av(\vb{x}, t) = 0, x\in\bound{\Omega}.
+\end{align*}
