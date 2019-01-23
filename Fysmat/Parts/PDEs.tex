@@ -33,7 +33,7 @@ Problemet
 	&\laplace{f} = \lambda f, \\
 	&f(x) = 0, x\in\bound{\Omega}
 \end{align*}
-har oändligt många lösningar $f_{n}$ med distinkta egenvärden $\lambda_{n} > 0$ så att lösningarna är ortogonala med inreprodukten
+har oändligt många lösningar $f_{n}$ med distinkta egenvärden $\lambda_{n} > 0$ så att lösningarna bildar en fullständig mängd och är ortogonala med inreprodukten
 \begin{align*}
 	\inprod{f}{g} = \integ[n]{\Omega}{x}{\cc{f}(x)g(x)}.
 \end{align*}
@@ -43,7 +43,10 @@ För problemet
 	&\laplace{f} = \lambda f, \\
 	&\alpha(x, t)u(x, t) + \beta(x, t)n_{i}\del{i}{u(x, t)} = 0, x\in\bound{\Omega},
 \end{align*}
-där $n$ är normal på $\bound{\Omega}$, finns det oändligt många ortogonala lösningar med distinkta egenvärden.
+där $n$ är normal på $\bound{\Omega}$, finns det oändligt många ortogonala lösningar med distinkta egenvärden, där dessa bildar en fullständig mängd.
+
+\paragraph{Spektralsatsen}
+Låt $A$ vara en självadjungerad operator med diskret spektrum. Då har $A$ oändligt många egenfunktioner. Dessa är ortogonala och bildar en fullständig mängd.
 
 \paragraph{Lösning av PDE:er for dummies}
 \begin{figure}[!ht]
