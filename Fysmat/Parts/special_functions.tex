@@ -1,0 +1,30 @@
+\section{Speciella funktioner}
+
+\paragraph{Trigonometriska och hyperbolskap funktioner}
+Trigonometriska funktioner kan utvidgas via deras Taylorpolynom till att även ta komplexa argument. Det samma kan hyperbolska funktioner, vilket ger relationen
+\begin{align*}
+	\cos(ix) &= \cosh{x}, \\
+	\sin(ix) &= i\sinh{x}.
+\end{align*}
+
+\paragraph{Besselfunktioner}
+I lösning av Laplaces ekvation på enhetsskivan dyker det upp två funktioner $J_{n}$ och $Y_{n}$. Dessa har följande egenskaper:
+\begin{itemize}
+	\item $J_{n}$ är begränsad när $r\to\infty$.
+	\item $J_{n}\propto r^{\abs{n}}$ då $r\to 0$.
+	\item $J_{n}\propto r^{-\abs{n}}$ då $r\to 0$.
+\end{itemize}
+Dessa definieras, för heltaliga $n$ och positiva argument, av
+\begin{align*}
+	J_{n}(\theta) &= \frac{1}{2\pi}\inteval{0}{2\pi}{r}{re^{-in\theta + ir\sin{\theta}}}, \\
+	Y_{n}(\theta) &= \frac{1}{\pi}\left(\inteval{0}{\pi}{r}{\sin(\theta\sin{r} - nr)} - \inteval{0}{\infty}{r}{(e^{nr} + (-1)^{n}e^{-nr})e^{-\theta\sinh{r}}}\right).
+\end{align*}
+
+\paragraph{Legendrepolynom}
+
+\paragraph{Klotytefunktioner}
+Laplaceoperatorn i sfäriska koordinater innehåller en del som endast beror på $r$ och en del som beror av vinklarna. Dens egenfunktioner är klotytefunktionerna
+\begin{align*}
+	Y_{l, m}(\theta, \phi) = Ne^{im\phi}P_{m}^{l}(\cos{\theta}).
+\end{align*}
+För ett fixt $l$ finns det $2l + 1$ möjliga värden av $m$. Dessa är alla heltal som uppfyller $\abs{m} \leq l$.
