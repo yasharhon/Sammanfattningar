@@ -19,6 +19,66 @@ Dessa definieras, för heltaliga $n$ och positiva argument, av
 	J_{n}(\theta) &= \frac{1}{2\pi}\inteval{0}{2\pi}{r}{re^{-in\theta + ir\sin{\theta}}}, \\
 	Y_{n}(\theta) &= \frac{1}{\pi}\left(\inteval{0}{\pi}{r}{\sin(\theta\sin{r} - nr)} - \inteval{0}{\infty}{r}{(e^{nr} + (-1)^{n}e^{-nr})e^{-\theta\sinh{r}}}\right).
 \end{align*}
+$J$ uppfyller i sådana fall $J_{n} = (-1)^{n}J_{-n}$.
+
+Var kommer dessa ifrån? Utgå från egenvärdesekvationen för Laplaceoperatorn i två dimensioner:
+\begin{align*}
+	\laplace{u} + \lambda u = 0.
+\end{align*}
+I polära koordinater blir detta
+\begin{align*}
+	\pdv[2]{u}{r} + \frac{1}{r}\pdv{u}{r} + \frac{1}{r^{2}}\pdv[2]{u}{\theta} + \lambda u = 0.
+\end{align*}
+$u$ är $2\pi$-periodisk, så vi skriver
+\begin{align*}
+	u(\vb{x}) = \sum\limits_{n = -\infty}^{\infty}J_{n}(r)e^{in\theta}.
+\end{align*}
+Insatt i differentialekvationen ger detta
+\begin{align*}
+	\sum\limits_{n = -\infty}^{\infty}\left(\dv[2]{J_{n}}{r} + \frac{1}{r}\dv{J_{n}}{r} - \frac{n^{2}}{r^{2}}J_{n} + \lambda J_{n}\right)e^{in\theta} = 0,
+\end{align*}
+vilket uppfylls om och endast om
+\begin{align*}
+	\dv[2]{J_{n}}{r} + \frac{1}{r}\dv{J_{n}}{r} \left(\lambda - \frac{n^{2}}{r^{2}}\right)J_{n} = 0.
+\end{align*}
+Alla $J_{n}$ uppfyller denna ekvationen.
+
+Gör nu substitutionen $v = \sqrt{\lambda}r$. Detta ger
+\begin{align*}
+	\dv[2]{J_{n}}{r} + \frac{1}{r}\dv{J_{n}}{r} + \left(\lambda - \frac{n^{2}}{r^{2}}\right)J_{n} &= \lambda\dv[2]{J_{n}}{v} + \frac{\sqrt{\lambda}}{v}\sqrt{\lambda}\dv{J_{n}}{v} \left(\lambda - \frac{n^{2}\lambda}{v^{2}}\right)J_{n}.
+\end{align*}
+Eftersom detta är lika med $0$ kan vi dela på $\lambda$ och få
+\begin{align*}
+	\dv[2]{J_{n}}{v} + \frac{1}{v}\dv{J_{n}}{v} + \left(1 - \frac{n^{2}}{v^{2}}\right)J_{n} = 0.
+\end{align*}
+Vi har alltså lyckats med att lösa ekvationen om vi kan hitta en egenfunktion motsvarande $\lambda = 1$.
+
+Om vi tittar på Laplaces ekvation i kartesiska koordinater, ser vi att $e^{iy}$ är en sådan funktion. I polära koordinater kan denna skrivas som $e^{ir\sin{\theta}}$. Denna funktionens Fourierkoefficienter enligt serieutvecklingen ovan löser ekvationen. Vi har
+\begin{align*}
+	J_{n}(v) = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\theta}{e^{iv\sin{\theta}}e^{-in\theta}},
+\end{align*}
+och egenfunktionen motsvarande ett godtyckligt $\lambda > 0$ är därmed
+\begin{align*}
+	J_{n}(r) = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\theta}{e^{i\sqrt{\lambda}r\sin{\theta}}e^{-in\theta}}.
+\end{align*}
+
+Detta kan även utvidgas till godtyckliga $\nu$ som ej är negativa heltal enligt
+\begin{align*}
+	J_{\nu}(r) = \left(\frac{r}{2}\right)^{\nu}\sum\limits_{k = 0}^{\infty}\frac{1}{k!\Gamma(\nu + k + 1)}\left(-\frac{r^{2}}{4}\right)^{k}.
+\end{align*}
+För att få den andra sortens funktion, använd reduktion av ordning? Vi får då
+\begin{align*}
+	Y_{\nu}(r) = \frac{J_{\nu}(r)\cos{\nu\pi} - J_{-\nu}(r)}{\sin{\nu\pi}}
+\end{align*}
+om $\nu$ ej är ett heltal.
+
+\paragraph{Sfäriska Besselfunktioner}
+Sfäriska Besselfunktioner definieras som
+\begin{align*}
+	j_{l}(r) &= \sqrt{\frac{\pi}{2r}}J_{l + \frac{1}{2}}(r), \\
+	y_{l}(r) &= \sqrt{\frac{\pi}{2r}}Y_{l + \frac{1}{2}}(r)
+\end{align*}
+för heltaliga $l$. Dessa dyker upp som egenfunktioner till radiella delen av Laplaceoperatorn i tre dimensioner.
 
 \paragraph{Legendrepolynom}
 

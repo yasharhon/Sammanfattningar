@@ -96,3 +96,54 @@ där både $L$ och $A$ är linjära operatorer. Antag att man hittar en funktion
 	\del{t}{v} + Lv = \del{t}{u} + Lu - \del{t}{w} - Lw = -\del{t}{w} - Lw,
 	Av(\vb{x}, t) = 0, x\in\bound{\Omega}.
 \end{align*}
+
+\paragraph{Greenfunktioner}
+För att prata om Greenfunktioner, behöver vi först introducera integralkärnor. Om en linjär operator $L$ på ett intervall $I$ uppfyller
+\begin{align*}
+	Lf(x) = \integ{I}{y}{K(x, y)f(y)},
+\end{align*}
+säjs $K$ vara integralkärnan till $L$. Detta kan definieras analogt i flera dimensioner.
+
+Betrakta nu differentialekvationen
+\begin{align*}
+	Lf = g
+\end{align*}
+i $d$ dimensioner på området $\Omega$ med homogena randvillkor och begynnelsevillkor. Nu har $L$ givetvis ingen integralkärna, då det är en derivationsoperator. Däremot kan $L^{-1}$ tänkas ha det. Antag vidare att $L^{-1}$ har integralkärnan $G$. Då skulle lösningen på problemet ovan vara
+\begin{align*}
+	f = \integ[d]{\Omega}{y}{G(x, y)g(y)}.
+\end{align*}
+Vi definierar då $G$ att vara Greenfunktionen till $L$.
+
+Hur kan vi hitta Greenfunktioner till en given operator? Vi använder superpositionsprincipen
+\begin{align*}
+	Lf_{1} = g_{1}, Lf_{2} = g_{2} \implies L(f_{1} + f_{2}) = g_{1} + g_{2}.
+\end{align*}
+Detta implicerar att om vi kan dela upp $g$ i hanterbara delar och lösa
+\begin{align*}
+	Lf_{i} = g_{i},
+\end{align*}
+kan vi hitta Greenfunktionen. Vi väljer uppdelningen
+\begin{align*}
+	Lf_{y}(x) = \delta(x - y), y\in\Omega.
+\end{align*}
+Låt nu $f_{y}(x) = G(x, y)$. Multiplicera med $g$ på båda sidor och integrera över $y$. Högersidan blir då
+\begin{align*}
+	\integ[d]{\Omega}{y}{\delta(x - y)g(y)} = g(x).
+\end{align*}
+Vänstersidan blir
+\begin{align*}
+	\integ[d]{\Omega}{y}{g(y)LG(x, y)}.
+\end{align*}
+Eftersom $L$ bara verkar på $x$, kan operatorn $L$ tas ut från integraltecknet, vilket gör vänstersidan till
+\begin{align*}
+	L\integ[d]{\Omega}{y}{g(y)G(x, y)}.
+\end{align*}
+Därmed ser vi att
+\begin{align*}
+	f(x) = \integ[d]{\Omega}{y}{g(y)G(x, y)}
+\end{align*}
+löser problemet, och det enda som återstår är att lösa differentialekvationen
+\begin{align*}
+	LG(x, y) = \delta(x - y).
+\end{align*}
+Denna ekvationen är alltså ett sätt att beräkna Greenfunktioner på. Notera att även randvillkoren kommer dyka upp i mer avancerade problem. Att beskriva detta i allmänna fall är svårt. Se till exempel för en mer komplett beskrivning av sådana fall.
