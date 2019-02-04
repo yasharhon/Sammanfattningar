@@ -66,3 +66,63 @@ Antag nu att $\tau = \frac{M_{\text{v}}}{K}$. Detta ger
 $K$ är en konstant som beror av stångens geometri.
 
 Hur beräknar vi $K$? Jo, man integrerar momentets differential över tvärsnittet. Vi vet att detta differentialet ges av kraft gånger arm, och det är så skjuvspänningen kommer in.
+
+\paragraph{Balkböjning}
+För att beskriva balkar behöver vi införa fler olika sorters inre krafter och moment. Dessa illustreras i figur \ref{fig:beam_forces}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/beam_forces.eps}
+	\caption{Illustration av inre krafter och moment i en balk.}
+	\label{fig:beam_forces}
+\end{figure}
+Vi har infört normalkraften $N$, tvärkraften $T$, det böjande momentet $M_{\text{b}}$ och det vridande momentet $M_{\text{v}}$.
+
+Låt $u$ vara balkens deformation normalt på dens utsträkning. Vi har från enaxliga tillståndet att
+\begin{align*}
+	\frac{\Delta u}{L} = \frac{N}{EA}.
+\end{align*}
+Låt $\theta$ och $\phi$ vara vinklarna för böjning och vridning. Vi har då
+\begin{align*}
+	\frac{\Delta\theta}{L} = \frac{M_{\text{v}}}{GK},
+	\frac{\Delta\phi}{L} = \frac{M_{\text{b}}}{EI}.
+\end{align*}
+
+\paragraph{Allmänt tillstånd för en balk}
+Snitta nu ut ett element med längd $\dd{x}$ från en balk. Om balken påverkas av en last $q$ per längdenhet, ger kraftjämvikten
+\begin{align*}
+	T(x + \dd{x}) - T(x) + q(x)\dd{x} = 0,
+\end{align*}
+vilket ger
+\begin{align*}
+	\dd{T}{x} = -q.
+\end{align*}
+Momentjämvikt kring centrum ger
+\begin{align*}
+	M(x + \dd{x}) - M(x) - (T(x) + T(x + \dd{x}))\dd{x} = 0.
+\end{align*}
+Bidraget från tvärkraften ges av
+\begin{align*}
+	T(x) + T(x + \dd{x}) &= 2T(x) + \dv{T}{x}\dd{x} \\
+	                     &= 2T(x) - q(x)\dd{x}.
+\end{align*}
+Insatt i momentjämvikten fås
+\begin{align*}
+	M(x + \dd{x}) - M(x) - \frac{1}{2}\dd{x}(T(x) + T(x + \dd{x})) = M(x + \dd{x}) - M(x) - T(x)\dd{x} + \frac{1}{2}\dd{x}q(x)\dd{x}.
+\end{align*}
+Vi försummar nu alla andra ordningens termer, vilket ger
+\begin{align*}
+	\dv{M}{x} = T.
+\end{align*}
+Kombinerat med det förra resultatet fås
+\begin{align*}
+	\dv[2]{M}{x} = -q.
+\end{align*}
+
+\paragraph{Randvillkor för balkar}
+En balk kan i en given ända vara
+\begin{itemize}
+	\item fri, vilket ger $T = 0$ och $M = 0$.
+	\item fritt upplagd, vilket ger $M = 0$.
+	\item glidinspänd, vilket ger $T = 0$.
+	\item fast inspönd, vilket ej ger villkor för de inre krafterna och momenterna.
+\end{itemize}

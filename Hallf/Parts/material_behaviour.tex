@@ -3,8 +3,6 @@
 \paragraph{Idealplastisk deformation}
 De flesta material beter sig så att när de deformeras förbi en viss punkt, deformeras de plastiskt i stället för elastiskt. En approximation för att beskriva detta beteendet är att låta deformationen vara elastisk upp till en töjningsgräns $\varepsilon_{\text{s}}$, och låta $\sigma$ vara konstant lika med en sträckgräns $\sigma_{\text{s}}$ för större töjningar.
 
-Om materialet komprimeras, visar det sig att det elastiska beteendet ofta är likt.
-
 När lasten sedan tas bort, kommer stången förkortas igen tills lasten blir lika med noll. Denna kontraktionen är parallell med det elastiska regimet, och konsekvensen är att man får en permanent deformation.
 
 \paragraph{Enkelriktad fiberkomposit}
@@ -49,7 +47,7 @@ som spänning i fibrerna, och motsvarande för matrisen.
 På samma sättet beskriver vi även fallet när spänningen går på tvärs av fibrernas riktning, som illustrerad i figur \ref{fig:fiber_composite_normal}.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width = 0.2\textwidth]{./Images/fiber_composite_normal.eps}
+	\includegraphics[width = 0.5\textwidth]{./Images/fiber_composite_normal.eps}
 	\caption{Illustration av en del av en enkelriktad fiberkomposit som belastas normalt på fiberns riktning.}
 	\label{fig:fiber_composite_normal}
 \end{figure}
@@ -72,3 +70,6 @@ och vi ser att
 \begin{align*}
 	\frac{1}{E_{T}} = \frac{v_{\text{f}}}{E_{\text{f}}} + \frac{v_{\text{m}}}{E_{\text{m}}}.
 \end{align*}
+
+\paragraph{Ideallastisk vridning}
+Vi inför idealplastiska material även i vridningssammanhang. Dessa beter sig analogt till idealplastiska material under dragning, där vi ersätter töjningen med skjuvvinkeln $\gamma$, spänningen med skjuvspänningen $\tau$, töjningsgränsen med en vinkelgräns $\gamma_{\text{s}}$ och sträckgränsen med en skjuvgräns $\tau_{\text{s}}$.
