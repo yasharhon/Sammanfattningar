@@ -62,6 +62,8 @@ där $f(c)$ är funktionens medelvärde på $[a, b]$. Vi kan skatta medelvärdet
 \end{align*}
 där alla $x_{i}$ är dragna oberoende från en likformig fördelning på $[a, b]$. Detta kallas för Monte Carlo-integration.
 
+Metoden är helt analog i högre dimensioner.
+
 \paragraph{Fel}
 Om vi antar att alla $x_{i}$ dras från en likformig sannolikhetstäthet, kan vi skriva
 \begin{align*}
@@ -97,3 +99,5 @@ Korstermerna har väntevärde
 då de olika $X_{i}$ är oberoende. Därmed är standardavvikelsen av $\varepsilon_{N}$ lika med $\frac{\sigma}{\sqrt{N}}$, och felet i metoden är proportionellt mot $\frac{1}{\sqrt{N}}$.
 
 Vi noterar att centrala gränsvärdesatsen ger att $\nu = \frac{\sqrt{N}}{\sigma}\varepsilon_{N}$ är standard normalfördelat.
+
+I $d$ dimensioner är felet proportionellt mot $N^{-\frac{d}{2}}$, och vi ser att den är bättre än trapetsmetoden för $d > 4$.
