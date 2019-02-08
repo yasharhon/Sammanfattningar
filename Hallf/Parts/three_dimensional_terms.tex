@@ -170,7 +170,7 @@ Om vi antar att elasticitetsmodulen är konstant över ytan, kan vi dra ut konst
 	N = E\varepsilon_{0}A.
 \end{align*}
 
-Vi beräknar vidare momentet $M_{y}$ normalt på både längdriktningen och $z$-koordinaten. Detta ges av
+Vi beräknar vidare det böjande momentet $M_{y}$, som är normalt på både längdriktningen och $z$-koordinaten. Detta ges av
 \begin{align*}
 	M_{y} &= \integ{A}{}{A}{\sigma z} \\
 	      &= \integ{A}{}{A}{Ez\left(\varepsilon_{0} + \frac{z}{R}\right)} \\
@@ -182,7 +182,7 @@ Första integralen är igen lika med $0$. Andra är relaterad till yttröghetsmo
 \end{align*}
 Vi får alltså
 \begin{align*}
-	M = \frac{EI_{y}}{R}.
+	M_{y} = \frac{EI_{y}}{R}.
 \end{align*}
 Vi kan nu sätta ihop dessa resultat och få
 \begin{align*}
@@ -201,3 +201,43 @@ och får då
 \begin{align*}
 	\abs{\sigma}_{\text{max}} = \frac{\abs{M_{y}}}{W_{\text{b}}}.
 \end{align*}
+
+\paragraph{Allmänt tillstånd för en balk}
+Vi försöker nu sammanställa dessa resultat till ett allmänt tillstånd för balken.
+
+Geometri ger oss att
+\begin{align*}
+	\frac{1}{\abs{R}} = \frac{\dv[2]{u}{x}}{\left(1 + \left(\dv{u}{x}\right)^{2}\right)^{\frac{3}{2}}}.
+\end{align*}
+För små deformationen är derivatan mycket liten. Om vi definierar positiv krökning som att balken kröks nedåt, fås
+\begin{align*}
+	\frac{1}{R} = -\dv[2]{u}{x}.
+\end{align*}
+Materialsamband ger
+\begin{align*}
+	M_{\text{b}} = -EI_{y}\dv[2]{u}{x}.
+\end{align*}
+Vi har även
+\begin{align*}
+	\dv[2]{M_{\text{b}}}{x} = -q,
+\end{align*}
+vilket slutligen ger
+\begin{align*}
+	\dv[2]{x}\left(EI_{y}\dv[2]{u}{x}\right) = q.
+\end{align*}
+
+Till detta tillståndet hör olika sorters randvillkor. Några enkla varianter av randvillkor är
+\begin{itemize}
+	\item $u$ eller $T$ givna i ändpunkterna.
+	\item $\dv{u}{x}$ eller $M$ givna i ändpunkterna.
+\end{itemize}
+Vi kan även karakterisera ändpunkter som
+\begin{itemize}
+	\item fria, dvs. $T = 0$ och $M = 0$.
+	\item fritt upplaggda, dvs. $u = 0$ och $M = 0$.
+	\item fast inspända, dvs. $u = 0$ och $\dv{u}{x} = 0$.
+	\item glidande inspända, dvs. $\dv{u}{x} = 0$ och $T = 0$.
+\end{itemize}
+
+\paragraph{Superposition}
+Balkens allmänna tillstånd är linjärt, så om man har någon komplicerad sammansättning av yttre laster och krafter, kan man separera problemet i olika delproblem, lösa de separat och superponera lösningen.
