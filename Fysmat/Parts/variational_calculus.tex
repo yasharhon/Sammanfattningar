@@ -1,0 +1,20 @@
+\section{Variationsanalys}
+
+\paragraph{Funktionaler}
+Variationsanalys handlar om funktionaler. Detta är avbildningar från funktioner till skalärer.
+
+\paragraph{Extrempunkter och variationer}
+Att analytiskt hitta en funktion som är en extrempunkt för en given funktional är allmänt inte enkelt. Den typiska strategin är att i stället anta att man har hittat en funktion som minimerar funktionalen, och introducera en variationsfunktion och en parameter $\varepsilon$ multiplicerad med den. Då vet man enligt antagandet att $\varepsilon = 0$ motsvarar en extrempunkt.
+
+\paragraph{Tillväxt av funktionalen}
+För att få en ide om hur en funktional beter sig beroende på $\varepsilon$, antag att $y$ minimerar funktionalen $J$, diskretisera $y$ i $N$ punkter och introducera variationen $\eta$. Detta ger
+\begin{align*}
+	J(y + \eta) - J(y) = \sum\limits_{i = 1}^{N}\pdv{J}{y_{i}} + O(\varepsilon^{2}).
+\end{align*}
+De partiella derivatorna
+
+\paragraph{Variationsproblem typ 1}
+Vi har en funktional $J$ som är extremal och funktionen $y$ är fixerad i randpunkterna.
+
+\paragraph{Variationsproblem typ 2}
+Vi har en funktional som är extremal och funktionen $y$ är fix i en punkt. Andra villkoret kommer från funktionalen.
