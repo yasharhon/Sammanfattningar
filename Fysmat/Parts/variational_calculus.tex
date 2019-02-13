@@ -9,7 +9,7 @@ Att analytiskt hitta en funktion som är en extrempunkt för en given funktional
 \paragraph{Tillväxt av funktionalen}
 För att få en ide om hur en funktional beter sig beroende på $\varepsilon$, antag att $y$ minimerar funktionalen $J$, diskretisera $y$ i $N$ punkter och introducera variationen $\eta$. Detta ger
 \begin{align*}
-	J(y + \eta) - J(y) = \sum\limits_{i = 1}^{N}\pdv{J}{y_{i}} + O(\varepsilon^{2}).
+	J(y + \varepsilon\eta) - J(y) = \sum\limits_{i = 1}^{N}\pdv{J}{y_{i}} + O(\varepsilon^{2}).
 \end{align*}
 De partiella derivatorna
 
@@ -18,3 +18,37 @@ Vi har en funktional $J$ som är extremal och funktionen $y$ är fixerad i randp
 
 \paragraph{Variationsproblem typ 2}
 Vi har en funktional som är extremal och funktionen $y$ är fix i en punkt. Andra villkoret kommer från funktionalen.
+
+\paragraph{Variationsproblem på integralform}
+För att illustrera hur man gör i variationsanalys, försöker vi hitta en funktion som är en extrempunkt till funktionalen
+\begin{align*}
+	J(u) = \inteval{x_{0}}{x_{1}}{x}{F(u, u', x)}.
+\end{align*}
+För att göra detta, antag att det finns ett minimum $y$, och introducera dens variation. Låt nu $f(\varepsilon) = J(y + \varepsilon\eta)$. Då gäller dett att $\dv{f}{\varepsilon} (0) = 0$. Denna derivatan ges av
+\begin{align*}
+	\dv{f}{\varepsilon} (\varepsilon) =& \dv{\varepsilon}\inteval{x_{0}}{x_{1}}{x}{F(y + \varepsilon\eta, y' + \varepsilon\eta', x)} \\
+	                                  =& \inteval{x_{0}}{x_{1}}{x}{\eta\del{u}{F}(y + \varepsilon\eta, y' + \varepsilon\eta', x) + \eta'\del{u'}{F}(y + \varepsilon\eta, y' + \varepsilon\eta', x)} \\
+	                                  =& \inteval{x_{0}}{x_{1}}{x}{\eta\del{u}{F}(y + \varepsilon\eta, y' + \varepsilon\eta', x)} + \eta(x_{1})\del{u'}{F(y + \varepsilon\eta, y' + \varepsilon\eta', x_{1})} \\
+	                                   &- \eta(x_{0})\del{u'}{F(y + \varepsilon\eta, y' + \varepsilon\eta', x_{0})} - \inteval{x_{0}}{x_{1}}{x}{\eta\dv{x}\del{u'}{F}(y + \varepsilon\eta, y' + \varepsilon\eta', x)} \\
+	                                  =& \inteval{x_{0}}{x_{1}}{x}{\eta\left(\del{u}{F}(y + \varepsilon\eta, y' + \varepsilon\eta', x) - \dv{x}\del{u'}{F}(y + \varepsilon\eta, y' + \varepsilon\eta', x)\right)} \\
+	                                   &+ \del{u'}{\eta(x_{1})F(y + \varepsilon\eta, y' + \varepsilon\eta', x_{1})} - \eta(x_{0})\del{u'}{F(y + \varepsilon\eta, y' + \varepsilon\eta', x_{0})}.
+\end{align*}
+
+Om detta skall vara lika med $0$, oberoende av $\eta$, kräver vi
+\begin{align*}
+	\del{u}{F} - \dv{x}\del{u'}{F} = 0.
+\end{align*}
+Om vi har bra randvillkor, kan de två återstående termerna försvinna. Annars måste dessa också vara lika med $0$.
+
+Beräkningen är analog om man har en vektorvärd funktion man minimerar funktionalen med avseende på - det kommer bara dyka upp flera termer. Den är även analog om man minimerar med avseende på en funktion av flera variabler. Då dyker det upp bidrag från de olika partialderivatorna. Om det finns beroende av högre ordningens derivator, får man göra flera partiella integrationer.
+
+\paragraph{Variationsproblem med funktionaler som bivillkor}
+Betrakta problemet att hitta en funktion som är en extrempunkt till funktionalen
+\begin{align*}
+	J(u) = \inteval{x_{0}}{x_{1}}{x}{F(u, u', x)}
+\end{align*}
+med bivillkoret
+\begin{align*}
+	K(u) = \inteval{x_{0}}{x_{1}}{x}{G(u, u', x)} = K_{0}.
+\end{align*}
+Man kan visa att detta är ekvivalent med att hitta en extremalpunkt till $J - \lambda K$ som uppfyller bivillkoret.
