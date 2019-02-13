@@ -241,3 +241,25 @@ Vi kan även karakterisera ändpunkter som
 
 \paragraph{Superposition}
 Balkens allmänna tillstånd är linjärt, så om man har någon komplicerad sammansättning av yttre laster och krafter, kan man separera problemet i olika delproblem, lösa de separat och superponera lösningen.
+
+\paragraph{Plasticering av balk}
+Betrakta en balk som endast utsätts för ett böjmoment $M$. Vid inledande plasticering är
+\begin{align*}
+	\sigma_{\text{max}} = \sigma_{\text{s}}.
+\end{align*}
+Vi vet i detta fallet att
+\begin{align*}
+	\sigma_{\text{max}} = \frac{\abs{M}}{W_{\text{b}}},
+\end{align*}
+vilket ger
+\begin{align*}
+	M_{\text{s}} = W_{\text{b}}\sigma_{\text{s}}.
+\end{align*}
+
+Vid full plasticering är spänningen lika med $\sigma_{\text{s}}$ i hela balken. Från detta kan man beräkna böjmomentet. Som ett exempel fås för ett rektangulärt tvärsnitt som böjs i höjdriktning:
+\begin{align*}
+	M_{\text{f}} = 2\cdot\sigma_{\text{s}}b\frac{h}{2}\cdot\frac{h}{4}.
+\end{align*}
+Man kan även visa att detta är lika med $\frac{3}{2}M_{\text{s}}$.
+
+Vid avlastning kan man använda superposition för att få spänningstillståndet. Det kommer visa sig att restspänningen är diskontinuerlig i mitten.
