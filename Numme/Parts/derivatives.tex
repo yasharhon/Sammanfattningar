@@ -19,8 +19,9 @@ och
 \paragraph{Val av steglängd}
 Antag att vi approximerar $f$ med $\tilde{f}$, där $\tilde{f}$ uppfyller $\abs{\tilde{f}(x) - f(x)} \leq \varepsilon\ \forall x$. Felet vi gör i skattning av derivatan ges då av
 \begin{align*}
-	\abs{\deval{f}{x}{x} - \frac{\tilde{f}(x + h) - \tilde{f}(x)}{h}} \leq \abs{\deval{f}{x}{x} - \frac{f(x + h) - f(x)}{h}} + \abs{\frac{\tilde{f}(x + h) - f(x + h) - \tilde{f}(x) + f(x)}{h}} \\
-	                                                                  &\leq Ch + \frac{2\varepsilon}{h}.
+	\abs{\deval{f}{x}{x} - \frac{\tilde{f}(x + h) - \tilde{f}(x)}{h}} \leq& \abs{\deval{f}{x}{x} - \frac{f(x + h) - f(x)}{h}} \\
+	                                                                      &+ \abs{\frac{\tilde{f}(x + h) - f(x + h) - \tilde{f}(x) + f(x)}{h}} \\
+	                                                                  \leq& Ch + \frac{2\varepsilon}{h}.
 \end{align*}
 Detta felet har sitt minimum för $h = \sqrt{\frac{2\varepsilon}{C}}$.
 

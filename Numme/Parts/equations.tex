@@ -155,3 +155,39 @@ och ger iterationen
 	\vb{x}_{n + 1} = \vb{x}_{n} - \dd{\vb{f}}(\vb{x}_{n})^{-1}f(\vb{x}_{n}).
 \end{align*}
 Notera att beräkningsmässigt är det svårt att hitta en inversmatris, så det är smartare att hitta en vektor $\vb{h}$ så att $\dd{\vb{f}}(x_{n})\vb{h} = \vb{f}(x_{n})$ och använda den i stället.
+
+\paragraph{Linjära system}
+Lösning av ett $n\times n$ linjärt system $Ax = b$ görs med ett antal beräkningar som är $\Ordo{n^{p}}$ för något $p$. För Gausselimination är $p = 3$.
+
+\subparagraph{Störningsanalys}
+Antag att man försöker lösa ett system $Ax = b$. Givet approximativ indata $\tilde{b}$ med en given felgräns, dvs. en given gräns för $\abs{b - \tilde{b}}$, hur stor felgräns fås för den approximativa lösningen $\tilde{x}$?
+
+Man kan skriva
+\begin{align*}
+	\abs{x - \tilde{x}} = A^{-1}(b - \tilde{b}),
+\end{align*}
+och normen av detta blir
+\begin{align*}
+	\norm{x - \tilde{x}} \leq \norm{A^{-1}}\norm{b - \tilde{b}},
+\end{align*}
+där vi har infört matrisnormen
+\begin{align*}
+	\norm{A} = \max\limits_{x \neq 0}\frac{\norm{Ax}}{\norm{x}}
+\end{align*}
+som uppfyller
+\begin{align*}
+	\norm{Ax} \leq \norm{A}\norm{x}.
+\end{align*}
+
+Uttrycket ovan innehåller absoluta fel, men ofta vet vi bara relativa fel på formen $\frac{\norm{b - \tilde{b}}}{\norm{b}}$. Med hjälp av matrisnormen kan vi dock skriva
+\begin{align*}
+	\norm{b} \leq \norm{A}\norm{x},
+\end{align*}
+vilket kan kombineras med uttrycket ovan för att ge
+\begin{align*}
+	\frac{\norm{x - \tilde{x}}}{\norm{x}} \leq \norm{A^{-1}}\norm{A}\frac{\norm{b - \tilde{b}}}{\norm{b}}.
+\end{align*}
+Vi kan då definiera konditionstalet $\kappa = \norm{A^{-1}}\norm{A}$, vilket ger
+\begin{align*}
+	R_{x} \leq \kappa R_{b}.
+\end{align*}

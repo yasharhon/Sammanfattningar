@@ -70,3 +70,25 @@ Vi vet att $\deval[2]{f}{x}{x} = \deval[2]{g}{x}{x}$ eftersom $p$ är linjär, v
 \begin{align*}
 	\abs{g(a)} &\leq \max\limits_{x_{0} \leq z \leq x_{0} + h}\frac{\abs{\deval[2]{f}{x}{z}}}{8}h^{2}.
 \end{align*}
+
+\paragraph{Konvergens för potensmetoden}
+Antag för en given matris $A$ att dens egenvärden uppfyller $\abs{\lambda_{1}} > \abs{\lambda_{2}} \geq \dots \geq \abs{\lambda_{n}}$ och att dens egenvektorer $v_{1}, \dots, v_{n}$ spänner upp $\R^{n}$. Då konvergerar potensmetoden för nästan alla startvektorer $x^{0}$ till egenvektorn $v_{1}$ och egenvärdet $\lambda_{1}$.
+
+\proof
+Vi kan skriva
+\begin{align*}
+	x^{0} = \sum\limits_{i = 1}^{n}c_{i}v_{i}.
+\end{align*}
+Om $c_{1} \neq 0$ ger $k$ multiplikationer med $A$
+\begin{align*}
+	A^{k}x^{0} = \sum\limits_{i = 1}^{n}\lambda_{i}^{k}c_{i}v_{i}.
+\end{align*}
+Potensmetoden ger oss nu
+\begin{align*}
+	x^{k + 1} = \frac{1}{\norm{\sum\limits_{i = 1}^{n}\lambda_{i}^{k}c_{i}v_{i}}}\sum\limits_{i = 1}^{n}\lambda_{i}^{k}c_{i}v_{i}.
+\end{align*}
+Om vi antar att både $c_{1}$ och $\lambda_{1}$ är positiva, kan detta skrivas som
+\begin{align*}
+	x^{k + 1} = \frac{1}{\norm{\sum\limits_{i = 1}^{n}\left(\frac{\lambda_{i}}{\lambda_{1}}\right)^{k}\frac{c_{i}}{c_{1}}v_{i}}}\sum\limits_{i = 1}^{n}\left(\frac{\lambda_{i}}{\lambda_{1}}\right)^{k}\frac{c_{i}}{c_{1}}v_{i}.
+\end{align*}
+Enligt antagandet kommer detta för stora $k$ att konvergera mot $\frac{v_{1}}{\norm{v_{1}}}$.
