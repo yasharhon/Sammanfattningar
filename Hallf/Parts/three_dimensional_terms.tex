@@ -263,3 +263,29 @@ Vid full plasticering är spänningen lika med $\sigma_{\text{s}}$ i hela balken
 Man kan även visa att detta är lika med $\frac{3}{2}M_{\text{s}}$.
 
 Vid avlastning kan man använda superposition för att få spänningstillståndet. Det kommer visa sig att restspänningen är diskontinuerlig i mitten.
+
+\paragraph{Knäckning}
+Om man t.ex. belastar en balk i dens längdriktning med en last som är större än en viss kritisk last, kommer balken snabbt böjas och nå ett nytt jämviktsläge. Detta kommer av att ursprungsläget är en instabil jämviktspunkt, så den minsta störning kommer att få den att anta ett stabilt jämviktstillstånd. Detta är ett exempel på ett instabilitetsfenomen.
+
+\paragraph{Tillstånd för axialbelastad balk}
+Betrakta en balk som utsätts för en axial belastning, och snitta ut ett element i den enligt figur \ref{fig:skew_beam_forces}.
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/skew_beam_forces.eps}
+	\caption{Snitt i en axialbelastad balk, där snittet görs vertikalt relativt det odeformerade läget.}
+	\label{fig:skew_beam_forces}
+\end{figure}
+Kraft- och momentjämvikter ger
+\begin{align*}
+	V(x + \dd{x}) - V(x) + q\dd{x} = 0, \\
+	H(x + \dd{x}) - H(x) = 0, \\
+	M(x + \dd{x}) - M(x) - V(x)\dd{x} + H\dv{w}{x}\dd{x} = 0,
+\end{align*}
+där vi har utnyttjat att vinkeln $\theta$ ges av derivatan av utböjningen och försummat det andra ordningens bidraget till momentet från den utbrädda lasten. Detta ger
+\begin{align*}
+	\dv{V}{x} = -q,\ \dv{H}{x} = 0,\ \dv{M}{x} = V - H\dv{w}{x}.
+\end{align*}
+Man kan visa att till första ordningen är $H = N$, och $N$ ges av den yttre axiala lasten (och eventuella volymkrafter). Kombinationen av dessa ekvationer ger då
+\begin{align*}
+	\dv[2]{x}\left(EI\dv[2]{w}{x}\right) - N\dv[2]{w}{x} = 0.
+\end{align*}
