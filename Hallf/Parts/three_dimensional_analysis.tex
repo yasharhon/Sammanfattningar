@@ -63,11 +63,24 @@ Vi får då
 \end{align*}
 
 \paragraph{Mohrs spänningscirkel}
-Mohrs spänningscirkel är ett sätt att grafiskt ta fram plana spänningar vid rotation av ett plan. För att konstruera cirkeln, rita upp ett $\sigma, \tau$-koordinatsystem och två punkter $(sigma_{x}, \tau_{x, y})$ och $(sigma_{y}, -\tau_{x, y})$, där dessa tas från något givet tillstånd. Dessa punkter skall vara i motstående änder av cirkeln, och från detta kan cirkeln ritas.
+Mohrs spänningscirkel är ett sätt att grafiskt ta fram plana spänningar vid rotation av ett plan. För att konstruera cirkeln, rita upp ett $\sigma, \tau$-koordinatsystem och två punkter $(sigma_{x}, \tau_{x, y})$ och $(sigma_{y}, -\tau_{x, y})$, där dessa tas från något givet tillstånd. Dessa punkter skall vara i motstående änder av cirkeln, och från detta kan cirkeln ritas, som i figur \ref{fig:mohr_stress_circle}.
 
-Det visar sig att cirkeln skär $\sigma$-axeln i största och minsta huvudspänningen.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/mohr_stress_circle.eps}
+	\caption{Mohrs spänningscirkel.}
+	\label{fig:mohr_stress_circle}
+\end{figure}
 
-En rotation moturs av planet med en vinkel $\phi$ motsvarar en rotation medurs av tillståndet på cirkeln med en vinkel $2\phi$.
+En rotation moturs av koordinatsystemet med en vinkel $\phi$ motsvarar en rotation medurs av tillståndet på cirkeln med en vinkel $2\phi$.
+
+Det visar sig att cirkeln skär $\sigma$-axeln i största och minsta huvudspänningen. Det finns även en vinkel $\psi$ som koordinatsystemet måste roteras med så att det blir parallellt med huvudriktningarna. Ur denna geometrin kan vi få följande samband, som är helt konsekventa med tensorbetraktningen gjort ovan:
+\begin{align*}
+	\sigma_{1}        &= \frac{\sigma_{x} + \sigma_{y}}{2} + \sqrt{\left(\frac{\sigma_{x} - \sigma_{y}}{2}\right)^{2} + \tau_{xy}^{2}}, \\
+	\sigma_{2}        &= \frac{\sigma_{x} + \sigma_{y}}{2} - \sqrt{\left(\frac{\sigma_{x} - \sigma_{y}}{2}\right)^{2} + \tau_{xy}^{2}}, \\
+	\tan(2\psi)       &= \frac{2\tau_{xy}}{\sigma_{x} - \sigma_{y}}, \\
+	\tau_{\text{max}} &= \frac{\sigma_{1} - \sigma_{3}}{2}.
+\end{align*}
 
 \paragraph{Jämvikt i tre dimensioner}
 Snitta ut en liten kub. Jämvikt i $x$-riktning ger
@@ -142,11 +155,24 @@ Beteckna även den största respektiva näst största huvudtöjningen som $\vare
 \end{align*}
 
 \paragraph{Mohrs töjningscirkel}
-Mohrs töjningscirkel är ett sätt att grafiskt ta fram plana töjningar vid rotation av ett plan. För att konstruera cirkeln, rita upp ett $\varepsilon, \frac{\gamma}{2}$-koordinatsystem och två punkter $(\varepsilon_{x}, \frac{\gamma_{x, y}}{2})$ och $(\varepsilon_{y}, -\frac{\gamma_{x, y}}{2})$, där dessa tas från något givet tillstånd. Dessa punkter skall vara i motstående änder av cirkeln, och från detta kan cirkeln ritas. 
+Mohrs töjningscirkel är ett sätt att grafiskt ta fram plana töjningar vid rotation av ett plan. För att konstruera cirkeln, rita upp ett $\varepsilon, \frac{\gamma}{2}$-koordinatsystem och två punkter $(\varepsilon_{x}, \frac{\gamma_{x, y}}{2})$ och $(\varepsilon_{y}, -\frac{\gamma_{x, y}}{2})$, där dessa tas från något givet tillstånd. Dessa punkter skall vara i motstående änder av cirkeln, och från detta kan cirkeln ritas, som i figur \ref{fig:mohr_strain_circle}.
 
-Det visar sig att cirkeln skär $\varepsilon$-axeln i största och näst största huvudspänningen.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/mohr_strain_circle.eps}
+	\caption{Mohrs töjningscirkel.}
+	\label{fig:mohr_strain_circle}
+\end{figure}
 
 En rotation moturs av planet med en vinkel $\phi$ motsvarar en rotation medurs av tillståndet på cirkeln med en vinkel $2\phi$.
+
+Det visar sig att cirkeln skär $\varepsilon$-axeln i största och näst största huvudtöjningen. Det finns även en vinkel $\chi$ som koordinatsystemet måste roteras med så att det blir parallellt med huvudriktningarna. Ur denna geometrin kan vi få följande samband, som är helt konsekventa med tensorbetraktningen gjort ovan:
+\begin{align*}
+	\varepsilon_{1}     &= \frac{\varepsilon_{x} + \varepsilon_{y}}{2} + \sqrt{\left(\frac{\varepsilon_{x} - \varepsilon_{y}}{2}\right)^{2} + \left(\frac{\gamma_{xy}}{2}\right)^{2}}, \\
+	\varepsilon_{2}     &= \frac{\varepsilon_{x} + \varepsilon_{y}}{2} - \sqrt{\left(\frac{\varepsilon_{x} - \varepsilon_{y}}{2}\right)^{2} + \left(\frac{\gamma_{xy}}{2}\right)^{2}}, \\
+	\tan(2\psi)         &= \frac{\gamma_{xy}}{\varepsilon_{x} - \varepsilon_{y}}, \\
+	\gamma_{\text{max}} &= \varepsilon_{1} - \varepsilon_{2}.
+\end{align*}
 
 \paragraph{Kompatibilitet i tre dimensioner}
 Från definitionerna av elementerna i töjningsmatrisen kan man se att det gäller att
