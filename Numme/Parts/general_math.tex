@@ -72,7 +72,7 @@ Vi vet att $\deval[2]{f}{x}{x} = \deval[2]{g}{x}{x}$ eftersom $p$ är linjär, v
 \end{align*}
 
 \paragraph{Konvergens för potensmetoden}
-Antag för en given matris $A$ att dens egenvärden uppfyller $\abs{\lambda_{1}} > \abs{\lambda_{2}} \geq \dots \geq \abs{\lambda_{n}}$ och att dens egenvektorer $v_{1}, \dots, v_{n}$ spänner upp $\R^{n}$. Då konvergerar potensmetoden för nästan alla startvektorer $x^{0}$ till egenvektorn $v_{1}$ och egenvärdet $\lambda_{1}$.
+Antag för en given matris $A$ att dens egenvärden uppfyller $\abs{\lambda_{1}} > \abs{\lambda_{2}} \geq \dots \geq \abs{\lambda_{n}}$ och att dens egenvektorer $v_{1}, \dots, v_{n}$ spänner upp $\R^{n}$. Då konvergerar potensmetoden för nästan alla startvektorer $x^{0}$ till egenvektorn $v_{1}$ och egenvärdet $\lambda_{1}$, med maximal konvergensrate $\abs{\frac{\lambda_{2}}{\lambda_{1}}}$.
 
 \proof
 Vi kan skriva
@@ -91,4 +91,6 @@ Om vi antar att både $c_{1}$ och $\lambda_{1}$ är positiva, kan detta skrivas 
 \begin{align*}
 	x^{k + 1} = \frac{1}{\norm{\sum\limits_{i = 1}^{n}\left(\frac{\lambda_{i}}{\lambda_{1}}\right)^{k}\frac{c_{i}}{c_{1}}v_{i}}}\sum\limits_{i = 1}^{n}\left(\frac{\lambda_{i}}{\lambda_{1}}\right)^{k}\frac{c_{i}}{c_{1}}v_{i}.
 \end{align*}
-Enligt antagandet kommer detta för stora $k$ att konvergera mot $\frac{v_{1}}{\norm{v_{1}}}$.
+Om $\lambda_{1}$ är negativ, kan man dividera med dens belopp. Om $c_{1}$ är negativ, får du fortfarande konvergens mot en egenvektor motsvarande egenvärdet $\lambda_{1}$.
+
+Enligt antagandet kommer iterationen för stora $k$ att konvergera mot $\frac{v_{1}}{\norm{v_{1}}}$. Vi noterar även att enligt antagandet är det termen motsvarande $i = 2$ som konvergerar långsammast, och att konvergensen sker med en faktor $\abs{\frac{\lambda_{2}}{\lambda_{1}}}$.
