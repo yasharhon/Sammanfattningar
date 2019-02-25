@@ -211,3 +211,82 @@ Jämförelse med Hookes lag ger
 \begin{align*}
 	G = \frac{1}{2(1 + \nu)}E.
 \end{align*}
+
+\paragraph{Tunnväggiga tryckkärl}
+Betrakta ett cylindrikskt tryckkärl med innerradie $a$ och väggtjocklek $h$ med ett inre tryck $p$. Vi kommer studera detta i cylindriska koordinater.
+
+Det finns spänningar $\sigma_{z}$ och $\sigma_{\phi}$ i tryckkärlet. Cylindersymmetrin ger att båda dessa är oberoende av $\phi$. Det återstår bara att använda jämvikter för att beräkna dem.
+
+Snitta nu ut en halvcylindrisk del med längd $\Delta z$, detta för att ej behöva betrakta radiella spänningar. Kraftjämvikt på ytan vi snittar genom ger
+\begin{align*}
+	2a\Delta zp - 2h\Delta z\sigma_{\phi} &= 0, \\
+	\sigma_{\phi}                         &= \frac{pa}{h}.
+\end{align*}
+
+Snitta nu normalt på $z$-axeln. Om vi försummar kraftbidrag från annat än trycket i kärlet, ger kraftjämvikten
+\begin{align*}
+	2\pi ah\sigma_{z} - \pi a^{2}p &= 0, \\
+	\sigma_{z}                     &= \frac{pa}{2h}.
+\end{align*}
+
+Om man tittar i radiell riktning, har vi randvillkoret $\sigma_{r} = -p$ på inre delen av mantelytan. Detta värdet är mycket mindre än de två andra spänningarna, så för tunnväggiga kärl approximerar vi $\sigma_{r} = 0.$
+
+Vi får även töjningar av detta trycket. Om vi får en radiell töjning $u_{r}$, får vi en töjning $2\pi u_{r}$ i $\phi$-riktning.
+
+Man kan göra samma beräkningar för ett sfäriskt kärl, och får
+\begin{align*}
+	\sigma_{\theta} = \sigma_{\phi} = \frac{pa}{2h}, \sigma_{r} = 0.
+\end{align*}
+Töjningarna ges av
+\begin{align*}
+	u_{\theta} = u_{\phi} = 2\pi u_{r}.
+\end{align*}
+
+\paragraph{Tjockväggiga tryckkärl}
+Betrakta återigen ett cylindriskt tryckkärl, denna gången med innerradie $a$ och ytterradie $b$.
+
+Snitta återigen normalt på $z$-axeln. Detta ger
+\begin{align*}
+	\sigma_{z} = \frac{pa^{2}}{b^{2} - a^{2}}.
+\end{align*}
+
+Snitta nu ut en bit av kärlet med vinkelbrädd $\Delta\phi$, höjd $\Delta z$ och tjocklek $\Delta r$. Vi har spänningar på alla sidor. Geometrin ger att spänningarna i $\phi$-riktning bildar vinkeln $\frac{\Delta\phi}{2}$ med den radiella normalen. Jämvikt i radiell riktning ger då
+\begin{align*}
+	(r + \Delta r)\Delta\phi\Delta z\sigma_{r}(r + \Delta r) - r\Delta\phi\Delta z\sigma_{r}(r) - 2\frac{\Delta\phi}{2}\Delta z\Delta r\sigma_{\phi} = 0.
+\end{align*}
+Detta kan lösas för att ge
+\begin{align*}
+	\frac{(r + \Delta r)\sigma_{r}(r + \Delta r) - r\sigma_{r}(r)}{\Delta r} - \sigma_{\phi} = 0,
+\end{align*}
+vilket i gränsen ger
+\begin{align*}
+	\dv{r}(r\sigma_{r}) - \sigma_{\phi} = 0.
+\end{align*}
+
+Notera att det ligger bakom att vissa skjuvspänningar blir $0$ för dena sortens symmetri.
+
+Betrakta vidare deformationen och töjningarna. Vi får i radiell riktning
+\begin{align*}
+	\varepsilon_{r} = \frac{\Delta r + u_{r}(r + \Delta r) - u_{r}(r) - \Delta r}{\Delta r} \to\dv{u_{r}}{r}
+\end{align*}
+och i vinkelriktning
+\begin{align*}
+	\varepsilon_{\phi} = \frac{(r + u_{r})\Delta\phi - r\Delta\phi}{r\Delta\phi} = \frac{u_{r}}{r}.
+\end{align*}
+Vi kan kombinera dessa ekvationerna med Hookes lag för att få
+\begin{align*}
+	\dv{r}(r^{3}\dv{\sigma_{r}}{r}) = 0.
+\end{align*}
+På inre randen har vi
+\begin{align*}
+	\sigma_{r}(a) = -p.
+\end{align*}
+Om vi har en yttre last $q$, har vi även randvillkoret
+\begin{align*}
+	\sigma_{r}(a) = -q.
+\end{align*}
+Detta kan kombineras till att ge
+\begin{align*}
+	\sigma_{r}    &= \frac{p - \left(\frac{b}{a}\right)^{2}q}{\left(\frac{b}{a}\right)^{2} - 1} - \frac{p - q}{\left(\frac{b}{a}\right)^{2} - 1}\frac{b^{2}}{r^{2}}, \\
+	\sigma_{\phi} &= \frac{p - \left(\frac{b}{a}\right)^{2}q}{\left(\frac{b}{a}\right)^{2} + 1} - \frac{p - q}{\left(\frac{b}{a}\right)^{2} - 1}\frac{b^{2}}{r^{2}}.
+\end{align*}
