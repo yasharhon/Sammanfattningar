@@ -13,6 +13,12 @@ och anpassar konstanterna så att $p$ antar rätt värden i datapunkterna. Detta
 \end{align*}
 där $\vb{c}$ är en vektor med alla koefficienter, $\vb{y}$ är en vektor med alla $y$-värden och $X_{ij} = x_{j}^{i - 1}$. $X$ kallas för en Vandermonde-matris. Om man har många datapunkter, kan detta dock ge upphov till ett illakonditionerad system.
 
+\paragraph{Lagrangeinterpolation}
+Som vi så innan är ett möjligt interpolationspolynom
+\begin{align*}
+	p(x) = \sum\limits_{i = 1}^{n + 1}y_{i}\prod\limits_{j\neq i}\frac{x - x_{j}}{x_{i} - x_{j}}.
+\end{align*}
+
 \paragraph{Newtons interpolationsmetod}
 Vi gör en ny ansats
 \begin{align*}

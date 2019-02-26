@@ -1,15 +1,7 @@
 \section{Integration}
 
 \paragraph{Eulers metod}
-Utgå från differentialekvationen
-\begin{align*}
-	\dv{y}{x} = f, y(a) = y_{0},
-\end{align*}
-och antag att vi vill integrera $f$ över $[a, b]$. Analysens huvudsats ger
-\begin{align*}
-	\inteval{a}{b}{f(x)}{x} = y(b) - y(a).
-\end{align*}
-Del nu upp $[a, b]$ i $N$ steg, och låt $x_{0} = a, x_{N} = b$. Eulers metod ger
+Antag att vi vill integrera en funktion $f$ över $[a, b]$. En enkel metod är att dela upp $[a, b]$ i $N$ steg, låta $x_{0} = a, x_{N} = b$. Eulers metod ger
 \begin{align*}
 	y_{N} &= y_{N - 1} + hf(x_{N - 1}) \\
 	      &= y_{N - 2} + hf(x_{N - 2}) + hf(x_{N - 1}) \\
@@ -21,12 +13,30 @@ Vi får slutligen approximationen
 	\inteval{a}{b}{f(x)}{x} \approx h\sum\limits_{i = 0}^{N - 1}f(x_{i}).
 \end{align*}
 
-\paragraph{Trapetsmetoden}
+\subparagraph{Fel}
 Utgå från differentialekvationen
 \begin{align*}
 	\dv{y}{x} = f, y(a) = y_{0},
 \end{align*}
-och antag att vi vill integrera $f$ över $[a, b]$. Del nu upp $[a, b]$ i $N$ steg, och låt $x_{0} = a, x_{N} = b$. I trapetsmetoden interpolerar vi $f$ i $x_{i}$ och $x_{i + 1}$ och integrerar denna räta linjen. Integralen är lika med arean av en trapets, vilket vi enkelt kan beräkna. En approximation av integralen över $[x_{i}, x_{i + 1}]$ är därmed
+och antag att vi vill integrera $f$ över $[a, b]$. Analysens huvudsats ger
+\begin{align*}
+	\inteval{a}{b}{f(x)}{x} = y(b) - y(a).
+\end{align*}
+Att beräkna denna integralen är alltså helt ekvivalent med Eulers metod. Vi försöker därför först att hitta det lokala felet på $[x_{i}, x_{i + 1}]$, som enligt argumentet från Eulers metod ges av
+\begin{align*}
+	\abs{y_{i + 1} - y(x_{i + 1})} \leq \frac{1}{2}\abs{\deval[2]{y}{t}{c}}h^{2},
+\end{align*}
+där $c\in [x_{i}, x_{i + 1}]$. Enligt sats ges det globala felet då av
+\begin{align*}
+	\abs{y_{N} - y(x_{N})} \leq \frac{e^{L(a - b)}}{2L}\max\limits_{c\in [a, b]}\abs{\deval[2]{y}{t}{c}}h,
+\end{align*}
+där vi har ändrat derivatan för att vara säker på att den anger en övre begränsning av det lokala felet. Detta kan skrivas om till
+\begin{align*}
+	\abs{y_{N} - y(x_{N})} \leq \frac{e^{L(a - b)}}{2L}\max\limits_{c\in [a, b]}\abs{\deval{f}{t}{c}}h.
+\end{align*}
+
+\paragraph{Trapetsmetoden}
+Betrakta integralen av en funktion $f$ över $[a, b]$. Dela nu upp $[a, b]$ i $N$ steg, och låt $x_{0} = a, x_{N} = b$. I trapetsmetoden interpolerar vi $f$ i $x_{i}$ och $x_{i + 1}$ och integrerar denna räta linjen. Integralen är lika med arean av en trapets, vilket vi enkelt kan beräkna. En approximation av integralen över $[x_{i}, x_{i + 1}]$ är därmed
 \begin{align*}
 	h\frac{f(x_{i + 1}) + f(x_{i})}{2}.
 \end{align*}
@@ -41,6 +51,12 @@ Låt $T_{h}$ vara skattningsfelet av integralen med trapetsmetoden med stegläng
 \begin{align*}
 	\abs{\inteval{a}{b}{f(x)}{x} - T_{h}} \leq \max\limits_{x\in [a, b]}\frac{1}{12}\abs{\deval[2]{f}{x}{x}}(b - a)h^{2}.
 \end{align*}
+
+För att visa detta, notera att det är ekvivalent att beräkna integralen av $f$ och att lösa begynnelsevärdesproblemet
+\begin{align*}
+	\dv{y}{x} = f(x),\ y(a) = y_{0}.
+\end{align*}
+Vi har en sats som beskriver det globala felet, och därmed behöver vi bara beräkna det lokala felet för integration mellan två punkter.
 
 \paragraph{Simpsons metod}
 Använder kvadratisk interpolation.

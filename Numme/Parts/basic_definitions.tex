@@ -1,5 +1,15 @@
 \section{Grundläggande koncept för numeriska metoder}
 
+\paragraph{Lokal konvergens}
+En numerisk metod säjs vara lokalt konvergent om den konvergerar mot ett givet numeriskt värde för startgissningar som är tillräckligt nära det rätta värdet.
+
+\paragraph{Linjär konvergens}
+En numerisk metod vars feltermer uppfyller
+\begin{align*}
+	\lim\limits_{n\to\infty}\frac{e_{n + 1}}{e_{n}} = S
+\end{align*}
+är linjärt konvergent med hastighet $S$.
+
 \paragraph{Kvadratisk konvergens}
 En numerisk metod vars feltermer uppfyller
 \begin{align*}
