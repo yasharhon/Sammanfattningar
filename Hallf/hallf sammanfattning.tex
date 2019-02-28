@@ -9,6 +9,8 @@
 
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
 \newcommand{\del}[3][]{\partial_{#2}^{#1}#3}
+\newcommand{\deval}[4][]{\dv[#1]{#2}{#3} (#4)}
+\renewcommand{\var}[1]{\delta \left(#1\right)}
 
 \title{Sammanfattning av SE1055 Hållfasthetslära}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -40,6 +42,8 @@
 \input{./Parts/beams.tex}
 
 \input{./Parts/three_dimensional_analysis.tex}
+
+\input{./Parts/energy.tex}
 
 \input{./Parts/material_behaviour.tex}
 
