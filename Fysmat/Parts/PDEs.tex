@@ -49,23 +49,26 @@ där $n$ är normal på $\bound{\Omega}$, finns det oändligt många ortogonala 
 Låt $A$ vara en självadjungerad operator med diskret spektrum. Då har $A$ oändligt många egenfunktioner. Dessa är ortogonala och bildar en fullständig mängd.
 
 \paragraph{Lösning av PDE:er for dummies}
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.2\textwidth]{./Images/langmann.jpg}
 	\caption{Peak fysiker.}
 	\label{fig:langmann}
 \end{figure}
-Fysiker hatar honom. Här kan du läsa hans tre enkla steg för att göra teoretisk fysik komplett vid att lösa partiella differentialekvationer:
+
+Fysiker hatar honom. Här kan du läsa hans enkla steg för att göra teoretisk fysik komplett vid att lösa partiella differentialekvationer:
 \begin{enumerate}
-	\item Bestäm lösningar till det homogena problemet.
-	\item Välj lösningar som passar till randvillkoren. Sturm-Liouvilles sats garanterar att det finns lösningar. Låt den allmänna lösningen vara en linjärkombination av dessa.
+	\item Hantera inhomogeniteter, så du eventuellt sitter kvar med en homogen ekvation.
+	\item Bestäm lösningar till det homogena problemet som passar till randvillkoren. Sturm-Liouvilles sats garanterar att det finns lösningar. Låt den allmänna lösningen vara en linjärkombination av dessa.
 	\item Hitta motsvarande lösningar till variabler som inte har randvillkor.
 	\item Skriv upp den allmänna lösningen som en linjärkombination av lösningarna du har fått innan.
-	\item Välj koefficienter som passar till initialvillkoren. Det finns även satser som hjälper med detta.
+	\item Välj din linjärkombination så att den passar till initialvillkoren. Sturm-Liouville-teori hjälper även med detta.
 \end{enumerate}
+Det som följer är sätt att göra dessa olika steg på.
 
 \paragraph{Separationsmetoden}
-Separationsmetoden är ett sätt att lösa homogena partiella differentialekvationer på.
+Separationsmetoden är ett sätt att lösa homogena partiella differentialekvationer på. Dett dåligt sätt, men ändå ett sätt.
 
 Låt $u(x_{1}, \dots, x_{n})$ vara en lösning till $Lu = 0$, där $L$ är en linjär differentialoperator. Separationsmetoden går ut på att göra ansatsen
 \begin{align*}
@@ -77,6 +80,85 @@ Denna ansatsen gör förhoppningsvis att differentialekvationen kan skrivas som
 \end{align*}
 Varje sida beror av olika variabler, varför de måste vara lika med en konstant. På detta sättet kan det ursprungliga problemet förhoppningsvis separeras i delproblem som är enkla att lösa.
 
+Den här lösningsmetoden är ej att föredra. Använd heller Sturm-Liouville-teori om du kan.
+
+\subparagraph{Exempel}
+\textit{
+Lös värmeledningsekvationen $\del{t}u - \alpha\del[2]{x}u = 0,\ u(0, t) = u(L, t) = 0$.
+}
+
+För att lösa denna, ansätt $u(x, t) = X(x)T(t)$. Insatt i differentialekvationen ger detta
+\begin{align*}
+	X\dv{T}{t} - \alpha\dv[2]{X}{x}T = 0,
+\end{align*}
+som kan separeras till
+\begin{align*}
+	\frac{1}{\alpha T}\dv{T}{t} = \frac{1}{X}\dv[2]{X}{x}.
+\end{align*}
+Båda sidor måste vara lika med en konstant $k$. Vi får då två ODE-problem som kan lösas. Lös först $X$-ekvationen, då randvillkoren kommer ge dig ett spektrum av möjliga värden på $k$. För varje sådant $k$ kan du lösa $T$-ekvationen. Lösningen är då en linjärkombination av produkter $XT$, där värje sådant produkt är lösningar av ekvationerna ovan för samma $k$.
+
+\paragraph{Lösning med Sturm-Liouville-teori}
+Betrakta ett problem på formen $Lu = 0$, där $L = L_{1} + L_{2}$ och $L_{2}$ är en operator på formen $\frac{1}{w}\dv{x}\left(p\dv{x}\right) + \frac{q}{w}$. Lösning med Sturm-Liouville-teori går ut på att serieutveckla lösningen i egenfunktioner till $L_{2}$, vilket ger ett enklare problem i de återstående variablerna.
+
+Det som är smart med denna metoden är att Sturm-Liouville-teori garanterar att det finns oändligt många sådana egenfunktioner som bildar en fullständig mängd. Vi får även ett sätt att serieutveckla funktioner på genom inreprodukten som kommer från teorin.
+
+Denna lösningsmetoden är helt klart att föredra framför variabelseparation.
+
+\subparagraph{Exempel}
+\textit{
+Lös diffusionproblemetekvationen $\del{t}u - D\del[2]{x}u = 0,\ u(0, t) = u(L, t) = 0,\ u(x, 0) = u_{0}(x)$.
+}
+
+Vi noterar att $-\del[2]{x}{}$ är en operator på formen som beskrivs. Vi kan även hitta sådana egenfunktioner för denna operatorn. Dessa ges av $f_{n}(x) = A_{n}\cos(\sqrt{\lambda_{n}}x) + B_{n}\sin(\sqrt{\lambda_{n}}x)$, där randvillkoren implicerar $A_{n} = 0, \sqrt{\lambda_{n}} = \frac{\pi}{L}n$. Vi gör därmed ansatsen
+\begin{align*}
+	u(x, t) = \sum\limits_{n = 1}^{\infty}B_{n}(t)\sin(\sqrt{\lambda_{n}}x).
+\end{align*}
+Insatt i ekvationen ger detta
+\begin{align*}
+	\del{t}{\sum\limits_{n = 1}^{\infty}B_{n}(t)\sin(\lambda_{n}x)} - D\del[2]{x}{\sum\limits_{n = 1}^{\infty}B_{n}(t)\sin(\lambda_{n}x)}     &= 0, \\
+	\sum\limits_{n = 1}^{\infty}\deval{B_{n}}{t}{t}\sin(\lambda_{n}x) + D\sum\limits_{n = 1}^{\infty}B_{n}(t)\lambda_{n}\sin(\sqrt{\lambda_{n}}x) &= 0.
+\end{align*}
+Man kan slå ihop serierna, och detta implicerar
+\begin{align*}
+	\dv{B_{n}}{t} + D\lambda_{n}B_{n} = 0.
+\end{align*}
+För att få ett initialvillkor för $B_{n}$, använd att
+\begin{align*}
+	u_{0}(x) = \sum\limits_{n = 1}^{\infty}B_{n}(0)\sin(\sqrt{\lambda_{n}}x).
+\end{align*}
+Sturm-Liouville-teori ger att
+\begin{align*}
+	u_{0}(x) = \sum\limits_{n = 1}^{\infty}\frac{\inprod{u_{0}}{\sin(\sqrt{\lambda_{n}}x)}}{\inprod{\sin(\sqrt{\lambda_{n}}x)}{\sin(\sqrt{\lambda_{n}}x)}}\sin(\sqrt{\lambda_{n}}x),
+\end{align*}
+vilket ger initialvillkoret
+\begin{align*}
+	B_{n}(0) = \frac{\inprod{u_{0}}{\sin(\sqrt{\lambda_{n}}x)}}{\inprod{\sin(\sqrt{\lambda_{n}}x)}{\sin(\sqrt{\lambda_{n}}x)}}
+\end{align*}
+med inreprodukten
+\begin{align*}
+	\inprod{f}{g} = \inteval{0}{L}{x}{\cc{f}(x)g(x)}.
+\end{align*}
+
+\paragraph{Mer avancerad exempel}
+Tillkommer.
+
+\paragraph{Superposition}
+Betrakta ett problem på formen $Lu = f$ med olika randvillkor på formen $A_{i}u = g_{i}$. Om problemet är linjärt, kan man skriva lösningen som en summa av olika funktioner, där varje term i summan löser samma problem för fallet alla funktioner $f, g_{i}$ förutom en är lika med $0$.
+
+\subparagraph{Konkretisering}
+\textit{
+Lös Poissons ekvation $\laplace{u} = f$ för $0\leq x\leq a, 0\leq y\leq b$ med randvillkoren $u(0, y) = g_{1}(y),\ \pdeval{u}{x}{a, y} = g_{2}(y),\ \pdeval{u}{y}{x, 0} = g_{3}(x), u(x, b) = g_{4}(x)$.
+}
+Lösningen ges av $u = \sum\limits_{i = 1}^{5}u_{i}$, där de olika $u_{i}$ löser
+\begin{alignat*}{7}
+	\laplace{u_{1}}         &= f,&\ \laplace{u_{2}}         &= 0,       &\        \laplace{u_{3}}         &= 0,&\        \laplace{u_{4}}         &= 0,&\        \laplace{u_{5}}         &= 0,& \\
+	u_{1}(0, y)             &= 0,&\ u_{2}(0, y)             &= g_{1}(y),&\ u_{3}(0, y)             &= 0,&\ u_{4}(0, y)             &= 0,&\ u_{5}(0, y)             &= 0,& \\
+	\pdeval{u_{1}}{x}{a, y} &= 0,&\ \pdeval{u_{2}}{x}{a, y} &= 0,       &\ \pdeval{u_{3}}{x}{a, y} &= g_{2}(y),&\ \pdeval{u_{4}}{x}{a, y} &= 0,&\ \pdeval{u_{5}}{x}{a, y} &= 0,& \\
+	\pdeval{u_{1}}{y}{x, 0} &= 0,&\ \pdeval{u_{2}}{y}{x, 0} &= 0,       &\ \pdeval{u_{3}}{y}{x, 0} &= 0,&\ \pdeval{u_{4}}{y}{x, 0} &= g_{3}(x),&\ \pdeval{u_{5}}{y}{x, 0} &= 0,& \\
+	u_{1}(x, b)             &= 0,&\ u_{2}(x, b)             &= 0,       &\ u_{3}(x, b)             &= 0,&\ u_{4}(x, b)             &= 0,&\ u_{5}(x, b)             &= g_{4}(x).&
+\end{alignat*}
+Nu har vi fått fem enklare problem att lösa, och det kanske går.
+
 \paragraph{Lösningsstrategi för inhomogena problem}
 Om man har ett problem med inhomogeniteter i differentialekvationen och/eller villkoren, finns det olika strategier för att lösa detta problemet:
 \begin{itemize}
@@ -84,18 +166,26 @@ Om man har ett problem med inhomogeniteter i differentialekvationen och/eller vi
 	\item flytta inhomogeniteten från villkoren till differentialekvationen, för sen att försöka lösa det.
 	\item serieutveckla ekvationen och lösningen, vilket ger ett ODE-problem för basfunktionerna.
 \end{itemize}
-Här specifieras hur metod två fungerar.
 
 För att utdypa kring andra metoden, betrakta ekvationen
 \begin{align*}
 	Lu            &= 0, \\
-	Au(\vb{x}, t) &= f(\vb{x}, t), x\in\bound{\Omega},
+	Au(\vb{x}, t) &= f(x, t), x\in\bound{\Omega},
 \end{align*}
 där både $L$ och $A$ är linjära operatorer. Antag att man hittar en funktion $w$ som uppfyller $Aw = f$ på randen, och inför $v = u - w$, där $u$ är en lösning. Denna uppfyller
 \begin{align*}
-	\del{t}{v} + Lv = \del{t}{u} + Lu - \del{t}{w} - Lw = -\del{t}{w} - Lw,
-	Av(\vb{x}, t) = 0, x\in\bound{\Omega}.
+	Lv       &= Lu - Lw = -Lw, \\
+	Av(x, t) &= 0, x\in\bound{\Omega}.
 \end{align*}
+
+\paragraph{Lösning på oändliga områden}
+Betrakta problemet $Lu = f$ på hela $\R^{n}$. För att lösa detta, är det smart att transformera problemet och försöka bryta det ned i minre bitar.
+
+\subparagraph{Exempel}
+Tillkommer
+
+\paragraph{Speglingsmetoder}
+Betrakta problemet $Lu = f$ på ett begränsad område
 
 \paragraph{Greenfunktioner}
 För att prata om Greenfunktioner, behöver vi först introducera integralkärnor. Om en linjär operator $L$ på ett intervall $I$ uppfyller
@@ -153,3 +243,5 @@ En fundamentallösning är en Greenfunktion som används för lösningar av ektv
 
 \paragraph{Poissonkärnor}
 Betrakta en homogen differentialekvation på ett helt reelt rum. Vi vet mha. Fouriertransform att lösningen för ett givet begynnelsesvillkor innebär en faltning av villkoret med någon funktion. Denna funktionen kallas ekvationens Poissonkärna. Den definieras i alla fall för Laplace' ekvation i två dimensioner, så jag väljer denna definitionen. Big whoop, wanna fight about it?
+
+\paragraph{Speglingsmetoder för Greenfunktioner}
