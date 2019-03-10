@@ -42,6 +42,30 @@ Om vi har bra randvillkor, kan de två återstående termerna försvinna. Annars
 
 Beräkningen är analog om man har en vektorvärd funktion man minimerar funktionalen med avseende på - det kommer bara dyka upp flera termer. Den är även analog om man minimerar med avseende på en funktion av flera variabler. Då dyker det upp bidrag från de olika partialderivatorna. Om det finns beroende av högre ordningens derivator, får man göra flera partiella integrationer.
 
+\paragraph{Beltramis identitet}
+Betrakta ett variationsproblem där funktionalen
+\begin{align*}
+	J(u) = \inteval{x_{0}}{x_{1}}{x}{F(u, u', x)}
+\end{align*}
+skall extremeras. Euler-Lagrange-ekvationen som beskriver extrempunkten är
+\begin{align*}
+	\del{u}{F} - \dv{x}\del{u'}{F} = 0.
+\end{align*}
+Om $F$ ej beror av $x$, gäller det att
+\begin{align*}
+	\dv{F}{x}           &= u'\del{u}{F} + u''\del{u'}{F}, \\
+	                    &= u'\dv{x}\del{u'}{F} + u''\del{u'}{F} \\
+	                    &= \dv{x}\left(u'\del{u'}{F}\right),
+\end{align*}
+vilket ger
+\begin{align*}
+	\dv{x}\left(F - u'\del{u'}{F}\right) = 0
+\end{align*}
+och slutligen Beltramis identitet
+\begin{align*}
+	F - u'\del{u'}{F} = C.
+\end{align*}
+
 \paragraph{Variationsproblem med funktionaler som bivillkor}
 Betrakta problemet att hitta en funktion som är en extrempunkt till funktionalen
 \begin{align*}
