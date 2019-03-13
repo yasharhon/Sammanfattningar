@@ -1,0 +1,166 @@
+\section{Användbar matte}
+
+\paragraph{Hjälpsats från Grönwalls lemma}
+Låt $f(x, y)$ vara Lipschitzkontinuerlig i $y$ med Lipschitzkonstant $L$, och $Y$ och $Z$ lösa $\dv{y}{x} = f$ med något initialvillkor i $x = a$. Då är
+\begin{align*}
+	\abs{Y(t) - Z(t)} \leq e^{L(t - a)}\abs{Y(a) - Z(a)}.
+\end{align*}
+
+\proof
+Bilda $u = Y - Z$. Vi antar att $u(a) \neq 0$ eftersom entydighet annars skulle ge satsen trivialt. Vi vet även att $u$ är strikt positiv eller negativ, så vi kan anta att $u$ är strikt positiv. Eftersom $f$ är Lipschitzkontinuerlig, uppfyller $u$ då
+\begin{align*}
+	\dv{u}{x} = \abs{f(t, Y) - f(t, Z)} \leq L\abs{Y - Z} = Lu,
+\end{align*}
+och lösning av detta med integration från $a$ till $t$ fullför beviset.
+
+\paragraph{Allmän begränsning av globalt fel}
+Betrakta begynnelsevärdesproblemet
+\begin{align*}
+	\deval{y}{t}{t} &= f(t, y(t)), \\
+	y(a)            &= b,
+\end{align*}
+löst på $[a, T]$, där $f$ är Lipschitzkontinuerlig med Lipschitzkonstant $L$. Betrakta en numerisk lösning med lokalt fel begränsad av $Mh^{p + 1}$. Då begränsas det globala felet av
+\begin{align*}
+	\abs{y(T) - y_{N}} \leq \frac{e^{L(T - a)}M}{L}h^{p}.
+\end{align*}
+
+\proof
+Vi inför $y(t; t_{n})$ som den exakta lösningen som startar i $(t_{n}, y_{n})$ (alltså är den exakta lösningen $y(t; t_{0})$). Det globala felet ges då av
+\begin{align*}
+	\abs{y(T) - y_{N}} &= \abs{y(T) - y(T; t_{N - 1}) + y(T; t_{N - 1}) + \dots - y(T; t_{1}) + y(T; t_{1}) - y_{N}} \\
+	                   &\leq \abs{y(T) - y(T; t_{N - 1})} + \abs{y(T; t_{N - 1}) - y(T; t_{N - 2})} + \dots + \abs{y(T; t_{1}) - y_{N}}.
+\end{align*}
+Vi noterar att $y(T) = y(T; t_{N - 1})$.
+
+Den första termen ges simpelthen av det lokala felet. Hjälpsatsen ovan ger
+\begin{align*}
+	\abs{y(T; t_{i}) - y(T; t_{i - 1})} \leq e^{L(T - t_{i})}\abs{y(t_{i}; t_{i}) - y(t_{i}; t_{i - 1})}.
+\end{align*}
+Det som står kvar i absolutbeloppstecknet är det lokala felet, eftersom den vänstra termen är exakt och den högra kommer från en iteration. Detta ger
+\begin{align*}
+	\abs{y(T; t_{i}) - y(T; t_{i - 1})} \leq e^{L(T - t_{i})}Mh^{p + 1} = e^{L(N - i)h}Mh^{p + 1}
+\end{align*}
+och vidare
+\begin{align*}
+	\abs{y_{N} - y(T)} &\leq Mh^{p + 1} + Mh^{p + 1}e^{Lh} + \dots + Mh^{p + 1}e^{L(N - 1)h}. \\
+	                   &= Mh^{p + 1}\frac{1 - e^{LNh}}{1 - e^{Lh}} \\
+	                   &= Mh^{p + 1}\frac{e^{LNh} - 1}{e^{Lh} - 1} \\
+	                   &\leq Mh^{p + 1}\frac{e^{LNh}}{Lh} \\
+	                   &= \frac{e^{LNh}M}{L}h^{p},
+\end{align*}
+och beviset är klart.
+
+\paragraph{Möjlighet för polynominterpolation}
+Givet $n + 1$ punkter $(x_{i}, y_{i})$, där $x_{i}\neq x_{j}$ om $i\neq j$, finns det ett entydigt polynom $p$ av grad (högst) $n$ så att $p(x_{i}) = y_{i}\ \forall i= 1, \dots, n + 1$.
+
+\proof
+För att visa existensen av $p$, kan vi välja det som
+\begin{align*}
+	p(x) = \sum\limits_{i = 1}^{n + 1}y_{i}\prod\limits_{j\neq i}\frac{x - x_{j}}{x_{i} - x_{j}}.
+\end{align*}
+Denna metoden kallas för Lagrangeinterpolation. Vi ser att $p$ har grad $n$ och
+\begin{align*}
+	p(x_{k}) = \sum\limits_{i = 1}^{n + 1}y_{i}\prod\limits_{j\neq i}\frac{x_{k} - x_{j}}{x_{i} - x_{j}}.
+\end{align*}
+För alla termer i summan där $i\neq k$ kommer det finnas en faktor $x_{k} - x_{k}$ i nämnaren, och dessa ger inget bidrag. För $i = k$ blir produkten bara $1$, och $p(x_{k}) = y_{k}$.
+
+För att visa att $p$ är entydig, antag att $q$ är ett annat interpolationspolynom och bilda $v = q - p$, med grad högst $n$. Detta ger att $v$ har $n + 1$ nollställen. Detta är endast möjligt om $v = 0$, och därmed måste $p$ vara unikt.
+
+\paragraph{Fel för linjär interpolation}
+Antag att $f\in C^{2}$. Låt $p$ vara det linjära polynomet som interpolerar punkterna $(x_{0}, f(x_{0}))$ och $(x_{0} + h, f(x_{0} + h))$. Då gäller $\abs{f(x) - p(x)} \leq Ch^{2},\ x_{0} \leq x \leq x_{0} + h$, där
+\begin{align*}
+	C = \max\limits_{x_{0} \leq z \leq x_{0} + h}\frac{\abs{\deval[2]{f}{x}{z}}}{8}.
+\end{align*}
+
+\proof
+Antag $x_{0} = 0$, och bilda $g = f - p$. $g$ är kontinuerlig på $[0, h]$, och antar därmed ett största och minsta värde på detta intervallet. Antag att den antar sitt största värde i $x = a$. Taylorutveckling kring $a$ ger
+\begin{align*}
+	g(x) = g(a) + \deval{g}{x}{a}(x - a) + \frac{1}{2}\deval[2]{g}{x}{c}(x - a)^{2}
+\end{align*}
+för något $c\in [a, x]$. Vi ser att andra termen måste bli $0$, ty $a$ är en maxpunkt. Evaluering av Taylorutvecklingen i $x = 0$ eller $x = h$ (den som är närmast $a$) ger $g(x) = 0$ och
+\begin{align*}
+	g(a)       &= -\frac{1}{2}\deval[2]{g}{x}{c}(x - a)^{2}, \\
+	\abs{g(a)} &\leq \frac{1}{2}\max\limits_{x_{0} \leq z \leq x_{0} + h}\abs{\deval[2]{g}{x}{z}}\left(\frac{1}{2}h\right)^{2}.
+\end{align*}
+Vi vet att $\deval[2]{f}{x}{x} = \deval[2]{g}{x}{x}$ eftersom $p$ är linjär, vilket ger
+\begin{align*}
+	\abs{g(a)} &\leq \max\limits_{x_{0} \leq z \leq x_{0} + h}\frac{\abs{\deval[2]{f}{x}{z}}}{8}h^{2}.
+\end{align*}
+
+\paragraph{Konvergens för potensmetoden}
+Antag för en given matris $A$ att dens egenvärden uppfyller $\abs{\lambda_{1}} > \abs{\lambda_{2}} \geq \dots \geq \abs{\lambda_{n}}$ och att dens egenvektorer $v_{1}, \dots, v_{n}$ spänner upp $\R^{n}$. Då konvergerar potensmetoden för nästan alla startvektorer $x^{0}$ till egenvektorn $v_{1}$ och egenvärdet $\lambda_{1}$, med maximal konvergensrate $\abs{\frac{\lambda_{2}}{\lambda_{1}}}$.
+
+\proof
+Vi kan skriva
+\begin{align*}
+	x^{0} = \sum\limits_{i = 1}^{n}c_{i}v_{i}.
+\end{align*}
+Om $c_{1} \neq 0$ ger $k$ multiplikationer med $A$
+\begin{align*}
+	A^{k}x^{0} = \sum\limits_{i = 1}^{n}\lambda_{i}^{k}c_{i}v_{i}.
+\end{align*}
+Potensmetoden ger oss nu
+\begin{align*}
+	x^{k + 1} = \frac{1}{\norm{\sum\limits_{i = 1}^{n}\lambda_{i}^{k}c_{i}v_{i}}}\sum\limits_{i = 1}^{n}\lambda_{i}^{k}c_{i}v_{i}.
+\end{align*}
+Om vi antar att både $c_{1}$ och $\lambda_{1}$ är positiva, kan detta skrivas som
+\begin{align*}
+	x^{k + 1} = \frac{1}{\norm{\sum\limits_{i = 1}^{n}\left(\frac{\lambda_{i}}{\lambda_{1}}\right)^{k}\frac{c_{i}}{c_{1}}v_{i}}}\sum\limits_{i = 1}^{n}\left(\frac{\lambda_{i}}{\lambda_{1}}\right)^{k}\frac{c_{i}}{c_{1}}v_{i}.
+\end{align*}
+Om $\lambda_{1}$ är negativ, kan man dividera med dens belopp. Om $c_{1}$ är negativ, får du fortfarande konvergens mot en egenvektor motsvarande egenvärdet $\lambda_{1}$.
+
+Enligt antagandet kommer iterationen för stora $k$ att konvergera mot $\frac{v_{1}}{\norm{v_{1}}}$. Vi noterar även att enligt antagandet är det termen motsvarande $i = 2$ som konvergerar långsammast, och att konvergensen sker med en faktor $\abs{\frac{\lambda_{2}}{\lambda_{1}}}$.
+
+\paragraph{Egenvärden för tridiagonala matriser}
+Betrakta $n\times n$-matrisen $T$ med $1$ på diagonalen och $-1$ på över- och underdiagonalen. Dens egenvektorer $v_{i}$ uppfyller
+\begin{align*}
+	v_{i, j} = \sin(\frac{ij}{n + 1}\pi)
+\end{align*}
+och har motsvarande egenvärden
+\begin{align*}
+	\lambda_{i} = 1 - 2\cos(\frac{i}{n + 1}\pi).
+\end{align*}
+
+\proof
+Låt $x_{i} = \frac{i}{n + 1}\pi$
+\begin{align*}
+	(Tv_{i})_{j} = -\sin((j - 1)x_{i}) + \sin(jx_{i}) - \sin((j + 1)x_{i}).
+\end{align*}
+Trigonometriska identiteter ger
+\begin{align*}
+	sin((j \pm 1)x_{i}) = \sin(jx_{i})\cos(x_{i}) \pm \cos(jx_{i})\sin(x_{i}),
+\end{align*}
+vilket implicerar
+\begin{align*}
+	(Tv_{i})_{j} = (1 - 2\cos(x_{i}))\sin(jx_{i}).
+\end{align*}
+
+\paragraph{Stabilitet för numerisk lösning av värmeledningsekvationen}
+Betrakta värmeledningsekvationen
+\begin{align*}
+	\pdv{u}{t} = D\pdv[2]{u}{x}
+\end{align*}
+löst numerisk med en framåtdifferens i tid, med steglängd $h$ i $x$ och $k$ i $t$. Lösningen är stabil om
+\begin{align*}
+	\frac{Dk}{h^{2}} < \frac{1}{2}.
+\end{align*}
+
+\proof
+Att lösa detta numeriskt innebär att göra iterationen
+\begin{align*}
+	y_{i + 1} = Ay_{i} + s_{j},
+\end{align*}
+där $y_{j}$ är en vektor med värdet av lösningen i de olika punkterna i diskretiseringen vid tidssteg $j$. Man kan stella upp ekvationerna och få att $A$ är en diagonalmatris med $1 - 2\sigma$ på diagonalen, $\sigma$ på över- och underdiagonalen och $0$ överallt annars, där $\sigma = \frac{Dk}{h^{2}}$. Man får även att $s_{j}$ är en vektor vars alla element är $0$ förutom de två sista, som har värdet $\sigma y_{0, j}$ och $\sigma y_{N, j}$, alltså värdena på randen.
+
+Låt nu $y_{j}$ vara en exakt lösning som uppfyller $y_{j + 1} = Ay_{j} + s_{j}$ och $w_{j}$ vara den numeriska lösningen som erhålls. Skillnaden $e_{j}$ mellan dessa uppfyller $e_{j + 1} = Ae_{j}$. Om inte felen skall förstoras, måste alla egenvärden ha belopp mindre än $1$.
+
+Låt nu $T$ vara $n\times n$-matrisen med $1$ på diagonalen och $-1$ på över- och underdiagonalen. Då kan vi skriva matrisen $A$ som $A = (1 - \sigma)I - \sigma T$. Vi känner egenvärdena till $T$, och vet därmed att $A$ har egenvärden
+\begin{align*}
+	\lambda_{i} &= 1 - \sigma - \sigma\left(1 - 2\cos(\frac{i}{n + 1}\pi)\right) \\
+	            &= 2\sigma\left(\cos(\frac{i}{n + 1}\pi) - 1\right) + 1.
+\end{align*}
+Eftersom $j$ går från $1$ till $n$, ligger alla egenvärden mellan $1 - 4\sigma$ och $1$. Vi vet att $\sigma$ är positiv, så vi kräver $1 - 4\sigma > -1$. Om man sätter in uttrycket för $\sigma$, fås slutligen
+\begin{align*}
+	\frac{Dk}{h^{2}} < \frac{1}{2},
+\end{align*}
+och beviset är klart.

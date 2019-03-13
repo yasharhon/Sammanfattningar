@@ -1,0 +1,48 @@
+\section{Derivator}
+
+\paragraph{Framåtdifferens}
+En derivata kan approximeras med framåtdifferensen
+\begin{align*}
+	\deval{f}{x}{x} \approx \frac{f(x + h) - f(x)}{h}.
+\end{align*}
+
+\subparagraph{Fel}
+För att få en skattning av felet, använder vi Taylorutveckling för att få
+\begin{align*}
+	f(x + h) - f(x) \approx \deval{f}{x}{x}h + \frac{1}{2}\deval[2]{f}{x}{c}h^{2},
+\end{align*}
+och
+\begin{align*}
+	\frac{f(x + h) - f(x)}{h} - \deval{f}{x}{x} = \frac{1}{2}\deval[2]{f}{x}{c}h.
+\end{align*}
+
+\paragraph{Val av steglängd}
+Antag att vi approximerar $f$ med $\tilde{f}$, där $\tilde{f}$ uppfyller $\abs{\tilde{f}(x) - f(x)} \leq \varepsilon\ \forall x$. Felet vi gör i skattning av derivatan ges då av
+\begin{align*}
+	\abs{\deval{f}{x}{x} - \frac{\tilde{f}(x + h) - \tilde{f}(x)}{h}} \leq& \abs{\deval{f}{x}{x} - \frac{f(x + h) - f(x)}{h}} \\
+	                                                                      &+ \abs{\frac{\tilde{f}(x + h) - f(x + h) - \tilde{f}(x) + f(x)}{h}} \\
+	                                                                  \leq& Ch + \frac{2\varepsilon}{h}.
+\end{align*}
+Detta felet har sitt minimum för $h = \sqrt{\frac{2\varepsilon}{C}}$.
+
+\paragraph{Central differens}
+Man kan alternativt försöka med en central differens
+\begin{align*}
+	\deval{f}{x}{x} \approx \frac{f(x + h) - f(x - h)}{2h}.
+\end{align*}
+
+\subparagraph{Fel}
+Vi Taylorutvecklar igen och får
+\begin{align*}
+	f(x + h) &\approx f(x) + \deval{f}{x}{x}h + \frac{1}{2}\deval[2]{f}{x}{x}h^{2} + \frac{1}{6}\deval[3]{f}{x}{c_{1}}h^{3}, \\
+	f(x - h) &\approx f(x) - \deval{f}{x}{x}h + \frac{1}{2}\deval[2]{f}{x}{x}h^{2} - \frac{1}{6}\deval[3]{f}{x}{c_{2}}h^{3}.
+\end{align*}
+Då blir centrala differensen
+\begin{align*}
+	\frac{f(x + h) - f(x - h)}{2h} - \deval{f}{x}{x} &\approx \frac{1}{12}h^{2}\left(\deval[3]{f}{x}{c_{1}} + \deval[3]{f}{x}{c_{2}}\right) \\
+	                                                 &\approx \frac{1}{6}\deval[3]{f}{x}{c}h^{2},
+\end{align*}
+där vi i sista raden har använt medelvärdesatsen.
+
+\paragraph{Val av steglängd}
+Antag att vi approximerar $f$ med $\tilde{f}$, där $\tilde{f}$ uppfyller $\abs{\tilde{f}(x) - f(x)} \leq \varepsilon\ \forall x$. Felet vi gör i skattning av derivatan minimeras då för $h\propto\sqrt[3]{\varepsilon}$.
