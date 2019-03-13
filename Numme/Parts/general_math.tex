@@ -1,23 +1,38 @@
 \section{Användbar matte}
 
+\paragraph{Hjälpsats från Grönwalls lemma}
+Låt $f(x, y)$ vara Lipschitzkontinuerlig i $y$ med Lipschitzkonstant $L$, och $Y$ och $Z$ lösa $\dv{y}{x} = f$ med något initialvillkor i $x = a$. Då är
+\begin{align*}
+	\abs{Y(t) - Z(t)} \leq e^{L(t - a)}\abs{Y(a) - Z(a)}.
+\end{align*}
+
+\proof
+Bilda $u = Y - Z$. Vi antar att $u(a) \neq 0$ eftersom entydighet annars skulle ge satsen trivialt. Vi vet även att $u$ är strikt positiv eller negativ, så vi kan anta att $u$ är strikt positiv. Eftersom $f$ är Lipschitzkontinuerlig, uppfyller $u$ då
+\begin{align*}
+	\dv{u}{x} = \abs{f(t, Y) - f(t, Z)} \leq L\abs{Y - Z} = Lu,
+\end{align*}
+och lösning av detta med integration från $a$ till $t$ fullför beviset.
+
 \paragraph{Allmän begränsning av globalt fel}
 Betrakta begynnelsevärdesproblemet
 \begin{align*}
 	\deval{y}{t}{t} &= f(t, y(t)), \\
 	y(a)            &= b,
 \end{align*}
-löst på $[a, T]$, där $f$ är Lipschitzkontinuerlig. Betrakta en numerisk lösning med lokalt fel begränsad av $Mh^{p + 1}$. Då begränsas det globala felet av
+löst på $[a, T]$, där $f$ är Lipschitzkontinuerlig med Lipschitzkonstant $L$. Betrakta en numerisk lösning med lokalt fel begränsad av $Mh^{p + 1}$. Då begränsas det globala felet av
 \begin{align*}
 	\abs{y(T) - y_{N}} \leq \frac{e^{L(T - a)}M}{L}h^{p}.
 \end{align*}
 
 \proof
-Vi inför $y(t; t_{n})$ som den exakta lösningen som startar i $(t_{n}, y_{n})$. Det globala felet ges då av
+Vi inför $y(t; t_{n})$ som den exakta lösningen som startar i $(t_{n}, y_{n})$ (alltså är den exakta lösningen $y(t; t_{0})$). Det globala felet ges då av
 \begin{align*}
 	\abs{y(T) - y_{N}} &= \abs{y(T) - y(T; t_{N - 1}) + y(T; t_{N - 1}) + \dots - y(T; t_{1}) + y(T; t_{1}) - y_{N}} \\
 	                   &\leq \abs{y(T) - y(T; t_{N - 1})} + \abs{y(T; t_{N - 1}) - y(T; t_{N - 2})} + \dots + \abs{y(T; t_{1}) - y_{N}}.
 \end{align*}
-Den första termen ges simpelthen av det lokala felet. Satsen om entydighet av lösning för en sådan differentialekvation ger vidare
+Vi noterar att $y(T) = y(T; t_{N - 1})$.
+
+Den första termen ges simpelthen av det lokala felet. Hjälpsatsen ovan ger
 \begin{align*}
 	\abs{y(T; t_{i}) - y(T; t_{i - 1})} \leq e^{L(T - t_{i})}\abs{y(t_{i}; t_{i}) - y(t_{i}; t_{i - 1})}.
 \end{align*}
@@ -30,7 +45,8 @@ och vidare
 	\abs{y_{N} - y(T)} &\leq Mh^{p + 1} + Mh^{p + 1}e^{Lh} + \dots + Mh^{p + 1}e^{L(N - 1)h}. \\
 	                   &= Mh^{p + 1}\frac{1 - e^{LNh}}{1 - e^{Lh}} \\
 	                   &= Mh^{p + 1}\frac{e^{LNh} - 1}{e^{Lh} - 1} \\
-	                   &\leq Mh^{p + 1}\frac{e^{LNh}}{Lh},
+	                   &\leq Mh^{p + 1}\frac{e^{LNh}}{Lh} \\
+	                   &= \frac{e^{LNh}M}{L}h^{p},
 \end{align*}
 och beviset är klart.
 
@@ -94,3 +110,57 @@ Om vi antar att både $c_{1}$ och $\lambda_{1}$ är positiva, kan detta skrivas 
 Om $\lambda_{1}$ är negativ, kan man dividera med dens belopp. Om $c_{1}$ är negativ, får du fortfarande konvergens mot en egenvektor motsvarande egenvärdet $\lambda_{1}$.
 
 Enligt antagandet kommer iterationen för stora $k$ att konvergera mot $\frac{v_{1}}{\norm{v_{1}}}$. Vi noterar även att enligt antagandet är det termen motsvarande $i = 2$ som konvergerar långsammast, och att konvergensen sker med en faktor $\abs{\frac{\lambda_{2}}{\lambda_{1}}}$.
+
+\paragraph{Egenvärden för tridiagonala matriser}
+Betrakta $n\times n$-matrisen $T$ med $1$ på diagonalen och $-1$ på över- och underdiagonalen. Dens egenvektorer $v_{i}$ uppfyller
+\begin{align*}
+	v_{i, j} = \sin(\frac{ij}{n + 1}\pi)
+\end{align*}
+och har motsvarande egenvärden
+\begin{align*}
+	\lambda_{i} = 1 - 2\cos(\frac{i}{n + 1}\pi).
+\end{align*}
+
+\proof
+Låt $x_{i} = \frac{i}{n + 1}\pi$
+\begin{align*}
+	(Tv_{i})_{j} = -\sin((j - 1)x_{i}) + \sin(jx_{i}) - \sin((j + 1)x_{i}).
+\end{align*}
+Trigonometriska identiteter ger
+\begin{align*}
+	sin((j \pm 1)x_{i}) = \sin(jx_{i})\cos(x_{i}) \pm \cos(jx_{i})\sin(x_{i}),
+\end{align*}
+vilket implicerar
+\begin{align*}
+	(Tv_{i})_{j} = (1 - 2\cos(x_{i}))\sin(jx_{i}).
+\end{align*}
+
+\paragraph{Stabilitet för numerisk lösning av värmeledningsekvationen}
+Betrakta värmeledningsekvationen
+\begin{align*}
+	\pdv{u}{t} = D\pdv[2]{u}{x}
+\end{align*}
+löst numerisk med en framåtdifferens i tid, med steglängd $h$ i $x$ och $k$ i $t$. Lösningen är stabil om
+\begin{align*}
+	\frac{Dk}{h^{2}} < \frac{1}{2}.
+\end{align*}
+
+\proof
+Att lösa detta numeriskt innebär att göra iterationen
+\begin{align*}
+	y_{i + 1} = Ay_{i} + s_{j},
+\end{align*}
+där $y_{j}$ är en vektor med värdet av lösningen i de olika punkterna i diskretiseringen vid tidssteg $j$. Man kan stella upp ekvationerna och få att $A$ är en diagonalmatris med $1 - 2\sigma$ på diagonalen, $\sigma$ på över- och underdiagonalen och $0$ överallt annars, där $\sigma = \frac{Dk}{h^{2}}$. Man får även att $s_{j}$ är en vektor vars alla element är $0$ förutom de två sista, som har värdet $\sigma y_{0, j}$ och $\sigma y_{N, j}$, alltså värdena på randen.
+
+Låt nu $y_{j}$ vara en exakt lösning som uppfyller $y_{j + 1} = Ay_{j} + s_{j}$ och $w_{j}$ vara den numeriska lösningen som erhålls. Skillnaden $e_{j}$ mellan dessa uppfyller $e_{j + 1} = Ae_{j}$. Om inte felen skall förstoras, måste alla egenvärden ha belopp mindre än $1$.
+
+Låt nu $T$ vara $n\times n$-matrisen med $1$ på diagonalen och $-1$ på över- och underdiagonalen. Då kan vi skriva matrisen $A$ som $A = (1 - \sigma)I - \sigma T$. Vi känner egenvärdena till $T$, och vet därmed att $A$ har egenvärden
+\begin{align*}
+	\lambda_{i} &= 1 - \sigma - \sigma\left(1 - 2\cos(\frac{i}{n + 1}\pi)\right) \\
+	            &= 2\sigma\left(\cos(\frac{i}{n + 1}\pi) - 1\right) + 1.
+\end{align*}
+Eftersom $j$ går från $1$ till $n$, ligger alla egenvärden mellan $1 - 4\sigma$ och $1$. Vi vet att $\sigma$ är positiv, så vi kräver $1 - 4\sigma > -1$. Om man sätter in uttrycket för $\sigma$, fås slutligen
+\begin{align*}
+	\frac{Dk}{h^{2}} < \frac{1}{2},
+\end{align*}
+och beviset är klart.

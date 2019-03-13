@@ -125,8 +125,7 @@ För att visa detta, notera först att om $\alpha$ är ett nollställe till $f$,
 \begin{align*}
 	\deval{g}{x}{\alpha} = 1 - \frac{\deval{f}{x}{\alpha}}{\deval{f}{x}{\alpha}} + \frac{f(\alpha)\deval[2]{f}{x}{\alpha}}{\deval{f}{x}{\alpha}^{2}} = 0.
 \end{align*}
-
-Därmed följer lokal konvergens följer av beviset som gjordes för fixpunktsmetoden. Vi Taylorutvecklar vidare $f$ nära $x_{n}$ och får
+Därmed följer lokal konvergens av beviset som gjordes för fixpunktsmetoden. Vi Taylorutvecklar vidare $f$ nära $x_{n}$ och får
 \begin{align*}
 	f(\alpha)                            &= f(x_{n}) + \deval{f}{x}{x_{n}}(\alpha - x_{n}) + \frac{1}{2}\deval[2]{f}{x}{c_{n}}(\alpha - x_{n})^{2}, \\
 	\frac{f(\alpha)}{\deval{f}{x}{x_{n}}} &= \frac{f(x_{n})}{\deval{f}{x}{x_{n}}} + \alpha - x_{n} + \frac{1}{2}\frac{\deval[2]{f}{x}{c_{n}}}{\deval{f}{x}{x_{n}}}(\alpha - x_{n})^{2} = 0,

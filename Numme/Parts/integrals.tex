@@ -36,27 +36,61 @@ där vi har ändrat derivatan för att vara säker på att den anger en övre be
 \end{align*}
 
 \paragraph{Trapetsmetoden}
-Betrakta integralen av en funktion $f$ över $[a, b]$. Dela nu upp $[a, b]$ i $N$ steg, och låt $x_{0} = a, x_{N} = b$. I trapetsmetoden interpolerar vi $f$ i $x_{i}$ och $x_{i + 1}$ och integrerar denna räta linjen. Integralen är lika med arean av en trapets, vilket vi enkelt kan beräkna. En approximation av integralen över $[x_{i}, x_{i + 1}]$ är därmed
+Betrakta integralen av en funktion $f$ över $[a, b]$. Dela nu upp $[a, b]$ i $N$ lika långa delintervall, och låt $x_{0} = a, x_{N} = b$. I trapetsmetoden interpolerar vi $f$ i $x_{i}$ och $x_{i + 1}$ och integrerar denna räta linjen. Integralen är lika med arean av en trapets, vilket vi enkelt kan beräkna. En approximation av integralen över $[x_{i}, x_{i + 1}]$ är därmed
 \begin{align*}
-	h\frac{f(x_{i + 1}) + f(x_{i})}{2}.
+	h\frac{f(x_{i + 1}) + f(x_{i})}{2},
 \end{align*}
-En approximation av hela integralen är då
+där $h = \frac{b - a}{N}$. En approximation av hela integralen är då
 \begin{align*}
 	\inteval{a}{b}{f(x)}{x} &\approx h\sum\limits_{i = 0}^{N - 1}\frac{f(x_{i + 1}) + f(x_{i})}{2} \\
 	                        &= h\left(\frac{f(x_{0}) + f(x_{N})}{2} + \sum\limits_{i = 1}^{N - 1}f(x_{i})\right).
 \end{align*}
 
 \subparagraph{Fel}
-Låt $T_{h}$ vara skattningsfelet av integralen med trapetsmetoden med steglängd $h$. Felet ges då av
+Låt $T_{h}$ vara skattningsfelet av integralen av $C^{2}$-funktionen $f$ med trapetsmetoden med steglängd $h$. Felet ges då av
 \begin{align*}
 	\abs{\inteval{a}{b}{f(x)}{x} - T_{h}} \leq \max\limits_{x\in [a, b]}\frac{1}{12}\abs{\deval[2]{f}{x}{x}}(b - a)h^{2}.
 \end{align*}
 
-För att visa detta, notera att det är ekvivalent att beräkna integralen av $f$ och att lösa begynnelsevärdesproblemet
+För att visa detta, försöker vi först hitta det lokala felet och sedan skatta det globala felet. Vi söker alltså först det lokala felet
 \begin{align*}
-	\dv{y}{x} = f(x),\ y(a) = y_{0}.
+	e_{i} = \abs{\frac{h}{2}(f(x_{i + 1}) - f(x_{i})) - \inteval{x_{i}}{x_{i + 1}}{f(x)}{x}}.
 \end{align*}
-Vi har en sats som beskriver det globala felet, och därmed behöver vi bara beräkna det lokala felet för integration mellan två punkter.
+Partiell integration ger
+\begin{align*}
+	e_{i} = \abs{\frac{h}{2}(f(x_{i + 1}) - f(x_{i})) - x_{i + 1}f(x_{i + 1}) + x_{i}f(x_{i}) + \inteval{x_{i}}{x_{i + 1}}{xf'(x)}{x}}.
+\end{align*}
+Vi inför $c = \frac{x_{i + 1} + x_{i}}{2}$ och får
+\begin{align*}
+	e_{i} = \abs{\frac{h}{2}(f(x_{i + 1}) - f(x_{i})) - (x_{i + 1} - c)f(x_{i + 1}) + (x_{i} - c)f(x_{i}) + \inteval{x_{i}}{x_{i + 1}}{(x - c)f'(x)}{x}}.
+\end{align*}
+Eftersom $c$ ligger mitt i mellan $x_{i}$ och $x_{i + 1}$, som ligger ett avstånd $h$ från varandra, kan detta skrivas om till
+\begin{align*}
+	e_{i} = \abs{\inteval{x_{i}}{x_{i + 1}}{(x - c)f'(x)}{x}}.
+\end{align*}
+En ny delvis integration ger
+\begin{align*}
+	e_{i} &= \abs{\frac{1}{8}h^{2}(f'(x_{i + 1}) - f'(x_{i})) - \frac{1}{2}\inteval{x_{i}}{x_{i + 1}}{(x - c)^{2}f''(x)}{x}} \\
+	      &= \abs{\frac{1}{2}\inteval{x_{i}}{x_{i + 1}}{\left(\left(\frac{h}{2}\right)^{2} - (x - c)^{2}\right)f''(x)}{x}}.
+\end{align*}
+Om $\abs{f''(x)} \leq M_{i}$ på intervallet, fås
+\begin{align*}
+	e_{i} &\leq \frac{1}{2}M_{i}\abs{\inteval{x_{i}}{x_{i + 1}}{\left(\left(\frac{h}{2}\right)^{2} - (x - c)^{2}\right)}{x}} \\
+	      &= \frac{1}{2}M_{i}\abs{\frac{h^{3}}{4} - \frac{2}{3}\left(\frac{h}{2}\right)^{3}} \\
+	      &= \frac{1}{12}M_{i}h^{3}.
+\end{align*}
+För att skatta det globala felet $E$, skriver vi
+\begin{align*}
+	E \leq \sum\limits_{i = 0}^{N - 1}e_{i}
+\end{align*}
+där integrationsintervallet har delats i $N + 1$ steg. Om $\abs{f''(x)} \leq M$ på hela integrationsintervallet, kan detta skrivas som
+\begin{align*}
+	E \leq MN\frac{1}{12}h^{3}.
+\end{align*}
+Sambandet $h = \frac{b - a}{N}$ gör att detta kan skrivas som
+\begin{align*}
+	E \leq \frac{1}{12}M(b - a)h^{2}.
+\end{align*}
 
 \paragraph{Simpsons metod}
 Använder kvadratisk interpolation.
