@@ -1,0 +1,179 @@
+\section{Speciella funktioner}
+
+\paragraph{Trigonometriska och hyperbolskap funktioner}
+Trigonometriska funktioner kan utvidgas via deras Taylorpolynom till att även ta komplexa argument. Det samma kan hyperbolska funktioner, vilket ger relationen
+\begin{align*}
+	\cos(ix) &= \cosh{x}, \\
+	\sin(ix) &= i\sinh{x}.
+\end{align*}
+
+\paragraph{$\Gamma$-funktionen}
+$\Gamma$-funktionen definieras som
+\begin{align*}
+	\Gamma(z) = \inteval{0}{\infty}{t}{t^{z - 1}e^{-t}},\ \Re{z} > \frac{1}{2}.
+\end{align*}
+
+$\Gamma$-funktionen uppfyller
+\begin{align*}
+	\Gamma(z + 1) = z\Gamma(z).
+\end{align*}
+För att visa detta, använd partiell integration för att få
+\begin{align*}
+	\Gamma(z + 1) &= \inteval{0}{\infty}{t}{t^{z}e^{-t}} \\
+	              &= \left[-e^{z}t^{z}\right]_{0}^{\infty} + \inteval{0}{\infty}{t}{zt^{z - 1}e^{-t}}.
+\end{align*}
+Evaluering i gränserna för den första termen ger $0$ under våra antaganden, och
+\begin{align*}
+	\Gamma(z + 1) &= \inteval{0}{\infty}{t}{zt^{z - 1}e^{-t}} \\
+	              &= z\Gamma(z).
+\end{align*}
+
+Vi har även
+\begin{align*}
+	\Gamma(1) &= \inteval{0}{\infty}{t}{e^{-t}} \\
+	          &= 1.
+\end{align*}
+En konsekvens av det vi har visat är att för heltaliga $z$ är $\Gamma(z + 1) = z!$.
+
+Vi har vidare
+\begin{align*}
+	\Gamma(z + n) = (z + n - 1)(z + n - 2)\dots z\Gamma(z).
+\end{align*}
+Detta implicerar att $\Gamma$ har en pol för $z = 0, -1, -2, \dots$.
+
+För stora $z$ har vi även approximativt
+\begin{align*}
+	\Gamma(z + 1) = \sqrt{2\pi z}z^{z}e^{-z},
+\end{align*}
+vilket även kallas Stirlings formel. För att visa detta, skriv
+\begin{align*}
+	\Gamma(z + 1) &= \inteval{0}{\infty}{t}{t^{z}e^{-t}} \\
+	              &= \inteval{0}{\infty}{t}{e^{-t + z\ln{t}}}.
+\end{align*}
+Vi kan Taylorutveckla exponenten för att få
+\begin{align*}
+	\Gamma(z + 1) &= \inteval{0}{\infty}{t}{e^{-t + z\left(\ln{z} + \frac{1}{z}(x - z) - \frac{1}{2z^{2}}(x -z)^{2}\right)}} \\
+	              &= \inteval{0}{\infty}{t}{e^{-z + z\ln{z} - \frac{1}{2z}(t - z)^{2}}}.
+\end{align*}
+Drar man ut faktorerna som ej beror av $t$ fås
+\begin{align*}
+	\Gamma(z + 1) &= z^{z}e^{-z}\inteval{0}{\infty}{t}{e^{-\frac{1}{2z}(t - z)^{2}}} \\
+	              &= z^{z}e^{-z}\inteval{-\frac{1}{\sqrt{2}}}{\infty}{u}{\sqrt{2z}e^{-u^{2}}} \\
+	              &= \sqrt{2}z^{z + \frac{1}{2}}e^{-z}\inteval{-\frac{1}{\sqrt{2}}}{\infty}{u}{e^{-u^{2}}}.
+\end{align*}
+Vi approximerar Gaussintegralen ovan med en integral äver hela tallinjen, vilket ger
+\begin{align*}
+	\Gamma(z + 1) &= \sqrt{2}z^{z + \frac{1}{2}}e^{-z}\inteval{-\infty}{\infty}{u}{e^{-u^{2}}} \\
+	              &= \sqrt{2\pi}z^{z + \frac{1}{2}}e^{-z}.
+\end{align*}
+Alternativt kan detta skrivas som
+\begin{align*}
+	\Gamma(z) = \sqrt{2\pi}z^{z - \frac{1}{2}}e^{-z}.
+\end{align*}
+
+\paragraph{Besselfunktioner}
+I lösning av Laplaces ekvation på enhetsskivan dyker det upp två funktioner $J_{n}$ och $Y_{n}$. Dessa har följande egenskaper:
+\begin{itemize}
+	\item $J_{n}$ är begränsad när $r\to\infty$.
+	\item $J_{n}\propto r^{\abs{n}}$ då $r\to 0$.
+	\item $J_{n}\propto r^{-\abs{n}}$ då $r\to 0$.
+\end{itemize}
+Dessa definieras, för heltaliga $n$ och positiva argument, av
+\begin{align*}
+	J_{n}(\theta) &= \frac{1}{2\pi}\inteval{0}{2\pi}{r}{re^{-in\theta + ir\sin{\theta}}}, \\
+	Y_{n}(\theta) &= \frac{1}{\pi}\left(\inteval{0}{\pi}{r}{\sin(\theta\sin{r} - nr)} - \inteval{0}{\infty}{r}{(e^{nr} + (-1)^{n}e^{-nr})e^{-\theta\sinh{r}}}\right).
+\end{align*}
+$J$ uppfyller i sådana fall $J_{n} = (-1)^{n}J_{-n}$.
+
+Var kommer dessa ifrån? Utgå från egenvärdesekvationen för Laplaceoperatorn i två dimensioner:
+\begin{align*}
+	\laplace{u} + \lambda u = 0.
+\end{align*}
+I polära koordinater blir detta
+\begin{align*}
+	\pdv[2]{u}{r} + \frac{1}{r}\pdv{u}{r} + \frac{1}{r^{2}}\pdv[2]{u}{\theta} + \lambda u = 0.
+\end{align*}
+$u$ är $2\pi$-periodisk, så vi skriver
+\begin{align*}
+	u(\vb{x}) = \sum\limits_{n = -\infty}^{\infty}J_{n}(r)e^{in\theta}.
+\end{align*}
+Insatt i differentialekvationen ger detta
+\begin{align*}
+	\sum\limits_{n = -\infty}^{\infty}\left(\dv[2]{J_{n}}{r} + \frac{1}{r}\dv{J_{n}}{r} - \frac{n^{2}}{r^{2}}J_{n} + \lambda J_{n}\right)e^{in\theta} = 0,
+\end{align*}
+vilket uppfylls om och endast om
+\begin{align*}
+	\dv[2]{J_{n}}{r} + \frac{1}{r}\dv{J_{n}}{r} + \left(\lambda - \frac{n^{2}}{r^{2}}\right)J_{n} = 0.
+\end{align*}
+Alla $J_{n}$ uppfyller denna ekvationen.
+
+Gör nu substitutionen $v = \sqrt{\lambda}r$. Detta ger
+\begin{align*}
+	\dv[2]{J_{n}}{r} + \frac{1}{r}\dv{J_{n}}{r} + \left(\lambda - \frac{n^{2}}{r^{2}}\right)J_{n} &= \lambda\dv[2]{J_{n}}{v} + \frac{\sqrt{\lambda}}{v}\sqrt{\lambda}\dv{J_{n}}{v} \left(\lambda - \frac{n^{2}\lambda}{v^{2}}\right)J_{n}.
+\end{align*}
+Eftersom detta är lika med $0$ kan vi dela på $\lambda$ och få
+\begin{align*}
+	\dv[2]{J_{n}}{v} + \frac{1}{v}\dv{J_{n}}{v} + \left(1 - \frac{n^{2}}{v^{2}}\right)J_{n} = 0.
+\end{align*}
+Vi har alltså lyckats med att lösa ekvationen om vi kan hitta en egenfunktion motsvarande $\lambda = 1$.
+
+Om vi tittar på Laplaces ekvation i kartesiska koordinater, ser vi att $e^{iy}$ är en sådan funktion. I polära koordinater kan denna skrivas som $e^{ir\sin{\theta}}$. Denna funktionens Fourierkoefficienter enligt serieutvecklingen ovan löser ekvationen. Vi har
+\begin{align*}
+	J_{n}(v) = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\theta}{e^{iv\sin{\theta}}e^{-in\theta}},
+\end{align*}
+och egenfunktionen motsvarande ett godtyckligt $\lambda > 0$ är därmed
+\begin{align*}
+	J_{n}(r) = \frac{1}{2\pi}\inteval{-\pi}{\pi}{\theta}{e^{i\sqrt{\lambda}r\sin{\theta}}e^{-in\theta}}.
+\end{align*}
+
+Detta kan även utvidgas till godtyckliga $\nu$ som ej är negativa heltal enligt
+\begin{align*}
+	J_{\nu}(r) = \left(\frac{r}{2}\right)^{\nu}\sum\limits_{k = 0}^{\infty}\frac{1}{k!\Gamma(\nu + k + 1)}\left(-\frac{r^{2}}{4}\right)^{k}.
+\end{align*}
+Detta kan visas vid att ansätta en serielösning till Bessels differentialekvation. Vi testar mer specifikt en potensserielösning
+\begin{align*}
+	f(x) = \sum\limits_{i = 0}^{\infty}a_{i}x^{i + s}
+\end{align*}
+till Bessels ekvation
+\begin{align*}
+	\dv[2]{f}{x} + \frac{1}{x}\dv{f}{x} + \left(\lambda - \frac{\nu^{2}}{x^{2}}\right)f = 0.
+\end{align*}
+Vi får
+\begin{align*}
+	\sum\limits_{i = 0}^{\infty}(s + i)(s + i - 1)a_{i}x^{i + s - 2} + \frac{1}{x}\sum\limits_{i = 0}^{\infty}(s + i)a_{i}x^{i + s - 1} + \left(\lambda - \frac{\nu^{2}}{x^{2}}\right)\sum\limits_{i = 0}^{\infty}a_{i}x^{i + s} = 0.
+\end{align*}
+Detta kan skrivas som
+\begin{align*}
+	 &(s(s - 1) + s - \nu^{2})a_{0}x^{s - 2} + ((s + 1)s + s + 1 - \nu^{2})a_{1}x^{s - 1} \\
+	+& \sum\limits_{i = 2}^{\infty}(s + i)(s + i - 1)a_{i}x^{i + s - 2} + \sum\limits_{i = 2}^{\infty}(s + i)a_{i}x^{i + s - 2} + \lambda\sum\limits_{i = 0}^{\infty}a_{i}x^{i + s} - \nu^{2}\sum\limits_{i = 2}^{\infty}a_{i}x^{i + s - 2} = 0.
+\end{align*}
+Detta skriver vi som
+\begin{align*}
+	(s^{2} - \nu^{2})a_{0}x^{s - 2} + ((s + 1)^{2} - \nu^{2})a_{1}x^{s - 1} + \sum\limits_{i = 2}^{\infty}((s + i)(s + i - 1) + s + i - \nu^{2})a_{i}x^{i + s - 2} + \lambda\sum\limits_{i = 0}^{\infty}a_{i}x^{i + s}                                              &= 0, \\
+	(s^{2} - \nu^{2})a_{0}x^{s - 2} + ((s + 1)^{2} - \nu^{2})a_{1}x^{s - 1} + \sum\limits_{i = 2}^{\infty}(((s + i + 2)^{2} - \nu^{2})a_{i + 2} + \lambda a_{i})x^{i + s} &= 0
+\end{align*}
+
+Vi vet att om $\nu$ ej är ett heltal, är $J_{\nu}$ och $J_{-\nu}$ linjärt oberoende.
+
+För att få den andra sortens funktion, använd reduktion av ordning? Vi får då
+\begin{align*}
+	Y_{\nu}(r) = \frac{J_{\nu}(r)\cos{\nu\pi} - J_{-\nu}(r)}{\sin{\nu\pi}}
+\end{align*}
+om $\nu$ ej är ett heltal. Detta har ett icke-trivialt gränsvärde när $n$ går mot ett heltal, och det är denna lösningen som används som andra term för heltaliga $\nu$.
+
+\paragraph{Sfäriska Besselfunktioner}
+Sfäriska Besselfunktioner definieras som
+\begin{align*}
+	j_{l}(r) &= \sqrt{\frac{\pi}{2r}}J_{l + \frac{1}{2}}(r), \\
+	y_{l}(r) &= \sqrt{\frac{\pi}{2r}}Y_{l + \frac{1}{2}}(r)
+\end{align*}
+för heltaliga $l$. Dessa dyker upp som egenfunktioner till radiella delen av Laplaceoperatorn i tre dimensioner.
+
+\paragraph{Legendrepolynom}
+
+\paragraph{Klotytefunktioner}
+Laplaceoperatorn i sfäriska koordinater innehåller en del som endast beror på $r$ och en del som beror av vinklarna. Dens egenfunktioner är klotytefunktionerna
+\begin{align*}
+	Y_{l, m}(\theta, \phi) = Ne^{im\phi}P_{m}^{l}(\cos{\theta}).
+\end{align*}
+För ett fixt $l$ finns det $2l + 1$ möjliga värden av $m$. Dessa är alla heltal som uppfyller $\abs{m} \leq l$.
