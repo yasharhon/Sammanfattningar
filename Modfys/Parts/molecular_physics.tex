@@ -1,0 +1,84 @@
+\section{Molekylfysik}
+
+\paragraph{Molekyler}
+Molekyler är enheter som består av ett antal atomer.
+
+\paragraph{Frihetsgrader}
+Jämförd med atomer, kan molekyler både vibrera och rotera.
+
+\paragraph{Modellpotential}
+Om vi betraktar en elektron som är bunden av två atomer, försöker vi beskriva den med en potential på formen
+\begin{align*}
+	V(r) = -\frac{A}{r^{n}} + \frac{B}{r^{m}}
+\end{align*}
+i en dimension. De involverade konstanterna kan anpassas till experiment, men för att elektronen inte skall dras in mot en atomkärna, måste $m > n$.
+
+Derivatan av detta ges av
+\begin{align*}
+	\dv{V}{r} = \frac{nA}{r^{n + 1}} - \frac{mB}{r^{m + 1}},
+\end{align*}
+och potentialens minimum ges av
+\begin{align*}
+	\frac{nA}{r^{n + 1}} - \frac{mB}{r^{m + 1}} &= 0, \\
+	nA                                          &= \frac{mB}{r^{m - n}} \\
+	r                                           &= \left(\frac{mb}{nA}\right)^{\frac{1}{m - n}}.
+\end{align*}
+
+\paragraph{Jonbindning}
+Om man har två atomer, där den ena har en löst bunden elektron och den andra har ett ookkuperat tillstånd i sitt ytterste fyllda skal, kan den löst bundna elektronen övergå från ena atomen till den andra. Detta resulterar i en nettoladdning på varje atom, vilket skapar en attraherande kraft, även kallad en jonbindning. Jonkristaller som bildas av fler atomer förklaras analogt.
+
+Utbytet av elektroner i sig själv är inte gynnsamt utan det som gör att salter bildas spontant är kombinationen av elektronutbyte och Coulombvexelvärkan.
+
+Vid små avstånd mellan atomen får man repulsiva krafter både från Paulirepulsion mellan elektronerna och Coulombrepulsion mellan kärnorna (effekten av dessa beror på avståndet mellan atomerna), varför modellpotentialen ovan är en bra beskrivning av interaktionen mellan atomerna.
+
+\paragraph{Kovalent bindning}
+Kovalent bindning uppstår när två atomer delar på sina elektroner.
+
+Som ett exempel, betrakta två lika atomer $A$ och $B$. En ungefärlig lösning till Schrödingerekvationen för en elektron är $\Psi = a\Psi_{A} + b\Psi_{B}$. Av symmetriskäl är $a = \pm b$. Detta ger upphov till en symmetrisk och en antisymmetrisk lösning.
+
+I enkla fall som väte kan detta lösas numeriskt. Då kan man jämföra energierna för små och stora avstånd mellan atomerna. Det man får är att den symmetriska lösningen har lägre energi än den antisymmetriska. Den symmetriska lösningen har hög sannolikhetstäthet mellan atomerna, medan den antisymmetriska lösningen har låg täthet mellan atomerna. Därmed kan detta tolkas som att den symmetriska lösningen ger ett elektronmoln mellan atomerna som attraherar båda, medan den antisymmetriska lösningen ger ett molm som omringar två atomer som repelleras.
+
+\paragraph{Rotation}
+Till skillnad från atomer kan molekyler rotera. Det är detta vi vill beskriva.
+
+Betrakta en stel kropp av två punktmassor som roterar i planet i deras masscentrumssystem. Detta är ekvivalent med en stel kropp med massa $\mu = \frac{m_{1}m_{2}}{m_{1} + m_{2}}$ som roterar kring kroppens masscentrum med ortsvektor $R = r_{1} + r_{2}$.
+
+Varför funkar detta? Det korta svaret är att det första systemet har rörelsemängdsmoment
+\begin{align*}
+	L = m_{1}\omega r_{1}^{2} + m_{2}\omega r_{2}^{2}
+\end{align*}
+normalt på rörelsesplanet. Det är klart att eftersom kroppen roterar kring sitt masscentrum är $r_{1} = -\frac{m_{2}}{m_{1}}r_{2}$, vilket ger
+\begin{align*}
+	L &= \frac{m_{2}^{2}}{m_{1}}\omega r_{2}^{2} + m_{2}\omega r_{2}^{2} \\
+	  &= \frac{m_{2}^{2} + m_{1}m_{2}}{m_{1}}\omega r_{2}^{2}.
+\end{align*}
+Om man inför det totala avståndet $R$ mellan partiklerna, får man vidare $-r_{1} + r_{2} = \frac{m_{2} + m_{1}}{m_{1}}r_{2} = R$ och $r_{2} = \frac{m_{1}}{m_{2} + m_{1}}R$, vilket ger
+\begin{align*}
+	L &= \frac{m_{1}m_{2}}{m_{2} + m_{1}}\omega R^{2},
+\end{align*}
+vilket skulle visas.
+
+Kroppens rörelsemängdsmoment ges av $L = \mu v\times R$ och dens tröghetsmoment med avseende på masscentrum ges av $I = \mu R^{2}$. Då kan rotationsenergin skrivas som
+\begin{align*}
+	E = \frac{L^{2}}{2I}.
+\end{align*}
+Detta systemet är sfäriskt symmetriskt, varför rörelsemängdsmomentet är kvantiserad som $L^{2} = \hbar^{2}j(j + 1), j = 0, 1, \dots$, där $j$ är kvanttalet som beskrivar rotationen. Då ges rotationsenergin av
+\begin{align*}
+	E = \frac{\hbar^{2}j(j + 1)}{2I}.
+\end{align*}
+
+\paragraph{Vibrationer}
+Bindningarna i molekyler kan vibrera, och det är detta vi vill beskriva.
+
+För att beskriva vibrationerna i en bindning, ansätter vi att atomerna i bindningen interagerar med Morse-potentialen
+\begin{align*}
+	V(r) = V_{0}\left(1 - e^{-\beta(r - r_{0})}\right)^{2}.
+\end{align*}
+Nära $r_{0}$ kan detta approximeras som en harmonisk oscillator med styrka $k = 2V_{0}\beta^{2}$. Detta ger upphov till energinivåer
+\begin{align*}
+	E = (v + \frac{1}{2})\hbar\omega_{0}, v = 0, 1, \dots
+\end{align*}
+där $\omega_{0} = \sqrt{\frac{k}{\mu}}$.
+
+\paragraph{Energiövergånger}
+Om en molekyl skall ändra sitt tillstånd, kan detta endast hända under förutsättningen $\Delta j = \pm 1$ för att bevara rörelsemängdsmomentet och $\Delta v = \pm 1$ eftersom molekylen interagerar bäst med fotoner under denna förutsättning (för låga energier). Detta ger till exempel upphov till rotations-vibrationsspektra.

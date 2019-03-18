@@ -1,0 +1,96 @@
+\section{Kärnfysik}
+
+\paragraph{Fundamentala begrepp}
+En atomkärna har ett visst antal av protoner och neutroner. Antal protoner $Z$ kallas protontalet, antal neutroner $N$ kallas neutrontalet och $A = N + Z$ kallas nukleontalet.
+
+\paragraph{Atomkärnans storlek}
+Experimentella resultat har gett
+\begin{align*}
+	R = R_{0}A^{\frac{1}{3}},
+\end{align*}
+där $R_{0}$ är en konstant. Resultatet blir att volymen är linjär i nukleontalet, vilket kan tolkas som att kärnans nukleontäthet (och därmed även masstäthet) ej beror av nukleontalet.
+
+\paragraph{Bindningsenergi och Weiszäckers formel}
+Bindningsenergin för olika ämnen varierar starkt. Ett försök på att beskriva detta kom från Weiszäcker och Bethe. De betraktade atomkärnan som en laddad vätskedroppe. Efter att introducera lite extratermer för att få formeln att passa med trender från experiment, kom de fram till
+\begin{align*}
+	E = a_{V}A - a_{S}A^{\frac{2}{3}} - a_{C}Z(Z - 1)A^{-\frac{1}{3}} - a_{\text{sym}}\frac{(A - 2Z)^{2}}{A} + \delta,
+\end{align*}
+där $\delta$ är $a_{P}A^{-\frac{3}{4}}$ om både $Z$ och $N$ är jämna, $-a_{P}A^{-\frac{3}{4}}$ om både $Z$ och $N$ är udda och $0$ om $A$ är udda.
+
+Första termen är linjär i $A$, precis som kärnans volym, och kallas ofta volymtermen. Den har sitt ursprung i starka kärnkraften. Andra termen kommer från effekter på kärnans yta. Tredje termen kommer från repulsion mellan protoner i kärnan. Tredje termen kommer från att nukleonerna är fermioner, och därför ökar kärnans energi omdet finns många lika nukleoner som behöver olika tillstånd. Den sista termen kommer från spinn-bankoppling i kärnan, och beror på att energin blir lägre om det finns lika många partiklar med spinn upp och ned.
+
+Jämförelser med experimentella resultat visar att det stämmer ganska väl, förutom för vissa värden på $N$ och $Z$, där kärnan är mycket mer stabil än vad denna formeln skulle förutspå. Dessa speciella värden kallas för magiska tal.
+
+\paragraph{Skalmodell för atomkärnan}
+Om man i stället betrakter nukleonerna som partiklar i en sfärisk låda med oändligt starka väggar, får man skallösningar för energierna. Vid att även introducera spinn-bankoppling lyckades denna enkla modellen återskapa magiska tal som stämde med experiment. För sitt arbet med detta fick Maria Goeppert-Mayer, Johannes Jensen och Eugene Wigner Nobelpriset i 1963.
+
+\paragraph{Radiokativitet}
+Radioaktivitet är ett begrepp för processer där atomkärnan förändras. För att en radioaktiv process skall ske (spontant), måste
+\begin{itemize}
+	\item processen ge från sig energi.
+	\item konserveringslagarna för laddning, rörelsemängd, rörelsemängdsmoment, nukleontalet (inte i allmänna kärnprocesser), leptontalet och universums totala energi vara uppfyllda.
+\end{itemize}
+
+\paragraph{Aktivitet}
+Den radioaktiva aktiviteten definieras som
+\begin{align*}
+	A = -\dv{N}{t}
+\end{align*}
+där $N$ är antal radioaktiva partiklar i systemet. Experimentellt avtar exponentiellt med tiden, vilket enkelt kan förklaras om aktiviteten är proportionell med antal radioaktiva partiklar.
+
+\paragraph{Halveringstid}
+Om man gör ansatsen $A = \lambda N$ får man $A\propto e^{-\lambda t}$. Halveringstiden $t_{\frac{1}{2}}$ definieras som tiden det tar för aktiviteten (eller, ekvivalent, antal radioaktiva partiklar) att halveras relativt ursprungsaktiviteten. Från detta relateras konstanten till halveringstiden med
+\begin{align*}
+	\lambda = \frac{\ln{2}}{t_{\frac{1}{2}}}.
+\end{align*}
+
+\paragraph{$Q$-värde}
+$Q$-värdet för en radioaktiv process är den totala ändringen i energi för processen.
+
+\paragraph{$\alpha$-sönderfall}
+I $\alpha$-sönderfall ger kärnan från sig en He-kärna med $2$ protoner och $2$ neutroner. Energispektrumet för denna processen är diskret.
+
+Man kan räkna fram att $\alpha$-partikelns energi ges av
+\begin{align*}
+	E_{\alpha} = \frac{Q}{1 + \frac{m_{\alpha}}{m_{\text{ny}}}},
+\end{align*}
+där $m_{\text{ny}}$ är den nya kärnans massa. Energispektrumet är alltså diskret.
+
+\paragraph{$\beta^{-}$-sönderfall}
+I $\beta^{-}$-sönderfall omdannas en neutron till en proton, och det skapas i processen en elektron och en elektron-antineutrino med symbolen $\bar{\nu}_{e}$. $\bar{\nu}_{e}$ är i princip masslös. Eftersom två partiklar skapas, är energifördelningen för $\beta^{-}$-partikeln (elektronen) kontinuerlig för energier upp till processens $Q$-värde.
+
+Reaktionens $Q$-värde ges av
+\begin{align*}
+	Q_{\beta^{-}} &= (m_{N, Z} - m_{N - 1, Z + 1} - m_{e^{-}})c^{2} \\
+	              &= (M_{N, Z} - M_{N - 1, Z + 1})c^{2},
+\end{align*}
+där $m$ refererar till kärnmassan och $M$ den totala atommassan (massan av kärnan och elektronerna). Villkoret för att reaktionen skall ske är
+\begin{align*}
+	M_{N, Z} > M_{N - 1, Z + 1}.
+\end{align*}
+
+\paragraph{$\beta^{+}$-sönderfall}
+I $\beta^{+}$-sönderfall omdannas en proton till en neutron, och det skapas i processen en positron, med symbol $e^{+}$ och en elektronneutrino med symbolen $\nu_{e}$. Eftersom två partiklar skapas, är energifördelningen för $\beta^{+}$-partikeln (positronen) kontinuerlig för energier upp till processens $Q$-värde.
+
+Reaktionens $Q$-värde ges av
+\begin{align*}
+	Q_{\beta^{-}} = (M_{N, Z} - M_{N + 1, Z - 1} - 2m_{e})c^{2},
+\end{align*}
+där vi nu ser att den nya atomen har plats till en mindre elektron och att vi har skapat en positron (som har massan $m_{e}$). Villkoret för att reaktionen skall ske är
+\begin{align*}
+	M_{N, Z} > M_{N + 1, Z - 1} + 2m_{e}.
+\end{align*}
+
+\paragraph{$\gamma$-strålning}
+Atomkärnans energinivåer är även kvantiserade. När kärnan hoppar ned i sina energinivåer, skickas det ut en foton. Gammastrålning kan förekomma efter andra radioaktiva processer, när atomkärnan efter processen är kvar i ett högt energinivå och hoppar ned. Sådana processer har ofta kort halveringstid.
+
+\paragraph{Elektroninfångning}
+I elektroninfångning fångas en elektron in i atomkärnan, och bildar till sammans med protonen en neutron. Från detta skickas även ut en $\nu_{e}$.
+
+Under processen dyker även upp ett ookkuperat elektrontillstånd i en av de innersta orbitalerna. När en elektron hoppar ned till detta tillståndet, skickas karakteristisk röntgenstrålning ut. Denna strålningen har ett diskret energispektrum.
+
+\paragraph{Inre konversion}
+I stället för att göra sig av med energi genom $\gamma$-sönderfall, kan kärnan ge energin till en elektron som exiteras. Denna processen har ett diskret energispektrum. På samma sättet som med elektroninfångning följer karakteristisk strålning ut efter detta.
+
+\paragraph{Spontan fission}
+Vissa atomkärnor kan spontant deformeras och dela sig upp i två delar samt några neutroner. Det mesta av energin för sådana processer går till de två fissionsprodukterna.
