@@ -1,0 +1,56 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+
+\newcommand{\del}[2]{\partial_{#1}#2}
+\newcommand{\inteval}[4]{\int\limits_{#1}^{#2}\dd{#3}#4}
+\newcommand{\integ}[3]{\int\limits_{#1}\dd{#2}#3}
+\newcommand{\cc}[1]{#1^{*}}
+\newcommand{\leci}[1]{\varepsilon_{#1}}
+
+\title{Sammanfattning av SH1014 Modern fysik}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/special_relativity.tex}
+
+\input{./Parts/general_relativity.tex}
+
+\input{./Parts/quantum_mechanics.tex}
+
+\input{./Parts/atomic_physics.tex}
+
+\input{./Parts/nuclear_physics.tex} 
+
+\input{./Parts/molecular_physics.tex}
+
+\input{./Parts/solid_state_physics.tex}
+
+\input{./Parts/particle_physics.tex}
+
+\end{document}
