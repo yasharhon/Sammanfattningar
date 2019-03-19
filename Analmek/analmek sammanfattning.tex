@@ -1,8 +1,16 @@
 \documentclass[a4paper, 11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
+\usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
+
+\usepackage[arrowdel]{physics}
+
+\newcommand{\example}[1]{\subparagraph{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\del}[2]{\partial_{#1}#2}
+\newcommand{\kdelta}[2]{\delta_{#1}^{#2}}
 
 \title{Sammanfattning av SI2360 Analytisk mekanik och klassisk fältteori}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -26,5 +34,9 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/coordinates.tex}
+
+\input{./Parts/tensors.tex}
 
 \end{document}
