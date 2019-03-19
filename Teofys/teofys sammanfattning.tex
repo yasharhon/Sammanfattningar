@@ -4,6 +4,12 @@
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
 
+\usepackage[arrowdel]{physics}
+
+\newcommand{\del}[2]{\partial_{#1}#2}
+\newcommand{\cc}[1]{#1^{*}}
+\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+
 \title{Sammanfattning av SI1155 Teoretisk fysik}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
 \date{\today}
@@ -26,5 +32,9 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/theoretical_physics.tex}
+
+\input{./Parts/foundations.tex}
 
 \end{document}

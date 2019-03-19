@@ -1,0 +1,128 @@
+\section{Grunderna i kvantmekanik}
+
+\paragraph{Newtonsk mekanik}
+I newtonsk mekanik beskrivs en partikel i ett intertialsystem av
+\begin{align*}
+	\vb{F} = m\vb{a},
+\end{align*}
+där $\vb{F}$ är summan av alla krafter på partikeln. Med givna initialvillkor kan partikelns bana beskrivas exakt.
+
+Om partikeln endast påverkas av konservativa krafter, är dens energi konstant. För en sådan partikel är dens energi alltid större än potentialens minimum.
+
+\paragraph{Analytisk mekanik}
+Alternativt till newtonsk mekanik kan man formulera mekaniken med Lagranges och Hamiltons formaliser. Dessa utgår från att beskriva partikelns bana med generaliserade koordinater $q_{i}$ och hastigheter $\dot{q}_{i}$ (totala tidsderivator av koordinaterna), och hitta en bana som minimerar verkansintegralen
+\begin{align*}
+	S = \integ{}{}{t}{L}
+\end{align*}
+där $L = T - V$ och $T$ är kinetiska energin. Dessa leder till ekvationer på formen
+\begin{align*}
+	\del{q_{i}}{L} - \dv{t}\del{\dot{q}_{i}}{L} = 0.
+\end{align*}
+Detta är Lagranges formalism.
+
+Alternativt kan man införa generaliserade rörelsemängder $p_{i} = \del{\dot{q}_{i}}{L}$ och Hamiltonfunktionen $H = \dot{q}_{i}p_{i} - L = T + V$. Denna transformationen ger dig
+\begin{align*}
+	\dot{q}_{i} = \del{p_{i}}{H},\ \dot{p}_{i} = -\del{q_{i}}{H}.
+\end{align*}
+Detta är Hamiltons formalism.
+
+Om systemet är symmetriskt i $q_{i}$-riktningen, beror $H$ ej av denna koordinaten, vilket ger att $\dot{p}_{i} = 0$ och $p_{i}$ är konstant. En sådan koordinat kallas för en cyklisk koordinat. Detta är ett specialfall av Nöethers sats, som säjer att till varje symmetri hör en konserverad storhet.
+
+En fråga är om man kan göra ett variabelbyte så att alla variabler är cykliska. För att diskutera detta, måste vi prata om kanoniska transformationer. En kanonisk transformation är ett variabelbyte som bevarar formen på Hamiltons ekvationer. Efter ett sådant variabelbyte fås en ny Hamiltonfunktion
+\begin{align*}
+	H(Q, P, t) = H(q, p, t) + \del{t}{S}(q, P, t).
+\end{align*}
+Vi vill nu gärna veta om denna nya storheten $S$ är verkan. Dens totala tidsderivata ges av
+\begin{align*}
+	\dot{S} = \del{q_{i}}{S}\dot{q}_{i} + \del{P_{i}}{S}\dot{P}_{i} + \del{t}{S}.
+\end{align*}
+Om detta är en transformation så att alla koordinater är cykliska, fås
+\begin{align*}
+	\dot{S} = \del{q_{i}}{S}\dot{q}_{i} + \del{t}{S}.
+\end{align*}
+Vi noterar enligt ovan att $\del{t}{S} = - H(q, p, t)$. Om nu $S$ skall vara verkan, måste denna totala tidsderivatan vara lika med Lagrangefunktionen. Definitionen av Hamiltonfunktionen ger då
+\begin{align*}
+	\del{q_{i}}{S} = p_{i},\ \del{P_{i}}{S} = Q_{i}.
+\end{align*}
+Vi får då Hamilton-Jacobis ekvation
+\begin{align*}
+	H(q, \del{p}{S}, t) + \del{t}{S} = 0.
+\end{align*}
+
+\paragraph{Behov för ny beskrivning}
+I början av 1900-talet upptäcktes det via olika experiment att partiklar på små längdskalor visade beteende som ej samsvarade med klassiska teorir. Detta skapade ett behov för en ny teori.
+
+\paragraph{Våg-partikel-dualitet}
+Det första steget togs av Max Planck år 1900. I ett desperat försök på att beskriva svartkroppsstrålning antog han att elektromagnetisk strålning upptas och avges i diskreta kvanta av energin $\hbar\omega$, där $\hbar$ är en helt ny konstant. Försöket lyckades.
+
+Senare förstod Einstein att ljus bestod av diskreta enheter med energi $E = pc$, där $p$ är enhetens rörelsemängd.
+
+de Broglie kombinerade dessa två resultaten till sin hypotes: Att alla partiklar har vågegenskaper, och kan beskrivas av en våglängd som ges av
+\begin{align*}
+	p = \hbar k = \frac{h}{\lambda}.
+\end{align*}
+Vi har använt vågtalet $k = \frac{2\pi}{\lambda}$ och introducerat Plancks konstant $h = 2\pi\hbar$.
+
+de Broglie antog även att alla partiklar kan beskrivas av en vågfunktion som ges av $\Psi = Ae^{i(kx - \omega t)}$ för en fri partikel. Vid att sätta in resultaten ovan kan denna vågfunktionen skrivas som
+\begin{align*}
+	\Psi = Ae^{i(\frac{p}{\hbar}x - \frac{E}{\hbar}t)}.
+\end{align*}
+
+\paragraph{Motivation av Schrödingerekvationen}
+Givet resultaten ovan, noterar vi
+\begin{align*}
+	i\hbar\del{t}{\Psi} = E\Psi, -\frac{\hbar^{2}}{2m}\del{x}{\Psi} = \frac{p^{2}}{2m}\Psi.
+\end{align*}
+Vi kommer ihåg den klassiska Hamiltonfunktionen $H = T + V$. För en fri partikel ges denna av $H = \frac{p^{2}}{2m} + V$. Vi ser nu att de två derivationsoperatorerna ovan ersätter totala respektiva kinetiska energin, och Hamiltonsk mekanik inspirerar oss nu att skriva
+\begin{align*}
+	i\hbar\del{t}{\Psi} = -\frac{\hbar^{2}}{2m}\del{x}{\Psi} + V\Psi.
+\end{align*}
+Efter detta kommer Schrödingerekvationen att behandlas som en naturlag. I mer allmänna fall kommer vi även skriva detta som
+\begin{align*}
+	i\hbar\del{t}{\Psi} = H\Psi,
+\end{align*}
+där $H$ är en operator som representerar systemets Hamiltonfunktion.
+
+\paragraph{Sannolikhet}
+Den fysikaliska tolkningen av vågfunktionen är att $\abs{\Psi}^{2}\dd{V} = \cc{\Psi}\Psi\dd{V}$ är sannolikheten för att hitta partikeln i en mycket liten volym. Vi kräver då
+\begin{align*}
+	\integ[3]{}{}{x}{\abs{\Psi}^{2}} = 1.
+\end{align*}
+Med denna tolkningen refereras $\Psi$ till som sannolikhetsamplituden.
+
+\paragraph{Operatorer}
+Vi har redan sett att det finns en koppling mellan operatorer på vågfunktionen och fysikaliska storheter. Baserad på detta definierar vi väntevärdet av en observabel $q$ som
+\begin{align*}
+	\expval{q} = \integ[3]{}{}{x}{\cc{\Psi}\hat{q}\Psi}.
+\end{align*}
+Här är $\hat{q}$ operatorn som motsvarar $q$. Denna distinktionen kommer inte göras mycket vidare i sammanfattningen.
+
+\paragraph{Osäkerhetsprincipen}
+Bandbräddsteori ger oss för $x$ och $p$ att
+\begin{align*}
+	\Delta x\Delta p \geq \frac{1}{2}\hbar.
+\end{align*}
+Här är $\Delta x$ standardavvikelsen för $x$.
+
+\paragraph{Kontinuitetsekvationen för sannolikhet}
+Man kan visa att
+\begin{align*}
+	\del{t}{\abs{\Psi}^{2}} + \div{j} = 0,
+\end{align*}
+där $j$ är sannolikhetsströmmen
+\begin{align*}
+	j = -\frac{i\hbar}{2m}(\cc{\Psi}\grad{\Psi} - \Psi\grad{\cc{\Psi}}).
+\end{align*}
+
+\paragraph{Ehrenfests sats}
+Man kan visa att
+\begin{align*}
+	\dv{\expval{x}}{t} = \frac{1}{m}\expval{p},\ \dv{\expval{p}}{t} = -\expval{\grad{V}}.
+\end{align*}
+
+\paragraph{Vägintegraler}
+Även kvantmekaniken kan formuleras med hjälp av verkansintegralen. I denna formalismen ger sannolikheten för att en partikel väljer en bana mellan två punkter ges av
+\begin{align*}
+	\sum e^{i\frac{S}{\hbar}},
+\end{align*}
+där summationen görs över alla möjliga banor mellan de två punkterna.
