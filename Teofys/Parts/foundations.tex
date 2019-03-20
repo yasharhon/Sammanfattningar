@@ -97,6 +97,8 @@ Vi har redan sett att det finns en koppling mellan operatorer på vågfunktionen
 \end{align*}
 Här är $\hat{q}$ operatorn som motsvarar $q$. Denna distinktionen kommer inte göras mycket vidare i sammanfattningen.
 
+Vi kan tolka denna integralen som en inreprodukt, och med den tolkningen kräver vi att alla operatorer som representerar fysikaliska storheter är självadjungerade eller Hermiteska.
+
 \paragraph{Osäkerhetsprincipen}
 Bandbräddsteori ger oss för $x$ och $p$ att
 \begin{align*}
@@ -126,3 +128,139 @@ Man kan visa att
 	\sum e^{i\frac{S}{\hbar}},
 \end{align*}
 där summationen görs över alla möjliga banor mellan de två punkterna.
+
+\paragraph{Koppling till klassisk mekanik}
+För att se kopplingen till klassisk fysik, är vi intresserade av att se vad som händer när $\hbar\to 0$. I detta fallet förväntar vi att de Broglie-våglängden blir liten, och att vågfunktionen därmed kommer oscillera mycket. Vi gör då ansatsen $\Psi = Ae^{i\frac{S}{\hbar}}$, där $S$ är någon funktion. Vi antar att $A$ varierar försumbart i rummet jämförd med $S$.
+
+Kinetisk energi-operatorn tillämpad på detta ger
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\del[2]{x}{\Psi} &= -\frac{\hbar^{2}}{2m}\del{x}{\left(\del{x}{A}e^{i\frac{S}{\hbar}} + iA\frac{1}{\hbar}\del{x}{S}e^{i\frac{S}{\hbar}}\right)} \\
+	                                      &=  -\frac{\hbar^{2}}{2m}\left(\del[2]{x}{A}e^{i\frac{S}{\hbar}} + i\del{x}{A}\frac{1}{\hbar}\del{x}{S}e^{i\frac{S}{\hbar}} + i\frac{1}{\hbar}\del{x}{A}\del{x}{S}e^{i\frac{S}{\hbar}} + iA\frac{1}{\hbar}\del[2]{x}{S}e^{i\frac{S}{\hbar}} - A\frac{1}{\hbar^{2}}(\del{x}{S})^{2}e^{i\frac{S}{\hbar}}\right).
+\end{align*}
+Observera att i gränsen kommer endast en term att överleva. Vi får även
+\begin{align*}
+	i\hbar\del{t}{\Psi} = i\hbar\left(\del{t}{A}e^{i\frac{S}{\hbar}} + iA\frac{1}{\hbar}\del{t}{S}e^{i\frac{S}{\hbar}}\right).
+\end{align*}
+Även här kommer endast en term överleva i gränsen. Insatt i Schrödingerekvationen och evaluerad i gränsen fås
+\begin{align*}
+	\left(\frac{1}{2m}(\del{x}{S})^{2} + V\right)\Psi = -\del{t}{S}\Psi,
+\end{align*}
+vilket implicerar
+\begin{align*}
+	\frac{1}{2m}(\del{x}{S})^{2} + V + \del{t}{S} = 0.
+\end{align*}
+De två första termerna motsvarar Hamiltonfunktionen i klassisk mekanik, där i har gjort transformationen $p\to\del{x}{S}$. Med denna tolkningen ser vi att detta motsvarar Hamilton-Jacobis ekvation.
+
+\paragraph{Separation av Schrödingerekvationen}
+Betrakta Schrödingerekvationen för en statisk potential. Då verkar Hamiltonoperatorn endast på rumliga koordinater. Vi gör då produktansatsen $\Psi = \psi\phi$, där $\psi$ endast beror av rumliga koordinater och $\phi$ endast av tiden. Detta ger
+\begin{align*}
+	H\Psi = \phi H\psi = i\hbar\del{t}{\Psi} = i\hbar \psi\dv{\phi}{t}.
+\end{align*}
+Vi kan nu dividera med $\Psi$ för att få
+\begin{align*}
+	\frac{1}{\psi}H\psi = \frac{i\hbar}{\phi}\dv{\phi}{t}.
+\end{align*}
+Eftersom varje sida beror av olika koordinater, måste de vara lika med en konstant. Av ingen anledning alls väljer vi att kalla denna konstanten för $E$. Vi löser först tidsdelen för att få
+\begin{align*}
+	\dv{\phi}{t} = -\frac{iE}{\hbar}\phi,
+\end{align*}
+med lösning
+\begin{align*}
+	\phi = Ce^{-i\frac{E}{\hbar}t}.
+\end{align*}
+Vi ser att $E$ måste motsvara systemets totala energi. Insatt i den andra ekvationen ger detta
+\begin{align*}
+	H\psi = E\psi.
+\end{align*}
+För stationära fall är alltså vågfunktionen ett egentillstånd till Hamiltonoperatorn.
+
+Betrakta vidare väntevärdet av en observabel som representeras av en operator som ej verkar på tidskoordinaten. Detta ger
+\begin{align*}
+	\expval{q} &= \integ[3]{}{}{x}{\cc{\Psi}q\Psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi}\cc{phi}q(\psi\phi)} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi}\cc{phi}\phi q\psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi}\abs{phi}^{2} q\psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi} q\psi}.
+\end{align*}
+Alltså är väntevärdet fullständigt tidsoberoende. Speciellt gäller för energin att
+\begin{align*}
+	\expval{q} &= \integ[3]{}{}{x}{\cc{\Psi} H\Psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi} H\psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi} E\psi} \\
+	           &= E\integ[3]{}{}{x}{\cc{\psi}\psi} \\
+	           &= E.
+\end{align*}
+På samma sättet fås $\expval{E^{2}} = E^{2}$ och $\Delta E = \sqrt{\expval{E^{2}} - \expval{E}^{2}} = 0.$
+
+Vi kan även skriva en allmän lösning som en superposition
+\begin{align*}
+	\Psi = \sum c_{n}\psi_{n}e^{-i\frac{E_{n}}{\hbar}t}
+\end{align*}
+där $H\psi_{n} = E_{n}\psi_{n}$ och summationen görs över hela systemets energispektrum.
+
+\paragraph{Partikel i oändlig låda}
+För att få en känsla för vilken sorts fysik som kommer ut av kvantmekaniken, betraktar vi en partikel i en oändlig lådpotential, dvs.
+\begin{align*}
+	V = 
+	\begin{cases}
+		0,      &0 < x < a, \\
+		\infty, &\text{annars.}
+	\end{cases}
+\end{align*}
+Detta motsvarar en låda med oändligt starka väggar.
+
+Vi noterar först att Schrödingerekvationen ger
+\begin{align*}
+	\del[2]{x}{\Psi} = -\frac{2m(E - V)}{\hbar^{2}}\psi.
+\end{align*}
+Alltså är vågfunktionens krökning proportionell mot $\sqrt{E - V}$. Detta implicerar om att $E - V < 0$ avtar beloppet av vågfunktionen exponentiellt i detta området. Om detta gäller överallt, kan det ej existera lösningar för $E < V_{\text{min}}$. Vi kommer därför anta att detta är sant härifrån.
+
+Vi observerar även att argumentet implicerar att eftersom potentialen är oändlig utanför lådan, måste vågfunktionen endast vara nollskild inuti lådan, och det återstår att lösa Schrödingerekvationen i denna regionen. Här fås.
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\del{x}{\del{x}{\psi}} &= E\psi, \\
+	\del{x}{\del{x}{\psi}}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+\end{align*}
+Vi definierar nu
+\begin{align*}
+	k^{2} = \frac{2mE}{\hbar^{2}}
+\end{align*}
+och får
+\begin{align*}
+	\del{x}{\del{x}{\psi}} = -k^{2}\psi.
+\end{align*}
+Detta har lösningar
+\begin{align*}
+	\psi = Ae^{ikx} + Be^{-ikx}.
+\end{align*}
+
+För att få mer information, behövs randvillkor. Vi kräver att vågfunktionen är kontinuerlig, vilket ger $\psi(0) = \psi(a) = 0$. Första randvillkoret ger
+\begin{align*}
+	A + B &= 0, \\
+	\psi  &= A\sin{kx}.
+\end{align*}
+Observera att detta inte kan uppfyllas för $k = 0$, varför denna möjligheten kan försummas.
+
+Andra randvillkoret ger
+\begin{align*}
+	ka = n\pi.
+\end{align*}
+Nu kan energin bestämmas enligt
+\begin{align*}
+	\frac{n^{2}\pi^{2}}{a^{2}} &= \frac{2mE}{\hbar^{2}}, \\
+	E                          &= \frac{\hbar^{2}n^{2}\pi^{2}}{2ma^{2}}.
+\end{align*}
+
+Slutligen ger normaliseringsvillkoret
+\begin{align*}
+	\integ{0}{a}{x}{\abs{B}^{2}\sin^{2}{kx}} = 1.
+\end{align*}
+Integralen på vänstersidan är
+\begin{align*}
+	\abs{B}^{2}\integ{0}{a}{x}{\frac{1 - \cos{2kx}}{2}}.
+\end{align*}
+Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
+\begin{align*}
+	\abs{B}^{2}\frac{a}{2} &= 1, \\
+	\abs{B}                &= \sqrt{\frac{2}{a}}.
+\end{align*}
+Observera att vi endast skriver absolutbeloppet eftersom $B$ kan innehålla en komplex fas utan att det ändrar fysiken.
