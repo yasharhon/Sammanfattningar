@@ -27,7 +27,13 @@ För att prata om Hermiteska operatorer, måste vi först prata om adjungerade o
 \end{align*}
 Med Diracnotation kan detta skrivas som $\mel{\Phi}{A}{\Psi} = \cc{\mel{\Psi}{\adj{A}}{\Phi}}$. En Hermitesk operator är en operator som uppfyller $\adj{A} = A$. Det visar sig att operatorer som $x, p$ och $H$ uppfyller detta, och det är ju trevligt.
 
-
+Några viktiga räkneregler för adjungerade operatorer är:
+\begin{itemize}
+	\item $\adj{(c_{1}A + c_{2}B)} = \cc{c_{1}}\adj{A} + \cc{c_{2}}\adj{B}$.
+	\item $\adj{(\adj{A})} = A$.
+	\item $\adj{(AB)} = \adj{B}\adj{A}$.
+	\item Normen i kvadrat av $A\ket{\Psi}$ ges av $\braket{\adj{A}A}{\Psi}$.
+\end{itemize}
 
 Det kommer visa sig att vi är intresserade av att studera egenvärdesproblem för självadjungerade operatorer. Därför vill vi veta lite om egenvärdena och egenfunktionerna till såna operatorer.
 
