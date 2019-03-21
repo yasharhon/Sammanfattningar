@@ -1,0 +1,88 @@
+\section{Diracnotation}
+
+\paragraph{Kvantmekaniska tillstånd och tillståndspostulatet}
+Vi utvidgar nu konceptet vågfunktion till ett allmänt kvantmekaniskt tillstånd $\ket{\Psi}$. Detta är en så kallad ketvektor i ett Hilbertrum. Ett fundamentalt postulat i kvantmekaniken är att $\ket{\Psi}$ beskriver systemet fullständigt.
+
+Till ketvektorerna hör även bravektorerna $\bra{\Psi}$, som bildar dualrummet till Hilbertrummet som alla ketvektorer finns i.
+
+\paragraph{Inreprodukt och ortogonalitet}
+Till dessa hör en inreprodukt
+\begin{align*}
+	\braket{\Psi}{\Phi} = \integ[3]{}{}{\vb{x}}{\cc{\Psi}\Phi}.
+\end{align*}
+Denna inreprodukten uppfyller $\braket{\Psi}{\Phi} = \cc{\braket{\Psi}{\Phi}}$.
+
+Baserad på detta kan vi införa ortogonalitet och normerbarhet. Vi säjer att en vektor är normerad om $\norm{\Psi}^{2} = \braket{\Psi} = 1$. Vi kommer förutsätta att vektorerna vi ser är normerade. Vi säjer även att $\ket{\Psi_{1}}$ och $\ket{\Psi_{2}}$ är ortonormala om $\braket{\Psi_{i}}{\Psi_{j}} = \delta{ij}$.
+
+\paragraph{Operatorer och operatorpostulatet}
+Ett annat fundamentalt postulat i kvantmekaniken är att observabler representeras av Hermiteska operatorer med en fullständig mängd av egenvektorer. Och vad betyder detta?
+
+Att representera en observabel med en operator innebär att det till varje klassiska observabel $A$ som kan skrivas som $A(x, p)$ tillhör en operator $\hat{A}(\hat{x}, \hat{p})$. Om det ej finns en klassisk motsvarighet till $A$, fås operatorn från experiment.
+
+Med Diracnotation kan vi även skriva en operatorn som $A = \op{\Psi_{1}}{\Psi_{2}}$. Vi använder i bland begreppet c-nummer om $\braket{}$ och q-nummer om $\op{}{}$. Med detta kan vi även skriva $\expval{A} = \expval{A}{\Psi}$.
+
+För att prata om Hermiteska operatorer, måste vi först prata om adjungerade operatorer. Den adjungerade operatorn $\adj{A}$ till $A$ definieras som den operatorn så att
+\begin{align*}
+	\integ[3]{}{}{\vb{x}}{\cc{\Psi}A\Phi} = \integ[3]{}{}{\vb{x}}{\cc{A\Psi}\Phi}.
+\end{align*}
+Med Diracnotation kan detta skrivas som $\mel{\Phi}{A}{\Psi} = \cc{\mel{\Psi}{\adj{A}}{\Phi}}$. En Hermitesk operator är en operator som uppfyller $\adj{A} = A$. Det visar sig att operatorer som $x, p$ och $H$ uppfyller detta, och det är ju trevligt.
+
+
+
+Det kommer visa sig att vi är intresserade av att studera egenvärdesproblem för självadjungerade operatorer. Därför vill vi veta lite om egenvärdena och egenfunktionerna till såna operatorer.
+
+Betrakta först ett egentillstånd $\ket{\Psi_{n}}$ med egenvärde $a_{n}$. Vi får:
+\begin{align*}
+	\expval{A} = \expval{A}{\Psi_{n}} = \cc{(\expval{A}{\Psi_{n}})},
+\end{align*}
+vilket implicerar att $a_{n} = \cc{a_{n}}$, och vi drar slutsatsen att självadjungerade operatorer har reella egenvärden.
+
+Betrakta vidare två olika egentillstånd. Vi får
+\begin{align*}
+	\mel{\Psi_{n}}{A}{\Psi_{m}} = a_{m}\braket{\Psi_{n}}{\Psi_{m}} = \cc{\mel{\Psi_{m}}{A}{\Psi_{n}}} = \cc{a_{n}}\cc{\braket{\Psi_{n}}{\Psi_{m}}} = \cc{a_{n}}\braket{\Psi_{n}}{\Psi_{m}},
+\end{align*}
+och drar slutsatsen att att $\braket{\Psi_{n}}{\Psi_{m}} = \delta_{nm}$. Observera att om samma egenvärde har flera egenfunktioner, kan man använda Gram-Schmidts metod för att få ortogonala egenfunktioner.
+
+Att bevisa att dessa egenvektorerna är fullständinga är allmänt bara möjligt för ändligdimensionella vektorrum. Vi kommer baka detta in i postulatet, och postulera att operatorerna vi vill betrakta är konstruerade så att detta är sant.
+
+\paragraph{Diracnotation och operatorer}
+Med fullständighetspostulatet kan vi nu skriva ett allmänt tillstånd som $\ket{\Psi} = c_{i}\ket{\Psi_{i}}$, och vi ser även att $c_{i} = \braket{\Psi_{i}}{\Psi}$. Vilken bas har vi utvecklat $\ket{\Psi}$ i? Jo, det är godtyckligt. Oftast kommer det vara egenbasen till en operator.
+
+För att en utgångspunkt, startar vi med identitetsoperatorn $I$. Med resonnemanget ovan kan vi skriva
+\begin{align*}
+	I\ket{\Psi} = \ket{\Psi} = \op{\Psi_{i}}{\Psi_{i}}\ket{\Psi},
+\end{align*}
+vilket implicerar $I = \op{\Psi_{i}}{\Psi_{i}}$.
+
+Nu kan vi betrakta en godtycklig operator $Q$ och skriva
+\begin{align*}
+	Q = IQI = \op{\Psi_{i}}{\Psi_{i}}Q\op{\Psi_{j}}{\Psi_{j}}.
+\end{align*}
+Vi kan definiera $Q_{ij} = \mel{\Psi_{i}}{Q}{\Psi_{j}}$, och får då
+\begin{align*}
+	Q = Q_{ij}\op{\Psi_{i}}{\Psi_{j}}.
+\end{align*}
+
+\paragraph{Sannolikhetstolkning}
+Med hjälp av detta kan vi skriva
+\begin{align*}
+	\braket{\Psi} = \ev{I}{\Psi} = \braket{\Psi}{\Psi_{i}}\braket{\Psi_{i}}{\Psi} = \cc{c_{i}}c_{i} = 1.
+\end{align*}
+Vi tolkar detta som att $\abs{c_{i}}^{2}$ är sannolikheten att systemet är i tillståndet $\ket{\Psi{i}}$.
+
+Vi kan även skriva väntevärdet av en observabel
+\begin{align*}
+	\expval{A} = \ev{A}{\Psi} = \ev{AI}{\Psi} = \mel{\Psi}{A}{\Psi_{i}}\braket{\Psi_{i}}{\Psi} = a_{i}\braket{\Psi}{\Psi_{i}}\braket{\Psi_{i}}{\Psi} = a_{i}\abs{c_{i}}^{2}.
+\end{align*}
+Notera hur snyggt detta blir när vi använder operatorpostulatet. Detta resultatet tolkar vi som att väntevärdet ges av en summa av produkter av egenvärden och sannolikheten för att systemet är i det motsvarande egentillståndet.
+
+\paragraph{Mätpostulatet}
+Ett annat fundamentalt postulat i kvantmekaniken är följande:
+
+Om ett system befinner sig i ett tillstånd $\ket{\Psi}$ ger en mätning av storheten $A$ något av egenvärdena $a_{i}$ till $A$ som resultat med sannolikhet $\braket{\Psi_{i}}{\Psi}$. Mätningen ändrar även systemets tillstånd från $\ket{\Psi}$ till $\ket{Psi_{i}}$, och vi säjer att tillståndet kollapsar.
+
+\paragraph{Schrödingerekvationen}
+Det sista postulatet i kvantmekaniken är att tillståndets tidsutvekling ges av
+\begin{align*}
+	H\ket{\Psi} = i\hbar\dv{t}\ket{\Psi}.
+\end{align*}
