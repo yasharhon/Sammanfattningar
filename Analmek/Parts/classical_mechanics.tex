@@ -1,0 +1,31 @@
+\section{Classical mechanics}
+In classical mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $\chi^{a}$ on this space in order to use what we know.
+
+\paragraph{Kinetic energy}
+Kinetic energy is defined by a rank $2$ tensor as
+\begin{align*}
+	E_{\text{k}} = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b},
+\end{align*}
+where the dot now really represents the time derivative.
+
+\paragraph{Hamilton's principle}
+We define the Lagrangian of a system as $\mathcal{L} = E_{\text{k}} - V$, where $V$ is the potential energy and taken to be a function on coordinate space. The action of a system over time is defined as
+\begin{align*}
+	S = \integ{}{}{t}{\mathcal{L}}.
+\end{align*}
+Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$. This can be expressed as
+\begin{align*}
+	\var{S} = \integ{}{}{t}{\var{\mathcal{L}}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\mathcal{L}} - \dv{t}\del{\dot{\chi}^{a}}{\mathcal{L}}\right)\var{\chi^{a}}} = 0.
+\end{align*}
+
+\paragraph{The kinetic metric}
+Consider a system with no potential energy. The Lagrangian simply becomes $\mathcal{L} = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. This is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
+
+\paragraph{Motion of a classical system}
+By defining $a^{b} = \dot{\chi}^{a}\dcov{a}{\dot{\chi}^{b}}$, the previous work leads us to a system with no potential satisfying $a^{b} = \ddot{\chi}^{b} + \chris{b}{a}{c}\dot{\chi}^{a}\dot{\chi}^{c} = 0$. In other words, a system with no potential moves along the geodesics of the kinetic metric.
+
+For a system with a potential, only the $\del{\chi^{a}}{\mathcal{L}}$ term is affected, and
+\begin{align*}
+	a^{b} = - T^{ba}\del{a}{V} = T^{ba}F,
+\end{align*}
+which is a generalization of Newton's second law.

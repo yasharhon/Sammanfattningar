@@ -6,11 +6,29 @@
 \usepackage[margin=0.5in]{geometry}
 
 \usepackage[arrowdel]{physics}
+\usepackage{tensor}
+\usepackage{pgffor}
 
-\newcommand{\example}[1]{\subparagraph{#1}}
+\newcommand{\example}[1]{\subparagraph{Example: #1}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\del}[2]{\partial_{#1}#2}
+\newcommand{\dcov}[2]{\grad_{#1}{#2}}
+\newcommand{\db}[1]{\vb{E}^{#1}}
+\newcommand{\tb}[1]{\vb{E}_{#1}}
 \newcommand{\kdelta}[2]{\delta_{#1}^{#2}}
+\newcommand{\tenprod}[1]
+{
+	\foreach \variable [count = \count] in #1
+	{
+		\ifnum\count > 1
+			\otimes
+		\fi
+		\variable
+	}
+}
+\newcommand{\chris}[3]{\Gamma^{#1}_{\;#2#3}}
+\newcommand{\integ}[5][]{\int\limits_{#2}^{#2}\dd[#1]{#4}#5}
+\renewcommand{\var}[1]{\delta #1}
 
 \title{Sammanfattning av SI2360 Analytisk mekanik och klassisk fältteori}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -38,5 +56,9 @@
 \input{./Parts/coordinates.tex}
 
 \input{./Parts/tensors.tex}
+
+\input{./Parts/geometry.tex}
+
+\input{./Parts/classical_mechanics.tex}
 
 \end{document}
