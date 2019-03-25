@@ -76,3 +76,26 @@ Vi inför idealplastiska material även i vridningssammanhang. Dessa beter sig a
 
 \paragraph{Knäckning}
 Om man t.ex. belastar en balk i dens längdriktning med en last som är större än en viss kritisk last, kommer balken snabbt böjas och nå ett nytt jämviktsläge. Detta kommer av att ursprungsläget är en instabil jämviktspunkt, så den minsta störning kommer att få den att anta ett stabilt jämviktstillstånd. Detta är ett exempel på ett instabilitetsfenomen.
+
+\paragraph{Plasiticitetsteori i tre dimensioner}
+I tre dimensioner inför vi effektivspänningen $\sigma_{\text{e}}$, som beror av spänningsmatrisen, och kräver $\sigma_{\text{e}}(S) = \sigma_{\text{s}}$ för att plasticitet skall inträda. Vi kommer undersöka detta för isotropa material.
+
+Vi kan välja huvudspänningsriktningarna som koordinatsystem. Då kan effektivspänningen reduceras till $\sigma_{\text{e}}(S) = \sigma_{\text{e}}(\sigma_{1}, \sigma_{2}, \sigma_{3})$. Plasticitetskriteriet definierar då en yta i tre dimensioner. Av rimlighetsskäl kan ytan inte skära origo.
+
+Vi kan kräva vissa saker av flytvillkoret, till exempel
+\begin{itemize}
+	\item det skall vara oberoende av eventuellt hydrostatiskt tryck, dvs. $\sigma_{\text{e}}(\sigma_{1}, \sigma_{2}, \sigma_{3}) = \sigma_{\text{e}}(\sigma_{1} - p, \sigma_{2}- p, \sigma_{3}- p) = \sigma_{\text{s}}$. Detta implicerar att ytan som definieras av flytvillkoret är en cylinderyta med riktning $(1, 1, 1)$.
+	\item det uppfyller ett enaxligt flytvillkor, dvs. att om någon huvudspänning är $\sigma_{\text{s}}$ och de andra är $0$, uppfylls flytvillkoret.
+	\item det är oberoende av reversering av spänningstillståndet, dvs. om alla huvudspänningar byter tecken är flytvillkoret uppfyld.
+	\item det är isotropiskt, dvs. permutation av huvudspänningarna ger fortfarande att flytvillkoret är uppfyld.
+\end{itemize}
+Från detta kan vi dra slutsatsen att vi endast behöver titta på en $30\degree$ sektor av ytan, då symmetrier ger resten av ytan.
+
+\paragraph{von Mises}
+von Mises lösning är att säja att denna sektorn är en cirkelbåge. Det finns en formel för denna.
+
+\paragraph{Tresca}
+Trescas lösning är att säja att denna sektorn är en rät linje. Det finns en formel för denna.
+
+\paragraph{Jämförelse}
+Om man jämför Trescas och von Mises teorir, blir det störst skillnad vid ren vridning. Trescas villkor är en mer konservativ gräns än von Mises, då den allmänt ligger närmare origo. Trescas villkor har hörn, och är därför svår numeriskt. Båda funkar ändå rätt bra när man jämför med experiment.
