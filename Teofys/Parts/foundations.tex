@@ -116,6 +116,9 @@ där $j$ är sannolikhetsströmmen
 	j = -\frac{i\hbar}{2m}(\cc{\Psi}\grad{\Psi} - \Psi\grad{\cc{\Psi}}).
 \end{align*}
 
+\paragraph{Klassiskt förbjudna områden}
+Områden där potentialen är större än ett tillstånds energi kallas klassiskt förbjudna områden. Klassiska system kan ej existera i såna områden, men vi kommer se att kvantmekaniska system har nollskild sannolikhet att finnas i klassiskt förbjudna områden.
+
 \paragraph{Ehrenfests sats}
 Man kan visa att
 \begin{align*}
@@ -198,6 +201,17 @@ Vi kan även skriva en allmän lösning som en superposition
 \end{align*}
 där $H\psi_{n} = E_{n}\psi_{n}$ och summationen görs över hela systemets energispektrum.
 
+\paragraph{Möjliga energier}
+Om en partikel finns i någon potential, måste alla energiegenvärden vara större än potentialens minimum. För att visa detta, kan vi observera att
+\begin{align*}
+	\expval{p^{2}} = \integ{}{}{x}{\abs{p\Psi}^{2}} > 0
+\end{align*}
+och
+\begin{align*}
+	\expval{V} = \integ{}{}{x}{V\abs{\Psi}^{2}} > V_\text{min},
+\end{align*}
+och därmed måste energins väntevärde vara större än $V_\text{min}$.
+
 \paragraph{Partikel i oändlig låda}
 För att få en känsla för vilken sorts fysik som kommer ut av kvantmekaniken, betraktar vi en partikel i en oändlig lådpotential, dvs.
 \begin{align*}
@@ -264,3 +278,14 @@ Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
 	\abs{B}                &= \sqrt{\frac{2}{a}}.
 \end{align*}
 Observera att vi endast skriver absolutbeloppet eftersom $B$ kan innehålla en komplex fas utan att det ändrar fysiken.
+
+\paragraph{Harmoniska oscillatorn}
+Harmoniska oscillatorn är ett viktigt problem i kvantmekaniken.
+
+Klassiskt dyker det i bland upp problem som involverar partiklar i en potential som är kvadratisk. Ett typiskt exempel är en partikel som är fast i en fjäder. I dessa sammanhang kommer vi skriva potentialen som $V = \frac{1}{2}m\omega^{2}x^{2}$. Vi vet att partikelns rörelse är periodisk med en viss amplitud. Dens totala energi ges av $E = \frac{1}{2}m\omega^{2}A^{2}$, där $A$ är dens amplitude.
+
+Både klassiskt och kvantmekaniskt kommer vi Taylorutveckla olika potentialer och få
+\begin{align*}
+	V \approx V(0) + \deval{V}{x}{0}x + \frac{1}{2}\deval[2]{V}{x}{0}x^{2}.
+\end{align*}
+Vi antar att $x = 0$ motsvarar jämvikt, varför den andra termen måste vara $0$. Vidare är det konstanta bidraget ointressant, då det ej ger något bidrag till fysiken. Kvar står en harmonisk oscillatorterm vars styrka ges av potentialens krökning i jämviktsläget.

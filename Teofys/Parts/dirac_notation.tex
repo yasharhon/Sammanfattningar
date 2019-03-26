@@ -92,3 +92,96 @@ Det sista postulatet i kvantmekaniken är att tillståndets tidsutvekling ges av
 \begin{align*}
 	H\ket{\Psi} = i\hbar\dv{t}\ket{\Psi}.
 \end{align*}
+
+\paragraph{Kommutatorer}
+Vi definierar kommutatorn mellan två operatorer som
+\begin{align*}
+	\commut{A}{B} = AB - BA.
+\end{align*}
+Om denna är $0$ säjs $A$ och $B$ att kommutera. Om två operatorer kommuterar spelar det ingen roll i vilken ordning man mäter de motsvarande observablerna - man kommer få samma resultat.
+
+Kommutatorn uppfyller följande relationer:
+\begin{itemize}
+	\item $\commut{A}{A} = 0$.
+	\item $\commut{A}{B} = -\commut{B}{A}$.
+	\item $\commut{AB}{C} = ABC - CAB = ABC - ACB + ACB - CAB = A\commut{B}{C} + \commut{A}{C}B$.
+	\item $\commut{A}{BC} = ABC - BCA = ABC - BAC + BAC - BCA = B\commut{A}{C} + \commut{A}{B}C$.
+\end{itemize}
+
+\paragraph{Kvantmekanisk harmonisk oscillator}
+Den kvantmekaniska harmoniska oscillatorn beskrivs av
+\begin{align*}
+	H = \frac{1}{2m}p^{2} + \frac{1}{2}m\omega^{2}x^{2}.
+\end{align*}
+vi vill skriva Hamiltonoperatorn i termer av nya operatorer, så kallade stegoperatorer. Den första är sänkningsoperatorn
+\begin{align*}
+	a = \frac{1}{\sqrt{2\hbar m\omega}}(ip + m\omega x)
+\end{align*}
+och höjningsoperatorn
+\begin{align*}
+	\adj{a} = \frac{1}{\sqrt{2\hbar m\omega}}(-ip + m\omega x).
+\end{align*}
+Vi noterar att $\adj{a} \neq a$, och därför representerar dessa inte i sig själv observabler. Däremot är
+\begin{align*}
+	x = \sqrt{\frac{\hbar}{2m\omega}}(\adj{a} + a),\ p = i\sqrt{\frac{\hbar m\omega}{2}}(\adj{a} - a).
+\end{align*}
+Kommutatorn mellan dessa är
+\begin{align*}
+	\commut{a}{\adj{a}} &= \frac{1}{2\hbar m\omega}\commut{ip + m\omega x}{-ip + m\omega x} \\
+	                    &= \frac{1}{2\hbar m\omega}(\commut{p}{p} + m^{2}\omega^{2}\commut{x}{x} + im\omega\commut{p}{x} - im\omega\commut{x}{p}) \\
+	                    &= \frac{1}{2\hbar m\omega}(im\omega(-i\hbar) - im\omega(i\hbar)) \\
+	                    &= 1.
+\end{align*}
+Detta implicerar
+\begin{align*}
+	a\adj{a} = \adj{a}a + 1.
+\end{align*}
+
+Vi kan nu skriva Hamiltonoperatorn som
+\begin{align*}
+	H &= -\frac{1}{2m}\frac{\hbar m\omega}{2}(\adj{a} - a)^{2} + \frac{1}{2}m\omega^{2}\frac{\hbar}{2m\omega}(\adj{a} + a)^{2} \\
+	  &= -\frac{\hbar\omega}{4}((\adj{a})^{2} + a^{2} - \adj{a}a - a\adj{a}) + \frac{\hbar\omega}{4}((\adj{a})^{2} + a^{2} + \adj{a}a + a\adj{a})^{2} \\
+	  &= \frac{\hbar\omega}{2}(\adj{a}a + a\adj{a}) \\
+	  &= \frac{\hbar\omega}{2}(2\adj{a}a + 1) \\
+	  &= \hbar\omega\left(\adj{a}a + \frac{1}{2}\right).
+\end{align*}
+Vi kan definiera nummeroperatorn $N = \adj{a}a$, och då skriva $H = \hbar\omega\left(N + \frac{1}{2}\right)$. Nummeroperatorn uppfyller 
+\begin{align*}
+	\commut{N}{a}       &= \adj{a}\commut{a}{a} + \commut{\adj{a}}{a}a = -a, \\
+	\commut{N}{\adj{a}} &= \adj{a}\commut{a}{\adj{a}} + \commut{a}{a}a = \adj{a}.
+\end{align*}
+Därmed uppfyller Hamiltonoperatorn (eftersom multipler av identiteten kommuterar med allt):
+\begin{align*}
+	\commut{H}{a}       &= -\hbar\omega a, \\
+	\commut{H}{\adj{a}} &= \hbar\omega\adj{a}.
+\end{align*}
+
+Antag nu att vi känner en egenfunktion $\Psi$. Då får vi
+\begin{align*}
+	Ha\Psi = aH\Psi - \hbar\omega a\Psi = (E - \hbar\omega)a\Psi,
+\end{align*}
+och $a\Psi$ är en ny egenfunktion med egenvärde $E - \hbar\omega$. Vi får även
+\begin{align*}
+	H\adj{a}\Psi = \adj{a}H\Psi + \hbar\omega\adj{a}\Psi = (E + \hbar\omega)\adj{a}\Psi,
+\end{align*}
+och vi ser nu varför vi döpte operatorena som vi gjorde.
+
+Vi vet samtidigt att vi kan inte fortsätta att sänka potentialen och hitta nya egenfuktioner för alla möjliga egenvärden. Därför måste det finnas ett $\Psi_{0}$ så att $\Psi_{0}$ är en egenfunktion med egenvärde $E_{0}$, men $a\Psi_{0}$ ej är en egenfunktion. Eftersom operatoralgebran funkar som den gör, är då den enda möjligheten att $a\Psi_{0} = 0$. Detta ger en ordinarie differentialekvation med lösning
+\begin{align*}
+	\Psi_{0} = Ae^{-\frac{m\omega x^{2}}{2\hbar}},\ A = \left(\frac{m\omega}{\pi\hbar}\right)^{\frac{1}{4}}.
+\end{align*}
+Vi ser vidare att grunntilståndsenergin ges av $E = \frac{1}{2}\hbar\omega$, eftersom $a\Psi_{0} = 0$ och $H = \hbar\omega\left(\adj{a}a + \frac{1}{2}\right)$. Vidare ges då det fullständiga energispektret av $E_{n} = \left(\frac{1}{2} + n\right)\hbar\omega, n = 0, 1, \dots$.
+
+De nästa tillstånden kan fås enligt
+\begin{align*}
+	\Psi_{n} = A_{n}(\adj{a})^{n}\Psi_{0} \propto H_{n}e^{-\frac{m\omega x^{2}}{2\hbar}},
+\end{align*}
+där $H_{n}$ är Hermitepolynomen. Detta hade man också kunnat få med en potensserielösning, men detta är mycket snyggare.
+
+Vi tittar lite på nummeroperatorn igen. Den är självadjungerad, så man skulle kunna tro att den representerar en observabel. Det visar sig att den gör det, ty om vi definierar $\ket{n}$ som egentillståndet till Hamiltonoperatorn med energi $E_{n}$, ger egenvärdesekvationen att $N\ket{n} = n\ket{n}$, och $N$ ger alltså ett mått på tillståndets energi.
+
+Till sist kommer lite om normering. Vi antar att det förra tillståndet var normerad, och vill ha en konstant $A$ så att om $a\ket{n} = A\ket{n - 1}$, är även det nya tillståndet normerad. Vi får
+\begin{align*}
+	\abs{A}^{2}\braket{n - 1} = \braket{\adj{a}a}{n} = n\braket{n},
+\end{align*}
+där vi har utnyttjat att om $\ket{\Phi} = a\ket{\Psi}$ är $\braket{\Phi} = \braket{\adj{a}a}{\Psi}$. Eftersom de två tillstånden är normerade, måste $A = \sqrt{n}$. Alltså är $a\ket{n} = \sqrt{n}\ket{n - 1}$. På samma sätt fås $\adj{a}\ket{n} = \sqrt{n + 1}\ket{n + 1}$.
