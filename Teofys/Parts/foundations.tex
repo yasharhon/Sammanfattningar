@@ -212,72 +212,18 @@ och
 \end{align*}
 och därmed måste energins väntevärde vara större än $V_\text{min}$.
 
-\paragraph{Partikel i oändlig låda}
-För att få en känsla för vilken sorts fysik som kommer ut av kvantmekaniken, betraktar vi en partikel i en oändlig lådpotential, dvs.
-\begin{align*}
-	V = 
-	\begin{cases}
-		0,      &0 < x < a, \\
-		\infty, &\text{annars.}
-	\end{cases}
-\end{align*}
-Detta motsvarar en låda med oändligt starka väggar.
+\paragraph{Kontinuitetsvillkor för vågfunktionen}
+Det gäller att vågfunktionen är kontinuerlig överallt och att dens derivata är kontinuerlig överallt förutom där potentialen är oändlig.
 
-Vi noterar först att Schrödingerekvationen ger
+För att visa detta, integrera Schrödingerekvationen fråm $-\varepsilon$ till $\varepsilon$. Med $H = -\frac{\hbar^{2}}{2m}\del[2]{x}{} + V$ fås
 \begin{align*}
-	\del[2]{x}{\Psi} = -\frac{2m(E - V)}{\hbar^{2}}\psi.
+	\integ{-\varepsilon}{\varepsilon}{x}{-\frac{\hbar^{2}}{2m}\del[2]{x}{\Psi} + V\Psi} = \integ{-\varepsilon}{\varepsilon}{x}{E\Psi}.
 \end{align*}
-Alltså är vågfunktionens krökning proportionell mot $\sqrt{E - V}$. Detta implicerar om att $E - V < 0$ avtar beloppet av vågfunktionen exponentiellt i detta området. Om detta gäller överallt, kan det ej existera lösningar för $E < V_{\text{min}}$. Vi kommer därför anta att detta är sant härifrån.
-
-Vi observerar även att argumentet implicerar att eftersom potentialen är oändlig utanför lådan, måste vågfunktionen endast vara nollskild inuti lådan, och det återstår att lösa Schrödingerekvationen i denna regionen. Här fås.
+Eftersom vågfunktionen antas vara normerbar, måste högersidan gå mot $0$ då $\varepsilon\to 0$. Det som finns kvar är
 \begin{align*}
-	-\frac{\hbar^{2}}{2m}\del{x}{\del{x}{\psi}} &= E\psi, \\
-	\del{x}{\del{x}{\psi}}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+	\integ{-\varepsilon}{\varepsilon}{x}{\del[2]{x}{\Psi}} = \frac{2m}{\hbar^{2}}\integ{-\varepsilon}{\varepsilon}{x}{V\Psi}.
 \end{align*}
-Vi definierar nu
-\begin{align*}
-	k^{2} = \frac{2mE}{\hbar^{2}}
-\end{align*}
-och får
-\begin{align*}
-	\del{x}{\del{x}{\psi}} = -k^{2}\psi.
-\end{align*}
-Detta har lösningar
-\begin{align*}
-	\psi = Ae^{ikx} + Be^{-ikx}.
-\end{align*}
-
-För att få mer information, behövs randvillkor. Vi kräver att vågfunktionen är kontinuerlig, vilket ger $\psi(0) = \psi(a) = 0$. Första randvillkoret ger
-\begin{align*}
-	A + B &= 0, \\
-	\psi  &= A\sin{kx}.
-\end{align*}
-Observera att detta inte kan uppfyllas för $k = 0$, varför denna möjligheten kan försummas.
-
-Andra randvillkoret ger
-\begin{align*}
-	ka = n\pi.
-\end{align*}
-Nu kan energin bestämmas enligt
-\begin{align*}
-	\frac{n^{2}\pi^{2}}{a^{2}} &= \frac{2mE}{\hbar^{2}}, \\
-	E                          &= \frac{\hbar^{2}n^{2}\pi^{2}}{2ma^{2}}.
-\end{align*}
-
-Slutligen ger normaliseringsvillkoret
-\begin{align*}
-	\integ{0}{a}{x}{\abs{B}^{2}\sin^{2}{kx}} = 1.
-\end{align*}
-Integralen på vänstersidan är
-\begin{align*}
-	\abs{B}^{2}\integ{0}{a}{x}{\frac{1 - \cos{2kx}}{2}}.
-\end{align*}
-Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
-\begin{align*}
-	\abs{B}^{2}\frac{a}{2} &= 1, \\
-	\abs{B}                &= \sqrt{\frac{2}{a}}.
-\end{align*}
-Observera att vi endast skriver absolutbeloppet eftersom $B$ kan innehålla en komplex fas utan att det ändrar fysiken.
+Om potentialen är ändlig, kommer även högersidan gå mot $0$, vilket implicerar att $\del{x}{\Psi}$ är kontinuerlig, och då måste även $\Psi$ vara kontinuerlig. Om nu potentialen skulle vara oändlig, skulle högersidan kunna bli ändlig även när $\varepsilon\to 0$, och detta ger att derivatan gör ett hopp. Däremot, om man integrerar igen, kommer man ändå få att $\Psi$ är kontinuerlig.
 
 \paragraph{Harmoniska oscillatorn}
 Harmoniska oscillatorn är ett viktigt problem i kvantmekaniken.

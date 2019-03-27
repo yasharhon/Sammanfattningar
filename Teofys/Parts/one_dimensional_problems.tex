@@ -1,0 +1,166 @@
+\section{Endimensionella problem}
+
+\paragraph{Partikel i oändlig låda}
+För att få en känsla för vilken sorts fysik som kommer ut av kvantmekaniken, betraktar vi en partikel i en oändlig lådpotential, dvs.
+\begin{align*}
+	V = 
+	\begin{cases}
+		0,      &0 < x < a, \\
+		\infty, &\text{annars.}
+	\end{cases}
+\end{align*}
+Detta motsvarar en låda med oändligt starka väggar.
+
+Vi noterar först att Schrödingerekvationen ger
+\begin{align*}
+	\del[2]{x}{\Psi} = -\frac{2m(E - V)}{\hbar^{2}}\psi.
+\end{align*}
+Alltså är vågfunktionens krökning proportionell mot $\sqrt{E - V}$. Detta implicerar om att $E - V < 0$ avtar beloppet av vågfunktionen exponentiellt i detta området. Om detta gäller överallt, kan det ej existera lösningar för $E < V_{\text{min}}$. Vi kommer därför anta att detta är sant härifrån.
+
+Vi observerar även att argumentet implicerar att eftersom potentialen är oändlig utanför lådan, måste vågfunktionen endast vara nollskild inuti lådan, och det återstår att lösa Schrödingerekvationen i denna regionen. Här fås.
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\del{x}{\del{x}{\psi}} &= E\psi, \\
+	\del{x}{\del{x}{\psi}}                      &= -\frac{2mE}{\hbar^{2}}\psi.
+\end{align*}
+Vi definierar nu
+\begin{align*}
+	k^{2} = \frac{2mE}{\hbar^{2}}
+\end{align*}
+och får
+\begin{align*}
+	\del{x}{\del{x}{\psi}} = -k^{2}\psi.
+\end{align*}
+Detta har lösningar
+\begin{align*}
+	\psi = Ae^{ikx} + Be^{-ikx}.
+\end{align*}
+
+För att få mer information, behövs randvillkor. Vi kräver att vågfunktionen är kontinuerlig, vilket ger $\psi(0) = \psi(a) = 0$. Första randvillkoret ger
+\begin{align*}
+ 	A + B &= 0, \\
+ 	\psi  &= A\sin{kx}.
+\end{align*}
+Observera att detta inte kan uppfyllas för $k = 0$, varför denna möjligheten kan försummas.
+
+Andra randvillkoret ger
+\begin{align*}
+	ka = n\pi.
+\end{align*}
+Nu kan energin bestämmas enligt
+\begin{align*}
+	\frac{n^{2}\pi^{2}}{a^{2}} &= \frac{2mE}{\hbar^{2}}, \\
+	E                          &= \frac{\hbar^{2}n^{2}\pi^{2}}{2ma^{2}}.
+\end{align*}
+
+Slutligen ger normaliseringsvillkoret
+\begin{align*}
+	\integ{0}{a}{x}{\abs{B}^{2}\sin^{2}{kx}} = 1.
+\end{align*}
+Integralen på vänstersidan är
+\begin{align*}
+	\abs{B}^{2}\integ{0}{a}{x}{\frac{1 - \cos{2kx}}{2}}.
+\end{align*}
+Den andra termen ger inget bidrag eftersom den har period $a$, och detta ger
+\begin{align*}
+	\abs{B}^{2}\frac{a}{2} &= 1, \\
+	\abs{B}                &= \sqrt{\frac{2}{a}}.
+\end{align*}
+Observera att vi endast skriver absolutbeloppet eftersom $B$ kan innehålla en komplex fas utan att det ändrar fysiken.
+
+\paragraph{Fria partiklar}
+För en fri partikel, dvs. en partikel som inte känner någon potential, är egenfunktionerna till Hamiltonoperatorn plana vågor. Om en given lösning har vågtal $k$, är lösningen
+\begin{align*}
+	\Psi = Ae^{i(kx - \omega t)}.
+\end{align*}
+Detta är en egenfunktion till rörelsemängdsoperatorn med egenvärde $p = \hbar k$. Energin ges då av
+\begin{align*}
+	E = \frac{\hbar^{2}k^{2}}{2m} = \hbar\omega(k),
+\end{align*}
+där sista likheten kommer av energioperatorn som en partiell derivata med avseende på tiden. En sådan relation mellan $\omega$ och $k$ kallas för en dispersionsrelation.
+
+Detta tillståndet har en konstant sannolikhetstäthet överallt. Därmed är tillståndet ej normerbara, och såna tillstånd kan i sig själv ej vara fysikaliska.
+
+För att få ett normerbart tillstånd för en fri partikel, kan man superponera egentillstånden enligt
+\begin{align*}
+	\eval{\Psi(x, t)}_{t = 0} = \frac{1}{\sqrt{2\pi}}\integ{-\infty}{\infty}{k}{\eval{\Psi(k, t)}_{t = 0}e^{ikx}}
+\end{align*}
+Detta är Fouriertransformen, där $\eval{\Psi(k)}_{t = 0}$ är Fouriertransformen vid $t = 0$, och man har att
+\begin{align*}
+	\eval{\Psi(k, t)}_{t = 0} = \frac{1}{\sqrt{2\pi}}\integ{-\infty}{\infty}{x}{\eval{\Psi(x, t)}_{t = 0}e^{-ikx}}.
+\end{align*}
+Vi kan nu skriva vågfunktionens tidsutveckling som
+\begin{align*}
+	\Psi(x, t) = \frac{1}{\sqrt{2\pi}}\integ{-\infty}{\infty}{k}{\Psi(k, t)e^{i(kx - \omega t)}}.
+\end{align*}
+Det visar sig att sådana tillstånd kan vara normerbara.
+
+\paragraph{Fashastighet och grupphastighet}
+Våghastigheten hos en plan våg kallas fashastigheten och ges av $v_{\text{f}} = \frac{\omega}{k}$. För en plan våg ges den av $v_{\text{f}} = \sqrt{\frac{E}{2m}}$. Den klassiska hastigheten för en partikel med energi $E$ ges av $v_{\text{g}} = \sqrt{\frac{2E}{m}}$. Det är ju inte kul, varför beter inte kvantmekaniska partiklar sig likadant? Det kommer av att ett vågpaket inte rör sig med fashastigheten till någon av vågorna den är uppbygd av, men med grupphastigheten $v_{\text{g}} = \dv{\omega}{k}$.
+
+För att se hur den uppkommer, antag att $\Psi(k)$ har ett maximum vid $k_{0}$ och har så liten spridning att expansionen
+\begin{align*}
+	\omega = \omega_{0} + v_{\text{g}}(k - k_{0})
+\end{align*}
+för den givna definitionen av $v_{\text{g}}$ är en bra approximation öveallt där $\Psi(k)$ inte är försumbar. Detta ger
+\begin{align*}
+	\Psi(x, t) &= \frac{1}{\sqrt{2\pi}}\integ{-\infty}{\infty}{k}{\Psi(k, t)e^{i(kx - (\omega_{0} + v_{\text{g}}(k - k_{0}))t}} \\
+	           &= \frac{1}{\sqrt{2\pi}}e^{i(v_{\text{g}}k_{0} - \omega_{0})t}\integ{-\infty}{\infty}{k}{\Psi(k, t)e^{ik(x - v_{\text{g}}t)}} \\
+	           &= e^{i(v_{\text{g}}k_{0} - \omega_{0})t}\Psi(x - v_{\text{g}}t, 0).
+\end{align*}
+Detta är alltså ett vågpaket som rör sig med hastighet $v_{\text{g}}$.
+
+\paragraph{Deltapotentialen}
+Betrakta en potential $V = -\alpha\delta(x)$. Vi vill studera både bundna tillstånd till dena potentialen och spridning på den.
+
+Bundna tillstånd fås för $E < 0$, och ges av
+\begin{align*}
+	\psi = Ae^{\kappa x} + Be^{-\kappa x},\ \kappa = \sqrt{-\frac{2mE}{\hbar^{2}}}
+\end{align*}
+där konstanterna är olika på varje sida av potentialen. Mer specifikt ger normeringskrav och kontinuitet att
+\begin{align*}
+	\psi =
+	\begin{cases}
+		Ae^{-\kappa x}, &x > 0, \\
+		Ae^{\kappa x},  &x < 0.
+	\end{cases}
+\end{align*}
+Derivatan av vågfunktionen är diskontinuerlig. Integration av Schrödingerekvationen ger
+\begin{align*}
+	\integ{-\varepsilon}{\varepsilon}{x}{\del[2]{x}{\Psi}} = \deval{\Psi}{x}{\varepsilon} - \deval{\Psi}{x}{-\varepsilon} = \frac{2m}{\hbar^{2}}\integ{-\varepsilon}{\varepsilon}{x}{V\Psi}.
+\end{align*}
+Med den givna potentialen blir högersidan $-\frac{2m\alpha A}{\hbar^{2}}$. Å andra sidan har derivatan värdet $-\kappa Ae^{-\kappa\varepsilon}$ för $x > 0$ och $\kappa Ae^{-\kappa\varepsilon}$ för $x < 0$, fås
+\begin{align*}
+	-2\kappa A = -\frac{2m\alpha A}{\hbar^{2}},
+\end{align*}
+vilket har lösningen $E = -\frac{m\alpha^{2}}{2\hbar^{2}}$. Alltså finns endast ett bundet tillstånd.
+
+Vi studerar vidare spridningstillstånden, som har energi $E > 0$. Om vi antar att det kommer in en våg från vänster, ges vågfunktionen av
+\begin{align*}
+	\Psi =
+	\begin{cases}
+		 Ae^{ikx} + Be^{-ikx}, &x < 0, \\
+		 Ce^{ikx},             &x > 0,
+	\end{cases}
+\end{align*}
+där $k = \sqrt{\frac{2mE}{\hbar^{2}}}$. Normerbarheten av lösningen är ointressang, då vi endast är intresserade av hur stor sannolikheten är för att partikeln transmitteras eller reflekteras.
+
+Kontinuitetsvillkoret ger $A + B = C$. Derivatans diskontinuitet ger
+\begin{align*}
+	Cik - Aik + Bik = -\frac{2m\alpha}{\hbar^{2}}\Psi(0) = -\frac{2m\alpha}{\hbar^{2}}(A + B).
+\end{align*}
+Vi definierar $\beta = \frac{m\alpha}{\hbar^{2}k}$. Då har detta systemet lösningar
+\begin{align*}
+	B = \frac{i\beta}{1 - i\beta}A,\ F = \frac{1}{1 - i\beta}A.
+\end{align*}
+Vi vill använda detta för att definiera transmissions- och reflektionskoefficienter i termer av sannolikhetsström. För en plan våg är sannolikhetsströmmen proportionell mot $\abs{\Psi}^{2}$, och övriga faktorer kommer vara lika i vårat fall eftersom alla ingående plana vågor har samma vågtal. Det visar sig också att sannolikhetsströmmen på vänstersidan ges av $\abs{A}^{2} - \abs{B}^{2}$, alltså av ett bidrag från den inkommande vågen och ett från den reflekterade vågen. Då kan vi definiera
+\begin{align*}
+	T &= \frac{\abs{B}^{2}}{\abs{A}^{2}} = \frac{1}{1 + \frac{m\alpha^{2}}{2\hbar^{2}E}}, \\
+	R &= \frac{\abs{C}^{2}}{\abs{A}^{2}} = \frac{1}{1 + \frac{2\hbar^{2}E}{m\alpha^{2}}}.
+\end{align*}
+Dessa uppfyller $T + R = 1$, och vi noterar att transmissionssannolikheten ökar med $E$. Vi noterar även att dessa ej beror på om potentialen är en deltabrunn eller en deltavägg. Anledningen till att partiklar kan koma sig genom deltaväggar är tunneling.
+
+\paragraph{Ändlig potentialbrunn}
+Tillkommer kanske.
+
+\paragraph{Rektangulär potentialbarriär}
+Tillkommer kanske.
