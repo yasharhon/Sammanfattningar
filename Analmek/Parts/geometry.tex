@@ -73,15 +73,15 @@ We note that the expression in the paranthesis is the Euler-Lagrange equation fo
 \end{align*}
 Multiplying this by $-g^{cd}\mathcal{L}$ yields
 \begin{align*}
-	g_{ac}g^{cd}\ddot{\chi}^{a} - \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(2\del{b}{g_{ac}} - \del{c}{g_{ab}}) = g_{ac}g^{cd}\ddot{\chi}^{a} - \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{b}{g_{ac}} - \del{c}{g_{ab}}) = 0.
+	g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(2\del{b}{g_{ac}} - \del{c}{g_{ab}}) = g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{b}{g_{ac}} - \del{c}{g_{ab}}) = 0.
 \end{align*}
 The $a$ and $b$ indices are summed over, and may thus be swapped. Combined with the symmetry of the metric tensor, this yields
 \begin{align*}
-	g_{ac}g^{cd}\ddot{\chi}^{a} - \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}) = 0.
+	g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}) = 0.
 \end{align*}
-For some very magical reason, this can be simplified to yield the geodesic equation
+Summation of the first term over $a$ gives $g_{ac}g^{cd}\ddot{\chi}^{a} = g_{ca}g^{cd}\ddot{\chi}^{a} = g^{cd}\ddot{\chi}_{c}$, and summation over $c$ gives $g^{cd}\ddot{\chi}_{c} = g^{cd}\ddot{\chi}^{d}$. This thus yields
 \begin{align*}
-	\ddot{\chi}^{a} - \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}) = 0.
+	\ddot{\chi}^{d} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}) = 0.
 \end{align*}
 
 \paragraph{Christoffel symbols and the geodesic equation}
@@ -100,14 +100,18 @@ Comparing this to the geodesic equation yields
 A better approach would have been to go through the derivation of the geodesic equation again, identifying the Christoffel symbols as you go, but I have no idea how to do that.
 
 \paragraph{The geometry of curved space}
-In curved space, we face the restriction that there is no position vector. All vectors in curved space are instead restricted to the tangent space. It turns out that tangent vectors at a point have coordinates $\dot{\chi}^{a}$ and that the tangent vectors consist of the tangent vectors to the coordinate lines.
+In curved space, we face the restriction that there is no position vector. All vectors in curved space are instead restricted to the tangent space. It turns out that tangent vectors at a point have coordinates $\dot{\chi}^{a}$ and that the tangent vectors consist of the tangent vectors to the coordinate lines, i.e. partial derivatives.
 
 We can also impose a metric tensor such that $\vb{v}\cdot\vb{w} = g_{ab}v^{a}w^{b}$, where the metric tensor is symmetric and positive definite.
 
-Dual vectors can be defined as linear maps from tangent vectors to scalars. In particular, the dual vector $\dd{f}$ can be defined as
+Dual vectors can be defined as linear maps from tangent vectors to scalars, i. e. on the form
+\begin{align*}
+	V(\vb{w}) = V_{a}w^{a}.
+\end{align*}
+In particular, the dual vector $\dd{f}$ can be defined as
 \begin{align*}
 	\dd{f}(\vb{v}) = v^{a}\del{a}{f} = \dv{f}{t}
 \end{align*}
-along a curve with $\vb{v}$ as a tangent. A basis for the space of dual vectors is $e^{a} = \dd{\chi^{a}}$.
+along a curve with $\vb{v}$ as a tangent. A basis for the space of dual vectors is $e^{a} = \dd{\chi^{a}}$. The tangent and dual spaces, if a metric exists, are related by $v_{a} = g_{ab}v^{b}$.
 
 Curve lengths are defined and computed as before. By defining geodesics as curves that extremize path length, this gives a set of Christoffel symbols and therefore a covariant derivative and a sense of what it means for a vector to change along a curve.

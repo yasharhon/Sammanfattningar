@@ -8,24 +8,91 @@ Kinetic energy is defined by a rank $2$ tensor as
 \end{align*}
 where the dot now really represents the time derivative.
 
+%Can be used to show H = T + V
+
 \paragraph{Hamilton's principle}
-We define the Lagrangian of a system as $\mathcal{L} = E_{\text{k}} - V$, where $V$ is the potential energy and taken to be a function on coordinate space. The action of a system over time is defined as
+We define the Lagrangian of a system as $\lag = E_{\text{k}} - V$, where $V$ is the potential energy and taken to be a function on coordinate space. The action of a system over time is defined as
 \begin{align*}
-	S = \integ{}{}{t}{\mathcal{L}}.
+	S = \integ{}{}{t}{\lag}.
 \end{align*}
 Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$. This can be expressed as
 \begin{align*}
-	\var{S} = \integ{}{}{t}{\var{\mathcal{L}}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\mathcal{L}} - \dv{t}\del{\dot{\chi}^{a}}{\mathcal{L}}\right)\var{\chi^{a}}} = 0.
+	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\lag} - \dv{t}\del{\dot{\chi}^{a}}{\lag}\right)\var{\chi^{a}}} = 0.
 \end{align*}
 
 \paragraph{The kinetic metric}
-Consider a system with no potential energy. The Lagrangian simply becomes $\mathcal{L} = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. This is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
+Consider a system with no potential energy. The Lagrangian simply becomes $\lag = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. This is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
 
 \paragraph{Motion of a classical system}
 By defining $a^{b} = \dot{\chi}^{a}\dcov{a}{\dot{\chi}^{b}}$, the previous work leads us to a system with no potential satisfying $a^{b} = \ddot{\chi}^{b} + \chris{b}{a}{c}\dot{\chi}^{a}\dot{\chi}^{c} = 0$. In other words, a system with no potential moves along the geodesics of the kinetic metric.
 
-For a system with a potential, only the $\del{\chi^{a}}{\mathcal{L}}$ term is affected, and
+For a system with a potential, only the $\del{\chi^{a}}{\lag}$ term is affected, and
 \begin{align*}
 	a^{b} = - T^{ba}\del{a}{V} = T^{ba}F,
 \end{align*}
 which is a generalization of Newton's second law.
+
+\paragraph{Noether's theorem}
+Noether's theorem relates symmetries of physical systems to conservation laws.
+
+What is a symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, s) = q^{a}$ and for small $s = \varepsilon$ that $t\to t + \varepsilon\var{t},\ q^{a}\to q^{a} + \varepsilon\var{q^{a}}$. This is assumed to be normalized such that $\var{t}$ is either $0$ or $1$. How? Don't ask. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
+\begin{align*}
+	\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}
+\end{align*}
+for some $F$. The variation of the Lagrangian can be written as
+\begin{align*}
+	\var{\lag} = \del{q^{a}}{\lag}\var{q^{a}} + \del{\dot{q}^{a}}{\lag}\var{\dot{q}^{a}} + \del{t}{\lag}\var{t}.
+\end{align*}
+The total time derivative of the Lagrangian is given by
+\begin{align*}
+	\dv{\lag}{t} = \del{t}{\lag} + \del{q^{a}}{\lag}\dot{q}^{a} + \del{\dot{q}^{a}}{\lag}\ddot{q}^{a},
+\end{align*}
+which yields
+\begin{align*}
+	\var{\lag} = \del{q^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t}.
+\end{align*}
+The equations of motion are $\del{q^{a}}{\lag} = \dv{t}\del{\dot{q}^{a}}{\lag}$. For a set of coordinates that satisfy this - a so-called on-shell solution - we have
+\begin{align*}
+	\var{\lag} &= \dv{t}\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t} \\
+	           &= \dv{t}\left(\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \lag\var{t}\right).
+\end{align*}
+If the transformation is a quasi-symmetry of the system, then this is equal to a total time derivative of $F$, and the quantity
+\begin{align*}
+	J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q}^{a}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
+\end{align*}
+thus satisfies $\dv{J}{t} = 0$. We can introduce the general momenta $p_{a} = \del{\dot{q}^{a}}{\lag}$ and the Hamiltonian $\ham = p_{a}\dot{q}^{a} - \lag$ to write
+\begin{align*}
+	J = F - p_{a}\var{q^{a}} + \ham\var{t}.
+\end{align*}
+
+We arrive at the conclusion that $J$ is a conserved quantity under a quasi-symmetry of the system. Identifying the conservation laws of a system is thus a matter of identifying the quasi-symmetries of a system and computing $J$ under that transformation.
+
+\example{A free particle in space}
+Consider a free particle in space. Its Lagrangian is given by $\lag = \frac{1}{2}m\dot{\vb{x}}^{2}$, and the variation of this is
+\begin{align*}
+	\var{\lag} = m\dot{\vb{x}}\cdot\var{\dot{\vb{x}}}.
+\end{align*}
+Its general momentum is
+\begin{align*}
+	\vb{p} = \del{\dot{\vb{x}}}{\lag} = m\dot{\vb{x}}.
+\end{align*}
+The Hamiltonian is
+\begin{align*}
+	\ham = \vb{p}\cdot\dot{\vb{x}} - \lag = \frac{1}{2}m\dot{\vb{x}}^{2}.
+\end{align*}
+We now want to identify quasi-symmetries of the system that make the variation of the Lagrangian either zero or the time derivative of some quantity. A key idea here is that we are only allowed to change the variations (or so I think).
+
+A first attempt is keeping $\var{\vb{x}}$ constant and not varying thiime(a spatial translation), which implies $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. This implies that $F$ is constant. The conserved quantity is thus
+\begin{align*}
+	J = F - \vb{p}\cdot\var{\vb{x}} = F - \vb{p}\cdot\vb{c},
+\end{align*}
+i.e. the momentum of the system is conserved. We also note that the constant $F$ in this case is arbitrary, and we might as well have set it to $0$. This will be the case at least sometimes.
+
+A second attempt is varying time, i.e. $\var{t} = 1$, but keeping the coordinates fixed, i.e. $\var{\vb{x}} = 0$ (a time translation). This yields $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. Once again $F$ is constant and taken to be zero, and the conserved quantity is thus $J = H$, i.e. the Hamiltonian of the system is conserved.
+
+A third attempt is to somehow make the scalar product in the variation of the Lagrangian zero, without varying time. An option is $\var{\vb{x}} = \vb{\omega}\times\vb{x}$, where $\vb{\omega}$ is a constant vector. This yields $\var{\dot{\vb{x}}} = \vb{\omega}\times\dot{\vb{x}}$ and $\var{\lag} = 0$. The conserved quantity is thus
+\begin{align*}
+	J &= -\vb{p}\cdot(\vb{\omega}\times\vb{x}) \\
+	  &= -\vb{\omega}\cdot(\vb{x}\times\vb{p}).
+\end{align*}
+Since $\vb{\omega}$ is constant, that means that $\vb{x}\times\vb{p}$, i.e. the angular momentum, is conserved.
