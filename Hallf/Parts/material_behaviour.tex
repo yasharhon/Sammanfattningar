@@ -99,3 +99,42 @@ Trescas lösning är att säja att denna sektorn är en rät linje. Det finns en
 
 \paragraph{Jämförelse}
 Om man jämför Trescas och von Mises teorir, blir det störst skillnad vid ren vridning. Trescas villkor är en mer konservativ gräns än von Mises, då den allmänt ligger närmare origo. Trescas villkor har hörn, och är därför svår numeriskt. Båda funkar ändå rätt bra när man jämför med experiment.
+
+\paragraph{Utmattning}
+Utmattning är fenomenet som uppstår när brott uppstår under spänningsgränser. Det som händer är att spänningsgränsen blir lägre i materialet av cyklisk deformation, och att den tenderer mot en utmattningsgräns.
+
+För att beskriva cykliska belastningar, inför vi begreppen minimumspänning, maximumspänning, amplitudspänning, mittspänning och spänningsförhållande. Vi har
+\begin{align*}
+	\sigma_{\text{a}} &= \frac{\sigma_{\text{max}} - \sigma_{\text{min}}}{2}, \\
+	\sigma_{\text{m}} &= \frac{\sigma_{\text{max}} + \sigma_{\text{min}}}{2}, \\
+	R                 &= \frac{\sigma_{\text{min}}}{\sigma_{\text{max}}}.
+\end{align*}
+
+\paragraph{Dragprovning och S-N-diagram}
+För att testa materialers utmattningsegenskaper, kan man utsätta ett prov för varierande spänningar. Det vanlige är rent varierande eller pulserande spänningar. För en given spänningsamplitud kan man mäta hur många cykler provet kan gå igenom innan brott, och detta kan plottas i ett S-N-diagram. I ett sånt diagram kan man också rita olika kurvor för olika brottsannolikheter.
+
+Av detta kan man läsa av brottgränsen $\sigma_{\text{B}}$ vid låga $N$ och utmattningsgränsen $\sigma_{\text{u}}$ vig höga $N$. Om man belastar provet med en spänning som är lägre än detta, har provet oändlig livslängd. Kurvan har typiskt en omvänd sigmoid form, och gränslivslängden $N{\text{g}}$ definieras som det $N$ där kurvan igen blir platt. Om spänningen är pulserande, betacknas utmattningsgränsen som $\sigma_{\text{up}}$. Motsvarande gränser kan även införas vid böjning eller böjning med rotation.
+
+\paragraph{Haigh-diagram}
+Ett Haigh-diagram är en representation av alla kombinationer av mittspänning och amplitudspänning som ger brott. Vi kommer dock förhålla oss till förenklade Haigh-diagram. Dessa konstrueras vid att dra räta linjer mellan olika punkter.
+
+Den första punkten är $\sigma_{\text{m}} = 0, \sigma_{\text{a}} = \sigma_{\text{u}}$, som motsvarar rent växlande belastning. Den andra punkten är en rent växlande spänning $\sigma_{\text{a}} = \sigma_{\text{m}} = \sigma_{\text{up}}$. Den tredje punkten fås från ett rent statiskt dragprov $\sigma_{\text{a}} = 0, \sigma_{\text{m}} = \sigma_{\text{B}}$. Linjerna mellan dessa är ett Haigh-diagram. Man kan även förfina vid att lägga till en linje mellan $\sigma_{\text{s}}$ på båda axlarna för att ta höjd för plasticering. Då blir Haigh-diagrammet den kurvan som ligger lägst i diagrammet.
+
+För att undersöka om den givna lasten ger brott, ritar man punkten in i Haigh-diagrammet. Om punkten är under kurvan, sker inte brott.
+
+\paragraph{Dimensionering}
+I vanliga fall vill man inte göra val baserad på gränserna utan med lite marginaler. Då kan man välja efter gränserna, fast multiplicerad med en faktor
+\begin{align*}
+	1 - \frac{\lambda}{K_{\text{f}}K_{\text{r}}K_{\text{d}}}.
+\end{align*}
+De olika faktorerna här förtjäner lite förklaring.
+
+$\lambda$ är en faktor som tillkommer på grund av materialkvalitet. I moderna material är denna endast viktig för gjutna komponenter.
+
+$K_{\text{f}}$ beror igen av en geometrisk faktor $K_{\text{t}}$. Tack, hållf. Om det finns variationer i komponentens tvärsnitt längsmed dens längd, beräknar man nominell spänning med hjälp av den minsta tvärsnittsdatan för att uppskatta den största spänningen som förekommer. Den maximala spänningen i komponenten är dock större än detta, tydligen, och kvoten mellan den maximala och nominella spänningen är $K_{\text{t}}$. $K_{\text{f}}$ fås med hjälp av sambandet $K_{\text{f}} = 1 + q(K_{\text{t}} - 1)$, där $q$ är en materialberoende storhet.
+
+$K_{\text{r}}$ beskriver ytfinheten, som visar sig påverka hållfastheten. Denna beror igen av medelytavvikelsen $R_{\text{a}}$.
+
+$K_{\text{d}}$ beror av provets storlek. Storleken spelar in på ett sätt som inte är helt klart.
+
+När man nu har konstruerat sitt förbättrade Haigh-diagram, kan man bestämma säkerhetsfaktorer med hjälp av avstånd i Haigh-diagrammet. Hur detta görs beror på vilken sorts last man har, och beskrivs (förhoppningsvis) i formelbladet.
