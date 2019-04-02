@@ -63,7 +63,23 @@ A geodesic is a curve that extremises the curve length between two points. From 
 \begin{align*}
 	\del{\chi^{a}}{\mathcal{L}} - \dv{t}\del{\dot{\chi}^{a}}{\mathcal{L}} = 0.
 \end{align*}
-Computing the derivatives yields
+The Euler-Lagrange equation thus becomes
+\begin{align*}
+	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}g_{bc}(\dot{\chi}^{b}\kdelta{a}{c} + \dot{\chi}^{c}\kdelta{a}{b})\right) = 0.
+\end{align*}
+A minor simplification yields
+\begin{align*}
+	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{\mathcal{L}}g_{ac}\dot{\chi}^{c}\right) = 0.
+\end{align*}
+Expanding the time derivative yields
+\begin{align*}
+	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \frac{1}{\mathcal{L}}\dv{t}(g_{ac}\dot{\chi}^{c}) + g_{ac}\dot{\chi}^{c}\frac{1}{\mathcal{L}^{2}}\dv{\lag}{t} = 0.
+\end{align*}
+This may be written as
+\begin{align*}
+	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \frac{1}{\lag}\dv{t}(g_{ac}\dot{\chi}^{c}) + \frac{1}{\lag}g_{ac}\dot{\chi}^{c}\dv{\ln{\lag}}{t} = 0.
+\end{align*}
+The curve may be reparametrized such that $\lag$ is equal to $1$ everywhere, yielding
 \begin{align*}
 	\frac{1}{2\mathcal{L}}\left(\dot{\chi}^{a}\dot{\chi}^{b}\del{c}{g_{ab}} - \dv{t}(2\dot{\chi}^{a}g_{ac})\right) = 0.
 \end{align*}
@@ -79,7 +95,7 @@ The $a$ and $b$ indices are summed over, and may thus be swapped. Combined with 
 \begin{align*}
 	g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}) = 0.
 \end{align*}
-Summation of the first term over $a$ gives $g_{ac}g^{cd}\ddot{\chi}^{a} = g_{ca}g^{cd}\ddot{\chi}^{a} = g^{cd}\ddot{\chi}_{c}$, and summation over $c$ gives $g^{cd}\ddot{\chi}_{c} = g^{cd}\ddot{\chi}^{d}$. This thus yields
+Summation of the first term over $a$ gives $g_{ac}g^{cd}\ddot{\chi}^{a} = g^{cd}\ddot{\chi}_{c}$, and summation over $c$ gives $g^{cd}\ddot{\chi}_{c} = \ddot{\chi}^{d}$. This thus yields
 \begin{align*}
 	\ddot{\chi}^{d} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}) = 0.
 \end{align*}

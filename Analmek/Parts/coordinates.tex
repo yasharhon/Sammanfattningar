@@ -1,22 +1,22 @@
 \section{Coordinates}
 
 \paragraph{Coordinates}
-A general set of coordinates on $\R^{n}$ is $n$ numbers $x^{a}, a = 1, \dots, n$ that uniquely define a point in the space.
+A general set of coordinates on $\R^{n}$ is $n$ numbers $\chi^{a}, a = 1, \dots, n$ that uniquely define a point in the space.
 
 \example{Cartesian coordinates}
-In cartesian coordinates we introduce an orthonormal basis $\vb{e}_{i}$. Vi kan då skriva $\vb{x} = x^{i}\vb{e}_{i}$.
+In cartesian coordinates we introduce an orthonormal basis $\vb{e}_{i}$. We can then write $\vb{x} = \chi^{i}\vb{e}_{i}$. This example is, however, not very illustrative.
 
 \paragraph{Basis vectors}
 There are two different choices of coordinate bases.
 
 The first is the tangent basis of vectors
 \begin{align*}
-	\vb{E}_{a} = \del{x_{a}}{\vb{x}} = \del{a}{\vb{x}}.
+	\vb{E}_{a} = \del{\chi^{a}}{\vb{x}} = \del{a}{\vb{x}}.
 \end{align*}
 
 The second is the dual basis
 \begin{align*}
-	\vb{E}^{a} = \grad{x^{a}}.
+	\vb{E}^{a} = \grad{\chi^{a}}.
 \end{align*}
 
 \paragraph{Vector coordinates}
@@ -28,7 +28,7 @@ The $v^{a}$ are called contravariant components and the $v_{a}$ are called covar
 
 We can now compute the scalar product
 \begin{align*}
-	\vb{E}_{a}\cdot\vb{E}^{b} = \del{a}{\vb{x}}\cdot\grad{x^{a}} = \kdelta{a}{b}.
+	\vb{E}_{a}\cdot\vb{E}^{b} = \del{a}{\vb{x}}\cdot\grad{\chi^{b}} = \kdelta{a}{b}.
 \end{align*}
 
 \paragraph{Coordinate transformations}
@@ -44,13 +44,13 @@ How do we transform between these? A single component is given by
 \paragraph{Tangents to curves}
 The tangent to a curve is given by
 \begin{align*}
-	\dot{\vb{\gamma}} = \dv{\vb{x}}{t} = \del{a}{\vb{x}}\dv{x^{a}}{t} = \dot{x^{a}}\vb{E}_{a}.
+	\dot{\vb{\gamma}} = \dv{\vb{x}}{t} = \del{a}{\vb{x}}\dv{\chi^{a}}{t} = \dot{\chi}^{a}\vb{E}_{a}.
 \end{align*}
 
 \paragraph{Gradients}
 The gradient of a curve is given by
 \begin{align*}
-	\grad{f} = \del{a}{f}\grad{x^{a}} = \vb{E}^{a}\del{a}{f}.
+	\grad{f} = \del{a}{f}\grad{\chi^{a}} = \vb{E}^{a}\del{a}{f}.
 \end{align*}
 
 \paragraph{Rates of change along a curve}
