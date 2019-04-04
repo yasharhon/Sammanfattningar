@@ -1,0 +1,32 @@
+\section{Group theory}
+
+\paragraph{Definition of a group}
+A grou is a set of objects $G$ with an operation $G\times G\to G,\ (a, b)\to ab$ such that
+\begin{itemize}
+	\item If $a, b\in G$ then $ab\in G$.
+	\item $a(bc) = (ab)c$ for all $a, b, c\in G$.
+	\item There exists an identity $e$ such that $ae = ea = a$ for all $a\in G$.
+	\item There exists for every element $a$ an inverse $a^{-1}\in G$ such that $aa^{-1} = a^{-1}a = e$.
+\end{itemize}
+
+\paragraph{Symmetries in classical mechanics}
+
+\example{Newton's second law}
+Newton's second law $m\ddot{\vb{x}} = -\grad{V}$, assuming the potential to be fixed, has certain symmetry properties:
+\begin{itemize}
+	\item The transformation $t\to t' = t + t_{0}$ is a symmetry, as $\dv{t} = \dv{t'}$ and $V$ is not changed under the transformation.
+	\item The transformation $t\to\tau = -t$ is a symmetry as $\dv{t} = \dv{\tau}{t}\dv{\tau} = -\dv{\tau}$, which implies $\dv[2]{t} = \dv[2]{\tau}$ and $V$ is not changed under the transformation.
+	\item Considering a system of particles, if the forces between these only depend on differences between the position vectors, the translation $\vb{x}_{i}\to\vb{y}_{i} = \vb{x}_{i} + \vb{x}_{0}$ is a symmetry as it does not change any differences.
+\end{itemize}
+
+\example{Constraining solutions using symmetries}
+If a system is invariant under some transformation $\vb{x}\to\vb{R}(\vb{x})$, then any property $u$ dependant on those coordinates satisfies $u(\vb{x}) = u(\vb{R}(\vb{x}))$.
+
+\paragraph{Connection to Noether's theorem}
+We defined symmetries of the action as transformations that satisy $\var{\lag} = 0$. In particular, we can construct a set of transformations such that $\del{s}{t} = \var{t},\ \del{s}{q^{a}} = \var{q^{a}}$, where $s$ is the symmetry parameter. This is a one-parameter family of symmetries. By defining $T_{s}q(t, 0) = q(t, s)$, these symmetries satisfy
+\begin{align*}
+	T_{s_{2}}T_{s_{1}}q(t, 0) = T_{s_{1} + s_{2}}q(t, 0).
+\end{align*}
+We see that these symmetries define a group.
+
+\example{A particle in a moving potential}
