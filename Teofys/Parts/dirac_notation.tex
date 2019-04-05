@@ -243,10 +243,53 @@ vilket implicerar $\hat{x} = -\frac{\hbar}{i}\del{x}{}$ (detta kommer även fram
 Två Hermiteska operatorer har en fullständig mängd gemensamma egenfunktioner om och endast om och endast om $\commut{A}{B} = 0$. Det finns ett bevis för detta i Mats' anteckningar.
 
 \paragraph{Utvidgad osäkerhetsprincip}
+För två självadjungerade operatorer $A$ och $B$ är
 \begin{align*}
 	\Delta A\Delta B = \frac{1}{2}\abs{\expval{\commut{A}{B}}}.
 \end{align*}
-Det finns ett bevis för detta i Mats' anteckningar, och följer från Cauchy-Schwarz' olikhet.
+
+För att visa detta, bilda operatorerna $a = A - \expval{A}$ och $b = B - \expval{B}$. Vi får
+\begin{align*}
+	\expval{a^{2}} = \expval{A^{2} - 2\expval{A}A + \expval{A}^{2}} = \expval{A^{2}} - \expval{A}^{2}
+\end{align*}
+och motsvarande för $b$. Cauchy-Schwarz' olikhet ger
+\begin{align*}
+	\expval{a^{2}}\expval{b^{2}}\geq\abs{\expval{ab}}^{2}.
+\end{align*}
+Vi kan skriva
+\begin{align*}
+	ab = \frac{1}{2}(ab + ba) + \frac{1}{2}\commut{a}{b}.
+\end{align*}
+Den första termen är självadjungerad, medan den andra byter tecken vid adjungering. Vi får därmed
+\begin{align*}
+	\expval{ab} = \expval{\frac{1}{2}(ab + ba)} + \expval{\frac{1}{2}\commut{a}{b}}.
+\end{align*}
+Vi noterar att
+\begin{align*}
+	\cc{\expval{\commut{a}{b}}} = -\expval{\commut{a}{b}},
+\end{align*}
+så denna termen måste vara helt imaginär. Detta implicerar
+\begin{align*}
+	\expval{ab} \geq \expval{\frac{1}{2}\commut{a}{b}}^{2}.
+\end{align*}
+Kommutatorn ges av
+\begin{align*}
+	\commut{a}{b} &= (A - \expval{A})(B - \expval{B}) - (B - \expval{B})(A - \expval{A}) \\
+	              &= AB - \expval{B}A - \expval{A}B + \expval{A}\expval{B} - (BA - \expval{A}B - \expval{B}A + \expval{A}\expval{B}) \\
+	              &= \commut{A}{B},
+\end{align*}
+och beviset är klart.
+
+Osäkerhetsprincipen kan även formuleras lite annorlunda, vid att skriva imaginärtermen ovan som
+\begin{align*}
+	-i\expval{\frac{1}{2}i\commut{a}{b}}.
+\end{align*}
+med den fördel att operatorn vars väntevärde beräknas nu är självadjungerad. Osäkerhetsprincipen kan då skrivas som
+\begin{align*}
+	\Delta A\Delta B = \frac{1}{2}\abs{\expval{i\commut{A}{B}}}
+\end{align*}
+
+Mats har ett bevis i sina anteckningar, formulerad med en något konstigare operator. Detta beviset tyckte jag varken var förtydligande eller till hjälp, så jag struntar i att visa det.
 
 Tolkningen av detta är att om två operatorer kommuterar, är de samtidigt mätbara. Vi säjer att de är kompatibla. Om två operatorer inte kommuterar, säjer vi att de är inkompatibla. Då är de inte allmänt samtidigt mätbara.
 
@@ -284,3 +327,10 @@ Detta ger
 \begin{align*}
 	\Delta H\Delta t\geq\frac{\hbar}{2}.
 \end{align*}
+
+\paragraph{Basvektorer för separabla lösningarn}
+Om man har ett separabelt problem, kan den allmänna lösningen skrivas med Diracnotation som
+\begin{align*}
+	\ket{\Psi_{n_{1}\dots n_{d}}} = \bigotimes\limits_{i = 1}^{d}\ket{\Psi_{i, n_{i}}},
+\end{align*}
+där $\otimes$ är tensorprodukten. Denna kommer oftast inte skrivas ut.

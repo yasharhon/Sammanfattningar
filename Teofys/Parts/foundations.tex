@@ -235,3 +235,132 @@ Både klassiskt och kvantmekaniskt kommer vi Taylorutveckla olika potentialer oc
 	V \approx V(0) + \deval{V}{x}{0}x + \frac{1}{2}\deval[2]{V}{x}{0}x^{2}.
 \end{align*}
 Vi antar att $x = 0$ motsvarar jämvikt, varför den andra termen måste vara $0$. Vidare är det konstanta bidraget ointressant, då det ej ger något bidrag till fysiken. Kvar står en harmonisk oscillatorterm vars styrka ges av potentialens krökning i jämviktsläget.
+
+\paragraph{Separabla problem}
+Betrakta ett problem med en Hamiltonoperator som kan skrivas som $H = \sum H_{i}$, där varje $H_{i}$ endast verkar på $x_{i}$-koordinaten. Då kan Schrödingerekvationen skrivas som
+\begin{align*}
+	\sum H_{i}\Psi = i\hbar\del{t}{\Psi}.
+\end{align*}
+Vid att ansätta
+\begin{align*}
+	\Psi(\vb{x}) = \prod \Psi_{i}(x_{i})
+\end{align*}
+kan Schrödingerekvationen separeras till $d$ problem
+\begin{align*}
+	H_{i}\Psi_{i} = i\hbar\del{t}{\Psi_{i}}.
+\end{align*}
+Den totala lösningen fås vid att multiplicera alla lösningar, och den totala energin fås vid att summera upp energin för varje tillstånd. Om varje lösning har energin $E_{i, n_{i}}$, är den totala energin $E_{n_{1}\dots n_{d}} = \sum E_{i, n_{i}}$.
+
+\paragraph{Sfäriskt symmetriska problem}
+Betrakta ett enpartikelproblem med en sfäriskt symmetrisk potential, kan den tidsoberoende Schrödingerekvationen
+\begin{align*}
+	\left(-\frac{\hbar^{2}}{2m}\left(\frac{1}{r^{2}}\pdv{r}\left(r^{2}\pdv{r}\right) + \frac{1}{r^{2}\sin(\theta)}\pdv{\theta}\left(\sin(\theta)\pdv{\theta}\right) + \frac{1}{r^{2}\sin^{2}(\theta)}\pdv[2]{\phi}\right) + V(r)\right)\Psi = E\Psi
+\end{align*}
+separeras. Separera ut $r$-beroendet i funktionen $R$ och vinkelberoendet i funktionen $Y$. De två sidorna är då lika med konstanten som vi döper $l(l + 1)$. Detta ger följande ekvationer:
+\begin{align*}
+	\dv{r}\left(r^{2}\dv{R}{r}\right) -\frac{2mr^{2}}{\hbar^{2}}(V(r) - E)R &= l(l + 1)R, \\
+	- \left(\frac{1}{\sin(\theta)}\pdv{\theta}\left(\sin(\theta)\pdv{Y}{\theta}\right) + \frac{1}{\sin^{2}(\theta)}\pdv[2]{Y}{\phi}\right)                           &= l(l + 1)Y.
+\end{align*}
+
+Vi kan även separera vinkelberoendet, och de två sidorna blir lika med en konstant $m^{2}$. Detta ger två ekvationer:
+\begin{align*}
+	\sin(\theta)\dv{\theta}\left(\sin(\theta)\dv{\Theta}{\theta}\right) + l(l + 1)\sin[2](\theta)\Theta          &= m^{2}\Theta, \\
+	-\dv[2]{\Phi}{\phi} &= m^{2}\Phi.
+\end{align*}
+
+Första ekvationen har lösning
+\begin{align*}
+	\Phi = e^{im\phi}.
+\end{align*}
+Denna lösningen måste vara $2\pi$-periodisk, vilket implicerar att $m$ är ett heltal. Lösningarna är ortogonala under inreprodukten
+\begin{align*}
+	\braket{f}{g} = \integ{0}{2\pi}{\phi}{\cc{f}g}.
+\end{align*}
+
+När vi nu känner $m$, skriver vi om $\theta$-ekvationen som
+\begin{align*}
+	-\frac{1}{\sin(\theta)}\left(\dv{\theta}\left(\sin(\theta)\dv{\Theta}{\theta}\right) - \frac{m^{2}}{\sin{\theta}}\Theta\right) &= l(l + 1)\Theta.
+\end{align*}
+Efter lite mer algebra fås lösningen
+\begin{align*}
+	P_{l}^{m}(x) = (1 - x^{2})^{\frac{\abs{m}}{2}}\dv[\abs{m}]{P_{l}}{x},
+\end{align*}
+där $x = \cos{\theta}$ och $P_{l}$ är Legendrepolynomen av grad $l$. Legendrepolynomens gradtal ger att $\abs{m}\leq l$. Lösningarna är ortogonala under inreprodukten
+\begin{align*}
+	\braket{f}{g} = \integ{0}{\pi}{\theta}{\sin(\theta)\cc{f}g}.
+\end{align*}
+Produkten av dessa två blir klotytefunktionerna $Y_{l}^{m}$.
+
+Kvar står den radiella ekvationen
+\begin{align*}
+	\dv{r}\left(r^{2}\dv{R}{r}\right) - \frac{2mr^{2}}{\hbar^{2}}(V(r) - E)R &= l(l + 1)R,
+\end{align*}
+som vi kan skriva om till
+\begin{align*}
+	\frac{1}{r^{2}}\dv{r}\left(r^{2}\dv{R}{r}\right) - \frac{2m}{\hbar^{2}}(V(r) - E)R &= \frac{l(l + 1)}{r^{2}}R, \\
+	-\frac{1}{r^{2}}\left(\dv{r}\left(r^{2}\dv{R}{r}\right) + \frac{2mr^{2}}{\hbar^{2}}\left(V(r) + \frac{\hbar^{2}l(l + 1)}{2m}\right)R\right) &= \frac{2mE}{\hbar^{2}}R.
+\end{align*}
+Detta är ett Sturm-Liouville-problem, och vi vet därmed att det finns oändligt många lösningar för positiva energier. Lösningarna är ortogonala under inreprodukten
+\begin{align*}
+	\braket{f}{g} = \integ{0}{\infty}{r}{r^{2}\cc{f}g}.
+\end{align*}
+Den totala inreprodukten av lösningarna är nu
+\begin{align*}
+	\braket{f}{g} &= \integ{0}{\infty}{r}{r^{2}\integ{0}{\pi}{\theta}{\sin(\theta)\integ{0}{2\pi}{\phi}{\cc{f}g}}} \\
+	              &= \integ{0}{\infty}{r}{\integ{0}{\pi}{\theta}{\integ{0}{2\pi}{\phi}{r^{2}\sin(\theta)\cc{f}g}}},
+\end{align*}
+vilket vi förväntade. Normeringsvillkoret är nu $\braket{\Psi} = 1$.
+
+Vi inför substitutionen $u = Rr$ på den ursprungliga formen av ekvationen, vilket efter lite algebra ger
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\dv[2]{u}{r} + \left(V(r) + \frac{\hbar^{2}l(l + 1)}{2mr^{2}}\right)u = Eu.
+\end{align*}
+Detta är en endimensionell Schrödingerekvation där vi har lagt till en centrifugalbarriär $\frac{\hbar^{2}l(l + 1)}{2mr^{2}}$ till potentialen. Med denna substitutionen kan normeringsvillkoret skrivas som
+\begin{align*}
+	\integ{0}{\infty}{r}{\integ{0}{\pi}{\theta}{\integ{0}{2\pi}{\phi}{\sin(\theta)\abs{uY_{l}^{m}}^{2}}}} = 1.
+\end{align*}
+
+\paragraph{Väteatomen}
+Väteatomen består av en proton och en neutron. Protonen är ungefär $2000$ gånger tyngre än elektronen, vilket betyder att atomens masscentrum till god approximation ligger i protonens centrum. Vid att lösa problemet i atomens masscentrum, fås protonen till att vara statisk och elektronen att röra sig i en potential $V(r) = -\frac{e^{2}}{4\pi\varepsilon_{0}r}$. Den radiella ekvationen blir då
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\dv[2]{u}{r} + \left(-\frac{e^{2}}{4\pi\varepsilon_{0}r} + \frac{\hbar^{2}l(l + 1)}{2mr^{2}}\right)u = Eu.
+\end{align*}
+Vi söker först bundna tillstånd, med negativ energi. Inför $E = -\frac{\hbar^{2}k^{2}}{2m},\ \rho = kr$ och $\rho_{0} = \frac{me^{2}}{2\pi\varepsilon_{0}\hbar^{2}k}$. Då fås
+\begin{align*}
+	\dv[2]{u}{rho} = \left(1 - \frac{\rho_{0}}{\rho} + \frac{l(l + 1)}{\rho^{2}}\right)u.
+\end{align*}
+Vi vill lösa detta med en potensserieansats. För stora $\rho$ är de två sista termerna försumbara, och vi får i gränsen $u = Ae^{-\rho}$. För små $\rho$ dominerar sista termen, och vi får gränsen $u = C\rho^{l + 1}$. Vi gör därför ansatsen $u = v(\rho)e^{-\rho}$. Insatt i ekvationen ger detta
+\begin{align*}
+	\dv[2]{v}{\rho} - 2\dv{v}{\rho} + \frac{\rho_{0}}{\rho}v - \frac{l(l + 1)}{\rho^{2}}v = 0.
+\end{align*}
+Vi löser detta med potensserieansatsen
+\begin{align*}
+	v = \sum\limits_{i = 0}^{\infty}c_{i}\rho^{i + l + 1}.
+\end{align*}
+Vi får rekursionsformeln
+\begin{align*}
+	c_{i + 1} = \frac{2(j + l + 1) - \rho_{0}}{(j + 1)(j + 2l + 2)}c_{j}.
+\end{align*}
+Rekursionen måste terminera, då man annars skulle få en lösning som beter sig som $e^{\rho}$ för stora $\rho$. Detta ger villkor för värdena av $\rho$, alltså $k$, alltså $E$. Mer specifikt, låt $n$ vara det största värdet av $j + l + 1$. Detta ger $\rho_{0} = 2n$. Ur detta fås
+\begin{align*}
+	k = \frac{me^{2}}{4\pi\varepsilon_{0}\hbar^{2}n}
+\end{align*}
+och slutligen
+\begin{align*}
+	E_{n} &= -\frac{\hbar^{2}}{2m}\left(\frac{me^{2}}{4\pi\varepsilon_{0}\hbar^{2}n}\right)^{2} \\
+	      &= -\frac{me^{4}}{2\hbar^{2}(4\pi\varepsilon_{0})^{2}n^{2}}.
+\end{align*}
+Den karakteristiska längdskalan i lösningen är Bohr-radien $a$ och ges av
+\begin{align*}
+	a = \frac{4\pi\varepsilon_{0}\hbar^{2}}{me^{2}}.
+\end{align*}
+De stationära tillstånden är
+\begin{align*}
+	\psi_{nlm} = A_{nl}e^{-\frac{r}{na}}\left(\frac{2r}{na}\right)^{l}L_{n - l - 1}^{2l + 1}\left(\frac{2r}{na}\right)Y_{l}^{m}(\theta, \phi),
+\end{align*}
+där $L$ är Laguerrepolynomen.
+
+Vi ser att för ett givet $n$ kan $l$, vara olikt - mer specifikt är $l = 0, 1, \dots, n - 1$ och de olika egentillstånden är då degenererade med degenerationsgrad
+\begin{align*}
+	\sum\limits_{l = 0}^{n - 1}2l + 1 = n^{2}.
+\end{align*}
