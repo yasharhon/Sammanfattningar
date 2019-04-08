@@ -138,3 +138,27 @@ $K_{\text{r}}$ beskriver ytfinheten, som visar sig påverka hållfastheten. Denn
 $K_{\text{d}}$ beror av provets storlek. Storleken spelar in på ett sätt som inte är helt klart.
 
 När man nu har konstruerat sitt förbättrade Haigh-diagram, kan man bestämma säkerhetsfaktorer med hjälp av avstånd i Haigh-diagrammet. Hur detta görs beror på vilken sorts last man har, och beskrivs (förhoppningsvis) i formelbladet.
+
+\paragraph{Sprickor}
+En spricka kan ses om en anvisning med extremt liten krökningsradie. Vi vet att detta ger extremt hög spänningskoncentration. Spricktillväxt kan ske vid låga kritiska laster, låga cykliska laster, spänningskorrosion eller krypning, och de två första kommer diskuteras här.
+
+De tre belastningsfallen vi betraktar borde jag kanske fixa en figur av. I alla dessa tre gäller för statisk belastning relationen
+\begin{align*}
+ 	\sigma = \frac{K_{I}}{\sqrt{2\pi x}},
+\end{align*}
+där $x$ är avståndet från sprickan. $K_{I}$ är spänningsintensitetsfaktorn, och beror av problemets geometri, men även av spänningen enligt uttrycket ovan. Vi får brått när $K_{I} = K_{I\text{c}}$, där $K_{I\text{c}}$ är materialets brottseghet.
+
+Vi ser att relationen för elastiskt-plastiska material definierar en plastisk son med storlek
+\begin{align*}
+	r_{\text{p}} = \frac{1}{2\pi}\left(\frac{K_{I}}{\sigma_{\text{s}}}\right)^{2}.
+\end{align*}
+Inuti denna sonen är materialet fullständigt plasticerad. Numeriska analyser visar dock att det plastiska områdets storlek är ungefär $2r_{\text{p}}$. Analyser baserade endast på elastisk deformation kallas för linjär brottmekanik, och vi har ett approximativt kriterium för sådana analysers giltighet att den minsta dimensionen $l$ i problemet måste uppfylla
+\begin{align*}
+	l \geq 15r_{\text{p}} \approx 2.5\left(\frac{K_{I}}{\sigma_{\text{s}}}\right)^{2}.
+\end{align*}
+
+I cykliska fall kommer brottkriteriet bero av $\Delta K_{I} = K_{I,\text{max}} - K_{I,\text{min}}$, där de olika termerna kan tas bort om de är negativa, eftersom kompresiv spänning ej kommer bidra till spräcktillväxt. Spricktillväxten per spänningscykel ges av $\dv{a}{N}$, där $a$ är spricklängden. En log-log-plot av dessa borde kanske finnas. I denna skulle vi sett att det finns en unre gräns $\Delta K_{\text{th}}$, där endast belastningar över denna ger spricktillväxt. Tillväxthastigheten ökar då mot en asymptot vid $K_{I\text{c}}$, där det blir brott. Att säja något om sambandet mellan dessa storheterna vore bra. Ett försök är Paris lag:
+\begin{align*}
+	\dv{a}{N} = C(\Delta K_{I})^{n},
+\end{align*}
+där $C$ och $n$ är materialparametrar.
