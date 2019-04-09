@@ -8,6 +8,69 @@ A grou is a set of objects $G$ with an operation $G\times G\to G,\ (a, b)\to ab$
 	\item There exists an identity $e$ such that $ae = ea = a$ for all $a\in G$.
 	\item There exists for every element $a$ an inverse $a^{-1}\in G$ such that $aa^{-1} = a^{-1}a = e$.
 \end{itemize}
+Groups can be
+\begin{itemize}
+	\item cyclic, i.e. all elements in the group are powers of a single element.
+	\item finitie, i.e. groups containing a finite number of elements.
+	\item infinite.
+	\item discrete, i.e. all elements in the group can be labeled with some index.
+	\item continuous.
+	\item commutative, i.e. $ab = ba$ for all elements in the group.
+\end{itemize}
+
+\paragraph{Subgroups}
+If $G = \{g_{\alpha}\}$ and the subset $H = \{h_{\alpha}\}$ is also a group, we call $H$ a subgroup of $G$ and write $H < G$.
+
+\paragraph{Direct products}
+GIven two groups $F$ and $G$, we define $F\times G$ as the set of ordered pairs of elements of the two groups. The group action of $F\times G$ is the group actions of $F$ and $G$ separately on the elements in the ordered pair.
+
+\paragraph{Homomorphisms and isomorphisms}
+A homomorphisms is a map $f: G\to H$ such that $f(g_{1})f(g_{2}) = f(g_{1}g_{2})$. If the map is bijective, $f$ is called an isomorphism.
+
+\paragraph{Point groups}
+Point groups are symmetries of, for instance, a crystal structure that leave at least one point in the structure invariant. Examples include
+\begin{itemize}
+	\item rotations.
+	\item reflections.
+	\item spatial inversions.
+\end{itemize}
+Combined with certain discrete translation, these are the space groups of the crystal. Space groups are the groups of all symmetries of a crystal.
+
+\paragraph{Small and large rotations}
+Consider a rotation of an infinitesimal displacement $\dd{\vb{x}}$ with a rotation $R$. The requirement for length to be preserved implies $R^{T}R = 1$.
+
+Consider now a rotation by a small angle $\var{\theta}$. Taylor expanding it in terms of the angle yields
+\begin{align*}
+	R(\var{\theta}) \approx 1 + A\var{\theta}.
+\end{align*}
+The requirement for $R$ to be orthogonal yields $A^{T} = -A$. We choose the solution
+\begin{align*}
+	J =
+	\mqty[
+		0  & 1 \\
+		-1 & 0
+	].
+\end{align*}
+We can now write the rotation matrix as
+\begin{align*}
+	R(\var{\theta}) =
+	\mqty[
+		1             & \var{\theta} \\
+		-\var{\theta} & 1
+	].
+\end{align*}
+
+We would now like to construct a large rotation in terms of smaller rotations as
+\begin{align*}
+	R(\theta) = \lim\limits_{N\to\infty}\left(1 + \frac{\theta}{N}J\right)^{N} = e^{\theta J}.
+\end{align*}
+We can write this as an infinite series and use the fact that $J^{2} = -1$ to obtain
+\begin{align*}
+	R(\theta) = \cos{\theta} + J\sin{\theta}.
+\end{align*}
+
+\paragraph{Dihedral groups}
+The dihedral group $D_{n}$ is the group of transformations that leave an $n$-sided polygon invariant.
 
 \paragraph{Symmetries in classical mechanics}
 
