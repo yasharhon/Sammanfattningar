@@ -247,3 +247,33 @@ Osäkerhetsrelationen ger
 	\Delta L_{x}\Delta L_{y} \geq \frac{1}{2}\abs{\expval{\commut{L_{x}}{L_{y}}}} = \frac{1}{2}\hbar\abs{\expval{L_{z}}} = \frac{1}{2}\abs{m}\hbar^{2}.
 \end{align*}
 Alltså är inte tillstånden vi har hittat egenfunktioner till $L_{x}$ eller $L_{y}$ om inte $m = 0$.
+
+\paragraph{Partiklar med spinn i magnetfält}
+En laddning $q$ med den givna spinnen får det magnetiska momentet $\vb{\mu} = \gamma\vb{S}$, där $\gamma = \frac{gq}{2m}$ och $g$ är en gyroskopisk faktor. För elektroner är den ungefär $2$ och för protoner är den ungefär $5$.
+
+Välj nu koordinatsystem så att $\vb{B}$ pekar i $z$-riktningen. Hamiltonianen ges då av
+\begin{align*}
+	H = -\vb{\mu}\cdot\vb{B} = -\frac{gqB}{2m}S_{z} = \omega_{0}S_{z} = \frac{1}{2}\hbar\omega_{0}
+	\mqty[
+		1 & 0 \\
+		0 & -1
+	].
+\end{align*}
+Dens egenvärden är $E_{m}\hbar\omega_{0}$.
+
+\paragraph{Schrödingerekvatinen för en partikel i ett magnetfält}
+Den tidsberoende Schrödingerekvationen för en partikel i ett magnetfält blir
+\begin{align*}
+	i\hbar\dv{\chi}{t} = H\chi.
+\end{align*}
+En allmän spinor för en $s = \frac{1}{2}$-partikel ges då av
+\begin{align*}
+	\chi = a\chi_{+}e^{-i\frac{E_{+}t}{\hbar}} + b\chi_{-}e^{-i\frac{E_{-}t}{\hbar}}.
+\end{align*}
+Normeringsvillkoret för såna tillstånd uppmanar oss att skriva $a = \cos{\frac{\theta}{2}}$ och $b = \sin{\frac{\theta}{2}}$. Vi får med detta
+\begin{align*}
+	\expval{S_{x}} &= \frac{1}{2}\hbar\sin{\theta}\cos{\omega_{0}t}, \\
+	\expval{S_{y}} &= \frac{1}{2}\hbar\sin{\theta}\sin{\omega_{0}t}, \\
+	\expval{S_{z}} &= \frac{1}{2}\hbar\cos{\theta}.
+\end{align*}
+Alltså precesserar spinnet kring $z$-axeln med frekvens $\omega_{0}$ i ett plan som ges av initialtillståndet.
