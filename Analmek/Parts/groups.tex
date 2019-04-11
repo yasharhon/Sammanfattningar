@@ -21,6 +21,9 @@ Groups can be
 \paragraph{Subgroups}
 If $G = \{g_{\alpha}\}$ and the subset $H = \{h_{\alpha}\}$ is also a group, we call $H$ a subgroup of $G$ and write $H < G$.
 
+\paragraph{Generators}
+The generators of a group is the smallest set of elements in the group such that all other elements in the group can be composed by the elements in the set. In this context, we will use the generators in a wider context - for instance, the matrix $J$ that is used to create rotation matrices is said to be a generator of the group.
+
 \paragraph{Direct products}
 GIven two groups $F$ and $G$, we define $F\times G$ as the set of ordered pairs of elements of the two groups. The group action of $F\times G$ is the group actions of $F$ and $G$ separately on the elements in the ordered pair.
 
@@ -36,7 +39,30 @@ Point groups are symmetries of, for instance, a crystal structure that leave at 
 \end{itemize}
 Combined with certain discrete translation, these are the space groups of the crystal. Space groups are the groups of all symmetries of a crystal.
 
-\paragraph{Small and large rotations}
+\paragraph{Dihedral groups}
+The dihedral group $D_{n}$ is the group of transformations that leave an $n$-sided polygon invariant.
+
+\paragraph{Lie groups}
+Formally, a Lie group is a group containing a manifold and the group operation and inverse operation being smooth maps on the manifold. Its elements are $g(\vb{\theta})$, where $g(\vb{0}) = 1$. We can expand the map as $g(\vb{\theta})\approx 1 + A$, where
+\begin{align*}
+	A = i\theta_{a}T_{a},
+\end{align*}
+where the $T_{a}$ are the generators. That means that close to the identity, the non-commutativity of such maps is captured by the commutators, or Lie brackets:
+\begin{align*}
+	\lieb{T_{a}}{T_{b}} = if_{a, b, c}T_{c}.
+\end{align*}
+The generators are sel-adjoint, so the constants $f_{a, b, c}$ are real.
+
+\paragraph{Representations}
+A representation is a homomorphism $D: G\to GL(V)$, where $GL(V)$ is the group of all invertible linear transformations on $V$. The group elements thus act on $V$ according to
+\begin{align*}
+	D(g_{1})D(g_{2})v = D(g_{1}g_{2})v,\ v\in V.
+\end{align*}
+
+\paragraph{Reducible and irreducible representations}
+Two representations are equivalent if they satisfy $S^{-1}DS = D'$, where $S$ is a matrix representing a change of basis. Some representations can be written as direct sums in certain bases. For these, there is a basis where the representation is block diagonal. These are reducible. Those that cannot are irreducible.
+
+\paragraph{Small and large rotations in two dimensions}
 Consider a rotation of an infinitesimal displacement $\dd{\vb{x}}$ with a rotation $R$. The requirement for length to be preserved implies $R^{T}R = 1$.
 
 Consider now a rotation by a small angle $\var{\theta}$. Taylor expanding it in terms of the angle yields
@@ -69,8 +95,59 @@ We can write this as an infinite series and use the fact that $J^{2} = -1$ to ob
 	R(\theta) = \cos{\theta} + J\sin{\theta}.
 \end{align*}
 
-\paragraph{Dihedral groups}
-The dihedral group $D_{n}$ is the group of transformations that leave an $n$-sided polygon invariant.
+\paragraph{Rotatins in three dimensions}
+The argument done for two dimensions does not use the dimensionality, so we conclude that even for higher dimensions, $R^{T}R = 1$. Expanding a small rotation around the identity yields that the first-order term must include an antisymmetric matrix. The space of antisymmetric $3\times 3$ matrices is three-dimensional. We thus choose the basis
+\begin{align*}
+	J_{x} =
+	\mqty[
+		0 & 0  & 0 \\
+		0 & 0  & 1 \\
+		0 & -1 & 0
+	],
+	J_{y} =
+	\mqty[
+		0 & 0 & -1 \\
+		0 & 0 & 0  \\
+		1 & 0 & 0
+	],
+	J_{z} =
+	\mqty[
+		0  & 1 & 0 \\
+		-1 & 0 & 0 \\
+		0  & 0 & 0
+	].
+\end{align*}
+Exponentiating yields
+\begin{align*}
+	R(\theta) = e^{\sum \theta_{i}J_{i}} = e^{\vb{\theta}\cdot\vb{J}}.
+\end{align*}
+In physics we usually extract a factor $i$ such that the basis matrices are Hermitian, and the rotation becomes
+\begin{align*}
+	R(\theta) = e^{i\vb{\theta}\cdot\vb{J}}.
+\end{align*}
+
+The set of generators of these rotations constitutes the Lie algebra.
+
+We know in general that rotations in three dimensions do not commute. In fact, we obtain in general that
+\begin{align*}
+	R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\lieb{J_{a}}{J_{b}},
+\end{align*}
+where $\lieb{J_{a}}{J_{b}}$ is the commutator. This commutator satisfies
+\begin{align*}
+	\lieb{J_{a}}{J_{b}}^{T} = \lieb{J_{b}^{T}}{J_{a}^{T}} = \lieb{-J_{b}}{-J_{a}} = -\lieb{J_{a}}{J_{b}},
+\end{align*}
+which implies
+\begin{align*}
+	\lieb{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
+\end{align*}
+It can be shown that
+\begin{align*}
+	\lieb{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
+\end{align*}
+or in a physics context (where a factor $i$ is extracted):
+\begin{align*}
+	\lieb{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
+\end{align*}
 
 \paragraph{Symmetries in classical mechanics}
 
