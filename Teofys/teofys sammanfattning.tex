@@ -8,6 +8,7 @@
 
 \newcommand{\del}[3][]{\partial_{#2}^{#1}#3}
 \newcommand{\deval}[4][]{\eval{\dv[#1]{#2}{#3}}_{#4}}
+\newcommand{\pdeval}[4][]{\eval{\del[#1]{#2}{#3}}_{#4}}
 \newcommand{\cc}[1]{#1^{*}}
 \newcommand{\adj}[1]{#1^{\dagger}}
 \newcommand{\commut}[2]{[#1, #2]}
@@ -45,5 +46,7 @@
 \input{./Parts/dirac_notation.tex}
 
 \input{./Parts/three_dimensions.tex}
+
+\input{./Parts/identical_particles.tex}
 
 \end{document}
