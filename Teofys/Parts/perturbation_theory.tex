@@ -1,0 +1,51 @@
+\section{Störningsteori}
+
+\paragraph{Störningsräkningarnas principer}
+Vi vill lösa problemet $H\Psi_{n} = E_{n}\Psi_{n}$. Detta görs på följande sätt:
+\begin{itemize}
+	\item Antag att vi har ett löst problem $H^{0}\Psi_{n}^{0} = E_{n}^{0}\Psi_{n}^{0}$.
+	\item Inför den störda hamiltonianen $H = H^{0} + V$, vars egenfunktioner vi vill hitta.
+	\item Inför styrkeparametern $\lambda$ genom $H = H^{0} + \lambda V$.
+	\item Sök en potensserielösning $\Psi = \Psi_{n}^{0} + \lambda\Psi_{n}^{1} + \lambda^{2}\Psi_{n}^{2}+ \dots$. Denna har energi $E_{n} = E_{n}^{0} + \lambda E_{n}^{1} + \lambda^{2}E_{n}^{2} + \dots$. De olika termerna är koorektioner av olik ordning, och superskriptet indikerar vad ordningen är för varje term.
+\end{itemize}
+
+Störningarna av olik ordning fås vid att identifiera termer från Schrödingerekvationen
+\begin{align*}
+	(H^{0} + \lambda V)(\Psi_{n}^{0} + \lambda\Psi_{n}^{1} + \lambda^{2}\Psi_{n}^{2}+ \dots) = (E_{n}^{0} + \lambda E_{n}^{1} + \lambda^{2}E_{n}^{2} + \dots)(\Psi_{n}^{0} + \lambda\Psi_{n}^{1} + \lambda^{2}\Psi_{n}^{2}+ \dots).
+\end{align*}
+Till exempel ges första ordningens störning av
+\begin{align*}
+	H^{0}\Psi_{n}^{1} + V\Psi_{n}^{0} = E_{n}^{0}\Psi_{n}^{1} + E_{n}^{1}\Psi_{n}^{0}
+\end{align*}
+Inreprodukten med $\Psi_{n}^{0}$ på båda sidor ger
+\begin{align*}
+	\mel{\Psi_{n}^{0}}{H^{0}}{\Psi_{n}^{1}} + \mel{\Psi_{n}^{0}}{V}{\Psi_{n}^{0}} = E_{n}^{0}\braket{\Psi_{n}^{0}}{\Psi_{n}^{1}} + E_{n}^{1}\braket{\Psi_{n}^{0}}{\Psi_{n}^{0}}.
+\end{align*}
+Eftersom hamiltonoperatorn är Hermitesk, kommer första term på båda sidor vara lika, vilket ger
+\begin{align*}
+	 E_{n}^{1} = \mel{\Psi_{n}^{0}}{V}{\Psi_{n}^{0}}.
+\end{align*}
+Vi kan även visa att
+\begin{align*}
+	\Psi_{n}^{1} = \sum\limits_{m \neq n}\frac{\mel{\Psi_{m}^{0}}{V}{\Psi_{n}^{0}}}{E_{n}^{0} - E_{m}^{0}}\Psi_{m}^{0},
+\end{align*}
+som ökar i amplitud med $V$. Det gäller även att
+\begin{align*}
+	E_{n}^{2} = \sum\limits_{m \neq n}\frac{\abs{\mel{\Psi_{m}^{0}}{V}{\Psi_{n}^{0}}}^{2}}{E_{n}^{0} - E_{m}^{0}},
+\end{align*}
+som ökar i styrka med $V^{2}$. Observera att nämnaren i dessa uttryck gör det helt klart att denna sortens räkning endast gäller för icke-degenererade energier.
+
+\paragraph{Degenererade energier}
+För att få en indikation på hur det går till, betrakta ett tvåfalt degenererad egentillstånd med två egentillstånd $\Psi_{a}^{0}$ och $\Psi_{b}^{0}$. Dessa kan väljas ortogonala. För att få störningen av första ordningen, gör vi ansatsen $\Psi = \alpha\Psi_{a}^{0} + \beta\Psi_{b}^{0} + \Psi^{1}$. Schrödingerekvationen ger enligt samma argument som ovan att
+\begin{align*}
+	H^{0}\Psi^{1} + V(\alpha\Psi_{a}^{0} + \beta\Psi_{b}^{0}) = E^{0}\Psi^{1} + E^{1}(\alpha\Psi_{a}^{0} + \beta\Psi_{b}^{0}).
+\end{align*}
+Inreprodukten med $\Psi_{a}^{0}$ ger igen
+\begin{align*}
+	\mel{\Psi_{a}^{0}}{H^{0}}{\Psi^{1}} + \alpha\mel{\Psi_{a}^{0}}{V}{\Psi_{a}^{0}} + \beta\mel{\Psi_{a}^{0}}{V}{\Psi_{b}^{0}} = E_{n}^{0}\braket{\Psi_{a}^{0}}{\Psi^{1}} + E^{0}(\alpha\braket{\Psi_{a}^{0}}{\Psi_{a}^{0}} + \beta\braket{\Psi_{a}^{0}}{\Psi_{b}^{0}}),
+\end{align*}
+där första termen på varje sida igen är lika. Vid att definiera $W_{ab} = \mel{\Psi_{a}^{0}}{V}{\Psi_{a}^{0}}$ och göra motsvarande fast för $\Psi_{b}^{0}$ fås ekvationssystemet
+\begin{align*}
+	\alpha W_{aa} + \beta W_{ab} = E^{1}\alpha,\ \alpha W_{ba} + \beta W_{bb} = E^{1}\beta,
+\end{align*}
+som är en egenvärdesekvation i energin. Vid att välja basen på ett sånt sätt att $W_{ab} = W_{ba} = 0$ kan de möjliga egenvärdena läsas av direkt.
