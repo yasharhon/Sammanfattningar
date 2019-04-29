@@ -49,3 +49,102 @@ där första termen på varje sida igen är lika. Vid att definiera $W_{ab} = \m
 	\alpha W_{aa} + \beta W_{ab} = E^{1}\alpha,\ \alpha W_{ba} + \beta W_{bb} = E^{1}\beta,
 \end{align*}
 som är en egenvärdesekvation i energin. Vid att välja basen på ett sånt sätt att $W_{ab} = W_{ba} = 0$ kan de möjliga egenvärdena läsas av direkt.
+
+\paragraph{Störningar i väte}
+Vi vill introducera störningar i väteatomens energier för att se vad som händer med energierna. Vid att jämföra detta med experiment kan man testa kvantmekanikens giltighet.
+
+\paragraph{Störning med elektriskt fält}
+Vi lägger först på ett elektriskt fält i $z$-riktning, med en potential på formen $V = e\mathcal{E}z_{\text{p}} - e\mathcal{E}z_{\text{e}}$ till totala systemet. Vi betraktar väteatomen i masscentrumssystemet, och detta kan då skrivas om i masscentrumssystemet som $V = e\mathcal{E}z$. Alternativt kan vi införa dipolmomentet $\vb{p} = -e\vb{r}_{e} + e\vb{r}_{p} = -e\vb{r}$, och skriva $V = -\vb{p}\cdot\vb{E}$. Första ordningens energikorrektion till grundtillståndet blir
+\begin{align*}
+	E_{100}^{1} = \expval{e\mathcal{E}z}{100} = 0,
+\end{align*}
+då grundtillståndet är sfäriskt symmetriskt.
+
+Andra ordningens korrektion blir
+\begin{align*}
+	E_{100}^{2} = e^{2}\mathcal{E}^{2}\sum\limits_{nlm \neq 100}\frac{\abs{\mel{nlm}{z}{100}}^{2}}{E_{1}^{0} - E_{n}^{0}} = -\frac{9}{4}4\pi\varepsilon_{0}a^{3}\mathcal{E}^{2}.
+\end{align*}
+Att göra denna beräkningen analytiskt kan göras, men vi vill i stället göra en uppskattning vid att låta alla $E_{n}^{0}$ vara $E_{2}^{0}$ för $n > 2$. Vi kan då ta ut energifaktorn från summationen ovan och få
+\begin{align*}
+	E_{100}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\sum\limits_{nlm \neq 100}\abs{\mel{nlm}{z}{100}}^{2}.
+\end{align*}
+Enligt argumentet från första ordningen kan vi utvidga summan till
+\begin{align*}
+	E_{100}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\sum\abs{\mel{nlm}{z}{100}}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\sum\mel{100}{z}{nlm}\mel{nlm}{z}{100}.
+\end{align*}
+Detta kan förenklas med hjälp av identitetsoperatorn till
+\begin{align*}
+	E_{100}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\expval{z^{2}}{100} = -\frac{8}{3}4\pi\varepsilon_{0}a^{3}\mathcal{E}^{2}.
+\end{align*}
+
+De andra energitillstånden är degenererade med degenerationsgrad $2n^{2}$. Vi vill nu välja en god bas så att störningsmatrisen blir diagonal. Då blir diagonalelementen i störningsmatrisen korrektionerna av första ordning. Vi kan utnyttja att om $A$ är Hermitesk med icke-degenererade egenvärden och störningen $V$ kommuterar med både $A$ och $H^{0}$, är $V$ diagonal i egenbasen till $A$.
+
+\paragraph{Relativistisk korrektion}
+Den relativistiska kinetiska energin ges av
+\begin{align*}
+	\sqrt{p^{2}c^{2} + (mc^{2})^{2}} - mc^{2},
+\end{align*}
+med en första korrektionsterm
+\begin{align*}
+	V = -\frac{p^{4}}{8m^{3}c^{2}}.
+\end{align*}
+Denna kommuterar med den klassiska hamiltonoperatorn, och vi kan därför använda icke-degenererad störningsräkning. Man kan visa att
+\begin{align*}
+	E_{n}^{1} = -\frac{(E_{n}^{0})^{2}}{2mc^{2}}\left(\frac{4n}{l + \frac{1}{2}} - 3\right),
+\end{align*}
+och
+\begin{align*}
+	\frac{E_{n}^{1}}{E_{n}^{0}}\propto E_{n}^{1}\propto\alpha^{2},
+\end{align*}
+där vi har infört finstrukturkonstanten
+\begin{align*}
+	\alpha = \frac{e^{2}}{4\pi\varepsilon_{0}\hbar c}.
+\end{align*}
+
+\paragraph{Spinn-bankoppling}
+Vi betraktar nu väteatomen i elektronens vilosystem. Då snurrar protonen kring elektronen, vilket ger upphov till en ström, som igen skapar ett magnetfält
+\begin{align*}
+	\vb{B} = \mu_{0}\frac{I}{2r}\vb{e}_{z} = \frac{e}{4\pi\varepsilon_{0}mc^{2}r^{3}}\vb{L}.
+\end{align*}
+Detta ger då en energikorrektion
+\begin{align*}
+	V = \frac{e^{2}}{4\pi\varepsilon_{0}m^{2}c^{2}r^{3}}\vb{L}\cdot\vb{S}.
+\end{align*}
+Störningarna som beräknades från detta var fel med en faktor $2$. Detta kom av att beräkningarna inte tog med i betraktningen att elektronens vilosystem inte är ett inertialsystem. Det faktiska energibidraget skall vara
+\begin{align*}
+	V = \frac{e^{2}}{8\pi\varepsilon_{0}m^{2}c^{2}r^{3}}\vb{L}\cdot\vb{S}.
+\end{align*}
+Vi får
+\begin{align*}
+	E_{n}^{1} &= \frac{e ^{2}}{8\pi\varepsilon_{0}}\frac{1}{m^{2}c^{2}}\frac{1}{2}\expval{J^{2} - L^{2} - S^{2}}\expval{\frac{1}{r^{3}}} \\
+	          &= \frac{(E_{n}^{0})^{2}}{mc^{2}}\frac{n(j(j + 1) - l(l + 1) - \frac{3}{4})}{l(l + \frac{1}{2})(l + 1)},
+\end{align*}
+där vi har användt att alla ingående operatorer opererar på olika koordinater, varför vi kan splitta upp väntevärdena på detta sättet.
+
+\paragraph{Hyperfinstruktur}
+Koppling mellan elektronens och protonens magnetiska moment ger en korrektionsterm
+\begin{align*}
+	E_{100}^{1} = \frac{\mu_{0}g_{p}e^{2}}{3m_{e}m_{p}}\expval{\vb{S}_{p}\cdot\vb{S}_{e}}\abs{\eval{\Psi_{100}}_{\vb{r} = \vb{0}}}^{2}.
+\end{align*}
+Detta ger en energisplittring lika med energiskillnaden mellan en spinntriplett och en spinnsinglett.
+
+\paragraph{Zeeman-effekt}
+Zeeman-effekten är energiskift hos elektroner i ett homogent magnetiskt fält. Störningstermen är
+\begin{align*}
+	V = -(\vb{\mu}_{l} + \vb{\mu}_{s})\cdot\vb{B} = \frac{e}{2m}\vb{B}\cdot(\vb{L} + 2\vb{S}) = \frac{e}{2m}\vb{B}\cdot(\vb{J} + \vb{S}).
+\end{align*}
+
+\subparagraph{Svaga fält}
+Här görs endast korrektion av finstrukturenergier. Eftersom $S_{z}$ är osäker i den kopplade basen, fås dock en icke-diagonal störningsmatris. Tidsmedelvärdet av $\vb{S}$ kan dock användas. Man får
+\begin{align*}
+	E^{1} = \frac{e}{2m}B\left(1 + \frac{j(j + 1) + s(s + 1) - l(l + 1)}{2j(j + 1)}\right)m_{j}\hbar.
+\end{align*}
+
+\subparagraph{Starka fält}
+För starka fält är Zeeman-effekten dominant, och man kan göra räkningen i produktbasen. Man får
+\begin{align*}
+	E^{1} = \mu_{B}B(m_{l} + 2m_{s}).
+\end{align*}
+
+\subparagraph{Mellanstarka fält}
+I detta fallet finns helt enkelt ingen bra bas. Det är dock inte mycket nytt som händer här.
