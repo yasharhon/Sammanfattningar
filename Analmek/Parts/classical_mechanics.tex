@@ -96,3 +96,94 @@ A third attempt is to somehow make the scalar product in the variation of the La
 	  &= -\vb{\omega}\cdot(\vb{x}\times\vb{p}).
 \end{align*}
 Since $\vb{\omega}$ is constant, that means that $\vb{x}\times\vb{p}$, i.e. the angular momentum, is conserved.
+
+\paragraph{Hamiltonian mechanics}
+Hamiltonian mechanics starts with trying to transform $\lag(q, \dot{q}, t)$ to $\ham(q, p, t)$. To start with this, we reintroduce the general momenta $p_{i} = \del{\dot{q}_{i}}{\lag}$ and define the Hamiltonian
+\begin{align*}
+	\ham = p_{i}\dot{q}_{i} - \lag.
+\end{align*}
+This is a Legendre transform of the Hamiltonian, which is discussed below. In Lagrangian mechanics, we considered paths in configuration space. In Hamiltonian mechanics, we instead consider paths in phase space, i.e. a space where the points are $(q, t)$. In this space, paths do not intersect as the system is deterministic. The new equations of motion in this formalism is
+\begin{align*}
+	\dot{p}_{i} = -\del{q_{i}}{\ham},\ \dot{q}_{i} = \del{p_{i}}{\ham}.
+\end{align*}
+
+Paths in phase space are periodic for integrable systems and fill out the accessible parts of phase space for chaotic systems.
+
+\paragraph{Legendre transforms}
+To illustrate the Legendre transform, consider a function $f(x, y)$ and $g(x, y, u) = ux - f(x, y)$. Its total derivative is given by
+\begin{align*}
+	\dd{g} = u\dd{x} + x\dd{u} - \del{x}{f}\dd{x} - \del{y}{f}\dd{y}.
+\end{align*}
+By choosing $u = \del{x}{f}$, we obtain
+\begin{align*}
+	\dd{g} = x\dd{u} - \del{y}{f}\dd{y},
+\end{align*}
+implying that $g$ is only a function of $u$ and $y$. To obtain $g$, invert the definition of $u$ to obtain $x(u, y)$.
+
+\paragraph{Equations of motion}
+The variation of the Hamiltonian is given by
+\begin{align*}
+	\dd{\ham} &= \dot{q}_{i}\dd{p_{i}} + p_{i}\dd{\dot{q}_{i}} - \del{q_{i}}{\lag}\dd{q_{i}} - \del{\dot{q}_{i}}{\lag}\dd{\dot{q}_{i}} - \del{t}{\lag}\dd{t} \\
+	          &= \dot{q}_{i}\dd{p_{i}} - \del{q_{i}}{\lag}\dd{q_{i}} - \del{t}{\lag}\dd{t}.
+\end{align*}
+Combining this with the equations of motion
+\begin{align*}
+	\del{q_{i}}{\lag} = \dv{t}\left(\del{\dot{q}_{i}}{\lag}\right) = \dv{t}\left(p_{i}\right) = \dot{p}_{i}
+\end{align*}
+yields
+\begin{align*}
+	\dot{q}_{i} = \del{p_{i}}{\ham},\ \dot{p}_{i} = -\del{q_{i}}{\ham},\ \del{t}{\lag} = -\del{t}{\ham}.
+\end{align*}
+
+We also have
+\begin{align*}
+	\dv{\ham}{t} &= \del{q_{i}}{\ham}\dot{q}_{i} + \del{p_{i}}{\ham}\dot{p}_{i} + del{t}{\ham} \\
+	             &= \del{t}{\ham},
+\end{align*}
+and so the Hamiltonian is conserved if it has no explicit time dependance.
+
+\paragraph{Liouville's theorem}
+As paths in phase space do not cross, we can think of the time evolution of a system as a flow in phase space. The volume element is $\dd{V} = \dd{q}\dd{p}$. Liouville's theorem states that flow in phase space is incompressible.
+
+To show this, consider the state at some point in time and after some infinitesimal time $\dd{t}$. Denote the point in phase space at the start as $(q, p)$ and after $\dd{t}$ as $(q', p').$ To first order in time we have
+\begin{align*}
+	q_{i}' = q_{i} + \dot{q}_{i}\dd{t} = q_{i} + \del{p_{i}}{\ham}\dd{t},\ p_{i}' = p_{i} + \dot{p}_{i}\dd{t} = p_{i} - \del{q_{i}}{\ham}\dd{t}.
+\end{align*}
+The volume element is given by
+\begin{align*}
+	\dd{V}' &= \left(\dd{q} +  \left(\del{q}{\del{p}{\ham}}\dd{q} + \del[2]{p}{\ham}\dd{p}\right)\dd{t}\right)\left(\dd{p} -  \left(\del[2]{q}{\ham}\dd{q} + \del{p}{\del{q}{\ham}}\dd{p}\right)\dd{t}\right) \\
+	        &= \dd{q}\dd{p} + \left(-\dd{q}\left(\del[2]{q}{\ham}\dd{q} + \del{p}{\del{q}{\ham}}\dd{p}\right) + \dd{p\left(\del{q}{\del{p}{\ham}}\dd{q} + \del[2]{p}{\ham}\dd{p}\right)}\right)\dd{t} \\
+	        &= \dd{q}\dd{p} + \left(-\del[2]{q}{\ham}(\dd{q})^{2} + (\del{q}{\del{p}{\ham}} - \del{p}{\del{q}{\ham}})\dd{q}\dd{p} + \del[2]{p}{\ham}(\dd{p})^{2}\right)\dd{t}.
+\end{align*}
+The equations of motion imply that the terms containing two consecutive derivatives with respect to the same variable are equal to zero. Assuming the Hamiltonian to be sufficiently smooth, the cross-derivatives are equal. This implies
+\begin{align*}
+	\dd{V}' = \dd{V}.
+\end{align*}
+
+\paragraph{Poisson brackets}
+Consider a function $f(q, p, t)$. Its time derivative is given by
+\begin{align*}
+	\dv{f}{t} &= \del{q_{i}}{f}\dot{q}_{i} + \del{p_{i}}{f}\dot{p}_{i} + \del{t}{f} \\
+	          &= \del{q_{i}}{f}\del{p_{i}}{\ham} - \del{p_{i}}{f}\del{q_{i}}{\ham} + \del{t}{f} \\
+	          &= \pob{f}{\ham} + \del{t}{f},
+\end{align*}
+where we now have defined the Poisson bracket. It is bilinear and satisfies
+\begin{align*}
+	\pob{f}{g}          &= -\pob{g}{f}, \\
+	\pob{fg}{h}         &= f\pob{g}{h} + \pob{f}{h}g, \\
+	\pob{f}{\pob{g}{h}} &+ \pob{g}{\pob{h}{f}} + \pob{h}{\pob{f}{g}} = 0.
+\end{align*}
+The expression above implies that if $\pob{f}{\ham} = 0$ and $f$ does not depend explicitly on time, then it is a constant of motion.
+
+\paragraph{Restatement of Liouville's theorem}
+We define $\rho(q, p, t)$ as the probability that a particle is close to $(q, p)$. Alternatively, for a large number of particles, we can define it as the number of particles close to $(q, p)$.
+
+We have
+\begin{align*}
+	\dv{\rho}{t} = 0,
+\end{align*}
+implying
+\begin{align*}
+	\del{t}{\rho} = -\pob{\rho}{\ham}.
+\end{align*}
+This is an equivalent statement of Liouville's theorem.
