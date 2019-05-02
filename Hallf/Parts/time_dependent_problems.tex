@@ -1,0 +1,17 @@
+\section{Tidsberoende problem}
+
+\paragraph{Diskreta problem}
+Betrakta ett problem där vi har $n$ punktmassor på en linje som rör sig normalt på linjens riktning, och har en förskjutning $w_{i}$ från jämviktsläget. Newtons andra lag ger
+\begin{align*}
+	m_{i}\ddot{w}_{i} = P_{i} - F_{i}.
+\end{align*}
+Här är $P_{i}$ den yttre kraften massa $i$ utsätts för och $F_{i}$ en sorts motståndsterm. Denna kan till exempel uppstå på grund av styvhet, och blir då på formen
+\begin{align*}
+	F_{i} = K_{ij}w_{j}.
+\end{align*}
+Problemet kan formuleras på matrisform som
+\begin{align*}
+	M\ddot{\vb{w}} + K\vb{w} = \vb{P}.
+\end{align*}
+
+Det homogena problemet kan lösas med en ansats $\vb{w} = \vb{a}\sin{\omega t}$. Detta ger upphov till ett egenvärdesproblem i egenfrekvenserna $\omega$.
