@@ -187,3 +187,36 @@ implying
 	\del{t}{\rho} = -\pob{\rho}{\ham}.
 \end{align*}
 This is an equivalent statement of Liouville's theorem.
+
+\paragraph{Canonical transformation}
+A canonical transformation is a transformation $(\vb{q}, \vb{p})\to (\vb{Q}, \vb{P})$ such that the Hamiltonian $H$ expressed in these new coordinates also satisfies Hamilton's equations in the new coordinates, i.e.
+\begin{align*}
+	\dot{Q}_{i} = \del{P_{i}}{H},\ \dot{P}_{i} = -\del{Q_{i}}{\ham}.
+\end{align*}
+
+\paragraph{Canonical transformations and Poisson brackets}
+It turns out that a transformation in phase space is canonical if and only if they preserve the following equations:
+\begin{align*}
+	\pob{q_{i}}{q_{j}} = \pob{p_{i}}{p_{j}} = 0,\ \pob{q_{i}}{p_{j}} = \delta_{ij}.
+\end{align*}
+
+To show this, consider some point $x$ in phase space. Under the canonical transformation, it transforms to $y$. Suppose now that the relation
+\begin{align*}
+	\dot{x}_{i} = J_{ij}\del{x_{j}}{\ham}
+\end{align*}
+to be true. According to the equations of motion, this would imply
+\begin{align*}
+	J_{ij} = 
+	\begin{cases}
+		 1, &j = i + n, i = 1, 2, \dots, n, \\
+		-1, &j = i - n, i = n + 1, \dots, 2n.
+	\end{cases}
+\end{align*}
+If the transformation is canonical, then the same should be true after the transformation. On the other hand, the chain rule yields
+\begin{align*}
+	\dot{y}_{i} = \del{x_{j}}{y_{i}}J_{ik}\del{x_{k}}{y_{m}}\del{y_{m}}{H}.
+\end{align*}
+Comparing this with the Jacobian $\mathcal{J}$ yields
+\begin{align*}
+	J = \mathcal{J}J\mathcal{J}^{T}.
+\end{align*}
