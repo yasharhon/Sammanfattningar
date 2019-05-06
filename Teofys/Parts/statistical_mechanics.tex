@@ -141,3 +141,44 @@ För att titta på dessa vill vi göra betraktningen i det storkanoniska ensembl
 \begin{align*}
 	Z_{G} = \sum\limits_{n_1}\dots e^{-\beta\sum\limits_{k}(E_{k} - \mu)n_{k}} = \prod\limits_{k}\sum\limits_{n_{k}}e^{-\beta(E_{k} - \mu)n_{k}} = \prod\limits_{k}Z_{k} = e^{-\beta F}.
 \end{align*}
+
+Väntevärdet av antal partiklar i något tillstånd ges av
+\begin{align*}
+	\expval{n_{k}} = \frac{\sum ne^{-\beta(E_{k} - \mu)n}}{Z_{k}},
+\end{align*}
+där
+\begin{align*}
+	Z_{k} = \sum e^{-\beta(E_{k} - \mu)n}.
+\end{align*}
+Vi ser att vi kan skriva
+\begin{align*}
+	\expval{n_{k}} = \frac{1}{\beta}\del{\mu}{Z_{k}}.
+\end{align*}
+
+För fermioner vet vi att $n_{k} = 0, 1$ på grund av Pauliprincipen. Därmed fås
+\begin{align*}
+	\expval{n_{k}} = \frac{0 + e^{-\beta(E_{k} - \mu)}}{1 + e^{-\beta(E_{k} - \mu)}} = \frac{1}{e^{\beta(E_{k} - \mu)} + 1},
+\end{align*}
+vilket kallas Fermi-Dirac-fördelningen.
+
+För bosoner fås
+\begin{align*}
+	Z_{k} = \sum e^{-\beta(E_{k} - \mu)n} = \frac{1}{1 - e^{-\beta(E_{k} - \mu)}},
+\end{align*}
+och
+\begin{align*}
+	\expval{n_{k}} = \frac{1}{e^{\beta(E_{k} - \mu)} - 1},
+\end{align*}
+vilket kallas Bose-Einstein-fördelningen.
+
+Vi kan jämföra detta med resultatet från särskiljbara identiska partiklar, som ger
+\begin{align*}
+	\expval{n_{k}} = e^{-\beta(E_{k} - \mu)}.
+\end{align*}
+Detta är gränsen för båda fördelningarna när energierna blir stora jämförd med temperaturen.
+
+\paragraph{Svartkroppsstrålning}
+Fotoner är bosoner med spinn $1$, och följer därmed Bose-Einstein-statistik. Antalet fotoner kommer variera med temperaturen, och detta implicerar $\mu = 0$. Vi får då
+\begin{align*}
+	\expval{n_{k}} = \frac{1}{e^{\beta\hbar\omega} - 1}.
+\end{align*}
