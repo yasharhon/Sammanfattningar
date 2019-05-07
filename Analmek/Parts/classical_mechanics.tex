@@ -220,3 +220,74 @@ Comparing this with the Jacobian $\mathcal{J}$ yields
 \begin{align*}
 	J = \mathcal{J}J\mathcal{J}^{T}.
 \end{align*}
+
+\paragraph{Infinitesimal transformations}
+Consider a transformation of the form
+\begin{align*}
+	q_{i} \to q_{i} + \alpha F_{i},\ p_{i} \to p_{i} + \alpha E_{i}.
+\end{align*}
+Computing the Poisson brackets of the new coordinates and momenta, and requiring it to be zero, yields
+%Show this with Jacobian instead?
+\begin{align*}
+	\pob{Q_{i}}{P_{j}} &= \pob{q_{i}}{p_{j}} + \pob{q_{i}}{\alpha E_{j}} + \pob{\alpha F_{i}}{p_{j}} + \pob{\alpha F_{i}}{\alpha E_{j}} \\
+	                   &= \dots \\
+	                   &= \delta_{ij} + \alpha(\del{p_{i}}{E_{j}} + \del{q_{j}}{F_{i}}) + \dots
+\end{align*}
+and the requirement
+\begin{align*}
+	\del{p_{i}}{E_{j}} = -\del{q_{j}}{F_{i}}.
+\end{align*}
+A simple choice of solution is
+\begin{align*}
+	E_{j} = -\del{q_{j}}{G},\ F_{i} = \del{p_{i}}{G}
+\end{align*}
+for some (smooth) function $G$. We say that $G$ generates the symmetry.
+
+We now reinsert this into the coordinate transformations. By considering the transformation as a map onto the same phase space, we obtain
+\begin{align*}
+	\del{\alpha}{q_{i}} = \del{p_{i}}{G},\ \del{\alpha}{p_{i}} = -\del{q_{i}}{G}.
+\end{align*}
+We notice the strong analogy with Hamilton's equations. This kind of transformations can be thought of as flows in phase space. 
+
+\paragraph{Symmetries and infinitesimal transformations}
+Suppose now that we perform an infinitesimal transformation. We then obtain
+\begin{align*}
+	\dv{\ham}{\alpha} = \pob{\ham}{G}.
+\end{align*}
+We say that $G$ is a symmetry of the system if $\pob{\ham}{G} = 0$. We can show that if $G$ is a symmetry of the system, then it is conserved.
+
+\paragraph{Something Lagrangians IG}
+We return to the principle of least action. Symmetries of the Lagrangian were on the form $\lag\to\lag + \dv{F}{t}$. We can now choose $F = G$, and instead consider this as a variational problem on phase space instead, where we seek the extrema of
+\begin{align*}
+	S = \integ{}{}{t}{p_{i}\dot{q}_{i} - \ham}.
+\end{align*}
+We now say that a canonical transformation of the system is a transformation such that
+\begin{align*}
+	\integ{}{}{t}{P_{i}\dot{Q}_{i} - H}
+\end{align*}
+is still extremal under the transformation. The Euler-Lagrange equations imply that this is true if
+\begin{align*}
+	p_{i}\dot{q}_{i} - \ham = P_{i}\dot{Q}_{i} - H + \dv{F}{t}.
+\end{align*}
+
+There are various functions that can satisfy this. For instance, consider a function $F(q, Q, t)$. We obtain that 
+%What do we obtain?
+
+Another choice is a function $F = F_{2}(q, P, t) - P_{i}Q_{i}$. We have
+\begin{align*}
+	\dv{F}{t} = \del{q_{i}}{F_{2}}\dot{q}_{i} + \del{P_{i}}{F_{2}}\dot{P}_{i} - \dot{P}_{i}Q_{i} - P_{i}\dot{Q}_{i} + \del{t}{F_{2}}.
+\end{align*}
+Inserting this into the above criterion yields
+\begin{align*}
+	p_{i} = \del{q_{i}}{F_{2}},\ Q_{i} = \del{p_{i}}{F_{2}},\ H = \ham + \del{t}{F_{2}}.
+\end{align*}
+
+\paragraph{Hamilton-Jacobi theory}
+Suppose that we could perform a transformation on the form $F = F_{2}(q, P, t) - P_{i}Q_{i}$ such that $H = 0$. This would imply that all $Q_{i}$ and $P_{i}$ were to be constant. The equation
+\begin{align*}
+	\ham + \del{t}{F_{2}} = 0
+\end{align*}
+would thus define a differential equation in $F_{2}$. We can now, with some reasoning behind it, I guess, call $F_{2}$ the action $S$. This yields the Hamilton-Jacobi equation
+\begin{align*}
+	H + \del{t}{S} = 0.
+\end{align*}
