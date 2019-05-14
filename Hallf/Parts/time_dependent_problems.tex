@@ -29,3 +29,42 @@ där $K$ är styvhetsmatrisen. Vi hade alternativt kunnat ställa upp flexibilit
 	\vb{w} = \alpha\vb{F}.
 \end{align*}
 Det visar sig att både styvhetsmatrisen och flexibilitetsmatrisen är symmetriska.
+
+\paragraph{Longitudinella svängningar i kontinuerliga kroppar}
+Betrakta en kropp som påverkas av en normalkraft $N$ i varje ända. Snitta ut ett litet element. På ytan normal på svängningsriktningen får vi
+\begin{align*}
+	\rho A\dd{x}\del[2]{t}{u} = \dd{N}.
+\end{align*}
+Hookes lag ger
+\begin{align*}
+	N = EA\del{x}{u},
+\end{align*}
+vilket implicerar
+\begin{align*}
+	\rho A\del[2]{t}{u} = \del{x}{\left(EA\del{x}{u}\right)}.
+\end{align*}
+För en kropp med konstant styvhet $EA$ fås vågekvationen, med våghastighet
+\begin{align*}
+	c = \sqrt{\frac{EA}{\rho}}.
+\end{align*}
+
+\paragraph{Böjsvängningar i kontinuerliga kroppar}
+Betrakta en kropp som böjs av någon utbredd last $q$. Snitta ut ett litet element. Kraftjämvikt i vertikal riktning ger
+\begin{align*}
+	T + \dd{T} - T + q\dd{x} = \dd{T} + q\dd{x} = \rho A\dd{x}\del[2]{t}{w} \implies \rho A\del[2]{t}{w} = q + \del{x}{T}.
+\end{align*}
+För låga frekvenser kan man betrakta rotationen av elementet som statisk, eventuellt inkludera en liten korrektion till egenfrekvenserna. Vi vet även från balkteori att
+\begin{align*}
+	\del{x}{M} = T,\ M = -EI\del[2]{x}{w}.
+\end{align*}
+Detta kan kombineras med resultaten ovan för att få
+\begin{align*}
+	\del[2]{x}{\left(EI\del[2]{x}{w}\right)} + \rho A\del[2]{t}{w} = q.
+\end{align*}
+Om det inte finns någon extern last och balken har konstant styvhet, reduceras detta till
+\begin{align*}
+	EI\del[4]{x}{w} + \rho A\del[2]{t}{w} = 0.
+\end{align*}
+
+\paragraph{Vågutbredning i kontinuerliga kroppar}
+Om man gör en periodisk ansats för balkens utböjning, får man att vågtalet och frekvensen måste hänga ihop på något sätt. Detta kallas för dispersion.
