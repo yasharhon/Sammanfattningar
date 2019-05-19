@@ -1,5 +1,22 @@
 \section{Balkar}
 
+\paragraph{Elastisk vridning}
+Antag att man har en stång med cirkulärt tvärsnitt fäst i ena ändan som man vrider med ett moment $M_{\text{v}}$ (i varje ända). Detta ger en vinkeldeformation $\theta$ i det yttersta tvärsnittet och $\gamma$ relativt linjen parallellt med stångens riktning. Om stången har en längd $l$ och en radius $a$, ger detta
+\begin{align*}
+	L\gamma = a\theta.
+\end{align*}
+Kombinerad med resultatet från delen om skjuvspänning ger detta
+\begin{align*}
+	\frac{\theta}{L} = \frac{\tau}{G}.
+\end{align*}
+Antag nu att $\tau = \frac{M_{\text{v}}}{K}$. Detta ger
+\begin{align*}
+	\frac{\theta}{L} = \frac{M_{\text{v}}}{GK}.
+\end{align*}
+$K$ är en konstant som beror av stångens geometri.
+
+Hur beräknar vi $K$? Jo, man integrerar momentets differential över tvärsnittet. Vi vet att detta differentialet ges av kraft gånger arm, och det är så skjuvspänningen kommer in.
+
 \paragraph{Balkböjning - fundamentala koncept}
 För att beskriva balkar behöver vi införa fler olika sorters inre krafter och moment. Dessa illustreras i figur \ref{fig:beam_forces}.
 \begin{figure}[!ht]
