@@ -1,0 +1,86 @@
+\section{Tensors}
+
+\paragraph{Definition}
+A tensor of rank $N$ is a multilinear map from $N$ vectors to a scalar.
+
+\paragraph{Components of a tensor}
+The components of a tensor are defined by
+\begin{align*}
+	T(\vb{E}^{a_{1}}, \dots, \vb{E}^{a_{N}}) = T^{a_{1}, \dots, a_{N}}.
+\end{align*}
+These are called the contravariant components of the tensor, and the covariant components are defined similarly. Mixed components can also be defined.
+
+\paragraph{Rules for tensors}
+Tensors obey the following rules:
+\begin{align*}
+	(T_{1} + T_{2})(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}) &= T_{1}(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}) + T_{2}(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}), \\
+	(kT)(\vb{w}_{1}, \dots, \vb{w}_{n_{2}})            &= kT(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}).
+\end{align*}
+In component form:
+\begin{align*}
+	(T_{1} + T_{2})^{a_{1}\dots a_{n}} &= T_{1}^{a_{1}\dots a_{n}} + T_{2}^{a_{1}\dots a_{n}}, \\
+	(kT)^{a_{1}\dots a_{n}}            &= kT^{a_{1}\dots a_{n}}.
+\end{align*}
+
+\paragraph{The metric tensor}
+The metric tensor $g$ is a rank $2$ tensor defined by $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$. Its components satisfy
+\begin{align*}
+	v_{a} = \vb{E}_{a}\cdot v^{b}\vb{E}_{b} = g(\vb{E}_{a}, \vb{E}_{b})v_{b} = g_{ab}v^{b},
+\end{align*}
+and likewise
+\begin{align*}
+	v^{a} = g^{ab}v_{b}.
+\end{align*}
+
+We note that
+\begin{align*}
+	v_{a} = g_{ab}v^{b} = g_{ab}g^{bc}v_{c},
+\end{align*}
+which implies $g_{ab}g^{bc} = \kdelta{a}{c}$.
+
+\paragraph{Tensor product}
+Given two tensors $T_{1}$ and $T_{2}$ of ranks $n_{1}$ and $n_{2}$, we kan define the rank $n_{1} + n_{2}$ tensor $\tenprod{{T_{1}, T_{2}}}$ as
+\begin{align*}
+	(\tenprod{{T_{1}, T_{2}}})(\vb{v}_{1}, \dots, \vb{v}_{n_{1}}, \vb{w}_{1}, \dots, \vb{w}_{n_{2}}) = T_{1}(\vb{v}_{1}, \dots, \vb{v}_{n_{1}})T_{2}(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}).
+\end{align*}
+In component form:
+\begin{align*}
+	(\tenprod{{T_{1}, T_{2}}})^{a_{1}\dots a_{n_{1} + n_{2}} = T_{1}^{a_{1}\dots a_{n_{1}}}T_{2}^{a_{n_{1} + 1}}\dots a_{n_{1} + n_{2}}}.
+\end{align*}
+
+\paragraph{Tensors as linear combinations}
+Using the tensor product, all tensors can be written as linear combinations of certain basis elements due to their bilinearity. Define
+\begin{align*}
+	e_{a_{1}\dots a_{n}} = \tenprod{{\vb{E}_{a_{1}}, \dots, \vb{E}_{a_{n}}}}
+\end{align*}
+to be the tensor that satisfies
+\begin{align*}
+	e_{a_{1}\dots a_{n}}(\vb{E}^{b_{1}}, \dots, \vb{E}^{b_{n}}) = (\vb{E}_{a_{1}}\cdot\vb{E}^{b_{1}})\dots (\vb{E}_{a_{n}}\cdot\vb{E}^{b_{n}}) = \kdelta{a_{1}}{b_{1}}\dots\kdelta{a_{n}}{b_{n}}.
+\end{align*}
+Then any tensor can be written as
+\begin{align*}
+	T = T^{a_{1}\dots a_{n}}e_{a_{1}\dots a_{n}}
+\end{align*}
+where the $T^{a_{1}\dots a_{n}}$ are exactly the contravariant components of $T$.
+
+\paragraph{Tensors as linear transforms on tensors}
+A rank $n$ tensor can also be viewed as a linear map from rank $m$ tensors to rank $n - m$ tensors. To do this, we first define, given $T$, the rank $n - m$ tensor $\tilde{T}(\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}})$ such that
+\begin{align*}
+	(\tilde{T}(\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}}))(\vb{v}_{1}, \dots, \vb{v}_{n - m}) = T(\vb{w}_{1}, \dots, \vb{w}_{m}, \vb{v}_{1}, \dots, \vb{v}_{n - m}).
+\end{align*}
+This map is also linear in all the $\vb{w}_{i}$. Next, given a rank $n - m$ tensor $\tilde{T}$, one can define the rank $n - m$ tensor $T(\vb{w}_{1}, \dots, \vb{w}_{m})$ such that
+\begin{align*}
+	T(\vb{w}_{1}, \dots, \vb{w}_{m}, \vb{v}_{1}, \dots, \vb{v}_{n - m}) = (\tilde{T}(\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}}))(\vb{v}_{1}, \dots, \vb{v}_{n - m}).
+\end{align*}
+This is a linear rank $n$ tensor.
+
+\paragraph{Tensor contraction}
+Given a complete set of vectors $\vb{v}_{i}$ and their dual $\vb{v}^{i}$ such that $\vb{v}_{i}\cdot\vb{v}^{i} = \kdelta{i}{j}$, the contraction $e_{12}T$ of two arguments of a rank $n$ tensor is the tensor of rank $n - 2$ satisfying
+\begin{align*}
+	(e_{12}T)(\vb{w}_{1}, \dots, \vb{w}_{n - 2}) = T(\vb{v}_{i}, \vb{v}^{i}, \vb{w}_{1}, \dots, \vb{w}_{n - 2}).
+\end{align*}
+In component form:
+\begin{align*}
+	(e_{12}T)^{a_{1}\dots a_{n - 2}} = T^{c\;a_{1}\dots a_{n - 2}}_{\;c}.
+\end{align*}
+The definition is similar (I assume) for the contraction of other arguments.
