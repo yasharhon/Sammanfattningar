@@ -63,7 +63,7 @@ de Broglie kombinerade dessa två resultaten till sin hypotes: Att alla partikla
 \end{align*}
 Vi har använt vågtalet $k = \frac{2\pi}{\lambda}$ och introducerat Plancks konstant $h = 2\pi\hbar$.
 
-de Broglie antog även att alla partiklar kan beskrivas av en vågfunktion som ges av $\Psi = Ae^{i(kx - \omega t)}$ för en fri partikel. Vid att sätta in resultaten ovan kan denna vågfunktionen skrivas som
+de Broglies hypotes var att alla partiklar kan beskrivas av en vågfunktion som ges av $\Psi = Ae^{i(kx - \omega t)}$ för en fri partikel. Vid att sätta in resultaten ovan kan denna vågfunktionen skrivas som
 \begin{align*}
 	\Psi = Ae^{i(\frac{p}{\hbar}x - \frac{E}{\hbar}t)}.
 \end{align*}
@@ -71,7 +71,7 @@ de Broglie antog även att alla partiklar kan beskrivas av en vågfunktion som g
 \paragraph{Motivation av Schrödingerekvationen}
 Givet resultaten ovan, noterar vi
 \begin{align*}
-	i\hbar\del{t}{\Psi} = E\Psi, -\frac{\hbar^{2}}{2m}\del{x}{\Psi} = \frac{p^{2}}{2m}\Psi.
+	i\hbar\del{t}{\Psi} = E\Psi,\ -\frac{\hbar^{2}}{2m}\del{x}{\Psi} = \frac{p^{2}}{2m}\Psi.
 \end{align*}
 Vi kommer ihåg den klassiska Hamiltonfunktionen $H = T + V$. För en fri partikel ges denna av $H = \frac{p^{2}}{2m} + V$. Vi ser nu att de två derivationsoperatorerna ovan ersätter totala respektiva kinetiska energin, och Hamiltonsk mekanik inspirerar oss nu att skriva
 \begin{align*}
@@ -171,46 +171,50 @@ med lösning
 \begin{align*}
 	\phi = Ce^{-i\frac{E}{\hbar}t}.
 \end{align*}
-Vi ser att $E$ måste motsvara systemets totala energi. Insatt i den andra ekvationen ger detta
+Om vi jämför detta med de Broglies hypotes, ser vi att $E$ måste motsvara systemets totala energi. Vilken chock. Insatt i den andra ekvationen ger detta
 \begin{align*}
-	H\psi = E\psi.
+	H\psi = E\psi,
 \end{align*}
-För stationära fall är alltså vågfunktionen ett egentillstånd till Hamiltonoperatorn.
+om du fortfarande inte skulle tro på att $E$ är systemets energi. För stationära fall är alltså vågfunktionen ett egentillstånd till Hamiltonoperatorn. Såna tillstånd kallas stationära.
 
-Betrakta vidare väntevärdet av en observabel som representeras av en operator som ej verkar på tidskoordinaten. Detta ger
+Betrakta vidare väntevärdet av en observabel som representeras av en operator som ej verkar på tiden. Detta ger
 \begin{align*}
 	\expval{q} &= \integ[3]{}{}{x}{\cc{\Psi}q\Psi} \\
-	           &= \integ[3]{}{}{x}{\cc{\psi}\cc{phi}q(\psi\phi)} \\
-	           &= \integ[3]{}{}{x}{\cc{\psi}\cc{phi}\phi q\psi} \\
-	           &= \integ[3]{}{}{x}{\cc{\psi}\abs{phi}^{2} q\psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi}\cc{\phi}q(\psi\phi)} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi}\cc{\phi}\phi q\psi} \\
+	           &= \integ[3]{}{}{x}{\cc{\psi}\abs{\phi}^{2} q\psi} \\
 	           &= \integ[3]{}{}{x}{\cc{\psi} q\psi}.
 \end{align*}
 Alltså är väntevärdet fullständigt tidsoberoende. Speciellt gäller för energin att
 \begin{align*}
-	\expval{q} &= \integ[3]{}{}{x}{\cc{\Psi} H\Psi} \\
+	\expval{H} &= \integ[3]{}{}{x}{\cc{\Psi} H\Psi} \\
 	           &= \integ[3]{}{}{x}{\cc{\psi} H\psi} \\
 	           &= \integ[3]{}{}{x}{\cc{\psi} E\psi} \\
 	           &= E\integ[3]{}{}{x}{\cc{\psi}\psi} \\
 	           &= E.
 \end{align*}
-På samma sättet fås $\expval{E^{2}} = E^{2}$ och $\Delta E = \sqrt{\expval{E^{2}} - \expval{E}^{2}} = 0.$
+På samma sättet fås $\expval{E^{2}} = E^{2}$ och $\Delta E = \sqrt{\expval{E^{2}} - \expval{E}^{2}} = 0$. Igen, stationära tillstånd har en välbestämd energi.
 
-Vi kan även skriva en allmän lösning som en superposition
+Vi kan nu skriva ett allmänt tillstånd som en superposition
 \begin{align*}
 	\Psi = \sum c_{n}\psi_{n}e^{-i\frac{E_{n}}{\hbar}t}
 \end{align*}
 där $H\psi_{n} = E_{n}\psi_{n}$ och summationen görs över hela systemets energispektrum.
 
-\paragraph{Möjliga energier}
-Om en partikel finns i någon potential, måste alla energiegenvärden vara större än potentialens minimum. För att visa detta, kan vi observera att
+\paragraph{Separabla problem}
+Betrakta ett problem med koordinater $x_{i}$ med en Hamiltonoperator som kan skrivas som $H = \sum H_{i}$, där varje $H_{i}$ endast verkar på $x_{i}$-koordinaten. Då kan Schrödingerekvationen skrivas som
 \begin{align*}
-	\expval{p^{2}} = \integ{}{}{x}{\abs{p\Psi}^{2}} > 0
+	\sum H_{i}\Psi = i\hbar\del{t}{\Psi}.
 \end{align*}
-och
+Vid att ansätta
 \begin{align*}
-	\expval{V} = \integ{}{}{x}{V\abs{\Psi}^{2}} > V_\text{min},
+	\Psi(\vb{x}) = \prod \Psi_{i}(x_{i})
 \end{align*}
-och därmed måste energins väntevärde vara större än $V_\text{min}$.
+kan Schrödingerekvationen separeras till $d$ problem
+\begin{align*}
+	H_{i}\Psi_{i} = i\hbar\del{t}{\Psi_{i}}.
+\end{align*}
+Den totala lösningen fås vid att multiplicera alla lösningar, och den totala energin fås vid att summera upp energin för varje tillstånd. Om varje lösning har energin $E_{i, n_{i}}$, är den totala energin $E_{n_{1}\dots n_{d}} = \sum E_{i, n_{i}}$.
 
 \paragraph{Kontinuitetsvillkor för vågfunktionen}
 Det gäller att vågfunktionen är kontinuerlig överallt och att dens derivata är kontinuerlig överallt förutom där potentialen är oändlig.
@@ -225,6 +229,281 @@ Eftersom vågfunktionen antas vara normerbar, måste högersidan gå mot $0$ då
 \end{align*}
 Om potentialen är ändlig, kommer även högersidan gå mot $0$, vilket implicerar att $\del{x}{\Psi}$ är kontinuerlig, och då måste även $\Psi$ vara kontinuerlig. Om nu potentialen skulle vara oändlig, skulle högersidan kunna bli ändlig även när $\varepsilon\to 0$, och detta ger att derivatan gör ett hopp. Däremot, om man integrerar igen, kommer man ändå få att $\Psi$ är kontinuerlig.
 
+\paragraph{Kvantmekaniska tillstånd och tillståndspostulatet}
+Vi utvidgar nu konceptet vågfunktion till ett allmänt kvantmekaniskt tillstånd $\ket{\Psi}$. Detta är en så kallad ketvektor i ett Hilbertrum. Ett fundamentalt postulat i kvantmekaniken är att $\ket{\Psi}$ beskriver systemet fullständigt.
+
+Till ketvektorerna hör även bravektorerna $\bra{\Psi}$, som bildar dualrummet till Hilbertrummet som alla ketvektorer finns i.
+
+\paragraph{Inreprodukt och ortogonalitet}
+Till Hilbertrummet hör en inreprodukt
+\begin{align*}
+	\braket{\Psi}{\Phi} = \integ[3]{}{}{\vb{x}}{\cc{\Psi}\Phi}.
+\end{align*}
+Denna inreprodukten uppfyller $\braket{\Psi}{\Phi} = \cc{\braket{\Psi}{\Phi}}$.
+
+Baserad på detta kan vi införa ortogonalitet och normerbarhet. Vi säjer att en vektor är normerad om $\norm{\Psi}^{2} = \braket{\Psi} = 1$. Vi kommer förutsätta att vektorerna vi ser är normerade. Vi säjer även att $\ket{\Psi_{i}}$ och $\ket{\Psi_{j}}$ är ortonormala om $\braket{\Psi_{i}}{\Psi_{j}} = \delta_{ij}$.
+
+\paragraph{Operatorer och operatorpostulatet}
+Ett annat fundamentalt postulat i kvantmekaniken är att observabler representeras av Hermiteska operatorer med en fullständig mängd av egenvektorer. Och vad betyder detta?
+
+Att representera en observabel med en operator innebär att det till varje klassiska observabel $A$ som kan skrivas som $A(x, p)$ tillhör en operator $\hat{A}(\hat{x}, \hat{p})$. Om det ej finns en klassisk motsvarighet till $A$, fås operatorn från experiment.
+
+Med Diracnotation kan vi skriva en operator som $A = \op{\Psi_{1}}{\Psi_{2}}$. Vi använder i bland begreppet c-nummer om $\braket{}$ och q-nummer om $\op{}{}$.
+
+För att prata om Hermiteska operatorer, måste vi först prata om adjungerade operatorer. Vi skriver en operators väntevärde som $\expval{A} = \expval{A}{\Psi}$, där
+\begin{align*}
+	\mel{\Psi}{A}{\Phi} = \integ[3]{}{}{\vb{x}}{\cc{\Psi}A\Phi}.
+\end{align*}
+Den adjungerade operatorn $\adj{A}$ till $A$ definieras som den operatorn så att $\mel{\Phi}{A}{\Psi} = \cc{\mel{\Psi}{\adj{A}}{\Phi}}$. En Hermitesk operator är en operator som uppfyller $\adj{A} = A$. Det visar sig att operatorer som $x, p$ och $H$ uppfyller detta, och det är ju trevligt. För andra operatorer, isär de vi kommer konstruera själva, tar vi det som ett postulat.
+
+Några viktiga räkneregler för adjungerade operatorer är:
+\begin{itemize}
+	\item $\adj{(c_{1}A + c_{2}B)} = \cc{c_{1}}\adj{A} + \cc{c_{2}}\adj{B}$.
+	\item $\adj{(\adj{A})} = A$.
+	\item $\adj{(AB)} = \adj{B}\adj{A}$.
+	\item Normen i kvadrat av $A\ket{\Psi}$ ges av $\expval{\adj{A}A}{\Psi}$.
+\end{itemize}
+
+Det kommer visa sig att vi är intresserade av att studera egenvärdesproblem för självadjungerade operatorer. Därför vill vi veta lite om egenvärdena och egenvektorerna till såna operatorer. Det kommer visa sig att dessa egenskaperna är bra, och att det därför är smart att baka adjungerade operatorer in i våra postulat.
+
+Betrakta först ett egentillstånd $\ket{\Psi_{n}}$ med egenvärde $a_{n}$. Vi får:
+\begin{align*}
+	\expval{A} = \expval{A}{\Psi_{n}} = \cc{(\expval{A}{\Psi_{n}})},
+\end{align*}
+vilket implicerar att $a_{n} = \cc{a_{n}}$, och vi drar slutsatsen att självadjungerade operatorer har reella egenvärden.
+
+Betrakta vidare två olika egentillstånd. Vi får
+\begin{align*}
+	\mel{\Psi_{n}}{A}{\Psi_{m}} = a_{m}\braket{\Psi_{n}}{\Psi_{m}} = \cc{\mel{\Psi_{m}}{A}{\Psi_{n}}} = \cc{a_{n}}\cc{\braket{\Psi_{n}}{\Psi_{m}}} = \cc{a_{n}}\braket{\Psi_{n}}{\Psi_{m}},
+\end{align*}
+och drar slutsatsen att att $\braket{\Psi_{n}}{\Psi_{m}} = \delta_{nm}$. Observera att om samma egenvärde har flera egenfunktioner, kan man använda Gram-Schmidts metod för att få ortogonala egenfunktioner.
+
+Att bevisa att dessa egenvektorerna är fullständinga är allmänt bara möjligt för ändligdimensionella vektorrum. Vi kommer baka detta in i postulatet, och postulera att operatorerna vi vill betrakta är konstruerade så att detta är sant.
+
+\paragraph{Diracnotation och operatorer}
+Med fullständighetspostulatet kan vi nu skriva ett allmänt tillstånd som $\ket{\Psi} = c_{i}\ket{\Psi_{i}}$, och vi ser även att $c_{i} = \braket{\Psi_{i}}{\Psi}$. Vilken bas har vi utvecklat $\ket{\Psi}$ i? Jo, det är godtyckligt. Oftast kommer det vara egenbasen till en operator.
+
+För att få en utgångspunkt, startar vi med identitetsoperatorn $I$. Med resonnemanget ovan kan vi skriva
+\begin{align*}
+	I\ket{\Psi} = \ket{\Psi} = \op{\Psi_{i}}{\Psi_{i}}\ket{\Psi},
+\end{align*}
+vilket implicerar $I = \op{\Psi_{i}}{\Psi_{i}}$.
+
+Nu kan vi betrakta en godtycklig operator $Q$ och skriva
+\begin{align*}
+	Q = IQI = \op{\Psi_{i}}{\Psi_{i}}Q\op{\Psi_{j}}{\Psi_{j}}.
+\end{align*}
+Vi kan definiera $Q_{ij} = \mel{\Psi_{i}}{Q}{\Psi_{j}}$, och får då
+\begin{align*}
+	Q = Q_{ij}\op{\Psi_{i}}{\Psi_{j}}.
+\end{align*}
+Alltså kan en operator dekomponeras i hur den verkar på tillstånden i basen, vilket vi känner från linjär algebra.
+
+\paragraph{Sannolikhetstolkning}
+Med hjälp av detta kan vi skriva
+\begin{align*}
+	\braket{\Psi} = \ev{I}{\Psi} = \braket{\Psi}{\Psi_{i}}\braket{\Psi_{i}}{\Psi} = \cc{c_{i}}c_{i} = 1.
+\end{align*}
+Vi tolkar detta som att $\abs{c_{i}}^{2}$ är sannolikheten att systemet är i tillståndet $\ket{\Psi_{i}}$.
+
+Vi kan även skriva väntevärdet av en observabel (med summation)
+\begin{align*}
+	\expval{A} = \ev{A}{\Psi} = \ev{AI}{\Psi} = \mel{\Psi}{A}{\Psi_{i}}\braket{\Psi_{i}}{\Psi} = a_{i}\braket{\Psi}{\Psi_{i}}\braket{\Psi_{i}}{\Psi} = a_{i}\abs{c_{i}}^{2}.
+\end{align*}
+Notera hur snyggt detta blir när vi använder operatorpostulatet. Detta resultatet tolkar vi som att väntevärdet ges av en summa av produkter av egenvärden och sannolikheten för att systemet är i det motsvarande egentillståndet.
+
+\paragraph{Mätpostulatet}
+Ett annat fundamentalt postulat i kvantmekaniken är följande:
+
+Om ett system befinner sig i ett tillstånd $\ket{\Psi}$ ger en mätning av storheten $A$ något av egenvärdena $a_{i}$ till $A$ som resultat med sannolikhet $\braket{\Psi_{i}}{\Psi}$. Mätningen ändrar även systemets tillstånd från $\ket{\Psi}$ till $\ket{\Psi_{i}}$, och vi säjer att tillståndet kollapsar.
+
+\paragraph{Schrödingerekvationen}
+Det sista postulatet i kvantmekaniken är att tillståndets tidsutvekling ges av
+\begin{align*}
+	H\ket{\Psi} = i\hbar\dv{t}\ket{\Psi}.
+\end{align*}
+
+\paragraph{Möjliga energier}
+Om en partikel finns i någon potential, måste alla energiegenvärden vara större än potentialens minimum. För att visa detta, kan vi observera att
+\begin{align*}
+	\expval{p^{2}} = \integ{}{}{x}{\abs{p\Psi}^{2}} > 0
+\end{align*}
+och
+\begin{align*}
+	\expval{V} = \integ{}{}{x}{V\abs{\Psi}^{2}} > V_\text{min},
+\end{align*}
+och därmed måste energins väntevärde vara större än $V_\text{min}$.
+
+\paragraph{Kommutatorer}
+Vi definierar kommutatorn mellan två operatorer som
+\begin{align*}
+	\commut{A}{B} = AB - BA.
+\end{align*}
+Om denna är $0$ säjs $A$ och $B$ att kommutera. Om två operatorer kommuterar spelar det ingen roll i vilken ordning man mäter de motsvarande observablerna - man kommer få samma resultat.
+
+Kommutatorn uppfyller följande relationer:
+\begin{itemize}
+	\item $\commut{A}{A} = 0$.
+	\item $\commut{A}{B} = -\commut{B}{A}$.
+	\item $\commut{AB}{C} = ABC - CAB = ABC - ACB + ACB - CAB = A\commut{B}{C} + \commut{A}{C}B$.
+	\item $\commut{A}{BC} = ABC - BCA = ABC - BAC + BAC - BCA = B\commut{A}{C} + \commut{A}{B}C$.
+\end{itemize}
+
+Kommutatorn ger Lie-algebran för operatorer på Hilbertrummet. Om det säjer dig någonting, bra. Annars, vänta tills du läser mer fysik.
+
+\paragraph{Representation av tillstånd som vektorer}
+Om vi utvecklar ett tillstånd i ortonormala basfunktioner, kan tillståndet representeras vid att låta utvecklingskoefficienterna vara element i vektorer. Med denna formalismen kan till exempel inreprodukten skrivas som en skalärprodukt.
+
+\paragraph{Operatorer som matriser}
+Om man representerar tillstånden som vektorer, ser vi att operatorer blir matriser, ty vi kommer ihåg att identitetsoperatorn kunne skrivas som $I = \ket{m}\bra{m}$. Då kan vi skriva
+\begin{align*}
+	A = IAI = \ket{m}\mel{m}{A}{n}\bra{n} = \ket{m}A_{mn}\bra{n},
+\end{align*}
+där de olika $A_{mn}$ är element i en matris som sedan kan operera på tillståndsvektorerna. Hur ser vi detta? Jo, dens verkan på ett element i basen är
+\begin{align*}
+	A\ket{n} = A_{mn}\ket{m}.
+\end{align*}
+Vi ser nu att en självadjungerad operator måste uppfylla
+\begin{align*}
+	A_{mn} = \mel{m}{A}{n} = \mel{n}{A}{m} = \cc{A_{mn}},
+\end{align*}
+och Hermiteska operatorer representeras av självadjungerade matriser. Sammansättningen av två operatorer ges av
+\begin{align*}
+	AB = IAIBI = \ket{m}\mel{m}{A}{k}\mel{k}{B}{n}\ket{n} = \ket{m}A_{mk}B_{kn}\bra{n},
+\end{align*}
+och motsvaras av matrismultiplikation.
+
+Om man utvecklar tillstånden i egenfunktioner till $A$, ges matriselementen av
+\begin{align*}
+	A_{mn} = \mel{m}{A}{n} = a_{n}\braket{m}{n} = a_{n}\delta_{mn}.
+\end{align*}
+
+\paragraph{Diracnotation i kontinuerliga fall}
+I kontinuerliga fall ersätts summationer över egentillstånd med integraler. Med denna övergången kommer en övergång från att sannolikheten för att hitta partikeln i något tillstånd ges av $\abs{\braket{n}{\Psi}}^{2}$ till att sannolikheten för att hitta partikeln i ett litet intervall ges av $\dd{x}\abs{\braket{x}{\Psi}}^{2}$, där $\ket{x}$ är ett egentillstånd till positionsoperatorn. Om vi jämför detta med vad vi vet från sannolikhetstolkningen, kan vi behandla vågfunktionen som en expansionskoefficient av det allmänna tillståndet $\ket{\Psi}$. Utifrån detta identifierar vi $\Psi = \braket{x}{\Psi}$. Identiteten blir
+\begin{align*}
+	I = \integ{}{}{x}{\ket{x}\bra{x}}.
+\end{align*}
+
+\paragraph{Ortonormering}
+I diskreta fall är ortonormeringsvillkoret $\braket{m}{n} = \delta_{mn}$. I kontinuerliga fall använder vi Fouriertransformen för att hitta ett ortonormeringsvillkor.
+
+Vi vet från teori om Fouriertransformen att
+\begin{align*}
+	\delta(x) &= \frac{1}{2\pi}\integ{-\infty}{\infty}{k}{e^{ikx}}, \\
+	\delta(k) &= \frac{1}{2\pi}\integ{-\infty}{\infty}{x}{e^{-ikx}}.
+\end{align*}
+Betrakta nu två olika egentillstånd till rörelsemängdsoperatorn, dvs. plana vågor. Ortonormering av dessa ger
+\begin{align*}
+	\braket{p'}{p} = \mel{p'}{I}{p} &= \integ{}{}{x}{\braket{p'}{x}\braket{x}{p'}} \\
+	                                &= \abs{A}^{2}\integ{}{}{x}{e^{-i\frac{p'}{\hbar}x}e^{i\frac{p}{\hbar}x}} \\
+	                                &= \abs{A}^{2}\hbar\integ{}{}{y}{e^{i(p - p')y}} \\
+	                                &= \abs{A}^{2}2\pi\hbar\delta(p - p').
+\end{align*}
+Egenfunktionerna är inte fullständigt specifierade än, så vid att välja $A = \frac{1}{\sqrt{2\pi\hbar}}$ fås ett ortonormeringsvillkor $\braket{p'}{p} = \delta(p - p')$, vilket är ganska analogt med ortonormeringsvillkoret i diskreta fall. För kontinuerliga fall är det denna sortens normering vi kommer att kräva.
+
+\paragraph{Positionsegenfunktioner}
+Betrakta nu positionsoperatorn i rörelsemängdsbasen. Egenfunktionsvillkoret ger
+\begin{align*}
+	\mel{p}{x}{x} = x\braket{p}{x} = x\cc{\braket{x}{p}}.
+\end{align*}
+Vi känner egentillstånden för rörelsemängd i positionsbasen, och relationen ovan ger oss  $\hat{x} = -\frac{\hbar}{i}\del{x}{}$ (detta kommer även fram från Fouriertransformens egenskaper). Deltafunktionsnormering, evt. Fouriertransformering, ger i positionsbasen $\braket{x}{y} = \delta(x - y)$.
+
+\paragraph{Fullständighet för operatorer}
+Två Hermiteska operatorer har en fullständig mängd gemensamma egenfunktioner om och endast om och endast om $\commut{A}{B} = 0$. Det finns ett bevis för detta i Mats' anteckningar.
+
+\paragraph{Utvidgad osäkerhetsprincip}
+För två självadjungerade operatorer $A$ och $B$ är
+\begin{align*}
+	\Delta A\Delta B = \frac{1}{2}\abs{\expval{\commut{A}{B}}}.
+\end{align*}
+
+För att visa detta, bilda operatorerna $a = A - \expval{A}$ och $b = B - \expval{B}$. Vi får
+\begin{align*}
+	\expval{a^{2}} = \expval{A^{2} - 2\expval{A}A + \expval{A}^{2}} = \expval{A^{2}} - \expval{A}^{2}
+\end{align*}
+och motsvarande för $b$. Cauchy-Schwarz' olikhet ger
+\begin{align*}
+	\expval{a^{2}}\expval{b^{2}}\geq\abs{\expval{ab}}^{2}.
+\end{align*}
+Vi kan skriva
+\begin{align*}
+	ab = \frac{1}{2}(ab + ba) + \frac{1}{2}\commut{a}{b}.
+\end{align*}
+Den första termen är självadjungerad, medan den andra byter tecken vid adjungering. Vi får därmed
+\begin{align*}
+	\expval{ab} = \expval{\frac{1}{2}(ab + ba)} + \expval{\frac{1}{2}\commut{a}{b}}.
+\end{align*}
+Vi noterar att
+\begin{align*}
+	\cc{\expval{\commut{a}{b}}} = -\expval{\commut{a}{b}},
+\end{align*}
+så denna termen måste vara helt imaginär. Detta implicerar
+\begin{align*}
+	\expval{ab} \geq \expval{\frac{1}{2}\commut{a}{b}}^{2}.
+\end{align*}
+Kommutatorn ges av
+\begin{align*}
+	\commut{a}{b} &= (A - \expval{A})(B - \expval{B}) - (B - \expval{B})(A - \expval{A}) \\
+	              &= AB - \expval{B}A - \expval{A}B + \expval{A}\expval{B} - (BA - \expval{A}B - \expval{B}A + \expval{A}\expval{B}) \\
+	              &= \commut{A}{B},
+\end{align*}
+och beviset är klart.
+
+Osäkerhetsprincipen kan även formuleras lite annorlunda, vid att skriva imaginärtermen ovan som
+\begin{align*}
+	-i\expval{\frac{1}{2}i\commut{a}{b}}.
+\end{align*}
+med den fördel att operatorn vars väntevärde beräknas nu är självadjungerad. Osäkerhetsprincipen kan då skrivas som
+\begin{align*}
+	\Delta A\Delta B = \frac{1}{2}\abs{\expval{i\commut{A}{B}}}
+\end{align*}
+
+Mats har ett bevis i sina anteckningar, formulerad med en något konstigare operator. Detta beviset tyckte jag varken var förtydligande eller till hjälp, så jag struntar i att visa det.
+
+Tolkningen av detta är att om två operatorer kommuterar, är de samtidigt mätbara. Vi säjer att de är kompatibla. Om två operatorer inte kommuterar, säjer vi att de är inkompatibla. Då är de inte allmänt samtidigt mätbara.
+
+\paragraph{Tidsändring av väntevärden}
+Vi får
+\begin{align*}
+	i\hbar\dv{\expval{Q}}{t} &= i\hbar\dv{t}\expval{Q}{\Psi} \\
+	                         &= i\hbar\mel{\Psi}{Q}{\del{t}{\Psi}} + i\hbar\mel{\del{t}{\Psi}}{Q}{\Psi} + i\hbar\braket{\dot{Q}}{\Psi} \\
+	                         &= \mel{\Psi}{Q}{i\hbar\del{t}{\Psi}} - \mel{i\hbar\del{t}{\Psi}}{Q}{\Psi} + i\hbar\braket{\dot{Q}}{\Psi} \\
+	                         &= \mel{\Psi}{Q}{H\Psi} - \mel{H\Psi}{Q}{\Psi} + i\hbar\braket{\dot{Q}}{\Psi} \\
+	                         &= \braket{\commut{Q}{H}}{\Psi} + i\hbar\braket{\dot{Q}}{\Psi},
+\end{align*}
+vilket ger (Heisenbergs ekvation?)
+\begin{align*}
+	\dv{\expval{Q}}{t} = \expval{\dot{Q}} + \frac{i}{\hbar}\braket{\commut{H}{Q}}{\Psi}.
+\end{align*}
+Vi noterar att observabler motsvarande tidsoberoende operatorer som kommuterar med Hamiltonoperatorn är bevarade.
+
+\paragraph{Osäkerhetsrelation för tid}
+Detta är sånt som får det att vrida sig i magen på mig.
+
+Osäkerhetsrelationen ger
+\begin{align*}
+	\Delta H\Delta Q\geq\frac{1}{2}\abs{\expval{\commut{H}{Q}}}.
+\end{align*}
+Om $Q$ är tidsoberoende, ger Heisenbergs ekvation
+\begin{align*}
+	\Delta H\Delta Q\geq\frac{\hbar}{2}\abs{\dv{\expval{Q}}{t}}.
+\end{align*}
+Låt oss nu definiera tiden $\Delta t$ det tar för $\expval{Q}$ att ändra sig med $\Delta Q$ genom
+\begin{align*}
+	\Delta Q = \abs{\dv{\expval{Q}}{t}}\Delta t.
+\end{align*}
+Detta ger
+\begin{align*}
+	\Delta H\Delta t\geq\frac{\hbar}{2}.
+\end{align*}
+
+\paragraph{Basvektorer för separabla lösningarn}
+Om man har ett separabelt problem, kan den allmänna lösningen skrivas med Diracnotation som
+\begin{align*}
+	\ket{\Psi_{n_{1}\dots n_{d}}} = \bigotimes\limits_{i = 1}^{d}\ket{\Psi_{i, n_{i}}},
+\end{align*}
+där $\otimes$ är tensorprodukten. Denna kommer oftast inte skrivas ut.
+
 \paragraph{Harmoniska oscillatorn}
 Harmoniska oscillatorn är ett viktigt problem i kvantmekaniken.
 
@@ -235,98 +514,3 @@ Både klassiskt och kvantmekaniskt kommer vi Taylorutveckla olika potentialer oc
 	V \approx V(0) + \deval{V}{x}{0}x + \frac{1}{2}\deval[2]{V}{x}{0}x^{2}.
 \end{align*}
 Vi antar att $x = 0$ motsvarar jämvikt, varför den andra termen måste vara $0$. Vidare är det konstanta bidraget ointressant, då det ej ger något bidrag till fysiken. Kvar står en harmonisk oscillatorterm vars styrka ges av potentialens krökning i jämviktsläget.
-
-\paragraph{Stern-Gerlachs experiment}
-I Stern-Gerlachs experiment sköts en stråla av silveratomer genom ett magnetfält, och observerade strålen på andra sidan. Resultatet blev två distinkta träffpunkter.
-
-Atomernas energi i magnetfältet ges av $H = -\vb{\mu}\cdot\vb{B}$. Om det magnetiska momentet $\vb{\mu}$ är intrinsikt, ges $z$-komponenten av kraften på atomen av $F_{z} = -\vb{\mu}\cdot\dv{\vb{B}}{z}$.
-
-Stern och Gerlach tolkade sitt experiment som att de hade hittat en rumskvantisering som Bohr hade postulerat. Detta var en feltolkning, då uppsplittringen orsakas av elektronspinnen. Denna tolkningen föreslogs först i 1925 av Pauli och Kramers. Uhlenbeck och Goudsmit publicerade en artikel om detta i 1926.
-
-\paragraph{Spinn}
-Vi har nu hittat halvtaliga lösningar av $l$ för rörelsemängdsmomentet. Vi tror att dessa kommer beskriva det som kallas för spinn. För att införa spinn, postulerar vi nu att varje partikel har ett intrinsikt rörelsemängdsmoment $\vb{S}$ som uppfyller
-\begin{align*}
-	\commut{S_{x}}{S_{y}} = i\hbar S_{z},\ \commut{S^{2}}{S_{z}} = 0,
-\end{align*}
-alltså samma egenskaper som banrörelsemängdsmomentet hade.
-
-Egenvärdet för detta rörelsemängdsmomentet är $\hbar^{2}s(s + 1)$. Värdet av $s$ är fixt för en given sorts partikel, och är:
-\begin{itemize}
-	\item $\frac{1}{2}$ för materiepartiklar som elektroner, kvarkar, protoner, neutroner osv.
-	\item $1$ för kraftpartiklar som fotoner, gluoner och $Z$- och $W$-bosoner.
-	\item $0$ för Higgsbosonen.
-	\item $2$ för den hypotetiska gravitonen.
-\end{itemize}
-
-För att konstruera operatorn, tittar vi på experimenten för $s = \frac{1}{2}$-partiklar. För dessa ersätter $s$ kvanttalet $l$ i halvtaliga fall. Det visar sig att det magnetiska momentet i $z$-riktning ges av $\mu_{z} = -\frac{e}{m}S_{z}$, där $S_{z} = \pm\frac{\hbar}{2}$. Spinnoperatorn kan då i egenbasen konstrueras som
-\begin{align*}
-	S_{z} = \frac{1}{2}\hbar
-	\mqty[
-		1 & 0 \\
-		0 & -1
-	],\
-	S^{2} = s(s + 1)\hbar^{2}
-	\mqty[
-		1 & 0 \\
-		0 & 1
-	].
-\end{align*}
-Egentillstånden kallas för spinorer, och betecknas med $\chi_{\pm}$ eller $\ket{\frac{1}{2}, \pm 1}$.
-
-Det motsvarande Hilbertrummet är tvådimensionellt, och vi kan genom vårat postulat införa stegoperatorerna
-\begin{align*}
-	S_{\pm} = S_{x} \pm iS_{y}.
-\end{align*}
-De verkar enligt
-\begin{align*}
-	S_{\pm}\ket{s, m} = \sqrt{s(s + 1) - m(m \pm 1)}\hbar\ket{s, m \pm 1}.
-\end{align*}
-Vi kan då konstruera matriserna
-\begin{align*}
-	S_{+} = \hbar
-	\mqty[
-		0 & 1 \\
-		0 & 0
-	],\
-	S_{-} = \hbar
-	\mqty[
-		0 & 0 \\
-		1 & 0
-	].
-\end{align*}
-Detta ger oss
-\begin{align*}
-	S_{x} = \frac{1}{2}\hbar
-	\mqty[
-		0 & 1 \\
-		1 & 0
-	],\ 
-	S_{y} = \frac{1}{2}\hbar
-	\mqty[
-		0 & -i \\
-		i & 0
-	].
-\end{align*}
-
-\paragraph{Addition av rörelsemängdsmoment}
-Betrakta det totala spinnet $\vb{S} = \vb{S}_{1} + \vb{S}_{2}$ för ett system. Eftersom de två termerna opererar på olika koordinater, gäller det att
-\begin{align*}
-	\commut{S_{x}}{S_{y}} = i\hbar S_{z}.
-\end{align*}
-Vi har nu två val av bas för Hilbertrummet:
-\begin{itemize}
-	\item Produktbasen $\ket{s_{1}, s_{2}, m_{1}, m_{2}} = \ket{s_{1},m_{1}}\otimes\ket{s_{2}, m_{2}}$. Detta visar sig inte vara en bra bas.
-	\item Den kopplade basen $\ket{s_{1}, s_{2}, s, m}$, som även skrivs $\ket{s, m}$.
-\end{itemize}
-För att göra basbytet, kan vi använda fullständighetsrelationen
-\begin{align*}
-	\ket{s, m} = \sum\limits_{m_{1}, m_{2}}\ket{s_{1}, s_{2}, m_{1}, m_{2}}\braket{s_{1}, s_{2}, m_{1}, m_{2}}{s, m}.
-\end{align*}
-Vi definierar då Clebsh-Gordankoefficienterna
-\begin{align*}
-	C_{m_{1}, m_{2}, m}^{s_{1}, s_{2}, m} = \braket{s_{1}, s_{2}, m_{1}, m_{2}}{s, m}.
-\end{align*}
-Dessa är endast nollskilda om $m = m_{1} + m_{2}$. Detta ses eftersom $S_{z} = S_{1z} + S_{2z}$. Vidare kan $s$ anta värden från $\abs{s_{1} - s_{2}}$ till $s_{1} + s_{2}$. Detta ses eftersom produktbasen innehåller $(2s_{1} + 1)(2s_{2} + 1)$ basvektorer. Om vi antar $s_{1} > s_{2}$, kan vi testa påståendet i den kopplade basen. Det totala antalet basvektorer är då
-\begin{align*}
-	\sum\limits_{s_{1} - s_{2}}^{s_{1} + s_{2}}2s + 1 = (2s_{1} + 1)(2s_{2} + 1).
-\end{align*}
