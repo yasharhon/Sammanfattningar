@@ -98,11 +98,11 @@ För att få normering, betraktar vi
 \end{align*}
 Dens inreprodukt med sig själv är
 \begin{align*}
-	\braket{L_{-}L_{+}}{m} = \abs{A_{+}}^{2}\braket{m}
+	\expval{L_{-}L_{+}}{m} = \abs{A_{+}}^{2}\braket{m \pm 1}
 \end{align*}
-å ena sidan och
+å ena sidan, eftersom stegoperatorerna är varandras adjungerade operatorer, och
 \begin{align*}
-	\braket{L^{2} - L_{z}^{2} - \hbar L_{z}}{m} = \hbar^{2}(l(l + 1) - m^{2} - m)\braket{m},
+	\expval{L^{2} - L_{z}^{2} - \hbar L_{z}}{m} = \hbar^{2}(l(l + 1) - m^{2} - m)\braket{m},
 \end{align*}
 vilket ger
 \begin{align*}
@@ -110,7 +110,7 @@ vilket ger
 \end{align*}
 och på samma sätt
 \begin{align*}
-	A_{+} = \sqrt{l(l + 1)- m(m - 1)}\hbar.
+	A_{-} = \sqrt{l(l + 1)- m(m - 1)}\hbar.
 \end{align*}
 
 Osäkerhetsrelationen ger
@@ -119,42 +119,19 @@ Osäkerhetsrelationen ger
 \end{align*}
 Alltså är inte tillstånden vi har hittat egenfunktioner till $L_{x}$ eller $L_{y}$ om inte $m = 0$.
 
-\paragraph{Partiklar med spinn i magnetfält}
-En laddning $q$ med den givna spinnen får det magnetiska momentet $\vb{\mu} = \gamma\vb{S}$, där $\gamma = \frac{gq}{2m}$ och $g$ är en gyroskopisk faktor. För elektroner är den ungefär $2$ och för protoner är den ungefär $5$.
-
-Välj nu koordinatsystem så att $\vb{B}$ pekar i $z$-riktningen. Hamiltonianen ges då av
-\begin{align*}
-	H = -\vb{\mu}\cdot\vb{B} = -\frac{gqB}{2m}S_{z} = \omega_{0}S_{z} = \frac{1}{2}\hbar\omega_{0}
-	\mqty[
-		1 & 0 \\
-		0 & -1
-	].
-\end{align*}
-Dens egenvärden är $E_{m}\hbar\omega_{0}$.
-
-\paragraph{Schrödingerekvatinen för en partikel i ett magnetfält}
-Den tidsberoende Schrödingerekvationen för en partikel i ett magnetfält blir
-\begin{align*}
-	i\hbar\dv{\chi}{t} = H\chi.
-\end{align*}
-En allmän spinor för en $s = \frac{1}{2}$-partikel ges då av
-\begin{align*}
-	\chi = a\chi_{+}e^{-i\frac{E_{+}t}{\hbar}} + b\chi_{-}e^{-i\frac{E_{-}t}{\hbar}}.
-\end{align*}
-Normeringsvillkoret för såna tillstånd uppmanar oss att skriva $a = \cos{\frac{\theta}{2}}$ och $b = \sin{\frac{\theta}{2}}$. Vi får med detta
-\begin{align*}
-	\expval{S_{x}} &= \frac{1}{2}\hbar\sin{\theta}\cos{\omega_{0}t}, \\
-	\expval{S_{y}} &= \frac{1}{2}\hbar\sin{\theta}\sin{\omega_{0}t}, \\
-	\expval{S_{z}} &= \frac{1}{2}\hbar\cos{\theta}.
-\end{align*}
-Alltså precesserar spinnet kring $z$-axeln med frekvens $\omega_{0}$ i ett plan som ges av initialtillståndet.
-
 \paragraph{Stern-Gerlachs experiment}
 I Stern-Gerlachs experiment sköts en stråla av silveratomer genom ett magnetfält, och observerade strålen på andra sidan. Resultatet blev två distinkta träffpunkter.
 
 Atomernas energi i magnetfältet ges av $H = -\vb{\mu}\cdot\vb{B}$. Om det magnetiska momentet $\vb{\mu}$ är intrinsikt, ges $z$-komponenten av kraften på atomen av $F_{z} = -\vb{\mu}\cdot\dv{\vb{B}}{z}$.
 
 Stern och Gerlach tolkade sitt experiment som att de hade hittat en rumskvantisering som Bohr hade postulerat. Detta var en feltolkning, då uppsplittringen orsakas av elektronspinnen. Denna tolkningen föreslogs först i 1925 av Pauli och Kramers. Uhlenbeck och Goudsmit publicerade en artikel om detta i 1926.
+
+\paragraph{Generalisering av rörelsemängdsmoment}
+Vi ser att vi kommer behöva en utvidgad beskrivning av rörelsemängdsmoment, och definierar då ett rörelsemängdsmoment som en operator $\vb{L}$ med kommutationsrelationer
+\begin{align*}
+	\commut{S_{i}}{S_{j}} = \varepsilon_{ijk}S_{k}.
+\end{align*}
+Från detta följer de andra egenskaperna som vi fick från banrörelsemängdsmomentet. Någon borde kanske visa detta.
 
 \paragraph{Spinn}
 Vi har nu hittat halvtaliga lösningar av $l$ för rörelsemängdsmomentet. Vi tror att dessa kommer beskriva det som kallas för spinn. För att införa spinn, postulerar vi nu att varje partikel har ett intrinsikt rörelsemängdsmoment $\vb{S}$ som uppfyller
@@ -220,6 +197,36 @@ Detta ger oss
 		i & 0
 	].
 \end{align*}
+
+\paragraph{Partiklar med spinn i magnetfält}
+En laddning $q$ med den givna spinnen får det magnetiska momentet $\vb{\mu} = \gamma\vb{S}$, där $\gamma = \frac{gq}{2m}$ och $g$ är en gyroskopisk faktor. För elektroner är den ungefär $2$ och för protoner är den ungefär $5$.
+
+Välj nu koordinatsystem så att $\vb{B}$ pekar i $z$-riktningen. Hamiltonianen ges då av
+\begin{align*}
+	H = -\vb{\mu}\cdot\vb{B} = -\frac{gqB}{2m}S_{z} = \omega_{0}S_{z} = \frac{1}{2}\hbar\omega_{0}
+	\mqty[
+		1 & 0 \\
+		0 & -1
+	].
+\end{align*}
+Dens egenvärden är $E_{m}\hbar\omega_{0}$.
+
+\paragraph{Schrödingerekvatinen för en partikel i ett magnetfält}
+Den tidsberoende Schrödingerekvationen för en partikel i ett magnetfält blir
+\begin{align*}
+	i\hbar\dv{\chi}{t} = H\chi.
+\end{align*}
+En allmän spinor för en $s = \frac{1}{2}$-partikel ges då av
+\begin{align*}
+	\chi = a\chi_{+}e^{-i\frac{E_{+}t}{\hbar}} + b\chi_{-}e^{-i\frac{E_{-}t}{\hbar}}.
+\end{align*}
+Normeringsvillkoret för såna tillstånd uppmanar oss att skriva $a = \cos{\frac{\theta}{2}}$ och $b = \sin{\frac{\theta}{2}}$. Vi får med detta
+\begin{align*}
+	\expval{S_{x}} &= \frac{1}{2}\hbar\sin{\theta}\cos{\omega_{0}t}, \\
+	\expval{S_{y}} &= \frac{1}{2}\hbar\sin{\theta}\sin{\omega_{0}t}, \\
+	\expval{S_{z}} &= \frac{1}{2}\hbar\cos{\theta}.
+\end{align*}
+Alltså precesserar spinnet kring $z$-axeln med frekvens $\omega_{0}$ i ett plan som ges av initialtillståndet.
 
 \paragraph{Addition av rörelsemängdsmoment}
 Betrakta det totala spinnet $\vb{S} = \vb{S}_{1} + \vb{S}_{2}$ för ett system. Eftersom de två termerna opererar på olika koordinater, gäller det att
