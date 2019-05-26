@@ -1,0 +1,224 @@
+\section{Störningsteori}
+
+\paragraph{Störningsräkningarnas principer}
+Vi vill lösa problemet $H\Psi_{n} = E_{n}\Psi_{n}$. Detta görs på följande sätt:
+\begin{itemize}
+	\item Antag att vi har ett löst problem $H^{0}\Psi_{n}^{0} = E_{n}^{0}\Psi_{n}^{0}$.
+	\item Inför den störda hamiltonianen $H = H^{0} + V$, vars egenfunktioner vi vill hitta.
+	\item Inför styrkeparametern $\lambda$ genom $H = H^{0} + \lambda V$.
+	\item Sök en potensserielösning $\Psi = \Psi_{n}^{0} + \lambda\Psi_{n}^{1} + \lambda^{2}\Psi_{n}^{2}+ \dots$. Denna har energi $E_{n} = E_{n}^{0} + \lambda E_{n}^{1} + \lambda^{2}E_{n}^{2} + \dots$. De olika termerna är koorektioner av olik ordning, och superskriptet indikerar vad ordningen är för varje term.
+\end{itemize}
+
+Störningarna av olik ordning fås vid att identifiera termer från Schrödingerekvationen
+\begin{align*}
+	(H^{0} + \lambda V)(\Psi_{n}^{0} + \lambda\Psi_{n}^{1} + \lambda^{2}\Psi_{n}^{2}+ \dots) = (E_{n}^{0} + \lambda E_{n}^{1} + \lambda^{2}E_{n}^{2} + \dots)(\Psi_{n}^{0} + \lambda\Psi_{n}^{1} + \lambda^{2}\Psi_{n}^{2}+ \dots).
+\end{align*}
+Till exempel ges första ordningens störning av
+\begin{align*}
+	H^{0}\Psi_{n}^{1} + V\Psi_{n}^{0} = E_{n}^{0}\Psi_{n}^{1} + E_{n}^{1}\Psi_{n}^{0}
+\end{align*}
+Inreprodukten med $\Psi_{n}^{0}$ på båda sidor ger
+\begin{align*}
+	\mel{\Psi_{n}^{0}}{H^{0}}{\Psi_{n}^{1}} + \mel{\Psi_{n}^{0}}{V}{\Psi_{n}^{0}} = E_{n}^{0}\braket{\Psi_{n}^{0}}{\Psi_{n}^{1}} + E_{n}^{1}\braket{\Psi_{n}^{0}}{\Psi_{n}^{0}}.
+\end{align*}
+Eftersom hamiltonoperatorn är Hermitesk, kommer första term på båda sidor vara lika, vilket ger
+\begin{align*}
+	 E_{n}^{1} = \mel{\Psi_{n}^{0}}{V}{\Psi_{n}^{0}}.
+\end{align*}
+Vi kan även visa att
+\begin{align*}
+	\Psi_{n}^{1} = \sum\limits_{m \neq n}\frac{\mel{\Psi_{m}^{0}}{V}{\Psi_{n}^{0}}}{E_{n}^{0} - E_{m}^{0}}\Psi_{m}^{0},
+\end{align*}
+som ökar i amplitud med $V$. Det gäller även att
+\begin{align*}
+	E_{n}^{2} = \sum\limits_{m \neq n}\frac{\abs{\mel{\Psi_{m}^{0}}{V}{\Psi_{n}^{0}}}^{2}}{E_{n}^{0} - E_{m}^{0}},
+\end{align*}
+som ökar i styrka med $V^{2}$. Observera att nämnaren i dessa uttryck gör det helt klart att denna sortens räkning endast gäller för icke-degenererade energier.
+
+\paragraph{Degenererade energier}
+För att få en indikation på hur det går till, betrakta ett tvåfalt degenererad egentillstånd med två egentillstånd $\Psi_{a}^{0}$ och $\Psi_{b}^{0}$. Dessa kan väljas ortogonala. För att få störningen av första ordningen, gör vi ansatsen $\Psi = \alpha\Psi_{a}^{0} + \beta\Psi_{b}^{0} + \Psi^{1}$. Schrödingerekvationen ger enligt samma argument som ovan att
+\begin{align*}
+	H^{0}\Psi^{1} + V(\alpha\Psi_{a}^{0} + \beta\Psi_{b}^{0}) = E^{0}\Psi^{1} + E^{1}(\alpha\Psi_{a}^{0} + \beta\Psi_{b}^{0}).
+\end{align*}
+Inreprodukten med $\Psi_{a}^{0}$ ger igen
+\begin{align*}
+	\mel{\Psi_{a}^{0}}{H^{0}}{\Psi^{1}} + \alpha\mel{\Psi_{a}^{0}}{V}{\Psi_{a}^{0}} + \beta\mel{\Psi_{a}^{0}}{V}{\Psi_{b}^{0}} = E_{n}^{0}\braket{\Psi_{a}^{0}}{\Psi^{1}} + E^{0}(\alpha\braket{\Psi_{a}^{0}}{\Psi_{a}^{0}} + \beta\braket{\Psi_{a}^{0}}{\Psi_{b}^{0}}),
+\end{align*}
+där första termen på varje sida igen är lika. Vid att definiera $W_{ab} = \mel{\Psi_{a}^{0}}{V}{\Psi_{a}^{0}}$ och göra motsvarande fast för $\Psi_{b}^{0}$ fås ekvationssystemet
+\begin{align*}
+	\alpha W_{aa} + \beta W_{ab} = E^{1}\alpha,\ \alpha W_{ba} + \beta W_{bb} = E^{1}\beta,
+\end{align*}
+som är en egenvärdesekvation i energin. Vid att välja basen på ett sånt sätt att $W_{ab} = W_{ba} = 0$ kan de möjliga egenvärdena läsas av direkt.
+
+\paragraph{Störningar i väte}
+Vi vill introducera störningar i väteatomens energier för att se vad som händer med energierna. Vid att jämföra detta med experiment kan man testa kvantmekanikens giltighet.
+
+\paragraph{Störning med elektriskt fält}
+Vi lägger först på ett elektriskt fält i $z$-riktning, med en potential på formen $V = e\mathcal{E}z_{\text{p}} - e\mathcal{E}z_{\text{e}}$ till totala systemet. Vi betraktar väteatomen i masscentrumssystemet, och detta kan då skrivas om i masscentrumssystemet som $V = e\mathcal{E}z$. Alternativt kan vi införa dipolmomentet $\vb{p} = -e\vb{r}_{e} + e\vb{r}_{p} = -e\vb{r}$, och skriva $V = -\vb{p}\cdot\vb{E}$. Första ordningens energikorrektion till grundtillståndet blir
+\begin{align*}
+	E_{100}^{1} = \expval{e\mathcal{E}z}{100} = 0,
+\end{align*}
+då grundtillståndet är sfäriskt symmetriskt.
+
+Andra ordningens korrektion blir
+\begin{align*}
+	E_{100}^{2} = e^{2}\mathcal{E}^{2}\sum\limits_{nlm \neq 100}\frac{\abs{\mel{nlm}{z}{100}}^{2}}{E_{1}^{0} - E_{n}^{0}} = -\frac{9}{4}4\pi\varepsilon_{0}a^{3}\mathcal{E}^{2}.
+\end{align*}
+Att göra denna beräkningen analytiskt kan göras, men vi vill i stället göra en uppskattning vid att låta alla $E_{n}^{0}$ vara $E_{2}^{0}$ för $n > 2$. Vi kan då ta ut energifaktorn från summationen ovan och få
+\begin{align*}
+	E_{100}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\sum\limits_{nlm \neq 100}\abs{\mel{nlm}{z}{100}}^{2}.
+\end{align*}
+Enligt argumentet från första ordningen kan vi utvidga summan till
+\begin{align*}
+	E_{100}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\sum\abs{\mel{nlm}{z}{100}}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\sum\mel{100}{z}{nlm}\mel{nlm}{z}{100}.
+\end{align*}
+Detta kan förenklas med hjälp av identitetsoperatorn till
+\begin{align*}
+	E_{100}^{2} = \frac{e^{2}\mathcal{E}^{2}}{E_{1}^{0} - E_{2}^{0}}\expval{z^{2}}{100} = -\frac{8}{3}4\pi\varepsilon_{0}a^{3}\mathcal{E}^{2}.
+\end{align*}
+
+De andra energitillstånden är degenererade med degenerationsgrad $2n^{2}$. Vi vill nu välja en god bas så att störningsmatrisen blir diagonal. Då blir diagonalelementen i störningsmatrisen korrektionerna av första ordning. Vi kan utnyttja att om $A$ är Hermitesk med icke-degenererade egenvärden och störningen $V$ kommuterar med både $A$ och $H^{0}$, är $V$ diagonal i egenbasen till $A$.
+
+\paragraph{Relativistisk korrektion}
+Den relativistiska kinetiska energin ges av
+\begin{align*}
+	\sqrt{p^{2}c^{2} + (mc^{2})^{2}} - mc^{2},
+\end{align*}
+med en första korrektionsterm
+\begin{align*}
+	V = -\frac{p^{4}}{8m^{3}c^{2}}.
+\end{align*}
+Denna kommuterar med den klassiska hamiltonoperatorn, och vi kan därför använda icke-degenererad störningsräkning. Man kan visa att
+\begin{align*}
+	E_{n}^{1} = -\frac{(E_{n}^{0})^{2}}{2mc^{2}}\left(\frac{4n}{l + \frac{1}{2}} - 3\right),
+\end{align*}
+och
+\begin{align*}
+	\frac{E_{n}^{1}}{E_{n}^{0}}\propto E_{n}^{1}\propto\alpha^{2},
+\end{align*}
+där vi har infört finstrukturkonstanten
+\begin{align*}
+	\alpha = \frac{e^{2}}{4\pi\varepsilon_{0}\hbar c}.
+\end{align*}
+
+\paragraph{Spinn-bankoppling}
+Vi betraktar nu väteatomen i elektronens vilosystem. Då snurrar protonen kring elektronen, vilket ger upphov till en ström, som igen skapar ett magnetfält
+\begin{align*}
+	\vb{B} = \mu_{0}\frac{I}{2r}\vb{e}_{z} = \frac{e}{4\pi\varepsilon_{0}mc^{2}r^{3}}\vb{L}.
+\end{align*}
+Detta ger då en energikorrektion
+\begin{align*}
+	V = \frac{e^{2}}{4\pi\varepsilon_{0}m^{2}c^{2}r^{3}}\vb{L}\cdot\vb{S}.
+\end{align*}
+Störningarna som beräknades från detta var fel med en faktor $2$. Detta kom av att beräkningarna inte tog med i betraktningen att elektronens vilosystem inte är ett inertialsystem. Det faktiska energibidraget skall vara
+\begin{align*}
+	V = \frac{e^{2}}{8\pi\varepsilon_{0}m^{2}c^{2}r^{3}}\vb{L}\cdot\vb{S}.
+\end{align*}
+Vi får
+\begin{align*}
+	E_{n}^{1} &= \frac{e ^{2}}{8\pi\varepsilon_{0}}\frac{1}{m^{2}c^{2}}\frac{1}{2}\expval{J^{2} - L^{2} - S^{2}}\expval{\frac{1}{r^{3}}} \\
+	          &= \frac{(E_{n}^{0})^{2}}{mc^{2}}\frac{n(j(j + 1) - l(l + 1) - \frac{3}{4})}{l(l + \frac{1}{2})(l + 1)},
+\end{align*}
+där vi har användt att alla ingående operatorer opererar på olika koordinater, varför vi kan splitta upp väntevärdena på detta sättet.
+
+\paragraph{Hyperfinstruktur}
+Koppling mellan elektronens och protonens magnetiska moment ger en korrektionsterm
+\begin{align*}
+	E_{100}^{1} = \frac{\mu_{0}g_{p}e^{2}}{3m_{e}m_{p}}\expval{\vb{S}_{p}\cdot\vb{S}_{e}}\abs{\eval{\Psi_{100}}_{\vb{r} = \vb{0}}}^{2}.
+\end{align*}
+Detta ger en energisplittring lika med energiskillnaden mellan en spinntriplett och en spinnsinglett.
+
+\paragraph{Zeeman-effekt}
+Zeeman-effekten är energiskift hos elektroner i ett homogent magnetiskt fält. Störningstermen är
+\begin{align*}
+	V = -(\vb{\mu}_{l} + \vb{\mu}_{s})\cdot\vb{B} = \frac{e}{2m}\vb{B}\cdot(\vb{L} + 2\vb{S}) = \frac{e}{2m}\vb{B}\cdot(\vb{J} + \vb{S}).
+\end{align*}
+
+\subparagraph{Svaga fält}
+Här görs endast korrektion av finstrukturenergier. Eftersom $S_{z}$ är osäker i den kopplade basen, fås dock en icke-diagonal störningsmatris. Tidsmedelvärdet av $\vb{S}$ kan dock användas. Man får
+\begin{align*}
+	E^{1} = \frac{e}{2m}B\left(1 + \frac{j(j + 1) + s(s + 1) - l(l + 1)}{2j(j + 1)}\right)m_{j}\hbar.
+\end{align*}
+
+\subparagraph{Starka fält}
+För starka fält är Zeeman-effekten dominant, och man kan göra räkningen i produktbasen. Man får
+\begin{align*}
+	E^{1} = \mu_{B}B(m_{l} + 2m_{s}).
+\end{align*}
+
+\subparagraph{Mellanstarka fält}
+I detta fallet finns helt enkelt ingen bra bas. Det är dock inte mycket nytt som händer här.
+
+\paragraph{Tidsberoende störningar}
+För att göra tidsberoende störningar, utgår vi från ett känt ostört problem $H^{0}\ket{n} = E_{n}\ket{n}$. Vi vill nu titta på en störning $H = H^{0} + \lambda V(t)$. Om systemet startar i tillstånd $\ket{a}$, får vi
+\begin{align*}
+	\ket{\Psi} = c_{n}\ket{n},
+\end{align*}
+där
+\begin{align*}
+	c_{n} = \frac{1}{i\hbar}\integ{0}{t}{t'}{e^{i\omega_{0}t'}\mel{n}{V(t')}{a}},\ n \neq a,\ \omega_{0} = \frac{E_{n} - E_{a}}{\hbar}.
+\end{align*}
+Vi kan även beräkna övergångssannolikheten
+\begin{align*}
+	p_{a\to n} = \frac{1}{\hbar^{2}}\abs{\integ{0}{t}{t'}{e^{i\omega_{0}t'}\mel{n}{V(t')}{a}}}^{2}.
+\end{align*}
+
+\paragraph{Oscillerande störning}
+Ett viktigt fall är en oscillerande störning
+\begin{align*}
+	V = V(\vb{r})\cos{\omega t}.
+\end{align*}
+De nya koefficienterna ges av
+\begin{align*}
+	c_{n} &= \frac{1}{2i\hbar}\mel{n}{V(\vb{r})}{a}\integ{0}{t}{t'}{e^{i\omega_{0}t'}(e^{i\omega t'} + e^{-i\omega t'})} \\
+	      &= \frac{V_{ba}}{i\hbar}\left(e^{i\frac{\omega + \omega_{0}}{2}}\frac{\sin{(\omega + \omega_{0})t}}{\omega_{0} + \omega} + e^{i\frac{\omega_{0} - \omega}{2}}\frac{\sin{(\omega_{0} - \omega)t}}{\omega_{0} - \omega}\right).
+\end{align*}
+Denna har resonans för $\omega = \pm\omega_{0}$, vilket motsvarar en övergång $a\to n$ eller $n\to a$.
+
+\paragraph{Emission och absorption av strålning}
+Elektroner växelverkar i huvudsak med det elektriska fältet i en elektromagnetisk våg. Betrakta därför ett infallande monokromatiskt elektriskt fält polariserat i $z$-riktningen. Det ger upphov till en potential
+\begin{align*}
+	V = eE_{0}z\cos{\omega t}.
+\end{align*}
+Vi får
+\begin{align*}
+	V_{ba} = eE_{0}\mel{b}{z}{a} = -PE_{0},
+\end{align*}
+där $P$ är polarisationens matriselement mellan $a$ och $b$.
+
+\paragraph{Inkoherent strålning}
+Antag att man har en frekvensfördelning $\rho$ så att den termiska energin ges av
+\begin{align*}
+	\dd{U} = \rho\dd{\omega}.
+\end{align*}
+Inkoherent strålning är strålning där det inte finns interferens mellan olika moder. För såna fall kan man beräkna en övergångshastighet
+\begin{align*}
+	R_{ab} = \frac{\pi}{3\varepsilon_{0}\hbar^{2}}\abs{P}^{2}\rho^{2}.
+\end{align*}
+Detta är Fermis gyllene regel. Koefficienten
+\begin{align*}
+	\frac{\pi}{3\varepsilon_{0}\hbar^{2}}\abs{P}^{2}
+\end{align*}
+är Einsteins $B$-koefficient.
+
+\paragraph{•}
+Antag att vi har $N_{a}$ atomer i $a$ och $N_{b}$ atomer i $b$. Vi vill gärna veta hastigheten för spontan emission. En detaljerad balans ger
+\begin{align*}
+	\dv{N_{b}}{t} = -N_{a}A - N_{b}B_{ba}\rho(\omega_{0}) + N_{a}B_{ab}\rho(\omega_{0}).
+\end{align*}
+Maxwell-Boltzmann-statistik ger
+\begin{align*}
+	\frac{N_{a}}{N_{b}} = e^{\beta\hbar\omega},
+\end{align*}
+vilket implicerar
+\begin{align*}
+	\rho(\omega_{0}) = \frac{A}{e^{\beta\hbar\omega}B_{ab} - B_{ba}}.
+\end{align*}
+Detta skall vara lika med Plancks fördelning
+\begin{align*}
+	\frac{\hbar}{\pi^{2}c^{3}}\frac{\omega^{3}}{e^{\beta\hbar\omega - 1}},
+\end{align*}
+vilket implicerar
+\begin{align*}
+	A = \frac{\omega_{0}^{3}\abs{P}^{2}}{3\pi\varepsilon_{0}\hbar c^{3}}.
+\end{align*}
