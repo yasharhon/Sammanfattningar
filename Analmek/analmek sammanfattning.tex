@@ -1,5 +1,5 @@
 \documentclass[a4paper, 11pt]{article}
-\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[swedish]{babel}
 \usepackage{amssymb}
 \usepackage{hyperref}
@@ -8,9 +8,6 @@
 \usepackage[arrowdel]{physics}
 \usepackage{tensor}
 \usepackage{pgffor}
-
-%TODO:
-% - Geodesics and Christoffel
 
 \newcommand{\example}[1]{\subparagraph{Example: #1}}
 \newcommand{\lag}{\mathcal{L}}
@@ -63,6 +60,8 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/variational_calculus.tex}
 
 \input{./Parts/coordinates.tex}
 
