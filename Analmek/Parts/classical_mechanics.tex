@@ -1,5 +1,45 @@
 \section{Classical mechanics}
-In classical mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $\chi^{a}$ on this space in order to use what we know.
+
+\paragraph{Lagrangian mechanics and differential geometry}
+In Lagrangian mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $\chi^{a}$ on this space in order to use what we know from the previous parts on differential geometry. Note that the term configuration does not exclude the discussion of systems other than the purely mechanical with Lagrangian mechanics. This is a clear advantage of Lagrangian mechanics as opposed to Newtonian mechanics.
+
+\paragraph{Hamilton's principle}
+Hamilton's principle replaces Newton's laws as the fundamental law of nature that is postulated in order to start off the theory. To formulate it, we first define the action of a system over time is defined as
+\begin{align*}
+	S = \integ{}{}{t}{\lag},
+\end{align*}
+where $\lag$ is the Lagrangian (discussed below). Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$. This can be expressed as
+\begin{align*}
+	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\lag} - \dv{t}\del{\dot{\chi}^{a}}{\lag}\right)\var{\chi^{a}}} = 0.
+\end{align*}
+
+\paragraph{How to form a theory}
+In Lagrangian mechanics, the recipe for formulating a theory to describe a system is simple: Introduce its Lagrangian and extremize the action to find the equations describing the system.
+
+\paragraph{The Lagrangian}
+The Lagrangian is essential in Lagrangian mechanics. For a system of particles in a conservative force field, it can be constructed as $\lag = E_{\text{k}} - V$. $V$ is the potential energy and is taken to be a function only of the coordinates. Note that this is not the only way to construct a Lagrangian - for instance, adding the total time derivative of some function adds a constant term to the action, and so has no effect on the variational analysis. In addition, Lagrangian mechanics can be used to describe entirely different systems in which terms such as kinetic energy do not make sense. In fact, this is an important feature of Lagrangian mechanics.
+
+\example{An inductor}
+Consider a lone inductor with inductance $L$ over which some (possibly time-dependent) potential $V$ is applied. According to classical electrodynamics, we have that
+\begin{align*}
+	V = L\dv{I}{t}.
+\end{align*}
+Let us see if we can reconstruct this using Lagrangian mechanics.
+
+We first need to impose coordinates on the system. I choose the lone coordinate $q$ as the amount of charge carried across the inductor. Suppose that the system had a Lagrangian $\lag = \frac{1}{2}L\dot{q}^{2} - qV$. The equation of motion is
+\begin{align*}
+	-V - \dv{t}(L\dot{q}) = 0,\ L\ddot{q} = V.
+\end{align*}
+Recognizing that $\dot{q} = I$, we arrive at the desired result
+\begin{align*}
+	V = L\dv{I}{t}.
+\end{align*}
+
+At this point I feel it only reasonable to discuss how I (or rather, Goldstein) arrived at this particular Lagrangian. To the trained eye it is very clear that the given equation of motion would result from that Lagrangian, but surely the core idea cannot be to just guess Lagrangians based on what we already know? Well, yes it can. The goal of physics is to describe reality, so if someone told you that their measurements implied the given equations of motion, is it not your job as a theorist to construct a theory which describes that experiment? And how do you that, if not by constructing an appropriate Lagrangian? It might seem somewhat ad hoc to construct theories based on desired results in this fashion, but the most important check for a theory to satisfy is its compliance with the reality around us. If that is ad hoc to you, then perhaps mathematics will feel more satisfactory to you than physics.
+
+There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This does not have pure coordinate dependance, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
+
+Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and going from the equations of motion to the Lagrangian. Of course, physics as a whole value the Lagrangian way higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
 
 \paragraph{Kinetic energy}
 Kinetic energy is defined by a rank $2$ tensor as
@@ -10,18 +50,8 @@ where the dot now really represents the time derivative.
 
 %Can be used to show H = T + V
 
-\paragraph{Hamilton's principle}
-We define the Lagrangian of a system as $\lag = E_{\text{k}} - V$, where $V$ is the potential energy and taken to be a function on coordinate space. The action of a system over time is defined as
-\begin{align*}
-	S = \integ{}{}{t}{\lag}.
-\end{align*}
-Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$. This can be expressed as
-\begin{align*}
-	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\lag} - \dv{t}\del{\dot{\chi}^{a}}{\lag}\right)\var{\chi^{a}}} = 0.
-\end{align*}
-
 \paragraph{The kinetic metric}
-Consider a system with no potential energy. The Lagrangian simply becomes $\lag = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. This is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
+Consider a system with no potential energy. The Lagrangian simply becomes $\lag = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. The action computed from this Lagrangian is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
 
 \paragraph{Motion of a classical system}
 By defining $a^{b} = \dot{\chi}^{a}\dcov{a}{\dot{\chi}^{b}}$, the previous work leads us to a system with no potential satisfying $a^{b} = \ddot{\chi}^{b} + \chris{b}{a}{c}\dot{\chi}^{a}\dot{\chi}^{c} = 0$. In other words, a system with no potential moves along the geodesics of the kinetic metric.
