@@ -12,6 +12,10 @@ where $\lag$ is the Lagrangian (discussed below). Hamilton's principle states th
 \begin{align*}
 	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\lag} - \dv{t}\del{\dot{\chi}^{a}}{\lag}\right)\var{\chi^{a}}} = 0.
 \end{align*}
+The equations of motion of the system are thus of the form
+\begin{align*}
+	\del{\chi^{a}}{\lag} - \dv{t}\del{\dot{\chi}^{a}}{\lag} = 0.
+\end{align*}
 
 \paragraph{How to form a theory}
 In Lagrangian mechanics, the recipe for formulating a theory to describe a system is simple: Introduce its Lagrangian and extremize the action to find the equations describing the system.
@@ -62,10 +66,63 @@ For a system with a potential, only the $\del{\chi^{a}}{\lag}$ term is affected,
 \end{align*}
 which is a generalization of Newton's second law.
 
-\paragraph{Noether's theorem}
-Noether's theorem relates symmetries of physical systems to conservation laws.
+\paragraph{Legendre transforms}
+To illustrate the Legendre transform, consider a function $f(x, y)$ and $g(x, y, u) = ux - f(x, y)$. Its total derivative is given by
+\begin{align*}
+	\dd{g} = u\dd{x} + x\dd{u} - \del{x}{f}\dd{x} - \del{y}{f}\dd{y}.
+\end{align*}
+By choosing $u = \del{x}{f}$, we obtain
+\begin{align*}
+	\dd{g} = x\dd{u} - \del{y}{f}\dd{y},
+\end{align*}
+implying that $g$ is only a function of $u$ and $y$. To obtain $g$, invert the definition of $u$ to obtain $x(u, y)$.
 
-What is a symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, s) = q^{a}$ and for small $s = \varepsilon$ that $t\to t + \varepsilon\var{t},\ q^{a}\to q^{a} + \varepsilon\var{q^{a}}$. This is assumed to be normalized such that $\var{t}$ is either $0$ or $1$. How? Don't ask. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
+\paragraph{Hamiltonian mechanics}
+The Lagrangian equations of motion are $n$ coupled second-order differential equations. Hamiltonian mechanics starts with trying to decouple these into $2n$ first-order differential equations. To illustrate how this is done, consider an equation of motion
+\begin{align*}
+	\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag} = 0.
+\end{align*}
+The second-order term is the place to hack away at. We thus define the generalized momenta
+\begin{align*}
+	p_{a} = \del{\dot{q}^{a}}{\lag}.
+\end{align*}
+Up until now, we have mathematically treated the coordinates and velocities as variables, making no difference between them in a technical manner. The next step is now to replace the velocities with the momenta. As the Lagrangian describes the system, we do this by Legendre transforming the Lagrangian.
+
+We now define the Hamiltonian
+\begin{align*}
+	\ham = p_{i}\dot{q}^{i} - \lag.
+\end{align*}
+From this definition we would like to obtain new equations of motion. This is done by computing the differential of the Hamiltonian. We have
+\begin{align*}
+	\dd{\lag} = \del{q^{i}}{\lag}\dd{q^{i}} + \del{\dot{q}^{i}}{\lag}\dd{\dot{q}^{i}} + \del{t}{\lag}\dd{t}.
+\end{align*}
+The definition of the general momenta and the equations of motion allows us to write this as
+\begin{align*}
+	\dd{\lag} = \dot{p}_{i}\dd{q^{i}} + p_{i}\dd{\dot{q}^{i}} + \del{t}{\lag}\dd{t}.
+\end{align*}
+The differential of the Hamiltonian is
+\begin{align*}
+	\dd{\ham} = p_{i}\dd{\dot{q}^{i}} + \dot{q}^{i}\dd{p_{i}} - \dot{p}_{i}\dd{q^{i}} - p_{i}\dd{\dot{q}^{i}} - \del{t}{\lag}\dd{t} = \dot{q}^{i}\dd{p_{i}} - \dot{p}_{i}\dd{q^{i}} - \del{t}{\lag}\dd{t},
+\end{align*}
+serving as an example of how the Legendre transform works. This implies that the equations  of motion are
+\begin{align*}
+	\dot{p}_{i} = -\del{q_{i}}{\ham},\ \dot{q}_{i} = \del{p_{i}}{\ham}.
+\end{align*}
+
+In Lagrangian mechanics, we considered paths in configuration space. In Hamiltonian mechanics, we instead consider paths in phase space, i.e. a space where the points are $(q, t)$. In this space, paths do not intersect as the system is deterministic. Paths in phase space are periodic for integrable systems and fill out the accessible parts of phase space for chaotic systems.
+
+We note that
+\begin{align*}
+	\dv{\ham}{t} &= \del{q_{i}}{\ham}\dot{q}_{i} + \del{p_{i}}{\ham}\dot{p}_{i} + del{t}{\ham} \\
+	             &= -\dot{p}_{i}\dot{q}_{i} + \dot{q}_{i}{\ham}\dot{p}_{i} + del{t}{\ham}
+	             &= \del{t}{\ham},
+\end{align*}
+and so the Hamiltonian is conserved if it has no explicit time dependence.
+
+\paragraph{Noether's theorem}
+Noether's theorem relates symmetries - or, more specifically, quasi-symmetries, of physical systems to conservation laws.
+
+What is a quasi-symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$ and for small $s = \varepsilon$ that $t\to t + \varepsilon\var{t},\ q^{a}\to q^{a} + \varepsilon\var{q^{a}}$. This is assumed to be normalized such that $\var{t}$ is either $0$ or $1$. How? Don't ask. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
 \begin{align*}
 	\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}
 \end{align*}
@@ -90,7 +147,7 @@ If the transformation is a quasi-symmetry of the system, then this is equal to a
 \begin{align*}
 	J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q}^{a}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
 \end{align*}
-thus satisfies $\dv{J}{t} = 0$. We can introduce the general momenta $p_{a} = \del{\dot{q}^{a}}{\lag}$ and the Hamiltonian $\ham = p_{a}\dot{q}^{a} - \lag$ to write
+thus satisfies $\dv{J}{t} = 0$. We can introduce the general momenta and the Hamiltonian to rewrite this as
 \begin{align*}
 	J = F - p_{a}\var{q^{a}} + \ham\var{t}.
 \end{align*}
@@ -126,51 +183,6 @@ A third attempt is to somehow make the scalar product in the variation of the La
 	  &= -\vb{\omega}\cdot(\vb{x}\times\vb{p}).
 \end{align*}
 Since $\vb{\omega}$ is constant, that means that $\vb{x}\times\vb{p}$, i.e. the angular momentum, is conserved.
-
-\paragraph{Hamiltonian mechanics}
-Hamiltonian mechanics starts with trying to transform $\lag(q, \dot{q}, t)$ to $\ham(q, p, t)$. To start with this, we reintroduce the general momenta $p_{i} = \del{\dot{q}_{i}}{\lag}$ and define the Hamiltonian
-\begin{align*}
-	\ham = p_{i}\dot{q}_{i} - \lag.
-\end{align*}
-This is a Legendre transform of the Hamiltonian, which is discussed below. In Lagrangian mechanics, we considered paths in configuration space. In Hamiltonian mechanics, we instead consider paths in phase space, i.e. a space where the points are $(q, t)$. In this space, paths do not intersect as the system is deterministic. The new equations of motion in this formalism is
-\begin{align*}
-	\dot{p}_{i} = -\del{q_{i}}{\ham},\ \dot{q}_{i} = \del{p_{i}}{\ham}.
-\end{align*}
-
-Paths in phase space are periodic for integrable systems and fill out the accessible parts of phase space for chaotic systems.
-
-\paragraph{Legendre transforms}
-To illustrate the Legendre transform, consider a function $f(x, y)$ and $g(x, y, u) = ux - f(x, y)$. Its total derivative is given by
-\begin{align*}
-	\dd{g} = u\dd{x} + x\dd{u} - \del{x}{f}\dd{x} - \del{y}{f}\dd{y}.
-\end{align*}
-By choosing $u = \del{x}{f}$, we obtain
-\begin{align*}
-	\dd{g} = x\dd{u} - \del{y}{f}\dd{y},
-\end{align*}
-implying that $g$ is only a function of $u$ and $y$. To obtain $g$, invert the definition of $u$ to obtain $x(u, y)$.
-
-\paragraph{Equations of motion}
-The variation of the Hamiltonian is given by
-\begin{align*}
-	\dd{\ham} &= \dot{q}_{i}\dd{p_{i}} + p_{i}\dd{\dot{q}_{i}} - \del{q_{i}}{\lag}\dd{q_{i}} - \del{\dot{q}_{i}}{\lag}\dd{\dot{q}_{i}} - \del{t}{\lag}\dd{t} \\
-	          &= \dot{q}_{i}\dd{p_{i}} - \del{q_{i}}{\lag}\dd{q_{i}} - \del{t}{\lag}\dd{t}.
-\end{align*}
-Combining this with the equations of motion
-\begin{align*}
-	\del{q_{i}}{\lag} = \dv{t}\left(\del{\dot{q}_{i}}{\lag}\right) = \dv{t}\left(p_{i}\right) = \dot{p}_{i}
-\end{align*}
-yields
-\begin{align*}
-	\dot{q}_{i} = \del{p_{i}}{\ham},\ \dot{p}_{i} = -\del{q_{i}}{\ham},\ \del{t}{\lag} = -\del{t}{\ham}.
-\end{align*}
-
-We also have
-\begin{align*}
-	\dv{\ham}{t} &= \del{q_{i}}{\ham}\dot{q}_{i} + \del{p_{i}}{\ham}\dot{p}_{i} + del{t}{\ham} \\
-	             &= \del{t}{\ham},
-\end{align*}
-and so the Hamiltonian is conserved if it has no explicit time dependance.
 
 \paragraph{Liouville's theorem}
 As paths in phase space do not cross, we can think of the time evolution of a system as a flow in phase space. The volume element is $\dd{V} = \dd{q}\dd{p}$. Liouville's theorem states that flow in phase space is incompressible.
