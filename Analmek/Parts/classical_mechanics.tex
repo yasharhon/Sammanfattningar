@@ -30,9 +30,9 @@ Consider a lone inductor with inductance $L$ over which some (possibly time-depe
 \end{align*}
 Let us see if we can reconstruct this using Lagrangian mechanics.
 
-We first need to impose coordinates on the system. I choose the lone coordinate $q$ as the amount of charge carried across the inductor. Suppose that the system had a Lagrangian $\lag = \frac{1}{2}L\dot{q}^{2} - qV$. The equation of motion is
+We first need to impose coordinates on the system. I choose the lone coordinate $q$ as the amount of charge carried across the inductor to ground. Suppose that the system had a Lagrangian $\lag = \frac{1}{2}L\dot{q}^{2} + qV$. The equation of motion is
 \begin{align*}
-	-V - \dv{t}(L\dot{q}) = 0,\ L\ddot{q} = V.
+	V - \dv{t}(L\dot{q}) = 0,\ L\ddot{q} = V.
 \end{align*}
 Recognizing that $\dot{q} = I$, we arrive at the desired result
 \begin{align*}
@@ -41,7 +41,7 @@ Recognizing that $\dot{q} = I$, we arrive at the desired result
 
 At this point I feel it only reasonable to discuss how I (or rather, Goldstein) arrived at this particular Lagrangian. To the trained eye it is very clear that the given equation of motion would result from that Lagrangian, but surely the core idea cannot be to just guess Lagrangians based on what we already know? Well, yes it can. The goal of physics is to describe reality, so if someone told you that their measurements implied the given equations of motion, is it not your job as a theorist to construct a theory which describes that experiment? And how do you that, if not by constructing an appropriate Lagrangian? It might seem somewhat ad hoc to construct theories based on desired results in this fashion, but the most important check for a theory to satisfy is its compliance with the reality around us. If that is ad hoc to you, then perhaps mathematics will feel more satisfactory to you than physics.
 
-There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This does not have pure coordinate dependance, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
+There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the loss of potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This does not have pure coordinate dependance, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
 
 Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and going from the equations of motion to the Lagrangian. Of course, physics as a whole value the Lagrangian way higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
 
@@ -51,8 +51,6 @@ Kinetic energy is defined by a rank $2$ tensor as
 	E_{\text{k}} = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b},
 \end{align*}
 where the dot now really represents the time derivative.
-
-%Can be used to show H = T + V
 
 \paragraph{The kinetic metric}
 Consider a system with no potential energy. The Lagrangian simply becomes $\lag = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. The action computed from this Lagrangian is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
@@ -114,10 +112,14 @@ In Lagrangian mechanics, we considered paths in configuration space. In Hamilton
 We note that
 \begin{align*}
 	\dv{\ham}{t} &= \del{q_{i}}{\ham}\dot{q}_{i} + \del{p_{i}}{\ham}\dot{p}_{i} + del{t}{\ham} \\
-	             &= -\dot{p}_{i}\dot{q}_{i} + \dot{q}_{i}{\ham}\dot{p}_{i} + del{t}{\ham}
+	             &= -\dot{p}_{i}\dot{q}_{i} + \dot{q}_{i}{\ham}\dot{p}_{i} + del{t}{\ham} \\
 	             &= \del{t}{\ham},
 \end{align*}
 and so the Hamiltonian is conserved if it has no explicit time dependence.
+
+% From variational principle
+
+% Hamiltonian total energy
 
 \paragraph{Noether's theorem}
 Noether's theorem relates symmetries - or, more specifically, quasi-symmetries, of physical systems to conservation laws.
@@ -302,7 +304,7 @@ Suppose now that we perform an infinitesimal transformation generated by $G$. We
 We have seen that a symmetry of the Hamiltonian is a transformation such that $\var{\ham} = 0$. Supposing this to be true, we have $\dot{G} = \pob{\ham}{G} = 0$, and $G$ is conserved. In other words, if $G$ generates a symmetry, then it is conserved.
 
 \paragraph{Generators from Hamilton's principle}
-We return to the principle of least action. Symmetries of the Lagrangian were on the form $\lag\to\lag + \dv{F}{t}$. We can now see the correspondence between $F$ and the generators $G$ of symmetries, and choose to ignore any differences. The principle of least action can be stated as a variational problem on phase space instead, where we seek the extrema of
+We return to the principle of least action. The principle of least action can be stated as a variational problem on phase space instead, where we seek the extrema of
 \begin{align*}
 	S = \integ{}{}{t}{p_{i}\dot{q}_{i} - \ham}.
 \end{align*}
@@ -325,7 +327,7 @@ Inserting this into the requirement above gives
 \end{align*}
 Comparing similar terms yields
 \begin{align*}
-	p_{i}\dot{q}_{i} = \del{q_{i}}{F}\dot{q}_{i},\ 0 = \del{p_{i}}{F}\dot{p}_{i},\ 0 = P_{i}\dot{Q}_{i} + \del{Q_{i}}{F}\dot{Q}_{i},\ 0 = \del{P_{i}}{F}\dot{P}_{i},\ -\ham = -H - \del{t}{F}, 
+	p_{i}\dot{q}_{i} = \del{q_{i}}{F}\dot{q}_{i},\ 0 = \del{p_{i}}{F}\dot{p}_{i},\ 0 = P_{i}\dot{Q}_{i} + \del{Q_{i}}{F}\dot{Q}_{i},\ 0 = \del{P_{i}}{F}\dot{P}_{i},\ -\ham = -H + \del{t}{F}, 
 \end{align*}
 and finally
 \begin{align*}
@@ -360,24 +362,118 @@ Suppose that we want to perform a canonical transform that preserves the first c
 However, as the two coordinates are equal, the partial derivatives represent equivalent operations. The only way to resolve this is for the transformation to satisfy $p_{1} = -P_{1}$ - otherwise you cannot find a generator of the first kind.
 
 \paragraph{Hamilton-Jacobi theory}
-Suppose that we could perform a transformation on the form $F = F_{2}(q, P, t) - P_{i}Q_{i}$ such that $H = 0$. This would imply that all $Q_{i}$ and $P_{i}$ were to be constant. The equation
+Suppose that we could perform a canonical transformation on a system generated by a generator of the second kind such that $H = 0$. As the transformed Hamiltonian is constant, this implies that all $Q_{i}$ and $P_{i}$ are constant, and so the system is trivial. The equation
 \begin{align*}
 	\ham + \del{t}{F_{2}} = 0
 \end{align*}
-would thus define a differential equation in $F_{2}$. We can now, with some reasoning behind it, I guess, call $F_{2}$ the action $S$. This yields the Hamilton-Jacobi equation
+thus defines a differential equation for the generator of the transformation we seek. Calling, for no apparent reason, the generator $F_{2}$ the action $S$ yields the Hamilton-Jacobi equation
 \begin{align*}
-	H + \del{t}{S} = 0,
+	\ham + \del{t}{S} = 0.
 \end{align*}
-where the Hamiltonian, according to previous arguments, would depend on the time derivative of $S$.
 
-%Prove S action
+How does this define a differential equation for the action? The Hamiltonian can be written in terms of the generalized coordinates and momenta, and the momenta are, according to the argument above, derivatives of the generator (i.e. the action) with respect to the coordinates. Thus the different terms include some combination of the coordinates and the derivatives of the action, as well as the final time derivative.
+
+Is the generator actually equal to the action? The total time derivative of the action is
+\begin{align*}
+	\dv{S}{t} = p_{i}\dot{q}^{i} - \ham.
+\end{align*}
+On the other hand, considering the supposed action we have been studying, we have
+\begin{align*}
+	\dv{S}{t} = \del{q^{i}}{S}\dot{q}^{i} + \del{P^{i}}{S}\dot{P}^{i} + \del{t}{S}.
+\end{align*}
+As the transformed system is trivial, the second (collection of) term(s) vanishes, and combining this with the equations defining the generator we are left with
+\begin{align*}
+	\dv{S}{t} = p_{i}\dot{q}^{i} + \del{t}{S}.
+\end{align*}
+Finally, using the Hamilton-Jacobi equation, we obtain
+\begin{align*}
+	\dv{S}{t} = p_{i}\dot{q}^{i} - \ham.
+\end{align*}
+
+By solving the Hamilton-Jacobi equation, we see that we obtain the action. According to the theory of generators, it is a function of the (old) coordinates, the new momenta and time. As the new momenta are constant, these appear as integration constants in the action.
+
+\example{The harmonic oscillator}
+We first try studying the harmonic oscillator. By doing this we will demonstrate the general procedure of Hamilton-Jacobi theory.
+
+We start with the familiar Hamiltonian
+\begin{align*}
+	\ham = \frac{1}{2m}p^{2} + \frac{1}{2}m\omega^{2}x^{2}.
+\end{align*}
+We know that $p = \del{x}{S}$, and so the Hamilton-Jacobi equation becomes
+\begin{align*}
+	\frac{1}{2m}\left(\del{x}{S}\right)^{2} + \frac{1}{2}m\omega^{2}x^{2} + \del{t}{S} = 0.
+\end{align*}
+
+Looking at this PDE, we see that it is non-homogenous and non-linear. Those are two words you typically do not want to hear in such a context. We have no boundary conditions, so it cannot be reduced to a Sturm-Liouville problem. In desperation, we turn to variable separation. The fact that different terms contain different powers of the action and its derivative is a hindrance to using a product anzats, so instead we will try an anzats of the form
+\begin{align*}
+	S(x, t) = X(x) + T(t).
+\end{align*}
+Inserting this into the Hamilton-Jacobi equation yields
+\begin{align*}
+	\frac{1}{2m}\left(\dv{X}{x}\right)^{2} + \frac{1}{2}m\omega^{2}x^{2} + \dv{T}{t} = 0.
+\end{align*}
+Subtracting the time term, we see that each side must be equal to a constant which I dub $\alpha$.
+
+Solving the time part first, we have
+\begin{align*}
+	T = -\alpha(t - t_{0}) + T(t_{0}).
+\end{align*}
+
+Returning to the space part, we are left with
+\begin{align*}
+	\frac{1}{2m}\left(\dv{X}{x}\right)^{2} + \frac{1}{2}m\omega^{2}x^{2} = \alpha.
+\end{align*}
+Solving this for the derivative yields
+\begin{align*}
+	\dv{X}{x} = \sqrt{2m\alpha - m^{2}\omega^{2}x^{2}}.
+\end{align*}
+$X$ is now given by integrating. The action is thus
+\begin{align*}
+	S = \integ{x_{0}}{x}{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha(t - t_{0}) + T(t_{0}) + X(x_{0}).
+\end{align*}
+Constant terms in the action are of course of no physical significance, and so we are free to set these to zero. We thus write
+\begin{align*}
+	S = \integ{x_{0}}{x}{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha t.
+\end{align*}
+We note that the action only depends on one integration constant $\alpha$. This is therefore the canonical momentum $P$.
+
+The next step is to compute the generalized (old) coordinates and momenta. To do this, we use the properties of the generator. We have
+\begin{align*}
+	Q &= \beta = \del{P}{S} = \del{\alpha}{S} = \integ{x_{0}}{x}{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t, \\
+	p &= \del{x}{S} = \sqrt{2m\alpha - m^{2}\omega^{2}x^{2}},
+\end{align*}
+where we have redubbed $Q$ to the constant of motion $\beta$. In theory we now have a sufficient amount of equations to solve the system, as the relation for $Q$ can be inverted to give $q$ over time, and this will in turn give $p$. In this particular case, this can be done analytically, as
+\begin{align*}
+	\beta &= \integ{x_{0}}{x}{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t \\
+	      &= \sqrt{\frac{m}{2\alpha}}\integ{x_{0}}{x}{y}{\frac{1}{\sqrt{1 - \frac{m\omega^{2}y^{2}}{2\alpha}}}} - t \\
+	      &= \frac{1}{\omega}\integ{s_{0}}{s(x)}{s}{\frac{1}{\sqrt{1 - s^{2}}}} - t \\
+	      &= \frac{1}{\omega}(\arcsin{s(x)} - \arcsin{s_{0}}) - t \\
+	      &= \frac{1}{\omega}\left(\arcsin(\sqrt{\frac{m}{2\alpha}}\omega x) - \arcsin(\sqrt{\frac{m}{2\alpha}}\omega x_{0})\right) - t.
+\end{align*}
+This yields
+\begin{align*}
+	x = \sqrt{\frac{2\alpha}{m\omega^{2}}}\sin(\phi + \omega t),
+\end{align*}
+where we have defined
+\begin{align*}
+	\phi = \omega\beta + \arcsin(\sqrt{\frac{m}{2\alpha}}\omega x_{0}).
+\end{align*}
+We then obtain
+\begin{align*}
+	p = \sqrt{2m\alpha - 2m\alpha\sin[2](\phi + \omega t)} = \sqrt{2m\alpha}\cos(\phi + \omega t),
+\end{align*}
+which is the familiar solution of the harmonic oscillator.
+
+Are the constants of motion also familiar? The answer is yes. We see that $\beta$ corresponds to the phase in the position and momentum, which are known to be constant. We also see that the Hamiltonian is equal to $\alpha$, and we also know that the Hamiltonian is constant. So that is nice.
+
+\example{Hamilton-Jacobi theory in spherical coordinates}
 
 \paragraph{The Schrödinger equation from Hamilton-Jacobi theory}
 
 \paragraph{Quantum mechanics and the action}
 
 \paragraph{Integrable systems}
-Consider a system with some Hamiltonian. This system is integrable if there is a canonical transformation $(q, p)\to (\theta, I)$ suc that the transformed Hamiltonian only depends on the momenta. For such a system, the equations of motion become
+Consider a system with some Hamiltonian. This system is integrable if there is a canonical transformation $(q, p)\to (\theta, I)$ such that the transformed Hamiltonian only depends on the momenta. For such a system, the equations of motion become
 \begin{align*}
 	\dot{\theta}_{i} = \del{I_{i}}{H} = \omega_{i},\ \dot{I}_{i} = 0.
 \end{align*}
