@@ -6,12 +6,65 @@ In variational calculus, we study the optimization of functionals, typically int
 \paragraph{Formulating the problem}
 We will primarily be interested in the following problem, as well as its derivatives:
 
-Consider a function $q$ which assumes fixed values at $a$ and $b$ and the functional
+Consider a function (or set of functions) $q$ which assumes fixed values at $a$ and $b$ and the functional
 \begin{align*}
 	S\left(q, \dv{q}{\tau}\right) = \integ{a}{b}{\tau}{F\left(q, \dv{q}{\tau}\right)}.
 \end{align*}
 Describe the function $q$ such that $S$ has an extremum.
 
-What derivatives of this are interesting? For instance, functionals that depend on higher derivatives and functionals based on multiple integrals, which generalize from this problem. But problems with different boundary conditions in $q$, entirely without boundary conditions in $q$ or even with a functional as a boundary condition.
+What derivatives of this are interesting? For instance, functionals that depend on higher derivatives and functionals based on multiple integrals, which generalize from this problem. But problems with different boundary conditions in $q$, entirely without boundary conditions in $q$ or even with a functional as a boundary condition. But to introduce the involved techniques, we will first be studying a problem of the above form.
 
 \paragraph{The variation of a function}
+The strategy for solving these problems is to assume that there exists a function that extremizes the functional and that it belongs to a family of functionals that satisfy the boundary conditions. Given this, we parametrize this family of functions with a parameter $\alpha$ such that $\alpha = 0$ corresponds to the extremum\footnotemark, allowing us to analyze the problem using the tools of single-variable calculus.
+
+\footnotetext{An example of such a parametrization is $q(\alpha) = q + \alpha\eta$, where $q$ is the actual extremum and $\eta$ is some function that fits the boundary condition. The following steps can thus be performed in terms of $\eta$, if that feels more reasonable.}
+
+We will be interested in small deviations from the extremum, and linearizing about the extremum gives rise to the quantity
+\begin{align*}
+	\deval{q}{\alpha}{0}\dd{\alpha}.
+\end{align*}
+We define this to be the variation of $q$ and denote it as $\var{q}$.
+
+\paragraph{The variation of a functional}
+We now in a similar way define the variation of a functional as
+\begin{align*}
+	\var{S} = \deval{S}{\alpha}{0}\dd{\alpha}.
+\end{align*}
+Differentiating under the integral sign, and now working under the assumption that multiple $q^{i}$ are involved, yields
+\begin{align*}
+	\var{S} &= \dd{\alpha}\integ{a}{b}{\tau}{\del{q^{i}}{F}\dv{q^{i}}{\alpha} + \del{\dot{q}^{i}}{F}\dv{\dot{q}^{i}}{\alpha}} \\
+	        &= \integ{a}{b}{\tau}{\del{q^{i}}{F}\var{q^{i}} + \del{\dot{q}^{i}}{F}\var{\dot{q}^{i}}},
+\end{align*}
+where the dot represents a derivative with respect to $\tau$.
+
+We see that the variation operation behaves exactly like a derivative, and according to the definition, it commutes with all other derivatives that may be involved, assuming sufficient smoothness. These results will therefore be used without further argument.
+
+As a side note, what in god's name is the partial derivative of a function with respect to another function? And what about a derivative with respect to a derivative? And should the derivative with respect to a derivative not contain some information about the derivative of the function the derivative of which we are differentiating with respect to? These are all very good and somewhat complex questions.
+
+Mathematically, it is somewhat beyond me to give a proper answer. But physically, we can think of it the following way: The functions $q^{i}$, as we will see later, will represent the path of the system, and $\tau$ will be replaced with the time $t$. As such, by varying $q^{i}$ we vary the path of the system, and by varying $\dot{q}^{i}$ we vary the velocity with which the system traverses the path. What we are doing with variational calculus is testing out an infinite number of paths to find the extremum of the action, and surely we must both try out different paths and traverse them with different velocities in order to find the extremum. That is why the derivatives are computed the way they are.
+
+What is a derivative with respect to a function? Mathematically, the functions are just numbers, and the derivatives show how much the integrand changes when we vary the given number. That is all. The derivatives are partial to signify that when we try varying one number, we keep all the others fixed.
+
+\paragraph{And the solution...}
+We have now tried varying the functional around the extremum. Single-variable calculus gives the condition that $\dv{S}{\alpha} = 0$ at the extremum, which is equivalent to $\var{S} = 0$. In other words,
+\begin{align*}
+	\integ{a}{b}{\tau}{\del{q^{i}}{F}\var{q^{i}} + \del{\dot{q}^{i}}{F}\var{\dot{q}^{i}}} = 0.
+\end{align*}
+We can integrate this by parts to obtain
+\begin{align*}
+	\left[\del{\dot{q}^{i}}{F}\var{q^{i}}\right]_{a}^{b} + \integ{a}{b}{\tau}{\left(\del{q^{i}}{F} - \dv{\tau}\del{\dot{q}^{i}}{F}\right)\var{q^{i}}} = 0.
+\end{align*}
+
+The first term from the integration by parts can be handled in two ways. If the variational problem has fixed boundary conditions, the families $q^{i}$ must have been chosen such that all functions in the family satisfy the boundary conditions. Thus the variations of these at the endpoints vanish. Otherwise, the two arising terms might be used as boundary conditions themselves, for instance by setting them to zero (the need for this arises due to the problem in question being second-order, and thus requiring two conditions).
+
+The remaining integral might of course happen to be zero for the given choice of families of $q^{i}$. But the extremum is an extremum no matter what choice I make. So by changing up the problem - for instance, by reparametrizing the $q^{i}$ or study an entirely different family in a similar way - I still obtain the same results. This must imply that the integral is zero no matter what $\var{q^{i}}$ is. And for this to be true, the only possibility is for the integrand to always be zero. To be absolutely sure, we can try varying only one coordinate at a time. This implies that
+\begin{align*}
+	\del{q^{i}}{F} - \dv{\tau}\del{\dot{q}^{i}}{F} = 0
+\end{align*}
+for all $i$, always. Solutions to this set of equations are thus our extrema, and are called the Euler-Lagrange equations.
+
+\paragraph{Variational problems with higher-order derivatives}
+What if the integrand also involves higher-order derivatives of the $q^{i}$? We can retrace the above steps mostly, but we will have to perform an extra (series of) integration(s) by parts. For instance, by including the second derivative and adding one extra integration, you should be able to show (unless this is wrong) that the extremum solution satisfies
+\begin{align*}
+	\del{q^{i}}{F} - \dv{\tau}\del{\dot{q}^{i}}{F} + \dv[2]{\tau}\del{\ddot{q}^{i}}{F} = 0.
+\end{align*}
