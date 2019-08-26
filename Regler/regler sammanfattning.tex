@@ -3,6 +3,12 @@
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
 
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+
+\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+
 \title{Sammanfattning av EL1000 Reglerteknik, allmän kurs}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
 \date{\today}
@@ -25,5 +31,11 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/basic_concepts.tex}
+
+\input{./Parts/block_diagrams.tex}
+
+\input{./Parts/negative_feedback.tex}
 
 \end{document}
