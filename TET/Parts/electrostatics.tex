@@ -1,0 +1,46 @@
+\section{Elektrostatik}
+
+\paragraph{Coulombs lag}
+Elektrostatiken utgår från Coulombs lag, som är en experimentellt framtagen lag. Den säjer att om två laddningar $Q$ och $q$ är separerade med en sträcka $\vb{R}$, är kraften mellan dem
+\begin{align*}
+	\vb{F} = \frac{1}{4\pi\varepsilon_{0}}\frac{qQ}{R^{3}}\vb{R}.
+\end{align*}
+Alternativt, i termer av enhetsvektorer,
+\begin{align*}
+	\vb{F} = \frac{1}{4\pi\varepsilon_{0}}\frac{qQ}{R^{2}}\ub{R}.
+\end{align*}
+Båda laddningarna antas ha försumbar utsträckning, och betecknas punktladdningar. $\varepsilon_{0}$ kallas vakuumpermittiviteten, och har enhet \si{\farad\per\meter}.
+
+\paragraph{Elektriskt fält}
+Det elektriska fältet som genereras av en laddning $Q$ definieras som att en liten testladdning $q$ upplever en kraft
+\begin{align*}
+	\vb{F} = q\vb{E}
+\end{align*}
+från $Q$. I våran definition skulle vi kunna lägga på ett $\lim\limits_{q\to 0}$.
+
+Baserad på detta får vi att en punktladdning $Q$ genererar ett elektriskt fält
+\begin{align*}
+	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\frac{Q}{R^{2}}\ub{R}.
+\end{align*}
+
+Eftersom krafter superponeras, gör även elektriska fält det. I diskreta fall motsvarar detta att summera över punktladdningar. I kontinuerliga fall integrerar vi i stället, där varje element i integrationen behandlas som en punktladdning, och vi får
+\begin{align*}
+	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{q}{\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+Laddningen kan vara spridd ut på en linje, en yta eller en volym, i vilka fall vi får $\dd{q} = \rho\dd{l}$, $\dd{q} = \sigma\dd{S}$ respektiva $\dd{q} = \lambda\dd{V}$. Förutom de olika elementerna finns en linjeladdningstäthet, ytladdningstäthet eller volymladdningstäthet.
+
+\paragraph{Gauss' lag}
+För att härleda Gauss' lag börjag vi med att titta på flödet av fältet $\frac{1}{R^{2}}\ub{R}$ genom en godtycklig yta, där $\vb{R}$ pekar från en utgångspunkt $\vb{r}'$ till ett givet ytelement. Integrationselementet
+\begin{align*}
+	\dd{\Omega} = \frac{\ub{R}\cdot\vb{\dd{S}}}{R^{2}}
+\end{align*}
+är rymdvinkeln som areaelementet upptar när det ses från origo. Vi kan se på något sätt att detta motsvarar att projicera areaelementet ned på enhetssfären kring origo. Alternativt, om kurvor är involverade, skulle man projicera ned på enhetscirkeln.
+
+Låt nu ytan $S$ exakt innesluta volymen $V$. Flödet vi betraktar ges då av fönsterfunktionen
+\begin{align*}
+	f(\vb{r}') = \integ{S}{}{S}{\frac{\vb{R}\cdot\vb{\dd{S}}}{R^{2}}} = \integ{\Omega}{}{\Omega}{} =
+	\begin{cases}
+		4\pi, &\vb{r}'\text{ innanför }S, \\
+		0,    &\vb{r}'\text{ utanför }S.
+	\end{cases}
+\end{align*}

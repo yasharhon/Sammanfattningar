@@ -3,6 +3,13 @@
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
 
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+
+\newcommand{\ub}[1]{\vb{e}_{\vb{#1}}}
+\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+
 \title{Sammanfattning av EI1320 Teoretisk elektroteknik}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
 \date{\today}
@@ -25,5 +32,7 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/electrostatics.tex}
 
 \end{document}
