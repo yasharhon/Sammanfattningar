@@ -34,13 +34,67 @@ För att härleda Gauss' lag börjag vi med att titta på flödet av fältet $\f
 \begin{align*}
 	\dd{\Omega} = \frac{\ub{R}\cdot\vb{\dd{S}}}{R^{2}}
 \end{align*}
-är rymdvinkeln som areaelementet upptar när det ses från origo. Vi kan se på något sätt att detta motsvarar att projicera areaelementet ned på enhetssfären kring origo. Alternativt, om kurvor är involverade, skulle man projicera ned på enhetscirkeln.
-
-Låt nu ytan $S$ exakt innesluta volymen $V$. Flödet vi betraktar ges då av fönsterfunktionen
+är rymdvinkeln som areaelementet upptar när det ses från origo. Vi kan se på något sätt att detta motsvarar att projicera areaelementet ned på enhetssfären kring origo. Alternativt, om kurvor är involverade, skulle man projicera ned på enhetscirkeln. Flödet vi betraktar ges då av fönsterfunktionen
 \begin{align*}
-	f(\vb{r}') = \integ{S}{}{S}{\frac{\vb{R}\cdot\vb{\dd{S}}}{R^{2}}} = \integ{\Omega}{}{\Omega}{} =
+	f(\vb{r}') = \integ{S}{}{S}{\frac{\ub{R}\cdot\ub{n}}{R^{2}}} = \integ{\Omega}{}{\Omega}{} =
 	\begin{cases}
 		4\pi, &\vb{r}'\text{ innanför }S, \\
 		0,    &\vb{r}'\text{ utanför }S.
 	\end{cases}
 \end{align*}
+
+Vi kommer nu ihåg hur elektriska fältet ser ut på integralform, specifikt som en volymintegral, och får då för flödet genom en godtycklig yta
+\begin{align*}
+	\vinteg{S}{}{S}{\vb{E}} &= \vinteg{S}{}{S}{\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{\rho}{R^{2}}\ub{R}}} \\
+	                      &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\integ{S}{}{S}{\rho\frac{\ub{R}\cdot\ub{n}}{R^{2}}}} \\
+	                      &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho f(\vb{r})} \\
+	                      &= \frac{Q_{\text{innesluten}}}{\varepsilon_{0}}.
+\end{align*}
+Vektorn $\vb{R}$ är nu specifierad för varje punkt på ytan och i hela rummet. Den sista integralen är lika med laddningen som är innesluten i $S$ eftersom fönsterfunktionen ger ett bidrag $4\pi$ om och endast om det finns laddning i den aktuella punkten.
+
+Gauss' lag är ett bra verktyg för att beräkna elektriska fält för geometrier med mycket symmetri.
+
+\paragraph{Gauss' lag på integralform}
+Betrakta nu en godtycklig yta $S$ som exakt inneslutar volymen $V$. Gauss' lag ger då
+\begin{align*}
+	\vinteg{S}{}{S}{\vb{E}} = \frac{1}{\varepsilon_{0}}\integ{V}{}{V}{\rho}.
+\end{align*}
+Vi kan använda divergenssatsen för att skriva om vänstersidan som en integral över $V$. Därmed kan vi dra slutsatsen
+\begin{align*}
+	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}}.
+\end{align*}
+
+\paragraph{Elektrostatisk potential}
+Med vår kunnskap från vektoranalysen kan vi skriva
+\begin{align*}
+	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\grad{\frac{1}{R}}} = -\grad{\left(\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\frac{1}{R}}\right)}.
+\end{align*}
+Vi definierar därmed den elektrostatiska potentialen enligt
+\begin{align*}
+	\vb{E} = -\grad{V}.
+\end{align*}
+Från våran definition ser vi att nollnivån för potentialen kan sättas arbiträrt, då det elektriska fältet (som är det som är fysikaliskt) inte ändras om potentialen ändras med en konstant. Vi brukar lägga nollnivån i oändligheten.
+
+Vi kan även från detta visa att
+\begin{align*}
+	\curl{\vb{E}} = \vb{0}.
+\end{align*}
+
+\paragraph{Potential och elektrisk spänning}
+Betrakta storheten $\vb{E}\cdot\dd{\vb{r}}$. Vi har
+\begin{align*}
+	\vb{E}\cdot\dd{\vb{r}} = E_{i}\dd{x_{i}} = -\del{i}{V}\dd{x_{i}} = -\dd{V}.
+\end{align*}
+Om vi nu jämför detta med den elektriska spänningen
+\begin{align*}
+	U_{12} = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}}
+\end{align*}
+mellan två punkter, kan vi se att detta blir
+\begin{align*}
+	U_{12} = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}} = -\integ{\vb{r}_{1}}{\vb{r}_{2}}{V}{} = V(\vb{r}_{1}) - V(\vb{r}_{2}),
+\end{align*}
+oberoende av vägen mellan punkterna. Om vi lägger potentialens referens i oändligheten, ser vi då att
+\begin{align*}
+	V(\vb{r}) = -\vinteg{\infty}{\vb{r}}{\vb{r}}{\vb{E}},
+\end{align*}
+ett typ inverst påstående av $\vb{E} = -\grad{V}$.
