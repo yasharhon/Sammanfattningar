@@ -7,13 +7,13 @@ Reglerteknik handlar om att kontrollera olika storheter, ofta betecknad $y$, mot
 För att förstå systemet, hittar vi först på en modell som beskriver det. Ur denna modellen fås typiskt en differentialekvation. Denna löser vi med Laplacetransform över tid.
 
 \paragraph{Överförningsfungktionen}
-Typiskt (isär om modellen ger en linjär differentialekvation) fås en lösning i Laplacerummet på formen $Y(s) = G(s)U(s)$, där $U$ är Laplacetransformen av $u$. Funktionen $G$ är överförningsfunktionen.
+Typiskt (isär om modellen ger en linjär differentialekvation) fås en lösning i Laplacerummet på formen $Y(s) = G(s)U(s)$, där $U$ är Laplacetransformen av $u$. Funktionen $G$ är överförningsfunktionen. Notera att denna lösningsformen beror på att alla initialvärden är $0$!
 
 \paragraph{Poler}
 Ett systems poler är rötterna till nämnarpolynomet (som typiskt finns) i överförningsfunktionen.
 
 \paragraph{Stabilitet}
-Ett system är stabilt om det tenderar mot ett visst läge. Systemets stabilitet är typiskt kopplad med dets noder.
+Ett system är stabilt om det tenderar mot ett visst läge. Systemets stabilitet är typiskt kopplad med dets noder. Detta kan man se i enkla fall, till exempel vanliga linjära ordinära differentialekvationer, då systemets polar anger hur snabbt lösningen avtar.
 
 \paragraph{Nollställen}
 Ett systems nollställen är rötterna till täljarpolynomet (som typiskt finns) hos överförningsfunktioner. Eftersom vi är intresserade av att styra $y$, är det viktigt hur vi ska välja $u$ för att få det. Därmed är $\frac{1}{G}$ en viktig storhet, och nollställen kan därmed orsaka reglerproblem som är svårlösta.
