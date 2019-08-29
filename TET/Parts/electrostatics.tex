@@ -54,7 +54,7 @@ Vektorn $\vb{R}$ är nu specifierad för varje punkt på ytan och i hela rummet.
 
 Gauss' lag är ett bra verktyg för att beräkna elektriska fält för geometrier med mycket symmetri.
 
-\paragraph{Gauss' lag på integralform}
+\paragraph{Gauss' lag på differentialform}
 Betrakta nu en godtycklig yta $S$ som exakt inneslutar volymen $V$. Gauss' lag ger då
 \begin{align*}
 	\vinteg{S}{}{S}{\vb{E}} = \frac{1}{\varepsilon_{0}}\integ{V}{}{V}{\rho}.
@@ -62,6 +62,30 @@ Betrakta nu en godtycklig yta $S$ som exakt inneslutar volymen $V$. Gauss' lag g
 Vi kan använda divergenssatsen för att skriva om vänstersidan som en integral över $V$. Därmed kan vi dra slutsatsen
 \begin{align*}
 	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}}.
+\end{align*}
+
+\paragraph{Randvillkor för elektrist fält}
+Ytladdningar ger diskontinuiteter i elektriskt fält. För att studera det, betrakta en punkt på ytan. Gör en liten låda kring punkten så att fältet är ungefär konstant på sidorna som inte rör ytan. Gauss' lag ger oss, om bara tar med de nämnda sidorna, att elektriksa fältets normalkomponent relativt ytan uppfyller
+\begin{align*}
+	E_{\text{ovan}}^{\perp}A - E_{\text{under}}^{\perp}A = \frac{\sigma A}{\varepsilon_{0}},
+\end{align*}
+där $A$ är sidornas yta. Positiv riktning för fältets normalkomponent är ut från ytan. Vid att låta lådan bli oändligt tunn kommer även de andra sidorna inte att ge något bidrag, varför det här måste stämma. Vi får därmed att
+\begin{align*}
+	E_{\text{ovan}}^{\perp} - E_{\text{under}}^{\perp} = \frac{\sigma}{\varepsilon_{0}}
+\end{align*}
+
+Vi kan även betrakta en liten fyrkantig slinga på samma sätt, med två sidor parallella med ytan och två normala på ytan. Eftersom integralen av elektriska fältet kring en sluten kurva alltid är $0$, får vi
+\begin{align*}
+	E_{\text{ovan}}^{\parallel} - E_{\text{under}}^{\parallel} = 0.
+\end{align*}
+Eftersom denna slingan kan ha vilken som helst orientering så länge man har två paralllella och två normala sidor, gäller det även på vektorform att
+\begin{align*}
+	\vb{E}_{\text{ovan}}^{\parallel} - \vb{E}_{\text{under}}^{\parallel} = \vb{0}.
+\end{align*}
+
+Dessa två resultat kan sammanfattas som
+\begin{align*}
+	\vb{E}_{\text{ovan}}^{\parallel} - \vb{E}_{\text{under}}^{\parallel} = \frac{\sigma}{\varepsilon_{0}}\vb{n}.
 \end{align*}
 
 \paragraph{Elektrostatisk potential}
@@ -97,4 +121,105 @@ oberoende av vägen mellan punkterna. Om vi lägger potentialens referens i oän
 \begin{align*}
 	V(\vb{r}) = -\vinteg{\infty}{\vb{r}}{\vb{r}}{\vb{E}},
 \end{align*}
-ett typ inverst påstående av $\vb{E} = -\grad{V}$.
+ett typ inverst påstående av $\vb{E} = -\grad{V}$. Vi ser även från detta att
+\begin{align*}
+	V(\vb{r}_{2}) - V(\vb{r}_{1}) = -\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}}.
+\end{align*}
+
+\paragraph{Potential och arbete}
+Antag att du vill förflytta en laddning $q$ i ett elektriskt fält. Den minsta kraften du måste verka med på laddningen för att göra detta är $\vb{F} = -q\vb{E}$, eftersom du arbetar mot det elektriska fältet. Arbetet du gör då är
+\begin{align*}
+	W = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{F}} = -q\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}} = q(V(\vb{r}_{2}) - V(\vb{r}_{1})).
+\end{align*}
+Med andra ord är potentialskillnaden mellan två punkter lika med arbetet som måste göras för att förflytta en laddning från ena punkten till den andra per laddning.
+
+\paragraph{Randvillkor för potentialen}
+För att betrakta randvillkor för potentialen vid en ytladdning, kan man integrera elektriska fältet längs med en rak linje normalt på ytaddningen över ytan och låta linjen bli godtyckligt kort. Då försvinner integralen, och vi får att potentialen är kontinuerlig. Randvillkoret för elektriska fältet kan skrivas i termer av potentialen som
+\begin{align*}
+	\grad_{\vb{n}}V_{\text{över}} - \grad_{\vb{n}}V_{\text{under}} = -\frac{\sigma}{\varepsilon_{0}},
+\end{align*}
+där $\grad_{\vb{n}}$ är riktningsderivatan i normalriktningen.
+
+\paragraph{Elektrostatisk energi}
+Vi är nu intresserade av energin som krävs för att skapa en viss laddningsfördelning. Vi kommer därför beräkna energin som krävs för att transportera all laddningen från oändligheten och placera den på rätt sätt.
+
+Vi börjar med att betrakta en samling laddningar som ska ligga på avstånd $r_{ij}$ från varandra. Att placera första laddningen på rätt plats kräver inget arbete. Att sen placera ut andra laddningen kommer kräva att man arbetar mot elektriska fältet från första. Man måste alltså göra ett arbete
+\begin{align*}
+	W_{2} = \frac{1}{4\pi\varepsilon_{0}}q_{2}\frac{q_{1}}{r_{12}}.
+\end{align*}
+På samma sätt måste laddning $3$ motarbeta elektriska fältet från både $1$ och $2$. Det totala arbetet är därmed
+\begin{align*}
+	W = \frac{1}{4\pi\varepsilon_{0}}\sum\limits_{i = 1}^{n}\sum\limits_{j < i}\frac{q_{i}q_{j}}{r_{ij}}.
+\end{align*}
+Eftersom $r_{ij} = r_{ji}$ kan vi nu skriva om den inre summan genom att i stället summera över alla andra partiklar än $i$, och lägga till en faktor $\frac{1}{2}$. Vi får då
+\begin{align*}
+	W = \frac{1}{8\pi\varepsilon_{0}}\sum\limits_{i = 1}^{n}\sum\limits_{j \neq i}\frac{q_{i}q_{j}}{r_{ij}}.
+\end{align*}
+Vid att ordna om faktorerna får vi
+\begin{align*}
+	W = \frac{1}{2}\sum\limits_{i = 1}^{n}q_{i}\sum\limits_{j \neq i}\frac{q_{j}}{4\pi\varepsilon_{0}r_{ij}} = \frac{1}{2}\sum\limits_{i = 1}^{n}q_{i}V_{i}(\vb{r}_{i}),
+\end{align*}
+där $V_{i}$ är potentialen som laddning $i$ känner av på grund av alla de andra laddingarna. Ett uttryck man hade kunnat gissa sig fram till från början.
+
+Vi generaliserar vidare vår definition till kontinuerliga laddningfördelningar som
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{V}{\rho V}.
+\end{align*}
+Vi kan med hjälp av resultaten från tidigare skriva detta som
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{V}{V\varepsilon_{0}\div{\vb{E}}} = \frac{1}{2}\varepsilon_{0}\integ{}{}{V}{\div{V\vb{E}} - \vb{E}\cdot\grad{V}} = \frac{1}{2}\varepsilon_{0}\left(\vinteg{}{}{S}{V\vb{E}} + \integ{}{}{V}{E^{2}}\right).
+\end{align*}
+
+Nu kan vi fundera lite över integrationsdomänder. Om man tittar på den ursprungliga integralen, ger den inget bidrag där det inte finns laddning. Därför kan vi börja med att integrera exakt över området där det finns laddning. Om vi gör området större, kommer den ursprungliga integralen att vara oändrad. Däremot kommer integralen av elektriska fältets belopp öka, så ytintegralen måste minska motsvarande. Vi kan nu repetera processen tills vi integrerar över hela rummet. Då försvinner ytintegralen, vilket man kan argumentera lite bättre för, och kvar står
+\begin{align*}
+	W = \frac{1}{2}\varepsilon_{0}\integ{}{}{V}{E^{2}}.
+\end{align*}
+
+Det visar sig att om man använder resultatet för en laddningsfördelning på en diskret fördelning, får man inte samma svar. Detta är för att uttrycket för en diskret fördelning inte tar hänsyn till energin som krävs för att skapa punktladdningar till att börja med, vilket uttrycket för kontinuerliga fördelningar inkluderar. Denna finessen kom in i beräkningarna i övergången till kontinuerliga fördelningar, eftersom vi för diskreta fördelningar endast använde potentialen varje laddning känner på grund av alla andra. För kontinuerliga fördelningar är detta inte ett problem eftersom varje element har försvinnande liten laddning och därmed bidrar med försvinnande lite potential. För diskreta fördelningar gäller detta ej, dock.
+
+\paragraph{Perfekta ledare}
+En perfekt ledare har obegränsat med fria laddningar som kan röra sig i materialet. Från detta följer att
+\begin{itemize}
+	\item $\vb{E} = \vb{0}$ överallt inuti ledaren. Annars skulle någon av de fria laddningarna påverkas av fältet och röra sig sån att de kansellerade det.
+	\item $\rho = \varepsilon_{0}\div{\vb{E}} = 0$ inuti ledaren. Därmed är alla fria laddningar på ytan.
+	\item $V$ är konstant inuti ledaren.
+	\item $\vb{E} = \frac{\sigma}{\varepsilon_{0}}\ub{n}$ precis utanför ledaren på grund av elektriska fältets randvillkor, alternativt eftersom tangentiella komponenter skulle transportera laddningar på ytan som skulle kansellera fältet.
+\end{itemize}
+
+\paragraph{Kraften på en ytladdning}
+Kring en ytladdning är elektriska fältet diskontinuerligt, så hur beräknar man kraften på en sådan? Med hjälp av superposition kan elektriska fältet skrivas som en summa av bidrag från själva laddningen och allt annat. Denna termen är kontinuerlig i ytan eftersom man skulle kunna ta bort ytladdningen utan att ändra den. Vidare ger randvillkoren att fältet på varje sida skiljer sig med en term $\pm\frac{\sigma}{2\varepsilon_{0}}\ub{n}$, som försvinner om man tar medelvärdet. Alltså ges kraften av laddningen gånger medelärdet av fältet på varje sida.
+
+\paragraph{Kraften på en ledare}
+Betrakta en ledare som specialfall. Här får vi en krafttäthet
+\begin{align*}
+	\vb{f}  = \frac{\sigma^{2}}{2\varepsilon_{0}}\ub{n},
+\end{align*}
+som motsvarar ett tryck utåt på laddaren - oberoende av vilken sorts ytladdning man har! I termer av elektriska fältet kan trycket skrivas som
+\begin{align*}
+	p = \frac{1}{2}\varepsilon_{0}E^{2}.
+\end{align*}
+
+\paragraph{Kapacitans}
+Betrakta först två ledare med olika laddningar $\pm q$. Man kan se av integraluttrycket för elektriska fältet att det är proportionellt mot $q$. Eftersom potentialskillnaden mellan ledarna är en integral av elektriska fältet, är även denna proportionell mot $q$. Vi definierar därmed systemets kapacitans som proportionalitetskonstanten mellan de två, alltså
+\begin{align*}
+	Q = CV.
+\end{align*}
+
+Betrakta nu ett system av olika ledare, med var sin potential och laddning. Vi har även någon potentialreferens. Vi kan börja med att sätta alla potentialer förutom en till $0$, och räkna ut alla $Q_{i}$. Vid att superponera alla dina resultat får du en mängd slutgiltiga samband på formen $Q_{i} = C_{ij}V_{j}$. Detta definierar kapacitansmatrisen. Man kan visa/argumentera för att matrisen är symmetrisk och positivt definit.
+
+\paragraph{Energin för ett system av ledare}
+För ett system av ledare har vi
+\begin{align*}
+	W &= \frac{1}{2}\integ{}{}{V}{\rho V} \\
+	  &= \frac{1}{2}\integ{\text{ledare }i}{}{S}{\sigma_{i}V_{i}} \\
+	  &= \frac{1}{2}V_{i}\integ{\text{ledare }i}{}{S}{\sigma_{i}} \\
+	  &= \frac{1}{2}V_{i}Q_{i}.
+\end{align*}
+Om vi använder kapacitansmatrisen får vi
+\begin{align*}
+	W = \frac{1}{2}V_{i}C_{ij}V_{j}.
+\end{align*}
+För en enda kondensator blir detta
+\begin{align*}
+	W = \frac{1}{2}CV^{2} = \frac{1}{2C}Q^{2}.
+\end{align*}
