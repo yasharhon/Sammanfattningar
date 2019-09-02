@@ -119,3 +119,47 @@ och enligt figur \ref{fig:negative_feedback} ser vi att
 \begin{align*}
 	F(s) = K\left(1 + \frac{1}{T_{\text{I}}s}\right).
 \end{align*}
+
+\paragraph{Rotort}
+Betrakta ett system med överförningsfunktion $G_{\text{O}}$ för det öppna systemet. Det slutna systemet kommer ha överförningsfunktion
+\begin{align*}
+	G_{\text{C}} = \frac{G_{\text{O}}}{1 + G_{\text{O}}}.
+\end{align*}
+$G_{\text{O}}$ är (tydligen) ofta på formen
+\begin{align*}
+	G_{\text{O}} = K\frac{Q}{P},
+\end{align*}
+där $K$ är en parameter. Då får vi
+\begin{align*}
+	G_{\text{C}} = \frac{KQ}{P + KQ}.
+\end{align*}
+Systemet har alltså poler som ges av
+\begin{align*}
+	P + KQ = 0,\ \frac{P}{Q} = -K.
+\end{align*}
+Detta kriteriet anger systemets rotort.
+
+Vi antar nu att $P$ och $Q$ är polynom av grad $n$ respektiva $m$, där $n \geq m$. Då vet vi att kriteriet har $n$ rötter, och rotorten har därför $n$ grenar. Rötterna dyker antingen upp som reellvärda eller i par av komplexkonjugerade rötter, och därmed är rotorten symmetrisk med avseende på reella axeln. Vi vet även att rotorten har $n - m$ asymptoter. Det gäller även att alla delar av reella axeln som har ett udda antal reella start- och ändpunkter till höger om sig tillhör rotorten.
+
+För att rita rotorten kan du följa dessa steg:
+
+\begin{itemize}
+	\item Beräkna överförningsfunktionen för det slutna systemet. Skriv nämnaren som $P + KQ = 0$.
+	\item Hitta startpunkterna, alltså rötterna till $P$.
+	\item Hitta ändpunkterna, alltså rötterna till $Q$.
+	\item Bestäm antal asymptoter, alltså gradtalet till $P$ minus gradtalet till $Q$.
+	\item Beräkna punkterna där rotorten korsar reella axeln, altså $\frac{1}{n - m}(\sum\text{startpunkter} - \sum\text{ändpunkter})$.
+	\item Bestäm deras riktningar genom att betrakta argumentet till $\frac{P}{Q} = -K$ för stora $s$.
+	\item Bestäm korsningar med imaginära axeln genom att sätta $s = i\omega$. Kom ihåg att $K\geq 0$.
+	\item Bestäm vilka delar av reella axeln som tillhör rotorten. Det är de delar som har ett udda antar start- och slutpunkter till höger om sig.
+	\item Rita.
+\end{itemize}
+
+\paragraph{Nyquistkriteriet}
+Givet överförningsfunktionen
+\begin{align*}
+	G_{\text{C}} = \frac{G_{\text{O}}}{1 + G_{\text{O}}}.
+\end{align*}
+för ett slutet system, finns det några poler så att systemet är instabilt? En ide för att undersöka detta är att undersöka alla $s$ i högre halvplan och se vilka värden på $G_{\text{O}}$ man får. Detta gör vi genom att rita två halvcirklar med radier $r$ respektivar $R$ i högre halvplan, förbinda dem med raka linjer i änderna och låta $r$ gå mot $0$ och $R$ mot $\infty$. $G_{\text{O}}$ kommer då anta värden på en kurva $\gamma'$. Argumentvariationsprincipen från komplex analys ger oss då att antalet poler i höger halvplan till ett återkopplad system är lika med antalet poler i höger halvplan hos $G_{\text{O}}$ plus antalet varv som $\gamma'$ omsluter punkten $-1$. Speciellt, om $G_{\text{O}}$ inte har poler i höger halvplan, är systemet stabilt om $\gamma'$ inte omsluter $-1$.
+
+Av någon anledning är den viktigaste delen där $\gamma'$ skär imaginära axeln. Man ska även kunna observera att $G_{\text{O}}(\infty) = 0$ och $G_{\text{O}}(0)\approx\frac{K}{s^{p}}$, där $p$ är antal poler i origo.
