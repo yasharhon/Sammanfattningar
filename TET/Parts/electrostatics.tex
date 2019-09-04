@@ -223,3 +223,105 @@ För en enda kondensator blir detta
 \begin{align*}
 	W = \frac{1}{2}CV^{2} = \frac{1}{2C}Q^{2}.
 \end{align*}
+
+\paragraph{Poissons ekvation}
+Om vi tittar på våra resultat, får vi nu Poissons ekvation
+\begin{align*}
+	\laplacian{V} = -\frac{\rho}{\varepsilon_{0}}.
+\end{align*}
+
+\paragraph{Entydighetssats för potentialen}
+Betrakta en region $H$ med känd laddningstäthet som innehåller tre regioner avgränsade av ytorna $S_{D}$, $S_{N}$ och $S_{Q}$ (med normalvektorerna pekande in mot de avgränsade regionerna). På $S_{D}$ är $V = V_{\text{S}}$ känd. På $S_{N}$ är $\grad_{\vb{n}}{V} = -E_{\vb{n}}$ känd. $S_{Q}$ är en perfekt ledare med känd total ytladdning $Q$. Vi vill försöka visa att elektriska fältet är entydigt i $H$.
+
+% TODO: Varför sista?
+För att visa detta, antag att vi har två lösningar $V_{1}$ och $V_{2}$ och bilda $V_{0} = V_{1} - V_{2}$. Då vet vi att $\laplacian{V_{0}} = 0$ i $H$, $V_{0} = 0$ på $S_{D}$ och $S_{Q}$, att $\grad_{\vb{n}}{V_{0}} = 0$ på $S_{N}$ och $\integ{S_{Q}}{}{S}{\grad_{\vb{n}}{V_{0}}} = 0$. Detta stämmer eftersom
+\begin{align*}
+	\integ{S_{Q}}{}{S}{\sigma} = \integ{S_{Q}}{}{S}{\sigma}
+\end{align*}
+Vi får därmed
+\begin{align*}
+	\integ{S_{D} + S_{Q} + S_{N}}{}{S}{V_{0}\grad_{\vb{n}}{V_{0}}} = \integ{H}{}{V}{V_{0}\laplacian{V_{0}} + \abs{\grad{V_{0}}}^{2}} = \integ{H}{}{V}{\abs{\grad{V_{0}}}^{2}}.
+\end{align*}
+På $S_{D}$ och $S_{N}$ är en av faktorerna i integranden lika med $0$, så vi behöver endast betrakta $S_{Q}$. Här har vi att $V_{0}$ måste vara konstant på ytan, vilket ger
+\begin{align*}
+	\integ{S_{Q}}{}{S}{V_{0}\grad_{\vb{n}}{V_{0}}} = V_{0}\integ{S_{Q}}{}{S}{\grad_{\vb{n}}{V_{0}}} = 0,
+\end{align*}
+vilket implicerar
+\begin{align*}
+	\grad{V} = \vb{E}_{2} - \vb{E}_{1} = \vb{0},
+\end{align*}
+och beviset är klart.
+
+\paragraph{Speglingsmetoder}
+Vissa problem kan lösas med speglingsmetoder. Då kan man ersätta vissa komponenter av ett problem med andra på ett sådant sätt att randvillkor som ges i problemet fortfarande är uppfylda.
+
+\paragraph{Spegling och potentialen från två linjeladdningar}
+Vi kommer behöva lite standardlösningar för att använda när vi speglar problem. Vi betraktar därför först två oändligt långa parallella linjeladdningar med laddning $\pm\lambda$ per längd separerade med ett avstånd $2h$. Problemet är tvådimensionellt, och vi inför $\vb{s}$ som vektorn från punkten mitt emellan laddningarna till en godtycklig punkt i planet. Elektriska fältet från laddningen till höger, som vi döper nummer $1$, ges av $\vb{E} = \frac{\lambda}{2\pi\varepsilon_{0}\abs{\vb{s} - \vb{s}_{1}}}\ub{s}'$, där $\vb{s}_{1} = h\ub{x}$ och $\ub{s}'$ pekar i samma riktning som $\vb{s} - \vb{s}_{1}$. Vi definierar $V = 0$ där $\vb{s} = 0$ och får
+\begin{align*}
+	V(\vb{s}) = -\vinteg{\vb{0}}{\vb{s}}{s'}{\frac{\lambda}{2\pi\varepsilon_{0}\abs{\vb{s}' - \vb{s}_{1}}}\ub{s}'} = -\vinteg{-\vb{s}_{1}}{\vb{s} - \vb{s}_{1}}{u'}{\frac{\lambda}{2\pi\varepsilon_{0}u'}\ub{u}'}.
+\end{align*}
+Vi har rotationssymmetri i planet, och kan därmed välja en radiell riktning för integrationen, vilket ger
+\begin{align*}
+	V(\vb{s}) = -\frac{\lambda}{2\pi\varepsilon_{0}}\ln{\frac{\abs{\vb{s} - \vb{s}_{1}}}{\abs{-\vb{s}_{1}}}} = -\frac{\lambda}{2\pi\varepsilon_{0}}\ln{\frac{\abs{\vb{s} - \vb{s}_{1}}}{h}}.
+\end{align*}
+Den totala potentialen är därmed
+\begin{align*}
+	V(\vb{s}) = \frac{\lambda}{2\pi\varepsilon_{0}}\ln{\frac{\abs{\vb{s} - \vb{s}_{2}}}{\abs{\vb{s} - \vb{s}_{1}}}}.
+\end{align*}
+
+Ekvipotentialytorna uppfyller $V = V_{0}$, vilket ger
+\begin{align*}
+	\frac{\abs{\vb{s} - \vb{s}_{2}}}{\abs{\vb{s} - \vb{s}_{1}}} = e^{\frac{2\pi\varepsilon_{0}V_{0}}{\lambda}}.
+\end{align*}
+Vi definierar $u = \frac{2\pi\varepsilon_{0}V_{0}}{\lambda}$ och skriver om avstånden på vänstersidan för att få
+\begin{align*}
+	\frac{(x + h)^{2} + y^{2}}{(x - h)^{2} + y^{2}} = e^{2u}.
+\end{align*}
+Detta ger
+\begin{align*}
+	x^{2} + 2xh + h^{2} + y^{2}                                                          &= e^{2u}(x^{2} - 2xh + h^{2} + y^{2}), \\
+	x^{2}(1 - e^{2u}) + 2xh(1 + e^{2u}) + y^{2}(1 - e^{2u})                              &= h^{2}(e^{2u} - 1), \\
+	x^{2}(e^{-u} - e^{u}) + 2xh(e^{-u} + e^{u}) + y^{2}(e^{-u} - e^{u})                  &= h^{2}(e^{u} - e^{-u}), \\
+	-x^{2}\sinh{u} + 2xh\cosh{u} - y^{2}\sinh{u}                                         &= h^{2}\sinh{u}, \\
+	x^{2} - 2xh\coth{u} + h^{2} + y^{2}                                                  &= 0, \\
+	x^{2} - 2xh\coth{u} + h^{2}\left(\coth^{2}{u} - \frac{1}{\sinh^{2}{u}}\right) + y^{2}          &= 0, \\
+	(x - h\coth{u})^{2} + y^{2}                                                          &= \frac{h^{2}}{\sinh^{2}{u}}
+\end{align*}
+Det är alltså en cirkel med centrum i $h\coth{u}\ub{x}$ och radie $a = \frac{h}{\abs{\sinh{u}}}$. Avstånden från cirkelns centrum till de två laddningarna är
+\begin{align*}
+	d_{1} = h\abs{\coth{u} - 1},\ d_{2} = h\abs{\coth{u} + 1}.
+\end{align*}
+Eftersom $\abs{\coth{u}} > 1$, får vi
+\begin{align*}
+	d_{1}d_{2} = h^{2}(\coth^{2}{u} - 1) = \frac{h^{2}}{\sinh^{2}{u}} = a^{2}.
+\end{align*}
+
+Speglingsstrategin är nu att om du har en linjeladdning $\lambda$ parallell med en ledande cirkulärcylindrisk yta med radien $a$ och laddning $-\lambda$ per längd, och avståndet från cylinderaxeln till linjeladdningen är $d$, kan cylinderytan ersättas med en linjeladdning $\lambda_{\text{s}} = -\lambda$ ett avstånd $d_{\text{s}} = \frac{a^{2}}{d}$ från cylinderaxeln.
+
+\paragraph{Spegling och potentialen från två punktladdningar}
+Betrakta två punktladdningar liggande på $z$-axeln, där den översta, döpt nummer 1, ligger i punkten $h\ub{z}$ och den andra i origo. Problemet är cylindersymmetriskt, så vi inför cylinderkoordinater. Potentialen är då
+\begin{align*}
+	V = \frac{1}{4\pi\varepsilon_{0}}\left(\frac{q_{1}}{\sqrt{\rho^{2} + (z - h)^{2}}} + \frac{q_{2}}{\sqrt{\rho^{2} + z^{2}}}\right).
+\end{align*}
+Ekvipotentialytorna för en nollskild potential är komplicerade, men ekvipotentialytan för $V = 0$ ges av
+\begin{align*}
+	\frac{q_{1}}{\sqrt{\rho^{2} + (z - h)^{2}}} + \frac{q_{2}}{\sqrt{\rho^{2} + z^{2}}} &= 0, \\
+	k = \frac{q_{1}}{q_{2}}                                                             &= -\frac{\sqrt{\rho^{2} + (z - h)^{2}}}{\sqrt{\rho^{2} + z^{2}}}, \\
+	\rho^{2}(k^{2} - 1) + k^{2}z^{2}                                                         &= (z - h)^{2}, \\
+	z^{2}(1 - k^{2}) - 2zh + h^{2}                                                      &= \rho^{2}(k^{2} - 1), \\
+	\rho^{2} + z^{2} - \frac{2zh}{1 - k^{2}} + \frac{h^{2}}{1 - k^{2}}                  &= 0, \\
+	\rho^{2} + \left(z - \frac{h}{1 - k^{2}}\right) - \frac{h^{2}}{(1 - k^{2})^{2}} + \frac{h^{2}}{1 - k^{2}} &= 0, \\
+	\rho^{2} + \left(z - \frac{h}{1 - k^{2}}\right)                                     &= \frac{h^{2}k^{2}}{(1 - k^{2})^{2}}.
+\end{align*}
+Detta är en sfär med centrum i $\frac{1}{1 - k^{2}}h\ub{z}$ och radius $a = h\abs{\frac{k}{1 - k^{2}}}$. Notera att det är en förutsättning att $k < 0$, alltså att laddningarna har olika tecken.
+
+Om vi nu antar $k^{2} > 1$ ligger sfärens centrum under laddning $2$. Avstånden från sfärens centrum till de två punktladdningarna är då
+\begin{align*}
+	d_{2} = \frac{1}{k^{2} - 1}h,\ d_{1} = h + d_{2} = \frac{k^{2}}{k^{2} - 1}h.
+\end{align*}
+Detta ger
+\begin{align*}
+	d_{1}d_{2} = a^{2},\ k = -\sqrt{\frac{d_{1}}{d_{2}}} = -\frac{d_{1}}{a} = -\frac{a}{d_{2}}.
+\end{align*}
+
+Speglingsstrategin är nu att om du har en punktladdning $q$ ett avstånd $d$ från centrum av en jordad ledande sfärisk yta med radien $a$, kan ledaren ersättas med en punktladdning $q_{s} = -q\frac{a}{d}$ ett avstånd $d_{s} = \frac{a^{2}}{d}$ från sfärens centrum (bort från punktladdningen).
