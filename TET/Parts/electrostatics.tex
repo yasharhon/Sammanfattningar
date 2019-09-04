@@ -325,3 +325,29 @@ Detta ger
 \end{align*}
 
 Speglingsstrategin är nu att om du har en punktladdning $q$ ett avstånd $d$ från centrum av en jordad ledande sfärisk yta med radien $a$, kan ledaren ersättas med en punktladdning $q_{s} = -q\frac{a}{d}$ ett avstånd $d_{s} = \frac{a^{2}}{d}$ från sfärens centrum (bort från punktladdningen).
+
+\paragraph{Laplace' ekvation i sfäriska koordinater}
+Vid att ställa upp Poissons ekvation i sfäriska koordinater på ett laddningsfritt domän som avgränsas av två sfäriska skal får man Laplace' ekvation. Den har allmän lösning på formen
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}\sum\limits_{m = -l}^{l}\left(A_{lm}r^{l} + \frac{B_{lm}}{r^{l + 1}}\right)Y_{lm}(\theta, \phi),
+\end{align*}
+där $Y_{lm}$ är klotytefunktionerna. $A_{lm}$ bestäms av laddningarna utanför det yttre skalet och $B_{lm}$ av laddningarna innanför det inre skalet.
+
+Vi har allmänt att
+\begin{align*}
+	Y_{lm}(\theta, \phi)\propto P_{l}^{m}(\cos{\theta})e^{im\phi},
+\end{align*}
+där $P_{l}^{m}$ är Legendrepolynomen. I fall som är rotationssymmetriska med avseende på $xy$-planet kan lösningen därför förenklas till
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}r^{l} + \frac{B_{l}}{r^{l + 1}}\right)P_{l}^{0}(\cos{\theta}).
+\end{align*}
+
+\paragraph{Anpassningsmetod}
+Betrakta ett fall likt fallet ovan där vi även känner $V$ på $z$-axeln. Eftersom $P_{l}(1) = 1$ och $P_{l}(-1) = (-1)^{l}$ får vi längs $z$-axeln
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}\abs{z}^{l} + \frac{B_{l}}{\abs{z}^{l + 1}}\right)
+	\begin{cases}
+		1,        &z > 0, \\
+		(-1)^{l}, &z < 0.
+	\end{cases}
+\end{align*}
