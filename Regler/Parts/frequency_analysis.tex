@@ -1,0 +1,28 @@
+\section{Frekvensanalys}
+
+\paragraph{Fundamental ide}
+Eftersom periodiska funktioner kan skrivas som en summa av trigonometriska funktioner och funktioner som avtar tillräcklig snabbt kan skrivas som en integral över trigonometriska funktioner, vet vi att när vi studerar linjära system räcker det att studera systemets respons på en enda term, alltså en enda trigonometrisk funktion, och se hur den beror av frekvensen. Om vi tillför en signal $u = \sin{\omega t}$ till ett system med överförningsfunktion $G$ får vi
+\begin{align*}
+	y &= \integ{0}{\infty}{\tau}{g(\tau)u(t - \tau)} \\
+	  &= \Im\left(\integ{0}{\infty}{\tau}{g(\tau)e^{i\omega(t - \tau)}}\right) \\
+	  &= \Im\left(e^{i\omega t}\integ{0}{\infty}{\tau}{g(\tau)e^{-i\omega\tau}}\right) \\
+	  &= \Im(e^{i\omega t}G(i\omega)) \\
+	  &= \abs{G(i\omega)}\sin(\omega t + \arg{G(i\omega)}).
+\end{align*}
+Det kan även finnas transienta termer här, men om systemet är stabilt kommer dessa försvinna över tid. Vi ser alltså att systemets svar beror av $G(i\omega)$.
+
+\paragraph{Nyquistdiagram}
+Ett Nyquistdiagram är en uppritning av $G(i\omega)$ för $0 < \omega < \infty$.
+
+\paragraph{Bodediagram}
+Ett Bodediagram är en uppritning av $\abs{G(i\omega)}$ och $\arg{G(i\omega)}$ som funktioner av $\omega$.
+
+\paragraph{Brytningspunkter}
+Om överförningsfunktionen kan skrivas som
+\begin{align*}
+	G(i\omega) = \frac{\prod(i\omega - z_{i})}{\prod(i\omega - p_{i})},
+\end{align*}
+är alla $z_{i}$ och $p_{i}$ brytningspunkter för systemet. Här kommer de största lutningsändringarna i Bodediagrammet.
+
+\paragraph{Bodes relation}
+Låt $G$ vara minimumsfas, dvs. ha alla sina nollställen och poler i vänstre halvplan, och $G(0) > 0$. Då gäller att om $\abs{G(i\omega)}$ i ett visst frekvensområde avtar med \SI{20}{\deci\bel} per dekad (en dekad är en ökning i frekvens med en faktor $10$), är $\arg{G(i\omega)}\approx \SI{-90}{\degree}$, och om $\abs{G(i\omega)}$ avtar med \SI{40}{\deci\bel} per dekad, är $\arg{G(i\omega)}\approx \SI{-180}{\degree}$.
