@@ -17,6 +17,18 @@ Ett Nyquistdiagram är en uppritning av $G(i\omega)$ för $0 < \omega < \infty$.
 \paragraph{Bodediagram}
 Ett Bodediagram är en uppritning av $\abs{G(i\omega)}$ och $\arg{G(i\omega)}$ som funktioner av $\omega$.
 
+\paragraph{Bandbredd}
+Bandbredden är bredden på det frekvensintervallet där $\abs{G(i\omega} \geq \frac{1}{\sqrt{2}}$, och benämnas $\omega_{\text{B}}$. Bandbredden kan ge information om systemets tillväxt, då hög bandbredd typiskt betyder snabb tillväxt. Man önskar typiskt att denna skall vara stor.
+
+\paragraph{Resonansfrekvens}
+Resonansfrekvensen $\omega_{\text{r}}$ är den frekvens som ger starkast respons i systemet.
+
+\paragraph{Resonanstopp}
+Resonanstoppen är $M_{\text{p}} = \abs{G(i\omega_{\text{r}})}$, och ger typiskt en indikation på hur mycket översläng man får. Man önskar typiskt att denna ska vara liten.
+
+\paragraph{Stationärt fel}
+Det stationära felet ges av $e_{0} = 1 - G_{\text{C}}(0)$.
+
 \paragraph{Brytningspunkter}
 Om överförningsfunktionen kan skrivas som
 \begin{align*}
@@ -26,3 +38,13 @@ Om överförningsfunktionen kan skrivas som
 
 \paragraph{Bodes relation}
 Låt $G$ vara minimumsfas, dvs. ha alla sina nollställen och poler i vänstre halvplan, och $G(0) > 0$. Då gäller att om $\abs{G(i\omega)}$ i ett visst frekvensområde avtar med \SI{20}{\deci\bel} per dekad (en dekad är en ökning i frekvens med en faktor $10$), är $\arg{G(i\omega)}\approx \SI{-90}{\degree}$, och om $\abs{G(i\omega)}$ avtar med \SI{40}{\deci\bel} per dekad, är $\arg{G(i\omega)}\approx \SI{-180}{\degree}$.
+
+\paragraph{Snabbhet och svängighet}
+Vi kan med tidigare resultat se att om $G_{\text{O}}(i\omega)$ är nära $1$ blir $G_{\text{C}}(i\omega)$ stor, och om $G_{\text{O}}(i\omega)$ är liten blir även $G_{\text{C}}(i\omega)$ liten. Vi kan också se att ett ekvivalent kriterium för bandbredden är $\abs{G_{\text{O}}(i\omega) - 1} \leq \sqrt{2}$ för $\omega \geq \omega_{\text{B}}$.
+
+\paragraph{Resonanstopp och fasmarginal}
+Vi har
+\begin{align*}
+	M_{\text{p}} \geq \abs{G(i\omega_{\text{c}})} = \frac{1}{2\sin(\frac{1}{2}\phi_{\text{m}})}.
+\end{align*}
+Speciellt ger liten fasmarginal stort översläng.

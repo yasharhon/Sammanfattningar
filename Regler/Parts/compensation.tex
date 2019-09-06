@@ -1,0 +1,26 @@
+\section{Kompensering}
+
+\paragraph{Ideen}
+Vi ser att det enklaste sättet att konstruera en bra regulator på är att ändra konstruktionen av det öppna systemet. Vi bestämmer alltså regulatorn $F$ utifrån krav på
+\begin{itemize}
+	\item snabbhet, alltså skärfrekvens.
+	\item dämpning, alltså fasmarginal.
+	\item stationärt fel, alltså krav på $\abs{G_{\text{O}}(0)}$.
+\end{itemize}
+
+\paragraph{Kompensation för snabbhet}
+För snabbhet räcker det med en P-regulator. Denna flyttar amplitudkurvan, men ändrar ej faskurvan. Alltså hjälper den oss att bestämma skärfrekvensen.
+
+\paragraph{Dämpning}
+Här kan man använda en PD-regulator. Den fixar fasmarginalen.
+
+\paragraph{Stationärt fel}
+Här kan man använda en PI-regulator. Denna kan dock förstöra fasmarginalen.
+
+\paragraph{Arbetsgång}
+Arbetsgången i kompensering är att
+\begin{itemize}
+	\item bestämma önskad bandbredd.
+	\item bestämma önskad fasmarginal för att ge nödvändig fasökning vid skärfrekvensen.
+	\item Gör lead- och laggrejer. Jag kanske borde fatta det.
+\end{itemize}

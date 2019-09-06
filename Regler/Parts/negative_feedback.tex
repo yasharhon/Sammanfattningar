@@ -160,6 +160,21 @@ Givet överförningsfunktionen
 \begin{align*}
 	G_{\text{C}} = \frac{G_{\text{O}}}{1 + G_{\text{O}}}.
 \end{align*}
-för ett slutet system, finns det några poler så att systemet är instabilt? En ide för att undersöka detta är att undersöka alla $s$ i högre halvplan och se vilka värden på $G_{\text{O}}$ man får. Detta gör vi genom att rita två halvcirklar med radier $r$ respektivar $R$ i högre halvplan, förbinda dem med raka linjer i änderna och låta $r$ gå mot $0$ och $R$ mot $\infty$. $G_{\text{O}}$ kommer då anta värden på en kurva $\gamma'$. Argumentvariationsprincipen från komplex analys ger oss då att antalet poler i höger halvplan till ett återkopplad system är lika med antalet poler i höger halvplan hos $G_{\text{O}}$ plus antalet varv som $\gamma'$ omsluter punkten $-1$. Speciellt, om $G_{\text{O}}$ inte har poler i höger halvplan, är systemet stabilt om $\gamma'$ inte omsluter $-1$.
+för ett slutet system, finns det några poler så att systemet är instabilt? En ide för att undersöka detta är att undersöka alla $s$ i högre halvplan och se vilka värden på $G_{\text{O}}$ man får. Detta gör vi genom att rita två halvcirklar med radier $r$ respektivar $R$ i högre halvplan, förbinda dem med raka linjer i änderna och låta $r$ gå mot $0$ och $R$ mot $\infty$. $G_{\text{O}}$ kommer då anta värden på en kurva som kallas för Nyquistkurvan. Argumentvariationsprincipen från komplex analys ger oss då att antalet poler i höger halvplan till ett återkopplad system är lika med antalet poler i höger halvplan hos $G_{\text{O}}$ plus antalet varv som Nyquistkurvan omsluter punkten $-1$. Speciellt, om $G_{\text{O}}$ inte har poler i höger halvplan, är systemet stabilt om Nyquistkurvan inte omsluter $-1$.
 
 Av någon anledning är den viktigaste delen där $\gamma'$ skär imaginära axeln. Man ska även kunna observera att $G_{\text{O}}(\infty) = 0$ och $G_{\text{O}}(0)\approx\frac{K}{s^{p}}$, där $p$ är antal poler i origo.
+
+\paragraph{Skärfrekvens}
+Skärfrekvens $\omega_{\text{c}}$ är frekvensen för vilken Nyquistkurvan skär enhetscirkeln. Det är en tummregel att denna är ungefär lik bandbredden.
+
+\paragraph{Fasmarginal}
+Fasmarginalen $\phi_{\text{m}}$ är vinkeln mellan negativa $x$-axeln och punkten där Nyquistkurvan skär enhetscirkeln.
+
+\paragraph{Phase-crossover-frekvens}
+$\omega_{\text{p}}$ är frekvensen så att $\arg{G_{\text{O}}(i\omega_{\text{p}}} = -\pi$.
+
+\paragraph{Amplitudmarginal}
+Amplitudmarginalen ges av $A_{\text{m}} = \frac{1}{\abs{G_{\text{O}}(i\omega_{\text{p}}}}$.
+
+\paragraph{Alternativt Nyquist-kriterium}
+Nyquistkriteriet kan nu formuleras som $\phi_{\text{m}} > 0,\ A_{\text{m}} > 1$.
