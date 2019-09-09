@@ -351,3 +351,131 @@ Betrakta ett fall likt fallet ovan där vi även känner $V$ på $z$-axeln. Efte
 		(-1)^{l}, &z < 0.
 	\end{cases}
 \end{align*}
+
+\paragraph{Elektriska dipolen}
+Betrakta två punktladdningar på en linje. Linjen går genom origo, och laddningarna ligger lika långa avstånd $\frac{1}{2}d$ från origo. Potentialen i punkten $\vb{r}$, som ligger ett avstånd $R_{+}$ respektiva $R_{-}$ från de två laddningarna, ges av
+\begin{align*}
+	V = \frac{q}{4\pi\varepsilon_{0}R_{+}} - \frac{q}{4\pi\varepsilon_{0}R_{-}} = \frac{q}{4\pi\varepsilon_{0}}\frac{R_{-} - R_{+}}{R_{+}R_{-}}.
+\end{align*}
+Om $r >> d$ fås
+\begin{align*}
+	V \approx \frac{q}{4\pi\varepsilon_{0}}\frac{d\cos{\theta}}{r^{2}}
+\end{align*}
+där $\theta$ är vinkeln mellan $\vb{r}$ och linjen. Vi kan då skriva detta som
+\begin{align*}
+	V = \frac{q}{4\pi\varepsilon_{0}}\frac{\vb{d}\cdot\ub{r}}{r^{2}}.
+\end{align*}
+Vi definierar nu dipolmomentet $\vb{p} = q\vb{d}$, och får då
+\begin{align*}
+	V = \frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}.
+\end{align*}
+
+Notera att vi kan skriva dipolmomentet som $\vb{p} = \sum q_{i}\vb{r}_{i}$.
+
+\paragraph{Ideala dipoler}
+En ideal dipol fås i gränsen för en dipol när $d$ blir oändligt liten på ett sådant sätt att $\vb{p}$ hålls konstant.
+
+\paragraph{Fältet från en dipol}
+Fältet från en dipol ges av
+\begin{align*}
+	\vb{E} = -\grad{\frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}} = -\grad{\frac{\vb{p}\cdot\vb{r}}{4\pi\varepsilon_{0}r^{3}}}.
+\end{align*}
+I nämnaren har vi
+\begin{align*}
+	\vb{p}\cdot\vb{r} = p_{i}r_{i} \implies \del{i}{\vb{p}\cdot\vb{r}} = p_{i} \implies \grad{\vb{p}\cdot\vb{r}} = \vb{p}.
+\end{align*}
+Vi får då
+\begin{align*}
+	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\left(\frac{\vb{p}}{r^{3}} - \frac{3\vb{p}\cdot\vb{r}}{r^{4}}\grad{r}\right) = \frac{1}{4\pi\varepsilon_{0}r^{3}}\left(3(\vb{p}\cdot\ub{r})\ub{r} - \vb{p}\right).
+\end{align*}
+
+\paragraph{Dipolmoment för en laddningsfördelning}
+För en laddningsfördelning ges dipolmomentet av
+\begin{align*}
+	\vb{p} = \integ{}{}{V}{\vb{r}\rho}.
+\end{align*}
+
+\paragraph{Förflyttning av koordinatsystem och dipolmoment}
+Vid förflyttning av origo en sträcka $\vb{a}$ fås
+\begin{align*}
+	\vb{p}' = \integ{}{}{V}{\vb{r}'\rho} = \integ{}{}{V}{(\vb{r} - \vb{a})\rho} = \vb{p} - q\vb{a}.
+\end{align*}
+Alltså beror dipolmomentet av origos position om det finns en netto mängd laddning i systemet.
+
+\paragraph{Multipolutveckling}
+Betrakta en punkt $\vb{r}$ och en annan punkt $\vb{r}'$. Vid att definiera $\vb{R} = \vb{r} - \vb{r}'$ får vi att om de två punkterna inte är samma, är $\laplacian{\frac{1}{R}} = 0$ överallt förutom där $\vb{R} = \vb{0}$. Vid att lägga vårat koordinatsystem så att $\vb{r}'$ är parallell med $z$-axeln och definiera vinkeln mellan $\vb{r}$ och $\vb{r}'$ som $\gamma$ fås
+\begin{align*}
+	\frac{1}{R} =
+	\begin{cases}
+		\sum\limits_{l = 0}^{\infty}A_{l}r^{l}P_{l}(\cos{\gamma}),          &r < r', \\
+		\sum\limits_{l = 0}^{\infty}\frac{B_{l}}{r^{l}}P_{l}(\cos{\gamma}), &r > r'.
+	\end{cases}
+\end{align*}
+Speciellt, på $z$-axeln är $\gamma = 0$ och
+\begin{align*}
+	\frac{1}{R} = \frac{1}{r_{>} - r_{<}} = \frac{1}{r_{>}}\left(1 - \frac{r_{<}}{r_{>}}\right)^{-1} = \frac{1}{r_{>}}\sum\limits_{l = 0}^{\infty}\left(\frac{r_{<}}{r_{>}}\right)^{l} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}},
+\end{align*}
+där $r_{<} = \min(r', r)$ och $r_{>} = \max(r', r)$. Vi utvidgar därmed lösningen till
+\begin{align*}
+	\frac{1}{R} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}}P_{l}(\cos{\gamma}).
+\end{align*}
+
+Vi söker nu potentialen utanför en sfär som omsluter en rumladdning. Vid att låta $\vb{r}$ peka utanför sfären och $\vb{r}'$ inuti fås $r_{<} = r',\ r_{>} = r$ och
+\begin{align*}
+	V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V'}{\frac{\rho}{R}} = \frac{1}{4\pi\varepsilon_{0}}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{V'}{(r')^{l}\rho P_{l}(\cos{\gamma})} = \sum\limits_{l = 0}^{\infty}V_{l}.
+\end{align*}
+De olika $V_{l}$ kommer ge oss termer som ser ut som olika multipoler, och vi vill nu studera dem. Vi noterar först att om $e_{i}$ respektiva $e_{i}'$ är komponenterna av $\ub{r}$ respektiva $\ub{r}'$, kan vi skriva
+\begin{align*}
+	\cos(\gamma) &= e_{i}e_{i}',\ \cos[2](\gamma) = e_{i}e_{i}'e_{i}e_{j}',\ 1 = e_{i}e_{i} = e_{i}e_{j}\delta_{ij}.
+\end{align*}
+
+För $l = 0$ får vi
+\begin{align*}
+	V_{0} = \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r}\integ{}{}{V'}{\rho},
+\end{align*}
+alltså ett bidrag motsvarande en punktladdning med samma totala laddning i origo. För $l = 1$ fås
+\begin{align*}
+	V_{1} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}\integ{}{}{V'}{r'\rho P_{1}(\cos{\gamma})} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'\cos{\gamma}\rho} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'e_{i}e_{i}'\rho} \\
+	      &= \frac{e_{i}}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r_{i}'\rho} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\ub{r}\cdot\integ{}{}{V'}{r_{i}'\rho}
+\end{align*}
+alltså ett bidrag motsvarande en dipol med samma totala dipolmoment i origo. För $l = 2$ fås
+\begin{align*}
+	V_{2} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{3}}\integ{}{}{V'}{r'^{2}\rho P_{2}(\cos{\gamma})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{i}'r_{i}'\rho(3\cos[2](\gamma) - 1)} \\
+	V_{2} &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3\cos[2](\gamma) - 1)}  \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}e_{i}'e_{i}e_{j}' - e_{i}e_{j}\delta_{ij})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}'e_{j}' - \delta_{ij})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})}.
+\end{align*}
+Vi definierar nu kvadrupolmomentstensorn
+\begin{align*}
+	Q_{ij} = \frac{1}{2}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})},
+\end{align*}
+vilket ger
+\begin{align*}
+	V = \frac{e_{i}Q_{ij}e_{j}}{4\pi\varepsilon_{0}r^{3}}.
+\end{align*}
+Detta är kvadrupolbidraget.
+
+Allmänt blir det $l$:te bidraget på formen
+\begin{align*}
+	V_{l} = \frac{Q_{i_{1}\dots i_{l}}e_{i_{1}}\dots e_{i_{l}}}{4\pi\varepsilon_{0}r^{l + 1}}.
+\end{align*}
+
+\paragraph{Additionssatsen}
+Hellre än att hantera komponenterna av kvadrupolmomentstensorn, använder vi en sats som säjer
+\begin{align*}
+	P_{l}(\cos{\gamma}) = \frac{4\pi}{2l + 1}\sum\limits_{m = -l}^{l}Y_{lm}(\theta, \phi)Y_{lm}^{*}(\theta', \phi').
+\end{align*}
+Då kan vi skriva
+\begin{align*}
+	\sum\limits_{l = 0}^{\infty}V_{l},\ V_{l} = \frac{1}{(2l + 1)\varepsilon_{0}r^{l + 1}}\sum\limits_{m = -l}^{l}q_{lm}Y_{lm}(\theta, \phi),
+\end{align*}
+där $q_{lm}$ är det sfäriska multipolmomentet
+\begin{align*}
+	q_{lm} = \integ{}{}{V*}{\rho (r')^{l}})Y_{lm}^{*}(\theta', \phi').
+\end{align*}
+Varje $V_{l}$ har alltså $2l + 1$ oberoende komponenter, vilket på grund av multipolmomenttensorernas symmetri och spårlöshet är lika med antalet oberoende komponenter i multipolmomenttensorn.
