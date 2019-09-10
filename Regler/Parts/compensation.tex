@@ -11,11 +11,42 @@ Vi ser att det enklaste sättet att konstruera en bra regulator på är att änd
 \paragraph{Kompensation för snabbhet}
 För snabbhet räcker det med en P-regulator. Denna flyttar amplitudkurvan, men ändrar ej faskurvan. Alltså hjälper den oss att bestämma skärfrekvensen.
 
-\paragraph{Dämpning}
-Här kan man använda en PD-regulator. Den fixar fasmarginalen.
+\paragraph{Fasavancering}
+För att höja fasen kan man använda en deriverande länk, alltså en regulator med överföringsfunktion
+\begin{align*}
+	F = K(\tau_{\text{D}}s + 1).
+\end{align*}
+Typiskt kan man inte låta deriveringen verka fullt ut, så överförningsfunktionen blir i stället på formen
+\begin{align*}
+	F_{\text{lead}} = K\frac{\tau_{\text{D}}s + 1}{\beta\tau_{\text{D}}s + 1}.
+\end{align*}
+Vi har
+\begin{align*}
+	\arg{F_{\text{lead}}} = \dots = \arctan{\frac{(1 - \beta)\tau_{\text{D}}\omega}{1 + \beta\tau_{\text{D}}^{2}\omega^{2}}},
+\end{align*}
+och får därmed att den maximala fasförskjutningen är
+\begin{align*}
+	\phi_{\text{max}} = \arctan{\frac{1 - \beta}{2\sqrt{\beta}}}
+\end{align*}
+för frekvensen
+\begin{align*}
+	\omega = \frac{1}{\sqrt{\beta}\tau_{\text{D}}}.
+\end{align*}
 
-\paragraph{Stationärt fel}
-Här kan man använda en PI-regulator. Denna kan dock förstöra fasmarginalen.
+\paragraph{Lågfrekvensförstärkning}
+Lågfrekvensförstärkning kan ta bort stationärt fel. För att lågfrekvensförstarka kan man använda en integrerande länk, alltså en regulator med överförningsfunktion
+\begin{align*}
+	F = \frac{\tau_{1}s + 1}{\tau_{\text{D}}s}.
+\end{align*}
+Denna har dock oändligt hög förstärkning för låga frekvenser, kan man i stället använda en fasretarderande länk, alltså en regulator med överförningsfunktion
+\begin{align*}
+	F_{\text{lag}} = \frac{\tau_{1}s + 1}{\beta\tau_{1}s + \gamma}.
+\end{align*}
+Vi har
+\begin{align*}
+	\arg{F_{\text{lag}}} = \dots = -\arctan{\frac{(1 - \gamma)\tau_{1}\omega_{\text{c}}}{\gamma + \tau_{1}^{2}\omega_{\text{c}}^{2}}}.
+\end{align*}
+Det kan däremot vara svårt att göra rätt val av parametrar.
 
 \paragraph{Arbetsgång}
 Arbetsgången i kompensering är att
