@@ -479,3 +479,81 @@ där $q_{lm}$ är det sfäriska multipolmomentet
 	q_{lm} = \integ{}{}{V*}{\rho (r')^{l}})Y_{lm}^{*}(\theta', \phi').
 \end{align*}
 Varje $V_{l}$ har alltså $2l + 1$ oberoende komponenter, vilket på grund av multipolmomenttensorernas symmetri och spårlöshet är lika med antalet oberoende komponenter i multipolmomenttensorn.
+
+\paragraph{Kraft på en laddningsfördelning}
+Betrakta en laddningsfördelning i ett yttre måttligt varierande elektriskt fält. Kraften på laddningsfördelningen ges då av
+\begin{align*}
+	\vb{F} = \integ{}{}{V}{\rho\vb{E}}.
+\end{align*}
+Vi vill nu approximera elektriska fältet i laddningsfördelningen vid att utveckla den kring en referenspunkt $\vb{r}_{0}$. Komponentvis har vi
+\begin{align*}
+	E_{i} \approx E_{i, 0} + (r_{j} - r_{j, 0})\del{j}{E_{i}},
+\end{align*}
+varför
+\begin{align*}
+	\vb{E} \approx \vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}
+\end{align*}
+och
+\begin{align*}
+	\vb{F} \approx \integ{}{}{V}{\rho\left(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}\right)}.
+\end{align*}
+Vidare, under antagandet att fältet varierar måttligt kan alla derivator antas vara konstanta, vilket ger
+\begin{align*}
+	\vb{F} \approx \integ{}{}{V}{\rho\vb{E}_{0}} + \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}} = Q\vb{E}_{0} + (\vb{p}\cdot\grad)\vb{E},
+\end{align*}
+där dipolmomentet mäts relativ $\vb{r}_{0}$. Att dra ut elektriska fältet i andra termen från integralen är helt okej - man kan tänka sig att integrationen skapar en operator som sedan får verka på fältet.
+
+\paragraph{Vridmoment på en laddningsfördelning}
+På en punktladdning har vi
+\begin{align*}
+	\vb{M} = \vb{r}\times\vb{F} = q\vb{r}\times\vb{E}.
+\end{align*}
+För en laddningsfördelning fås då, relativt en referenspunkt $O$, vridmomentet
+\begin{align*}
+	\vb{M} &= \integ{}{}{V}{\rho\vb{r}\times\vb{E}} \\
+	       &\approx \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0}) + \vb{r}_{0})\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})}.
+\end{align*}
+Vi försummar nu termer av andra ordningen i $\vb{r} - \vb{r}_{0}$ och får
+\begin{align*}
+	\vb{M} &= \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\times\vb{E}_{0} + \vb{r}_{0}\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}))} \\
+	       &= \left(\integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})}\right)\times\vb{E}_{0} + \vb{r}_{0}\times\integ{}{}{V}{\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})} \\
+	       &= \vb{p}\times\vb{E}_{0} + \vb{r}_{0}\times\vb{F}.
+\end{align*}
+
+\paragraph{Polarisation}
+Polarisationen $\vb{P}$ uppfyller
+\begin{align*}
+	\vb{p} = \integ{}{}{V}{\vb{P}}.
+\end{align*}
+
+\paragraph{Polariserbarhet}
+Polariserbarheten $\alpha$ uppfyller
+\begin{align*}
+	\vb{p} = \alpha\vb{E}.
+\end{align*}
+
+\paragraph{Fält och potential från polarisation}
+Från ett litet rymdelement fås
+\begin{align*}
+	\dd{\vb{p}} = \vb{P}\dd{V},\ \dd{V} = \frac{1}{4\pi\varepsilon_{0}}\frac{\dd{\vb{p}}\cdot\ub{R}}{R^{2}},\ V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{\vb{P}\cdot\ub{R}}{R^{2}}}.
+\end{align*}
+Elektriska fältet kommer ha en singularitet som beter sig som $\frac{1}{R^{3}}$. Denna kommer inte upphävas av volymelementet, och kräver specialbehandling.
+
+Vi kommer dock lösa detta genom att använda att
+\begin{align*}
+	\grad'{\frac{1}{R}} = \grad'{\frac{1}{\abs{\vb{r} - \vb{r}'}}} = \frac{1}{R^{2}}\ub{R},
+\end{align*}
+vilket ger
+\begin{align*}
+	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\vb{P}\cdot\grad'{\frac{1}{R}}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\div'{\frac{\vb{P}}{R^{2}}} - \frac{1}{R}\div'{\vb{P}}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\vinteg{}{}{S}{\frac{\vb{P}}{R}} - \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{1}{R}\div'{\vb{P}}},
+\end{align*}
+vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
+\begin{align*}
+	\rho = -\div'{\vb{P}},\ \sigma = \vb{P}\cdot\ub{n}.
+\end{align*}
+Nu kan vi beräkna elektriska fältet som
+\begin{align*}
+	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
