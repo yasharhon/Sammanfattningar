@@ -48,3 +48,75 @@ Vi har
 	M_{\text{p}} \geq \abs{G(i\omega_{\text{c}})} = \frac{1}{2\sin(\frac{1}{2}\phi_{\text{m}})}.
 \end{align*}
 Speciellt ger liten fasmarginal stort översläng.
+
+\paragraph{Känslighet}
+Betrakta ett system som i figur \ref{fig:negative_feedback_equiv}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = \textwidth]{./Images/negative_feedback_equiv.eps}
+	\caption{Illustration av tänkt reglersystem.}
+	\label{fig:negative_feedback_equiv}
+\end{figure}
+Om $F_{r} = F_{y} = F$, skulle systemet vare ekvivalent med välkända negativt återkopplade system. Vi är nu intresserade av att studera systemets känslighet för störningen.
+
+Vi har allmänt
+\begin{align*}
+	Y = V + U = V + G(RF_{r} - YF_{y}),\ Y = \frac{GF_{r}}{1 + GF_{y}}R + \frac{1}{1 + GF_{y}}V.
+\end{align*}
+Vi definierar då känslighetsfunktionen
+\begin{align*}
+	S = \frac{1}{1 + GF_{y}}.
+\end{align*}
+
+\paragraph{Frekvensanalys av känslighetsfunktionen}
+Vi har
+\begin{align*}
+	\abs{S(i\omega)} = \abs{\frac{1}{1 + G(i\omega)F_{y}(i\omega)}} \leq M_{\text{s}},
+\end{align*}
+vilket kan skrivas som
+\begin{align*}
+	\abs{G(i\omega)F_{y}(i\omega) - (-1)} \leq \frac{1}{M_{\text{s}}}.
+\end{align*}
+Alltså måste Nyquistkurvan för $G(F_{y}$ vara utanför en cirkel med mittpukt i $-1$ och radie $\frac{1}{M_{\text{s}}}$.
+
+\paragraph{Robusthet}
+Medan en modell kan ha en överförningsfunktion $G$, kan ett reellt system ha en överförningsfunktion $G' = G(1 + \Delta G)$, där $\Delta G$ är det relativa felet i överförningsfunktionen. Om man återkopplar systemet får man då
+\begin{align*}
+	Y' = \frac{G'F}{1 + G'F}R = \dots = (1 + S'\Delta G)Y,\ S' = \frac{1}{1 + G'F},
+\end{align*}
+och $S*\Delta G$ blir det relativa felet i $Y$. Detta betyder att om systemets känslighetsfunktion är liten, får modellfel liten inverkan.
+
+\paragraph{Robusthetskriteriet}
+Antag att $G$ ger ett system som är stabilt. Är då ett motsvarande verkligt system stabilt? För att svara på det, kan vi använda Nyquistkriteriet. Kravet är att $F_{y}G'$ ej får omsluta $-1$, vilket vi anser som uppfylld om avståndet mellan $F_{y}G'$ och $F_{y}G$ är mindre än avståndet mellan $F_{y}G$ och $-1$. Detta kan formuleras som
+\begin{align*}
+	\abs{F_{y}(i\omega)G'(i\omega) - F_{y}(i\omega)G(i\omega)} < \abs{F_{y}(i\omega)G(i\omega) + 1}
+\end{align*}
+och slutligen robusthetskriteriet
+\begin{align*}
+	\abs{\frac{F_{y}(i\omega)G'(i\omega)}{1 + F_{y}(i\omega)G(i\omega)}} < \frac{1}{\abs{\Delta G(i\omega)}}.
+\end{align*}
+
+Vi definierar nu den komplementära känslighetsfunktionen
+\begin{align*}
+	T = \frac{GF_{y}}{1 + GF_{y}} = 1 - S.
+\end{align*}
+Normalt är $\Delta G$ ej känd, men vi har en övre skattning $g$ av denna. Det verkliga systemet är då stabilt om
+\begin{align*}
+	\abs{T(i\omega)} < \frac{1}{g(\omega},
+\end{align*}
+vilket är ett tillräckligt, men ofta inte nödvändigt, villkor.
+
+\paragraph{Nackdelar med återkoppling}
+Återkoppling kan ge följande problem:
+\begin{itemize}
+	\item Hög kretsförstärkning ökar risken för instabilitet, speciellt vid modellfel.
+	\item Om $GF_{y}$ är stor, krävs stora styrsignaler. Det samma gäller i frekvensband där $\abs{G}$ är liten.
+	\item Mätbrus suger, typ.
+\end{itemize}
+
+\paragraph{Bodes sats}
+Om $G'$ har relativt gradtal större än $2$, gäller att
+\begin{align*}
+	\integ{0}{\infty}{\omega}{\log{\abs{S(i\omega}}} = \pi\sum\limits_{k = 1}^{m}p_{k},
+\end{align*}
+där $p_{k}$ är polerna till $G'$ i högre halvplan.
