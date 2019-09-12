@@ -1,0 +1,69 @@
+\section{Tillståndsrepresentationer}
+
+\paragraph{Ideen}
+Den fundamentala ideen vi vill åt nu är att representera ett systems tillstånd på ett annat sätt än just dets tidsutveckling, till exempel som en vektor.
+
+\paragraph{Representation av linjära system}
+Tidsutvecklingen av ett system tillstånd kan i många linjära fall skrivas som
+\begin{align*}
+	\dot{\vb{x}} = A\vb{x} + B\vb{u},
+\end{align*}
+där $\vb{u}$ beskriver en styrsignal. Utsignalen är typiskt på formen
+\begin{align*}
+	y = \vb{c}\cdot\vb{x} + \vb{d}\cdot\vb{u}.
+\end{align*}
+
+\paragraph{Linjära system i Laplacedomänet}
+Genom att laplacetransformera ekvationen som beskriver ett systems tillstånd fås
+\begin{align*}
+	s\vb{X} = A\vb{X} + \vb{b}U,
+\end{align*}
+givet att systemets starttillstånd är $\vb{0}$. Detta kan skrivas som
+\begin{align*}
+	\vb{X} = (sI - A)^{-1}B\vb{U}.
+\end{align*}
+Insatt i uttrycket för $Y$ fås
+\begin{align*}
+	Y = \vb{c}\cdot\vb{X} + d\vb{U} = (\vb{c}^{T}(sI - A)^{-1}B + d)\vb{U},
+\end{align*}
+och vi identifierar överförningsfunktionen som
+\begin{align*}
+	G = \vb{c}^{T}(sI - A)^{-1}\vb{b} + d.
+\end{align*}
+Av någon anledning är detta lika med
+\begin{align*}
+	G = \frac{1}{sI - A}\vb{c}^{T}(sI - A)^{\dagger}\vb{b} + d
+\end{align*}
+
+\paragraph{Poler i tillståndsrepresentation}
+Det visar sig att systemets poler ges av
+\begin{align*}
+	\det(sI - A) = s^{2}.
+\end{align*}
+Detta ska tydligen motsvara $A$:s egenvärden.
+
+\paragraph{Linjärisering}
+Verkliga system är ofta olinjära, men vi ska försöka behandla dem som linjära ändå.
+
+Betrakta ett system
+\begin{align*}
+	\dot{\vb{x}} = \vb{f}(\vb{x}, u),\ \dot{y} = g(\vb{x}, u).
+\end{align*}
+Anta konstant styrsignal $u_{0}$, och antag att systemet då tenderar mot ett stationärt tillstånd $\vb{x}_{0}$. Denna punkten uppfyller då
+\begin{align*}
+	\vb{f}(\vb{x}_{0}, u_{0}) = \vb{0},\ h(\vb{x}_{0}, u_{0}) = y_{0}.
+\end{align*}
+När vi linjäriserar, betraktar vi små variationer $\Delta\vb{x}, \Delta u, \Delta y$ kring denna punkten. Vi får
+\begin{align*}
+	\dv{\Delta\vb{x}}{t} = \vb{f}(\vb{x}_{0} + \Delta\vb{x}, u_{0} + \Delta u) = \vb{f}(\vb{x}_{0}, u_{0}) + \pdv{\vb{f}}{\vb{x}}\Delta\vb{x} + \del{u}{\vb{f}}\Delta u = \pdv{\vb{f}}{\vb{x}}\Delta\vb{x} + \del{u}{\vb{f}}\Delta u.
+\end{align*}
+På samma sätt fås
+\begin{align*}
+	\dv{\Delta y}{t} = h(\vb{x}_{0} + \Delta\vb{x}, u_{0} + \Delta u) - y_{0} = h(\vb{x}_{0}, u_{0}) - y_{0} + \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u = \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u.
+\end{align*}
+Det totala systemet
+\begin{align*}
+	\dv{\Delta\vb{x}}{t} &= \pdv{\vb{f}}{\vb{x}}\Delta\vb{x} + \del{u}{\vb{f}}\Delta u, \\
+	\dv{\Delta y}{t}     &= \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u
+\end{align*}
+är alltså linjärt för små ändringar.
