@@ -553,7 +553,21 @@ vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
 \begin{align*}
 	\rho = -\div'{\vb{P}},\ \sigma = \vb{P}\cdot\ub{n}.
 \end{align*}
-Nu kan vi beräkna elektriska fältet som
+Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
 \begin{align*}
 	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+
+\paragraph{Introduktion av D-fältet}
+Gauss' lag på integralform ger oss nu
+\begin{align*}
+	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}} = \frac{-\div'{\vb{P}} + \rho_{\text{f}}}{\varepsilon_{0}},
+\end{align*}
+där $\rho_{\text{f}}$ är den fria laddningstätheten. Detta implicerar
+\begin{align*}
+	\div(\varepsilon_{0}\vb{E} + \vb{P}) = \rho_{\text{f}},
+\end{align*}
+vilket uppmanar oss att definiera
+\begin{align*}
+	\vb{D} = \varepsilon_{0}\vb{E} + \vb{P}.
 \end{align*}
