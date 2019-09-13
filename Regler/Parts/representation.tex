@@ -6,11 +6,11 @@ Den fundamentala ideen vi vill åt nu är att representera ett systems tillstån
 \paragraph{Representation av linjära system}
 Tidsutvecklingen av ett system tillstånd kan i många linjära fall skrivas som
 \begin{align*}
-	\dot{\vb{x}} = A\vb{x} + B\vb{u},
+	\dot{\vb{x}} = A\vb{x} + \vb{b}u,
 \end{align*}
 där $\vb{u}$ beskriver en styrsignal. Utsignalen är typiskt på formen
 \begin{align*}
-	y = \vb{c}\cdot\vb{x} + \vb{d}\cdot\vb{u}.
+	y = \vb{c}\cdot\vb{x} + du.
 \end{align*}
 
 \paragraph{Linjära system i Laplacedomänet}
@@ -67,3 +67,74 @@ Det totala systemet
 	\dv{\Delta y}{t}     &= \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u
 \end{align*}
 är alltså linjärt för små ändringar.
+
+\paragraph{Lösning av system i representation}
+Betrakta ett system på formen
+\begin{align*}
+	\dot{\vb{x}} = A\vb{x} + \vb{b}u,\ \vb{x}(0) = \vb{x}_{0},\ y = \vb{c}\cdot\vb{x}.
+\end{align*}
+Vi använder att
+\begin{align*}
+	\dv{t}e^{-At} = -Ae^{-At},
+\end{align*}
+varför
+\begin{align*}
+	e^{-At}\dot{\vb{x}}              &= e^{-At}A\vb{x} + e^{-At}\vb{b}u, \\
+	\dv{t}\left(e^{-At}\vb{x}\right) &= e^{-At}\vb{b}u, \\
+	\vb{x}                           &= \vb{x}_{0}e^{At} + \integ{0}{t}{\tau}{e^{-A(t - \tau)}\vb{b}u}.
+\end{align*}
+
+\paragraph{Styrbarhet}
+Ett tillstånd $\vb{x}$ är styrbart om man kan styra det motsvarande systemet från $\vb{0}$ till $\vb{x}$ med hjälp av en styrsignal $u$ på ändlig tid.
+
+\paragraph{Test av styrbarhet}
+Vi noterar först att Cayley-Hamiltons sats ger
+\begin{align*}
+	A^{n} + \sum\limits_{i = 1}^{n}a_{i}A^{n - i} = 0,
+\end{align*}
+där $a_{i}$ är koefficienterna i $A$:s karakteristiska polynom. Därmed kan alla potenser av $A$ av högre ordning skrivas som en linjärkombination av potenser av $A$ upp till och med $n - 1$. Därmed gäller det att
+\begin{align*}
+	e^{At} = \sum\limits_{i = 0}^{n - 1}f_{i}(t)A^{i}
+\end{align*}
+för några funktioner $f_{i}$.
+
+Betrakta nu ett system och dets representation. Om systemets starttillstånd är $\vb{0}$, medför detta
+\begin{align*}
+	\vb{x} = \left(\sum\limits_{i = 0}^{n - 1}\gamma_{i}(t)A^{i}\right)\vb{b}
+\end{align*}
+där
+\begin{align*}
+	\gamma_{i} = \integ{0}{t}{\tau}{f_{i}(\tau)u(\tau)}.
+\end{align*}
+Med andra ord är de styrbara $\vb{x}$ linjärkombinationer av de olika $A^{i}\vb{b}$, alltså att det ligger i bildrummet till styrbarhetsmatrisen
+\begin{align*}
+	\S = [\vb{b}, A\vb{b}, \dots, A^{n - 1}\vb{b}].
+\end{align*}
+Systemet är styrbart om $\det(\S) \neq 0$.
+
+\paragraph{Observerbarhet}
+Ett tillstånd $\vb{x}$ är icke observerbart om utsignalen $y$ är identiskt noll då initialvärdet är $\vb{x}$ och insignalen identisk noll.
+
+\paragraph{Test av observerbarhet}
+Vi vill nu testa om ett tillstånd $\vb{x}_{0}$ är observerbart. Om vi har styrsignal $u = 0$, gäller det att
+\begin{align*}
+	\vb{x} = e^{At}\vb{x}_{0}, y = \vb{c}\cdot e^{At}\vb{x}_{0}, \dv[n]{y}{t} = \vb{c}\cdot A^{n}e^{At}\vb{x}_{0}.
+\end{align*}
+Speciellt är $y = 0$ för alla $t$ om
+\begin{align*}
+	y(0) = \vb{c}\cdot\vb{x}_{0} = 0, \dv{y}{t} = \vb{c}\cdot A\vb{x}_{0} = 0,\ \dots, \dv[n - 1]{y}{t} = \vb{c}\cdot A^{n - 1}\vb{x}_{0} = 0.
+\end{align*}
+Givet att detta stämmer, ger Cayley-Hamiltons sats att även högre ordningens derivator av $y$ kommer vara $0$. Därmed ligger de icke-observerbara tillstånden i nollrummet till observerbarhetsmatrisen
+\begin{align*}
+	\O =
+	\mqty[
+		\vb{c}^{T} \\
+		\vb{c}^{T}A \\
+		\vdots \\
+		\vb{c}^{T}A^{n - 1}
+	].
+\end{align*}
+Systemet är observerbart $\det(\O) \neq 0$.
+
+\paragraph{Minimalhet}
+Ett system är minimalt om och endast om det är både styrbart och observerbart.
