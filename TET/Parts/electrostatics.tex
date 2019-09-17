@@ -525,6 +525,7 @@ Polarisationen $\vb{P}$ uppfyller
 \begin{align*}
 	\vb{p} = \integ{}{}{V}{\vb{P}}.
 \end{align*}
+Detta fältet uppfyller inga speciella randvillkor, och är allmänt ej rotationsfritt.
 
 \paragraph{Polariserbarhet}
 Polariserbarheten $\alpha$ uppfyller
@@ -551,11 +552,11 @@ vilket ger
 \end{align*}
 vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
 \begin{align*}
-	\rho = -\div'{\vb{P}},\ \sigma = \vb{P}\cdot\ub{n}.
+	\rho_{\text{b}} = -\div'{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\ub{n}.
 \end{align*}
 Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
 \begin{align*}
-	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\frac{1}{R^{2}}\ub{R}}.
+	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma_{\text{b}}}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho_{\text{b}}\frac{1}{R^{2}}\ub{R}}.
 \end{align*}
 
 \paragraph{Introduktion av D-fältet}
@@ -571,3 +572,79 @@ vilket uppmanar oss att definiera
 \begin{align*}
 	\vb{D} = \varepsilon_{0}\vb{E} + \vb{P}.
 \end{align*}
+
+\paragraph{Randvillkor för D-fältet}
+Vi kan visa att
+\begin{align*}
+	D_{1}^{\perp} - D_{2}^{\perp} = \sigma_{\text{b}},\ \vb{D}_{1}^{\parallel} - \vb{D}_{2}^{\parallel} = \vb{P}_{1}^{\parallel} - \vb{P}_{2}^{\parallel}.
+\end{align*}
+
+\paragraph{Linjära dielektrika}
+Linjära dielektrika uppfyller
+\begin{align*}
+	\vb{P} = \varepsilon_{0}\chi_{\text{e}}\vb{E}
+\end{align*}
+för måttliga fältstyrkor. $\chi_{\text{e}}$ är dielektrikumets elektriska susceptibilitet.
+
+\paragraph{D-fält i linjära dielektrika}
+I ett linjärt dielektrikum fås
+\begin{align*}
+	\vb{D} = \varepsilon_{0}(1 + \chi_{\text{e}})\vb{E} = \varepsilon_{0}\varepsilon_{\text{r}}\vb{E} = \varepsilon\vb{E}.
+\end{align*}
+$\varepsilon_{\text{r}}$ är dielektrikumets relativa permittivitet, och $\varepsilon$ är dets permittivitet.
+
+\paragraph{Energi för linjära dielektrika}
+I linjära dielektrika tillkommer även arbete för att polarisera dielektrikumet. Om man betraktar en atom som en punktladdning $q$ och en laddning $-q$ jämnt fördelad över ett klot med radie $a$, skapar det negativt laddade molnet ett elektriskt fält
+\begin{align*}
+	\vb{E}_{-q} = -\frac{q}{4\pi\varepsilon_{0}a^{3}}\vb{r},\ r < a.
+\end{align*}
+Kraften på laddningen i mitten blir då
+\begin{align*}
+	\vb{F} = -\frac{q^{2}}{4\pi\varepsilon_{0}a^{3}}\vb{r} = -\frac{q^{2}}{4\pi\varepsilon_{0}a^{3}}\grad{\frac{1}{2}r^{2}}.
+\end{align*}
+Arbetet som krävs för att förflytta laddningen i mitten från centrum blir då
+\begin{align*}
+	W = \frac{1}{2}\frac{q^{2}r^{2}}{4\pi\varepsilon_{0}a^{3}} = -\frac{1}{2}\vb{p}\cdot\vb{E}_{-q}.
+\end{align*}
+
+Om nu atomen är i ett yttre elektriskt fält $\vb{E}$, kommer det elektriska fältet att förflytta laddningen i centrum. Jämvikt fås när $\vb{E} = -\vb{E}_{-q}$, och arbetet som görs för att förflytta laddningen i mitten är då
+\begin{align*}
+	W = \frac{1}{2}\vb{p}\cdot\vb{E}.
+\end{align*}
+
+Med detta argumentet i bakgrunden ställer vi upp energin i ett dielektrikum som
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{V}{\vb{P}\cdot\vb{E}}.
+\end{align*}
+I tillägg har vi det övriga bidraget för att skapa det elektriska fältet, och totala energin ges av
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{V}{(\varepsilon_{0}\vb{E} + \vb{P})\cdot\vb{E}} = \frac{1}{2}\integ{}{}{V}{\vb{D}\cdot\vb{E}}.
+\end{align*}
+
+\paragraph{Krafter på ett dielektrikum}
+Betrakta ett dielektrikum någonstans i närheten av två perfekta ledare med laddning $\pm Q$ på de respektiva. Ledarna kan antingen vara isärkopplade eller kopplade ihop med ett batteri som upprätthåller en konstant spänningsskillnad $U$ mellan dem. Dielektrikumets position beskrivs av dets geometri och en referensvektor $\vb{r}$ (till exempel till dets geometriska centrum). Att beräkna elektriska fältet är allmänt svårt, men vi ska försöka undveka detta med ett trick.
+
+Betrakta första fallet först. Om dielektrikumet förflyttas en sträcka $\dd{\vb{r}}$, gör elektriska fältet från ledarna ett arbete på det, som nödvändigtvis måste balanseras av ett mekaniskt arbete. Arbetet som görs på systemet är
+\begin{align*}
+	\dd{W} = \grad{W}\cdot\dd{\vb{r}} = -\dd{W_{\text{e}}} = -\vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+\end{align*}
+Samtidigt kan vi skriva systemets energi $W$ i termer av parameterna i systemets beskrivning. Därmed är kraften på dielektrikumet
+\begin{align*}
+	\vb{F}_{\text{e}} = -\grad{W} = -\grad{\frac{1}{2}\frac{Q^{2}}{C}} = \frac{1}{2}\frac{Q^{2}}{C^{2}}\grad{C} = \frac{1}{2}V^{2}\grad{C}.
+\end{align*}
+
+Betrakta nu det andra fallet. Om spänningen mellan ledarna hålls konstant, kommer translation av dielektrikumet behöva balansera arbetet både från translation i elektriska fältet och arbetet som krävs för att transportera laddning mellan ledarna för att hålla spänningsskillnaden mellan dem konstant. Vi får 
+\begin{align*}
+	\dd{W} = U\dd{Q} - \dd{W_{\text{e}}} = U\dd{Q} - \vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+\end{align*}
+Samtidigt ges vänstersidan av $\dd{W} = \frac{1}{2}U\dd{Q}$, så $U\dd{Q} = 2\dd{W} = 2\grad{W}\cdot\dd{\vb{r}}$, vilket ger
+\begin{align*}
+	\vb{F}_{\text{e}} = \grad{W} = \frac{1}{2}U^{2}\grad{C}.
+\end{align*}
+
+\paragraph{Moment på ett dielektrikum}
+Vid att göra en liknande analys som den ovan fås
+\begin{align*}
+	\vb{N}_{\text{e}} = \pm\del{\phi}{W_{\text{e}}}\ub{z},
+\end{align*}
+där $+$ och $-$ är fallen där $Q$ respektiva $U$ är konstant.
