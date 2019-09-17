@@ -6,33 +6,33 @@ Den fundamentala ideen vi vill åt nu är att representera ett systems tillstån
 \paragraph{Representation av linjära system}
 Tidsutvecklingen av ett system tillstånd kan i många linjära fall skrivas som
 \begin{align*}
-	\dot{\vb{x}} = A\vb{x} + \vb{b}u,
+	\dot{x} = Ax + Bu,
 \end{align*}
-där $\vb{u}$ beskriver en styrsignal. Utsignalen är typiskt på formen
+där $u$ beskriver en styrsignal. Utsignalen är typiskt på formen
 \begin{align*}
-	y = \vb{c}\cdot\vb{x} + du.
+	y = Cx + Du.
 \end{align*}
 
 \paragraph{Linjära system i Laplacedomänet}
 Genom att laplacetransformera ekvationen som beskriver ett systems tillstånd fås
 \begin{align*}
-	s\vb{X} = A\vb{X} + \vb{b}U,
+	sX = AX + BU,
 \end{align*}
 givet att systemets starttillstånd är $\vb{0}$. Detta kan skrivas som
 \begin{align*}
-	\vb{X} = (sI - A)^{-1}B\vb{U}.
+	X = (sI - A)^{-1}BU.
 \end{align*}
 Insatt i uttrycket för $Y$ fås
 \begin{align*}
-	Y = \vb{c}\cdot\vb{X} + d\vb{U} = (\vb{c}^{T}(sI - A)^{-1}B + d)\vb{U},
+	Y = CX + DU = (C(sI - A)^{-1}B + D)U,
 \end{align*}
 och vi identifierar överförningsfunktionen som
 \begin{align*}
-	G = \vb{c}^{T}(sI - A)^{-1}\vb{b} + d.
+	G = C(sI - A)^{-1}B + D.
 \end{align*}
 Av någon anledning är detta lika med
 \begin{align*}
-	G = \frac{1}{sI - A}\vb{c}^{T}(sI - A)^{\dagger}\vb{b} + d
+	G = \frac{1}{sI - A}C(sI - A)^{\dagger}B + D
 \end{align*}
 
 \paragraph{Poler i tillståndsrepresentation}
@@ -42,36 +42,38 @@ Det visar sig att systemets poler ges av
 \end{align*}
 Detta ska tydligen motsvara $A$:s egenvärden.
 
-\paragraph{Linjärisering}
+\paragraph{Linjarisering}
 Verkliga system är ofta olinjära, men vi ska försöka behandla dem som linjära ändå.
 
 Betrakta ett system
 \begin{align*}
-	\dot{\vb{x}} = \vb{f}(\vb{x}, u),\ \dot{y} = g(\vb{x}, u).
+	\dot{x} = f(x, u),\ \dot{y} = g(x, u).
 \end{align*}
 Anta konstant styrsignal $u_{0}$, och antag att systemet då tenderar mot ett stationärt tillstånd $\vb{x}_{0}$. Denna punkten uppfyller då
 \begin{align*}
-	\vb{f}(\vb{x}_{0}, u_{0}) = \vb{0},\ h(\vb{x}_{0}, u_{0}) = y_{0}.
+	f(x_{0}, u_{0}) = \vb{0},\ h(x_{0}, u_{0}) = y_{0}.
 \end{align*}
-När vi linjäriserar, betraktar vi små variationer $\Delta\vb{x}, \Delta u, \Delta y$ kring denna punkten. Vi får
+När vi linjäriserar, betraktar vi små variationer $\Delta x, \Delta u, \Delta y$ kring denna punkten. Vi får
 \begin{align*}
-	\dv{\Delta\vb{x}}{t} = \vb{f}(\vb{x}_{0} + \Delta\vb{x}, u_{0} + \Delta u) = \vb{f}(\vb{x}_{0}, u_{0}) + \pdv{\vb{f}}{\vb{x}}\Delta\vb{x} + \del{u}{\vb{f}}\Delta u = \pdv{\vb{f}}{\vb{x}}\Delta\vb{x} + \del{u}{\vb{f}}\Delta u.
+	\dv{\Delta x}{t} = f(x_{0} + \Delta x, u_{0} + \Delta u) = \vb{f}(x_{0}, u_{0}) + \pdv{f}{x}\Delta x + \del{u}{f}\Delta u = \pdv{f}{x}\Delta x + \del{u}{f}\Delta u.
 \end{align*}
+Observera att $\pdv{f}{x}$ allmänt är en matris.
+
 På samma sätt fås
 \begin{align*}
-	\dv{\Delta y}{t} = h(\vb{x}_{0} + \Delta\vb{x}, u_{0} + \Delta u) - y_{0} = h(\vb{x}_{0}, u_{0}) - y_{0} + \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u = \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u.
+	\dv{\Delta y}{t} = h(x_{0} + \Delta x, u_{0} + \Delta u) - y_{0} = h(x_{0}, u_{0}) - y_{0} + \grad_{x}{h}\Delta x + \del{u}{h}\Delta u = \grad_{x}{h}\Delta x + \del{u}{h}\Delta u.
 \end{align*}
 Det totala systemet
 \begin{align*}
-	\dv{\Delta\vb{x}}{t} &= \pdv{\vb{f}}{\vb{x}}\Delta\vb{x} + \del{u}{\vb{f}}\Delta u, \\
-	\dv{\Delta y}{t}     &= \grad_{x}{h}\cdot\Delta\vb{x} + \del{u}{h}\Delta u
+	\dv{\Delta x}{t} &= \pdv{f}{x}\Delta x + \del{u}{f}\Delta u, \\
+	\dv{\Delta y}{t}     &= \grad_{x}{h}\Delta x + \del{u}{h}\Delta u
 \end{align*}
 är alltså linjärt för små ändringar.
 
 \paragraph{Lösning av system i representation}
 Betrakta ett system på formen
 \begin{align*}
-	\dot{\vb{x}} = A\vb{x} + \vb{b}u,\ \vb{x}(0) = \vb{x}_{0},\ y = \vb{c}\cdot\vb{x}.
+	\dot{\vb{x}} = A\vb{x} + Bu,\ \vb{x}(0) = \vb{x}_{0},\ y = C\vb{x}.
 \end{align*}
 Vi använder att
 \begin{align*}
@@ -79,9 +81,9 @@ Vi använder att
 \end{align*}
 varför
 \begin{align*}
-	e^{-At}\dot{\vb{x}}              &= e^{-At}A\vb{x} + e^{-At}\vb{b}u, \\
-	\dv{t}\left(e^{-At}\vb{x}\right) &= e^{-At}\vb{b}u, \\
-	\vb{x}                           &= \vb{x}_{0}e^{At} + \integ{0}{t}{\tau}{e^{-A(t - \tau)}\vb{b}u}.
+	e^{-At}\dot{\vb{x}}              &= e^{-At}A\vb{x} + e^{-At}Bu, \\
+	\dv{t}\left(e^{-At}\vb{x}\right) &= e^{-At}Bu, \\
+	\vb{x}                           &= \vb{x}_{0}e^{At} + \integ{0}{t}{\tau}{e^{-A(t - \tau)}Bu}.
 \end{align*}
 
 \paragraph{Styrbarhet}
@@ -138,3 +140,105 @@ Systemet är observerbart $\det(\O) \neq 0$.
 
 \paragraph{Minimalhet}
 Ett system är minimalt om och endast om det är både styrbart och observerbart.
+
+\paragraph{Proportionell återkoppling}
+Antag att vi återkopplar systemet med $\vb{u} = l_{0}\vb{r} - L\vb{x}$. Om utsignalen ej beror av $\vb{u}$ kan det återkopplade systemet skrivas som
+\begin{align*}
+	\dot{\vb{x}} = (A - BL)\vb{x} + Bl_{0}\vb{r},\ y = C\vb{x}.
+\end{align*}
+
+Systemets poler ges av egenvärdena till $A - BL$. Det finns $n$ såna, och $L$ har $n$ parametrar. Om systemet är styrbart kan dets poler därmed placeras godtyckligt vid lämpligt val av $L$.
+
+Valet av $l_{0}$ görs så att $y = r$ när systemet är stationärt. Detta kräver dock att man känner $G(0)$ och att inga störningar påverkar systemet. Därför inför vi I-reglering.
+
+\paragraph{I-reglering}
+När vi I-reglerar, inför vi extra tillstånd
+\begin{align*}
+	x_{n + 1} = \integ{0}{t}{\tau}{e}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\dot{x}_{n + 1} = r - y = r - Cx.
+\end{align*}
+Då kan vi utvidga modellen till
+\begin{align*}
+	\dot{\vb{x}} =
+	\mqty[
+		\dot{x} \\
+		\dot{x}_{n + 1}
+	]
+	=
+	\mqty[
+		A  & 0 \\
+		-C & 0
+	]
+	\mqty[
+		x \\
+		x_{n + 1}
+	] +
+	\mqty[
+		B \\
+		0
+	]
+	u
+	+
+	\mqty[
+		0 \\
+		1
+	]
+	r = A\vb{x} + Bu + 
+	\mqty[
+		0 \\
+		1
+	]
+	r.
+\end{align*}
+Strategin är nu att återkoppla det nya systemet med återkoppling på formen
+\begin{align*}
+	u = -Lx - l_{n + 1}x_{n + 1} = -L\vb{x}.
+\end{align*}
+Då kan $L$ väljas så att $A - BL$ får önskade egenvärden. Stationärt har vi
+\begin{align*}
+	\dot{x} = 0,\ 	\dot{x}_{n + 1} = 0.
+\end{align*}
+
+\paragraph{Skattning av tillstånd}
+Om man ej kan mäta systemets tillstånd exakt, kan man skatta det.
+
+Mer precist, antag att vi har en modell
+\begin{align*}
+	\dot{x} = Ax + Bu,\ y = Cx
+\end{align*}
+som simulerar
+\begin{align*}
+	\dot{\hat{x}} = A\hat{x} + Bu,\  \hat{y} = C\hat{x}.
+\end{align*}
+Felsignalen är
+\begin{align*}
+	y - \hat{y} = y - C\hat{x}.
+\end{align*}
+Vi försöker återkoppla systemet. Det beskrivs då av
+\begin{align*}
+	\dot{\hat{x}} = A\hat{x} + Bu + K(y- C\hat{x}) = (A - KC)C\hat{x} + Bu + Ky.
+\end{align*}
+Skattningsfelet $\tilde{x}$ ges då av
+\begin{align*}
+	\dot{\tilde{x}} = \dot{x} - \dot{\hat{x}} = Ax + Bu - A\hat{x} - Bu - K(Cx - C\hat{x}) = (A - KC)\tilde{x}.
+\end{align*}
+Detta har lösning
+\begin{align*}
+	\tilde{x} = e^{(A - KC)t}\tilde{x}(0).
+\end{align*}
+Felet tenderar mot $0$ egenvärdena till $A - KC$ är negativa, och hur snabbt det tenderar mot $0$ beror av egenvärdenas belopp.
+
+Mätfelet ges av $y_{\text{m}} = y + e$. Detta ger
+\begin{align*}
+	\dot{\tilde{x}} = (A - KC)\tilde{x} + Ke.
+\end{align*}
+Stora $K$ ger som vi ser höga mätfel, men det ger även snabba system. Optimeringen där görs av ett Kalmanfilter. Vi väljer då systemet så att egenvärdena till $A - BL$ har lägre belopp än egenvärdena till $A - KC$.
+
+Vid återkoppling av såna system är överförningsfunktionen för det slutna systemet
+\begin{align*}
+	G = C(sI - (A - BL))^{-1}Bl_{0},
+\end{align*}
+alltså likadant som tidigare.
