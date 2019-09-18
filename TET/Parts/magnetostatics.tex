@@ -1,0 +1,28 @@
+\section{Magnetostatik}
+
+\paragraph{Ström}
+Ström definieras som $I = \dv{Q}{t}$.
+
+\paragraph{Kraft på strömslingor}
+Betrakta två slingor $C$ och $C'$. Genom varje slinga går en ström $I$ respektiva $I'$ i samma riktning som kurvans orientering. Experiment har visat att kraften på $C$ från $C'$ ges av
+\begin{align*}
+	\vb{F} = \vinteg{C}{}{\vb{r}}{I\times\frac{\mu_{0}I'}{4\pi}\vinteg{C'}{}{\vb{r}'}{\times\frac{1}{R^{2}}\ub{R}}}
+\end{align*}
+där $\vb{R} = \vb{r} - \vb{r}'$.
+
+\paragraph{Magnetiska fältet}
+Genom att definiera det magnetiska fältet från $C'$ i punkten $\vb{r}$ som
+\begin{align*}
+	\vb{B} = \frac{\mu_{0}I'}{4\pi}\vinteg{C'}{}{\vb{r}'}{\times\frac{1}{R^{2}}\ub{R}}
+\end{align*}
+fås
+\begin{align*}
+	\vb{F} = \vinteg{C}{}{\vb{r}}{I\times\vb{B}}.
+\end{align*}
+
+\paragraph{Ytströmtäthet och rymdströmtäthet}
+För strömmar fördelade i rummet eller på en yta kan vi utvidga definitionen av magnetiska fältet till att bli
+\begin{align*}
+	\vb{B} = \frac{\mu_{0}}{4\pi}\vinteg{}{}{S}{\vb{J}\times\frac{1}{R^{2}}\ub{R}}\ \text{eller}\ \vb{B} = \frac{\mu_{0}}{4\pi}\vinteg{}{}{V}{\vb{J}\times\frac{1}{R^{2}}\ub{R}},
+\end{align*}
+där $\vb{J}$ är den lokala strömtätheten.
