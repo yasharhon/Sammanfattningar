@@ -125,3 +125,127 @@ Detta ger
 	\vb{n}_{12}\times(\vb{B}_{1} - \vb{B}_{2}) = \mu_{0}\vb{J}.
 \end{align*}
 Ett motsvarande bevis kan även göras med Ampères lag för en liten strömslinga.
+
+\paragraph{Magnetiskt dipolmoment för en slinga}
+Betrakta en strömslinga $C$ som bär en ström $I$. Vi söker vektorpotentialen på stort avstånd från slingan. Det exakta uttrycket ges av
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\integ{C}{}{\vb{r}}{\frac{I}{R}}.
+\end{align*}
+Om $C$ omkransar en yta $S$, fås
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}I}{4\pi}\integ{S}{}{\vb{S}}{\times\grad'{\frac{1}{R}}} = \frac{\mu_{0}I}{4\pi}\integ{S}{}{\vb{S}}{\times\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+Vid stora avstånd fås
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\left(I\integ{S}{}{\vb{S}}{}\right)\times\frac{1}{r^{2}}\ub{r} = \frac{\mu_{0}}{4\pi r^{2}}\vb{m}\times\ub{r},
+\end{align*}
+där vi har definierat det magnetiska dipolmomentet
+\begin{align*}
+	\vb{m} = I\integ{S}{}{\vb{S}}{} = I\vb{S}.
+\end{align*}
+Igen har vi definierat slingans vektorarea $\vb{S}$.
+
+Hur ska man välja vektorarean? Tänk dig att $C$ är randen till två olika ytor $S_{1}$ och $S_{2}$. Detta ger
+\begin{align*}
+	\vb{S}_{1} - \vb{S}_{2} = \integ{S_{1}}{}{\vb{r}}{} - \integ{S_{2}}{}{\vb{r}}{} = \integ{S_{1} + S_{2}}{}{\vb{S}}{} = \integ{V}{}{V}{\grad{1}} = \vb{0},
+\end{align*}
+och därmed spelar inte valet roll.
+
+\paragraph{Magnetiskt dipolmoment för en allmän strömtäthet}
+För att studera en allmän strömtäthet, vill vi dela den upp i slingor. Betrakta då konen med $\vb{r}$, som ligger på $C$, som generatris. För denna är ytelementet $\vb{S} = \frac{1}{2}\vb{r}\times\dd{\vb{r}}$ fås
+\begin{align*}
+	\vb{m} = I\vb{S} = I\integ{S}{}{\vb{S}}{} = \frac{1}{2}\int\limits_{C}{\vb{r}\times I\dd{\vb{r}}}.
+\end{align*}
+Vi generaliserar detta genom att låta $I\dd{\vb{r}}$ gå mot $\vb{J}\dd{V}$ och integrera över dessa resultat för att få
+\begin{align*}
+	\vb{m} = \frac{1}{2}\int{\dd{V}\vb{r}\times \vb{J}}.
+\end{align*}
+
+\paragraph{Dipolmomentets beroende av origo}
+Om vi förflyttar vårat koordinatsystem fås
+\begin{align*}
+	\vb{m}_{O} = \frac{1}{2}\int{\dd{V}(\vb{r} - \vb{r}_{O})\times \vb{J}} = \vb{m} - \frac{1}{2}\vb{r}_{O}\times\int{\dd{V}\vb{J}}.
+\end{align*}
+Vi har
+\begin{align*}
+	\integ{}{}{V}{J_{i}} = \integ{}{}{V}{\vb{J}\cdot\grad{r_{i}} + r_{i}\div{\vb{J}}} = \integ{}{}{V}{\div{r_{i}\vb{J}} + r_{i}\div{\vb{J}}}.
+\end{align*}
+Vi använder nu att vi arbetar med magnetostatik för att ta bort sista termen, vilket ger
+\begin{align*}
+	\integ{}{}{V}{J_{i}} = \integ{}{}{V}{\div{r_{i}\vb{J}}} = \integ{}{}{\vb{S}}{\cdot r_{i}\vb{J}}.
+\end{align*}
+Slingan förutsätts vara ändlig, och då behöver vi bara integrera över en yta som inneslutar den. På den ytan är $\vb{J} = \vb{0}$, vilket ger att integralen av komponenten blir $0$, och slutligen
+\begin{align*}
+	\vb{m}_{O} = \vb{m}.
+\end{align*}
+
+\paragraph{Magnetiska fältet från en dipol}
+Vi får
+\begin{align*}
+	\vb{B} &= \curl{\vb{A}} \\
+	       &= \frac{\mu_{0}}{4\pi}\curl(\frac{1}{r^{2}}\vb{m}\times\ub{r}) \\
+	       &= \frac{\mu_{0}}{4\pi}\left(\grad{\frac{1}{r^{3}}}\times(\vb{m}\times\vb{r}) + \frac{1}{r^{3}}\curl(\vb{m}\times\vb{r})\right) \\
+	       &= \frac{\mu_{0}}{4\pi}\left(-\frac{3}{r^{4}}\grad{r}\times(\vb{m}\times\vb{r}) + \frac{1}{r^{3}}\curl(\vb{m}\times\vb{r})\right) \\
+	       &= \frac{\mu_{0}}{4\pi}\left(-\frac{3}{r^{4}}\ub{r}\times(\vb{m}\times\vb{r}) + \frac{1}{r^{3}}(\vb{m}\div{\vb{r}}  - (\vb{m}\cdot\grad)\vb{r})\right) \\
+	       &= \frac{1}{r^{3}}\frac{\mu_{0}}{4\pi}\left(-3\ub{r}\times(\vb{m}\times\ub{r}) + \frac{1}{r^{3}}(3\vb{m}  - \vb{m})\right) \\
+	       &= \frac{1}{r^{3}}\frac{\mu_{0}}{4\pi}\left(-3(\ub{r}\cdot\ub{r})\vb{m} + 3\times(\vb{m}\cdot\ub{r})\ub{r} + 2\vb{m}\right) \\
+	       &= \frac{1}{r^{3}}\frac{\mu_{0}}{4\pi}\left(3(\vb{m}\cdot\ub{r})\ub{r} - \vb{m}\right).
+\end{align*}
+
+\paragraph{Kraft på en magnetisk dipol}
+Kraften på en strömslinga $C$ ges av
+\begin{align*}
+	\vb{F} &= \int\limits_{C}{I\dd{\vb{r}}\times\vb{B}} \\
+	       &= I\int\limits_{S}{(\dd{\vb{S}}\times\grad')\times\vb{B}} \\
+	       &= I\integ{S}{}{S}{\grad'(\vb{B}\cdot\ub{n}) - \ub{n}\div{\vb{B}})}.
+\end{align*}
+Komponentvis fås
+\begin{align*}
+	F_{i} = I\integ{S}{}{S}{\delp{i}{B_{j}}n_{j}}.
+\end{align*}
+Vi antar att magnetfältet varierar måttligt över slingan, och approximerar derivatornas värde i mittpunkten, varför den faktorn kan tas utanför integralen. Detta ger
+\begin{align*}
+	F_{i} = I\del{i}{B_{j}}\integ{S}{}{S_{j}}{} = \del{i}{B_{j}S_{j}},
+\end{align*}
+och slutligen
+\begin{align*}
+	\vb{F} = \grad{\vb{m}\cdot\vb{B}}.
+\end{align*}
+
+\paragraph{Vridmoment på en slinga}
+Vridmomentet ges av
+\begin{align*}
+	\vb{M} &= \int\limits_{C}{\vb{r}\times\dd{\vb{F}}} \\
+	       &= I\int\limits_{C}{\vb{r}\times(\dd{\vb{r}}\times\vb{B})} \\
+	       &= I\int\limits_{C}{(\vb{B}\cdot\vb{r})\dd{\vb{r}} - (\vb{r}\cdot\dd{\vb{r}})\vb{B}}.
+\end{align*}
+Vi approximerar fältet till att vara konstant och lika med fältet i mitten, vilket ger
+\begin{align*}
+	\vb{B}\int\limits_{C}{(\vb{r}\cdot\dd{\vb{r}})} = \vb{B}\vinteg{S}{}{\vb{S}}{\curl{\vb{r}}} = \vb{0}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\vb{M} &= I\integ{C}{}{\vb{r}}{\vb{B}\cdot\vb{r}} \\
+	       &= I\integ{S}{}{\vb{S}}{\times\grad{\vb{B}\cdot\vb{r}}} \\
+	       &= I\integ{S}{}{\vb{S}}{\times\vb{B}} \\
+	       &= \vb{m}\times\vb{B}.
+\end{align*}
+
+\paragraph{Magnetisering}
+Magnetiseringen $\vb{M}$ uppfyller
+\begin{align*}
+	\vb{m} = \integ{}{}{V}{\vb{M}}.
+\end{align*}
+
+I en atom har elektronerna omloppstid
+\begin{align*}
+	T = \frac{2\pi r}{v},
+\end{align*}
+vilket ger strömmen
+\begin{align*}
+	\vb{I} = -\frac{e}{T}\ub{\phi} = -\frac{ev}{2\pi r}\ub{\phi}.
+\end{align*}
+Dessa ger då magnetiska momentet
+\begin{align*}
+	\vb{m} = \frac{1}{2}\int{\vb{r}\times I\dd{\vb{r}}} = -\frac{1}{2}erv\ub{z}.
+\end{align*}
