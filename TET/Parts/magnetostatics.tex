@@ -249,3 +249,24 @@ Dessa ger då magnetiska momentet
 \begin{align*}
 	\vb{m} = \frac{1}{2}\int{\vb{r}\times I\dd{\vb{r}}} = -\frac{1}{2}erv\ub{z}.
 \end{align*}
+
+\paragraph{Vektorpotential från magnetisering}
+Vi har
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\integ{}{}{V}{\frac{1}{r^{2}}\vb{M}\times\ub{r}}.
+\end{align*}
+Detta kan skrivas som
+\begin{align*}
+	\vb{A} &= \frac{\mu_{0}}{4\pi}\integ{}{}{V}{\vb{M}\times\grad'{\frac{1}{r}}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{V}{\vb{M}\times\grad'{\frac{1}{r}}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{V}{\frac{1}{r}\curl'{\vb{M}} - \curl'{\frac{1}{r}\vb{M}}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{V}{\frac{1}{r}\curl'{\vb{M}}} - \frac{\mu_{0}}{4\pi}\integ{}{}{\vb{S}}{\times\frac{1}{r}\vb{M}}.
+\end{align*}
+Detta motsvarar magnetiska fältet från en volymström
+\begin{align*}
+	\vb{J}_{\text{bv}} = \curl{\vb{M}}
+\end{align*}
+och en ytström
+\begin{align*}
+	\vb{J}_{\text{bs}} = \vb{M}\times\ub{n}.
+\end{align*}
