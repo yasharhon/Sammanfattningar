@@ -209,7 +209,7 @@ Vi antar att magnetfältet varierar måttligt över slingan, och approximerar de
 \end{align*}
 och slutligen
 \begin{align*}
-	\vb{F} = \grad{\vb{m}\cdot\vb{B}}.
+	\vb{F} = \grad(\vb{m}\cdot\vb{B}).
 \end{align*}
 
 \paragraph{Vridmoment på en slinga}
@@ -270,3 +270,27 @@ och en ytström
 \begin{align*}
 	\vb{J}_{\text{bs}} = \vb{M}\times\ub{n}.
 \end{align*}
+
+\paragraph{Multipolutveckling av vektorpotentialen}
+Vi har
+\begin{align*}
+	\frac{1}{R} = \sum\limits_{l = 0}^{\infty}\frac{r'^{l}}{r^{l + 1}}P_{l}(\cos{\theta'}),
+\end{align*}
+vilket för en strömslinga ger
+\begin{align*}
+	\vb{A} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\vb{r}}{\frac{I}{R}} \\
+	       &= \frac{\mu_{0}I}{4\pi}\sum\limits_{l = 0}^{\infty}\integ{}{}{\vb{r}'}{\frac{r'^{l}}{r^{l + 1}}P_{l}(\cos{\theta'})} \\
+	       &= \frac{\mu_{0}I}{4\pi}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{\vb{r}'}{r'^{l}P_{l}(\cos{\theta'})}.
+\end{align*}
+Den första termen ges av
+\begin{align*}
+	\vb{A}_{0} = \frac{\mu_{0}I}{4\pi}\frac{1}{r^{1}}\integ{}{}{\vb{r}'}{P_{0}(\cos{\theta'})} = \frac{\mu_{0}I}{4\pi}\frac{1}{r^{1}}\integ{}{}{\vb{r}'}{} = \vb{0}
+\end{align*}
+för en sluten strömslinga. Inte oförväntad, då vi inte känner till magnetiska monopoler. Den andra termen ges av
+\begin{align*}
+	\vb{A}_{1} &= \frac{\mu_{0}I}{4\pi}\frac{1}{r^{2}}\integ{}{}{\vb{r}'}{r'^{1}P_{1}(\cos{\theta'})} \\
+	           &= \frac{\mu_{0}I}{4\pi r^{2}}\integ{}{}{\vb{r}'}{r'\cos{\theta'}} \\
+	           &= \frac{\mu_{0}I}{4\pi r^{2}}\integ{}{}{\vb{r}'}{r'\cdot\ub{r}} \\
+	           &= -\frac{\mu_{0}I}{4\pi r^{2}}\ub{r}\times\integ{}{}{\vb{S}}{},
+\end{align*}
+vilket motsvarar en dipolterm. Vidare skulle man kunna skriva upp kvadrupoltermen också.
