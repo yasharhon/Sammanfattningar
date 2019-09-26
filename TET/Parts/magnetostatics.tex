@@ -98,7 +98,7 @@ På samma sätt som för elektriska potentialen fås
 \paragraph{Magnetfältets rotation}
 Vi har
 \begin{align*}
-	\curl{\vb{B}} = \curl{\curl{\vb{A}}} = \grad{\div{\vb{A}}} - \laplacian{\vb{A}} = -\mu_{0}\vb{J}.
+	\curl{\vb{B}} = \curl{\curl{\vb{A}}} = \grad{\div{\vb{A}}} - \laplacian{\vb{A}} = \mu_{0}\vb{J}.
 \end{align*}
 
 \paragraph{Ampères cirkulationslag}
@@ -294,3 +294,59 @@ för en sluten strömslinga. Inte oförväntad, då vi inte känner till magneti
 	           &= -\frac{\mu_{0}I}{4\pi r^{2}}\ub{r}\times\integ{}{}{\vb{S}}{},
 \end{align*}
 vilket motsvarar en dipolterm. Vidare skulle man kunna skriva upp kvadrupoltermen också.
+
+\paragraph{$H$-fältet}
+Ampères lag ger
+\begin{align*}
+	\curl{\vb{B}} = \mu_{0}\vb{J}.
+\end{align*}
+Med resultatet ovan fås
+\begin{align*}
+	\curl{\vb{B}}                           &= \mu_{0}\vb{J}_{\text{fri}} + \mu_{0}\curl{\vb{M}}, \\
+	\curl(\frac{1}{\mu_{0}}\vb{B} - \vb{M}) &= \mu_{0}\vb{J}_{\text{fri}}.
+\end{align*}
+Vi definierar då
+\begin{align*}
+	\vb{H} = \frac{1}{\mu_{0}}\vb{B} - \vb{M},
+\end{align*}
+vilket ger
+\begin{align*}
+	\curl{\vb{H}} = \mu_{0}\vb{J}_{\text{fri}}.
+\end{align*}
+
+\paragraph{Amperes lag för $H$-fältet}
+Vi får
+\begin{align*}
+	I_{\text{fri}} = \vinteg{}{}{r}{\vb{H}}.
+\end{align*}
+
+\paragraph{Linjära magnetiserbara material}
+Betrakta ett material som uppfyller
+\begin{align*}
+	\vb{M} = \frac{1}{\mu{0}}\chi_{\text{m}}\vb{B}.
+\end{align*}
+Dessa uppfyller
+\begin{align*}
+	\vb{B} &= \mu_{0}(\vb{H} + \vb{M}), \\
+	\vb{M} &= \chi_{\text{m}}(\vb{H} + \vb{M}), \\
+	\vb{M} &= \frac{\chi_{\text{m}}}{1 - \chi_{\text{m}}}\vb{H} = \chi_{\text{m}}^{H}\vb{H}.
+\end{align*}
+Detta ger slutligen
+\begin{align*}
+	\vb{B} = \mu_{0}(1 + \chi_{\text{m}}^{H})\vb{H} = \mu_{0}\mu_{\text{r}}\vb{H} = \mu\vb{H},
+\end{align*}
+där $\mu_{\text{r}} = 1 + \chi_{\text{m}}^{H}$ kallas den relativa permeabiliteten och $\mu$ kallas permeabiliteten.
+
+\paragraph{Klassificering av magnetiska material}
+Det finns olika sorters magnetism i material. BLand dessa är:
+\begin{itemize}
+	\item diamagnetiska material, med $\chi_{\text{m}} < 0$, typiskt kring \num{-1e-5}.
+	\item paramagnetiska material, med $\chi_{\text{m}} > 0$, typiskt kring \num{1e-4}.
+	\item ferromagnetiska material, med $\chi_{\text{m}} >> 1$. Dessa är dock ofta icke-linjära.
+\end{itemize}
+
+\paragraph{Randvillkor för $H$-fältet}
+I en gränsyta fås
+\begin{align*}
+	H_{1}^{\perp} - H_{2}^{\perp} = M_{2}^{\perp} - M_{1}^{\perp},\ \vb{n}_{12}\times(\vb{H}_{1} - \vb{H}_{2}) = \mu_{0}\vb{J}_{\text{f}}.
+\end{align*}
