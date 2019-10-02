@@ -1,0 +1,91 @@
+\section{Lite om elektronik}
+
+\paragraph{Ledningsförmåga}
+Fria laddningar kan transporteras av krafter per laddning. Om det i ett ämne finns en krafttäthet $\vb{f}$ ger denna alltså upphov till en inducerad strömtäthet. Vi antar att denna är linjär ock skriver
+\begin{align*}
+	J_{i} = \sigma_{ij}f_{ij},
+\end{align*}
+där $\sigma$ är ledningsförmågan, här uttrykt som en tensorstorhet. Den har enhet \si{\siemens\per\meter} eller \si{\per\ohm\per\meter}. En perfekt ledare har oändlig (och diagonal) sådan.
+
+\paragraph{Resistans och Ohms lag}
+Betrakta ett batteri (en ideal spänningskälla) som är kopplad til två ideala ledare. De ideala ledarna har potential $V_{+}$ respektiva $V_{-}$, och är förbundna av ett material med ledningsförmåga $\sigma$. I det ledande området är $\vb{J} = \sigma\vb{E}$. Om kontaktytan mellan det ledande området och ledarna är $S_{+}$ respektiva $S_{-}$ fås
+\begin{align*}
+	U = V_{+} - V_{-} = -\vinteg{S_{-}}{S_{+}}{\vb{r}}{\vb{E}},\ I = \vinteg{S_{-}}{}{\vb{a}}{\vb{J}} = -\vinteg{S_{+}}{}{\vb{a}}{\vb{J}}.
+\end{align*}
+Vägintegralen för spänningen kan tas för att vara mellan två godtyckliga punkter på ytorna. Vi definierar då det ledande områdets resistans som
+\begin{align*}
+	R = \frac{U}{I}.
+\end{align*}
+
+\paragraph{Randvillkor mellan ledare}
+För att bevara $\div{\vb{J}} = 0$ fås kravet
+\begin{align*}
+	\vb{n}_{12}\cdot(\vb{J}_{1} - \vb{J}_{2}) = 0.
+\end{align*}
+Randvillkoret för elektriska fältet ger även
+\begin{align*}
+	\vb{n}_{12}\times\left(\frac{1}{\sigma_{1}}\vb{J}_{1} - \frac{1}{\sigma_{2}}\vb{J}_{2}\right) = \vb{0}.
+\end{align*}
+
+\paragraph{Effektutveckling och Joules lag}
+Betrakta en punktladdning $q$. På denna uträtter det elektriska och magnetiska fältet arbetet
+\begin{align*}
+	\dd{W} = \vb{F}\cdot\dd{\vb{r}} = q(\vb{E} + \vb{v}\times\vb{B})\cdot\dd{\vb{r}} = q\vb{E}\cdot\dd{\vb{r}}.
+\end{align*}
+Då tillförs $q$ effekten
+\begin{align*}
+	P = q\vb{v}\cdot\vb{E}.
+\end{align*}
+
+Betrakta nu en volymström $\vb{J} = \rho\vb{v}$. Ett litet element i detta tillförs effekten
+\begin{align*}
+	\dd{P} = \rho\dd{V}\vb{v}\cdot\vb{E} = \dd{V}\vb{J}\cdot\vb{E}.
+\end{align*}
+Vi kan nu införa effekttätheten
+\begin{align*}
+	p = \vb{J}\cdot\vb{E}.
+\end{align*}
+Denna integreras över ledarens volym för att ge
+\begin{align*}
+	P &= \integ{V}{}{V}{p} \\
+	  &= \integ{V}{}{V}{\vb{J}\cdot\vb{E}} \\
+	  &= -\integ{V}{}{V}{\vb{J}\cdot\grad{V}} \\
+	  &= -\integ{V}{}{V}{\div{V\vb{J}} - V\div{\vb{J}}} \\
+	  &= -\vinteg{S}{}{S}{V\vb{J}}.
+\end{align*}
+Om det ledande området är omringad av en isolator har $\vb{J}$ ingen normalkomponent där, och
+\begin{align*}
+	P &= -\vinteg{S_{+}}{}{S}{V\vb{J}} - \vinteg{S_{-}}{}{S}{V\vb{J}} \\
+	  &= (V_{+} - V_{-})I,
+\end{align*}
+alltså
+\begin{align*}
+	P = UI.
+\end{align*}
+
+\paragraph{Elektromotorisk kraft}
+Betrakta en smal resistiv slinga med tvärsnitt $A$ som beskrivs av en naturlig rymdkoordinat $l$. Om slingan för strömmen $I$ fås
+\begin{align*}
+	\vb{J} = \frac{I}{A}\ub{l} = \sigma\vb{f}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\vb{f}\cdot\dd{\vb{l}} = \frac{I}{\sigma A}\dd{l}.
+\end{align*}
+Om vi jämför detta med resultatet för ett cylindriskt motstånd fås
+\begin{align*}
+	\vb{f}\cdot\dd{\vb{l}} = I\dd{R}.
+\end{align*}
+Resistansen hos ett kort segment i slingan är alltså
+\begin{align*}
+	\dd{R}.
+\end{align*}
+Vi får nu
+\begin{align*}
+	\vinteg{}{}{l}{\vb{f}} = I\integ{}{}{R}{} = IR.
+\end{align*}
+För att få en ström krävs det alltså att
+\begin{align*}
+	\emf = \vinteg{}{}{l}{\vb{f}}
+\end{align*}
+är nollskild. Vi definierar $\emf$ som den elektromotoriska kraften.
