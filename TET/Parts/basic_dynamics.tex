@@ -1,1 +1,88 @@
 \section{Grundläggande dynamik}
+
+\paragraph{Lite om kvasistatiska fält}
+Vi kommer här betrakta kvasistatiska fall, alltså fall där $\rho$ och $\vb{J}$ ändras långsamt. I såna fall extrapolerar vi Biot-Savarts lag trivialt. Coulombs lag extrapoleras även trivialt, men totala elektriska fältet får även en extra term från ändringen av magnetiska fältet, som vi kommer se.
+
+\paragraph{Elektromagnetisk induktion}
+Betrakta en strömslinga $C$ som rör sig godtyckligt och ändrar form under en liten tid $\dd{t}$. Vi är nu intresserade av ändringen i magnetiska flödet
+\begin{align*}
+	\dv{\Phi}{t} = \dv{t}\vinteg{S(t)}{}{a}{\vb{B}} = \lim\limits_{\dd{t}\to 0}\frac{1}{\dd{t}}\left(\vinteg{S(t + \dd{t})}{}{a}{\vb{B}(t + \dd{t})} - \vinteg{S(t)}{}{a}{\vb{B}(t)}\right).
+\end{align*}
+Vi serieutvecklar magnetfältet med avseende på tid (den följande variationen av koordinater tas med i det faktum att vi integrerar över olika ytor) för att få
+\begin{align*}
+	\dv{\Phi}{t} \approx \lim\limits_{\dd{t}\to 0}\frac{1}{\dd{t}}\left(\vinteg{S(t + \dd{t})}{}{a}{\vb{B}(t)} - \vinteg{S(t)}{}{a}{\vb{B}(t)} + \dd{t}\vinteg{S(t + \dd{t})}{}{a}{\del{t}{\vb{B}}(t)}\right).
+\end{align*}
+Låt nu kurvan vid $t$ och $t + \dd{t}$ förbindas av ytan $S_{\text{o}}$. Då fås
+\begin{align*}
+	\vinteg{S(t + \dd{t})}{}{a}{\vb{B}(t)} - \vinteg{S(t)}{}{a}{\vb{B}(t)} + \vinteg{S_{\text{o}}}{}{a}{\vb{B}(t)} = \integ{V}{}{\tau}{\div{\vb{B}}} = 0,
+\end{align*}
+där vi har lagt på ett minustecken för att ändra orienteringen på ena ytan. Om varje punkt på $C$ rör sig med en hastighet $\vb{v}$ fås
+\begin{align*}
+	\vinteg{S(t + \dd{t})}{}{a}{\vb{B}(t)} - \vinteg{S(t)}{}{a}{\vb{B}(t)} = -\integ{C(t)}{}{}{\vb{B}\cdot(\dd{\vb{l}}\times\vb{v}\dd{t})}.
+\end{align*}
+Vi har
+\begin{align*}
+	\vb{B}\cdot(\dd{\vb{l}}\times\vb{v}) = B_{i}\varepsilon_{ijk}\dd{l}_{j}v_{k} = \dd{l}_{j}\varepsilon_{jki}v_{k}B_{i} = \dd{\vb{l}}\cdot(\vb{v}\times\vb{B}).
+\end{align*}
+Detta ger slutligen
+\begin{align*}
+	\dv{\Phi}{t} = \vinteg{S(t + \dd{t})}{}{a}{\del{t}{\vb{B}}(t)} - \int\limits_{C(t)}{\dd{\vb{l}}\cdot(\vb{v}\times\vb{B})}.
+\end{align*}
+
+\paragraph{Rörlig slinga i statiskt fält}
+Betrakta fallet då en slinga rör sig i ett statiskt fält. Vi får då
+\begin{align*}
+	\int\limits_{C(t)}{\dd{\vb{l}}\cdot(\vb{v}\times\vb{B})} = -\dv{\Phi}{t}.
+\end{align*}
+Vi känner igen vänstra termen som elektromotoriska spänningen, alltså integralen av kraft per laddning över slingan, och får
+\begin{align*}
+	\emf = -\dv{\Phi}{t}.
+\end{align*}
+
+\paragraph{Varierande magnetiskt fält och fältlagar}
+Betrakta en statisk strömslinga i ett varierande magnetiskt fält. Michael Faraday upptäckte att även en sån upplever en kraft. Hans hypotes var att detta berodde på att det inducerades en elektromotorisk spänning på grund av ett elektriskt fält. Mer specifikt,
+\begin{align*}
+	\vinteg{}{}{l}{\vb{E}} = -\vinteg{S}{}{a}{\del{t}{\vb{B}}(t)}.
+\end{align*}
+
+Maxwell generaliserade detta genom att ta bort den fysikaliska slingan och i stället betrakta en integrationsbana i rummet. Om Faradays hypotes stämde, skulle Stokes' sats ge
+\begin{align*}
+	\vinteg{S}{}{a}{\left(\curl{\vb{E}} + \del{t}{\vb{B}}(t)\right)} = 0.
+\end{align*}
+Om integrationsbanan är godtycklig, ger det
+\begin{align*}
+	\curl{\vb{E}} + \del{t}{\vb{B}}(t) = \vb{0}.
+\end{align*}
+Detta är en dynamisk fältlag för det elektriska och magnetiska fältet.
+
+\paragraph{Potentialer för dynamiska fält}
+För långsamt varierande $\rho$ och $\vb{J}$ ser uttrycken för magnetiska fältet och elektriska fältets rotationsfria del lika ut som de gjorde i statiken, fast med tidsberoende källor. De motsvarande potentialerna kommer utvidgas på samma sätt. Om vi nu tittar på elektriska fältets icke-rotationsfria del, fås
+\begin{align*}
+	\div{\vb{E}} = \div(-\del{t}{\vb{B}}) = -\del{t}{\div{\vb{B}}} = 0.
+\end{align*}'
+I analogi med Biot-Savarts lag fås då
+\begin{align*}
+	\vb{E} = -\frac{1}{4\pi}\integ{}{}{V}{\del{t}{\vb{B}}\times\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+
+Vi kan även skriva
+\begin{align*}
+	\curl{\vb{E}} + \del{t}{\vb{B}}(t) = \curl(\vb{E} + \del{t}{\vb{A}}) = \vb{0}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\div(\vb{E} + \del{t}{\vb{A}}) = 0,\ \curl(\vb{E} + \del{t}{\vb{A}}) = \vb{0},
+\end{align*}
+och därmed måste
+\begin{align*}
+	\vb{E} = -\del{t}{\vb{A}}).
+\end{align*}
+Med generaliseringen av $\vb{A}$ fås
+\begin{align*}
+	\vb{E} = -\frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\del{t}{\vb{J}}}.
+\end{align*}
+
+I allmänhet arbetar vi med potentialerna
+\begin{align*}
+	\vb{B} = \curl{\vb{A}},\ \vb{E} = -\grad{V} - \del{t}{\vb{A}}.
+\end{align*}
