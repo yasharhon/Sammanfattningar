@@ -86,3 +86,98 @@ I allmänhet arbetar vi med potentialerna
 \begin{align*}
 	\vb{B} = \curl{\vb{A}},\ \vb{E} = -\grad{V} - \del{t}{\vb{A}}.
 \end{align*}
+
+\paragraph{EMK från induktans}
+Vi får i ett system med $n$ slingor
+\begin{align*}
+	\emf_{i} = -\sum\limits_{j}M_{ij}\dv{I_{j}}{t} = -L_{i}\dv{I_{i}}{t} + \emf_{\text{övriga}}.
+\end{align*}
+Vi kan ställa upp detta med hjälp av egeninduktansen som
+\begin{align*}
+	\dv{I_{i}}{t} + \frac{R_{i}}{L_{i}} = \frac{\emf_{\text{övriga}}}{L_{i}}.
+\end{align*}
+
+\paragraph{Magnetisk energi}
+Den magnetiska energin $W_{\text{m}}$ är arbetet som krävs för att starta en strömkälla $\vb{J}$. Magnetiska fältet gör inget arbete i statiska fall, och därmed kan vi endast betrakta den i tidsberoende fall.
+
+Under igångsättningen finns ett inducerat elektriskt fält $\vb{E} = -\del{t}{\vb{A}}$. För att upprätthålla $\vb{J}$ mot det elektriska fältet tillförs effekten
+\begin{align*}
+	P = -\integ{}{}{\tau}{\vb{E}\cdot\vb{J}} = \integ{}{}{\tau}{\vb{J}\cdot\del{t}{\vb{A}}}.
+\end{align*}
+Med Ampères lag skriver vi detta som
+\begin{align*}
+	P &= \frac{1}{\mu_{0}}\integ{}{}{\tau}{(\curl{\vb{B}})\cdot\del{t}{\vb{A}}} \\
+	  &= \frac{1}{\mu_{0}}\integ{}{}{\tau}{\div(\vb{B}\times\del{t}{\vb{A}}) + \vb{B}\cdot\curl(\del{t}{\vb{A}})} \\
+	  &= \frac{1}{\mu_{0}}\vinteg{}{}{S}{\vb{B}\times\del{t}{\vb{A}}} + \frac{1}{\mu_{0}}\integ{}{}{\tau}{\vb{B}\cdot\del{t}{\vb{B}}}.
+\end{align*}
+När vi utvidgar integrationsvolymen mot oändligheten försvinner ytintegralen, och kvar står
+\begin{align*}
+	P = \frac{1}{2\mu_{0}}\dv{t}\integ{}{}{\tau}{B^{2}}.
+\end{align*}
+Därmed fås
+\begin{align*}
+	W_{\text{m}} = \frac{1}{2\mu_{0}}\integ{}{}{\tau}{B^{2}},
+\end{align*}
+som alternativt kan skrivas som
+\begin{align*}
+	W_{\text{m}} = \frac{1}{2}\integ{}{}{\tau}{\vb{J}\cdot\vb{A}}.
+\end{align*}
+
+\paragraph{Magnetisk energi för en slinga med tjocklek}
+Vi delar strömslingan i små delar $V_{i}$ med tvärsnitt $S_{i}$. Magnetiska energin ges av
+\begin{align*}
+	W_{\text{m}} &= \frac{1}{2}\sum\limits_{i}\integ{V_{i}}{}{\tau}{\vb{J}_{i}\cdot\vb{A}}.
+\end{align*}
+Varje element för en ström $\vb{J}_{i}$, och bidrar då med fält $\vb{A}_{i}$ respektiva $\vb{B}_{i}$. Detta ger
+\begin{align*}
+	\frac{1}{2}\sum\limits_{i}\sum\limits_{j}\integ{V_{i}}{}{\tau}{\vb{J}_{i}\cdot\vb{A}_{j}} = \sum\limits_{i}\sum\limits_{j}W_{\text{m}, ij}.
+\end{align*}
+Egenenergierna $W_{\text{m}, ii}$ motsvarar uttrycken vi har härlett innan. Detta sättet är att föredra framför att räkna på flödet i slingor (vilket också skulle kunna funka om man delar upp strömtätheten i skivor). Om vi vidare antar att $\vb{A}$ är ungefär konstant över varje tvärsnitt fås
+\begin{align*}
+	\vb{J}_{i}\dd{\tau} = I_{i}\dd{\vb{l}}.
+\end{align*}
+Därmed kan vi skriva
+\begin{align*}
+	W_{\text{m}, ij} = \frac{1}{2}I_{i}\vinteg{C_{i}}{}{l}{\vb{A}_{j}} = \frac{1}{2}I_{i}\Phi_{ij} = \frac{1}{2}I_{i}M_{ij}I_{j}.
+\end{align*}
+För systemet fås då
+\begin{align*}
+	W_{\text{m}} = \frac{1}{2}\sum\limits_{i}\sum\limits_{j}I_{i}M_{ij}I_{j}.
+\end{align*}
+Vi vet att detta är strikt positivt, så induktansmatrisen måste vara positivt definit.
+
+Vi kan även notera att egeninduktansen ges av
+\begin{align*}
+	L_{i} = \frac{2W_{\text{m}, ii}}{I_{i}^{2}},
+\end{align*}
+men jag vet inte om det har någon relevans för något.
+
+\paragraph{Generalisering av Ampères lag}
+I statiska situationer har vi sett att Ampères lag är konsekvent med att strömmarna är divergensfria. I dynamiska situationer är inte strömmarna nödvändigtvis divergensfria, så vi kommer försöka göra en ny ad hoc dynamisk Ampères lag.
+
+Vi har
+\begin{align*}
+	\curl{\vb{B}} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\curl(\vb{J}\times\frac{1}{R^{2}}\ub{R})} \\
+	              &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\div(\frac{1}{R^{2}}\ub{R})\vb{J} - (\vb{J}\cdot\grad)\frac{1}{R^{2}}\ub{R}} \\
+	              &= \mu_{0}\vb{J} + \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{(\vb{J}\cdot\grad')\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+Vi betecknar den andra termen som $\vb{I}$. Komponentvis har vi
+\begin{align*}
+	I_{i} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{J_{j}\del{j}{\frac{1}{R^{3}}R_{i}}} \\
+	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\del{j}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{1}{R^{3}}R_{i}\del{j}{J_{j}}} \\
+	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{S_{i}}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{3}}R_{i}\div{\vb{J}}}.
+\end{align*}
+Genom att skicka integrationsområdet mot oändligheten försvinner första termen, vilket ger
+\begin{align*}
+	\curl{\vb{B}} &= \mu_{0}\vb{J} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\div{\vb{J}}\frac{1}{R^{3}}\ub{R}}.
+\end{align*}
+Med kontinuitetsekvationen fås
+\begin{align*}
+	\curl{\vb{B}} &= \mu_{0}\vb{J} + \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\del{t}{\rho}\frac{1}{R^{3}}\ub{R}}.
+\end{align*}
+Vi känner igen andra termen som proportionell mot en tidsderivata av elektriska fältet, och en möjlig kandidat till en ny Ampères lag är
+\begin{align*}
+	\curl{\vb{B}} - \mu_{0}\varepsilon_{0}\del{t}{\vb{E}} = \mu_{0}\vb{J}.
+\end{align*}
+
+Observera att detta inte är en härledning, då vi har utgått från dessa generaliserade varianterna av Coulombs och Biot-Savarts lagar. Dessa uppfyller till exempel inte $\curl{\vb{E}} = -\del{t}{\vb{B}}$. För att uppfylla detta måste induktiva korrektionstermen läggas till, men då kommer inte den nya Ampères lag att gälla, så man får en jobbig iterativ process med korrektioner.

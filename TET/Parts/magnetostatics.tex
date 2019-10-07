@@ -350,3 +350,20 @@ I en gränsyta fås
 \begin{align*}
 	H_{1}^{\perp} - H_{2}^{\perp} = M_{2}^{\perp} - M_{1}^{\perp},\ \vb{n}_{12}\times(\vb{H}_{1} - \vb{H}_{2}) = \mu_{0}\vb{J}_{\text{f}}.
 \end{align*}
+
+\paragraph{Ömsesidig induktans}
+Betrakta två strömslingor $C_{1}$ och $C_{2}$. En ström $I_{1}$ ger ett magnetiskt flöde $\Phi_{21}$ genom $C_{2}$. Vi har att
+\begin{align*}
+	\Phi_{12} = \vinteg{C_{2}}{}{l_{2}}{\vb{A}} = \vinteg{C_{2}}{}{l_{2}}{\frac{\mu_{0}I_{1}}{4\pi}\integ{C_{1}}{}{\vb{l}_{1}}{\frac{1}{R}}} = M_{21}I_{1},
+\end{align*}
+där $M_{21}$ är $C_{2}$:s ömsesidiga induktans från $C_{1}$. Det gäller att $M_{12} = M_{21}$.
+
+\paragraph{Egeninduktans}
+Om det går en ström i en slinga induceras även ett magnetiskt flöde från slingas egna fält. Vi döper denna $M_{11} = L_{1}$, och har $\Phi_{11} = L_{1}I_{1}$.
+
+\paragraph{Induktansmatris}
+Om man har ett problem med $n$ strömslingor, får man
+\begin{align*}
+	\Phi_{i} = \sum\limits_{j}M_{ij}I_{j},
+\end{align*}
+som kan skrivas som ett matrisproblem som involverar induktansmatrisen $M$.
