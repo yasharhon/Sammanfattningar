@@ -12,22 +12,37 @@ Eftersom periodiska funktioner kan skrivas som en summa av trigonometriska funkt
 Det kan även finnas transienta termer här, men om systemet är stabilt kommer dessa försvinna över tid. Vi ser alltså att systemets svar beror av $G(i\omega)$.
 
 \paragraph{Nyquistdiagram}
-Ett Nyquistdiagram är en uppritning av $G(i\omega)$ för $0 < \omega < \infty$.
+Ett Nyquistdiagram är en uppritning av $G(i\omega)$ för $0 < \omega < \infty$. Vi kan se att detta i stort sett är den intressanta delen av Nyquistkurvan.
 
 \paragraph{Bodediagram}
-Ett Bodediagram är en uppritning av $\abs{G(i\omega)}$ och $\arg{G(i\omega)}$ som funktioner av $\omega$.
+Ett Bodediagram är en diagram av $\abs{G(i\omega)}$ och $\arg{G(i\omega)}$ som funktioner av $\omega$.
+
+\paragraph{Skärfrekvens}
+Skärfrekvensen $\omega_{\text{c}}$ är frekvensen för vilken Nyquistkurvan skär enhetscirkeln. Det är en tummregel att denna är proportionell mot systemets bandbredd, som vi kommer diskutera sedan.
+
+\paragraph{Fasmarginal}
+Fasmarginalen $\phi_{\text{m}}$ är vinkeln mellan negativa $x$-axeln och punkten där Nyquistkurvan skär enhetscirkeln. Mer specifikt kan vi skriva $\phi_{\text{m}} = \pi + \arg{G(i\omega_{\text{c}})}$.
+
+\paragraph{Fasskärfrekvens}
+Fasskärfrekvensen $\omega_{\text{p}}$ är frekvensen så att $\arg{G_{\text{O}}(i\omega_{\text{p}})} = -\pi$.
+
+\paragraph{Amplitudmarginal}
+Amplitudmarginalen ges av $A_{\text{m}} = \frac{1}{\abs{G_{\text{O}}(i\omega_{\text{p}})}}$.
+
+\paragraph{Alternativt förenklad Nyquist-kriterium}
+Det förenklade Nyquistkriteriet kan nu formuleras som $\phi_{\text{m}} > 0,\ A_{\text{m}} > 1$.
 
 \paragraph{Bandbredd}
-Bandbredden är bredden på det frekvensintervallet där $\abs{G(i\omega} \geq \frac{1}{\sqrt{2}}$, och benämnas $\omega_{\text{B}}$. Bandbredden kan ge information om systemets tillväxt, då hög bandbredd typiskt betyder snabb tillväxt. Man önskar typiskt att denna skall vara stor.
+Bandbredden är bredden på det frekvensintervallet där $\abs{G(i\omega)} \geq \frac{1}{\sqrt{2}}$ i relativa enheter, vilket motsvarar förstärkning större än \SI{3}{\decibel}, och benämnas $\omega_{\text{B}}$. Bandbredden kan ge information om systemets tillväxt, då hög bandbredd typiskt betyder snabb tillväxt.
 
 \paragraph{Resonansfrekvens}
 Resonansfrekvensen $\omega_{\text{r}}$ är den frekvens som ger starkast respons i systemet.
 
 \paragraph{Resonanstopp}
-Resonanstoppen är $M_{\text{p}} = \abs{G(i\omega_{\text{r}})}$, och ger typiskt en indikation på hur mycket översläng man får. Man önskar typiskt att denna ska vara liten.
+Resonanstoppen är $M_{\text{p}} = \abs{G(i\omega_{\text{r}})}$ i relativa enheter (?), och ger typiskt en indikation på hur mycket översläng man får. Man önskar typiskt att denna ska vara liten.
 
 \paragraph{Stationärt fel}
-Det stationära felet ges av $e_{0} = 1 - G_{\text{C}}(0)$.
+Det stationära felet ges av $e_{0} = 1 - G_{\text{C}}(0)$, definitivt inte i reella enheter.
 
 \paragraph{Brytningspunkter}
 Om överförningsfunktionen kan skrivas som

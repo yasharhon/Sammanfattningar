@@ -1,7 +1,7 @@
 \section{Prestanda och prestandamått}
 
 \paragraph{Stigtid}
-Stigtiden definieras som $T_{\text{r}}, = t_{2} - t_{1}$, där $y(t_{2}) = 0.9$ och $y(t_{1}) = 0.1$, med $y$ mätt i relativa enheter.
+Stigtiden definieras som $T_{\text{r}}, = t_{2} - t_{1}$, där vi typiskt har kriteriet $y(t_{2}) = 0.9$ och $y(t_{1}) = 0.1$, med $y$ mätt i relativa enheter.
 
 \paragraph{Insvängningstid}
 Insvängningstiden definieras som $\abs{y(t) - 1} < p$ när $t > T_{\text{s}}$, med $y$ mätt i relativa enheter. $p$ är typiskt lika med $0.05$.
@@ -10,10 +10,16 @@ Insvängningstiden definieras som $\abs{y(t) - 1} < p$ när $t > T_{\text{s}}$, 
 Överslänget definieras som $y_{\text{max}} - 1$, med $y$ mätt i relativa enheter.
 
 \paragraph{Parametrar i svängningslika system}
-Om du har ett system med ett andra ordningens polynom i överförningsfunktionens nämnare, skriv polynomet som $s^{2} + 2\zeta\omega_{0}s + \omega_{0}^{2}$. Då gäller det att
+Om du har ett system med ett andra ordningens polynom i överförningsfunktionens nämnare, skriv polynomet som $s^{2} + 2\zeta\omega_{0}s + \omega_{0}^{2}$. $\omega_{0}$ är systemets resonansfrekvens och $\zeta$ dets dämpning. Det gäller för ett rent andra ordningens system att
 \begin{align*}
 	T_{\text{r}} \propto \frac{1}{\omega_{0}},\ T_{\text{s}} \approx \frac{3}{\zeta\omega_{0}},\ M = e^{\frac{\pi\zeta}{\sqrt{1 - \zeta^{2}}}}.
 \end{align*}
 
 \paragraph{Stationärt fel}
-Det stationära felet är felet som kvarstår efter lång tid.
+Det stationära felet är felet $e = r - y$ som kvarstår efter lång tid.
+
+\paragraph{Felkoefficienter}
+Det stationära felet beror både på systemets egenskaper och reglersignalen. Om reglersignalen är på formen $r_{n} = t^{n}\theta(t)$, där $\theta$ är Heavisidefunktionen, definieras felkoefficienterna som
+\begin{align*}
+	e_{n} = \lim\limits_{t\to\infty}r_{n} - y.
+\end{align*}
