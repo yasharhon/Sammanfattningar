@@ -181,3 +181,37 @@ Vi känner igen andra termen som proportionell mot en tidsderivata av elektriska
 \end{align*}
 
 Observera att detta inte är en härledning, då vi har utgått från dessa generaliserade varianterna av Coulombs och Biot-Savarts lagar. Dessa uppfyller till exempel inte $\curl{\vb{E}} = -\del{t}{\vb{B}}$. För att uppfylla detta måste induktiva korrektionstermen läggas till, men då kommer inte den nya Ampères lag att gälla, så man får en jobbig iterativ process med korrektioner.
+
+\paragraph{Maxwells ekvationer}
+All vår kunnskap om elektrostatik- och dynamik för att skriva ned de ekvationerna som beskriver det vi kan:
+\begin{align*}
+	\curl{\vb{E}} + \del{t}{\vb{B}} = \vb{0}, \\
+	\div{\vb{B}} = 0, \\
+	\curl{\vb{B}} - \mu_{0}\varepsilon_{0}\del{t}{\vb{E}} = \mu_{0}\vb{J}, \\
+	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}}.
+\end{align*}
+Dessa kallas för Maxwells ekvationer.
+
+\paragraph{Poyntings sats}
+Betrakta en volym $V$ som omkransas av en yta $S$. Joules lag ger att $V$ tillförs effekten
+\begin{align*}
+	P_{\text{mek}} = \integ{V}{}{}{\vb{J}\cdot\vb{E}}.
+\end{align*}
+Vi kan tolka detta som
+\begin{align*}
+	\vb{J}\cdot\vb{E} = \del{t}{w_{\text{mek}}},
+\end{align*}
+där $w_{\text{mek}}$ är energitätheten. Med hjälp av Maxwells ekvationer skriver vi
+\begin{align*}
+	\del{t}{w_{\text{mek}}} &= \frac{1}{\mu_{0}}\vb{E}\cdot\curl{B} - \varepsilon_{0}\vb{E}\cdot\del{t}{\vb{E}} \\
+	                        &= \frac{1}{\mu_{0}}\left(\vb{B}\cdot\curl{E} - \div(\vb{E}\times\vb{B})\right) - \frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} \\
+	                        &= -\frac{1}{\mu_{0}}\div(\vb{E}\times\vb{B}) - \del{t}{\left(\frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} + \frac{1}{2\mu_{0}}B^{2}\right)}.
+\end{align*}
+Vi har en fältenergitäthet från de första två termerna, som vi förstår väl, men det finns även en extra term här. Den är en flödestäthet av energi. Vi kallar den då Poyntings vektor
+\begin{align*}
+	\vb{S} = \frac{1}{\mu_{0}}\vb{E}\times\vb{B}.
+\end{align*}
+Den uppfyller konserveringslagen
+\begin{align*}
+	\div{\vb{S}} + \del{t}{(w_{\text{mek}} + w_{\text{em}})} = 0.
+\end{align*}

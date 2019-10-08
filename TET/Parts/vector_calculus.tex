@@ -7,18 +7,22 @@ Diracs deltafunktion generaliserar utan vidare till högre dimensioner. Med andr
 \end{align*}
 om $V$ innesluter origo.
 
-\paragraph{Nablaoperatorn i olika koordinatsystem}
-Betrakta två olika koordinatsystem $S$ och $S'$. Med hjälp av de kartesiska basvektorerna (som är lika i bägge koordinatsystemen) kan vi skriva ortsvektorn i de två som
+\paragraph{Nablaoperatorn med avseende på fält- och källpunkt}
+Med hjälp av de kartesiska basvektorerna kan vi skriva källpunktsvektorn och fältpunktsvektorn som
 \begin{align*}
 	\vb{r} = r_{i}\ub{i},\ \vb{r}' = r_{i}'\ub{i}.
 \end{align*}
-Vidare kan vi skriva nablaoperatorn som
+Vidare kan vi skriva nablaoperatorn med avseende på de två vektorerna som
 \begin{align*}
-	\grad{} = \ub{i}\del{i}{},\ \grad{} = \ub{i}\delp{i}{}.
+	\grad{} = \ub{i}\del{i}{},\ \grad^{\prime}{} = \ub{i}\delp{i}{}.
 \end{align*}
-Betrakta nu en funktion av $\vb{R} = \vb{r} - \vb{r}'$. Då kan vi visa att
+Betrakta nu en funktion av $\vb{R} = \vb{r} - \vb{r}'$. Då gäller det att
 \begin{align*}
-	\del{i}{f} = -\delp{i}{f}.
+	\del{i}{f} = \dv{f}{R}\del{i}{R} = -\dv{f}{R}\delp{i}{R} = -\delp{i}{f}.
+\end{align*}
+Detta ger alltså att
+\begin{align*}
+	\grad{f} = -\gradp{f}.
 \end{align*}
 
 \paragraph{Gradienten av $R$}
@@ -28,11 +32,11 @@ Betrakta funktionen
 \end{align*}
 Vi har
 \begin{align*}
-	\del{i}{R} = \frac{1}{2}(R_{k}R_{k})^{-\frac{1}{2}}\cdot 2R_{j}\del{i}{R_{j}} = (R_{k}R_{k})^{-\frac{1}{2}}R_{j}\del{i}{(r_{j} - r_{j}'} = \frac{R_{j}}{R}\delta{ij} = \frac{R_{i}}{R}\delta{ij}.
+	\del{i}{R} = \frac{1}{2}(R_{k}R_{k})^{-\frac{1}{2}}\cdot 2R_{j}\del{i}{R_{j}} = (R_{k}R_{k})^{-\frac{1}{2}}R_{j}\del{i}{(r_{j} - r_{j}')} = \frac{R_{j}}{R}\delta{ij} = \frac{R_{i}}{R}\delta{ij}.
 \end{align*}
 Detta ger
 \begin{align*}
-	\grad{R} = -\grad'{R} = \ub{\vb{R}}.
+	\grad{R} = -\gradp{R} = \ub{\vb{R}}.
 \end{align*}
 
 \paragraph{Divergensen av $\frac{1}{R^{2}}$-fältet}
