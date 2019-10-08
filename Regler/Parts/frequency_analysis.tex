@@ -44,37 +44,50 @@ Resonanstoppen är $M_{\text{p}} = \abs{G(i\omega_{\text{r}})}$ i relativa enhet
 \paragraph{Dekomponering av Bodediagram}
 Vi skriver överförningsfunktionen som
 \begin{align*}
-	G(i\omega) = \frac{K}{s^{p}}\frac{\prod\left(1 +\frac{i\omega}{z_{i}}\right)}{\prod\left(1 +\frac{i\omega}{p_{i}}\right)}.
+	G(i\omega) = \frac{K}{s^{p}}\frac{\prod\left(1 +\frac{i\omega}{z_{i}}\right)}{\prod\left(1 +\frac{i\omega}{p_{i}}\right)},
 \end{align*}
-En sån överförningsfunktion ger
+som har poler i $-z_{i}$ och nollställen i $-p_{i}$. En sådan överförningsfunktion ger
 \begin{align*}
-	\log{\abs{G(i\omega}} = \log{K} + \sum\log{\abs{1 +\frac{i\omega}{z_{i}}}} - \sum\log{\abs{1 +\frac{i\omega}{p_{i}}}},\ \arg{G(i\omega)} = -p\frac{\pi}{2} + \sum\arctan{\frac{\omega}{z_{i}}} - \sum\arctan{\frac{\omega}{p_{i}}}.
+	\log{\abs{G(i\omega)}} = \log{K} + \sum\log{\abs{1 +\frac{i\omega}{z_{i}}}} - \sum\log{\abs{1 +\frac{i\omega}{p_{i}}}},\ \arg{G(i\omega)} = -p\frac{\pi}{2} + \sum\arctan{\frac{\omega}{z_{i}}} - \sum\arctan{\frac{\omega}{p_{i}}}.
 \end{align*}
 Alltså är Bodeplottet en summa av bidrag från enstaka faktorer, eventuellt två komplexkonjugerade parade ihop. Vi studerar de därför var för sig.
+
+\paragraph{Bodediagram för en potens}
+Betrakta en faktor $s^{p}$ i överförningsfunktionen. För den gäller att
+\begin{align*}
+	\log{\abs{G(i\omega)}} = p\log{\omega},\ \arg{G(i\omega)} = -p\frac{\pi}{2}.
+\end{align*}
+Detta motsvarar en rät linje med lutning $p$ i Bodediagrammet och en konstant fassänkning.
 
 \paragraph{Bodediagram för en linjär faktor}
 En enda faktor $1 +\frac{i\omega}{z_{i}}$, under antagandet att $z_{i}$ är reell, har
 \begin{align*}
 	\log{\abs{G(i\omega)}} = \frac{1}{2}\log(1 + \frac{\omega^{2}}{z_{i}^{2}})\ \arg{G(i\omega)} = \arctan{\frac{\omega}{z_{i}}}.
 \end{align*}
-Lågfrekvensasymptoten är $0$, medan högfrekvensasymptoten är $\log{\frac{\omega}{z_{i}}}$, alltså en rät linje i en log-log-plot. Dessa två asymptoterna skär varandra för $\omega = z_{i}$. I denna punkten ändrar bodeplotten brått sin lutning. Denna punkten kallas då bodeplottens brytpunkt.
+Lågfrekvensasymptoten är $0$, medan högfrekvensasymptoten är $\log{\frac{\omega}{z_{i}}}$, alltså en rät linje med lutning $1$ i en log-log-plot. Dessa två asymptoterna skär varandra för $\omega = z_{i}$. I denna punkten ändrar bodeplotten brått sin lutning. Denna punkten kallas då bodeplottens brytpunkt.
 
 \paragraph{Bodediagram för ett polynom av andra ordningen}
+Betrakta två faktorer
+\begin{align*}
+	\left(1 +\frac{i\omega}{z_{i}}\right)\left(1 +\frac{i\omega}{z_{i}^{*}}\right) = 1 - \frac{\omega^{2}}{\abs{z_{i}}^{2}} + 2i\omega\left(\frac{1}{z_{i}} + \frac{1}{z_{i}^{*}}\right) = 1 - \frac{\omega^{2}}{\abs{z_{i}}^{2}} + 2i\frac{\omega}{\abs{z_{i}}^{2}}(z_{i} + z_{i}^{*}) = 1 - \frac{\omega^{2}}{\abs{z_{i}}^{2}} + 2i\frac{\omega}{\abs{z_{i}}}\cos{\arg{z_{i}}}.
+\end{align*}
+Analogt med vad vi har gjort tidigare definierar vi $\abs{z_{i}} = \omega_{0},\ \zeta = \cos{\arg{z_{i}}}$. Vi har då
+\begin{align*}
+\log{\abs{G(i\omega)}} = \frac{1}{2}\log(\left(1 - \frac{\omega^{2}}{\omega_{0}^{2}}\right)^{2} + 4\frac{\omega^{2}}{\omega_{0}^{2}}\zeta^{2}),\ \arg{G(i\omega)} = \arctan{\frac{2\frac{\omega}{\omega_{0}}\zeta}{1 - \frac{\omega^{2}}{\omega_{0}^{2}}}}.
+\end{align*}
+Lågfrekvensasymptoten är $0$. Högfrekvensasymptoten är $2\log{\frac{\omega}{\omega_{0}}}$, vilket är en rak linje med lutning $2$ i en log-log-plot. Nära $\omega = \omega_{0}$ försvinner den kvadratiska termen, och Bodediagrammet beter sig som $\log{\frac{\omega}{\omega_{0}}}$, alltså en rak linje med lutning $1$ i en log-log-plot. Denna asymptoten skär alla andra precis när $\omega = \omega_{0}$, varför detta är en dubbel brytpunkt för Bodediagrammet.
 
 \paragraph{Ritning av Bodeplottar}
-Låt systemets överförningsfunktion vara
-\begin{align*}
-	G = \frac{b_{1}s^{m} + \dots + b_{m + 1}}{s^{n} + \dots + a_{n - p}s^{p}},\ n > m.
-\end{align*}
-Lågfrekvensasymptoten är
-\begin{align*}
-	\abs{G(i\omega} = \frac{b_{m + 1}}{a_{n - p}}\omega^{-p},\ \arg{G(i\omega)} = -p\frac{\pi}{2}.
-\end{align*}
-Högfrekvensasymptoten är
-\begin{align*}
-	\abs{G(i\omega} = b_{1}\omega^{m - n},\ \arg{G(i\omega)} = -(n - m)\frac{\pi}{2}.
-\end{align*}
-Kom ihåg att i logaritmiska diagram motsvarar potenser av $\omega$ räta linjer med lutning lika med exponenten.
+För att rita amplituddelen av ett Bodediagram, gör följande:
+\begin{itemize}
+	\item Faktorisera täljare och nämnare och identifiera poler och nollställen.
+	\item Identifiera exponenten $p$.
+	\item Identifiera $K$.
+	\item Starta Bodediagrammet i $\log{K}$ och fortsätt i en rak linje med lutning $-p$.
+	\item När du kommer till en reell pol, sänk lutningen med $1$.
+	\item När du kommer till beloppet av ett par av komplexa poler, sänk lutningen med $2$.
+	\item Gör samma för nollställena, men höj lutningen i stället.
+\end{itemize}
 
 \paragraph{Bodes relation}
 Låt $G$ vara minimumsfas, dvs. ha alla sina nollställen och poler i vänstre halvplan, och $G(0) > 0$. Då gäller att om $\abs{G(i\omega)}$ i ett visst frekvensområde avtar med \SI{20}{\decibel} per dekad (en dekad är en ökning i frekvens med en faktor $10$), är $\arg{G(i\omega)}\approx \SI{-90}{\degree}$, och om $\abs{G(i\omega)}$ avtar med \SI{40}{\decibel} per dekad, är $\arg{G(i\omega)}\approx \SI{-180}{\degree}$.
