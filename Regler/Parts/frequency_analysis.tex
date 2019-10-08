@@ -41,18 +41,43 @@ Resonansfrekvensen $\omega_{\text{r}}$ är den frekvens som ger starkast respons
 \paragraph{Resonanstopp}
 Resonanstoppen är $M_{\text{p}} = \abs{G(i\omega_{\text{r}})}$ i relativa enheter (?), och ger typiskt en indikation på hur mycket översläng man får. Man önskar typiskt att denna ska vara liten.
 
-\paragraph{Stationärt fel}
-Det stationära felet ges av $e_{0} = 1 - G_{\text{C}}(0)$, definitivt inte i reella enheter.
-
-\paragraph{Brytningspunkter}
-Om överförningsfunktionen kan skrivas som
+\paragraph{Dekomponering av Bodediagram}
+Vi skriver överförningsfunktionen som
 \begin{align*}
-	G(i\omega) = \frac{\prod(i\omega - z_{i})}{\prod(i\omega - p_{i})},
+	G(i\omega) = \frac{K}{s^{p}}\frac{\prod\left(1 +\frac{i\omega}{z_{i}}\right)}{\prod\left(1 +\frac{i\omega}{p_{i}}\right)}.
 \end{align*}
-är alla $z_{i}$ och $p_{i}$ brytningspunkter för systemet. Här kommer de största lutningsändringarna i Bodediagrammet.
+En sån överförningsfunktion ger
+\begin{align*}
+	\log{\abs{G(i\omega}} = \log{K} + \sum\log{\abs{1 +\frac{i\omega}{z_{i}}}} - \sum\log{\abs{1 +\frac{i\omega}{p_{i}}}},\ \arg{G(i\omega)} = -p\frac{\pi}{2} + \sum\arctan{\frac{\omega}{z_{i}}} - \sum\arctan{\frac{\omega}{p_{i}}}.
+\end{align*}
+Alltså är Bodeplottet en summa av bidrag från enstaka faktorer, eventuellt två komplexkonjugerade parade ihop. Vi studerar de därför var för sig.
+
+\paragraph{Bodediagram för en linjär faktor}
+En enda faktor $1 +\frac{i\omega}{z_{i}}$, under antagandet att $z_{i}$ är reell, har
+\begin{align*}
+	\log{\abs{G(i\omega)}} = \frac{1}{2}\log(1 + \frac{\omega^{2}}{z_{i}^{2}})\ \arg{G(i\omega)} = \arctan{\frac{\omega}{z_{i}}}.
+\end{align*}
+Lågfrekvensasymptoten är $0$, medan högfrekvensasymptoten är $\log{\frac{\omega}{z_{i}}}$, alltså en rät linje i en log-log-plot. Dessa två asymptoterna skär varandra för $\omega = z_{i}$. I denna punkten ändrar bodeplotten brått sin lutning. Denna punkten kallas då bodeplottens brytpunkt.
+
+\paragraph{Bodediagram för ett polynom av andra ordningen}
+
+\paragraph{Ritning av Bodeplottar}
+Låt systemets överförningsfunktion vara
+\begin{align*}
+	G = \frac{b_{1}s^{m} + \dots + b_{m + 1}}{s^{n} + \dots + a_{n - p}s^{p}},\ n > m.
+\end{align*}
+Lågfrekvensasymptoten är
+\begin{align*}
+	\abs{G(i\omega} = \frac{b_{m + 1}}{a_{n - p}}\omega^{-p},\ \arg{G(i\omega)} = -p\frac{\pi}{2}.
+\end{align*}
+Högfrekvensasymptoten är
+\begin{align*}
+	\abs{G(i\omega} = b_{1}\omega^{m - n},\ \arg{G(i\omega)} = -(n - m)\frac{\pi}{2}.
+\end{align*}
+Kom ihåg att i logaritmiska diagram motsvarar potenser av $\omega$ räta linjer med lutning lika med exponenten.
 
 \paragraph{Bodes relation}
-Låt $G$ vara minimumsfas, dvs. ha alla sina nollställen och poler i vänstre halvplan, och $G(0) > 0$. Då gäller att om $\abs{G(i\omega)}$ i ett visst frekvensområde avtar med \SI{20}{\deci\bel} per dekad (en dekad är en ökning i frekvens med en faktor $10$), är $\arg{G(i\omega)}\approx \SI{-90}{\degree}$, och om $\abs{G(i\omega)}$ avtar med \SI{40}{\deci\bel} per dekad, är $\arg{G(i\omega)}\approx \SI{-180}{\degree}$.
+Låt $G$ vara minimumsfas, dvs. ha alla sina nollställen och poler i vänstre halvplan, och $G(0) > 0$. Då gäller att om $\abs{G(i\omega)}$ i ett visst frekvensområde avtar med \SI{20}{\decibel} per dekad (en dekad är en ökning i frekvens med en faktor $10$), är $\arg{G(i\omega)}\approx \SI{-90}{\degree}$, och om $\abs{G(i\omega)}$ avtar med \SI{40}{\decibel} per dekad, är $\arg{G(i\omega)}\approx \SI{-180}{\degree}$.
 
 \paragraph{Snabbhet och svängighet}
 Vi kan med tidigare resultat se att om $G_{\text{O}}(i\omega)$ är nära $1$ blir $G_{\text{C}}(i\omega)$ stor, och om $G_{\text{O}}(i\omega)$ är liten blir även $G_{\text{C}}(i\omega)$ liten. Vi kan också se att ett ekvivalent kriterium för bandbredden är $\abs{G_{\text{O}}(i\omega) - 1} \leq \sqrt{2}$ för $\omega \geq \omega_{\text{B}}$.
