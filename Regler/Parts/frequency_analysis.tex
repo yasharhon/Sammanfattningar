@@ -102,7 +102,7 @@ Vi har
 \end{align*}
 Speciellt ger liten fasmarginal stort översläng.
 
-\paragraph{Känslighet}
+\paragraph{Frekvensanalys av känslighetsfunktionen}
 Betrakta ett system som i figur \ref{fig:negative_feedback_equiv}.
 \begin{figure}[!ht]
 	\centering
@@ -110,18 +110,17 @@ Betrakta ett system som i figur \ref{fig:negative_feedback_equiv}.
 	\caption{Illustration av tänkt reglersystem.}
 	\label{fig:negative_feedback_equiv}
 \end{figure}
-Om $F_{r} = F_{y} = F$, skulle systemet vare ekvivalent med välkända negativt återkopplade system. Vi är nu intresserade av att studera systemets känslighet för störningen.
+Om $F_{r} = F_{y} = F$, skulle systemet vara ekvivalent med det välkända negativt återkopplade systemet. Vi är nu intresserade av att studera systemets känslighet för störningen.
 
 Vi har allmänt
 \begin{align*}
-	Y = V + U = V + G(RF_{r} - YF_{y}),\ Y = \frac{GF_{r}}{1 + GF_{y}}R + \frac{1}{1 + GF_{y}}V.
+	Y = V + U = V + G(RF_{r} - YF_{y}),\ Y = \frac{GF_{r}}{1 + GF_{y}}R + \frac{1}{1 + GF_{y}}V,
 \end{align*}
-Vi definierar då känslighetsfunktionen
+och känslighetsfunktionen ges då av
 \begin{align*}
 	S = \frac{1}{1 + GF_{y}}.
 \end{align*}
 
-\paragraph{Frekvensanalys av känslighetsfunktionen}
 Vi har
 \begin{align*}
 	\abs{S(i\omega)} = \abs{\frac{1}{1 + G(i\omega)F_{y}(i\omega)}} \leq M_{\text{s}},
@@ -130,14 +129,25 @@ vilket kan skrivas som
 \begin{align*}
 	\abs{G(i\omega)F_{y}(i\omega) - (-1)} \leq \frac{1}{M_{\text{s}}}.
 \end{align*}
-Alltså måste Nyquistkurvan för $G(F_{y}$ vara utanför en cirkel med mittpukt i $-1$ och radie $\frac{1}{M_{\text{s}}}$.
+Alltså måste Nyquistkurvan för $GF_{y}$ vara utanför en cirkel med mittpukt i $-1$ och radie $\frac{1}{M_{\text{s}}}$.
 
 \paragraph{Robusthet}
 Medan en modell kan ha en överförningsfunktion $G$, kan ett reellt system ha en överförningsfunktion $G' = G(1 + \Delta G)$, där $\Delta G$ är det relativa felet i överförningsfunktionen. Om man återkopplar systemet får man då
 \begin{align*}
-	Y' = \frac{G'F}{1 + G'F}R = \dots = (1 + S'\Delta G)Y,\ S' = \frac{1}{1 + G'F},
+	Y' &= \frac{G'F}{1 + G'F}R \\
+	   &= \frac{G'F(1 + GF)}{(1 + GF)(1 + G'F)}R \\
+	   &= \frac{GF(1 + \Delta G)(1 + GF)}{(1 + GF)(1 + G'F)}R \\
+	   &= \frac{GF(1 + \Delta G + GF + \Delta GGF)}{(1 + GF)(1 + G'F)}R \\
+	   &= \frac{GF\Delta G + FG(1 + GF + \Delta GGF)}{(1 + GF)(1 + G'F)}R \\
+	   &= \frac{GF\Delta G + FG(1 + G'F)}{(1 + GF)(1 + G'F)}R \\
+	   &= \left(\frac{GF\Delta G}{(1 + GF)(1 + G'F)} + \frac{FG}{1 + GF}\right)R.
 \end{align*}
-och $S*\Delta G$ blir det relativa felet i $Y$. Detta betyder att om systemets känslighetsfunktion är liten, får modellfel liten inverkan.
+Om återkopplingen är $U = FE$ fås
+\begin{align*}
+	Y' &= \frac{FG}{1 + GF}R + \frac{GF\Delta G}{(1 + GF)(1 + G'F)}R \\
+	   &= (1 + S'\Delta G)Y,
+\end{align*}
+där $S'$ är känslighetsfunktionen för det verkliga systemet. Det relativa felet i $Y$ blir alltså $S'\Delta G$ blir det relativa felet i $Y$. Detta betyder att om systemets känslighetsfunktion är liten, får modellfel liten inverkan.
 
 \paragraph{Robusthetskriteriet}
 Antag att $G$ ger ett system som är stabilt. Är då ett motsvarande verkligt system stabilt? För att svara på det, kan vi använda Nyquistkriteriet. Kravet är att $F_{y}G'$ ej får omsluta $-1$, vilket vi anser som uppfylld om avståndet mellan $F_{y}G'$ och $F_{y}G$ är mindre än avståndet mellan $F_{y}G$ och $-1$. Detta kan formuleras som
@@ -155,7 +165,7 @@ Vi definierar nu den komplementära känslighetsfunktionen
 \end{align*}
 Normalt är $\Delta G$ ej känd, men vi har en övre skattning $g$ av denna. Det verkliga systemet är då stabilt om
 \begin{align*}
-	\abs{T(i\omega)} < \frac{1}{g(\omega},
+	\abs{T(i\omega)} < \frac{1}{g(\omega)},
 \end{align*}
 vilket är ett tillräckligt, men ofta inte nödvändigt, villkor.
 
@@ -170,6 +180,6 @@ vilket är ett tillräckligt, men ofta inte nödvändigt, villkor.
 \paragraph{Bodes sats}
 Om $G'$ har relativt gradtal större än $2$, gäller att
 \begin{align*}
-	\integ{0}{\infty}{\omega}{\log{\abs{S(i\omega}}} = \pi\sum\limits_{k = 1}^{m}p_{k},
+	\integ{0}{\infty}{\omega}{\log{\abs{S(i\omega)}}} = \pi\sum\limits_{k = 1}^{m}p_{k},
 \end{align*}
 där $p_{k}$ är polerna till $G'$ i högre halvplan.

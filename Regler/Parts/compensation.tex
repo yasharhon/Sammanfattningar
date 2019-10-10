@@ -7,11 +7,9 @@ Vi ser att det enklaste sättet att konstruera en bra regulator på är att änd
 	\item dämpning, alltså fasmarginal.
 	\item stationärt fel, alltså krav på $\abs{G_{\text{O}}(0)}$.
 \end{itemize}
+Denna delen kommer att diskutera hur man kan designa en kompensator som får systemet att uppfylla kraven på dessa.
 
-\paragraph{Kompensation för snabbhet}
-För snabbhet räcker det med en P-regulator. Denna flyttar amplitudkurvan, men ändrar ej faskurvan. Alltså hjälper den oss att bestämma skärfrekvensen.
-
-\paragraph{Fasavancering}
+\paragraph{Fasavancerande länk}
 För att höja fasen kan man använda en deriverande länk, alltså en regulator med överföringsfunktion
 \begin{align*}
 	F = K(\tau_{\text{D}}s + 1).
@@ -22,7 +20,7 @@ Typiskt kan man inte låta deriveringen verka fullt ut, så överförningsfunkti
 \end{align*}
 Vi har
 \begin{align*}
-	\arg{F_{\text{lead}}} = \dots = \arctan{\frac{(1 - \beta)\tau_{\text{D}}\omega}{1 + \beta\tau_{\text{D}}^{2}\omega^{2}}},
+	\arg{F_{\text{lead}}(i\omega)} = \arctan{\frac{(1 - \beta)\tau_{\text{D}}\omega}{1 + \beta\tau_{\text{D}}^{2}\omega^{2}}},
 \end{align*}
 och får därmed att den maximala fasförskjutningen är
 \begin{align*}
@@ -32,26 +30,32 @@ för frekvensen
 \begin{align*}
 	\omega = \frac{1}{\sqrt{\beta}\tau_{\text{D}}}.
 \end{align*}
+När vi designar kompensatorn väljer vi typiskt att den maximala fasförskjutningen skall ske för $\omega = \omega_{\text{c}}$. När vi vet den önskade fashöjningnen $\phi$, väljs $\beta$ som
+\begin{align*}
+	\beta = 2\tan[2](\phi) + 1 - 2\sqrt{\tan[2](\phi) + \tan[4](\phi)}.
+\end{align*}
+Notera att hur mycket fasen behöver höjas beror på önskad fasmarginal, systemets egna fasförskjutning och ett bidrag från en eventuell fasfördröjande länk som kommer diskuteras sen. Notera även att man typiskt inte använder fasavancerande länker för fashöjningar större än \SI{40}{\degree}.
+
+Vidare väljer vi
+\begin{align*}
+	\tau_{\text{D}} = \frac{1}{\sqrt{\beta}\omega_{\text{c}}},
+\end{align*}
+så att maximal fashöjning sker vid skärfrekvensen. Notera att den fashöjande länken även kan behöva kompensera för fasfördröjning i den andra länken.
 
 \paragraph{Lågfrekvensförstärkning}
 Lågfrekvensförstärkning kan ta bort stationärt fel. För att lågfrekvensförstarka kan man använda en integrerande länk, alltså en regulator med överförningsfunktion
 \begin{align*}
-	F = \frac{\tau_{1}s + 1}{\tau_{\text{D}}s}.
+	F = \frac{\tau_{\text{I}}s + 1}{\tau_{\text{I}}s}.
 \end{align*}
-Denna har dock oändligt hög förstärkning för låga frekvenser, kan man i stället använda en fasretarderande länk, alltså en regulator med överförningsfunktion
+Denna har dock oändligt hög förstärkning för låga frekvenser, vilket i praktiken kan vara svårt att realisera. Då kan man i stället använda en fasretarderande länk, alltså en regulator med överförningsfunktion
 \begin{align*}
-	F_{\text{lag}} = \frac{\tau_{1}s + 1}{\beta\tau_{1}s + \gamma}.
+	F_{\text{lag}} = \frac{\tau_{\text{I}}s + 1}{\beta\tau_{\text{I}}s + \gamma}.
 \end{align*}
 Vi har
 \begin{align*}
-	\arg{F_{\text{lag}}} = \dots = -\arctan{\frac{(1 - \gamma)\tau_{1}\omega_{\text{c}}}{\gamma + \tau_{1}^{2}\omega_{\text{c}}^{2}}}.
+	\arg{F_{\text{lag}}(i\omega)} = -\arctan{\frac{(1 - \gamma)\tau_{\text{I}}\omega_{\text{c}}}{\gamma + \tau_{\text{I}}^{2}\omega_{\text{c}}^{2}}}.
 \end{align*}
-Det kan däremot vara svårt att göra rätt val av parametrar.
+$\gamma$ väljs baserad på önskad lågfrekvensförstärkning. Vi ser nu att fasfördröjningen beror på produkten $\tau_{\text{I}}\omega_{\text{c}}$. Som tummregel sätts denna till att vara $10$, vilket ger en fasfördröjning på \SI{6}{\degree} som den fashöjande länken även kommer behöva kompensera för.
 
-\paragraph{Arbetsgång}
-Arbetsgången i kompensering är att
-\begin{itemize}
-	\item bestämma önskad bandbredd.
-	\item bestämma önskad fasmarginal för att ge nödvändig fasökning vid skärfrekvensen.
-	\item Gör lead- och laggrejer. Jag kanske borde fatta det.
-\end{itemize}
+\paragraph{Placerin av skärfrekvens}
+För att placera skärfrekvensen lägger man helt enkelt på ett $K$ så att systemets förstärkning vid skärfrekvensen är $1$.
