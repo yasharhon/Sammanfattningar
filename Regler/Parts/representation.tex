@@ -1,46 +1,10 @@
 \section{Tillståndsrepresentationer}
 
 \paragraph{Ideen}
-Den fundamentala ideen vi vill åt nu är att representera ett systems tillstånd på ett annat sätt än just dets tidsutveckling, till exempel som en vektor.
+Den fundamentala ideen vi vill åt nu är att representera ett systems tillstånd på ett annat sätt än bara utsignalens tidsutveckling. Vi vill även inkludera andra storheter i systemet.
 
-\paragraph{Representation av linjära system}
-Tidsutvecklingen av ett system tillstånd kan i många linjära fall skrivas som
-\begin{align*}
-	\dot{x} = Ax + Bu,
-\end{align*}
-där $u$ beskriver en styrsignal. Utsignalen är typiskt på formen
-\begin{align*}
-	y = Cx + Du.
-\end{align*}
-
-\paragraph{Linjära system i Laplacedomänet}
-Genom att laplacetransformera ekvationen som beskriver ett systems tillstånd fås
-\begin{align*}
-	sX = AX + BU,
-\end{align*}
-givet att systemets starttillstånd är $\vb{0}$. Detta kan skrivas som
-\begin{align*}
-	X = (sI - A)^{-1}BU.
-\end{align*}
-Insatt i uttrycket för $Y$ fås
-\begin{align*}
-	Y = CX + DU = (C(sI - A)^{-1}B + D)U,
-\end{align*}
-och vi identifierar överförningsfunktionen som
-\begin{align*}
-	G = C(sI - A)^{-1}B + D.
-\end{align*}
-Av någon anledning är detta lika med
-\begin{align*}
-	G = \frac{1}{sI - A}C(sI - A)^{\dagger}B + D
-\end{align*}
-
-\paragraph{Poler i tillståndsrepresentation}
-Det visar sig att systemets poler ges av
-\begin{align*}
-	\det(sI - A) = s^{2}.
-\end{align*}
-Detta ska tydligen motsvara $A$:s egenvärden.
+\paragraph{Kort om notation}
+$y$ kommer fortfarande att representera utsignalen och $u$ insignalen. $x$ kommer vara systemets tillstånd, karakteriserad av ett visst antal storheter. Däremot skulle en eller flera av dessa vara vektorer. Just för att detta kan variera från system till system och betraktning till betraktning, väljer jag att vara ambivalent med notationen.
 
 \paragraph{Linjarisering}
 Verkliga system är ofta olinjära, men vi ska försöka behandla dem som linjära ändå.
@@ -70,86 +34,138 @@ Det totala systemet
 \end{align*}
 är alltså linjärt för små ändringar.
 
+\paragraph{Representation av linjära system}
+Tidsutvecklingen av ett system tillstånd kan i linjära fall skrivas som
+\begin{align*}
+	\dot{x} = Ax + Bu,
+\end{align*}
+där $u$ beskriver en styrsignal. Utsignalen är typiskt på formen
+\begin{align*}
+	y = Cx + Du.
+\end{align*}
+
+\paragraph{Linjära system i Laplacedomänet}
+Genom att Laplacetransformera ekvationen som beskriver ett systems tillstånd fås
+\begin{align*}
+	sX = AX + BU,
+\end{align*}
+givet att systemets starttillstånd är $0$. Detta kan skrivas som
+\begin{align*}
+	X = (sI - A)^{-1}BU.
+\end{align*}
+Insatt i uttrycket för $Y$ fås
+\begin{align*}
+	Y = CX + DU = (C(sI - A)^{-1}B + D)U,
+\end{align*}
+och vi identifierar överförningsfunktionen som
+\begin{align*}
+	G = C(sI - A)^{-1}B + D.
+\end{align*}
+Man kan visa att
+\begin{align*}
+	A^{-1} = \frac{1}{\mdet{A}}A^{\dagger},
+\end{align*}
+vilket ger
+\begin{align*}
+	G = \frac{1}{\mdet{sI - A}}C(sI - A)^{\dagger}B + D
+\end{align*}
+
+\paragraph{Poler i tillståndsrepresentation}
+Om inte $\mdet{sI - A}$ och $C(sI - A)^{\dagger}$ delar faktorer, blir då systemets poler egenvärdena till $A$.
+
+\paragraph{Stabilitet}
+Baserad på detta kan vi använda kunskapen om polernas inverkan på systemets stabilitet för att dra följande slutsats: Ett linjärt system är stabilt om och endast om alla egenvärden till $A$ har negativa realdelar.
+
 \paragraph{Lösning av system i representation}
 Betrakta ett system på formen
 \begin{align*}
-	\dot{\vb{x}} = A\vb{x} + Bu,\ \vb{x}(0) = \vb{x}_{0},\ y = C\vb{x}.
+	\dot{x} = Ax + Bu,\ x(0) = x_{0},\ y = Cx.
 \end{align*}
 Vi använder att
 \begin{align*}
 	\dv{t}e^{-At} = -Ae^{-At},
 \end{align*}
-varför
+vilket ger
 \begin{align*}
-	e^{-At}\dot{\vb{x}}              &= e^{-At}A\vb{x} + e^{-At}Bu, \\
-	\dv{t}\left(e^{-At}\vb{x}\right) &= e^{-At}Bu, \\
-	\vb{x}                           &= \vb{x}_{0}e^{At} + \integ{0}{t}{\tau}{e^{-A(t - \tau)}Bu}.
+	e^{-At}\dot{x}              &= e^{-At}Ax + e^{-At}Bu, \\
+	\dv{t}\left(e^{-At}x\right) &= e^{-At}Bu, \\
+	x                           &= x_{0}e^{At} + \integ{0}{t}{\tau}{e^{-A(t - \tau)}Bu}.
 \end{align*}
 
 \paragraph{Styrbarhet}
-Ett tillstånd $\vb{x}$ är styrbart om man kan styra det motsvarande systemet från $\vb{0}$ till $\vb{x}$ med hjälp av en styrsignal $u$ på ändlig tid.
+Ett tillstånd $x$ är styrbart om det finns en insignal som kan styra det motsvarande systemet från $0$ till $x$ på ändlig tid. Ett system är styrbart om alla tillståndsvektorer är styrbara.
 
 \paragraph{Test av styrbarhet}
 Vi noterar först att Cayley-Hamiltons sats ger
 \begin{align*}
 	A^{n} + \sum\limits_{i = 1}^{n}a_{i}A^{n - i} = 0,
 \end{align*}
-där $a_{i}$ är koefficienterna i $A$:s karakteristiska polynom. Därmed kan alla potenser av $A$ av högre ordning skrivas som en linjärkombination av potenser av $A$ upp till och med $n - 1$. Därmed gäller det att
+där $a_{i}$ är koefficienterna i $A$:s karakteristiska polynom. Därmed kan alla potenser av $A$ av högre ordning skrivas som en linjärkombination av potenser av $A$ upp till och med $n - 1$, vilket betyder att
 \begin{align*}
 	e^{At} = \sum\limits_{i = 0}^{n - 1}f_{i}(t)A^{i}
 \end{align*}
 för några funktioner $f_{i}$.
 
-Betrakta nu ett system och dets representation. Om systemets starttillstånd är $\vb{0}$, medför detta
+Betrakta nu ett system och dets representation. Om systemets starttillstånd är $0$, medför detta
 \begin{align*}
-	\vb{x} = \left(\sum\limits_{i = 0}^{n - 1}\gamma_{i}(t)A^{i}\right)\vb{b}
+	x = \left(\sum\limits_{i = 0}^{n - 1}\gamma_{i}(t)A^{i}\right)B
 \end{align*}
 där
 \begin{align*}
 	\gamma_{i} = \integ{0}{t}{\tau}{f_{i}(\tau)u(\tau)}.
 \end{align*}
-Med andra ord är de styrbara $\vb{x}$ linjärkombinationer av de olika $A^{i}\vb{b}$, alltså att det ligger i bildrummet till styrbarhetsmatrisen
+Om $x$ är styrbart, måste det enligt resonnemanget ovan vara en linjärkombination av de olika $A^{i}B$. Detta betyder att $x$ måste ligga i bildrummet till styrbarhetsmatrisen
 \begin{align*}
-	\S = [\vb{b}, A\vb{b}, \dots, A^{n - 1}\vb{b}].
+	\S = [B, AB, \dots, A^{n - 1}B].
 \end{align*}
 Systemet är styrbart om $\det(\S) \neq 0$.
 
 \paragraph{Observerbarhet}
-Ett tillstånd $\vb{x}$ är icke observerbart om utsignalen $y$ är identiskt noll då initialvärdet är $\vb{x}$ och insignalen identisk noll.
+Ett tillstånd $x$ är icke observerbart om utsignalen $y$ är identiskt noll då initialvärdet är $x$ och insignalen identisk noll. Ett system är observerbart om inga tillståndsvektorer är icke-observerbara.
 
 \paragraph{Test av observerbarhet}
-Vi vill nu testa om ett tillstånd $\vb{x}_{0}$ är observerbart. Om vi har styrsignal $u = 0$, gäller det att
+Vi vill nu testa om ett tillstånd $x_{0}$ är observerbart. Om vi har styrsignal $u = 0$, gäller det att
 \begin{align*}
-	\vb{x} = e^{At}\vb{x}_{0}, y = \vb{c}\cdot e^{At}\vb{x}_{0}, \dv[n]{y}{t} = \vb{c}\cdot A^{n}e^{At}\vb{x}_{0}.
+	x = e^{At}x_{0}, y = Ce^{At}x_{0}, \dv[n]{y}{t} = CA^{n}e^{At}x_{0}.
 \end{align*}
 Speciellt är $y = 0$ för alla $t$ om
 \begin{align*}
-	y(0) = \vb{c}\cdot\vb{x}_{0} = 0, \dv{y}{t} = \vb{c}\cdot A\vb{x}_{0} = 0,\ \dots, \dv[n - 1]{y}{t} = \vb{c}\cdot A^{n - 1}\vb{x}_{0} = 0.
+	y(0) = Cx_{0} = 0, \dv{y}{t} = CAx_{0} = 0,\ \dots, \dv[n - 1]{y}{t} = CA^{n - 1}x_{0} = 0,
 \end{align*}
-Givet att detta stämmer, ger Cayley-Hamiltons sats att även högre ordningens derivator av $y$ kommer vara $0$. Därmed ligger de icke-observerbara tillstånden i nollrummet till observerbarhetsmatrisen
+eftersom om detta stämmer, ger Cayley-Hamiltons sats att även högre ordningens derivator av $y$ kommer vara $0$. Därmed ligger de icke-observerbara tillstånden i nollrummet till observerbarhetsmatrisen
 \begin{align*}
 	\O =
 	\mqty[
-		\vb{c}^{T} \\
-		\vb{c}^{T}A \\
+		C \\
+		CA \\
 		\vdots \\
-		\vb{c}^{T}A^{n - 1}
+		CA^{n - 1}
 	].
 \end{align*}
-Systemet är observerbart $\det(\O) \neq 0$.
+Systemet är observerbart om $\det(\O) \neq 0$.
 
 \paragraph{Minimalhet}
-Ett system är minimalt om och endast om det är både styrbart och observerbart.
+En tillståndsbeskrivning är en minimal realisation av ett insignal-utsignalsamband om och endast om den är både styrbar och observerbar.
 
 \paragraph{Proportionell återkoppling}
-Antag att vi återkopplar systemet med $\vb{u} = l_{0}\vb{r} - L\vb{x}$. Om utsignalen ej beror av $\vb{u}$ kan det återkopplade systemet skrivas som
+Antag att vi återkopplar systemet med $u = l_{0}r - Lx$. Om utsignalen ej beror av $u$ kan det återkopplade systemet skrivas som
 \begin{align*}
-	\dot{\vb{x}} = (A - BL)\vb{x} + Bl_{0}\vb{r},\ y = C\vb{x}.
+	\dot{x} = (A - BL)x + Bl_{0}r,\ y = Cx.
 \end{align*}
 
-Systemets poler ges av egenvärdena till $A - BL$. Det finns $n$ såna, och $L$ har $n$ parametrar. Om systemet är styrbart kan dets poler därmed placeras godtyckligt vid lämpligt val av $L$.
+Detta ger att systemets poler ges av egenvärdena till $A - BL$. Det finns $n$ såna, och $L$ har $n$ parametrar. Om systemet är styrbart kan dets poler därmed placeras godtyckligt vid lämpligt val av $L$.
 
-Valet av $l_{0}$ görs så att $y = r$ när systemet är stationärt. Detta kräver dock att man känner $G(0)$ och att inga störningar påverkar systemet. Därför inför vi I-reglering.
+Vidare studerar vi ett statiskt scenario, som uppfyller
+\begin{align*}
+	x &= (BL - A)^{-1}Bl_{0}r, \\
+	y &= C(BL - A)^{-1}Bl_{0}r + Dl_{0}r - DL(BL - A)^{-1}Bl_{0}r \\
+	  &= \left((C - DL)(BL - A)^{-1}B + D\right)l_{0}r,
+\end{align*}
+som är proportionellt mot $l_{0}$. Genom att välja
+\begin{align*}
+	l_{0} = \left((C - DL)(BL - A)^{-1}B + D\right)^{-1}
+\end{align*}
+fås att $y = r$ när systemet är statiskt. Detta kräver dock att man känner de involverade matriserna och att inga störningar påverkar systemet. Därför inför vi I-reglering.
 
 \paragraph{I-reglering}
 När vi I-reglerar, inför vi extra tillstånd
