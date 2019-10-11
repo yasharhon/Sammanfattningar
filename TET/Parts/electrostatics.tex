@@ -16,13 +16,14 @@ Det elektriska fältet som genereras av en laddning $Q$ definieras som att en li
 \begin{align*}
 	\vb{F} = q\vb{E}
 \end{align*}
-från $Q$. I våran definition skulle vi kunna lägga på ett $\lim\limits_{q\to 0}$.
+från $Q$. I våran definition skulle vi kunna lägga på ett $\lim\limits_{q\to 0}$, för att vara tydliga.
 
 Baserad på detta får vi att en punktladdning $Q$ genererar ett elektriskt fält
 \begin{align*}
 	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\frac{Q}{R^{2}}\ub{R}.
 \end{align*}
 
+\paragraph{Linjäritet och allmäna uttryck för elektriska fältet}
 Eftersom krafter superponeras, gör även elektriska fält det. I diskreta fall motsvarar detta att summera över punktladdningar. I kontinuerliga fall integrerar vi i stället, där varje element i integrationen behandlas som en punktladdning, och vi får
 \begin{align*}
 	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{q}{\frac{1}{R^{2}}\ub{R}}.
@@ -30,11 +31,11 @@ Eftersom krafter superponeras, gör även elektriska fält det. I diskreta fall 
 Laddningen kan vara spridd ut på en linje, en yta eller en volym, i vilka fall vi får $\dd{q} = \rho\dd{l}$, $\dd{q} = \sigma\dd{S}$ respektiva $\dd{q} = \lambda\dd{V}$. Förutom de olika elementerna finns en linjeladdningstäthet, ytladdningstäthet eller volymladdningstäthet. Notera att med hjälp av Diracs delta kan alla dessa fallen skrivas som volymladdningstätheter.
 
 \paragraph{Gauss' lag}
-För att härleda Gauss' lag börjag vi med att titta på flödet av fältet $\frac{1}{R^{2}}\ub{R}$ genom en godtycklig yta, där $\vb{R}$ pekar från en utgångspunkt $\vb{r}'$ till ett givet ytelement. Integrationselementet
+För att härleda Gauss' lag börjag vi med att titta på flödet av fältet $\frac{1}{R^{2}}\ub{R}$ genom en godtycklig yta. Integrationselementet
 \begin{align*}
-	\dd{\Omega} = \frac{\ub{R}\cdot\vb{\dd{S}}}{R^{2}}
+	\dd{\Omega} = \frac{\ub{R}\cdot\vb{\dd{a}}}{R^{2}}
 \end{align*}
-är rymdvinkeln som areaelementet upptar när det ses från origo. Vi kan se på något sätt att detta motsvarar att projicera areaelementet ned på enhetssfären kring origo. Alternativt, om kurvor är involverade, skulle man projicera ned på enhetscirkeln. Flödet vi betraktar ges då av fönsterfunktionen
+är rymdvinkeln som areaelementet upptar när det ses från origo. Vi kan se på något sätt att detta motsvarar att projicera areaelementet ned på enhetssfären kring origo. Alternativt, om fältets källa är en linjeladdning, skulle man projicera ned på enhetscirkeln. Flödet vi betraktar ges då av fönsterfunktionen
 \begin{align*}
 	f(\vb{r}') = \integ{S}{}{S}{\frac{\ub{R}\cdot\ub{n}}{R^{2}}} = \integ{\Omega}{}{\Omega}{} =
 	\begin{cases}
@@ -45,61 +46,71 @@ För att härleda Gauss' lag börjag vi med att titta på flödet av fältet $\f
 
 Vi kommer nu ihåg hur elektriska fältet ser ut på integralform, specifikt som en volymintegral, och får då för flödet genom en godtycklig yta
 \begin{align*}
-	\vinteg{S}{}{S}{\vb{E}} &= \vinteg{S}{}{S}{\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{\rho}{R^{2}}\ub{R}}} \\
-	                      &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\integ{S}{}{S}{\rho\frac{\ub{R}\cdot\ub{n}}{R^{2}}}} \\
-	                      &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho f(\vb{r})} \\
+	\vinteg{S}{}{a}{\vb{E}} &= \vinteg{S}{}{a}{\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{\rho}{R^{2}}\ub{R}}} \\
+	                      &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\vinteg{S}{}{S}{\rho\frac{\ub{R}}{R^{2}}}} \\
+	                      &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\rho f(\vb{r}')} \\
 	                      &= \frac{Q_{\text{innesluten}}}{\varepsilon_{0}}.
 \end{align*}
-Vektorn $\vb{R}$ är nu specifierad för varje punkt på ytan och i hela rummet. Den sista integralen är lika med laddningen som är innesluten i $S$ eftersom fönsterfunktionen ger ett bidrag $4\pi$ om och endast om det finns laddning i den aktuella punkten.
+Den sista integralen är lika med laddningen som är innesluten i $S$ eftersom fönsterfunktionen ger ett bidrag $4\pi$ om och endast om det finns laddning i den aktuella punkten.
 
 Gauss' lag är ett bra verktyg för att beräkna elektriska fält för geometrier med mycket symmetri.
 
 \paragraph{Gauss' lag på differentialform}
-Betrakta nu en godtycklig yta $S$ som exakt inneslutar volymen $V$. Gauss' lag ger då
+Betrakta nu en godtycklig yta $S$ som exakt inneslutar (den lite godtyckliga) volymen $V$. Gauss' lag ger då
 \begin{align*}
-	\vinteg{S}{}{S}{\vb{E}} = \frac{1}{\varepsilon_{0}}\integ{V}{}{V}{\rho}.
+	\vinteg{S}{}{a}{\vb{E}} = \frac{1}{\varepsilon_{0}}\integ{V}{}{\tau}{\rho}.
 \end{align*}
-Vi kan använda divergenssatsen för att skriva om vänstersidan som en integral över $V$. Därmed kan vi dra slutsatsen
+Vi kan använda divergenssatsen för att skriva om vänstersidan som en integral över $V$. Detta ger
+\begin{align*}
+	\integ{V}{}{\tau}{\div{\vb{E}}} = \frac{1}{\varepsilon_{0}}\integ{V}{}{\tau}{\rho}.
+\end{align*}
+Eftersom $V$ är godtyckligt vald, måste det gälla att
 \begin{align*}
 	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}}.
 \end{align*}
 
 \paragraph{Randvillkor för elektrist fält}
-Ytladdningar ger diskontinuiteter i elektriskt fält. För att studera det, betrakta en punkt på ytan. Gör en liten låda kring punkten så att fältet är ungefär konstant på sidorna som inte rör ytan. Gauss' lag ger oss, om bara tar med de nämnda sidorna, att elektriksa fältets normalkomponent relativt ytan uppfyller
+Ytladdningar ger diskontinuiteter i elektriskt fält. För att studera det, betrakta en punkt på en yta. Gör en liten låda kring punkten så att fältet är ungefär konstant på sidorna som inte rör ytan, och döp varje sida $1$ och $2$. Inför även (enhets)normalvektorn $\vb{n}_{12}$. Gauss' lag ger oss, om bara tar med de nämnda sidorna, att elektriksa fältets normalkomponent relativt ytan uppfyller
 \begin{align*}
-	E_{\text{ovan}}^{\perp}A - E_{\text{under}}^{\perp}A = \frac{\sigma A}{\varepsilon_{0}},
+	\vb{E}_{1}\cdot\vb{n}_{12}A - \vb{E}_{2}\cdot\vb{n}_{12}A = \frac{\sigma A}{\varepsilon_{0}},
 \end{align*}
 där $A$ är sidornas yta. Positiv riktning för fältets normalkomponent är ut från ytan. Vid att låta lådan bli oändligt tunn kommer även de andra sidorna inte att ge något bidrag, varför det här måste stämma. Vi får därmed att
 \begin{align*}
-	E_{\text{ovan}}^{\perp} - E_{\text{under}}^{\perp} = \frac{\sigma}{\varepsilon_{0}}
+	(\vb{E}_{1} - \vb{E}_{2})\cdot\vb{n}_{12} = \frac{\sigma}{\varepsilon_{0}}.
 \end{align*}
 
 Vi kan även betrakta en liten fyrkantig slinga på samma sätt, med två sidor parallella med ytan och två normala på ytan. Eftersom integralen av elektriska fältet kring en sluten kurva alltid är $0$, får vi
 \begin{align*}
-	E_{\text{ovan}}^{\parallel} - E_{\text{under}}^{\parallel} = 0.
+	E_{1}^{\parallel} - E_{2}^{\parallel} = 0,
 \end{align*}
-Eftersom denna slingan kan ha vilken som helst orientering så länge man har två paralllella och två normala sidor, gäller det även på vektorform att
+där fältets komponenter ges med avseende på någon riktning. Eftersom denna slingan kan ha vilken som helst orientering så länge man har två paralllella och två normala sidor, måste det gälla för ala tangentiella riktningar, vilket ger
 \begin{align*}
-	\vb{E}_{\text{ovan}}^{\parallel} - \vb{E}_{\text{under}}^{\parallel} = \vb{0}.
+	(\vb{E}_{1} - \vb{E}_{2})\times\vb{n}_{12} = \vb{0}.
 \end{align*}
 
 Dessa två resultat kan sammanfattas som
 \begin{align*}
-	\vb{E}_{\text{ovan}}^{\parallel} - \vb{E}_{\text{under}}^{\parallel} = \frac{\sigma}{\varepsilon_{0}}\vb{n}.
+	\vb{E}_{1} - \vb{E}_{2} = \frac{\sigma}{\varepsilon_{0}}\vb{n}_{12}.
 \end{align*}
+
+\paragraph{Kraften på en ytladdning}
+Kring en ytladdning är elektriska fältet diskontinuerligt, så hur beräknar man kraften på en sådan? Med hjälp av superposition kan elektriska fältet skrivas som en summa av bidrag från själva laddningen och allt annat. Termen från andra saker, som är den som ger kraften, är kontinuerlig i ytan eftersom man skulle kunna ta bort ytladdningen utan att ändra den. Vidare är fältet tillräcklig nära ytladdningen $\pm\frac{\sigma}{2\varepsilon_{0}}\vb{n}_{12}$, som försvinner om man tar medelvärdet. Alltså ges kraften av laddningen gånger medelärdet av fältet på varje sida.
 
 \paragraph{Elektrostatisk potential}
 Med vår kunnskap från vektoranalysen kan vi skriva
 \begin{align*}
-	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\grad{\frac{1}{R}}} = -\grad{\left(\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho\frac{1}{R}}\right)}.
+	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\rho\grad{\frac{1}{R}}} = -\grad(\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\rho\frac{1}{R}}).
 \end{align*}
 Vi definierar därmed den elektrostatiska potentialen enligt
 \begin{align*}
 	\vb{E} = -\grad{V}.
 \end{align*}
-Från våran definition ser vi att nollnivån för potentialen kan sättas arbiträrt, då det elektriska fältet (som är det som är fysikaliskt) inte ändras om potentialen ändras med en konstant. Vi brukar lägga nollnivån i oändligheten.
+Från våran definition ser vi att nollnivån för potentialen kan sättas arbiträrt, då det elektriska fältet (som är det som är fysikaliskt) inte ändras om potentialen ändras med en konstant. Vi brukar lägga nollnivån i oändligheten, vilket för ändliga laddningstätheter ger
+\begin{align*}
+	V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\rho\frac{1}{R}}.
+\end{align*}
 
-Vi kan även från detta visa att
+En konsekvens av detta är
 \begin{align*}
 	\curl{\vb{E}} = \vb{0}.
 \end{align*}
@@ -111,34 +122,88 @@ Betrakta storheten $\vb{E}\cdot\dd{\vb{r}}$. Vi har
 \end{align*}
 Om vi nu jämför detta med den elektriska spänningen
 \begin{align*}
-	U_{12} = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}}
+	U_{12} = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{l}{\vb{E}}
 \end{align*}
 mellan två punkter (som är den välkända spänningen vi känner från kretsvärlden), kan vi se att detta blir
 \begin{align*}
-	U_{12} = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}} = -\integ{\vb{r}_{1}}{\vb{r}_{2}}{V}{} = V(\vb{r}_{1}) - V(\vb{r}_{2}),
+	U_{12} = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{l}{\vb{E}} = -\integ{\vb{r}_{1}}{\vb{r}_{2}}{V}{} = V(\vb{r}_{1}) - V(\vb{r}_{2}),
 \end{align*}
 oberoende av vägen mellan punkterna. Om vi lägger potentialens referens i oändligheten, ser vi då att
 \begin{align*}
-	V(\vb{r}) = -\vinteg{\infty}{\vb{r}}{\vb{r}}{\vb{E}},
+	V(\vb{r}_{0}) = -\vinteg{\infty}{\vb{r}_{0}}{l}{\vb{E}},
 \end{align*}
-ett typ inverst påstående av $\vb{E} = -\grad{V}$. Vi ser även från detta att
+ett typ inverst påstående av $\vb{E} = -\grad{V}$. Intgrationsbanan parametriseras från $\infty$ till $\vb{r}_{0}$, ett mistag jag gör lite för många gånger. Vi ser även från detta att
 \begin{align*}
-	V(\vb{r}_{2}) - V(\vb{r}_{1}) = -\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}}.
+	V(\vb{r}_{2}) - V(\vb{r}_{1}) = -\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{l}{\vb{E}}.
 \end{align*}
 
 \paragraph{Potential och arbete}
 Antag att du vill förflytta en laddning $q$ i ett elektriskt fält. Den minsta kraften du måste verka med på laddningen för att göra detta är $\vb{F} = -q\vb{E}$, eftersom du arbetar mot det elektriska fältet. Arbetet du gör då är
 \begin{align*}
-	W = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{F}} = -q\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{\vb{r}}{\vb{E}} = q(V(\vb{r}_{2}) - V(\vb{r}_{1})).
+	W = \vinteg{\vb{r}_{1}}{\vb{r}_{2}}{l}{\vb{F}} = -q\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{l}{\vb{E}} = q(V(\vb{r}_{2}) - V(\vb{r}_{1})).
 \end{align*}
 Med andra ord är potentialskillnaden mellan två punkter lika med arbetet som måste göras för att förflytta en laddning från ena punkten till den andra per laddning.
 
-\paragraph{Randvillkor för potentialen}
-För att betrakta randvillkor för potentialen vid en ytladdning, kan man integrera elektriska fältet längs med en rak linje normalt på ytaddningen över ytan och låta linjen bli godtyckligt kort. Då försvinner integralen, och vi får att potentialen är kontinuerlig. Randvillkoret för elektriska fältet kan skrivas i termer av potentialen som
+\paragraph{Entydighetssats för potentialen}
+Betrakta en region $H$ med känd laddningstäthet. Inuti (men inte en del av) $H$ finns tre regioner avgränsade av ytorna $S_{D}$, $S_{N}$ och $S_{Q}$ (med normalvektorerna pekande in mot de avgränsade regionerna). På $S_{D}$ är $V = V_{\text{S}}$ känd. På $S_{N}$ är $\grad_{\vb{n}}{V} = -\vb{E}_{\vb{n}}$ känd. $S_{Q}$ är en perfekt ledare med känd total ytladdning $Q$. Vi vill försöka visa att elektriska fältet är entydigt i $H$.
+
+% TODO: Varför sista?
+För att visa detta, antag att vi har två lösningar $V_{1}$ och $V_{2}$ och bilda $V_{0} = V_{1} - V_{2}$. Då vet vi att $\laplacian{V_{0}} = 0$ i $H$, $V_{0} = 0$ på $S_{D}$ och $S_{Q}$, $\grad_{\vb{n}}{V_{0}} = 0$ på $S_{N}$ och $\integ{S_{Q}}{}{S}{\grad_{\vb{n}}{V_{0}}} = \vb{0}$. Detta stämmer eftersom
 \begin{align*}
-	\grad_{\vb{n}}V_{\text{över}} - \grad_{\vb{n}}V_{\text{under}} = -\frac{\sigma}{\varepsilon_{0}},
+	\integ{S_{Q}}{}{a}{\grad_{\vb{n}}{V_{0}}} = \integ{S_{Q}}{}{a}{\sigma}
 \end{align*}
-där $\grad_{\vb{n}}$ är riktningsderivatan i normalriktningen.
+enligt randvillkoret fär elektriska fältet. Vi får därmed
+\begin{align*}
+	\integ{S_{D} + S_{Q} + S_{N}}{}{a}{V_{0}\grad_{\vb{n}}{V_{0}}} = \integ{H}{}{\tau}{V_{0}\laplacian{V_{0}} + \abs{\grad{V_{0}}}^{2}} = \integ{H}{}{\tau}{\abs{\grad{V_{0}}}^{2}}.
+\end{align*}
+På $S_{D}$ och $S_{N}$ är en av faktorerna i integranden på vänstersidan lika med $0$, så vi behöver endast betrakta $S_{Q}$. Här har vi att $V_{0}$ är konstant på ytan, vilket ger
+\begin{align*}
+	\integ{S_{Q}}{}{a}{V_{0}\grad_{\vb{n}}{V_{0}}} = V_{0}\integ{S_{Q}}{}{a}{\grad_{\vb{n}}{V_{0}}}.
+\end{align*}
+Gauss' lag ger att detta är $0$ (även fast ytan har omvänd orientering, då Gauss' lag ändå bara innehåller laddningen i ytans inre), vilket implicerar
+\begin{align*}
+	\grad{V} = \vb{E}_{2} - \vb{E}_{1} = \vb{0},
+\end{align*}
+och beviset är klart.
+
+\paragraph{Randvillkor för potentialen}
+För att betrakta randvillkor för potentialen vid en ytladdning, kan man integrera elektriska fältet längs med en rak linje normalt på ytaddningen över ytan och låta linjen bli godtyckligt kort. Då fås randvillkoret för elektriska fältet i termer av potentialen som
+\begin{align*}
+	\grad_{\vb{n}_{12}}V_{1} - \grad_{\vb{n}_{12}}V_{2} = -\frac{\sigma}{\varepsilon_{0}},
+\end{align*}
+där $\grad_{\vb{n}_{12}}$ är riktningsderivatan i normalriktningen från område $2$ mot område $1$.
+
+\paragraph{Poissons ekvation}
+Gauss' lag på differentialform kombinerad med definitionen av potentialen ger Poissons ekvation
+\begin{align*}
+	\laplacian{V} = -\frac{\rho}{\varepsilon_{0}}.
+\end{align*}
+
+\paragraph{Laplace' ekvation i sfäriska koordinater}
+Genom att ställa upp Poissons ekvation i sfäriska koordinater på ett laddningsfritt domän som avgränsas av två sfäriska skal får man Laplace' ekvation. Den har allmän lösning på formen
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}\sum\limits_{m = -l}^{l}\left(A_{lm}r^{l} + \frac{B_{lm}}{r^{l + 1}}\right)Y_{lm}(\theta, \phi),
+\end{align*}
+där $Y_{lm}$ är klotytefunktionerna. $A_{lm}$ bestäms av laddningarna utanför det yttre skalet och $B_{lm}$ av laddningarna innanför det inre skalet.
+
+Vi har allmänt att
+\begin{align*}
+	Y_{lm}(\theta, \phi)\propto P_{l}^{m}(\cos{\theta})e^{im\phi},
+\end{align*}
+där $P_{l}^{m}$ är Legendrepolynomen. I fall som är rotationssymmetriska med avseende på $xy$-planet kan lösningen därför förenklas till
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}r^{l} + \frac{B_{l}}{r^{l + 1}}\right)P_{l}^{0}(\cos{\theta}).
+\end{align*}
+
+\paragraph{Anpassningsmetod}
+Betrakta ett fall likt fallet ovan där vi även känner $V$ på $z$-axeln. Eftersom $P_{l}(1) = 1$ och $P_{l}(-1) = (-1)^{l}$ får vi längs $z$-axeln
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}\abs{z}^{l} + \frac{B_{l}}{\abs{z}^{l + 1}}\right)
+	\begin{cases}
+		1,        &z > 0, \\
+		(-1)^{l}, &z < 0.
+	\end{cases}
+\end{align*}
 
 \paragraph{Elektrostatisk energi}
 Vi är nu intresserade av energin som krävs för att skapa en viss laddningsfördelning. Vi kommer därför beräkna energin som krävs för att transportera all laddningen från oändligheten och placera den på rätt sätt.
@@ -163,16 +228,17 @@ där $V_{i}$ är potentialen som laddning $i$ känner av på grund av alla de an
 
 Vi generaliserar vidare vår definition till kontinuerliga laddningfördelningar som
 \begin{align*}
-	W = \frac{1}{2}\integ{}{}{V}{\rho V}.
+	W = \frac{1}{2}\integ{V}{}{\tau}{\rho V},
 \end{align*}
-Vi kan med hjälp av resultaten från tidigare skriva detta som
+där $V$ är en region som innehåller all laddning. Vi kan med hjälp av resultaten från tidigare skriva detta som
 \begin{align*}
-	W = \frac{1}{2}\integ{}{}{V}{V\varepsilon_{0}\div{\vb{E}}} = \frac{1}{2}\varepsilon_{0}\integ{}{}{V}{\div{V\vb{E}} - \vb{E}\cdot\grad{V}} = \frac{1}{2}\varepsilon_{0}\left(\vinteg{}{}{S}{V\vb{E}} + \integ{}{}{V}{E^{2}}\right).
+	W = \frac{1}{2}\integ{V}{}{\tau}{V\varepsilon_{0}\div{\vb{E}}} = \frac{1}{2}\varepsilon_{0}\integ{V}{}{\tau}{\div(V\vb{E}) - \vb{E}\cdot\grad{V}} = \frac{1}{2}\varepsilon_{0}\left(\vinteg{S}{}{a}{V\vb{E}} + \integ{V}{}{\tau}{E^{2}}\right),
 \end{align*}
+där $S$ är ytan som omsluter $V$.
 
-Nu kan vi fundera lite över integrationsdomänder. Om man tittar på den ursprungliga integralen, ger den inget bidrag där det inte finns laddning. Därför kan vi börja med att integrera exakt över området där det finns laddning. Om vi gör området större, kommer den ursprungliga integralen att vara oändrad. Däremot kommer integralen av elektriska fältets belopp öka, så ytintegralen måste minska motsvarande. Vi kan nu repetera processen tills vi integrerar över hela rummet. Då försvinner ytintegralen, vilket man kan argumentera lite bättre för, och kvar står
+Om man tittar på den ursprungliga integralen, ger den inget bidrag där det inte finns laddning. Därför kan vi börja med att låta $V$ vara exakt området där det finns laddning. Om vi gör $V$ större, kommer den ursprungliga integralen att vara oändrad. Däremot kommer integralen av elektriska fältets belopp öka, så ytintegralen måste minska motsvarande. Att ytintegralen avtar kan man se eftersom ytan ökar som $r^{2}$, medan fältet avtar som $\frac{1}{R^{2}}$ och potentialen som $\frac{1}{R}$. Vi kan nu repetera processen tills vi integrerar över hela rummet. Då försvinner ytintegralen, och kvar står
 \begin{align*}
-	W = \frac{1}{2}\varepsilon_{0}\integ{}{}{V}{E^{2}}.
+	W = \frac{1}{2}\varepsilon_{0}\integ{}{}{\tau}{E^{2}}.
 \end{align*}
 
 Det visar sig att om man använder resultatet för en laddningsfördelning på en diskret fördelning, får man inte samma svar. Detta är för att uttrycket för en diskret fördelning inte tar hänsyn till energin som krävs för att skapa punktladdningar till att börja med, vilket uttrycket för kontinuerliga fördelningar inkluderar. Denna finessen kom in i beräkningarna i övergången till kontinuerliga fördelningar, eftersom vi för diskreta fördelningar endast använde potentialen varje laddning känner på grund av alla andra. För kontinuerliga fördelningar är detta inte ett problem eftersom varje element har försvinnande liten laddning och därmed bidrar med försvinnande lite potential. För diskreta fördelningar gäller detta ej, dock.
@@ -186,34 +252,36 @@ En perfekt ledare har obegränsat med fria laddningar som kan röra sig i materi
 	\item $\vb{E} = \frac{\sigma}{\varepsilon_{0}}\ub{n}$ precis utanför ledaren på grund av elektriska fältets randvillkor, alternativt eftersom tangentiella komponenter skulle transportera laddningar på ytan som skulle kansellera fältet.
 \end{itemize}
 
-\paragraph{Kraften på en ytladdning}
-Kring en ytladdning är elektriska fältet diskontinuerligt, så hur beräknar man kraften på en sådan? Med hjälp av superposition kan elektriska fältet skrivas som en summa av bidrag från själva laddningen och allt annat. Denna termen är kontinuerlig i ytan eftersom man skulle kunna ta bort ytladdningen utan att ändra den. Vidare ger randvillkoren att fältet på varje sida skiljer sig med en term $\pm\frac{\sigma}{2\varepsilon_{0}}\ub{n}$, som försvinner om man tar medelvärdet. Alltså ges kraften av laddningen gånger medelärdet av fältet på varje sida.
-
 \paragraph{Kraften på en ledare}
-Betrakta en ledare som specialfall. Här får vi en krafttäthet
+Betrakta en perfekt ledare. Randvillkoret för elektriska fältet ger
 \begin{align*}
-	\vb{f}  = \frac{\sigma^{2}}{2\varepsilon_{0}}\ub{n},
+	\vb{E} = \frac{\sigma}{2\varepsilon_{0}}\vb{n}
 \end{align*}
-som motsvarar ett tryck utåt på laddaren - oberoende av vilken sorts ytladdning man har! I termer av elektriska fältet kan trycket skrivas som
+precis utanför ytan. Då verkar en krafttäthet
+\begin{align*}
+	\vb{f}  = \frac{\sigma^{2}}{2\varepsilon_{0}}\ub{n}
+\end{align*}
+på ytan. Detta motsvarar ett tryck utåt på laddaren - oberoende av vilken sorts ytladdning man har! I termer av elektriska fältet kan trycket skrivas som
 \begin{align*}
 	p = \frac{1}{2}\varepsilon_{0}E^{2}.
 \end{align*}
 
 \paragraph{Kapacitans}
-Betrakta först två ledare med olika laddningar $\pm q$. Man kan se av integraluttrycket för elektriska fältet att det är proportionellt mot $q$. Eftersom potentialskillnaden mellan ledarna är en integral av elektriska fältet, är även denna proportionell mot $q$. Vi definierar därmed systemets kapacitans som proportionalitetskonstanten mellan de två, alltså
+Betrakta först två ledare med olika laddningar $\pm Q$. Man kan se av integraluttrycket för elektriska fältet att det är proportionellt mot $Q$. Eftersom potentialskillnaden mellan ledarna är en integral av elektriska fältet, är även denna proportionell mot $Q$. Vi definierar därmed systemets kapacitans som proportionalitetskonstanten mellan de två, alltså
 \begin{align*}
 	Q = CV.
 \end{align*}
+Denna beror enbart av systemets geometri.
 
-Betrakta nu ett system av olika ledare, med var sin potential och laddning. Vi har även någon potentialreferens. Vi kan börja med att sätta alla potentialer förutom en till $0$, och räkna ut alla $Q_{i}$. Vid att superponera alla dina resultat får du en mängd slutgiltiga samband på formen $Q_{i} = C_{ij}V_{j}$. Detta definierar kapacitansmatrisen. Man kan visa/argumentera för att matrisen är symmetrisk och positivt definit.
+Betrakta nu ett system av olika ledare, med var sin potential och laddning. Vi har även någon potentialreferens. Vi kan börja med att sätta alla potentialer förutom en till $0$, och räkna ut alla $Q_{i}$. Vid att superponera alla dina resultat får du en mängd slutgiltiga samband på formen $Q_{i} = C_{ij}V_{j}$. Detta definierar kapacitansmatrisen. Man kan visa/argumentera för att matrisen är symmetrisk och positivt definit. Om man vill visa det, kan man göra en energibetraktning av tillföringen av en extra laddning till systemet, och jämföra energin om man först tillför laddningen och sen tillför ytladdning till ledarna för att höja potentialerna, eller ändrar ordningen, och använder elektrostatiska kraftens konservativitet.
 
 \paragraph{Energin för ett system av ledare}
-För ett system av ledare har vi
+För ett system av ledare $D_{i}$ har vi
 \begin{align*}
-	W &= \frac{1}{2}\integ{}{}{V}{\rho V} \\
-	  &= \frac{1}{2}\integ{\text{ledare }i}{}{S}{\sigma_{i}V_{i}} \\
-	  &= \frac{1}{2}V_{i}\integ{\text{ledare }i}{}{S}{\sigma_{i}} \\
-	  &= \frac{1}{2}V_{i}Q_{i}.
+	W &= \frac{1}{2}\integ{}{}{\tau}{\rho V} \\
+	  &= \frac{1}{2}\sum\integ{D_{i}}{}{a}{\sigma_{i}V_{i}} \\
+	  &= \frac{1}{2}\sum V_{i}\integ{D_{i}}{}{a}{\sigma_{i}} \\
+	  &= \frac{1}{2}\sum V_{i}Q_{i}.
 \end{align*}
 Om vi använder kapacitansmatrisen får vi
 \begin{align*}
@@ -223,34 +291,6 @@ För en enda kondensator blir detta
 \begin{align*}
 	W = \frac{1}{2}CV^{2} = \frac{1}{2C}Q^{2}.
 \end{align*}
-
-\paragraph{Poissons ekvation}
-Om vi tittar på våra resultat, får vi nu Poissons ekvation
-\begin{align*}
-	\laplacian{V} = -\frac{\rho}{\varepsilon_{0}}.
-\end{align*}
-
-\paragraph{Entydighetssats för potentialen}
-Betrakta en region $H$ med känd laddningstäthet som innehåller tre regioner avgränsade av ytorna $S_{D}$, $S_{N}$ och $S_{Q}$ (med normalvektorerna pekande in mot de avgränsade regionerna). På $S_{D}$ är $V = V_{\text{S}}$ känd. På $S_{N}$ är $\grad_{\vb{n}}{V} = -E_{\vb{n}}$ känd. $S_{Q}$ är en perfekt ledare med känd total ytladdning $Q$. Vi vill försöka visa att elektriska fältet är entydigt i $H$.
-
-% TODO: Varför sista?
-För att visa detta, antag att vi har två lösningar $V_{1}$ och $V_{2}$ och bilda $V_{0} = V_{1} - V_{2}$. Då vet vi att $\laplacian{V_{0}} = 0$ i $H$, $V_{0} = 0$ på $S_{D}$ och $S_{Q}$, att $\grad_{\vb{n}}{V_{0}} = 0$ på $S_{N}$ och $\integ{S_{Q}}{}{S}{\grad_{\vb{n}}{V_{0}}} = 0$. Detta stämmer eftersom
-\begin{align*}
-	\integ{S_{Q}}{}{S}{\sigma} = \integ{S_{Q}}{}{S}{\sigma}
-\end{align*}
-Vi får därmed
-\begin{align*}
-	\integ{S_{D} + S_{Q} + S_{N}}{}{S}{V_{0}\grad_{\vb{n}}{V_{0}}} = \integ{H}{}{V}{V_{0}\laplacian{V_{0}} + \abs{\grad{V_{0}}}^{2}} = \integ{H}{}{V}{\abs{\grad{V_{0}}}^{2}}.
-\end{align*}
-På $S_{D}$ och $S_{N}$ är en av faktorerna i integranden lika med $0$, så vi behöver endast betrakta $S_{Q}$. Här har vi att $V_{0}$ måste vara konstant på ytan, vilket ger
-\begin{align*}
-	\integ{S_{Q}}{}{S}{V_{0}\grad_{\vb{n}}{V_{0}}} = V_{0}\integ{S_{Q}}{}{S}{\grad_{\vb{n}}{V_{0}}} = 0,
-\end{align*}
-vilket implicerar
-\begin{align*}
-	\grad{V} = \vb{E}_{2} - \vb{E}_{1} = \vb{0},
-\end{align*}
-och beviset är klart.
 
 \paragraph{Speglingsmetoder}
 Vissa problem kan lösas med speglingsmetoder. Då kan man ersätta vissa komponenter av ett problem med andra på ett sådant sätt att randvillkor som ges i problemet fortfarande är uppfylda.
@@ -325,326 +365,3 @@ Detta ger
 \end{align*}
 
 Speglingsstrategin är nu att om du har en punktladdning $q$ ett avstånd $d$ från centrum av en jordad ledande sfärisk yta med radien $a$, kan ledaren ersättas med en punktladdning $q_{s} = -q\frac{a}{d}$ ett avstånd $d_{s} = \frac{a^{2}}{d}$ från sfärens centrum (bort från punktladdningen).
-
-\paragraph{Laplace' ekvation i sfäriska koordinater}
-Vid att ställa upp Poissons ekvation i sfäriska koordinater på ett laddningsfritt domän som avgränsas av två sfäriska skal får man Laplace' ekvation. Den har allmän lösning på formen
-\begin{align*}
-	V = \sum\limits_{l = 0}^{\infty}\sum\limits_{m = -l}^{l}\left(A_{lm}r^{l} + \frac{B_{lm}}{r^{l + 1}}\right)Y_{lm}(\theta, \phi),
-\end{align*}
-där $Y_{lm}$ är klotytefunktionerna. $A_{lm}$ bestäms av laddningarna utanför det yttre skalet och $B_{lm}$ av laddningarna innanför det inre skalet.
-
-Vi har allmänt att
-\begin{align*}
-	Y_{lm}(\theta, \phi)\propto P_{l}^{m}(\cos{\theta})e^{im\phi},
-\end{align*}
-där $P_{l}^{m}$ är Legendrepolynomen. I fall som är rotationssymmetriska med avseende på $xy$-planet kan lösningen därför förenklas till
-\begin{align*}
-	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}r^{l} + \frac{B_{l}}{r^{l + 1}}\right)P_{l}^{0}(\cos{\theta}).
-\end{align*}
-
-\paragraph{Anpassningsmetod}
-Betrakta ett fall likt fallet ovan där vi även känner $V$ på $z$-axeln. Eftersom $P_{l}(1) = 1$ och $P_{l}(-1) = (-1)^{l}$ får vi längs $z$-axeln
-\begin{align*}
-	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}\abs{z}^{l} + \frac{B_{l}}{\abs{z}^{l + 1}}\right)
-	\begin{cases}
-		1,        &z > 0, \\
-		(-1)^{l}, &z < 0.
-	\end{cases}
-\end{align*}
-
-\paragraph{Elektriska dipolen}
-Betrakta två punktladdningar på en linje. Linjen går genom origo, och laddningarna ligger lika långa avstånd $\frac{1}{2}d$ från origo. Potentialen i punkten $\vb{r}$, som ligger ett avstånd $R_{+}$ respektiva $R_{-}$ från de två laddningarna, ges av
-\begin{align*}
-	V = \frac{q}{4\pi\varepsilon_{0}R_{+}} - \frac{q}{4\pi\varepsilon_{0}R_{-}} = \frac{q}{4\pi\varepsilon_{0}}\frac{R_{-} - R_{+}}{R_{+}R_{-}}.
-\end{align*}
-Om $r >> d$ fås
-\begin{align*}
-	V \approx \frac{q}{4\pi\varepsilon_{0}}\frac{d\cos{\theta}}{r^{2}}
-\end{align*}
-där $\theta$ är vinkeln mellan $\vb{r}$ och linjen. Vi kan då skriva detta som
-\begin{align*}
-	V = \frac{q}{4\pi\varepsilon_{0}}\frac{\vb{d}\cdot\ub{r}}{r^{2}}.
-\end{align*}
-Vi definierar nu dipolmomentet $\vb{p} = q\vb{d}$, och får då
-\begin{align*}
-	V = \frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}.
-\end{align*}
-
-Notera att vi kan skriva dipolmomentet som $\vb{p} = \sum q_{i}\vb{r}_{i}$.
-
-\paragraph{Ideala dipoler}
-En ideal dipol fås i gränsen för en dipol när $d$ blir oändligt liten på ett sådant sätt att $\vb{p}$ hålls konstant.
-
-\paragraph{Fältet från en dipol}
-Fältet från en dipol ges av
-\begin{align*}
-	\vb{E} = -\grad{\frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}} = -\grad{\frac{\vb{p}\cdot\vb{r}}{4\pi\varepsilon_{0}r^{3}}}.
-\end{align*}
-I nämnaren har vi
-\begin{align*}
-	\vb{p}\cdot\vb{r} = p_{i}r_{i} \implies \del{i}{\vb{p}\cdot\vb{r}} = p_{i} \implies \grad{\vb{p}\cdot\vb{r}} = \vb{p}.
-\end{align*}
-Vi får då
-\begin{align*}
-	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\left(\frac{\vb{p}}{r^{3}} - \frac{3\vb{p}\cdot\vb{r}}{r^{4}}\grad{r}\right) = \frac{1}{4\pi\varepsilon_{0}r^{3}}\left(3(\vb{p}\cdot\ub{r})\ub{r} - \vb{p}\right).
-\end{align*}
-
-\paragraph{Dipolmoment för en laddningsfördelning}
-För en laddningsfördelning ges dipolmomentet av
-\begin{align*}
-	\vb{p} = \integ{}{}{V}{\vb{r}\rho}.
-\end{align*}
-
-\paragraph{Förflyttning av koordinatsystem och dipolmoment}
-Vid förflyttning av origo en sträcka $\vb{a}$ fås
-\begin{align*}
-	\vb{p}' = \integ{}{}{V}{\vb{r}'\rho} = \integ{}{}{V}{(\vb{r} - \vb{a})\rho} = \vb{p} - q\vb{a}.
-\end{align*}
-Alltså beror dipolmomentet av origos position om det finns en netto mängd laddning i systemet.
-
-\paragraph{Multipolutveckling}
-Betrakta en punkt $\vb{r}$ och en annan punkt $\vb{r}'$. Vid att definiera $\vb{R} = \vb{r} - \vb{r}'$ får vi att om de två punkterna inte är samma, är $\laplacian{\frac{1}{R}} = 0$ överallt förutom där $\vb{R} = \vb{0}$. Vid att lägga vårat koordinatsystem så att $\vb{r}'$ är parallell med $z$-axeln och definiera vinkeln mellan $\vb{r}$ och $\vb{r}'$ som $\gamma$ fås
-\begin{align*}
-	\frac{1}{R} =
-	\begin{cases}
-		\sum\limits_{l = 0}^{\infty}A_{l}r^{l}P_{l}(\cos{\gamma}),          &r < r', \\
-		\sum\limits_{l = 0}^{\infty}\frac{B_{l}}{r^{l}}P_{l}(\cos{\gamma}), &r > r'.
-	\end{cases}
-\end{align*}
-Speciellt, på $z$-axeln är $\gamma = 0$ och
-\begin{align*}
-	\frac{1}{R} = \frac{1}{r_{>} - r_{<}} = \frac{1}{r_{>}}\left(1 - \frac{r_{<}}{r_{>}}\right)^{-1} = \frac{1}{r_{>}}\sum\limits_{l = 0}^{\infty}\left(\frac{r_{<}}{r_{>}}\right)^{l} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}},
-\end{align*}
-där $r_{<} = \min(r', r)$ och $r_{>} = \max(r', r)$. Vi utvidgar därmed lösningen till
-\begin{align*}
-	\frac{1}{R} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}}P_{l}(\cos{\gamma}).
-\end{align*}
-
-Vi söker nu potentialen utanför en sfär som omsluter en rumladdning. Vid att låta $\vb{r}$ peka utanför sfären och $\vb{r}'$ inuti fås $r_{<} = r',\ r_{>} = r$ och
-\begin{align*}
-	V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V'}{\frac{\rho}{R}} = \frac{1}{4\pi\varepsilon_{0}}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{V'}{(r')^{l}\rho P_{l}(\cos{\gamma})} = \sum\limits_{l = 0}^{\infty}V_{l}.
-\end{align*}
-De olika $V_{l}$ kommer ge oss termer som ser ut som olika multipoler, och vi vill nu studera dem. Vi noterar först att om $e_{i}$ respektiva $e_{i}'$ är komponenterna av $\ub{r}$ respektiva $\ub{r}'$, kan vi skriva
-\begin{align*}
-	\cos(\gamma) &= e_{i}e_{i}',\ \cos[2](\gamma) = e_{i}e_{i}'e_{i}e_{j}',\ 1 = e_{i}e_{i} = e_{i}e_{j}\delta_{ij}.
-\end{align*}
-
-För $l = 0$ får vi
-\begin{align*}
-	V_{0} = \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r}\integ{}{}{V'}{\rho},
-\end{align*}
-alltså ett bidrag motsvarande en punktladdning med samma totala laddning i origo. För $l = 1$ fås
-\begin{align*}
-	V_{1} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}\integ{}{}{V'}{r'\rho P_{1}(\cos{\gamma})} \\
-	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'\cos{\gamma}\rho} \\
-	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'e_{i}e_{i}'\rho} \\
-	      &= \frac{e_{i}}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r_{i}'\rho} \\
-	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\ub{r}\cdot\integ{}{}{V'}{r_{i}'\rho}
-\end{align*}
-alltså ett bidrag motsvarande en dipol med samma totala dipolmoment i origo. För $l = 2$ fås
-\begin{align*}
-	V_{2} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{3}}\integ{}{}{V'}{r'^{2}\rho P_{2}(\cos{\gamma})} \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{i}'r_{i}'\rho(3\cos[2](\gamma) - 1)} \\
-	V_{2} &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3\cos[2](\gamma) - 1)}  \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}e_{i}'e_{i}e_{j}' - e_{i}e_{j}\delta_{ij})} \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}'e_{j}' - \delta_{ij})} \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})}.
-\end{align*}
-Vi definierar nu kvadrupolmomentstensorn
-\begin{align*}
-	Q_{ij} = \frac{1}{2}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})},
-\end{align*}
-vilket ger
-\begin{align*}
-	V = \frac{e_{i}Q_{ij}e_{j}}{4\pi\varepsilon_{0}r^{3}}.
-\end{align*}
-Detta är kvadrupolbidraget.
-
-Allmänt blir det $l$:te bidraget på formen
-\begin{align*}
-	V_{l} = \frac{Q_{i_{1}\dots i_{l}}e_{i_{1}}\dots e_{i_{l}}}{4\pi\varepsilon_{0}r^{l + 1}}.
-\end{align*}
-
-\paragraph{Additionssatsen}
-Hellre än att hantera komponenterna av kvadrupolmomentstensorn, använder vi en sats som säjer
-\begin{align*}
-	P_{l}(\cos{\gamma}) = \frac{4\pi}{2l + 1}\sum\limits_{m = -l}^{l}Y_{lm}(\theta, \phi)Y_{lm}^{*}(\theta', \phi').
-\end{align*}
-Då kan vi skriva
-\begin{align*}
-	\sum\limits_{l = 0}^{\infty}V_{l},\ V_{l} = \frac{1}{(2l + 1)\varepsilon_{0}r^{l + 1}}\sum\limits_{m = -l}^{l}q_{lm}Y_{lm}(\theta, \phi),
-\end{align*}
-där $q_{lm}$ är det sfäriska multipolmomentet
-\begin{align*}
-	q_{lm} = \integ{}{}{V*}{\rho (r')^{l}})Y_{lm}^{*}(\theta', \phi').
-\end{align*}
-Varje $V_{l}$ har alltså $2l + 1$ oberoende komponenter, vilket på grund av multipolmomenttensorernas symmetri och spårlöshet är lika med antalet oberoende komponenter i multipolmomenttensorn.
-
-\paragraph{Kraft på en laddningsfördelning}
-Betrakta en laddningsfördelning i ett yttre måttligt varierande elektriskt fält. Kraften på laddningsfördelningen ges då av
-\begin{align*}
-	\vb{F} = \integ{}{}{V}{\rho\vb{E}}.
-\end{align*}
-Vi vill nu approximera elektriska fältet i laddningsfördelningen vid att utveckla den kring en referenspunkt $\vb{r}_{0}$. Komponentvis har vi
-\begin{align*}
-	E_{i} \approx E_{i, 0} + (r_{j} - r_{j, 0})\del{j}{E_{i}},
-\end{align*}
-varför
-\begin{align*}
-	\vb{E} \approx \vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}
-\end{align*}
-och
-\begin{align*}
-	\vb{F} \approx \integ{}{}{V}{\rho\left(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}\right)}.
-\end{align*}
-Vidare, under antagandet att fältet varierar måttligt kan alla derivator antas vara konstanta, vilket ger
-\begin{align*}
-	\vb{F} \approx \integ{}{}{V}{\rho\vb{E}_{0}} + \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}} = Q\vb{E}_{0} + (\vb{p}\cdot\grad)\vb{E},
-\end{align*}
-där dipolmomentet mäts relativ $\vb{r}_{0}$. Att dra ut elektriska fältet i andra termen från integralen är helt okej - man kan tänka sig att integrationen skapar en operator som sedan får verka på fältet.
-
-\paragraph{Vridmoment på en laddningsfördelning}
-På en punktladdning har vi
-\begin{align*}
-	\vb{M} = \vb{r}\times\vb{F} = q\vb{r}\times\vb{E}.
-\end{align*}
-För en laddningsfördelning fås då, relativt en referenspunkt $O$, vridmomentet
-\begin{align*}
-	\vb{M} &= \integ{}{}{V}{\rho\vb{r}\times\vb{E}} \\
-	       &\approx \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0}) + \vb{r}_{0})\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})}.
-\end{align*}
-Vi försummar nu termer av andra ordningen i $\vb{r} - \vb{r}_{0}$ och får
-\begin{align*}
-	\vb{M} &= \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\times\vb{E}_{0} + \vb{r}_{0}\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}))} \\
-	       &= \left(\integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})}\right)\times\vb{E}_{0} + \vb{r}_{0}\times\integ{}{}{V}{\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})} \\
-	       &= \vb{p}\times\vb{E}_{0} + \vb{r}_{0}\times\vb{F}.
-\end{align*}
-
-\paragraph{Polarisation}
-Polarisationen $\vb{P}$ uppfyller
-\begin{align*}
-	\vb{p} = \integ{}{}{V}{\vb{P}}.
-\end{align*}
-Detta fältet uppfyller inga speciella randvillkor, och är allmänt ej rotationsfritt.
-
-\paragraph{Polariserbarhet}
-Polariserbarheten $\alpha$ uppfyller
-\begin{align*}
-	\vb{p} = \alpha\vb{E}.
-\end{align*}
-
-\paragraph{Fält och potential från polarisation}
-Från ett litet rymdelement fås
-\begin{align*}
-	\dd{\vb{p}} = \vb{P}\dd{V},\ \dd{V} = \frac{1}{4\pi\varepsilon_{0}}\frac{\dd{\vb{p}}\cdot\ub{R}}{R^{2}},\ V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{\vb{P}\cdot\ub{R}}{R^{2}}}.
-\end{align*}
-Elektriska fältet kommer ha en singularitet som beter sig som $\frac{1}{R^{3}}$. Denna kommer inte upphävas av volymelementet, och kräver specialbehandling.
-
-Vi kommer dock lösa detta genom att använda att
-\begin{align*}
-	\grad'{\frac{1}{R}} = \grad'{\frac{1}{\abs{\vb{r} - \vb{r}'}}} = \frac{1}{R^{2}}\ub{R},
-\end{align*}
-vilket ger
-\begin{align*}
-	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\vb{P}\cdot\grad'{\frac{1}{R}}} \\
-	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\div'{\frac{\vb{P}}{R^{2}}} - \frac{1}{R}\div'{\vb{P}}} \\
-	  &= \frac{1}{4\pi\varepsilon_{0}}\vinteg{}{}{S}{\frac{\vb{P}}{R}} - \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{1}{R}\div'{\vb{P}}},
-\end{align*}
-vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
-\begin{align*}
-	\rho_{\text{b}} = -\div'{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\ub{n}.
-\end{align*}
-Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
-\begin{align*}
-	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma_{\text{b}}}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho_{\text{b}}\frac{1}{R^{2}}\ub{R}}.
-\end{align*}
-
-\paragraph{Introduktion av D-fältet}
-Gauss' lag på integralform ger oss nu
-\begin{align*}
-	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}} = \frac{-\div'{\vb{P}} + \rho_{\text{f}}}{\varepsilon_{0}},
-\end{align*}
-där $\rho_{\text{f}}$ är den fria laddningstätheten. Detta implicerar
-\begin{align*}
-	\div(\varepsilon_{0}\vb{E} + \vb{P}) = \rho_{\text{f}},
-\end{align*}
-vilket uppmanar oss att definiera
-\begin{align*}
-	\vb{D} = \varepsilon_{0}\vb{E} + \vb{P}.
-\end{align*}
-
-\paragraph{Randvillkor för D-fältet}
-Vi kan visa att
-\begin{align*}
-	D_{1}^{\perp} - D_{2}^{\perp} = \sigma_{\text{b}},\ \vb{D}_{1}^{\parallel} - \vb{D}_{2}^{\parallel} = \vb{P}_{1}^{\parallel} - \vb{P}_{2}^{\parallel}.
-\end{align*}
-
-\paragraph{Linjära dielektrika}
-Linjära dielektrika uppfyller
-\begin{align*}
-	\vb{P} = \varepsilon_{0}\chi_{\text{e}}\vb{E}
-\end{align*}
-för måttliga fältstyrkor. $\chi_{\text{e}}$ är dielektrikumets elektriska susceptibilitet.
-
-\paragraph{D-fält i linjära dielektrika}
-I ett linjärt dielektrikum fås
-\begin{align*}
-	\vb{D} = \varepsilon_{0}(1 + \chi_{\text{e}})\vb{E} = \varepsilon_{0}\varepsilon_{\text{r}}\vb{E} = \varepsilon\vb{E}.
-\end{align*}
-$\varepsilon_{\text{r}}$ är dielektrikumets relativa permittivitet, och $\varepsilon$ är dets permittivitet.
-
-\paragraph{Energi för linjära dielektrika}
-I linjära dielektrika tillkommer även arbete för att polarisera dielektrikumet. Om man betraktar en atom som en punktladdning $q$ och en laddning $-q$ jämnt fördelad över ett klot med radie $a$, skapar det negativt laddade molnet ett elektriskt fält
-\begin{align*}
-	\vb{E}_{-q} = -\frac{q}{4\pi\varepsilon_{0}a^{3}}\vb{r},\ r < a.
-\end{align*}
-Kraften på laddningen i mitten blir då
-\begin{align*}
-	\vb{F} = -\frac{q^{2}}{4\pi\varepsilon_{0}a^{3}}\vb{r} = -\frac{q^{2}}{4\pi\varepsilon_{0}a^{3}}\grad{\frac{1}{2}r^{2}}.
-\end{align*}
-Arbetet som krävs för att förflytta laddningen i mitten från centrum blir då
-\begin{align*}
-	W = \frac{1}{2}\frac{q^{2}r^{2}}{4\pi\varepsilon_{0}a^{3}} = -\frac{1}{2}\vb{p}\cdot\vb{E}_{-q}.
-\end{align*}
-
-Om nu atomen är i ett yttre elektriskt fält $\vb{E}$, kommer det elektriska fältet att förflytta laddningen i centrum. Jämvikt fås när $\vb{E} = -\vb{E}_{-q}$, och arbetet som görs för att förflytta laddningen i mitten är då
-\begin{align*}
-	W = \frac{1}{2}\vb{p}\cdot\vb{E}.
-\end{align*}
-
-Med detta argumentet i bakgrunden ställer vi upp energin i ett dielektrikum som
-\begin{align*}
-	W = \frac{1}{2}\integ{}{}{V}{\vb{P}\cdot\vb{E}}.
-\end{align*}
-I tillägg har vi det övriga bidraget för att skapa det elektriska fältet, och totala energin ges av
-\begin{align*}
-	W = \frac{1}{2}\integ{}{}{V}{(\varepsilon_{0}\vb{E} + \vb{P})\cdot\vb{E}} = \frac{1}{2}\integ{}{}{V}{\vb{D}\cdot\vb{E}}.
-\end{align*}
-
-\paragraph{Krafter på ett dielektrikum}
-Betrakta ett dielektrikum någonstans i närheten av två perfekta ledare med laddning $\pm Q$ på de respektiva. Ledarna kan antingen vara isärkopplade eller kopplade ihop med ett batteri som upprätthåller en konstant spänningsskillnad $U$ mellan dem. Dielektrikumets position beskrivs av dets geometri och en referensvektor $\vb{r}$ (till exempel till dets geometriska centrum). Att beräkna elektriska fältet är allmänt svårt, men vi ska försöka undveka detta med ett trick.
-
-Betrakta första fallet först. Om dielektrikumet förflyttas en sträcka $\dd{\vb{r}}$, gör elektriska fältet från ledarna ett arbete på det, som nödvändigtvis måste balanseras av ett mekaniskt arbete. Arbetet som görs på systemet är
-\begin{align*}
-	\dd{W} = \grad{W}\cdot\dd{\vb{r}} = -\dd{W_{\text{e}}} = -\vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
-\end{align*}
-Samtidigt kan vi skriva systemets energi $W$ i termer av parameterna i systemets beskrivning. Därmed är kraften på dielektrikumet
-\begin{align*}
-	\vb{F}_{\text{e}} = -\grad{W} = -\grad{\frac{1}{2}\frac{Q^{2}}{C}} = \frac{1}{2}\frac{Q^{2}}{C^{2}}\grad{C} = \frac{1}{2}V^{2}\grad{C}.
-\end{align*}
-
-Betrakta nu det andra fallet. Om spänningen mellan ledarna hålls konstant, kommer translation av dielektrikumet behöva balansera arbetet både från translation i elektriska fältet och arbetet som krävs för att transportera laddning mellan ledarna för att hålla spänningsskillnaden mellan dem konstant. Vi får 
-\begin{align*}
-	\dd{W} = U\dd{Q} - \dd{W_{\text{e}}} = U\dd{Q} - \vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
-\end{align*}
-Samtidigt ges vänstersidan av $\dd{W} = \frac{1}{2}U\dd{Q}$, så $U\dd{Q} = 2\dd{W} = 2\grad{W}\cdot\dd{\vb{r}}$, vilket ger
-\begin{align*}
-	\vb{F}_{\text{e}} = \grad{W} = \frac{1}{2}U^{2}\grad{C}.
-\end{align*}
-
-\paragraph{Moment på ett dielektrikum}
-Vid att göra en liknande analys som den ovan fås
-\begin{align*}
-	\vb{N}_{\text{e}} = \pm\del{\phi}{W_{\text{e}}}\ub{z},
-\end{align*}
-där $+$ och $-$ är fallen där $Q$ respektiva $U$ är konstant.

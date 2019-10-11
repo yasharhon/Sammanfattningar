@@ -1,0 +1,301 @@
+\section{Dipoler och dielektrika}
+
+\paragraph{Elektriska dipolen}
+Betrakta två punktladdningar på en linje. Linjen går genom origo, och laddningarna ligger lika långa avstånd $\frac{1}{2}d$ från origo. Potentialen i punkten $\vb{r}$, som ligger ett avstånd $R_{+}$ respektiva $R_{-}$ från de två laddningarna, ges av
+\begin{align*}
+	V = \frac{q}{4\pi\varepsilon_{0}R_{+}} - \frac{q}{4\pi\varepsilon_{0}R_{-}} = \frac{q}{4\pi\varepsilon_{0}}\frac{R_{-} - R_{+}}{R_{+}R_{-}}.
+\end{align*}
+Om $r >> d$ fås
+\begin{align*}
+	V \approx \frac{q}{4\pi\varepsilon_{0}}\frac{d\cos{\theta}}{r^{2}}
+\end{align*}
+där $\theta$ är vinkeln mellan $\vb{r}$ och linjen. Vi kan då skriva detta som
+\begin{align*}
+	V = \frac{q}{4\pi\varepsilon_{0}}\frac{\vb{d}\cdot\ub{r}}{r^{2}}.
+\end{align*}
+Vi definierar nu dipolmomentet $\vb{p} = q\vb{d}$, och får då
+\begin{align*}
+	V = \frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}.
+\end{align*}
+
+Notera att vi kan skriva dipolmomentet som $\vb{p} = \sum q_{i}\vb{r}_{i}$.
+
+\paragraph{Ideala dipoler}
+En ideal dipol fås i gränsen för en dipol när $d$ blir oändligt liten på ett sådant sätt att $\vb{p}$ hålls konstant.
+
+\paragraph{Fältet från en dipol}
+Fältet från en dipol ges av
+\begin{align*}
+	\vb{E} = -\grad{\frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}} = -\grad{\frac{\vb{p}\cdot\vb{r}}{4\pi\varepsilon_{0}r^{3}}}.
+\end{align*}
+I nämnaren har vi
+\begin{align*}
+	\vb{p}\cdot\vb{r} = p_{i}r_{i} \implies \del{i}{\vb{p}\cdot\vb{r}} = p_{i} \implies \grad{\vb{p}\cdot\vb{r}} = \vb{p}.
+\end{align*}
+Vi får då
+\begin{align*}
+	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\left(\frac{\vb{p}}{r^{3}} - \frac{3\vb{p}\cdot\vb{r}}{r^{4}}\grad{r}\right) = \frac{1}{4\pi\varepsilon_{0}r^{3}}\left(3(\vb{p}\cdot\ub{r})\ub{r} - \vb{p}\right).
+\end{align*}
+
+\paragraph{Dipolmoment för en laddningsfördelning}
+För en laddningsfördelning ges dipolmomentet av
+\begin{align*}
+	\vb{p} = \integ{}{}{V}{\vb{r}\rho}.
+\end{align*}
+
+\paragraph{Förflyttning av koordinatsystem och dipolmoment}
+Vid förflyttning av origo en sträcka $\vb{a}$ fås
+\begin{align*}
+	\vb{p}' = \integ{}{}{V}{\vb{r}'\rho} = \integ{}{}{V}{(\vb{r} - \vb{a})\rho} = \vb{p} - q\vb{a}.
+\end{align*}
+Alltså beror dipolmomentet av origos position om det finns en netto mängd laddning i systemet.
+
+\paragraph{Multipolutveckling}
+Betrakta en punkt $\vb{r}$ och en annan punkt $\vb{r}'$. Vid att definiera $\vb{R} = \vb{r} - \vb{r}'$ får vi att om de två punkterna inte är samma, är $\laplacian{\frac{1}{R}} = 0$ överallt förutom där $\vb{R} = \vb{0}$. Vid att lägga vårat koordinatsystem så att $\vb{r}'$ är parallell med $z$-axeln och definiera vinkeln mellan $\vb{r}$ och $\vb{r}'$ som $\gamma$ fås
+\begin{align*}
+	\frac{1}{R} =
+	\begin{cases}
+		\sum\limits_{l = 0}^{\infty}A_{l}r^{l}P_{l}(\cos{\gamma}),          &r < r', \\
+		\sum\limits_{l = 0}^{\infty}\frac{B_{l}}{r^{l}}P_{l}(\cos{\gamma}), &r > r'.
+	\end{cases}
+\end{align*}
+Speciellt, på $z$-axeln är $\gamma = 0$ och
+\begin{align*}
+	\frac{1}{R} = \frac{1}{r_{>} - r_{<}} = \frac{1}{r_{>}}\left(1 - \frac{r_{<}}{r_{>}}\right)^{-1} = \frac{1}{r_{>}}\sum\limits_{l = 0}^{\infty}\left(\frac{r_{<}}{r_{>}}\right)^{l} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}},
+\end{align*}
+där $r_{<} = \min(r', r)$ och $r_{>} = \max(r', r)$. Vi utvidgar därmed lösningen till
+\begin{align*}
+	\frac{1}{R} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}}P_{l}(\cos{\gamma}).
+\end{align*}
+
+Vi söker nu potentialen utanför en sfär som omsluter en rumladdning. Vid att låta $\vb{r}$ peka utanför sfären och $\vb{r}'$ inuti fås $r_{<} = r',\ r_{>} = r$ och
+\begin{align*}
+	V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V'}{\frac{\rho}{R}} = \frac{1}{4\pi\varepsilon_{0}}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{V'}{(r')^{l}\rho P_{l}(\cos{\gamma})} = \sum\limits_{l = 0}^{\infty}V_{l}.
+\end{align*}
+De olika $V_{l}$ kommer ge oss termer som ser ut som olika multipoler, och vi vill nu studera dem. Vi noterar först att om $e_{i}$ respektiva $e_{i}'$ är komponenterna av $\ub{r}$ respektiva $\ub{r}'$, kan vi skriva
+\begin{align*}
+	\cos(\gamma) &= e_{i}e_{i}',\ \cos[2](\gamma) = e_{i}e_{i}'e_{i}e_{j}',\ 1 = e_{i}e_{i} = e_{i}e_{j}\delta_{ij}.
+\end{align*}
+
+För $l = 0$ får vi
+\begin{align*}
+	V_{0} = \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r}\integ{}{}{V'}{\rho},
+\end{align*}
+alltså ett bidrag motsvarande en punktladdning med samma totala laddning i origo. För $l = 1$ fås
+\begin{align*}
+	V_{1} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}\integ{}{}{V'}{r'\rho P_{1}(\cos{\gamma})} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'\cos{\gamma}\rho} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'e_{i}e_{i}'\rho} \\
+	      &= \frac{e_{i}}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r_{i}'\rho} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\ub{r}\cdot\integ{}{}{V'}{r_{i}'\rho}
+\end{align*}
+alltså ett bidrag motsvarande en dipol med samma totala dipolmoment i origo. För $l = 2$ fås
+\begin{align*}
+	V_{2} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{3}}\integ{}{}{V'}{r'^{2}\rho P_{2}(\cos{\gamma})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{i}'r_{i}'\rho(3\cos[2](\gamma) - 1)} \\
+	V_{2} &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3\cos[2](\gamma) - 1)}  \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}e_{i}'e_{i}e_{j}' - e_{i}e_{j}\delta_{ij})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}'e_{j}' - \delta_{ij})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})}.
+\end{align*}
+Vi definierar nu kvadrupolmomentstensorn
+\begin{align*}
+	Q_{ij} = \frac{1}{2}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})},
+\end{align*}
+vilket ger
+\begin{align*}
+	V = \frac{e_{i}Q_{ij}e_{j}}{4\pi\varepsilon_{0}r^{3}}.
+\end{align*}
+Detta är kvadrupolbidraget.
+
+Allmänt blir det $l$:te bidraget på formen
+\begin{align*}
+	V_{l} = \frac{Q_{i_{1}\dots i_{l}}e_{i_{1}}\dots e_{i_{l}}}{4\pi\varepsilon_{0}r^{l + 1}}.
+\end{align*}
+
+\paragraph{Additionssatsen}
+Hellre än att hantera komponenterna av kvadrupolmomentstensorn, använder vi en sats som säjer
+\begin{align*}
+	P_{l}(\cos{\gamma}) = \frac{4\pi}{2l + 1}\sum\limits_{m = -l}^{l}Y_{lm}(\theta, \phi)Y_{lm}^{*}(\theta', \phi').
+\end{align*}
+Då kan vi skriva
+\begin{align*}
+	V = \sum\limits_{l = 0}^{\infty}V_{l},\ V_{l} = \frac{1}{(2l + 1)\varepsilon_{0}r^{l + 1}}\sum\limits_{m = -l}^{l}q_{lm}Y_{lm}(\theta, \phi),
+\end{align*}
+där $q_{lm}$ är det sfäriska multipolmomentet
+\begin{align*}
+	q_{lm} = \integ{}{}{V*}{\rho (r')^{l}})Y_{lm}^{*}(\theta', \phi').
+\end{align*}
+Varje $V_{l}$ har alltså $2l + 1$ oberoende komponenter, vilket på grund av multipolmomenttensorernas symmetri och spårlöshet är lika med antalet oberoende komponenter i multipolmomenttensorn.
+
+\paragraph{Kraft på en laddningsfördelning}
+Betrakta en laddningsfördelning i ett yttre måttligt varierande elektriskt fält. Kraften på laddningsfördelningen ges då av
+\begin{align*}
+	\vb{F} = \integ{}{}{V}{\rho\vb{E}}.
+\end{align*}
+Vi vill nu approximera elektriska fältet i laddningsfördelningen vid att utveckla den kring en referenspunkt $\vb{r}_{0}$. Komponentvis har vi
+\begin{align*}
+	E_{i} \approx E_{i, 0} + (r_{j} - r_{j, 0})\del{j}{E_{i}},
+\end{align*}
+varför
+\begin{align*}
+	\vb{E} \approx \vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}
+\end{align*}
+och
+\begin{align*}
+	\vb{F} \approx \integ{}{}{V}{\rho\left(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}\right)}.
+\end{align*}
+Vidare, under antagandet att fältet varierar måttligt kan alla derivator antas vara konstanta, vilket ger
+\begin{align*}
+	\vb{F} \approx \integ{}{}{V}{\rho\vb{E}_{0}} + \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}} = Q\vb{E}_{0} + (\vb{p}\cdot\grad)\vb{E},
+\end{align*}
+där dipolmomentet mäts relativ $\vb{r}_{0}$. Att dra ut elektriska fältet i andra termen från integralen är helt okej - man kan tänka sig att integrationen skapar en operator som sedan får verka på fältet.
+
+\paragraph{Vridmoment på en laddningsfördelning}
+På en punktladdning har vi
+\begin{align*}
+	\vb{M} = \vb{r}\times\vb{F} = q\vb{r}\times\vb{E}.
+\end{align*}
+För en laddningsfördelning fås då, relativt en referenspunkt $O$, vridmomentet
+\begin{align*}
+	\vb{M} &= \integ{}{}{V}{\rho\vb{r}\times\vb{E}} \\
+	       &\approx \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0}) + \vb{r}_{0})\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})}.
+\end{align*}
+Vi försummar nu termer av andra ordningen i $\vb{r} - \vb{r}_{0}$ och får
+\begin{align*}
+	\vb{M} &= \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\times\vb{E}_{0} + \vb{r}_{0}\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}))} \\
+	       &= \left(\integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})}\right)\times\vb{E}_{0} + \vb{r}_{0}\times\integ{}{}{V}{\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})} \\
+	       &= \vb{p}\times\vb{E}_{0} + \vb{r}_{0}\times\vb{F}.
+\end{align*}
+
+\paragraph{Polarisation}
+Polarisationen $\vb{P}$ uppfyller
+\begin{align*}
+	\vb{p} = \integ{}{}{V}{\vb{P}}.
+\end{align*}
+Detta fältet uppfyller inga speciella randvillkor, och är allmänt ej rotationsfritt.
+
+\paragraph{Polariserbarhet}
+Polariserbarheten $\alpha$ uppfyller
+\begin{align*}
+	\vb{p} = \alpha\vb{E}.
+\end{align*}
+
+\paragraph{Fält och potential från polarisation}
+Från ett litet rymdelement fås
+\begin{align*}
+	\dd{\vb{p}} = \vb{P}\dd{V},\ \dd{V} = \frac{1}{4\pi\varepsilon_{0}}\frac{\dd{\vb{p}}\cdot\ub{R}}{R^{2}},\ V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{\vb{P}\cdot\ub{R}}{R^{2}}}.
+\end{align*}
+Elektriska fältet kommer ha en singularitet som beter sig som $\frac{1}{R^{3}}$. Denna kommer inte upphävas av volymelementet, och kräver specialbehandling.
+
+Vi kommer dock lösa detta genom att använda att
+\begin{align*}
+	\grad'{\frac{1}{R}} = \grad'{\frac{1}{\abs{\vb{r} - \vb{r}'}}} = \frac{1}{R^{2}}\ub{R},
+\end{align*}
+vilket ger
+\begin{align*}
+	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\vb{P}\cdot\grad'{\frac{1}{R}}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\div'{\frac{\vb{P}}{R^{2}}} - \frac{1}{R}\div'{\vb{P}}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\vinteg{}{}{S}{\frac{\vb{P}}{R}} - \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{1}{R}\div'{\vb{P}}},
+\end{align*}
+vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
+\begin{align*}
+	\rho_{\text{b}} = -\div'{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\ub{n}.
+\end{align*}
+Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
+\begin{align*}
+	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma_{\text{b}}}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho_{\text{b}}\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+
+\paragraph{Introduktion av D-fältet}
+Gauss' lag på integralform ger oss nu
+\begin{align*}
+	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}} = \frac{-\div'{\vb{P}} + \rho_{\text{f}}}{\varepsilon_{0}},
+\end{align*}
+där $\rho_{\text{f}}$ är den fria laddningstätheten. Detta implicerar
+\begin{align*}
+	\div(\varepsilon_{0}\vb{E} + \vb{P}) = \rho_{\text{f}},
+\end{align*}
+vilket uppmanar oss att definiera
+\begin{align*}
+	\vb{D} = \varepsilon_{0}\vb{E} + \vb{P}.
+\end{align*}
+
+\paragraph{Randvillkor för D-fältet}
+Vi kan visa att
+\begin{align*}
+	D_{1}^{\perp} - D_{2}^{\perp} = \sigma_{\text{b}},\ \vb{D}_{1}^{\parallel} - \vb{D}_{2}^{\parallel} = \vb{P}_{1}^{\parallel} - \vb{P}_{2}^{\parallel}.
+\end{align*}
+
+\paragraph{Linjära dielektrika}
+Linjära dielektrika uppfyller
+\begin{align*}
+	\vb{P} = \varepsilon_{0}\chi_{\text{e}}\vb{E}
+\end{align*}
+för måttliga fältstyrkor. $\chi_{\text{e}}$ är dielektrikumets elektriska susceptibilitet.
+
+\paragraph{D-fält i linjära dielektrika}
+I ett linjärt dielektrikum fås
+\begin{align*}
+	\vb{D} = \varepsilon_{0}(1 + \chi_{\text{e}})\vb{E} = \varepsilon_{0}\varepsilon_{\text{r}}\vb{E} = \varepsilon\vb{E}.
+\end{align*}
+$\varepsilon_{\text{r}}$ är dielektrikumets relativa permittivitet, och $\varepsilon$ är dets permittivitet.
+
+\paragraph{Energi för linjära dielektrika}
+I linjära dielektrika tillkommer även arbete för att polarisera dielektrikumet. Om man betraktar en atom som en punktladdning $q$ och en laddning $-q$ jämnt fördelad över ett klot med radie $a$, skapar det negativt laddade molnet ett elektriskt fält
+\begin{align*}
+	\vb{E}_{-q} = -\frac{q}{4\pi\varepsilon_{0}a^{3}}\vb{r},\ r < a.
+\end{align*}
+Kraften på laddningen i mitten blir då
+\begin{align*}
+	\vb{F} = -\frac{q^{2}}{4\pi\varepsilon_{0}a^{3}}\vb{r} = -\frac{q^{2}}{4\pi\varepsilon_{0}a^{3}}\grad{\frac{1}{2}r^{2}}.
+\end{align*}
+Arbetet som krävs för att förflytta laddningen i mitten från centrum blir då
+\begin{align*}
+	W = \frac{1}{2}\frac{q^{2}r^{2}}{4\pi\varepsilon_{0}a^{3}} = -\frac{1}{2}\vb{p}\cdot\vb{E}_{-q}.
+\end{align*}
+
+Om nu atomen är i ett yttre elektriskt fält $\vb{E}$, kommer det elektriska fältet att förflytta laddningen i centrum. Jämvikt fås när $\vb{E} = -\vb{E}_{-q}$, och arbetet som görs för att förflytta laddningen i mitten är då
+\begin{align*}
+	W = \frac{1}{2}\vb{p}\cdot\vb{E}.
+\end{align*}
+
+Med detta argumentet i bakgrunden ställer vi upp energin i ett dielektrikum som
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{V}{\vb{P}\cdot\vb{E}}.
+\end{align*}
+I tillägg har vi det övriga bidraget för att skapa det elektriska fältet, och totala energin ges av
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{V}{(\varepsilon_{0}\vb{E} + \vb{P})\cdot\vb{E}} = \frac{1}{2}\integ{}{}{V}{\vb{D}\cdot\vb{E}}.
+\end{align*}
+
+% TODO: Griffiths argument
+% TODO: Which is greater, why
+
+\paragraph{Krafter på ett dielektrikum}
+Betrakta ett dielektrikum någonstans i närheten av två perfekta ledare med laddning $\pm Q$ på de respektiva. Ledarna kan antingen vara isärkopplade eller kopplade ihop med ett batteri som upprätthåller en konstant spänningsskillnad $U$ mellan dem. Dielektrikumets position beskrivs av dets geometri och en referensvektor $\vb{r}$ (till exempel till dets geometriska centrum). Att beräkna elektriska fältet är allmänt svårt, men vi ska försöka undveka detta med ett trick.
+
+Betrakta första fallet först. Om dielektrikumet förflyttas en sträcka $\dd{\vb{r}}$, gör elektriska fältet från ledarna ett arbete på det, som nödvändigtvis måste balanseras av ett mekaniskt arbete. Arbetet som görs på systemet är
+\begin{align*}
+	\dd{W} = \grad{W}\cdot\dd{\vb{r}} = -\dd{W_{\text{e}}} = -\vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+\end{align*}
+Samtidigt kan vi skriva systemets energi $W$ i termer av parameterna i systemets beskrivning. Därmed är kraften på dielektrikumet
+\begin{align*}
+	\vb{F}_{\text{e}} = -\grad{W} = -\grad{\frac{1}{2}\frac{Q^{2}}{C}} = \frac{1}{2}\frac{Q^{2}}{C^{2}}\grad{C} = \frac{1}{2}V^{2}\grad{C}.
+\end{align*}
+
+Betrakta nu det andra fallet. Om spänningen mellan ledarna hålls konstant, kommer translation av dielektrikumet behöva balansera arbetet både från translation i elektriska fältet och arbetet som krävs för att transportera laddning mellan ledarna för att hålla spänningsskillnaden mellan dem konstant. Vi får 
+\begin{align*}
+	\dd{W} = U\dd{Q} - \dd{W_{\text{e}}} = U\dd{Q} - \vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+\end{align*}
+Samtidigt ges vänstersidan av $\dd{W} = \frac{1}{2}U\dd{Q}$, så $U\dd{Q} = 2\dd{W} = 2\grad{W}\cdot\dd{\vb{r}}$, vilket ger
+\begin{align*}
+	\vb{F}_{\text{e}} = \grad{W} = \frac{1}{2}U^{2}\grad{C}.
+\end{align*}
+
+\paragraph{Moment på ett dielektrikum}
+Vid att göra en liknande analys som den ovan fås
+\begin{align*}
+	\vb{N}_{\text{e}} = \pm\del{\phi}{W_{\text{e}}}\ub{z},
+\end{align*}
+där $+$ och $-$ är fallen där $Q$ respektiva $U$ är konstant.
