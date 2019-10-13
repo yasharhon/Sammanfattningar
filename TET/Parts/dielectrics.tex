@@ -131,7 +131,7 @@ Varje $V_{l}$ har alltså $2l + 1$ oberoende komponenter, vilket på grund av mu
 \paragraph{Kraft på en laddningsfördelning}
 Betrakta en laddningsfördelning i ett yttre måttligt varierande elektriskt fält. Kraften på laddningsfördelningen ges då av
 \begin{align*}
-	\vb{F} = \integ{}{}{V}{\rho\vb{E}}.
+	\vb{F} = \integ{}{}{\tau'}{\rho\vb{E}}.
 \end{align*}
 Vi vill nu approximera elektriska fältet i laddningsfördelningen vid att utveckla den kring en referenspunkt $\vb{r}_{0}$. Komponentvis har vi
 \begin{align*}
@@ -143,13 +143,13 @@ varför
 \end{align*}
 och
 \begin{align*}
-	\vb{F} \approx \integ{}{}{V}{\rho\left(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}\right)}.
+	\vb{F} \approx \integ{}{}{\tau'}{\rho\left(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}\right)}.
 \end{align*}
 Vidare, under antagandet att fältet varierar måttligt kan alla derivator antas vara konstanta, vilket ger
 \begin{align*}
-	\vb{F} \approx \integ{}{}{V}{\rho\vb{E}_{0}} + \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}} = Q\vb{E}_{0} + (\vb{p}\cdot\grad)\vb{E},
+	\vb{F} \approx \integ{}{}{\tau'}{\rho\vb{E}_{0}} + \integ{}{}{\tau'}{\rho((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}} = Q\vb{E}_{0} + (\vb{p}\cdot\grad)\vb{E},
 \end{align*}
-där dipolmomentet mäts relativ $\vb{r}_{0}$. Att dra ut elektriska fältet i andra termen från integralen är helt okej - man kan tänka sig att integrationen skapar en operator som sedan får verka på fältet.
+där dipolmomentet mäts relativ $\vb{r}_{0}$. Att dra ut elektriska fältet i andra termen från integralen är helt okej - eftersom derivatorna inte varierar i laddningsfördelningen, kan man tänka sig att integrationen skapar en operator som sedan får verka på fältet.
 
 \paragraph{Vridmoment på en laddningsfördelning}
 På en punktladdning har vi
@@ -158,20 +158,20 @@ På en punktladdning har vi
 \end{align*}
 För en laddningsfördelning fås då, relativt en referenspunkt $O$, vridmomentet
 \begin{align*}
-	\vb{M} &= \integ{}{}{V}{\rho\vb{r}\times\vb{E}} \\
-	       &\approx \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0}) + \vb{r}_{0})\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})}.
+	\vb{M} &= \integ{}{}{\tau'}{\rho\vb{r}\times\vb{E}} \\
+	       &\approx \integ{}{}{\tau'}{\rho((\vb{r} - \vb{r}_{0}) + \vb{r}_{0})\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})}.
 \end{align*}
 Vi försummar nu termer av andra ordningen i $\vb{r} - \vb{r}_{0}$ och får
 \begin{align*}
-	\vb{M} &= \integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})\times\vb{E}_{0} + \vb{r}_{0}\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}))} \\
-	       &= \left(\integ{}{}{V}{\rho((\vb{r} - \vb{r}_{0})}\right)\times\vb{E}_{0} + \vb{r}_{0}\times\integ{}{}{V}{\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E})} \\
+	\vb{M} &= \integ{}{}{\tau'}{\rho((\vb{r} - \vb{r}_{0})\times\vb{E}_{0} + \vb{r}_{0}\times(\vb{E}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}))} \\
+	       &= \left(\integ{}{}{\tau'}{\rho((\vb{r} - \vb{r}_{0})}\right)\times\vb{E}_{0} + \vb{r}_{0}\times\integ{}{}{\tau'}{\vb{E}_{0} + (\vb{r} - \vb{r}_{0})\cdot\grad)\vb{E}} \\
 	       &= \vb{p}\times\vb{E}_{0} + \vb{r}_{0}\times\vb{F}.
 \end{align*}
 
 \paragraph{Polarisation}
 Polarisationen $\vb{P}$ uppfyller
 \begin{align*}
-	\vb{p} = \integ{}{}{V}{\vb{P}}.
+	\vb{p} = \integ{}{}{\tau'}{\vb{P}}.
 \end{align*}
 Detta fältet uppfyller inga speciella randvillkor, och är allmänt ej rotationsfritt.
 
@@ -184,25 +184,23 @@ Polariserbarheten $\alpha$ uppfyller
 \paragraph{Fält och potential från polarisation}
 Från ett litet rymdelement fås
 \begin{align*}
-	\dd{\vb{p}} = \vb{P}\dd{V},\ \dd{V} = \frac{1}{4\pi\varepsilon_{0}}\frac{\dd{\vb{p}}\cdot\ub{R}}{R^{2}},\ V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{\vb{P}\cdot\ub{R}}{R^{2}}}.
+	\dd{\vb{p}} = \vb{P}\dd{\tau'},\ \dd{V} = \frac{1}{4\pi\varepsilon_{0}}\frac{\dd{\vb{p}}\cdot\ub{R}}{R^{2}},\ V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{\vb{P}\cdot\ub{R}}{R^{2}}}.
 \end{align*}
-Elektriska fältet kommer ha en singularitet som beter sig som $\frac{1}{R^{3}}$. Denna kommer inte upphävas av volymelementet, och kräver specialbehandling.
-
-Vi kommer dock lösa detta genom att använda att
+Elektriska fältet kommer ha en singularitet som beter sig som $\frac{1}{R^{3}}$. Denna kommer inte upphävas av volymelementet, och kräver specialbehandling. Vi löser detta genom att använda att
 \begin{align*}
 	\grad'{\frac{1}{R}} = \grad'{\frac{1}{\abs{\vb{r} - \vb{r}'}}} = \frac{1}{R^{2}}\ub{R},
 \end{align*}
 vilket ger
 \begin{align*}
-	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\vb{P}\cdot\grad'{\frac{1}{R}}} \\
-	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\div'{\frac{\vb{P}}{R^{2}}} - \frac{1}{R}\div'{\vb{P}}} \\
-	  &= \frac{1}{4\pi\varepsilon_{0}}\vinteg{}{}{S}{\frac{\vb{P}}{R}} - \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\frac{1}{R}\div'{\vb{P}}},
+	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\vb{P}\cdot\gradp{\frac{1}{R}}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\divp{\frac{\vb{P}}{R^{2}}} - \frac{1}{R}\divp{\vb{P}}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\vinteg{}{}{a'}{\frac{\vb{P}}{R}} - \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R}\divp{\vb{P}}},
 \end{align*}
 vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
 \begin{align*}
-	\rho_{\text{b}} = -\div'{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\ub{n}.
+	\rho_{\text{b}} = -\div{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\vb{n}.
 \end{align*}
-Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
+Vi kunde ta bort primmet från divergensoperatorn därför att divergensen kommer vara $0$ där $\vb{P} = \vb{0}$. Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
 \begin{align*}
 	\vb{E} = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{S}{\frac{\sigma_{\text{b}}}{R^{2}}\ub{R}} + \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V}{\rho_{\text{b}}\frac{1}{R^{2}}\ub{R}}.
 \end{align*}
@@ -210,7 +208,7 @@ Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska
 \paragraph{Introduktion av D-fältet}
 Gauss' lag på integralform ger oss nu
 \begin{align*}
-	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}} = \frac{-\div'{\vb{P}} + \rho_{\text{f}}}{\varepsilon_{0}},
+	\div{\vb{E}} = \frac{\rho}{\varepsilon_{0}} = \frac{-\div{\vb{P}} + \rho_{\text{f}}}{\varepsilon_{0}},
 \end{align*}
 där $\rho_{\text{f}}$ är den fria laddningstätheten. Detta implicerar
 \begin{align*}
@@ -224,7 +222,7 @@ vilket uppmanar oss att definiera
 \paragraph{Randvillkor för D-fältet}
 Vi kan visa att
 \begin{align*}
-	D_{1}^{\perp} - D_{2}^{\perp} = \sigma_{\text{b}},\ \vb{D}_{1}^{\parallel} - \vb{D}_{2}^{\parallel} = \vb{P}_{1}^{\parallel} - \vb{P}_{2}^{\parallel}.
+	(D_{1} - D_{2})\cdot\vb{n} = \sigma_{\text{b}},\ (\vb{D}_{1} - \vb{D}_{2})\times\vb{n} = (\vb{P}_{1} - \vb{P}_{2})\times\vb{n}.
 \end{align*}
 
 \paragraph{Linjära dielektrika}
@@ -241,8 +239,38 @@ I ett linjärt dielektrikum fås
 \end{align*}
 $\varepsilon_{\text{r}}$ är dielektrikumets relativa permittivitet, och $\varepsilon$ är dets permittivitet.
 
+\paragraph{Elektrisk energi och linjära dielektrika}
+Vi är intresserade av att studera energin för att skapa ett system som innehåller linjära isotropa dielektrika. För att göra detta, placera först ut alla dielektrika, och ta sedan med in den fria laddningen en bit i taget. Om man tar med en bit laddning $\dd{\rho_{\text{f}}}$, kräver det energin
+\begin{align*}
+	\dd{W} = \integ{}{}{\tau}{V\dd{\rho_{\text{f}}}}.
+\end{align*}
+Superposition ger $\dd{\rho_{\text{f}}} = \div(\dd{\vb{D}})$, där $\dd{\vb{D}}$ är ändringen i D-fältet. Detta ger
+\begin{align*}
+	\dd{W} &= \integ{}{}{\tau}{V\div(\dd{\vb{D}})} \\
+	       &= \integ{}{}{\tau}{\div(V\dd{\vb{D}}) - \dd{\vb{D}}\cdot\grad{V}} \\
+	       &= \vinteg{}{}{a}{V\dd{\vb{D}}} + \integ{}{}{\tau}{\dd{\vb{D}}\cdot\vb{E}}.
+\end{align*}
+På samma sätt som tidigare skickar vi integrationsområdets rand till oändligheten, vilket ger att ytintegralen försvinner och
+\begin{align*}
+	\dd{W} = \integ{}{}{\tau}{\dd{\vb{D}}\cdot\vb{E}}.
+\end{align*}
+För ett linjärt dielektrikum har vi
+\begin{align*}
+	\dd{\vb{D}\cdot\vb{E}} = \dd(\varepsilon E^{2}) = 2\varepsilon\vb{E}\cdot\dd{\vb{E}} = 2\dd{\vb{D}}\cdot\vb{E},
+\end{align*}
+vilket ger
+\begin{align*}
+	\dd{W} = \dd(\frac{1}{2}\integ{}{}{\tau}{\vb{D}\cdot\vb{E}}),
+\end{align*}
+och integration över tillförd laddning ger
+\begin{align*}
+	W = \frac{1}{2}\integ{}{}{\tau}{\vb{D}\cdot\vb{E}}.
+\end{align*}
+
+Hur skiljer detta sig från uttrycket vi fick utan att betrakta dielektrika? Jo, det förra uttrycket ger energin för att placera ut alla laddningar, både bundna och fria, i sin slutgiltiga position. Detta kommer inte inkludera energin för att ompolarisera dielektrikumet som är utplacerad. Det nya uttrycket inkluderar inte energin för att placera ut de bundna laddningarna, men denna kommer vara $0$ eftersom dielektrikumet är opolariserad till att börja med och vi behandlar dielektrikumet som bestående av ideala dipoler. Därifrån kommer dielektrikumet att ge en respons när fri laddning tillförs, och att skapa denna responsen kräver en viss energi som bara inkluderas i det nya uttrycket. En illustration av detta ges i exemplet under.
+
 \paragraph{Energi för linjära dielektrika}
-I linjära dielektrika tillkommer även arbete för att polarisera dielektrikumet. Om man betraktar en atom som en punktladdning $q$ och en laddning $-q$ jämnt fördelad över ett klot med radie $a$, skapar det negativt laddade molnet ett elektriskt fält
+Betrakta en atom, approximerad som en punktladdning $q$ och en laddning $-q$ jämnt fördelad över ett klot med radie $a$. Det negativt laddade molnet skapar ett elektriskt fält
 \begin{align*}
 	\vb{E}_{-q} = -\frac{q}{4\pi\varepsilon_{0}a^{3}}\vb{r},\ r < a.
 \end{align*}
@@ -268,9 +296,6 @@ I tillägg har vi det övriga bidraget för att skapa det elektriska fältet, oc
 \begin{align*}
 	W = \frac{1}{2}\integ{}{}{V}{(\varepsilon_{0}\vb{E} + \vb{P})\cdot\vb{E}} = \frac{1}{2}\integ{}{}{V}{\vb{D}\cdot\vb{E}}.
 \end{align*}
-
-% TODO: Griffiths argument
-% TODO: Which is greater, why
 
 \paragraph{Krafter på ett dielektrikum}
 Betrakta ett dielektrikum någonstans i närheten av två perfekta ledare med laddning $\pm Q$ på de respektiva. Ledarna kan antingen vara isärkopplade eller kopplade ihop med ett batteri som upprätthåller en konstant spänningsskillnad $U$ mellan dem. Dielektrikumets position beskrivs av dets geometri och en referensvektor $\vb{r}$ (till exempel till dets geometriska centrum). Att beräkna elektriska fältet är allmänt svårt, men vi ska försöka undveka detta med ett trick.
