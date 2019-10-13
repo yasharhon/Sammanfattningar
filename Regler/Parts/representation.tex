@@ -219,25 +219,27 @@ Då kan $L$ väljas så att $A - BL$ får önskade egenvärden. Stationärt har 
 \end{align*}
 
 \paragraph{Skattning av tillstånd}
-Om man ej kan mäta systemets tillstånd exakt, kan man skatta det.
+Betrakta ett system där man endast kan mäta utsignal och insignal. I såna fall kan man inte göra tillståndsåterkoppling direkt. Däremot kan man försöka göra detta genom att skatta systemets tillstånd.
 
 Mer precist, antag att vi har en modell
 \begin{align*}
-	\dot{x} = Ax + Bu,\ y = Cx
+	\dot{x} = Ax + Bu,\ y = Cx,\ x(0) = x_{0}
 \end{align*}
-som simulerar
+som vi simulerar enligt
 \begin{align*}
-	\dot{\hat{x}} = A\hat{x} + Bu,\  \hat{y} = C\hat{x}.
+	\dot{\hat{x}} = A\hat{x} + Bu,\  \hat{y} = C\hat{x},\ \hat{x}(0) = \hat{x}_{0}.
 \end{align*}
-Felsignalen är
+Simuleringsfelet är
 \begin{align*}
 	y - \hat{y} = y - C\hat{x}.
 \end{align*}
-Vi försöker återkoppla systemet. Det beskrivs då av
+Vi försöker återkoppla det simulerade systemet med hjälp av simuleringsfelet. Detta beskrivs av
 \begin{align*}
-	\dot{\hat{x}} = A\hat{x} + Bu + K(y- C\hat{x}) = (A - KC)C\hat{x} + Bu + Ky.
+	\dot{\hat{x}} = A\hat{x} + Bu + K(y- C\hat{x}) = (A - KC)\hat{x} + Bu + Ky.
 \end{align*}
-Skattningsfelet $\tilde{x}$ ges då av
+Systemet ovan kallas för en observatör för det ursprungliga systemet.
+
+Skattningsfelet $\tilde{x}$ beskrivs av
 \begin{align*}
 	\dot{\tilde{x}} = \dot{x} - \dot{\hat{x}} = Ax + Bu - A\hat{x} - Bu - K(Cx - C\hat{x}) = (A - KC)\tilde{x}.
 \end{align*}
@@ -245,11 +247,14 @@ Detta har lösning
 \begin{align*}
 	\tilde{x} = e^{(A - KC)t}\tilde{x}(0).
 \end{align*}
-Felet tenderar mot $0$ egenvärdena till $A - KC$ är negativa, och hur snabbt det tenderar mot $0$ beror av egenvärdenas belopp.
+Skattningsfelet tenderar alltså mot $0$ om egenvärdena till $A - KC$ är negativa, och hur snabbt det tenderar mot $0$ beror av egenvärdenas belopp. Det finns en komrpomiss mellan hur snabbt skattningsfelet avtar och hur känsligt systemet är för störningar.
 
-Mätfelet ges av $y_{\text{m}} = y + e$. Detta ger
+För att studera huruvida skattningsfelet kan fås att avta godtyckligt snabbt, studerar vi egenvärdena till $A - KC$. Detta är samma som för $A^{T} - C^{T}K^{T}$. Att få detta system att avta godtyckligt snabbt är en fråga om att kunna placera polerna för matrisen ovan godtyckligt. Detta är exakt samma problem som vi har studerat med proportionell återkoppling, och vi vet då att systemet kan fås att avta godtyckligt snabbt om systemet baserad på $A^{T}$ och $C^{T}$ är styrbart.
+
+\paragraph{Kalmanfilter}
+Betrakta ett system vars utsignal störs av ett mätfel $v$ och vars tillstånd störs av ett fel $v$. Skattningsfelet beskrivs av
 \begin{align*}
-	\dot{\tilde{x}} = (A - KC)\tilde{x} + Ke.
+	\dot{\tilde{x}} = (A - KC)\tilde{x} + e - Kv.
 \end{align*}
 Stora $K$ ger som vi ser höga mätfel, men det ger även snabba system. Optimeringen där görs av ett Kalmanfilter. Vi väljer då systemet så att egenvärdena till $A - BL$ har lägre belopp än egenvärdena till $A - KC$.
 
