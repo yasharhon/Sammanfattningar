@@ -186,7 +186,7 @@ Genom att ställa upp Poissons ekvation i sfäriska koordinater på ett laddning
 \end{align*}
 där $Y_{lm}$ är klotytefunktionerna. $A_{lm}$ bestäms av laddningarna utanför det yttre skalet och $B_{lm}$ av laddningarna innanför det inre skalet.
 
-Vi har allmänt att
+Det gäller att
 \begin{align*}
 	Y_{lm}(\theta, \phi)\propto P_{l}^{m}(\cos{\theta})e^{im\phi},
 \end{align*}
@@ -196,7 +196,7 @@ där $P_{l}^{m}$ är Legendrepolynomen. I fall som är rotationssymmetriska med 
 \end{align*}
 
 \paragraph{Anpassningsmetod}
-Betrakta ett fall likt fallet ovan där vi även känner $V$ på $z$-axeln. Eftersom $P_{l}(1) = 1$ och $P_{l}(-1) = (-1)^{l}$ får vi längs $z$-axeln
+Betrakta ett fall likt fallet ovan, med rotationssymmetri kring $z$-axeln, där vi även känner $V$ på $z$-axeln. Eftersom $P_{l}(1) = 1$ och $P_{l}(-1) = (-1)^{l}$ får vi längs $z$-axeln
 \begin{align*}
 	V = \sum\limits_{l = 0}^{\infty}\left(A_{l}\abs{z}^{l} + \frac{B_{l}}{\abs{z}^{l + 1}}\right)
 	\begin{cases}
@@ -204,6 +204,7 @@ Betrakta ett fall likt fallet ovan där vi även känner $V$ på $z$-axeln. Efte
 		(-1)^{l}, &z < 0.
 	\end{cases}
 \end{align*}
+Detta kan jämföras med den kända lösningen för att identifiera koefficienterna i serien och utvidga lösningen.
 
 \paragraph{Elektrostatisk energi}
 Vi är nu intresserade av energin som krävs för att skapa en viss laddningsfördelning. Vi kommer därför beräkna energin som krävs för att transportera all laddningen från oändligheten och placera den på rätt sätt.

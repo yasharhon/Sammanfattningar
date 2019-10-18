@@ -1,0 +1,277 @@
+\section{Magnetiska dipoler och magneter}
+
+\paragraph{Magnetiskt dipolmoment för en slinga}
+Betrakta en strömslinga $C$ som bär en ström $I$. Vi söker vektorpotentialen på stort avstånd från slingan. Det exakta uttrycket ges av
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\integ{C}{}{\vb{l}'}{\frac{I}{R}}.
+\end{align*}
+Om $C$ omkransar en yta $S$, fås
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}I}{4\pi}\tinteg{S}{}{a}{\gradp{\frac{1}{R}}} = \frac{\mu_{0}I}{4\pi}\tinteg{S}{}{a}{\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+Vid stora avstånd fås
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\left(I\integ{S}{}{\vb{a}}{}\right)\times\frac{1}{r^{2}}\ub{r} = \frac{\mu_{0}}{4\pi r^{2}}\vb{m}\times\ub{r},
+\end{align*}
+där vi har definierat det magnetiska dipolmomentet
+\begin{align*}
+	\vb{m} = I\integ{S}{}{\vb{a}}{} = I\vb{S}.
+\end{align*}
+Igen har vi definierat slingans vektorarea $\vb{S}$.
+
+Hur ska man välja vektorarean? Tänk dig att $C$ är randen till två olika ytor $S_{1}$ och $S_{2}$, som till sammans innesluter området $V$. Detta ger
+\begin{align*}
+	\vb{S}_{1} - \vb{S}_{2} = \integ{S_{1}}{}{\vb{a}}{} - \integ{S_{2}}{}{\vb{a}}{} = \integ{S_{1} + S_{2}}{}{\vb{a}}{} = \integ{V}{}{\tau}{\grad{1}} = \vb{0},
+\end{align*}
+och därmed spelar inte valet roll.
+
+\paragraph{Magnetiskt dipolmoment för en allmän strömtäthet}
+För att studera en allmän strömtäthet, vill vi dela den upp i slingor. Betrakta då konen med spets i origo, rand $C$ och $\vb{r}$, som ligger på $C$, som generatris. För denna är ytelementet $\dd{\vb{a}} = \frac{1}{2}\vb{r}\times\dd{\vb{r}}$, vilket ger
+\begin{align*}
+	\vb{m} = I\vb{S} = I\integ{S}{}{\vb{a}}{} = \frac{1}{2}\int\limits_{C}{\vb{r}'\times I\dd{\vb{l}'}}.
+\end{align*}
+Vi generaliserar detta genom att ersätta $I\dd{\vb{l}'}$ med $\vb{J}\dd{\tau'}$ och integrera över resultatet för varje lilla slinga för att få
+\begin{align*}
+	\vb{m} = \frac{1}{2}\int{\dd{\tau'}\vb{r}'\times \vb{J}}.
+\end{align*}
+
+\paragraph{Dipolmomentets beroende av origo}
+Om vi förflyttar vårat koordinatsystem fås
+\begin{align*}
+	\vb{m}_{O} = \frac{1}{2}\integ{}{}{\tau'}{(\vb{r}' - \vb{r}_{O})\times\vb{J}} = \vb{m} - \frac{1}{2}\vb{r}_{O}\times\integ{}{}{\tau'}{\vb{J}}.
+\end{align*}
+Vi har
+\begin{align*}
+	\integ{}{}{\tau'}{J_{i}} = \integ{}{}{\tau'}{\vb{J}\cdot\gradp{r_{i}'}} = \integ{}{}{\tau}{\divp(r_{i}'\vb{J}) - r_{i}'\divp{\vb{J}}}.
+\end{align*}
+Vi använder nu att vi arbetar med magnetostatik för att ta bort sista termen, vilket ger
+\begin{align*}
+	\integ{}{}{\tau'}{J_{i}} = \integ{}{}{\tau'}{\divp(r_{i}'\vb{J})} = \vinteg{}{}{a}{r_{i}'\vb{J}}.
+\end{align*}
+Slingan förutsätts vara ändlig, och då behöver vi bara integrera över en yta som inneslutar den. På den ytan är $\vb{J} = \vb{0}$, vilket ger att integralen av komponenten blir $0$, och slutligen
+\begin{align*}
+	\vb{m}_{O} = \vb{m}.
+\end{align*}
+
+\paragraph{Magnetiska fältet från en dipol}
+Vi får
+\begin{align*}
+	\vb{B} &= \curl{\vb{A}} \\
+	       &= \frac{\mu_{0}}{4\pi}\curl(\frac{1}{r^{2}}\vb{m}\times\ub{r}) \\
+	       &= \frac{\mu_{0}}{4\pi}\left(\grad{\frac{1}{r^{3}}}\times(\vb{m}\times\vb{r}) + \frac{1}{r^{3}}\curl(\vb{m}\times\vb{r})\right) \\
+	       &= \frac{\mu_{0}}{4\pi}\left(-\frac{3}{r^{4}}\grad{r}\times(\vb{m}\times\vb{r}) + \frac{1}{r^{3}}\curl(\vb{m}\times\vb{r})\right) \\
+	       &= \frac{\mu_{0}}{4\pi}\left(-\frac{3}{r^{4}}\ub{r}\times(\vb{m}\times\vb{r}) + \frac{1}{r^{3}}(\vb{m}\div{\vb{r}}  - (\vb{m}\cdot\grad)\vb{r})\right) \\
+	       &= \frac{1}{r^{3}}\frac{\mu_{0}}{4\pi}\left(-3\ub{r}\times(\vb{m}\times\ub{r}) + \frac{1}{r^{3}}(3\vb{m}  - \vb{m})\right) \\
+	       &= \frac{1}{r^{3}}\frac{\mu_{0}}{4\pi}\left(-3(\ub{r}\cdot\ub{r})\vb{m} + 3\times(\vb{m}\cdot\ub{r})\ub{r} + 2\vb{m}\right) \\
+	       &= \frac{1}{r^{3}}\frac{\mu_{0}}{4\pi}\left(3(\vb{m}\cdot\ub{r})\ub{r} - \vb{m}\right).
+\end{align*}
+
+\paragraph{Kraft på en magnetisk dipol}
+Kraften på en strömslinga $C$ ges av
+\begin{align*}
+	\vb{F} &= \int\limits_{C}{I\dd{\vb{l}}\times\vb{B}} \\
+	       &= I\int\limits_{S}{(\dd{\vb{a}}\times\grad')\times\vb{B}} \\
+	       &= I\integ{S}{}{a}{\grad'(\vb{B}\cdot\ub{n}) - \ub{n}\div{\vb{B}})}.
+\end{align*}
+Andra termen är $0$. Första termen ger komponentvis
+\begin{align*}
+	F_{i} = I\integ{S}{}{a}{\delp{i}{(B_{j}n_{j})}}.
+\end{align*}
+Vi antar att magnetfältet varierar måttligt över slingan, och approximerar derivatornas värde i mittpunkten, varför den faktorn kan tas utanför integralen. Detta ger
+\begin{align*}
+	F_{i} = I\del{i}{B_{j}}\integ{S}{}{a_{j}}{} = \del{i}{(B_{j}Ia_{j})},
+\end{align*}
+och slutligen
+\begin{align*}
+	\vb{F} = \grad(\vb{m}\cdot\vb{B}).
+\end{align*}
+
+Det här var oklart, så vi testar ett annat sätt: Skriv
+\begin{align*}
+	\vb{B} = \vb{B}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{B},
+\end{align*}
+där derivatan av $\vb{B}$ antas vara konstant. Detta ger
+\begin{align*}
+	\vb{B} &= I\tinteg{C}{}{l}{\vb{B}_{0} + ((\vb{r} - \vb{r}_{0})\cdot\grad)\vb{B}} \\
+	       &= I\left(\integ{C}{}{\vb{l}}{}\right)\times\vb{B}_{0} + I\left(\tinteg{C}{}{l}{(\vb{r}\cdot\grad)\vb{B}}\right) - I\left(\integ{C}{}{\vb{l}}{}\right)\times(\vb{r}_{0}\cdot\grad)\vb{B} \\
+	       &= I\left(\tinteg{C}{}{l}{(\vb{r}\cdot\grad)\vb{B}}\right).
+\end{align*}
+På indexform fås
+\begin{align*}
+	F_{i} &= I\integ{C}{}{l_{j}}{\varepsilon_{ijk}[(\vb{r}\cdot\grad)\vb{B}]_{k}} \\
+	      &= I\integ{C}{}{l_{j}}{\varepsilon_{ijk}r_{m}\del{m}{B_{k}}} \\
+	      &= \varepsilon_{ijk}I\del{m}{B_{k}}\integ{V}{}{l_{j}}{r_{m}} \\
+	      &= \varepsilon_{ijk}I\del{m}{B_{k}}\integ{S}{}{a_{b}}{\varepsilon_{jbc}\del{c}{r_{m}}} \\
+	      &= \varepsilon_{ijk}\varepsilon_{jbc}\delta_{cm}I\del{m}{B_{k}}\integ{S}{}{a_{b}}{} \\
+	      &= \varepsilon_{ijk}\varepsilon_{cjb}m_{b}\del{c}{B_{k}} \\
+	      &= (\delta_{ic}\delta_{kb} - \delta_{ib}\delta_{kc})m_{b}\del{c}{B_{k}} \\
+	      &= m_{k}\del{i}{B_{k}} - m_{i}\del{k}{B_{k}} \\
+	      &= \del{i}{m_{k}B_{k}} - m_{i}\div{\vb{B}},
+\end{align*}
+vilket slutligen ger
+\begin{align*}
+	\vb{F} = \grad(\vb{m}\cdot\vb{B}).
+\end{align*}
+
+\paragraph{Vridmoment på en slinga}
+Vridmomentet ges av
+\begin{align*}
+	\vb{M} &= \int\limits_{C}{\vb{r}\times\dd{\vb{F}}} \\
+	       &= I\int\limits_{C}{\vb{r}\times(\dd{\vb{l}}\times\vb{B})} \\
+	       &= I\int\limits_{C}{(\vb{B}\cdot\vb{r})\dd{\vb{l}} - (\vb{r}\cdot\dd{\vb{l}})\vb{B}}.
+\end{align*}
+Vi approximerar fältet till att vara konstant och lika med fältet i mitten, vilket ger
+\begin{align*}
+	\vb{B}\int\limits_{C}{(\vb{r}\cdot\dd{\vb{l}})} = \vb{B}\vinteg{S}{}{\vb{a}}{\curl{\vb{r}}} = \vb{0}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\vb{M} &= I\integ{C}{}{\vb{l}}{\vb{B}\cdot\vb{r}} \\
+	       &= I\tinteg{S}{}{a}{\grad(\vb{B}\cdot\vb{r})} \\
+	       &= I\tinteg{S}{}{a}{\vb{B}} \\
+	       &= \vb{m}\times\vb{B}.
+\end{align*}
+
+\paragraph{Magnetisering}
+Magnetiseringen $\vb{M}$ uppfyller
+\begin{align*}
+	\vb{m} = \integ{}{}{\tau'}{\vb{M}}.
+\end{align*}
+
+% TODO: Relevant?
+I en atom har elektronerna omloppstid
+\begin{align*}
+	T = \frac{2\pi r}{v},
+\end{align*}
+vilket ger strömmen
+\begin{align*}
+	\vb{I} = -\frac{e}{T}\ub{\phi} = -\frac{ev}{2\pi r}\ub{\phi}.
+\end{align*}
+Dessa ger då magnetiska momentet
+\begin{align*}
+	\vb{m} = \frac{1}{2}\int{\vb{r}\times I\dd{\vb{r}}} = -\frac{1}{2}erv\ub{z}.
+\end{align*}
+
+\paragraph{Vektorpotential från magnetisering}
+Vi har
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{M}\times\ub{R}}.
+\end{align*}
+Detta kan skrivas som
+\begin{align*}
+	\vb{A} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\vb{M}\times\gradp{\frac{1}{R}}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\curlp{\vb{M}} - \curlp{\left(\frac{1}{R}\vb{M}\right)}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{r}\curlp{\vb{M}}} - \frac{\mu_{0}}{4\pi}\tinteg{}{}{a'}{\frac{1}{R}\vb{M}}.
+\end{align*}
+Detta motsvarar magnetiska fältet från en volymström
+\begin{align*}
+	\vb{J}_{\text{bv}} = \curlp{\vb{M}}
+\end{align*}
+och en ytström
+\begin{align*}
+	\vb{J}_{\text{bs}} = \vb{M}\times\ub{n}.
+\end{align*}
+
+\paragraph{Multipolutveckling av vektorpotentialen}
+Vi har
+\begin{align*}
+	\frac{1}{R} = \sum\limits_{l = 0}^{\infty}\frac{r'^{l}}{r^{l + 1}}P_{l}(\cos{\theta'}),
+\end{align*}
+vilket för en strömslinga ger
+\begin{align*}
+	\vb{A} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\vb{l}æ}{\frac{I}{R}} \\
+	       &= \frac{\mu_{0}I}{4\pi}\sum\limits_{l = 0}^{\infty}\integ{}{}{\vb{l}'}{\frac{r'^{l}}{r^{l + 1}}P_{l}(\cos{\theta'})} \\
+	       &= \frac{\mu_{0}I}{4\pi}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{\vb{l}'}{r'^{l}P_{l}(\cos{\theta'})}.
+\end{align*}
+Den första termen ges av
+\begin{align*}
+	\vb{A}_{0} = \frac{\mu_{0}I}{4\pi}\frac{1}{r^{1}}\integ{}{}{\vb{l}'}{P_{0}(\cos{\theta'})} = \frac{\mu_{0}I}{4\pi}\frac{1}{r^{1}}\integ{}{}{\vb{l}'}{} = \vb{0}
+\end{align*}
+för en sluten strömslinga. Inte oförväntad, då vi inte känner till magnetiska monopoler. Den andra termen ges av
+\begin{align*}
+	\vb{A}_{1} &= \frac{\mu_{0}I}{4\pi}\frac{1}{r^{2}}\integ{}{}{\vb{l}'}{r'^{1}P_{1}(\cos{\theta'})} \\
+	           &= \frac{\mu_{0}I}{4\pi r^{2}}\integ{}{}{\vb{l}'}{r'\cos{\theta'}} \\
+	           &= \frac{\mu_{0}I}{4\pi r^{2}}\integ{}{}{\vb{l}'}{\vb{r}'\cdot\ub{r}} \\
+	           &= -\frac{\mu_{0}}{4\pi r^{2}}\ub{r}\times I\integ{}{}{\vb{a}'}{},
+\end{align*}
+vilket motsvarar en dipolterm. Vidare skulle man kunna skriva upp kvadrupoltermen också.
+
+\paragraph{$H$-fältet}
+Ampères lag ger
+\begin{align*}
+	\curl{\vb{B}} = \mu_{0}\vb{J}.
+\end{align*}
+Med resultatet ovan fås
+\begin{align*}
+	\curl{\vb{B}}                           &= \mu_{0}\vb{J}_{\text{fri}} + \mu_{0}\curl{\vb{M}}, \\
+	\curl(\frac{1}{\mu_{0}}\vb{B} - \vb{M}) &= \vb{J}_{\text{fri}}.
+\end{align*}
+Vi definierar då
+\begin{align*}
+	\vb{H} = \frac{1}{\mu_{0}}\vb{B} - \vb{M},
+\end{align*}
+vilket ger
+\begin{align*}
+	\curl{\vb{H}} = \vb{J}_{\text{fri}}.
+\end{align*}
+
+\paragraph{Amperes lag för $H$-fältet}
+Vi får
+\begin{align*}
+	I_{\text{fri}} = \vinteg{}{}{l}{\vb{H}}.
+\end{align*}
+
+\paragraph{Linjära magnetiserbara material}
+Betrakta ett material som uppfyller
+\begin{align*}
+	\vb{M} = \frac{1}{\mu{0}}\chi_{\text{m}}\vb{B}.
+\end{align*}
+Dessa uppfyller
+\begin{align*}
+	\vb{B} &= \mu_{0}(\vb{H} + \vb{M}), \\
+	\vb{M} &= \chi_{\text{m}}(\vb{H} + \vb{M}), \\
+	\vb{M} &= \frac{\chi_{\text{m}}}{1 - \chi_{\text{m}}}\vb{H} = \chi_{\text{m}}^{H}\vb{H}.
+\end{align*}
+Detta ger slutligen
+\begin{align*}
+	\vb{B} = \mu_{0}(1 + \chi_{\text{m}}^{H})\vb{H} = \mu_{0}\mu_{\text{r}}\vb{H} = \mu\vb{H},
+\end{align*}
+där $\mu_{\text{r}} = 1 + \chi_{\text{m}}^{H}$ kallas den relativa permeabiliteten och $\mu$ kallas permeabiliteten.
+
+\paragraph{Klassificering av magnetiska material}
+Det finns olika sorters magnetism i material. Bland dessa är:
+\begin{itemize}
+	\item diamagnetiska material, med $\chi_{\text{m}} < 0$, typiskt kring \num{-1e-5}.
+	\item paramagnetiska material, med $\chi_{\text{m}} > 0$, typiskt kring \num{1e-4}.
+	\item ferromagnetiska material, med $\chi_{\text{m}} >> 1$. Dessa är dock ofta icke-linjära.
+\end{itemize}
+
+\paragraph{Randvillkor för $H$-fältet}
+I en gränsyta fås
+\begin{align*}
+	(\vb{H}_{1} - \vb{H}_{2})\cdot\vb{n}_{12} = (\vb{M}_{2} - \vb{M}_{1})\cdot\vb{n}_{12},\ \vb{n}_{12}\times(\vb{H}_{1} - \vb{H}_{2}) = \mu_{0}\vb{J}_{\text{f}}.
+\end{align*}
+
+\paragraph{Ömsesidig induktans}
+Betrakta två strömslingor $C_{1}$ och $C_{2}$. En ström $I_{1}$ ger ett magnetiskt flöde $\Phi_{21}$ genom $C_{2}$. Vi har att
+\begin{align*}
+	\Phi_{12} = \vinteg{C_{2}}{}{l_{2}}{\vb{A}} = \vinteg{C_{2}}{}{l_{2}}{\frac{\mu_{0}I_{1}}{4\pi}\integ{C_{1}}{}{\vb{l}_{1}}{\frac{1}{R}}} = M_{21}I_{1},
+\end{align*}
+där $\vb{R} = \vb{r}_{2} - \vb{r}_{1}$ och $M_{21}$ är $C_{2}$:s ömsesidiga induktans från $C_{1}$. Med andra ord:
+\begin{align*}
+	M_{21} = \frac{\mu_{0}}{4\pi}\vinteg{C_{2}}{}{l_{2}}{\integ{C_{1}}{}{\vb{l}_{1}}{\frac{1}{R}}}.
+\end{align*}
+Det gäller att $M_{12} = M_{21}$.
+
+\paragraph{Egeninduktans}
+Om det går en ström i en slinga induceras även ett magnetiskt flöde från slingas egna fält. Vi döper denna $M_{11} = L_{1}$, och har $\Phi_{11} = L_{1}I_{1}$.
+
+\paragraph{Induktansmatris}
+Om man har ett problem med $n$ strömslingor, får man
+\begin{align*}
+	\Phi_{i} = \sum\limits_{j}M_{ij}I_{j},
+\end{align*}
+som kan skrivas som ett matrisproblem som involverar induktansmatrisen $M$.
+
+\paragraph{Krafter på magneter}
+% TODO: Beräkna

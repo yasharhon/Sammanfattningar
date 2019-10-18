@@ -7,6 +7,8 @@
 \usepackage{amsmath}
 \usepackage[arrowdel]{physics}
 
+\sisetup{exponent-product = \cdot}
+
 \newcommand{\emf}{\mathcal{E}}
 
 \newcommand{\ub}[1]{\vb{e}_{\vb{#1}}}
@@ -14,8 +16,10 @@
 \newcommand{\delp}[2]{\partial_{#1}^{\prime}#2}
 \newcommand{\gradp}[1]{\grad^{\prime}{#1}}
 \newcommand{\divp}[1]{\grad^{\prime}\cdot{#1}}
+\newcommand{\curlp}[1]{\grad^{\prime}\times{#1}}
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
 \newcommand{\vinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\cdot #4}
+\newcommand{\tinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\times #4}
 
 \title{Sammanfattning av EI1320 Teoretisk elektroteknik}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -49,6 +53,8 @@
 \input{./Parts/dielectrics.tex}
 
 \input{./Parts/magnetostatics.tex}
+
+\input{./Parts/magnets.tex}
 
 \input{./Parts/electronics.tex}
 

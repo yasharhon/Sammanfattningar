@@ -18,7 +18,7 @@ Vi definierar nu dipolmomentet $\vb{p} = q\vb{d}$, och får då
 	V = \frac{\vb{p}\cdot\ub{r}}{4\pi\varepsilon_{0}r^{2}}.
 \end{align*}
 
-Notera att vi kan skriva dipolmomentet som $\vb{p} = \sum q_{i}\vb{r}_{i}$.
+Notera att vi kan skriva dipolmomentet som $\vb{p} = \sum q_{i}\vb{r}_{i}^{\prime}$.
 
 \paragraph{Ideala dipoler}
 En ideal dipol fås i gränsen för en dipol när $d$ blir oändligt liten på ett sådant sätt att $\vb{p}$ hålls konstant.
@@ -40,18 +40,18 @@ Vi får då
 \paragraph{Dipolmoment för en laddningsfördelning}
 För en laddningsfördelning ges dipolmomentet av
 \begin{align*}
-	\vb{p} = \integ{}{}{V}{\vb{r}\rho}.
+	\vb{p} = \integ{}{}{\tau'}{\vb{r}'\rho}.
 \end{align*}
 
 \paragraph{Förflyttning av koordinatsystem och dipolmoment}
 Vid förflyttning av origo en sträcka $\vb{a}$ fås
 \begin{align*}
-	\vb{p}' = \integ{}{}{V}{\vb{r}'\rho} = \integ{}{}{V}{(\vb{r} - \vb{a})\rho} = \vb{p} - q\vb{a}.
+	\vb{p} = \integ{}{}{\tau'}{\vb{r}'\rho} = \integ{}{}{\tau'}{(\vb{r}_{0} - \vb{a})\rho} = \vb{p}_{0} - q\vb{a},
 \end{align*}
-Alltså beror dipolmomentet av origos position om det finns en netto mängd laddning i systemet.
+dær subskriptet $0$ indikerar ursprungliga koordinater. Alltså beror dipolmomentet av origos position om det finns en netto mängd laddning i systemet.
 
 \paragraph{Multipolutveckling}
-Betrakta en punkt $\vb{r}$ och en annan punkt $\vb{r}'$. Vid att definiera $\vb{R} = \vb{r} - \vb{r}'$ får vi att om de två punkterna inte är samma, är $\laplacian{\frac{1}{R}} = 0$ överallt förutom där $\vb{R} = \vb{0}$. Vid att lägga vårat koordinatsystem så att $\vb{r}'$ är parallell med $z$-axeln och definiera vinkeln mellan $\vb{r}$ och $\vb{r}'$ som $\gamma$ fås
+Vi vet att $\laplacian{\frac{1}{R}} = 0$ överallt förutom där $\vb{R} = \vb{0}$. Genom att lägga vårat koordinatsystem så att $\vb{r}'$ är parallell med $z$-axeln och definiera vinkeln mellan $\vb{r}$ och $\vb{r}'$ som $\gamma$ fås
 \begin{align*}
 	\frac{1}{R} =
 	\begin{cases}
@@ -59,7 +59,7 @@ Betrakta en punkt $\vb{r}$ och en annan punkt $\vb{r}'$. Vid att definiera $\vb{
 		\sum\limits_{l = 0}^{\infty}\frac{B_{l}}{r^{l}}P_{l}(\cos{\gamma}), &r > r'.
 	\end{cases}
 \end{align*}
-Speciellt, på $z$-axeln är $\gamma = 0$ och
+Speciellt, på den positiva $z$-axeln är $\gamma = 0$ och
 \begin{align*}
 	\frac{1}{R} = \frac{1}{r_{>} - r_{<}} = \frac{1}{r_{>}}\left(1 - \frac{r_{<}}{r_{>}}\right)^{-1} = \frac{1}{r_{>}}\sum\limits_{l = 0}^{\infty}\left(\frac{r_{<}}{r_{>}}\right)^{l} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}},
 \end{align*}
@@ -68,39 +68,39 @@ där $r_{<} = \min(r', r)$ och $r_{>} = \max(r', r)$. Vi utvidgar därmed lösni
 	\frac{1}{R} = \sum\limits_{l = 0}^{\infty}\frac{r_{<}^{l}}{r_{>}^{l + 1}}P_{l}(\cos{\gamma}).
 \end{align*}
 
-Vi söker nu potentialen utanför en sfär som omsluter en rumladdning. Vid att låta $\vb{r}$ peka utanför sfären och $\vb{r}'$ inuti fås $r_{<} = r',\ r_{>} = r$ och
+Vi söker nu potentialen utanför en sfär som omsluter en rumladdning. Då fås $r_{<} = r',\ r_{>} = r$ och
 \begin{align*}
-	V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{V'}{\frac{\rho}{R}} = \frac{1}{4\pi\varepsilon_{0}}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{V'}{(r')^{l}\rho P_{l}(\cos{\gamma})} = \sum\limits_{l = 0}^{\infty}V_{l}.
+	V = \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{\rho}{R}} = \frac{1}{4\pi\varepsilon_{0}}\sum\limits_{l = 0}^{\infty}\frac{1}{r^{l + 1}}\integ{}{}{\tau'}{(r')^{l}\rho P_{l}(\cos{\gamma'})} = \sum\limits_{l = 0}^{\infty}V_{l}.
 \end{align*}
-De olika $V_{l}$ kommer ge oss termer som ser ut som olika multipoler, och vi vill nu studera dem. Vi noterar först att om $e_{i}$ respektiva $e_{i}'$ är komponenterna av $\ub{r}$ respektiva $\ub{r}'$, kan vi skriva
+De olika $V_{l}$ kommer ge oss termer som ser ut som olika multipoler, och vi vill nu studera dem. Vi noterar först att om $e_{i}$ respektiva $e_{i}'$ är komponenterna av $\ub{r}$ respektiva $\ub{r'}$, kan vi skriva
 \begin{align*}
-	\cos(\gamma) &= e_{i}e_{i}',\ \cos[2](\gamma) = e_{i}e_{i}'e_{i}e_{j}',\ 1 = e_{i}e_{i} = e_{i}e_{j}\delta_{ij}.
+	\cos(\gamma) &= e_{i}e_{i}',\ \cos[2](\gamma) = e_{i}e_{i}'e_{j}e_{j}',\ 1 = e_{i}e_{i} = e_{i}e_{j}\delta_{ij}.
 \end{align*}
 
 För $l = 0$ får vi
 \begin{align*}
-	V_{0} = \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r}\integ{}{}{V'}{\rho},
+	V_{0} = \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r}\integ{}{}{\tau'}{\rho},
 \end{align*}
 alltså ett bidrag motsvarande en punktladdning med samma totala laddning i origo. För $l = 1$ fås
 \begin{align*}
-	V_{1} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}\integ{}{}{V'}{r'\rho P_{1}(\cos{\gamma})} \\
-	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'\cos{\gamma}\rho} \\
-	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r'e_{i}e_{i}'\rho} \\
-	      &= \frac{e_{i}}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{V'}{r_{i}'\rho} \\
-	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\ub{r}\cdot\integ{}{}{V'}{r_{i}'\rho}
+	V_{1} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}\integ{}{}{\tau'}{r'\rho P_{1}(\cos{\gamma})} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{\tau'}{r'\cos{\gamma}\rho} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{\tau'}{r'e_{i}e_{i}'\rho} \\
+	      &= \frac{e_{i}}{4\pi\varepsilon_{0}r^{2}}\integ{}{}{\tau'}{r_{i}'\rho} \\
+	      &= \frac{1}{4\pi\varepsilon_{0}r^{2}}\ub{r}\cdot\integ{}{}{\tau'}{\rho r_{i}'}
 \end{align*}
 alltså ett bidrag motsvarande en dipol med samma totala dipolmoment i origo. För $l = 2$ fås
 \begin{align*}
-	V_{2} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{3}}\integ{}{}{V'}{r'^{2}\rho P_{2}(\cos{\gamma})} \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{i}'r_{i}'\rho(3\cos[2](\gamma) - 1)} \\
-	V_{2} &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3\cos[2](\gamma) - 1)}  \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}e_{i}'e_{i}e_{j}' - e_{i}e_{j}\delta_{ij})} \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{r_{k}'r_{k}'\rho(3e_{i}'e_{j}' - \delta_{ij})} \\
-	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})}.
+	V_{2} &= \frac{1}{4\pi\varepsilon_{0}}\frac{1}{r^{3}}\integ{}{}{\tau'}{r'^{2}\rho P_{2}(\cos{\gamma})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{\tau'}{r_{i}'r_{i}'\rho(3\cos[2](\gamma) - 1)} \\
+	V_{2} &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{\tau'}{r_{k}'r_{k}'\rho(3\cos[2](\gamma) - 1)}  \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}\integ{}{}{\tau'}{r_{k}'r_{k}'\rho(3e_{i}e_{i}'e_{i}e_{j}' - e_{i}e_{j}\delta_{ij})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{\tau'}{r_{k}'r_{k}'\rho(3e_{i}'e_{j}' - \delta_{ij})} \\
+	      &= \frac{1}{8\pi\varepsilon_{0}r^{3}}e_{i}e_{j}\integ{}{}{\tau'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})}.
 \end{align*}
 Vi definierar nu kvadrupolmomentstensorn
 \begin{align*}
-	Q_{ij} = \frac{1}{2}\integ{}{}{V'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})},
+	Q_{ij} = \frac{1}{2}\integ{}{}{\tau'}{\rho(3r_{i}'r_{j}' - (r')^{2}\delta_{ij})},
 \end{align*}
 vilket ger
 \begin{align*}
@@ -124,7 +124,7 @@ Då kan vi skriva
 \end{align*}
 där $q_{lm}$ är det sfäriska multipolmomentet
 \begin{align*}
-	q_{lm} = \integ{}{}{V*}{\rho (r')^{l}})Y_{lm}^{*}(\theta', \phi').
+	q_{lm} = \integ{}{}{\tau'}{\rho (r')^{l}Y_{lm}^{*}(\theta', \phi')}.
 \end{align*}
 Varje $V_{l}$ har alltså $2l + 1$ oberoende komponenter, vilket på grund av multipolmomenttensorernas symmetri och spårlöshet är lika med antalet oberoende komponenter i multipolmomenttensorn.
 
@@ -198,7 +198,7 @@ vilket ger
 \end{align*}
 vilket motsvara coulombpotentialen från två ekvivalenta laddningsfördelningar
 \begin{align*}
-	\rho_{\text{b}} = -\div{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\vb{n}.
+	\rho_{\text{b}} = -\divp{\vb{P}},\ \sigma_{\text{b}} = \vb{P}\cdot\vb{n}.
 \end{align*}
 Vi kunde ta bort primmet från divergensoperatorn därför att divergensen kommer vara $0$ där $\vb{P} = \vb{0}$. Vi kalla dessa för bundna laddningsfördelningar. Nu kan vi beräkna elektriska fältet som
 \begin{align*}
@@ -222,7 +222,7 @@ vilket uppmanar oss att definiera
 \paragraph{Randvillkor för D-fältet}
 Vi kan visa att
 \begin{align*}
-	(D_{1} - D_{2})\cdot\vb{n} = \sigma_{\text{b}},\ (\vb{D}_{1} - \vb{D}_{2})\times\vb{n} = (\vb{P}_{1} - \vb{P}_{2})\times\vb{n}.
+	(\vb{D}_{1} - \vb{D}_{2})\cdot\vb{n}_{12} = \sigma_{\text{f}},\ (\vb{D}_{1} - \vb{D}_{2})\times\vb{n}_{12} = (\vb{P}_{1} - \vb{P}_{2})\times\vb{n}_{12}.
 \end{align*}
 
 \paragraph{Linjära dielektrika}
@@ -298,29 +298,47 @@ I tillägg har vi det övriga bidraget för att skapa det elektriska fältet, oc
 \end{align*}
 
 \paragraph{Krafter på ett dielektrikum}
-Betrakta ett dielektrikum någonstans i närheten av två perfekta ledare med laddning $\pm Q$ på de respektiva. Ledarna kan antingen vara isärkopplade eller kopplade ihop med ett batteri som upprätthåller en konstant spänningsskillnad $U$ mellan dem. Dielektrikumets position beskrivs av dets geometri och en referensvektor $\vb{r}$ (till exempel till dets geometriska centrum). Att beräkna elektriska fältet är allmänt svårt, men vi ska försöka undveka detta med ett trick.
+Betrakta ett dielektrikum någonstans i närheten av två perfekta ledare med laddning $\pm Q$ på de respektiva och spänningsskillnad $V$ mellan dem. Ledarna kan antingen vara isärkopplade eller kopplade ihop med ett batteri som upprätthåller en konstant spänningsskillnad. Systemet har en energi $W_{\text{e}}$. Dielektrikumets position beskrivs av dets geometri och en referensvektor $\vb{r}$ (till exempel till dets geometriska centrum). Att beräkna elektriska fältet är allmänt svårt, men vi ska försöka undveka detta med ett trick.
 
-Betrakta första fallet först. Om dielektrikumet förflyttas en sträcka $\dd{\vb{r}}$, gör elektriska fältet från ledarna ett arbete på det, som nödvändigtvis måste balanseras av ett mekaniskt arbete. Arbetet som görs på systemet är
+Betrakta dielektrikumet först. Om det förflyttas en sträcka $\dd{\vb{r}}$, görs ett arbete $\dd{W}$ av kraften $\vb{F}$. Kraftjämvikten ger
 \begin{align*}
-	\dd{W} = \grad{W}\cdot\dd{\vb{r}} = -\dd{W_{\text{e}}} = -\vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+	\vb{F} + \vb{F}_{\text{e}} = \vb{0},
 \end{align*}
-Samtidigt kan vi skriva systemets energi $W$ i termer av parameterna i systemets beskrivning. Därmed är kraften på dielektrikumet
+och därmed
 \begin{align*}
-	\vb{F}_{\text{e}} = -\grad{W} = -\grad{\frac{1}{2}\frac{Q^{2}}{C}} = \frac{1}{2}\frac{Q^{2}}{C^{2}}\grad{C} = \frac{1}{2}V^{2}\grad{C}.
+	\dd{W} = \vb{F}\cdot\dd{\vb{r}} = -\vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+\end{align*}
+och därmed
+\begin{align*}
+	\vb{F}_{\text{e}} = -\grad{W}.
 \end{align*}
 
-Betrakta nu det andra fallet. Om spänningen mellan ledarna hålls konstant, kommer translation av dielektrikumet behöva balansera arbetet både från translation i elektriska fältet och arbetet som krävs för att transportera laddning mellan ledarna för att hålla spänningsskillnaden mellan dem konstant. Vi får 
+Betrakta första fallet först. Om dielektrikumet förflyttas en sträcka $\dd{\vb{r}}$, görs ett arbete $\dd{W}$ av kraften $\vb{F}$, som måste vara lika med totala ändringen i elektrisk energi. Detta ger
 \begin{align*}
-	\dd{W} = U\dd{Q} - \dd{W_{\text{e}}} = U\dd{Q} - \vb{F}_{\text{e}}\cdot\dd{\vb{r}}.
+	\dd{W} = \dd{W_{\text{e}}}.
 \end{align*}
-Samtidigt ges vänstersidan av $\dd{W} = \frac{1}{2}U\dd{Q}$, så $U\dd{Q} = 2\dd{W} = 2\grad{W}\cdot\dd{\vb{r}}$, vilket ger
+Därmed gäller att
 \begin{align*}
-	\vb{F}_{\text{e}} = \grad{W} = \frac{1}{2}U^{2}\grad{C}.
+	\vb{F}_{\text{e}} = -\grad{W_{\text{e}}} = -\grad{\frac{1}{2}\frac{Q^{2}}{C}} = \frac{1}{2}\frac{Q^{2}}{C^{2}}\grad{C} = \frac{1}{2}V^{2}\grad{C}.
+\end{align*}
+
+Betrakta nu det andra fallet. Om spänningen mellan ledarna hålls konstant, kommer det totala arbetet på systemet komma både från dielektrikumets translation i elektriska fältet och arbetet som krävs för att transportera laddning mellan ledarna för att hålla spänningsskillnaden mellan dem konstant, som båda är positiva bidrag. Vi får 
+\begin{align*}
+	\dd{W} = -V\dd{Q} + \dd{W_{\text{e}}}.
+\end{align*}
+Samtidigt gäller det att $\dd{W_{\text{e}}} = \frac{1}{2}V\dd{Q}$, så
+\begin{align*}
+	\dd{W_{\text{e}}} = -\dd{W}.
+\end{align*}
+Om vi jämför detta med kraftjämvikten på dielektrikumet, ger detta
+\begin{align*}
+	\vb{F}_{\text{e}} = \grad{W_{\text{e}}} = \frac{1}{2}V^{2}\grad{C}.
 \end{align*}
 
 \paragraph{Moment på ett dielektrikum}
-Vid att göra en liknande analys som den ovan fås
+% TODO: Gör analys
+Genom att göra en liknande analys som den ovan fås
 \begin{align*}
 	\vb{N}_{\text{e}} = \pm\del{\phi}{W_{\text{e}}}\ub{z},
 \end{align*}
-där $+$ och $-$ är fallen där $Q$ respektiva $U$ är konstant.
+där $+$ och $-$ är fallen där $Q$ respektiva $V$ är konstant.

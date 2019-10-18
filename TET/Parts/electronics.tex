@@ -3,16 +3,16 @@
 \paragraph{Ledningsförmåga}
 Fria laddningar kan transporteras av krafter per laddning. Om det i ett ämne finns en krafttäthet $\vb{f}$ ger denna alltså upphov till en inducerad strömtäthet. Vi antar att denna är linjär ock skriver
 \begin{align*}
-	J_{i} = \sigma_{ij}f_{ij},
+	J_{i} = \sigma_{ij}f_{j},
 \end{align*}
-där $\sigma$ är ledningsförmågan, här uttrykt som en tensorstorhet. Den har enhet \si{\siemens\per\meter} eller \si{\per\ohm\per\meter}. En perfekt ledare har oändlig (och diagonal) sådan.
+där $\sigma$ är ledningsförmågan. Den har enhet \si{\siemens\per\meter} eller \si{\per\ohm\per\meter}. En perfekt ledare har oändlig (och diagonal) sådan.
 
 \paragraph{Resistans och Ohms lag}
 Betrakta ett batteri (en ideal spänningskälla) som är kopplad til två ideala ledare. De ideala ledarna har potential $V_{+}$ respektiva $V_{-}$, och är förbundna av ett material med ledningsförmåga $\sigma$. I det ledande området är $\vb{J} = \sigma\vb{E}$. Om kontaktytan mellan det ledande området och ledarna är $S_{+}$ respektiva $S_{-}$ fås
 \begin{align*}
 	U = V_{+} - V_{-} = -\vinteg{S_{-}}{S_{+}}{\vb{r}}{\vb{E}},\ I = \vinteg{S_{-}}{}{\vb{a}}{\vb{J}} = -\vinteg{S_{+}}{}{\vb{a}}{\vb{J}}.
 \end{align*}
-Vägintegralen för spänningen kan tas för att vara mellan två godtyckliga punkter på ytorna. Vi definierar då det ledande områdets resistans som
+Vägintegralen för spänningen kan tas för att vara mellan två godtyckliga punkter på ytorna. Vi definierar (av någon anledning) nu det ledande områdets resistans som
 \begin{align*}
 	R = \frac{U}{I}.
 \end{align*}
@@ -24,7 +24,7 @@ För att bevara $\div{\vb{J}} = 0$ fås kravet
 \end{align*}
 Randvillkoret för elektriska fältet ger även
 \begin{align*}
-	\vb{n}_{12}\times\left(\frac{1}{\sigma_{1}}\vb{J}_{1} - \frac{1}{\sigma_{2}}\vb{J}_{2}\right) = \vb{0}.
+	\vb{n}_{12}\times\left(\sigma_{1}^{-1}\vb{J}_{1} - \sigma_{2}^{-1}\vb{J}_{2}\right) = \vb{0}.
 \end{align*}
 
 \paragraph{Effektutveckling och Joules lag}
@@ -39,7 +39,7 @@ Då tillförs $q$ effekten
 
 Betrakta nu en volymström $\vb{J} = \rho\vb{v}$. Ett litet element i detta tillförs effekten
 \begin{align*}
-	\dd{P} = \rho\dd{V}\vb{v}\cdot\vb{E} = \dd{V}\vb{J}\cdot\vb{E}.
+	\dd{P} = \rho\dd{\tau}\vb{v}\cdot\vb{E} = \dd{\tau}\vb{J}\cdot\vb{E}.
 \end{align*}
 Vi kan nu införa effekttätheten
 \begin{align*}
@@ -47,15 +47,15 @@ Vi kan nu införa effekttätheten
 \end{align*}
 Denna integreras över ledarens volym för att ge
 \begin{align*}
-	P &= \integ{V}{}{V}{p} \\
-	  &= \integ{V}{}{V}{\vb{J}\cdot\vb{E}} \\
-	  &= -\integ{V}{}{V}{\vb{J}\cdot\grad{V}} \\
-	  &= -\integ{V}{}{V}{\div{V\vb{J}} - V\div{\vb{J}}} \\
-	  &= -\vinteg{S}{}{S}{V\vb{J}}.
+	P &= \integ{}{}{\tau}{p} \\
+	  &= \integ{}{}{\tau}{\vb{J}\cdot\vb{E}} \\
+	  &= -\integ{}{}{\tau}{\vb{J}\cdot\grad{V}} \\
+	  &= -\integ{}{}{\tau}{\div(V\vb{J}) - V\div{\vb{J}}} \\
+	  &= -\vinteg{}{}{a}{V\vb{J}}.
 \end{align*}
 Om det ledande området är omringad av en isolator har $\vb{J}$ ingen normalkomponent där, och
 \begin{align*}
-	P &= -\vinteg{S_{+}}{}{S}{V\vb{J}} - \vinteg{S_{-}}{}{S}{V\vb{J}} \\
+	P &= -\vinteg{S_{+}}{}{a}{V\vb{J}} - \vinteg{S_{-}}{}{a}{V\vb{J}} \\
 	  &= (V_{+} - V_{-})I,
 \end{align*}
 alltså
@@ -70,7 +70,7 @@ Betrakta en smal resistiv slinga med tvärsnitt $A$ som beskrivs av en naturlig 
 \end{align*}
 Detta ger
 \begin{align*}
-	\vb{f}\cdot\dd{\vb{l}} = \frac{I}{\sigma A}\dd{l}.
+	\vb{f}\cdot\dd{\vb{l}} = \frac{I}{A}\sigma^{-1}\dd{l}.
 \end{align*}
 Om vi jämför detta med resultatet för ett cylindriskt motstånd fås
 \begin{align*}
@@ -78,7 +78,7 @@ Om vi jämför detta med resultatet för ett cylindriskt motstånd fås
 \end{align*}
 Resistansen hos ett kort segment i slingan är alltså
 \begin{align*}
-	\dd{R}.
+	\dd{R} \frac{\dd{l}}{A\sigma}.
 \end{align*}
 Vi får nu
 \begin{align*}
