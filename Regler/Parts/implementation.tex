@@ -1,0 +1,43 @@
+\section{Implementering}
+Mycket av modern reglerteknik görs på dator, så här kommer vi diskutera verktyg för att göra en datorbaserad implementering av en regulator. I en dator tidsdiskretiseras allt, och det kommer därför vara viktigt att kunna approximera derivator.
+
+\paragraph{Sampling}
+Sampling är processen att mäta en signal med jämna intervall. Processen karakteriseras av en frekvens $f = \frac{1}{T}$, som är hur ofta man samplar.
+
+\paragraph{Nyquistfrekvensen}
+Det visar sig att signaler med högre frekvens än $f = \frac{1}{2T}$ ej kan skiljas från signaler med lägre frekvens. Denna frekvensen kalls Nyquistfrekvensen.
+
+\paragraph{Introduktion av operatorer}
+Vi definierar
+\begin{align*}
+	py = \dot{y},\ q_{T}y = y(t + T).
+\end{align*}
+Dessa operatorerna kommer vara viktiga när vi gör diskretisering.
+
+\paragraph{Eulers formel bakåt}
+Eulers formel bakåt gör approximationen
+\begin{align*}
+	\dot{y} \approx \Delta_{\text{E}}y = \frac{1}{T}(y(t) - y(t - T)).
+\end{align*}
+I termer av operatorer kan Eulers formel bakåt skrivas som
+\begin{align*}
+	p \approx \Delta_{\text{E}} = \frac{1}{T}(1 - q_{T}^{-1}).
+\end{align*}
+
+\paragraph{Tustins formel}
+Tustins formel gör den implicita approximationen
+\begin{align*}
+	\dot{y} \approx \Delta_{\text{T}}y
+\end{align*}
+så att
+\begin{align*}
+	\frac{1}{2}(\Delta_{\text{T}}y(t) + \delta_{\text{T}}y(t - T)) = \frac{1}{T}(y(t) - y(t - T)).
+\end{align*}
+I termer av operatorer kan vi skriva
+\begin{align*}
+	\frac{1}{2}\Delta_{\text{T}}(1 + q_{T}^{-1}) = \frac{1}{T}(1 - q_{T}^{-1}),
+\end{align*}
+och därmed
+\begin{align*}
+	p \approx \Delta_{\text{T}} = \frac{2}{T}\frac{1 - q_{T}^{-1}}{1 + q_{T}^{-1}}.
+\end{align*}
