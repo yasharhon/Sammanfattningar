@@ -1,7 +1,7 @@
-\section{Grundläggande dynamik}
+\section{Grunderna i elektrodynamik}
 
 \paragraph{Lite om kvasistatiska fält}
-Vi kommer här betrakta kvasistatiska fall, alltså fall där $\rho$ och $\vb{J}$ ändras långsamt. I såna fall extrapolerar vi Biot-Savarts lag trivialt. Coulombs lag extrapoleras även trivialt, men totala elektriska fältet får även en extra term från ändringen av magnetiska fältet, som vi kommer se.
+Vi kommer här betrakta kvasistatiska fall, alltså fall där $\rho$ och $\vb{J}$ ändras långsamt. I såna fall kommer vi försöka bilda en dynamisk teori genom att extrapolera Biot-Savarts och Coulombs lagar trivialt, fast nu med integration av tidsberoende källor. Notera att det totala elektriska fältet även får en extra term från ändringen av magnetiska fältet, som vi kommer se.
 
 \paragraph{Elektromagnetisk induktion}
 Betrakta en strömslinga $C$ som rör sig godtyckligt och ändrar form under en liten tid $\dd{t}$. Vi är nu intresserade av ändringen i magnetiska flödet
@@ -34,7 +34,7 @@ Betrakta fallet då en slinga rör sig i ett statiskt fält. Vi får då
 \begin{align*}
 	\int\limits_{C(t)}{\dd{\vb{l}}\cdot(\vb{v}\times\vb{B})} = -\dv{\Phi}{t}.
 \end{align*}
-Vi känner igen vänstra termen som elektromotoriska spänningen, alltså integralen av kraft per laddning över slingan, och får
+Vi känner igen vänstra termen som elektromotoriska kraften, alltså linjeintegralen av kraft per laddning över slingan, och får
 \begin{align*}
 	\emf = -\dv{\Phi}{t}.
 \end{align*}
@@ -55,17 +55,15 @@ Om integrationsbanan är godtycklig, ger det
 \end{align*}
 Detta är en dynamisk fältlag för det elektriska och magnetiska fältet.
 
-\paragraph{Potentialer för dynamiska fält}
-För långsamt varierande $\rho$ och $\vb{J}$ ser uttrycken för magnetiska fältet och elektriska fältets rotationsfria del lika ut som de gjorde i statiken, fast med tidsberoende källor. De motsvarande potentialerna kommer utvidgas på samma sätt. Om vi nu tittar på elektriska fältets icke-rotationsfria del, fås
+\paragraph{Elektriska fältets nya term}
+Vi ser att elektriska fältet har nollskild rotation i dynamiken, så vi delar upp det i en rotationsfri del och en divergensfri del. Om vi nu tittar på den divergensfria delen, fås
 \begin{align*}
-	\div{\vb{E}} = \div(-\del{t}{\vb{B}}) = -\del{t}{\div{\vb{B}}} = 0.
-\end{align*}'
-I analogi med Biot-Savarts lag fås då
-\begin{align*}
-	\vb{E} = -\frac{1}{4\pi}\integ{}{}{V}{\del{t}{\vb{B}}\times\frac{1}{R^{2}}\ub{R}}.
+	\vb{E} = -\frac{1}{4\pi}\integ{}{}{V}{\del{t}{\vb{B}}\times\frac{1}{R^{2}}\ub{R}}
 \end{align*}
+i analogi med Biot-Savarts lag. Den rotationsfria har redan beskrivits.
 
-Vi kan även skriva
+\paragraph{Potentialer för dynamiska fält}
+Vi har att
 \begin{align*}
 	\curl{\vb{E}} + \del{t}{\vb{B}}(t) = \curl(\vb{E} + \del{t}{\vb{A}}) = \vb{0}.
 \end{align*}
@@ -75,14 +73,13 @@ Detta ger
 \end{align*}
 och därmed måste
 \begin{align*}
-	\vb{E} = -\del{t}{\vb{A}}).
+	\vb{E} = -\del{t}{\vb{A}}.
 \end{align*}
 Med generaliseringen av $\vb{A}$ fås
 \begin{align*}
 	\vb{E} = -\frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\del{t}{\vb{J}}}.
 \end{align*}
-
-I allmänhet arbetar vi med potentialerna
+Vi ser då att i dynamiken ges sambandet mellan fält och potentialer av
 \begin{align*}
 	\vb{B} = \curl{\vb{A}},\ \vb{E} = -\grad{V} - \del{t}{\vb{A}}.
 \end{align*}
@@ -94,11 +91,11 @@ Vi får i ett system med $n$ slingor
 \end{align*}
 Vi kan ställa upp detta med hjälp av egeninduktansen som
 \begin{align*}
-	\dv{I_{i}}{t} + \frac{R_{i}}{L_{i}} = \frac{\emf_{\text{övriga}}}{L_{i}}.
+	\dv{I_{i}}{t} + \frac{I_{i}}{R_{i}L_{i}} = \frac{\emf_{\text{övriga}}}{L_{i}}.
 \end{align*}
 
 \paragraph{Magnetisk energi}
-Den magnetiska energin $W_{\text{m}}$ är arbetet som krävs för att starta en strömkälla $\vb{J}$. Magnetiska fältet gör inget arbete i statiska fall, och därmed kan vi endast betrakta den i tidsberoende fall.
+Den magnetiska energin $W_{\text{m}}$ är arbetet som krävs för att starta en strömkälla $\vb{J}$. Magnetiska fältet gör inget arbete i statiska fall, och därmed kan vi endast betrakta magnetisk energi i dynamiken.
 
 Under igångsättningen finns ett inducerat elektriskt fält $\vb{E} = -\del{t}{\vb{A}}$. För att upprätthålla $\vb{J}$ mot det elektriska fältet tillförs effekten
 \begin{align*}
@@ -108,7 +105,7 @@ Med Ampères lag skriver vi detta som
 \begin{align*}
 	P &= \frac{1}{\mu_{0}}\integ{}{}{\tau}{(\curl{\vb{B}})\cdot\del{t}{\vb{A}}} \\
 	  &= \frac{1}{\mu_{0}}\integ{}{}{\tau}{\div(\vb{B}\times\del{t}{\vb{A}}) + \vb{B}\cdot\curl(\del{t}{\vb{A}})} \\
-	  &= \frac{1}{\mu_{0}}\vinteg{}{}{S}{\vb{B}\times\del{t}{\vb{A}}} + \frac{1}{\mu_{0}}\integ{}{}{\tau}{\vb{B}\cdot\del{t}{\vb{B}}}.
+	  &= \frac{1}{\mu_{0}}\vinteg{}{}{a}{\vb{B}\times\del{t}{\vb{A}}} + \frac{1}{\mu_{0}}\integ{}{}{\tau}{\vb{B}\cdot\del{t}{\vb{B}}}.
 \end{align*}
 När vi utvidgar integrationsvolymen mot oändligheten försvinner ytintegralen, och kvar står
 \begin{align*}
@@ -123,6 +120,10 @@ som alternativt kan skrivas som
 	W_{\text{m}} = \frac{1}{2}\integ{}{}{\tau}{\vb{J}\cdot\vb{A}}.
 \end{align*}
 
+\paragraph{Magnetisk energi i material}
+
+\paragraph{Krafter på magneter}
+
 \paragraph{Magnetisk energi för en slinga med tjocklek}
 Vi delar strömslingan i små delar $V_{i}$ med tvärsnitt $S_{i}$. Magnetiska energin ges av
 \begin{align*}
@@ -132,9 +133,11 @@ Varje element för en ström $\vb{J}_{i}$, och bidrar då med fält $\vb{A}_{i}$
 \begin{align*}
 	\frac{1}{2}\sum\limits_{i}\sum\limits_{j}\integ{V_{i}}{}{\tau}{\vb{J}_{i}\cdot\vb{A}_{j}} = \sum\limits_{i}\sum\limits_{j}W_{\text{m}, ij}.
 \end{align*}
-Egenenergierna $W_{\text{m}, ii}$ motsvarar uttrycken vi har härlett innan. Detta sättet är att föredra framför att räkna på flödet i slingor (vilket också skulle kunna funka om man delar upp strömtätheten i skivor). Om vi vidare antar att $\vb{A}$ är ungefär konstant över varje tvärsnitt fås
+Egenenergierna $W_{\text{m}, ii}$ motsvarar uttrycken vi har härlett innan, alltså integralen av kvadratet av något bidrag till magnetiska fältet. Detta sättet är att föredra framför att räkna på flödet i slingor (vilket också skulle kunna funka om man delar upp strömtätheten i skivor).
+
+Om vi vidare antar att $\vb{A}$ är ungefär konstant över varje tvärsnitt fås
 \begin{align*}
-	\vb{J}_{i}\dd{\tau} = I_{i}\dd{\vb{l}}.
+	\vb{J}_{i}\dd{\tau} = \vb{J}_{i}S_{i}\cdot\dd{vb{l}} = I_{i}\dd{\vb{l}}.
 \end{align*}
 Därmed kan vi skriva
 \begin{align*}
@@ -146,16 +149,20 @@ För systemet fås då
 \end{align*}
 Vi vet att detta är strikt positivt, så induktansmatrisen måste vara positivt definit.
 
-Vi kan även notera att egeninduktansen ges av
+\paragraph{Induktanser från energitermer}
+Med detta kan vi definiera
 \begin{align*}
-	L_{i} = \frac{2W_{\text{m}, ii}}{I_{i}^{2}},
+	M_{ij} = \frac{2W_{\text{m}, ij}}{I_{i}I_{j}}.
 \end{align*}
-men jag vet inte om det har någon relevans för något.
+Det låter oss även definiera egeninduktanserna enligt
+\begin{align*}
+	L_{i} = \frac{2W_{\text{m}, ii}}{I_{i}^{2}}.
+\end{align*}
 
 \paragraph{Generalisering av Ampères lag}
 I statiska situationer har vi sett att Ampères lag är konsekvent med att strömmarna är divergensfria. I dynamiska situationer är inte strömmarna nödvändigtvis divergensfria, så vi kommer försöka göra en ny ad hoc dynamisk Ampères lag.
 
-Vi har
+Genom att utgå från vår generalisering av Biot-Savarts lag fås
 \begin{align*}
 	\curl{\vb{B}} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\curl(\vb{J}\times\frac{1}{R^{2}}\ub{R})} \\
 	              &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\div(\frac{1}{R^{2}}\ub{R})\vb{J} - (\vb{J}\cdot\grad)\frac{1}{R^{2}}\ub{R}} \\
@@ -165,15 +172,15 @@ Vi betecknar den andra termen som $\vb{I}$. Komponentvis har vi
 \begin{align*}
 	I_{i} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{J_{j}\del{j}{\frac{1}{R^{3}}R_{i}}} \\
 	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\del{j}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{1}{R^{3}}R_{i}\del{j}{J_{j}}} \\
-	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{S_{i}}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{3}}R_{i}\div{\vb{J}}}.
+	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{a_{i}'}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{3}}R_{i}\div{\vb{J}}}.
 \end{align*}
 Genom att skicka integrationsområdet mot oändligheten försvinner första termen, vilket ger
 \begin{align*}
-	\curl{\vb{B}} &= \mu_{0}\vb{J} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\div{\vb{J}}\frac{1}{R^{3}}\ub{R}}.
+	\curl{\vb{B}} &= \mu_{0}\vb{J} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\div{\vb{J}}\frac{1}{R^{2}}\ub{R}}.
 \end{align*}
 Med kontinuitetsekvationen fås
 \begin{align*}
-	\curl{\vb{B}} &= \mu_{0}\vb{J} + \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\del{t}{\rho}\frac{1}{R^{3}}\ub{R}}.
+	\curl{\vb{B}} &= \mu_{0}\vb{J} + \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\del{t}{\rho}\frac{1}{R^{2}}\ub{R}}.
 \end{align*}
 Vi känner igen andra termen som proportionell mot en tidsderivata av elektriska fältet, och en möjlig kandidat till en ny Ampères lag är
 \begin{align*}
@@ -183,7 +190,7 @@ Vi känner igen andra termen som proportionell mot en tidsderivata av elektriska
 Observera att detta inte är en härledning, då vi har utgått från dessa generaliserade varianterna av Coulombs och Biot-Savarts lagar. Dessa uppfyller till exempel inte $\curl{\vb{E}} = -\del{t}{\vb{B}}$. För att uppfylla detta måste induktiva korrektionstermen läggas till, men då kommer inte den nya Ampères lag att gälla, så man får en jobbig iterativ process med korrektioner.
 
 \paragraph{Maxwells ekvationer}
-All vår kunnskap om elektrostatik- och dynamik för att skriva ned de ekvationerna som beskriver det vi kan:
+All vår kunnskap om elektrostatik- och dynamik slås nu ihop för att skriva ned de ekvationerna som beskriver det vi vet:
 \begin{align*}
 	\curl{\vb{E}} + \del{t}{\vb{B}} = \vb{0}, \\
 	\div{\vb{B}} = 0, \\
@@ -203,8 +210,8 @@ Vi kan tolka detta som
 \end{align*}
 där $w_{\text{mek}}$ är energitätheten. Med hjälp av Maxwells ekvationer skriver vi
 \begin{align*}
-	\del{t}{w_{\text{mek}}} &= \frac{1}{\mu_{0}}\vb{E}\cdot\curl{B} - \varepsilon_{0}\vb{E}\cdot\del{t}{\vb{E}} \\
-	                        &= \frac{1}{\mu_{0}}\left(\vb{B}\cdot\curl{E} - \div(\vb{E}\times\vb{B})\right) - \frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} \\
+	\del{t}{w_{\text{mek}}} &= \frac{1}{\mu_{0}}\vb{E}\cdot\curl{\vb{B}} - \varepsilon_{0}\vb{E}\cdot\del{t}{\vb{E}} \\
+	                        &= \frac{1}{\mu_{0}}\left(\vb{B}\cdot\curl{\vb{B}} - \div(\vb{E}\times\vb{B})\right) - \frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} \\
 	                        &= -\frac{1}{\mu_{0}}\div(\vb{E}\times\vb{B}) - \del{t}{\left(\frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} + \frac{1}{2\mu_{0}}B^{2}\right)}.
 \end{align*}
 Vi har en fältenergitäthet från de första två termerna, som vi förstår väl, men det finns även en extra term här. Den är en flödestäthet av energi. Vi kallar den då Poyntings vektor
