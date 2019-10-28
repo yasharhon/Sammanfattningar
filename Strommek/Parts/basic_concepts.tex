@@ -1,0 +1,86 @@
+\section{Grundläggande koncept}
+
+\paragraph{Fluider}
+Stela kroppar ger typiskt motstånd om de utsätts för skjuvning. Vi definierar fluider som ämnen som inte gör detta utan deformeras snabbare ju mer skjuvspänning de utsätts för.
+
+\paragraph{Kontinua}
+Ett kontinuum är ett medium så att egenskaper som temperatur och tryck är definierade i varje punkt i mediet som ett fält. När vi nu vet att all materia består av atomer, kan vi förstå kontinuumsbaserad teori som en approximation där fält tas som medelvärden över regioner av rummet. Detta är typiskt en bra approximation så länge alla relevanta storleksskalor är mycket större än atomära storheter.
+
+\paragraph{Hastighetsfältet}
+Hastighetsfältet $\vb{u}$ är ett vektorfält som anger i vilken riktning och hur snabbt ett fluid flödar. Vi betecknar typiskt dets komponenter som $u, v, w$.
+
+\paragraph{Strömlinjer}
+Strömlinjer är linjer som är så att hastigheten är tangentiell till linjen.
+
+\paragraph{Ekvation för strömlinjen}
+För en strömlinje ger formlikhet att
+\begin{align*}
+	\dv{y}{x} = \frac{v}{u}.
+\end{align*}
+
+\paragraph{Tidsändring och materiell derivata}
+Betrakta ett fluidelement. Om det vid en given tid befinner sig i $\vb{r}$, kommer det under en tid $\cha{t}$ förflytta sig en sträcka $\cha{\vb{r}}$. Värdet av något fält $\phi$ i det fluidelementet kommer då vara
+\begin{align*}
+	\phi(\vb{r} + \cha{\vb{r}}, t + \cha{t}) = \phi(\vb{r}, t) + \del{t}{\phi}\cha{t} + \del{i}{\phi}\cha{x_{i}}.
+\end{align*}
+Den totala tidsderivatan av $\phi$ för det givna elementet fås genom att beräkna ändringen av fältet och dela på den lilla tidsskillnaden. Vi får då
+\begin{align*}
+	\dv{\phi}{t} = \del{t}{\phi} + \del{i}{\phi}\frac{\cha{x_{i}}}{\cha{t}} = \del{t}{\phi} + \del{i}{\phi}u_{i} = \del{t}{\phi} + (\vb{u}\cdot\grad)\phi.
+\end{align*}
+Detta kallar vi för den materiella derivatan av $\phi$.
+
+\paragraph{Acceleration}
+Accelerationen är materiella derivatan av hastighetsfältet.
+
+\paragraph{Kontrollvolymer}
+I strömningsmekanik kommer vi betrakta fixa kontrollvolymer, som kommer betecknas $V$, och materiella kontrollvolymer, som betecknas $\mathcal{V}$. En materiell kontrollvolym rör sig med fluidet, så att dens gränsyta ändras.
+
+\paragraph{Tidsderivator av integraler}
+Det gäller att
+\begin{align*}
+	\dv{t}\integ{V}{}{V}{\phi}                     &= \integ{V}{}{V}{\del{t}{\phi}}, \\
+	\dv{t}\integ{\mathcal{V}}{}{\mathcal{V}}{\phi} &= \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\phi}} + \vinteg{\mathcal{S}}{}{\mathcal{S}}{\phi\vb{u}} = \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\phi} + \div(\phi\vb{u})}.
+\end{align*}
+
+\paragraph{Inkompressibla fluider}
+En fluid är inkompresibel om volymsmåttet av en godtycklig materiell kontrollvolym ej ändras med tiden. Genom att använda tidsderivatorna ovan kan man visa att detta ger
+\begin{align*}
+	\div{\vb{u}} = 0.
+\end{align*}
+
+\paragraph{Massa}
+Massan av en fluid inom en volym $V$ ges av
+\begin{align*}
+	\integ{V}{}{V}{\rho}
+\end{align*}
+där $\rho$ är tätheten.
+
+\paragraph{Kontinuitetsekvationen för en inkompressibel fluid}
+Eftersom ingen vätska strömmar ut eller in genom en kontrollvolym i en inkompressibel fluid måste massan av volymen vara konstant. Detta ger
+\begin{align*}
+	\integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
+\end{align*}
+Om detta gäller överallt, måste integranden vara noll överallt. Detta kan skrivas som
+\begin{align*}
+	\mdv{\rho}{t} + \rho\div{\vb{u}} = 0.
+\end{align*}
+För en inkompressibel fluid är alltså
+\begin{align*}
+	\mdv{\rho}{t} = 0.
+\end{align*}
+I praktiken antar vi att en inkompressibel fluid har ungefär konstant täthet överallt. Om alla relevanta hastigheter är mycket mindre än ljudhastigheten i mediet, kan fluidet approximeras som inkompressibelt.
+
+Kontinuitetsekvationen kan även härledas ur betraktningar av produktion och förlust av fluid i en fix kontrollvolym, alla Vektoranalys.
+
+\paragraph{Strömfunktionen}
+Definiera strömfunktionen $\Psi$ så att
+\begin{align*}
+	\del{x}{\Psi} = u,\ \del{y}{\Psi} = -v.
+\end{align*}
+Man kan visa att denna är konstant längsmed en strömlinje.
+
+\paragraph{Rörelsemängd}
+Rörelsemängden av en fluid inom en volym $V$ ges av
+\begin{align*}
+	\integ{V}{}{V}{\rho\vb{u}}.
+\end{align*}
