@@ -11,6 +11,7 @@
 
 \newcommand{\emf}{\mathcal{E}}
 
+\newcommand{\cc}[1]{#1^{\star}}
 \newcommand{\ub}[1]{\vb{e}_{\vb{#1}}}
 \newcommand{\del}[3][]{\partial_{#2}^{#1}#3}
 \newcommand{\delp}[2]{\partial_{#1}^{\prime}#2}
@@ -20,6 +21,8 @@
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
 \newcommand{\vinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\cdot #4}
 \newcommand{\tinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\times #4}
+\newcommand{\fou}[1]{\mathcal{F}\left(#1\right)}
+\newcommand{\fouinv}[1]{\mathcal{F}^{-1}\left(#1\right)}
 
 \title{Sammanfattning av EI1320 Teoretisk elektroteknik}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -59,5 +62,7 @@
 \input{./Parts/electronics.tex}
 
 \input{./Parts/basic_dynamics.tex}
+
+\input{./Parts/waves.tex}
 
 \end{document}

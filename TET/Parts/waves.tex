@@ -1,0 +1,70 @@
+\section{Elektromagnetiska vågor}
+
+\paragraph{Elektromagnetiska vågekvationer}
+Det gäller allmänt att
+\begin{align*}
+	\curl(\curl(\vb{F})) = \grad(\div{\vb{F}}) - \laplacian{\vb{F}}.
+\end{align*}
+Maxwells ekvationer ger
+\begin{align*}
+	\curl(\curl{\vb{E}}) &= -\curl(\del{t}{\vb{B}}) = -\del{t}{\curl{\vb{B}}} = -\mu_{0}\del{t}{\vb{J}} - \mu_{0}\varepsilon_{0}\del[2]{t}{\vb{E}}, \\
+	\curl(\curl{\vb{B}}) &= \curl(\mu_{0}\vb{J} + \mu_{0}\varepsilon_{0}\del{t}{\vb{E}}) = \mu_{0}\curl{\vb{J}} - \mu_{0}\varepsilon_{0}\del[2]{t}{\vb{B}},
+\end{align*}
+vilket ger vågekvationerna
+\begin{align*}
+	(\laplacian - \mu_{0}\varepsilon_{0}\del[2]{t}{})\vb{E} &= \frac{1}{\varepsilon_{0}}\grad{\rho} + \mu_{0}\del{t}{\vb{J}}, \\
+	(\laplacian - \mu_{0}\varepsilon_{0}\del[2]{t}{})\vb{B} &= -\mu_{0}\curl{\vb{J}}.
+\end{align*}
+
+\paragraph{Plana vågors våghastighet}
+Man kan visa att en plan våg i källfritt rum propagerar med farten
+\begin{align*}
+	c = \frac{1}{\sqrt{\mu_{0}\varepsilon_{0}}}.
+\end{align*}
+
+\paragraph{Fouriertransformering av fälten}
+Fouriertransformering ger
+\begin{align*}
+	\vb{E}_{\omega} = \integ{-\infty}{\infty}{t}{\vb{E}e^{i\omega t}},
+\end{align*}
+med inverstransform
+\begin{align*}
+	\vb{E} = \frac{1}{2\pi}\integ{-\infty}{\infty}{\omega}{\vb{E}_{\omega}e^{-i\omega t}}.
+\end{align*}
+Det motsvarande gäller även för magnetfältet. Vi använder beteckningen
+\begin{align*}
+	\vb{E}_{\omega} = \fou{\vb{E}},\ \vb{E} = \fouinv{\vb{E}_{\omega}}.
+\end{align*}
+Eftersom fälten är reella, måste det gälla att
+\begin{align*}
+	\vb{E} = \frac{1}{\pi}\Re\left(\integ{0}{\infty}{t}{\vb{E}_{\omega}e^{-i\omega t}}\right).
+\end{align*}
+
+Vi kan visa följande egenskaper i källfria rum:
+\begin{align*}
+	\fou{\vb{E}} = -i\omega\vb{E}_{\omega},\ \curl{\vb{E}_{\omega}} = i\omega\vb{B}_{\omega},\ \curl{\vb{B}_{\omega}} = -i\frac{\omega}{c^{2}}\vb{E}_{\omega},\ \div{\vb{E}} = \div{\vb{B}} = 0.
+\end{align*}
+
+\paragraph{Strikt tidsharmonisering}
+En strikt tidsharmonisering är en idealisering av en given fältkomponent $F$ på formen
+\begin{align*}
+	F = F_{0}\cos{\omega_{0}t + \alpha} = \Re{F_{0}e^{-\omega_{0}t - i\alpha}}.
+\end{align*}
+Genom att baka ihop allt førutom det harmoniska tidsberoende får man en komplex amplitud för vågen. Denna har belop $F_{0}$ och argument $-\alpha$.
+
+\paragraph{Plana vågor}
+En plan våg ges av
+\begin{align*}
+	\vb{E}_{\omega} = \Re{\vb{E}_{0}e^{i(\vb{k}\cdot\vb{r} - \omega t)}},
+\end{align*}
+där amplituden är en konstant. För en sån ger Maxwells ekvationer
+\begin{align*}
+	\vb{k}\times\vb{E}_{\omega} = \omega\vb{B},\ \vb{k}\times\vb{B} = -\omega c^{2}\vb{E}_{\omega}.
+\end{align*}
+
+\paragraph{Tidsmedelvärde av harmoniska storheter}
+Låt $a$ och $b$ vara harmoniska storheter med periodtid $T$. Då kan man visa att
+\begin{align*}
+	\expval{ab} = \frac{1}{2}\Re{\cc{A}B}
+\end{align*}
+där $A$ och $B$ är storheternas amplituder.
