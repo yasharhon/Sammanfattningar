@@ -55,22 +55,36 @@ Massan av en fluid inom en volym $V$ ges av
 \end{align*}
 där $\rho$ är tätheten.
 
-\paragraph{Kontinuitetsekvationen för en inkompressibel fluid}
-Eftersom ingen vätska strömmar ut eller in genom en kontrollvolym i en inkompressibel fluid måste massan av volymen vara konstant. Detta ger
+\paragraph{Kontinuitetsekvationen}
+Eftersom randen för en materiell kontrollvolym följer med den strömmande vätskan måste massan av volymen vara konstant. Detta ger
 \begin{align*}
 	\integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
 \end{align*}
 Om detta gäller överallt, måste integranden vara noll överallt. Detta kan skrivas som
 \begin{align*}
-	\mdv{\rho}{t} + \rho\div{\vb{u}} = 0.
+	\mdv{\rho} + \rho\div{\vb{u}} = 0.
 \end{align*}
-För en inkompressibel fluid är alltså
+
+\paragraph{Kontinuitetsekvationen för en inkompressibel fluid}
+För en inkompressibel fluid är då
 \begin{align*}
-	\mdv{\rho}{t} = 0.
+	\mdv{\rho} = 0.
 \end{align*}
 I praktiken antar vi att en inkompressibel fluid har ungefär konstant täthet överallt. Om alla relevanta hastigheter är mycket mindre än ljudhastigheten i mediet, kan fluidet approximeras som inkompressibelt.
 
 Kontinuitetsekvationen kan även härledas ur betraktningar av produktion och förlust av fluid i en fix kontrollvolym, alla Vektoranalys.
+
+\paragraph{Hjälpsats för fältintegraler i inkompressibla fluider}
+Det gäller att
+\begin{align*}
+	\dv{t}\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\phi} &= \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho\phi} + \div(\rho\phi\vb{u})} \\
+	                                               &= \integ{\mathcal{V}}{}{\mathcal{V}}{\rho\del{t}{\phi} + \phi\del{t}{\rho} + \phi\div(\rho\vb{u}) + (\rho\vb{u}\cdot\grad)\phi} \\
+	                                               &= \integ{\mathcal{V}}{}{\mathcal{V}}{\rho\mdv{\phi} + \phi\del{t}{\rho} + \phi\div(\rho\vb{u})}.
+\end{align*}
+Kontinuitetsekvationen ger att de två andra termerna försvinner och
+\begin{align*}
+	\dv{t}\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\phi} =\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\mdv{\phi}}.
+\end{align*}
 
 \paragraph{Strömfunktionen}
 Definiera strömfunktionen $\Psi$ så att
@@ -83,4 +97,62 @@ Man kan visa att denna är konstant längsmed en strömlinje.
 Rörelsemängden av en fluid inom en volym $V$ ges av
 \begin{align*}
 	\integ{V}{}{V}{\rho\vb{u}}.
+\end{align*}
+
+\paragraph{Spänningstensorn}
+För en (liten) volym med ytnormal $\vb{n}$ gäller
+\begin{align*}
+	f_{i} = \tau_{ji}n_{j}
+\end{align*}
+där $\tau$ är spänningstensorn. Spänningstensorn är ett tensorfält då den ger ett kraftfält i fluiden som måste integreras för att få totala kraften. Den totala kraften ges av
+\begin{align*}
+	F_{i} = \integ{S}{}{S_{j}}{\tau_{ji}} = \integ{V}{}{V}{\del{j}{\tau_{ji}}}.
+\end{align*}
+
+\paragraph{Newtons andra lag}
+Newtons andra lag för en fluid ger
+\begin{align*}
+	\dv{t}\integ{\V}{}{\V}{\rho u_{i}} = \integ{\V}{}{\V}{\rho g_{i} + \del{j}{\tau_{ji}}},
+\end{align*}
+där $\vb{g}$ är volymkraften. Med hjälp av hjälpsatsen från innan fås
+\begin{align*}
+	\integ{\V}{}{\V}{\rho\mdv{u_{i}}} = \integ{\V}{}{\V}{\rho g_{i} + \del{j}{\tau_{ji}}}.
+\end{align*}
+Detta gäller för en godtycklig materiell kontrollvolym, vilket ger
+\begin{align*}
+	\mdv{u_{i}} = g_{i} + \frac{1}{\rho}\del{j}{\tau_{ji}}.
+\end{align*}
+Kontinuitetsekvationen och Newtons andra lag är de fundamentala lagarna hastighetsfältet och spänningstensorns måste uppfylla. Tyvärr ger detta bara fyra ekvationer för att bestämma de tolv okända som ingår. Genom att betrakta bevarande av rörelsemängdsmoment får man att spänningstensorn är symmetrisk, men problemet återstår. Därför behöver vi göra approximationer och dylikt.
+
+\paragraph{Eulers ekvationer}
+Betrakta en fluid där det inte finns friktionskrafter internt i vätskan, en så kallad inviskös fluid. För denna är spänningstensorn $\tau_{ij} = -p\delta_{ij}$. Då förenklas Newtons andra lag till
+\begin{align*}
+	\mdv{u_{i}} = g_{i} - \frac{1}{\rho}\del{i}{p}.
+\end{align*}
+Detta är Eulers ekvationer. De har randvillkoret att $\vb{u}\cdot\vb{n} = 0$ på randytan.
+
+\paragraph{Bernoullis ekvation}
+Bernoullis ekvation är en ekvation som ger en förenklad beskrivning av en inviskös vätska. Det gäller att
+\begin{align*}
+	(\vb{u}\cdot\grad)\vb{u} = \frac{1}{2}\grad{u^{2}} - \vb{u}\times\vb*{\omega}
+\end{align*}
+där $\vb*{\omega} = \curl{\vb{u}}$ är vorticiteten. Genom att betrakta konstanta kraftfält i $z$-riktning och definiera $B = \frac{1}{2}u^{2} + \frac{p}{\rho} + gz$ blir Newtons andra lag
+\begin{align*}
+	\del{t}{\vb{u}} + \grad{B} = \vb{u}\times\vb*{\omega}.
+\end{align*}
+
+Betrakta nu en stationär vätska. Genom att integrera ekvationen ovan längsmed en strömlinje försvinner högersidan, vilket ger att $B$ är konstant längsmed strömlinjen.
+
+\paragraph{Newtons andra lag på integralform}
+För en fix $\vb{g}$ kan vi integrera Newtons andra lag över en fix kontrollvolym för att ge
+\begin{align*}
+	\integ{V}{}{V}{\rho\del{t}{u_{i}} + \rho u_{j}\del{j}{u_{i}}} = Mg_{i} + \integ{V}{}{V}{\del{j}{\tau_{ij}}}.
+\end{align*}
+För en inkompressibel fluid är $\rho u_{j}\del{j}{u_{i}} = \rho \del{j}{(u_{j}u_{i})}$. I stationära fall fås då
+\begin{align*}
+¨	\integ{S}{}{S_{j}}{\rho u_{j}u_{i}} = Mg_{i} + \integ{S}{}{S_{j}}{\tau_{ij}},
+\end{align*}
+vilket på vektorform (möjligtvis bara i inviskösa fall) blir
+\begin{align*}
+	\int\limits_{S}(\dd{\vb{S}}\cdot\vb{u})\vb{u} = Mg_{i} - \integ{S}{}{\vb{S}}{p}.
 \end{align*}
