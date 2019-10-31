@@ -68,3 +68,173 @@ Låt $a$ och $b$ vara harmoniska storheter med periodtid $T$. Då kan man visa a
 	\expval{ab} = \frac{1}{2}\Re{\cc{A}B}
 \end{align*}
 där $A$ och $B$ är storheternas amplituder.
+
+\paragraph{Normalt infall på en gränsyta}
+Betrakta en gränsyta i $z = 0$ mellan två linjära material där det inte finns fria laddningar eller strömtätheter på gränsytan. Låt det infallande elektriska och magnetiska fältet vara
+\begin{align*}
+	\vb{E}_{\text{I}} = E_{\text{I}}e^{i(kz - \omega t)}\ub{x},\ \vb{B}_{\text{I}} = \frac{1}{v_{1}}E_{\text{I}}e^{i(kz - \omega t)}\ub{y}.
+\end{align*}
+Detta ger upphov till reflekterade och transmitterade fält
+\begin{align*}
+	\vb{E}_{\text{R}} = E_{\text{R}}e^{i(-kz - \omega t)}\ub{x},\ \vb{B}_{\text{R}} = \frac{1}{v_{1}}E_{\text{R}}e^{i(-kz - \omega t)}\ub{y},\ \vb{E}_{\text{T}} = E_{\text{T}}e^{i(kz - \omega t)}\ub{x},\ \vb{B}_{\text{T}} = \frac{1}{v_{2}}E_{\text{T}}e^{i(kz - \omega t)}\ub{y}.
+\end{align*}
+Minustecknet på det reflekterade magnetfältet följer av att vågvektorn byter tecken. I tangentiell riktning är $\vb{E}$ och $\vb{H}$ kontinuerliga. Detta ger
+\begin{align*}
+	E_{\text{I}} + E_{\text{R}} = E_{\text{T}},\ \frac{1}{\mu_{1}v_{1}}(E_{\text{I}} - E_{\text{R}}) = \frac{1}{\mu_{2}v_{2}}E_{\text{T}}.
+\end{align*}
+Genom att definiera
+\begin{align*}
+	\beta = \frac{\mu_{1}v_{1}}{\mu_{2}v_{2}}
+\end{align*}
+fås
+\begin{align*}
+	E_{\text{R}} = \frac{1 - \beta}{1 + \beta}E_{\text{I}},\ E_{\text{T}} = \frac{2}{1 + \beta}E_{\text{I}}.
+\end{align*}
+
+\paragraph{Brytningsindex}
+Brytningsindexen för ett linjärt medium definieras som
+\begin{align*}
+	n = \frac{c}{v},
+\end{align*}
+där $v$ ges av
+\begin{align*}
+	v = \frac{1}{\sqrt{\varepsilon\mu}}.
+\end{align*}
+
+\paragraph{Intensitet}
+Intensitet för en elektromagnetisk våg ges av infallande effekt per area, med andra ord flödet av Poyntingvektorn per area. För en harmonisk våg i ett linjärt medium ges (tidsmedelvärdet av) intensiteten av
+\begin{align*}
+	I = \frac{1}{2}\varepsilon vE^{2}.
+\end{align*}
+
+\paragraph{Reflektions- och transmissionskoefficienter}
+Reflektionskoefficienten definieras av
+\begin{align*}
+	R = \frac{I_{\text{R}}}{I_{\text{I}}}.
+\end{align*}
+För normalt infall på gränsytan mellan linjära medier ges den av
+\begin{align*}
+	R = \left(\frac{1 - \beta}{1 + \beta}\right)^{2}.
+\end{align*}
+På samma sätt definieras transmissionskoefficienten av
+\begin{align*}
+	T = \frac{I_{\text{T}}}{I_{\text{I}}},
+\end{align*}
+och ges i fallet som beskrivs ovan av
+\begin{align*}
+	T = \frac{4}{(1 + \beta)^{2}}.
+\end{align*}
+
+Om de relativa permeabiliteterna är nära $1$ kan vi skriva
+\begin{align*}
+	R = \left(\frac{n_{2} - n_{1}}{n_{2} + n_{1}}\right)^{2},\ T = \frac{4n_{1}n_{2}}{(n_{1} + n_{2})^{2}}.
+\end{align*}
+
+\paragraph{Snett infall}
+Betrakta en liknande gränsyta som för normalt infall, men nu med snett infallande elektriska och magnetiska fält
+\begin{align*}
+	\vb{E}_{\text{I}} = \vb{E}_{0\text{I}}e^{i(\vb{k}_{\text{I}}\cdot\vb{r} - \omega t)},\ \vb{B}_{\text{I}} = (\vb{k}_{\text{I}}\times\vb{E}_{0\text{I}})e^{i(\vb{k}_{\text{I}}\cdot\vb{r} - \omega t)}.
+\end{align*}
+Dessa ger upphov till reflekterade fält
+\begin{align*}
+	\vb{E}_{\text{R}} = \vb{E}_{0\text{R}}e^{i(\vb{k}_{\text{R}}\cdot\vb{r} - \omega t)},\ \vb{B}_{\text{R}} = (\vb{k}_{\text{R}}\times\vb{E}_{0\text{R}})e^{i(\vb{k}_{\text{R}}\cdot\vb{r} - \omega t)},\ \vb{E}_{\text{T}} = \vb{E}_{0\text{T}}e^{i(\vb{k}_{\text{T}}\cdot\vb{r} - \omega t)},\ \vb{B}_{\text{T}} = (\vb{k}_{\text{T}}\times\vb{E}_{0\text{T}})e^{i(\vb{k}_{\text{T}}\cdot\vb{r} - \omega t)}.
+\end{align*}
+Frekvensen anges av källan, ooch då uppfyller vågvektorerna
+\begin{align*}
+	k_{\text{I}}v_{1} = k_{\text{R}}v_{1} = k_{\text{T}}v_{2}.
+\end{align*}
+Randvillkoren för fälten gäller fortfarande, och kommer vara på formen
+\begin{align*}
+	F_{\text{I}}e^{i(\vb{k}_{\text{I}}\cdot\vb{r} - \omega t)} + F_{\text{R}}e^{i(\vb{k}_{\text{R}}\cdot\vb{r} - \omega t)} = F_{\text{T}}e^{i(\vb{k}_{\text{T}}\cdot\vb{r} - \omega t)}.
+\end{align*}
+Exponenterna innehåller all information om rum och tid. Om dessa vore olika, skulle en liten ändring i position eller tid bryta likheten. Detta bekreftar att frekvensen ej ändras. Vi får vidare att
+\begin{align*}
+	\vb{k}_{\text{I}}\cdot\vb{r} = \vb{k}_{\text{R}}\cdot\vb{r} = \vb{k}_{\text{T}}\cdot\vb{r}
+\end{align*}
+på gränsytan, vilket implicerar att endast $z$-komponenten av vågvektorn kan ändras under reflektion och transmission. Vi tar det därmed som en lag att vågvektorerna bildar infallsplanet, och vi kan inskränka oss till fallet där vågvektorerna ligger i $xz$-planet.
+
+Låt vågvektorerna peka i vinklar $\theta_{\text{I}}, \theta_{\text{R}}$ och $\theta_{\text{T}}$ från normalriktningen pekande in i medierna. Om tangentialkomponenterna av vågvektorn ej ändras, ger detta reflektionslagen
+\begin{align*}
+	\sin{\theta_{\text{I}}} = \sin{\theta_{\text{R}}},\ \theta_{\text{I}} = \theta_{\text{R}}
+\end{align*}
+och
+\begin{align*}
+	k_{\text{I}}\sin{\theta_{\text{I}}} = k_{\text{T}}\sin{\theta_{\text{T}}}.
+\end{align*}
+Detta ger Snells lag
+\begin{align*}
+	\frac{1}{v_{1}}\sin{\theta_{\text{I}}} = \frac{1}{v_{2}}\sin{\theta_{\text{T}}}
+\end{align*}
+alternativt
+\begin{align*}
+	\frac{\sin{\theta_{\text{T}}}}{\sin{\theta_{\text{I}}}} = \frac{n_{1}}{n_{2}}.
+\end{align*}
+
+Randvillkoren ger vidare
+\begin{align*}
+	\varepsilon_{1}(\vb{E}_{0\text{I}}^{\perp} + \vb{E}_{0\text{R}}^{\perp})           &= \varepsilon_{2}\vb{E}_{0\text{T}}^{\perp}, \\
+	\vb{B}_{0\text{I}}^{\perp} + \vb{B}_{0\text{R}}^{\perp}                            &= \vb{B}_{0\text{T}}^{\perp}, \\
+	\vb{E}_{0\text{I}}^{\parallel} + \vb{E}_{0\text{R}}^{\parallel}                    &= \vb{E}_{0\text{T}}^{\parallel}, \\
+	\frac{1}{\mu_{1}}(\vb{B}_{0\text{I}}^{\parallel} + \vb{B}_{0\text{R}}^{\parallel}) &= \frac{1}{\mu_{1}}\vb{B}_{0\text{T}}^{\perp},
+\end{align*}
+där $\vb{B} = \frac{1}{v}\vb{k}\times\vb{E}$ i alla ekvationer.
+
+\paragraph{Plan polarisering}
+Betrakta snett infall där elektriska fältet oscillerar i infallsplanet. Då ger randvillkoren
+\begin{align*}
+	\varepsilon_{1}(-E_{0\text{I}}\sin{\theta_{\text{I}}} + E_{0\text{R}}\sin{\theta_{\text{R}}}) = -\varepsilon_{2}E_{0\text{T}}\sin{\theta_{\text{T}}}, \\
+	E_{0\text{I}}\cos{\theta_{\text{I}}} + E_{0\text{R}}\cos{\theta_{\text{R}}}) = E_{0\text{T}}\cos{\theta_{\text{T}}}, \\
+	\frac{1}{\mu_{1}v_{1}}(E_{0\text{I}} - E_{0\text{R}}) = \frac{1}{\mu_{2}v_{2}}E_{0\text{T}}.
+\end{align*}
+Första och sista randvillkoret är linjärt beroende på grund av reflektionslagen och Snells lag, och reducerar båda till
+\begin{align*}
+	E_{0\text{I}} - E_{0\text{R}} = \beta E_{0\text{T}}.
+\end{align*}
+Om vi definierar
+\begin{align*}
+	\alpha = \frac{\cos{\theta_{\text{R}}}}{\cos{\theta_{\text{T}}}}
+\end{align*}
+blir lösningen
+\begin{align*}
+	E_{0\text{R}} = \frac{\alpha - \beta}{\alpha + \beta}E_{0\text{I}},\ E_{0\text{T}} = \frac{2}{\alpha + \beta}E_{0\text{I}}.
+\end{align*}
+Detta är Fresnels ekvationer för plan polarisering. Det finns motsvarande ekvationer för polarisering normalt på infalls planet.
+
+\paragraph{Brewstervinkeln}
+För $\alpha = \beta$ försvinner den reflekterade vågen. Vi skriver först
+\begin{align*}
+	\alpha = \frac{\sqrt{1 - \left(\frac{n_{1}}{n_{2}}\right)^{2}\sin[2](\theta_{\text{I}})}}{\cos{\theta_{\text{I}}}}.
+\end{align*}
+Låt Brewstervinkeln $\theta_{\text{B}}$ vara infallsvinkeln så att den reflekterade vågen försvinner. Denna uppfyller
+\begin{align*}
+	\sin[2](\theta_{\text{B}}) = \frac{1 - \beta^{2}}{\left(\frac{n_{1}}{n_{2}}\right)^{2} - \beta^{2}}.
+\end{align*}
+Om permeabiliteterna är lika blir detta
+\begin{align*}
+	\tan{\theta_{\text{B}}} = \frac{n_{2}}{n_{1}}.
+\end{align*}
+
+\paragraph{Normalt infall på ledande yta}
+Vid normalt infall av en elektromagnetisk våg på en ledande yta fås på liknande sätt som innan en reflekterad våg. Det transmitterade fältet blir dock
+\begin{align*}
+	\vb{E}_{\text{T}} = E_{\text{T}}e^{i(k_{2}z - \omega t)}\ub{x},\ \vb{B}_{\text{T}} = \frac{k_{2}}{\omega}E_{\text{T}}e^{i(k_{2}z - \omega t)}\ub{y}
+\end{align*}
+där $k_{2} = k' + i\kappa$ är den nya vågvektorn. Notera att detta implicerar att fälten avtar exponentiellt. Randvillkoren blir även något annorlunda, eftersom det kan finnas källor på gränsytan. Det finns däremot ingen laddningstäthet vid normalt infall eftersom det inte finns någon normalkomponent av elektriska fältet. För en ohmsk ledare kan det heller inte finnas någon strömtäthet på gränsytan eftersom det skulle kräva ett oändligt elektriskt fält.
+
+Randvillkoret för elektriska fältet ger
+\begin{align*}
+	E_{\text{I}} + E_{\text{R}} = E_{\text{T}},
+\end{align*}
+och randvillkoret för $H$-fältet ger
+\begin{align*}
+	\frac{1}{\mu_{1}v_{1}}(E_{\text{I}} - E_{\text{R}}) = \frac{k_{2}}{\mu_{2}\omega}E_{\text{T}}.
+\end{align*}
+Genom att definiera
+\begin{align*}
+	\beta' = \frac{k_{2}\mu_{1}v_{1}}{\mu_{2}\omega}
+\end{align*}
+fås
+\begin{align*}
+	E_{\text{R}} = \frac{1 - \beta'}{1 + \beta'}E_{\text{I}},\ E_{\text{T}} = \frac{2}{1 + \beta'}E_{\text{I}}.
+\end{align*}
+För en perfekt ledare har $k_{2}$ stort belopp, vilket ger att vågen reflekteras fullständigt med fasvridning $\pi$.
