@@ -69,22 +69,75 @@ Låt $a$ och $b$ vara harmoniska storheter med periodtid $T$. Då kan man visa a
 \end{align*}
 där $A$ och $B$ är storheternas amplituder.
 
+\paragraph{Maxwells ekvationer i linjära material}
+I linjära materialer är Maxwells ekvationer
+\begin{align*}
+	\curl{\vb{E}} = -\del{t}{\vb{B}},\ \div{\vb{B}} = 0,\ \curl{\vb{H}} = \vb{J}_{\text{f}} + \del{t}{\vb{D}},\ div{\vb{D}} = \rho_{\text{f}}.
+\end{align*}
+
+\paragraph{Laddningstätheter i homogena ohmska material}
+I ett homogent ohmsk material fås
+\begin{align*}
+	\div{\curl{\vb{H}}} &= \div{\vb{J}_{\text{f}}} + \del{t}{\div{\vb{D}}} \\
+	                    &= \frac{\sigma}{\varepsilon}\div{\vb{D}} + \del{t}{\rho_{\text{f}}} \\
+	                    &= \frac{\sigma}{\varepsilon}\div{\vb{D}}\rho_{\text{f}} + \del{t}{\rho_{\text{f}}},
+\end{align*}
+och därmed avtar fria laddningstätheten exponentiellt mot $0$. Därmed kommer vi bortse från denna.
+
+\paragraph{Komplex permittivitet och permeabilitet}
+Maxwells ekvationer för en monokromatisk plan våg i ett material ger
+\begin{align*}
+	\vb{k}\times\vb{B} = -\omega\mu\left(\varepsilon + \frac{\sigma}{\omega}i\right)\vb{E}.
+\end{align*}
+Detta får oss att införa den komplexa permittiviteten $\varepsilon_{\text{c}} = \varepsilon + \frac{\sigma}{\omega}i$. De två termerna kommer betecknas $\varepsilon'$ och $\varepsilon''$. Den imaginära termen kommer från lednings- och polarisationsförluster i materialet. På liknande sätt kan vi införa en komplex permeabilitet $\mu_{\text{c}}$, där den imaginära termen kommer från magnetiseringsförluster.
+
+\paragraph{Dispersion i material och komplexa vågvektorn}
+Vi har
+\begin{align*}
+	\vb{k}\times(\vb{k}\times\vb{E}) = (\vb{k}\cdot\vb{E})\vb{k} - (\vb{k}\cdot\vb{k})\vb{E} = \omega\vb{k}\times\vb{B} = -\omega\mu\varepsilon_{\text{c}}\vb{E},
+\end{align*}
+vilket ger dispersionsrelationen
+\begin{align*}
+	\vb{k}\cdot\vb{k} = \omega\mu\varepsilon_{\text{c}}.
+\end{align*}
+Vi ser då att vi även måste definiera en komplex vågvektor. Den imaginära och komplexa termen är parallella för en plan våg.
+
+\paragraph{Inträngningsdjup}
+Vågvektorns imaginära term kommer ge att fälten avtar exponentiellt med en hastighet proportionell mot komplexa termens belopp. Vi definierar då inträngningsdjupet
+\begin{align*}
+	\delta = \frac{1}{k''}.
+\end{align*}
+
+\paragraph{Vågimpedans}
+På något sätt får vi
+\begin{align*}
+	\vb{B} = \frac{1}{\omega}\vb{k}\times\vb{E} = \sqrt{\mu\varepsilon_{\text{c}}}\ub{k}\times\vb{E},
+\end{align*}
+och därmed
+\begin{align*}
+	\vb{H} = \sqrt{\frac{\varepsilon_{\text{c}}}{\mu}}\ub{k}\times\vb{E}.
+\end{align*}
+Vi definierar då vågimpedansen
+\begin{align*}
+	\eta = \sqrt{\frac{\mu}{\varepsilon_{\text{c}}}}.
+\end{align*}
+
 \paragraph{Normalt infall på en gränsyta}
 Betrakta en gränsyta i $z = 0$ mellan två linjära material där det inte finns fria laddningar eller strömtätheter på gränsytan. Låt det infallande elektriska och magnetiska fältet vara
 \begin{align*}
-	\vb{E}_{\text{I}} = E_{\text{I}}e^{i(kz - \omega t)}\ub{x},\ \vb{B}_{\text{I}} = \frac{1}{v_{1}}E_{\text{I}}e^{i(kz - \omega t)}\ub{y}.
+	\vb{E}_{\text{I}} = E_{\text{I}}e^{i(kz - \omega t)}\ub{x}.
 \end{align*}
 Detta ger upphov till reflekterade och transmitterade fält
 \begin{align*}
-	\vb{E}_{\text{R}} = E_{\text{R}}e^{i(-kz - \omega t)}\ub{x},\ \vb{B}_{\text{R}} = \frac{1}{v_{1}}E_{\text{R}}e^{i(-kz - \omega t)}\ub{y},\ \vb{E}_{\text{T}} = E_{\text{T}}e^{i(kz - \omega t)}\ub{x},\ \vb{B}_{\text{T}} = \frac{1}{v_{2}}E_{\text{T}}e^{i(kz - \omega t)}\ub{y}.
+	\vb{E}_{\text{R}} = E_{\text{R}}e^{i(-kz - \omega t)}\ub{x},\ \vb{E}_{\text{T}} = E_{\text{T}}e^{i(kz - \omega t)}\ub{x}.
 \end{align*}
-Minustecknet på det reflekterade magnetfältet följer av att vågvektorn byter tecken. I tangentiell riktning är $\vb{E}$ och $\vb{H}$ kontinuerliga. Detta ger
+I tangentiell riktning är $\vb{E}$ och $\vb{H}$ kontinuerliga. Detta ger
 \begin{align*}
-	E_{\text{I}} + E_{\text{R}} = E_{\text{T}},\ \frac{1}{\mu_{1}v_{1}}(E_{\text{I}} - E_{\text{R}}) = \frac{1}{\mu_{2}v_{2}}E_{\text{T}}.
+	E_{\text{I}} + E_{\text{R}} = E_{\text{T}},\ \frac{1}{\eta_{1}}(E_{\text{I}} - E_{\text{R}}) = \frac{1}{\eta_{2}}E_{\text{T}}.
 \end{align*}
-Genom att definiera
+Minustecknet på det reflekterade magnetfältet följer av att vågvektorn byter tecken. Genom att definiera
 \begin{align*}
-	\beta = \frac{\mu_{1}v_{1}}{\mu_{2}v_{2}}
+	\beta = \frac{\eta_{1}}{\eta_{2}}
 \end{align*}
 fås
 \begin{align*}
@@ -122,7 +175,7 @@ På samma sätt definieras transmissionskoefficienten av
 \end{align*}
 och ges i fallet som beskrivs ovan av
 \begin{align*}
-	T = \frac{4}{(1 + \beta)^{2}}.
+	T = \frac{4\varepsilon_{2}v_{2}}{\varepsilon_{1}v_{1}(1 + \beta)^{2}} = \sqrt{\frac{\varepsilon_{2}\mu_{1}}{\varepsilon_{1}\mu_{2}}}\frac{4}{(1 + \beta)^{2}}.
 \end{align*}
 
 Om de relativa permeabiliteterna är nära $1$ kan vi skriva
