@@ -1,0 +1,76 @@
+\section{Lösningar av Navier-Stokes' ekvation för newtonska fluider}
+
+Detta är lösningar av Navier-Stokes' ekvation för newtonska fluider i vissa specifika geometrier.
+
+\paragraph{Couetteströmning}
+Betrakta en fluid mellan två plattor. Fluiden har kinematisk viskositet $\nu$, täthet $\rho$, konstant tryck $p$ och befinner sig långt från in- och utlopp (vi säjer att strömningen är fullt utbildad). Plattorna är på ett avstånd $h$ i $y$-riktning. Ena plattan är fäst, och andra plattan rör sig med en hastighet $U$ i $x$-riktning. Vi vill nu bestämma stationära hastighetsfältet, volymsflödet per enhet längd i $z$-riktning och spänningen på de två plattorna.
+
+Vi noterar först att problemet är symmetriskt i både $x$ och $z$. Eftersom det inte finns något som driver flöde i $z$-riktning, måste $u_{z} = 0$. Då ger inkompressibilitetsvillkoret att $u_{y}$ är konstant och lika med $0$ för att uppfylla randvillkoret. Det som återstår av Navier-Stokes' ekvation är
+\begin{align*}
+	\laplacian{u_{x}} = \del[2]{y}{u_{x}} = 0,
+\end{align*}
+och slutligen
+\begin{align*}
+	u_{x} = U\frac{y}{h}.
+\end{align*}
+
+Volymsflödet per längdenhet ges av
+\begin{align*}
+	\Phi = \frac{1}{l}\vinteg{x = c}{}{S}{\vb{u}} = \frac{1}{l}\integ{0}{l}{z}{\integ{0}{h}{y}{U\frac{y}{h}}} = \frac{1}{2}Uh.
+\end{align*}
+
+För att hitta spänningarna längsmed ytorna, konstaterar vi först att ytorna har normalvektor $n_{i} = \pm\delta_{i2}$. Ytspänningarna ges då av
+\begin{align*}
+	\tau_{ij}n_{j} = \pm\tau_{i2} = \pm\mu(\del{i}{u_{2}} + \del{2}{u_{i}}).
+\end{align*}
+Den enda nollskilda kraftkomponenten är den första, och ges av
+\begin{align*}
+	f_{1} = \tau_{1j}n_{j} = \pm\mu\frac{U}{h} = \pm\frac{\rho\nu U}{h}.
+\end{align*}
+
+\paragraph{Poiseuille-strömning}
+Betrakta en fluid mellan två plattor. Fluiden har kinematisk viskositet $\nu$, täthet $\rho$, tryck $p$ med konstant gradient $-K\ub{x}$ och strömningen är stationär och fullt utbildad. Plattorna är båda fästa på ett avstånd $h$ i $y$-riktning. Vi vill nu bestämma stationära hastighetsfältet, volymsflödet per längdenhet i $z$-riktning och spänningen på de två plattorna.
+
+På samma sätt som för Couetteströmning fås $u_{y} = u_{z} = 0$ och symmetri i $x$ och $z$. Navier-Stokesä ekvation ger då
+\begin{align*}
+	\nu\laplacian{u_{x}} = \nu\del[2]{y}{u_{x}} = \frac{1}{\rho}\ub{x}\del{x}{p} = -\frac{K}{\rho},\ \del[2]{y}{u_{x}} = -\frac{K}{\mu}.
+\end{align*}
+Detta har lösning
+\begin{align*}
+	u_{x} = \frac{1}{2}\frac{Kh^{2}}{\mu}\left(\frac{y}{h} - \left(\frac{y}{h}\right)^{2}\right).
+\end{align*}
+
+Volymsflödet per längdenhet ges av
+\begin{align*}
+	\Phi &= \frac{1}{l}\vinteg{x = c}{}{S}{\vb{u}} \\
+	     &= \frac{1}{l}\integ{0}{l}{z}{\integ{0}{h}{y}{\frac{1}{2}\frac{Kh^{2}}{\mu}\left(\frac{y}{h} - \left(\frac{y}{h}\right)^{2}\right)}} \\
+	     &= \frac{1}{2}\frac{Kh^{3}}{\mu}\integ{0}{1}{u}{(u - u^{2})} \\
+	     &= \frac{1}{12}\frac{Kh^{3}}{\mu}.
+\end{align*}
+
+Normalvektorn ges på samma sätt som innan, och vi får
+\begin{align*}
+	\tau_{ij}n_{j} = \pm\mu(\del{i}{u_{2}} + \del{2}{u_{i}}).
+\end{align*}
+Enda nollskilda komponenten är
+\begin{align*}
+	f_{1} = \pm\frac{1}{2}Kh\left(1 - 2\frac{y}{h}\right).
+\end{align*}
+Denna är lika med $\frac{1}{2}Kh$ på båda ytorna.
+
+\paragraph{Stokes' första problem}
+Betrakta en newtonsk fluid med kinematisk viskositet $\nu$ och täthet $\rho$ i det halvoändliga rummet $y > 0$. Vid randen börjar en platta röra sig med hastighet $U$ i $x$-riktningen vid $t = 0$. Vi vill nu bestämma hastighetsfältet.
+
+Systemet är symmetriskt i $xz$-planet, och inkompressibiliteten ger då $\del{y}{u_{y}} = 0$. För att uppfylla randvillkoret måste då $u_{y} = 0$. Återigen finns det inget som driver flöde i $z$-riktning, så $u_{z} = 0$. Navier-Stokes' ekvation ger då
+\begin{align*}
+	\del{t}{u_{x}} = -\frac{1}{\rho}\del{x}{p} + \nu\laplacian{u_{x}}.
+\end{align*}
+Återigen använder vi symmetrin för att skriva detta som
+\begin{align*}
+	\del{t}{u_{x}} = \nu\del[2]{y}{u_{x}}.
+\end{align*}
+Vi kommer lösa detta med en likformighetsansats med den dimensionslösa variabeln $\eta = \frac{y}{\sqrt{\nu t}}$ på formen
+\begin{align*}
+	u_{x} = Uf(\eta).
+\end{align*}
+Jag borde lösa klart det här någon gång.
