@@ -109,7 +109,7 @@ Vågvektorns imaginära term kommer ge att fälten avtar exponentiellt med en ha
 \end{align*}
 
 \paragraph{Vågimpedans}
-På något sätt får vi
+För en monokromatisk plan våg fås
 \begin{align*}
 	\vb{B} = \frac{1}{\omega}\vb{k}\times\vb{E} = \sqrt{\mu\varepsilon_{\text{c}}}\ub{k}\times\vb{E},
 \end{align*}
@@ -233,11 +233,11 @@ Randvillkoren ger vidare
 där $\vb{B} = \frac{1}{v}\vb{k}\times\vb{E}$ i alla ekvationer.
 
 \paragraph{Plan polarisering}
-Betrakta snett infall där elektriska fältet oscillerar i infallsplanet. Då ger randvillkoren
+Betrakta snett infall där elektriska fältet oscillerar i infallsplanet, även kallad TM-fallet. Då ger randvillkoren
 \begin{align*}
 	\varepsilon_{1}(-E_{0\text{I}}\sin{\theta_{\text{I}}} + E_{0\text{R}}\sin{\theta_{\text{R}}}) = -\varepsilon_{2}E_{0\text{T}}\sin{\theta_{\text{T}}}, \\
-	E_{0\text{I}}\cos{\theta_{\text{I}}} + E_{0\text{R}}\cos{\theta_{\text{R}}}) = E_{0\text{T}}\cos{\theta_{\text{T}}}, \\
-	\frac{1}{\mu_{1}v_{1}}(E_{0\text{I}} - E_{0\text{R}}) = \frac{1}{\mu_{2}v_{2}}E_{0\text{T}}.
+	E_{0\text{I}}\cos{\theta_{\text{I}}} + E_{0\text{R}}\cos{\theta_{\text{R}}} = E_{0\text{T}}\cos{\theta_{\text{T}}}, \\
+	\frac{1}{\eta_{1}}(E_{0\text{I}} - E_{0\text{R}}) = \frac{1}{\eta_{2}}E_{0\text{T}}.
 \end{align*}
 Första och sista randvillkoret är linjärt beroende på grund av reflektionslagen och Snells lag, och reducerar båda till
 \begin{align*}
@@ -245,11 +245,11 @@ Första och sista randvillkoret är linjärt beroende på grund av reflektionsla
 \end{align*}
 Om vi definierar
 \begin{align*}
-	\alpha = \frac{\cos{\theta_{\text{R}}}}{\cos{\theta_{\text{T}}}}
+	\alpha = \frac{\cos{\theta_{\text{T}}}}{\cos{\theta_{\text{I}}}}
 \end{align*}
 blir lösningen
 \begin{align*}
-	E_{0\text{R}} = \frac{\alpha - \beta}{\alpha + \beta}E_{0\text{I}},\ E_{0\text{T}} = \frac{2}{\alpha + \beta}E_{0\text{I}}.
+	E_{0\text{R}} = \frac{\beta - \alpha}{\alpha + \beta}E_{0\text{I}},\ E_{0\text{T}} = \frac{2}{\alpha + \beta}E_{0\text{I}}.
 \end{align*}
 Detta är Fresnels ekvationer för plan polarisering. Det finns motsvarande ekvationer för polarisering normalt på infalls planet.
 
