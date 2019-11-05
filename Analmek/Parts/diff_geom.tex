@@ -1,0 +1,95 @@
+\section{Differential Geometry}
+
+\paragraph{Coordinates}
+A general set of coordinates on $\R^{n}$ is $n$ numbers $\chi^{a}, a = 1, \dots, n$ that uniquely define a point in the space.
+
+\example{Cartesian coordinates}
+In cartesian coordinates we introduce an orthonormal basis $\vb{e}_{i}$. We can then write $\vb{x} = \chi^{i}\vb{e}_{i}$. This example is, however, not very illustrative.
+
+\paragraph{Basis vectors}
+When working with both Cartesian and non-Cartesian coordinate systems, there are two different choices of coordinate bases.
+
+The first is the tangent basis of vectors
+\begin{align*}
+	\vb{E}_{a} = \del{\chi^{a}}{\vb{r}} = \del{a}{\vb{r}}.
+\end{align*}
+
+The second is the dual basis
+\begin{align*}
+	\vb{E}^{a} = \grad{\chi^{a}}.
+\end{align*}
+
+\example{Cartesian coordinates}
+In Cartesian coordinates we have $\vb{r} = x^{i}\vb{e}_{i}$. The basis vectors are fixed and orthonormal, meaning $\vb{E}_{a} = \kdelta{a}{i}\vb{e}_{i} = \vb{e}_{a}$. Likewise, we have $\vb{E}^{a} = \grad{x^{a}} = \vb{e}_{a}$. As we can see, the tangent and dual basis are equal in Cartesian coordinates.
+
+\example{Polar coordinates}
+A slightly more non-trivial example is polar coordinates, where we have
+\begin{align*}
+	\vb{r} = r(\cos{\phi}\vb{e}_{x} + \sin{\phi}\vb{e}_{y}).
+\end{align*}
+The tangent basis vectors are thus
+\begin{align*}
+	\tb{r} = \cos{\phi}\vb{e}_{x} + \sin{\phi}\vb{e}_{y},\ \tb{\phi} = r(-\sin{\phi}\vb{e}_{x} + \cos{\phi}\vb{e}_{y}).
+\end{align*}
+It is not quite obvious how to find the dual basis vectors - to compute the gradient, you would need to express the polar coordinates in terms of Cartesian coordinates, and this might not even be possible (in the case of polar coordinates, it isn't). To circumvent this problem, we compute the gradients of $x$ and $y$, yielding
+\begin{align*}
+	\vb{e}_{x} = \cos{\phi}\grad{r} - r\sin{\phi}\grad{\phi},\ \vb{e}_{y} = \sin{\phi}\grad{r} + r\cos{\phi}\grad{\phi}.
+\end{align*}
+The solutions to this are
+\begin{align*}
+	\db{r} = \cos{\phi}\vb{e}_{x} + \sin{\phi}\vb{e}_{y},\ \db{\phi} = \frac{1}{r}(-\sin{\phi}\vb{e}_{x} + \cos{\phi}\vb{e}_{y}).
+\end{align*}
+
+Note that the use of Cartesian basis vectors was necessary in order to express the tangent and dual basis in terms of something sensible - otherwise, we would have no sense of space or direction.
+
+\paragraph{Orthogonality}
+We can now compute the scalar product
+\begin{align*}
+	\vb{E}_{a}\cdot\vb{E}^{b} = \del{a}{\vb{r}}\cdot\grad{\chi^{b}} = (\del{a}{x^{i}}\vb{e}_{i})\cdot(\del{x^{j}}{\chi^{b}}\vb{e}_{j}) = \del{a}{x^{i}}\del{x^{j}}{\chi^{b}}\delta_{ij} = \del{a}{x^{i}}\del{x^{i}}{\chi^{b}}.
+\end{align*}
+According to the chain rule, this is simply equal to $\del{a}{\chi^{b}}$, which again is equal to $\kdelta{a}{b}$.
+
+Note that the vectors in the tangent and dual bases are not necessarily orthogonal amongst themselves.
+
+\paragraph{Vector Components}
+Any vector can now be written as
+\begin{align*}
+	\vb{v} = v^{a}\tb{a} = v_{a}\db{a}.
+\end{align*}
+The $v^{a}$ are called contravariant components and the $v_{a}$ are called covariant components.
+
+Up until now we have not been careful about where we place the indices. This will now change. In addition, we add to the convention of Einstein summation the idea that the balance of raised and lowered indices msut be preserved by an equality.
+
+\paragraph{Coordinate Transformations}
+Suppose that a vector can be expressed in two different tangent bases (corresponding to different choices of coordinates). How do we transform between these? A single component is given by
+\begin{align*}
+	(v')^{b} = (\db{b})'\cdot v^{a}\tb{a} = v^{a}\grad{(\chi')^{b}}\cdot\del{a}{\vb{r}} = v^{a}\del{a}{(\chi')^{b}}.
+\end{align*}
+
+Likewise, we try to transform between dual bases. We obtain
+\begin{align*}
+	v_{b}' = \tb{b}'\cdot v_{a}\db{a} = v_{a}\del[\prime]{b}{\vb{r}}\cdot\grad{\chi^{a}} = v^{a}\del[\prime]{b}{\chi^{a}}.
+\end{align*}
+
+%TODO: Show this
+The covariant components thus transform in the same way as the tangent basis, while the contravariant components change in the opposite way. This is the reason fomr the nomenvlature.
+
+\paragraph{Tangents to Curves}
+The tangent to a curve is given by
+\begin{align*}
+	\dot{\vb*{\gamma}} = \dv{\vb{x}}{t} = \del{a}{\vb{x}}\dv{\chi^{a}}{t} = \dot{\chi}^{a}\vb{E}_{a}.
+\end{align*}
+We see that it is naturally expressed in terms of the tangent basis.
+
+\paragraph{Gradients}
+The gradient of a function is given by
+\begin{align*}
+	\grad{f} = \del{a}{f}\grad{\chi^{a}} = \del{a}{f}\db{a}.
+\end{align*}
+We see that it is naturally expressed in terms of the dual basis.
+
+\paragraph{Rates of change along a curve}
+The rate of change of a quantity along a path is given by
+\begin{align*}
+	\dv{f}{t} = \del{a}{f}\dv{\chi^{a}}{t} = \grad{f}\cdot\dot{\vb*{\gamma}}.
+\end{align*}

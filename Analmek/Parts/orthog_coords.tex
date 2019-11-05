@@ -1,0 +1,37 @@
+\section{Differentiation and Integration in Orthogonal Coordinates}
+
+To tie together what we have learned thus far with what we studied in Vector Calculus, we will study differentiation and integration in orthogonal coordinate systems. For this part of the summary we will take a break from the oh-so strict indexing rules established above.
+
+\paragraph{Defining Relation}
+Orthogonal coordinate systems are defined by the relation
+\begin{align*}
+	\tb{a}\cdot\tb{b} = h_{a}^{2}\delta_{ab}\nosum .
+\end{align*}
+
+\paragraph{Orthonormal Basis}
+Based on the orthogonality conditions, we define the orthogonal basis vectors
+\begin{align*}
+	\vb{e}_{a} = \frac{1}{h_{a}}\tb{a}\nosum .
+\end{align*}
+Normeringsvillkoret ger då direkt
+\begin{align*}
+	h_{a} = \sqrt{\sum\limits_{i}\del{a}{x^{i}}}.
+\end{align*}
+
+\paragraph{Physical Components}
+The physical components of a vector is its projection onto the orthonormal basis vectors, denoted with a tilde.
+
+\paragraph{Relation to Dual Basis}
+By expanding the dual basis vectors in terms of their physical components, we obtain
+\begin{align*}
+	\tilde{E}_{a}^{b} = \vb{e}_{b}\cdot\db{a} = \frac{1}{h_{b}}\kdelta{b}{a}\nosum .
+\end{align*}
+This implies
+\begin{align*}
+	\db{a} = \tilde{E}_{b}^{a}\vb{e}_{b} = \frac{1}{h_{a}}\kdelta{a}{b}\vb{e}_{b} = \frac{1}{h_{a}}\vb{e}_{a}\nosum ,
+\end{align*}
+and thus
+\begin{align*}
+	\vb{e}_{a} = h_{a}\db{a}.
+\end{align*}
+We see that the dual basis would have been an equally good starting point for describing orthogonal systems.
