@@ -1,0 +1,145 @@
+\section{Gränsskikt}
+
+\paragraph{Bildningen av gränsskikt}
+Vidhäftningsvillkoret gör att nära ytor ändras hastigheten extremt snabbt i ett tunt skikt nära ytan, det så kallade gränsskiktet. Vi kommer studera beteendet i och utanför såna gränsskikt i fall som är symmetriska i $z$-riktning.
+
+\paragraph{Formulering av problem}
+Vi kommer betrakta strömning av en fluid i $x$-riktning med friströmshastighet $U$. Fluiden strömmar förbi en platta som är parallell med $x$-riktningen och har längd $L$. Över ytan finns ett gränsskikt med tjocklek $\delta$
+
+\paragraph{Reynoldstalet}
+Navier-Stokes' ekvation ger
+\begin{align*}
+	u_{x}\del{x}{u_{x}} + u_{y}\del{y}{u_{x}} = -\frac{1}{\rho}\del{x}{p} + \nu(\del[2]{x}{u_{x}} + \del[2]{y}{u_{x}}).
+\end{align*}
+Vi studerar först problemet i gränsskiktet. Här är viskösa krafter viktiga, så $y$-derivatan kommer vara stor här. Om vi av någon oklar anledning antar att $x$-derivatan är av ledande ordning på vänstersidan, blir detta
+\begin{align*}
+	u_{x}\del{x}{u_{x}} = \nu\del[2]{y}{u_{x}}.
+\end{align*}
+Detta låter oss göra en grov storleksuppskattning
+\begin{align*}
+	\frac{U^{2}}{L} = \nu\frac{U}{\delta^{2}},\ \frac{\delta}{L} = \frac{1}{\sqrt{\rey}},
+\end{align*}
+där $\rey = \frac{UL}{\nu}$ är Reynoldstalet. I de flesta tillämpningar är Reynoldstalet stort, så gränsskiktet är tunt.
+
+\paragraph{Dimensionslösa variabler}
+Vi vill nu förenkla Navier-Stokes' ekvationer för stora Reynoldstal. För att göra detta låter vi $U$ och $p_{\infty}$ vara hastigheten och trycket långt uppströms. Vi antar att $u_{x}$ är av storleksordning $U$ och att $\del{x}{p} = \rho u_{x}\del{x}{u_{x}}$. Detta ger storleksordningsuppskattningen
+\begin{align*}
+	p_{\infty} - p \approx \rho U^{2}.
+\end{align*}
+Vi kan även skatta vertikala hastigheten med hjälp av inkompressibilitetsvillkoret som
+\begin{align*}
+	u_{y} \approx \frac{\delta}{L}U = \frac{1}{\sqrt{\rey}}U.
+\end{align*}
+Detta motiverar oss att införa de dimensionslösa variablerna
+\begin{align*}
+	x' = \frac{x}{L},\ y' = \frac{y}{\delta} = \sqrt{\rey}\frac{y}{L},\ u_{x}' = \frac{u_{x}}{U},\ u_{y}' = \sqrt{\rey}\frac{u_{y}}{U},\ p' = \frac{p_{\infty} - p}{\rho U^{2}}.
+\end{align*}
+I termer av dessa variabler är Navier-Stokes' ekvationer
+\begin{align*}
+	u_{x}'\del{x'}{u_{x}'} + u_{y}'\del{y'}{u_{x}'}                 &= -\del{y'}{p'} + \frac{1}{\rey}\del[2]{x'}{u_{x}'} + \del[2]{y'}{u_{x}'}, \\
+	\frac{1}{\rey}(u_{x}'\del{x'}{u_{y}'} + u_{y}'\del{y'}{u_{y}'}) &= -\del{y'}{p'} + \frac{1}{\rey^{2}}\del[2]{x'}{u_{x}'} + \frac{1}{\rey}\del[2]{y'}{u_{x}'}, \\
+	\del{x'}{u_{x}'} + \del{y'}{u_{y}'} = 0.
+\end{align*}
+För stora Reynoldstal kan vi nu bortse från många termer här. I våra ursprungliga variabler fås då
+\begin{align*}
+	u_{x}\del{x}{u_{x}} + u_{y}\del{y}{u_{x}}                 &= -\del{y}{p} + \del[2]{y}{u_{x}}, \\
+	0                                                         &= -\del{y}{p}, \\
+	\del{x}{u_{x}} + \del{y}{u_{y}} = 0.
+\end{align*}
+Man kan tydligen även använda Bernoullis ekvation (fast inte) längsmed en strömlinje som följer gränsskiktets rand. Vi får då
+\begin{align*}
+	\frac{p}{\rho} + \frac{1}{2}U^{2} = c,\ -\frac{1}{\rho}\del{x}{p} = U\del{x}{U}.
+\end{align*}
+Nu har vi ställt upp alla ekvationer, och vi har randvillkoren
+\begin{align*}
+	u_{x}(x, 0) = u_{y}(x, 0) = 0,\ u_{x}(x, \infty) = U,
+\end{align*}
+
+\paragraph{Mått på tjocklek}
+Härifrån måste vi välja någon definition av gränsskiktets tjocklek. Detta är tre olika sätt att göra det på.
+
+\paragraph{Delta-nittinio}
+Delta-nittinio-måttet definieras av
+\begin{align*}
+	u(x, \delta_{99}) = 0.99U.
+\end{align*}
+
+\paragraph{Förträngningstjockleken}
+Förträngningstjockleken definieras som avståndet i vertikal riktning en strömlinje långt från väggen förflyttas på grund av väggen.
+
+För att beräkna den observerar vi att masskonserveringen ger
+\begin{align*}
+	\integ{0}{h}{y}{U} = \integ{0}{h + \delta_{\star}}{y}{u_{x}},
+\end{align*}
+där vi gör andra integralen på ett (långt?) avstånd från där strömningen möter plattan. Eftersom vi pratar om strömlinjer långt från väggen, gör vi skattningen $u_{x} = U$ långt borta, vilket ger
+\begin{align*}
+	\delta_{\star} = \integ{0}{h}{y}{1 - \frac{u_{x}}{U}}.
+\end{align*}
+
+\paragraph{Rörelsemängdtjocklek}
+Om tryckgradienten är noll fås för kontrollvolymen vi studerade ovan
+\begin{align*}
+	-f = -\integ{0}{h}{y}{\rho U^{2}} + \integ{0}{h + \delta_{\star}}{y}{\rho u_{x}^{2}}
+\end{align*}
+där
+\begin{align*}
+	f = \integ{0}{x}{x}{\mu\del{y}{u_{x}}(x, 0)}
+\end{align*}
+är friktionskraften i $x$-riktning på den delen av plattan som är innanför kontrollvolymen. Vi definierar nu rörelsemängdstjockleken
+\begin{align*}
+	\theta &= \frac{f}{\rho U^{2}} \\
+	       &= \integ{0}{h}{y}{1 - \left(\frac{u_{x}}{U}\right)^{2}} + \frac{1}{U^{2}}\integ{h}{h + \delta_{\star}}{y}{u_{x}^{2}} \\
+	       &\approx \integ{0}{h}{y}{1 - \left(\frac{u_{x}}{U}\right)^{2}} + \delta_{\star} \\
+	       &= \integ{0}{h}{y}{\frac{u_{x}}{U}\left( 1 - \frac{u_{x}}{U}\right)}.
+\end{align*}
+Vi kan tydligen skriva detta som
+\begin{align*}
+	\theta = \integ{0}{\infty}{y}{\frac{u_{x}}{U}\left( 1 - \frac{u_{x}}{U}\right)}.
+\end{align*}
+
+\paragraph{Blasius' gränsskikt}
+Blasius' lösning för gränsskiktet är en något annorlunda lösning av samma problemet vi har studerat. I detta fall är tryckgradienten lika med noll och strömningen möter plattan i origo. Inkompressibilitetsvillkoret låter oss införa strömfunktionen $\Psi$, och Navier-Stokes' ekvationer ger
+\begin{align*}
+	\del{y}{\Psi}\del{y}{\del{x}{\Psi}} - \del{x}{\Psi}\del[2]{y}{\Psi} = \nu\del[3]{y}{\Psi}.
+\end{align*}
+Eftersom systemet ej ändras under addition av en konstant till strömfunktionen, kan vi välja $\Psi(x, 0) = 0$. De övriga randvillkoren blir
+\begin{align*}
+	\del{y}{\Psi}(x, 0) = 0,\ \del{y}{\Psi}(x, y) \to U.
+\end{align*}
+Vi kommer lösa detta problemet med en likformighetsansats
+\begin{align*}
+	u_{x} = Uf'(\eta),\ \eta = \frac{y}{\delta(x)}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\Psi = \integ{0}{y}{y}{u_{x}} = U\delta\integ{0}{\eta}{\eta}{f'(\eta)} = U\delta f(\eta).
+\end{align*}
+Insatt i Navier-Stokes' ekvation ger detta
+\begin{align*}
+	f''' = -\left(\frac{U\delta}{\nu}\dv{\delta}{x}\right)ff''.
+\end{align*}
+Om detta skall gälla, måste prefaktorn vara en konstant. Vi kan sätta den till $\frac{1}{2}$, vilket ger
+\begin{align*}
+	\delta = \sqrt{\frac{\nu x}{U}}.
+\end{align*}
+Att ändra den konstanten skulle bara motsvara en omskalning av enheterna, så vi ser att valet av konstant är godtyckligt. Den återstående ekvationen är
+\begin{align*}
+	\frac{1}{2}ff'' + f''' = 0,
+\end{align*}
+med randvillkor
+\begin{align*}
+	f(0) = 0,\ f'(0) = 0,\ f'(\eta) \to 1.
+\end{align*}
+
+Vi kan även beräkna väggskjuvspänningen
+\begin{align*}
+	\tau = \mu\del{y}{u_{x}}(x, 0) = \frac{0.332\rho U^{2}}{\sqrt{\rey_{x}}}
+\end{align*}
+där $\rey_{x}$ är Reynoldstalet beräknad med $x$. Det totala aerodynamiska moståndet på plattan ges då av
+\begin{align*}
+	F = \integ{0}{L}{x}{\tau} = \frac{0.664\rho U^{2}}{\sqrt{\rey_{L}}}.
+\end{align*}
+Vi kan även definiera en motståndskoefficient
+\begin{align*}
+	C = \frac{F}{\frac{1}{2}\rho U^{2}} = \frac{1.33}{\sqrt{\rey_{L}}}.
+\end{align*}
