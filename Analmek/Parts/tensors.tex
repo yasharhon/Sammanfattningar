@@ -3,14 +3,14 @@
 \paragraph{Definition}
 A tensor of rank $N$ is a multilinear map from $N$ vectors to a scalar.
 
-\paragraph{Components of a tensor}
+\paragraph{Components of a Tensor}
 The components of a tensor are defined by
 \begin{align*}
 	T(\vb{E}^{a_{1}}, \dots, \vb{E}^{a_{N}}) = T^{a_{1}, \dots, a_{N}}.
 \end{align*}
 These are called the contravariant components of the tensor, and the covariant components are defined similarly. Mixed components can also be defined.
 
-\paragraph{Rules for tensors}
+\paragraph{Basic Operations on Tensors}
 Tensors obey the following rules:
 \begin{align*}
 	(T_{1} + T_{2})(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}) &= T_{1}(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}) + T_{2}(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}), \\
@@ -22,23 +22,20 @@ In component form:
 	(kT)^{a_{1}\dots a_{n}}            &= kT^{a_{1}\dots a_{n}}.
 \end{align*}
 
-\paragraph{The metric tensor}
-The metric tensor $g$ is a rank $2$ tensor defined by $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$. Its components satisfy
+\paragraph{Coordinate Transformations}
+Suppose that we transform the basis according to
 \begin{align*}
-	v_{a} = \vb{E}_{a}\cdot v^{b}\vb{E}_{b} = g(\vb{E}_{a}, \vb{E}_{b})v_{b} = g_{ab}v^{b},
+	(\tb{}^{\prime})^{a_{i}} = L_{b_{i}}^{a_{i}}\tb{b_{i}}.
 \end{align*}
-and likewise
+The components of the tensor then transform according to
 \begin{align*}
-	v^{a} = g^{ab}v_{b}.
+	T((\tb{}^{\prime})^{a_{1}}, \dots, (\tb{}^{\prime})^{a_{n}}) &= T(L_{b_{1}}^{a_{1}}\tb{b_{1}}, \dots, L_{b_{n}}^{a_{n}}\tb{b_{n}}) \\
+	                                                             &= L_{b_{1}}^{a_{1}}\dots L_{b_{n}}^{a_{n}}T(\tb{b_{1}}, \dots, \tb{b_{n}}) \\
+	                                                             &= L_{b_{1}}^{a_{1}}\dots L_{b_{n}}^{a_{n}}T^{a_{1}, \dots, a_{N}}.
 \end{align*}
+Many introductions to tensors define tensors according to this relation. And now you know where it comes from.
 
-We note that
-\begin{align*}
-	v_{a} = g_{ab}v^{b} = g_{ab}g^{bc}v_{c},
-\end{align*}
-which implies $g_{ab}g^{bc} = \kdelta{a}{c}$.
-
-\paragraph{Tensor product}
+\paragraph{The Tensor Product}
 Given two tensors $T_{1}$ and $T_{2}$ of ranks $n_{1}$ and $n_{2}$, we kan define the rank $n_{1} + n_{2}$ tensor $\tenprod{{T_{1}, T_{2}}}$ as
 \begin{align*}
 	(\tenprod{{T_{1}, T_{2}}})(\vb{v}_{1}, \dots, \vb{v}_{n_{1}}, \vb{w}_{1}, \dots, \vb{w}_{n_{2}}) = T_{1}(\vb{v}_{1}, \dots, \vb{v}_{n_{1}})T_{2}(\vb{w}_{1}, \dots, \vb{w}_{n_{2}}).
@@ -48,7 +45,7 @@ In component form:
 	(\tenprod{{T_{1}, T_{2}}})^{a_{1}\dots a_{n_{1} + n_{2}} = T_{1}^{a_{1}\dots a_{n_{1}}}T_{2}^{a_{n_{1} + 1}}\dots a_{n_{1} + n_{2}}}.
 \end{align*}
 
-\paragraph{Tensors as linear combinations}
+\paragraph{A Base For The Space of Tensors}
 Using the tensor product, all tensors can be written as linear combinations of certain basis elements due to their bilinearity. Define
 \begin{align*}
 	e_{a_{1}\dots a_{n}} = \tenprod{{\vb{E}_{a_{1}}, \dots, \vb{E}_{a_{n}}}}
@@ -63,7 +60,7 @@ Then any tensor can be written as
 \end{align*}
 where the $T^{a_{1}\dots a_{n}}$ are exactly the contravariant components of $T$.
 
-\paragraph{Tensors as linear transforms on tensors}
+\paragraph{Tensors as Linear Transforms Between Tensors}
 A rank $n$ tensor can also be viewed as a linear map from rank $m$ tensors to rank $n - m$ tensors. To do this, we first define, given $T$, the rank $n - m$ tensor $\tilde{T}(\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}})$ such that
 \begin{align*}
 	(\tilde{T}(\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}}))(\vb{v}_{1}, \dots, \vb{v}_{n - m}) = T(\vb{w}_{1}, \dots, \vb{w}_{m}, \vb{v}_{1}, \dots, \vb{v}_{n - m}).
@@ -84,3 +81,19 @@ In component form:
 	(e_{12}T)^{a_{1}\dots a_{n - 2}} = T^{c\;a_{1}\dots a_{n - 2}}_{\;c}.
 \end{align*}
 The definition is similar (I assume) for the contraction of other arguments.
+
+\paragraph{The metric tensor}
+The metric tensor $g$ is a rank $2$ tensor defined by $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$. It is a symmetric tensor. Its components satisfy
+\begin{align*}
+	v_{a} = \vb{E}_{a}\cdot v^{b}\vb{E}_{b} = g(\vb{E}_{a}, \vb{E}_{b})v^{b} = g_{ab}v^{b},
+\end{align*}
+and likewise
+\begin{align*}
+	v^{a} = g^{ab}v_{b}.
+\end{align*}
+
+We note that
+\begin{align*}
+	v_{a} = g_{ab}v^{b} = g_{ab}g^{bc}v_{c},
+\end{align*}
+which implies $g_{ab}g^{bc} = \kdelta{a}{c}$.

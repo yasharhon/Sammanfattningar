@@ -13,9 +13,9 @@ Based on the orthogonality conditions, we define the orthogonal basis vectors
 \begin{align*}
 	\vb{e}_{a} = \frac{1}{h_{a}}\tb{a}\nosum .
 \end{align*}
-Normeringsvillkoret ger då direkt
+The normalization thus implies
 \begin{align*}
-	h_{a} = \sqrt{\sum\limits_{i}\del{a}{x^{i}}}.
+	h_{a} = \sqrt{\sum\limits_{i}(\del{a}{x^{i}})^{2}}.
 \end{align*}
 
 \paragraph{Physical Components}
@@ -35,3 +35,33 @@ and thus
 	\vb{e}_{a} = h_{a}\db{a}.
 \end{align*}
 We see that the dual basis would have been an equally good starting point for describing orthogonal systems.
+
+\paragraph{Line Integrals}
+Using our previous knowledge of rates of change along a curve, we have
+\begin{align*}
+	\vinteg{\Gamma}{}{r}{\vb{v}} &= \integ{\Gamma}{}{\chi^{a}}{\tb{a}\cdot\vb{v}} \\
+	                             &= \integ{\Gamma}{}{\tau}{\dot{\chi}^{a}\tb{a}\cdot\vb{v}} \\
+	                             &= \integ{\Gamma}{}{\tau}{\sum\limits_{a}\dot{\chi}^{a}h_{a}\tilde{v}_{a}}.
+\end{align*}
+Specifically, when integrating along a $\chi^{c}$ coordinate line, we can use the coordinate as a parameter, yielding
+\begin{align*}
+	\vinteg{\Gamma}{}{r}{\vb{v}} = \integ{\Gamma}{}{\tau}{\dv{\chi^{a}}{\chi^{c}}\tb{a}\cdot\vb{v}} = \integ{\Gamma}{}{\chi^{c}}{h_{c}v_{c}}.
+\end{align*}
+
+\paragraph{Surface Integrals}
+Consider a coordinate level surface $S_{c}$. In three dimensions we have
+\begin{align*}
+	\dd{\vb{S}} &= \del{a}{\vb{r}}\times\del{b}{\vb{r}}\dd{\chi^{a}}\dd{\chi^{b}} \\
+	            &= h_{a}h_{b}\vb{e}_{a}\vb{e}_{b}\dd{\chi^{a}}\dd{\chi^{b}} \\
+	            &= \pm h_{a}h_{b}\dd{\chi^{a}}\dd{\chi^{b}}\vb{e}_{c}.
+\end{align*}
+We immediately identify the unit normal and area element.
+
+The final results (hopefully) generalize to other dimensionalities, but I could not see any way of bypassing the need for the cross product in three dimensions.
+
+\paragraph{Volume Integrals}
+Consider an infinitesimal volume element separated by $2n$ coordinate surfaces corresponding to coordinate values $\chi^{a}$ and $\chi^{a} + \dd{\chi^{a}}$. Using what we did with line integrals
+\begin{align*}
+	\dd{V} = \prod\limits_{i}h_{i}\dd{\chi^{i}}.
+\end{align*}
+We identify the Jacobian as $\J = \prod\limits_{i}h_{i}$.
