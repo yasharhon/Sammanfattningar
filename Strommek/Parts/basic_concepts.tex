@@ -125,6 +125,12 @@ Detta gäller för en godtycklig materiell kontrollvolym, vilket ger
 \end{align*}
 Kontinuitetsekvationen och Newtons andra lag är de fundamentala lagarna hastighetsfältet och spänningstensorns måste uppfylla. Tyvärr ger detta bara fyra ekvationer för att bestämma de tolv okända som ingår. Genom att betrakta bevarande av rörelsemängdsmoment får man att spänningstensorn är symmetrisk, men problemet återstår. Därför behöver vi göra approximationer och dylikt.
 
+\paragraph{Vorticitet}
+Vorticiteten för ett fluid definieras som
+\begin{align*}
+	\vb*{\omega} = \curl{\vb{u}}.
+\end{align*}
+
 \paragraph{Eulers ekvationer}
 Betrakta en fluid där det inte finns friktionskrafter internt i vätskan, en så kallad inviskös fluid. För denna är spänningstensorn $\tau_{ij} = -p\delta_{ij}$. Då förenklas Newtons andra lag till
 \begin{align*}
@@ -135,9 +141,9 @@ Detta är Eulers ekvationer. De har randvillkoret att $\vb{u}\cdot\vb{n} = 0$ p�
 \paragraph{Bernoullis ekvation}
 Bernoullis ekvation är en ekvation som ger en förenklad beskrivning av en inviskös vätska. Det gäller att
 \begin{align*}
-	(\vb{u}\cdot\grad)\vb{u} = \frac{1}{2}\grad{u^{2}} - \vb{u}\times\vb*{\omega}
+	(\vb{u}\cdot\grad)\vb{u} = \frac{1}{2}\grad{u^{2}} - \vb{u}\times\vb*{\omega}.
 \end{align*}
-där $\vb*{\omega} = \curl{\vb{u}}$ är vorticiteten. Genom att betrakta konstanta kraftfält i $z$-riktning och definiera $B = \frac{1}{2}u^{2} + \frac{p}{\rho} + gz$ blir Newtons andra lag
+Genom att betrakta konstanta kraftfält i $z$-riktning och definiera $B = \frac{1}{2}u^{2} + \frac{p}{\rho} + gz$ blir Newtons andra lag
 \begin{align*}
 	\del{t}{\vb{u}} + \grad{B} = \vb{u}\times\vb*{\omega}.
 \end{align*}
@@ -157,6 +163,29 @@ vilket på vektorform (möjligtvis bara i inviskösa fall) blir
 \begin{align*}
 	\int\limits_{S}(\dd{\vb{S}}\cdot\vb{u})\vb{u} = Mg_{i} - \integ{S}{}{\vb{S}}{p}.
 \end{align*}
+
+\paragraph{Kelvins teorem}
+Betrakta cirkulationen
+\begin{align*}
+	\Gamma = \vinteg{\C}{}{r}{\vb{u}} = \vinteg{\S}{}{\S}{\vb*{\omega}}
+\end{align*}
+kring en materiell kurva. Med hjälp av Eulers ekvationer kan man visa att för en inviskös, inkompressibel fluid är
+\begin{align*}
+	\dv{\Gamma}{t} = 0.
+\end{align*}
+
+\paragraph{Potentiallösning för vorticitetsfria fluider}
+Om en fluid är vorticitetsfri, gäller det att
+\begin{align*}
+	\vb{u} = \grad{\Phi}.
+\end{align*}
+Inkompressibilitetsvillkoret är då
+\begin{align*}
+	\laplacian{\Phi} = 0.
+\end{align*}
+
+\paragraph{d'Alemberts paradox}
+d'Alamberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
 
 \paragraph{Töjningstensorn}
 Betrakta ett litet fluidelement som rör sig i någon riktning $x_{i}$. Över elementets längd $\cha{x}$ ändras hastigheten med $\del{i}{u_{i}}\cha{x_{i}}$. Över ett litet tidsintervall $\cha{t}$ kommer då fluidelementet att förlängas med $\cha{s} = \del{i}{u_{i}}\cha{x_{i}}\cha{t}$. Den linjära töjningen definieras som förlängningen per längd och tid, och ges här i $x_{i}$-riktningen av $\del{i}{u_{i}}$.
