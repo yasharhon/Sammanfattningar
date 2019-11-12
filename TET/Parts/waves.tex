@@ -291,3 +291,39 @@ fås
 	E_{\text{R}} = \frac{1 - \beta'}{1 + \beta'}E_{\text{I}},\ E_{\text{T}} = \frac{2}{1 + \beta'}E_{\text{I}}.
 \end{align*}
 För en perfekt ledare har $k_{2}$ stort belopp, vilket ger att vågen reflekteras fullständigt med fasvridning $\pi$.
+
+\paragraph{Metalliska vågledare}
+Betrakta en källfri rymd som omges av en metallisk cylinder. Cylinderns symmetriaxel är $z$-axeln. Vi löser detta med separationsansatsen
+\begin{align*}
+	\vb{E} = \vb{E}_{0}(\vb{s})e^{i(k_{z}z - \omega t)},\ \vb{B} = \vb{B}_{0}(\vb{s})e^{i(k_{z}z - \omega t)}.
+\end{align*}
+I rymden blir vågekvationen
+\begin{align*}
+	\laplacian{\vb{E}} - \frac{1}{c^{2}}\del{t}{\vb{E}} = \dalemb{\vb{E}} = \vb{0}.
+\end{align*}
+Med den givna ansatsen fås
+\begin{align*}
+	\dalemb = \laplaperp - k_{z}^{2} + \frac{\omega^{2}}{c^{2}}
+\end{align*}
+där $\laplaperp$ gör derivationer i planet normalt på $z$-axeln. Genom att definiera det normala vågtalet $k_{\perp}^{2} = \frac{\omega^{2}}{c^{2}} - k_{z}^{2}$ fås att fältamplituderna är egenfunktioner till $\laplaperp$ med egenvärden $k_{\perp}^{2}$.
+
+Vi delar nu upp fälten i komponenter tangentiellt och normalt på $z$-axeln. Maxwells ekvationer i tangentialplanet och $z$-riktning ger då
+\begin{alignat*}{3}
+	(\gradperp{E_{z}} - ik_{z}\vb{E}_{\perp})\times\ub{z} &= i\omega\vb{B}_{\perp},\      &\gradperp\times\vb{E}_{\perp}            &= i\omega B_{z}\ub{z}, \\
+	(\gradperp{B_{z}} - ik_{z}\vb{B}_{\perp})\times\ub{z} &= -i\frac{\omega}{c^{2}}\vb{E}_{\perp},\ &\gradperp\times\vb{B}_{\perp} &= -i\frac{\omega}{c^{2}}E_{z}\ub{z}.
+\end{alignat*}
+Om man kryssar ekvationerna till vänster med $\ub{z}$ från vänster får man på något sätt
+\begin{align*}
+	\vb{E}_{\perp} = \frac{i}{k_{\perp}^{2}}(k_{z}\gradperp{E_{z}} - \omega\ub{z}\times\gradperp{B_{z}}),\ \vb{B}_{\perp} = \frac{i}{k_{\perp}^{2}}(k_{z}\gradperp{B_{z}} + \frac{\omega}{c^{2}}\ub{z}\times\gradperp{E_{z}}).
+\end{align*}
+
+Ekvationen behöver även randvillkor. Vi har antagit att det är metall på randen. Randvillkoret för elektriska fältet ger
+\begin{align*}
+	\vb{0} = \vb{n}\times\vb{E}_{0} = \vb{n}\times\vb{E}_{\perp} + E_{z}\vb{n}\times\ub{z}.
+\end{align*}
+Detta implicerar direkt att $E_{z} = 0$ och $\vb{n}\times\vb{E}_{\perp} = \vb{0}$. Detta gäller över hela randen, så $\vb{n}\times\gradperp{E_{z}} = \vb{0}$. Detta implicerar på något sätt $\vb{n}\cdot\gradperp{B_{z}} = 0$.
+
+\paragraph{Gränsfrekvens för vågledare}
+Fälten i en vågledare ges av ett Sturm-Liouville-problem, så spektrumet av $k_{\perp}$ är oändligt (detaljerna bestäms av randens geometri). Det finns då för varje vågtal i spektrumet ett $k$ så att $k < k_{\perp}$. För detta $k$ fås $k_{z} = i\sqrt{k_{\perp}^{2} - k^{2}}$, och fältet avtar exponentiellt i ledaren. Gränsfrekvensen för ett givet vågtal definieras som $\omega_{\text{g}} = ck_{\perp}$, och är frekvensen som ligger på gränsen mellan propagerande och evanescenta moder. Vågtalet med lägst gränsfrekvens kallas för grundmoden.
+
+Notera att vi nu kan skriva $k_{z} = \frac{1}{c}\sqrt{\omega^{2} - \omega_{\text{g}}^{2}}$.
