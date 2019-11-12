@@ -79,21 +79,6 @@ Kontinuitetsekvationen ger att de två andra termerna försvinner och
 	\dv{t}\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\phi} =\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\mdv{\phi}}.
 \end{align*}
 
-\paragraph{Strömfunktionen}
-I fall med symmetri i $z$-riktning ger kontinuitetsekvationen för en inkompressibel vätska
-\begin{align*}
-	\del{x}{u_{x}} + \del{y}{u_{y}} = 0.
-\end{align*}
-Lösningen av detta ges av strömfunktionen $\Psi$. Den definieras så att
-\begin{align*}
-	\del{y}{\Psi} = u_{x},\ \del{x}{\Psi} = -u_{y}.
-\end{align*}
-En viktig karakteristik för strömfunktionen fås genom att betrakta en liten ändring
-\begin{align*}
-	\dd{\Psi} = \grad{\Psi}\cdot\dd{\vb{r}} = -u_{y}\dd{x} + u_{x}\dd{y}.
-\end{align*}
-Om vi rör oss längsmed en strömlinje, är denna lilla ändringen lika med $0$.
-
 \paragraph{Rörelsemängd}
 Rörelsemängden av en fluid inom en volym $V$ ges av
 \begin{align*}
@@ -173,19 +158,6 @@ kring en materiell kurva. Med hjälp av Eulers ekvationer kan man visa att för 
 \begin{align*}
 	\dv{\Gamma}{t} = 0.
 \end{align*}
-
-\paragraph{Potentiallösning för vorticitetsfria fluider}
-Om en fluid är vorticitetsfri, gäller det att
-\begin{align*}
-	\vb{u} = \grad{\Phi}.
-\end{align*}
-Inkompressibilitetsvillkoret är då
-\begin{align*}
-	\laplacian{\Phi} = 0.
-\end{align*}
-
-\paragraph{d'Alemberts paradox}
-d'Alamberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
 
 \paragraph{Töjningstensorn}
 Betrakta ett litet fluidelement som rör sig i någon riktning $x_{i}$. Över elementets längd $\cha{x}$ ändras hastigheten med $\del{i}{u_{i}}\cha{x_{i}}$. Över ett litet tidsintervall $\cha{t}$ kommer då fluidelementet att förlängas med $\cha{s} = \del{i}{u_{i}}\cha{x_{i}}\cha{t}$. Den linjära töjningen definieras som förlängningen per längd och tid, och ges här i $x_{i}$-riktningen av $\del{i}{u_{i}}$.
