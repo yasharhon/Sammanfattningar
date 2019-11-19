@@ -26,8 +26,43 @@ Inkompressibilitetsvillkoret är då
 	\laplacian{\Phi} = 0.
 \end{align*}
 
+\paragraph{Potential för strömning kring en cylinder}
+I cylinderkoordinater är gradientoperatorn $\grad = \ub{r}\del{r} + \frac{1}{r}\ub{\phi}\del{\phi}$ och laplaceoperatorn $\laplacian = \del[2]{r} + \frac{1}{r}\del{r} + \frac{1}{r^{2}}\del[2]{\phi}$. För att studera strömningen av en inviskös fluid kring en cylinder med radien $a$ centrerad i origo, söker vi då lösningen till
+\begin{align*}
+	\del[2]{r}{\Phi} + \frac{1}{r}\del{r}{\Phi} + \frac{1}{r^{2}}\del[2]{\phi}{\Phi} = 0,\ \del{r}{\Phi}\eval_{r = a} = 0,\ \left(\ub{r}\del{r}{\Phi} + \frac{1}{r}\ub{\phi}\del{\phi}{\Phi}\right)\eval_{r = \infty} = U\ub{x}.
+\end{align*}
+Vi löser detta med en separabel ansats - mer specifikt $\Phi = R(r)\cos{\phi}$. För att se att detta är en bra ansats, titta på det andra randvillkoret för $\theta = 0$. Givet detta fås
+\begin{align*}
+	\cos{\phi}\dv[2]{R}{r} + \frac{\cos{\phi}}{r}\dv{R}{r} - \frac{\cos{\phi}}{r^{2}}R &= 0, \\
+	r^{2}\dv[2]{R}{r} + r\dv{R}{r} - R                                                 &= 0.
+\end{align*}
+Genom att ansätta $R = r^{n}$ för något $n$ fås
+\begin{align*}
+	(n(n - 1) + n - 1)r^{n} = (n^{2} - 1)r^{n} = 0.
+\end{align*}
+Om detta skall gälla för alla $r$, måste $n = \pm 1$ och $R = Ar + \frac{B}{r}$. Första randvillkoret ger
+\begin{align*}
+	A - \frac{B}{a^{2}} = 0,\ R = A\left(r + \frac{a}{r}a\right).
+\end{align*}
+Andra randvillkoret ger för $\phi = 0$
+\begin{align*}
+	\left(\ub{r}A\left(1 - \frac{a^{2}}{r^{2}}\right) - \frac{\sin{\phi}}{r}\ub{\phi}A\left(r + \frac{a}{r}a\right)\right)\eval_{\phi = 0,\ r = \infty} = \ub{x}A,
+\end{align*}
+och den slutgiltiga lösningen är
+\begin{align*}
+	\Phi = U\cos{\phi}\left(r + \frac{a}{r}a\right).
+\end{align*}
+Vi noterar till senare att detta kan skrivas
+\begin{align*}
+	\Phi = U\cos{\phi}r + U\cos(-\phi)\frac{a}{r}a = \Re\left(Uz + \frac{Ua^{2}}{z}\right).
+\end{align*}
+Hastighetskomponenterna är
+\begin{align*}
+	u_{r} = U\cos{\phi}\left(1 - \frac{a^{2}}{r^{2}}\right),\ u_{\phi} = -U\sin{\phi}\left(1 + \frac{a^{2}}{r^{2}}\right).
+\end{align*}
+
 \paragraph{d'Alemberts paradox}
-d'Alamberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
+d'Alemberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
 
 \paragraph{Komplex potential}
 Vi inför nu den komplexa strömfunktionen $W = \Phi + i\Psi$. Om detta ska vara en analytisk funktion (alltså kunna skrivas som en funktion av ett komplext tal $w = x + iy$ så att realdelen och imaginärdelen behandlas likadant), måste den uppfylla Cauchy-Riemanns ekvationer
@@ -87,7 +122,7 @@ Betrakta funktionen
 \begin{align*}
 	W = \frac{\mu}{z}.
 \end{align*}
-Genom att sätta $\frac{\mu}{2\Im{\Psi}} = -C$ kan man visa att strömlinjerna ges av
+Genom att sätta $\frac{\mu}{2\Im{W}} = -C$ kan man visa att strömlinjerna ges av
 \begin{align*}
 	x^{2} + (y - C)^{2} = C^{2}.
 \end{align*}
