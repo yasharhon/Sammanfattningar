@@ -144,12 +144,90 @@ Vi kan även definiera en motståndskoefficient
 	C = \frac{F}{\frac{1}{2}\rho U^{2}} = \frac{1.33}{\sqrt{\rey_{L}}}.
 \end{align*}
 
+\paragraph{Exempel: Blasius' gränsskikt med känd asymptot}
+Betrakta viskös strömning över en platta med längd $L$. Vätskan har friströmshastighet $U$, täthet $\rho$ och kinematisk viskositet $\nu$. De fyra punkterna $A$, $B$, $A'$ och $B'$ definieras av koordinaterna $(0, 0)$, $(L, 0)$, $(0, h)$ och $(L, h)$, där $h$ är ett avstand som är mycket större än gränsskiktets tjocklek. För stora $\eta$ gäller att $f(\eta) \approx \eta - 1.721$.
+
+Vi söker först skillnaden i massflöde per längd i $z$ genom $AA'$ och $BB'$. Första ges av
+\begin{align*}
+	\Phi = \integ{0}{h}{y}{\rho u_{x}} = \integ{0}{h}{y}{\rho U},
+\end{align*}
+och andra ges av
+\begin{align*}
+	\Phi = \integ{0}{h}{y}{\rho u_{x}} = \integ{0}{h}{y}{\rho U\dv{f}{\eta}},
+\end{align*}
+där vi har använt likformighetslösningen. Skillnaden ges av
+\begin{align*}
+	\Delta\Phi &= \integ{0}{h}{y}{\rho U\left(1 - \frac{u_{x}}{U}\right)} \\
+	           &= \rho\delta U\integ{0}{\frac{h}{\delta}}{\eta}{1 - \dv{f}{\eta}} \\
+	           &= \rho\delta U\left[\eta - f(\eta)\right]_{0}^{\frac{h}{\delta}}.
+\end{align*}
+Unre gränsen ger inget bidrag, och i övre gränsen kan asymptotiska lösningen användas, vilket ger
+\begin{align*}
+	\Delta\Phi = 1.721\rho\delta U.
+\end{align*}
+
+Vi söker vidare rörelsemängdsflödet i $x$-riktning per längd i $z$-riktning genom $A'B'$, som ges av
+\begin{align*}
+	\Phi_{p} = \integ{0}{L}{x}{\rho u_{y}u_{x}}.
+\end{align*}
+Med likformighetslösningen fås
+\begin{align*}
+	u_{y} &= -U\dv{(f\delta)}{x} \\
+	      &= -U\left(\dv{\delta}{x}f + \delta\dv{f}{\eta}\dv{\eta}{x}\right) \\
+	      &= -U\left(\dv{\delta}{x}f - \frac{y}{\delta^{2}}\delta\dv{f}{\eta}\dv{\delta}{x}\right) \\
+	      &= U\dv{\delta}{x}\left(\frac{y}{\delta}\dv{f}{\eta} - f\right) \\
+	      &= U\dv{\delta}{x}\left(\eta\dv{f}{\eta} - f\right).
+\end{align*}
+Därmed fås
+\begin{align*}
+	\Phi_{p} = \integ{0}{L}{x}{\rho U^{2}\dv{\delta}{x}\left(\eta\dv{f}{\eta} - f\right)\dv{f}{\eta}}.
+\end{align*}
+Vi integrerar i det asymptotiska området, varför den asymptotiska lösningen kan användas för att ge
+\begin{align*}
+	\Phi_{p} &= \integ{0}{L}{x}{\rho U^{2}\dv{\delta}{x}\left(\eta - \eta + 1.721\right)} \\
+	         &= 1.721\rho U^{2}\sqrt{\frac{\nu L}{U}}.
+\end{align*}
+
+Om man antar att den asymptotiska lösningen gäller överallt mellan de fyra punkterna, kan man beräkna motståndskraften på plattan. Skjuvspänningen på plattan i $x$-riktning ges av
+\begin{align*}
+	\tau_{xy} &= \mu\left(\dv{u_{x}}{y} + \dv{u_{y}}{y}\right) \\
+	          &= \mu U\dv{y}\left(\frac{f}{\eta}\right) \\
+	          &= \mu\frac{U}{\delta}\dv[2]{f}{\eta}.
+\end{align*}
+Motståndskraften per längd i $z$-riktning ges då av
+\begin{align*}
+	F_{x} &= \integ{0}{L}{x}{\mu\frac{U}{\delta}\dv[2]{f}{\eta}} \\
+	      &= \mu U\integ{0}{L}{x}{\frac{1}{\delta}\dv[2]{f}{\eta}}
+\end{align*}
+
 \paragraph{Avlösning}
 Kring kroppar som omges av strömning kommer det bildas gränsskikt där vorticiteten är hög. Detta kommer påverka strömningen med olik karaktär beroende på ett Reynoldstal som beskriver strömningen.
 
 \paragraph{Motståndskraft på kropp i fluid}
 Betrakta en statisk kropp i en fluid med friströmshastighet $U\ub{x}$. På denna är motståndskraften
 \begin{align*}
-	F = \frac{1}{2}C_{D}\rho U^{2}S
+	F = \frac{1}{2}\rho U^{2}C_{D}S
 \end{align*}
 där $S$ är den projicerade arean i strömriktningen och $C_{D}$ är en motståndskoefficient som beror på Reynoldstalet.
+
+\paragraph{Exempel: Terminalhastighet för en regndroppe}
+Betrakta en vattendroppe med diametern $d$ med tätheten $\rho_{\text{s}}$ i tyngdfältet som faller genom atmosfären, som har täthet $\rho$ och kinematisk viskositet $\nu$. Antag att motståndskoefficienten för vattendroppen ges av
+\begin{align*}
+	C_{D} = \frac{24}{R}\left(1 + \frac{1}{6}R^{\frac{2}{3}}\right),
+\end{align*}
+där $R$ är Reynoldstalet $\frac{Ud}{\nu}$. Det antas att detta är lägre än $1000$. Vi vill bestämma droppens terminalhastighet.
+
+För att göra detta, ställ upp kraftjämvikten i vertikal riktning, som vid terminalhastigheten ger
+\begin{align*}
+	D + \frac{\pi}{6}d^{3}\rho g - mg = 0.
+\end{align*}
+Genom att använda motståndskoefficienten fås
+\begin{align*}
+	\frac{1}{2}\rho U^{2}C_{D}\frac{\pi}{4}d^{2} = mg - \frac{\pi}{6}d^{3}\rho g = \frac{\pi}{6}d^{3}\rho_{\text{s}}g\left(1 - \frac{\rho}{\rho_{\text{s}}}\right).
+\end{align*}
+Vi förenklar till
+\begin{align*}
+	\rho U^{2}C_{D} &= \frac{4}{3}d\rho_{\text{s}}g\left(1 - \frac{\rho}{\rho_{\text{s}}}\right), \\
+	U               &= \sqrt{\frac{4}{3C_{D}}\frac{\rho_{\text{s}}}{\rho}dg\left(1 - \frac{\rho}{\rho_{\text{s}}}\right)}.
+\end{align*}
+Detta är en implicit ekvation i terminalhastigheten, då dämpningskoefficienten beror av denna. Vi kan lösa den numeriskt genom att gissa en dämpningskoefficient, beräkna den motsvarande terminalhastigheten, beräkna det motsvarande Reynoldstalet och dämpningskoefficienten och upprepa proceduren tills du får konvergens.
