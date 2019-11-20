@@ -1,0 +1,81 @@
+\section{Gaugetransformationer}
+
+Vi kommer här att delvis starta om dynamiken genom att studera potentialerna i stället för fälten. Vi kommer ihåg att
+\begin{align*}
+	\vb{E} = -\grad{V} - \del{t}{\vb{A}},\ \vb{B} = \curl{\vb{A}}.
+\end{align*}
+
+\paragraph{Modifierade vågekvationer för potentialerna}
+Vi har
+\begin{align*}
+	\div{\vb{E}}                                   &= -\laplacian{V} - \del{t}{\div{\vb{A}}} \\
+	                                               &= -\dalemb{V} - \del{t}{\left(\div{\vb{A}} + \frac{1}{c^{2}}\del{t}{V}\right)} \\
+	                                               &= \frac{\rho}{\varepsilon_{0}}, \\
+	\curl{\vb{B}} - \frac{1}{c^{2}}\del{t}{\vb{E}} &= \curl(\curl{\vb{A}}) + \frac{1}{c^{2}}(\grad{\del{t}{V}} + \del[2]{t}{\vb{A}}) \\
+	                                               &= -\dalemb{\vb{A}} + \grad(\div{\vb{A}} + \frac{1}{c^{2}}\del{t}{V}) \\
+	                                               &= \mu_{0}\vb{J}.
+\end{align*}
+Vi inför den så kallade ``gauge''-termen
+\begin{align*}
+	g = \div{\vb{A}} + \frac{1}{c^{2}}\del{t}{V},
+\end{align*}
+och får då
+\begin{align*}
+	\dalemb{V} + \del{t}{g} = -\frac{\rho}{\varepsilon_{0}},\ \dalemb{\vb{A}} - \grad{g} = \mu_{0}\vb{J}.
+\end{align*}
+
+\paragraph{Lorenz' gaugevillkor}
+Lorenz' gaugevillkor är
+\begin{align*}
+	g = 0.
+\end{align*}
+
+\paragraph{Gaugetransformationer}
+Här kommer vi till en del av fysiken där man inte har bra ord på svenska. Därför kommer vi använda det engelska ordet gauge om den sortens transformationer som kommer diskuteras. Ordet är besläktad med mått och mätning, och uttalas g\textipa{eIdZ}.
+
+Låt $\lambda$ vara ett godtycklig skalärfält, och transformera potentialerna enligt
+\begin{align*}
+	V' = V - \del{t}{\lambda},\ \vb{A}' = \vb{A} + \grad{\lambda}.
+\end{align*}
+Det är fortfarande fälten som har en direkt fysikalisk tolkning, och dessa ges av
+\begin{align*}
+	\vb{B}' &= \curl{\vb{A}'} = \curl{\vb{A}} + \curl{\grad{\lambda}} = \curl{\vb{A}} = \vb{B}, \\
+	\vb{E}' &= -\grad{V'} - \del{t}{\vb{A}'} = -\grad{V} + \grad{\del{t}{\lambda}} - \del{t}{\vb{A}} - \del{t}{\grad{\lambda}} = -\grad{V} - \del{t}{\vb{A}} = \vb{E}.
+\end{align*}
+
+\paragraph{Kausala Greenfunktioner till d'Alembertoperatorn}
+Vi söker en lösning till
+\begin{align*}
+	\dalemb{G} = -\delta(\vb{r} - \vb{r}')\delta(t - t')
+\end{align*}
+med randvillkor $G = 0$ i oändligheten och initialvillkor $G = 0$. Denna (eller i alla fall en kausal sådan) ges av
+\begin{align*}
+	G(\vb{r}, t | \vb{r}', t') = \frac{1}{4\pi R}\delta\left(t - t' - \frac{R}{c}\right),\ R = \abs{\vb{r} - \vb{r}'},
+\end{align*}
+motsvarande en sfärisk våg. I fall där man inte har några randbidrag och homogena begynnelsevillkor fås potentialerna genom att falta med Greenfunktionen. Detta ger
+\begin{align*}
+	V &= \frac{1}{\varepsilon_{0}}\integ{}{}{\tau'}{\integ{}{}{t'}{G\rho(\vb{r}', t')}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R}\rho\left(\vb{r}', t - \frac{R}{c}\right)},
+\end{align*}
+och $\vb{A}$ beräknas på samma sätt.
+
+\paragraph{Retarderad tid}
+Vi definierar den retarderade tiden som
+\begin{align*}
+	t_{\text{r}} = t - \frac{R}{c}.
+\end{align*}
+Denna dyker upp i båda potentialerna, och motsvarar att informationen om källornas ändringar propagerar med hastighet $c$.
+
+\paragraph{Vågekvationer för fälten}
+Vi vill nu ta fram vågekvationer för fälten, och kommer använda att gradientoperatorn och tidsderivationsoperatorn kommuterar både med varandra och med d'Alembertoperatorn. Vi får
+\begin{align*}
+	\dalemb{\vb{E}} &= -\dalemb{\grad{V}} - \dalemb{\del{t}{\vb{A}}} = \frac{1}{\varepsilon_{0}}\grad{\rho} + \del{t}{\grad{g}} + \mu_{0}\del{t}{\vb{J}} - \del{t}{\grad{g}} = \frac{1}{\varepsilon_{0}}\grad{\rho} + \mu_{0}\del{t}{\vb{J}}, \\
+	\dalemb{\vb{B}} &= \dalemb{\curl{\vb{A}}} = -\mu_{0}\curl{\vb{J}} + \curl{\grad{g}} = -\mu_{0}\curl{\vb{J}}.
+\end{align*}
+
+\paragraph{Lösningar av vågekvationen}
+Lösningar av vågekvationerna ges av
+\begin{align*}
+	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R^{2}}\rho(\vb{r}', t_{\text{r}})\ub{R} + \frac{1}{cR}\del{t}{\rho(\vb{r}', t_{\text{r}})}\ub{R} - \frac{1}{c^{2}R}\del{t}{\vb{J}}}, \\
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R} + \frac{1}{cR}\del{t}{\vb{J}(\vb{r}', t_{\text{r}})}\times\ub{R}}.
+\end{align*}

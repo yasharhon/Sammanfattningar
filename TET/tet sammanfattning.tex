@@ -6,6 +6,7 @@
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[safe]{tipa}
 \usepackage[arrowdel]{physics}
 
 \sisetup{exponent-product = \cdot}
@@ -19,7 +20,7 @@
 \newcommand{\gradp}[1]{\grad^{\prime}{#1}}
 \newcommand{\divp}[1]{\grad^{\prime}\cdot{#1}}
 \newcommand{\curlp}[1]{\grad^{\prime}\times{#1}}
-\newcommand{\dalemb}[1][]{\Box #1}
+\newcommand{\dalemb}[1][]{\Box^{2}#1}
 \newcommand{\gradperp}[1][]{\grad_{\perp}{#1}}
 \newcommand{\laplaperp}[1][]{\laplacian_{\perp}{#1}}
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
@@ -68,5 +69,7 @@
 \input{./Parts/basic_dynamics.tex}
 
 \input{./Parts/waves.tex}
+
+\input{./Parts/dynamic_potentials.tex}
 
 \end{document}
