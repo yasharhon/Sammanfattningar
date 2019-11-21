@@ -59,7 +59,7 @@ Enda nollskilda komponenten är
 Denna är lika med $\frac{1}{2}Kh$ på båda ytorna.
 
 \paragraph{Stokes' första problem}
-Betrakta en newtonsk fluid med kinematisk viskositet $\nu$ och täthet $\rho$ i det halvoändliga rummet $y > 0$. Vid randen börjar en platta röra sig med hastighet $U$ i $x$-riktningen vid $t = 0$. Vi vill nu bestämma hastighetsfältet.
+Betrakta en newtonsk fluid med kinematisk viskositet $\nu$ och täthet $\rho$ i det halvoändliga rummet $y > 0$. Vid randen börjar en platta röra sig med hastighet $U$ i $x$-riktningen vid $t = 0$. Vi vill nu bestämma hastighetsfältet och skjuvspänningen på väggen.
 
 Systemet är symmetriskt i $xz$-planet, och inkompressibiliteten ger då $\del{y}{u_{y}} = 0$. För att uppfylla randvillkoret måste då $u_{y} = 0$. Återigen finns det inget som driver flöde i $z$-riktning, så $u_{z} = 0$. Navier-Stokes' ekvation ger då
 \begin{align*}
@@ -106,5 +106,13 @@ Villkoret i gränsen ger
 \end{align*}
 vilket ger
 \begin{align*}
-	f(\eta) = 1 - \erf\left(\frac{1}{2}\eta\right) = \erfc\left(\frac{1}{2}\eta\right).
+	f(\eta) = 1 - \erf\left(\frac{1}{2}\eta\right) = \erfc\left(\frac{1}{2}\eta\right) = \erfc\left(\frac{y}{2\sqrt{\nu t}}\right).
+\end{align*}
+
+Skjuvspänningen på väggen ges av
+\begin{align*}
+	\tau &= \tau_{yx}\eval_{y = 0} \\
+	     &= \mu\del{y}{u_{x}}\eval_{y = 0} \\
+	     &= -\frac{U\mu}{2\sqrt{\nu t}}\frac{2}{\sqrt{\pi}}e^{-\frac{y^{2}}{4\nu t}}\eval_{y = 0} \\
+	     &= -U\rho\sqrt{\frac{\nu}{\pi t}}.
 \end{align*}
