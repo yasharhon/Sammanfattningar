@@ -22,9 +22,9 @@ Accelerationen är materiella derivatan av hastighetsfältet.
 I strömningsmekanik kommer vi betrakta fixa kontrollvolymer, som kommer betecknas $V$, och materiella kontrollvolymer, som betecknas $\mathcal{V}$. En materiell kontrollvolym rör sig med fluidet, så att dens gränsyta ändras.
 
 \paragraph{Inkompressibla fluider}
-En fluid är inkompresibel om volymsmåttet av en godtycklig materiell kontrollvolym ej ändras med tiden. Detta är automatiskt uppfyld för en fix kontrollvolym. För en materiell kontrollvolym gäller det att
+En fluid är inkompresibel om volymsmåttet av en godtycklig materiell kontrollvolym av fluiden ej ändras med tiden. Detta är automatiskt uppfyld för en fix kontrollvolym. För en materiell kontrollvolym gäller det att
 \begin{align*}
-	dv{t}\integ{\V}{}{\V}{} = \integ{\V}{}{\V}{0 + \div(\phi\vb{u})}.
+	\dv{t}\integ{\V}{}{\V}{} = \integ{\V}{}{\V}{0 + \div{\vb{u}}}.
 \end{align*}
 Kontrollvolymen är godtycklig, vilket ger
 \begin{align*}
@@ -41,14 +41,14 @@ där $\rho$ är tätheten.
 \paragraph{Kontinuitetsekvationen}
 Eftersom randen för en materiell kontrollvolym följer med den strömmande vätskan måste massan av volymen vara konstant. Detta ger
 \begin{align*}
-	\integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
+	\dv{t}\integ{V}{}{V}{\rho} = \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
 \end{align*}
 Om detta gäller överallt, måste integranden vara noll överallt. Detta kan skrivas som
 \begin{align*}
 	\mdv{\rho} + \rho\div{\vb{u}} = 0.
 \end{align*}
 
-Man kan alternativt studera kontinuitetsekvationen i en fix kontrollvolym. Mssbevarandet ger i en källfri volym
+Man kan alternativt studera kontinuitetsekvationen i en fix kontrollvolym. Massbevarandet ger i en källfri volym
 \begin{align*}
 	\dv{t}\integ{V}{}{V}{\rho} = -\vinteg{S}{}{S}{\rho\vb{u}}.
 \end{align*}
@@ -64,8 +64,6 @@ För en inkompressibel fluid är då
 	\mdv{\rho} = 0.
 \end{align*}
 I praktiken antar vi att en inkompressibel fluid har ungefär konstant täthet överallt. Om alla relevanta hastigheter är mycket mindre än ljudhastigheten i mediet, kan fluidet approximeras som inkompressibelt.
-
-Kontinuitetsekvationen kan även härledas ur betraktningar av produktion och förlust av fluid i en fix kontrollvolym, alla Vektoranalys.
 
 \paragraph{Hjälpsats för fältintegraler i inkompressibla fluider}
 Det gäller att
@@ -86,20 +84,27 @@ Rörelsemängden av en fluid inom en volym $V$ ges av
 \end{align*}
 
 \paragraph{Spänningstensorn}
-För en (liten) volym med ytnormal $\vb{n}$ gäller
+Spänningstensorns komponenter $\tau_{ij}$ är kraften i riktning $j$ på ett ytelement med ytnormal i riktning $i$. För en (liten) volym med ytnormal $\vb{n}$ gäller därmed för krafttätheten $\vb{f}$ att
 \begin{align*}
-	f_{i} = \tau_{ji}n_{j}
+	f_{i} = \tau_{ji}n_{j}.
 \end{align*}
-där $\tau$ är spänningstensorn. Spänningstensorn är ett tensorfält då den ger ett kraftfält i fluiden som måste integreras för att få totala kraften. Den totala kraften ges av
+Spänningstensorn är ett tensorfält då den ger ett kraftfält i fluiden som måste integreras för att få totala kraften. Den totala kraften ges av
 \begin{align*}
 	F_{i} = \integ{S}{}{S_{j}}{\tau_{ji}} = \integ{V}{}{V}{\del{j}{\tau_{ji}}}.
 \end{align*}
+
+Man kan visa genom momentjämvikt att spänningstensorn är symmetriskt, varför jag väljer att formulera om definitionerna ovan till
+\begin{align*}
+	f_{i} = \tau_{ji}n_{j},\ F_{i} = \integ{S}{}{S_{j}}{\tau_{ji}} = \integ{V}{}{V}{\del{j}{\tau_{ji}}},
+\end{align*}
+som är den mer kända formen.
 
 \paragraph{Inviskösa fluider}
 Inviskösa fluider definieras av
 \begin{align*}
 	\tau_{ij} = -p\delta_{ij}.
 \end{align*}
+I såna fluider finns det inga friktionskrafter, varken inbördes i fluidet eller mellan fluidet och omgivningen.
 
 \paragraph{Newtons andra lag}
 Newtons andra lag för en fluid ger
@@ -123,14 +128,18 @@ Vorticiteten för ett fluid definieras som
 \end{align*}
 
 \paragraph{Eulers ekvationer}
-Betrakta en fluid där det inte finns friktionskrafter internt i vätskan, en så kallad inviskös fluid. För denna är spänningstensorn $\tau_{ij} = -p\delta_{ij}$. Då förenklas Newtons andra lag till
+Betrakta en inviskös fluid. För denna förenklas Newtons andra lag till
 \begin{align*}
-	\mdv{u_{i}} = g_{i} - \frac{1}{\rho}\del{i}{p}.
+	\mdv{u_{i}} = g_{i} - \frac{1}{\rho}\del{i}{p},
+\end{align*}
+eller på vektorform
+\begin{align*}
+	\del{t}{\vb{u}} + (\vb{u}\cdot\grad)\vb{u} = \vb{g} - \frac{1}{\rho}\grad{p}.
 \end{align*}
 Detta är Eulers ekvationer. De har randvillkoret att $\vb{u}\cdot\vb{n} = 0$ på randytan.
 
 \paragraph{Bernoullis ekvation}
-Bernoullis ekvation är en ekvation som ger en förenklad beskrivning av en inviskös vätska. Det gäller att
+Bernoullis ekvation är en ekvation som ger en förenklad beskrivning av en inviskös fluid. Det gäller att
 \begin{align*}
 	(\vb{u}\cdot\grad)\vb{u} = \frac{1}{2}\grad{u^{2}} - \vb{u}\times\vb*{\omega}.
 \end{align*}
@@ -139,18 +148,22 @@ Genom att betrakta konstanta kraftfält i $z$-riktning och definiera $B = \frac{
 	\del{t}{\vb{u}} + \grad{B} = \vb{u}\times\vb*{\omega}.
 \end{align*}
 
-Betrakta nu en stationär vätska. Genom att integrera ekvationen ovan längsmed en strömlinje försvinner högersidan, vilket ger att $B$ är konstant längsmed strömlinjen.
+Betrakta nu stationärt flöde av en fluid. Genom att integrera ekvationen ovan längsmed en strömlinje försvinner högersidan, vilket ger att
+\begin{align*}
+	B = \frac{1}{2}u^{2} + \frac{p}{\rho} + gz
+\end{align*}
+är konstant längsmed strömlinjen.
 
-\paragraph{Newtons andra lag på integralform}
-För en fix $\vb{g}$ kan vi integrera Newtons andra lag över en fix kontrollvolym för att ge
+\paragraph{Newtons andra lag för stationära fall}
+För en konstant $\vb{g}$ kan vi integrera Newtons andra lag över en fix kontrollvolym för att ge
 \begin{align*}
 	\integ{V}{}{V}{\rho\del{t}{u_{i}} + \rho u_{j}\del{j}{u_{i}}} = Mg_{i} + \integ{V}{}{V}{\del{j}{\tau_{ij}}}.
 \end{align*}
 För en inkompressibel fluid är $\rho u_{j}\del{j}{u_{i}} = \rho \del{j}{(u_{j}u_{i})}$. I stationära fall fås då
 \begin{align*}
-¨	\integ{S}{}{S_{j}}{\rho u_{j}u_{i}} = Mg_{i} + \integ{S}{}{S_{j}}{\tau_{ij}},
+¨	\integ{S}{}{S_{j}}{\rho u_{j}u_{i}} = Mg_{i} + \integ{S}{}{S_{j}}{\tau_{ij}}.
 \end{align*}
-vilket på vektorform (möjligtvis bara i inviskösa fall) blir
+På vektorform, specifikt för en inviskös vätska, blir detta
 \begin{align*}
 	\int\limits_{S}(\dd{\vb{S}}\cdot\vb{u})\vb{u} = Mg_{i} - \integ{S}{}{\vb{S}}{p}.
 \end{align*}
