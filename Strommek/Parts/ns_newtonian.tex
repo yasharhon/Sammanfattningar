@@ -73,4 +73,38 @@ Vi kommer lösa detta med en likformighetsansats med den dimensionslösa variabe
 \begin{align*}
 	u_{x} = Uf(\eta).
 \end{align*}
-Jag borde lösa klart det här någon gång.
+Att vi vill använda denna ansatsen kan man förstå eftersom $\eta$ är det enklaste sättet att konstruera en dimensionslös variabel på med de givna storheterna. Randvillkoren för $f$ är
+\begin{align*}
+	f(0) = U,\ f(\eta) \to 0.
+\end{align*}
+
+Vi får nu
+\begin{align*}
+	\del{t}{}    &= -\frac{1}{2}\frac{y}{\sqrt{\nu}t^{\frac{3}{2}}}\dv{\eta} = -\frac{\eta}{2t}\dv{\eta}, \\
+	\del{y}{}    &= \frac{1}{\sqrt{\nu t}}\dv{\eta}, \\
+	\del[2]{t}{} &= \frac{1}{\nu t}\dv[2]{\eta}.
+\end{align*}
+Navier-Stokes' ekvation reduceras då till
+\begin{align*}
+	-\frac{\eta}{2t}\dv{f}{\eta} &= \nu\frac{1}{\nu t}\dv[2]{f}{\eta}, \\
+	-\frac{1}{2}\eta\dv{f}{\eta} &= \dv[2]{f}{\eta}.
+\end{align*}
+Vi separerar, integrerar och får
+\begin{align*}
+	\ln(\frac{1}{C}\dv{f}{\eta}) = -\frac{1}{4}\eta^{2},\ \dv{f}{\eta} = Ce^{-\frac{1}{4}\eta^{2}}.
+\end{align*}
+En till integration ger
+\begin{align*}
+	f(\eta) - 1 &= \integ{0}{\eta}{\xi}{Ce^{-\frac{1}{4}\xi^{2}}}, \\
+	f(\eta)     &= 1 + C\integ{0}{\eta}{\xi}{e^{-\frac{1}{4}\xi^{2}}} \\
+	            &= 1 + \frac{1}{2}C\sqrt{\pi}\frac{2}{\sqrt{\pi}}\integ{0}{\frac{1}{2}\eta}{\alpha}{e^{-\alpha^{2}}} \\
+	            &= 1 + \frac{\sqrt{\pi}}{2}C\erf(\frac{1}{2}\eta).
+\end{align*}
+Villkoret i gränsen ger
+\begin{align*}
+	1 + \frac{\sqrt{\pi}}{2}C = 0,\ \frac{\sqrt{\pi}}{2}C = -1,
+\end{align*}
+vilket ger
+\begin{align*}
+	f(\eta) = 1 - \erf\left(\frac{1}{2}\eta\right) = \erfc\left(\frac{1}{2}\eta\right).
+\end{align*}
