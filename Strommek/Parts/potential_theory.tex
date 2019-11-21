@@ -120,13 +120,45 @@ Detta är en virvel med cirkulationen $\Gamma$ i medurs riktning.
 \paragraph{Dipol}
 Betrakta funktionen
 \begin{align*}
-	W = \frac{\mu}{z}.
+	W = \frac{\mu}{w}.
 \end{align*}
 Genom att sätta $\frac{\mu}{2\Im{W}} = -C$ kan man visa att strömlinjerna ges av
 \begin{align*}
 	x^{2} + (y - C)^{2} = C^{2}.
 \end{align*}
 Detta är cirklar med radius $C$ och centrum i $(0, C)$, vilket motsvarar strömningar från origo i cirklar som tangerar origo.
+
+\paragraph{Exempel: Potentiallösning för en lång platta}
+Strömningen kring en lång platta kan beskrivas som en superposition av en friström och en källa i origo med en styrka $m$. Källans styrka kommer bestämma både var plattan börjar och hur tjock den är. Potentialen är
+\begin{align*}
+	W = Uw + \frac{m}{2\pi}\ln{w}.
+\end{align*}
+Hastighetspotentialen ges av
+\begin{align*}
+	\Phi = Ur\cos{\phi} + \frac{m}{2\pi}\ln{r},
+\end{align*}
+alternativt i kartesiska koordinater
+\begin{align*}
+	\Phi = Ux + \frac{m}{4\pi}\ln(x^{2} + y^{2}).
+\end{align*}
+De motsvarande hastighetskomponenter är
+\begin{align*}
+	u_{r} = U\cos{\phi} + \frac{m}{2\pi r},\ u_{\theta} = -U\sin{\phi},
+\end{align*}
+alternativt
+\begin{align*}
+	u_{x} = U + \frac{mx}{2\pi(x^{2} + y^{2})},\ u_{y} = \frac{my}{2\pi(x^{2} + y^{2})}.
+\end{align*}
+Stagnationspunkterna ges av $x = -\frac{m}{2\pi U},\ y = 0$.
+
+För att beräkna stagnationsströmlinjen kommer vi använda strömfunktionen, som i vårat fall ges av
+\begin{align*}
+	\Psi = Ur\sin{\phi} + m\frac{\phi}{2\pi}.
+\end{align*}
+Vid stagnationspunkten har denna värdet $\frac{1}{2}m$. Stagnationslinjen beskrivs därmed av
+\begin{align*}
+	\frac{1}{2}m = Uy + m\frac{\phi}{2\pi},\ y = \frac{m}{2U}\left(1 - \frac{\phi}{\pi}\right).
+\end{align*}
 
 \paragraph{Kutta-Jukowskis sats}
 Kutta-Jukowskis sats säjer att lyftkraften på en kropp ges av $\rho U\Gamma$, där $\Gamma$ är cirkulationen kring kroppen. Detta är en god approximation för många olika kroppar, speciellt tunna, strömlinjeformade kroppar.

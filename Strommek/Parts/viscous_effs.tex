@@ -1,5 +1,65 @@
 \section{Viskösa effekter}
 
+\paragraph{Exempel: Couetteströmning av två vätskor}
+Betrakta två Newtonska fluider mellan två plattor, med kinematisk viskositeter $\nu_{1}$ $\nu_{2}$ (nummererade från botten till topp), täthet $\rho$ och konstant tryck $p$. Vätskorna tar upp lika stor plats i $y$-led. Strömningen är stationär och fullt utbildad. Plattorna är på ett avstånd $h$ i $y$-riktning. Ena plattan är fäst, och andra plattan rör sig med en hastighet $U$ i $x$-riktning. Vi vill nu bestämma stationära hastighetsfältet och spänningen mellan de två fluiderna.
+
+Vi vill nu lösa Navier-Stokes' ekvation, med samma randvillkor som för Couetteströmning. Det stationära villkoret och konstanta trycket tar bort två termer, och symmetrin kombinerad med att flödet bara drivs i $x$-riktning tar bort en till term. Kvar står termen med Laplaceoperatorn. Att lösa detta problemet innehåller en lite subtil distinktion för icke-homogena vätskor. Denna termen kommer från en derivata av töjningstensorn. Symmetrin ger då att differentialekvationen som beskriver hastighetsfältet är
+\begin{align*}
+	\frac{1}{\rho}\del{y}{(\mu\del{y}{u_{x}})} = 0.
+\end{align*}
+Tätheten kan tas in i derivationen eftersom den är konstant för att ge
+\begin{align*}
+	\del{y}{(\nu\del{y}{u_{x}})} = 0.
+\end{align*}
+Vi ser då att lösningen kommer vara olik i de två vätskorna - mer specifikt
+\begin{align*}
+	u_{x} =
+	\begin{cases}
+		\frac{A_{1}}{\nu_{1}}y,     & y < \frac{1}{2}h, \\
+		\frac{A_{2}}{\nu_{2}}y + B, & y > \frac{1}{2}h,
+	\end{cases}
+\end{align*}
+där ena konstanttermen har tagits bort direkt för att uppfylla ena randvillkoret. Andra randbillkoret ger
+\begin{align*}
+	B = U - \frac{A_{2}h}{\nu_{2}},\ u_{x} =
+	\begin{cases}
+		\frac{A_{1}}{\nu_{1}}y,                                 & y < \frac{1}{2}h, \\
+		U + \frac{A_{2}h}{\nu_{2}}\left(\frac{y}{h} - 1\right), & y > \frac{1}{2}h.
+	\end{cases}
+\end{align*}
+Det står kvar två konstanter, så två till villkor behövs. Ena är att hastighetsfältet måste vara kontinuerligt, då man annars skulle ha att vätskorna glider längsmed varandra, vilket inte kan hända eftersom flödet är visköst (argumentet är det samma som för vidhäftningsvillkoret). Detta ger
+\begin{align*}
+	\frac{A_{1}h}{2\nu_{1}} = U - \frac{A_{2}h}{2\nu_{2}}.
+\end{align*}
+För att få det sista villkoret kan man frilägga de två vätskorna. Dessa kommer verka med en skjuvkraft på varandra som enligt Newtons tredje lag måste vara lika. Om $\tau_{i}$ är skjuvkraften på vätska $i$ i $x$-riktning, blir villkoret $\tau_{1} = -\tau_{2}$. Vi har
+\begin{align*}
+	\tau_{1} = \mu_{1}\del{y}{u_{x}},\ \tau_{2} = -\mu_{2}\del{y}{u_{x}},
+\end{align*}
+vilket ger
+\begin{align*}
+	\mu_{1}\frac{A_{1}}{\nu_{1}} = \mu_{1}\frac{A_{2}}{\nu_{2}},\ A_{1} = A_{2} = A.
+\end{align*}
+Därmed fås
+\begin{align*}
+	\frac{Ah}{2\nu_{1}}                       &= U - \frac{Ah}{2\nu_{2}}, \\
+	A\frac{\nu_{1} + \nu_{2}}{\nu_{1}\nu_{2}} &= \frac{2U}{h}, \\
+	A                                         &= \frac{2U}{h}\frac{\nu_{1}\nu_{2}}{\nu_{1} + \nu_{2}}.
+\end{align*}
+Hastighetsfältet blir slutligen
+\begin{align*}
+	u_{x} =
+	\begin{cases}
+		2U\frac{\nu_{2}}{\nu_{1} + \nu_{2}}\frac{y}{h},                                   & y < \frac{1}{2}h, \\
+		U\left(1 + 2\frac{\nu_{1}}{\nu_{1} + \nu_{2}}\left(\frac{y}{h} - 1\right)\right), & y > \frac{1}{2}h.
+	\end{cases}
+\end{align*}
+
+Nu återstår bara att beräkna skjuvspänningen. Vi får
+\begin{align*}
+	\tau_{1} = \mu_{1}\frac{2U}{h}\frac{\nu_{2}}{\nu_{1} + \nu_{2}} = \frac{2U\rho}{h}\frac{\nu_{1}\nu_{2}}{\nu_{1} + \nu_{2}}, \\
+	\tau_{2} = -\mu_{2}\frac{2U}{h}\frac{\nu_{1}}{\nu_{1} + \nu_{2}} = -\frac{2U\rho}{h}\frac{\nu_{1}\nu_{2}}{\nu_{1} + \nu_{2}}.
+\end{align*}
+
 \paragraph{Bildningen av gränsskikt}
 Vidhäftningsvillkoret gör att nära ytor ändras hastigheten extremt snabbt i ett tunt skikt nära ytan, det så kallade gränsskiktet. Vi kommer studera beteendet i och utanför såna gränsskikt i fall som är symmetriska i $z$-riktning.
 
