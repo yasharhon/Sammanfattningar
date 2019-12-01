@@ -79,3 +79,36 @@ Lösningar av vågekvationerna ges av
 	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R^{2}}\rho(\vb{r}', t_{\text{r}})\ub{R} + \frac{1}{cR}\del{t}{\rho(\vb{r}', t_{\text{r}})}\ub{R} - \frac{1}{c^{2}R}\del{t}{\vb{J}}}, \\
 	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R} + \frac{1}{cR}\del{t}{\vb{J}(\vb{r}', t_{\text{r}})}\times\ub{R}}.
 \end{align*}
+
+\paragraph{Någonting om punktladdningar i rörelse}
+
+\paragraph{Komplext fjärrfält från utbredd strömtäthet}
+Betrakta en strömtäthet som ligger fullständigt innanför ett område med maximal dimension $d_{\text{max}}$. Magnetfältet från denna ges av
+\begin{align*}
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\left(\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}}) + \frac{1}{cR}\del{t}{\vb{J}(\vb{r}', t_{\text{r}})}\right)\times\ub{R}}.
+\end{align*}
+Om strömtätheten har ett harmoniskt tidsberoende $e^{j\omega t}$, där $j = i$ (konventionen används pga det positiva tecknet i exponenten) fås i integranden
+\begin{align*}
+	\vb{J} = \Re\left(\vb{J}(\vb{r}')e^{j\omega t_{\text{r}}}\right) = \Re\left(\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}}\right),\ \del{t}{\vb{J}} = \Re\left(j\omega\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}}\right).
+\end{align*}
+Vi kommer bortse från det harmoniska tidsberoende då det inte ändras, och inför $k = \frac{\omega}{c}$.
+
+För att studera fältet långt borta från strömfördelningen antar vi att $kR >> 1$, vilket ger det komplexa fältet
+\begin{align*}
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\left(\frac{1}{R^{2}}\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}} + \frac{1}{cR}j\omega\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}}\right)\times\ub{R}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}e^{-jkR}\left(1 + jkR\right)\vb{J}(\vb{r}')\times\ub{R}} \\
+	       &\approx j\frac{\mu_{0}k}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}e^{-jkR}\vb{J}(\vb{r}')\times\ub{R}}.
+\end{align*}
+Om $r >> d_{\text{max}}$ kan vi göra en parallelliseringsansats $kR \approx k(r - \ub{r}\cdot\vb{r}') = kr - \vb{k}\cdot\vb{r}'$, där $\vb{k} = k\ub{r}$. Detta ger
+\begin{align*}
+	\vb{B} &= j\frac{\mu_{0}k}{4\pi r}e^{-jkr}\integ{}{}{\tau'}{e^{j\vb{k}\cdot\vb{r}'}\vb{J}(\vb{r}')\times\ub{r}} \\
+	       &= j\frac{\mu_{0}}{4\pi r}e^{-jkr}\left(\integ{}{}{\tau'}{e^{j\vb{k}\cdot\vb{r}'}\vb{J}(\vb{r}')}\right)\times\vb{k}.
+\end{align*}
+Vi känner igen uttrycket i parentesen som Fouriertransformen av strömtätheten med avseende på rum. Vi får vidare
+\begin{align*}
+	\expval{\vb{S}} = \frac{\mu_{0}c}{32\pi^{2}r^{2}}F\ub{r},
+\end{align*}
+där
+\begin{align*}
+	F = \abs{\fou{\vb{J}}\times\vb{k}}^{2} = (\fou{\vb{J}}\times\vb{k})\cdot(\fou{\vb{J}}\times\vb{k})^{*}.
+\end{align*}

@@ -1,0 +1,28 @@
+\section{Antenner}
+
+\paragraph{Elektriska dipolantenner}
+En enkel form för antenn konstrueras genom att placera två motsatta punktladdningar på ett avstånd $d$ från varandra och förbinda dessa med en ström $I$. Genom att orientera $z$-axeln parallell med vektorn som förbinder dipolerna fås
+\begin{align*}
+	\vb{p} = q(t)d\ub{z},\ I = \del{t}{q}.
+\end{align*}
+Från detta kan man i gränsen $d\to 0,\ qd\to p$ visa att
+\begin{align*}
+	\rho = -\vb{p}\cdot\grad{\delta(\vb{r})},\ \vb{J} = \vb{p}\delta(\vb{r}).
+\end{align*}
+Genom att studera fältet från en dipol i Lorenzgaugen fås
+\begin{align*}
+	\vb{E}(\vb{r}, t) &= \frac{3}{4\pi\varepsilon_{0}}\frac{\ub{r}\cdot(\vb{p} + \frac{r}{c}\dot{\vb{p}})\ub{r} - (\vb{p} + \frac{r}{v}\dot{\vb{p}})}{r^{3}} + \frac{\mu_{0}}{4\pi}\frac{(\dot{\vb{p}}\cdot\ub{r})\ub{r} - \ddot{\vb{p}}}{r}, \\
+	\vb{B}(\vb{r}, t) &= \frac{\mu_{0}}{4\pi r^{2}}\left(\dot{\vb{p}} + \frac{r}{c}\ddot{p}\right)\times\ub{r},
+\end{align*}
+där alla $\vb{p}$ och derivator av denna evalueras vid $t_{\text{r}} = t - \frac{r}{c}$.
+
+\paragraph{Effekttransport från en elektrisk dipolantenn}
+Man kan visa att genom en sfär med radien $R$ som är koncentrisk med dipolen fås
+\begin{align*}
+	P = \dv{W_{\text{när}}}{t} + P_{\text{strål}},
+\end{align*}
+där
+\begin{align*}
+	W_{\text{när}} = \frac{\mu_{0}}{6\pi c}\left(\frac{c^{3}p^{2}}{2R^{3}} + \frac{c^{2}}{R^{2}}(\vb{p}\cdot\dot{\vb{p}}) + \frac{c}{R}\dot{p}^{2}\right),\ P_{\text{strål}} = \frac{\mu_{0}}{6\pi\varepsilon_{0}c}\ddot{p}^{2}.
+\end{align*}
+Det är bara den sista termen, strålningstermen, som når ut till oändligheten.
