@@ -26,3 +26,41 @@ där
 	W_{\text{när}} = \frac{\mu_{0}}{6\pi c}\left(\frac{c^{3}p^{2}}{2R^{3}} + \frac{c^{2}}{R^{2}}(\vb{p}\cdot\dot{\vb{p}}) + \frac{c}{R}\dot{p}^{2}\right),\ P_{\text{strål}} = \frac{\mu_{0}}{6\pi\varepsilon_{0}c}\ddot{p}^{2}.
 \end{align*}
 Det är bara den sista termen, strålningstermen, som når ut till oändligheten.
+
+\paragraph{Raka trådantenner}
+En annan enkel antenn kan konstrueras genom att föra en varierande ström genom en rak tråd med längd $h$ (orienterad längs med $z$-axeln).
+
+\paragraph{Raka trådantenner med tidsharmonisk ström}
+Vi antar att strömmen i tråden är tidsharmonisk, och söker elektriska och magnetiska fältet för $r >> h, \lambda$. Vi kan då använda resultaten från analyser av tidsharmoniska strömfördelningar för att få
+\begin{align*}
+	\vb{B} = j\frac{\mu_{0}}{4\pi}\frac{e^{-jkr}}{r}\fou{\vb{J}}\times\vb{k},
+\end{align*}
+där strömtätheten ges av
+\begin{align*}
+	\vb{J}(\vb{r}') = I(z')\delta(\vb{s}')(H(z' + \frac{1}{2}h) - H(z' - \frac{1}{2}h))\ub{z}.
+\end{align*}
+Genom att Fouriertransformera strömtätheten fås
+\begin{align*}
+	\vb{B} = j\frac{\mu_{0}\omega}{4\pi c}\frac{e^{-jkr}}{r}\sin{\phi}\integ{-\frac{1}{2}h}{\frac{1}{2}h}{z'}{I(z')e^{j\frac{z'}{\lambda}2\pi\cos{\theta}}}\ub{\phi}.
+\end{align*}
+
+\paragraph{Mittpunktsmatade trådantenner}
+För en mittpunktsmatad trådantenn antar vi att strömmen tar slut i änderna av tråden. Den approximativa strömtätheten ges av
+\begin{align*}
+	I(z') = I_{0}\sin(\frac{2\pi}{\lambda}\left(\frac{1}{2}h - \abs{z'}\right)).
+\end{align*}
+Det motsvarande magnetfältet blir då
+\begin{align*}
+	\vb{B} = j\frac{\mu_{0}I_{0}}{2\pi}\frac{e^{-jkr}}{r}\frac{\cos(\pi\cos{\theta}\frac{h}{\lambda}) - \cos(\pi\frac{h}{\lambda})}{\sin{\theta}}\ub{\phi}.
+\end{align*}
+
+\paragraph{Gruppantenner}
+En gruppantenn är en mängd av $N$ strömfördelningar som alla befinner sig inom ett avstånd $w_{\text{max}}$ från varandra. För fjärrfältet från en sån kan vi använda parallellapproximationen för att få
+\begin{align*}
+	\vb{B} = \sum\limits_{n}j\frac{\mu_{0}}{4\pi}\frac{e^{-jkR_{n}}}{R_{n}}\vb{f}_{n}(\theta, \phi) \approx j\frac{\mu_{0}}{4\pi}\frac{e^{-jkr}}{r}\sum\limits_{n}e^{j\vb{k}\cdot\vb{w}_{n}}\vb{f}_{n}(\theta, \phi).
+\end{align*}
+Om alla delarna är lika och likadant orienterade fås $\vb{f}_{n} = a_{n}\vb{f}$, vilket ger
+\begin{align*}
+	\vb{B} = j\frac{\mu_{0}}{4\pi}\frac{e^{-jkr}}{r}\vb{f}\sum\limits_{n}a_{n}e^{j\vb{k}\cdot\vb{w}_{n}}.
+\end{align*}
+Här dyker det upp en elementfaktor $\vb{f}$ och en gruppfaktor $G = \sum\limits_{n}a_{n}e^{j\vb{k}\cdot\vb{w}_{n}}$, som allmänt är komplex.
