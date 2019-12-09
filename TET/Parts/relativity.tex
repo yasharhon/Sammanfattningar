@@ -1,0 +1,93 @@
+\section{Relativitet och elektromagnetism}
+
+\paragraph{Lorentztransformen}
+Betrakta två inertialsystem $S$ och $S'$ med sammanfallande koordinataxlar, där $S'$ rör sig med hastigheten $v\ub{x}$ relativt $S$. Lorentztransformen mellan koordinaterna i de två systemen är
+\begin{align*}
+	t' = \gamma\left(t - \frac{\beta}{c}x\right),\ x' = \gamma(x - vt),
+\end{align*}
+med
+\begin{align*}
+	\beta = \frac{v}{c},\ \gamma = \frac{1}{\sqrt{1 - \beta^{2}}}.
+\end{align*}
+Övriga koordinater påverkas inte. Inversion av transformen fås genom att byta tecken på $\beta$ och byta plats på primmade och oprimmade koordinater. På matrisform skriver vi
+\begin{align*}
+	(x')^{\mu} = \Lambda_{\nu}^{\mu}x^{\nu},
+\end{align*}
+där $\nu$ och $\mu$ löper från $0$ till $3$ och $x^{0} = ct$. Konventionen i speciell relativitet är att grekiska index löper över alla dimensioner medan latinska index bara löper över rumsindex.
+
+Mer allmänt kan vi skriva transformationsmatrisen som
+\begin{align*}
+	\lambda_{\nu}^{\mu} = \del{\nu}{(x')^{\mu}},
+\end{align*}
+med invers vars komponenter ges av $\delp{\nu}{x^{\mu}}$. Kontravarianta vektorer transformeras med vanliga transformationsmatrisen och kovarianta vektorer med den inversa transformationsmatrisen. Alla vektorer kan uttryckas i kontravarianta och kovarianta komponenter, och dessa uppfyller
+\begin{align*}
+	A_{\mu} = g_{\mu\nu}A^{\nu},\ A^{\mu} = g^{\mu\nu}A_{\nu}
+\end{align*}
+där $g$ är den metriska tensorn. Metriken vi använder ges av $g_{ij} = \delta_{ij},\ g_{0\mu} = -\delta_{0\mu}$.
+
+\paragraph{Derivator}
+Kedjeregeln ger att derivationsoperatorn $\del{0}{} = \frac{1}{c}\del{t}{},\ \del{i}{} = \del{i}{}$ transformeras kovariant. Dens kontravarianta motsvarighet tas enkelt fram med metriken.
+
+\paragraph{Källtensorn}
+Betrakta en laddningsfördelning som rör sig med konstant hastighet relativt ett inertialsystem $S$. I dens vilosystem $S'$ är $\vb{J}' = \vb{0}$. I $S$ fås
+\begin{align*}
+	\rho = \gamma \rho',\ \vb{J} = \rho v\ub{x} = \gamma\rho' v\ub{x}.
+\end{align*}
+Mer allmänt kan man bilda $4$-vektorn
+\begin{align*}
+	J^{0} = c\rho, J^{i} = J_{i}
+\end{align*}
+och visa att denna transformeras enligt Lorentztransformationen.
+
+\paragraph{Potentialtensorn}
+Vi (inte jag) har visat att potentialen från en punktladdning i icke-accelererad rörelse ges av
+\begin{align*}
+	V(x^{\mu}) = \gamma\frac{q}{4\pi\varepsilon_{0}}\frac{1}{\sqrt{\gamma(x^{1} - \beta x^{0})^{2} + (x^{2})^{2} + (x^{3})^{2}}},\ \vb{A}(x^{\mu}) = \beta\frac{V}{c}\ub{x}.
+\end{align*}
+I laddningens inertialsystem fås
+\begin{align*}
+	V((x')^{\mu}) = \frac{q}{4\pi\varepsilon_{0}}\frac{1}{\sqrt{(x^{i})^{2}}},\ \vb{A}'((x')^{\mu}) = \vb{0}.
+\end{align*}
+Då definierar vi $4$-vektorn
+\begin{align*}
+	(A')^{0} = \frac{V}{c},\ (A')^{i} = A_{i}.
+\end{align*}
+Denna transformeras enligt Lorentztransformationen.
+
+\paragraph{Lorentzskalärer}
+En Lorentsskalär är en skalär som är invariant under Lorentztransformationen. Den mest allmänna Lorentzskalären är skalärprodukten mellan $4$-vektorer
+\begin{align*}
+	\vb{A}\cdot\vb{B} = A_{\mu}B^{\mu}.
+\end{align*}
+Detta ger direkt att $\del{\mu}{J^{\mu}}$ är en Lorentzskalar, vilket motsvarar kontinuitetsekvationen. I Lorenzgaugen är $\del{\mu}{A^{\mu}}$ en Lorentzskalär. d'Alembertoperatorn $\del{\mu}{\delc{\mu}{}}$ är även invariant under Lorentztransformen.
+
+\paragraph{Faradaytensorn}
+Elektriska och magnetiska fältet kan användas för att konstruera den antisymmetriska tensorn
+\begin{align*}
+	F^{\mu\nu} = 
+	\mqty
+	[
+		0                & \frac{E_{x}}{c} & \frac{E_{y}}{c} & \frac{E_{z}}{c} \\
+		-\frac{E_{x}}{c} & 0               & B_{z}           & -B_{y} \\
+		-\frac{E_{y}}{c} & -B_{z}          & 0               & B_{x}  \\
+		-\frac{E_{z}}{c} & B_{y}           & -B_{x}          & 0
+	].
+\end{align*}
+Genom att Lorentztransformera denna fås
+\begin{align*}
+	E_{x}' = E_{x},\ E_{y}' = \gamma(E_{y} - \beta cB_{z}),\ E_{z}' = \gamma(E_{z} + \beta cB_{y}), \\
+	B_{x}' = B_{x},\ B_{y}' = \gamma\left(B_{y} + \frac{\beta}{c}B_{z}\right),\ B_{z}' = \left(B_{z} - \frac{\beta}{c}E_{y}\right).
+\end{align*}
+
+%TODO: Duala tensorn
+
+\paragraph{Maxwells ekvationer}
+Tre av Maxwells ekvationer kan nu skrivas
+\begin{align*}
+	\del{\nu}{F^{\mu\nu}} = \mu_{0}J^{\mu}.
+\end{align*}
+Om man gör det samma med duala fälttensorn fås
+\begin{align*}
+	\del{\nu}{G^{\mu\nu}} = 0,
+\end{align*}
+vilket ger den sista.
