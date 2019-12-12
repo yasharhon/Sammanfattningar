@@ -30,8 +30,8 @@ Eftersom krafter superponeras, gör även elektriska fält det. I diskreta fall 
 \end{align*}
 Laddningen kan vara spridd ut på en linje, en yta eller en volym, i vilka fall vi får $\dd{q} = \rho\dd{l}$, $\dd{q} = \sigma\dd{S}$ respektiva $\dd{q} = \lambda\dd{V}$. Förutom de olika elementerna finns en linjeladdningstäthet, ytladdningstäthet eller volymladdningstäthet. Notera att med hjälp av Diracs delta kan alla dessa fallen skrivas som volymladdningstätheter.
 
-\paragraph{Gauss' lag}
-För att härleda Gauss' lag börjag vi med att titta på flödet av fältet $\frac{1}{R^{2}}\ub{R}$ genom en godtycklig yta. Integrationselementet
+\paragraph{Gauss lag}
+För att härleda Gauss lag börjag vi med att titta på flödet av fältet $\frac{1}{R^{2}}\ub{R}$ genom en godtycklig yta. Integrationselementet
 \begin{align*}
 	\dd{\Omega} = \frac{\ub{R}\cdot\vb{\dd{a}}}{R^{2}}
 \end{align*}
@@ -97,7 +97,7 @@ Dessa två resultat kan sammanfattas som
 Kring en ytladdning är elektriska fältet diskontinuerligt, så hur beräknar man kraften på en sådan? Med hjälp av superposition kan elektriska fältet skrivas som en summa av bidrag från själva laddningen och allt annat. Termen från andra saker, som är den som ger kraften, är kontinuerlig i ytan eftersom man skulle kunna ta bort ytladdningen utan att ändra den. Vidare är fältet tillräcklig nära ytladdningen $\pm\frac{\sigma}{2\varepsilon_{0}}\vb{n}_{12}$, som försvinner om man tar medelvärdet. Alltså ges kraften av laddningen gånger medelärdet av fältet på varje sida.
 
 \paragraph{Elektrostatisk potential}
-Med vår kunnskap från vektoranalysen kan vi skriva
+Med vår kunskap från vektoranalysen kan vi skriva
 \begin{align*}
 	\vb{E} = -\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\rho\grad{\frac{1}{R}}} = -\grad(\frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\rho\frac{1}{R}}).
 \end{align*}
@@ -132,7 +132,7 @@ oberoende av vägen mellan punkterna. Om vi lägger potentialens referens i oän
 \begin{align*}
 	V(\vb{r}_{0}) = -\vinteg{\infty}{\vb{r}_{0}}{l}{\vb{E}},
 \end{align*}
-ett typ inverst påstående av $\vb{E} = -\grad{V}$. Intgrationsbanan parametriseras från $\infty$ till $\vb{r}_{0}$, ett mistag jag gör lite för många gånger. Vi ser även från detta att
+ett typ inverst påstående av $\vb{E} = -\grad{V}$. Intgrationsbanan parametriseras från $\infty$ till $\vb{r}_{0}$, ett misstag jag gör lite för många gånger. Vi ser även från detta att
 \begin{align*}
 	V(\vb{r}_{2}) - V(\vb{r}_{1}) = -\vinteg{\vb{r}_{1}}{\vb{r}_{2}}{l}{\vb{E}}.
 \end{align*}
@@ -247,10 +247,10 @@ Det visar sig att om man använder resultatet för en laddningsfördelning på e
 \paragraph{Perfekta ledare}
 En perfekt ledare har obegränsat med fria laddningar som kan röra sig i materialet. Från detta följer att
 \begin{itemize}
-	\item $\vb{E} = \vb{0}$ överallt inuti ledaren. Annars skulle någon av de fria laddningarna påverkas av fältet och röra sig sån att de kansellerade det.
+	\item $\vb{E} = \vb{0}$ överallt inuti ledaren. Annars skulle någon av de fria laddningarna påverkas av fältet och röra sig sån att de kancellerade det.
 	\item $\rho = \varepsilon_{0}\div{\vb{E}} = 0$ inuti ledaren. Därmed är alla fria laddningar på ytan.
 	\item $V$ är konstant inuti ledaren.
-	\item $\vb{E} = \frac{\sigma}{\varepsilon_{0}}\ub{n}$ precis utanför ledaren på grund av elektriska fältets randvillkor, alternativt eftersom tangentiella komponenter skulle transportera laddningar på ytan som skulle kansellera fältet.
+	\item $\vb{E} = \frac{\sigma}{\varepsilon_{0}}\ub{n}$ precis utanför ledaren på grund av elektriska fältets randvillkor, alternativt eftersom tangentiella komponenter skulle transportera laddningar på ytan som skulle kancellera fältet.
 \end{itemize}
 
 \paragraph{Kraften på en ledare}
@@ -354,7 +354,7 @@ Ekvipotentialytorna för en nollskild potential är komplicerade, men ekvipotent
 	\rho^{2} + \left(z - \frac{h}{1 - k^{2}}\right) - \frac{h^{2}}{(1 - k^{2})^{2}} + \frac{h^{2}}{1 - k^{2}} &= 0, \\
 	\rho^{2} + \left(z - \frac{h}{1 - k^{2}}\right)                                     &= \frac{h^{2}k^{2}}{(1 - k^{2})^{2}}.
 \end{align*}
-Detta är en sfär med centrum i $\frac{1}{1 - k^{2}}h\ub{z}$ och radius $a = h\abs{\frac{k}{1 - k^{2}}}$. Notera att det är en förutsättning att $k < 0$, alltså att laddningarna har olika tecken.
+Detta är en sfär med centrum i $\frac{1}{1 - k^{2}}h\ub{z}$ och radie $a = h\abs{\frac{k}{1 - k^{2}}}$. Notera att det är en förutsättning att $k < 0$, alltså att laddningarna har olika tecken.
 
 Om vi nu antar $k^{2} > 1$ ligger sfärens centrum under laddning $2$. Avstånden från sfärens centrum till de två punktladdningarna är då
 \begin{align*}
