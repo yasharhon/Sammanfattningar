@@ -16,6 +16,11 @@ Genom att studera fältet från en dipol i Lorenzgaugen fås
 \end{align*}
 där alla $\vb{p}$ och derivator av denna evalueras vid $t_{\text{r}} = t - \frac{r}{c}$.
 
+Fälten uppfyller
+\begin{align*}
+	\vb{B} = \frac{1}{c}\ub{r}\times\vb{E},\ \vb{E} = -c\ub{r}\times\vb{B}.
+\end{align*}
+
 \paragraph{Effekttransport från en elektrisk dipolantenn}
 Man kan visa att genom en sfär med radien $R$ som är koncentrisk med dipolen fås
 \begin{align*}
@@ -31,7 +36,7 @@ Det är bara den sista termen, strålningstermen, som når ut till oändligheten
 En annan enkel antenn kan konstrueras genom att föra en varierande ström genom en rak tråd med längd $h$ (orienterad längs med $z$-axeln).
 
 \paragraph{Raka trådantenner med tidsharmonisk ström}
-Vi antar att strömmen i tråden är tidsharmonisk, och söker elektriska och magnetiska fältet för $r >> h, \lambda$. Vi kan då använda resultaten från analyser av tidsharmoniska strömfördelningar för att få
+Vi antar att strömmen i tråden är tidsharmonisk, och söker elektriska och magnetiska fältet för $r \gg h, \lambda$. Vi kan då använda resultaten från analyser av tidsharmoniska strömfördelningar för att få
 \begin{align*}
 	\vb{B} = j\frac{\mu_{0}}{4\pi}\frac{e^{-jkr}}{r}\fou{\vb{J}}\times\vb{k},
 \end{align*}
@@ -55,12 +60,30 @@ Det motsvarande magnetfältet blir då
 \end{align*}
 
 \paragraph{Gruppantenner}
-En gruppantenn är en mängd av $N$ strömfördelningar som alla befinner sig inom ett avstånd $w_{\text{max}}$ från varandra. För fjärrfältet från en sån kan vi använda parallellapproximationen för att få
+En gruppantenn är en mängd av $N$ strömfördelningar som alla befinner sig inom ett avstånd $w_{\text{max}}$ från varandra.
+
+\paragraph{Fjärrfält från en gruppantenn av dipoler}
+Betrakta en uppställning av dipoler med dipolmoment $\vb{p}_{n}$ centrerade i punkterna $\vb{w}_{n}$. I fjärrzonen till samtliga dipoler ger superposition
 \begin{align*}
-	\vb{B} = \sum\limits_{n}j\frac{\mu_{0}}{4\pi}\frac{e^{-jkR_{n}}}{R_{n}}\vb{f}_{n}(\theta, \phi) \approx j\frac{\mu_{0}}{4\pi}\frac{e^{-jkr}}{r}\sum\limits_{n}e^{j\vb{k}\cdot\vb{w}_{n}}\vb{f}_{n}(\theta, \phi).
+	\vb{B} = \frac{\mu_{0}}{4\pi c}\sum\limits_{n}\frac{1}{R_{n}}\del[2]{t}{\vb{p}_{n}}(t_{n})\times\ub{R_{n}},\ t_{n} = t - \frac{R_ {n}}{c}.
 \end{align*}
-Om alla delarna är lika och likadant orienterade fås $\vb{f}_{n} = a_{n}\vb{f}$, vilket ger
+I fjärrzonen kan vi använda parallellapproximationen $R_{n} \approx r - \ub{r}\cdot\vb{w}_{n},\ \ub{R_{n}} \approx \ub{r}$ för att få
 \begin{align*}
-	\vb{B} = j\frac{\mu_{0}}{4\pi}\frac{e^{-jkr}}{r}\vb{f}\sum\limits_{n}a_{n}e^{j\vb{k}\cdot\vb{w}_{n}}.
+	\vb{B} \approx -\frac{\mu_{0}}{4\pi c}\ub{r}\times\left(\sum\limits_{n}\frac{1}{R_{n}}\del[2]{t}{\vb{p}_{n}}\left(t_{\text{r}} + \frac{\ub{r}\cdot\vb{w}_{n}}{c}\right)\right) \approx -\frac{\mu_{0}}{4\pi cr}\ub{r}\times\left(\sum\limits_{n}\del[2]{t}{\vb{p}_{n}}\left(t_{\text{r}} + \frac{\ub{r}\cdot\vb{w}_{n}}{c}\right)\right),
 \end{align*}
-Här dyker det upp en elementfaktor $\vb{f}$ och en gruppfaktor $G = \sum\limits_{n}a_{n}e^{j\vb{k}\cdot\vb{w}_{n}}$, som allmänt är komplex.
+där vi har infört retarderade tiden för origo $t_{\text{r}} = t - \frac{r}{c}$.
+
+Om dipolen har harmoniskt tidsberoende $\vb{p}_{n} = p_{n}\ub{p_{n}}e^{j(\omega t + \alpha_{n})}$ kan vi skriva
+\begin{align*}
+	\vb{B} &= -\frac{\mu_{0}}{4\pi cr}\ub{r}\times\left(\sum\limits_{n}-\omega^{2}p_{n}\ub{p_{n}}e^{j\alpha_{n} + j\omega\left(t_{\text{r}} + \frac{\ub{r}\cdot\vb{w}_{n}}{c}\right)}\right) \\
+	       &= \frac{\mu_{0}\omega^{2}}{4\pi cr}e^{j\omega t_{\text{r}}}\ub{r}\times\left(\sum\limits_{n}p_{n}\ub{p_{n}}e^{j\alpha_{n} + j\omega\frac{\ub{r}\cdot\vb{w}_{n}}{c}}\right).
+\end{align*}
+Om man inför vågvektorn $k = \frac{\omega}{c}\ub{r}$ och bortser från harmoniska tidsberoendet kan detta skrivas som
+\begin{align*}
+	\vb{B} = \frac{\mu_{0}\omega^{2}}{4\pi cr}e^{-jkr}\sum\limits_{n}e^{j\alpha_{n} + j\vb{k}\cdot\vb{w}_{n}}\vb{f}_{n}(\theta, \phi).
+\end{align*}
+Om alla delarna är lika och likadant orienterade fås $\vb{f}_{n} = a_{n}\ub{f}$, vilket ger
+\begin{align*}
+	\vb{B} = \frac{\mu_{0}\omega^{2}}{4\pi cr}e^{-jkr}\ub{f}\sum\limits_{n}a_{n}e^{j\alpha_{n} + j\vb{k}\cdot\vb{w}_{n}}.
+\end{align*}
+Här dyker det upp en elementfaktor $\ub{f}$ som beskriver antennens orientering och en gruppfaktor $G = \sum\limits_{n}a_{n}e^{j\alpha_{n} + j\vb{k}\cdot\vb{w}_{n}}$ som beskriver hur de samverkar.
