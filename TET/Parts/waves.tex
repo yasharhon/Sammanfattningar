@@ -21,6 +21,11 @@ Man kan visa att en plan våg i källfritt rum propagerar med farten
 \begin{align*}
 	c = \frac{1}{\sqrt{\mu_{0}\varepsilon_{0}}}.
 \end{align*}
+Vi inför d'Alembertoperatorn $\dalemb{} = \laplacian{} - \frac{1}{c^{2}}\del[2]{t}{}$ och skriver då vågekvationerna som
+\begin{align*}
+	\dalemb{\vb{E}} &= \frac{1}{\varepsilon_{0}}\grad{\rho} + \mu_{0}\del{t}{\vb{J}}, \\
+	\dalemb{\vb{B}} &= -\mu_{0}\curl{\vb{J}}.
+\end{align*}
 
 \paragraph{Fouriertransformering av fälten}
 Fouriertransformering ger
@@ -42,13 +47,13 @@ Eftersom fälten är reella, måste det gälla att
 
 Vi kan visa följande egenskaper i källfria rum:
 \begin{align*}
-	\fou{\vb{E}} = -i\omega\vb{E}_{\omega},\ \curl{\vb{E}_{\omega}} = i\omega\vb{B}_{\omega},\ \curl{\vb{B}_{\omega}} = -i\frac{\omega}{c^{2}}\vb{E}_{\omega},\ \div{\vb{E}} = \div{\vb{B}} = 0.
+	\fou{\vb{E}} = -i\omega\vb{E}_{\omega},\ \curl{\vb{E}_{\omega}} = i\omega\vb{B}_{\omega},\ \curl{\vb{B}_{\omega}} = -i\frac{\omega}{c^{2}}\vb{E}_{\omega},\ \div{\vb{E}_{\omega}} = \div{\vb{B}_{\omega}} = 0.
 \end{align*}
 
 \paragraph{Strikt tidsharmonisering}
 En strikt tidsharmonisering är en idealisering av en given fältkomponent $F$ på formen
 \begin{align*}
-	F = F_{0}\cos{\omega_{0}t + \alpha} = \Re{F_{0}e^{-\omega_{0}t - i\alpha}}.
+	F = F_{0}\cos(\omega_{0}t + \alpha) = \Re{F_{0}e^{-\omega_{0}t - i\alpha}}.
 \end{align*}
 Genom att baka ihop allt førutom det harmoniska tidsberoende får man en komplex amplitud för vågen. Denna har belop $F_{0}$ och argument $-\alpha$.
 
@@ -72,35 +77,49 @@ där $A$ och $B$ är storheternas amplituder.
 \paragraph{Maxwells ekvationer i linjära material}
 I linjära materialer är Maxwells ekvationer
 \begin{align*}
-	\curl{\vb{E}} = -\del{t}{\vb{B}},\ \div{\vb{B}} = 0,\ \curl{\vb{H}} = \vb{J}_{\text{f}} + \del{t}{\vb{D}},\ div{\vb{D}} = \rho_{\text{f}}.
+	\curl{\vb{E}} = -\del{t}{\vb{B}},\ \div{\vb{B}} = 0,\ \curl{\vb{H}} = \vb{J}_{\text{f}} + \del{t}{\vb{D}},\ \div{\vb{D}} = \rho_{\text{f}}.
 \end{align*}
 
 \paragraph{Laddningstätheter i homogena ohmska material}
 I ett homogent ohmsk material fås
 \begin{align*}
-	\div{\curl{\vb{H}}} &= \div{\vb{J}_{\text{f}}} + \del{t}{\div{\vb{D}}} \\
-	                    &= \frac{\sigma}{\varepsilon}\div{\vb{D}} + \del{t}{\rho_{\text{f}}} \\
-	                    &= \frac{\sigma}{\varepsilon}\div{\vb{D}}\rho_{\text{f}} + \del{t}{\rho_{\text{f}}},
+	0 = \div(\curl{\vb{H}}) &= \div{\vb{J}_{\text{f}}} + \del{t}{\div{\vb{D}}} \\
+	                        &= \frac{\sigma}{\varepsilon}\div{\vb{D}} + \del{t}{\rho_{\text{f}}} \\
+	                        &= \frac{\sigma}{\varepsilon}\rho_{\text{f}} + \del{t}{\rho_{\text{f}}},
 \end{align*}
 och därmed avtar fria laddningstätheten exponentiellt mot $0$. Därmed kommer vi bortse från denna.
 
 \paragraph{Komplex permittivitet och permeabilitet}
-Maxwells ekvationer för en monokromatisk plan våg i ett material ger
+Maxwells ekvationer för en monokromatisk plan våg i ett linjärt, ohmskt material ger
 \begin{align*}
 	\vb{k}\times\vb{B} = -\omega\mu\left(\varepsilon + \frac{\sigma}{\omega}i\right)\vb{E}.
 \end{align*}
-Detta får oss att införa den komplexa permittiviteten $\varepsilon_{\text{c}} = \varepsilon + \frac{\sigma}{\omega}i$. De två termerna kommer betecknas $\varepsilon'$ och $\varepsilon''$. Den imaginära termen kommer från lednings- och polarisationsförluster i materialet. På liknande sätt kan vi införa en komplex permeabilitet $\mu_{\text{c}}$, där den imaginära termen kommer från magnetiseringsförluster.
+Detta får oss att införa den komplexa permittiviteten $\varepsilon_{\text{c}} = \varepsilon + \frac{\sigma}{\omega}i$. De två termerna kommer betecknas $\varepsilon'$ och $\varepsilon''$. Den imaginära termen kommer från lednings- och polarisationsförluster i materialet. På liknande sätt kan vi införa en komplex permeabilitet $\mu_{\text{c}}$, där den imaginära termen kommer från magnetiseringsförluster. I mer allmänna material kan både reella och imaginära termen i en införd komplex permittivitet eller permeabilitet bero av vågfrekvensen.
 
 \paragraph{Dispersion i material och komplexa vågvektorn}
 Vi har
 \begin{align*}
-	\vb{k}\times(\vb{k}\times\vb{E}) = (\vb{k}\cdot\vb{E})\vb{k} - (\vb{k}\cdot\vb{k})\vb{E} = \omega\vb{k}\times\vb{B} = -\omega\mu\varepsilon_{\text{c}}\vb{E},
+	\vb{k}\times(\vb{k}\times\vb{E}) = (\vb{k}\cdot\vb{E})\vb{k} - (\vb{k}\cdot\vb{k})\vb{E} = \omega\vb{k}\times\vb{B} = -\omega^{2}\mu\varepsilon_{\text{c}}\vb{E},
 \end{align*}
 vilket ger dispersionsrelationen
 \begin{align*}
-	\vb{k}\cdot\vb{k} = \omega\mu\varepsilon_{\text{c}}.
+	\vb{k}\cdot\vb{k} = \omega^{2}\mu\varepsilon_{\text{c}}.
 \end{align*}
 Vi ser då att vi även måste definiera en komplex vågvektor. Den imaginära och komplexa termen är parallella för en plan våg.
+
+\paragraph{Komplexa vågvektorn för en plan våg}
+För en plan våg ger dispersionsrelationen
+\begin{align*}
+	\vb{k}\cdot\vb{k} = (k' + ik'')^{2} = \omega^{2}\mu\varepsilon_{\text{c}} = \omega^{2}\mu\varepsilon\left(1 + \frac{\sigma}{\omega\varepsilon}i\right) = \omega^{2}\mu\varepsilon\sqrt{1 + \left(\frac{\sigma}{\omega\varepsilon}\right)^{2}}e^{i\arctan{\frac{\sigma}{\omega\varepsilon}}},
+\end{align*}
+och därmed
+\begin{align*}
+	k' + ik'' = \omega\sqrt{\mu\varepsilon}\sqrt[4]{1 + \left(\frac{\sigma}{\omega\varepsilon}\right)^{2}}e^{i\frac{1}{2}\arctan{\frac{\sigma}{\omega\varepsilon}}}.
+\end{align*}
+Man kan säkert visa att
+\begin{align*}
+	k' = \omega\sqrt{\frac{\mu\varepsilon}{2}}\sqrt{\sqrt{1 + \left(\frac{\sigma}{\omega\varepsilon}\right)^{2}} + 1},\ k'' = \omega\sqrt{\frac{\mu\varepsilon}{2}}\sqrt{\sqrt{1 + \left(\frac{\sigma}{\omega\varepsilon}\right)^{2}} - 1}.
+\end{align*}
 
 \paragraph{Inträngningsdjup}
 Vågvektorns imaginära term kommer ge att fälten avtar exponentiellt med en hastighet proportionell mot komplexa termens belopp. Vi definierar då inträngningsdjupet
@@ -268,7 +287,7 @@ Om permeabiliteterna är lika blir detta
 \end{align*}
 
 \paragraph{Normalt infall på ledande yta}
-Vid normalt infall av en elektromagnetisk våg på en ledande yta fås på liknande sätt som innan en reflekterad våg. Det transmitterade fältet blir dock
+Vid normalt infall av en elektromagnetisk våg på en ledande yta fås en reflekterad våg, helt analogt med vad vi har sett tidigare. Det transmitterade fältet blir dock
 \begin{align*}
 	\vb{E}_{\text{T}} = E_{\text{T}}e^{i(k_{2}z - \omega t)}\ub{x},\ \vb{B}_{\text{T}} = \frac{k_{2}}{\omega}E_{\text{T}}e^{i(k_{2}z - \omega t)}\ub{y}
 \end{align*}
@@ -324,6 +343,6 @@ Ekvationen behöver även randvillkor. Vi har antagit att det är metall på ran
 Detta implicerar direkt att $E_{z} = 0$ och $\vb{n}\times\vb{E}_{\perp} = \vb{0}$. Detta gäller över hela randen, så $\vb{n}\times\gradperp{E_{z}} = \vb{0}$. Detta implicerar på något sätt $\vb{n}\cdot\gradperp{B_{z}} = 0$.
 
 \paragraph{Gränsfrekvens för vågledare}
-Fälten i en vågledare ges av ett Sturm-Liouville-problem, så spektrumet av $k_{\perp}$ är oändligt (detaljerna bestäms av randens geometri). Det finns då för varje vågtal i spektrumet ett $k$ så att $k < k_{\perp}$. För detta $k$ fås $k_{z} = i\sqrt{k_{\perp}^{2} - k^{2}}$, och fältet avtar exponentiellt i ledaren. Gränsfrekvensen för ett givet vågtal definieras som $\omega_{\text{g}} = ck_{\perp}$, och är frekvensen som ligger på gränsen mellan propagerande och evanescenta moder. Vågtalet med lägst gränsfrekvens kallas för grundmoden.
+Fälten i en vågledare ges av ett Sturm-Liouville-problem, så spektrumet av $k_{\perp}$ är oändligt (detaljerna bestäms av randens geometri). Det finns då för varje vågtal $k_{\perp}$ i spektrumet ett $\abs{\vb{k}} = k$ så att $k < k_{\perp}$. För detta $\abs{\vb{k}}$ fås $k_{z} = i\sqrt{k_{\perp}^{2} - k^{2}}$, och fältet avtar exponentiellt i ledaren. Gränsfrekvensen för ett givet vågtal definieras som $\omega_{\text{g}} = ck_{\perp}$, och är frekvensen som ligger på gränsen mellan propagerande och evanescenta moder. Vågtalet med lägst gränsfrekvens kallas för grundmoden.
 
-Notera att vi nu kan skriva $k_{z} = \frac{1}{c}\sqrt{\omega^{2} - \omega_{\text{g}}^{2}}$.
+Lägre frekvenser än $\omega_{\text{g}}$ kommer alltså ge evanescenta moder och högre frekvenser ger propagerande moder. Detta visas tydligast i omskrivningen $k_{z} = \frac{1}{c}\sqrt{\omega^{2} - \omega_{\text{g}}^{2}}$.
