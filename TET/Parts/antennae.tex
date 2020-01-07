@@ -1,7 +1,7 @@
 \section{Antenner}
 
 \paragraph{Elektriska dipolantenner}
-En enkel form för antenn konstrueras genom att placera två motsatta punktladdningar på ett avstånd $d$ från varandra och förbinda dessa med en ström $I$. Genom att orientera $z$-axeln parallell med vektorn som förbinder dipolerna fås
+En enkel form för antenn konstrueras genom att placera två motsatta variabla punktladdningar på ett avstånd $d$ från varandra och förbinda dessa med en ström $I$. Genom att orientera $z$-axeln parallell med vektorn som förbinder punktladdningarna fås ett dipolmoment och en ström
 \begin{align*}
 	\vb{p} = q(t)d\ub{z},\ I = \del{t}{q}.
 \end{align*}
@@ -31,6 +31,24 @@ där
 	W_{\text{när}} = \frac{\mu_{0}}{6\pi c}\left(\frac{c^{3}p^{2}}{2R^{3}} + \frac{c^{2}}{R^{2}}(\vb{p}\cdot\dot{\vb{p}}) + \frac{c}{R}\dot{p}^{2}\right),\ P_{\text{strål}} = \frac{\mu_{0}}{6\pi\varepsilon_{0}c}\ddot{p}^{2}.
 \end{align*}
 Det är bara den sista termen, strålningstermen, som når ut till oändligheten.
+
+\paragraph{Magnetiska dipolantenner}
+En annan enkel form för antenn konstrueras genom att lägga en sladd i en cirkulär slinga. Om cirkeln har radie $a$ och för strömmen $I$ fås dipolmomentet
+\begin{align*}
+	\vb{m} = \pi a^{2}I\ub{z}.
+\end{align*}
+I gränsen $a\to 0, \pi a^{2}I\to m$ fås magnetiseringen
+\begin{align*}
+	\vb{M} = \vb{m}\delta(\vb{r}).
+\end{align*}
+Den motsvarande strömtätheten är
+\begin{align*}
+	\vb{J} = \curl{\vb{M}} = \grad{\delta}\times\vb{m}.
+\end{align*}
+Från detta kan man visa att
+\begin{align*}
+	\vb{B} = -\frac{\mu_{0}}{4\pi}\frac{\del{t}{\vb{m}} + \frac{r}{c}\del[2]{t}{\vb{m}}}{r^{2}}\times\ub{r},\ \vb{B} = \frac{\mu_{0}}{4\pi r}\left(\frac{3\left(\ub{r}\cdot\left(\vb{m} + \frac{r}{c}\del{t}{\vb{m}}\right)\right)\ub{r}}{r^{2}} + \frac{(\ub{r}\cdot\del[2]{t}{\vb{m}}))\ub{r} - \del[2]{t}{\vb{m}}}{c^{2}}\right).
+\end{align*}
 
 \paragraph{Raka trådantenner}
 En annan enkel antenn kan konstrueras genom att föra en varierande ström genom en rak tråd med längd $h$ (orienterad längs med $z$-axeln).

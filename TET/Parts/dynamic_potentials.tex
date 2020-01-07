@@ -77,11 +77,29 @@ Vi vill nu ta fram vågekvationer för fälten, och kommer använda att gradient
 %TODO: SHOW
 Lösningar av vågekvationerna ges av
 \begin{align*}
-	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R^{2}}\rho(\vb{r}', t_{\text{r}})\ub{R} + \frac{1}{cR}\del{t}{\rho(\vb{r}', t_{\text{r}})}\ub{R} - \frac{1}{c^{2}R}\del{t}{\vb{J}(\vb{r}', t_{\text{r}})}}, \\
-	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R} + \frac{1}{cR}\del{t}{\vb{J}(\vb{r}', t_{\text{r}})}\times\ub{R}}.
+	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R^{2}}\rho(\vb{r}', t_{\text{r}})\ub{R} + \frac{1}{cR}\del{t_{\text{r}}}{\rho(\vb{r}', t_{\text{r}})}\ub{R} - \frac{1}{c^{2}R}\del{t_{\text{r}}}{\vb{J}(\vb{r}', t_{\text{r}})}}, \\
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R} + \frac{1}{cR}\del{t_{\text{r}}}{\vb{J}(\vb{r}', t_{\text{r}})}\times\ub{R}}.
 \end{align*}
 
-\paragraph{Någonting om punktladdningar i rörelse}
+\paragraph{Kvasistatiska fält}
+Betrakta långsamma förlopp där vi kan approximera
+\begin{align*}
+	\rho(\vb{r}', t_{\text{r}})   &\approx \rho(\vb{r}', t) + (t_{\text{r}} - t)\del{t}{\rho(\vb{r}', t)} = \rho(\vb{r}', t) - \frac{R}{c}\del{t}{\rho(\vb{r}', t)}, \\
+	\vb{J}(\vb{r}', t_{\text{r}}) &\approx \vb{J}(\vb{r}', t) + (t_{\text{r}} - t)\del{t}{\vb{J}(\vb{r}', t)} = \vb{J}(\vb{r}', t) - \frac{R}{c}\del{t}{\vb{J}(\vb{r}', t)}.
+\end{align*}
+De motsvarande tidsderivatorna är
+\begin{align*}
+	\del{t_{\text{r}}}{\rho(\vb{r}', t_{\text{r}})}   &= \del{t}{\rho(\vb{r}', t_{\text{r}})} \approx \del{t}{\rho(\vb{r}', t)}, \\
+	\del{t_{\text{r}}}{\vb{J}(\vb{r}', t_{\text{r}})} &= \del{t}{\vb{J}(\vb{r}', t_{\text{r}})} \approx \del{t}{\vb{J}(\vb{r}', t)},
+\end{align*}
+där vi kan evaluera derivatorna i $t$ eftersom förloppet är tillräckligt långsamt för att derivatan är ungefär konstant under tiden det tar för fälten att propagera. Insatt i uttryckten för fälten fås
+\begin{align*}
+	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{\rho(\vb{r}', t)}{R^{2}}\ub{R}} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\del{t}{\vb{J}(\vb{r}', t)}}, \\
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R}},
+\end{align*}
+som vi känner igen som de kvasistatiska fälten.
+
+\paragraph{Punktladdningar i rörelse}
 Betrakta en punktladdning $q$ i en föreskriven rörelse som beskrivs av ortsvektorn $\vb{w}(t)$. Laddningen har hastighet $\vb{v}$ och acceleration $\vb{a}$. Vi vill nu ta fram potentialerna och fälten från denna. Då återvänder vi till Greenfunktionslösningen
 \begin{align*}
 	V &= \frac{1}{\varepsilon_{0}}\integ{}{}{\tau'}{\integ{}{}{t'}{G(\vb{r}, t | \vb{r}', t')\rho(\vb{r}', t')}}.

@@ -40,13 +40,13 @@ Mer allmänt kan man bilda $4$-vektorn
 och visa att denna transformeras enligt Lorentztransformationen.
 
 \paragraph{Potentialtensorn}
-Vi (inte jag) har visat att potentialen från en punktladdning i icke-accelererad rörelse ges av
+Vi har visat att potentialen från en punktladdning i icke-accelererad rörelse ges av
 \begin{align*}
-	V(x^{\mu}) = \gamma\frac{q}{4\pi\varepsilon_{0}}\frac{1}{\sqrt{\gamma(x^{1} - \beta x^{0})^{2} + (x^{2})^{2} + (x^{3})^{2}}},\ \vb{A}(x^{\mu}) = \beta\frac{V}{c}\ub{x}.
+	V(x^{\mu}) = \gamma\frac{q}{4\pi\varepsilon_{0}}\frac{1}{\sqrt{\gamma(x^{1} - \beta x^{0})^{2} + (x^{2})^{2} + (x^{3})^{2}}},\ \vb{A}(x^{\mu}) = \frac{V}{c}\vb*{\beta}.
 \end{align*}
 I laddningens inertialsystem fås
 \begin{align*}
-	V((x')^{\mu}) = \frac{q}{4\pi\varepsilon_{0}}\frac{1}{\sqrt{(x^{i})^{2}}},\ \vb{A}'((x')^{\mu}) = \vb{0}.
+	V((x')^{\mu}) = \frac{q}{4\pi\varepsilon_{0}}\frac{1}{\sqrt{(x')^{i}(x')^{i}}},\ \vb{A}'((x')^{\mu}) = \vb{0}.
 \end{align*}
 Då definierar vi $4$-vektorn
 \begin{align*}
@@ -69,8 +69,8 @@ Elektriska och magnetiska fältet kan användas för att konstruera den antisymm
 	[
 		0                & \frac{E_{x}}{c} & \frac{E_{y}}{c} & \frac{E_{z}}{c} \\
 		-\frac{E_{x}}{c} & 0               & B_{z}           & -B_{y} \\
-		-\frac{E_{y}}{c} & -B_{z}          & 0               & B_{x}  \\
-		-\frac{E_{z}}{c} & B_{y}           & -B_{x}          & 0
+		-\frac{E_{y}}{c} & -B_{z}          & 0               & -B_{x}  \\
+		-\frac{E_{z}}{c} & B_{y}           & B_{x}           & 0
 	].
 \end{align*}
 Genom att Lorentztransformera denna fås
@@ -79,10 +79,21 @@ Genom att Lorentztransformera denna fås
 	B_{x}' = B_{x},\ B_{y}' = \gamma\left(B_{y} + \frac{\beta}{c}B_{z}\right),\ B_{z}' = \left(B_{z} - \frac{\beta}{c}E_{y}\right).
 \end{align*}
 
-%TODO: Duala tensorn
+\paragraph{Duala Faradaytensorn}
+Duala Faradaytensorn fås genom att göra bytet $E_{i}\leftrightarrow -cB_{i}$ i Faradaytensorn. På matrisform blir den
+\begin{align*}
+	G^{\mu\nu} = 
+	\mqty
+	[
+		0     & -B_{x}           & -B_{y}           & -B_{z} \\
+		B_{x} & 0                & \frac{E_{z}}{c}  & -\frac{E_{y}}{c} \\
+		B_{y} & -\frac{E_{z}}{c} & 0                & \frac{E_{x}}{c}  \\
+		B_{z} & \frac{E_{y}}{c}  & -\frac{E_{x}}{c} & 0
+	].
+\end{align*}
 
 \paragraph{Maxwells ekvationer}
-Tre av Maxwells ekvationer kan nu skrivas
+Två av Maxwells ekvationer kan nu skrivas
 \begin{align*}
 	\del{\nu}{F^{\mu\nu}} = \mu_{0}J^{\mu}.
 \end{align*}
@@ -90,4 +101,4 @@ Om man gör det samma med duala fälttensorn fås
 \begin{align*}
 	\del{\nu}{G^{\mu\nu}} = 0,
 \end{align*}
-vilket ger den sista.
+vilket ger de två andra.
