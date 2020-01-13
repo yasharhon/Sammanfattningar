@@ -41,7 +41,7 @@ där $\rho$ är tätheten.
 \paragraph{Kontinuitetsekvationen}
 Eftersom randen för en materiell kontrollvolym följer med den strömmande vätskan måste massan av volymen vara konstant. Detta ger
 \begin{align*}
-	\dv{t}\integ{V}{}{V}{\rho} = \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
+	\dv{t}\integ{\V}{}{V}{\rho} = \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
 \end{align*}
 Om detta gäller överallt, måste integranden vara noll överallt. Detta kan skrivas som
 \begin{align*}
@@ -83,6 +83,12 @@ Rörelsemängden av en fluid inom en volym $V$ ges av
 	\integ{V}{}{V}{\rho\vb{u}}.
 \end{align*}
 
+\paragraph{Vorticitet}
+Vorticiteten för en fluid definieras som
+\begin{align*}
+	\vb*{\omega} = \curl{\vb{u}}.
+\end{align*}
+
 \paragraph{Spänningstensorn}
 Spänningstensorns komponenter $\tau_{ij}$ är kraften i riktning $j$ på ett ytelement med ytnormal i riktning $i$. För en (liten) volym med ytnormal $\vb{n}$ gäller därmed för krafttätheten $\vb{f}$ att
 \begin{align*}
@@ -95,16 +101,9 @@ Spänningstensorn är ett tensorfält då den ger ett kraftfält i fluiden som m
 
 Man kan visa genom momentjämvikt att spänningstensorn är symmetriskt, varför jag väljer att formulera om definitionerna ovan till
 \begin{align*}
-	f_{i} = \tau_{ji}n_{j},\ F_{i} = \integ{S}{}{S_{j}}{\tau_{ji}} = \integ{V}{}{V}{\del{j}{\tau_{ji}}},
+	f_{i} = \tau_{ij}n_{j},\ F_{i} = \integ{S}{}{S_{j}}{\tau_{ij}} = \integ{V}{}{V}{\del{j}{\tau_{ij}}},
 \end{align*}
-som är den mer kända formen.
-
-\paragraph{Inviskösa fluider}
-Inviskösa fluider definieras av
-\begin{align*}
-	\tau_{ij} = -p\delta_{ij}.
-\end{align*}
-I såna fluider finns det inga friktionskrafter, varken inbördes i fluidet eller mellan fluidet och omgivningen.
+som är den (för mig) mer kända formen.
 
 \paragraph{Newtons andra lag}
 Newtons andra lag för en fluid ger
@@ -121,11 +120,12 @@ Detta gäller för en godtycklig materiell kontrollvolym, vilket ger
 \end{align*}
 Kontinuitetsekvationen och Newtons andra lag är de fundamentala lagarna hastighetsfältet och spänningstensorns måste uppfylla. Tyvärr ger detta bara fyra ekvationer för att bestämma de tolv okända som ingår. Genom att betrakta bevarande av rörelsemängdsmoment får man att spänningstensorn är symmetrisk, men problemet återstår. Därför behöver vi göra approximationer och dylikt.
 
-\paragraph{Vorticitet}
-Vorticiteten för ett fluid definieras som
+\paragraph{Inviskösa fluider}
+Inviskösa fluider definieras av
 \begin{align*}
-	\vb*{\omega} = \curl{\vb{u}}.
+	\tau_{ij} = -p\delta_{ij}.
 \end{align*}
+I såna fluider finns det inga friktionskrafter, varken inbördes i fluidet eller mellan fluidet och omgivningen.
 
 \paragraph{Eulers ekvationer}
 Betrakta en inviskös fluid. För denna förenklas Newtons andra lag till
@@ -154,7 +154,7 @@ Betrakta nu stationärt flöde av en fluid. Genom att integrera ekvationen ovan 
 \end{align*}
 är konstant längsmed strömlinjen.
 
-\paragraph{Newtons andra lag för stationära fall}
+\paragraph{Newtons andra lag för stationära inviskösa flöden}
 För en konstant $\vb{g}$ kan vi integrera Newtons andra lag över en fix kontrollvolym för att ge
 \begin{align*}
 	\integ{V}{}{V}{\rho\del{t}{u_{i}} + \rho u_{j}\del{j}{u_{i}}} = Mg_{i} + \integ{V}{}{V}{\del{j}{\tau_{ij}}}.
@@ -177,3 +177,9 @@ kring en materiell kurva. Med hjälp av Eulers ekvationer kan man visa att för 
 \begin{align*}
 	\dv{\Gamma}{t} = 0.
 \end{align*}
+
+\paragraph{d'Alemberts paradox}
+d'Alemberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
+
+\paragraph{Kutta-Jukowskis sats}
+Kutta-Jukowskis sats säjer att lyftkraften på en kropp ges av $\rho U\Gamma$, där $\Gamma$ är cirkulationen kring kroppen. Detta är en god approximation för många olika kroppar, speciellt tunna, strömlinjeformade kroppar.

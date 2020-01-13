@@ -6,7 +6,7 @@ Kontinuitetsekvationen för en inkompressibel fluid ger
 \begin{align*}
 	\del{x}{u_{x}} + \del{y}{u_{y}} = 0.
 \end{align*}
-Lösningen av detta ges av strömfunktionen $\Psi$. Den definieras så att
+Detta kan lösas genom att införa strömfunktionen $\Psi$. Den definieras så att
 \begin{align*}
 	\del{y}{\Psi} = u_{x},\ \del{x}{\Psi} = -u_{y}.
 \end{align*}
@@ -60,9 +60,6 @@ Hastighetskomponenterna är
 \begin{align*}
 	u_{r} = U\cos{\phi}\left(1 - \frac{a^{2}}{r^{2}}\right),\ u_{\phi} = -U\sin{\phi}\left(1 + \frac{a^{2}}{r^{2}}\right).
 \end{align*}
-
-\paragraph{d'Alemberts paradox}
-d'Alemberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
 
 \paragraph{Komplex potential}
 Vi inför nu den komplexa strömfunktionen $W = \Phi + i\Psi$. Om detta ska vara en analytisk funktion (alltså kunna skrivas som en funktion av ett komplext tal $w = x + iy$ så att realdelen och imaginärdelen behandlas likadant), måste den uppfylla Cauchy-Riemanns ekvationer
@@ -159,6 +156,3 @@ Vid stagnationspunkten har denna värdet $\frac{1}{2}m$. Stagnationslinjen beskr
 \begin{align*}
 	\frac{1}{2}m = Uy + m\frac{\phi}{2\pi},\ y = \frac{m}{2U}\left(1 - \frac{\phi}{\pi}\right).
 \end{align*}
-
-\paragraph{Kutta-Jukowskis sats}
-Kutta-Jukowskis sats säjer att lyftkraften på en kropp ges av $\rho U\Gamma$, där $\Gamma$ är cirkulationen kring kroppen. Detta är en god approximation för många olika kroppar, speciellt tunna, strömlinjeformade kroppar.
