@@ -1,0 +1,66 @@
+\section{Basic Concepts in Statistical Physics}
+
+\paragraph{Avogadro's Number}
+Statistical physics discusses systems of many particles. A relevant measure of the number of particles to be studies is $N_{\text{A}} = \num{6.022e23}$.
+
+\paragraph{Molar Mass}
+The molar mass of a substance is defined as $M = mN_{\text{A}}$, where $m$ is the mass of a single atom or molecule.
+
+\paragraph{Atomic Units}
+When discussing atoms and molecules, we use relative units. These units are relative to the atomic mass unit $\au = \SI{1.66e-27}{\kilo\gram}$, defined as $\frac{1}{12}$ the mass of \ce{^{12}C}. This happens to be close to the mass of a hydrogen atom.
+
+\paragraph{The Thermodynamic Limit}
+The thermodynamic limit is the limit of the statistical consideration of a system when the number of particle is large. In this limit, quantities such as temperature, pressure and density can be defined as we know them and macroscopic equilibria can be achieved.
+
+\paragraph{Intensive and Extensive Variables}
+Intensive variables do not depend on the size of the system, whereas extensive variables do. Examples of the former are pressure and temperature, and examples of the latter are volume and total energy.
+
+\paragraph{Heat}
+Heat is the flow of energy.
+
+\paragraph{Microstates}
+A microstate of a system is any complete description of all particles in a system, for instance a specification of all positions and velocities of the particles in a gas.
+
+\paragraph{Macrostates}
+A macrostate of a system is a description of the macroscopic properties of a system.
+
+\paragraph{Multiplicity}
+The multiplicity of a macrostate is the number of microstates that yield the same macrostate.
+
+\paragraph{The Fundamental Postulate}
+The fundamental hypothesis of statistical mechanics is that all microstates available to a system have equal property.
+
+\paragraph{Equilibrium and Multiplicity}
+Combining the fundamental postulate with our knowledge of thermodynamics, it is clear that a system in thermal equilibrium has maximal multiplicity.
+
+\paragraph{The Boltzmann constant}
+Consider two systems which are not in contact. The total energy and multiplicity is given by
+\begin{align*}
+	E = E_{1} + E_{2},\ \Omega = \Omega_{1}(E_{1})\Omega_{2}(E_{2}).
+\end{align*}
+At equilibrium, the total multiplicity is maximal. Differentiating with respect to $E_{1}$ gives
+\begin{align*}
+	\del{E_{1}}{\Omega} = \Omega_{2}\dv{\Omega_{1}}{E_{1}} + \Omega_{1}\dv{\Omega_{2}}{E_{2}}\dv{E_{2}}{E_{1}}.
+\end{align*}
+The total energy is fixed, yielding
+\begin{align*}
+	\frac{1}{\Omega_{1}}\dv{\Omega_{1}}{E_{1}} = \frac{1}{\Omega_{2}}\dv{\Omega_{2}}{E_{2}},
+\end{align*}
+which we can rewrite as
+\begin{align*}
+	\dv{\ln{\Omega_{1}}}{E_{1}} = \dv{\ln{\Omega_{2}}}{E_{2}}.
+\end{align*}
+We define this to be equal to $\frac{1}{\kb T}$.
+
+\paragraph{The Boltzmann Factor}
+Consider a thermal bath in contact with a small system. The energy of the small system is $\varepsilon$, so that the bath has energy $E - \varepsilon$. Taylor expanding the multiplicity yields
+\begin{align*}
+	\ln{\Omega(E - \varepsilon)} \approx \ln{\Omega(E)} - \varepsilon\dv{\ln{\Omega}}{E} = \ln{\Omega(E)} - \frac{\varepsilon}{\kb T},
+\end{align*}
+with solution
+\begin{align*}
+	\Omega(E - \varepsilon) = \Omega(E)e^{-\frac{\varepsilon}{\kb T}}.
+\end{align*}
+This exponential factor is called the Boltzmann factor.
+
+We note that the probability of finding the small system in the macrostate with energy $\varepsilon$ is, according to the fundamental hypothesis, proportional to $e^{-\frac{\varepsilon}{\kb T}}$.
