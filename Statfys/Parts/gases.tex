@@ -1,0 +1,111 @@
+\section{Gases}
+
+\paragraph{The Maxwell-Boltzmann Velocity Distribution}
+Consider a system of $n$ (approximately) non-interacting particles. Assuming the separations to be much larger than the particle size and neglecting rotational and vibrational degrees of freedom, each particle has total energy $E = \frac{1}{2}mv^{2}$. We can now treat each particle as a small system in contact with a heat reservoir (namely the other particles). The results concerning the Boltzmann factor thus hold for this molecule. A single velocity component is thus described by the probability distribution
+\begin{align*}
+	g(v_{i}) = \sqrt{\frac{m}{2\pi\kb T}}e^{-\frac{mv_{i}^{2}}{2\kb T}}.
+\end{align*}
+This is of course true for all particles in the gas, meaning that the fraction of molecules with $v_{i}$ in the range $v_{i}$ to $v_{i} + \dd{v_{i}}$ is equal to $g(v_{i})\dd{v_{i}}$.
+
+It can be shown that
+\begin{align*}
+	\expval{v_{i}} = 0,\ \expval{\abs{v_{i}}} = \sqrt{\frac{2\kb T}{m}},\ \expval{v_{i}^{2}} = \frac{\kb T}{m}.
+\end{align*}
+
+\paragraph{The Maxwell-Boltzmann Speed Distribution}
+Consider instead the distribution of the particle speed. The distribution satisfying that the fraction of particles with speed in the range $v$ to $v + \dd{v}$ is
+\begin{align*}
+	f(v) = \frac{4}{\sqrt{\pi}}\left(\frac{m}{2\kb T}\right)^{\frac{3}{2}}v^{2}e^{-\frac{v^{2}}{2\kb T}},
+\end{align*}
+where the quadratic factor arises due to the integration volume.
+
+It can be shown that
+\begin{align*}
+	\expval{v} = \sqrt{\frac{8\kb T}{\pi m}},\ \expval{v^{2}} = \frac{3\kb T}{m}
+\end{align*}
+and that $f$ has a maximum for
+\begin{align*}
+	v = \sqrt{\frac{2\kb T}{m}}.
+\end{align*}
+
+\paragraph{Directions and the Speed Distribution}
+Because the velocity distribution is isotropic, the fraction of molecules whose trajectories lie in some solid angle range $\dd{\Omega}$ is given by $\frac{\dd{\Omega}}{4\pi}$. In three dimensions we can choose some direction and define an azimuthal angle $\theta$ relative to that direction, yielding that a fraction
+\begin{align*}
+	\frac{1}{2}nf(v)\sin{\theta}\dd{v}\dd{\theta}
+\end{align*}
+are travelling close to the angle $\theta$ to the chosen direction with a speed close to $v$ per unit volume ($n$ is the amount of particles per volume).
+
+\paragraph{The Ideal Gas Law}
+Consider a wall with area $A$ with a gas on one side. In a time interval $\dd{t}$ the molecules travelling at angle $\theta$ to the wall normal sweep out a volume $A\cos{\theta}v\dd{t}$. This means that the number of molecules hitting the wall during $\dd{t}$ is given by
+\begin{align*}
+	A\cos{\theta}v\dd{t}\cdot\frac{1}{2}nf(v)\sin{\theta}\dd{v}\dd{\theta}.
+\end{align*}
+Per unit area this number becomes
+\begin{align*}
+	\cos{\theta}v\dd{t}\cdot\frac{1}{2}nf(v)\sin{\theta}\dd{v}\dd{\theta}.
+\end{align*}
+Each particle imparts a momentum $2mv\cos{\theta}$ to the wall. The total momentum imparted to the wall per unit area by particles travelling at a specified speed and direction is thus
+\begin{align*}
+	2mv\cos{\theta}\cdot\cos{\theta}v\dd{t}\cdot\frac{1}{2}nf(v)\sin{\theta}\dd{v}\dd{\theta},
+\end{align*}
+meaning that the impulse per area, i.e. the pressure, from these particles is
+\begin{align*}
+	\dd{p} = 2mv\cos{\theta}\cdot\cos{\theta}v\cdot\frac{1}{2}nf(v)\sin{\theta}\dd{v}\dd{\theta}.
+\end{align*}
+Integrating this, the total pressure is
+\begin{align*}
+	p = \frac{1}{3}nm\expval{v^{2}} = n\kb T.
+\end{align*}
+Using the fact that $n = \frac{N}{V}$ we finally obtain the ideal gas law
+\begin{align*}
+	pV = N\kb T.
+\end{align*}
+
+\paragraph{Dalton's Law}
+For a mixture of ideal gases, the partial pressures of each gas can be added. This is due to the fact that the number of particles can be added.
+
+\paragraph{Gas Flux and Effusion}
+We define the particle flux of a gas as the number of molecules striking a unit area per time. We can integrate a previously obtained expression to obtain
+\begin{align*}
+	\Phi = \frac{p}{\sqrt{2\pi m\kb T}}.
+\end{align*}
+
+The velocity distribution of molecules effusing out of a container is modified by a factor $v$. This can be noted from the form of the expression for thu number of particles striking a unit area.
+
+\paragraph{Collision Time}
+Consider a gas, where we (for now) treat all particles but one as stationary. This particle has velocity $v$ and collision cross-section $\sigma$ (to be discussed later, but it is essentially the area of the particle with which other particles can collide). In a time $\dd{t}$ the particle sweeps out an area $\sigma v\dd{t}$, meaning that a collision occurs within $\dd{t}$ is $n\sigma v\dd{t}$. We define $P(t)$ to be the probability of the particle not colliding up to time $t$. According to our reasoning, we must have $P(t + \dd{t}) = P(t)(1 - n\sigma v\dd{t})$. Comparing this to a Taylor expansion of $P$, we obtain
+\begin{align*}
+	P(t) + \dd{P}{t}\dd{t} = P(t)(1 - n\sigma v\dd{t}).
+\end{align*}
+This has the solution
+\begin{align*}
+	P(t) = e^{-n\sigma vt},
+\end{align*}
+assuming our consideration started at $t = 0$. The probability of not colliding up to $t$ and colliding during the next $\dd{t}$ is
+\begin{align*}
+	P'(t) = n\sigma ve^{-n\sigma vt},
+\end{align*}
+which is normalized. Using this, we compute the collision time
+\begin{align*}
+	\tau = \frac{1}{n\sigma v}.
+\end{align*}
+
+\paragraph{Collision Cross-Section}
+Consider two spherical particles of radius $a_{1}$ and $a_{2}$ interacting with a hard-sphere potential. Imagining a particle of type $1$ moving in the vicinity of type $2$ particles, the movement of the type $1$ particle sweeps out a tube of radius $a_{1} + a_{2}$ such that if type $2$ particles enter the tube, a collision occurs. The area of this tube is the collision cross-section, and is in this case given by
+\begin{align*}
+	\sigma = \pi(a_{1} + a_{2})^{2}.
+\end{align*}
+
+\paragraph{Mean Free Path}
+The mean free path is the mean distance a particle can move without colliding. It should be proportional to the collision time and some velocity, but which velocity? It turns out that to include the effects of all particles moving, we must use the relative velocity between the considered particle and the other particles. We have
+\begin{align*}
+	v_{\text{r}}^{2} = v_{1}^{2} + v_{2}^{2} - 2\vb{v}_{1}\cdot\vb{v}_{2}.
+\end{align*}
+The expected value of the cross-term is $0$ due to symmetry, and hence
+\begin{align*}
+	\expval{v_{\text{r}}^{2}} = 2\expval{v^{2}}.
+\end{align*}
+We approximate $\expval{v_{\text{r}}}$ and $\expval{v}$ to be their RMS counterparts. Hence the mean free path is
+\begin{align*}
+	\lambda = \expval{v_{\text{r}}}\tau = \frac{\sqrt{\expval{v_{\text{r}}^{2}}}}{n\sigma v} = \frac{\sqrt{2}\expval{v}}{n\sigma v} = \frac{1}{\sqrt{2}n\sigma} = \frac{\kb T}{\sqrt{2}p\sigma}.
+\end{align*}
