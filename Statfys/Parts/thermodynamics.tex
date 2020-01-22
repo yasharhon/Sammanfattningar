@@ -1,0 +1,130 @@
+\section{Thermodynamics}
+
+\paragraph{Functions of State}
+A quantity $f$ is a function of state if its equilibrium value is a function of the equilibrium values of the variables describing the state.
+
+\paragraph{Internal Energy}
+The internal energy $U$ of a system is the sum of the energy of all the internal degrees of freedom of a system.
+
+\paragraph{Quasistatic Processes}
+A process is quasistatic if the system is in equilibrium at each point during the process.
+
+\paragraph{The First Law}
+Energy is conserved and heat and work are both forms of energy. In mathematical form:
+\begin{align*}
+	\dd{U} = \din{Q} + \din{W}.
+\end{align*}
+This implies the convention that positive differentials correspond to energy supplied to the system.
+
+\paragraph{Heat Capacity of a Gas}
+The work required to compress a gas is $\din{W} = -p\dd{V}$, meaning that the total change in internal energy for a gas is
+\begin{align*}
+	\dd{U} = \fix{\pdv{U}{T}}{V}\dd{T} + \fix{\pdv{U}{V}}{T}\dd{V}
+\end{align*}
+where the subscript indicates which variables are constant when the derivatives are computed. The first law gives
+\begin{align*}
+	\din{Q} = \fix{\pdv{U}{T}}{V}\dd{T} + \left(\fix{\pdv{U}{V}}{T} + p\right)\dd{V}.
+\end{align*}
+Heat capacitites are defined as derivatives of $Q$ with respect to temperature, imploring us to divide by the differential change in temperature. We thus obtain
+\begin{align*}
+	C_{V} = \fix{\pdv{Q}{T}}{V} = \fix{\pdv{Q}{T}}{V},\ C_{p} = \fix{\pdv{Q}{T}}{p} = \fix{\pdv{U}{T}}{V} + \left(\fix{\pdv{U}{V}}{T} + p\right)\fix{\pdv{V}{T}}{p}.
+\end{align*}
+
+\paragraph{Molar Heat Capacities}
+Molar heat capacities, denoted with a small $c$, are heat capacities per molar mass.
+
+\paragraph{Adiabatic Index}
+The adiabatic index is defined as
+\begin{align*}
+	\gamma = \frac{C_{p}}{C_{V}}.
+\end{align*}
+
+\paragraph{The Second Law of Thermodynamics}
+The second law comes in two different statements:
+\begin{itemize}
+	\item \textbf{Clausius' statement:} No process is possible whose sole result is the transfer of heat from a colder to a hotter body.
+	\item \textbf{Kelvin's statement:} No process is possible whose sole result is the complete conversion of heat into work.
+\end{itemize}
+%TODO: Equivalence
+
+\paragraph{The Carnot Cycle}
+Consider a machine performing work based on the energy transfer between two heat reservoirs. One way to extract the energy is by using a Carnot process, which uses an ideal gas. The cycle connects four different points in a $pV$ diagram with two adiabatics and two isothermals.
+
+\paragraph{Efficiency}
+The efficiency of a machine has various definitions, but the general definition is the ratio between the energy you get out and the energy you put in.
+
+\paragraph{Carnot's Theorem}
+No heat engine working between two heat reservoirs is more efficient than a Carnot engine.
+
+To prove this, suppose that you create an engine producing the same work $W$ as a Carnot heat engine, but for an energy $Q'$ as opposed to the energy $Q$ needed to run the Carnot engine. Now let your new engine be used to power a reversed Carnot engine. The statement that this new engine is more efficient is expressed as
+\begin{align*}
+	\frac{W}{Q'} > \frac{W}{Q} \implies Q > Q'.
+\end{align*}
+During the process each engine gives off some heat $Q_{\text{l}}$ to the cold reservoir. The first law of thermodynamics implies
+\begin{align*}
+	W = Q' - Q_{\text{l}}' = Q - Q_{\text{l}}.
+\end{align*}
+As $Q - Q' > 0$, so is $Q_{\text{l}} - Q_{\text{l}}'$. Now, $Q - Q'$ is the net energy left in the hot reservoir during a cycle and $Q_{\text{l}} - Q_{\text{l}}'$ is the energy extracted from the cold reservoir. The sole result of this process is thus to extract energy from a cold reservoir to a hot one, which violates the second law.
+
+%TODO: Corollary
+
+\paragraph{Clausius' Theorem}
+Consider some arbitrary cyclic process. We can describe this as a sequence of the system being connected to temperatures $T_{i}$, with heats $\din{Q_{i}}$ being supplied at every stage. The total work is given by
+\begin{align*}
+	W = \sum\din{Q_{i}}.
+\end{align*}
+Now suppose that the heat at each point is supplied by a Carnot engine operating between temperatures $T$ and $T_{i}$. One can show that for a Carnot engine the ratio of heat to temperature at which the heat is exchanged is constant. This implies
+\begin{align*}
+	\frac{\din{Q_{i}}}{T_{i}} = \frac{\din{Q_{i}} + \din{W_{i}}}{T}
+\end{align*}
+where $\din{W_{i}}$ is the work done by the Carnot engine. This process cannot violate the second law of thermodynamics, hence
+\begin{align*}
+	W + \sum\din{W_{i}} \leq 0.
+\end{align*}
+Hence
+\begin{align*}
+	\sum\din{Q_{i}} + \sum\din{Q_{i}}\left(\frac{T}{T_{i}} - 1\right) = T\sum\frac{\din{Q_{i}}}{T_{i}} \leq 0.
+\end{align*}
+The temperature $T$ is constant and positive, and can thus be ignored. In the limit of considering the process in a contiuous manner, this becomes
+\begin{align*}
+	\intin{}{}{Q}{\frac{1}{T}} \leq 0.
+\end{align*}
+This is Clausius' theorem, where equality necessarily holds for a reversible cycle.
+
+\paragraph{Entropy}
+As we have seen, the integral
+\begin{align*}
+	\intin{}{}{Q}{\frac{1}{T}}
+\end{align*}
+is path independent for a reversible process. We thus define the state function
+\begin{align*}
+	\dd{S} = \frac{\din{Q}}{T}
+\end{align*}
+to be the entropy.
+
+\paragraph{The Second Law and Entropy}
+Consider two points connected by a reversible and an irreversible process such that the two form a cycle. Clausius' theorem yields
+\begin{align*}
+	\intin{A}{B}{Q}{\frac{1}{T}} + \intin{B}{A}{Q_{\text{rev}}}{\frac{1}{T}} \leq 0 \implies \intin{A}{B}{Q}{\frac{1}{T}} \leq \intin{A}{B}{Q_{\text{rev}}}{\frac{1}{T}}.
+\end{align*}
+This holds for two arbitrary points, meaning
+\begin{align*}
+	\dd{S} \geq \frac{\din{Q}}{T}.
+\end{align*}
+Considering a thermally isolated system, we obtain
+\begin{align*}
+	\dd{S} \geq 0.
+\end{align*}
+This is a restatement of the second law of thermodynamics.
+
+\paragraph{The First Law and Entropy}
+For a reversible process we obtain
+\begin{align*}
+	\dd{U} = T\dd{S} - p\dd{V}.
+\end{align*}
+However, as all involved quantities are functions of state, this must hold even if the process in question is irreversible.
+
+\paragraph{Natural Variables For Internal Energy}
+Our restatement of the first law implies that $U$ can be written as a function of $S$ and $V$.
+
+%TODO: More derivatives

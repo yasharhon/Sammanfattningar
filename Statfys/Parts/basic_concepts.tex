@@ -64,3 +64,38 @@ with solution
 This exponential factor is called the Boltzmann factor.
 
 We note that the probability of finding the small system in the macrostate with energy $\varepsilon$ is, according to the fundamental hypothesis, proportional to $e^{-\frac{\varepsilon}{\kb T}}$.
+
+\paragraph{The Statistical Basis For Entropy}
+We can use what we have seen in thermodynamics to show that
+\begin{align*}
+	\frac{1}{T} = \fix{\pdv{S}{U}}{V}.
+\end{align*}
+Combining this with our definition of temperature from a microscopic perspective, we obtain
+\begin{align*}
+	S = \kb\ln{\Omega}.
+\end{align*}
+
+\paragraph{Entropy and Probability}
+Consider a system with $N$ available microstates, all equally likely and indistinguishable by experiment. These are divided into groups called to macrostates, distinguishable by experiment, with $n_{i}$ microstates in each macrostate. We have
+\begin{align*}
+	\sum n_{i} = N,
+\end{align*}
+and the probability of finding the system in a particular macrostate is thus
+\begin{align*}
+	P_{i} = \frac{n_{i}}{N}.
+\end{align*}
+The total entropy is $S_{\text{tot}} = \kb\ln{N}$, but cannot be measured as the microstates are indistinguishable. Nevertheless, as entropy is extensive, the total entropy is a sum of the freedom to explore the microstates for a given macrostate and the freedom to explore the different macrostates, i.e.
+\begin{align*}
+	S_{\text{tot}} = S + S_{\text{micro}}.
+\end{align*}
+The entropy due to exploring microstates is an expectation value over the different macrostates of the entropy, given by
+\begin{align*}
+	S_{\text{micro}} = \sum P_{i}S_{i} = \kb\sum P_{i}\ln{n_{i}}.
+\end{align*}
+This yields
+\begin{align*}
+	S &= S_{\text{tot}} - S_{\text{micro}} \\
+	  &= \kb\ln{N} - \kb\sum P_{i}\ln{n_{i}} \\
+	  &= \kb\sum P_{i}\left(\ln{N} - \ln{n_{i}}\right) \\
+	  &= -\kb\sum P_{i}\ln{P_{i}}.
+\end{align*}
