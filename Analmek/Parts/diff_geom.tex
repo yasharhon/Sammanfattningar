@@ -3,10 +3,10 @@
 \paragraph{Coordinates}
 A general set of coordinates on $\R^{n}$ is $n$ numbers $\chi^{a}, a = 1, \dots, n$ that uniquely define a point in the space.
 
-\example{Cartesian coordinates}
+\example{Cartesian Coordinates}
 In cartesian coordinates we introduce an orthonormal basis $\vb{e}_{i}$. We can then write $\vb{x} = \chi^{i}\vb{e}_{i}$. This example is, however, not very illustrative.
 
-\paragraph{Basis vectors}
+\paragraph{Basis Vectors}
 When working with both Cartesian and non-Cartesian coordinate systems, there are two different choices of coordinate bases.
 
 The first is the tangent basis of vectors
@@ -19,10 +19,10 @@ The second is the dual basis
 	\vb{E}^{a} = \grad{\chi^{a}}.
 \end{align*}
 
-\example{Cartesian coordinates}
+\example{Cartesian Coordinates}
 In Cartesian coordinates we have $\vb{r} = x^{i}\vb{e}_{i}$. The basis vectors are fixed and orthonormal, meaning $\vb{E}_{a} = \kdelta{a}{i}\vb{e}_{i} = \vb{e}_{a}$. Likewise, we have $\vb{E}^{a} = \grad{x^{a}} = \vb{e}_{a}$. As we can see, the tangent and dual basis are equal in Cartesian coordinates.
 
-\example{Polar coordinates}
+\example{Polar Coordinates}
 A slightly more non-trivial example is polar coordinates, where we have
 \begin{align*}
 	\vb{r} = r(\cos{\phi}\vb{e}_{x} + \sin{\phi}\vb{e}_{y}).
@@ -60,19 +60,51 @@ The $v^{a}$ are called contravariant components and the $v_{a}$ are called covar
 
 Up until now we have not been careful about where we place the indices. This will now change. In addition, we add to the convention of Einstein summation the idea that the balance of raised and lowered indices msut be preserved by an equality.
 
-\paragraph{Coordinate Transformations}
-Suppose that a vector can be expressed in two different tangent bases (corresponding to different choices of coordinates). How do we transform between these? A single component is given by
+\paragraph{Changes of Basis and Coordinate Transformations}
+Suppose we perform the change of basis, expressed in the dual basis as
+\begin{align*}
+	(\tb{b})' = L_{b}^{a}\tb{a}.
+\end{align*}
+This must be due to a change of coordinates. The chain rule dictates
+\begin{align*}
+	(\tb{b})' = \del[\prime]{b}{\vb{r}} = \del{a}{\vb{r}}\del[\prime]{b}{\chi^{a}} = \del[\prime]{b}{\chi^{a}}\tb{a},
+\end{align*}
+which identifies the transformation coefficients as
+\begin{align*}
+	L_{b}^{a} = \del[\prime]{b}{\chi^{a}}.
+\end{align*}
+
+Similarly, expressing the change of basis in the dual basis yields
+\begin{align*}
+	(\db{b})' = K_{a}^{b}\db{a}
+\end{align*}
+yields
+\begin{align*}
+	(\db{b})' = \grad{(\chi')^{b}} = \del{a}{(\chi')^{b}}\grad{\chi^{a}} = \del{a}{(\chi')^{b}}\db{a},
+\end{align*}
+identifying the transformation coefficients as
+\begin{align*}
+	K_{a}^{b} = \del{a}{(\chi')^{b}}.
+\end{align*}
+
+These transformation coefficients satisfy
+\begin{align*}
+	L_{a}^{c}K_{c}^{b} = \del[\prime]{a}{\chi^{c}}\del{c}{(\chi')^{b}} = \kdelta{a}{b},
+\end{align*}
+and hence the two transformations are inverses of each other.
+
+\paragraph{Transformations of Vectors}
+Under a coordinate transformation, a single contravariant vector component is given by
 \begin{align*}
 	(v')^{b} = (\db{b})'\cdot v^{a}\tb{a} = v^{a}\grad{(\chi')^{b}}\cdot\del{a}{\vb{r}} = v^{a}\del{a}{(\chi')^{b}}.
 \end{align*}
 
-Likewise, we try to transform between dual bases. We obtain
+Likewise, the covariant components are given by
 \begin{align*}
-	v_{b}' = \tb{b}'\cdot v_{a}\db{a} = v_{a}\del[\prime]{b}{\vb{r}}\cdot\grad{\chi^{a}} = v^{a}\del[\prime]{b}{\chi^{a}}.
+	v_{b}' = \tb{b}'\cdot v_{a}\db{a} = v_{a}\del[\prime]{b}{\vb{r}}\cdot\grad{\chi^{a}} = v_{a}\del[\prime]{b}{\chi^{a}}.
 \end{align*}
 
-%TODO: Show this
-The covariant components thus transform in the same way as the tangent basis, while the contravariant components change in the opposite way. This is the reason fomr the nomenvlature.
+The covariant components thus transform in the same way as the tangent basis, while the contravariant components change in the opposite way. This is the reason for the nomenclature.
 
 \paragraph{Tangents to Curves}
 The tangent to a curve is given by

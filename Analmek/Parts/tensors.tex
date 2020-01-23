@@ -23,15 +23,12 @@ In component form:
 \end{align*}
 
 \paragraph{Coordinate Transformations}
-Suppose that we transform the basis according to
+Under a change of coordinates, the components of the tensor then transform according to
 \begin{align*}
-	(\tb{}^{\prime})^{a_{i}} = L_{b_{i}}^{a_{i}}\tb{b_{i}}.
-\end{align*}
-The components of the tensor then transform according to
-\begin{align*}
-	T((\tb{}^{\prime})^{a_{1}}, \dots, (\tb{}^{\prime})^{a_{n}}) &= T(L_{b_{1}}^{a_{1}}\tb{b_{1}}, \dots, L_{b_{n}}^{a_{n}}\tb{b_{n}}) \\
-	                                                             &= L_{b_{1}}^{a_{1}}\dots L_{b_{n}}^{a_{n}}T(\tb{b_{1}}, \dots, \tb{b_{n}}) \\
-	                                                             &= L_{b_{1}}^{a_{1}}\dots L_{b_{n}}^{a_{n}}T^{a_{1}, \dots, a_{N}}.
+	T^{a_{1}\dots a_{n}} &= T((\tb{a_{1}})', \dots, (\tb{a_{n}})') \\
+	                     &= T(L_{a_{1}}^{b_{1}}\tb{b_{1}}, \dots, L_{a_{n}}^{b_{n}}\tb{b_{n}}) \\
+	                     &= L_{a_{1}}^{b_{1}}\dots L_{a_{n}}^{b_{n}}T(\tb{b_{1}}, \dots, \tb{b_{n}}) \\
+	                     &= L_{a_{1}}^{b_{1}}\dots L_{a_{n}}^{b_{n}}T^{b_{1}, \dots, b_{n}}.
 \end{align*}
 Many introductions to tensors define tensors according to this relation. And now you know where it comes from.
 
@@ -42,7 +39,7 @@ Given two tensors $T_{1}$ and $T_{2}$ of ranks $n_{1}$ and $n_{2}$, we kan defin
 \end{align*}
 In component form:
 \begin{align*}
-	(\tenprod{{T_{1}, T_{2}}})^{a_{1}\dots a_{n_{1} + n_{2}} = T_{1}^{a_{1}\dots a_{n_{1}}}T_{2}^{a_{n_{1} + 1}}\dots a_{n_{1} + n_{2}}}.
+	(\tenprod{{T_{1}, T_{2}}})^{a_{1}\dots a_{n_{1} + n_{2}}} = T_{1}^{a_{1}\dots a_{n_{1}}}T_{2}^{a_{n_{1} + 1}\dots a_{n_{1} + n_{2}}}.
 \end{align*}
 
 \paragraph{A Base For The Space of Tensors}
@@ -71,7 +68,7 @@ This map is also linear in all the $\vb{w}_{i}$. Next, given a rank $n - m$ tens
 \end{align*}
 This is a linear rank $n$ tensor.
 
-\paragraph{Tensor contraction}
+\paragraph{Tensor Contraction}
 Given a complete set of vectors $\vb{v}_{i}$ and their dual $\vb{v}^{i}$ such that $\vb{v}_{i}\cdot\vb{v}^{i} = \kdelta{i}{j}$, the contraction $e_{12}T$ of two arguments of a rank $n$ tensor is the tensor of rank $n - 2$ satisfying
 \begin{align*}
 	(e_{12}T)(\vb{w}_{1}, \dots, \vb{w}_{n - 2}) = T(\vb{v}_{i}, \vb{v}^{i}, \vb{w}_{1}, \dots, \vb{w}_{n - 2}).
@@ -82,18 +79,34 @@ In component form:
 \end{align*}
 The definition is similar (I assume) for the contraction of other arguments.
 
-\paragraph{The metric tensor}
-The metric tensor $g$ is a rank $2$ tensor defined by $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$. It is a symmetric tensor. Its components satisfy
+\paragraph{Tensor Fields}
+A tensor field is a map from coordinate space to a tensor.
+
+\paragraph{The Metric Tensor}
+The metric tensor $g$ is a rank $2$ tensor. We start by defining it as $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$, but more generally the metric tensor defines the inner product.
+
+The metric tensor is symmetric. Its components satisfy
 \begin{align*}
 	v_{a} = \vb{E}_{a}\cdot v^{b}\vb{E}_{b} = g(\vb{E}_{a}, \vb{E}_{b})v^{b} = g_{ab}v^{b},
 \end{align*}
 and likewise
 \begin{align*}
-	v^{a} = g^{ab}v_{b}.
+	v^{a} = g^{ab}v_{b}
 \end{align*}
+where $\vb{v}$ is a vector. This demonstrates the capabilities of the metric to raise and lower indices.
 
 We note that
 \begin{align*}
 	v_{a} = g_{ab}v^{b} = g_{ab}g^{bc}v_{c},
 \end{align*}
 which implies $g_{ab}g^{bc} = \kdelta{a}{c}$.
+
+\example{The Metric in Polar Coordinates}
+The contravariant components of the metric tensor, according to the definition, are
+\begin{align*}
+	g_{rr} = \tb{r}\cdot\tb{r} = 1,\ g_{r\phi} = g_{\phi r} = \tb{r}\cdot\tb{\phi} = 0,\ g_{\phi\phi} = \tb{\phi}\cdot\tb{\phi} = r^{2}.
+\end{align*}
+Likewise, the covariant components are
+\begin{align*}
+	g^{rr} = \db{r}\cdot\db{r} = 1,\ g_{r\phi} = g_{\phi r} = \db{r}\cdot\db{\phi} = 0,\ g_{\phi\phi} = \db{\phi}\cdot\db{\phi} = \frac{1}{r^{2}}.
+\end{align*}
