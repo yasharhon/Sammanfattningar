@@ -12,3 +12,13 @@ The differential of a quantity $f$ on a phase space described by the vector $\vb
 	\dd{f} = \grad{f}\cdot\vb{r}.
 \end{align*}
 The implication is that $f$ is a function on phase space, which is not true for all quantities.
+
+\paragraph{The Reciprocal and Reciprocity Theorems}
+Consider a function $x(y, z)$, and suppose that this function can be inverted to a function $z(x, y)$. We can write the differentials of $x$ and $z$, and insert the differential of $z$ into the differential of $x$ to yield
+\begin{align*}
+	\fix{\pdv{x}{z}}{y} = \frac{1}{\fix{\pdv{z}{x}}{y}},\ \fix{\pdv{x}{y}}{z}\fix{\pdv{y}{z}}{x}\fix{\pdv{z}{x}}{y} = -1.
+\end{align*}
+These can also be combined to yield
+\begin{align*}
+	\fix{\pdv{x}{y}}{z} = -\fix{\pdv{z}{y}}{x}\fix{\pdv{x}{z}}{y}.
+\end{align*}
