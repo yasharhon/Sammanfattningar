@@ -63,7 +63,7 @@ Vi ser att elektriska fältet har nollskild rotation i dynamiken, så vi delar u
 i analogi med Biot-Savarts lag. Den rotationsfria har redan beskrivits.
 
 \paragraph{Potentialer för dynamiska fält}
-Vi har att
+Vi har för den rotationsfria terman att
 \begin{align*}
 	\curl{\vb{E}} + \del{t}{\vb{B}}(t) = \curl(\vb{E} + \del{t}{\vb{A}}) = \vb{0}.
 \end{align*}
@@ -85,7 +85,7 @@ Vi ser då att i dynamiken ges sambandet mellan fält och potentialer av
 \end{align*}
 
 \paragraph{EMK från induktans}
-Vi får i ett system med $n$ slingor
+Vi får i ett system med $n$ statiska slingor
 \begin{align*}
 	\emf_{i} = -\sum\limits_{j}M_{ij}\dv{I_{j}}{t} = -L_{i}\dv{I_{i}}{t} + \emf_{\text{övriga}}.
 \end{align*}
@@ -150,13 +150,9 @@ För systemet fås då
 Vi vet att detta är strikt positivt, så induktansmatrisen måste vara positivt definit.
 
 \paragraph{Induktanser från energitermer}
-Med detta kan vi definiera
+Med detta kan vi skriva
 \begin{align*}
-	M_{ij} = \frac{2W_{\text{m}, ij}}{I_{i}I_{j}}.
-\end{align*}
-Det låter oss även definiera egeninduktanserna enligt
-\begin{align*}
-	L_{i} = \frac{2W_{\text{m}, ii}}{I_{i}^{2}}.
+	M_{ij} = \frac{2W_{\text{m}, ij}}{I_{i}I_{j}},\ L_{i} = \frac{2W_{\text{m}, ii}}{I_{i}^{2}}.
 \end{align*}
 
 \paragraph{Generalisering av Ampères lag}
@@ -174,7 +170,7 @@ Vi betecknar den andra termen som $\vb{I}$. Komponentvis har vi
 	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\del{j}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{1}{R^{3}}R_{i}\del{j}{J_{j}}} \\
 	      &= \frac{\mu_{0}}{4\pi}\integ{}{}{a_{i}'}{\left(\frac{1}{R^{3}}J_{j}R_{i}\right)} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{3}}R_{i}\div{\vb{J}}}.
 \end{align*}
-Genom att skicka integrationsområdet mot oändligheten försvinner första termen, vilket ger
+Genom att utvidga integrationsområdet mot oändligheten försvinner första termen, vilket ger
 \begin{align*}
 	\curl{\vb{B}} &= \mu_{0}\vb{J} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\div{\vb{J}}\frac{1}{R^{2}}\ub{R}}.
 \end{align*}
@@ -208,13 +204,13 @@ Vi kan tolka detta som
 \begin{align*}
 	\vb{J}\cdot\vb{E} = \del{t}{w_{\text{mek}}},
 \end{align*}
-där $w_{\text{mek}}$ är energitätheten. Med hjälp av Maxwells ekvationer skriver vi
+där $w_{\text{mek}}$ är den mekaniska energitätheten. Med hjälp av Maxwells ekvationer skriver vi
 \begin{align*}
 	\del{t}{w_{\text{mek}}} &= \frac{1}{\mu_{0}}\vb{E}\cdot\curl{\vb{B}} - \varepsilon_{0}\vb{E}\cdot\del{t}{\vb{E}} \\
 	                        &= \frac{1}{\mu_{0}}\left(\vb{B}\cdot\curl{\vb{B}} - \div(\vb{E}\times\vb{B})\right) - \frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} \\
 	                        &= -\frac{1}{\mu_{0}}\div(\vb{E}\times\vb{B}) - \del{t}{\left(\frac{1}{2}\varepsilon_{0}\cdot\del{t}{E^{2}} + \frac{1}{2\mu_{0}}B^{2}\right)}.
 \end{align*}
-Vi har en fältenergitäthet från de första två termerna, som vi förstår väl, men det finns även en extra term här. Den är en flödestäthet av energi. Vi kallar den då Poyntings vektor
+Vi har en fältenergitäthet från två av termerna, som vi förstår väl, men det finns även en extra term här. Den är en flödestäthet av energi. Vi kallar den Poyntings vektor
 \begin{align*}
 	\vb{S} = \frac{1}{\mu_{0}}\vb{E}\times\vb{B}.
 \end{align*}
@@ -224,7 +220,7 @@ Den uppfyller konserveringslagen
 \end{align*}
 
 \paragraph{Rörelsemängd i elektromagnetism}
-Betrakta ett föremål med laddningstäthet $\rho$ och strömtäthet $\vb{J}$. Detta har rörelsemängd som kommer från laddningarnas rörelse. Om vi inför rörelsemängdstätheten $\vb{g}_{\text{mek}}$ fås
+Betrakta ett föremål med laddningstäthet $\rho$ och strömtäthet $\vb{J}$. Detta har rörelsemängd som kommer från laddningarnas rörelse. Om vi inför rörelsemängdstätheten $\vb{g}_{\text{mek}}$ ger Newtons andra lag
 \begin{align*}
 	\del{t}{\vb{g}_{\text{mek}}} = \rho\vb{E} + \vb{J}\times\vb{B}.
 \end{align*}
@@ -232,22 +228,21 @@ Maxwells ekvationer ger
 \begin{align*}
 	\del{t}{\vb{g}_{\text{mek}}} = \varepsilon_{0}\vb{E}(\div{\vb{E}}) + \frac{1}{\mu_{0}}(\curl{\vb{B}})\times\vb{B} - \varepsilon_{0}\del{t}{\vb{E}}\times\vb{B}.
 \end{align*}
-Vi skriver med hjälp av Maxwells lagar
+Vi skriver med hjälp av Maxwells ekvationer
 \begin{align*}
 	(\curl{\vb{B}})\times\vb{B} &= -\frac{1}{2}\grad{B^{2}} + (\vb{B}\cdot\grad)\vb{B}, \\
 	\del{t}{\vb{E}}\times\vb{B} &= \del{t}{(\vb{E}\times\vb{B})} - \vb{E}\times\del{t}{\vb{B}} \\
 	                            &= \del{t}{(\vb{E}\times\vb{B})} + \vb{E}\times(\curl{\vb{E}}) \\
-	                            &= \del{t}{(\vb{E}\times\vb{B})} -\frac{1}{2}\grad{E^{2}} + (\vb{E}\cdot\grad)\vb{E},
+	                            &= \del{t}{(\vb{E}\times\vb{B})} + \frac{1}{2}\grad{E^{2}} - (\vb{E}\cdot\grad)\vb{E},
 \end{align*}
-vilket ger
-% TODO: Complete
+vilket, till sammans med Maxwells ekvationer, ger
 \begin{align*}
-	\del{t}{\vb{g}_{\text{mek}}} &= \varepsilon_{0}\vb{E}(\div{\vb{E}}) + \frac{1}{\mu_{0}}\left(-\frac{1}{2}\grad{B^{2}} + (\vb{B}\cdot\grad)\vb{B}\right) - \varepsilon_{0}\left(\del{t}{(\vb{E}\times\vb{B})} -\frac{1}{2}\grad{E^{2}} + (\vb{E}\cdot\grad)\vb{E}\right) \\
-	                             &= \varepsilon_{0}(\vb{E}(\div{\vb{E}})) + \frac{1}{\mu_{0}}(\vb{B}\cdot\grad)\vb{B} - \varepsilon_{0}\left(\del{t}{(\vb{E}\times\vb{B})} + (\vb{E}\cdot\grad)\vb{E}\right) + (\vb{E}\cdot\grad)\vb{E} - \frac{1}{2}\grad(\varepsilon_{0}E^{2} + \frac{1}{\mu_{0}}B^{2}) \\
-	                             &= \dots \\
-	                             &= \varepsilon_{0}(\vb{E}\div{\vb{E}} + (\vb{E}\cdot\grad)\vb{E}) + \frac{1}{\mu_{0}}(\vb{B}\div{\vb{B}} + (\vb{B}\cdot\grad)\vb{B}) - \grad(\frac{1}{2}\varepsilon_{0}E^{2} + \frac{1}{2\mu_{0}}B^{2}) - \varepsilon_{0}\mu_{0}\del{t}{\left(\frac{1}{\mu_{0}}\vb{E}\times\vb{B}\right)} \\
-	                             &= \varepsilon_{0}(\vb{E}\div{\vb{E}} + (\vb{E}\cdot\grad)\vb{E}) + \frac{1}{\mu_{0}}(\vb{B}\div{\vb{B}} + (\vb{B}\cdot\grad)\vb{B}) - \grad(w_{\text{e}} + w_{\text{m}}) - \varepsilon_{0}\mu_{0}\del{t}{\vb{S}}.
+	\del{t}{\vb{g}_{\text{mek}}} &= \varepsilon_{0}\vb{E}(\div{\vb{E}}) + \frac{1}{\mu_{0}}\left(-\frac{1}{2}\grad{B^{2}} + (\vb{B}\cdot\grad)\vb{B}\right) - \varepsilon_{0}\left(\del{t}{(\vb{E}\times\vb{B})} + \frac{1}{2}\grad{E^{2}} - (\vb{E}\cdot\grad)\vb{E}\right) \\
+	                             &= \varepsilon_{0}\vb{E}(\div{\vb{E}}) + \frac{1}{\mu_{0}}(\vb{B}\cdot\grad)\vb{B} - \varepsilon_{0}\left(\del{t}{(\vb{E}\times\vb{B})} - (\vb{E}\cdot\grad)\vb{E}\right) - \frac{1}{2}\grad(\varepsilon_{0}E^{2} + \frac{1}{\mu_{0}}B^{2}) \\
+	                             &= \varepsilon_{0}(\vb{E}(\div{\vb{E}}) + (\vb{E}\cdot\grad)\vb{E}) + \frac{1}{\mu_{0}}(\vb{B}\div{\vb{B}} + (\vb{B}\cdot\grad)\vb{B}) - \grad(\frac{1}{2}\varepsilon_{0}E^{2} + \frac{1}{2\mu_{0}}B^{2}) - \varepsilon_{0}\mu_{0}\del{t}{\left(\frac{1}{\mu_{0}}\vb{E}\times\vb{B}\right)} \\
+	                             &= \varepsilon_{0}(\vb{E}(\div{\vb{E}}) + (\vb{E}\cdot\grad)\vb{E}) + \frac{1}{\mu_{0}}(\vb{B}\div{\vb{B}} + (\vb{B}\cdot\grad)\vb{B}) - \grad(w_{\text{e}} + w_{\text{m}}) - \varepsilon_{0}\mu_{0}\del{t}{\vb{S}}.
 \end{align*}
+Notera att vi adderade en term som är $\vb{0}$.
 
 \paragraph{Elektromagnetisk rörelsemängd och Maxwells spänningstensor}
 Vi betraktar nu den mekaniska rörelsemängden komponentvis:
@@ -257,7 +252,7 @@ Vi betraktar nu den mekaniska rörelsemängden komponentvis:
 \end{align*}
 Vi definierar då elektromagnetiska rörelsemängdstätheten
 \begin{align*}
-	\vb{g}_{\text{m}} = \mu_{0}\varepsilon_{0}\del{t}{\vb{S}}
+	\vb{g}_{\text{em}} = \mu_{0}\varepsilon_{0}\vb{S}
 \end{align*}
 och Maxwells spänningstensor
 \begin{align*}
@@ -268,12 +263,17 @@ Då kan vi skriva
 	\del{t}{(g_{\text{mek}, i} + g_{\text{em}, i})} + \del{j}{(-T_{ij})} = 0,
 \end{align*}
 alltså en kontinuitetsekvation.
-% TODO: Skriv som en vektor?
+
+Om man vill kan man skriva
+\begin{align*}
+	\del{j}{T_{ij}} = \delta_{jk}\del{k}{T_{ij}} = \ub{j}\cdot\ub{k}\del{k}{T_{ij}} = (\ub{k}\del{k}){}\cdot({T_{ij}\ub{j}}) = \div{{T_{ij}\ub{j}}},
+\end{align*}
+och vektorfältet som transporterar komponent $i$ av rörelsemängden är $-\div{{T_{ij}\ub{j}}}$. Men att skriva så är lite fult, och ekvationen vi började med är en fullgod kontinuitetsekvation.
 
 \paragraph{Flöde av rörelsemängd och ytspänningsvektorer}
 I ett område har vi
 \begin{align*}
-	\dv{t}(p_{\text{mek}, i} + p_{\text{em}, i}) &= \integ{}{}{\tau}{g_{\text{mek}, i} + g_{\text{em}, i}} \\
+	\dv{t}(p_{\text{mek}, i} + p_{\text{em}, i}) &= \integ{}{}{\tau}{\del{t}{g_{\text{mek}, i} + g_{\text{em}, i}}} \\
 	                                             &= \integ{}{}{\tau}{\del{j}{T_{ij}}} \\
 	                                             &= \integ{}{}{a_{j}}{T_{ij}}.
 \end{align*}
@@ -288,24 +288,45 @@ Vi definierar den elektriska och magnetiska ytspänningsvektorn som
 \end{align*}
 Vi ser då att flödet av dessa ut genom området ger ändringen av total rörelsemängd. I många praktiska fall är tidsderivatan av elektromagnetisk rörelsemängd försumbar, och kvar står en flödesintegral på ena sidan och summan av alla krafter på andra.
 
-\paragraph{Alternativ konstruktion av ytspänningsvektorerna}
-Man kan (och jag borde kanske) visa att
+\paragraph{Geometrisk konstruktion av ytspänningsvektorerna}
+Det gäller att
 \begin{align*}
 	T_{\text{e}} = w_{\text{e}}
 \end{align*}
-och att den bildar vinkeln $\alpha$ med $\vb{E}$ och $2\alpha$ med $\vb{n}$. Den ligger även i samma plan som $\vb{E}$ och $\vb{n}$. Det samma gäller för den magnetiska ytspänningsvektorn.
+och att om vinkeln mellan $\vb{E}$ och $\vb{n}$ är $\alpha$, bildar ytspänningsvektorn vinkeln $\alpha$ med $\vb{E}$ och $2\alpha$ med $\vb{n}$. Den ligger även i samma plan som $\vb{E}$ och $\vb{n}$. Det samma gäller för den magnetiska ytspänningsvektorn.
+
+Vi visar detta så rakt fram som vi kan för den elektriska ytspänningsvektorn. Det sista påståendets sannhet är uppenbar eftersom $\vb{T}_{\text{e}}$ är en linjärkombination av $\vb{E}$ och $\vb{n}$. Vi har vidare
+\begin{align*}
+	T_{\text{e}}^{2} &= \varepsilon_{0}^{2}\left((\vb{n}\cdot\vb{E})\vb{E} - \frac{1}{2}E^{2}\vb{n}\right)^{2} \\
+	                 &= \varepsilon_{0}^{2}\left((\vb{n}\cdot\vb{E})^{2}E^{2} + \frac{1}{4}E^{4}\vb{n}^{2} - (\vb{n}\cdot\vb{E})\vb{E}\cdot E^{2}\vb{n}\right) \\
+	                 &= \varepsilon_{0}^{2}\left((\vb{n}\cdot\vb{E})^{2}E^{2} + \frac{1}{4}E^{4} - (\vb{n}\cdot\vb{E})^{2}E^{2}\right) \\
+	                 &= \frac{1}{4}\varepsilon_{0}^{2}E^{4} \\
+	                 &= w_{\text{e}}^{2},
+\end{align*}
+vilket visar det första påståendet. Vi har vidare
+\begin{align*}
+	\vb{T}_{\text{e}}\cdot\vb{E} = \varepsilon_{0}(\vb{n}\cdot\vb{E})E^{2} - \frac{1}{2}\varepsilon_{0}E^{2}(\vb{n}\cdot\vb{E}) = \frac{1}{2}\varepsilon_{0}E^{2}(\vb{n}\cdot\vb{E}) = (\vb{n}\cdot\vb{E})w_{\text{e}},
+\end{align*}
+varför
+\begin{align*}
+	\cos{\alpha} = \frac{\vb{n}\cdot\vb{E}}{E}.
+\end{align*}
+Jämför detta med
+\begin{align*}
+	\vb{T}_{\text{e}}\cdot\vb{n} = \varepsilon_{0}(\vb{n}\cdot\vb{E})^{2} - \frac{1}{2}\varepsilon_{0}E^{2}n^{2} = \frac{1}{2}\varepsilon_{0}E^{2}(2\cos[2](\alpha) - 1) = T_{\text{e}}\cos{2\alpha}.
+\end{align*}
+Beviset är helt analogt för den magnetiska ytspänningsvektorn.
 
 \paragraph{Elektromagnetiskt rörelsemängdsmoment}
 Vi har
 \begin{align*}
-	\vb{N}_{\text{mek}} = \integ{}{}{\tau}{\vb{r}\times\del{t}{\vb{g}_{\text{mek}}}} = \integ{}{}{\tau}{\del{t}{\vb{l}_{\text{mek}}}}.
+	\vb{N}_{\text{mek}} = \integ{}{}{\tau}{\vb{r}\times\del{t}{\vb{g}_{\text{mek}}}} = \integ{}{}{\tau}{\del{t}{\vb{l}_{\text{mek}}}},
 \end{align*}
-Vi har en konserveringslag för tätheten av rörelsemängd, och skulle även vilja ha det för den nu införda tätheten av rörelsemängdsmoment. Vi inför då tätheten av elektromagnetisk rörelsemängdsmoment som
+där vi har infört tätheten av rörelsemängdsmoment
 \begin{align*}
 	\vb{l}_{\text{em}} = \vb{r}\times\vb{g}_{\text{em}}.
 \end{align*}
-Vi har då
-% TODO: Limitations on coordinate systems
+Vi vill gärna ha en konserveringslag för denna, och använder konserveringslagen för rörelsemängd för att skriva
 \begin{align*}
 	\del{t}{(l_{\text{mek}, i} + l_{\text{em}, i})} &= \varepsilon_{ijk}r_{j}\del{t}{(g_{\text{mek}, k} + g_{\text{em}, k})} \\
 	                                                &= \varepsilon_{ijk}r_{j}\del{p}{T_{kp}} \\
@@ -330,10 +351,10 @@ Vi har
 \begin{align*}
 	\dv{t}(L_{\text{mek}, i} + L_{\text{em}, i}) &= \integ{}{}{\tau}{\del{t}{(l_{\text{mek}, i} + l_{\text{em}, i})}} \\
 	                                             &= -\integ{}{}{\tau}{\del{j}{M_{ij}}} \\
-	                                             &= -\integ{}{}{S_{j}}{M_{ij}} \\
-	                                             &= -\integ{}{}{S_{j}}{\varepsilon_{ikp}r_{p}T_{kj}},
+	                                             &= -\integ{}{}{a_{j}}{M_{ij}} \\
+	                                             &= -\integ{}{}{a_{j}}{\varepsilon_{ikp}r_{p}T_{kj}},
 \end{align*}
 vilket ger
 \begin{align*}
-	\dv{t}\vb{L} = -\integ{}{}{S}{(\vb{T}_{\text{e}} + \vb{T}_{\text{m}})\times\vb{r}}.
+	\dv{t}\vb{L} = -\integ{}{}{a}{(\vb{T}_{\text{e}} + \vb{T}_{\text{m}})\times\vb{r}}.
 \end{align*}
