@@ -152,7 +152,7 @@ We have
 \begin{align*}
 	\dd{F} = \dd{U} - T\dd{S} - S\dd{T} = T\dd{S} - p\dd{V} - T\dd{S} - S\dd{T} = -p\dd{V} - S\dd{T},
 \end{align*}
-implying that $H$ is a function of $T$ and $p$, as well as
+implying that $F$ is a function of $T$ and $V$, as well as
 \begin{align*}
 	\fix{\pdv{F}{T}}{V} = -S,\ \fix{\pdv{F}{V}}{T} = -p.
 \end{align*}
@@ -202,3 +202,43 @@ As an example, the derivatives of $F$ are $-S$ and $-p$, computed with respect t
 \begin{align*}
 	\fix{\pdv{S}{V}}{T} = \fix{\pdv{p}{T}}{V}.
 \end{align*}
+
+\paragraph{Other Types of Work}
+The previous discussions have been focused on gaseous systems, where all work is manifest as expansions and compressions. When discussing the thermodynamics of other kinds of systems, we will need to add other work terms, of the form
+\begin{align*}
+	\din{W} = Y\dd{X},
+\end{align*}
+where $Y$ is an intensive generalized force and $X$ an extensive generalized displacement. For gases, we had $Y = -p$ and $X = V$. Other examples would include elastic rods, with $Y$ as the rod tension and $X$ as its extension, or liquid surfaces, with $Y$ as the surface tension and $X$ as the surface area.
+
+\paragraph{The Third Law}
+The third law was initially concerned with the issue of determining absolute entropies. Three different statements of the third law were finally coined:
+
+\begin{itemize}
+	\item \textbf{Nernst's statement:} Near absolute zero, all reactions in a system in internal equilibrium take place with no change in entropy.
+	\item \textbf{Planck's statement:} The entropy of all systems in internal equilibrium is the same at absolute zero, and may be taken to be zero.
+	\item \textbf{Simon's satement:} The contribution to the entropy of a system by each aspect of the system which is in internal thermodynamic equilibrium tends to zero when approaching absolute zero.
+\end{itemize}
+
+Simon's idea of aspects are based on a closer and closer inspections of a system. Considering a crystal for instance, it can be studied as a macroscopic entity or in terms of the individual atoms comprising it. These are, in turn, built up of nucleons, which are made up of quarks and so on (potentially). Each of these is termed an aspect.
+
+\paragraph{Consequences of the Third Law}
+Now we examine some of the consequences of the third law.
+
+The first consequence is for heat capacities. We have
+\begin{align*}
+	C = T\pdv{S}{T} = \pdv{S}{\ln{T}} \to 0.
+\end{align*}
+One might suspect that the first equality implies it (and I don't know why it does not). But the second statement guarantees it, as the third law implies that the entropy is bounded at low temperatures.
+
+A second consequence is for thermal expansion. The third law implies
+\begin{align*}
+	\fix{\pdv{S}{p}}{T} \to 0
+\end{align*}
+near absolute zero, which implies
+\begin{align*}
+	\fix{\pdv{V}{T}}{p} \to 0.
+\end{align*}
+
+A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
+
+A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
