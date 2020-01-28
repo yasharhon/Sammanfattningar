@@ -1,0 +1,81 @@
+\section{Statistical Physics}
+
+\paragraph{The Partition Function}
+The partition function is defined as
+\begin{align*}
+	Z = \sum e^{-\beta E_{i}},
+\end{align*}
+where the $E_{i}$ are possible values of the energy (or, rather, the Hamiltonian) and we now formally introduce $\beta = \frac{1}{\kb T}$.
+
+\paragraph{Properties of the Partition Function}
+
+\paragraph{Internal Energy}
+In a statistical context, we define the internal energy as $U = \expval{E}$. We have
+\begin{align*}
+	U &= \frac{\sum E_{i}e^{-\beta E_{i}}}{\sum e^{-\beta E_{i}}} \\
+	  &= \frac{-\dv{Z}{\beta}}{Z} \\
+	  &= -\pdv{\ln{Z}}{\beta}.
+\end{align*}
+Alternatively, in terms of temperature,
+\begin{align*}
+	U = -\pdv{\ln{Z}}{T}\pdv{T}{\beta} = \frac{1}{\kb\beta^{2}}\pdv{\ln{Z}}{T} = \kb T^{2}\pdv{\ln{Z}}{T}.
+\end{align*}
+
+\paragraph{Entropy}
+We have
+\begin{align*}
+	\ln{P_{i}} = \ln(\frac{e^{-\beta E_{i}}}{Z}) = -\beta E_{i} - \ln{Z}.
+\end{align*}
+The definition of entropy from probability thus implies
+\begin{align*}
+	S = -\kb\sum P_{i}\ln{P_{i}} = \kb\sum P_{i}(\beta E_{i} + \ln{Z}) = \kb\ln{Z} + \kb\beta U.
+\end{align*}
+
+\paragraph{Helmholtz Free Energy}
+We have
+\begin{align*}
+	F = U - TS = U - \frac{1}{\kb\beta}S = U - U - \frac{1}{\beta}\ln{Z} = -\frac{1}{\beta}\ln{Z},
+\end{align*}
+or
+\begin{align*}
+	Z = e^{-\beta F}.
+\end{align*}
+
+\paragraph{Heat Capacity}
+The heat capacity is given by
+\begin{align*}
+	C = \pdv{U}{T} = 2\kb T\pdv{\ln{Z}}{T} + \kb T^{2}\pdv[2]{\ln{Z}}{T}.
+\end{align*}
+
+\paragraph{Pressure}
+The pressure is given by
+\begin{align*}
+	p = -\pdv{F}{V} = \frac{1}{\beta}\pdv{\ln{Z}}{V}.
+\end{align*}
+
+\paragraph{Enthalpy}
+The enthalpy is given by
+\begin{align*}
+	H = \kb T^{2}\pdv{\ln{Z}}{T} + \frac{V}{\beta}\pdv{\ln{Z}}{V} = \kb T\left(T\pdv{\ln{Z}}{T} + V\pdv{\ln{Z}}{V}\right).
+\end{align*}
+
+\paragraph{Gibbs Free Energy}
+The Gibbs free energy is given by
+\begin{align*}
+	G = \kb T\left(-\ln{Z} + V\pdv{\ln{Z}}{V}\right).
+\end{align*}
+
+\paragraph{The Equipartition Theorem}
+Suppose that some degree of freedom $x$, which may take any value, of a system only appears in the Hamiltonian as a quadratic term $\alpha x^{2}$. Its contribution to the internal energy is
+\begin{align*}
+	\expval{E} = \frac{\integ{-\infty}{\infty}{x}{\alpha x^{2}e^{-\beta\alpha x^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha x^{2}}}}.
+\end{align*}
+One can show that this is equal to
+\begin{align*}
+	\expval{E} = \frac{1}{2}\kb T.
+\end{align*}
+Examples of such degrees of freedom are
+\begin{itemize*}
+	\item translations, rotations and vibrations in a gas.
+	\item vibrations in a crystal.
+\end{itemize*}
