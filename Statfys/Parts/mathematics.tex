@@ -14,11 +14,20 @@ The differential of a quantity $f$ on a phase space described by the vector $\vb
 The implication is that $f$ is a function on phase space, which is not true for all quantities.
 
 \paragraph{The Reciprocal and Reciprocity Theorems}
-Consider a function $x(y, z)$, and suppose that this function can be inverted to a function $z(x, y)$. We can write the differentials of $x$ and $z$, and insert the differential of $z$ into the differential of $x$ to yield
+Consider a function $x(y, z)$, and suppose that this function can be inverted to a function $z(x, y)$. We can write the differentials of $x$ and $z$ to obtain
 \begin{align*}
-	\fix{\pdv{x}{z}}{y} = \frac{1}{\fix{\pdv{z}{x}}{y}},\ \fix{\pdv{x}{y}}{z}\fix{\pdv{y}{z}}{x}\fix{\pdv{z}{x}}{y} = -1.
+	\dd{x} = \fix{\pdv{x}{z}}{y}\dd{z} + \fix{\pdv{x}{y}}{z}\dd{y},\ \dd{z} = \fix{\pdv{z}{x}}{y}\dd{x} + \fix{\pdv{z}{y}}{x}\dd{y}.
 \end{align*}
-These can also be combined to yield
+Combining these yields
 \begin{align*}
-	\fix{\pdv{x}{y}}{z} = -\fix{\pdv{z}{y}}{x}\fix{\pdv{x}{z}}{y}.
+	\dd{x} &= \fix{\pdv{x}{z}}{y}\left(\fix{\pdv{z}{x}}{y}\dd{x} + \fix{\pdv{z}{y}}{x}\dd{y}\right) + \fix{\pdv{x}{y}}{z}\dd{y} \\
+	       &= \left(\fix{\pdv{x}{z}}{y}\fix{\pdv{z}{x}}{y}\right)\dd{x} + \left(\fix{\pdv{x}{z}}{y}\fix{\pdv{z}{y}}{x} + \fix{\pdv{x}{y}}{z}\right)\dd{y}.
+\end{align*}
+This implies
+\begin{align*}
+	\fix{\pdv{x}{z}}{y} = \frac{1}{\fix{\pdv{z}{x}}{y}},\ \fix{\pdv{x}{y}}{z} = -\fix{\pdv{z}{y}}{x}\fix{\pdv{x}{z}}{y},
+\end{align*}
+which can be combined to yield
+\begin{align*}
+	 \fix{\pdv{x}{y}}{z}\fix{\pdv{y}{z}}{x}\fix{\pdv{z}{x}}{y} = -1.
 \end{align*}

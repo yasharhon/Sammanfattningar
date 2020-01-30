@@ -3,6 +3,12 @@
 \paragraph{Functions of State}
 A quantity $f$ is a function of state if its equilibrium value is a function of the equilibrium values of the variables describing the state.
 
+\paragraph{Intensive and Extensive Variables}
+Intensive variables do not depend on the size of the system, whereas extensive variables do. Examples of the former are pressure and temperature, and examples of the latter are volume and total energy.
+
+\paragraph{Heat}
+Heat is the flow of energy.
+
 \paragraph{Internal Energy}
 The internal energy $U$ of a system is the sum of the energy of all the internal degrees of freedom of a system.
 
@@ -16,18 +22,35 @@ Energy is conserved and heat and work are both forms of energy. In mathematical 
 \end{align*}
 This implies the convention that positive differentials correspond to energy supplied to the system.
 
-\paragraph{Heat Capacity of a Gas}
-The work required to compress a gas is $\din{W} = -p\dd{V}$, meaning that the total change in internal energy for a gas is
+\paragraph{The Second Law of Thermodynamics}
+The second law comes in two different statements:
+\begin{itemize}
+	\item \textbf{Clausius' statement:} No process is possible whose sole result is the transfer of heat from a colder to a hotter body.
+	\item \textbf{Kelvin's statement:} No process is possible whose sole result is the complete conversion of heat into work.
+\end{itemize}
+%TODO: Equivalence
+
+\paragraph{Types of Work}
+The following discussions will focus on gaseous systems, where all work is manifest as expansions and compressions. Before doing that, we should specify how work terms work. They are generally of the form
 \begin{align*}
-	\dd{U} = \fix{\pdv{U}{T}}{V}\dd{T} + \fix{\pdv{U}{V}}{T}\dd{V}
+	\din{W} = X\dd{x},
 \end{align*}
-where the subscript indicates which variables are constant when the derivatives are computed. The first law gives
+where $X$ is an intensive generalized force and $x$ an extensive generalized displacement. For gases, we have $X = -p$ and $x = V$. Other examples would include elastic rods, with $X$ as the rod tension and $x$ as its extension, or liquid surfaces, with $X$ as the surface tension and $x$ as the surface area.
+
+This might of course seemingly imply that work is indeed a function of state - after all, it seems to be an exact differential. The flaw in this argument lies in the work only looking like this when performed in a reversible manner.
+
+\paragraph{Heat Capacity of a Gas}
+The work required to compress a gas is $\din{W} = -p\dd{V}$. The change in internal energy for a gas is
+\begin{align*}
+	\dd{U} = \fix{\pdv{U}{T}}{V}\dd{T} + \fix{\pdv{U}{V}}{T}\dd{V},
+\end{align*}
+as $U$ is a  function of state. The subscript indicates which variables are constant when the derivatives are computed. The first law gives
 \begin{align*}
 	\din{Q} = \fix{\pdv{U}{T}}{V}\dd{T} + \left(\fix{\pdv{U}{V}}{T} + p\right)\dd{V}.
 \end{align*}
-Heat capacitites are defined as derivatives of $Q$ with respect to temperature, imploring us to divide by the differential change in temperature. We thus obtain
+Heat capacitites are defined as derivatives of $Q$ with respect to temperature. We thus obtain
 \begin{align*}
-	C_{V} = \fix{\pdv{Q}{T}}{V} = \fix{\pdv{Q}{T}}{V},\ C_{p} = \fix{\pdv{Q}{T}}{p} = \fix{\pdv{U}{T}}{V} + \left(\fix{\pdv{U}{V}}{T} + p\right)\fix{\pdv{V}{T}}{p}.
+	C_{V} = \fix{\pdv{Q}{T}}{V} = \fix{\pdv{U}{T}}{V},\ C_{p} = \fix{\pdv{Q}{T}}{p} = \fix{\pdv{U}{T}}{V} + \left(\fix{\pdv{U}{V}}{T} + p\right)\fix{\pdv{V}{T}}{p}.
 \end{align*}
 
 \paragraph{Molar Heat Capacities}
@@ -39,14 +62,6 @@ The adiabatic index is defined as
 	\gamma = \frac{C_{p}}{C_{V}}.
 \end{align*}
 
-\paragraph{The Second Law of Thermodynamics}
-The second law comes in two different statements:
-\begin{itemize}
-	\item \textbf{Clausius' statement:} No process is possible whose sole result is the transfer of heat from a colder to a hotter body.
-	\item \textbf{Kelvin's statement:} No process is possible whose sole result is the complete conversion of heat into work.
-\end{itemize}
-%TODO: Equivalence
-
 \paragraph{The Carnot Cycle}
 Consider a machine performing work based on the energy transfer between two heat reservoirs. One way to extract the energy is by using a Carnot process, which uses an ideal gas. The cycle connects four different points in a $pV$ diagram with two adiabatics and two isothermals.
 
@@ -56,7 +71,7 @@ The efficiency of a machine has various definitions, but the general definition 
 \paragraph{Carnot's Theorem}
 No heat engine working between two heat reservoirs is more efficient than a Carnot engine.
 
-To prove this, suppose that you create an engine producing the same work $W$ as a Carnot heat engine, but for an energy $Q'$ as opposed to the energy $Q$ needed to run the Carnot engine. Now let your new engine be used to power a reversed Carnot engine. The statement that this new engine is more efficient is expressed as
+To prove this, suppose that you create an engine producing the same work $W$ as a Carnot heat engine, but for an energy $Q'$ as opposed to the energy $Q$ needed to run the Carnot engine. Now let your new engine be used to power a reversed Carnot engine. As the process must be performed cyclically, the statement that this new engine is more efficient is expressed as
 \begin{align*}
 	\frac{W}{Q'} > \frac{W}{Q} \implies Q > Q'.
 \end{align*}
@@ -115,7 +130,7 @@ Considering a thermally isolated system, we obtain
 \begin{align*}
 	\dd{S} \geq 0.
 \end{align*}
-This is a restatement of the second law of thermodynamics.
+This is a restatement of the second law of thermodynamics, and essentially an equilibrium condition for any isolated system.
 
 \paragraph{The First Law and Entropy}
 For a reversible process we obtain
@@ -172,7 +187,9 @@ implying that $G$ is a function of $T$ and $p$, as well as
 \end{align*}
 
 \paragraph{Availability and Equilibrium}
-Consider a system in contact with surroundings at temperature $T_{0}$ and pressure $p_{0}$. If heat $\din{Q}$ is supplied to the system during some process, the entropy change satisfies $T_{0}\dd{S} \geq \din{Q}$. The first law implies
+The availability is a more general quantity which can be defined appropriately for systems with given constraints. Its differential will give a general equilibrium condition for the system.
+
+As an example, consider a system in contact with surroundings at temperature $T_{0}$ and pressure $p_{0}$. If heat $\din{Q}$ is supplied to the system during some process, the entropy change satisfies $T_{0}\dd{S} \geq \din{Q}$. The first law implies
 \begin{align*}
 	\din{Q} = \dd{U} - \din{W} - (-p_{0}\dd{V}),
 \end{align*}
@@ -193,7 +210,13 @@ If the system is mechanically isolated from the surroundings, such that only vol
 \begin{align*}
 	\dd{A} \leq 0.
 \end{align*}
-This is a general equilibrium condition which applies to systems with many different constraints, depending on a proper definition of the availability.
+Looking more closely at the differential of the availability, we obtain
+\begin{align*}
+	\dd{A} = \dd{U} + p_{0}\dd{V} - T_{0}\dd{S} = \dd(U + p_{0}V - T_{0}S) = \dd{G}.
+\end{align*}
+Hence the equilibrium condition is that Gibbs free energy is minimized.
+
+%TODO: Add more equilibrium conditions
 
 \paragraph{Maxwell Relations}
 Using the symmetry of partial derivatives for a state function, one can obtain relations between derivatives of other state functions.
@@ -202,13 +225,6 @@ As an example, the derivatives of $F$ are $-S$ and $-p$, computed with respect t
 \begin{align*}
 	\fix{\pdv{S}{V}}{T} = \fix{\pdv{p}{T}}{V}.
 \end{align*}
-
-\paragraph{Other Types of Work}
-The previous discussions have been focused on gaseous systems, where all work is manifest as expansions and compressions. When discussing the thermodynamics of other kinds of systems, we will need to add other work terms, of the form
-\begin{align*}
-	\din{W} = Y\dd{X},
-\end{align*}
-where $Y$ is an intensive generalized force and $X$ an extensive generalized displacement. For gases, we had $Y = -p$ and $X = V$. Other examples would include elastic rods, with $Y$ as the rod tension and $X$ as its extension, or liquid surfaces, with $Y$ as the surface tension and $X$ as the surface area.
 
 \paragraph{The Third Law}
 The third law was initially concerned with the issue of determining absolute entropies. Three different statements of the third law were finally coined:
