@@ -69,6 +69,16 @@ Combining this with our definition of temperature from a microscopic perspective
 	S = \kb\ln{\Omega}.
 \end{align*}
 
+\paragraph{The Boltzmann Factor With Varying Particle Number}
+Consider a system with energy $U$ and $N$ particles exchanging energy and particles with a smaller system with energy $\varepsilon$ and $n$ particles. The entropy of the reservoir is
+\begin{align*}
+	S \approx S_{0} - \varepsilon\fix{\pdv{S}{U}}{N, V} - n\fix{\pdv{S}{N}}{U, V} = S_{0} - \frac{1}{T}\left(\varepsilon - \mu n\right).
+\end{align*}
+Somehow this implies
+\begin{align*}
+	P(\varepsilon, n) \propto e^{-\beta\left(\varepsilon - \mu n\right)}.
+\end{align*}
+
 \paragraph{Entropy and Probability}
 Consider a system with $N$ available microstates, all equally likely and indistinguishable by experiment. These are divided into groups called to macrostates, distinguishable by experiment, with $n_{i}$ microstates in each macrostate. We have
 \begin{align*}

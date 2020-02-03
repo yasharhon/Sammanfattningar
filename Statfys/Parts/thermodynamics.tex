@@ -140,9 +140,18 @@ For a reversible process we obtain
 However, as all involved quantities are functions of state, this must hold even if the process in question is irreversible.
 
 \paragraph{Natural Variables For Internal Energy}
-Our restatement of the first law implies that $U$ can be written as a function of $S$ and $V$.
+Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $V$. In addition, there is a dependence on the number of particles of type $i$.
 
 %TODO: Derivatives of U and S
+
+\paragraph{Chemical Potential}
+The chemical potential is defined as
+\begin{align*}
+	\mu_{i} = \fix{\pdv{U}{N_{i}}}{S, V, N_{j}}
+\end{align*}
+where $j \neq i$. Equivalent definitions can be introduced using other thermodynamic potentials.
+
+%TODO: Update with chemical potential
 
 \paragraph{Enthalpy}
 The enthalpy is defined as 
@@ -186,6 +195,22 @@ implying that $G$ is a function of $T$ and $p$, as well as
 	\fix{\pdv{G}{T}}{p} = -S,\ \fix{\pdv{G}{p}}{T} = V.
 \end{align*}
 
+%TODO: Free energy and work
+
+\paragraph{The Grand Potential}
+The grand potential is defined as
+\begin{align*}
+	\GP = F - \mu N.
+\end{align*}
+We have
+\begin{align*}
+	\dd{\GP} = -p\dd{V} - S\dd{T} + \mu\dd{N} - \mu\dd{N} - N\dd{\mu} = -p\dd{V} - S\dd{T} - N\dd{\mu},
+\end{align*}
+implying that $\GP$ is a function of $V$, $T$ and $\mu$, as well as
+\begin{align*}
+	S = - \fix{\pdv{\GP}{T}}{V, \mu},\ p = - \fix{\pdv{\GP}{V}}{T, \mu},\ N = - \fix{\pdv{\GP}{\mu}}{T, V}.
+\end{align*}
+
 \paragraph{Availability and Equilibrium}
 The availability is a more general quantity which can be defined appropriately for systems with given constraints. Its differential will give a general equilibrium condition for the system.
 
@@ -217,6 +242,8 @@ Looking more closely at the differential of the availability, we obtain
 Hence the equilibrium condition is that Gibbs free energy is minimized.
 
 %TODO: Add more equilibrium conditions
+
+%TODO: Equilibria where only one variable may vary
 
 \paragraph{Maxwell Relations}
 Using the symmetry of partial derivatives for a state function, one can obtain relations between derivatives of other state functions.
@@ -258,3 +285,19 @@ near absolute zero, which implies
 A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
 
 A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
+
+\paragraph{Reinterpretation of the Chemical Potential and Grand Potential}
+%TODO: More rigorous
+Consider a system which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Differentiating with respect to $\lambda$ and setting $\lambda = 1$ yields
+\begin{align*}
+	U - TS + pV = G = \mu N,
+\end{align*}
+and thus that $\mu$ is the Gibbs free energy per particle. This also implies
+\begin{align*}
+	\GP = -pV.
+\end{align*}
+
+\paragraph{Chemical Potential Without Particle Conservation}
+For certain systems, there are no conservation laws for the number of particles. For such systems, equilibrium corresponds to $\mu = 0$.
+
+\paragraph{Gaseous Reactions}
