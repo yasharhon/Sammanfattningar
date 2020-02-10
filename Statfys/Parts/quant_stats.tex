@@ -7,21 +7,16 @@ The concepts developed in this chapter will be based on the concepts of distingu
 Consider a many-particle state of fermions where two particles occupy the same state. Exchanging these two particles do not modify the total state. Combining this with the requirement that the state be antisymmetric under particle exchange implies that such a state cannot exist for fermions. This gives rise to the Pauli exclusion principle, which states that two indistinguishable fermions cannot occupy the same quantum state.
 
 \paragraph{Quantum Grand Canonical Partition Functions}
-%TODO: Add N!
-
-For a single energy level it can be shown that the grand canonical partition function is
-\begin{align*}
-	\ln{\Z} = \pm\ln(1 \pm e^{\beta(\mu - E)}),
-\end{align*}
-where the $+$ is for fermions and the $-$ is for bosons.
-
 Consider a system with a set of quantum states with energies $E_{i}$ occupied by $n_{i}$ particles each. Such a system would correspond to a set of non-interacting particles. If this system is set in thermal contact with a heat bath, this implies that the occupancy of each state will vary due to the heat exchange, which is why such systems belong to the grand canonical ensemble. The grand canonical partition function for such a system is of the form
 \begin{align*}
 	\Z = \sum\limits_{N = 0}^{\infty}\sum\limits_{\text{States}}e^{-\beta(E - \mu N)}.
 \end{align*}
+A first question might be what happened to the factor $N!$ signifying that the particles are indistinguishable - after all, we said that distinguishability would be important. The answer is that the occupancy numbers themselves are not quantum numbers directly defining any state, but rather numbers defining the composition of the states. Due to the (anti)symmetry of the total state, it must be that any set of occupancy numbers can only correspond to a single quantum state, and thus there is no overcounting.
+
 The sum over states is a sum over all configurations such that the sum of all occupancy numbers is equal to $N$. Combining this with the summation over $N$ yields that this sum may be replaced by a sum over all conceivable occupancy configurations. The total energy and the number of particles may be expressed as sums over particle numbers, allowing us to write
 \begin{align*}
-	\Z = \prod\limits_{i}\left(\sum\limits_{\{n_{i}\}}e^{n_{i}\beta(\mu - E_{i})}\right),
+	\Z &= \sum\limits_{n_{1}}\dots\sum\limits_{n_{\infty}}e^{n_{i}\beta(\mu - E_{i})} \\
+	   &= \prod\limits_{i}\left(\sum\limits_{n_{i}}e^{n_{i}\beta(\mu - E_{i})}\right),
 \end{align*}
 where the summation is performed over all possible values of the quantum numbers.
 
@@ -40,7 +35,6 @@ We can also write
 where the $+$ is for fermions and the $-$ is for bosons.
 
 \paragraph{The Bose-Einstein and Fermi-Dirac Distributions}
-%TODO: Show mean occupancy
 When considering the statistics of quantum gases, we will base our work on distribution functions describing the mean occupancy of a given energy level. This choice is highly analogous to, say, converting from the Maxwell-Boltzmann velocity distribution to a corresponding speed distribution for ideal gases. We have
 \begin{align*}
 	\expval{n_{i}} = -\frac{1}{\beta}\pdv{\ln{\Z}}{E_{i}} = \frac{e^{\beta(\mu - E_{i})}}{1 \pm e^{\beta(\mu - E_{i})}} = \frac{1}{e^{\beta(E_{i} - \mu)} \pm 1}.

@@ -15,21 +15,6 @@ The internal energy $U$ of a system is the sum of the energy of all the internal
 \paragraph{Quasistatic Processes}
 A process is quasistatic if the system is in equilibrium at each point during the process.
 
-\paragraph{The First Law}
-Energy is conserved and heat and work are both forms of energy. In mathematical form:
-\begin{align*}
-	\dd{U} = \din{Q} + \din{W}.
-\end{align*}
-This implies the convention that positive differentials correspond to energy supplied to the system.
-
-\paragraph{The Second Law of Thermodynamics}
-The second law comes in two different statements:
-\begin{itemize}
-	\item \textbf{Clausius' statement:} No process is possible whose sole result is the transfer of heat from a colder to a hotter body.
-	\item \textbf{Kelvin's statement:} No process is possible whose sole result is the complete conversion of heat into work.
-\end{itemize}
-%TODO: Equivalence
-
 \paragraph{Types of Work}
 The following discussions will focus on gaseous systems, where all work is manifest as expansions and compressions. Before doing that, we should specify how work terms work. They are generally of the form
 \begin{align*}
@@ -62,6 +47,27 @@ The adiabatic index is defined as
 	\gamma = \frac{C_{p}}{C_{V}}.
 \end{align*}
 
+\paragraph{The First Law}
+Energy is conserved and heat and work are both forms of energy. In mathematical form:
+\begin{align*}
+\dd{U} = \din{Q} + \din{W}.
+\end{align*}
+This implies the convention that positive differentials correspond to energy supplied to the system.
+
+\paragraph{The Second Law of Thermodynamics}
+The second law comes in two different statements:
+\begin{itemize}
+	\item \textbf{Clausius' statement:} No process is possible whose sole result is the transfer of heat from a colder to a hotter body.
+	\item \textbf{Kelvin's statement:} No process is possible whose sole result is the complete conversion of heat into work.
+\end{itemize}
+
+\paragraph{Equivalence of Statements}
+Consider two heat reservoirs. We want to show that the existence of a system that violates one statement implies the existence of a system that violates the other.
+
+To prove that Clausius' statement implies Kelvin's, we introduce a Clausius violater which can transfer heat from a cold to a hot reservoir. Suppose that the violator transfers a heat $Q_{\text{l}}$ between the reservoirs and introduce a heat engine which produces work while transferring heat $Q_{\text{h}}$ from the hot reservoir and leaving $Q_{\text{l}}$ in the cold reservoir. The combination of these two systems thus convert heat $Q_{\text{h}} - Q_{\text{l}}$ to work with no other results, violating Kelvin's statement.
+
+To prove that Kelvin's statement implies Clausius', we introduce a Kelvin violater which can convert heat directly to work. Suppose that the violator converts a heat $W$ into work, and let this work run a reverse heat engine between the reservoirs taking heat $Q_{\text{l}}$ from the cold reservoir and leaving heat $Q_{\text{h}}$ in the cold reservoir. The combination of these two systems thus transfer heat $Q_{\text{l}}$ from the cold reservoir to the hot reservoir with no other results, violating Kelvin's statement.
+
 \paragraph{The Carnot Cycle}
 Consider a machine performing work based on the energy transfer between two heat reservoirs. One way to extract the energy is by using a Carnot process, which uses an ideal gas. The cycle connects four different points in a $pV$ diagram with two adiabatics and two isothermals.
 
@@ -81,7 +87,10 @@ During the process each engine gives off some heat $Q_{\text{l}}$ to the cold re
 \end{align*}
 As $Q - Q' > 0$, so is $Q_{\text{l}} - Q_{\text{l}}'$. Now, $Q - Q'$ is the net energy left in the hot reservoir during a cycle and $Q_{\text{l}} - Q_{\text{l}}'$ is the energy extracted from the cold reservoir. The sole result of this process is thus to extract energy from a cold reservoir to a hot one, which violates the second law.
 
-%TODO: Corollary
+\subparagraph{Corollary}
+All reversible heat engines working between two temperatures have the same efficiency as a Carnot engine.
+
+To show this, suppose a Carnot engine is working between two reservoirs and running another engine undoing that process. This other engine cannot be more efficient than the Carnot engine, meaning that it delivers a greater amount of energy to the hot reservoir than the Carnot engine took, violating the second law of thermodynamics. Thus the two engines must have the same efficiency.
 
 \paragraph{Clausius' Theorem}
 Consider some arbitrary cyclic process. We can describe this as a sequence of the system being connected to temperatures $T_{i}$, with heats $\din{Q_{i}}$ being supplied at every stage. The total work performed during the cycle is given by
@@ -140,18 +149,27 @@ For a reversible process we obtain
 However, as all involved quantities are functions of state, this must hold even if the process in question is irreversible.
 
 \paragraph{Natural Variables For Internal Energy}
-Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $V$. In addition, there is a dependence on the number of particles of type $i$.
-
-%TODO: Derivatives of U and S
+Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $V$ (naturally it could be written in terms of other variables too, but you would have to change variables from $S$ and $V$ in order to do that). This implies
+\begin{align*}
+	\fix{\pdv{U}{S}}{V} = T,\ \fix{\pdv{U}{V}}{S} = -p.
+\end{align*}
 
 \paragraph{Chemical Potential}
-The chemical potential is defined as
+In addition to the dependence of the internal energy on entropy and volume, there is a dependence on the number of particles of type $i$. This is contained in the chemical potential, defined as
 \begin{align*}
 	\mu_{i} = \fix{\pdv{U}{N_{i}}}{S, V, N_{j}}
 \end{align*}
-where $j \neq i$. Equivalent definitions can be introduced using other thermodynamic potentials.
+where $j \neq i$. From now on, summation rules will be used for chemical potentials, $i$ will signify all sets of possible values of $i$, and $j\neq i$ may always be assumed to be true unless otherwise specified.
 
-%TODO: Update with chemical potential
+\paragraph{Entropy}
+We can re-express the differential of internal energy as a differential of entropy or use the reciprocal and reciprocity theorems to obtain
+\begin{align*}
+	\dd{S} = \frac{1}{T}\dd{U} + \frac{p}{T}\dd{V}.
+\end{align*}
+This implies that the entropy is a function of $U$, $V$ and $N_{i}$, as well as
+\begin{align*}
+	\fix{\pdv{S}{U}}{V, N_{i}} = \frac{1}{T},\ \fix{\pdv{S}{V}}{U, N_{i}} = \frac{p}{T},\ \fix{\pdv{S}{N_{i}}}{U, V, N_{j}} = -\frac{\mu_{i}}{T}.
+\end{align*}
 
 \paragraph{Enthalpy}
 The enthalpy is defined as 
@@ -160,11 +178,11 @@ The enthalpy is defined as
 \end{align*}
 We have
 \begin{align*}
-	\dd{H} = \dd{U} + p\dd{V} + V\dd{p} = T\dd{S} - p\dd{V} + p\dd{V} + V\dd{p} = T\dd{S} + V\dd{p},
+	\dd{H} = \dd{U} + p\dd{V} + V\dd{p} = T\dd{S} - p\dd{V} + \mu_{i}\dd{N_{i}} + p\dd{V} + V\dd{p} = T\dd{S} + V\dd{p} + \mu_{i}\dd{N_{i}},
 \end{align*}
-implying that $H$ is a function of $S$ and $p$, as well as
+implying that $H$ is a function of $S$, $p$ and $N_{i}$, as well as
 \begin{align*}
-	\fix{\pdv{H}{S}}{p} = T,\ \fix{\pdv{H}{p}}{S} = V.
+	\fix{\pdv{H}{S}}{p, N_{i}} = T,\ \fix{\pdv{H}{p}}{S, N_{i}} = V,\ \fix{\pdv{H}{N_{i}}}{S, V,  N_{j}} = \mu_{i}.
 \end{align*}
 
 \paragraph{Helmholtz Free Energy}
@@ -174,11 +192,11 @@ The Helmholtz free energy is defined as
 \end{align*}
 We have
 \begin{align*}
-	\dd{F} = \dd{U} - T\dd{S} - S\dd{T} = T\dd{S} - p\dd{V} - T\dd{S} - S\dd{T} = -p\dd{V} - S\dd{T},
+	\dd{F} = \dd{U} - T\dd{S} - S\dd{T} = T\dd{S} - p\dd{V} + \mu_{i}\dd{N_{i}} - T\dd{S} - S\dd{T} = -p\dd{V} - S\dd{T} + \mu_{i}\dd{N_{i}},
 \end{align*}
-implying that $F$ is a function of $T$ and $V$, as well as
+implying that $F$ is a function of $T$, $V$ and $N_{i}$, as well as
 \begin{align*}
-	\fix{\pdv{F}{T}}{V} = -S,\ \fix{\pdv{F}{V}}{T} = -p.
+	\fix{\pdv{F}{T}}{V, N_{i}} = -S,\ \fix{\pdv{F}{V}}{T, N_{i}} = -p,\ \fix{\pdv{F}{N_{i}}}{T, V,  N_{j}} = \mu_{i}.
 \end{align*}
 
 \paragraph{Gibbs Free Energy}
@@ -188,27 +206,25 @@ The Gibbs free energy is defined as
 \end{align*}
 We have
 \begin{align*}
-	\dd{G} = \dd{H} - T\dd{S} - S\dd{T} = T\dd{S} + V\dd{p} - T\dd{S} - S\dd{T} = V\dd{p} - S\dd{T},
+	\dd{G} = \dd{H} - T\dd{S} - S\dd{T} = T\dd{S} + V\dd{p} + \mu_{i}\dd{N_{i}} - T\dd{S} - S\dd{T} = V\dd{p} - S\dd{T} + \mu_{i}\dd{N_{i}},
 \end{align*}
-implying that $G$ is a function of $T$ and $p$, as well as
+implying that $G$ is a function of $T$, $p$ and $N_{i}$, as well as
 \begin{align*}
-	\fix{\pdv{G}{T}}{p} = -S,\ \fix{\pdv{G}{p}}{T} = V.
+	\fix{\pdv{G}{T}}{p} = -S,\ \fix{\pdv{G}{p}}{T} = V,\ \fix{\pdv{G}{N_{i}}}{T, p,  N_{j}} = \mu_{i}.
 \end{align*}
-
-%TODO: Free energy and work
 
 \paragraph{The Grand Potential}
 The grand potential is defined as
 \begin{align*}
-	\GP = F - \mu N.
+	\GP = F - \mu_{i}N_{i}.
 \end{align*}
 We have
 \begin{align*}
-	\dd{\GP} = -p\dd{V} - S\dd{T} + \mu\dd{N} - \mu\dd{N} - N\dd{\mu} = -p\dd{V} - S\dd{T} - N\dd{\mu},
+	\dd{\GP} = -p\dd{V} - S\dd{T} + \mu_{i}\dd{N_{i}} - \mu_{i}\dd{N_{i}} - N_{i}\dd{\mu_{i}} = -p\dd{V} - S\dd{T} - N_{i}\dd{\mu_{i}},
 \end{align*}
-implying that $\GP$ is a function of $V$, $T$ and $\mu$, as well as
+implying that $\GP$ is a function of $V$, $T$ and $\mu_{i}$, as well as
 \begin{align*}
-	S = - \fix{\pdv{\GP}{T}}{V, \mu},\ p = - \fix{\pdv{\GP}{V}}{T, \mu},\ N = - \fix{\pdv{\GP}{\mu}}{T, V}.
+	S = - \fix{\pdv{\GP}{T}}{V, \mu},\ p = - \fix{\pdv{\GP}{V}}{T, \mu},\ N_{i} = - \fix{\pdv{\GP}{\mu_{i}}}{T, V, N_{j}}.
 \end{align*}
 
 \paragraph{Availability and Equilibrium}
@@ -286,9 +302,22 @@ A third consequence is for ideal systems, such as the ideal gas and non-interact
 
 A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
 
+%TODO: Free energy and work
+
 \paragraph{Reinterpretation of the Chemical Potential and Grand Potential}
-%TODO: More rigorous
-Consider a system which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Differentiating with respect to $\lambda$ and setting $\lambda = 1$ yields
+Consider a system of only one kind of particles which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Let a subscript $\lambda$ denote quantities for a scaled system. We thus have
+\begin{align*}
+	S_{\lambda} = \lambda S.
+\end{align*}
+Differentiating with respect to $\lambda$ 
+\begin{align*}
+	S &= \fix{\pdv{S_{\lambda}}{U_{\lambda}}}{V_{\lambda}, N_{\lambda}}\pdv{U_{\lambda}}{\lambda} + \fix{\pdv{S_{\lambda}}{V_{\lambda}}}{U_{\lambda}, N_{\lambda}}\pdv{V_{\lambda}}{\lambda} + \fix{\pdv{S_{\lambda}}{N_{\lambda}}}{U_{\lambda}, V_{\lambda}}\pdv{N_{\lambda}}{\lambda}.
+\end{align*}
+Setting $\lambda = 1$ or arguing that temperature is intensive yields that this is equal to
+\begin{align*}
+	S = \frac{U}{T} + \frac{p}{T} - \frac{\mu}{T}. 
+\end{align*}
+We can rewrite this as
 \begin{align*}
 	U - TS + pV = G = \mu N,
 \end{align*}
@@ -300,4 +329,4 @@ and thus that $\mu$ is the Gibbs free energy per particle. This also implies
 \paragraph{Chemical Potential Without Particle Conservation}
 For certain systems, there are no conservation laws for the number of particles. For such systems, equilibrium corresponds to $\mu = 0$.
 
-\paragraph{Gaseous Reactions}
+\paragraph{Gaseous Chemical Reactions}
