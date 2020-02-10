@@ -1,5 +1,9 @@
 \section{Statistical Physics}
 
+\subsection{The Microcanonical Ensemble}
+
+\subsection{The Canonical Ensemble}
+
 \paragraph{The Partition Function}
 The partition function is defined as
 \begin{align*}
@@ -75,14 +79,16 @@ However, for indistinguishable particles, an issue arises due to overcounting of
 	Z_{N} = \frac{Z_{1}^{N}}{N!}.
 \end{align*}
 
+But hold on! In classical mechanics, the equations of motions themselves imply that all particles are distinguishable. After all, any set of positions and momenta are directly connected to a single particle. How can the issue of distinguishability be relevant? The answer is that in the beginning, this factor was added ad hoc in order to guarantee that the entropy would be extensive. At its heart, however, the idea of indistinguishable particles is quantum mechanical. This could be taken as an early sign of the strong connection between statistical physics and quantum mechanics.
+
 \paragraph{The Equipartition Theorem}
-Suppose that some degree of freedom $x$, which may take any value, of a system only appears in the Hamiltonian as a quadratic term $\alpha x^{2}$. Its contribution to the internal energy is
+Suppose that some degree of freedom $x$, which may take any value, of a system without degenerate microstates only appears in the Hamiltonian as a quadratic term $\alpha x^{2}$. Its contribution to the internal energy is
 \begin{align*}
-	\expval{E} = \frac{\integ{-\infty}{\infty}{x}{\alpha x^{2}e^{-\beta\alpha x^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha x^{2}}}}.
+\expval{E} = \frac{\integ{-\infty}{\infty}{x}{\alpha x^{2}e^{-\beta\alpha x^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha x^{2}}}}.
 \end{align*}
 One can show that this is equal to
 \begin{align*}
-	\expval{E} = \frac{1}{2}\kb T.
+\expval{E} = \frac{1}{2}\kb T.
 \end{align*}
 Examples of such degrees of freedom are
 \begin{itemize}
@@ -93,37 +99,37 @@ Examples of such degrees of freedom are
 \paragraph{The Ideal Gas}
 We will now study the statistical mechanics of an ideal gas. We will do this by considering the gas as a set of non-interacting free quantum particles in an $L\times L\times L$ box. The single-state wave function is
 \begin{align*}
-	\psi = \left(\frac{2}{L}\right)\sin(k_{x}x)\sin(k_{y}y)\sin(k_{z}z),
+\psi = \left(\frac{2}{L}\right)\sin(k_{x}x)\sin(k_{y}y)\sin(k_{z}z),
 \end{align*}
 where each quantum number is given by $k_{i} = \frac{\pi}{L}n_{i}$. Representing each possible state in a $3$-dimensional space where each point represents a sate, the available states of the system occupy the first octant, each state taking up a cube with dimensions $\frac{\pi}{L}$. The number of states with wave vector of length $k$ to $k + \dd{k}$ is given by $\frac{1}{8}4\pi k^{2}\dd{k}$. Defining the density of states $g$ as the number of states in a small $k$-interval divided by the interval length and the volume occupied by each state implies 
 \begin{align*}
-	g(k) = \frac{\frac{1}{2}\pi k^{2}}{\left(\frac{\pi}{L}\right)^{3}} = \frac{Vk^{2}}{2\pi^{2}}.
+g(k) = \frac{\frac{1}{2}\pi k^{2}}{\left(\frac{\pi}{L}\right)^{3}} = \frac{Vk^{2}}{2\pi^{2}}.
 \end{align*}
 The single-particle partition function can now be calculated as
 \begin{align*}
-	Z_{1} = \integ{0}{\infty}{k}{e^{-\beta E}g(k)} = \integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}\frac{Vk^{2}}{2\pi^{2}}} = \frac{V}{2\pi^{2}}\integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}k^{2}} = \frac{V}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}.
+Z_{1} = \integ{0}{\infty}{k}{e^{-\beta E}g(k)} = \integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}\frac{Vk^{2}}{2\pi^{2}}} = \frac{V}{2\pi^{2}}\integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}k^{2}} = \frac{V}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}.
 \end{align*}
 We can now define the quantum concentration
 \begin{align*}
-	n_{\text{Q}} = \frac{1}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}
+n_{\text{Q}} = \frac{1}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}
 \end{align*}
 and the thermal length
 \begin{align*}
-	\lambda_{\text{th}} = \frac{1}{n_{\text{Q}}^{\frac{1}{3}}},
+\lambda_{\text{th}} = \frac{1}{n_{\text{Q}}^{\frac{1}{3}}},
 \end{align*}
 allowing us to write
 \begin{align*}
-	Z_{1} = Vn_{\text{Q}} = \frac{V}{\lambda_{\text{th}}^{3}}.
+Z_{1} = Vn_{\text{Q}} = \frac{V}{\lambda_{\text{th}}^{3}}.
 \end{align*}
 The partition function for the entire system can be written as
 \begin{align*}
-	Z_{N} = \frac{1}{N!}\frac{V^{N}}{\lambda_{\text{th}}^{3N}}
+Z_{N} = \frac{1}{N!}\frac{V^{N}}{\lambda_{\text{th}}^{3N}}
 \end{align*}
 assuming that the number of thermally accessible energy levels is much larger than the density of particles, i.e. $\frac{N}{V} << n_{\text{Q}}$.
 
 It is now time to derive thermodynamic properties of the system. We have
 \begin{align*}
-	U = \frac{3}{2}\kb T,\ p = \frac{N\kb T}{V},\ S = N\kb\left(\frac{5}{2} - \ln(\frac{N}{V}\lambda_{\text{th}}^{3})\right),\ G = N\kb T\ln(\frac{N}{V}\lambda_{\text{th}}^{3}).
+U = \frac{3}{2}\kb T,\ p = \frac{N\kb T}{V},\ S = N\kb\left(\frac{5}{2} - \ln(\frac{N}{V}\lambda_{\text{th}}^{3})\right),\ G = N\kb T\ln(\frac{N}{V}\lambda_{\text{th}}^{3}).
 \end{align*}
 
 \paragraph{Heat Capacity of a Diatomic Gas}
@@ -131,18 +137,41 @@ A major challenge of classical thermodynamics was explaining the behaviour of th
 
 To understand this we have to study diatomic gases with quantum mechanics. We find that higher rotational energy levels are only thermally accessible for temperatures close to or above $\frac{\hbar^{2}}{2I\kb}$, and vibrational levels close to or above $\frac{\hbar\omega}{\kb}$.
 
+\subsection{The Grand Canonical Ensemble}
+
 \paragraph{The Grand Canonical Partition Function}
-For a system which may exchange energy and particles with its surroundings, we have
+For a system which may exchange energy and particles with its surroundings, we define the grand canonical partition function
 \begin{align*}
-	P_{i} = \frac{e^{-\beta(E_{i} + \mu N_{i})}}{\Z},\ \Z = \sum e^{-\beta(E_{i} + \mu N_{i})}.
-\end{align*}
-This defines the grand canonical partition function
-\begin{align*}
-	\Z = \sum e^{-\beta(E_{i} + \mu N_{i})},
+	\Z = \sum e^{-\beta(E_{i} - \mu N_{i})},
 \end{align*}
 which may be written as
 \begin{align*}
-	\Z = \sum\limits_{N = 0}^{\infty}Z_{N}.
+	\Z = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z_{N}.
 \end{align*}
 
-%TODO: Expectation values
+\paragraph{Number of Particles}
+The number of particles is given by
+\begin{align*}
+	N = \frac{1}{\Z}\sum N_{i}e^{-\beta(E_{i} - \mu N_{i})} = \frac{1}{\Z}\pdv{\Z}{\beta\mu} = \kb T\pdv{\ln{\Z}}{\beta\mu}.
+\end{align*}
+
+\paragraph{Internal Energy}
+The internal energy is given by
+\begin{align*}
+	U = \frac{1}{\Z}\sum E_{i}e^{-\beta(E_{i} - \mu N_{i})} = \frac{1}{\Z}\left(-\pdv{\Z}{\beta} + \sum\mu N_{i}e^{-\beta(E_{i} - \mu N_{i})}\right) = -\pdv{\ln{\Z}}{\beta} + \mu N.
+\end{align*}
+
+\paragraph{Entropy}
+The entropy is given by
+\begin{align*}
+	S &= -\kb\sum P_{i}\ln{P_{i}} \\
+	  &= \kb\sum \frac{1}{\Z}e^{-\beta(E_{i} - \mu N_{i})}\cdot\left(\beta(E_{i} - \mu N_{i}) - \ln{\Z}\right) \\
+	  &= \frac{U}{T} - \frac{\mu N}{T} - \kb\sum P_{i}\ln{\Z} \\
+	  &= \frac{U - \mu N + \kb T\ln{\Z}}{T}.
+\end{align*}
+
+\paragraph{Grand Potential}
+The grand potential is given by
+\begin{align*}
+	\GP = U - TS - \mu N = -\kb T\ln{\Z}.
+\end{align*}
