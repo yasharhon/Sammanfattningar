@@ -48,3 +48,168 @@ for bosons and
 	f(E) = \frac{1}{e^{\beta(E_{i} - \mu)} + 1}
 \end{align*}
 for fermions. These functions are called the Bose-Einstein and Fermi-Dirac distribution functions.
+
+\paragraph{The Non-Interacting Quantum Gas}
+Consider a fluid of non-interacting quantum particles. The state of the system is characterized by a set of possible wave vectors, and each wave vector state has a degeneracy of $2s + 1$, where $s$ is the spin of each particle. The partition function can thus be written as
+\begin{align*}
+	\Z = \prod\limits_{\vb{k}}\Z_{\vb{k}}^{2s + 1}
+\end{align*}
+where
+\begin{align*}
+	\Z_{\vb{k}} = (1 \pm e^{-\beta(E_{\vb{k}} - \mu)})^{\pm 1}.
+\end{align*}
+
+%TODO: Compute grand potential and thermodynamic properties
+
+We continue our study by considering non-relativistic particles in a periodic cube. For such particles the components of the wave vector are of the form
+\begin{align*}
+	k_{i} = \frac{2\pi}{L}n,\ n = 0, \pm 1, \pm 2, \dots
+\end{align*}
+where $L$ is the dimension of the cube. In addition, there is a spin degeneracy, hence termed $\eta(s)$, such that the density of states in k-space is
+\begin{align*}
+	\rho(\vb{k}) = \eta(s)\frac{1}{\left(\frac{2\pi}{L}\right)^{3}} = \eta(s)\frac{V}{8\pi^{3}}.
+\end{align*}
+In terms of the length of the wave vector we have
+\begin{align*}
+	\rho(k) = \eta(s)\frac{V}{8\pi^{3}}\cdot 4\pi k^{2} = \eta(s)\frac{V}{2\pi^{2}}k^{2}.
+\end{align*}
+To express this in terms of the energy, we use the dispersion relation
+\begin{align*}
+	E = \frac{\hbar^{2}k^{2}}{2m},
+\end{align*}
+which yields that the density of states is
+\begin{align*}
+	\rho(E) = \frac{1}{\frac{\hbar^{2}k(E)}{m}}\cdot \eta(s)\frac{V}{2\pi^{2}}k^{2}(E) = \frac{\eta(s)}{2\pi^{2}}\frac{mV}{\hbar^{2}}\frac{\sqrt{2mE}}{\hbar} = \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E}.
+\end{align*}
+The number of states with energy less than $E$ is thus
+\begin{align*}
+	\sigma(E) &= \integ{0}{E}{\varepsilon}{\rho(\varepsilon)} \\
+	          &= \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{E}{\varepsilon}{\sqrt{\varepsilon}} \\
+	          &= \frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2mE}{\hbar^{2}}\right)^{\frac{3}{2}}.
+\end{align*}
+
+The partition function of a quantum gas is thus given by
+\begin{align*}
+	\ln{\Z} &= \pm\sum\limits_{\vb{k}}\ln(1 \pm e^{-\beta(E_{\vb{k}} - \mu)}) \\
+	        &= \pm\integ{0}{\infty}{E}{\rho(E)\ln(1 \pm e^{-\beta(E - \mu)}}) \\
+	        &= \mp\integ{0}{\infty}{E}{\sigma(E)\frac{\mp\beta e^{-\beta(E - \mu)}}{1 \pm e^{-\beta(E - \mu)}}} \\
+	        &= \beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}},
+\end{align*}
+where the top sign is for fermions and the bottom for bosons.
+
+The grand potential of such a quantum gas is given by
+\begin{align*}
+	\GP = -\kb T\ln{\Z} = -\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}},
+\end{align*}
+or more explicitly
+\begin{align*}
+	\GP = &=  -\frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{\infty}{E}{\frac{E^{\frac{3}{2}}}{e^{\beta(E - \mu)} \pm 1}}.
+\end{align*}
+
+The total number of occupied states may be computed in two ways. The first is
+\begin{align*}
+	N &= \sum\limits_{\vb{k}}n_{\vb{k}} \\
+	  &= \sum\limits_{\vb{k}}\kb T\pdv{\ln{Z_{\vb{k}}}}{\mu} \\
+	  &= \kb T\integ{0}{\infty}{E}{\rho(E)\pdv{\ln{Z_{\vb{k}}}}{\mu}}.
+\end{align*}
+The second is
+\begin{align*}
+	N &= \pdv{\ln{\Z}}{\beta\mu}.
+\end{align*}
+We now use the fact that the integrand in $\ln{Z}$ is of the form $\sigma(E)f(\beta(E - \mu))$. For such a function we have
+\begin{align*}
+	\del{\beta\mu}{} = -\del{\beta E}{} = -\kb T\del{E}{},
+\end{align*}
+yielding
+\begin{align*}
+	N &= \pdv{\beta\mu}\left(\beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}}\right) \\
+	  &= \beta\integ{0}{\infty}{E}{\sigma(E)\pdv{\beta\mu}\left(\frac{1}{e^{\beta(E - \mu)} \pm 1}\right)} \\
+	  &= -\integ{0}{\infty}{E}{\sigma(E)\pdv{E}\left(\frac{1}{e^{\beta(E - \mu)} \pm 1}\right)} \\
+	  &= \integ{0}{\infty}{E}{\frac{\rho(E)}{e^{\beta(E - \mu)} \pm 1}}.
+\end{align*}
+
+The internal energy is given by
+\begin{align*}
+	U &= \mu N - \pdv{\ln{Z}}{\beta} \\
+	  &= \mu\integ{0}{\infty}{E}{\frac{\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \pdv{\beta}\left(\beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}}\right) \\
+	  &= \integ{0}{\infty}{E}{\frac{\mu\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}} - \beta\integ{0}{\infty}{E}{\sigma(E)\cdot -\frac{(E - \mu)e^{\beta(E - \mu)}}{(e^{\beta(E - \mu)} \pm 1)^{2}}} \\
+	  &= \integ{0}{\infty}{E}{\frac{\mu\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}} + \beta\integ{0}{\infty}{E}{\sigma(E)(E - \mu)\frac{e^{\beta(E - \mu)}}{(e^{\beta(E - \mu)} \pm 1)^{2}}} \\
+	  &= \integ{0}{\infty}{E}{\frac{\mu\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}} + \integ{0}{\infty}{E}{(\rho(E)(E - \mu) + \sigma(E))\frac{1}{e^{\beta(E - \mu)} \pm 1}} \\
+	  &= \integ{0}{\infty}{E}{\frac{E\rho(E)}{e^{\beta(E - \mu)} \pm 1}},
+\end{align*}
+or alternatively as
+\begin{align*}
+	U = \sum\limits_{\vb{k}}n_{\vb{k}}E_{\vb{k}}.
+\end{align*}
+
+It can be shown that all these quantities are proportional to
+\begin{align*}
+	\mp(\kb T)^{n}\Gamma(n)\Li(\mp z)
+\end{align*}
+where $n$ is the power of $E$ that is integrated.
+
+\paragraph{The Fermi Energy}
+Consider a gas of fermions, a Fermi gas, at $T = 0$. At this temperature, the fermions will fill up states from the lowest energy, $2s + 1$ at a time, until they hit a certain maximal energy, defined to be the Fermi energy. Based on this a more explicit definition of the Fermi energy is
+\begin{align*}
+	E_{\text{F}} = \eval{\mu}_{T = 0}.
+\end{align*}
+%TODO: Why does this make sense?
+
+At $T = 0$, $\beta$ is very large. This means that the occupation number for a quantum gas is
+\begin{align*}
+	n_{\vb{k}} = \frac{1}{e^{\beta(E_{\vb{k}} - \mu)} + 1} \to \theta(\mu - E_{\vb{k}}) = \theta(E_{\text{F}} - E_{\vb{k}})
+\end{align*}
+where $\theta$ is the Heaviside function. We thus obtain
+\begin{align*}
+	N = \integ[3]{}{}{\vb{k}}{g(\vb{k})}
+\end{align*}
+where we integrate over a sphere of radius $k_{\text{F}} = k(E_{\text{F}})$. This wave vector is called the Fermi wave vector.
+
+\paragraph{The Fermi Temperature}
+The Fermi temperature is defined as
+\begin{align*}
+	T_{\text{F}} = \frac{E_{\text{F}}}{\kb}.
+\end{align*}
+
+\paragraph{The Fermi Surface}
+The Fermi surface is the surface in k-space made up of points corresponding to states with energy equal to that of the chemical potential.
+
+\paragraph{The Sommerfeld Formula}
+Consider a integral of the form
+\begin{align*}
+	I = \integ{0}{\infty}{E}{\phi(E)f(E)},\ f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}.
+\end{align*}
+Introduce the antiderivative $\psi$ of $\phi$ such that $\psi(0) = 0$. We thus have
+\begin{align*}
+	I = -\integ{0}{\infty}{E}{\psi(E)\dv{f}{E}}.
+\end{align*}
+Introducing $x = \beta(E - \mu)$, we can somehow expand $\psi$ as
+\begin{align*}
+	\psi = \sum\limits_{s = 0}^{\infty}\eval{\dv[s]{\psi}{x}}_{x = 0}\frac{x^{s}}{s!},
+\end{align*}
+compute
+\begin{align*}
+	\dv{f}{E} = -\beta\frac{e^{x}}{(e^{x} + 1)^{2}}
+\end{align*}
+and write
+\begin{align*}
+	I &= \sum\limits_{s = 0}^{\infty}\frac{\beta}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{0}{\infty}{E}{x^{s}\frac{e^{x}}{(e^{x} + 1)^{2}}} \\
+	  &= \sum\limits_{s = 0}^{\infty}\frac{1}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{-\beta\mu}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}}.
+\end{align*}
+If the temperature is much lower than the Fermi temperature, we can extend the integral to $-\infty$, where the odd terms disappear and the even terms take the form
+\begin{align*}
+	\integ{-\infty}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} &= 2\integ{0}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} \\
+	                                                               &= 2\integ{0}{\infty}{x}{\frac{x^{s}e^{-x}}{(e^{-x} + 1)^{2}}} \\
+	                                                               &= 2\integ{0}{\infty}{x}{x^{s}e^{-x}\sum\limits_{m = 0}^{\infty}(-1)^{m}(m + 1)e^{-mx}} \\
+	                                                               &= 2\sum\limits_{m = 0}^{\infty}(-1)^{m}(m + 1)\integ{0}{\infty}{x}{x^{s}e^{-(m + 1)x}} \\
+	                                                               &= 2\sum\limits_{m = 1}^{\infty}(-1)^{m + 1}m\integ{0}{\infty}{x}{x^{s}e^{-mx}} \\
+	                                                               &= 2(s!)\sum\limits_{m = 1}^{\infty}\frac{(-1)^{m + 1}}{m^{s}} \\
+	                                                               &= 2(s!)(1 - 2^{1 - s})\zeta(s).
+\end{align*}
+We thus finally obtain the Sommerfeld formula
+\begin{align*}
+	I &\approx \sum\limits_{s = 0}^{\infty}\frac{1}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{-\infty}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} \\
+	  &= \sum\limits_{s = 0}^{\infty}\frac{1}{(2s)!}\eval{\dv[2s]{\psi}{x}}_{x = 0}2(2s!)(1 - 2^{1 - 2s})\zeta(2s) \\
+	  &= \psi(x = 0) + \frac{\pi^{2}}{6}\eval{\dv[2]{\psi}{x}}_{x = 0} + \frac{7\pi^{4}}{360}\eval{\dv[4]{\psi}{x}}_{x = 0} + \dots \\
+	  &= \integ{0}{\mu}{E}{\phi} + \frac{\pi^{2}}{6}\eval{\dv{\phi}{x}}_{E = \mu} + \frac{7\pi^{4}}{360}\eval{\dv[3]{\phi}{x}}_{E = \mu} + \dots
+\end{align*}
