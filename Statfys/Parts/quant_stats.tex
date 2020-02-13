@@ -1,7 +1,7 @@
 \section{Quantum Statistical Mechanics}
 
-\paragraph{Distinguishability}
-The concepts developed in this chapter will be based on the concepts of distinguishability. Classical particles are distinguishable, but quantum particles are not. As is postulated ad hoc in non-relativistic quantum mechanics, the operation of changing the positions of two quantum particles in a quantum state has a certain symmetry depending on the type of considered particles. Boson states are symmetric under exchange, and fermions are antisymmetric.
+\paragraph{Distinguishability and Exchange Symmetry}
+The concepts developed in this chapter will be based on the concepts of distinguishability. Classical particles are distinguishable, but quantum particles are not. As is postulated ad hoc in non-relativistic quantum mechanics, the operation of exchanging the two quantum particles with each other has a certain symmetry depending on the type of considered particles. Boson states are symmetric under exchange, and fermions are antisymmetric.
 
 \paragraph{The Pauli Exclusion Principle}
 Consider a many-particle state of fermions where two particles occupy the same state. Exchanging these two particles do not modify the total state. Combining this with the requirement that the state be antisymmetric under particle exchange implies that such a state cannot exist for fermions. This gives rise to the Pauli exclusion principle, which states that two indistinguishable fermions cannot occupy the same quantum state.
@@ -34,6 +34,36 @@ We can also write
 \end{align*}
 where the $+$ is for fermions and the $-$ is for bosons.
 
+\paragraph{The Density of States}
+%TODO: Extend to arbitrary dimension and dispersion
+In all problems to be studied, we will consider particles in a periodic cube. For such particles the components of the wave vector are of the form
+\begin{align*}
+	k_{i} = \frac{2\pi}{L}n,\ n = 0, \pm 1, \pm 2, \dots
+\end{align*}
+where $L$ is the dimension of the cube. In addition, there is a spin degeneracy, hence termed $\eta(s)$, such that the density of states in k-space is
+\begin{align*}
+	\rho(\vb{k}) = \eta(s)\frac{1}{\left(\frac{2\pi}{L}\right)^{3}} = \eta(s)\frac{V}{8\pi^{3}}.
+\end{align*}
+In terms of the length of the wave vector we have
+\begin{align*}
+	\rho(k) = \eta(s)\frac{V}{8\pi^{3}}\cdot 4\pi k^{2} = \eta(s)\frac{V}{2\pi^{2}}k^{2}.
+\end{align*}
+To express this in terms of the energy, we use the dispersion relation
+\begin{align*}
+E = \frac{\hbar^{2}k^{2}}{2m},
+\end{align*}
+which yields that the density of states is
+\begin{align*}
+\rho(E) = \frac{1}{\frac{\hbar^{2}k(E)}{m}}\cdot \eta(s)\frac{V}{2\pi^{2}}k^{2}(E) = \frac{\eta(s)}{2\pi^{2}}\frac{mV}{\hbar^{2}}\frac{\sqrt{2mE}}{\hbar} = \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E}.
+\end{align*}
+
+We can also compute the number of states with energy less than $E$, which is given by
+\begin{align*}
+\sigma(E) &= \integ{0}{E}{\varepsilon}{\rho(\varepsilon)} \\
+          &= \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{E}{\varepsilon}{\sqrt{\varepsilon}} \\
+          &= \frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2mE}{\hbar^{2}}\right)^{\frac{3}{2}}.
+\end{align*}
+
 \paragraph{The Bose-Einstein and Fermi-Dirac Distributions}
 When considering the statistics of quantum gases, we will base our work on distribution functions describing the mean occupancy of a given energy level. This choice is highly analogous to, say, converting from the Maxwell-Boltzmann velocity distribution to a corresponding speed distribution for ideal gases. We have
 \begin{align*}
@@ -59,35 +89,6 @@ where
 	\Z_{\vb{k}} = (1 \pm e^{-\beta(E_{\vb{k}} - \mu)})^{\pm 1}.
 \end{align*}
 
-%TODO: Compute grand potential and thermodynamic properties
-
-We continue our study by considering non-relativistic particles in a periodic cube. For such particles the components of the wave vector are of the form
-\begin{align*}
-	k_{i} = \frac{2\pi}{L}n,\ n = 0, \pm 1, \pm 2, \dots
-\end{align*}
-where $L$ is the dimension of the cube. In addition, there is a spin degeneracy, hence termed $\eta(s)$, such that the density of states in k-space is
-\begin{align*}
-	\rho(\vb{k}) = \eta(s)\frac{1}{\left(\frac{2\pi}{L}\right)^{3}} = \eta(s)\frac{V}{8\pi^{3}}.
-\end{align*}
-In terms of the length of the wave vector we have
-\begin{align*}
-	\rho(k) = \eta(s)\frac{V}{8\pi^{3}}\cdot 4\pi k^{2} = \eta(s)\frac{V}{2\pi^{2}}k^{2}.
-\end{align*}
-To express this in terms of the energy, we use the dispersion relation
-\begin{align*}
-	E = \frac{\hbar^{2}k^{2}}{2m},
-\end{align*}
-which yields that the density of states is
-\begin{align*}
-	\rho(E) = \frac{1}{\frac{\hbar^{2}k(E)}{m}}\cdot \eta(s)\frac{V}{2\pi^{2}}k^{2}(E) = \frac{\eta(s)}{2\pi^{2}}\frac{mV}{\hbar^{2}}\frac{\sqrt{2mE}}{\hbar} = \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E}.
-\end{align*}
-The number of states with energy less than $E$ is thus
-\begin{align*}
-	\sigma(E) &= \integ{0}{E}{\varepsilon}{\rho(\varepsilon)} \\
-	          &= \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{E}{\varepsilon}{\sqrt{\varepsilon}} \\
-	          &= \frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2mE}{\hbar^{2}}\right)^{\frac{3}{2}}.
-\end{align*}
-
 The partition function of a quantum gas is thus given by
 \begin{align*}
 	\ln{\Z} &= \pm\sum\limits_{\vb{k}}\ln(1 \pm e^{-\beta(E_{\vb{k}} - \mu)}) \\
@@ -101,7 +102,7 @@ The grand potential of such a quantum gas is given by
 \begin{align*}
 	\GP = -\kb T\ln{\Z} = -\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}},
 \end{align*}
-or more explicitly
+or, by using the density of states, we have
 \begin{align*}
 	\GP = &=  -\frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{\infty}{E}{\frac{E^{\frac{3}{2}}}{e^{\beta(E - \mu)} \pm 1}}.
 \end{align*}
@@ -245,3 +246,39 @@ To examine what happens below the critical temperature, one can argue that $z$ i
 \end{align*}
 
 %TODO: Add thermodynamics
+
+\paragraph{The Photon Gas}
+We will compute the statistical mechanics of a photon gas using a more crude version of the machinery shown above. For a photon in a three-dimensional cube we have
+\begin{align*}
+	g(k) = 2\frac{4\pi k^{2}V}{8\pi^{3}} = \frac{k^{2}V}{\pi^{2}}.
+\end{align*}
+Using the linear dispersion relation for photons we have
+\begin{align*}
+	g(\omega) = \frac{1}{c}\frac{\omega^{2}V}{c^{2}\pi^{2}} = \frac{\omega^{2}V}{c^{3}\pi^{2}}.
+\end{align*}
+The internal energy for such a photon is given by
+\begin{align*}
+	U_{\omega} = \hbar\omega\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\omega} - 1}\right).
+\end{align*}
+We thus obtain
+\begin{align*}
+	U = \integ{0}{\infty}{\omega}{\frac{\omega^{2}V}{c^{3}\pi^{2}}\hbar\omega\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\omega} - 1}\right)}.
+\end{align*}
+One issue with this is that the first term diverges, which is typically undesirable. However, we note that its value is independent of temperature, so we conclude that it must correspond to a vacuum energy - an energy which is present in any black body. We thus ignore it to obtain
+\begin{align*}
+	U &= \integ{0}{\infty}{\omega}{\frac{\omega^{2}V}{c^{3}\pi^{2}}\hbar\omega\frac{1}{e^{\beta\hbar\omega} - 1}} \\
+	  &= \frac{V\hbar}{c^{3}\pi^{2}} \integ{0}{\infty}{\omega}{\frac{\omega^{3}}{e^{\beta\hbar\omega} - 1}} \\
+	  &= \frac{V\hbar}{c^{3}\pi^{2}}\left(\frac{1}{\beta\hbar}\right)^{4} \integ{0}{\infty}{x}{\frac{x^{3}}{e^{x} - 1}} \\
+	  &= \frac{V}{\hbar^{3}c^{3}\pi^{2}}(\kb T)^{4}\frac{\pi^{4}}{15} \\
+	  &= \frac{\pi^{2}V\kb^{4}}{15\hbar^{3}c^{3}}T^{4}.
+\end{align*}
+The original integrand, divided by the volume, defines the black-body distribution
+\begin{align*}
+	u_{\omega} = \frac{\hbar}{c^{3}\pi^{2}}\frac{\omega^{3}}{e^{\beta\hbar\omega} - 1},
+\end{align*}
+which may be rewritten in terms of the wavelength as
+\begin{align*}
+	u_{\lambda} = \frac{8\pi hc}{\lambda^{5}}\frac{1}{e^{\frac{\beta hc}{\lambda}} - 1}.
+\end{align*}
+
+%TODO: SOmething about Rayleigh-Jeans and radiance
