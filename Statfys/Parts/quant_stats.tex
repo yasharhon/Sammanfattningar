@@ -213,3 +213,35 @@ We thus finally obtain the Sommerfeld formula
 	  &= \psi(x = 0) + \frac{\pi^{2}}{6}\eval{\dv[2]{\psi}{x}}_{x = 0} + \frac{7\pi^{4}}{360}\eval{\dv[4]{\psi}{x}}_{x = 0} + \dots \\
 	  &= \integ{0}{\mu}{E}{\phi} + \frac{\pi^{2}}{6}\eval{\dv{\phi}{x}}_{E = \mu} + \frac{7\pi^{4}}{360}\eval{\dv[3]{\phi}{x}}_{E = \mu} + \dots
 \end{align*}
+
+\paragraph{Thermodynamics of the Fermi Gas}
+
+\paragraph{Hints of a Phase Transition}
+For a Bose gas it may be shown that
+\begin{align*}
+	\frac{N\lambda_{\text{th}}^{3}}{\eta(s)V} = \Li_{\frac{3}{2}}(z),
+\end{align*}
+which has no solution if
+\begin{align*}
+	\frac{N\lambda_{\text{th}}^{3}}{\eta(s)V} > \zeta\left(\frac{3}{2}\right).
+\end{align*}
+What happens is that the integral approximations of the sums for the macroscopic quantities fails due to the ground state being macroscopically occupied. This occurs at a temperature
+\begin{align*}
+	\kb T_{\text{c}} = \frac{2\pi\hbar^{2}}{m}\left(\frac{N}{\eta(s)\zeta\left(\frac{3}{2}\right)V}\right)^{\frac{2}{3}}.
+\end{align*}
+
+\paragraph{Corrected Analysis of the Bose Gas}
+Suppose that the total number of occupied states is
+\begin{align*}
+	N = N_{0} + N_{1}
+\end{align*}
+where the two terms are the number of particles in the ground state and the number of particles in all other states respectively. Above the critical temperature the ground state is not macroscopically occupied, and we have
+\begin{align*}
+	N_{0} = \frac{1}{z^{-1} - 1},\ N_{1} \approx \frac{\eta(s)V}{\lambda_{\text{th}}^{3}}\Li_{\frac{3}{2}}(z).
+\end{align*}
+To examine what happens below the critical temperature, one can argue that $z$ is close to $1$, which yields
+\begin{align*}
+	N_{1} = \frac{\eta(s)\zeta\left(\frac{3}{2}\right)}{\lambda_{\text{th}}^{3}},\ N_{0} = N\left(1 - \left(\frac{T}{T_{\text{c}}}\right)^{3}\right).
+\end{align*}
+
+%TODO: Add thermodynamics
