@@ -34,6 +34,9 @@ We can also write
 \end{align*}
 where the $+$ is for fermions and the $-$ is for bosons.
 
+\paragraph{Constraints on the Chemical Potential}
+At this point it is wise to explicitly state a constraint which is often placed on the chemical potential, namely that it is chosen such that the number of particles does not change when either $V$ or $T$ are varied.
+
 \paragraph{The Density of States}
 %TODO: Extend to arbitrary dimension and dispersion
 In all problems to be studied, we will consider particles in a periodic cube. For such particles the components of the wave vector are of the form
@@ -71,13 +74,15 @@ When considering the statistics of quantum gases, we will base our work on distr
 \end{align*}
 As there is a one-to-one correspondence between a given occupancy number and the corresponding energy, we can now write the distribution functions as
 \begin{align*}
-	f(E) = \frac{1}{e^{\beta(E_{i} - \mu)} - 1}
+	f(E) = \frac{1}{e^{\beta(E - \mu)} - 1}
 \end{align*}
 for bosons and
 \begin{align*}
-	f(E) = \frac{1}{e^{\beta(E_{i} - \mu)} + 1}
+	f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}
 \end{align*}
 for fermions. These functions are called the Bose-Einstein and Fermi-Dirac distribution functions.
+
+Note that the Bose-Einstein distribution imposes a constraint on the chemical potential, as it becomes singular if the chemical potential is greater than the lowest available energy state.
 
 \paragraph{The Non-Interacting Quantum Gas}
 Consider a fluid of non-interacting quantum particles. The state of the system is characterized by a set of possible wave vectors, and each wave vector state has a degeneracy of $2s + 1$, where $s$ is the spin of each particle. The partition function can thus be written as
@@ -282,3 +287,62 @@ which may be rewritten in terms of the wavelength as
 \end{align*}
 
 %TODO: SOmething about Rayleigh-Jeans and radiance
+
+\paragraph{The Phonon Gas}
+Phonons are quantized excitations in a crystal lattice. We will now study their statistics.
+
+We first need a dispersion relation. To obtain this, we consider a chain of similar atoms with nearest-neighbour interactions where the displacement of each atom from its equilibrium position is denoted as $u_{i}$. Assuming the chain to be infinite and expanding the forces to first order, we obtain
+\begin{align*}
+	m\ddot{u}_{n} = K(u_{n + 1} - u_{n}) - K(u_{n} - u_{n - 1}) = K(u_{n + 1} + u_{n - 1} - 2u_{n}).
+\end{align*}
+We are looking for periodic solutions of the form $u_{n} = Ce^{i(kna - \omega t)}$. Inserting this into the equation above yields
+\begin{align*}
+	-m\omega^{2} = K(e^{ika} + e^{-ika} - 2) = K(2\cos(ka) - 2) = -4K\sin[2](\frac{ka}{2}),
+\end{align*}
+and thus
+\begin{align*}
+	\omega = 2\sqrt{\frac{K}{m}}\abs{\sin(\frac{ka}{2})}.
+\end{align*}
+Studying the dispersion in the long-wavelength limit, we have
+\begin{align*}
+	\omega = 2\sqrt{\frac{K}{m}}\frac{ka}{2} = a\sqrt{\frac{K}{m}}k.
+\end{align*}
+This implies a speed for long-wavelength phonons equal to
+\begin{align*}
+	v_{\text{s}} = a\sqrt{\frac{K}{m}}.
+\end{align*}
+
+Next we need a density of states. This is less trivial for phonons than for photons due to the fact that the number of modes is finite - $3N - 6$, to be precise (approximated to $3N$). Two models were proposed. The first is the Einstein model
+\begin{align*}
+	g(\omega) = 3N\delta(\omega - \omega_{\text{E}}),
+\end{align*}
+corresponding to all phonons oscillating at the same frequency. As we will see, this makes it natural to define the Einstein temperature
+\begin{align*}
+	T_{\text{E}} = \frac{\hbar\omega_{\text{E}}}{\kb}.
+\end{align*}
+The other model starts with the normal k-space density of states
+\begin{align*}
+	g(\vb{k}) = \frac{3}{\left(\frac{2\pi}{L}\right)^{3}} = \frac{3V}{(2\pi)^{3}},\ g(k) = \frac{3V}{(2\pi)^{3}}4\pi k^{2} = \frac{3V}{2\pi^{2}}k^{2}.
+\end{align*}
+Using the long-wavelength approximation (which is at least partially valid, as it is those states which are counted first) we obtain
+\begin{align*}
+	g(\omega) = \frac{3V}{2\pi^{2}v_{\text{s}}^{3}}\omega^{2}.
+\end{align*}
+As the number of vibration modes is finite, we are required to introduce the Debye frequency, defined by
+\begin{align*}
+	\integ{0}{\omega_{\text{D}}}{\omega}{g(\omega)} = 3N.
+\end{align*}
+In three dimensions we obtain
+\begin{align*}
+	\omega_{\text{D}} = \left(\frac{6N\pi^{2}v_{\text{s}}^{3}}{V}\right)^{\frac{1}{3}}.
+\end{align*}
+We also introduce the Debye temperature
+\begin{align*}
+	T_{\text{D}} = \frac{\hbar\omega_{\text{D}}}{\kb}.
+\end{align*}
+
+Now we are ready to handle the statistical mechanics of the gas. We have
+\begin{align*}
+	\ln{Z} = \integ{0}{\infty}{\omega}{g(\omega)\ln(\frac{e^{-\frac{1}{2}\beta\hbar\omega}}{1 - e^{-\beta\hbar\omega}})}.
+\end{align*}
+For the 
