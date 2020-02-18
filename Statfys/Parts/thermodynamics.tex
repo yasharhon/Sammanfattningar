@@ -326,7 +326,50 @@ and thus that $\mu$ is the Gibbs free energy per particle. This also implies
 	\GP = -pV.
 \end{align*}
 
+%TODO: Show for multiple kinds of particles
+
 \paragraph{Chemical Potential Without Particle Conservation}
 For certain systems, there are no conservation laws for the number of particles. In such cases, if the chemical potential is fixed, the system will evolve in such a way as to minimize the availability with respect to the number of particles, which corresponds to $\mu = 0$. If there is a conservation law present, one must instead construct a constraint on the chemical potentials.
 
 \paragraph{Gaseous Chemical Reactions}
+
+\paragraph{Latent Heat}
+Consider a phase transition. During such a transition the temperature is constant, and in order for the transition to occur a certain amount of heat must be supplied. This is called the latent heat and is given by
+\begin{align*}
+	L = T_{\text{c}}\Delta S.
+\end{align*}
+
+\paragraph{Trouton's Rule}
+For an interaction-free fluid, the multiplicity is proportional to the volume, yielding that the molar multiplicity ratio is
+\begin{align*}
+	\frac{\Omega_{\text{vapour}}}{\Omega_{\text{liquid}}} = \left(\frac{V_{\text{vapour}}}{V_{\text{liquid}}}\right)^{N_{A}} = \left(\frac{\rho_{\text{liquid}}}{\rho_{\text{vapour}}}\right)^{N_{A}} \approx 10^{3N_{A}},
+\end{align*}
+as liquids are approximately $1000$ times as dense as vapours. The molar latent heat of fusion is thus
+\begin{align*}
+	\frac{L}{n} = 7RT_{\text{c}}.
+\end{align*}
+
+\paragraph{The Clausius-Clapeyron Equation}
+Consider two phases, denoted $1$ and $2$, in equilibrium. We are interested in computing the coexistence curve between the two phases, i.e. the curve of all points such that the two phases are in equilibrium.
+
+At any point of coexistence we have
+\begin{align*}
+	\dd{G} = \mu_{1}\dd{N_{1}} + \mu_{2}\dd{N_{2}} = 0.
+\end{align*}
+Conservation of particle number implies that
+\begin{align*}
+	\mu_{1} = \mu_{2}.
+\end{align*}
+Now, supposing we were to move along the coexistence curve in the $p-T$ plane, we would have
+\begin{align*}
+	-s_{1}\dd{T} + v_{1}\dd{p} = -s_{2}\dd{T} + v_{2}\dd{p}
+\end{align*}
+where $s$ and $v$ are entropies and volumes per particle. This implies
+\begin{align*}
+	\dv{p}{T} = \frac{s_{2} - s_{1}}{v_{2} - v_{1}} = \frac{l}{T(v_{2} - v_{1})},
+\end{align*}
+where $l$ is the latent heat per particle. We finally obtain
+\begin{align*}
+	\dv{p}{T} = \frac{L}{T(V_{2} - V_{1})},
+\end{align*}
+which is the Clausius-Clapeyron equation.
