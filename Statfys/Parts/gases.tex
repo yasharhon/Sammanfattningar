@@ -109,3 +109,113 @@ We approximate $\expval{v_{\text{r}}}$ and $\expval{v}$ to be their RMS counterp
 \begin{align*}
 	\lambda = \expval{v_{\text{r}}}\tau = \frac{\sqrt{\expval{v_{\text{r}}^{2}}}}{n\sigma v} = \frac{\sqrt{2}\expval{v}}{n\sigma v} = \frac{1}{\sqrt{2}n\sigma} = \frac{\kb T}{\sqrt{2}p\sigma}.
 \end{align*}
+
+\paragraph{The Wave Equation for Sound Waves}
+Fluid mechanics give that the flow of a non-viscous gas is described by Euler's equation
+\begin{align*}
+	\del{t}{\vb{u}} + (u\cdot\grad)\vb{u} = -\frac{1}{\rho}\grad{p},
+\end{align*}
+as well as the continuity equation
+\begin{align*}
+	\del{t}{\rho} + \div{\rho\vb{u}} = 0.
+\end{align*}
+We simplify Euler' equations for small amplitudes by ignoring second-order terms in Euler's equations to obtain
+\begin{align*}
+	\del{t}{\vb{u}} = -\frac{1}{\rho}\grad{p}.
+\end{align*}
+We also expand the continuity equation to
+\begin{align*}
+	\del{t}{\rho} + \rho\div{\vb{u}} + \vb{u}\cdot\grad{\rho} = 0.
+\end{align*}
+Dividing by $\rho$ and introducing $s = \ln{\frac{\rho}{\rho_{0}}}$ yields
+\begin{align*}
+	\del{t}{s} + \div{\vb{u}} + \vb{u}\cdot\grad{s} = 0.
+\end{align*}
+Once again ignoring second-order terms we obtain
+\begin{align*}
+	\del{t}{s} + \div{\vb{u}} = 0.
+\end{align*}
+
+In order to proceed, we introduce the bulk modulus
+\begin{align*}
+	B = -V\pdv{p}{V}.
+\end{align*}
+%TODO: This is bad
+Using the fact that the density is inversely proportional to the volume, we obtain
+\begin{align*}
+	B = \rho\pdv{p}{\rho}.
+\end{align*}
+This allows us to write
+\begin{align*}
+	\del{t}{\vb{u}} = -\frac{1}{\rho}\pdv{p}{\rho}\grad{\rho} = -\frac{B}{\rho^{2}}\grad{\rho} = -\frac{B}{\rho}\grad{s}.
+\end{align*}
+
+We have thus far obtained
+\begin{align*}
+	\del{t}{s} + \div{\vb{u}} = 0,\ \del{t}{\vb{u}} = -\frac{B}{\rho}\grad{s}.
+\end{align*}
+Computing the time derivative of the first equation and the gradient of the second yields
+\begin{align*}
+	\del[2]{t}{s} - \frac{B}{\rho}\laplacian{s} = 0,
+\end{align*}
+which is a wave equation for the sound waves.
+
+\paragraph{The Nature of Sound Waves}
+As we have seen, sound waves are variations in the density of air caused by compressions and rarefactions. However, I have not specified how the air is compressed and rarefacted, and that makes a difference. We will now try to get an understanding of which it might be.
+
+Sound waves propagate at a length scale of
+\begin{align*}
+	\lambda = \frac{2\pi c}{\omega}
+\end{align*}
+where $c$ is the speed of sound. Temperature propagates at a length scale of
+\begin{align*}
+	\delta = \sqrt{\frac{2D}{\omega}}
+\end{align*}
+where $D$ is the thermal diffusivity. It seems reasonable that if the sound waves propagate at smaller length scales than the temperature does, i.e. $\delta > \lambda$, the compressions should be isothermal, whereas otherwise they are adiabatic. It turns out that the latter is true most often, so sound waves are typically adiabatic compressions and rarefactions of air. In fact, the wavelengths at which the opposite is true is smaller than the mean free path in air, making it obvious that the adiabatic case is most relevant.
+
+\paragraph{The Mach Number and Shock Waves}
+Consider a sound source moving at speed $v$. The Mach number is defined as
+\begin{align*}
+	M = \frac{v}{c}.
+\end{align*}
+We see that for Mach numbers greater than $1$, the source moves faster than the waves. This corresponds to a shift from the wave being led by circular wavefronts to being led by a cone, as new wavefronts are generated ahead of the previous ones and interferes constructively with the previous. This causes the formation of a shock wave, i.e. a very intense wavefront.
+
+\paragraph{Conservation Laws for Shock Waves}
+We will now try to formulate conservation laws for shock waves. We will do this by considering the gas as split into two regimes by the front of the shock wave, where the gas that has not yet met the shock wave is termed $1$ and the other gas is termed $2$. Studying the gas in the rest frame of the shock front, we have that the gas in each region is flowing with a velocity $v_{1}$ and $v_{2}$ respectively. We must have $v_{1} = v$, where $v$ is the speed of the source.
+
+Mass conservation implies
+\begin{align*}
+	\rho_{1}v = \rho_{2}v_{2}.
+\end{align*}
+
+Newton's second law implies
+\begin{align*}
+	p_{1} + \rho_{1}v^{2} = p_{2} + \rho_{2}v_{2}^{2}.
+\end{align*}
+
+Energy conservation implies
+\begin{align*}
+	p_{1}v + \left(\rho_{1}\tilde{u}_{1} + \frac{1}{2}\rho_{1}v^{2}\right)v = p_{2}v_{2} + \left(\rho_{2}\tilde{u}_{2} + \frac{1}{2}\rho_{2}v_{2}^{2}\right)v_{2}
+\end{align*}
+where $\tilde{u}$ is the energy per unit mass.
+
+\paragraph{The Rankine-Hugoniot Conditions}
+For an ideal gas we have
+\begin{align*}
+	\tilde{u} = \frac{p}{(\gamma - 1)\rho}.
+\end{align*}
+This yields
+\begin{align*}
+	\gamma\rho_{1}\tilde{u}_{1}v + \frac{1}{2}\rho_{1}v^{3} = \gamma\rho_{2}\tilde{u}_{2}v_{2} + \frac{1}{2}\rho_{2}v_{2}^{3}.
+\end{align*}
+Combining this with the mass conservation and the expression for the internal energy yields
+\begin{align*}
+	\frac{\gamma}{\gamma - 1}\frac{p_{1}}{\rho_{1}} + \frac{1}{2}v^{2} = \frac{\gamma}{\gamma - 1}\frac{p_{2}}{\rho_{2}} + \frac{1}{2}v_{2}^{2}.
+\end{align*}
+%TODO: Complete
+The computations are long, so for now I will just state the final result
+\begin{align*}
+	\frac{p_{2}}{p_{1}} = \frac{2\gamma M^{2} - (\gamma - 1)}{\gamma + 1},\ \frac{\rho_{2}}{\rho_{1}} = \frac{v_{1}}{v_{2}} = \frac{(\gamma + 1)M^{2}}{2 + (\gamma - 1)M^{2}}.
+\end{align*}
+
+%TODO: Entropy difference?
