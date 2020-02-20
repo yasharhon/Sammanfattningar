@@ -3,12 +3,13 @@
 \usepackage[margin=0.5in]{geometry}
 
 \usepackage[version=3]{mhchem}
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage[arrowdel]{physics}
 \usepackage{siunitx}
 
 \newcommand{\au}{\text{a.u.}}
-\newcommand{\Li}{\text{Li}}
+\newcommand{\Li}[1]{\text{Li}_{#1}}
 \newcommand{\kb}{\ensuremath{k_{\text{B}}}}
 \newcommand{\Z}{\mathcal{Z}}
 \newcommand{\GP}{\Phi_{\text{G}}}
@@ -42,8 +43,6 @@
 \pagenumbering{arabic}
 
 \input{./Parts/mathematics.tex}
-
-\input{./Parts/combinatorics.tex}
 
 \input{./Parts/thermodynamics.tex}
 

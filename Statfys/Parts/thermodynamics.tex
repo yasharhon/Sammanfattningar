@@ -13,39 +13,16 @@ Heat is the flow of energy.
 The internal energy $U$ of a system is the sum of the energy of all the internal degrees of freedom of a system.
 
 \paragraph{Quasistatic Processes}
-A process is quasistatic if the system is in equilibrium at each point during the process.
+A process is quasistatic if the system is in equilibrium at each point during the process. Reversible processes must be performed quasistatically.
 
-\paragraph{Types of Work}
-The following discussions will focus on gaseous systems, where all work is manifest as expansions and compressions. Before doing that, we should specify how work terms work. They are generally of the form
+\paragraph{Work}
+The work performed on a system is a mechanical addition of energy. It is generally of the form
 \begin{align*}
 	\din{W} = X\dd{x},
 \end{align*}
-where $X$ is an intensive generalized force and $x$ an extensive generalized displacement. For gases, we have $X = -p$ and $x = V$. Other examples would include elastic rods, with $X$ as the rod tension and $x$ as its extension, or liquid surfaces, with $X$ as the surface tension and $x$ as the surface area.
+where $X$ is an intensive generalized force and $x$ an extensive generalized displacement. For gases, around which most of the following discussions will focus, we have $X = -p$ and $x = V$. Other examples would include elastic rods, with $X$ as the rod tension and $x$ as its extension, or liquid surfaces, with $X$ as the surface tension and $x$ as the surface area.
 
 This might of course seemingly imply that work is indeed a function of state - after all, it seems to be an exact differential. The flaw in this argument lies in the work only looking like this when performed in a reversible manner.
-
-\paragraph{Heat Capacity of a Gas}
-The work required to compress a gas is $\din{W} = -p\dd{V}$. The change in internal energy for a gas is
-\begin{align*}
-	\dd{U} = \fix{\pdv{U}{T}}{V}\dd{T} + \fix{\pdv{U}{V}}{T}\dd{V},
-\end{align*}
-as $U$ is a  function of state. The subscript indicates which variables are constant when the derivatives are computed. The first law gives
-\begin{align*}
-	\din{Q} = \fix{\pdv{U}{T}}{V}\dd{T} + \left(\fix{\pdv{U}{V}}{T} + p\right)\dd{V}.
-\end{align*}
-Heat capacitites are defined as derivatives of $Q$ with respect to temperature. We thus obtain
-\begin{align*}
-	C_{V} = \fix{\pdv{Q}{T}}{V} = \fix{\pdv{U}{T}}{V},\ C_{p} = \fix{\pdv{Q}{T}}{p} = \fix{\pdv{U}{T}}{V} + \left(\fix{\pdv{U}{V}}{T} + p\right)\fix{\pdv{V}{T}}{p}.
-\end{align*}
-
-\paragraph{Molar Heat Capacities}
-Molar heat capacities, denoted with a small $c$, are heat capacities per molar mass.
-
-\paragraph{Adiabatic Index}
-The adiabatic index is defined as
-\begin{align*}
-	\gamma = \frac{C_{p}}{C_{V}}.
-\end{align*}
 
 \paragraph{The First Law}
 Energy is conserved and heat and work are both forms of energy. In mathematical form:
@@ -68,8 +45,96 @@ To prove that Clausius' statement implies Kelvin's, we introduce a Clausius viol
 
 To prove that Kelvin's statement implies Clausius', we introduce a Kelvin violater which can convert heat directly to work. Suppose that the violator converts a heat $W$ into work, and let this work run a reverse heat engine between the reservoirs taking heat $Q_{\text{l}}$ from the cold reservoir and leaving heat $Q_{\text{h}}$ in the cold reservoir. The combination of these two systems thus transfer heat $Q_{\text{l}}$ from the cold reservoir to the hot reservoir with no other results, violating Kelvin's statement.
 
+\paragraph{Ideal Gases}
+Consider a gas with negligible internal interactions. For such a gas experiments have revealed
+\begin{align*}
+	pV = nRT.
+\end{align*}
+
+\paragraph{Heat Capacity of a Gas}
+For a gas we have
+\begin{align*}
+	\dd{U} = \fix{\pdv{U}{T}}{V}\dd{T} + \fix{\pdv{U}{V}}{T}\dd{V},
+\end{align*}
+as $U$ is a  function of state. The subscript indicates which variables are constant when the derivatives are computed. The first law gives
+\begin{align*}
+	\din{Q} = \fix{\pdv{U}{T}}{V}\dd{T} + \left(\fix{\pdv{U}{V}}{T} + p\right)\dd{V}.
+\end{align*}
+Heat capacitites are defined as derivatives of $Q$ with respect to temperature. We thus obtain
+\begin{align*}
+	C_{V} = \fix{\pdv{Q}{T}}{V} = \fix{\pdv{U}{T}}{V},\ C_{p} = \fix{\pdv{Q}{T}}{p} = \fix{\pdv{U}{T}}{V} + \left(\fix{\pdv{U}{V}}{T} + p\right)\fix{\pdv{V}{T}}{p}.
+\end{align*}
+In particular, we have for an ideal gas (where there are no interactions, and the internal energy thus does not depend on the colume) that
+\begin{align*}
+	C_{p} = C_{V} + p\frac{nR}{p} = C_{V} + nR.
+\end{align*}
+Heat capacities may be derived similarly for other kinds of systems.
+
+\paragraph{Molar Heat Capacities}
+Molar heat capacities, denoted with a small $c$, are heat capacities per mole.
+
+\paragraph{Adiabatic Index}
+The adiabatic index is defined as
+\begin{align*}
+	\gamma = \frac{C_{p}}{C_{V}}.
+\end{align*}
+
+\paragraph{Processes on Ideal Gases}
+Processes performed on ideal gases may be characterized as
+\begin{itemize}
+	\item isobaric, where the pressure is constant.
+	\item isochoric, where the volume is constant.
+	\item isothermal, where the temperature is constant. For such processes, we also have that $pV$ is constant.
+	\item adiabatic, where the gas does not exchange heat with its surroundings. For such processes, we have
+	\begin{align*}
+		\din{Q}               &= \dd{U} - p\dd{V} = 0, \\
+		C_{V}\dd{T}           &= \frac{nRT}{V}\dd{V}, \\
+		\frac{C_{V}}{T}\dd{T} &= \frac{nR}{V}\dd{V} = \frac{C_{p} - C_{V}}{V}\dd{V}, \\
+		\ln{\frac{T}{T_{0}}}  &= (\gamma - 1)\ln{\frac{V}{V_{0}}},
+	\end{align*}
+	meaning that $TV^{\gamma - 1}$ is constant. This may of course be re-expressed in terms of other combinations of thermodynamic variables.
+\end{itemize}
+
 \paragraph{The Carnot Cycle}
 Consider a machine performing work based on the energy transfer between two heat reservoirs. One way to extract the energy is by using a Carnot process, which uses an ideal gas. The cycle connects four different points in a $pV$ diagram with two adiabatics and two isothermals.
+
+More specifically, introduce the two heat reservoirs $T_{\text{h}} > T_{\text{l}}$ and the notation for each step according to figure \ref{fig:carnot}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/carnot.pdf}
+	\caption{Schematic of a Carnot cycle.}
+	\label{fig:carnot}
+\end{figure}
+
+During step a, the gas expands isothermally, and we have
+\begin{align*}
+	\Delta U = 0,\ Q = W = nRT_{\text{h}}\ln{\frac{V_{\text{b}}}{V_{\text{a}}}}.
+\end{align*}
+
+During step b, the gas expands adiabatically, and we have
+\begin{align*}
+	Q = 0,\ W = \Delta U = C_{V}(T_{\text{l}} - T_{\text{h}}).
+\end{align*}
+
+During step c, the gas compresses isothermally, and we have
+\begin{align*}
+	\Delta U = 0,\ Q = W = nRT_{\text{l}}\ln{\frac{V_{\text{d}}}{V_{\text{c}}}}.
+\end{align*}
+
+During step b, the gas compresses adiabatically, and we have
+\begin{align*}
+	Q = 0,\ W = \Delta U = C_{V}(T_{\text{h}} - T_{\text{l}}).
+\end{align*}
+
+We use the previously derived expressions for adiabatic processes to write
+\begin{align*}
+	T_{\text{h}}V_{a}^{\gamma - 1} = T_{\text{l}}V_{d}^{\gamma - 1},\ T_{\text{h}}V_{b}^{\gamma - 1} = T_{\text{l}}V_{c}^{\gamma - 1}.
+\end{align*}
+Thus we obtain for the isothermal compression that
+\begin{align*}
+	Q = nRT_{\text{l}}\ln(\frac{\left(\frac{T_{\text{h}}}{T_{\text{l}}}\right)^{\frac{1}{\gamma - 1}}V_{a}}{\left(\frac{T_{\text{h}}}{T_{\text{l}}}\right)^{\frac{1}{\gamma - 1}}V_{b}}) = nRT_{\text{l}}\ln(\frac{V_{a}}{V_{b}}),
+\end{align*}
+and thus $\frac{\abs{Q}}{T}$ is constant for the two heat-exchanging steps.
 
 \paragraph{Efficiency}
 The efficiency of a machine has various definitions, but the general definition is the ratio between the energy you get out and the energy you put in.
@@ -97,7 +162,7 @@ Consider some arbitrary cyclic process. We can describe this as a sequence of th
 \begin{align*}
 	W = \sum\din{Q_{i}}.
 \end{align*}
-Now suppose that the heat at each point is supplied by a Carnot engine operating between temperatures $T$ and $T_{i}$. One can show that for a Carnot engine the ratio of heat to temperature at which the heat is exchanged is constant. This implies
+Now suppose that the heat at each point is supplied by a Carnot engine operating between two reservoirs at temperature $T$ and $T_{i}$. Using the constant ratio for Carnot cycles which was derived previously, we have
 \begin{align*}
 	\frac{\din{Q_{i}}}{T_{i}} = \frac{\din{Q_{i}} + \din{W_{i}}}{T}
 \end{align*}
@@ -109,7 +174,7 @@ Hence
 \begin{align*}
 	\sum\din{Q_{i}} + \sum\din{Q_{i}}\left(\frac{T}{T_{i}} - 1\right) = T\sum\frac{\din{Q_{i}}}{T_{i}} \leq 0.
 \end{align*}
-The temperature $T$ is constant and positive, and can thus be ignored. In the limit of considering the process in a contiuous manner, this becomes
+The temperature $T$ is constant and positive, and can thus be ignored. In the limit of considering the process in a continuous manner, this becomes
 \begin{align*}
 	\intin{}{}{Q}{\frac{1}{T}} \leq 0.
 \end{align*}
@@ -142,36 +207,41 @@ Considering a thermally isolated system, we obtain
 This is a restatement of the second law of thermodynamics, and essentially an equilibrium condition for any isolated system.
 
 \paragraph{The First Law and Entropy}
-For a reversible process we obtain
+For a reversible process on a gas we obtain
 \begin{align*}
-	\dd{U} = T\dd{S} - p\dd{V}.
+	\dd{U} = T\dd{S} - p\dd{V},
+\end{align*}
+or more generally
+\begin{align*}
+	\dd{U} = T\dd{S} + X\dd{x}.
 \end{align*}
 However, as all involved quantities are functions of state, this must hold even if the process in question is irreversible.
 
 \paragraph{Natural Variables For Internal Energy}
-Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $V$ (naturally it could be written in terms of other variables too, but you would have to change variables from $S$ and $V$ in order to do that). This implies
+Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $x$ (naturally it could be written in terms of other variables too, but you would have to change variables from $S$ and $x$ in order to do that. A switch from $S$ to $T$ would for instance be rewriting $U$ as $U(S(T), x)$). The restatement also implies
 \begin{align*}
-	\fix{\pdv{U}{S}}{V} = T,\ \fix{\pdv{U}{V}}{S} = -p.
+	\fix{\pdv{U}{S}}{V} = T,\ \fix{\pdv{U}{x}}{S} = X.
 \end{align*}
 
 \paragraph{Chemical Potential}
 In addition to the dependence of the internal energy on entropy and volume, there is a dependence on the number of particles of type $i$. This is contained in the chemical potential, defined as
 \begin{align*}
-	\mu_{i} = \fix{\pdv{U}{N_{i}}}{S, V, N_{j}}
+	\mu_{i} = \fix{\pdv{U}{N_{i}}}{S, x, N_{j}}
 \end{align*}
 where $j \neq i$. From now on, summation rules will be used for chemical potentials, $i$ will signify all sets of possible values of $i$, and $j\neq i$ may always be assumed to be true unless otherwise specified.
 
 \paragraph{Entropy}
 We can re-express the differential of internal energy as a differential of entropy or use the reciprocal and reciprocity theorems to obtain
 \begin{align*}
-	\dd{S} = \frac{1}{T}\dd{U} + \frac{p}{T}\dd{V}.
+	\dd{S} = \frac{1}{T}\dd{U} - \frac{X}{T}\dd{x}.
 \end{align*}
-This implies that the entropy is a function of $U$, $V$ and $N_{i}$, as well as
+This implies that the entropy is a function of $U$, $x$ and $N_{i}$, as well as
 \begin{align*}
-	\fix{\pdv{S}{U}}{V, N_{i}} = \frac{1}{T},\ \fix{\pdv{S}{V}}{U, N_{i}} = \frac{p}{T},\ \fix{\pdv{S}{N_{i}}}{U, V, N_{j}} = -\frac{\mu_{i}}{T}.
+	\fix{\pdv{S}{U}}{x, N_{i}} = \frac{1}{T},\ \fix{\pdv{S}{x}}{U, N_{i}} = -\frac{X}{T},\ \fix{\pdv{S}{N_{i}}}{U, x, N_{j}} = -\frac{\mu_{i}}{T}.
 \end{align*}
 
 \paragraph{Enthalpy}
+%TODO: Continue to rewrite for general systems
 The enthalpy is defined as 
 \begin{align*}
 	H = U + pV.
@@ -228,9 +298,9 @@ implying that $\GP$ is a function of $V$, $T$ and $\mu_{i}$, as well as
 \end{align*}
 
 \paragraph{Availability and Equilibrium}
-The availability is a more general quantity which can be defined appropriately for systems with given constraints. Its differential will give a general equilibrium condition for the system.
+The availability is a more general quantity which can be defined appropriately for systems with given constraints. Its differential will give both the maximal amount of work that can be performed by a system and a general equilibrium condition for the system.
 
-As an example, consider a system in contact with surroundings at temperature $T_{0}$ and pressure $p_{0}$. If heat $\din{Q}$ is supplied to the system during some process, the entropy change satisfies $T_{0}\dd{S} \geq \din{Q}$. The first law implies
+As an example, consider a system in contact with surroundings at temperature $T_{0}$ and pressure $p_{0}$ (which may be chosen independently of the constraints on the system as both pressure and temperature are extensive and we assume the surroundings to be much larger than the system). If heat $\din{Q}$ is supplied to the system during some process, the entropy change satisfies $T_{0}\dd{S} \geq \din{Q}$, where $S$ is the entropy of the system. The first law implies
 \begin{align*}
 	\din{Q} = \dd{U} - \din{W} - (-p_{0}\dd{V}),
 \end{align*}
@@ -245,8 +315,10 @@ Defining the availability for this case as
 \end{align*}
 implies
 \begin{align*}
-	\din{W} \geq \dd{A}.
+	\din{W} \geq \dd{A},
 \end{align*}
+where equality is obtained for a reversible processes. Thus changes in the availability are equal to the maximal amount of useful work that can be extracted from a system.
+
 If the system is mechanically isolated from the surroundings, such that only volume-changing work can be performed, we have
 \begin{align*}
 	\dd{A} \leq 0.
@@ -257,9 +329,20 @@ Looking more closely at the differential of the availability, we obtain
 \end{align*}
 Hence the equilibrium condition is that Gibbs free energy is minimized.
 
-%TODO: Add more equilibrium conditions
+In a similar fashion we find that for thermally isolated systems at fixed volume, the appropriate availability is $A = -T_{0}S$, and hence for such systems the entropy is maximized. For a system at fixed temperature and volume the appropriate availability is $A = U - T_{0}S = F$, and hence for such systems the Helmholtz free energy is minimized.
 
-%TODO: Equilibria where only one variable may vary
+\paragraph{Exchanges Between Systems}
+For systems in contact, equilibrium is determined by minimizing the total availability.
+
+As an example, consider two systems at fixed volume in thermal contact. For such a system the equilibrium condition is that the entropy is maximized. We obtain
+\begin{align*}
+	\dd{S} = \dd{S_{1}} + \dd{S_{2}} = \frac{1}{T_{1}}\dd{U_{1}} + \frac{1}{T_{2}}\dd{U_{2}} \geq 0.
+\end{align*}
+Energy conservation implies that the two internal energy changes must balance each other, yielding
+\begin{align*}
+	\left(\frac{1}{T_{1}} - \frac{1}{T_{2}}\right)\dd{U_{1}} \geq 0,
+\end{align*}
+and hence the systems reach equilibrium when they reach the same temperature.
 
 \paragraph{Maxwell Relations}
 Using the symmetry of partial derivatives for a state function, one can obtain relations between derivatives of other state functions.
@@ -301,8 +384,6 @@ near absolute zero, which implies
 A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
 
 A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
-
-%TODO: Free energy and work
 
 \paragraph{Reinterpretation of the Chemical Potential and Grand Potential}
 Consider a system of only one kind of particles which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Let a subscript $\lambda$ denote quantities for a scaled system. We thus have

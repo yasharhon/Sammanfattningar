@@ -1,5 +1,15 @@
 \section{Handy Mathematics}
 
+\paragraph{Combinations and Permutations}
+Permutations are sequences of some kind. Combinations are permutations where order does not matter. From a collection of $n$ elements, the number of possible permutations of $k$ elements is
+\begin{align*}
+\Omega = \frac{n!}{(n - k)!}
+\end{align*}
+and the number of possible combinations is
+\begin{align*}
+\Omega = \binom{n}{k}.
+\end{align*}
+
 \paragraph{Stirling's Formula}
 In the limit of large $n$, Stirling's formula gives
 \begin{align*}
@@ -43,5 +53,15 @@ It is convergent for $z \leq 0$. It has the following properties:
 \end{itemize}
 
 \paragraph{The Riemann Zeta Function}
+The Riemann Zeta function is defined as
+\begin{align*}
+	\zeta(z) = \sum\limits_{n = 1}^{\infty}\frac{1}{n^{z}}.
+\end{align*}
+It is convergent for $z > 1$.
 
 \paragraph{The Polylogarithm Function}
+The polylogarithm function is defined as
+\begin{align*}
+	\Li{n} = \sum\limits_{k = 1}^{\infty}\frac{z^{k}}{k^{n}}
+\end{align*}
+on the open unit disc in the complex plane, but can be analytically continued over the rest of the complex plane.
