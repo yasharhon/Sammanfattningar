@@ -35,7 +35,7 @@ Because the velocity distribution is isotropic, the fraction of molecules whose 
 \end{align*}
 are travelling close to the angle $\theta$ to the chosen direction with a speed close to $v$ per unit volume ($n$ is the amount of particles per volume).
 
-\paragraph{The Ideal Gas Law}
+\paragraph{The Ideal Gas Law from Statistics}
 Consider a wall with area $A$ with a gas on one side. In a time interval $\dd{t}$ the molecules travelling at angle $\theta$ to the wall normal sweep out a volume $A\cos{\theta}v\dd{t}$. This means that the number of molecules hitting the wall during $\dd{t}$ is given by
 \begin{align*}
 	A\cos{\theta}v\dd{t}\cdot\frac{1}{2}nf(v)\sin{\theta}\dd{v}\dd{\theta}.
@@ -62,20 +62,20 @@ Using the fact that $n = \frac{N}{V}$ we finally obtain the ideal gas law
 \end{align*}
 
 \paragraph{Dalton's Law}
-For a mixture of ideal gases, the partial pressures of each gas can be added. This is due to the fact that the number of particles can be added.
+For a mixture of ideal gases, the total pressure is a sum of the partial pressures of each gas. This is essentially due to the fact that the number of particles can be added.
 
 \paragraph{Gas Flux and Effusion}
-We define the particle flux of a gas as the number of molecules striking a unit area per time. We can integrate a previously obtained expression to obtain
+We define the particle flux of a gas as the number of molecules striking a unit area per time. We can integrate a previously obtained expression (the number of particles striking the wall?) to obtain
 \begin{align*}
 	\Phi = \frac{p}{\sqrt{2\pi m\kb T}}.
 \end{align*}
 
-The velocity distribution of molecules effusing out of a container is modified by a factor $v$. This can be noted from the form of the expression for thu number of particles striking a unit area.
+The velocity distribution of molecules effusing out of a container is modified by a factor $v$. This can be noted from the form of the expression for the number of particles striking a unit area.
 
 \paragraph{Collision Time}
 Consider a gas, where we (for now) treat all particles but one as stationary. This particle has velocity $v$ and collision cross-section $\sigma$ (to be discussed later, but it is essentially the area of the particle with which other particles can collide). In a time $\dd{t}$ the particle sweeps out an area $\sigma v\dd{t}$, meaning that a collision occurs within $\dd{t}$ is $n\sigma v\dd{t}$. We define $P(t)$ to be the probability of the particle not colliding up to time $t$. According to our reasoning, we must have $P(t + \dd{t}) = P(t)(1 - n\sigma v\dd{t})$. Comparing this to a Taylor expansion of $P$, we obtain
 \begin{align*}
-	P(t) + \dd{P}{t}\dd{t} = P(t)(1 - n\sigma v\dd{t}).
+	P(t) + \dv{P}{t}\dd{t} = P(t)(1 - n\sigma v\dd{t}).
 \end{align*}
 This has the solution
 \begin{align*}

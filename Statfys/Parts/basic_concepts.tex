@@ -27,27 +27,24 @@ The fundamental postulate of statistical mechanics is that all microstates avail
 \paragraph{Equilibrium and Multiplicity}
 Combining the fundamental postulate with our knowledge of thermodynamics, it is clear that a system in thermal equilibrium is in the macrostate corresponding to maximal multiplicity.
 
-\paragraph{The Boltzmann Constant}
-Consider two systems which are not in contact. The total energy and multiplicity is given by
+\paragraph{The Boltzmann Constant and Microscopic Temperature}
+Consider two isolated systems in contact. The total energy and multiplicity is given by
 \begin{align*}
 	E = E_{1} + E_{2},\ \Omega = \Omega_{1}(E_{1})\Omega_{2}(E_{2}).
 \end{align*}
 At equilibrium, the total multiplicity is maximal. Differentiating with respect to $E_{1}$ gives
 \begin{align*}
-	\del{E_{1}}{\Omega} = \Omega_{2}\dv{\Omega_{1}}{E_{1}} + \Omega_{1}\dv{\Omega_{2}}{E_{2}}\dv{E_{2}}{E_{1}}.
-\end{align*}
-The total energy is fixed, yielding
-\begin{align*}
-	\frac{1}{\Omega_{1}}\dv{\Omega_{1}}{E_{1}} = \frac{1}{\Omega_{2}}\dv{\Omega_{2}}{E_{2}},
+	\pdv{\Omega}{E_{1}}                        &= \Omega_{2}\dv{\Omega_{1}}{E_{1}} + \Omega_{1}\dv{\Omega_{2}}{E_{2}}\dv{E_{2}}{E_{1}} = \Omega_{2}\dv{\Omega_{1}}{E_{1}} - \Omega_{1}\dv{\Omega_{2}}{E_{2}}, \\
+	\frac{1}{\Omega_{1}}\dv{\Omega_{1}}{E_{1}} &= \frac{1}{\Omega_{2}}\dv{\Omega_{2}}{E_{2}},
 \end{align*}
 which we can rewrite as
 \begin{align*}
 	\dv{\ln{\Omega_{1}}}{E_{1}} = \dv{\ln{\Omega_{2}}}{E_{2}}.
 \end{align*}
-We define this to be equal to $\frac{1}{\kb T}$.
+We define either side to be equal to $\frac{1}{\kb T}$.
 
 \paragraph{The Boltzmann Factor}
-Consider a thermal bath in contact with a small system. The energy of the small system is $\varepsilon$, so that the bath has energy $E - \varepsilon$. For each energy, only one cunfiguration is available for the small system. Taylor expanding the multiplicity yields
+Consider a thermal bath in contact with a small system. The energy of the small system is $\varepsilon$, hence the bath has energy $E - \varepsilon$. Assuming that the multiplicity of the small system is independent of its energy, we Taylor expand the total multiplicity to obtain
 \begin{align*}
 	\ln{\Omega(E - \varepsilon)} \approx \ln{\Omega(E)} - \varepsilon\dv{\ln{\Omega}}{E} = \ln{\Omega(E)} - \frac{\varepsilon}{\kb T},
 \end{align*}
@@ -57,10 +54,10 @@ with solution
 \end{align*}
 This exponential factor is called the Boltzmann factor.
 
-We note that the probability of finding the small system in the macrostate with energy $\varepsilon$ is, according to the fundamental hypothesis, proportional to $e^{-\frac{\varepsilon}{\kb T}}$.
+A consequence of this is that the probability of finding the small system in the macrostate with energy $\varepsilon$ is, according to the fundamental hypothesis, proportional to $e^{-\frac{\varepsilon}{\kb T}}$.
 
 \paragraph{The Statistical Basis For Entropy}
-We can use what we have seen in thermodynamics to show that
+We have
 \begin{align*}
 	\frac{1}{T} = \fix{\pdv{S}{U}}{V}.
 \end{align*}
@@ -69,12 +66,27 @@ Combining this with our definition of temperature from a microscopic perspective
 	S = \kb\ln{\Omega}.
 \end{align*}
 
-\paragraph{The Boltzmann Factor With Varying Particle Number}
-Consider a system with energy $U$ and $N$ particles exchanging energy and particles with a smaller system with energy $\varepsilon$ and $n$ particles. The entropy of the reservoir is
+Another, slightly more ad hoc way of arguing this, is to consider the entropy as a function of the multiplicity. Supposing that we have a system comprised of two non-correlated parts, the extensivity of the entropy yields
+\begin{align*}
+	S = S_{1} + S_{2}.
+\end{align*}
+Now, the total multiplicity is $\Omega = \Omega_{1}\Omega_{2}$, so requiring the entropy to be extensive takes the form
+\begin{align*}
+	S(\Omega_{1}\Omega_{2}) = S(\Omega_{1}) + S(\Omega_{2}).
+\end{align*}
+A simple choice of entropy function is thus to choose one among the elementary functions. The function which does this is the natural logarithm. At this point we may introduce the Boltzmann constant as the constant of proportionality required to give $S$ a dimension, and thus start our statistical definitions with our new entropy formula. The statistical definition of entropy will follow from that.
+
+\paragraph{The Gibbs Factor}
+Consider a system of $N$ particles with internal energy $U$ exchanging energy and particles with a smaller system with energy $\varepsilon$ and $n$ particles. The entropy of the reservoir is
 \begin{align*}
 	S \approx S_{0} - \varepsilon\fix{\pdv{S}{U}}{N, V} - n\fix{\pdv{S}{N}}{U, V} = S_{0} - \frac{1}{T}\left(\varepsilon - \mu n\right).
 \end{align*}
-Somehow this implies
+Writing this in terms of the multiplicity we have
+\begin{align*}
+	\ln{\Omega(E - \varepsilon, N - n)} &= \ln{\Omega(E, N)} - \frac{\varepsilon - \mu n}{\kb T}, \\
+	\Omega(E - \varepsilon, N - n)      &= \Omega(E, N)e^{-\frac{\varepsilon - \mu n}{\kb T}},
+\end{align*}
+implying
 \begin{align*}
 	P(\varepsilon, n) \propto e^{-\beta\left(\varepsilon - \mu n\right)}.
 \end{align*}
@@ -103,10 +115,3 @@ This yields
 	  &= \kb\sum P_{i}\left(\ln{N} - \ln{n_{i}}\right) \\
 	  &= -\kb\sum P_{i}\ln{P_{i}}.
 \end{align*}
-
-\paragraph{The Gibbs Factor}
-Performing a similar analysis for a system with particle exchange reveals
-\begin{align*}
-	P_{i} \propto \frac{e^{-\beta(E_{i} - \mu N_{i})}}{\Z}.
-\end{align*}
-This is called the Gibbs factor.

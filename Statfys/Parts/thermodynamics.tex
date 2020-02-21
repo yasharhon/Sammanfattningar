@@ -217,6 +217,39 @@ or more generally
 \end{align*}
 However, as all involved quantities are functions of state, this must hold even if the process in question is irreversible.
 
+\paragraph{The Third Law}
+The third law was initially concerned with the issue of determining absolute entropies. Three different statements of the third law were finally coined:
+
+\begin{itemize}
+	\item \textbf{Nernst's statement:} Near absolute zero, all reactions in a system in internal equilibrium take place with no change in entropy.
+	\item \textbf{Planck's statement:} The entropy of all systems in internal equilibrium is the same at absolute zero, and may be taken to be zero.
+	\item \textbf{Simon's statement:} The contribution to the entropy of a system by each aspect of the system which is in internal thermodynamic equilibrium tends to zero when approaching absolute zero.
+\end{itemize}
+
+Simon's idea of aspects are based on a closer and closer inspections of a system. Considering a crystal for instance, it can be studied as a macroscopic entity or in terms of the individual atoms comprising it. These are, in turn, built up of nucleons, which are made up of quarks and so on (potentially). Each of these is termed an aspect.
+
+\paragraph{Consequences of the Third Law}
+Now we examine some of the consequences of the third law.
+
+The first consequence is for heat capacities near absolute zero. We have
+\begin{align*}
+	C = T\pdv{S}{T} = \pdv{S}{\ln{T}} \to 0.
+\end{align*}
+One might suspect that the first equality implies it (and I don't know why it does not). But the second statement guarantees it somehow, as the third law implies that the entropy is bounded at low temperatures.
+
+A second consequence is for thermal expansion. The third law implies
+\begin{align*}
+	\fix{\pdv{S}{p}}{T} \to 0
+\end{align*}
+near absolute zero, which implies
+\begin{align*}
+	\fix{\pdv{V}{T}}{p} \to 0.
+\end{align*}
+
+A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
+
+A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
+
 \paragraph{Natural Variables For Internal Energy}
 Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $x$ (naturally it could be written in terms of other variables too, but you would have to change variables from $S$ and $x$ in order to do that. A switch from $S$ to $T$ would for instance be rewriting $U$ as $U(S(T), x)$). The restatement also implies
 \begin{align*}
@@ -297,6 +330,34 @@ implying that $\GP$ is a function of $V$, $T$ and $\mu_{i}$, as well as
 	S = - \fix{\pdv{\GP}{T}}{V, \mu},\ p = - \fix{\pdv{\GP}{V}}{T, \mu},\ N_{i} = - \fix{\pdv{\GP}{\mu_{i}}}{T, V, N_{j}}.
 \end{align*}
 
+\paragraph{Reinterpretation of the Chemical Potential and Grand Potential}
+Consider a system of only one kind of particles which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Let a subscript $\lambda$ denote quantities for a scaled system. We thus have
+\begin{align*}
+	S_{\lambda} = \lambda S.
+\end{align*}
+Differentiating with respect to $\lambda$ 
+\begin{align*}
+	S &= \fix{\pdv{S_{\lambda}}{U_{\lambda}}}{V_{\lambda}, N_{\lambda}}\pdv{U_{\lambda}}{\lambda} + \fix{\pdv{S_{\lambda}}{V_{\lambda}}}{U_{\lambda}, N_{\lambda}}\pdv{V_{\lambda}}{\lambda} + \fix{\pdv{S_{\lambda}}{N_{\lambda}}}{U_{\lambda}, V_{\lambda}}\pdv{N_{\lambda}}{\lambda}.
+\end{align*}
+Setting $\lambda = 1$ or arguing that temperature is intensive yields that this is equal to
+\begin{align*}
+	S = \frac{U}{T} + \frac{p}{T} - \frac{\mu}{T}. 
+\end{align*}
+We can rewrite this as
+\begin{align*}
+	U - TS + pV = G = \mu N,
+\end{align*}
+and thus that $\mu$ is the Gibbs free energy per particle. For a system of multiple kinds of particles we instead obtain
+\begin{align*}
+	G = \mu_{i}N_{i},
+\end{align*}
+and we now interpret $\mu_{i}$ as the Gibbs free energy per particle of type $i$.
+
+This also implies
+\begin{align*}
+	\GP = -pV.
+\end{align*}
+
 \paragraph{Availability and Equilibrium}
 The availability is a more general quantity which can be defined appropriately for systems with given constraints. Its differential will give both the maximal amount of work that can be performed by a system and a general equilibrium condition for the system.
 
@@ -331,7 +392,7 @@ Hence the equilibrium condition is that Gibbs free energy is minimized.
 
 In a similar fashion we find that for thermally isolated systems at fixed volume, the appropriate availability is $A = -T_{0}S$, and hence for such systems the entropy is maximized. For a system at fixed temperature and volume the appropriate availability is $A = U - T_{0}S = F$, and hence for such systems the Helmholtz free energy is minimized.
 
-\paragraph{Exchanges Between Systems}
+\paragraph{Equilibrium Between Systems}
 For systems in contact, equilibrium is determined by minimizing the total availability.
 
 As an example, consider two systems at fixed volume in thermal contact. For such a system the equilibrium condition is that the entropy is maximized. We obtain
@@ -351,63 +412,6 @@ As an example, the derivatives of $F$ are $-S$ and $-p$, computed with respect t
 \begin{align*}
 	\fix{\pdv{S}{V}}{T} = \fix{\pdv{p}{T}}{V}.
 \end{align*}
-
-\paragraph{The Third Law}
-The third law was initially concerned with the issue of determining absolute entropies. Three different statements of the third law were finally coined:
-
-\begin{itemize}
-	\item \textbf{Nernst's statement:} Near absolute zero, all reactions in a system in internal equilibrium take place with no change in entropy.
-	\item \textbf{Planck's statement:} The entropy of all systems in internal equilibrium is the same at absolute zero, and may be taken to be zero.
-	\item \textbf{Simon's satement:} The contribution to the entropy of a system by each aspect of the system which is in internal thermodynamic equilibrium tends to zero when approaching absolute zero.
-\end{itemize}
-
-Simon's idea of aspects are based on a closer and closer inspections of a system. Considering a crystal for instance, it can be studied as a macroscopic entity or in terms of the individual atoms comprising it. These are, in turn, built up of nucleons, which are made up of quarks and so on (potentially). Each of these is termed an aspect.
-
-\paragraph{Consequences of the Third Law}
-Now we examine some of the consequences of the third law.
-
-The first consequence is for heat capacities. We have
-\begin{align*}
-	C = T\pdv{S}{T} = \pdv{S}{\ln{T}} \to 0.
-\end{align*}
-One might suspect that the first equality implies it (and I don't know why it does not). But the second statement guarantees it, as the third law implies that the entropy is bounded at low temperatures.
-
-A second consequence is for thermal expansion. The third law implies
-\begin{align*}
-	\fix{\pdv{S}{p}}{T} \to 0
-\end{align*}
-near absolute zero, which implies
-\begin{align*}
-	\fix{\pdv{V}{T}}{p} \to 0.
-\end{align*}
-
-A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
-
-A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
-
-\paragraph{Reinterpretation of the Chemical Potential and Grand Potential}
-Consider a system of only one kind of particles which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Let a subscript $\lambda$ denote quantities for a scaled system. We thus have
-\begin{align*}
-	S_{\lambda} = \lambda S.
-\end{align*}
-Differentiating with respect to $\lambda$ 
-\begin{align*}
-	S &= \fix{\pdv{S_{\lambda}}{U_{\lambda}}}{V_{\lambda}, N_{\lambda}}\pdv{U_{\lambda}}{\lambda} + \fix{\pdv{S_{\lambda}}{V_{\lambda}}}{U_{\lambda}, N_{\lambda}}\pdv{V_{\lambda}}{\lambda} + \fix{\pdv{S_{\lambda}}{N_{\lambda}}}{U_{\lambda}, V_{\lambda}}\pdv{N_{\lambda}}{\lambda}.
-\end{align*}
-Setting $\lambda = 1$ or arguing that temperature is intensive yields that this is equal to
-\begin{align*}
-	S = \frac{U}{T} + \frac{p}{T} - \frac{\mu}{T}. 
-\end{align*}
-We can rewrite this as
-\begin{align*}
-	U - TS + pV = G = \mu N,
-\end{align*}
-and thus that $\mu$ is the Gibbs free energy per particle. This also implies
-\begin{align*}
-	\GP = -pV.
-\end{align*}
-
-%TODO: Show for multiple kinds of particles
 
 \paragraph{Chemical Potential Without Particle Conservation}
 For certain systems, there are no conservation laws for the number of particles. In such cases, if the chemical potential is fixed, the system will evolve in such a way as to minimize the availability with respect to the number of particles, which corresponds to $\mu = 0$. If there is a conservation law present, one must instead construct a constraint on the chemical potentials.
@@ -431,7 +435,7 @@ as liquids are approximately $1000$ times as dense as vapours. The molar latent 
 \end{align*}
 
 \paragraph{The Clausius-Clapeyron Equation}
-Consider two phases, denoted $1$ and $2$, in equilibrium. We are interested in computing the coexistence curve between the two phases, i.e. the curve of all points such that the two phases are in equilibrium.
+Consider two phases, denoted $1$ and $2$, in equilibrium. We are interested in computing the coexistence curve between the two phases, i.e. the curve of all points such that the two phases are in equilibrium. The experimentally relevant constraints are typically constant pressure and temperature, so we want to study the coexistence curve in the $p-T$ diagram and find the coexistence curve when these two variables are fixed.
 
 At any point of coexistence we have
 \begin{align*}
@@ -441,11 +445,11 @@ Conservation of particle number implies that
 \begin{align*}
 	\mu_{1} = \mu_{2}.
 \end{align*}
-Now, supposing we were to move along the coexistence curve in the $p-T$ plane, we would have
+Now, supposing we were to move along the coexistence curve in the $p-T$ plane, the fact that the chemical potential is the Gibbs free energy per particle we have
 \begin{align*}
 	-s_{1}\dd{T} + v_{1}\dd{p} = -s_{2}\dd{T} + v_{2}\dd{p}
 \end{align*}
-where $s$ and $v$ are entropies and volumes per particle. This implies
+where $s$ and $v$ are entropies and volumes per particle. Solving this yields
 \begin{align*}
 	\dv{p}{T} = \frac{s_{2} - s_{1}}{v_{2} - v_{1}} = \frac{l}{T(v_{2} - v_{1})},
 \end{align*}
@@ -453,4 +457,4 @@ where $l$ is the latent heat per particle. We finally obtain
 \begin{align*}
 	\dv{p}{T} = \frac{L}{T(V_{2} - V_{1})},
 \end{align*}
-which is the Clausius-Clapeyron equation.
+which is the Clausius-Clapeyron equation. Yes, this derivation handles the differences between particles poorly.

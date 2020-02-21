@@ -1,5 +1,12 @@
 \section{Statistical Physics}
 
+\paragraph{Probability and Observables}
+The purpose of statistical mechanics is to treat systems in a statistical manner. We will describe systems in terms of probability distributions in phase space and compute observables as expectation values from this probability. A first step to note is that, in terms of classical mechanics, these observables must be computed as time averages. However, the fundamental postulate allows us to replace this by ensemble averages. We thus obtain the formula
+\begin{align*}
+	\expval{A} = \sum A_{i}P_{i}
+\end{align*}
+where the summation is performed over all of phase space.
+
 \subsection{The Microcanonical Ensemble}
 
 \subsection{The Canonical Ensemble}
@@ -9,9 +16,45 @@ The partition function is defined as
 \begin{align*}
 	Z = \sum e^{-\beta E_{i}},
 \end{align*}
-where the $E_{i}$ are possible values of the energy (or, rather, the Hamiltonian) and we now formally introduce $\beta = \frac{1}{\kb T}$. The summation is performed over all possible microstates of the system.
+where the $E_{i}$ are possible values of the energy (or, rather, the Hamiltonian) and we now formally introduce $\beta = \frac{1}{\kb T}$. The summation is performed over all of phase space.
+
+\paragraph{Probability}
+Combining our knowledge we obtain
+\begin{align*}
+	P_{i} = \frac{1}{Z}e^{-\beta E_{i}}.
+\end{align*}
 
 \paragraph{Properties of the Partition Function}
+Suppose that the Hamiltonian is redefined by adding a constant. We then obtain
+\begin{align*}
+	Z' = \sum e^{-\beta (E_{i} + E_{0})} = e^{-\beta E_{0}}Z.
+\end{align*}
+The value of any observable is thus
+\begin{align*}
+	\expval{A'} = \sum A'_{i}P'_{i} = \sum A'_{i}\frac{e^{-\beta(E_{i} + E_{0})}}{e^{-\beta E_{0}}Z} = \frac{1}{Z}\sum A'_{i}e^{-\beta E_{i}}.
+\end{align*}
+We see that the only way for the expectation value to change is if $A_{i}$ itself depends on the energy (as is the case if $A$ is the internal energy, for instance). Otherwise, we have
+\begin{align*}
+	\expval{A'} = \expval{A}.
+\end{align*}
+
+Suppose that the Hamiltonian is separable, i.e. can be written as a sum over Hamiltonians $H_{j}$ describing the $j$th degree of freedom. We thus obtain
+\begin{align*}
+	Z = \sum e^{-\sum\beta H_{j}} = \sum\limits_{\text{dof 1}}\dots\sum\limits_{\text{dof }N}e^{-\sum\beta H_{j}} = \prod\limits_{j}\sum\limits_{\text{dof j}}e^{-\beta H_{j}} = \prod\limits_{j}Z_{j}
+\end{align*}
+where each partition function describes a given degree of freedom. This also has the consequence that observables which only depend on a subset of the degrees of freedom may be computed without considering the other degrees of freedom.
+
+\paragraph{Distinguishability}
+For distinguishable particles (distinguished by, for instance, spatial separation) of the same kind we have
+\begin{align*}
+	Z_{N} = Z_{1}^{N}.
+\end{align*}
+However, for indistinguishable particles, an issue arises due to overcounting of states where two or more particles have different energies. This overcounting is by a factor of $n!$, where $n$ is the number of particles occupying different states, as switching the $n$ particles around does not yield a new state. However, if states where two or more particles have the same energy can be ignored, we can solve the overcounting problem by accounting for the degeneracy of the remaining states according to
+\begin{align*}
+	Z_{N} = \frac{Z_{1}^{N}}{N!}.
+\end{align*}
+
+But hold on! In classical mechanics, the equations of motions themselves imply that all particles are distinguishable. After all, any set of positions and momenta are directly connected to a single particle. How can the issue of distinguishability be relevant? The answer is that in the beginning, this factor was added ad hoc in order to guarantee that the entropy would be extensive. At its heart, however, the idea of indistinguishable particles is quantum mechanical. This could be taken as an early sign of the strong connection between statistical physics and quantum mechanics.
 
 \paragraph{Internal Energy}
 In a statistical context, we define the internal energy as $U = \expval{E}$. We have
@@ -28,11 +71,11 @@ Alternatively, in terms of temperature,
 \paragraph{Entropy}
 We have
 \begin{align*}
-	\ln{P_{i}} = \ln(\frac{e^{-\beta E_{i}}}{Z}) = -\beta E_{i} - \ln{Z}.
+	\ln{P_{i}} = -\beta E_{i} - \ln{Z}.
 \end{align*}
 The definition of entropy from probability thus implies
 \begin{align*}
-	S = -\kb\sum P_{i}\ln{P_{i}} = \kb\sum P_{i}(\beta E_{i} + \ln{Z}) = \kb\ln{Z} + \kb\beta U.
+	S = -\kb\sum P_{i}\ln{P_{i}} = \kb\sum P_{i}(\beta E_{i} + \ln{Z}) = \kb\ln{Z} + \frac{U}{T}.
 \end{align*}
 
 \paragraph{Helmholtz Free Energy}
@@ -50,6 +93,14 @@ The heat capacity is given by
 \begin{align*}
 	C = \pdv{U}{T} = 2\kb T\pdv{\ln{Z}}{T} + \kb T^{2}\pdv[2]{\ln{Z}}{T}.
 \end{align*}
+Alternatively, we may write
+\begin{align*}
+	C &= \pdv{T}\left(\sum E_{i}\frac{1}{Z}e^{-\beta E_{i}}\right) \\
+	  &= \frac{Z\cdot\frac{1}{\kb T^{2}}\sum E_{i}^{2}e^{-\beta E_{i}} - \pdv{Z}{T}\sum E_{i}e^{-\beta E_{i}}}{Z^{2}} \\
+	  &= \frac{1}{\kb T^{2}}\expval{E^{2}} + \frac{\expval{E}}{Z}\cdot -\frac{1}{\kb T^{2}}\pdv{Z}{\beta} \\
+	  &= \frac{1}{\kb T^{2}}\left(\expval{E^{2}} - \expval{E}^{2}\right).
+\end{align*}
+In other words, heat capacities are a measure of energy fluctuations.
 
 \paragraph{Pressure}
 The pressure is given by
@@ -69,28 +120,15 @@ The Gibbs free energy is given by
 	G = \kb T\left(-\ln{Z} + V\pdv{\ln{Z}}{V}\right).
 \end{align*}
 
-\paragraph{Distinguishability}
-For distinguishable particles one can show that
-\begin{align*}
-	Z_{N} = Z_{1}^{N}.
-\end{align*}
-However, for indistinguishable particles, an issue arises due to overcounting of states where two particles have equal energies. However, if these states can be ignored, we can solve the overcounting problem by writing
-\begin{align*}
-	Z_{N} = \frac{Z_{1}^{N}}{N!}.
-\end{align*}
-
-But hold on! In classical mechanics, the equations of motions themselves imply that all particles are distinguishable. After all, any set of positions and momenta are directly connected to a single particle. How can the issue of distinguishability be relevant? The answer is that in the beginning, this factor was added ad hoc in order to guarantee that the entropy would be extensive. At its heart, however, the idea of indistinguishable particles is quantum mechanical. This could be taken as an early sign of the strong connection between statistical physics and quantum mechanics.
-
 \paragraph{The Equipartition Theorem}
 Suppose that some degree of freedom $x$, which may take any value, of a system without degenerate microstates only appears in the Hamiltonian as a quadratic term $\alpha x^{2}$. Its contribution to the internal energy is
 \begin{align*}
-\expval{E} = \frac{\integ{-\infty}{\infty}{x}{\alpha x^{2}e^{-\beta\alpha x^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha x^{2}}}}.
+	\expval{E} &= \frac{\integ{-\infty}{\infty}{x}{\alpha x^{2}e^{-\beta\alpha x^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha x^{2}}}} \\
+	           &= \kb T\frac{\integ{-\infty}{\infty}{x}{u^{2}e^{-u^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-u^{2}}}} \\
+	           &= \kb T\frac{\frac{\sqrt{\pi}}{2}}{\sqrt{\pi}} \\
+	           &= \frac{1}{2}\kb T.
 \end{align*}
-One can show that this is equal to
-\begin{align*}
-\expval{E} = \frac{1}{2}\kb T.
-\end{align*}
-Examples of such degrees of freedom are
+Examples of such degrees of freedom (assuming a sufficient number of states is thermally available, which may not be the case for systems with a quantum nature) are
 \begin{itemize}
 	\item translations, rotations and vibrations in a gas.
 	\item vibrations in a crystal.
