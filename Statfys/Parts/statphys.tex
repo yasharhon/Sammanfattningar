@@ -100,7 +100,10 @@ Alternatively, we may write
 	  &= \frac{1}{\kb T^{2}}\expval{E^{2}} + \frac{\expval{E}}{Z}\cdot -\frac{1}{\kb T^{2}}\pdv{Z}{\beta} \\
 	  &= \frac{1}{\kb T^{2}}\left(\expval{E^{2}} - \expval{E}^{2}\right).
 \end{align*}
-In other words, heat capacities are a measure of energy fluctuations.
+In other words, heat capacities correspond to energy fluctuations.
+
+\paragraph{Heat Capacities With Discrete Energy Levels}
+For systems with discrete energies the energy fluctuations must vanish at low temperatures, as only the lowest energy states becomes accessible.
 
 \paragraph{Pressure}
 The pressure is given by
@@ -121,13 +124,31 @@ The Gibbs free energy is given by
 \end{align*}
 
 \paragraph{The Equipartition Theorem}
-Suppose that some degree of freedom $x$, which may take any value, of a system without degenerate microstates only appears in the Hamiltonian as a quadratic term $\alpha x^{2}$. Its contribution to the internal energy is
+Suppose that some degree of freedom $x$, which may take any value, of a system without degenerate microstates only appears in the Hamiltonian as a term $\alpha\abs{x}^{\nu}$. Its contribution to the internal energy is
 \begin{align*}
-	\expval{E} &= \frac{\integ{-\infty}{\infty}{x}{\alpha x^{2}e^{-\beta\alpha x^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha x^{2}}}} \\
-	           &= \kb T\frac{\integ{-\infty}{\infty}{x}{u^{2}e^{-u^{2}}}}{\integ{-\infty}{\infty}{x}{e^{-u^{2}}}} \\
-	           &= \kb T\frac{\frac{\sqrt{\pi}}{2}}{\sqrt{\pi}} \\
-	           &= \frac{1}{2}\kb T.
+	\expval{\alpha\abs{x}^{\nu}} &= \frac{\integ{-\infty}{\infty}{x}{\alpha\abs{x}^{\nu}e^{-\beta\alpha\abs{x}^{\nu}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha\abs{x}^{n}}}} \\
+	                             &= \frac{\integ{0}{\infty}{x}{\alpha x^{n}e^{-\beta\alpha x^{n}}}}{\integ{0}{\infty}{x}{e^{-\beta\alpha x^{n}}}}.
 \end{align*}
+Defining
+\begin{align*}
+	I_{\nu} = \integ{0}{\infty}{x}{e^{-\beta\alpha x^{n}}}
+\end{align*}
+we can write
+\begin{align*}
+	\expval{\alpha\abs{x}^{\nu}} = -\frac{1}{I_{\nu}}\dv{I_{\nu}}{\beta} = -\dv{\ln{I_{\nu}}}{\beta}.
+\end{align*}
+We have
+\begin{align*}
+	I_{\nu} &= \integ{0}{\infty}{u}{\frac{1}{\nu\beta\alpha}x^{1 - \nu}e^{-u}} \\
+	        &= \frac{1}{\nu\beta\alpha}\integ{0}{\infty}{u}{\left(\frac{u}{\beta\alpha}\right)^{\frac{1}{\nu} - 1}e^{-u}} \\
+	        &= \frac{1}{\nu}\left(\frac{1}{\beta\alpha}\right)^{\frac{1}{\nu}}\integ{0}{\infty}{u}{u^{\frac{1}{\nu} - 1}e^{-u}} \\
+	        &= \beta^{-\frac{1}{\nu}}\frac{\Gamma\left(\frac{1}{\nu}\right)}{\nu\alpha^{\frac{1}{\nu}}}.
+\end{align*}
+From this we obtain
+\begin{align*}
+	\expval{\alpha\abs{x}^{\nu}} = \frac{1}{\nu\beta} = \frac{1}{\nu}\kb T.
+\end{align*}
+
 Examples of such degrees of freedom (assuming a sufficient number of states is thermally available, which may not be the case for systems with a quantum nature) are
 \begin{itemize}
 	\item translations, rotations and vibrations in a gas.
@@ -137,41 +158,41 @@ Examples of such degrees of freedom (assuming a sufficient number of states is t
 \paragraph{The Ideal Gas}
 We will now study the statistical mechanics of an ideal gas. We will do this by considering the gas as a set of non-interacting free quantum particles in an $L\times L\times L$ box. The single-state wave function is
 \begin{align*}
-\psi = \left(\frac{2}{L}\right)\sin(k_{x}x)\sin(k_{y}y)\sin(k_{z}z),
+	\psi = \left(\frac{2}{L}\right)\sin(k_{x}x)\sin(k_{y}y)\sin(k_{z}z),
 \end{align*}
 where each quantum number is given by $k_{i} = \frac{\pi}{L}n_{i}$. Representing each possible state in a $3$-dimensional space where each point represents a sate, the available states of the system occupy the first octant, each state taking up a cube with dimensions $\frac{\pi}{L}$. The number of states with wave vector of length $k$ to $k + \dd{k}$ is given by $\frac{1}{8}4\pi k^{2}\dd{k}$. Defining the density of states $g$ as the number of states in a small $k$-interval divided by the interval length and the volume occupied by each state implies 
 \begin{align*}
-g(k) = \frac{\frac{1}{2}\pi k^{2}}{\left(\frac{\pi}{L}\right)^{3}} = \frac{Vk^{2}}{2\pi^{2}}.
+	g(k) = \frac{\frac{1}{2}\pi k^{2}}{\left(\frac{\pi}{L}\right)^{3}} = \frac{Vk^{2}}{2\pi^{2}}.
 \end{align*}
 The single-particle partition function can now be calculated as
 \begin{align*}
-Z_{1} = \integ{0}{\infty}{k}{e^{-\beta E}g(k)} = \integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}\frac{Vk^{2}}{2\pi^{2}}} = \frac{V}{2\pi^{2}}\integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}k^{2}} = \frac{V}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}.
+	Z_{1} = \integ{0}{\infty}{k}{e^{-\beta E}g(k)} = \integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}\frac{Vk^{2}}{2\pi^{2}}} = \frac{V}{2\pi^{2}}\integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}k^{2}} = \frac{V}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}.
 \end{align*}
 We can now define the quantum concentration
 \begin{align*}
-n_{\text{Q}} = \frac{1}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}
+	n_{\text{Q}} = \frac{1}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}
 \end{align*}
-and the thermal length
+and the thermal wavelength
 \begin{align*}
-\lambda_{\text{th}} = \frac{1}{n_{\text{Q}}^{\frac{1}{3}}},
+	\lambda_{\text{th}} = \frac{1}{n_{\text{Q}}^{\frac{1}{3}}},
 \end{align*}
 allowing us to write
 \begin{align*}
-Z_{1} = Vn_{\text{Q}} = \frac{V}{\lambda_{\text{th}}^{3}}.
+	Z_{1} = Vn_{\text{Q}} = \frac{V}{\lambda_{\text{th}}^{3}}.
 \end{align*}
 The partition function for the entire system can be written as
 \begin{align*}
-Z_{N} = \frac{1}{N!}\frac{V^{N}}{\lambda_{\text{th}}^{3N}}
+	Z_{N} = \frac{1}{N!}\frac{V^{N}}{\lambda_{\text{th}}^{3N}}
 \end{align*}
 assuming that the number of thermally accessible energy levels is much larger than the density of particles, i.e. $\frac{N}{V} << n_{\text{Q}}$.
 
 It is now time to derive thermodynamic properties of the system. We have
 \begin{align*}
-U = \frac{3}{2}\kb T,\ p = \frac{N\kb T}{V},\ S = N\kb\left(\frac{5}{2} - \ln(\frac{N}{V}\lambda_{\text{th}}^{3})\right),\ G = N\kb T\ln(\frac{N}{V}\lambda_{\text{th}}^{3}).
+	U = \frac{3}{2}\kb T,\ p = \frac{N\kb T}{V},\ S = N\kb\left(\frac{5}{2} - \ln(\frac{N}{V}\lambda_{\text{th}}^{3})\right),\ G = N\kb T\ln(\frac{N}{V}\lambda_{\text{th}}^{3}).
 \end{align*}
 
 \paragraph{Heat Capacity of a Diatomic Gas}
-A major challenge of classical thermodynamics was explaining the behaviour of the heat capacity of diatomic gases. A diatomic ideal gas has translational, vibrational and rotational degrees of freedom. Classical equipartition theory would imply their heat capacity to be $C_{V} = \frac{7}{2}\kb T$, but this was only observed after heating above a certain temperature (I think).
+A major challenge of classical thermodynamics was explaining the behaviour of the heat capacity of diatomic gases. A diatomic ideal gas has translational, vibrational and rotational degrees of freedom. Classical equipartition theory would imply their heat capacity to be $C_{V} = \frac{7}{2}\kb T$, but this was only observed after heating above a certain temperature.
 
 To understand this we have to study diatomic gases with quantum mechanics. We find that higher rotational energy levels are only thermally accessible for temperatures close to or above $\frac{\hbar^{2}}{2I\kb}$, and vibrational levels close to or above $\frac{\hbar\omega}{\kb}$.
 

@@ -45,11 +45,11 @@ which can be combined to yield
 \paragraph{The Gamma Function}
 The gamma function is defined as
 \begin{align*}
-	\Gamma(z) = \integ{0}{\infty}{x}{x^{z - 1}e^{-x}}.
+	\gf{z} = \integ{0}{\infty}{x}{x^{z - 1}e^{-x}}.
 \end{align*}
-It is convergent for $z \leq 0$. It has the following properties:
+It is convergent for $\Re(z) \leq 0$. It has the following properties:
 \begin{itemize}
-	\item $\Gamma(z + 1) = z\Gamma(z)$.
+	\item $\gf{z + 1} = z\gf{z}$.
 \end{itemize}
 
 \paragraph{The Riemann Zeta Function}
@@ -65,3 +65,32 @@ The polylogarithm function is defined as
 	\Li{n} = \sum\limits_{k = 1}^{\infty}\frac{z^{k}}{k^{n}}
 \end{align*}
 on the open unit disc in the complex plane, but can be analytically continued over the rest of the complex plane.
+
+\paragraph{Solid Angle}
+Consider a function in $d$ dimensions such that $f(\vb{r}) = f(r)$. When integrating such functions, we would like to do it in a coordinate system which separates out direction from distance (an example of a fitting coordinate system is spherical coordinates for $d = 3$), such that the integral of $f$ is simplified. In order to do that, however, it would seem that we have to identify the coordinate change from cartesian coordinates which allows us to separate the integral. However, for a function with directional symmetry, we can circumvent this problem by introducing the solid angle. Before doing that, we need to study the Jacobian of the coordinate change. As only one of the new coordinates contains the distance, the Jacobian must depend on $r$ only according to a factor $r^{d - 1}$. In other words, we have
+\begin{align*}
+	J(r, \vb{\theta}) = r^{d - 1}g_{d}(\vb{\theta})
+\end{align*}
+where $\vb{\theta}$ is the set of new coordinates describing direction. We thus have
+\begin{align*}
+	\integ[d]{}{}{\vb{r}}{f(r)} = \integ[d - 1]{}{}{\vb{\theta}}{g(\vb{\theta})}\integ{}{}{r}{f(r)r^{d - 1}}.
+\end{align*}
+This defines the solid angle as
+\begin{align*}
+	\Omega_{d} = \integ[d - 1]{}{}{\vb{\theta}}{g(\vb{\theta})}.
+\end{align*}
+
+What is its value, then? In order to determine that, we need a reference integral which we can compute. A good example is a Gaussian in $d$ dimensions. We have
+\begin{align*}
+	\integ[d]{}{}{\vb{r}}{e^{-r^{2}}} = \left(\integ{-\infty}{\infty}{x}{e^{-x^{2}}}\right)^{d} = \pi^{\frac{d}{2}}.
+\end{align*}
+On the other hand, we have
+\begin{align*}
+	\integ[d]{}{}{\vb{r}}{e^{-r^{2}}} &= \omega_{d}\integ{0}{\infty}{r}{r^{d - 1}e^{-r^{2}}} \\
+&= \frac{1}{2}\omega_{d}\integ{0}{\infty}{u}{u^{\frac{d}{2} - 1}e^{-u}} \\
+&= \frac{1}{2}\gf{\frac{d}{2} - 1}\omega_{d},
+\end{align*}
+and thus
+\begin{align*}
+	\Omega_{d} = \frac{2\pi^{\frac{d}{2}}}{\gf{\frac{d}{2} - 1}}.
+\end{align*}

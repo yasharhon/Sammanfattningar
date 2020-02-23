@@ -4,16 +4,20 @@
 The concepts developed in this chapter will be based on the concepts of distinguishability. Classical particles are distinguishable, but quantum particles are not. As is postulated ad hoc in non-relativistic quantum mechanics, the operation of exchanging the two quantum particles with each other has a certain symmetry depending on the type of considered particles. Boson states are symmetric under exchange, and fermions are antisymmetric.
 
 \paragraph{The Pauli Exclusion Principle}
-Consider a many-particle state of fermions where two particles occupy the same state. Exchanging these two particles do not modify the total state. Combining this with the requirement that the state be antisymmetric under particle exchange implies that such a state cannot exist for fermions. This gives rise to the Pauli exclusion principle, which states that two indistinguishable fermions cannot occupy the same quantum state.
+Consider a many-particle state of fermions where two particles occupy the same state. Exchanging these two particles does not modify the total state. Combining this with the requirement that the state be antisymmetric under particle exchange implies that such a state cannot exist for fermions. This gives rise to the Pauli exclusion principle, which states that two indistinguishable fermions cannot occupy the same quantum state.
 
 \paragraph{Quantum Grand Partition Functions}
-Consider a system with a set of quantum states with energies $E_{i}$ occupied by $n_{i}$ particles each. Such a system would correspond to a set of non-interacting particles. If this system is set in thermal contact with a heat bath, this implies that the occupancy of each state will vary due to the heat exchange, which is why such systems belong to the grand canonical ensemble. The grand canonical partition function for such a system is of the form
+Consider a system with a set of quantum states with energies $E_{i}$ occupied by $n_{i}$ particles each. Such a system would correspond to a set of non-interacting particles. The partition function for such a system is
 \begin{align*}
-	\Z = \sum\limits_{N = 0}^{\infty}\sum\limits_{\text{States}}e^{-\beta(E - \mu N)}.
+	Z = \sum\limits_{\text{States}}e^{-\beta\sum n_{i}(E_{i} - \mu)} = \sum\limits_{\text{States}}e^{\beta\left(\mu N - \sum n_{i}E_{i}\right)}.
 \end{align*}
 A first question might be what happened to the factor $N!$ signifying that the particles are indistinguishable - after all, we said that distinguishability would be important. The answer is that the occupancy numbers themselves are not quantum numbers directly defining any state, but rather numbers defining the composition of the states. Due to the (anti)symmetry of the total state, it must be that any set of occupancy numbers can only correspond to a single quantum state, and thus there is no overcounting.
 
-The sum over states is a sum over all configurations such that the sum of all occupancy numbers is equal to $N$. Combining this with the summation over $N$ yields that this sum may be replaced by a sum over all conceivable occupancy configurations. The total energy and the number of particles may be expressed as sums over particle numbers, allowing us to write
+Computing this sum for any significant $N$ is very difficult, as fixing one occupation number leaves constraints on the next, making the computation very intricate. However, the grand canonical partition function for such a system is of the form
+\begin{align*}
+	\Z = \sum\limits_{N = 0}^{\infty}\sum\limits_{\text{States}}e^{\beta\left(\mu N - \sum n_{i}E_{i}\right)}.
+\end{align*}
+The sum over states is a sum over all configurations such that the sum of all occupancy numbers is equal to $N$. Combining this with the summation over $N$ yields that this sum may be replaced by a sum over all conceivable occupancy configurations, removing the intricacies in the canonical ensemble. Furthermore, we have
 \begin{align*}
 	\Z &= \sum\limits_{n_{1}}\dots\sum\limits_{n_{\infty}}e^{n_{i}\beta(\mu - E_{i})} \\
 	   &= \prod\limits_{i}\left(\sum\limits_{n_{i}}e^{n_{i}\beta(\mu - E_{i})}\right),
@@ -36,6 +40,23 @@ where the $+$ is for fermions and the $-$ is for bosons.
 
 \paragraph{Constraints on the Chemical Potential}
 At this point it is wise to explicitly state a constraint which is often placed on the chemical potential, namely that it is chosen such that the number of particles does not change when either $V$ or $T$ are varied.
+
+\paragraph{The Bose-Einstein and Fermi-Dirac Distributions}
+When considering the statistics of quantum gases, we will base our work on distribution functions written in terms of energy rather than occupancy. This choice is highly analogous to, say, converting from the Maxwell-Boltzmann velocity distribution to a corresponding speed distribution for ideal gases. We have
+\begin{align*}
+\expval{n_{i}} = -\frac{1}{\beta}\pdv{\ln{\Z}}{E_{i}} = \frac{e^{\beta(\mu - E_{i})}}{1 \pm e^{\beta(\mu - E_{i})}} = \frac{1}{e^{\beta(E_{i} - \mu)} \pm 1}.
+\end{align*}
+As there is a one-to-one correspondence between a given occupancy number and the corresponding energy, we can now write the distribution functions as
+\begin{align*}
+f(E) = \frac{1}{e^{\beta(E - \mu)} - 1}
+\end{align*}
+for bosons and
+\begin{align*}
+f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}
+\end{align*}
+for fermions. These functions are called the Bose-Einstein and Fermi-Dirac distribution functions.
+
+Note that the Bose-Einstein distribution imposes a constraint on the chemical potential, as it becomes singular if the chemical potential is greater than the lowest available energy state.
 
 \paragraph{The Density of States}
 %TODO: Extend to arbitrary dimension and dispersion
@@ -66,23 +87,6 @@ We can also compute the number of states with energy less than $E$, which is giv
           &= \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{E}{\varepsilon}{\sqrt{\varepsilon}} \\
           &= \frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2mE}{\hbar^{2}}\right)^{\frac{3}{2}}.
 \end{align*}
-
-\paragraph{The Bose-Einstein and Fermi-Dirac Distributions}
-When considering the statistics of quantum gases, we will base our work on distribution functions describing the mean occupancy of a given energy level. This choice is highly analogous to, say, converting from the Maxwell-Boltzmann velocity distribution to a corresponding speed distribution for ideal gases. We have
-\begin{align*}
-	\expval{n_{i}} = -\frac{1}{\beta}\pdv{\ln{\Z}}{E_{i}} = \frac{e^{\beta(\mu - E_{i})}}{1 \pm e^{\beta(\mu - E_{i})}} = \frac{1}{e^{\beta(E_{i} - \mu)} \pm 1}.
-\end{align*}
-As there is a one-to-one correspondence between a given occupancy number and the corresponding energy, we can now write the distribution functions as
-\begin{align*}
-	f(E) = \frac{1}{e^{\beta(E - \mu)} - 1}
-\end{align*}
-for bosons and
-\begin{align*}
-	f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}
-\end{align*}
-for fermions. These functions are called the Bose-Einstein and Fermi-Dirac distribution functions.
-
-Note that the Bose-Einstein distribution imposes a constraint on the chemical potential, as it becomes singular if the chemical potential is greater than the lowest available energy state.
 
 \paragraph{The Non-Interacting Quantum Gas}
 Consider a fluid of non-interacting quantum particles. The state of the system is characterized by a set of possible wave vectors, and each wave vector state has a degeneracy of $2s + 1$, where $s$ is the spin of each particle. The partition function can thus be written as
