@@ -60,32 +60,46 @@ Note that the Bose-Einstein distribution imposes a constraint on the chemical po
 
 \paragraph{The Density of States}
 %TODO: Extend to arbitrary dimension and dispersion
-In all problems to be studied, we will consider particles in a periodic cube. For such particles the components of the wave vector are of the form
+In all problems to be studied, we will consider particles in a $d$-dimensional periodic cube with a dispersion relation on the form of a power law. For such particles the components of the wave vector are of the form
 \begin{align*}
 	k_{i} = \frac{2\pi}{L}n,\ n = 0, \pm 1, \pm 2, \dots
 \end{align*}
-where $L$ is the dimension of the cube. In addition, there is a spin degeneracy, hence termed $\eta(s)$, such that the density of states in k-space is
+where $L$ is the dimension of the cube. In addition, there is a degeneracy factor, hence termed $\eta$, such that the density of states in k-space is
 \begin{align*}
-	\rho(\vb{k}) = \eta(s)\frac{1}{\left(\frac{2\pi}{L}\right)^{3}} = \eta(s)\frac{V}{8\pi^{3}}.
+	\rho(\vb{k}) = \eta\frac{1}{\left(\frac{2\pi}{L}\right)^{d}} = \eta\frac{V}{(2\pi)^{d}}.
 \end{align*}
 In terms of the length of the wave vector we have
 \begin{align*}
-	\rho(k) = \eta(s)\frac{V}{8\pi^{3}}\cdot 4\pi k^{2} = \eta(s)\frac{V}{2\pi^{2}}k^{2}.
+	\rho(k) = \eta\frac{V}{(2\pi)^{d}}\cdot \Omega_{d}k^{d - 1} = \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}Vk^{d - 1}.
 \end{align*}
 To express this in terms of the energy, we use the dispersion relation
 \begin{align*}
-E = \frac{\hbar^{2}k^{2}}{2m},
+	E = \alpha k^{t},
 \end{align*}
 which yields that the density of states is
 \begin{align*}
-\rho(E) = \frac{1}{\frac{\hbar^{2}k(E)}{m}}\cdot \eta(s)\frac{V}{2\pi^{2}}k^{2}(E) = \frac{\eta(s)}{2\pi^{2}}\frac{mV}{\hbar^{2}}\frac{\sqrt{2mE}}{\hbar} = \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E}.
+	\rho(E) &= \frac{1}{\alpha tk^{t - 1}(E)}\cdot \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2} - 1}}Vk^{d - 1}(E) \\
+	        &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha}k^{d - t}(E) \\
+	        &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha}\left(\frac{E}{\alpha}\right)^{\frac{d}{t} - 1} \\
+	        &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t} - 1}.
 \end{align*}
 
 We can also compute the number of states with energy less than $E$, which is given by
 \begin{align*}
-\sigma(E) &= \integ{0}{E}{\varepsilon}{\rho(\varepsilon)} \\
-          &= \frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{E}{\varepsilon}{\sqrt{\varepsilon}} \\
-          &= \frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2mE}{\hbar^{2}}\right)^{\frac{3}{2}}.
+	\sigma(E) &= \integ{0}{E}{\varepsilon}{\rho(\varepsilon)} \\
+              &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\integ{0}{E}{\varepsilon}{\varepsilon^{\frac{d}{t} - 1}} \\
+              &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}d}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t}}.
+\end{align*}
+
+One specific examples is massive particles in three dimensions, for which $\alpha = \frac{\hbar^{2}}{2m},\ t = 2$ and $\eta = \eta(s)$, and thus
+\begin{align*}
+	\rho(E)   &= \frac{\eta(s)}{8\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}E^{\frac{1}{2}} = \frac{\eta(s)}{(2\pi)^{2}}\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}VE^{\frac{1}{2}}, \\
+	\sigma(E) &= \frac{\eta(s)}{12\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}E^{\frac{3}{2}} = \frac{\eta(s)}{6\pi^{2}}\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}VE^{\frac{3}{2}}.
+\end{align*}
+Another is massless ultra-relativistic particles in three dimensions, for which $\alpha = \hbar c,\ t = 1$ and $\eta = 2$, and thus
+\begin{align*}
+	\rho(E)   &= \frac{2}{4\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\hbar c\right)^{3}}E^{2} = \frac{1}{\pi^{2}}\frac{V}{\left(\hbar c\right)^{3}}E^{2}, \\
+	\sigma(E) &= \frac{2}{12\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\hbar c\right)^{3}}E^{3} = \frac{1}{3\pi^{2}}\frac{V}{\left(\hbar c\right)^{3}}E^{3}.
 \end{align*}
 
 \paragraph{The Non-Interacting Quantum Gas}

@@ -73,11 +73,11 @@ Consider a function in $d$ dimensions such that $f(\vb{r}) = f(r)$. When integra
 \end{align*}
 where $\vb{\theta}$ is the set of new coordinates describing direction. We thus have
 \begin{align*}
-	\integ[d]{}{}{\vb{r}}{f(r)} = \integ[d - 1]{}{}{\vb{\theta}}{g(\vb{\theta})}\integ{}{}{r}{f(r)r^{d - 1}}.
+	\integ[d]{}{}{\vb{r}}{f(r)} = \integ[d - 1]{}{}{\vb{\theta}}{g_{d}(\vb{\theta})}\integ{}{}{r}{f(r)r^{d - 1}}.
 \end{align*}
 This defines the solid angle as
 \begin{align*}
-	\Omega_{d} = \integ[d - 1]{}{}{\vb{\theta}}{g(\vb{\theta})}.
+	\Omega_{d} = \integ[d - 1]{}{}{\vb{\theta}}{g_{d}(\vb{\theta})}.
 \end{align*}
 
 What is its value, then? In order to determine that, we need a reference integral which we can compute. A good example is a Gaussian in $d$ dimensions. We have
@@ -86,9 +86,9 @@ What is its value, then? In order to determine that, we need a reference integra
 \end{align*}
 On the other hand, we have
 \begin{align*}
-	\integ[d]{}{}{\vb{r}}{e^{-r^{2}}} &= \omega_{d}\integ{0}{\infty}{r}{r^{d - 1}e^{-r^{2}}} \\
-&= \frac{1}{2}\omega_{d}\integ{0}{\infty}{u}{u^{\frac{d}{2} - 1}e^{-u}} \\
-&= \frac{1}{2}\gf{\frac{d}{2} - 1}\omega_{d},
+	\integ[d]{}{}{\vb{r}}{e^{-r^{2}}} &= \Omega_{d}\integ{0}{\infty}{r}{r^{d - 1}e^{-r^{2}}} \\
+                                      &= \frac{1}{2}\Omega_{d}\integ{0}{\infty}{u}{u^{\frac{d}{2} - 1}e^{-u}} \\
+                                      &= \frac{1}{2}\gf{\frac{d}{2}}\Omega_{d},
 \end{align*}
 and thus
 \begin{align*}
