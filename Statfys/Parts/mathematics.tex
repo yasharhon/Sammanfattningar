@@ -53,18 +53,37 @@ It is convergent for $\Re(z) \leq 0$. It has the following properties:
 \end{itemize}
 
 \paragraph{The Riemann Zeta Function}
-The Riemann Zeta function is defined as
+The Riemann zeta function is defined as
 \begin{align*}
 	\zeta(z) = \sum\limits_{n = 1}^{\infty}\frac{1}{n^{z}}.
 \end{align*}
 It is convergent for $z > 1$.
 
+\paragraph{The Dirichlet Eta Function}
+The Dirichlet eta function is defined as
+\begin{align*}
+	\eta(z) = \sum\limits_{n = 1}^{\infty}\frac{(-1)^{n + 1}}{n^{z}}.
+\end{align*}
+It is very similar to the Riemann zeta function, and we will derive a connection between the two. We have
+\begin{align*}
+	\zeta(z) - \eta(z) &= \sum\limits_{n = 1}^{\infty}\frac{1}{n^{z}} + \frac{(-1)^{n}}{n^{z}} \\
+	                   &= 2\sum\limits_{n = 1}^{\infty}\frac{1}{(2n)^{z}} \\
+	                   &= 2^{1 - z}\zeta(z),
+\end{align*}
+and thus
+\begin{align*}
+	\eta(z) = (1 - 2^{1 - z})\zeta(z).
+\end{align*}
+
 \paragraph{The Polylogarithm Function}
 The polylogarithm function is defined as
 \begin{align*}
-	\Li{n} = \sum\limits_{k = 1}^{\infty}\frac{z^{k}}{k^{n}}
+	\Li{n}{z} = \sum\limits_{k = 1}^{\infty}\frac{z^{k}}{k^{n}}
 \end{align*}
-on the open unit disc in the complex plane, but can be analytically continued over the rest of the complex plane.
+on the open unit disc in the complex plane, but can be analytically continued over the rest of the complex plane. It has the following properties:
+\begin{itemize}
+	\item $\Li{n}{1} = \zeta(n)$.
+\end{itemize}
 
 \paragraph{Solid Angle}
 Consider a function in $d$ dimensions such that $f(\vb{r}) = f(r)$. When integrating such functions, we would like to do it in a coordinate system which separates out direction from distance (an example of a fitting coordinate system is spherical coordinates for $d = 3$), such that the integral of $f$ is simplified. In order to do that, however, it would seem that we have to identify the coordinate change from cartesian coordinates which allows us to separate the integral. However, for a function with directional symmetry, we can circumvent this problem by introducing the solid angle. Before doing that, we need to study the Jacobian of the coordinate change. As only one of the new coordinates contains the distance, the Jacobian must depend on $r$ only according to a factor $r^{d - 1}$. In other words, we have

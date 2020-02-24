@@ -59,7 +59,8 @@ for fermions. These functions are called the Bose-Einstein and Fermi-Dirac distr
 Note that the Bose-Einstein distribution imposes a constraint on the chemical potential, as it becomes singular if the chemical potential is greater than the lowest available energy state.
 
 \paragraph{The Density of States}
-%TODO: Extend to arbitrary dimension and dispersion
+When performing studies of quantum systems in terms of energy, we will need a way of counting the number of states corresponding to a specific energy. This is why we need the density of states, which is a function that under continuous assumptios (i.e. we can integrate over quantum numbers instead of summing over them) counts the number of states corresponding to a given energy.
+
 In all problems to be studied, we will consider particles in a $d$-dimensional periodic cube with a dispersion relation on the form of a power law. For such particles the components of the wave vector are of the form
 \begin{align*}
 	k_{i} = \frac{2\pi}{L}n,\ n = 0, \pm 1, \pm 2, \dots
@@ -103,46 +104,33 @@ Another is massless ultra-relativistic particles in three dimensions, for which 
 \end{align*}
 
 \paragraph{The Non-Interacting Quantum Gas}
-Consider a fluid of non-interacting quantum particles. The state of the system is characterized by a set of possible wave vectors, and each wave vector state has a degeneracy of $2s + 1$, where $s$ is the spin of each particle. The partition function can thus be written as
-\begin{align*}
-	\Z = \prod\limits_{\vb{k}}\Z_{\vb{k}}^{2s + 1}
-\end{align*}
-where
-\begin{align*}
-	\Z_{\vb{k}} = (1 \pm e^{-\beta(E_{\vb{k}} - \mu)})^{\pm 1}.
-\end{align*}
-
-The partition function of a quantum gas is thus given by
+Consider a fluid of non-interacting quantum particles. The partition function of a quantum gas is thus given by
 \begin{align*}
 	\ln{\Z} &= \pm\sum\limits_{\vb{k}}\ln(1 \pm e^{-\beta(E_{\vb{k}} - \mu)}) \\
 	        &= \pm\integ{0}{\infty}{E}{\rho(E)\ln(1 \pm e^{-\beta(E - \mu)}}) \\
 	        &= \mp\integ{0}{\infty}{E}{\sigma(E)\frac{\mp\beta e^{-\beta(E - \mu)}}{1 \pm e^{-\beta(E - \mu)}}} \\
 	        &= \beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}},
 \end{align*}
-where the top sign is for fermions and the bottom for bosons.
+where the top sign is for fermions and the bottom for bosons. This will be the convention from now on.
 
 The grand potential of such a quantum gas is given by
 \begin{align*}
-	\GP = -\kb T\ln{\Z} = -\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}},
-\end{align*}
-or, by using the density of states, we have
-\begin{align*}
-	\GP = &=  -\frac{2}{3}\frac{\eta(s)}{(2\pi)^{2}}V\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{\infty}{E}{\frac{E^{\frac{3}{2}}}{e^{\beta(E - \mu)} \pm 1}}.
+	\GP = -\kb T\ln{\Z} = -\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}}.
 \end{align*}
 
 The total number of occupied states may be computed in two ways. The first is
 \begin{align*}
 	N &= \sum\limits_{\vb{k}}n_{\vb{k}} \\
-	  &= \sum\limits_{\vb{k}}\kb T\pdv{\ln{Z_{\vb{k}}}}{\mu} \\
-	  &= \kb T\integ{0}{\infty}{E}{\rho(E)\pdv{\ln{Z_{\vb{k}}}}{\mu}}.
+	  &= \sum\limits_{\vb{k}}\kb T\pdv{\ln{\Z_{\vb{k}}}}{\mu} \\
+	  &= \kb T\integ{0}{\infty}{E}{\rho(E)\pdv{\ln{\Z_{\vb{k}}}}{\mu}}.
 \end{align*}
 The second is
 \begin{align*}
 	N &= \pdv{\ln{\Z}}{\beta\mu}.
 \end{align*}
-We now use the fact that the integrand in $\ln{Z}$ is of the form $\sigma(E)f(\beta(E - \mu))$. For such a function we have
+We now use the fact that the integrand in $\ln{\Z}$ is of the form $\sigma(E)f(\beta(E - \mu))$. For $f$ we have
 \begin{align*}
-	\del{\beta\mu}{} = -\del{\beta E}{} = -\kb T\del{E}{},
+	\pdv{}{\beta\mu} = -\pdv{}{\beta E} = -\kb T\pdv{}{E},
 \end{align*}
 yielding
 \begin{align*}
@@ -166,26 +154,37 @@ or alternatively as
 	U = \sum\limits_{\vb{k}}n_{\vb{k}}E_{\vb{k}}.
 \end{align*}
 
-It can be shown that all these quantities are proportional to
+All of these integrals are of the form
 \begin{align*}
-	\mp(\kb T)^{n}\Gamma(n)\Li(\mp z)
+	A = \integ{0}{\infty}{E}{\frac{CE^{n}}{z^{-1}e^{\beta E} \pm 1}}.
 \end{align*}
-where $n$ is the power of $E$ that is integrated.
+We rewrite them as
+\begin{align*}
+	A &= \integ{0}{\infty}{E}{\frac{CE^{n}}{z^{-1}e^{\beta E} \pm 1}} \\
+	  &= C\integ{0}{\infty}{E}{\frac{E^{n}ze^{-\beta E}}{1 \pm ze^{-\beta E}}} \\
+	  &= C\left(\frac{1}{\beta}\right)^{n + 1}\integ{0}{\infty}{u}{\frac{u^{n}ze^{-u}}{1 \pm ze^{-u}}} \\
+	  &= C\left(\kb T\right)^{n + 1}\integ{0}{\infty}{u}{u^{n}ze^{-u}\sum\limits_{k = 0}^{\infty}\left(\mp ze^{-u}\right)^{k}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\sum\limits_{k = 0}^{\infty}\left(\mp z\right)^{k + 1}\integ{0}{\infty}{u}{u^{n}e^{-(k + 1)u}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\sum\limits_{k = 0}^{\infty}\left(\mp z\right)^{k + 1}\left(\frac{1}{k + 1}\right)^{n + 1}\integ{0}{\infty}{x}{x^{n}e^{-x}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\Gamma(n + 1)\sum\limits_{k = 0}^{\infty}\frac{\left(\mp z\right)^{k + 1}}{(k + 1)^{n + 1}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\Gamma(n + 1)\sum\limits_{m = 1}^{\infty}\frac{\left(\mp z\right)^{m}}{m^{n + 1}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\Gamma(n + 1)\Li{n + 1}{\mp z}.
+\end{align*}
 
 \paragraph{The Fermi Energy}
-Consider a gas of fermions, a Fermi gas, at $T = 0$. At this temperature, the fermions will fill up states from the lowest energy, $2s + 1$ at a time, until they hit a certain maximal energy, defined to be the Fermi energy. Based on this a more explicit definition of the Fermi energy is
+Consider a gas of fermions, a Fermi gas, at $T = 0$. At this temperature, the fermions will fill up states from the lowest energy, $\eta(s)$ at a time, until they hit a certain maximal energy, defined to be the Fermi energy. As the chemical potential is the cost of adding a new particle, a more explicit definition of the Fermi energy is
 \begin{align*}
 	E_{\text{F}} = \eval{\mu}_{T = 0}.
 \end{align*}
-%TODO: Why does this make sense?
 
+\paragraph{The Fermi Wave Vector}
 At $T = 0$, $\beta$ is very large. This means that the occupation number for a quantum gas is
 \begin{align*}
 	n_{\vb{k}} = \frac{1}{e^{\beta(E_{\vb{k}} - \mu)} + 1} \to \theta(\mu - E_{\vb{k}}) = \theta(E_{\text{F}} - E_{\vb{k}})
 \end{align*}
 where $\theta$ is the Heaviside function. We thus obtain
 \begin{align*}
-	N = \integ[3]{}{}{\vb{k}}{g(\vb{k})}
+	N = \integ[3]{}{}{\vb{k}}{\rho(\vb{k})}
 \end{align*}
 where we integrate over a sphere of radius $k_{\text{F}} = k(E_{\text{F}})$. This wave vector is called the Fermi wave vector.
 
@@ -207,7 +206,7 @@ Introduce the antiderivative $\psi$ of $\phi$ such that $\psi(0) = 0$. We thus h
 \begin{align*}
 	I = -\integ{0}{\infty}{E}{\psi(E)\dv{f}{E}}.
 \end{align*}
-Introducing $x = \beta(E - \mu)$, we can somehow expand $\psi$ as
+Introducing $x = \beta(E - \mu)$, we can expand $\psi$ as
 \begin{align*}
 	\psi = \sum\limits_{s = 0}^{\infty}\eval{\dv[s]{\psi}{x}}_{x = 0}\frac{x^{s}}{s!},
 \end{align*}
@@ -234,6 +233,7 @@ We thus finally obtain the Sommerfeld formula
 \begin{align*}
 	I &\approx \sum\limits_{s = 0}^{\infty}\frac{1}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{-\infty}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} \\
 	  &= \sum\limits_{s = 0}^{\infty}\frac{1}{(2s)!}\eval{\dv[2s]{\psi}{x}}_{x = 0}2(2s!)(1 - 2^{1 - 2s})\zeta(2s) \\
+	  &= 2\sum\limits_{s = 0}^{\infty}(1 - 2^{1 - 2s})\zeta(2s)\eval{\dv[2s]{\psi}{x}}_{x = 0} \\
 	  &= \psi(x = 0) + \frac{\pi^{2}}{6}\eval{\dv[2]{\psi}{x}}_{x = 0} + \frac{7\pi^{4}}{360}\eval{\dv[4]{\psi}{x}}_{x = 0} + \dots \\
 	  &= \integ{0}{\mu}{E}{\phi} + \frac{\pi^{2}}{6}\eval{\dv{\phi}{x}}_{E = \mu} + \frac{7\pi^{4}}{360}\eval{\dv[3]{\phi}{x}}_{E = \mu} + \dots
 \end{align*}
