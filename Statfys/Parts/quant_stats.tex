@@ -415,17 +415,17 @@ We also introduce the Debye temperature
 	T_{\text{D}} = \frac{\hbar\omega_{\text{D}}}{\kb}.
 \end{align*}
 
-Now we are ready to handle the statistical mechanics of the gas. We have
+Now we are ready to handle the statistical mechanics of the gas. Assuming linear dispersion, we have
 \begin{align*}
-	\ln{\Z} = \integ{0}{\infty}{\omega}{\rho(\omega)\ln(\frac{e^{-\frac{1}{2}\beta\hbar\omega}}{1 - e^{-\beta\hbar\omega}})}.
+	\ln{\Z} = -\integ{0}{\infty}{E}{\rho(E)\ln(1 - e^{-\beta E})} = -\integ{0}{\infty}{\omega}{\rho(\omega)\ln(1 - e^{-\beta\hbar\omega})}.
 \end{align*}
 For the Einstein case we obtain
 \begin{align*}
-	\ln{\Z} = dN\ln(\frac{e^{-\frac{1}{2}\beta\hbar\omega_{\text{E}}}}{1 - e^{-\beta\hbar\omega_{\text{E}}}}) = dN\left(-\frac{1}{2}\beta\hbar\omega_{\text{E}} - \ln(1 - e^{-\beta\hbar\omega_{\text{E}}})\right).
+	\ln{\Z} = -dN\ln(1 - e^{-\beta\hbar\omega_{\text{E}}}).
 \end{align*}
 The internal energy is given by
 \begin{align*}
-	U = -dN\left(-\frac{1}{2}\hbar\omega_{\text{E}} - \frac{\hbar\omega_{\text{E}}e^{-\beta\hbar\omega_{\text{E}}}}{1 - e^{-\beta\hbar\omega_{\text{E}}}}\right) = dN\hbar\omega_{\text{E}}\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\omega_{\text{E}}} - 1}\right).
+	U = dN\frac{\hbar\omega_{\text{E}}e^{-\beta\hbar\omega_{\text{E}}}}{1 - e^{-\beta\hbar\omega_{\text{E}}}} = dN\hbar\omega_{\text{E}}\frac{1}{e^{\beta\hbar\omega_{\text{E}}} - 1}.
 \end{align*}
 The heat capacity is given by
 \begin{align*}
@@ -439,17 +439,15 @@ corresponding to the equipartition result. At low temperatures we obtain
 \begin{align*}
 	C \approx dN\kb\left(\frac{T_{\text{E}}}{T}\right)^{2}e^{-\frac{T_{\text{E}}}{T}}.
 \end{align*}
-While it does predict that the heat capacity vanishes at low temperatures, a failure of classical equipartition theory, the experimental results show a behaviour like $T^{-3}$ at low temperatures, meaning that the Einstein model is too simple.
+While it does predict that the heat capacity vanishes at low temperatures, a failure of classical equipartition theory, the experimental results show a behaviour like $T^{3}$ at low temperatures, meaning that the Einstein model is too simple.
 
-For the Debye case we first write
+For the Debye case we have
 \begin{align*}
-	\ln{\Z} &= \integ{0}{\omega_{\text{D}}}{\omega}{\frac{d^{2}N}{\omega_{\text{D}}^{d}}\omega^{d - 1}\ln(\frac{e^{-\frac{1}{2}\beta\hbar\omega}}{1 - e^{-\beta\hbar\omega}})} \\
-	        &= \integ{0}{\omega_{\text{D}}}{\omega}{\frac{d^{2}N}{\omega_{\text{D}}^{d}}\omega^{d - 1}\left(-\frac{1}{2}\beta\hbar\omega - \ln(1 - e^{-\beta\hbar\omega})\right)} \\
-	        &= -\frac{d^{2}N}{2(d + 1)}\beta\hbar\omega_{\text{D}} - \frac{d^{2}N}{\omega_{\text{D}}^{d}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d - 1}\ln(1 - e^{-\beta\hbar\omega})}.
+	\ln{\Z} &= -\frac{d^{2}N}{\omega_{\text{D}}^{d}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d - 1}\ln(1 - e^{-\beta\hbar\omega})}.
 \end{align*}
 The internal energy is thus given by
 \begin{align*}
-	U = \frac{d^{2}N}{2(d + 1)}\hbar\omega_{\text{D}} + \frac{d^{2}N}{\omega_{\text{D}}^{d}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d - 1}\frac{\hbar\omega e^{-\beta}}{1 - e^{-\beta\hbar\omega}}} = \frac{d^{2}N}{2(d + 1)}\hbar\omega_{\text{D}} + \frac{d^{2}N}{\omega_{\text{D}}^{d}}\hbar\integ{0}{\omega_{\text{D}}}{\omega}{\frac{\omega^{d}}{e^{\beta\hbar\omega} - 1}}.
+	U = \frac{d^{2}N}{\omega_{\text{D}}^{d}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d - 1}\frac{\hbar\omega e^{-\beta}}{1 - e^{-\beta\hbar\omega}}} = \frac{d^{2}N}{\omega_{\text{D}}^{d}}\hbar\integ{0}{\omega_{\text{D}}}{\omega}{\frac{\omega^{d}}{e^{\beta\hbar\omega} - 1}}.
 \end{align*}
 The heat capacity is
 \begin{align*}

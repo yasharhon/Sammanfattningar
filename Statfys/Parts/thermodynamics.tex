@@ -228,28 +228,6 @@ The third law was initially concerned with the issue of determining absolute ent
 
 Simon's idea of aspects are based on a closer and closer inspections of a system. Considering a crystal for instance, it can be studied as a macroscopic entity or in terms of the individual atoms comprising it. These are, in turn, built up of nucleons, which are made up of quarks and so on (potentially). Each of these is termed an aspect.
 
-\paragraph{Consequences of the Third Law}
-Now we examine some of the consequences of the third law.
-
-The first consequence is for heat capacities near absolute zero. We have
-\begin{align*}
-	C = T\pdv{S}{T} = \pdv{S}{\ln{T}} \to 0.
-\end{align*}
-One might suspect that the first equality implies it (and I don't know why it does not). But the second statement guarantees it somehow, as the third law implies that the entropy is bounded at low temperatures.
-
-A second consequence is for thermal expansion. The third law implies
-\begin{align*}
-	\fix{\pdv{S}{p}}{T} \to 0
-\end{align*}
-near absolute zero, which implies
-\begin{align*}
-	\fix{\pdv{V}{T}}{p} \to 0.
-\end{align*}
-
-A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
-
-A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
-
 \paragraph{Natural Variables For Internal Energy}
 Our restatement of the first law implies that $U$ is most naturally written as a function of $S$ and $x$ (naturally it could be written in terms of other variables too, but you would have to change variables from $S$ and $x$ in order to do that. A switch from $S$ to $T$ would for instance be rewriting $U$ as $U(S(T), x)$). The restatement also implies
 \begin{align*}
@@ -330,6 +308,36 @@ implying that $\GP$ is a function of $V$, $T$ and $\mu_{i}$, as well as
 	S = - \fix{\pdv{\GP}{T}}{V, \mu},\ p = - \fix{\pdv{\GP}{V}}{T, \mu},\ N_{i} = - \fix{\pdv{\GP}{\mu_{i}}}{T, V, N_{j}}.
 \end{align*}
 
+\paragraph{Maxwell Relations}
+Using the symmetry of partial derivatives for a state function, one can obtain relations between derivatives of other state functions.
+
+As an example, the derivatives of $F$ are $-S$ and $-p$, computed with respect to $T$ and $V$. This implies
+\begin{align*}
+	\fix{\pdv{S}{V}}{T} = \fix{\pdv{p}{T}}{V}.
+\end{align*}
+
+\paragraph{Consequences of the Third Law}
+Now we examine some of the consequences of the third law.
+
+The first consequence is for heat capacities near absolute zero. We have
+\begin{align*}
+	C = T\pdv{S}{T} = \pdv{S}{\ln{T}} \to 0.
+\end{align*}
+One might suspect that the first equality implies it (and I don't know why it does not). But the second statement guarantees it somehow, as the third law implies that the entropy is bounded at low temperatures.
+
+A second consequence is for thermal expansion. The third law implies
+\begin{align*}
+	\fix{\pdv{S}{p}}{T} \to 0
+\end{align*}
+near absolute zero, which implies
+\begin{align*}
+	\fix{\pdv{V}{T}}{p} \to 0.
+\end{align*}
+
+A third consequence is for ideal systems, such as the ideal gas and non-interacting spin systems. These cannot be ideal at low temperatures, a fact that might be guessed at based on tendencies in their entropies, but can also be justified by the fact that interactions between units in the system can be disregarded at high temperatures, where the ideal models are valid, but not at lower temperatures.
+
+A final consequence is the fact that one cannot cool to $T = 0$ in a finite number of steps, a fact which is not easy to prove rigorously.
+
 \paragraph{Reinterpretation of the Chemical Potential and Grand Potential}
 Consider a system of only one kind of particles which is scaled by a factor $\lambda$. The entropy, expressed as a function of $U$, $V$ and $N$ is extensive, yielding that it, too, is scaled by a factor $\lambda$. Let a subscript $\lambda$ denote quantities for a scaled system. We thus have
 \begin{align*}
@@ -357,6 +365,19 @@ This also implies
 \begin{align*}
 	\GP = -pV.
 \end{align*}
+
+\paragraph{The Gibbs-Duhem Relation}
+We have
+\begin{align*}
+	\dd{\mu_{i}N_{i}} = \mu_{i}\dd{N_{i}} + N_{i}\dd{\mu_{i}} = \dd{G} = V\dd{p} - S\dd{T} + \mu_{i}\dd{N_{i}},
+\end{align*}
+which yields the Gibbs-Duhem relation
+\begin{align*}
+	N_{i}\dd{\mu_{i}} = V\dd{p} - S\dd{T}.
+\end{align*}
+
+\paragraph{Chemical Potential Without Particle Conservation}
+For certain systems, there are no conservation laws for the number of particles. In such cases, if the chemical potential is fixed, the system will evolve in such a way as to minimize the availability with respect to the number of particles, which corresponds to $\mu = 0$. If there is a conservation law present, one must instead construct a constraint on the chemical potentials.
 
 \paragraph{Availability and Equilibrium}
 The availability is a more general quantity which can be defined appropriately for systems with given constraints. Its differential will give both the maximal amount of work that can be performed by a system and a general equilibrium condition for the system.
@@ -405,25 +426,35 @@ Energy conservation implies that the two internal energy changes must balance ea
 \end{align*}
 and hence the systems reach equilibrium when they reach the same temperature.
 
-\paragraph{Maxwell Relations}
-Using the symmetry of partial derivatives for a state function, one can obtain relations between derivatives of other state functions.
-
-As an example, the derivatives of $F$ are $-S$ and $-p$, computed with respect to $T$ and $V$. This implies
-\begin{align*}
-	\fix{\pdv{S}{V}}{T} = \fix{\pdv{p}{T}}{V}.
-\end{align*}
-
-\paragraph{Chemical Potential Without Particle Conservation}
-For certain systems, there are no conservation laws for the number of particles. In such cases, if the chemical potential is fixed, the system will evolve in such a way as to minimize the availability with respect to the number of particles, which corresponds to $\mu = 0$. If there is a conservation law present, one must instead construct a constraint on the chemical potentials.
-
-\paragraph{Gaseous Chemical Reactions}
-
 \paragraph{Latent Heat}
-Consider a phase transition. During such a transition the temperature is constant, and in order for the transition to occur a certain amount of heat must be supplied. This is called the latent heat and is given by
+Consider a phase transition. During such a transition the temperature is constant, in addition to an additional constraint of fixed volume or pressure. In order for the transition to occur a certain amount of heat must be supplied, called the latent heat. Using the fact that the free energy is continuous (and attributing the latent heat to a change in internal energy or enthalpy) we have
 \begin{align*}
 	L = T_{\text{c}}\Delta S.
 \end{align*}
 In many contexts you will instead meet specific latent heats, denoted as $l$, which may be per mass or per mole.
+
+\paragraph{The Clausius-Clapeyron Equation}
+Consider two phases, denoted $1$ and $2$, in equilibrium. We are interested in computing the coexistence curve between the two phases, i.e. the curve of all points such that the two phases are in equilibrium. The experimentally relevant constraints are typically constant pressure and temperature, so we want to study the coexistence curve in the $p$-$T$ diagram and find the coexistence curve when these two variables are fixed.
+
+At any point of coexistence we have
+\begin{align*}
+\dd{G} = \mu_{1}\dd{N_{1}} + \mu_{2}\dd{N_{2}} = 0.
+\end{align*}
+Conservation of particle number implies that
+\begin{align*}
+\mu_{1} = \mu_{2}.
+\end{align*}
+Now, supposing we were to move along the coexistence curve in the $p-T$ plane, the fact that the chemical potential is the Gibbs free energy per particle we have
+\begin{align*}
+-s_{1}\dd{T} + v_{1}\dd{p} = -s_{2}\dd{T} + v_{2}\dd{p}
+\end{align*}
+where $s$ and $v$ are entropies and volumes per particle. Solving this yields
+\begin{align*}
+\dv{p}{T} = \frac{s_{2} - s_{1}}{v_{2} - v_{1}} = \frac{l}{T(v_{2} - v_{1})},
+\end{align*}
+where $l$ is the latent heat per particle. The involved quantities per particle may equivalently be replaced by the corresponding molar quantities.
+
+\paragraph{Gaseous Chemical Reactions}
 
 \paragraph{Trouton's Rule}
 For an interaction-free fluid, the multiplicity is proportional to the volume, yielding that the molar multiplicity ratio is
@@ -434,28 +465,3 @@ as liquids are approximately $1000$ times as dense as vapours. The molar latent 
 \begin{align*}
 	\frac{L}{n} = 7RT_{\text{c}}.
 \end{align*}
-
-\paragraph{The Clausius-Clapeyron Equation}
-Consider two phases, denoted $1$ and $2$, in equilibrium. We are interested in computing the coexistence curve between the two phases, i.e. the curve of all points such that the two phases are in equilibrium. The experimentally relevant constraints are typically constant pressure and temperature, so we want to study the coexistence curve in the $p-T$ diagram and find the coexistence curve when these two variables are fixed.
-
-At any point of coexistence we have
-\begin{align*}
-	\dd{G} = \mu_{1}\dd{N_{1}} + \mu_{2}\dd{N_{2}} = 0.
-\end{align*}
-Conservation of particle number implies that
-\begin{align*}
-	\mu_{1} = \mu_{2}.
-\end{align*}
-Now, supposing we were to move along the coexistence curve in the $p-T$ plane, the fact that the chemical potential is the Gibbs free energy per particle we have
-\begin{align*}
-	-s_{1}\dd{T} + v_{1}\dd{p} = -s_{2}\dd{T} + v_{2}\dd{p}
-\end{align*}
-where $s$ and $v$ are entropies and volumes per particle. Solving this yields
-\begin{align*}
-	\dv{p}{T} = \frac{s_{2} - s_{1}}{v_{2} - v_{1}} = \frac{l}{T(v_{2} - v_{1})},
-\end{align*}
-where $l$ is the latent heat per particle. We finally obtain
-\begin{align*}
-	\dv{p}{T} = \frac{L}{T(V_{2} - V_{1})},
-\end{align*}
-which is the Clausius-Clapeyron equation. Yes, this derivation handles the differences between particles poorly.

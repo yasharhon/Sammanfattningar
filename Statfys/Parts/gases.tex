@@ -206,16 +206,63 @@ For an ideal gas we have
 \end{align*}
 This yields
 \begin{align*}
-	\gamma\rho_{1}\tilde{u}_{1}v + \frac{1}{2}\rho_{1}v^{3} = \gamma\rho_{2}\tilde{u}_{2}v_{2} + \frac{1}{2}\rho_{2}v_{2}^{3}.
+	p_{i}v_{i} + \left(\rho_{i}\tilde{u}_{i} + \frac{1}{2}\rho_{i}v_{i}^{2}\right)v_{i} = \tilde{u}_{i}(\gamma - 1)\rho_{i}v_{i} + \left(\rho_{i}\tilde{u}_{i} + \frac{1}{2}\rho_{i}v_{i}^{2}\right)v_{i} = \gamma\tilde{u}_{i}\rho_{i}v_{i} + \frac{1}{2}\rho_{i}v_{i}^{3},
 \end{align*}
-Combining this with the mass conservation and the expression for the internal energy yields
+and thus
+\begin{align*}
+	\gamma\tilde{u}_{1}\rho_{1}v + \frac{1}{2}\rho_{1}v^{3} = \gamma\tilde{u}_{2}\rho_{2}v_{2} + \frac{1}{2}\rho_{2}v_{2}^{3}.
+\end{align*}
+Combining this with the mass conservation yields
 \begin{align*}
 	\frac{\gamma}{\gamma - 1}\frac{p_{1}}{\rho_{1}} + \frac{1}{2}v^{2} = \frac{\gamma}{\gamma - 1}\frac{p_{2}}{\rho_{2}} + \frac{1}{2}v_{2}^{2}.
 \end{align*}
-%TODO: Complete
-The computations are long, so for now I will just state the final result
+The momentum conservation implies
 \begin{align*}
-	\frac{p_{2}}{p_{1}} = \frac{2\gamma M^{2} - (\gamma - 1)}{\gamma + 1},\ \frac{\rho_{2}}{\rho_{1}} = \frac{v_{1}}{v_{2}} = \frac{(\gamma + 1)M^{2}}{2 + (\gamma - 1)M^{2}}.
+	p_{2} - p_{1} = \Phi^{2}\left(\frac{1}{\rho_{1}} - \frac{1}{\rho_{2}}\right).
+\end{align*}
+Introducing the mass flow $\Phi$ and writing
+\begin{align*}
+	v^{2} - v_{2}^{2} = \Phi^{2}\left(\frac{1}{\rho_{1}^{2}} - \frac{1}{\rho_{2}^{2}}\right) = (p_{2} - p_{1})\left(\frac{1}{\rho_{1}} + \frac{1}{\rho_{2}}\right),
+\end{align*}
+we may insert this to obtain
+\begin{align*}
+	\frac{\gamma}{\gamma - 1}\frac{p_{1}}{\rho_{1}} + \frac{1}{2}(p_{2} - p_{1})\left(\frac{1}{\rho_{1}} + \frac{1}{\rho_{2}}\right) = \frac{\gamma}{\gamma - 1}\frac{p_{2}}{\rho_{2}}.
+\end{align*}
+We simplify to obtain
+\begin{align*}
+	2\gamma p_{1} + (\gamma - 1)(p_{2} - p_{1})\left(1 + \frac{\rho_{1}}{\rho_{2}}\right) &= 2\gamma\frac{\rho_{1}}{\rho_{2}}p_{2}, \\
+	\frac{\rho_{1}}{\rho_{2}}\left(2\gamma p_{2} - (\gamma - 1)(p_{2} - p_{1})\right)     &= (\gamma + 1)p_{1} + (\gamma - 1)p_{2}, \\
+	\frac{\rho_{1}}{\rho_{2}}                                                             &= \frac{(\gamma + 1)p_{1} + (\gamma - 1)p_{2}}{(\gamma - 1)p_{1} + (\gamma + 1)p_{2}}.
+\end{align*}
+Now that the mass flow has been reduced to containing the pressures and densities and these are connected, we will try to express everything in terms of the Mach number. For an ideal gas we have $v_{\text{s}} = \sqrt{\frac{\gamma p}{\rho}}$. As the non-shocked air defines the Mach number, we have
+\begin{align*}
+	M = v\sqrt{\frac{\rho_{1}}{\gamma p_{1}}},\ v^{2} = M^{2}\frac{\gamma p_{1}}{\rho_{1}}
+\end{align*}
+We thus write
+\begin{align*}
+	v^{2} &= \frac{\Phi^{2}}{\rho_{1}^{2}} = \frac{p_{2} - p_{1}}{\rho_{1}\left(1 - \frac{\rho_{1}}{\rho_{2}}\right)} \\
+	      &= \frac{p_{2} - p_{1}}{\rho_{1}\left(1 - \frac{(\gamma + 1)p_{1} + (\gamma - 1)p_{2}}{(\gamma - 1)p_{1} + (\gamma + 1)p_{2}}\right)} \\
+	      &= \frac{p_{2} - p_{1}}{\rho_{1}}\frac{(\gamma - 1)p_{1} + (\gamma + 1)p_{2}}{(\gamma - 1)p_{1} + (\gamma + 1)p_{2} - (\gamma + 1)p_{1} - (\gamma - 1)p_{2}} \\
+	      &= \frac{p_{2} - p_{1}}{2\rho_{1}}\frac{(\gamma - 1)p_{1} + (\gamma + 1)p_{2}}{p_{2} - p_{1}} \\
+	      &= \frac{(\gamma - 1)p_{1} + (\gamma + 1)p_{2}}{2\rho_{1}}.
+\end{align*}
+Equating this to the expression in terms of the Mach number and multiplying by $\rho_{1}$ yields
+\begin{align*}
+	2M^{2}\gamma p_{1}              &= (\gamma - 1)p_{1} + (\gamma + 1)p_{2}, \\
+	(\gamma + 1)\frac{p_{2}}{p_{1}} &= 2M^{2}\gamma + 1 - \gamma, \\
+	\frac{p_{2}}{p_{1}}             &= \frac{2M^{2}\gamma + 1 - \gamma}{\gamma + 1}.
+\end{align*}
+Using a previously derived expression,, we can now also solve for the densities. We have
+\begin{align*}
+	\frac{\rho_{2}}{\rho_{1}} &= \frac{(\gamma - 1)p_{1} + (\gamma + 1)p_{2}}{(\gamma + 1)p_{1} + (\gamma - 1)p_{2}} \\
+	                          &= \frac{(\gamma - 1) + (\gamma + 1)\frac{p_{2}}{p_{1}}}{(\gamma + 1) + (\gamma - 1)\frac{p_{2}}{p_{1}}} \\
+	                          &= \frac{(\gamma - 1) + (\gamma + 1)\frac{2M^{2}\gamma + 1 - \gamma}{\gamma + 1}}{(\gamma + 1) + (\gamma - 1)\frac{2M^{2}\gamma + 1 - \gamma}{\gamma + 1}} \\
+	                          &= \frac{(\gamma - 1)(\gamma + 1) + (\gamma + 1)(2M^{2}\gamma + 1 - \gamma)}{(\gamma + 1)^{2} + (\gamma - 1)(2M^{2}\gamma + 1 - \gamma)} \\
+	                          &= \frac{2M^{2}\gamma(\gamma + 1)}{4\gamma + 2M^{2}\gamma(\gamma - 1)} \\
+	                          &= \frac{(\gamma + 1)M^{2}}{2 + (\gamma - 1)M^{2}}.
 \end{align*}
 
-%TODO: Entropy difference?
+The equations as they stand allow expansive shocks, corresponding to $M < 1$. However, this would correspond to shocked gas accelerating and expanding, violating the second law of thermodynamic. Hence shocks only occur for $M > 1$. For such shocks the ideal gas law can be used to obtain
+\begin{align*}
+	\Delta S = C_{V}\ln(\frac{p_{2}}{p_{1}}\left(\frac{\rho_{1}}{\rho_{2}}\right)^{\gamma}) = C_{V}\ln(\frac{2M^{2}\gamma + 1 - \gamma}{\gamma + 1}\left(\frac{(\gamma + 1)M^{2}}{2 + (\gamma - 1)M^{2}}\right)^{\gamma}).
+\end{align*}
