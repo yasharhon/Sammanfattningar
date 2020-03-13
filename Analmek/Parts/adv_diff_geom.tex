@@ -1,24 +1,68 @@
-\section{Geometry}
+\section{Advanced Differential Geometry}
 
-\paragraph{Covariant derivatives and Christoffel symbols}
-When computing a derivative, one must account both for the change in the quantity itself and the change of basis. We have
+In this part we will expand on the previously discussed concepts of differential geometry, mainly by incorporating our knowledge of tensors into it.
+
+\paragraph{The Metric Tensor}
+The metric tensor $g$ is a rank $2$ tensor. We start by defining it as $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$, but more generally the metric tensor defines the inner product.
+
+The metric tensor is symmetric. Its components satisfy
 \begin{align*}
-	\del{b}{\tb{a}} = \chris{c}{b}{a}\tb{c}
+	v_{a} = \vb{E}_{a}\cdot v^{b}\vb{E}_{b} = g(\vb{E}_{a}, \vb{E}_{b})v^{b} = g_{ab}v^{b},
 \end{align*}
-where the $\chris{c}{b}{a}$ are called Christoffel symbols. These satisfy
+and likewise
+\begin{align*}
+	v^{a} = g^{ab}v_{b}
+\end{align*}
+where $\vb{v}$ is a vector. This demonstrates the capabilities of the metric to raise and lower indices.
+
+We note that
+\begin{align*}
+	v_{a} = g_{ab}v^{b} = g_{ab}g^{bc}v_{c},
+\end{align*}
+which implies $g_{ab}g^{bc} = \kdelta{a}{c}$.
+
+\example{The Metric in Polar Coordinates}
+The contravariant components of the metric tensor, according to the definition, are
+\begin{align*}
+	g_{rr} = \tb{r}\cdot\tb{r} = 1,\ g_{r\phi} = g_{\phi r} = \tb{r}\cdot\tb{\phi} = 0,\ g_{\phi\phi} = \tb{\phi}\cdot\tb{\phi} = r^{2}.
+\end{align*}
+Likewise, the covariant components are
+\begin{align*}
+	g^{rr} = \db{r}\cdot\db{r} = 1,\ g_{r\phi} = g_{\phi r} = \db{r}\cdot\db{\phi} = 0,\ g_{\phi\phi} = \db{\phi}\cdot\db{\phi} = \frac{1}{r^{2}}.
+\end{align*}
+
+\paragraph{Christoffel Symbols}
+When computing the derivative of a vector quantity, one must account both for the change in the quantity itself and the change in the basis vectors. We define the Christoffel symbols according to
+\begin{align*}
+	\del{b}{\tb{a}} = \chris{c}{b}{a}\tb{c}.
+\end{align*}
+These can be computed according to
 \begin{align*}
 	\db{c}\cdot\del{b}{\tb{a}} = \db{c}\cdot\chris{d}{b}{a}\tb{d} = \kdelta{d}{c}\chris{d}{b}{a} = \chris{c}{b}{a}.
 \end{align*}
 Note that
 \begin{align*}
-	\del{a}{\tb{b}} = \del{a}{\del{b}{\vb{x}}} = \del{b}{\del{a}{\vb{x}}} = \del{b}{\tb{a}},
+	\del{a}{\tb{b}} = \del{a}{\del{b}{\vb{r}}} = \del{b}{\del{a}{\vb{r}}} = \del{b}{\tb{a}},
 \end{align*}
 which implies
 \begin{align*}
 	\chris{c}{b}{a} = \chris{c}{a}{b}.
 \end{align*}
 
-Using this, we can compute the partial derivate of $\vb{v} = v^{a}\tb{a}$ with respect to $\chi^{a}$ as
+Do the Christoffel symbols define a tensor? Someone should probably study that.
+
+\example{Christoffel Symbols in Polar Coordinates}
+To compute these, we need partial derivative of the basis vectors. We have
+\begin{align*}
+	\del{r}{\tb{r}} = \vb{0},\ \del{\phi}{\tb{r}} = \del{r}{\tb{\phi}} = \frac{1}{r}\tb{\phi},\ \del{\phi}{\tb{\phi}} = -r\tb{r}.
+\end{align*}
+We thus obtain
+\begin{align*}
+	\chris{a}{r}{r} = 0,\ \chris{r}{r}{\phi} = 0,\ \chris{\phi}{r}{\phi} = \frac{1}{r},\ \chris{r}{\phi}{\phi} = -r,\ \chris{\phi}{\phi}{\phi} = 0.
+\end{align*}
+
+\paragraph{Covariant Derivatives}
+The partial derivate of $\vb{v} = v^{a}\tb{a}$ with respect to $\chi^{a}$ is given by
 \begin{align*}
 	\del{a}{\vb{v}} = \tb{b}\del{a}{v^{b}} + v^{b}\del{a}{\tb{b}} = \tb{b}\del{a}{v^{b}} + v^{b}\chris{c}{a}{b}\tb{c}.
 \end{align*}
@@ -26,14 +70,19 @@ Renaming the summation indices yields
 \begin{align*}
 	\del{a}{\vb{v}} = \tb{b}(\del{a}{v^{b}} + v^{c}\chris{b}{a}{c}),
 \end{align*}
-which contains one term from the change in the coordinates and one term from the change in basis. We now define the covariant derivative of the contravariant components of $\vb{v}$ as
-\begin{align*}
-	\dcov{a}{v^{b}} = \del{a}{v^{b}} + v^{c}\chris{b}{a}{c}.
-\end{align*}
+which contains one term from the change in the coordinates and one term from the change in basis.
 
-We would also like to define the covariant derivative of the covariant components of a vector field. To do this, we use the fact that
+Realizing that derivatives of vector quantities must take both of these into account in order to transform like a tensor, we would like to define a differentiation operation that takes both of these to account when differentiating vector components. This is the covariant derivative. We define its action on contravariant vector components as
 \begin{align*}
-	\del{a}{\tb{b}\cdot\db{c}} = \del{a}{\kdelta{b}{c}} = 0.
+	\dcov{a}{v^{b}} = \del{a}{v^{b}} + v^{c}\chris{b}{a}{c},
+\end{align*}
+such that
+\begin{align*}
+	\del{a}{\vb{v}} = E_{b}\dcov{a}{v^{a}}.
+\end{align*}
+In a similar fashion we would like to define its action on covariant vector components. To do this, we use the fact that
+\begin{align*}
+	\del{a}{(\tb{b}\cdot\db{c})} = \del{a}{\kdelta{b}{c}} = 0.
 \end{align*}
 The product rule yields
 \begin{align*}
@@ -48,7 +97,29 @@ Repeating the steps above now yields
 	\dcov{a}{v_{b}} = \del{a}{v_{b}} - \chris{c}{a}{b}v_{c}.
 \end{align*}
 
-\paragraph{Curve length}
+\paragraph{Covariant Derivatives of Tensor Fields}
+
+\paragraph{Christoffel Symbols and the Metric}
+The derivatives of the metric tensor are given by
+\begin{align*}
+	\del{c}{g_{ab}} = \tb{a}\cdot\del{c}{\tb{b}} + \tb{b}\cdot\del{c}{\tb{a}} = \tb{a}\cdot\chris{d}{c}{b}\tb{d} + \tb{b}\cdot\chris{d}{c}{a}\tb{d} = \chris{d}{c}{b}g_{ad} + \chris{d}{c}{a}g_{bd}.
+\end{align*}
+Multiplying by $g^{ea}$ and summing over $a$ yields
+\begin{align*}
+	g^{ea}\del{c}{g_{ab}} = \chris{d}{c}{b}g_{ad}g^{ea} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{d}{c}{b}g_{da}g^{ae} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{e}{c}{b} + \chris{d}{c}{a}g_{bd}g^{ea}.
+\end{align*}
+The hope is that this can be used to obtain an expression for the Christoffel symbols. To try to do that, we will compare this to the expression obtained by switching $c$ and $b$. This expression is
+\begin{align*}
+	g^{ea}\del{b}{g_{ac}} = \chris{e}{b}{c} + \chris{d}{b}{a}g_{cd}g^{ea} = \chris{e}{c}{b} + \chris{d}{b}{a}g_{cd}g^{ea},
+\end{align*}
+yielding
+\begin{align*}
+	\chris{e}{c}{b} &= \frac{1}{2}\left(g^{ea}\del{c}{g_{ab}} + g^{ea}\del{b}{g_{ac}} - \chris{d}{c}{a}g_{bd}g^{ea} - \chris{d}{b}{a}g_{cd}g^{ea}\right) \\
+	                &= \frac{1}{2}g^{ea}\left(\del{c}{g_{ab}} + \del{b}{g_{ac}} - \chris{d}{a}{c}g_{bd} - \chris{d}{a}{c}g_{cd}\right) \\
+	                &= \frac{1}{2}g^{ea}\left(\del{c}{g_{ab}} + \del{b}{g_{ac}} - \del{a}{g_{bc}}\right).
+\end{align*}
+
+\paragraph{Curve Length}
 Consider some curve parametrized by $t$, and let $\dot{\vb{\gamma}}$ denote its tangent. The curve length is given by
 \begin{align*}
 	\dd{s}^{2} = \dd{\vb{x}}\cdot\dd{\vb{x}} = g(\dot{\vb{\gamma}}, \dot{\vb{\gamma}})\dd{t}^{2} = g_{ab}\dot{\chi^{a}}\dot{\chi^{b}}\dd{t}^{2}.
