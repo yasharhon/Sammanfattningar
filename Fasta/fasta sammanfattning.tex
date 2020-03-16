@@ -3,6 +3,13 @@
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
 
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+
+\newcommand{\cdir}[1]{\ensuremath{\left[#1\right]}}
+\newcommand{\cplane}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\cpset}[1]{\ensuremath{\left\{#1\right\}}}
+
 \title{Summary of SK2758 Solid State Physics}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
 \date{\today}
@@ -25,5 +32,7 @@
 \newpage
 
 \pagenumbering{arabic}
+
+\input{./Parts/crystals.tex}
 
 \end{document}
