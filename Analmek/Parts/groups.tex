@@ -1,7 +1,7 @@
 \section{Group Theory}
 
-\paragraph{Definition of a group}
-A grou is a set of objects $G$ with an operation $G\times G\to G,\ (a, b)\to ab$ such that
+\paragraph{Definition of a Group}
+A group is a set of objects $G$ with an operation $G\times G\to G,\ (a, b)\to ab$ such that
 \begin{itemize}
 	\item If $a, b\in G$ then $ab\in G$.
 	\item $a(bc) = (ab)c$ for all $a, b, c\in G$.
@@ -11,24 +11,38 @@ A grou is a set of objects $G$ with an operation $G\times G\to G,\ (a, b)\to ab$
 Groups can be
 \begin{itemize}
 	\item cyclic, i.e. all elements in the group are powers of a single element.
-	\item finitie, i.e. groups containing a finite number of elements.
-	\item infinite.
-	\item discrete, i.e. all elements in the group can be labeled with some index.
-	\item continuous.
-	\item commutative, i.e. $ab = ba$ for all elements in the group.
+	\item finitie, i.e. groups containing a finite number of elements, or infinte.
+	\item discrete, i.e. all elements in the group can be labelled with some index, por continuous.
+	\item commutative, i.e. $ab = ba$ for all elements in the group, or non-commutative.
 \end{itemize}
 
 \paragraph{Subgroups}
 If $G = \{g_{\alpha}\}$ and the subset $H = \{h_{\alpha}\}$ is also a group, we call $H$ a subgroup of $G$ and write $H < G$.
+
+\paragraph{Conjugacy Classes}
+Two group elements $a$ and $b$ are conjugate if there exists an element $g$ such that
+\begin{align*}
+a = gbg^{-1}.
+\end{align*}
+We write $a\sim b$.
+
+\paragraph{Equivalence Relations}
+An equivalence relation is a relation (here denoted $=$) between two things such that
+\begin{itemize}
+	\item $a = b \equiv b = a$.
+	\item $a = b,\ b = c\implies a = c$.
+\end{itemize}
+
+\example{Conjugacy as an Equivalence Relation}
+
+\paragraph{Homomorphisms and Isomorphisms}
+A homomorphisms is a map $f: G\to H$ such that $f(g_{1})f(g_{2}) = f(g_{1}g_{2})$. If the map is bijective, $f$ is called an isomorphism.
 
 \paragraph{Generators}
 The generators of a group is the smallest set of elements in the group such that all other elements in the group can be composed by the elements in the set. In this context, we will use the generators in a wider context - for instance, the matrix $J$ that is used to create rotation matrices is said to be a generator of the group.
 
 \paragraph{Direct products}
 GIven two groups $F$ and $G$, we define $F\times G$ as the set of ordered pairs of elements of the two groups. The group action of $F\times G$ is the group actions of $F$ and $G$ separately on the elements in the ordered pair.
-
-\paragraph{Homomorphisms and isomorphisms}
-A homomorphisms is a map $f: G\to H$ such that $f(g_{1})f(g_{2}) = f(g_{1}g_{2})$. If the map is bijective, $f$ is called an isomorphism.
 
 \paragraph{Point groups}
 Point groups are symmetries of, for instance, a crystal structure that leave at least one point in the structure invariant. Examples include
@@ -45,18 +59,18 @@ The dihedral group $D_{n}$ is the group of transformations that leave an $n$-sid
 \paragraph{Lie groups}
 Formally, a Lie group is a group containing a manifold and the group operation and inverse operation being smooth maps on the manifold. Its elements are $g(\vb{\theta})$, where $g(\vb{0}) = 1$. We can expand the map as $g(\vb{\theta})\approx 1 + A$, where
 \begin{align*}
-	A = i\theta_{a}T_{a},
+A = i\theta_{a}T_{a},
 \end{align*}
 where the $T_{a}$ are the generators. That means that close to the identity, the non-commutativity of such maps is captured by the commutators, or Lie brackets:
 \begin{align*}
-	\lieb{T_{a}}{T_{b}} = if_{a, b, c}T_{c}.
+\lieb{T_{a}}{T_{b}} = if_{a, b, c}T_{c}.
 \end{align*}
 The generators are sel-adjoint, so the constants $f_{a, b, c}$ are real.
 
 \paragraph{Representations}
 A representation is a homomorphism $D: G\to GL(V)$, where $GL(V)$ is the group of all invertible linear transformations on $V$. The group elements thus act on $V$ according to
 \begin{align*}
-	D(g_{1})D(g_{2})v = D(g_{1}g_{2})v,\ v\in V.
+D(g_{1})D(g_{2})v = D(g_{1}g_{2})v,\ v\in V.
 \end{align*}
 
 \paragraph{Reducible and irreducible representations}
@@ -67,86 +81,86 @@ Consider a rotation of an infinitesimal displacement $\dd{\vb{x}}$ with a rotati
 
 Consider now a rotation by a small angle $\var{\theta}$. Taylor expanding it in terms of the angle yields
 \begin{align*}
-	R(\var{\theta}) \approx 1 + A\var{\theta}.
+R(\var{\theta}) \approx 1 + A\var{\theta}.
 \end{align*}
 The requirement for $R$ to be orthogonal yields $A^{T} = -A$. We choose the solution
 \begin{align*}
-	J =
-	\mqty[
-		0  & 1 \\
-		-1 & 0
-	].
+J =
+\mqty[
+0  & 1 \\
+-1 & 0
+].
 \end{align*}
 We can now write the rotation matrix as
 \begin{align*}
-	R(\var{\theta}) =
-	\mqty[
-		1             & \var{\theta} \\
-		-\var{\theta} & 1
-	].
+R(\var{\theta}) =
+\mqty[
+1             & \var{\theta} \\
+-\var{\theta} & 1
+].
 \end{align*}
 
 We would now like to construct a large rotation in terms of smaller rotations as
 \begin{align*}
-	R(\theta) = \lim\limits_{N\to\infty}\left(1 + \frac{\theta}{N}J\right)^{N} = e^{\theta J}.
+R(\theta) = \lim\limits_{N\to\infty}\left(1 + \frac{\theta}{N}J\right)^{N} = e^{\theta J}.
 \end{align*}
 We can write this as an infinite series and use the fact that $J^{2} = -1$ to obtain
 \begin{align*}
-	R(\theta) = \cos{\theta} + J\sin{\theta}.
+R(\theta) = \cos{\theta} + J\sin{\theta}.
 \end{align*}
 
 \paragraph{Rotatins in three dimensions}
 The argument done for two dimensions does not use the dimensionality, so we conclude that even for higher dimensions, $R^{T}R = 1$. Expanding a small rotation around the identity yields that the first-order term must include an antisymmetric matrix. The space of antisymmetric $3\times 3$ matrices is three-dimensional. We thus choose the basis
 \begin{align*}
-	J_{x} =
-	\mqty[
-		0 & 0  & 0 \\
-		0 & 0  & 1 \\
-		0 & -1 & 0
-	],
-	J_{y} =
-	\mqty[
-		0 & 0 & -1 \\
-		0 & 0 & 0  \\
-		1 & 0 & 0
-	],
-	J_{z} =
-	\mqty[
-		0  & 1 & 0 \\
-		-1 & 0 & 0 \\
-		0  & 0 & 0
-	].
+J_{x} =
+\mqty[
+0 & 0  & 0 \\
+0 & 0  & 1 \\
+0 & -1 & 0
+],
+J_{y} =
+\mqty[
+0 & 0 & -1 \\
+0 & 0 & 0  \\
+1 & 0 & 0
+],
+J_{z} =
+\mqty[
+0  & 1 & 0 \\
+-1 & 0 & 0 \\
+0  & 0 & 0
+].
 \end{align*}
 Exponentiating yields
 \begin{align*}
-	R(\theta) = e^{\sum \theta_{i}J_{i}} = e^{\vb{\theta}\cdot\vb{J}}.
+R(\theta) = e^{\sum \theta_{i}J_{i}} = e^{\vb{\theta}\cdot\vb{J}}.
 \end{align*}
 In physics we usually extract a factor $i$ such that the basis matrices are Hermitian, and the rotation becomes
 \begin{align*}
-	R(\theta) = e^{i\vb{\theta}\cdot\vb{J}}.
+R(\theta) = e^{i\vb{\theta}\cdot\vb{J}}.
 \end{align*}
 
 The set of generators of these rotations constitutes the Lie algebra.
 
 We know in general that rotations in three dimensions do not commute. In fact, we obtain in general that
 \begin{align*}
-	R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\lieb{J_{a}}{J_{b}},
+R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\lieb{J_{a}}{J_{b}},
 \end{align*}
 where $\lieb{J_{a}}{J_{b}}$ is the commutator. This commutator satisfies
 \begin{align*}
-	\lieb{J_{a}}{J_{b}}^{T} = \lieb{J_{b}^{T}}{J_{a}^{T}} = \lieb{-J_{b}}{-J_{a}} = -\lieb{J_{a}}{J_{b}},
+\lieb{J_{a}}{J_{b}}^{T} = \lieb{J_{b}^{T}}{J_{a}^{T}} = \lieb{-J_{b}}{-J_{a}} = -\lieb{J_{a}}{J_{b}},
 \end{align*}
 which implies
 \begin{align*}
-	\lieb{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
+\lieb{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
 \end{align*}
 It can be shown that
 \begin{align*}
-	\lieb{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
+\lieb{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
 \end{align*}
 or in a physics context (where a factor $i$ is extracted):
 \begin{align*}
-	\lieb{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
+\lieb{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
 \end{align*}
 
 \paragraph{Symmetries in classical mechanics}
@@ -165,7 +179,7 @@ If a system is invariant under some transformation $\vb{x}\to\vb{R}(\vb{x})$, th
 \paragraph{Connection to Noether's theorem}
 We defined symmetries of the action as transformations that satisy $\var{\lag} = 0$. In particular, we can construct a set of transformations such that $\del{s}{t} = \var{t},\ \del{s}{q^{a}} = \var{q^{a}}$, where $s$ is the symmetry parameter. This is a one-parameter family of symmetries. By defining $T_{s}q(t, 0) = q(t, s)$, these symmetries satisfy
 \begin{align*}
-	T_{s_{2}}T_{s_{1}}q(t, 0) = T_{s_{1} + s_{2}}q(t, 0).
+T_{s_{2}}T_{s_{1}}q(t, 0) = T_{s_{1} + s_{2}}q(t, 0).
 \end{align*}
 We see that these symmetries define a group.
 
