@@ -121,14 +121,16 @@ and so the Hamiltonian is conserved if it has no explicit time dependence.
 
 % Hamiltonian total energy
 
-\paragraph{Noether's theorem}
+\paragraph{Noether's Theorem}
 Noether's theorem relates symmetries - or, more specifically, quasi-symmetries, of physical systems to conservation laws.
 
-What is a quasi-symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$ and for small $s = \varepsilon$ that $t\to t + \varepsilon\var{t},\ q^{a}\to q^{a} + \varepsilon\var{q^{a}}$. This is assumed to be normalized such that $\var{t}$ is either $0$ or $1$. How? Don't ask. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
+What is a quasi-symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
 \begin{align*}
-	\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}
+	\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}\dd{s}
 \end{align*}
-for some $F$. The variation of the Lagrangian can be written as
+for some $F$. The case $F = 0$ is referred to as symmetries of the system.
+
+The variation of the Lagrangian can be written as
 \begin{align*}
 	\var{\lag} = \del{q^{a}}{\lag}\var{q^{a}} + \del{\dot{q}^{a}}{\lag}\var{\dot{q}^{a}} + \del{t}{\lag}\var{t}.
 \end{align*}
@@ -185,6 +187,28 @@ A third attempt is to somehow make the scalar product in the variation of the La
 	  &= -\vb{\omega}\cdot(\vb{x}\times\vb{p}).
 \end{align*}
 Since $\vb{\omega}$ is constant, that means that $\vb{x}\times\vb{p}$, i.e. the angular momentum, is conserved.
+
+\paragraph{Symmetry Groups in Classical Mechanics}
+
+\example{Newton's Second Law}
+Newton's second law $m\ddot{\vb{x}} = -\grad{V}$, assuming the potential to be fixed, has certain symmetry properties:
+\begin{itemize}
+	\item The transformation $t\to t' = t + t_{0}$ is a symmetry, as $\dv{t} = \dv{t'}$ and $V$ is not changed under the transformation.
+	\item The transformation $t\to\tau = -t$ is a symmetry as $\dv{t} = \dv{\tau}{t}\dv{\tau} = -\dv{\tau}$, which implies $\dv[2]{t} = \dv[2]{\tau}$ and $V$ is not changed under the transformation.
+	\item Considering a system of particles, if the forces between these only depend on differences between the position vectors, the translation $\vb{x}_{i}\to\vb{y}_{i} = \vb{x}_{i} + \vb{x}_{0}$ is a symmetry as it does not change any differences.
+\end{itemize}
+
+\example{Constraining Solutions Using Symmetries}
+If a system is invariant under some transformation $\vb{x}\to\vb{R}(\vb{x})$, then any property $u$ dependant on those coordinates satisfies $u(\vb{x}) = u(\vb{R}(\vb{x}))$.
+
+\paragraph{Connection to Noether's Theorem}
+We defined symmetries of the action as transformations that satisy $\var{\lag} = 0$. In particular, we can construct a set of transformations such that $\del{s}{t} = \var{t},\ \del{s}{q^{a}} = \var{q^{a}}$, where $s$ is the symmetry parameter. This is a one-parameter family of symmetries. By defining $T_{s}q(t, 0) = q(t, s)$, these symmetries satisfy
+\begin{align*}
+T_{s_{2}}T_{s_{1}}q(t, 0) = T_{s_{1} + s_{2}}q(t, 0).
+\end{align*}
+We see that these symmetries define a group.
+
+\example{A Particle in a Moving Potential}
 
 \paragraph{Liouville's theorem}
 As paths in phase space do not cross, we can think of the time evolution of a system as a flow in phase space. The volume element is $\dd{V} = \dd{q}\dd{p}$. Liouville's theorem states that flow in phase space is incompressible.
