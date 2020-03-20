@@ -85,3 +85,113 @@ Randomly stacked crystals are formed by densely packed layers of atoms being sta
 Polytopism is a milder variation of random stacking, where the order of the stacked layers is extremely long-range.
 
 %TODO: Add special structures
+
+\paragraph{X-Ray Diffraction}
+X-ray diffraction is the process of shining X-rays onto a material in order to characterize it. Before atomic physics, it was discovered that solids scattered X-rays intensely in specific directions, as opposed to light, which was reflected by the solid. In the context of solid-state physics, we can interpret this as crystal planes acting as diffraction grids that scatter the X-rays. This interpretation makes sense because the wavelength of X-rays is comparable to interatomic distances in a solid, consistent with the regime in which classical wave physics predicts that diffraction phenomena are significant, and the scattered light being localized is consistent with diffraction of other waves.
+
+\paragraph{Bragg's Law}
+Bragg's law was a first attempt at explaining X-ray diffraction patterns. To derive it, consider a solid composed of aligned and stacked atomic planes separated by a distance $d$ on which electromagnetic radiation of wavelength $\lambda$ is incident at angle $\theta$ to the planes, and suppose each plane reflects the radiation specularly (following the law of reflection) and elastically (preserving the wavelength). Comparing radiation reflected from two adjacent layers, the light in the lower layer travels a distance $2d\sin{\theta}$ longer. In order for the radiation from these layers to interfere constructively, we must have
+\begin{align*}
+	2d\sin{\theta} = n\lambda,\ n = 1, 2, \dots
+\end{align*}
+This is Bragg's law. It is a very rough description of X-ray diffraction, but predicts the phenomenology correctly. It also predicts that diffraction occurs for $\lambda < 2d$, which is why light, for instance, is not diffracted by solids.
+
+\paragraph{Fourier Analysis and Reciprocal Space}
+The translational symmetry of the lattice implies that the tools of Fourier analysis are applicable when studying solid-state physics. Any observable $A$ defined on the crystal lattice may be written as
+\begin{align*}
+	A = \sum\limits_{\vb{G}}A_{\vb{G}}e^{i\vb{G}\cdot\vb{r}}.
+\end{align*}
+The coefficients in the series expansion are given by
+\begin{align*}
+	A_{\vb{G}} = \frac{1}{V_{\text{cell}}}\integ[d]{\text{cell}}{}{\vb{r}}{A(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}.
+\end{align*}
+In order for $A$ to be an observable, we must have $A_{-\vb{G}} = \cc{A_{\vb{G}}}$. The fact that $A$ is an observable on the crystal lattice implies that it must have the same symmetries - in particular translational symmetry. This implies
+\begin{align*}
+	A(\vb{r} + u_{i}\vb{a}_{i}) = A(\vb{r}) \implies u_{i}\vb{G}\cdot\vb{a}_{i} = 2\pi n
+\end{align*}
+where $n$ is an integer. The vectors $\vb{G}$ must have reciprocal length as their dimension, and are thus vectors in what is termed reciprocal space.
+
+\paragraph{The Reciprocal Lattice}
+The simplest choice of vectors satisfying
+\begin{align*}
+	u_{i}\vb{G}\cdot\vb{a}_{i} = 2\pi n
+\end{align*}
+is integer combinations of a set of vectors $\{\vb{b}_{i}\}$ such that $\vb{a}_{i}\cdot\vb{b}_{j} = 2\pi\delta_{ij}$. The set of vectors $\{\vb{b}_{i}\}$ thus defines a Bravais lattice in reciprocal space, termed the reciprocal lattice. In three dimensions, the explicit formula for the reciprocal lattice vectors is
+\begin{align*}
+	\vb{b}_{1} = \frac{2\pi}{V_{\text{cell}}}\vb{a}_{2}\times\vb{a}_{3},\ V_{\text{cell}} = \vb{a}_{1}\cdot(\vb{a}_{2}\times\vb{a}_{3})
+\end{align*}
+with cyclic permutation of the indices yielding the other two.
+
+\paragraph{Diffraction by Solids}
+Using the language of Fourier analysis and reciprocal space, we will try to derive a more sophisticated diffraction condition.
+
+To do this, consider a crystal exposed to far-field radiation described by a wave vector $\vb{k}$ which is scattered elastically by the crystal in an arbitrary direction and observed in the far-field region in some direction, in which the wave vector is $\vb{k}^{\prime}$. Considering the interference between two points displaced by $\vb{r}$, the phase difference between the radiation from the two points is $(\vb{k} - \vb{k}^{\prime})\cdot\vb{r}$. Supposing that the amplitude of the scattered wave is proportional to the electron density (or, really, any property defined on the lattice), the total scattered amplitude is proportional to the (confusingly termed) scattering amplitude
+\begin{align*}
+	F = \integ[d]{}{}{\vb{r}}{n(\vb{r})e^{i(\vb{k} - \vb{k}^{\prime})\cdot\vb{r}}}.
+\end{align*}
+Adding the series expansion of the electron density yields
+\begin{align*}
+	F = \integ[d]{}{}{\vb{r}}{\sum\limits_{\vb{G}}n_{\vb{G}}e^{i\vb{G}\cdot\vb{r}}e^{-i\Delta\vb{k}\cdot\vb{r}}} = \integ[d]{}{}{\vb{r}}{\sum\limits_{\vb{G}}n_{\vb{G}}e^{i(\vb{G} - \Delta\vb{k})\cdot\vb{r}}} = \sum\limits_{\vb{G}}\integ[d]{}{}{\vb{r}}{n_{\vb{G}}e^{i(\vb{G} - \Delta\vb{k})\cdot\vb{r}}}.
+\end{align*}
+For the case $\Delta\vb{k} = \vb{G}$ for any one particular reciprocal lattice vector, the exponential in this term vanishes, leaving a term $Vn_{\vb{G}}$. It can be shown that all other terms in the scattering amplitude vanish, yielding $F = Vn_{\vb{G}}$ for this case and $F = 0$ otherwise. The most fundamental diffraction condition is thus
+\begin{align*}
+	\Delta\vb{k} = \vb{G}.
+\end{align*}
+
+While we have in principle obtained a diffraction condition now, we can simplify it by using the fact that the scattering is inelastic. We obtain
+\begin{align*}
+	2\vb{k}\cdot\vb{G} + G^{2} = 0.
+\end{align*}
+It may be rewritten by swapping $\vb{G}$ for $-\vb{G}$, which is also a reciprocal lattice vector, to yield
+\begin{align*}
+	2\vb{k}\cdot\vb{G} = G^{2}.
+\end{align*}
+
+Note that this implies that information about the reciprocal lattice, and therefore the lattice itself, may be obtained from diffraction experiments.
+
+\paragraph{Laue's Equations}
+The fundamental diffraction criterion implies
+\begin{align*}
+	\Delta\vb{k}\cdot\vb{a}_{i} = 2\pi v_{i}
+\end{align*}
+for some integer $v_{i}$, simultaneously for all lattive vectors. This implies that reflections are only found at the intersection of three cones in reciprocal space. This is very strict, and such reflections must be found by sweeping in crystal orientation and/or wavelength or by chance.
+
+\paragraph{The Ewald Sphere}
+The Ewald sphere is a tool for visualizing the necessary conditions for diffractions. To construct it, draw the incident wave vector starting in a point such that it terminates in a reciprocal lattice point. From the starting point, draw a sphere of radius $k$. All reciprocal lattice points corresponding to a diffraction peak are found on this sphere.
+
+\paragraph{Brillouin Zones}
+To introduce the concept of Brillouin zones, rewrite the diffraction condition as
+\begin{align*}
+	\vb{k}\cdot\frac{1}{2}\vb{G} = \left(\frac{1}{2}G\right)^{2}.
+\end{align*}
+For a fixed $\vb{G}$, this equation defines the set of wave vectors terminating on the bisector of $\vb{G}$. This is similar to the construction of the Wigner-Seitz cell in real space, but now extended to construct zones using all points in the reciprocal lattice. Constructing these bisectors divides the reciprocal space into Brillouin zones (a single Brillouin zone is the combinations of all zones a fixed number of zones from the central zone). The central zone, which is the Wigner-Seitz cell in reciprocal space, is the first Brillouin zone.
+
+\paragraph{The Structure Factor and Atomic Form Factor}
+When the diffraction condition is satisfied, i.e. $\Delta\vb{k} = \vb{G}$ for some reciprocal lattice vector, the scattering amplitude for a crystal of $N$ cells becomes
+\begin{align*}
+	F = \integ[d]{}{}{\vb{r}}{n(\vb{r})e^{-i\vb{G}\cdot\vb{r}}} = N\integ[d]{\text{cell}}{}{\vb{r}}{n(\vb{r})e^{-i\vb{G}\cdot\vb{r}}} = NS_{\vb{G}},
+\end{align*}
+where we have introduced the structure factor $S_{\vb{G}}$, which describes the effect of the electron distribution in the cell on the scattering amplitude for a given diffraction peak.
+
+Writing the electron density as a superposition of contributions from each atom in the basis (this decomposition is not unique, but somehow this is not a problem), we obtain
+\begin{align*}
+	S_{\vb{G}} = \integ[d]{\text{cell}}{}{\vb{r}}{\sum n_{j}(\vb{r} - \vb{r}_{j})e^{-i\vb{G}\cdot\vb{r}}}
+\end{align*}
+where the $\vb{r}_{j}$ are the positions of the atoms in the basis. We rewrite this as
+\begin{align*}
+	S_{\vb{G}} = \sum\integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r} - \vb{r}_{j})e^{-i\vb{G}\cdot\vb{r}}} = \sum e^{-i\vb{G}\cdot\vb{r}_{j}}\integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
+\end{align*}
+where the last step follows from the translational symmetry. Defining the atomic form factor
+\begin{align*}
+	f_{j, \vb{G}} = \integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
+\end{align*}
+we have
+\begin{align*}
+	S_{\vb{G}} = \sum f_{j, \vb{G}}e^{-i\vb{G}\cdot\vb{r}_{j}}.
+\end{align*}
+
+When observing electron distributions in solids, these appear close to those of free atoms. This does not mean that electrons are not distributed in a solid versus for free atoms, but that these corrections do not have a major effect on the atomic form factors. Thus it may be relevant to write these as
+\begin{align*}
+	f_{j, \vb{G}} = \integ[d]{}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
+\end{align*}
+where the electron distribution is that of a free atom and the integration is performed over all of space.
