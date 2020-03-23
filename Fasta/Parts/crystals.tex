@@ -122,6 +122,25 @@ is integer combinations of a set of vectors $\{\vb{b}_{i}\}$ such that $\vb{a}_{
 \end{align*}
 with cyclic permutation of the indices yielding the other two.
 
+\paragraph{Interplanar Distances}
+Consider the set of \cpset{hkl} planes. We are interested in computing the distance between two adjacent such planes. To do this, we will first need a unit normal to any such plane. According to the construction of the Miller indices, the vectors
+\begin{align*}
+\vb{v}_{1} = \frac{1}{h}\vb{a}_{1} - \frac{1}{k}\vb{a}_{2},\ \vb{v}_{2} = \frac{1}{h}\vb{a}_{1} - \frac{1}{l}\vb{a}_{3}
+\end{align*}
+span the plane, apart from some constant spatial shift. Hence we are interested in a vector that is simultaneously normal to both of these. One possible choice is
+\begin{align*}
+	\vb{G}_{hkl} = h\vb{b}_{1} + k\vb{b}_{2} + l\vb{b}_{3}.
+\end{align*}
+From this, obtaining a unit normal is trivial. Next we need a vector from one plane to the other. One possible choice is
+\begin{align*}
+	\vb{T} = \frac{1}{h}\vb{a}_{1},
+\end{align*}
+as one cell has space for $h$ planes of this type when counted along the $\vb{a}_{1}$ direction. From this, the distance is given by
+\begin{align*}
+	d = \frac{1}{\abs{\vb{G}_{hkl}}}\vb{G}_{hkl}\cdot\vb{T} = \frac{2\pi}{\abs{\vb{G}_{hkl}}},
+\end{align*}
+which is true for any Bravais lattice.
+
 \paragraph{Diffraction by Solids}
 Using the language of Fourier analysis and reciprocal space, we will try to derive a more sophisticated diffraction condition.
 
@@ -165,6 +184,26 @@ To introduce the concept of Brillouin zones, rewrite the diffraction condition a
 	\vb{k}\cdot\frac{1}{2}\vb{G} = \left(\frac{1}{2}G\right)^{2}.
 \end{align*}
 For a fixed $\vb{G}$, this equation defines the set of wave vectors terminating on the bisector of $\vb{G}$. This is similar to the construction of the Wigner-Seitz cell in real space, but now extended to construct zones using all points in the reciprocal lattice. Constructing these bisectors divides the reciprocal space into Brillouin zones (a single Brillouin zone is the combinations of all zones a fixed number of zones from the central zone). The central zone, which is the Wigner-Seitz cell in reciprocal space, is the first Brillouin zone.
+
+\paragraph{Volume of the Brillouin Zone}
+We would like to compute the volume of the Brillouin zone in terms of the volume of the unit cell. To do this, we note that the unit cell volume is given by
+\begin{align*}
+	V_{\text{c}} = \vb{a}_{1}\cdot(\vb{a}_{2}\times\vb{a}_{3}).
+\end{align*}
+Using this, the volume of the Brillouin zone is given by
+\begin{align*}
+	V_{\text{r}} = \vb{b}_{1}\cdot(\vb{b}_{2}\times\vb{b}_{3}).
+\end{align*}
+The vector in the parenthesis is given by
+\begin{align*}
+	\vb{b}_{2}\times\vb{b}_{3} &= \frac{(2\pi)^{2}}{V_{\text{c}}^{2}}(\vb{a}_{3}\times\vb{a}_{1})\times (\vb{a}_{1}\times\vb{a}_{2}) \\
+	                           &= \frac{(2\pi)^{2}}{V_{\text{c}}^{2}}((\vb{a}_{3}\cdot(\vb{a}_{1}\times\vb{a}_{2}))\vb{a}_{1} - (\vb{a}_{3}\cdot(\vb{a}_{1}\times\vb{a}_{1}))\vb{a}_{2}) \\
+	                           &= \frac{(2\pi)^{2}}{V_{\text{c}}}\vb{a}_{1},
+\end{align*}
+and thus the volume of the Brillouin zone is given by
+\begin{align*}
+	V_{\text{r}} = \frac{(2\pi)^{3}}{V_{\text{c}}}.
+\end{align*}
 
 \paragraph{The Structure Factor and Atomic Form Factor}
 When the diffraction condition is satisfied, i.e. $\Delta\vb{k} = \vb{G}$ for some reciprocal lattice vector, the scattering amplitude for a crystal of $N$ cells becomes
