@@ -67,13 +67,9 @@ The space group of the Bravais lattices is the group of symmetries of all Bravai
 An $n$-fold rotation is a rotation operation such that it reduces to the identity operation when applied $n$ times. Lattices cannot be symmetric under $5$-fold rotation.
 
 \paragraph{Crystal Planes}
-In a cell it is useful to define crystallographic planes. Rather than specifying them in terms of a normal vector, they are specified according to the following rules:
-\begin{enumerate}
-	\item For each axis, defined by the lattice vectors, identify the intercepts of the plane with the axis.
-	\item Compute the reciprocals of each intercept.
-	\item Reduce to three integers with the same ratio.
-\end{enumerate}
-The notation is of the form \cplane{hkl}. A bar above any element indicates that element to be negative. A set of planes equivalent by symmetry may be denoted \cpset{hkl}.
+In a cell it is useful to define crystallographic planes. These are indicated by a set of indices \cplane{hkl}, the computation of which we will return to. A bar above any element indicates that element to be negative.
+
+A set of parallel planes such that all lattice points are contained in the set may be denoted \cpset{hkl}.
 
 \paragraph{Crystallographic Directions}
 Likewise we define crystallographic directions by the notation \cdir{uvw}. The indices are the set of the smallest integers such that they form a vector parallel to the one in question.
@@ -121,6 +117,43 @@ is integer combinations of a set of vectors $\{\vb{b}_{i}\}$ such that $\vb{a}_{
 	\vb{b}_{1} = \frac{2\pi}{V_{\text{cell}}}\vb{a}_{2}\times\vb{a}_{3},\ V_{\text{cell}} = \vb{a}_{1}\cdot(\vb{a}_{2}\times\vb{a}_{3})
 \end{align*}
 with cyclic permutation of the indices yielding the other two.
+
+\paragraph{Crystal Planes and the Reciprocal Lattice}
+Assume that there is a lattice point in the origin and that the closest crystal plane with orientation specified by the normal vector $\vb{n}$ is a distance $d$ from the origin. Any plane parallel to the plane in question is described by
+\begin{align*}
+	\vb{r}\cdot\vb{n} = md,\ m = 0, \pm 1, \dots
+\end{align*}
+
+Consider now a translation by $\vb{T}$ such that the lattice is left invariant. Assuming the translation to be between lattice points, the translation must satisfy the equation of some crystal plane, implying
+\begin{align*}
+	\vb{T}\cdot\vb{n} = md.
+\end{align*}
+In particular, if the translation is to a point in a plane adjacent to the origin, we have
+\begin{align*}
+	\vb{T}\cdot\frac{2\pi}{d}\vb{n} = 2\pi.
+\end{align*}
+Comparing this to the definition of the reciprocal lattice implies that the plane is normal to a reciprocal lattice vector
+\begin{align*}
+	\vb{G} = \frac{2\pi}{d}\vb{n}.
+\end{align*}
+This is the shortest reciprocal lattice vector describing the plane. The expression above implies
+\begin{align*}
+	d = \frac{2\pi}{\abs{\vb{G}}}.
+\end{align*}
+
+\paragraph{Miller Indices}
+Returning to the indexing system for crystal planes, we may decompose the normal vector as
+\begin{align*}
+	\vb{G} = h\vb{b}_{1} + k\vb{b}_{2} + l\vb{b}_{3}.
+\end{align*}
+These indices are exactly the indices used to describe a crystal plane, and are termed Miller indices. As $\vb{G}$ is the shortest vector describing the plane, the indices cannot contain any common factors.
+
+The Miller indices may also be computed from the real lattice according to the following rules:
+\begin{enumerate}
+	\item For each axis, defined by the lattice vectors, identify the intercepts of the plane with the axis as units of the lattice parameters.
+	\item Compute the reciprocals of each intercept.
+	\item Reduce to three integers with the same ratio.
+\end{enumerate}
 
 \paragraph{Interplanar Distances}
 Consider the set of \cpset{hkl} planes. We are interested in computing the distance between two adjacent such planes. To do this, we will first need a unit normal to any such plane. According to the construction of the Miller indices, the vectors
@@ -234,3 +267,5 @@ When observing electron distributions in solids, these appear close to those of 
 	f_{j, \vb{G}} = \integ[d]{}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
 \end{align*}
 where the electron distribution is that of a free atom and the integration is performed over all of space.
+
+The construction of the structure factor is not unique, and may be performed for any repeat unit in the crystal. This is handy as it can simplify many computations. For example, considering a face-centered cubic structure, it can be considered as a simple cubic structure with three atoms in the basis or as an FCC structure such that summation must be performed over the entire conventional cell.
