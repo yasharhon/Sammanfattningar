@@ -121,16 +121,17 @@ and so the Hamiltonian is conserved if it has no explicit time dependence.
 
 % Hamiltonian total energy
 
-\paragraph{Noether's Theorem}
-Noether's theorem relates symmetries - or, more specifically, quasi-symmetries, of physical systems to conservation laws.
-
-What is a quasi-symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
+\paragraph{Symmetries and Quasi-Symmetries}
+Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
 \begin{align*}
 	\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}\dd{s}
 \end{align*}
 for some $F$. The case $F = 0$ is referred to as symmetries of the system.
 
-The variation of the Lagrangian can be written as
+\paragraph{Noether's Theorem}
+Noether's theorem relates symmetries - or, more specifically, quasi-symmetries, of physical systems to conservation laws.
+
+The variation of the Lagrangian under variation of coordinates and time can be written as
 \begin{align*}
 	\var{\lag} = \del{q^{a}}{\lag}\var{q^{a}} + \del{\dot{q}^{a}}{\lag}\var{\dot{q}^{a}} + \del{t}{\lag}\var{t}.
 \end{align*}
@@ -147,7 +148,7 @@ The equations of motion are $\del{q^{a}}{\lag} = \dv{t}\del{\dot{q}^{a}}{\lag}$.
 	\var{\lag} &= \dv{t}\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t} \\
 	           &= \dv{t}\left(\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \lag\var{t}\right).
 \end{align*}
-If the transformation is a quasi-symmetry of the system, then this is equal to a total time derivative of $F$, and the quantity
+If the variation corresponds to a quasi-symmetry of the system, then this is equal to a total time derivative of $F$, and the quantity
 \begin{align*}
 	J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q}^{a}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
 \end{align*}
@@ -158,7 +159,7 @@ thus satisfies $\dv{J}{t} = 0$. We can introduce the general momenta and the Ham
 
 We arrive at the conclusion that $J$ is a conserved quantity under a quasi-symmetry of the system. Identifying the conservation laws of a system is thus a matter of identifying the quasi-symmetries of a system and computing $J$ under that transformation.
 
-\example{A free particle in space}
+\example{A Free Particle in Space}
 Consider a free particle in space. Its Lagrangian is given by $\lag = \frac{1}{2}m\dot{\vb{x}}^{2}$, and the variation of this is
 \begin{align*}
 	\var{\lag} = m\dot{\vb{x}}\cdot\var{\dot{\vb{x}}}.
@@ -173,7 +174,7 @@ The Hamiltonian is
 \end{align*}
 We now want to identify quasi-symmetries of the system that make the variation of the Lagrangian either zero or the time derivative of some quantity. A key idea here is that we are only allowed to change the variations (or so I think).
 
-A first attempt is keeping $\var{\vb{x}}$ constant and not varying thiime(a spatial translation), which implies $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. This implies that $F$ is constant. The conserved quantity is thus
+A first attempt is keeping $\var{\vb{x}}$ constant and not varying time(a spatial translation), which implies $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. This implies that $F$ is constant. The conserved quantity is thus
 \begin{align*}
 	J = F - \vb{p}\cdot\var{\vb{x}} = F - \vb{p}\cdot\vb{c},
 \end{align*}
@@ -201,6 +202,7 @@ Newton's second law $m\ddot{\vb{x}} = -\grad{V}$, assuming the potential to be f
 \example{Constraining Solutions Using Symmetries}
 If a system is invariant under some transformation $\vb{x}\to\vb{R}(\vb{x})$, then any property $u$ dependant on those coordinates satisfies $u(\vb{x}) = u(\vb{R}(\vb{x}))$.
 
+
 \paragraph{Connection to Noether's Theorem}
 We defined symmetries of the action as transformations that satisy $\var{\lag} = 0$. In particular, we can construct a set of transformations such that $\del{s}{t} = \var{t},\ \del{s}{q^{a}} = \var{q^{a}}$, where $s$ is the symmetry parameter. This is a one-parameter family of symmetries. By defining $T_{s}q(t, 0) = q(t, s)$, these symmetries satisfy
 \begin{align*}
@@ -209,6 +211,11 @@ T_{s_{2}}T_{s_{1}}q(t, 0) = T_{s_{1} + s_{2}}q(t, 0).
 We see that these symmetries define a group.
 
 \example{A Particle in a Moving Potential}
+
+\paragraph{Symmetry Breaking}
+Suppose that a system is approximately symmetric under a a group $G$ of transformations. When studying this system, a first approach is thus to treat it as symmetric under $G$ and use the mathematics of $G$ to compute corrections to the symmetric approximation. This is known as symmetry breaking.
+
+%TODO: Add example
 
 \paragraph{Liouville's theorem}
 As paths in phase space do not cross, we can think of the time evolution of a system as a flow in phase space. The volume element is $\dd{V} = \dd{q}\dd{p}$. Liouville's theorem states that flow in phase space is incompressible.
