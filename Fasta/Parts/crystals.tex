@@ -239,7 +239,9 @@ and thus the volume of the Brillouin zone is given by
 \end{align*}
 
 \paragraph{The Structure Factor and Atomic Form Factor}
-When the diffraction condition is satisfied, i.e. $\Delta\vb{k} = \vb{G}$ for some reciprocal lattice vector, the scattering amplitude for a crystal of $N$ cells becomes
+The diffraction condition is stated in terms of reciprocal lattice vectors obtained from the primitive lattice vectors. However, especially in experimental contexts, the primitive unit cell is not the geometry of choice for studying materials. Instead, one can use inherent ambiguities in choices of repeat units of the crystal to study geometries with, for instance, more or simpler symmetries. When considering such geometries, the diffraction conditions is only necessary, not sufficient. We will now study diffraction for such cases.
+
+Consider a crystal built up of some kind of cell, not necessarily a primitive one. When the diffraction condition is satisfied, i.e. $\Delta\vb{k} = \vb{G}$ for some reciprocal lattice vector corresponding to the chosen cell, the scattering amplitude for a crystal of $N$ cells becomes
 \begin{align*}
 	F = \integ[d]{}{}{\vb{r}}{n(\vb{r})e^{-i\vb{G}\cdot\vb{r}}} = N\integ[d]{\text{cell}}{}{\vb{r}}{n(\vb{r})e^{-i\vb{G}\cdot\vb{r}}} = NS_{\vb{G}},
 \end{align*}
@@ -251,9 +253,9 @@ Writing the electron density as a superposition of contributions from each atom 
 \end{align*}
 where the $\vb{r}_{j}$ are the positions of the atoms in the basis. We rewrite this as
 \begin{align*}
-	S_{\vb{G}} = \sum\integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r} - \vb{r}_{j})e^{-i\vb{G}\cdot\vb{r}}} = \sum e^{-i\vb{G}\cdot\vb{r}_{j}}\integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
+	S_{\vb{G}} = \sum\integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r} - \vb{r}_{j})e^{-i\vb{G}\cdot\vb{r}}} = \sum e^{-i\vb{G}\cdot\vb{r}_{j}}\integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}.
 \end{align*}
-where the last step follows from the translational symmetry. Defining the atomic form factor
+Defining the atomic form factor
 \begin{align*}
 	f_{j, \vb{G}} = \integ[d]{\text{cell}}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
 \end{align*}
@@ -261,6 +263,7 @@ we have
 \begin{align*}
 	S_{\vb{G}} = \sum f_{j, \vb{G}}e^{-i\vb{G}\cdot\vb{r}_{j}}.
 \end{align*}
+The requirement for diffraction is thus that $\Delta\vb{k} = \vb{G}$ and the structure factor being non-zero.
 
 When observing electron distributions in solids, these appear close to those of free atoms. This does not mean that electrons are not distributed in a solid versus for free atoms, but that these corrections do not have a major effect on the atomic form factors. Thus it may be relevant to write these as
 \begin{align*}
@@ -268,4 +271,64 @@ When observing electron distributions in solids, these appear close to those of 
 \end{align*}
 where the electron distribution is that of a free atom and the integration is performed over all of space.
 
-The construction of the structure factor is not unique, and may be performed for any repeat unit in the crystal. This is handy as it can simplify many computations. For example, considering a face-centered cubic structure, it can be considered as a simple cubic structure with three atoms in the basis or as an FCC structure such that summation must be performed over the entire conventional cell.
+The astute reader might have noticed that when considering the primitive unit cell of a crystal with one atom in the basis, the structure factor is trivial. One could thus ask whether this was really necessary. The answer to the latter question is left to experimentalists, but I can confirm that this derivation neither adds nor subtracts to our knowledge. If you have chosen the primitive cell, the structure factor is trivial and diffraction occurs for every observation such that the diffraction criterion is satisfied. For other choices of cells, certain reciprocal lattice vectors will produce a structure factor equal to zero. This is because these do not correspond to reciprocal lattice vectors of the primitive cell. Someone should prove this more rigorously. Can we be sure that other choices of cells cover all possible reciprocal lattice vectors of the primitive cell? Yes, as non-primitive cells must have longer lattice vectors, corresponding to shorter reciprocal lattice vectors, implying that the reciprocal lattice vectors of the primitive cell should be possible to express as combinations of the reciprocal lattice vectors of the non-primitive cell.
+
+\paragraph{Cohesive Energy}
+The cohesive energy of a crystal is the energy required to separate the crystal into neutral free atoms at rest at infinite separation.
+
+\paragraph{Types of Crystal Binding}
+The different types of crystal binding and their origins are
+\begin{itemize}
+	\item van der Waals binding, which occurs due to fluctuating electric dipoles in atoms and molecules.
+	\item ionic binding, which occurs due to Coulomb forces between ions.
+	\item covalent binding, which occurs due to the filling of electron states localized between atoms.
+	\item metal binding, where valence electrons form a gas throughout the crystal and balance repulsion between the metal atoms in the lattice.
+\end{itemize}
+
+\paragraph{van der Waals Energy}
+%TODO: Derivation of van der Waals energy
+The van der Waals interaction between two atoms in a crystal or molecule is modelled as a potential of the form
+\begin{align*}
+	V = 4\varepsilon\left(\left(\frac{\sigma}{R}\right)^{12} - \left(\frac{\sigma}{R}\right)^{6}\right)
+\end{align*}
+with a positive term from Pauli repulsion and a negative term from attraction between fluctuating dipoles.
+
+For a crystal of $N$ atoms the cohesive energy due to van der Waals interaction becomes
+\begin{align*}
+	U = 2N\varepsilon\left(\sum\limits_{j}\left(\frac{\sigma}{R_{j}}\right)^{12} - \left(\frac{\sigma}{R_{j}}\right)^{6}\right).
+\end{align*}
+Re-expressing this in terms of nearest-neighbour distances $R$ in the lattice, we can write $R_{j} = p_{j}R$ to obtain
+\begin{align*}
+	U = 2N\varepsilon\left(\left(\frac{\sigma}{R}\right)^{12}\sum\limits_{j}\frac{1}{p_{j}^{12}} - \left(\frac{\sigma}{R}\right)^{6}\sum\limits_{j}\frac{1}{p_{j}^{6}}\right)
+\end{align*}
+where we have divided by two in order to distribute the interaction energy evenly between the atoms. The two summations are determined solely by the crystal structure.
+
+\paragraph{Ionic Binding}
+Ionic interactions between two atoms in a crystal is modelled as a potential of the form
+\begin{align*}
+	V = \lambda e^{-\frac{R_{ij}}{\rho}} \pm \frac{q^{2}}{4\pi\varepsilon_{0}R_{ij}}
+\end{align*}
+with a positive term from Pauli repulsion and a negative term from attraction between charged particles. The Pauli term is typically only included for nearest neighbours.
+
+For a crystal of $N$ atoms the cohesive energy due to ionic interaction becoms
+\begin{align*}
+	U = N\left(Z\lambda e^{-\frac{R}{\rho}} + \sum\limits_{j}(-1)^{g(j)}\frac{q^{2}}{4\pi\varepsilon_{0}R_{j}}\right)
+\end{align*}
+where we have introduced the nearest-neighbour distance $R$ and the function $g$ describing whether atom  $j$ has an equal or opposite charge to that of the atom in the origin. Re-expressing the Coulomb term in terms of nearest-neighbour distances we obtain
+\begin{align*}
+	U = N\left(Z\lambda e^{-\frac{R}{\rho}} - \alpha\frac{q^{2}}{4\pi\varepsilon_{0}R_{ij}}\right)
+\end{align*}
+where $Z$ is the coordination number of a given ion and
+\begin{align*}
+	\alpha = \sum\limits\frac{(-1)^{g(j)}}{p_{j}}
+\end{align*}
+is termed the Madelung constant and depends only on the crystal structure.
+
+\paragraph{Covalently Bound Solids}
+Solids bound by covalent force have localized electrons due to the nature of the bonds in the solid, meaning that such bonds are typically found in insulators and semiconductors.
+
+\paragraph{Metals}
+Electrons in metals move around in a gas, hence metals are generally good conductors.
+
+\paragraph{Atomic Radii}
+The introduced parameters in the interaction potentials described above that have dimensions of length are essentially dependent on atomic radii. It turns out that atomic radii are largely independent of the composition of the material in which any given atom is found. However, they are significantly affected by coordination number.
