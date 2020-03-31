@@ -1,8 +1,8 @@
-\section{Classical field theory}
+\section{Classical Field theory}
 
 Classical field theory can be considered a limit of classical dynamics when the number of particles is infinite. The system obtains new ``coordinates'' $\phi^{a}$, which are functions of position and time. Summations over coordinates now become integrals over space.
 
-\paragraph{Lagrangian dynamics}
+\paragraph{Lagrangian Formulation of Field Theory}
 The Lagrangian in a field theory now becomes
 \begin{align*}
 	L = \integ[d]{}{}{\vb{r}}{\lag}
@@ -11,26 +11,13 @@ where $\lag$ is the Lagrangian density, which in general depends on all involved
 \begin{align*}
 	\dv{\lag}{\phi^{a}} - \pdv{t}\pdv{\lag}{(\del{t}{\phi^{a}})} - \pdv{x^{i}}\pdv{\lag}{(\del{i}{\phi^{a}})} = 0.
 \end{align*}
-Alternatively, by defining $x^{0} = t$ and extending the summation over spatial coordinates to include $i = 0$, we can write
+Alternatively, by defining $x^{0} = t$ and extending the summation, we can write
 \begin{align*}
-	\dv{\lag}{\phi^{a}} - \pdv{x^{i}}\pdv{\lag}{(\del{i}{\phi^{a}})} = 0.
+	\dv{\lag}{\phi^{a}} - \pdv{x^{b}}\pdv{\lag}{(\del{b}{\phi^{a}})} = 0.
 \end{align*}
 
-\paragraph{Solving models}
-To solve models, we usually allow for periodic boundary conditions. The field is then expanded as a Fourier series, or a Fourier transform in the limit of a large domain or small lattice constant. We will in any case find that the system is compact in Fourier space, i.e. there are only non-zero contributions within some compact region.
-
-\paragraph{Nöether's theorem}
-In this context Nöether's theorem states that symmetries of a system are associated with conservative current. In field theory, a symmetry is a transformation $\phi\to\phi_{a}$, where $a$ is some continuous transformation parameter, such that for the quantity
-\begin{align*}
-	\dv{\lag}{a} = \dv{V^{\mu}}{x^{\mu}}
-\end{align*}
-there are quantities $j^{\mu}$ such that
-\begin{align*}
-	\dv{j^{\mu}}{x^{\mu}} = 0.
-\end{align*}
-
-\paragraph{Hamiltonian dynamics}
-In Hamiltonian dynamics, we define the momentum density
+\paragraph{Hamiltonian Formulation}
+In the Hamiltonian formalism, we define the momentum density
 \begin{align*}
 	\pi_{a} = \del{\phi^{a}}{\lag}.
 \end{align*}
@@ -40,14 +27,24 @@ The Hamiltonian is now given by
 \end{align*}
 where $\ham = \pi_{a}\del{t}{\phi^{a}} - \lag$. The Hamiltonian equations of motion become
 \begin{align*}
-	\dot{\phi} = \fdv{H}{\pi},\ \dot{\pi} = -\fdv{H}{\phi},
+	\dot{\phi} = \fdv{H}{\pi},\ \dot{\pi} = -\fdv{H}{\phi}.
 \end{align*}
-where the functional derivative is given by
-\begin{align*}
-	\fdv{H}{\pi} = \del{\pi}{\ham} - \del{x}{\del{\pi_{x}}{\ham}} + \dots
-\end{align*}
-
 While the Hamiltonian formalism carries no issues with it in classical contexts, it does not generalize well to relativity due to the fact that it treats the time derivative differently to the spatial derivatives, which is a big no-no.
+
+\paragraph{Reduction to Discrete Problems}
+For a problem on a compact domain, one can Fourier expand the fields (and the momentum densities) to obtain a discrete set of Fourier coefficients, the dynamics of which can be studied. It is this approach which will be the basis for quantum mechanics, where the coefficients will be replaced by occupation operators.
+
+For problems on non-compact domains, we instead employ the Fourier transform as a tool. However, we have not really helped ourselves in this case.
+
+\paragraph{Nöether's Theorem}
+In this context Nöether's theorem states that symmetries of a system are associated with conservative current. In field theory, a symmetry is a transformation $\phi\to\phi_{a}$, where $a$ is some continuous transformation parameter, such that for the quantity
+\begin{align*}
+	\dv{\lag}{a} = \dv{V^{\mu}}{x^{\mu}}
+\end{align*}
+there are quantities $j^{\mu}$ such that
+\begin{align*}
+	\dv{j^{\mu}}{x^{\mu}} = 0.
+\end{align*}
 
 \paragraph{Poisson brackets}
 Poisson brackets of two functionals on phase space are defined as
