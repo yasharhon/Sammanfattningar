@@ -1,0 +1,154 @@
+\section{Phonons and Crystal Vibration}
+
+\paragraph{The Monoatomic Chain}
+Vibrations in a crystal lattice along a certain crystal direction are vibrations along a chain of atoms lying in that direction. Hence we will need to understand the (classical) physics of particles on chains.
+
+%TODO: Show without assuming x dependence
+Consider a chain of atoms at positions $x_{n} = na + u_{n}$, the first term of which is the equliibrium position and the second is the fluctuations from equilibrium. Assuming a harmonic potential with intensity $C$ between nearest neighbours in the chain, your favorite choice of equations of motion will yield
+\begin{align*}
+	m\dv[2]{x_{n}}{t} = m\dv[2]{u_{n}}{t} = C(x_{n + 1} - x_{n}) - C(x_{n} - x_{n - 1}) = C(x_{n + 1} + x_{n - 1} - 2x_{n}) = C(u_{n + 1} + u_{n - 1} - 2u_{n}).
+\end{align*}
+When studying lattice vibrations, we are interested in solutions to the equations of motion which are travelling waves, of the form
+\begin{align*}
+	u_{n} = u_{0}e^{i(Kna - \omega t)}.
+\end{align*}
+Inserting this into the equations of motion yields
+\begin{align*}
+	-m\omega^{2}u_{0}e^{i(Kna - \omega t)} = Cu_{0}e^{i(Kna - \omega t)}\left(e^{iKa} + e^{-iKa} - 2\right) = 2Cu_{0}e^{i(Kna - \omega t)}\left(\cos{Ka} - 1\right) = -4Cu_{0}e^{i(Kna - \omega t)}\sin[2](\frac{Ka}{2}).
+\end{align*}
+This implies the dispersion relation
+\begin{align*}
+	\omega = \sqrt{\frac{4C}{m}}\abs{\sin(\frac{Ka}{2})}.
+\end{align*}
+
+To continue our study, we introduce
+\begin{align*}
+	\xi = \frac{Ka}{2\pi},\ \omega_{0} = \sqrt{\frac{4C}{m}},
+\end{align*}
+allowing us to write the dispersion relation as
+\begin{align*}
+	\omega = \omega_{0}\abs{\sin(\pi\xi)}.
+\end{align*}
+Firstly we note that the dispersion relation has a period of $\pi$ in the new coordinates. In addition, we note that $\xi$ for this chain is a measure of progression in the reciprocal lattice - each integer value of $\xi$ corresponds to a reciprocal lattice point. This means that all of the physics of the chain are contained within the interval $-\frac{1}{2} < \xi < \frac{1}{2}$, which is the first Brillouin zone of the lattice.
+
+The periodicity of the dispersion relation has an interpretation. Suppose that $K = k + \frac{2\pi}{a}$ where $k$ is within the first Brillouin zone. The motion of any particle in the chain when exposed to such a wave is given by
+\begin{align*}
+	u_{n} = u_{0}e^{i(Kna - \omega t)} = u_{0}e^{2\pi ni}e^{i\left(kna - \omega t\right)} = u_{0}e^{i\left(kna - \omega t\right)}.
+\end{align*}
+Hence the periodicity of the dispersion relation is due to the fact that the travelling wave is only defined at discrete points.
+
+The group velocity of such lattice vibrations is given by
+\begin{align*}
+	v_{\text{g}} = \dv{\omega}{K} = \frac{1}{2\omega}\dv{\omega^{2}}{K} = \frac{1}{2\omega_{0}\abs{\sin(\pi\xi)}}\cdot \frac{2a\omega_{0}^{2}}{2}\sin(\frac{Ka}{2})\cos(\frac{Ka}{2}) = \frac{1}{2}a\omega_{0}\cos(\pi\xi)\text{sgn}\left(\sin(\pi\xi)\right),
+\end{align*}
+where the last factor merely describes the direction of propagation. In the long-wavelength limit, close to the origin in reciprocal space, we obtain
+\begin{align*}
+	\omega \approx \omega_{0}\pi\xi = \frac{1}{2}Ka\omega_{0},\ v_{\text{g}} \approx \frac{1}{2}a\omega_{0},
+\end{align*}
+implying the linear dispersion relation $\omega = v_{\text{g}}K$. Identifying $Ca$ as a measure of the tension and $\frac{m}{a}$ as the density, we also have
+\begin{align*}
+	v_{\text{g}} = \sqrt{\frac{T}{\rho}},
+\end{align*}
+as expected for acoustic waves in a solid. When approaching the Brillouin zone boundary, we obtain
+\begin{align*}
+	v_{\text{g}} = 0,
+\end{align*}
+representing a standing wave solution. The wavelength corresponding to the zone boundary is the shortest wavelength that can propagate in the material.
+
+\paragraph{The Diatomic Chain}
+To study the effect of the basis, consider a chain of atoms with two atoms in the basis and lattice parameter $a$. Denoting the fluctuations of each type of atom by $u$ and $v$ respectively and only considering nearest-neighbour interactions, the equations of motion are
+\begin{align*}
+	m_{1}\dv[2]{u_{n}}{t} = C(v_{n} + v_{n - 1} - 2u_{n}),\ m_{2}\dv[2]{v_{n}}{t} = C(u_{n + 1} + u_{n} - 2v_{n}).
+\end{align*}
+We again look for plane wave solutions of the form
+\begin{align*}
+	u_{n} = u_{0}e^{i(Kna - \omega t)},\ v_{n} = v_{0}e^{i(Kna - \omega t)}.
+\end{align*}
+Inserting this into the equations of motion yields
+\begin{align*}
+	-m_{1}\omega^{2}u_{0}e^{i(Kna - \omega t)} &= C\left(v_{0}e^{i(Kna - \omega t)} + v_{0}e^{i(K(n - 1)a - \omega t)} - 2u_{0}e^{i(Kna - \omega t)}\right) \\
+	                                           &= Ce^{-i(Kna - \omega t)}\left(v_{0}\left(1 + e^{-iKa}\right) - 2u_{0}\right), \\
+	-m_{2}\omega^{2}v_{0}e^{i(Kna - \omega t)} &= C\left(u_{0}e^{i(K(n + 1)a - \omega t)} + u_{0}e^{i(Kna - \omega t)} - 2v_{0}e^{i(Kna - \omega t)}\right) \\
+	                                           &= Ce^{i(Kna - \omega t)}\left(u_{0}\left(e^{iKa} + 1\right) - 2v_{0}\right).
+\end{align*}
+This is a homogenous system of equations in the amplitudes. A non-trivial solution (corresponding to there being motion in the system) corresponds to the determinant of the coefficient matrix being zero. This implies
+\begin{align*}
+	\mqty
+	[
+		2C - m_{1}\omega^{2}       & -C\left(1 + e^{-iKa}\right) \\
+		-C\left(e^{iKa} + 1\right) & 2C - m_{2}\omega^{2}
+	]
+	&= 0, \\
+	(2C - m_{1}\omega^{2})(2C - m_{2}\omega^{2}) - C^{2}\left(1 + e^{-iKa}\right)\left(e^{iKa} + 1\right) &= 0, \\
+	m_{1}m_{2}\omega^{4} - 2C(m_{1} + m_{2})\omega^{2} + 2C^{2}\left(1 - \cos(Ka)\right) &= 0,
+\end{align*}
+with solution
+\begin{align*}
+	\omega^{2} &= \frac{2C(m_{1} + m_{2}) \pm \sqrt{4C^{2}(m_{1} + m_{2})^{2} - 8m_{1}m_{2}C^{2}\left(1 - \cos(Ka)\right)}}{2m_{1}m_{2}}.
+\end{align*}
+Defining
+\begin{align*}
+	\omega_{0} = \sqrt{\frac{C(m_{1} + m_{2})}{m_{1}m_{2}}}
+\end{align*}
+we obtain
+\begin{align*}
+	\omega^{2} &= \omega_{0}^{2}\left(1 \pm \sqrt{1 - 4\frac{m_{1}m_{2}}{(m_{1} + m_{2})^{2}}\sin[2](\frac{1}{2}Ka)}\right).
+\end{align*}
+The two choices of sign here represent two so-called branches of the dispersion relation, one termed the optical branch and the other the acoustic branch. The terminology will be clarified later.
+
+We proceed by studying the limiting cases. In the low-wavelength limit we have
+\begin{align*}
+	\omega^{2} &\approx \omega_{0}^{2}\left(1 \pm \sqrt{1 - \frac{m_{1}m_{2}}{(m_{1} + m_{2})^{2}}(Ka)^{2}}\right) \\
+	           &\approx \omega_{0}^{2}\left(1 \pm 1 \mp \frac{m_{1}m_{2}}{2(m_{1} + m_{2})^{2}}(Ka)^{2}\right),
+\end{align*}
+yielding
+\begin{align*}
+	\omega_{\text{op}} \approx \sqrt{2}\omega_{0},\ \omega_{\text{ac}} \approx \frac{\sqrt{C}}{\sqrt{2(m_{1} + m_{2})}}\abs{Ka}.
+\end{align*}
+For the optical branch, we thus obtain
+\begin{align*}
+	\frac{u_{0}}{v_{0}} = \frac{2C}{2C - 2m_{1}\omega_{0}^{2}} = \frac{2m_{2}}{2m_{2} - 2(m_{1} + m_{2})} = -\frac{m_{2}}{m_{1}},
+\end{align*}
+and for the acoustic branch we obtain
+\begin{align*}
+	\frac{u_{0}}{v_{0}} = \frac{2C}{2C - 2m_{1}\frac{C}{2(m_{1} + m_{2})}(Ka)^{2}} \approx 1,
+\end{align*}
+This reveals the nature of the nomenclature, as acoustic modes correspond to atoms oscillating in phase and propagating acoustic waves, whereas optical modes correspond to atoms being in anti-phase and can thus be excited by electromagnetic waves in ionic crystals.
+
+Simultaneously plotting the dispersion relations of the two branches in the first Brillouin zone yields two different curves. As the anti-phase solution in the low-wavelength limit for the optical branch corresponds to a periodicity of $\lambda = a$ for the motion, we can interpret excitations of oscillations in the chain as starting in the acoustic branch for small $K$ and following this dispersion relation before moving into the optical branch when crossing the Brillouin zone boundary. This transition is not smooth, as at the Brillouin zone boundary we have
+\begin{align*}
+	\omega^{2} &= \omega_{0}^{2}\left(1 \pm \sqrt{1 - 4\frac{m_{1}m_{2}}{(m_{1} + m_{2})^{2}}}\right) \\
+	           &= \frac{\omega_{0}^{2}}{m_{1} + m_{2}}\left(m_{1} + m_{2} \pm \sqrt{(m_{1} + m_{2})^{2} - 4m_{1}m_{2}}\right) \\
+	           &= \frac{C}{m_{1}m_{2}}\left(m_{1} + m_{2} \pm (m_{1} - m_{2})\right),
+\end{align*}
+assuming $m_{1} > m_{2}$, with permuting the indices yielding the other result. Specifically, for the two branches we obtain
+\begin{align*}
+	\omega_{\text{op}} = \sqrt{\frac{2C}{m_{2}}},\ \omega_{\text{ac}} = \sqrt{\frac{2C}{m_{1}}},
+\end{align*}
+and frequencies between these two cannot be excited in the chain. This gap must thus be crossed in order for the described excitation to occur. Furthermore, as each of these frequencies correspond (I think) to the harmonic oscillation frequencies of only one sort of atom in the harmonic potential created by the static nearest neighbours, we can interpret it as each branch approaching a state where only one kind of atom is excited, and the frequency gap is due to the different masses of the atoms.
+
+\paragraph{Crystal Vibrations in Three Dimensions}
+In three dimensions there are certain effects which are not considered in our previous description, but which can be explained using similar reasoning.
+
+In general, moving to three dimensions produces both longitudinal and transverse vibration modes. This will be true for all branches.
+
+For crystals with a monoatomic basis, different crystal directions will produce different dispersion relations due to variations in the geometry of the bonds along different directions.
+
+For crystals with more atoms in the basis, each atom in the basis beyond the first will add a new optical branch.
+
+%TODO: Mention anharmonic effects?
+
+\paragraph{Phonons}
+%TODO: Physics, see Kittel appendix C
+While our discussion up to now have been classical nature, one could instead have constructed the Hamiltonian of the chain and studied it using quantum mechanics. Through a somewhat lengthy process, you would then arrive at the result that the chain can be described as a set of quantum harmonic oscillators. The energies of such a systems are quanta of $\hbar\omega$. Each such energy quantum is termed a phonon.
+
+Phonons are quasi-particles, meaning that they behave as particles but are nothing but many-body effects in reality. More specifically, they interact as though they had energy $\hbar\omega$ and momentum $\hbar\vb{K}$, the latter being termed crystal momentum. This allows us to measure their dispersion.
+
+\paragraph{Inelastic Neutron Scattering}
+Inelastic neutron scattering is a powerful method for measuring phonon dispersion, as it is only by this method that the entire dispersion relation can be measured. As we are studying inelastic scattering, we are concerned with cases where the neutrons either create or absorb phonons. The conservation laws for a single neutron before and after scattering are
+\begin{align*}
+	\frac{\hbar^{2}k^{2}}{2m} = \frac{\hbar^{2}(k^{\prime})^{2}}{2m} \pm \hbar\omega,\ \hbar\vb{k} = \hbar\vb{k}^{\prime} \pm \hbar\vb{K} + \hbar\vb{G},
+\end{align*}
+where the last term in the momentum conservation is due to the periodicity of the phonon dispersion relation with respect to the different Brillouin zones forcing us to move $\vb{K}$ to the first Brillouin zone.
+
+In an experiment, a neutron with energy $E = \frac{\hbar^{2}k^{2}}{2m}$ is sent into a sample, scattered and detected by a detector that measures both its direction of motion and its energy $E^{\prime} = \frac{\hbar^{2}(k^{\prime})^{2}}{2m}$. From this, the frequency of the phonon with which the neutron interacted and the full scattered wave vector can be obtained. As the crystal structure contains all information about the reciprocal lattice, the phonon wave vector can also be calculated. Plotting the phonon frequency against the wave number finally yields the dispersion relation.
