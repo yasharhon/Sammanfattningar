@@ -152,3 +152,59 @@ Inelastic neutron scattering is a powerful method for measuring phonon dispersio
 where the last term in the momentum conservation is due to the periodicity of the phonon dispersion relation with respect to the different Brillouin zones forcing us to move $\vb{K}$ to the first Brillouin zone.
 
 In an experiment, a neutron with energy $E = \frac{\hbar^{2}k^{2}}{2m}$ is sent into a sample, scattered and detected by a detector that measures both its direction of motion and its energy $E^{\prime} = \frac{\hbar^{2}(k^{\prime})^{2}}{2m}$. From this, the frequency of the phonon with which the neutron interacted and the full scattered wave vector can be obtained. As the crystal structure contains all information about the reciprocal lattice, the phonon wave vector can also be calculated. Plotting the phonon frequency against the wave number finally yields the dispersion relation.
+
+\paragraph{Phonon Contributions to Heat Capacity}
+As phonons have energy, they contribute to the heat capacity of a crystal. Using statistical mechanics, we can determine how large this contribution is by treating the phonon gas as a collection of non-interacting harmonic oscillators.
+
+The following paragraphs will mostly summarize essential results. For details, please see my summary of SI1162 Statistical Physics.
+
+\paragraph{Heat Capacity from Classical Statistics}
+In classical mechanics, the equipartition theorem yields
+\begin{align*}
+	U = 3N\kb T,\ C_{V} = 3N\kb, 
+\end{align*}
+known as the Dulong-Petit rule. The molar heat capacity is thus
+\begin{align*}
+	c_{V} = 3s\Na\kb = 3R
+\end{align*}
+where \Na is the Avogadro number and $s$ the number of atoms in the basis.
+
+This result agrees with experiments at high temperatures, but does not agree with the result that the heat capacity vanishes at low temperatures.
+
+\paragraph{Heat Capacity from Quantum Statistics}
+In order to use quantum statistics, we use the results that the energies of a harmonic oscillator are $E_{n} = \left(n + \frac{1}{2}\right)\hbar\omega$. In order to do statistics, however, we need a density of states which ideally should take polarization into account as well. The models described below are all attempts at appropriate choices of the density of states.
+
+\paragraph{The Einstein Model}
+The Einstein model proposes the density of states
+\begin{align*}
+	\rho(\omega) = 3N\delta(\omega - \omega_{\text{E}})
+\end{align*}
+where $\omega_{\text{E}}$ is termed the Einstein frequency. When taking polarization into account, the density of states may be split up into terms containing different Einstein frequencies for different polarizations. One obtains
+\begin{align*}
+	c_{V} = 3sR\left(\beta\hbar\omega_{\text{E}}\right)^{2}\frac{e^{\beta\hbar\omega_{\text{E}}}}{\left(e^{\beta\hbar\omega_{\text{E}}} - 1\right)^{2}}.
+\end{align*}
+where $\beta = \frac{1}{\kb T}$. This prediction both vanishes at low temperatures and approaches the Dulong-Petit rule at high temperatures. However, its low-temperature behaviour does not match with experiments.
+
+The Einstein model describes optical phonons well due to their narrower frequency distribution. However, the low-temperature limitations of the model is due to it not describing acoustic phonons well.
+
+\paragraph{The Debye Model}
+The Debye model, working from a linear dispersion relation and the standard k-space density of states, proposes the density of states
+\begin{align*}
+	\rho(\omega) = \frac{2}{2\pi^{2}}\frac{V}{v^{3}}\omega^{2}
+\end{align*}
+%TODO: Check number of phonons
+up to some maximal frequency $\omega_{\text{D}}$, termed the Debye frequency. The requirement that the number of phonons be equal to $3N$ yields
+\begin{align*}
+	\omega_{\text{D}} = \left(\frac{6\pi^{2}N}{V}\right)^{\frac{1}{3}}v.
+\end{align*}
+In order to proceed with the calculations, one often uses the average
+\begin{align*}
+	\frac{3}{v^{3}} = \sum\frac{1}{v_{p}^{3}}
+\end{align*}
+to obtain
+\begin{align*}
+	c_{V} = 9sR\left(\frac{T}{T_{\text{D}}}\right)^{3}\integ{0}{\beta\hbar\omega_{\text{D}}}{x}{\frac{x^{4}e^{x}}{(e^{x} - 1)^{2}}}
+\end{align*}
+where $T_{\text{D}} = \frac{\hbar\omega_{\text{D}}}{\kb}$.
+	
+This model both yields the correct low-temperature and high-temperature behaviour.
