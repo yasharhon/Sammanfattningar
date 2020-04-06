@@ -1,0 +1,90 @@
+\section{Electrons}
+
+\paragraph{Statistics of Electrons}
+Properties of solids will also be treated using statistical mechanics. Again, for details, please see my summary of SI1162 Statistical Physics.
+
+\paragraph{The Electron Gas}
+The electron gas is a system of non-interacting electrons. The statistical mechanics studied in SI1162 are for electron gases.
+
+\paragraph{Fundamentals}
+The density of states for the electron gas is given by
+\begin{align*}
+	\rho(E) = \frac{V}{2\pi^{2}}\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E}.
+\end{align*}
+The distribution of energies is according to the Fermi-Dirac distribution
+\begin{align*}
+	f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}.
+\end{align*}
+
+\paragraph{Fermi Energy}
+The Fermi energy is the energy of the highest occupied state of a system at $T = 0$. According to the shape of the Fermi-Dirac distribution, $E_{\text{F}} = \eval{\mu}_{T = 0}$.
+
+\paragraph{Heat Capacity}
+The molar heat capacity of the free electron gas is given by
+\begin{align*}
+	c_{V} = \frac{\pi^{2}s^{\prime}}{2}\frac{RT}{T_{\text{F}}}
+\end{align*}
+where $s^{\prime}$ is the number of electrons per formula unit and $T_{\text{F}}$ is the Fermi temperature.
+	
+\paragraph{Resistivity}
+To treat resistivity in the free electron model, consider an electron in the gas. Its velocity is given by $\vb{v} = \frac{\hbar}{m}\vb{k}$. In the presence of a constant electric field, Newton's second law gives
+\begin{align*}
+	\dv{\vb{k}}{t} = -\frac{e}{\hbar}\vb{E}.
+\end{align*}
+The solution to this is unbounded, and this description is thus not complete.
+
+To remedy this, we introduce scattering to the problem. Supposing that electrons are scattered after some characteristic time $\tau$, we introduce the drift velocity
+\begin{align*}
+	\vb{v}_{\text{d}} = -\frac{e\tau}{m}\vb{E}.
+\end{align*}
+The current density is thus
+\begin{align*}
+	\vb{J} = -ne\vb{v}_{\text{d}} = \frac{ne^{2}\tau}{m}\vb{E},
+\end{align*}
+and thus the resistivity is
+\begin{align*}
+	\rho = \frac{m}{ne^{2}\tau}.
+\end{align*}
+
+An alternative way to derive this is to introduce a scattering term to Newton's law according to
+\begin{align*}
+	m\dv{\vb{v}}{t} = -e\vb{E} - \frac{m}{\tau}\vb{v},
+\end{align*}
+with steady-state solution
+\begin{align*}
+	\vb{v}_{\text{d}} = -\frac{e\tau}{m}\vb{E}.
+\end{align*}
+
+\paragraph{Experimental Resistivity}
+Experimentally, the temperature dependence of the resistivity is of the form
+\begin{align*}
+	\rho = \rho_{\text{I}} + \rho_{\text{L}},
+\end{align*}
+and is called Matthiesen's rule. The first term comes from impurities in the solid, which scatter electrons, and is constant. The second term comes from lattice vibrations, and thus vanishes at low temperatures and is linear at high temperatures.
+
+\paragraph{The Hall Effect}
+For a solid in the presence of both an electric and magnetic field, Newton's second law for the electrons becomes
+\begin{align*}
+	m\dv{\vb{v}}{t} = -e\vb{E} - e\vb{v}\times\vb{B} - \frac{m}{\tau}\vb{v},
+\end{align*}
+The implicit steady-state solution is
+\begin{align*}
+	\vb{v} = -\frac{e\tau}{m}\left(\vb{E} + \vb{v}\times\vb{B}\right),
+\end{align*}
+which must be studied for a specific geometry.
+
+The geometry which is typically considered is a prismatic slab of solid through which a current runs in the $x$-direction and which is exposed to a magnetic field in the $z$-direction. For this geometry, as there is no current in the $y$-direction and the electric field is planar, we have
+\begin{align*}
+	v_{x} = -\frac{e\tau}{m}E_{x},\ E_{y} = -\frac{e\tau B}{m}E_{x},\ v_{z} = 0.
+\end{align*}
+Hence the electric field transversal to the current direction is non-zero. This is termed the Hall effect.
+
+Defining the Hall coefficient as
+\begin{align*}
+	R = \frac{E_{x}}{J_{x}B},
+\end{align*}
+the previous expression for the current density can be used to obtain
+\begin{align*}
+	R = \frac{1}{n(-e)}.
+\end{align*}
+This can be generalized for materials with other charge carriers by replacing $-e$ by the charge of the charge carriers. However, this description, and consequently the free electron model, is lacking for insulators and semiconductors.
