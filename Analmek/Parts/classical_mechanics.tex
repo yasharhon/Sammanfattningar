@@ -1,4 +1,4 @@
-\section{Classical mechanics}
+\section{Classical Mechanics}
 
 \paragraph{Lagrangian Mechanics and Differential Geometry}
 In Lagrangian mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $q^{a}$ on this space in order to use what we know from the previous parts on differential geometry. Note that the term configuration does not exclude the discussion of systems other than the purely mechanical with Lagrangian mechanics. This is a clear advantage of Lagrangian mechanics as opposed to Newtonian mechanics.
@@ -11,29 +11,7 @@ Hamilton's principle replaces Newton's laws as the fundamental law of nature tha
 where $\lag$ is the Lagrangian. Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$.
 
 \paragraph{The Lagrangian}
-The Lagrangian is essential in Lagrangian mechanics. For a system of particles in a conservative force field, it can be constructed as $\lag = E_{\text{k}} - V$. $V$ is the potential energy and is taken to be a function only of the coordinates. Note that this is not the only way to construct a Lagrangian - for instance, adding the total time derivative of some function adds a constant term to the action, and so has no effect on the variational analysis. In addition, Lagrangian mechanics can be used to describe entirely different systems in which terms such as kinetic energy do not make sense. In fact, this is an important feature of Lagrangian mechanics.
-
-\example{An inductor}
-Consider a lone inductor with inductance $L$ over which some (possibly time-dependent) potential $V$ is applied. According to classical electrodynamics, we have that
-\begin{align*}
-	V = L\dv{I}{t}.
-\end{align*}
-Let us see if we can reconstruct this using Lagrangian mechanics.
-
-We first need to impose coordinates on the system. I choose the lone coordinate $q$ as the amount of charge carried across the inductor to ground. Suppose that the system had a Lagrangian $\lag = \frac{1}{2}L\dot{q}^{2} + qV$. The equation of motion is
-\begin{align*}
-	V - \dv{t}(L\dot{q}) = 0,\ L\ddot{q} = V.
-\end{align*}
-Recognizing that $\dot{q} = I$, we arrive at the desired result
-\begin{align*}
-	V = L\dv{I}{t}.
-\end{align*}
-
-At this point I feel it only reasonable to discuss how I (or rather, Goldstein) arrived at this particular Lagrangian. To the trained eye it is very clear that the given equation of motion would result from that Lagrangian, but surely the core idea cannot be to just guess Lagrangians based on what we already know? Well, yes it can. The goal of physics is to describe reality, so if someone told you that their measurements implied the given equations of motion, is it not your job as a theorist to construct a theory which describes that experiment? And how do you that, if not by constructing an appropriate Lagrangian? It might seem somewhat ad hoc to construct theories based on desired results in this fashion, but the most important check for a theory to satisfy is its compliance with the reality around us. If that is ad hoc to you, then perhaps mathematics will feel more satisfactory to you than physics.
-
-There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the loss of potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This does not have pure coordinate dependance, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
-
-Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and going from the equations of motion to the Lagrangian. Of course, physics as a whole value the Lagrangian way higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
+The Lagrangian is essential in Lagrangian mechanics. For a system of particles in a conservative force field, it can be constructed as $\lag = E_{\text{k}} - V$. $V$ is the potential energy and is taken to be a function only of the coordinates. Note that this is not the only way to construct a Lagrangian - for instance, adding the total time derivative of some function adds a constant term to the action, and so has no effect on the variational analysis. In addition, Lagrangian mechanics can be used to describe entirely different systems in which terms such as kinetic energy do not make sense. In fact, this is an important feature of analytical mechanics.
 
 \paragraph{Lagrange's Equations of Motion}
 Hamilton's principle can be expressed as
@@ -47,6 +25,28 @@ The equations of motion of the system are thus of the form
 
 \paragraph{How to Construct a Theory}
 In Lagrangian mechanics, the recipe for formulating a theory to describe a system is simple: Introduce its Lagrangian and extremize the action to find the equations describing the system.
+
+\example{An Inductor}
+Consider a lone inductor with inductance $L$ over which some (possibly time-dependent) potential $V$ is applied. According to classical electrodynamics, we have that
+\begin{align*}
+V = L\dv{I}{t}.
+\end{align*}
+Let us see if we can reconstruct this using Lagrangian mechanics.
+
+We first need to impose coordinates on the system. I choose the lone coordinate $q$ as the amount of charge carried across the inductor to ground. Suppose that the system had a Lagrangian $\lag = \frac{1}{2}L\dot{q}^{2} + qV$. The equation of motion is
+\begin{align*}
+V - \dv{t}(L\dot{q}) = 0,\ L\ddot{q} = V.
+\end{align*}
+Recognizing that $\dot{q} = I$, we arrive at the desired result
+\begin{align*}
+V = L\dv{I}{t}.
+\end{align*}
+
+At this point I feel it only reasonable to discuss how I (or rather, Goldstein) arrived at this particular Lagrangian. To the trained eye it is very clear that the given equation of motion would result from that Lagrangian, but surely the core idea cannot be to just guess Lagrangians based on what we already know? Well, yes it can. The goal of physics is to describe reality, so if someone told you that their measurements implied the given equations of motion, is it not your job as a theorist to construct a theory which describes that experiment? And how do you that, if not by constructing an appropriate Lagrangian? It might seem somewhat ad hoc to construct theories based on desired results in this fashion, but the most important check for a theory to satisfy is its compliance with the reality around us. If that is ad hoc to you, then perhaps mathematics will feel more satisfactory to you than physics.
+
+There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the loss of potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This does not have pure coordinate dependance, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
+
+Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and going from the equations of motion to the Lagrangian. Of course, physics as a whole value the Lagrangian way higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
 
 \paragraph{Kinetic Energy}
 Kinetic energy is defined in terms of the rank $2$ kinetic metric tensor as

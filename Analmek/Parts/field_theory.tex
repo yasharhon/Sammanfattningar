@@ -9,12 +9,18 @@ The Lagrangian in a field theory now becomes
 \end{align*}
 where $\lag$ is the Lagrangian density, which in general depends on all involved fields, their derivatives with respect to both space and time and space and time themselves. From this we can obtain the action, and extremize it to obtain the equations for the time evolution of the system. The equations of motion are of the form
 \begin{align*}
-	\dv{\lag}{\phi^{a}} - \pdv{t}\pdv{\lag}{(\del{t}{\phi^{a}})} - \pdv{x^{i}}\pdv{\lag}{(\del{i}{\phi^{a}})} = 0.
+	\pdv{\lag}{\phi^{a}} - \pdv{t}\pdv{\lag}{(\del{t}{\phi^{a}})} - \pdv{x^{i}}\pdv{\lag}{(\del{i}{\phi^{a}})} = 0.
 \end{align*}
-Alternatively, by defining $x^{0} = t$ and extending the summation, we can write
+Alternatively, by defining $x^{0} = ct$ for some speed $c$ and extending the summation, we can write
 \begin{align*}
-	\dv{\lag}{\phi^{a}} - \pdv{x^{b}}\pdv{\lag}{(\del{b}{\phi^{a}})} = 0.
+	\pdv{\lag}{\phi^{a}} - \pdv{x^{\mu}}\pdv{\lag}{(\del{\mu}{\phi^{a}})} = 0.
 \end{align*}
+
+\example{A String}
+
+\example{The Electromagnetic Field}
+
+\example{The Schrödinger Equation}
 
 \paragraph{Hamiltonian Formulation}
 In the Hamiltonian formalism, we define the momentum density
@@ -31,22 +37,115 @@ where $\ham = \pi_{a}\del{t}{\phi^{a}} - \lag$. The Hamiltonian equations of mot
 \end{align*}
 While the Hamiltonian formalism carries no issues with it in classical contexts, it does not generalize well to relativity due to the fact that it treats the time derivative differently to the spatial derivatives, which is a big no-no.
 
+\example{A String}
+
 \paragraph{Reduction to Discrete Problems}
 For a problem on a compact domain, one can Fourier expand the fields (and the momentum densities) to obtain a discrete set of Fourier coefficients, the dynamics of which can be studied. It is this approach which will be the basis for quantum mechanics, where the coefficients will be replaced by occupation operators.
 
 For problems on non-compact domains, we instead employ the Fourier transform as a tool. However, we have not really helped ourselves in this case.
 
-\paragraph{Nöether's Theorem}
-In this context Nöether's theorem states that symmetries of a system are associated with conservative current. In field theory, a symmetry is a transformation $\phi\to\phi_{a}$, where $a$ is some continuous transformation parameter, such that for the quantity
+\paragraph{Symmetries of Field Theories}
+Consider a field theory (on Euclidean space) described by the Lagrangian density \lag. A symmetry of the system is a transformation of all involved coordinates and fields such that:
+\begin{enumerate}
+	\item \lag retains its functional form under the transformation - in other words, the expression for the Lagrangian density is unchanged.
+	\item The action is unchanged by the transformation.
+\end{enumerate}
+
+Before proceeding, it would also be useful to clarify what kinds of transformation we are considering. Transformations in field theory concern both transformations of the coordinates according to
 \begin{align*}
-	\dv{\lag}{a} = \dv{V^{\mu}}{x^{\mu}}
+	(x^{\prime})^{\mu} = x^{\mu} + \var{x^{\mu}}
 \end{align*}
-there are quantities $j^{\mu}$ such that
+and of the fields according to
 \begin{align*}
-	\dv{j^{\mu}}{x^{\mu}} = 0.
+	(\phi^{\prime})^{a}((x^{\prime})^{\mu}) = \phi^{a}(x^{\mu}) + \var{\phi^{a}}.
+\end{align*}
+We will distinguish between the transformed fields and the change in the field at a particular point, given by
+\begin{align*}
+	(\phi^{\prime})^{a}(x^{\mu}) = \phi^{a}(x^{\mu}) + \bvar{\phi^{a}}
 \end{align*}
 
-\paragraph{Poisson brackets}
+\paragraph{Nöether's Theorem}
+Field theory also carries with it a version of Nöether's theorem, which will be covered here. A version will be presented here which is somewhat more restricted than the version presented for systems with discrete degrees of freedom - if you wanted to compare the two, you could say that this version only contains symmetries.
+
+Consider the action of a symmetry on a given system. The requirement that the action be unchanged can be written as
+\begin{align*}
+	\integ{\Omega^{\prime}}{}{(x^{\prime})^{\mu}}{\lag^{\prime}} - \integ{\Omega}{}{x^{\mu}}{\lag} = 0.
+\end{align*}
+The functional form of the Lagrangian density is unchanged, which also carries the consequence that the integration variables may be renamed. This yields
+\begin{align*}
+	\integ{\Omega^{\prime}}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu})} - \integ{\Omega}{}{x^{\mu}}{\lag(\phi^{a}, x^{\mu})} = 0.
+\end{align*}
+
+%TODO: Extend to multiple dimensions
+To illustrate what happens to this, consider the analogous scenario in one dimension, for which we have
+\begin{align*}
+	\integ{a + \var{a}}{b + \var{b}}{x}{f + \var{f}} - \integ{a}{b}{x}{f} = 0.
+\end{align*}
+This can be rewritten as
+\begin{align*}
+	\integ{a + \var{a}}{b + \var{b}}{x}{\var{f}} + \integ{b}{b + \var{b}}{x}{f} - \integ{a}{a + \var{a}}{x}{f} = 0.
+\end{align*}
+The terms containing an integral of a variation over an interval containing a variation will be of order greater than one, and may thus be ignored. In addition, the two latter integrals may be linearized to obtain
+\begin{align*}
+	\integ{a}{b}{x}{\var{f}} + f(b)\var{b} - f(a)\var{a} = \integ{a}{b}{x}{\var{f} + \dv{x}(f\var{x})} = 0.
+\end{align*}
+Returning to the case which we wanted to study, we obtain
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu})} + \integ{S}{}{S_{\mu}}{\lag(\phi^{a}, x^{\mu})\var{x^{\mu}}} = \integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})} = 0,
+\end{align*}
+where $S$ is the boundary of $\Omega$ and we have made (hopefully proper) use of the $n$-dimensional divergence theorem. The difference in the first two terms can be expanded to first order as
+\begin{align*}
+	\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) &= \pdv{\lag}{\phi^{a}}\bvar{\phi}^{a} + \pdv{\lag}{(\del{\nu}{\phi^{a}})}\bvar{(\del{\nu}{\phi^{a}})}.
+\end{align*}
+The use of the variation at a specific point is due to the fact that both Lagrangians are now evaluated at the same points. This is significant because while the total variation does not commute with the differentiation operators, this one does. Using the equations of motion, we additionally obtain
+\begin{align*}
+	\pdv{\lag}{\phi^{a}}\bvar{\phi}^{a} + \pdv{\lag}{(\del{\nu}{\phi^{a}})}\del{\nu}{\bvar{\phi^{a}}} = \bvar{\phi}^{a}\pdv{x^{\nu}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \pdv{\lag}{(\del{\nu}{\phi^{a}})}\del{\nu}{\bvar{\phi^{a}}} = \pdv{x^{\nu}}\left(\bvar{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})}\right).
+\end{align*}
+Hence we have
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\pdv{x^{\nu}}\left(\bvar{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}}\right)} = 0,
+\end{align*}
+which is already in the form of a conservation law for the quantities
+\begin{align*}
+	\bvar{\phi}^{a}\pdv{\lag}{(\del{0}{\phi^{a}})} + \lag\var{x^{0}}
+\end{align*}
+and the corresponding currents
+\begin{align*}
+	\bvar{\phi}^{a}\pdv{\lag}{(\del{i}{\phi^{a}})} + \lag\var{x^{i}}.
+\end{align*}
+
+To obtain a neater form, we specify the form of the transformation as
+\begin{align*}
+	\var{x}^{\mu} = \alpha^{r}X_{r}^{\mu},\ \var{\phi}^{a} = \alpha^{r}\Phi_{r}^{a}
+\end{align*}
+where the $\alpha^{r}$ are a set of transformation parameters. To first order, we have
+\begin{align*}
+	\var{\phi}^{a}  &= \bvar{\phi}^{a} + \del{\mu}{\phi^{a}}\var{x}^{\mu}, \\
+	\bvar{\phi}^{a} &= \alpha^{r}(\Phi_{r}^{a} - \del{\mu}{\phi^{a}}X_{r}^{\mu}).
+\end{align*}
+For this kind of transformation, one thus obtains
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\pdv{x^{\nu}}\left(\alpha^{r}(\Phi_{r}^{a} - \del{\sigma}{\phi^{a}}X_{r}^{\sigma})\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \alpha^{r}X_{r}^{\nu}\lag\right)} &= \integ{\Omega}{}{x^{\mu}}{\alpha^{r}\pdv{x^{\nu}}\left(\left(\lag\kdelta{\sigma}{\nu} - \del{\sigma}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})}\right)X_{r}^{\sigma} + \Phi_{r}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})}\right)}.
+\end{align*}
+Setting this equal to zero and changing the sign of the integrand yields
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\alpha^{r}\pdv{x^{\nu}}\left(\left(\del{\sigma}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \lag\kdelta{\sigma}{\nu}\right)X_{r}^{\sigma} - \Phi_{r}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})}\right)} = 0,
+\end{align*}
+which is the final form of Nöether's theorem. It states that
+\begin{align*}
+	\pdv{x^{\nu}}\left(\left(\del{\sigma}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \lag\kdelta{\sigma}{\nu}\right)X_{r}^{\sigma} - \Phi_{r}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})}\right) = 0,
+\end{align*}
+which is a conservation law for the quantities corresponding to $\nu = 0$.
+
+A more general proof can be performed for a transformation such that
+\begin{align*}
+	\var{\lag} = \dv{\alpha}\dv{V^{\mu}}{x^{\mu}},
+\end{align*}
+i.e. a divergence, but I will leave this case for the future me.
+
+\example{Charge Conservation}
+
+\paragraph{Poisson Brackets}
 Poisson brackets of two functionals on phase space are defined as
 \begin{align*}
 	\pob{F}{G} = \integ[D]{}{}{\vb{r}}{\del{\phi}{F}\del{\pi}{G} - \del{\pi}{F}\del{\phi}{G}}
