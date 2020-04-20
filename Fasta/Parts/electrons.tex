@@ -88,3 +88,39 @@ the previous expression for the current density can be used to obtain
 	R = \frac{1}{n(-e)}.
 \end{align*}
 This can be generalized for materials with other charge carriers by replacing $-e$ by the charge of the charge carriers. However, this description, and consequently the free electron model, is lacking for insulators and semiconductors.
+
+\paragraph{The Central Equation}
+To flesh out our description of electronic properties, we will start by introducing a potential in which the electrons are moving. The first approximation consists in combining the potential experienced by any single electron from both the atoms in the crystal and other electrons into some potential $V(\vb{r})$, where we require that $V$ have the same periodicity as the crystal. For this case, the Schrödinger equation is separable and given by
+\begin{align*}
+	-\frac{\hbar^{2}}{2m}\laplacian{\Psi} + V\Psi = E\Psi.
+\end{align*}
+The electron density is given by $n = N\abs{\Psi}^{2}$, and we will therefore require that the probability density have the same periodicity as the lattice.
+
+To solve the Schrödinger equation, we utilize the periodicity of the potential and the solution to Fourier expand the two as
+\begin{align*}
+	V = \sum\limits_{\vb{G}}v_{\vb{G}}e^{i\vb{G}\cdot\vb{r}},\ \Psi = \sum\limits_{\vb{k}}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}.
+\end{align*}
+Note that $V$ is expanded in terms of the reciprocal lattice vectors as it must have the periodicity of the lattice, while this is not the case for the electron state. This is due to the fact that the electron density might still have the correct translational symmetry with other Fourier components. Inserting this into the Schrödinger equation yields
+\begin{align*}
+	\sum\limits_{\vb{k}}\frac{\hbar^{2}k^{2}}{2m}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}} + \left(\sum\limits_{\vb{G}}v_{\vb{G}}e^{i\vb{G}\cdot\vb{r}}\right)\left(\sum\limits_{\vb{k}}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}\right) &= E\sum\limits_{\vb{k}}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}, \\
+	\sum\limits_{\vb{k}}\frac{\hbar^{2}k^{2}}{2m}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}} + \sum\limits_{\vb{G}}\sum\limits_{\vb{k}}v_{\vb{G}}c_{\vb{k}}e^{i(\vb{k} + \vb{G})\cdot\vb{r}} &= E\sum\limits_{\vb{k}}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}.
+\end{align*}
+The sum over $\vb{k}$ may be relabelled for each $\vb{G}$ (which are in the set of $\vb{k}$) to yield
+\begin{align*}
+	\sum\limits_{\vb{k}}\frac{\hbar^{2}k^{2}}{2m}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}} + \sum\limits_{\vb{G}}\sum\limits_{\vb{k}}v_{\vb{G}}c_{\vb{k} - \vb{G}}e^{i\vb{k}\cdot\vb{r}} &= E\sum\limits_{\vb{k}}c_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}, \\
+	\sum\limits_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}\left(\left(\frac{\hbar^{2}k^{2}}{2m} - E\right)c_{\vb{k}} + \sum\limits_{\vb{G}}\sum\limits_{\vb{k}}v_{\vb{G}}c_{\vb{k} - \vb{G}}\right) &= 0.
+\end{align*}
+Noting that each term in the series is orthogonal to all others, we must require that each term be equal to zero. Introducing the free-electron energy $\lambda_{\vb{k}} = \frac{\hbar^{2}k^{2}}{2m}$ yields the central equation
+\begin{align*}
+	\left(\lambda_{\vb{k}} - E\right)c_{\vb{k}} + \sum\limits_{\vb{G}}\sum\limits_{\vb{k}}v_{\vb{G}}c_{\vb{k} - \vb{G}} = 0.
+\end{align*}
+
+\paragraph{Bloch's Theorem}
+As the wave function may be expanded in terms of plane waves, we will now study each plane wave solution, i.e. studying the solution for a fixed $\vb{k}$. Firstly we note that shifting $\vb{k}$ by a reciprocal lattice vector yields a new equation relating the same set of Fourier coefficients, meaning that if the dispersion relation is non-trivial (in other words, if there is kinetic energy in the system) then there are enough linearly independent equations to find non-trivial solutions. Secondly, we note that generally, allowing one coefficient in the set to be non-trivial implies that the others are too, meaning that the restriction to a single wave vector must in fact be modified to a single set of wavevectors. This set will be denoted by the wave vector in the first Brillouin zone. Assuming the system to have been solved, the state is
+\begin{align*}
+	\Psi = \sum\limits_{\vb{G}}c_{\vb{k} - \vb{G}}e^{i(\vb{k} - \vb{G})\cdot\vb{r}} = e^{i\vb{k}\cdot\vb{r}}\sum\limits_{\vb{G}}c_{\vb{k} - \vb{G}}e^{-i\vb{G}\cdot\vb{r}}.
+\end{align*}
+The sum is the Fourier series of a function which shares the periodicity of the lattice, and we dub this a Bloch function and denote it as $u_{\vb{k}}$. We thus arrive at the state
+\begin{align*}
+	\Psi = u_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}.
+\end{align*}
