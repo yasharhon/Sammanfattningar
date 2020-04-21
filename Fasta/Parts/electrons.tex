@@ -115,6 +115,8 @@ Noting that each term in the series is orthogonal to all others, we must require
 	\left(\lambda_{\vb{k}} - E\right)c_{\vb{k}} + \sum\limits_{\vb{G}}\sum\limits_{\vb{k}}v_{\vb{G}}c_{\vb{k} - \vb{G}} = 0.
 \end{align*}
 
+A minor comment about this is that any single coefficient is inversely proportional to $\lambda_{\vb{k}} - E$, implying that some coefficients will be much larger than the others, meaning that in most cases there is no need to include many coefficients.
+
 \paragraph{Bloch's Theorem}
 As the wave function may be expanded in terms of plane waves, we will now study each plane wave solution, i.e. studying the solution for a fixed $\vb{k}$. Firstly we note that shifting $\vb{k}$ by a reciprocal lattice vector yields a new equation relating the same set of Fourier coefficients, meaning that if the dispersion relation is non-trivial (in other words, if there is kinetic energy in the system) then there are enough linearly independent equations to find non-trivial solutions. Secondly, we note that generally, allowing one coefficient in the set to be non-trivial implies that the others are too, meaning that the restriction to a single wave vector must in fact be modified to a single set of wavevectors. This set will be denoted by the wave vector in the first Brillouin zone. Assuming the system to have been solved, the state is
 \begin{align*}
@@ -124,3 +126,31 @@ The sum is the Fourier series of a function which shares the periodicity of the 
 \begin{align*}
 	\Psi = u_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}.
 \end{align*}
+
+\paragraph{Energy Bands}
+Solving the central equation will net you both the Fourier coefficients of the state and the energy of the state. The energies can be plotted as a function of $\vb{k}$ to yield a set of graphs of energies for different $\vb{k}$. These (and, sometimes, the set of energy values corresponding to each graph) are called energy bands. A feature of energy bands is often that certain energies are not found in the bands, meaning that there are gaps between the bands.
+
+\paragraph{The One-Dimensional Nearly-Free Electron Model}
+In the one-dimensional nearly-free electron model, electrons in a potential $V = 2V_{0}\cos(Gx),\ G = \frac{2\pi}{a}$ is studied. For this potential, we have only two non-zero Fourier coefficients $v_{G} = v_{-G} = V_{0}$.
+
+To study this model and, in particular, its band gap, we consider electrons at the Brillouin zone boundary, where $k = \pm\frac{1}{2}G = \pm\frac{\pi}{a}$. According to our previous argument, we start by only considering the corresponding coefficients, which are given by
+\begin{align*}
+	\left(\lambda - E\right)c_{\frac{1}{2}G} + V_{0}c_{-\frac{1}{2}G} = 0,\ \left(\lambda - E\right)c_{-\frac{1}{2}G} + V_{0}c_{\frac{1}{2}G} = 0
+\end{align*}
+where $\lambda = \frac{1}{4}\frac{\hbar^{2}\pi^{2}}{2ma^{2}}$. The system has non-trivial solutions when
+\begin{align*}
+	\left(\lambda - E\right)^{2} - V_{0}^{2} = 0\implies E = \lambda \pm V_{0},
+\end{align*}
+and the corresponding solutions satisfy
+\begin{align*}
+	\frac{c_{\frac{1}{2}G}}{c_{-\frac{1}{2}G}} = \frac{V_{0}}{E - \lambda} = \pm 1,
+\end{align*}
+meaning that the low-energy state is proportional to $\sin(\frac{1}{2}Gx)$ and the high-energy state is proportional to $\cos(\frac{1}{2}Gx)$.
+
+The results can be interpreted by considering the corresponding electron densities. For the low-energy state the density is concentrated at the potential minima, whereas for the high-energy state it is concentrated at the maxima, explaining the difference in energy. Furthermore, as the set of states does not continuously transition between the two, there is a band gap - here of size $2\abs{V_{0}}$.
+
+Similarly, studying the solution close to the Brillouin zone boundary nets the energies
+\begin{align*}
+	E = \frac{\lambda_{k} + \lambda_{k + G}}{2} \pm\sqrt{\left(\frac{\lambda_{k} + \lambda_{k + G}}{2}\right)^{2} + V_{0}^{2}},
+\end{align*}
+corresponding to a similar, but somewhat larger bandgap.
