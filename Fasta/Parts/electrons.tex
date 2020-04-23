@@ -154,3 +154,193 @@ Similarly, studying the solution close to the Brillouin zone boundary nets the e
 	E = \frac{\lambda_{k} + \lambda_{k + G}}{2} \pm\sqrt{\left(\frac{\lambda_{k} + \lambda_{k + G}}{2}\right)^{2} + V_{0}^{2}},
 \end{align*}
 corresponding to a similar, but somewhat larger bandgap.
+
+\paragraph{Band Structure in Real Materials}
+%TODO: Elaborate
+The band structure of a real material can be obtained experimentally, and may be used to obtain information about the material.
+
+One piece of information is the density of states. To reconstruct it, we first recall that the density of states is inversely proportional to $\dv{E}{k}$, meaning that flat parts of the band structure correspond to large densities of states. Second, we note that the number of states in a given energy band is constant. This is true because for a crystal of $N$ primitive cells there are $N$ $\vb{k}$-points in the first Brillouin zone (somehow). Multiplying by spin degeneracy gives the number of states in the band. Thus the density of states may be constructed from the slope of the band structure.
+
+\paragraph{Conduction and Valence Bands}
+The conduction and valence bands are the lowest unfilled and highest filled (or partially filled) bands respectively.
+
+\paragraph{Electron Excitation}
+Electrons are excited by the absorption of photons. Energy conservation requires $\hbar\omega > E_{\text{g}}$ where $E_{\text{g}}$ is the band gap. This implies that the wavelength is long. Momentum conservation thus requires that the change in the wave vector be much smaller than $\frac{\pi}{a}$, meaning that excitations occur almost straight up in the band structure.
+
+\paragraph{Direct and Indirect Band Gaps}
+Direct band gaps are found in materials where the maxima and minima of two adjacent bands occur for the same $k$. For such materials, excitations occur by the absorption of a single photon. Indirect band gaps are found in materials where the maxima and minima are found for different values of $k$. For such materials, excitations occur via the absorption of a photon to increase the energy and interaction with a phonon to conserve momentum. Processes involving multiple absorptions are less probable.
+
+\paragraph{Conservation Laws for Indirect Band Gaps}
+When considering conservation of energy and momentum during electron excitations across indirect band gaps, we can neglect the phonon energy and photon momentum, as these are typically negligible compared to other quantities. The conservation laws are therefore
+\begin{align*}
+	\hbar\omega = E_{\text{g}},\ \vb{k}_{e} = -\vb{K}
+\end{align*}
+where $\vb{K}$ is the phonon wave vector and $\vb{k}_{e}$ is the wave vector of the excited electron.
+
+\paragraph{Metals, Semiconductors and Insulators}
+We can now describe the difference between metals and semiconductors. In order to conduct electricity, an electron must be excited from the valence band. If an electron is in a half-filled band, there are available energy states close to the valence band and electrons may easily be excited, as is the case for metals. If an electron is in a filled band, however, it will have to traverse the band gap to be excited. This is the case for insulators and semiconductors, and the extent to which a material falls in either category depends on the size of the band gap.
+
+\paragraph{Holes}
+When electrons are thermally excited, they leave behind vacant electron states in the valence band. These are termed holes.
+
+\paragraph{Physical Quantities for a Hole}
+For a filled valence band the total wave vector must be zero. When a hole is created by electron excitation, the new total wave vector is comprised of a contribution from the excited electron and the contributions from the electrons in the valence band. As the hole is an effect of a vacant state in the valence band, the contributions from the valence band are added up to the contribution from the hole. This implies
+\begin{align*}
+	\vb{k}_{\text{h}} = -\vb{k}_{e}.
+\end{align*}
+
+To obtain a dispersion relation for the hole, consider an electron excited from some energy $E_{e}$ in the valence band, defined such that the top of the valence band is at $E = 0$. After the excitation, the total energy of the valence band is $E = -E_{e}$, and this energy is attributed to the hole. Using the fact that bands are symmetric under inversion in most cases, we can thus write
+\begin{align*}
+	E_{e}(\vb{k}_{e}) = E_{e}(-\vb{k}_{e}) = -E_{\text{h}}(-\vb{k}_{e}) = -E_{\text{h}}(\vb{k}_{\text{h}}).
+\end{align*}
+In other words, the band structure for holes is constructed by mirroring the electron band structure about the top of the band and performing spatial inversion.
+
+The group velocity of an electron is given by
+\begin{align*}
+	\vb{v}_{\text{g}} = \grad_{\vb{k}}{\omega} = \frac{1}{\hbar}\grad_{\vb{k}}{E_{e}}.
+\end{align*}
+For a hole we have
+\begin{align*}
+	\vb{v}_{\text{g}} = \frac{1}{\hbar}\grad_{\vb{k}_{\text{h}}}{E_{\text{h}}} = -\frac{1}{\hbar}\grad_{\vb{k}_{\text{h}}}{E_{e}} = \frac{1}{\hbar}\grad_{\vb{k}_{e}}{E_{e}},
+\end{align*}
+i.e. the same as for electrons.
+
+The work done on a hole or an electron is given by
+\begin{align*}
+	\dd{W} = \vb{F}\cdot\dd{\vb{s}} = \vb{F}\cdot\frac{1}{\hbar}\grad_{\vb{k}}{E_{\text{h}}}\dd{t} = \grad_{\vb{k}}{E_{\text{h}}}\cdot\frac{1}{\hbar}\vb{F}\dd{t},
+\end{align*}
+implying
+\begin{align*}
+	\vb{F} = \hbar\dv{\vb{k}}{t}.
+\end{align*}
+Newton's second law for electrons now becomes
+\begin{align*}
+	\hbar\dv{\vb{k}}{t} = -e(\vb{E} + \vb{v}_{\text{g}}\times\vb{B}).
+\end{align*}
+To convert this into an equation for holes, simply change the sign of the wave vector to obtain
+\begin{align*}
+	\hbar\dv{\vb{k}}{t} = e(\vb{E} + \vb{v}_{\text{g}}\times\vb{B}).
+\end{align*}
+In other words, holes behave as particles with a charge $e$.
+
+Newton's second law can also be written as
+\begin{align*}
+	\vb{F} = m\dv{\vb{v}_{\text{g}}}{t} = \frac{m}{\hbar}\dv{t}\grad_{\vb{k}}{E} = \frac{m}{\hbar}\laplacian{E}\dv{\vb{k}}{t} = \frac{m}{\hbar^{2}}\laplacian{E}\vb{F},
+\end{align*}
+implying the definition of an effective mass $m^{*}$ such that
+\begin{align*}
+	\frac{m^{*}}{\hbar^{2}}\laplacian{E} = 1.
+\end{align*}
+Due to the different curvatures of the dispersion relations, the effective masses of holes and electrons satisfy $m^{*}_{\text{h}} = -m^{*}_{e}$.
+
+\paragraph{Intrinsic and Extrinsic Semiconductors}
+Intrinsic semiconductors are semiconducting due to intrinsic material properties. In these materials the concentration of electrons and holes are always equal. Extrinsic semiconductors are semiconducting due to the addition of other substances, so-called doping. In these materials the concentrations of one charge carrier is greater than that of the other.
+
+\paragraph{Current in Semiconductors}
+In semiconductors the total current density is comprised of contributions from both electrons and holes, each term being proportional to the concentrations of the respective charge carriers.
+
+\paragraph{Charge Carrier Mobility}
+The mobility of a charge carrier is defined as
+\begin{align*}
+	\mu = \frac{v}{E}
+\end{align*}
+where $v$ is the drift velocity and $E$ the electric field.
+
+\paragraph{Charge Carrier Concentration}
+We would now like to study the concentration of charge carriers in semiconductors. To do this, we use quantum statistics, starting with the Fermi-Dirac distribution
+\begin{align*}
+	f_{e}(E) = \frac{1}{e^{\beta(E - \mu)} + 1},
+\end{align*}
+which describes the probability of finding an electron at energy $E$. Similarly, the probability of finding a hole at a given energy is
+\begin{align*}
+	f_{\text{h}}(E) = 1 - f_{e}(E) = \frac{1}{e^{\beta(\mu - E)} + 1}.
+\end{align*}
+To proceed, we will consider temperatures such that $\beta(E - \mu) >> 1$ in the conduction band and $\beta(\mu - E) >> 1$ in the valence band, allowing us to approximate these distributions as exponential in the energy, i.e.
+\begin{align*}
+	f_{e}(E) \approx e^{-\beta(E - \mu)},\ f_{\text{h}}(E) \approx e^{-\beta(\mu - E)}.
+\end{align*}
+Furthermore, we approximate the density of states of conduction band electrons and valence band holes as those of free particles, i.e.
+\begin{align*}
+	D_{e} = \frac{V}{2\pi^{2}}\left(\frac{2m^{\star}_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E - E_{\text{c}}},\ D_{\text{h}} = \frac{V}{2\pi^{2}}\left(\frac{2m^{\star}_{\text{h}}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E_{\text{v}} - E}
+\end{align*}
+where $E_{\text{v}}$ and $E_{\text{c}}$ are the energies at the boundaries of the valence and conduction bands respectively and we use the effective masses of each particle. This is reasonable because energies far away from the band edge will give small contributions anyway due to the Boltzmann factor.
+
+The concentrations of conduction band electrons is now given by
+\begin{align*}
+	n &= \frac{1}{V}\integ{E_{\text{c}}}{\infty}{E}{D_{e}(E)f_{e}(E)} \\
+	  &= \integ{E_{\text{c}}}{\infty}{E}{\frac{1}{2\pi^{2}}\left(\frac{2m^{\star}_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E - E_{\text{c}}}e^{-\beta(E - \mu)}} \\
+	  &= \frac{1}{2\pi^{2}}\left(\frac{2m^{\star}_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{\infty}{E}{\sqrt{E}e^{-\beta(E + E_{\text{c}} - \mu)}} \\
+	  &= \frac{1}{2\pi^{2}}\left(\frac{2m^{\star}_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}e^{-\beta(E_{\text{c}} - \mu)}\cdot 2(\kb T)^{\frac{3}{2}}\integ{0}{\infty}{x}{x^{2}e^{-x^{2}}} \\
+	  &= 2\left(\frac{m^{\star}_{e}\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}e^{\beta(\mu - E_{\text{c}})}.
+\end{align*}
+Similarly, the concentration of valence band holes is given by
+\begin{align*}
+	p &= \frac{1}{V}\integ{-\infty}{E_{\text{v}}}{E}{D_{\text{h}}(E)f_{\text{h}}(E)} \\
+	  &= \integ{-\infty}{E_{\text{v}}}{E}{\frac{1}{2\pi^{2}}\left(\frac{2m^{\star}_{\text{h}}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E_{\text{v}} - E}e^{-\beta(\mu - E)}} \\
+	  &= \frac{1}{2\pi^{2}}\left(\frac{2m^{\star}_{\text{h}}}{\hbar^{2}}\right)^{\frac{3}{2}}\integ{0}{\infty}{E}{\sqrt{E}e^{-\beta(\mu - E_{\text{v}} + E)}} \\
+	  &= \frac{1}{2\pi^{2}}\left(\frac{2m^{\star}_{\text{h}}}{\hbar^{2}}\right)^{\frac{3}{2}}e^{-\beta(\mu - E_{\text{v}})}\integ{0}{\infty}{E}{\sqrt{E}e^{-\beta E}} \\
+	  &= 2\left(\frac{m^{\star}_{\text{h}}\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}e^{\beta(E_{\text{v}} - \mu)}.
+\end{align*}
+
+\paragraph{The Law of Mass-Action}
+The product of the charge carrier concentrations is
+\begin{align*}
+	np = 4\left(\frac{\kb T}{2\pi\hbar^{2}}\right)^{3}(m^{\star}_{e}m^{\star}_{\text{h}})^{\frac{3}{2}}e^{\beta(E_{\text{v}} - E_{\text{c}})} = 4\left(\frac{\kb T}{2\pi\hbar^{2}}\right)^{3}(m^{\star}_{e}m^{\star}_{\text{h}})^{\frac{3}{2}}e^{-\beta E_{\text{g}}}.
+\end{align*}
+This is the law of mass-action.
+
+An alternative way of writing this is by combining the non-exponential factors of the carrier concentrations to $n_{0}$ and $p_{0}$, which yields
+\begin{align*}
+	np = n_{0}p_{0}e^{-\beta E_{\text{g}}}.
+\end{align*}
+This obscures parts of the temperature dependence, but this is fine, at least for small temperature variations, as the exponential temperature dependence dominates.
+
+\paragraph{Carrier Concentrations in Intrinsic Semiconductors}
+For intrinsic semiconductors the law of mass-action yields
+\begin{align*}
+	n = p = 2\left(\frac{\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}(m^{\star}_{e}m^{\star}_{\text{h}})^{\frac{3}{4}}e^{-\frac{1}{2}\beta E_{\text{g}}}.
+\end{align*}
+
+\paragraph{Chemical Potential for an Intrinsic Semiconductor}
+Using the fact that $n = p$ for an intrinsic semiconductor, we have
+\begin{align*}
+	2\left(\frac{m^{\star}_{e}\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}e^{\beta(\mu - E_{\text{c}})} &= 2\left(\frac{m^{\star}_{\text{h}}\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}e^{\beta(E_{\text{v}} - \mu)}.
+\end{align*}
+This can be solved for the chemical potential according to
+\begin{align*}
+	e^{2\beta\mu} &= \left(\frac{m^{\star}_{\text{h}}}{m^{\star}_{e}}\right)^{\frac{3}{2}}e^{\beta(E_{\text{v}} + E_{\text{c}})}, \\
+	\mu           &= \frac{1}{2}(E_{\text{v}} + E_{\text{c}}) + \frac{3}{4}\kb T\ln(\frac{m^{\star}_{\text{h}}}{m^{\star}_{e}}).
+\end{align*}
+This means that the previous calculations imply that the chemical potential is close to the middle of the band gap. In addition, the effective masses of electrons and holes are often close, meaning that the temperature dependence of the chemical potential is weak. We have previously assumed energies in the bands to be very different from the chemical potential when compared to the thermal energy, and this estimate of the chemical potential from the results of our calculation show that the results are consistent with the assumptions. A good sign.
+
+\paragraph{Doping of Semiconductors}
+Doping a semiconductor means adding small amounts of other substances to the material. The type of doping is determined by its effect on the band structure. Doping such that filled states close to the conduction band are added is termed n-doping, while doping such that vacant states close to the valence band are added is termed p-doping. We say that n-doping supplies donor states and p-doping supplies acceptor states.
+
+It turns out that doping effects dominate over intrinsic effects, and semiconductor doping is thus a very powerful tool to manipulate material properties.
+
+\paragraph{Donor and Acceptor Equilibria}
+We introduce the concentrations of donors and acceptors as $n_{a}^{b}$. $a$ may be a or d, signifying donors and acceptors, and $b$ may be a plus or minus sign, depending on the type of doping, to signify the concentration of ionized dopants, or a zero to signify a neutral dopant. The possible pairings are a, - and d, +.
+
+Assuming doping such that each dopant atom provides only one donor or acceptor state, counting all atoms in the structure yields $n_{\text{d}} = n_{\text{d}}^{+} + n_{\text{d}}^{0}$ and $n_{\text{a}} = n_{\text{a}}^{-} + n_{\text{a}}^{0}$. Balancing charges yields $n + n_{\text{a}}^{-} = p + n_{\text{d}}^{+}$.
+
+\paragraph{Charge Carrier Concentrations in Doped Semiconductors}
+It can be shown for a doped semiconductor that
+\begin{align*}
+	n = \sqrt{n_{0}n_{\text{d}}}e^{-\frac{1}{2}\beta E_{\text{d}}},\ p = \sqrt{p_{0}n_{\text{a}}}e^{-\frac{1}{2}\beta E_{\text{a}}}
+\end{align*}
+where $n_{0}$ and $p_{0}$ are the same as shown for intrinsic semi conductors and $E_{\text{d}}$ and $E_{\text{a}}$ are the energies of the donor and acceptor levels respectively.
+
+\paragraph{The $pn$ Junction}
+Consider two samples of a semiconductor where one is p-doped and the other is n-doped. These have the same band structure with the exception of the presence of donor and acceptor levels. The chemical potential of each sample is (for some reason) close to these extra energy levels, such that if the two samples are connected electrically, the equality of the chemical potential causes the two band structures to shift relative to their original position, being raised for the p-doped sample and lowered for the n-doped sample. Close to the interface the band structure continuously transitions between the two extremes. This region is termed the pn junction.
+
+In the junction, charge carriers from the two samples will recombine, leaving net charges at either side of the junction. Assuming the geometries of the samples to be equal and treating the charge densities in each region as $-en_{\text{a}}$ and $en_{\text{d}}$ respectively, charge neutrality implies
+\begin{align*}
+	ew_{p}n_{\text{a}} = ew_{n}n_{\text{d}}
+\end{align*}
+where $w_{p}$ and $w_{n}$ are the lengths of the junction in either sample. Furthermore, this argument in combination with Poisson's equation implies that a potential difference is naturally set up between the two samples. This potential difference is the basis for solar cells.
+
+\paragraph{Junction Diodes}
+A $pn$ junction may also be used to construct a crude diode. When a junction has a positive voltage applied to it from the $n$ side to the $p$ side, we call this forward biasing. The effect of forward biasing is to create a difference in the chemical potential countering the equalization effect of the junction. This in turn decreases the size of the junction (or depletion region, not sure which term is correct/appropriate) until the bias is large enough that the junction vanishes and current can flow. Applying a reverse bias will increase the size of the junction. This causes no current flow until a sufficiently strong bias, typically much stronger than the corresponding forward bias, is applied that the electric field overcomes resistance in the material and the junction diode breaks down.
+
+\paragraph{Transistors and Semiconductor Electronics}
+Transistors are built on combining $pn$ junctions. Using a small bias, one can make the transistor switch between conducting and not conducting electricity. This is what is needed to express binary signals, and transistors are therefore the foundation of computer technology. The miniaturization of consumer electronics has been driven by the miniaturization of the transistor in particular. The size of a transistor has been decreasing exponentially since the 1960's, in accordance with Moore's law, but this trend is slowing down as the miniaturization of semiconductor technology is approaching its limit.
