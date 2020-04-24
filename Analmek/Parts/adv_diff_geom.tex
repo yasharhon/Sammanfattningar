@@ -174,9 +174,63 @@ Comparing this to the geodesic equation yields
 \end{align*}
 A better approach would have been to go through the derivation of the geodesic equation again, identifying the Christoffel symbols as you go, but I am not sure if that is what I did in the previous paragraph. In any case we have already obtained this result.
 
-\paragraph{The Geometry of Curved Space}
-In curved space, we face the restriction that there is no position vector. All vectors in curved space are instead restricted to the tangent space. It turns out that tangent vectors at a point have coordinates $\dot{\chi}^{a}$ and that the tangent vectors consist of the tangent vectors to the coordinate lines, i.e. partial derivatives.
+\paragraph{Manifolds}
+A manifold is a set which is locally isomorphic to $\R^{n}$. We will take this to mean that we can locally impose coordinates $\chi^{a}$ on the manifold.
 
+Along with the definition of a manifold come certain other definitions. A local description of the manifold is called a chart. A collection of charts such that the combination of the charts describe the entire manifold is called an atlas. $n$ is called the dimension of the manifold.
+
+\paragraph{Manifolds and Vectors}
+Even though manifolds are locally isomorphic to Euclidean space, the vectors that were previously developed do not make sense when applied to this Euclidean space.
+
+\example{Tangent Vectors on $S_{2}$}
+Consider $S_{2}$, the unit sphere in $\R^{3}$, and suppose you cover it with a layer of water like an ocean, introduce north and south poles, place two sailors on opposite sides of the equator and tell both of them to sail south at some given speed. In practice, this means that they should both travel in their local $-y$ direction. Assuming vectors in the two spaces to make sense, you would conclude that the sailors are sailing in the same direction at the same speed and could not possibly hit each other. The accident which would occur at the south pole would of course prove you wrong. This example is one, very verbose, way of expressing why the vectors in the local Euclidean spaces do not make sense.
+
+This argument seems to have one hole in it, namely that $S_{2}$ is implicitly embedded in $\R^{3}$. Using this fact, the collision between the sailors could be deduced using the previously developed concepts of vectors. The reason why this would work is that you could impose a position vector in $\R^{3}$ onto every point on $S_{2}$. This is not a feature of more general manifold, meaning that this hole does not exist for more general manifolds.
+
+\paragraph{Tangent Vectors}
+Tangent vectors describe how scalar fields change with displacement along a curve. In Euclidean space the tangent basis was composed of derivatives with respect to the set of coordinates. In general curved spaces, we define
+\begin{align*}
+	\tb{a} = \del{a}{}.
+\end{align*}
+Derivatives are linear operators, so at least the set of tangent bases span some vector space and it makes sense to call a derivative a vector. A general tangent vector is now
+\begin{align*}
+	X = X^{a}\tb{a} = X^{a}\del{a}{}.
+\end{align*}
+To get more of a sense of how this can be related to vectors, consider the directional derivative
+\begin{align*}
+	\grad_{\vb{n}} = \vb{n}\cdot\grad = n^{a}\del{a}{}.
+\end{align*}
+When applied to Euclidean space, there is a direct correspondence between $\vb{n}$ and the directional derivative, as $\grad_{\vb{n}}{\vb{x}} = \vb{n}$. For more general manifolds, tangent vectors are defined to be directional derivatives. Note that this definition carries with it the same dependence on position as was previously warned about.
+
+Tangent vectors transform according to
+\begin{align*}
+	X^{a}\del{a}{} = X^{a}\del{a}{(\chi^{\prime})^{b}}\del[\prime]{b}{},
+\end{align*}
+implying the transformation rule
+\begin{align*}
+	(X^{\prime})^{a} = \del{b}{(\chi^{\prime})^{a}}X^{b},
+\end{align*}
+which is the same as the transformation rule for contravariant vector components in Euclidean space.
+
+\paragraph{Dual Vectors}
+To define dual vectors, we first introduce the dual space as the set of all linear operations from the tangent space to real numbers. This is also a vector space. The basis for the space is defined such that
+\begin{align*}
+	\db{a}(\del{b}{}) = \kdelta{b}{a}.
+\end{align*}
+
+In Euclidean space the dual basis was constructed from the gradient. The only concept here that carries over to manifolds is a definition based on small changes in the coordinates. More specifically, for any smooth scalar field $f$ we define a dual vector field according to
+\begin{align*}
+	df(X) = Xf = X^{a}\del{a}{f}
+\end{align*}
+and call it the differential (it is still not clear to me whether this has anything to do with the actual differential of a function). This has a similar structure to an inner product if the dual vector field has components $df_{a} = \del{a}{f}$. These components correspond to those of the gradient in Euclidean space. The basis we desire is $d\chi^{a}$.
+
+The components transform according to
+\begin{align*}
+	\del{a}{f} = \del[\prime]{b}{f}\del{a}{(\chi^{\prime})^{b}},
+\end{align*}
+which is the transformation rule for covariant vector components.
+
+\paragraph{The Geometry of Curved Space}
 We can also impose a metric tensor such that $\vb{v}\cdot\vb{w} = g_{ab}v^{a}w^{b}$, where the metric tensor is symmetric and positive definite.
 
 Dual vectors can be defined as linear maps from tangent vectors to scalars, i. e. on the form
