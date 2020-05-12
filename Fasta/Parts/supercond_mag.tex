@@ -201,3 +201,60 @@ In addition to this paramagnetic contribution there is a diamagnetic contributio
 	\chi = \frac{\mu_{0}\mu_{\text{B}}^{2}N}{E_{\text{F}}}.
 \end{align*}
 While we have neglected the temperature dependence along the way, it turns out that the susceptibility is almost temperature-independent.
+
+\paragraph{Ferromagnetism}
+Ferromagnetic materials exhibit spontaneous magnetization at zero applied field. Their behaviour is characterized by being ferromagnetic at low temperatures before undergoing a phase transition to a paramagnetic phase at higher temperatures. The critical temperature for ferromagnets is termed the Curie temperature. The existence of ferromagnetism can be explained by introducing coupling between atomic angular momenta in a solid.
+
+\paragraph{The Weiss Model}
+The Weiss model is a phenomenological theory of ferromagnetism and, as we will see, antiferromagnetism. It introduces an exchange field
+\begin{align*}
+	\vb{B}_{\text{E}} = \lambda\mu_{0}\vb{M}
+\end{align*}
+which must be taken into consideration when considering interactions with the magnetic field, but not when solving Maxwell's equations. $\lambda$ is a dimensionless constant. The effect of this term is to simulate the coupling effects described above.
+
+In the paramagnetic phase, when treating each spin as a two-level system, it can be shown that
+\begin{align*}
+	\frac{1}{\chi} = \frac{T - T_{\text{C}}}{C},\ C = \frac{\mu_{0}n\mu_{\text{B}}^{2}}{\kb},\ T_{\text{C}} = \lambda C.
+\end{align*}
+In reality, the temperature at which the susceptibility is expected to be infinite and the onset of ferromagnetism differ slightly, but this is usually neglected.
+
+In the ferromagnetic phase, spontaneous magnetization is expected at zero field. The magnetization at zero field is given by
+\begin{align*}
+	M = n\mu_{\text{B}}\tanh(\frac{\mu_{0}\mu_{\text{B}}\lambda M}{\kb T}),
+\end{align*}
+which is an implicit equation in terms of the magnetization. The Curie temperature is the lowest temperature at which the solution is $M = 0$. It can be shown that this corresponds to
+\begin{align*}
+	T_{\text{C}} = \lambda C
+\end{align*}
+for the same Curie constant as before, which means that the presence of the phase transition checks out.
+
+In a more general case the orbital angular momenta in the paramagnetic phase cancel out, leaving $J = S$. Performing the same derivation as before (which I should do), the Curie constant
+\begin{align*}
+	C = \frac{N\mu_{0}g^{2}S(S + 1)\mu_{\text{B}}^{2}}{3\kb}.
+\end{align*}
+
+The Weiss model has certain complications. Some solids have weak coupling between angular momenta, as opposed to the strong coupling which is required for the Weiss model to work. For these cases, $J$ is a better quantum number than $S$. In addition, certain materials have interactions between the atomic structure and the band electrons, altering the effectiveness of the interactions and thereby certain parameters in the model. This also has an effect on the ferromagnetic phase, where the saturation magnetization is $M = n_{\text{B}}n\mu_{\text{B}}$, where $n_{\text{B}} \neq p$ is the effective number of Bohr magnetons.
+
+\paragraph{The Heisenberg Model}
+The Heisenberg model is a quantum theory of ferromagnetism and antiferromagnetism. It adds the interaction energy
+\begin{align*}
+	U = -2J\vb{s}_{i}\cdot\vb{s}_{j}
+\end{align*}
+between two angular momenta, where $J$ is the so-called exchange integral which arises due to overlap of wavefunctions.
+
+To obtain an understanding for how this works, the exchange integral can be derived in the Weiss model. You finally obtain
+\begin{align*}
+		J = \frac{3\kb T_{\text{C}}}{2zS(S + 1)},
+\end{align*}
+where $z$ is the number of nearest neighbours.
+
+The sign of the exchange integral need not be positive, and negative exchange integrals describe both antiferromagnetism and frustrated magnets.
+
+\paragraph{Antiferromagnetism}
+Antiferromagnetic materials exhibit spontaneous spin ordering at zero applied field. Their behaviour is characterized by being antiferromagnetic at low temperatures before undergoing a phase transition to a paramagnetic phase at higher temperatures. The critical temperature for antiferromagnets is termed the Néel temperature.
+
+\paragraph{The Weiss Model for Antiferromagnets}
+To describe antiferromagnets, they are first divided into two sublattices $A$ and $B$ corresponding to each spin configuration and considering only nearest-neighbour interactions. Through some work it can be shown that
+\begin{align*}
+	\frac{1}{\chi} = \frac{T + T_{\text{N}}}{2C}.
+\end{align*}
