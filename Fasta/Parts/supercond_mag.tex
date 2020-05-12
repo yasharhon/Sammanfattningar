@@ -74,3 +74,130 @@ The free energy $F_{n}$ of the normal conducting state, on the other hand, is ap
 \begin{align*}
 	F_{n} - F_{0} = \frac{V}{2\mu_{0}}B_{\text{c}}^{2}.
 \end{align*}
+
+\paragraph{Magnetic Susceptibility}
+The magnetic susceptibility is given by
+\begin{align*}
+	\vb{M} = \chi\vb{H}.
+\end{align*}
+
+\paragraph{Types of Magnetic Response}
+The magnetic response of a material is (in many cases) categorized according to the following categories:
+\begin{itemize}
+	\item Diamagnetism, where $\chi < 0$ and $\abs{\chi} \ll 0$.
+	\item Paramagnetism, where $\chi > 0$ and $\abs{\chi} \ll 0$.
+	\item Ferromagnetism, where $\chi \gg 0$. This is often accompanied by the presence of non-zero magnetization at zero external field if the temperature is sufficiently low.
+\end{itemize}
+
+\paragraph{Origins of Magnetic Response}
+Magnetic response in a solid can have many different origins. A few examples are:
+\begin{itemize}
+	\item Atoms
+	\begin{itemize}
+		\item Paramagnetism due to redistribution of atomic electrons.
+		\item Diamagnetism due to wavefunctions changing such tat they oppose the external field.
+	\end{itemize}
+	\item Free electrons
+	\begin{itemize}
+		\item Paramagnetism due to redistribution of free electrons.
+		\item Diamagnetism due to wavefunctions changing such tat they oppose the external field.
+	\end{itemize}
+	\item Spin-spin interactions
+	\begin{itemize}
+		\item Ferromagnetism or antiferromagnetism, depending on the nature of the interaction.
+		\item Other exotic effects, for instance spin waves.
+	\end{itemize}
+	\item Atomic nuclei, the discussion of which is beyond the scope of this course.
+\end{itemize}
+
+\paragraph{Diamagnetism from Atoms}
+It turns out that by considering atomic electrons as non-interacting electrons in a Coulomb potential and adding a perturbation Hamiltonian
+\begin{align*}
+	H_{\text{d}} = \frac{e^{2}B^{2}}{8m}(x^{2} + y^{2}),
+\end{align*}
+diamagnetic effects are obtained.
+
+We start with a classical description, which yields that electrons in an external magnetic field precess around the nucleus with a frequency
+\begin{align*}
+	\omega = \frac{eB}{2m},
+\end{align*}
+termed the Larmor frequency. The total current from all precessing electrons is
+\begin{align*}
+	I = -Ze\frac{eB}{4\pi m},
+\end{align*}
+yielding a magnetic moment of
+\begin{align*}
+	\mu = -\frac{Ze^{2}B}{4\pi m}\expval{\rho^{2}},
+\end{align*}
+where the latter factor may be taken as a mean over all electrons. This should probably be treated more explicitly, as it clearly motivates the form of the perturbation Hamiltonian.
+
+The expected value of the perturbation Hamiltonian is given by
+\begin{align*}
+	\expval{H_{\text{d}}} = \frac{e^{2}B^{2}}{8m}\expval{\rho^{2}}.
+\end{align*}
+For some reason, the corresponding magnetic moment for a single state is
+\begin{align*}
+	\mu = -\grad_{\vb{B}}{\expval{H_{\text{d}}}} = -\frac{e^{2}B}{4m}\expval{\rho^{2}}.
+\end{align*}
+The total magnetic moment is thus
+\begin{align*}
+	\mu = -\frac{Ze^{2}B}{4m}\expval{\rho^{2}}.
+\end{align*}
+Rewriting this in terms of the atomic radius, we obtain
+\begin{align*}
+	M = n\mu = -\frac{nZe^{2}B}{6m}\expval{r^{2}},
+\end{align*}
+and finally the susceptibility
+\begin{align*}
+	\chi = -\frac{nZe^{2}\mu_{0}}{6m}\expval{r^{2}}.
+\end{align*}
+
+\paragraph{Paramagnetism in Atoms}
+It turns out that by considering atomic electrons as non-interacting electrons in a Coulomb potential and adding a perturbation Hamiltonian
+\begin{align*}
+	H_{\text{p}} = \frac{e\hbar}{2m}L_{z},
+\end{align*}
+paramagnetic effects are obtained.
+
+Paramagnetic effects are often found in atoms with unfilled inner electron shells. The total angular momentum for an atom is given by
+\begin{align*}
+	\vb{J} = \vb{L} + \vb{S}.
+\end{align*}
+The corresponding magnetic momentum is
+\begin{align*}
+	\vb*{\mu} = -g\mu_{\text{B}}\vb{J}
+\end{align*}
+where
+\begin{align*}
+	g = 1 + \frac{j(j + 1) + s(s + 1) - l(l + 1)}{2j(j + 1)}
+\end{align*}
+is called the Landé g-factor and $\mu_{\text{B}}$ is the Bohr magneton $\frac{e\hbar}{2m}$.
+
+Electrons distribute in the shells according to Hund's rules:
+\begin{enumerate}
+	\item Maximize the total spin $s$.
+	\item Maximize the total angular momentum $l$.
+	\item Compute the total angular momentum according to $j = \abs{l - s}$ if the shell is less than half-filled and $j = l + s$ if the shell is more than half-filled.
+\end{enumerate}
+
+\paragraph{Magnetism in the Electron Gas}
+At zero field, free electrons have an equal probability of having either spin. However, the introduction of an external field skews the statistics towards one configuration, splitting the density of states (or, more likely if you ask me, the occupation number) into two terms corresponding to either spin and creating paramagnetism. This effect is very small as the energy change is much smaller than the Fermi level, which is the energy at which electrons might switch energies.
+
+The number of electrons that switch spins is approximately
+\begin{align*}
+	\Delta N = \mu_{\text{B}}BD_{2}(E_{\text{F}}) \approx \frac{1}{2}\mu_{\text{B}}BD(E_{\text{F}})
+\end{align*}
+where $D_{2}$ is the density of states with unfavorable spin and $D$ is the total density of states. The total magnetization is thus
+\begin{align*}
+	M = \frac{2\mu_{\text{B}}\Delta N}{V} = \frac{\mu_{\text{B}^{2}BD(E_{\text{F}})}}{V} = \frac{3\mu_{\text{B}}^{2}BN}{2E_{\text{F}}},
+\end{align*}
+and the susceptibility is
+\begin{align*}
+	\chi = \frac{3\mu_{0}\mu_{\text{B}}^{2}N}{2E_{\text{F}}}.
+\end{align*}
+
+In addition to this paramagnetic contribution there is a diamagnetic contribution. Landau showed that it was equal to a third of the paramagnetic contribution in magnitude, yielding the total susceptibility
+\begin{align*}
+	\chi = \frac{\mu_{0}\mu_{\text{B}}^{2}N}{E_{\text{F}}}.
+\end{align*}
+While we have neglected the temperature dependence along the way, it turns out that the susceptibility is almost temperature-independent.
