@@ -1,10 +1,10 @@
 \section{Electrons}
 
 \paragraph{Statistics of Electrons}
-Properties of solids will also be treated using statistical mechanics. Again, for details, please see my summary of SI1162 Statistical Physics.
+Properties of solids will also be treated using statistical mechanics. For details, in particular on the statistics of free electrons, please see my summary of SI1162 Statistical Physics.
 
 \paragraph{The Electron Gas}
-The electron gas is a system of non-interacting electrons. The statistical mechanics studied in SI1162 are for electron gases.
+The electron gas is a system of non-interacting electrons.
 
 \paragraph{Fundamentals}
 The density of states for the electron gas is given by
@@ -22,7 +22,7 @@ The Fermi energy is the energy of the highest occupied state of a system at $T =
 \paragraph{Heat Capacity}
 The molar heat capacity of the free electron gas is given by
 \begin{align*}
-	c_{V} = \frac{\pi^{2}s^{\prime}}{2}\frac{RT}{T_{\text{F}}}
+	c_{V} = \frac{\pi^{2}s^{\prime}}{2}\frac{T}{T_{\text{F}}}R,
 \end{align*}
 where $s^{\prime}$ is the number of electrons per formula unit and $T_{\text{F}}$ is the Fermi temperature.
 	
@@ -31,7 +31,7 @@ To treat resistivity in the free electron model, consider an electron in the gas
 \begin{align*}
 	\dv{\vb{k}}{t} = -\frac{e}{\hbar}\vb{E}.
 \end{align*}
-The solution to this is unbounded, and this description is thus not complete.
+The solution to this corresponds to unbounded momentum, and this description is thus not complete.
 
 To remedy this, we introduce scattering to the problem. Supposing that electrons are scattered after some characteristic time $\tau$, we introduce the drift velocity
 \begin{align*}
@@ -87,10 +87,10 @@ the previous expression for the current density can be used to obtain
 \begin{align*}
 	R = \frac{1}{n(-e)}.
 \end{align*}
-This can be generalized for materials with other charge carriers by replacing $-e$ by the charge of the charge carriers. However, this description, and consequently the free electron model, is lacking for insulators and semiconductors.
+For certain materials, the magnitude and sign of the Hall coefficient does not match with their valency or conduction being performed by electrons. In addition, this description, and consequently the free electron model, is lacking for insulators and semiconductors.
 
 \paragraph{The Central Equation}
-To flesh out our description of electronic properties, we will start by introducing a potential in which the electrons are moving. The first approximation consists in combining the potential experienced by any single electron from both the atoms in the crystal and other electrons into some potential $V(\vb{r})$, where we require that $V$ have the same periodicity as the crystal. For this case, the Schrödinger equation is separable and given by
+To flesh out our description of electronic properties, we will start by introducing a potential in which the electrons are moving. The first approximation consists in combining the potential experienced by any single electron from both the atoms in the crystal and other electrons into some potential $V(\vb{r})$, where we require that $V$ have the same periodicity as the crystal. For this case, the Schrödinger equation is separable into $N$ equations of the form
 \begin{align*}
 	-\frac{\hbar^{2}}{2m}\laplacian{\Psi} + V\Psi = E\Psi.
 \end{align*}
@@ -131,7 +131,7 @@ The sum is the Fourier series of a function which shares the periodicity of the 
 Solving the central equation will net you both the Fourier coefficients of the state and the energy of the state. The energies can be plotted as a function of $\vb{k}$ to yield a set of graphs of energies for different $\vb{k}$. These (and, sometimes, the set of energy values corresponding to each graph) are called energy bands. A feature of energy bands is often that certain energies are not found in the bands, meaning that there are gaps between the bands.
 
 \paragraph{The One-Dimensional Nearly-Free Electron Model}
-In the one-dimensional nearly-free electron model, electrons in a potential $V = 2V_{0}\cos(Gx),\ G = \frac{2\pi}{a}$ is studied. For this potential, we have only two non-zero Fourier coefficients $v_{G} = v_{-G} = V_{0}$.
+The one-dimensional nearly-free electron model describes electrons in a potential $V = 2V_{0}\cos(Gx),\ G = \frac{2\pi}{a}$. For this potential, we have only two non-zero Fourier coefficients $v_{G} = v_{-G} = V_{0}$.
 
 To study this model and, in particular, its band gap, we consider electrons at the Brillouin zone boundary, where $k = \pm\frac{1}{2}G = \pm\frac{\pi}{a}$. According to our previous argument, we start by only considering the corresponding coefficients, which are given by
 \begin{align*}
@@ -147,11 +147,22 @@ and the corresponding solutions satisfy
 \end{align*}
 meaning that the low-energy state is proportional to $\sin(\frac{1}{2}Gx)$ and the high-energy state is proportional to $\cos(\frac{1}{2}Gx)$.
 
-The results can be interpreted by considering the corresponding electron densities. For the low-energy state the density is concentrated at the potential minima, whereas for the high-energy state it is concentrated at the maxima, explaining the difference in energy. Furthermore, as the set of states does not continuously transition between the two, there is a band gap - here of size $2\abs{V_{0}}$.
-
-Similarly, studying the solution close to the Brillouin zone boundary nets the energies
+The results can be interpreted by considering the corresponding electron densities, given by
 \begin{align*}
-	E = \frac{\lambda_{k} + \lambda_{k + G}}{2} \pm\sqrt{\left(\frac{\lambda_{k} + \lambda_{k + G}}{2}\right)^{2} + V_{0}^{2}},
+	\abs{\Psi}^{2} = \frac{1}{2}(1 \pm \cos(Gx)).
+\end{align*}
+For the low-energy state the density is concentrated at the potential minima, whereas for the high-energy state it is concentrated at the maxima, explaining the difference in energy. Furthermore, as the set of states does not continuously transition between the two, there is a band gap - here of size $2\abs{V_{0}}$.
+
+Similarly, studying the solution close to the Brillouin zone boundary nets the
+\begin{align*}
+	\left(\lambda_{k} - E\right)c_{k} + V_{0}c_{k - G} = 0,\ \left(\lambda_{k - G} - E\right)c_{k - G} + V_{0}c_{k} = 0.
+\end{align*}
+Non-trivial solutions are obtained for
+\begin{align*}
+	\left(\lambda_{k} - E\right)\left(\lambda_{k - G} - E\right) - V_{0}^{2} &= 0, \\
+	E^{2} - \left(\lambda_{k} + \lambda_{k - G}\right)E + \lambda_{k}\lambda_{k - G} - V_{0}^{2} &= 0, \\
+	E                                                                        &= \frac{\lambda_{k} + \lambda_{k + G}}{2} \pm\sqrt{\left(\frac{\lambda_{k} + \lambda_{k + G}}{2}\right)^{2} + V_{0}^{2} - \lambda_{k}\lambda_{k - G}} \\
+	                                                                         &= \frac{\lambda_{k} + \lambda_{k + G}}{2} \pm\sqrt{\left(\frac{\lambda_{k} - \lambda_{k + G}}{2}\right)^{2} + V_{0}^{2}},
 \end{align*}
 corresponding to a similar, but somewhat larger bandgap.
 
@@ -165,7 +176,7 @@ One piece of information is the density of states. To reconstruct it, we first r
 The conduction and valence bands are the lowest unfilled and highest filled (or partially filled) bands respectively.
 
 \paragraph{Electron Excitation}
-Electrons are excited by the absorption of photons. Energy conservation requires $\hbar\omega > E_{\text{g}}$ where $E_{\text{g}}$ is the band gap. This implies that the wavelength is long. Momentum conservation thus requires that the change in the wave vector be much smaller than $\frac{\pi}{a}$, meaning that excitations occur almost straight up in the band structure.
+Electrons are excited by the absorption of photons. Energy conservation requires $\hbar\omega > E_{\text{g}}$ where $E_{\text{g}}$ is the band gap. Momentum conservation typically requires that the change in the wave vector be much smaller than $\frac{\pi}{a}$, meaning that excitations occur almost straight up in the band structure.
 
 \paragraph{Direct and Indirect Band Gaps}
 Direct band gaps are found in materials where the maxima and minima of two adjacent bands occur for the same $k$. For such materials, excitations occur by the absorption of a single photon. Indirect band gaps are found in materials where the maxima and minima are found for different values of $k$. For such materials, excitations occur via the absorption of a photon to increase the energy and interaction with a phonon to conserve momentum. Processes involving multiple absorptions are less probable.
@@ -178,7 +189,7 @@ When considering conservation of energy and momentum during electron excitations
 where $\vb{K}$ is the phonon wave vector and $\vb{k}_{e}$ is the wave vector of the excited electron.
 
 \paragraph{Metals, Semiconductors and Insulators}
-We can now describe the difference between metals and semiconductors. In order to conduct electricity, an electron must be excited from the valence band. If an electron is in a half-filled band, there are available energy states close to the valence band and electrons may easily be excited, as is the case for metals. If an electron is in a filled band, however, it will have to traverse the band gap to be excited. This is the case for insulators and semiconductors, and the extent to which a material falls in either category depends on the size of the band gap.
+We can now describe the difference between metals and semiconductors. In order to conduct electricity, an electron must be excited. If an electron is in a half-filled band, there are available energy states close to the highest occupied state and electrons may easily be excited, as is the case for metals. If an electron is in a filled band, however, it will have to traverse the band gap to be excited. This is the case for insulators and semiconductors, and the extent to which a material falls in either category depends on the size of the band gap.
 
 \paragraph{Holes}
 When electrons are thermally excited, they leave behind vacant electron states in the valence band. These are termed holes.
@@ -189,7 +200,7 @@ For a filled valence band the total wave vector must be zero. When a hole is cre
 	\vb{k}_{\text{h}} = -\vb{k}_{e}.
 \end{align*}
 
-To obtain a dispersion relation for the hole, consider an electron excited from some energy $E_{e}$ in the valence band, defined such that the top of the valence band is at $E = 0$. After the excitation, the total energy of the valence band is $E = -E_{e}$, and this energy is attributed to the hole. Using the fact that bands are symmetric under inversion in most cases, we can thus write
+To obtain a dispersion relation for the hole, consider an electron excited from some energy $E_{e}$ in the valence band, defined such that the highest initially occupied state is at $E = 0$. After the excitation, the total energy of the valence band is $E = -E_{e}$, and this energy is attributed to the hole. Using the fact that bands are symmetric under k-space inversion in most cases, we can thus write
 \begin{align*}
 	E_{e}(\vb{k}_{e}) = E_{e}(-\vb{k}_{e}) = -E_{\text{h}}(-\vb{k}_{e}) = -E_{\text{h}}(\vb{k}_{\text{h}}).
 \end{align*}
@@ -255,7 +266,7 @@ which describes the probability of finding an electron at energy $E$. Similarly,
 \begin{align*}
 	f_{\text{h}}(E) = 1 - f_{e}(E) = \frac{1}{e^{\beta(\mu - E)} + 1}.
 \end{align*}
-To proceed, we will consider temperatures such that $\beta(E - \mu) >> 1$ in the conduction band and $\beta(\mu - E) >> 1$ in the valence band, allowing us to approximate these distributions as exponential in the energy, i.e.
+To proceed, we will consider temperatures such that $\beta(E - \mu) \gg 1$ in the conduction band and $\beta(\mu - E) \gg 1$ in the valence band, allowing us to approximate these distributions as exponential in the energy, i.e.
 \begin{align*}
 	f_{e}(E) \approx e^{-\beta(E - \mu)},\ f_{\text{h}}(E) \approx e^{-\beta(\mu - E)}.
 \end{align*}
@@ -263,7 +274,7 @@ Furthermore, we approximate the density of states of conduction band electrons a
 \begin{align*}
 	D_{e} = \frac{V}{2\pi^{2}}\left(\frac{2m^{\star}_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E - E_{\text{c}}},\ D_{\text{h}} = \frac{V}{2\pi^{2}}\left(\frac{2m^{\star}_{\text{h}}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E_{\text{v}} - E}
 \end{align*}
-where $E_{\text{v}}$ and $E_{\text{c}}$ are the energies at the boundaries of the valence and conduction bands respectively and we use the effective masses of each particle. This is reasonable because energies far away from the band edge will give small contributions anyway due to the Boltzmann factor.
+where $E_{\text{v}}$ and $E_{\text{c}}$ are the energies at the boundaries of the valence and conduction bands respectively and we use the effective masses of each particle. This is somewhat reasonable because energies far away from the band edge will give small contributions anyway due to the Boltzmann factor. An argument for why states close to the band edges are close to free-particle states should be supplied, though.
 
 The concentrations of conduction band electrons is now given by
 \begin{align*}
@@ -311,7 +322,7 @@ This can be solved for the chemical potential according to
 	e^{2\beta\mu} &= \left(\frac{m^{\star}_{\text{h}}}{m^{\star}_{e}}\right)^{\frac{3}{2}}e^{\beta(E_{\text{v}} + E_{\text{c}})}, \\
 	\mu           &= \frac{1}{2}(E_{\text{v}} + E_{\text{c}}) + \frac{3}{4}\kb T\ln(\frac{m^{\star}_{\text{h}}}{m^{\star}_{e}}).
 \end{align*}
-This means that the previous calculations imply that the chemical potential is close to the middle of the band gap. In addition, the effective masses of electrons and holes are often close, meaning that the temperature dependence of the chemical potential is weak. We have previously assumed energies in the bands to be very different from the chemical potential when compared to the thermal energy, and this estimate of the chemical potential from the results of our calculation show that the results are consistent with the assumptions. A good sign.
+Hence the previous calculations imply that the chemical potential is close to the middle of the band gap. In addition, the effective masses of electrons and holes are often close, meaning that the temperature dependence of the chemical potential is weak. We have previously assumed energies in the bands to be very different from the chemical potential when compared to the thermal energy, and this estimate of the chemical potential is consistent with that assumption. A good sign.
 
 \paragraph{Doping of Semiconductors}
 Doping a semiconductor means adding small amounts of other substances to the material. The type of doping is determined by its effect on the band structure. Doping such that filled states close to the conduction band are added is termed n-doping, while doping such that vacant states close to the valence band are added is termed p-doping. We say that n-doping supplies donor states and p-doping supplies acceptor states.
@@ -319,19 +330,43 @@ Doping a semiconductor means adding small amounts of other substances to the mat
 It turns out that doping effects dominate over intrinsic effects, and semiconductor doping is thus a very powerful tool to manipulate material properties.
 
 \paragraph{Donor and Acceptor Equilibria}
-We introduce the concentrations of donors and acceptors as $n_{a}^{b}$. $a$ may be a or d, signifying donors and acceptors, and $b$ may be a plus or minus sign, depending on the type of doping, to signify the concentration of ionized dopants, or a zero to signify a neutral dopant. The possible pairings are a, - and d, +.
+We introduce the concentrations of donor and acceptor atoms as $n_{a}^{b}$. $a$ may be a or d, signifying donors and acceptors, and $b$ may be a plus or minus sign, depending on the type of doping, to signify the concentration of ionized dopants, or a zero to signify a neutral dopant. No superscript denotes the total concentration. The possible pairs are a, - and d, +.
 
 Assuming doping such that each dopant atom provides only one donor or acceptor state, counting all atoms in the structure yields $n_{\text{d}} = n_{\text{d}}^{+} + n_{\text{d}}^{0}$ and $n_{\text{a}} = n_{\text{a}}^{-} + n_{\text{a}}^{0}$. Balancing charges yields $n + n_{\text{a}}^{-} = p + n_{\text{d}}^{+}$.
 
 \paragraph{Charge Carrier Concentrations in Doped Semiconductors}
-It can be shown for a doped semiconductor that
+Assuming dopant effects to dominate, we have
 \begin{align*}
-	n = \sqrt{n_{0}n_{\text{d}}}e^{-\frac{1}{2}\beta E_{\text{d}}},\ p = \sqrt{p_{0}n_{\text{a}}}e^{-\frac{1}{2}\beta E_{\text{a}}}
+	n \approx n_{\text{d}}^{+} = n_{\text{d}} - n_{\text{d}}^{0}.
 \end{align*}
-where $n_{0}$ and $p_{0}$ are the same as shown for intrinsic semi conductors and $E_{\text{d}}$ and $E_{\text{a}}$ are the energies of the donor and acceptor levels respectively.
+Furthermore, the concentration of neutral donors is equal to the number of filled states in the donor level, given by
+\begin{align*}
+	n_{\text{d}}^{0} = \frac{1}{e^{\beta(E_{\text{c}} - E_{\text{d}} - \mu)} + 1}n_{\text{d}},
+\end{align*}
+where $E_{\text{c}}$ is the edge of the conduction band and $E_{\text{d}}$ is the energy difference between the donor level and the conduction band. The concentration of electrons is thus
+\begin{align*}
+	n_{\text{d}} = \frac{e^{\beta(E_{\text{c}} - E_{\text{d}} - \mu)}}{e^{\beta(E_{\text{c}} - E_{\text{d}} - \mu)} + 1}n_{\text{d}} = \frac{1}{e^{\beta(\mu - E_{\text{c}} + E_{\text{d}})} + 1}n_{\text{d}}.
+\end{align*}
+The chemical potential is in such cases between the donor level and the conduction band in order for the conduction band not to be occupied. At low temperatures, we therefore approximate
+\begin{align*}
+	n_{\text{d}} \approx e^{\beta(E_{\text{c}} - E_{\text{d}} - \mu)}n_{\text{d}}.
+\end{align*}
+To simplify this further, the chemical potential must be eliminated. Using a previous result, we obtain
+\begin{align*}
+	2\left(\frac{m^{\star}_{e}\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}e^{\beta(\mu - E_{\text{c}})} = n_{0}e^{\beta(\mu - E_{\text{c}})} = e^{\beta(E_{\text{c}} - E_{\text{d}} - \mu)}n_{\text{d}},\ e^{\beta(\mu - E_{\text{c}})} = \sqrt{\frac{n_{\text{d}}}{n_{0}}}e^{-\frac{1}{2}\beta E_{\text{d}}}.
+\end{align*}
+Inserting this into the expression for the electron concentration we have
+\begin{align*}
+	n = \sqrt{n_{0}n_{\text{d}}}e^{-\frac{1}{2}\beta E_{\text{d}}}.
+\end{align*}
+Similarly, for holes it can be shown that
+\begin{align*}
+	p = \sqrt{p_{0}n_{\text{a}}}e^{-\frac{1}{2}\beta E_{\text{a}}},
+\end{align*}
+where $E_{\text{a}}$ is the energy difference between the valence band edge and the acceptor level.
 
 \paragraph{The $pn$ Junction}
-Consider two samples of a semiconductor where one is p-doped and the other is n-doped. These have the same band structure with the exception of the presence of donor and acceptor levels. The chemical potential of each sample is (for some reason) close to these extra energy levels, such that if the two samples are connected electrically, the equality of the chemical potential causes the two band structures to shift relative to their original position, being raised for the p-doped sample and lowered for the n-doped sample. Close to the interface the band structure continuously transitions between the two extremes. This region is termed the pn junction.
+Consider two samples of a semiconductor where one is p-doped and the other is n-doped. These have the same band structure with the exception of the presence of donor and acceptor levels. The chemical potential of each sample is close to these extra energy levels, such that if the two samples are connected electrically, the equality of the chemical potential causes the two band structures to shift relative to their original position, being raised for the p-doped sample and lowered for the n-doped sample. Close to the interface the band structure continuously transitions between the two extremes. This region is termed the pn junction.
 
 In the junction, charge carriers from the two samples will recombine, leaving net charges at either side of the junction. Assuming the geometries of the samples to be equal and treating the charge densities in each region as $-en_{\text{a}}$ and $en_{\text{d}}$ respectively, charge neutrality implies
 \begin{align*}

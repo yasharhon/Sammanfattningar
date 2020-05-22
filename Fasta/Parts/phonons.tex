@@ -1,14 +1,14 @@
 \section{Phonons and Crystal Vibration}
 
 \paragraph{The Monoatomic Chain}
-Vibrations in a crystal lattice along a certain crystal direction are vibrations along a chain of atoms lying in that direction. Hence we will need to understand the (classical) physics of particles on chains.
+Vibrations in a crystal lattice along a certain crystal direction are vibrations along a chain of atoms lying in that direction. Hence we will need to understand the (classical) physics of chains of particles.
 
 %TODO: Show without assuming x dependence
-Consider a chain of atoms at positions $x_{n} = na + u_{n}$, the first term of which is the equliibrium position and the second is the fluctuations from equilibrium. Assuming a harmonic potential with intensity $C$ between nearest neighbours in the chain, your favorite choice of equations of motion will yield
+Consider a chain of atoms at positions $x_{n} = x_{0,n} + u_{n}$, the first term of which is the equliibrium position and the second is the deviation from equilibrium. Assuming a harmonic potential with intensity $C$ between nearest neighbours in the chain, your favorite choice of equations of motion will yield
 \begin{align*}
-	m\dv[2]{x_{n}}{t} = m\dv[2]{u_{n}}{t} = C(x_{n + 1} - x_{n}) - C(x_{n} - x_{n - 1}) = C(x_{n + 1} + x_{n - 1} - 2x_{n}) = C(u_{n + 1} + u_{n - 1} - 2u_{n}).
+	m\dv[2]{x_{n}}{t} = m\dv[2]{u_{n}}{t} = C(x_{n + 1} - x_{n}) - C(x_{n} - x_{n - 1}) = C(x_{n + 1} + x_{n - 1} - 2x_{n}) = C(u_{n + 1} + u_{n - 1} - 2u_{n})
 \end{align*}
-When studying lattice vibrations, we are interested in solutions to the equations of motion which are travelling waves, of the form
+where we have used the fact that translational symmetry implies that $x_{0,n + 1} - x_{0,n} = x_{0,n} - x_{0,n - 1}	$. When studying lattice vibrations, we are interested in solutions to the equations of motion which are travelling waves, of the form
 \begin{align*}
 	u_{n} = u_{0}e^{i(Kna - \omega t)}.
 \end{align*}
@@ -103,7 +103,7 @@ We proceed by studying the limiting cases. In the low-wavelength limit we have
 \end{align*}
 yielding
 \begin{align*}
-	\omega_{\text{op}} \approx \sqrt{2}\omega_{0},\ \omega_{\text{ac}} \approx \frac{\sqrt{C}}{\sqrt{2(m_{1} + m_{2})}}\abs{Ka}.
+	\omega_{\text{op}} \approx \sqrt{2}\omega_{0},\ \omega_{\text{ac}} \approx \sqrt{\frac{C}{2(m_{1} + m_{2})}}\abs{Ka}.
 \end{align*}
 For the optical branch, we thus obtain
 \begin{align*}
@@ -172,7 +172,7 @@ where \Na is the Avogadro number and $s$ the number of atoms in the basis.
 This result agrees with experiments at high temperatures, but does not agree with the result that the heat capacity vanishes at low temperatures.
 
 \paragraph{Heat Capacity from Quantum Statistics}
-In order to use quantum statistics, we use the results that the energies of a harmonic oscillator are $E_{n} = \left(n + \frac{1}{2}\right)\hbar\omega$. In order to do statistics, however, we need a density of states which ideally should take polarization into account as well. The models described below are all attempts at appropriate choices of the density of states.
+In order to use quantum statistics, we use the results that the energies of a harmonic oscillator are $E_{n} = \left(n + \frac{1}{2}\right)\hbar\omega$. To proceed, however, we need a density of states which ideally should take polarization into account as well. The models described below are all attempts at appropriate choices of the density of states.
 
 \paragraph{The Einstein Model}
 The Einstein model proposes the density of states
@@ -181,9 +181,9 @@ The Einstein model proposes the density of states
 \end{align*}
 where $\omega_{\text{E}}$ is termed the Einstein frequency. When taking polarization into account, the density of states may be split up into terms containing different Einstein frequencies for different polarizations. One obtains
 \begin{align*}
-	c_{V} = 3sR\left(\beta\hbar\omega_{\text{E}}\right)^{2}\frac{e^{\beta\hbar\omega_{\text{E}}}}{\left(e^{\beta\hbar\omega_{\text{E}}} - 1\right)^{2}}.
+	c_{V} = 3R\left(\beta\hbar\omega_{\text{E}}\right)^{2}\frac{e^{\beta\hbar\omega_{\text{E}}}}{\left(e^{\beta\hbar\omega_{\text{E}}} - 1\right)^{2}}.
 \end{align*}
-where $\beta = \frac{1}{\kb T}$. This prediction both vanishes at low temperatures and approaches the Dulong-Petit rule at high temperatures. However, its low-temperature behaviour does not match with experiments.
+where $\beta = \frac{1}{\kb T}$ for a single mode. This prediction both vanishes at low temperatures and approaches the Dulong-Petit rule at high temperatures. However, its low-temperature behaviour does not match with experiments.
 
 The Einstein model describes optical phonons well due to their narrower frequency distribution. However, the low-temperature limitations of the model is due to it not describing acoustic phonons well.
 
@@ -203,7 +203,7 @@ In order to proceed with the calculations, one often uses the average
 \end{align*}
 to obtain
 \begin{align*}
-	c_{V} = 9sR\left(\frac{T}{T_{\text{D}}}\right)^{3}\integ{0}{\beta\hbar\omega_{\text{D}}}{x}{\frac{x^{4}e^{x}}{(e^{x} - 1)^{2}}}
+	c_{V} = 9R\left(\frac{T}{T_{\text{D}}}\right)^{3}\integ{0}{\beta\hbar\omega_{\text{D}}}{x}{\frac{x^{4}e^{x}}{(e^{x} - 1)^{2}}}
 \end{align*}
 where $T_{\text{D}} = \frac{\hbar\omega_{\text{D}}}{\kb}$.
 	

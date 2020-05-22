@@ -4,16 +4,17 @@
 Solid state physics, as we will study it, is concerned with crystals. A crystal is an arrangement of atoms which is repeated periodically. When developing the physics of crystals, we will assume their repetition to be infinite.
 
 \paragraph{Basis}
-The arrangement of atoms which is repeated in a crystal is termed the basis.
+The arrangement of atoms which is repeated in a crystal is termed the basis. Note the ambiguity in the choice of basis.
 
 \paragraph{Lattices}
-The set of points to which the basis is attached is termed the lattice.
+The set of points to which the basis is attached is termed the lattice. The ambiguities in the choices of basis and lattice are connected.
 
 \paragraph{Bravais Lattices}
 A Bravais lattice is a lattice such that the arrangement of lattice points looks exactly equal from any lattice point. This turns out to be equivalent to the lattice being infinite and symmetric under certain discrete translations. We will treat crystal lattices as Bravais lattices.
 
-The two-dimensional Bravais lattices are the rectangular,
+The two-dimensional Bravais lattices are the rectangular, square, hexagonal, centered rectangular and monoclinic lattices. Some are shown in figure \ref{fig:bravais2D}.
 
+%TODO: Add the rest
 \begin{figure}[!ht]
 	\centering
 	\subfloat[Square.]
@@ -25,15 +26,19 @@ The two-dimensional Bravais lattices are the rectangular,
 	{
 		\includegraphics[width = 0.3\textwidth]{./Images/2d_rectangular.pdf}
 	}
+	\caption{Some Bravais lattices in two dimensions.}
+	\label{fig:bravais2D}
 \end{figure}
 
-%TODO: Add 2D and 3D Bravais lattices
+The three-dimensional lattices are more numerous, but can be divided into triclinic, monoclinic, orthorhombic, tetragonal, cubic, trigonal and hexagonal lattices.
+
+%TODO: Add 3D Bravais lattices
 
 \paragraph{Lattice Vectors}
-The set $\{\vb{a}_{i}\}$ of lattice vectors of a Bravais lattice is the smallest possible set of vectors such that translating the lattice by $u_{i}\vb{a}_{i}$, where the $u_{i}$ are integers, leaves the lattice unchanged. There is an infinite number of ways to define the lattice vectors of a given lattice.
+The set $\{\vb{a}_{i}\}$ of lattice vectors of a Bravais lattice is the smallest possible set of vectors such that translating the lattice by $u_{i}\vb{a}_{i}$, where the $u_{i}$ are integers, leaves the lattice unchanged. For any given lattice, there are numerous ways to define the lattice vectors.
 
 \paragraph{Primitive Lattice Vectors}
-A set of lattice vectors is primitive if any two equivalent points are connected by integer combinations of the lattice vectors.
+A set of lattice vectors is primitive if any two lattice points are connected by integer combinations of the lattice vectors.
 
 \paragraph{Crystal Axes}
 The crystal axes are a set of directions that span space. These may be chosen according to, for instance, the primitive lattice vectors or other directions connected to the symmetry of the lattice.
@@ -45,13 +50,13 @@ The crystal cell is the repeat unit of the crystal. It may be constructed in an 
 Lattice constants are a set of parameters defining the dimensions of the cell.
 
 \paragraph{Primitive Cell}
-The primitive cell is a minimum-volume cell. It contains only one lattice point, and is thus termed a unit cell. Its infinite translation throughout space yields the lattice.
+The primitive cell is a minimum-volume cell. It contains only one lattice point, and is thus termed a unit cell.
 
 \paragraph{Primitive Basis}
 The primitive basis is the basis associated with the primitive cell.
 
 \paragraph{Wigner-Seitz Cell}
-The Wigner-Seitz Cell is the cell constructed by for any lattice point dividing space into two at the middle of and normal to the line between the point in question and all other points, and choosing the smallest possible region of space containing the point from this.
+The Wigner-Seitz Cell is the cell constructed by for any lattice point dividing space into two at the middle of and normal to the line between the point in question and all other points, and choosing the smallest region of space containing the point which is defined by the divisions of space.
 
 \paragraph{Lattice Point Group}
 The lattice point group is the group of operations which, applied about a lattice point (i.e. keeping this point fixed), leaves the lattice unchanged. Examples of possible fundamental operations include:
@@ -105,7 +110,7 @@ In order for $A$ to be an observable, we must have $A_{-\vb{G}} = \cc{A_{\vb{G}}
 \begin{align*}
 	A(\vb{r} + u_{i}\vb{a}_{i}) = A(\vb{r}) \implies u_{i}\vb{G}\cdot\vb{a}_{i} = 2\pi n
 \end{align*}
-where $n$ is an integer. The vectors $\vb{G}$ must have reciprocal length as their dimension, and are thus vectors in what is termed reciprocal space.
+where $n$ is an integer. This defines the set of allowed expansion coefficients in the Fourier expansion. The vectors $\vb{G}$ must have reciprocal length as their dimension, and thus belong to what is termed reciprocal space.
 
 \paragraph{The Reciprocal Lattice}
 The simplest choice of vectors satisfying
@@ -119,7 +124,7 @@ is integer combinations of a set of vectors $\{\vb{b}_{i}\}$ such that $\vb{a}_{
 with cyclic permutation of the indices yielding the other two.
 
 \paragraph{Crystal Planes and the Reciprocal Lattice}
-Assume that there is a lattice point in the origin and that the closest crystal plane with orientation specified by the normal vector $\vb{n}$ is a distance $d$ from the origin. Any plane parallel to the plane in question is described by
+Assume that there is a lattice point at the origin and that the closest crystal plane with orientation specified by the unit normal vector $\vb{n}$ is a distance $d$ from the origin. Any plane parallel to the plane in question is described by
 \begin{align*}
 	\vb{r}\cdot\vb{n} = md,\ m = 0, \pm 1, \dots
 \end{align*}
@@ -136,10 +141,7 @@ Comparing this to the definition of the reciprocal lattice implies that the plan
 \begin{align*}
 	\vb{G} = \frac{2\pi}{d}\vb{n}.
 \end{align*}
-This is the shortest reciprocal lattice vector describing the plane. The expression above implies
-\begin{align*}
-	d = \frac{2\pi}{\abs{\vb{G}}}.
-\end{align*}
+This is the shortest reciprocal lattice vector describing the plane.
 
 \paragraph{Miller Indices}
 Returning to the indexing system for crystal planes, we may decompose the normal vector as
@@ -156,21 +158,9 @@ The Miller indices may also be computed from the real lattice according to the f
 \end{enumerate}
 
 \paragraph{Interplanar Distances}
-Consider the set of \cpset{hkl} planes. We are interested in computing the distance between two adjacent such planes. To do this, we will first need a unit normal to any such plane. According to the construction of the Miller indices, the vectors
+Using the final result describing the normal of a given set of crystal planes, we obtain
 \begin{align*}
-\vb{v}_{1} = \frac{1}{h}\vb{a}_{1} - \frac{1}{k}\vb{a}_{2},\ \vb{v}_{2} = \frac{1}{h}\vb{a}_{1} - \frac{1}{l}\vb{a}_{3}
-\end{align*}
-span the plane, apart from some constant spatial shift. Hence we are interested in a vector that is simultaneously normal to both of these. One possible choice is
-\begin{align*}
-	\vb{G}_{hkl} = h\vb{b}_{1} + k\vb{b}_{2} + l\vb{b}_{3}.
-\end{align*}
-From this, obtaining a unit normal is trivial. Next we need a vector from one plane to the other. One possible choice is
-\begin{align*}
-	\vb{T} = \frac{1}{h}\vb{a}_{1},
-\end{align*}
-as one cell has space for $h$ planes of this type when counted along the $\vb{a}_{1}$ direction. From this, the distance is given by
-\begin{align*}
-	d = \frac{1}{\abs{\vb{G}_{hkl}}}\vb{G}_{hkl}\cdot\vb{T} = \frac{2\pi}{\abs{\vb{G}_{hkl}}},
+	d = \frac{2\pi}{\abs{\vb{G}_{hkl}}},
 \end{align*}
 which is true for any Bravais lattice.
 
@@ -223,7 +213,7 @@ We would like to compute the volume of the Brillouin zone in terms of the volume
 \begin{align*}
 	V_{\text{c}} = \vb{a}_{1}\cdot(\vb{a}_{2}\times\vb{a}_{3}).
 \end{align*}
-Using this, the volume of the Brillouin zone is given by
+Similarly, the volume of the Brillouin zone is given by
 \begin{align*}
 	V_{\text{r}} = \vb{b}_{1}\cdot(\vb{b}_{2}\times\vb{b}_{3}).
 \end{align*}
@@ -265,13 +255,19 @@ we have
 \end{align*}
 The requirement for diffraction is thus that $\Delta\vb{k} = \vb{G}$ and the structure factor being non-zero.
 
+The atomic form factor of a single atom is closely connected to its valency. For instance, if the electron distribution is completely localized at the nucleus, we obtain
+\begin{align*}
+	f_{j, \vb{G}} = Z
+\end{align*}
+where $Z$ is the number of electrons in the atom. The relation to the number of electrons turns out to be true for the general case as well.
+
 When observing electron distributions in solids, these appear close to those of free atoms. This does not mean that electrons are not distributed in a solid versus for free atoms, but that these corrections do not have a major effect on the atomic form factors. Thus it may be relevant to write these as
 \begin{align*}
 	f_{j, \vb{G}} = \integ[d]{}{}{\vb{r}}{n_{j}(\vb{r})e^{-i\vb{G}\cdot\vb{r}}}
 \end{align*}
 where the electron distribution is that of a free atom and the integration is performed over all of space.
 
-The astute reader might have noticed that when considering the primitive unit cell of a crystal with one atom in the basis, the structure factor is trivial. One could thus ask whether this was really necessary. The answer to the latter question is left to experimentalists, but I can confirm that this derivation neither adds nor subtracts to our knowledge. If you have chosen the primitive cell, the structure factor is trivial and diffraction occurs for every observation such that the diffraction criterion is satisfied. For other choices of cells, certain reciprocal lattice vectors will produce a structure factor equal to zero. This is because these do not correspond to reciprocal lattice vectors of the primitive cell. Someone should prove this more rigorously. Can we be sure that other choices of cells cover all possible reciprocal lattice vectors of the primitive cell? Yes, as non-primitive cells must have longer lattice vectors, corresponding to shorter reciprocal lattice vectors, implying that the reciprocal lattice vectors of the primitive cell should be possible to express as combinations of the reciprocal lattice vectors of the non-primitive cell.
+The astute reader might have noticed that when considering the primitive unit cell of a crystal with one atom in the basis, the structure factor is trivial. However, this description is often chosen in these cases as well, and so one could ask whether this is necessary. The answer to the latter question is left to experimentalists, but I can confirm that this derivation neither adds nor subtracts to our knowledge for these cases. If you have chosen the primitive cell, the structure factor is trivial and diffraction occurs for every observation such that the diffraction criterion is satisfied. For other choices of cells, certain reciprocal lattice vectors will produce a structure factor equal to zero. This is because these do not correspond to reciprocal lattice vectors of the primitive cell. Someone should prove this more rigorously. Can we be sure that other choices of cells cover all possible reciprocal lattice vectors of the primitive cell? Yes, as non-primitive cells must have longer lattice vectors, corresponding to shorter reciprocal lattice vectors, implying that the reciprocal lattice vectors of the primitive cell should be possible to express as combinations of the reciprocal lattice vectors of the non-primitive cell.
 
 \paragraph{Cohesive Energy}
 The cohesive energy of a crystal is the energy required to separate the crystal into neutral free atoms at rest at infinite separation.
@@ -282,7 +278,7 @@ The different types of crystal binding and their origins are
 	\item van der Waals binding, which occurs due to fluctuating electric dipoles in atoms and molecules.
 	\item ionic binding, which occurs due to Coulomb forces between ions.
 	\item covalent binding, which occurs due to the filling of electron states localized between atoms.
-	\item metal binding, where valence electrons form a gas throughout the crystal and balance repulsion between the metal atoms in the lattice.
+	\item metal binding, where valence electrons form a gas throughout the crystal, the presence of which balances the repulsion between the metal atoms in the lattice.
 \end{itemize}
 
 \paragraph{van der Waals Energy}
@@ -304,23 +300,23 @@ Re-expressing this in terms of nearest-neighbour distances $R$ in the lattice, w
 where we have divided by two in order to distribute the interaction energy evenly between the atoms. The two summations are determined solely by the crystal structure.
 
 \paragraph{Ionic Binding}
-Ionic interactions between two atoms in a crystal is modelled as a potential of the form
+Ionic interactions between two atoms in a crystal are modelled as a potential of the form
 \begin{align*}
 	V = \lambda e^{-\frac{R_{ij}}{\rho}} \pm \frac{q^{2}}{4\pi\varepsilon_{0}R_{ij}}
 \end{align*}
-with a positive term from Pauli repulsion and a negative term from attraction between charged particles. The Pauli term is typically only included for nearest neighbours.
+with a positive term from Pauli repulsion and a term from attraction between charged particles, the sign of which depending on the ions in question. The Pauli term is typically only included for nearest neighbours.
 
 For a crystal of $N$ atoms the cohesive energy due to ionic interaction becoms
 \begin{align*}
-	U = N\left(Z\lambda e^{-\frac{R}{\rho}} + \sum\limits_{j}(-1)^{g(j)}\frac{q^{2}}{4\pi\varepsilon_{0}R_{j}}\right)
+	U = N\left(Z\lambda e^{-\frac{R}{\rho}} + \sum\limits_{j}(-1)^{g(j)}\frac{q^{2}}{4\pi\varepsilon_{0}R_{ij}}\right)
 \end{align*}
-where we have introduced the nearest-neighbour distance $R$ and the function $g$ describing whether atom  $j$ has an equal or opposite charge to that of the atom in the origin. Re-expressing the Coulomb term in terms of nearest-neighbour distances we obtain
+where we have introduced the function $g$ describing whether atom  $j$ has an equal or opposite charge to that of the atom in the origin. Re-expressing the Coulomb term in terms of nearest-neighbour distances we obtain
 \begin{align*}
 	U = N\left(Z\lambda e^{-\frac{R}{\rho}} - \alpha\frac{q^{2}}{4\pi\varepsilon_{0}R_{ij}}\right)
 \end{align*}
 where $Z$ is the coordination number of a given ion and
 \begin{align*}
-	\alpha = \sum\limits\frac{(-1)^{g(j)}}{p_{j}}
+	\alpha = \sum\limits_{j}\frac{(-1)^{g(j)}}{p_{ij}}
 \end{align*}
 is termed the Madelung constant and depends only on the crystal structure.
 
