@@ -48,6 +48,55 @@ There is also an argument from the physics we already know. Having introduced th
 
 Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and going from the equations of motion to the Lagrangian. Of course, physics as a whole value the Lagrangian formalism higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
 
+\example{The Lagrangian Mechanics of a Charged Particle}
+Consider a particle with mass $m$ and charge $q$ in an external electromagnetic field. Newton's equations for this particle is
+\begin{align*}
+	m\dv{\vb{v}}{t} = q(\vb{E} + \vb{v}\times\vb{B}).
+\end{align*}
+In terms of the potentials we have
+\begin{align*}
+	\vb{E} = -\grad{\phi} - \del{t}{\vb{A}},\ \vb{B} = \curl{\vb{A}}
+\end{align*}
+yielding
+\begin{align*}
+	m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{t}{\vb{A}} + \vb{v}\times(\curl{\vb{A}})\right).
+\end{align*}
+The components of the latter term are
+\begin{align}
+	V_{i} &= \leci{ijk}v_{j}\leci{kmn}\del{m}{A_{n}} \\
+	      &= \leci{kij}\leci{kmn}v_{j}\del{m}{A_{n}} \\
+	      &= (\kdelta{im}{}\kdelta{jn}{} - \kdelta{in}{}\kdelta{jm}{})v_{j}\del{m}{A_{n}} \\
+	      &= v_{j}\del{i}{A_{j}} - v_{j}\del{j}{A_{i}},
+\end{align}
+hence the magnetic term can be expanded to yield
+\begin{align*}
+	&m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{t}{\vb{A}} + \grad{(\vb{v}\cdot\vb{A})} - (\vb{v}\cdot\grad)\vb{A}\right) = q\left(-\grad{\phi} - \dv{\vb{A}}{t} + \grad{(\vb{v}\cdot\vb{A})}\right). \\
+	&m\dv{\vb{v}}{t} + q\left(\grad{\phi} + \dv{\vb{A}}{t} - \grad{(\vb{v}\cdot\vb{A})}\right) = \vb{0}.
+\end{align*}
+
+To construct a Lagrangian with the same equations of motion, note that all terms but the ones containing the magnetic potential are easily created as $\lag = \frac{1}{2}mv^{2} - q\phi$. To create the remaining terms, add a term $q\vb{v}\cdot\vb{A}$ for a total Lagrangian of
+\begin{align*}
+	\lag = \frac{1}{2}mv^{2} - q(\phi - \vb{v}\cdot\vb{A}).
+\end{align*}
+The corresponding equations of motion in (Cartesian) vector notation are
+\begin{align*}
+	\grad_{\vb{r}}{\lag} - \dv{t}\left(\grad_{\vb{v}}{\lag}\right) = \vb{0}.
+\end{align*}
+With this Lagrangian we obtain
+\begin{align*}
+	-q\grad{\phi} + q\grad{(\vb{v}\cdot\vb{A})} - \dv{t}\left(m\vb{v} + q\vb{A}\right) = \vb{0}, \\
+	m\dv{\vb{v}}{t} + q\left(\grad{\phi} + \dv{\vb{A}}{t} - \grad{(\vb{v}\cdot\vb{A})}\right) = \vb{0}.
+\end{align*}
+Great - we did it!
+
+As a side note, how does this Lagrangian change under a gauge transform? Such a transform adds a partial time derivative of a function $-f$ to the electric potential and the gradient $f$ to the magnetic potential. Under such a transform we have
+\begin{align*}
+	\lag^{\prime} &= \frac{1}{2}mv^{2} - q(\phi - \del{t}{f}  - \vb{v}\cdot(\vb{A} + \grad{f})) \\
+	              &= \lag + q(\del{t}{f} + \vb{v}\cdot\grad{f}) \\
+	              &= \lag + \dv{f}{t}.
+\end{align*}
+It can be shown that such a Lagrangian has the same equations of motion.
+
 \paragraph{Kinetic Energy}
 Kinetic energy is defined in terms of the rank $2$ kinetic metric tensor as
 \begin{align*}
@@ -133,6 +182,25 @@ We note that
 and so the Hamiltonian is conserved if it has no explicit time dependence.
 
 %TODO: Hamiltonian total energy
+
+\example{The Hamiltonian Mechanics of a Charged Particle}
+Starting with the Lagrangian
+\begin{align*}
+	\lag = \frac{1}{2}mv^{2} - q\phi + q\vb{v}\cdot\vb{A}.
+\end{align*}
+we have
+\begin{align*}
+	\vb{p} = \grad_{\vb{v}}{\lag} = m\vb{v} + q\vb{A},
+\end{align*}
+and the Hamiltonian is thus
+\begin{align*}
+	\ham &= \vb{p}\cdot\vb{v} - \lag \\
+	     &= \vb{p}\cdot\frac{1}{m}(\vb{p} - q\vb{A}) - \frac{1}{2m}(\vb{p} - q\vb{A})^{2} + q\phi - \frac{q}{m}(\vb{p} - q\vb{A})\cdot\vb{A} \\
+	     &= \frac{1}{m}\left(\vb{p}\cdot(\vb{p} - q\vb{A}) - \frac{1}{2}(\vb{p} - q\vb{A})^{2} - q\vb{A}\cdot(\vb{p} - q\vb{A})\right) + q\phi \\
+	     &= \frac{1}{2m}\left(\vb{p} - q\vb{A}\right)^{2} + q\phi.
+\end{align*}
+
+%TODO: Gauge transform
 
 \paragraph{Poisson Brackets}
 Consider a function $f(\vb{q}, \vb{p}, t)$. Its time derivative is given by
