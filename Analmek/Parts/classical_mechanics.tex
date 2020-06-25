@@ -353,42 +353,64 @@ Suppose that we want to perform a canonical transform that preserves the first c
 However, as the two coordinates are equal, the partial derivatives represent equivalent operations. The only way to resolve this is for the transformation to satisfy $p_{1} = -P_{1}$ - otherwise you cannot find a generator of the first kind.
 
 \paragraph{Symmetries and Quasi-Symmetries}
-Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
-\begin{align*}
-\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}\dd{s}
-\end{align*}
-for some $F$. The case $F = 0$ is referred to as symmetries of the system.
+Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that the Lagrangian does not change its functional form and the action is changed by some constant depending on the boundary conditions. Symmetries are the transformations such that this constant is $0$.
 
 \paragraph{Noether's Theorem}
-Noether's theorem relates symmetries - or, more specifically, quasi-symmetries, of physical systems to conservation laws.
+Noether's theorem relates quasi-symmetries of physical systems to conservation laws.
 
-The variation of the Lagrangian under variation of coordinates and time can be written as
+%TODO: Explain better
+To prove it, we must first convert the definitions we have to local form. The new coordinates are given by $Q_{i}(\tau) = q_{i}(t) + \var{q_{i}}(\tau)$, and thus mix up the time, which we have to fix. By the definition of a quasi-symmetry, we have
 \begin{align*}
-\var{\lag} = \del{q^{a}}{\lag}\var{q^{a}} + \del{\dot{q}^{a}}{\lag}\var{\dot{q}^{a}} + \del{t}{\lag}\var{t}.
+	\integ{t_{1} + \var{t_{1}}}{t_{2} + \var{t_{2}}}{\tau}{\lag(Q_{i}, \tau)} - \integ{t_{1}}{t_{2}}{t}{\lag(q_{i}, t)} = \integ{t_{1}}{t_{2}}{t}{\dv{F}{t}},
 \end{align*}
-The total time derivative of the Lagrangian is given by
+for some function $F$. This is of the form
 \begin{align*}
-\dv{\lag}{t} = \del{t}{\lag} + \del{q^{a}}{\lag}\dot{q}^{a} + \del{\dot{q}^{a}}{\lag}\ddot{q}^{a},
+	\integ{a + \var{a}}{b + \var{b}}{x'}{f + \var{f}} - \integ{a}{b}{x}{f} = c.
 \end{align*}
-which yields
+This can be rewritten as
 \begin{align*}
-\var{\lag} = \del{q^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t}.
+	\integ{a + \var{a}}{b + \var{b}}{x}{\var{f}} + \integ{b}{b + \var{b}}{x}{f} - \integ{a}{a + \var{a}}{x}{f} = c.
 \end{align*}
-The equations of motion are $\del{q^{a}}{\lag} = \dv{t}\del{\dot{q}^{a}}{\lag}$. For a set of coordinates that satisfy this - a so-called on-shell solution - we have
+The terms containing an integral of a variation over an interval containing a variation will be of order greater than one, and may thus be ignored. In addition, the two latter integrals may be linearized to obtain
 \begin{align*}
-\var{\lag} &= \dv{t}\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t} \\
-&= \dv{t}\left(\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \lag\var{t}\right).
+	f(b)\var{b} - f(a)\var{a} + \integ{a}{b}{x}{\var{f}} = \integ{a}{b}{x}{\var{f} + \dv{x}(f\var{x})} = c.
 \end{align*}
-If the variation corresponds to a quasi-symmetry of the system, then this is equal to a total time derivative of $F$, and the quantity
+Hence, we have
 \begin{align*}
-J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q}^{a}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
+	\integ{t_{1}}{t_{2}}{\tau}{\lag(Q_{i}, t) - \lag(q_{i}, t) + \dv{t}(\lag(q_{i}, t)\var{t}) - F} = 0.
 \end{align*}
-thus satisfies $\dv{J}{t} = 0$. We can introduce the general momenta and the Hamiltonian to rewrite this as
+This completes the conversion of time.
+
+Next, the two first terms can be expanded to first order as
 \begin{align*}
-J = F - p_{a}\var{q^{a}} + \ham\var{t}.
+	\lag(Q_{i}, t) - \lag(q_{i}, t) = \del{q^{a}}{\lag}\bvar{q^{a}} + \del{\dot{q}^{a}}{\lag}\bvar{\dot{q}^{a}} = \del{q^{a}}{\lag}\bvar{q^{a}} + \del{\dot{q}^{a}}{\lag}\dv{t}\bvar{q^{a}},
+\end{align*}
+where we have introduced $\bvar{q^{a}} = \var{q^{a}}(t)$. Using the equations of motion, we further have
+\begin{align*}
+	\lag(Q_{i}, t) - \lag(q_{i}, t) = \bvar{q^{a}}\dv{t}\del{\dot{q}^{a}}{\lag} + \del{\dot{q}^{a}}{\lag}\dv{t}\bvar{q^{a}} = \dv{t}\left(\bvar{q^{a}}\del{\dot{q}^{a}}{\lag}\right).
+\end{align*}
+Hence we have
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{\tau}{\dv{t}\left(\lag(q_{i}, t)\var{t} + \bvar{q^{a}}\del{\dot{q}^{a}}{\lag}\right) - F} = 0.
 \end{align*}
 
-We arrive at the conclusion that $J$ is a conserved quantity under a quasi-symmetry of the system. Identifying the conservation laws of a system is thus a matter of identifying the quasi-symmetries of a system and computing $J$ under that transformation.
+Finally, we have to first order
+\begin{align*}
+	\var{q^{a}} = \bvar{q^{a}} + \dot{q^{a}}\var{t},
+\end{align*}
+yielding
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{\tau}{\dv{t}\left(\lag\var{t} + (\var{q^{a}} - \dot{q^{a}}\var{t})\del{\dot{q}^{a}}{\lag} - F\right)} = 0.
+\end{align*}
+The time interval in consideration may now be taken to be arbitrarily small, hence we must have that
+\begin{align*}
+	J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q^{a}}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
+\end{align*}
+is a conserved quantity for this system. We can introduce the general momenta and the Hamiltonian to rewrite this as
+\begin{align*}
+	J = F - p_{a}\var{q^{a}} + \ham\var{t}.
+\end{align*}
+This is the statement of Nöether's theorem. Identifying the conservation laws of a system is thus a matter of identifying the quasi-symmetries of a system and computing $J$ under that transformation.
 
 \example{A Free Particle in Space}
 Consider a free particle in space. Its Lagrangian is given by $\lag = \frac{1}{2}m\dot{\vb{x}}^{2}$, and the variation of this is
