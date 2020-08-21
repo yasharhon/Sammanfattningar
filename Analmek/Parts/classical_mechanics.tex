@@ -4,14 +4,11 @@
 In Lagrangian mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $q^{a}$ on this space in order to use what we know from the previous parts on differential geometry. Note that the term configuration does not exclude the discussion of systems other than the purely mechanical with Lagrangian mechanics. This is a clear advantage of Lagrangian mechanics as opposed to Newtonian mechanics.
 
 \paragraph{Hamilton's Principle}
-Hamilton's principle replaces Newton's laws as the fundamental law of nature that is postulated in order to start off the theory. To formulate it, we first define the action of a system over time is defined as
+Hamilton's principle replaces Newton's laws as the fundamental law of nature that is postulated in order to start off the theory. To formulate it, we first define the action of a system over time as
 \begin{align*}
 	S = \integ{}{}{t}{\lag},
 \end{align*}
 where $\lag$ is the Lagrangian. Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$.
-
-\paragraph{The Lagrangian}
-The Lagrangian is essential in Lagrangian mechanics. For a system of particles in a conservative force field, it can be constructed as $\lag = E_{\text{k}} - V$. $V$ is the potential energy and is taken to be a function only of the coordinates. Note that this is not the only way to construct a Lagrangian - for instance, adding the total time derivative of some function adds a constant term to the action, and so has no effect on the variational analysis. In addition, Lagrangian mechanics can be used to describe entirely different systems in which terms such as kinetic energy do not make sense. In fact, this is an important feature of analytical mechanics.
 
 \paragraph{Lagrange's Equations of Motion}
 Hamilton's principle can be expressed as
@@ -22,6 +19,28 @@ The equations of motion of the system are thus of the form
 \begin{align*}
 	\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag} = 0.
 \end{align*}
+
+\paragraph{Invariances of Lagrangian Dynamics}
+Lagrangian dynamics are invariant if the Lagrangian is changed by a total time derivative. This is because such a term adds only two boundary terms to the action, which should not be affected by variations of the coordinates.
+
+Lagrangian dynamics are also invariant under coordinate changes. To realize this, suppose that the Lagrangian is expressed in coordinates $q^{a}$ such that the equations of motion are satisfied. Now write these as $q^{a} = q^{a}(Q^{a}, t)$. This implies
+\begin{align*}
+	&\dot{q}^{a} = \pdv{q^{a}}{Q^{b}}\dot{Q}^{b} + \del{t}{q^{a}}, \\
+	&\pdv{\lag}{q^{a}} - \dv{t}\pdv{\lag}{\dot{q}^{a}} = 0.
+\end{align*}
+We would like to show that
+\begin{align*}
+	\pdv{\lag}{Q^{a}} - \dv{t}\pdv{\lag}{\dot{Q}^{a}} = 0.
+\end{align*}
+Using the chain rule, we obtain
+\begin{align*}
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\pdv{\dot{q}^{b}}{Q^{a}} - \dv{t}\left(\pdv{\lag}{\dot{q}^{b}}\pdv{\dot{q}^{b}}{\dot{Q}^{a}}\right) = 0, \\
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\pdv{Q^{a}}\left(\pdv{q^{b}}{Q^{c}}\dot{Q}^{c} + \del{t}{q^{b}}\right) - \dv{t}\left(\pdv{\lag}{\dot{q}^{b}}\pdv{q^{b}}{Q^{a}}\right) = 0, \\
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\left(\pdv{q^{b}}{Q^{a}}{Q^{c}}\dot{Q}^{c} + \pdv{\del{t}{q^{b}}}{Q^{a}}\right) - \pdv{\lag}{\dot{q}^{b}}\dv{t}\pdv{q^{b}}{Q^{a}} - \pdv{q^{b}}{Q^{a}}\dv{t}\pdv{\lag}{\dot{q}^{b}} = 0, \\
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\left(\pdv{q^{b}}{Q^{a}}{Q^{c}}\dot{Q}^{c} + \pdv{\del{t}{q^{b}}}{Q^{a}}\right) - \pdv{q^{b}}{Q^{a}}\dv{t}\pdv{\lag}{\dot{q}^{b}} - \pdv{\lag}{\dot{q}^{b}}\left(\pdv{q^{b}}{Q^{a}}{Q^{c}}\dot{Q}^{c} + \del{t}{\pdv{q^{b}}{Q^{ax}}}\right) = 0, \\
+	&\pdv{q^{b}}{Q^{a}}\left(\pdv{\lag}{q^{b}} - \dv{t}\pdv{\lag}{\dot{q}^{b}}\right) = 0.
+\end{align*}
+As the coordinate change is invertible, the equations of motion are still satisfied.
 
 \paragraph{How to Construct a Theory}
 In Lagrangian mechanics, the recipe for formulating a theory to describe a system is simple: Introduce its Lagrangian and extremize the action to find the equations describing the system.
@@ -44,9 +63,9 @@ V = L\dv{I}{t}.
 
 At this point I feel it only reasonable to discuss how I (or rather, Goldstein) arrived at this particular Lagrangian. To the trained eye it is very clear that the given equation of motion would result from that Lagrangian, but surely the core idea cannot be to just guess Lagrangians based on what we already know? Well, yes it can. The goal of physics is to describe reality, so if someone told you that their measurements implied the given equations of motion, is it not your job as a theorist to construct a theory which describes that experiment? And how do you that, if not by constructing an appropriate Lagrangian? It might seem somewhat ad hoc to construct theories based on desired results in this fashion, but the most important check for a theory to satisfy is its compliance with the reality around us. If that is ad hoc to you, then perhaps mathematics will feel more satisfactory to you than physics.
 
-There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the loss of potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This does not have pure coordinate dependance, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
+There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the loss of potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This has velocity dependence, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
 
-Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and going from the equations of motion to the Lagrangian. Of course, physics as a whole value the Lagrangian formalism higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
+Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and the other way round. Of course, physics as a whole value the Lagrangian formalism higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
 
 \example{The Lagrangian Mechanics of a Charged Particle}
 Consider a particle with mass $m$ and charge $q$ in an external electromagnetic field. Newton's equations for this particle is
@@ -95,7 +114,6 @@ As a side note, how does this Lagrangian change under a gauge transform? Such a 
 	              &= \lag + q(\del{t}{f} + \vb{v}\cdot\grad{f}) \\
 	              &= \lag + \dv{f}{t}.
 \end{align*}
-It can be shown that such a Lagrangian has the same equations of motion.
 
 \paragraph{Kinetic Energy}
 Kinetic energy is defined in terms of the rank $2$ kinetic metric tensor as
@@ -112,7 +130,7 @@ By defining $a^{b} = \dot{\chi}^{a}\dcov{a}{\dot{\chi}^{b}}$, the previous work 
 
 For a system with a potential, only the $\del{\chi^{a}}{\lag}$ term is affected, and
 \begin{align*}
-	a^{b} = - T^{ba}\del{a}{V} = T^{ba}F,
+	a^{b} = - T^{ba}\del{a}{V} = F^{a},
 \end{align*}
 which is a generalization of Newton's second law.
 
@@ -248,7 +266,7 @@ and we thus recognize $M$ as the Jacobian of the coordinate change. Inserting th
 \end{align*}
 On the other hand, according to the chain rule, we have
 \begin{align*}
-	\del{y^{i}}{\ham} = \del{x^{j}}{H}\del{y^{i}}{x^{j}},
+	\pdv{\ham}{x^{i}} = \pdv{\ham}{y^{j}}\pdv{y^{j}}{x^{i}},
 \end{align*}
 in matrix form
 \begin{align*}
@@ -650,8 +668,36 @@ Are the constants of motion also familiar? The answer is yes. We see that $\beta
 \paragraph{Integrable systems}
 Consider a system with some Hamiltonian. This system is integrable if there is a canonical transformation $(q, p)\to (\theta, I)$ such that the transformed Hamiltonian only depends on the momenta. For such a system, the equations of motion become
 \begin{align*}
-	\dot{\theta}_{i} = \del{I_{i}}{H} = \omega_{i},\ \dot{I}_{i} = 0.
+	\dot{\theta}^{i} = \del{I_{i}}{H} = \omega_{i},\ \dot{I}_{i} = 0.
 \end{align*}
+This set of coordinates and momenta is called action-angle variables.
+
+\paragraph{Action-Angle Variables}
+The action-angle variables of a system is the set of generalized coordinates $\theta^{i}$ and generalized momenta $I_{i}$ such that the Hamiltonian only depends on the generalized momenta. The claim is that the generalized momenta are
+\begin{align*}
+	I_{i} = \frac{1}{2\pi}\integ{\gamma_{i}}{}{q^{j}}{p_{j}},
+\end{align*}
+where the integration is performed twice over the set of available coordinates in phase space, i.e. over the period of the motion.
+
+\example{The Harmonic Oscillator}
+Consider a harmonic oscillator with energy $E$. In this case we have the one action-angle momentum
+\begin{align*}
+	I = \frac{1}{2\pi}\integ{}{}{q}{p}.
+\end{align*}
+The momentum can be re-expressed in terms of the coordinate to obtain
+\begin{align*}
+	I = \frac{1}{2\pi}\integ{}{}{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}}.
+\end{align*}
+The extremal values of the coordinate are $\pm\sqrt{\frac{2E}{m\omega^{2}}}$, yielding
+\begin{align*}
+	I &= \frac{1}{\pi}\integ{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}} \\
+	  &= \frac{\sqrt{2mE}}{\pi}\integ{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}{q}{\sqrt{1 - \frac{m\omega^{2}}{2E}q^{2}}} \\
+	  &= \frac{\sqrt{2mE}}{\pi}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{\sqrt{\frac{2E}{m\omega^{2}}}\cos{x}\sqrt{1 - \sin[2](x)}} \\
+	  &= \frac{2E}{\pi\omega}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{\cos[2](x)} \\
+	  &= \frac{E}{\pi\omega}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{1 + \cos{2x}} \\
+	  &= \frac{E}{\omega}.
+\end{align*}
+In other words, the Hamiltonian in the new variables is $H = \omega I$, and the frequency of the corresponding coordinate is simply $\omega$.
 
 \paragraph{Structures of theory}
 A theory in physics contain

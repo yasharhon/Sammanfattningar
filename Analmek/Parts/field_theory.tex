@@ -69,8 +69,8 @@ To show that this is the correct one, we first use the fact that $g_{\mu\nu} = g
 \end{align*}
 Next we write the Lagrangian density as
 \begin{align*}
-	\lag &= -\frac{1}{4}g^{\mu\alpha}g^{\nu\beta}F_{\alpha\beta}F_{\mu\nu} - A_{\mu}j^{\mu} \\
-	     &= -\frac{1}{4}g^{\mu\alpha}g^{\nu\beta}(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}})(\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}) - A_{\mu}j^{\mu}.
+	\lag &= -\frac{1}{4\mu_{0}}g^{\mu\alpha}g^{\nu\beta}F_{\alpha\beta}F_{\mu\nu} - A_{\mu}j^{\mu} \\
+	     &= -\frac{1}{4\mu_{0}}g^{\mu\alpha}g^{\nu\beta}(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}})(\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}) - A_{\mu}j^{\mu}.
 \end{align*}
 To clear things up further, we should remember that in the formal sense, the derivatives of the fields are all independent variables, yielding
 \begin{align*}
@@ -79,26 +79,25 @@ To clear things up further, we should remember that in the formal sense, the der
 The equations of motion are
 \begin{align*}
 	\pdv{\lag}{A_{\sigma}} - \del{\kappa}{\pdv{\lag}{(\del{\kappa}{A_{\sigma}})}} &= 0, \\
-	-j^{\sigma} + \del{\kappa}{\frac{1}{4}g^{\mu\alpha}g^{\nu\beta}\left((\delta_{\kappa\alpha}\delta_{\sigma\beta} - \delta_{\kappa\beta}\delta_{\sigma\alpha})(\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}) + (\delta_{\kappa\mu}\delta_{\sigma\nu} - \delta_{\kappa\nu}\delta_{\sigma\mu})(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}})\right)} &= 0, \\
-	-j^{\sigma} + \del{\kappa}{\frac{1}{4}\left((g^{\mu\kappa}g^{\nu\sigma} - g^{\mu\sigma}g^{\nu\kappa})F_{\mu\nu} + (g^{\kappa\alpha}g^{\sigma\beta} - g^{\sigma\alpha}g^{\kappa\beta})F_{\alpha\beta}\right)} &= 0, \\
-	-j^{\sigma} + \del{\kappa}{\frac{1}{4}\left((F^{\kappa\sigma} - F^{\sigma\kappa}) + (g^{\kappa\alpha}g^{\sigma\beta}F_{\kappa\sigma} - g^{\sigma\alpha}g^{\kappa\beta}F_{\alpha\beta})\right)} &= 0, \\
-	\del{\kappa}{F^{\kappa\sigma}} &= j^{\sigma}.
+	-j^{\sigma} + \del{\kappa}{\frac{1}{4\mu_{0}}g^{\mu\alpha}g^{\nu\beta}\left((\delta_{\kappa\alpha}\delta_{\sigma\beta} - \delta_{\kappa\beta}\delta_{\sigma\alpha})(\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}) + (\delta_{\kappa\mu}\delta_{\sigma\nu} - \delta_{\kappa\nu}\delta_{\sigma\mu})(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}})\right)} &= 0, \\
+	-j^{\sigma} + \del{\kappa}{\frac{1}{4\mu_{0}}\left((g^{\mu\kappa}g^{\nu\sigma} - g^{\mu\sigma}g^{\nu\kappa})F_{\mu\nu} + (g^{\kappa\alpha}g^{\sigma\beta} - g^{\sigma\alpha}g^{\kappa\beta})F_{\alpha\beta}\right)} &= 0, \\
+	-j^{\sigma} + \del{\kappa}{\frac{1}{4\mu_{0}}\left((F^{\kappa\sigma} - F^{\sigma\kappa}) + (g^{\kappa\alpha}g^{\sigma\beta}F_{\kappa\sigma} - g^{\sigma\alpha}g^{\kappa\beta}F_{\alpha\beta})\right)} &= 0, \\
+	\del{\kappa}{F^{\kappa\sigma}} &= \mu_{0}j^{\sigma}.
 \end{align*}
 
+%TODO: Complete
 Let's examine the equations of motion more carefully. The first is
 \begin{align*}
-	\del{\kappa}{F^{\kappa 0}} &= j^{0} = c\rho,
+	\del{\kappa}{F^{\kappa 0}} &= \mu_{0}j^{0} = \frac{1}{\varepsilon_{0}c}\rho,
 \end{align*}
-which is a Maxwell equation if $F^{i 0} = E^{i}$. Let's try to show that. We have
+which is a Maxwell equation if $F^{i 0} = \frac{1}{c}E^{i}$. Let's try to show that. We have
 \begin{align*}
 	F^{i0} &= g^{i\alpha}g^{0\beta}(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}}) \\
-	       &= g^{i\alpha}(\del{\alpha}{\phi} - \del{0}{A_{\alpha}}) \\
-	       &= -\del{i}{\phi} - \del{0}{A_{i}} \\
-	       &= -\del{i}{\phi} - \frac{1}{c}\del{t}{A_{i}} \\
-	       &= E^{i}.
+	       &= g^{i\alpha}(\frac{1}{c}\del{\alpha}{\phi} - \del{0}{A_{\alpha}}) \\
+	       &= \frac{1}{c}\del[i]{}{\phi} - \del{0}{A^{i}} \\
+	       &= \frac{1}{c}\left(\del[i]{}{\phi} - \del{t}{A^{i}}\right) \\
+	       &= \frac{1}{c}E^{i}.
 \end{align*}
-
-Another equation is
 
 \paragraph{Hamiltonian Formulation}
 In the Hamiltonian formalism, we define the momentum density
