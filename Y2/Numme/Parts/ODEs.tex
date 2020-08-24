@@ -1,0 +1,100 @@
+\section{Lösning av ordinarie differentialekvationer}
+
+\paragraph{Eulers metod (framåt)}
+Betrakta begynnelsevärdesproblemet
+\begin{align*}
+	\deval{y}{t}{t} &= f(t, y(t)), \\
+	y(a)            &= b.
+\end{align*}
+Eulers metod går ut på att
+\begin{enumerate}
+	\item Dela upp intervallet vi vill lösa problemet på i diskreta steg, där steg $n$ finns i punkten $t_{n} = a + nh$, där $h$ är steglängden.
+	\item Linjarisera problemet till
+	\begin{align*}
+		y_{n + 1} - y_{n} = f(t_{n}, y_{n})h,
+	\end{align*}
+	där $y_{n} = y(t_{n})$.
+\end{enumerate}
+
+En pseudokod-beskrivning av en lösning med startvillkor \verb|t0| och \verb|y0|, steglängd \verb|h| och \verb|N| steg är:
+\begin{lstlisting}
+	define f(t, y)
+	input t0 and y0
+	input h and N
+	t = t0
+	y = y0
+	for 1 < i < N
+		y = y + f(t, y)*h
+		t = t + h
+	end
+\end{lstlisting}
+
+\subparagraph{Felanalys}
+Om vi betraktar det första steget i iterationen, har man lokalt
+\begin{align*}
+	y(t_{1}) &= y(t_{0}) + \deval{y}{t}{t_{0}}(t_{1} - t_{0}) + \frac{1}{2}\deval[2]{y}{t}{\alpha}(t_{1} - t_{0})^{2} \\
+	         &= y(t_{0}) + hf(t_{0}, y_{0}) + \frac{1}{2}\deval[2]{y}{t}{\alpha}h^{2}.
+\end{align*}
+Om andraderivatan av $y$ är begränsad, ger detta
+\begin{align*}
+	\abs{y_{1} - y(t_{1})} \leq Mh^{2},
+\end{align*}
+och det lokala felet är \Ordo{h^{2}}.
+
+Det globala felet kan nu uppskattas som det lokala felet multiplicetar med antal steg. Om vi försöker lösa ekvationen på intervallet $[a, T]$ med $N$ steg, har man
+\begin{align*}
+	Nh = T - a,
+\end{align*}
+och det globala felet kan uppskattas som
+\begin{align*}
+	\abs{y_{N} - y(t_{N})} \approx h^{2}\frac{T - a}{h} = Ch.
+\end{align*}
+
+\paragraph{Eulers metod för system av differentialekvationer}
+Betrakta begynnelsevärdesproblemet
+\begin{align*}
+	\deval{\vb{y}}{t}{t} &= \vb{f}(t, \vb{y}(t)), \\
+	\vb{y}(a)            &= \vb{b}.
+\end{align*}
+Eulers metod går ut på att
+\begin{enumerate}
+	\item Dela upp intervallet vi vill lösa problemet på i diskreta steg, där steg $n$ finns i punkten $t^{n} = a + nh$, där $h$ är steglängden.
+	\item Linjarisera problemet till
+	\begin{align*}
+		y^{n + 1} - y_{n} = \vb{f}(t^{n}, y^{n})h,
+	\end{align*}
+	där $\vb{y}^{n} = \vb{y}(t^{n})$.
+\end{enumerate}
+
+En pseudokod-beskrivning av en lösning med startvillkor \verb|t0| och \verb|y0|, där denna är en lista med \verb|M| element, steglängd \verb|h| och \verb|N| steg är:
+\begin{lstlisting}
+	define f(t, y)
+	input t0 and y0
+	input h and N
+	t = t0
+	y = y0
+	for 1 < i < N
+		for 1 < j < M
+			y[j] = y[j] + f[j](t, y)*h
+		end
+		t = t + h
+	end
+\end{lstlisting}
+
+Observera att \verb|f| nu är en lista av \verb|M| funktioner, och kom ihåg att högre ordningens ekvationer med en funktion kan skrivas som ett system av differentialekvationer.
+
+\paragraph{Eulers metod bakåt}
+Betrakta begynnelsevärdesproblemet
+\begin{align*}
+	\deval{y}{t}{t} &= f(t, y(t)), \\
+	y(a)            &= b.
+\end{align*}
+Eulers metod bakåt går ut på att
+\begin{enumerate}
+	\item Dela upp intervallet vi vill lösa problemet på i diskreta steg, där steg $n$ finns i punkten $t_{n} = a + nh$, där $h$ är steglängden.
+	\item Linjarisera problemet till
+	\begin{align*}
+		y_{n + 1} - y_{n} = f(t_{n + 1}, y_{n + 1})h,
+	\end{align*}
+	där $y_{n} = y(t_{n})$. Detta ger en ekvation i $y_{n + 1}$ som måste lösas numeriskt.
+\end{enumerate}

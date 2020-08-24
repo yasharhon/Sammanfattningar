@@ -1,0 +1,336 @@
+\section{Stela kroppar}
+En stel kropp är en massbelagd domän så att avståndet mellan två godtyckliga punkter är konstant.
+
+\subsection{Allmän kinematik}
+En stel kropp kan ha translationshastighet eller rotationshastighet. Translationshastighet karakteriseras av att $\vb{v}_{A} = \vb{v}_{B}$ för alla $A, B$. Rotationshastighet karakteriseras av att det finns ett $C$ som är stelt förenad med kroppen så att $\vb{v}_{C} = \vb{0}$ momentant. 
+
+\paragraph{Hastighet}
+För att beskriva rörelsen till en stel kropp, bilda en referensram med axlerna fixa relativt kroppen. Betrakta två punkter $A, B$ i kroppen, där origo i den nya referensramen är $A$. Då gäller det att
+\begin{align*}
+	\vb{v}_{B} = \vb{v}_{B, \text{sp}} + \vb{v}_{B, \text{rel}}.
+\end{align*}
+Eftersom axlerna är fixa relativt kroppen, ger andra termen inget bidrag, vilket ger
+\begin{align*}
+	\vb{v}_{B} = \vb{v}_{A} + \vb*{\omega}\times\vb{r}_{AB}
+\end{align*}
+och bekräftar vårt påstående om att all rörelse för en stel kropp är antingen translation eller rotation.
+
+\paragraph{Acceleration}
+Kroppens acceleration ges av
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{B, \text{sp}} + \vb{a}_{B, \text{cor}} + \vb{a}_{B, \text{rel}}.
+\end{align*}
+Fixa axler relativt kroppen ger att de två sista termerna ej bidrar och
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \dv{\vb*{\omega}}{t}\times\vb{r}_{AB} + \vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AB}),
+\end{align*}
+där den första termen är ett translatoriskt bidrag och de två andra är rotationsbidrag.
+
+\subsection{Allmän dynamik}
+
+\paragraph{Allmän rotation kring fix axel}
+Vi betraktar en stel kropps rotation kring en fix punkt $O$ parallellt med en axel $Q$. Vi inför vinklarna $\alpha, \beta, \gamma$ mellan $\vb*{\omega}$ och axlarna, enhetsvektorn
+\begin{align*}
+	\vu{e}_{Q} = \cos{\alpha}\vu{e}_{x} + \cos{\beta}\vu{e}_{y} + \cos{\gamma}\vu{e}_{z},
+\end{align*}
+vinkeln $\theta_k$ mellan $\vb*{\omega}$ och $\vb{r}_{k}$ och avståndet $\rho_{k}$ från rotationsaxeln till partikeln. Vi beräknar först
+\begin{align*}
+	\rho_{k}^2 =& r_{k}^2\sin^{2}{\theta} \\
+	           =& \abs{\vb{r_{k}}\times\vu{e}_{Q}}^2 \\
+	           =& \abs{(y_{k}\cos{\gamma} - z_{k}\cos{\beta})\vu{e}_{x} + (z_{k}\cos{\alpha} - x_{k}\cos{\gamma})\vu{e}_{y} + (x_{k}\cos{\beta} - y_{k}\cos{\alpha})\vu{e}_{z}}^2 \\
+	           =& (y_{k}\cos{\gamma} - z_{k}\cos{\beta})^2 + (z_{k}\cos{\alpha} - x_{k}\cos{\gamma})^2 + (x_{k}\cos{\beta} - y_{k}\cos{\alpha})^2 \\
+	           =& (y_{k}^2 + z_{k}^2)\cos^{2}{\alpha} + (x_{k}^2 + z_{k}^2)\cos^{2}{\beta} + (x_{k}^2 + y_{k}^2)\cos^{2}{\gamma} \\
+	            &- 2y_{k}z_{k}\cos{\beta}\cos{\gamma} - 2x_{k}z_{k}\cos{\alpha}\cos{\gamma} - 2x_{k}y_{k}\cos{\alpha}\cos{\beta}.
+\end{align*}
+
+Vi inför nu tröghetsmomentet
+\begin{align*}
+	I_{Q} =& \sum m_{i}\rho_{i}^2 \\
+	      =& \sum m_{i}(y_{k}^2 + z_{k}^2)\cos^{2}{\alpha} + \sum m_{i}(x_{k}^2 + z_{k}^2)\cos^{2}{\beta} + \sum m_{i}(x_{k}^2 + y_{k}^2)\cos^{2}{\gamma} \\
+	       &- 2\sum m_{i}y_{k}z_{k}\cos{\beta}\cos{\gamma} - 2\sum m_{i}x_{k}z_{k}\cos{\alpha}\cos{\gamma} - 2\sum m_{i}x_{k}y_{k}\cos{\alpha}\cos{\beta}
+\end{align*}
+och definierar tröghetstensorn $I$ med komponenter
+\begin{align*}
+	I_{xx} = \sum m_{i}y_{i}^2 + z_{i}^2, I _{xy} = -\sum m_{i}x_{i}y_{i} 
+\end{align*}
+och motsvarande för andra subskript. Detta ger
+\begin{align*}
+	I_{Q} =& I_{xx}\cos^{2}{\alpha} + I_{yy}\cos^{2}{\beta} + I_{zz}\cos^{2}{\gamma} \\
+	       &+ 2I_{yz}\cos{\beta}\cos{\gamma} + 2I_{xz}\cos{\alpha}\cos{\gamma} + 2I_{xy}\cos{\alpha}\cos{\beta} \\
+	      =& \vu{e}_{Q}\cdot I\vu{e}_{Q}.
+\end{align*}
+
+\paragraph{Mer om tröghetstensorn}
+Tröghetstensorn är symmetrisk, och kan därmed diagonaliseras. Axlarna så att tröghetsmatrisen är diagonal relativt dessa kallas huvudaxlar.
+
+\subparagraph{Parallellförflyttningssatsen för diagonalelementer}
+Betrakta en stel kropp. Inför två referensramer $S, S'$, där den primmade ramen är ett masscentrumssystem, kroppen roterar kring $z'$-axeln, $z$-axeln är parallell med $z'$-axeln och avståndet mellan dessa är $d$. Vi inför tröghetsmomenten
+\begin{align*}
+	I_{zz}   &= \sum m_{i}(x_{i}^2 + y_{i}^2), \\
+	I_{z'z'} &= \sum m_{i}(x_{i}'^2 + y_{i}'^2).
+\end{align*}
+Vi skriver om första enligt
+\begin{align*}
+	I_{z} &= \sum m_{i}(x_{G}^2 + 2x_{i}'x_{G} + x_{i}'^{2} + y_{G}^2 + 2y_{i}'y_{G} + y_{i}'^{2}) \\
+	      &= \sum m_{i}(x_{G}^2 + y_{G}^2) + \sum m_{i}(x_{i}'^{2} + y_{i}'^{2}) + 2x_{G}\sum m_{i}x_{i}' + 2y_{G}\sum m_{i}y_{i}' \\
+	      &= md^2 + I_{z'z'},
+\end{align*}
+där de två sista summorna försvinner eftersom $S'$ är ett masscentrumssystem. Härledningen är analog för de andra diagonalelementen.
+
+\subparagraph{Parallellförflyttningssatsen för tröghetsprodukter}
+Betrakta en stel kropp. Inför två referensramer $S, S'$, där den primmade ramen är ett masscentrumssystem och enhetsvektorerna är parallella. Vi har
+\begin{align*}
+	I _{xy} &= -\sum m_{i}x_{i}y_{i} \\
+	        &= -\sum m_{i}(x_{G}y_{G} + x_{i}'y_{G} + x_{G}y_{i}' + x_{i}'y_{i}') \\
+	        &= -mx_{G}y_{G} - y_{G}\sum m_{i}x_{i}' - x_{G}\sum m_{i}y_{i}' - \sum m_{i}x_{i}'y_{i}' \\
+	        &= I_{x'y'} - mx_{G}y_{G}.
+\end{align*}
+
+\subparagraph{Kinetisk energi}
+Den relativa kinetiska energin ges av
+\begin{align*}
+	T' = \frac{1}{2}\sum m_{i}v_{i}'^{2}.
+\end{align*}
+Med $\rho_{i}$ som avståndet till rotationsaxeln ger hastighetssambandet
+\begin{align*}
+	T' &= \frac{1}{2}\sum m_{i}\rho_{i}^{2}\omega^{2} \\
+	   &= \frac{1}{2}I_{G}\omega^{2}.
+\end{align*}
+Den totala kinetiska energin ges av
+\begin{align*}
+	T = \frac{1}{2}mv_{G}^{2} + \frac{1}{2}I_{G}\omega^{2},
+\end{align*}
+som innehåller en banterm och en spinnterm. Med hjälp av tröghetstensorn kan den andra termen skrivas som
+\begin{align*}
+	T' &= \frac{1}{2}I_{Q}\omega^2 \\
+	   &= \frac{1}{2}\vu{e}_{Q}\cdot I\vu{e}_{Q}\omega^2 \\
+	   &= \frac{1}{2}\omega\vu{e}_{Q}\cdot I\omega\vu{e}_{Q} \\
+	   &= \frac{1}{2}\vb*{\omega}\cdot I\vb*{\omega}.
+\end{align*}
+
+\paragraph{Rörelsemängdsmoment}
+Rörelsemängdsmomentet kan skrivas som
+\begin{align*}
+	\vb{H}_{O} &= \sum \vb{r}_{i}\times m_{i}\vb{v}_{i} \\
+	           &= \sum m_{i}\vb{r}_{i}\times(\vb*{\omega}\times\vb{r}_{i}) \\
+	           &= \sum m_{i}((\vb{r}_{i}\cdot\vb{r}_{i})\vb*{\omega} - (\vb{r}_{i}\cdot\vb*{\omega})\vb{r}_{i}).
+\end{align*}
+Vi betraktar nu $x$-komponenten, som ges av
+\begin{align*}
+	H_{O, x} &= \sum m_{i}((x_{i}^2 + y_{i}^2 + z_{i}^2)\omega_{x} - (x_{i}\omega_{x} + y_{i}\omega_{y} + z_{i}\omega_{z})x_{i}) \\
+	         &= \sum m_{i}((y_{i}^2 + z_{i}^2)\omega_{x} - (y_{i}\omega_{y} + z_{i}\omega_{z})x_{i}) \\
+	         &= I_{xx}\omega_{x} + I_{xy}\omega_{y} + I_{xz}\omega_{z}.
+\end{align*}
+Från detta fås
+\begin{align*}
+	\vb{H}_{O} = I\vb*{\omega}.
+\end{align*}
+Med detta kan den kinetiska energin i masscentrumssystemet skrivas som
+\begin{align*}
+	T' = \frac{1}{2}\vb*{\omega}\cdot I\vb*{\omega}.
+\end{align*}
+
+\paragraph{Energilagen}
+Definiera effekten
+\begin{align*}
+	P_{ij} = \vb{f}_{ij}\cdot\vb{v}_{i} + \vb{f}_{ji}\cdot\vb{v}_{j} = \vb{f}_{ij}\cdot(\vb{v}_{i} - \vb{v}_{j}).
+\end{align*}
+Vi använder att $\vb{v}_{j} = \vb{v}_{i} + \vb*{\omega}\times(\vb{r}_{j} - \vb{v}_{i})$ och får
+\begin{align*}
+	P_{ij} = -\vb{f}_{ij}\cdot\vb*{\omega}\times(\vb{r}_{j} - \vb{v}_{i}) = 0
+\end{align*}
+eftersom $\vb{f}_{ij}$ verkar längs linjen mellan partikel $i$ och $j$. Därmed gör de indre krafterna inget arbete, och
+\begin{align*}
+	U_{0 - 1}^{\text{(e)}} = T_{1} - T_{0}.
+\end{align*}
+
+\paragraph{Arbete}
+För att beräkna arbetet som görs på en stel kropp i allmän rörelse, betrakta
+\begin{align*}
+	T = \frac{1}{2}mv_{G}^{2} + \frac{1}{2}\vb*{\omega}\cdot I\vb*{\omega}.
+\end{align*}
+Med energilagen fås nettoeffekten $P$ på kroppen av
+\begin{align*}
+	P &= \dv{T}{t} \\
+	  &= m\dv{\vb{v}_{G}}{t}\cdot\vb{v}_{G} + \vb*{\omega}\cdot I\vb*{\alpha} \\
+	  &= \vb{F}\cdot\vb{v}_{G} + \vb{M}_{G}\cdot\vb*{\omega}.
+\end{align*}
+Arbetet ges då av
+\begin{align*}
+	\dd{U} = P\dd{t} = \vb{F}\cdot\dd{\vb{r}_{G}} + M_{G, n}\dd{\theta}
+\end{align*}
+där $M_{G, n}$ är momentets komponent normalt på rotationsplanet.
+
+\paragraph{Eulers dynamiska ekvationer}
+Betrakta en stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en kroppsfix ram $Oxyz$. Det gäller att
+\begin{align*}
+	\dv{\vb{H}_{O}}{t} = \relderiv{\vb{H}_{O}} + \vb*{\omega}\times\vb{H}_{O}.
+\end{align*}
+Eftersom kroppen är stel, har vi vidare
+\begin{align*}
+	\relderiv{\vb{H}_{O}} = I_{O}\relderiv{\vb*{\omega}}.
+\end{align*}
+Rörelsemängdsmomentlagen ger då Eulers dynamiska ekvation
+\begin{align*}
+	I_{O}\relderiv{\vb*{\omega}} + \vb*{\omega}\times\vb{H}_{O} = \dv{\vb{M}_{O}}{t}.
+\end{align*}
+Med den kroppsfixa ramen orienterat längs med kroppens huvudaxler blir detta på komponentform
+\begin{align*}
+	I_{xx}\dv{\omega_{x}}{t} + (I_{zz} - I_{yy})\omega_{y}\omega_{z} &= M_{O, x}, \\
+	I_{yy}\dv{\omega_{y}}{t} + (I_{xx} - I_{zz})\omega_{z}\omega_{x} &= M_{O, y}, \\
+	I_{zz}\dv{\omega_{z}}{t} + (I_{yy} - I_{xx})\omega_{x}\omega_{y} &= M_{O, z}.
+\end{align*}
+
+\paragraph{Eulers kinematiska ekvationer}
+Betrakta en stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en kroppsfix ram $Oxyz$. Låt linjen där $xy$-planet skär $XY$-planet vara parallell med $\vb{n}$, som igen är parallell med $\vu{e}_{Z}\times\vu{e}_{z}$. Introducera vinkeln $\theta$ mellan $Z$- och $z$-axeln, vinkeln $\psi$ mellan $X$-axeln och $\vb{n}$ och vinkeln $\phi$ mellan $\vb{n}$ och $x$-axeln. Dessa kallas för Eulervinklarna. Vinkelhastigheten är en summa av vinkelhastigheter motsvarande ändring av varje vinkel, och ges av
+\begin{align*}
+	\vb*{\omega} = \dv{\psi}{t}\vu{e}_{Z} + \dv{\theta}{t}\vu{e}_{n} + \dv{\phi}{t}\vu{e}_{z}.
+\end{align*}
+Projektion på det kroppsfixa systemet ger
+\begin{align*}
+	\vu{e}_{Z} &= \cos{\theta}\vu{e}_{z} + \sin{\theta}(\sin{\phi}\vu{e}_{x} + \cos{\phi}\vu{e}_{y}), \\
+	\vu{e}_{n} &= \cos{\phi}\vu{e}_{x} - \sin{\phi}\vu{e}_{y}.
+\end{align*}
+Från detta fås Eulers kinematiska ekvationer
+\begin{align*}
+	\omega_{x} &= \dv{\psi}{t}\sin{\theta}\sin{\phi} + \dv{\theta}{t}\cos{\phi}, \\
+	\omega_{y} &= \dv{\psi}{t}\sin{\theta}\cos{\phi} - \dv{\theta}{t}\sin{\phi}, \\
+	\omega_{z} &= \dv{\psi}{t}\cos{\theta} + \dv{\phi}{t}.
+\end{align*}
+
+\paragraph{3D-rotation av en axisymmetrisk kropp}
+Betrakta en axisymmetrisk stel kropp som roterar kring en fix punkt $O$. Välj en rumsfixt inertialram $OXYZ$ och en ram $Oxyz$, där $z$-axeln pekar längs med kroppens symmetriaxel och kroppen kan rotera fritt kring detta. Denna sortens ram kallas en resalram. Nu kan $x$-axeln väljas parallellt med $\vb{n}$. Kroppens rotation kan nu delas i resalramens vinkelhastighet
+\begin{align*}
+	\vb*{\omega}_{S} = \dv{\psi}{t}\vu{e}_{Z} + \dv{\theta}{t}\vu{e}_{n}
+\end{align*}
+och kroppens vinkelhastighet relativt resalramen
+\begin{align*}
+	\vb*{\omega}_{0} = \dv{\phi}{t}\vu{e}_{z}.
+\end{align*}
+Nu får vi
+\begin{align*}
+	\dv{\vb{H}_{O}}{t} = \relderiv{\vb{H}_{O}} + \vb*{\omega}_{S}\times\vb{H}_{O}
+\end{align*}
+och
+\begin{align*}
+	\relderiv{\vb{H}_{O}} = I_{O}\relderiv{\vb*{\omega}_{0}},
+\end{align*}
+vilket slutligen ger
+\begin{align*}
+	I_{O}\relderiv{\vb*{\omega}_{0}} + \vb*{\omega}_{S}\times\vb{H}_{O} = \dv{\vb{M}_{O}}{t}.
+\end{align*}
+
+\subsection{Plan rörelse}
+Plan rörelse för en stel kropp karakteriseras av att hastigheten i alla punkter är parallellt med ett och samma fixa plan. Om rörelsen är i $xy$-planet, kommer $\vb*{\omega}$ peka längs med $z$-axeln.
+
+\paragraph{Momentancentrum}
+Om en stel kropp roterar under plan rörelse, finns det alltid en punkt $C$ med $\vb{v}_{C} = \vb{0}$, som kallas momentancentrum. Denna punkt uppfyller $\vb{v}_{A} = -\vb*{\omega}\times\vb{r}_{AC}$. För att hitta den, multiplicera med $\vb*{\omega}$ på båda sidor för att få
+\begin{align*}
+	\vb*{\omega}\times\vb{v}_{A} &= -\vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AC}) \\
+	                             &= -(\vb*{\omega}\cdot\vb{r}_{AC})\vb*{\omega} + \omega^2\vb{r}_{AC}.
+\end{align*}
+Eftersom rörelsen är plan, behöver vi bara betrakta ett snitt av kroppen i rörelsesplanet, vilket gör att den första skalärprodukten blir $0$. Detta ger då positionen till momentancentrumet enligt
+\begin{align*}
+	\vb{r}_{AC} = \frac{1}{\omega^2}\vb*{\omega}\times\vb{v}_{A}.
+\end{align*}
+
+\subparagraph{Hastighet}
+Vid att införa cylindriska koordinater kring origo fås ortsvektorn till någon partikel i kroppen som $\vb{r}_{i}' = \rho_{i}\vu{e}_{\rho}$. Partikelns hastighet ges av
+\begin{align*}
+	\vb{v}_{i} &= \vb{v}_{G} + \vb*{\omega}\times\vb{r}_{i}' \\
+	           &= \vb{v}_{G} + \omega\rho_{i}\vu{e}_{\theta}.
+\end{align*}
+
+\paragraph{Acceleration}
+Accelerationssambandet för plan rörelse ger
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \dv{\vb*{\omega}}{t}\times\vb{r}_{AB} + \vb*{\omega}\times(\vb*{\omega}\times\vb{r}_{AB}).
+\end{align*}
+Vi skriver ut termerna och får
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \alpha\vu{e}_{z}\times\vb{r}_{AB} + (\vb*{\omega}\cdot\vb{r}_{AB})\vb*{\omega} - \omega^2\vb{r}_{AB}.
+\end{align*}
+Eftersom rörelsen är plan, blir skalärprodukten $0$, och man får slutligen
+\begin{align*}
+	\vb{a}_{B} = \vb{a}_{A} + \alpha\vu{e}_{z}\times\vb{r}_{AB} - \omega^2\vb{r}_{AB}.
+\end{align*}
+
+\paragraph{2D-rotation kring fix axel}
+Låt punkten $O$ vara på rotationsaxeln och välg cylindriska koordinater så att kroppen roterar kring $z$-axeln. För någon partikel i den stela kroppen har man
+\begin{align*}
+	\vb{v}_{i} = \vb{v}_{O} + \vb*{\omega}\times\vb{r}_{i} = \rho_{i}\omega\vu{e}_{\theta}.
+\end{align*}
+Den kinetiska energin ges nu av
+\begin{align*}
+	T = \frac{1}{2}\omega^2\sum m_{k}\rho_{i}^2
+\end{align*}
+och rörelsemängdsmomentet kring $O$ ges av
+\begin{align*}
+	\vb{H}_{O} &= \sum \vb{r}_{i}\times m_{i}\rho_{i}\omega\vu{e}_{\theta} \\
+	           &= \sum m_{i}\rho_{i}^2\omega\vu{e}_{z} - \sum m_{i}\rho_{i}z_{i}\omega\vu{e}_{r}.
+\end{align*}
+Vi inför nu tröghetsmomentet kring $z$-axeln
+\begin{align*}
+	I_{z} = \sum m_{k}\rho_{i}^2,
+\end{align*}
+med motsvarande definitioner kring andra axlar (högst analog till elementer i tröghetstensorn). Då gäller att
+\begin{align*}
+	T     &= \frac{1}{2}I_{z}\omega^2, \\
+	H_{z} &= I_{z}\omega.
+\end{align*}
+
+Kraftekvationens komponenter ger
+\begin{align*}
+	F_{r}      &= -ml\left(\dv{\theta}{t}\right)^2, \\
+	F_{\theta} &= ml\dv[2]{\theta}{t}.
+\end{align*}
+
+Momentekvationen ger
+\begin{align*}
+	\dv{t}\left(I_{z}\dv{\theta}{t}\right) = M_{z}.
+\end{align*}
+
+Arbetet som görs på kroppen ges av
+\begin{align*}
+	\dd{U_{i}} = \vb{F}_{i}\cdot\dd{\vb{r}_{i}} = F_{i, \theta}\rho_{i}\omega\dd{t} = M_{i, z}\dd{\theta}.
+\end{align*}
+
+\paragraph{Tröghetsmoment för en plan kropp}
+Låt oss först betrakta en plan kropp som roterar i planet. Då kan det visas att
+\begin{align*}
+	I_{z} = I_{x} + I_{y}.
+\end{align*}
+
+\subparagraph{Rörelsemängdsmoment}
+Det relativa rörelsemängdsmomentet ges av
+\begin{align*}
+	\vb{H}_{G}' &= \sum \vb{r}_{i}'\times m_{i}\vb{v}_{i}' \\
+	            &= \sum \rho_{i}^{2} m_{i}\vu{e}_{r}\times\vu{e}_{\theta} \\
+	            &= I_{G}\omega\vu{e}_{z}.
+\end{align*}
+Det totala rörelsemängdsmomentet är då
+\begin{align*}
+	\vb{H}_{O} = \vb{r}_{OG}\times m\vb{v}_{G} + I_{G}\omega\vu{e}_{z}
+\end{align*}
+som också består av en banterm och en spinnterm.
+
+\subparagraph{Dynamiska lagar}
+För en stel kropp i plan rörelse gäller att
+\begin{align*}
+	m\vb{a}_{G} = \vb{F}, I_{G}\alpha = M_{z}.
+\end{align*}
+
+\subparagraph{Arbete}
+Effekten som utövs under en kropps rörelse ges av
+\begin{align*}
+	P = \dv{T}{t} &= m\vb{a}_{G}\cdot\vb{v}_{G} + I\vb*{\alpha}\cdot\vb*{\omega} \\
+	              &= \vb{F}\cdot\vb{v}_{G} + \vb{M}_{G}\cdot\vb*{\omega}.
+\end{align*}
+Arbetet som görs ges då av
+\begin{align*}
+	\dd{U} &= P\dd{t} \\
+	       &= \vb{F}\cdot\vb{v}_{G}\dd{t} + \vb{M}_{G}\cdot\vb*{\omega}\dd{t} \\
+	       &= \vb{F}\cdot\vb{v}_{G}\dd{t} + \vb{M}_{G}\cdot\vb*{\omega}\dd{t} \\
+	       &= \vb{F}\cdot\dd{\vb{r}_{G}} + M_{z}\dd{\theta},
+\end{align*}
+där vi har användt att $\vb{M}_{G}$ pekar i $z$-riktning.

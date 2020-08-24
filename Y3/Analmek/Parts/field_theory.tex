@@ -1,0 +1,54 @@
+\section{Classical field theory}
+
+Classical field theory can be considered a limit of classical dynamics when the number of particles is infinite. The system obtains new ``coordinates'' $\phi^{A}$, which are functions of position and time. Summations over coordinates now become integrals over space.
+
+\paragraph{Lagrangian dynamics}
+The Lagrangian in a field theory now becomes
+\begin{align*}
+	L = \integ[D]{}{}{\vb{r}}{\lag}
+\end{align*}
+where $\lag$ is the Lagrangian density, which in general depends on all involved fields, their derivatives and the coordinates. From this we can obtain the action, and extremize it to obtain the equations for the time evolution of the system.
+
+\paragraph{Solving models}
+To solve models, we usually allow for periodic boundary conditions. The field is then expanded as a Fourier series, or a Fourier transform in the limit of a large domain or small lattice constant. We will in any case find that the system is compact in Fourier space, i.e. there are only non-zero contributions within some compact region.
+
+\paragraph{Nöether's theorem}
+In this context Nöether's theorem states that symmetries of a system are associated with conservative current. In field theory, a symmetry is a transformation $\phi\to\phi_{a}$, where $a$ is some continuous transformation parameter, such that for the quantity
+\begin{align*}
+	\dv{\lag}{a} = \dv{V^{\mu}}{x^{\mu}}
+\end{align*}
+there are quantities $j^{\mu}$ such that
+\begin{align*}
+	\dv{j^{\mu}}{x^{\mu}} = 0.
+\end{align*}
+
+\paragraph{Hamiltonian dynamics}
+In Hamiltonian dynamics, we define the momentum density
+\begin{align*}
+	\pi = \del{\phi}{\lag}.
+\end{align*}
+The Hamiltonian is now given by
+\begin{align*}
+	H = \integ[D]{}{}{\vb{r}}{\ham},
+\end{align*}
+where $\ham = \pi\del{t}{\phi} - \lag$.
+
+\paragraph{Poisson brackets}
+Poisson brackets of two functionals on phase space are defined as
+\begin{align*}
+	\pob{F}{G} = \integ[D]{}{}{\vb{r}}{\del{\phi}{F}\del{\pi}{G} - \del{\pi}{F}\del{\phi}{G}}
+\end{align*}
+We can somehow show that
+\begin{align*}
+	\pob{\phi(x)}{\phi(y)} = \pob{\pi(x)}{\pi(y)} = 0,\ \pob{\phi(x)}{\pi(y)} = \delta(x - y).
+\end{align*}
+
+\paragraph{Equations of motion}
+The Hamiltonian equations of motion become
+\begin{align*}
+	\dot{\phi} = \fdv{H}{\pi},\ \dot{\pi} = -\fdv{H}{\phi},
+\end{align*}
+where the functional derivative is given by
+\begin{align*}
+	\fdv{H}{\pi} = \del{\pi}{\ham} - \del{x}{\del{\pi_{x}}{\ham}} + \dots
+\end{align*}

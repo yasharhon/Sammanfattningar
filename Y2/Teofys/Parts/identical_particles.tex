@@ -1,0 +1,42 @@
+\section{Identiska partiklar}
+
+\paragraph{Kvanttillstånd för särskiljbara partiklar}
+Om vi har två särskiljbara partiklar, kan tillståndet skrivas som en produkt, dvs. $\ket{\Psi} = \ket{a}\ket{b}$. Bakom scenen är detta en tensorprodukt, men det skriver vi typiskt inte explicit.
+
+\paragraph{Tillstånd för identiska partiklar}
+För identiska partiklar finns det inte exakta banor som det gör i klassisk fysik. Därför går det inte att avgöra vilken partikel som är vilken om de inte är separerade. Därmed kan man inte använda produkttillstånd. Det behövs därför tillstånd som respekterar byte av partiklar.
+
+\paragraph{Utbytesoperatorn}
+Vi definierar utbytesoperatorn
+\begin{align*}
+	P\Psi(\vb{r}_{1}, \vb{r}_{2}) = P\Psi_{12} = \Psi_{21}.
+\end{align*}
+För lika tillstånd kräver vi $P\Psi_{12} = c\Psi_{12}$. Vid att använda utbytesoperatorn två gånger fås kravet $\abs{c} = 1$, med lösningar $c = \pm 1$. Första fallet motsvarar symmetri under utbyte, och andra fallet motsvarar antisymmetri.
+
+\paragraph{Tillstånd för identiska partiklar med produkttillstånd}
+Det visar sig att vi kan konstruera tillåtna tillstånd för identiska partiklar med produkttillstånd ändå. Vafan. Det gör vi så här:
+\begin{align*}
+	\ket{\Psi} = \frac{1}{\sqrt{2}}(\ket{a}\ket{b} \pm \ket{b}\ket{a}).
+\end{align*}
+
+\paragraph{Symmetriseringspostulatet}
+Identiska partiklar med heltaliga spinn har symmetriska tillstånd under utbyte. Såna kallas för bosoner.
+
+Identiska partiklar med halvtaliga spinn har antisymmetriska tillstånd under utbyte. Såna kallas för fermioner.
+
+\paragraph{Utbyteskrafter}
+För särskiljbara partiklar kan vi betrakta väntevärdet
+\begin{align*}
+	\expval{(x_{1} - x_{2})^{2}} &= \bra{a}\bra{b}(x_{1}^{2} + x_{2}^{2} - 2x_{1}x_{2})\ket{a}\ket{b} \\
+	                             &= \expval{x_{1}^{2}}{a} + \expval{x_{2}^{2}}{b} - 2\expval{x_{1}}{a}\expval{x_{2}}{b} \\
+	                             &= \expval{x^{2}}{a} + \expval{x^{2}}{b} - 2\expval{x}{a}\expval{x}{b}.
+\end{align*}
+För identiska partiklar fås
+\begin{align*}
+	\expval{(x_{1} - x_{2})^{2}} &= \frac{1}{2}(\bra{a}\bra{b} \pm \bra{b}\bra{a})(x_{1}^{2} + x_{2}^{2} - 2x_{1}x_{2})(\ket{a}\ket{b} \pm \ket{b}\ket{a}) \\
+	                             &= \expval{x^{2}}{a} + \expval{x^{2}}{b} - 2\expval{x}{a}\expval{x}{b} \pm \bra{a}\bra{b}(x_{1}^{2} + x_{2}^{2} - 2x_{1}x_{2})\ket{b}\ket{a} \\
+	                             &= \expval{x^{2}}{a} + \expval{x^{2}}{b} - 2\expval{x}{a}\expval{x}{b} \mp 2\bra{a}\bra{b}x_{1}x_{2}\ket{b}\ket{a} \\
+	                             &= \expval{x^{2}}{a} + \expval{x^{2}}{b} - 2\expval{x}{a}\expval{x}{b} \mp 2\bra{a}x_{1}\ket{b}\bra{b}x_{2}\ket{a} \\
+	                             &= \expval{x^{2}}{a} + \expval{x^{2}}{b} - 2\expval{x}{a}\expval{x}{b} \mp 2\abs{\mel{a}{x}{b}}^{2}.
+\end{align*}
+Vi har utnyttjar det faktum att medelkvadratavståndet är en observabel för att förenkla lite.

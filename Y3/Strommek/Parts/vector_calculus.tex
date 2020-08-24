@@ -1,0 +1,24 @@
+\section{Vektoranalys}
+
+Vi kommer här demonstrera lite grundläggande vektoranalys för kontinua som flödar. Mer specifikt kommer vi demonstrera hur flödet påverkar hur man gör integraler i såna kontinua.
+
+\paragraph{Hastighetsfältet}
+Hastighetsfältet $\vb{u}$ är ett vektorfält som anger i vilken riktning och hur snabbt ett kontinuum flödar. Vi betecknar i bland dets komponenter som $u, v, w$.
+
+\paragraph{Tidsändring och materiell derivata}
+Betrakta ett volymselement. Om det vid en given tid befinner sig i $\vb{r}$, kommer det under en tid $\cha{t}$ förflytta sig en sträcka $\cha{\vb{r}}$. Värdet av något fält $\phi$ i det fluidelementet kommer då vara
+\begin{align*}
+	\phi(\vb{r} + \cha{\vb{r}}, t + \cha{t}) = \phi(\vb{r}, t) + \del{t}{\phi}\cha{t} + \del{i}{\phi}\cha{x_{i}}.
+\end{align*}
+Den totala tidsderivatan av $\phi$ för det givna elementet fås genom att beräkna ändringen av fältet och dela på den lilla tidsskillnaden. Vi får då
+\begin{align*}
+	\dv{\phi}{t} = \del{t}{\phi} + \del{i}{\phi}\frac{\cha{x_{i}}}{\cha{t}} = \del{t}{\phi} + \del{i}{\phi}u_{i} = \del{t}{\phi} + (\vb{u}\cdot\grad)\phi.
+\end{align*}
+Detta kallar vi för den materiella derivatan av $\phi$.
+
+\paragraph{Tidsderivator av integraler}
+Det gäller att
+\begin{align*}
+	\dv{t}\integ{V}{}{V}{\phi}   &= \integ{V}{}{V}{\del{t}{\phi}}, \\
+	\dv{t}\integ{\V}{}{\V}{\phi} &= \integ{\V}{}{\V}{\del{t}{\phi}} + \vinteg{\mathcal{S}}{}{\mathcal{S}}{\phi\vb{u}} = \integ{\V}{}{\V}{\del{t}{\phi} + \div(\phi\vb{u})}.
+\end{align*}

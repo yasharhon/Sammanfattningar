@@ -1,0 +1,497 @@
+\section{Speciell relativitet}
+
+\paragraph{Galileitransformationen}
+Betrakta en statisk ram $S$ och en ram $S'$ som rör sig med konstant hastighet $\vb{u}$. Galileitransformen är den klassiska transformen av hastigheter och accelerationer mellan dessa system och ger
+\begin{align*}
+	\vb{r} = \vb{u}t + \vb{r}', \\
+	\vb{v} = \vb{u} + \vb{v}', \\
+	\vb{a} = \vb{a}'. \\
+\end{align*}
+
+\paragraph{Michelson-Morleys experiment}
+Michelson-Morleys experiment visade att ljus omöjligt kunde propageras genom den postulerade etern.
+
+Uppställningen som användes är (en mer avancerad variant av) Michelson-Morley-interferometern, som illustreras i figur \ref{fig:interferometer}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/interferometer.eps}
+	\caption{}
+	\label{fig:interferometer}
+\end{figure}
+
+Ideen bakom experimentet var att de två "armarna" i uppställningen skulle röra sig med olika hastigheter relativt etern eftersom Jorden rör sig relativt Solen.
+
+Om nu varje arm har längd $L$ och etern rör sig med en hastighet $u$ åt höger, tar ljuset tiden
+\begin{align*}
+	t_{\text{höger}} &= \frac{L}{c + u} + \frac{L}{c - u} \\
+	                 &= L\frac{c - u + c + u}{c^{2} - u^{2}} \\
+	                 &= \frac{2cL}{c^{2} - u^{2}} \\
+	                 &= \frac{2L}{c}\frac{1}{1 - \frac{u^{2}}{c^{2}}}
+\end{align*}
+att röra sig till och från stråldelaren åt höger och tiden
+\begin{align*}
+	t_{\text{upp}} &= \frac{2L}{\sqrt{c^{2} - u^{2}}} \\
+	               &= \frac{2L}{c}\frac{\sqrt{1 - \frac{u^{2}}{c^{2}}}}{1 - \frac{u^{2}}{c^{2}}},
+\end{align*}
+ty ljuset måste röra sig uppåt och motriktad hastigheten mot höger för att återvända till samma position i stråldelaren. Alltså borde skillnaden mellan tiden det tar för ljuset att röra sig de två vägarna ges av
+\begin{align*}
+	\Delta t = \frac{2L}{c}\frac{1 - \sqrt{1 - \frac{u^{2}}{c^{2}}}}{1 - \frac{u^{2}}{c^{2}}}.
+\end{align*}
+För Michelson och Morleys fal förutspådde de att de skulle se $0.4$ fransar i interferensmönstret, men de observerade $< 0.01$ fransar. Efter att ha upprepat sitt experiment ett halvår senare för att utesluta påverkan från Jordens position, konkluderade de med att det inte kunde finnas någon eter.
+
+\paragraph{Einsteins postulat}
+Baserad på Michelson-Morleys experiment, kom Einstein med följande postulat:
+\begin{itemize}
+	\item Fysikens lagar är de samma i alla inertialsystem.
+	\item Ljushastigheten i vakuum har samma värde $c$ i alla inertialsystem.
+\end{itemize}
+
+\paragraph{Lorentztransformationen}
+Lorentztransformationen är en transformation för att byta mellan olika referensramer. Den skiljer sig från Galileitransformationer, som inte är tillräcklig för att beskriva denna nya fysiken. Härledningen av denna kommer täckas här. Den är lite matematiskt involverad, så denna del av sammanfattningen är endast intressant för dig som tycker om sådant.
+
+För att härleda Lorentztransformationen, betrakta två referensramar som sammanfallar vid $t = 0$ där den ena rör sig med en hastighet $v$ i $x$-riktning. För att beskriva transformationen, ansätter vi
+\begin{align*}
+	x' = k_{i}x_{i},
+\end{align*}
+där det summeras över alla rymdliga koordinater och tiden. Vi ansätter linjaritet eftersom det annars skulle kunna uppkomma accelererande rörelse i ett system utan att det är acceleration i ett annat, vilket skulle vara konstigt. Vidare antar vi att $x'$ ej beror av andra rymdliga kordinater, men att den kan bero av origos rörelse, och ansätter
+\begin{align*}
+	x' = k_{1}(x - vt).
+\end{align*}
+Antag nu att vi skickar ut en ljuspuls från origo vid $t = 0$. Vågfrontens avstånd från origo kommer beskrivas av
+\begin{align*}
+	x^{2} + y^{2} + z^{2} = c^{2}t^{2},
+	x'^{2} + y^{2} + z^{2} = c^{2}t'^{2},
+\end{align*}
+eftersom ljuset skall ha samma fart i båda referensramer. Vi använder nu våran ansats för att transformera den andra ekvationen tillbaka, och får
+\begin{align*}
+	k_{1}^{2}x^{2} + y^{2} + z^{2} + k_{1}^{2}(v^{2}t^{2} - 2xvt) = c^{2}t'^{2}.
+\end{align*}
+Om vi sätter $t = t'$, får vi nu andra termer, och transformationen mislyckades. Vi åtgärder detta vid att ansätta
+\begin{align*}
+	t' = k_{t, 1}x + k_{t, 2}t.
+\end{align*}
+Detta ger
+\begin{align*}
+	k_{1}^{2}x^{2} + y^{2} + z^{2} + k_{1}^{2}(v^{2}t^{2} - 2xvt) = c^{2}(k_{t, 1}^{2}x^{2} + k_{t, 2}^{2}t^{2} + 2k_{t, 1}k_{t, 2}xt).
+\end{align*}
+För att transformationen skall lyckas, ger detta
+\begin{align*}
+	k_{1}^{2} - c^{2}k_{t, 1}^{2}      &= 1, \\
+	vk_{1}^{2} + c^{2}k_{t, 1}k_{t, 2} &= 0, \\
+	c^{2}k_{t, 2}^{2} - v^{2}k_{1}^{2} &= c^{2}.
+\end{align*}
+Vi kollar först fallet $v = 0$, motsvarande identitetstransformationen. Denna lösningen motsvarar $k_{1} = 1, k_{t, 1} = 0, k_{t, 2} = 1$, och en lösning för andra $v$ bör återskapa detta resultatet.
+
+Vi inför nu
+\begin{align*}
+	\beta = \frac{v}{c}, \gamma = \frac{1}{\sqrt{1 - \beta^{2}}},
+\end{align*}
+och ekvationssystemet kan skrivas om till
+\begin{align*}
+	k_{1}^{2} - c^{2}k_{t, 1}^{2}       &= 1, \\
+	\beta k_{1}^{2} + ck_{t, 1}k_{t, 2} &= 0, \\
+	k_{t, 2}^{2} - \beta^{2}k_{1}^{2}   &= 1.
+\end{align*}
+Sista ekvationen kan skrivas som
+\begin{align*}
+	k_{1}^{2} = \frac{k_{t, 2}^{2} - 1}{\beta^{2}}.
+\end{align*}
+Den andra ekvationen kan skrivas som
+\begin{align*}
+	\frac{k_{t, 2}^{2} - 1}{\beta} + ck_{t, 1}k_{t, 2} = 0.
+\end{align*}
+Detta är en andragradsekvation i $k_{t, 2}$ med lösningar
+\begin{align*}
+	k_{t, 2} = \frac{-\beta ck_{t, 1} \pm\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{2}.
+\end{align*}
+Vi kommer självklart se att transformationskoefficienterna är entydigt bestämda, men eftersom $k_{t, 1}$ fortfarande är okänd (basfallet ger inte ens tillräcklig information för att bestämma tecknet på den koeffeicienten) låter vi $\pm$-tecknet bli och fortsätter.
+
+Vi får nu
+\begin{align*}
+	k_{1}^{2} &= \frac{\frac{\beta^{2}c^{2}k_{t, 1}^{2} + \beta^{2}c^{2}k_{t, 1}^{2} + 4 \mp 2\beta ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{4} - 1}{\beta^{2}} \\
+	          &= \frac{2\beta^{2}c^{2}k_{t, 1}^{2} \mp 2\beta ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{4\beta^{2}} \\
+	          &= \frac{\beta c^{2}k_{t, 1}^{2} \mp ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{2\beta}.
+\end{align*}
+Nu ser vi att valet av tecknet på $k_{t, 1}$ och valet av $\mp$ spelar roll - mer specifikt, om $k_{t, 1} > 0$ måste man välja $+$ och vice versa (annars skulle man få en imaginär transformationskoefficient, vilket skulle vara absurd när den beskriver en transformation mellan två observabler). Vi noterar att om den andra ekvationen skall uppfyllas, måste $k_{t, 1}k_{t, 2}$ vara negativ. Eftersom basfallet gav $k_{t, 2} = 1$, gissar vi att $k_{t, 1}$ är negativ (vadå, har du en bättre gissning?). Första ekvationen ger nu
+\begin{align*}
+	\frac{\beta c^{2}k_{t, 1}^{2} - ck_{t, 1}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4}}{2\beta} - c^{2}k_{t, 1}^{2} = 1.
+\end{align*}
+Vi får rotuttrycket för sig själv och får
+\begin{align*}
+	-\frac{ck_{t, 1}}{2\beta}\sqrt{\beta^{2}c^{2}k_{t, 1}^{2} + 4} = 1 + \frac{1}{2}c^{2}k_{t, 1}^{2}.
+\end{align*}
+Vi har något positivt på båda sidor, och kan med ro i hjärtat kvadrera för att få
+\begin{align*}
+	\frac{c^{2}k_{t, 1}^{2}}{4\beta^{2}}(\beta^{2}c^{2}k_{t, 1}^{2} + 4) = 1 + c^{2}k_{t, 1}^{2} + \frac{1}{4}c^{4}k_{t, 1}^{4}.
+\end{align*}
+Gudarna är barmhärtiga, och detta förenklas till
+\begin{align*}
+	\left(\frac{1}{\beta^{2}} - 1\right)c^{2}k_{t, 1}^{2} &= 1, \\
+	c^{2}k_{t, 1}^{2}                                     &= \frac{1}{\frac{1}{\beta^{2}} - 1} \\
+	                                                      &= \frac{\beta^{2}}{1 - \beta^{2}}.
+\end{align*}
+Detta har (negativ) lösning
+\begin{align*}
+	k_{t, 1} = -\frac{\beta\gamma}{c}.
+\end{align*}
+Första ekvationen ger nu
+\begin{align*}
+	k_{1}^{2} &= 1 + c^{2}k_{t, 1}^{2} \\
+	          &= 1 + \beta^{2}\gamma^{2} \\
+	          &= \frac{1 - \beta^{2} + \beta^{2}}{1 - \beta^{2}} \\
+	          &= \gamma^{2}.
+\end{align*}
+Vi ser att $\gamma$ har samma tecken för alla $\beta$, och eftersom vi sökte en positiv lösning för $\beta = 0$, väljer vi $k_{1} = \gamma$.
+
+Sista ekvationen ger på helt samma sättet
+\begin{align*}
+	k_{1}^{2} = 1 + \beta^{2}k_{t, 2}^{2} = 1 + \beta^{2}\gamma^{2} = \gamma^{2},
+\end{align*}
+och med ett motsvarande argument får vi $k_{1} = \gamma$.
+
+Om du är en matematiker, ser du kanske att ekvationerna vi utgick från är invarianta under teckenbyte av vissa koefficienter, och du kan komma fram till en lika bra lösning på dessa vid att byta tecken på några transformationskoefficienter. Dessa löser ekvationerna, men ger absolut inget samsvar med gammal och vältestad teori, vilket man typiskt inte vill att ens nya revolutionära teori skall göra.
+
+Om du är en matematiker och ett petigt as, tycker du kanske att val av tecken kan bero av $\beta$. Det löser ju ekvationerna, trots allt. Detta är sant, men bara tanken på att förklara absurditeten i detta för dig gör ont. Om du tycker det är rimligt att göra så, kan du omöjligt ha smält konsekvenserna av dina tankar ordentligt. Jag skulle rekommendera dig att sätta dig med en kopp te och fundera både två och tre gånger över vad du föreslår. Nu är det sent, och jag vill lägga mig.
+
+\subparagraph{Alternativ härledning}
+Wow, dessa tar ju aldrig slut.
+
+Vi kan i stället göra en härledning vid att låta Lorentztransformen vara linjär, och ställa följande krav på den:
+\begin{itemize}
+	\item Ljusets hastighet är den samma i båda referensramer, dvs. att $x = ct$ och $x' = ct'$ måste gälla samtidigt.
+	\item Den inversa transformen måste motsvara transformen när hastigheten $v$ till den rörliga referensramen byter tecken.
+\end{itemize}
+Vi skriver Lorentztransformen som
+\begin{align*}
+	x' = Ax + Bt, \\
+	t' = Cx + Dt.
+\end{align*}
+Om man betraktar punkten $x' = 0$, har denna uppenbarligen rörelse $x = vt$, vilket implicerar $\frac{B}{A} = -v$. Lorentztransformen kan då skrivas som
+\begin{align*}
+	x' = A(x - vt).
+\end{align*}
+Kravet som rör att ljushastigheten är konstant ger
+\begin{align*}
+	ct' &= A(c - v)t, \\
+	ct  &= A(c + v)t'
+\end{align*}
+för transformen och den inversa transformen av $x'$. Produkten av dessa två ekvationerna är
+\begin{align*}
+	c^{2}tt' = A^{2}(c^{2} - v^{2})tt',
+\end{align*}
+vilket implicerar
+\begin{align*}
+	A^{2}  = \gamma^{2}.
+\end{align*}
+Återigen skulle man kunna leka med tecknet, men vi bara väljer en positiv konstant och låter det bli med det.
+
+För att bestämma transformationskoefficienterna för tid, försöker vi att Lorentztransformera den inversa transformen. Den inversa transformen ges av
+\begin{align*}
+	x = \gamma(x' + vt'),
+\end{align*}
+och transformation av denna ger
+\begin{align*}
+	x = \gamma(x' + vCx + vDt).
+\end{align*}
+Vi löser denna för $x'$ och får
+\begin{align*}
+	x' = \left(\frac{1}{\gamma} - vC\right)x - vDt.
+\end{align*}
+Om detta skall motsvara den ursprungliga transformen, måste
+\begin{align*}
+	\frac{1}{\gamma} - vC &= \gamma, \\
+	-vD                   &= -v\gamma.
+\end{align*}
+Detta har lösningar
+\begin{align*}
+	D &= \gamma, \\
+	C &= \frac{1}{v}\frac{1 - \gamma^{2}}{\gamma} \\
+	  &= \frac{1}{v}\frac{1 - \frac{1}{1 - \beta^{2}}}{\gamma} \\
+	  &= -\frac{1}{v}\frac{\frac{\beta^{2}}{1 - \beta^{2}}}{\gamma} \\
+	  &= -\frac{\beta}{c}\frac{\gamma^{2}}{\gamma} \\
+	  &= -\frac{\beta\gamma}{c}.
+\end{align*}
+
+\paragraph{Formler för Lorentztransformationen}
+Lorentztransformationen ges av
+\begin{align*}
+	x' = \gamma(x - vt), t' = \gamma\left(t - \frac{\beta}{c}x\right),
+\end{align*}
+med
+\begin{align*}
+	\beta = \frac{v}{c}, \gamma = \frac{1}{\sqrt{1 - \beta^{2}}}.
+\end{align*}
+Den inversa Lorentztransformationen fås vid att lösa ut ekvationerna för $x$ och $t$, och ges av
+\begin{align*}
+	x = \gamma(x' + vt'), t = \gamma\left(t' + \frac{\beta}{c}x'\right).
+\end{align*}
+Med de givna skalfaktorerna ser vi att för små hastigheter går detta över i Galileitransformer, medan inga hastigheter över $c$ tillåts.
+
+\paragraph{Samtidighet}
+Betrakta två händelser som inträffer med en tidsskillnad $\Delta t$ mätt i inertialramen. Lorentztransformationen ger
+\begin{align*}
+	\Delta t = \gamma(\Delta t' + \frac{\beta}{c}\Delta x').
+\end{align*}
+Detta implicerar att även om händelserna är samtidiga i en referensram, är de inte nödvändigtvis det i den andra. Om tidsskillnaden mäts i den rörliga ramen, kan den skrivas som
+\begin{align*}
+	\Delta t' = \gamma(\Delta t - \frac{\beta}{c}\Delta x).
+\end{align*}
+
+\paragraph{Tidsdilation}
+Betrakta två händelser som inträffer vid samma position i den rörliga ramen. Lorentztransformationen ger
+\begin{align*}
+	\Delta t = \gamma\Delta t',
+\end{align*}
+och det mäts en längre tidsskilland mellan händelserna i den statiska ramen. Symmetrierna i ekvationen ovan ger att om händelserna inträffer vid samma position i den statiska ramen, observeras tidsdilatation i den rörliga ramen.
+
+Med andra ord: Observatörer som ej är statiska relativt två händelser mäter en längre tidsskillnad mellan händelserna än observatörer som är statiska relativt händelsen.
+
+\paragraph{Längdkontraktion}
+Lorentztransformationen av avståndet mellan två händelser ges av
+\begin{align*}
+	\Delta x' &= \gamma(\Delta x - v\Delta t), \\
+	\Delta x  &= \gamma(\Delta x' + v\Delta t')
+\end{align*}
+Betrakta två händelser som rör sig med den rörliga ramen och inträffer vid samma tidspunkt i den rörliga ramen. Lorentztransformationen ger
+\begin{align*}
+	\Delta x = \frac{1}{\gamma}\Delta x',
+\end{align*}
+och det mäts ett kortare avstånd mellan händelserna i inertialramen. Symmetrien ger ett motsvarande resultat om händelserna är samtidiga i den statiska ramen.
+
+Med andra ord: Observatörer som ej är statiska relativt två händelser mäter ett kortare avstånd mellan händelserna än observatörer som är statiska relativt händelsen.
+
+\paragraph{Tvillingparadoxen}
+Betrakta två tvillingar, där tvilling $A$ stannar på Jorden hela sitt liv och tvilling $B$ reser till en planet långt borta och tillbaka med en relativistisk hastighet. $A$ får att hen har åldrats mer än sin tvilling eftersom denna har upplevd tidsdilatation. Men $B$ upplever att hen är statisk och att $A$ rör sig. Därmed upplever $A$ tidsdilatation enligt $B$, och $B$ åldrats mer. Hur kan båda tycka att de är äldst när $B$ kommer tillbaka?
+
+För att lösa paradoxen, antag att $A$ och $B$ skickar ut ljuspulser med något fast tidsintervall för att hålla koll på hur gamla varandra är. Eftersom ljuset har samma hastighet i alla inertialramer, måste antal pulser vara ett mått på ålder som både $A$ och $B$ kan enas om.
+
+Låt planeten vara ett avstånd $x = cT$ från Jorden, och låt $B$ röra sig med en hastighet $v = \beta c$ mot antingen planeten eller Jorden. Enligt $A$ tar det $t = \frac{T}{\beta}$ att nå planeten, och $t = \frac{2T}{\beta}$ att åka fram och tillbaka. $B$s position ges då enligt $A$ av
+\begin{align*}
+	s =
+	\begin{cases}
+		\beta ct,       &t < \frac{T}{\beta}, \\
+		c(2T - \beta t), &\frac{T}{\beta} < t < \frac{2T}{\beta}.
+	\end{cases}
+\end{align*}
+Om varje tvilling skickar ut en ljuspuls med tidsintervall $\Delta t$, mottar $B$ ljuspuls nummer $n$ enligt $A$ när
+\begin{align*}
+	c(t_{B, n} - n\Delta t) = s(t_{B, n}).
+\end{align*}
+Vi betraktar först ljuspulser som mottas när $B$ är på väg mot planeten. Dessa mottas vid tid
+\begin{align*}
+	t_{B, n} = \frac{n}{1 - \beta}\Delta t. 
+\end{align*}
+$A$ mottar ljuspulser som skickas ut med tidsintervall $\gamma\Delta t$ och ljuspuls nummer $n$ mottas när
+\begin{align*}
+	s(\gamma n\Delta t) - c(t_{A, n} - \gamma n\Delta t) = 0.
+\end{align*}
+Vi betraktar igen ljuspulser som mottas när $B$ är på väg mot planeten. Dessa mottas vid tid
+\begin{align*}
+	c\beta\gamma n\Delta t - c(t_{A, n} - \gamma n\Delta t) = 0, \\
+	t_{A, n} = (1 + \beta)\gamma n\Delta t.
+\end{align*}
+
+Vi betraktar vidare ljuspulser som mottas av $B$ på väg mot Jorden. Dessa mottas när
+\begin{align*}
+	c(t_{B, n} - n\Delta t) &= c(2T - \beta t_{B, n}), \\
+	t_{B, n}                &= \frac{2T + n\Delta t}{1 + \beta}.
+\end{align*}
+$A$ mottar ljuspuls nummer $n$ när
+\begin{align*}
+	c(2T - \beta\gamma n\Delta t) - c(t_{A, n} - \gamma n\Delta t) &= 0, \\
+	t_{A, n}                                                        &= 2T + (1 - \beta)\gamma n\Delta t.
+\end{align*}
+
+Skillnaden mellan de två kommer från att $B$ mottar sin sista puls på väg mot planeten vid $t = \frac{T}{\beta}$, medan $A$ mottar sista pulsen från färden till planeten vid tiden
+\begin{align*}
+	t = \frac{1 + \beta}{\beta}T.
+\end{align*}
+Pulserna från de olika etapperna når $A$ och $B$ med olika tidsintervall. Eftersom ændringen i tidsintervall inträder tidigare för $B$ än $A$, och detta kommer ge att de är överens om hur gamla de är.
+
+För att kunna jämföra åldern, vill vi nu veta hur många pulser varje tvilling mottar under de två etapperna. Under resan till planeten mottar $B$
+\begin{align*}
+	n_{A\to B} = \frac{T}{\Delta t}\frac{1 - \beta}{\beta}
+\end{align*}
+pulser, medan $B$ har skickat ut
+\begin{align*}
+	n_{B} = \frac{T}{\beta\gamma\Delta t}
+\end{align*}
+pulser. Under resan tillbaka till Jorden mottar $B$
+\begin{align*}
+	n_{A\to B} = 2T\frac{1}{\beta\Delta t} - \frac{T}{\Delta t}\frac{1 - \beta}{\beta} = \frac{T}{\beta\Delta T}(2 - 1 + \beta) = \frac{T(1 + \beta)}{\beta\Delta t}
+\end{align*}
+pulser, medan $B$ har skickat ut
+\begin{align*}
+	n_{B} = \frac{T}{\beta\gamma\Delta t}
+\end{align*}
+pulser. Alltså upplever $B$ att den åldras långsammare med en faktor
+\begin{align*}
+	\frac{n_{A\to B}}{n_{B}} = \frac{\frac{T}{\Delta t}\frac{1 - \beta}{\beta}}{\frac{T}{\beta\gamma\Delta t}} = (1 - \beta)\gamma
+\end{align*}
+under resan till planeten, dvs. under tiden $\frac{T}{\beta\gamma}$ och snabbare med en faktor
+\begin{align*}
+	\frac{n_{A\to B}}{n_{B}} = \frac{\frac{T(1 + \beta)}{\beta\Delta t}}{\frac{T}{\beta\gamma\Delta t}} = (1 + \beta)\gamma
+\end{align*}
+under den resterande tiden. Alltså är det slutliga förhållandet i ålder
+\begin{align*}
+	\frac{(1 - \beta)\frac{T}{\beta} + (1 + \beta)\frac{T}{\beta}}{2\frac{T}{\gamma\beta}} = \frac{1 - \beta + 1 + \beta}{2}\gamma = \gamma.
+\end{align*}
+
+På andra sidan mottar $A$
+\begin{align*}
+	n_{B\to A} = \frac{T}{\gamma\beta\Delta t}
+\end{align*}
+pulser som skickades från färden till planeten under tiden $\frac{1 + \beta}{\beta}T$, medan $A$ har skickat ut
+\begin{align*}
+	n_{A} = \frac{1 + \beta}{\beta}\frac{T}{\Delta t}
+\end{align*}
+pulser under samma tiden. $A$ mottar även
+\begin{align*}
+	n_{B\to A} = \frac{2T}{\gamma\beta\Delta t} - \frac{T}{\gamma\beta\Delta t} = \frac{T}{\gamma\beta\Delta t}
+\end{align*}
+pulser från färden tillbaka till Jorden, medan $A$ har skickat ut
+\begin{align*}
+	n_{A} = \frac{\frac{2T}{\beta} - \frac{1 + \beta}{\beta}T}{\Delta t} = \frac{2T - (1 + \beta)T}{\beta\Delta t} = \frac{T(1 - \beta)}{\beta\Delta t}
+\end{align*}
+pulser under den återstående tiden. Alltså upplever $A$ att den äldas snabbare med en faktor
+\begin{align*}
+	\frac{n_{B\to A}}{n_{A}} = \frac{\frac{T}{\gamma\beta\Delta t}}{\frac{1 + \beta}{\beta}\frac{T}{\Delta t}} = \frac{1}{(1 + \beta)\gamma}
+\end{align*}
+när den får signaler från resan till planeten och långsammare med en faktor
+\begin{align*}
+	\frac{n_{B\to A}}{n_{A}} = \frac{\frac{T}{\gamma\beta\Delta t}}{\frac{T(1 - \beta)}{\beta\Delta t}} = \frac{1}{(1 - \beta)\gamma}
+\end{align*}
+när den får signaler från resan till Jorden. Det slutliga förhållandet i ålder blir då
+\begin{align*}
+	\frac{\frac{1}{(1 + \beta)\gamma}\frac{1 + \beta}{\beta}T + \frac{1}{(1 - \beta)\gamma}(\frac{2T}{\beta} - \frac{1 + \beta}{\beta}T)}{\frac{2T}{\beta}} = \frac{1 + \frac{1 - \beta}{1 - \beta}}{2}\frac{1}{\gamma} = \frac{1}{\gamma},
+\end{align*}
+och de två är överens om att tvillingen på Jorden åldras snabbast.
+
+\paragraph{Relativistisk Dopplereffekt}
+Betrakta återigen två olika system, där det rörliga systemet rör sig med en vinkel $\theta$ från linjen mellan $O$ och $O'$, som är parallell med $x$-axeln. Från $O'$ skickas det ut ljuspulser vid $t_{1}'$ och $t_{2}'$. Lorentztransformationerna ger att ljuset skickas ut vid tider
+\begin{align*}
+	t_{1} = \gamma t_{1}', \\
+	t_{2} = \gamma t_{2}'.
+\end{align*}
+Om första pulsen skickas ut vid avstånd $x_{1}$, skickas den andra ut vid avstånd
+\begin{align*}
+	x_{2} = x_{1} + \gamma v(t_{2}' - t_{1}')\cos{\theta},
+\end{align*}
+där vi har approximerat att avståndet $S'$ rör sig normalt på $x$-axeln är litet. Ljuspulserna når därmed origo vid tid
+\begin{align*}
+	t_{O1} &= t_{1} + \frac{x_{1}}{c}, \\
+	t_{O2} &= t_{2} + \frac{x_{2}}{c} \\
+	       &= t_{2} + \frac{x_{1} + \gamma v(t_{2}' - t_{1}')\cos{\theta}}{c} \\
+	       &= \frac{x_{1}}{c} + \gamma t_{2}'(1 + \beta\cos{\theta}) - \gamma t_{1}'\beta\cos{\theta}.
+\end{align*}
+Vi inför periodtiden $\Delta t' = t_{2}' - t_{1}'$, och får
+\begin{align*}
+	\Delta t_{O} &= \gamma t_{2}'(1 + \beta\cos{\theta}) - \gamma t_{1}'(1 + \beta\cos{\theta}) \\
+	             &= \gamma (1 + \beta\cos{\theta})\Delta t'.
+\end{align*}
+Frekvensen för ljuspulsen ges då av
+\begin{align*}
+	f_{\text{obs}} = \frac{1}{\gamma(1 + \beta\cos{\theta})}f_{\text{källa}}.
+\end{align*}
+
+\paragraph{Lorentztransformation av hastigheter}
+Vi använder differentialerna
+\begin{align*}
+	\dd{x} = \gamma(\dd{x'} + v\dd{t'}), \\
+	\dd{t} = \gamma(\dd{t'} + \frac{\beta}{c}\dd{x'})
+\end{align*}
+och får hastigheterna
+\begin{align*}
+	u_{x} &= \dv{x}{t} = \frac{\dd{x'} + v\dd{t'}}{\dd{t'} + \frac{\beta}{c}\dd{x'}} = \frac{u_{x}' + v}{1 + \frac{\beta}{c}u_{x}'}, \\
+	u_{y} &= \frac{u_{y}'}{\gamma\left(1 + \frac{\beta}{c}u_{x}'\right)}, \\
+	u_{z} &= \frac{u_{z}'}{\gamma\left(1 + \frac{\beta}{c}u_{x}'\right)}.
+\end{align*}
+
+\paragraph{Relativistisk rörelsemängd}
+Betrakta studsen som illustreras i figur \ref{fig:collision_inertial}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/collision_inertial.eps}
+	\caption{Illustration}
+	\label{fig:collision_inertial}
+\end{figure}
+
+Vi antar här att rörelsen kan vara relativistisk i $x$, men approximeras som klassisk i $y$. Om partiklerna har samma massa (och hastighet), är masscentrum statiskt i $C$. Studsen är vidare symmetrisk kring masscentrum, och därmed måste både $A$ och $B$ ha samma hastighet i $x$-riktning.
+
+Vi kan alternativt betrakta studsen i en referensram som följer partikeln $A$ i $x$-riktning, vilket illustreras i figur \ref{fig:collision_following}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/collision_following.eps}
+	\caption{Illustration}
+	\label{fig:collision_following}
+\end{figure}
+Symmetriargumentet gäller även här.
+
+Båda system är inertialsystem, och därmed är rörelsesmängden bevarad i båda system.
+
+Vi definierar tiden $t_{0}$ som det tar för $A$ att röra sig avståndet $d$ upp och ned i $A$:s referensram. Ändringen i rörelsemängd ges då av
+\begin{align*}
+	\Delta p_{A, y} = -2m_{A}\frac{d}{t_{0}} - 2m_{A}\frac{d}{t_{0}} = -4m_{A}\frac{d}{t_{0}}, \\
+	\Delta p_{B, y} = 2m_{B}\frac{d}{t} + 2m_{B}\frac{d}{t} = 4m_{B}\frac{d}{t},
+\end{align*}
+där tiden $t$ är tiden det tar för $B$ att röra sig upp och ned i denna referensramen. Eftersom rörelsen i $y$-riktning är klassisk, är denna tiden $t_{0}$ i en referensram som följer $B$ på samma sättet. Vi transformerar därmed från ramen som följer $A$ till ramen som följer $B$. Om ramen som följer $A$ rör sig med en hastighet $v$ relativt ramen som följer $B$, får man efter transformation att
+\begin{align*}
+	\Delta p_{B, y} = 4m_{B}\frac{d}{\gamma t_{0}}.
+\end{align*}
+Den totala ändringen i rörelsemängdsmoment är lika med $0$, vilket ger
+\begin{align*}
+	m_{B} = \gamma m_{A}.
+\end{align*}
+Eftersom rörelsen i $y$-riktning är klassisk, kan $A$:s massa nu ersättas av vilomassan $m_{0}$, som är $A$:s massa mätt i sitt eget inertialsystem. Eftersom de två har samma vilomassa, ger detta
+\begin{align*}
+	m = \gamma m_{0}.
+\end{align*}
+Den relativistiska rörelsemängden ges därmed av
+\begin{align*}
+	p = mv = \gamma m_{0}v.
+\end{align*}
+
+\paragraph{Relativistisk energi}
+Newtons andra lag ger
+\begin{align*}
+	F = \dv{t}\left(mv\right).
+\end{align*}
+Om kraftsumman $F$ får verka på en partikel som börjar från vilo, ges dens kinetiska energi av
+\begin{align*}
+	T = \int F\cdot\dd{s} = \int\dv{t}\left(mv\right)\cdot v\dd{t} = \int v\cdot\dd{(mv)} = \int v^{2}\dd{m} + mv\cdot\dd{v}.
+\end{align*}
+Lorentztransformationen av massa ger
+\begin{align*}
+	m^{2}\gamma^{2} = m_{0}^{2},\ m^{2}(c^{2} - v^{2}) = m_{0}^{2}c^{2}.
+\end{align*}
+Vid att beröäkna differentialen av båda sidor får
+\begin{align*}
+	2mc^{2}\dd{m} - 2mv^{2}\dd{m} - 2m^{2}v\cdot\dd{v} = 0, c^{2}m = v^{2}\dd{m} + mv\cdot\dd{v},
+\end{align*}
+vilket insatt i integralen ger
+\begin{align*}
+	T = \int c^{2}\dd{m} = c^{2}(m - m_{0}) = m_{0}c^{2}(\gamma - 1).
+\end{align*}
+Detta kan alternativt skrivas som
+\begin{align*}
+	mc^{2} = T + m_{0}c^{2},
+\end{align*}
+vilket tolkades som ett uttryck för totala energin som innehåller en konstant viloenergi $m_{0}c^{2}$ (obs: Ej en potentiell energi!). Därmed ges den totala energin av
+\begin{align*}
+	E = mc^{2} = T + m_{0}c^{2}.
+\end{align*}
+
+\paragraph{Relation mellan energi och rörelsemängd}
+Vi har nu fått
+\begin{align*}
+	p^{2} = \gamma^{2}m_{0}^{2}v^{2}, E^{2} = \gamma^{2}m_{0}^{2}c^{4}.
+\end{align*}
+Energin i kvadrat kan skrivas som
+\begin{align*}
+	E^{2} = \gamma^{2}m_{0}^{2}c^{4} = \gamma^{2}m_{0}^{2}c^{4}\left(\frac{1}{\gamma^{2}} + \beta^{2}\right),
+\end{align*}
+eftersom $\gamma = \frac{1}{\sqrt{1 - \beta^{2}}}$. Vi får vidare
+\begin{align*}
+	E^{2} &= m_{0}^{2}c^{4} + m_{0}^{2}v^{2}c^{2} \\
+	      &= m_{0}^{2}c^{4} + p^{2}c^{2}.
+\end{align*}

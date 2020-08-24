@@ -1,0 +1,121 @@
+\section{Analytisk mekanik}
+Betrakta ett system av $n$ partiklar. Dessa beskrivs av $3n$ koordinater i $3$ dimensioner. Systemet kan även begränsas av
+\begin{itemize}
+	\item holonoma tvång på formen $f(\vb{r}_{1}, \dots, \vb{r}_{n}, t) = 0.$
+	\item icke-holonoma tvång, som ej kan uttryckas som holonoma tvång och endast ger samband mellan differentialerna.
+\end{itemize}
+Vi kommer endast betrakta konservativa system.
+
+\paragraph{Frihetsgrader}
+Systemets antal frihetsgrader är det minsta antalet parametrar som entydigt bestämmer systemets läge.
+
+Om systemet begränsas av $k$ holonoma tvång, har systemet $s = 3n - k$ frihetsgrader.
+
+\paragraph{Generaliserade koordinater}
+Systemets generaliserade koordinater är ett val av parametrar som beskriver systemets läge. Dessa betecknas som $q_{i}$. Det finns lika många av dessa som antal frihetsgrader i systemet.
+
+Med dessa inför vi även tidsderivatorna $\dot{q}_{i}$.
+
+\paragraph{Virtuell förflyttning}
+Vi introducerar nu den virtuella förflyttningen $\delta\vb{r}$. Denna är förenlig med villkoren (som ecentuellt är frysta i tid) och i övrigt godtycklig.
+
+\paragraph{Variation av generaliserad koordinat}
+Vi introducerar variationen av en generaliserad koordinat som
+\begin{align*}
+	\delta q_{i} = \varepsilon\eta_{i}(t),
+\end{align*}
+där $\eta$ är $0$ i ändpunkterna.
+
+\paragraph{Konfigurationsrum}
+Konfigurationsrummet är ett rum vars koordinater är de generaliserade koordinaterna. Rörelse i detta rummet representerar alltså ändring av systemets tillstånd.
+
+\paragraph{Hastighet}
+Vi kan nu skriva hastigheten för en given partikel som
+\begin{align*}
+	\vb{v}_{k} = \pdv{\vb{r}_{k}}{t} + \sum\limits_{i = 1}^{s}\pdv{\vb{r}_{k}}{q_{i}}\dot{q}_{i}.
+\end{align*}
+
+\paragraph{Lagrangefunktionen}
+Vi inför nu Lagrangefunktionen
+\begin{align*}
+	L = T - V.
+\end{align*}
+
+\paragraph{Verkningsfunktionalen}
+Vi inför även verkningsfunktionalen
+\begin{align*}
+	S = \int\limits_{t_{1}}^{t_{2}}\dd{t}L.
+\end{align*}
+
+\paragraph{Hamiltons variationsprincip}
+Hamiltons variationsprincip kan behandlas som en naturlag, och representerar ett alternativt sätt till Newtons lagar att beräkna partikelsystemets beteende på. Variationsprincipen säjer att $S$ har ett extremum längs den verkliga banan i konfigurationsrummet. Med variationskalkylen kan detta skrivas som
+\begin{align*}
+	\delta S = 0.
+\end{align*}
+
+\paragraph{Lagranges ekvationer}
+Vi tillämpar nu vår kunnskap om variationskalkyl på verkningsintegralen och får
+\begin{align*}
+	\delta S = \int\limits_{t_{1}}^{t_{2}}\dd{t}\sum\limits_{i = 1}^{k}\pdv{L}{q_{i}}\Delta q_{i} + \pdv{L}{\dot{q}_{i}}\Delta \dot{q}_{i} = 0.
+\end{align*}
+Den sista familjen av termer ges av
+\begin{align*}
+	\int\limits_{t_{1}}^{t_{2}}\dd{t}\pdv{L}{\dot{q}_{i}}\delta \dot{q}_{i} = -\int\limits_{t_{1}}^{t_{2}}\dd{t}\dv{t}\left(\pdv{L}{\dot{q}_{i}}\right)\delta q_{i}
+\end{align*}
+då variationen är $0$ i ändpunkterna. Då kan variationsprincipen skrivas som
+\begin{align*}
+	\int\limits_{t_{1}}^{t_{2}}\dd{t}\sum\limits_{i = 1}^{k}\Delta q_{i}\left(\pdv{L}{q_{i}} - \dv{t}\left(\pdv{L}{\dot{q}_{i}}\right)\right) = 0.
+\end{align*}
+Om detta skall gälla för alla val av tidsintervall, ger detta Lagranges ekvationer
+\begin{align*}
+	\pdv{L}{q_{i}} - \dv{t}\left(\pdv{L}{\dot{q}_{i}}\right) = 0.
+\end{align*}
+
+\paragraph{Generaliserade rörelsemängder}
+Vi inför nu generaliserade rörelsemängder
+\begin{align*}
+	p_{i} = \pdv{L}{\dot{q}_{i}}.
+\end{align*}
+
+\paragraph{Hamiltonfunktionen}
+Lagranges ekvationer är ett system av andra ordningens differentialekvationer. För att försöka att reducera det till ett system av första ordningens ekvationer, inför vi Hamiltonfunktionen
+\begin{align*}
+	H = \sum p_{i}\dot{q}_{i} - L.
+\end{align*}
+
+\paragraph{Hamiltons ekvationer}
+Variationen av Hamiltonfunktionen ges av
+\begin{align*}
+	\delta H &= \sum p_{i}\delta\dot{q}_{i} + \dot{q}_{i}\delta p_{i} - \pdv{L}{q_{i}}\delta q_{i} - \pdv{L}{\dot{q}_{i}}\delta\dot{q}_{i} \\
+	         &= \sum p_{i}\delta\dot{q}_{i} + \dot{q}_{i}\delta p_{i} - \pdv{L}{q_{i}}\delta q_{i} - p_{i}\delta\dot{q}_{i} \\
+	         &= \sum\dot{q}_{i}\delta p_{i} - \pdv{L}{q_{i}}\delta q_{i}.
+\end{align*}
+Med Lagranges ekvationer kan vi skriva
+\begin{align*}
+	\pdv{L}{q_{i}} = \dot{p}_{i},
+\end{align*}
+och Hamiltonfunktionens variation ges av
+\begin{align*}
+	\delta H = \sum\dot{q}_{i}\delta p_{i} - \dot{p}_{i}\delta q_{i}.
+\end{align*}
+
+Om vi jämför detta med variationen som fås vid att betrakta Hamiltonfunktionen som en funktion av de generaliserade koordinaterna och rörelsemängdsmomenterna, fås
+\begin{align*}
+	\delta H = \sum\pdv{H}{q_{i}}\delta q_{i} + \pdv{H}{p_{i}}\delta p_{i}.
+\end{align*}
+Detta ger Hamiltons ekvationer:
+\begin{align*}
+	\dot{q}_{i} = \pdv{H}{p_{i}}, \dot{p}_{i} = \pdv{H}{q_{i}},
+\end{align*}
+som är ett system med $2s$ ekvationer, där $s$ är antal frihetsgrader, av första ordningens differentialekvationer.
+
+\paragraph{Koppling till energien}
+Vi har att
+\begin{align*}
+	\sum p_{i}\dot{q}_{i} = \sum\pdv{L}{\dot{q}_{i}}\dot{q}_{i} = \sum\pdv{T}{\dot{q}_{i}}\dot{q}_{i} = 2T,
+\end{align*}
+där den sista likheten kommer av Eulers sats om homogena funktioner och att den kinetiska energin är en homogen funktion av ordning $2$. Detta ger
+\begin{align*}
+	H = 2T - L = T + V = E,
+\end{align*}
+och är alltså lika med den totala energin.

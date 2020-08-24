@@ -1,0 +1,128 @@
+\section{Magnetostatik}
+
+\paragraph{Ström}
+Ström definieras som $I = \dv{Q}{t}$.
+
+\paragraph{Strömtäthet}
+I fall där strömmen inte flödar längs med linjer utan längs ytor eller fritt i rummet definierar vi strömtätheten $\vb{J}$ som vektorfältet som beskriver flödet av laddningar. Strömtäthetens belopp ges av $J = \rho v$, där $\vb{v}$ är hastighetsfältet för laddningarna.
+
+\paragraph{Kontinuitetsekvation för strömtätheten}
+Strömtätheten uppfyller
+\begin{align*}
+	\del{t}{\rho} + \div{\vb{J}} = 0.
+\end{align*}
+
+\paragraph{Kraft på strömslingor}
+Betrakta två slingor $C$ och $C'$. Genom varje slinga går en ström $I$ respektiva $I'$ i samma riktning som kurvans orientering. Experiment har visat att kraften på $C$ från $C'$ ges av
+\begin{align*}
+	\vb{F} = \integ{C}{}{\vb{r}}{I\times\left(\frac{\mu_{0}I'}{4\pi}\tinteg{C'}{}{r'}{\frac{1}{R^{2}}\ub{R}}\right)}
+\end{align*}
+där $\vb{R} = \vb{r} - \vb{r}'$.
+
+\paragraph{Magnetiska fältet}
+Genom att definiera det magnetiska fältet från $C'$ i punkten $\vb{r}$ som
+\begin{align*}
+	\vb{B} = \frac{\mu_{0}I'}{4\pi}\tinteg{C'}{}{r'}{\frac{1}{R^{2}}\ub{R}}
+\end{align*}
+fås
+\begin{align*}
+	\vb{F} = \integ{C}{}{\vb{r}}{I\times\vb{B}}.
+\end{align*}
+
+\paragraph{Magnetfält från strömtätheter}
+För strömmar fördelade i rummet eller på en yta kan vi utvidga definitionen av magnetiska fältet till att bli
+\begin{align*}
+	\vb{B} = \frac{\mu_{0}}{4\pi}\integ{}{}{a'}{\vb{J}\times\frac{1}{R^{2}}\ub{R}}\ \text{eller}\ \vb{B} = \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\vb{J}\times\frac{1}{R^{2}}\ub{R}}.
+\end{align*}
+Vi skriver gärna integrationselementen, som innehåller strömmen och differnetialen, som $\dd{\vb{C}}$. Även ytströmmar och linjeströmmar kan skrivas som volymströmmar.
+
+\paragraph{Potential för magnetfältet}
+Vi har
+\begin{align*}
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\vb{J}\times\frac{1}{R^{2}}\ub{R}} \\
+	       &= -\frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\vb{J}\times\grad{\frac{1}{R}}} \\
+	       &= \curl(\frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\vb{J}}).
+\end{align*}
+Rotationsoperatorn kan tas utanför integrationen då den verkar på koordinater som det ej integreras över. Vi definierar då vektorpotentialen
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\vb{J}},
+\end{align*}
+och har då
+\begin{align*}
+	\vb{B} = \curl{\vb{A}}.
+\end{align*}
+
+\paragraph{Entydighet för vektorpotentialen}
+Vektorpotentialen kan även definieras som
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\vb{J}} + \grad{\Lambda},
+\end{align*}
+där $\Lambda$ är en godtycklig funktion. Eftersom gradienter ej har rotation, kommer denna vektorpotentialen att ge samma magnetfält. Vi kommer oftast sätta $\Lambda = 0$.
+
+\paragraph{Magnetfältets divergens}
+Eftersom $\vb{B}$ är rotationen av en vektorpotential, gäller det att
+\begin{align*}
+	\div{\vb{B}} = 0.
+\end{align*}
+
+\paragraph{Vektorpotentialens divergens}
+Vi har
+\begin{align*}
+	\div{\vb{A}} &= \div(\frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\vb{J}}) \\
+	             &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\vb{J}\cdot\grad{\frac{1}{R}}} \\
+	             &= -\frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\vb{J}\cdot\gradp{\frac{1}{R}}} \\
+	             &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\divp{\vb{J}} - \divp{\frac{1}{R}\vb{J}}} \\
+	             &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\divp{\vb{J}}} -  \frac{\mu_{0}}{4\pi}\vinteg{}{}{a'}{\frac{1}{R}\vb{J}}.
+\end{align*}
+I elektrostatiska fall är alla laddningar statiska, varför den första termen ej ger något bidrag. Genom att utvidga integrationsområdet till hela rummet som tidigare fås
+\begin{align*}
+	\div{\vb{A}} = 0.
+\end{align*}
+
+\paragraph{Magnetiskt flöde}
+Det magnetiska flödet definieras som
+\begin{align*}
+	\Phi = \vinteg{}{}{a}{\vb{B}}.
+\end{align*}
+Med hjälp av Stokes' sats fås
+\begin{align*}
+	\Phi = \vinteg{}{}{l}{A}.
+\end{align*}
+Detta blir alltid $0$ genom en sluten yta.
+
+\paragraph{Vektorpotentialens laplacian}
+På samma sätt som för elektriska potentialen fås
+\begin{align*}
+	\laplacian{\vb{A}} = -\mu_{0}\vb{J}.
+\end{align*}
+
+\paragraph{Magnetfältets rotation}
+Vi har
+\begin{align*}
+	\curl{\vb{B}} = \curl{\curl{\vb{A}}} = \grad{\div{\vb{A}}} - \laplacian{\vb{A}} = \mu_{0}\vb{J}.
+\end{align*}
+
+\paragraph{Ampères cirkulationslag}
+Strömmen genom en yta ges av
+\begin{align*}
+	I = \vinteg{}{}{a}{\vb{J}} = \frac{1}{\mu_{0}}\vinteg{}{}{a}{\curl{\vb{B}}} = \frac{1}{\mu_{0}}\vinteg{}{}{l}{\vb{B}}.
+\end{align*}
+
+\paragraph{Randvillkor för magnetfältet}
+Som med elektriska fältet betraktar vi magnetfältet nära en ytströmtäthet. Kring denna lägger vi en yta och beräknar flödet genom den när ytans tjocklek blir liten. Detta ger
+\begin{align*}
+	(\vb{B}_{1} - \vb{B}_{2})\cdot\vb{n}_{12} = 0.
+\end{align*}
+Vidare kan vi skriva
+\begin{align*}
+	\integ{}{}{\tau}{\mu_{0}\vb{J}} = \integ{}{}{\tau}{\curl{\vb{B}}}.
+\end{align*}
+Med indexräkning fås
+\begin{align*}
+	\left[\integ{}{}{\tau}{\curl{\vb{B}}}\right]_{i} = \varepsilon_{ijk}\integ{}{}{\tau}{\del{j}{B_{k}}} = \varepsilon_{ijk}\integ{}{}{a_{j}}{B_{k}} = \left[\tinteg{}{}{a}{\vb{B}}\right]_{i}.
+\end{align*}
+Detta ger
+\begin{align*}
+	\vb{n}_{12}\times(\vb{B}_{1} - \vb{B}_{2}) = \mu_{0}\vb{J}.
+\end{align*}
+Ett motsvarande bevis kan även göras med Ampères lag för en liten strömslinga.

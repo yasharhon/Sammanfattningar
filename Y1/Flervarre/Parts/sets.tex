@@ -1,0 +1,55 @@
+\section{Mängdlära}
+
+\subsection{Definitioner}
+
+\paragraph{Öppna klot}
+Ett öppet klot i $\R^n$ centrerad i $\vect{a}$ med radius $r$ är
+\begin{align*}
+	\{\vect{x}\in\R^n:\ \abs{\vect{x} - \vect{a}}<r\}.
+\end{align*}
+
+\paragraph{Omgivningar till punkter}
+$U\subset\R^n$ är en omgivning till $\vect{a}\in\R^n$ om $U$ innehåller något öppet klot med centrum $\vect{a}$.
+
+\paragraph{Inre punkter}
+Låt $M\subset\R^n$. $\vect{a}$ är en inre punkt till $M$ om det finns ett öppet klot kring $\vect{a}$ i $M$.
+
+\paragraph{Yttre punkter}
+Låt $M\subset\R^n$. $\vect{a}$ är en yttre punkt till $M$ om det finns ett öppet klot kring $\vect{a}$ i $M$:s komplement, definierad som $\R^n\setminus M$.
+
+\paragraph{Randpunkter}
+Låt $M\subset\R^n$. $\vect{a}$ är en randpunkt till $M$ om varje öppet klot kring $\vect{a}$ innehåller punkter i $M$ och $M$:s komplement.
+
+\paragraph{Rand}
+Mängden av alla randpunkter till en mängd $M$ är randen till $M$. Denna betecknas $\bound{M}$.
+
+\paragraph{Öppna och slutna mängder}
+En mängd är öppen om $\bound{M}$ är i $M$:s komplement och sluten om $\bound{M}$ är i $M$.
+
+\paragraph{Begränsade mängder}
+En mängd $M$ är begränsad om $\exists c > 0$ så att $\abs{\vect{x}} < c\ \forall\ \vect{x}\in M$.
+
+\paragraph{Kompakta mängder}
+En mängd är kompakt om den är sluten och begränsad.
+
+\paragraph{Bågvis sammanhängande mängder}
+$D$ är en bågvis sammanhängande mängd om varje par punkter $\vect{a}, \vect{b}\in D$ finns en kurva $\vect{x}(t), t\in [\alpha, \beta]$ så att $\vect{x}(t)\in D$ för alla $t$ och $\vect{x}(\alpha) = \vect{a}$ och $\vect{x}(\beta) = \vect{b}$.
+
+\paragraph{Axelparallella rektangler}
+En axelparallell rektangel i $\R^2$ är på formen
+\begin{align*}
+	\{(x, y)\ |\ a\leq x\leq b, c\leq y\leq d\}.
+\end{align*}
+
+\paragraph{Nollmängder}
+En mängd $N\subset\R^2$ är en nollmängd om vi för alla $\varepsilon > 0$ kan täcka över $N$ med ändligt många axelparallella rektanglar med area mindre än eller lika med $\varepsilon$.
+
+\paragraph{Kvadrerbara mängder}
+En mängd $D\subset\R^2$ är kvadrerbar om $\bound{D}$ är en nollmängd.
+
+\subsection{Satser}
+
+\paragraph{Grafer som nollmängder}
+Grafen av en kontinuerlig funktion $\phi: [a, b]\to\R$ är en nollmängd.
+
+\proof

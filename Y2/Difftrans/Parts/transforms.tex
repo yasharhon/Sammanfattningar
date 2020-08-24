@@ -1,0 +1,203 @@
+\section{Transformer}
+
+\subsection{Definitioner}
+
+\paragraph{Fouriertransformen}
+Låt $f\in L^{1}(\R, \C)$. Då definieras Fouriertransformen $\fou{f}$ som
+\begin{align*}
+	\fou{f}(\omega) = \inteval{\R}{}{f(x)e^{-i\omega x}}{x}.
+\end{align*}
+
+\paragraph{Inversa Fouriertransformen}
+Inversa Fouriertransformen definieras som
+\begin{align*}
+	\fouinv{f}(x) = \inteval{\R}{}{f(\omega)e^{i\omega x}}{\omega}.
+\end{align*}
+
+\paragraph{Faltning över $\R$}
+Låt $f, g\in L^{1}(\R, \C)$. Då definieras faltningen av $f$ och $g$ som
+\begin{align*}
+	\conv{f}{g}(x) = \inteval{\R}{}{f(x - t)g(t)}{t} = \inteval{\R}{}{f(t)g(x - t)}{t}.
+\end{align*}
+
+\paragraph{Laplacetransformen}
+Låt $f: [0, \infty)\to\R$ vara integrerbar på varje delintervall av $[0, \infty)$ så att det finns ett $\in R$ så att $\abs{f(t)}\leq Me^{kt}$ för något $M$ och alla $t \geq 0$. Då definieras Laplacetransformen av $f$ som
+\begin{align*}
+	\lap{f}(s) = \inteval{0}{\infty}{f(t)e^{-st}}{t}
+\end{align*}
+för alla $s > k$.
+
+\paragraph{Faltning för över $[0, \infty)$}
+Låt $f$ och $g$ vara Riemannintegrerbara på $[0, \infty)$. Då definieras faltningen av $f$ och $g$ som
+\begin{align*}
+	\conv{f}{g}(x) = \inteval{0}{\infty}{f(x - t)g(t)}{t} = \inteval{0}{\infty}{f(t)g(x - t)}{t}.
+\end{align*}
+
+\subsection{Satser}
+
+\paragraph{Räkneregler för Fouriertransformen}
+Fouritertransformen uppfyller:
+\begin{itemize}
+	\item Fouriertransformen definierar en linjär operator.
+	\item Om $f_{a}(x) = f(x - a)$ är $\fou{f_{a}}(\omega) = e^{-ia\omega}\fou{f}(\omega)$.
+	\item Om $f_{a}(x) = f(\frac{x}{a})$ är $\fou{f_{a}}(\omega) = \frac{1}{a}\fou{f}(\frac{\omega}{a})$.
+	\item Om $f,\dv{f}{x}\in L^{1}(\R, \C)$ är $\fou{\dv{f}{x}}(\omega) = i\omega\fou{f}(\omega)$.
+	\item Om $f\in L^{1}(\R, \C)$ är $\fou{tf}(\omega) = i\deval{\fou{f}}{\omega}{\omega}$.
+\end{itemize}
+
+\proof
+Här visas endast andra och tredje påståendet.
+
+Om $f_{a}(x) = f(x - a)$ är 
+\begin{align*}
+	\fou{f_{a}}(\omega) &= \inteval{-\infty}{\infty}{f(x - a)e^{-i\omega x}}{x} \\
+	                    &= \inteval{-\infty}{\infty}{f(x)e^{-i\omega(x + a)}}{x} \\
+	                    &= e^{-i\omega a}\inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x} \\
+	                    &= e^{-i\omega a}\fou{f}(\omega),
+\end{align*}
+vilket skulle visas.
+
+Om $f$ har kompakt stöd, dvs. det finns ett $M$ så att $\abs{x} > M\implies f(x) = 0$,  gäller det vidare att
+\begin{align*}
+	\fou{\dv{f}{x}}(\omega) &= \inteval{-\infty}{\infty}{\deval{f}{x}{x}e^{-i\omega x}}{x} \\
+	                        &= \left[f(x)e^{-i\omega x}\right]_{-2M}^{2M} + i\omega\inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x}.
+\end{align*}
+Jag är inte säker på att detta stämmer, men jag tror gränserna i sista raden valdes godtycklig som något större än $M$ och sedan skulle kunna skickas mot oändligheten. I alla fall ger denna inget bidrag, och beviset är klart.
+
+\paragraph{Fouriertransformens egenskaper}
+Låt $f\in L^{1}(\R, \C)$. Då gäller att
+\begin{itemize}
+	\item $\abs{\fou{f}(\omega)} \leq \inteval{\R}{}{\abs{f(x)}}{x}$.
+	\item $\fou{f}$ är kontinuerlig på $\R$.
+	\item $\lim\limits_{\abs{\omega}\to\infty}\fou{f}(\omega) = 0$.
+\end{itemize}
+
+\proof
+Första påståendet följer från Cauchy-Schwarz' olikhet.
+
+Andra påståendet är sant ty
+\begin{align*}
+	\abs{\fou{f}(\omega + h) - \fou{f}(\omega)} &= \abs{\inteval{-\infty}{\infty}{f(x)e^{-i(\omega + h)x}}{x} - \inteval{-\infty}{\infty}{f(x)e^{-i\omega x}}{x}} \\
+	                                            &= \abs{\inteval{-\infty}{\infty}{f(x)e^{-i\omega x}(e^{-ihx} - 1)}{x}} \\
+	                                            &\leq \abs{\inteval{\abs{x} < M}{}{f(x)e^{-i\omega x}(e^{-ihx} - 1)}{x}} + \abs{\inteval{\abs{x} \geq M}{}{f(x)e^{-i\omega x}(e^{-ihx} - 1)}{x}}.
+\end{align*}
+För små $h$ är $\abs{e^{-ihx} - 1} < \varepsilon$
+
+Sista påståendet följer direkt från Riemann-Lebesgues lemma.
+
+\paragraph{Inversionsformeln}
+Låt $f\in L^{1}(\R, \C)$ vara styckvist $C^{1}$ och ha generaliserade vänster- och högerderivator i alla punkter. Då gäller att
+\begin{align*}
+	f(x) = \fouinv{f}(x) = \frac{1}{2\pi}\inteval{\R}{}{\fou{f}(\omega)e^{i\omega x}}{\omega}.
+\end{align*}
+
+\proof
+
+\paragraph{Fouriertransform och faltning}
+Antag att $f, g\in L^{1}(\R, \C)$. Då gäller att
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega)           &= \fou{f}(\omega)\fou{g}(\omega), \\
+	\fouinv{\conv{\fou{f}}{\fou{g}}}(x) &= f(x)g(x).
+\end{align*}
+
+\proof
+Ett lite hälft bevis är:
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega) = \inteval{\R}{}{e^{-i\omega x}\inteval{\R}{}{f(x - t)g(t)}{t}}{x}.
+\end{align*}
+Utan att motivera varför, byter vi integrationsordning och skriver vi detta som
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega) &= \inteval{\R}{}{\inteval{\R}{}{e^{-i\omega x}f(x - t)g(t)}{t}}{x} \\
+	                          &= \inteval{\R}{}{\inteval{\R}{}{e^{-i\omega(x - t)}f(x - t)e^{-i\omega t}g(t)}{t}}{x} \\
+	                          &= \inteval{\R}{}{e^{-i\omega t}g(t)\inteval{\R}{}{e^{-i\omega(x - t)}f(x - t)}{x}}{t}.
+\end{align*}
+Vid att göra variabelbytet $u = x - t$ tas $t$-beroendet bort, och högra integralen blir $\fou{f}(\omega)$, vilket ger
+\begin{align*}
+	\fou{\conv{f}{g}}(\omega) &= \inteval{\R}{}{e^{-i\omega t}g(t)\fou{f}(\omega)}{t} \\
+	                          &= \fou{f}(\omega)\inteval{\R}{}{e^{-i\omega t}g(t)}{t} \\
+	                          &= \fou{f}(\omega)\fou{g}(\omega).
+\end{align*}
+Ideen är motsvarande med inverstransformen.
+
+\paragraph{Plancherels sats}
+Låt $f\in L^{1}(\R, \C)$. Då gäller det att
+\begin{align*}
+	\inteval{\R}{}{\abs{f(x)}^{2}}{x} = \frac{1}{2\pi}\inteval{\R}{}{\abs{\fou{f}(\omega)}}{\omega}.
+\end{align*}
+
+\proof
+
+\paragraph{Räkneregler för Laplacetransformen}
+Låt $f: [0, \infty)\to\R$ ha en Laplacetransform. Då gäller att
+\begin{itemize}
+	\item Laplacetransformationen definierar en linjär operator.
+	\item $\lap{e^{at}f}(s) = \lap{f}(s - a)$.
+	\item Om $f(t) = 0$ för $t < 0$, gäller det för $g(t) = f(t - a)$, där $a > 0$, att $\lap{g}{s} = e^{-as}\lap{f}(s)$.
+	\item Det gäller för $g(t) = f(at), a > 0$ att $\lap{g}(s) = \frac{1}{a}\lap{f}(\frac{s}{a})$.
+	\item $\lap{tf}(s) = -\deval{\lap{f}}{s}{s}$.
+	\item Om $\dv{f}{t}$ även har en Laplacetransform, är $\lap{\dv{f}{t}}(s) = s\lap{f}(s) - f(0)$.
+\end{itemize}
+
+\proof
+Här görs inga formella bevis utan bara informella härledningar.
+
+Första påståendet följer direkt av att integralen är linjär.
+
+Det gäller att
+\begin{align*}
+	\lap{e^{at}f}(s) &= \inteval{0}{\infty}{e^{at}f(t)e^{-st}}{t} \\
+	                 &= \inteval{0}{\infty}{f(t)e^{(a - s)t}}{t} \\
+	                 &= \lap{f}(s - a),
+\end{align*}
+vilket bevisar andra påståendet.
+
+Det gäller för $g(t) = f(t - a)$ för $a > 0$ att
+\begin{align*}
+	\lap{g} &= \inteval{0}{\infty}{g(t)e^{-st}}{t} \\
+	        &= \inteval{0}{\infty}{f(t - a)e^{-st}}{t} \\
+	        &= \inteval{-a}{\infty}{f(u)e^{-s(u + a)}}{u} \\
+	        &= e^{-sa}\inteval{-a}{\infty}{f(u)e^{-s(u + a)}}{u} \\
+	        &= e^{-sa}\left(\inteval{0}{\infty}{f(u)e^{-su}}{u} - \inteval{0}{-a}{f(u)e^{-su}}{u}\right) \\
+	        &= e^{-sa}\inteval{0}{\infty}{f(u)e^{-su}}{u} \\
+	        &= e^{-sa}\lap{f}(s),
+\end{align*}
+där vi har använt att $f(t) = 0, t < 0$, vilket bevisar tredje påståendet.
+
+Det gäller för $g(t) = f(at), a > 0$ att
+\begin{align*}
+	\lap{g}(s) &= \inteval{0}{\infty}{g(t)e^{-st}}{t} \\
+	           &= \inteval{0}{\infty}{f(at)e^{-st}}{t} \\
+	           &= \inteval{0}{\infty}{f(u)e^{-\frac{s}{a}u}\frac{1}{a}}{u} \\
+	           &= \frac{1}{a}\inteval{0}{\infty}{f(u)e^{-\frac{s}{a}u}}{u} \\
+	           &= \frac{1}{a}\lap{f}\left(\frac{s}{a}\right),
+\end{align*}
+vilket bevisar det fjärde påståendet.
+
+Det gäller att
+\begin{align*}
+	\lap{tf}(s) &= \inteval{0}{\infty}{tf(t)e^{-st}}{t} \\
+	            &= -\dv{s}\inteval{0}{\infty}{f(t)e^{-st}}{t} \\
+	            &= -\deval{\lap{f}}{s}{s},
+\end{align*}
+vilket bevisar det femte påståendet.
+
+Det gäller att
+\begin{align*}
+	\lap{\dv{f}{t}} &= \inteval{0}{\infty}{\deval{f}{t}{t}e^{-st}}{t} \\
+	                &= \left[f(t)e^{-st}\right]_{0}^{\infty} + \inteval{0}{\infty}{f(t)se^{-st}}{t} \\
+	                &= s\inteval{0}{\infty}{f(t)e^{-st}}{t} - f(0) \\
+	                &= s\lap{f}(s) - f(0),
+\end{align*}
+vilket bevisar det sjätte påståendet.
+
+\paragraph{Laplacetransformens entydighet}
+Låt $f$ och $g$ uppfylla $\lap{f} = \lap{g}$. Då är $f = g$.
+
+\proof
+
+\paragraph{Laplacetransformationen av en faltning}
+Låt $f$ och $g$ ha Laplacetransformer. Då gäller att
+\begin{align*}
+	\lap{\conv{f}{g}}(s) = \lap{f}(s)\lap{g}(s)
+\end{align*}
+där faltningen görs över $[0, \infty)$.

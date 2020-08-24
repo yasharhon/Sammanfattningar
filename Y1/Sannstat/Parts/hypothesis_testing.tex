@@ -1,0 +1,57 @@
+\section{Hypotesprövning}
+Hypotesprövning baseras på stickproc $X_1, \dots, X_n$ från någon fördelning. Vi önskar pröva någon grundhypotes, eller nollhypotes, $H_0$ om hur fördelningen ser ut. Nollhypotesen testas gärna mot en alternativ hypotes $H_1$.
+
+\paragraph{Styrkefunktionen}
+För en given test kan man definiera testens styrkefunktion $h(\theta)$ som sannolikheten för att $H_0$ förkastas om $\theta$ är det rätta värdet på någon parameter. Vi önskar att denna skall vara stor när $H_1$ är uppfylld.
+
+\paragraph{Signifikanstester}
+Från stickproven får man någon teststorhet $t(X_1, \dots, X_n) = t_\text{obs}$. Man anger sen ett kritiskt område $C$, och gör ett signifikanstest:
+\begin{itemize}
+	\item Om $t_\text{obs}\in C$ förkastas $H_0$.
+	\item Om $t_\text{obs}\not\in C$ förkastas ej $H_0$.
+\end{itemize}
+Man väljer $C$ på ett sådant sätt att om $H_0$ är sann, är $P(t\in C) = \alpha$ för något $\alpha$ Detta $\alpha$ kallas testens signifikansnivå, eller felrisk, och anger sannolikheten för att $H_0$ förkastas om $H_0$ är sann. Denna önskas typisk låg.
+
+\paragraph{$P$-värden}
+Man kan även definiera ett $P$-värde, eller observerad signifikansnivå. Detta definieras som $P = P(t\geq t_\text{obs})$ under förutsättningen att $H_0$ är sann. Om $P\leq\alpha$ förkastar man $H_0$.
+
+\paragraph{Konfidensmetoden}
+Signifikanstester är ekvivalent med konfidensmetoden, där man hittar ett konfidensintervall med konfidensgrad $1 - \alpha$, där $\alpha$ är testens signifikans, och undersöka om värdet $\theta_0$, specifierat i $H_0$, ligger i konfidensintervallet.
+
+\subsection{$\chi^2$-tester}
+
+\paragraph{Test av förutspådda sannolikheter}
+Gör $n$ oberoende försök med möjliga utfall $A_1, \dots, A_r$, där alla utfall har frekvens $x_i$. Vi vill testa $H_0$: alla $P(A_i) = p_i$ för några $p_i$. Vi definierar testvariabeln
+\begin{align*}
+	Q = \sum\limits_{i = 1}^{r}\frac{(x_i - np_i)^2}{np_i}.
+\end{align*}
+Om $H_0$ är sann, är $Q$ approximativt $\chi^2(r -1)$. Det är även så att $Q$ ökar med avviket av $p_i$ från det reella värdet. Vi förkastar då $H_0$ om $Q_{\text{obs}} > \chi_{\alpha}^2(r - 1)$ med signifikans $\alpha$. Testen fungerar bra om $np_{i}\geq 5\ \forall\ i$.
+
+\paragraph{Test av parameter i fördelning}
+Gör $n$ oberoende försök med möjliga utfall $A_1, \dots, A_r$, där alla utfall har frekvens $x_i$. Vi vill testa $H_0$: alla $P(A_i) = p_i(\theta_1, \dots, \theta_k)$ för några $\theta_i$. Vi skattar alla $\theta_i$ och definierar igen testvariabeln
+\begin{align*}
+	Q = \sum\limits_{i = 1}^{r}\frac{(x_i - np_i^*)^2}{np_i^*},
+\end{align*}
+där $p_i^*$ är sannolikheten baserad på skattningerna av $\theta_i$. Om $H_0$ är sann, är $Q$ approximativt $\chi^2(r - k - 1)$. Vi förkastar då $H_0$ om $Q_{\text{obs}} > \chi_{\alpha}^2(r - k - 1)$ med signifikans $\alpha$. Testen fungerar bra om $np_{i}^*\geq 5\ \forall\ i$.
+
+\paragraph{Test av homogenitet i sannolikheter}
+Gör $s$ serier med $n_i$ oberoende försök per serie, med möjliga utfall $A_1, \dots, A_r$ med frekvens $x_{sr}$. Vi vill testa $H_0$: alla $P(A_i)$ är lika från experiment till experiment. Vi definierar testvariabeln
+\begin{align*}
+	Q = \sum\limits_{i = 1}^{s}\sum\limits_{j = 1}^{r}\frac{(x_{ij} - n_ip_j^*)^2}{n_ip_j^*},
+\end{align*}
+där $p_j^* = \frac{1}{n}\sum\limits_{i = 1}^{s}x_{ij}$. Om $H_0$ är sann, är $Q$ approximativt $\chi^2((r - 1)(s - 1))$. Vi förkastar då $H_0$ om $Q_{\text{obs}} > \chi_{\alpha}^2((r - 1)(s - 1))$ med signifikans $\alpha$. Testen fungerar bra om $n_ip_j^*\geq 5\ \forall\ i$.
+
+\paragraph{Test av oberoende}
+Gör $n$ oberoende försök, med $sr$ möjliga utfall $B_1A_1, \dots, B_sA_r$ med frekvens $x_{sr}$. Det gäller att
+\begin{align*}
+	P(A_j) = p_{.j} = \sum\limits_{i = 1}^{s}p_{ij},
+\end{align*}
+och motsvarande för $B_i$. Vi skattar dessa som
+\begin{align*}
+	p_{.j}^* = \frac{1}{n}\sum\limits_{i = 1}^{s}x_{ij}.
+\end{align*}
+Vi vill testa $H_0$: $A$ och $B$ är oberoende, med andra ord att $p_{ij} = p_{i.}p_{.j}$. Vi definierar testvariabeln
+\begin{align*}
+	Q = \sum\limits_{i = 1}^{s}\sum\limits_{j = 1}^{r}\frac{(x_{ij} - np_{i.}^*p_{.j}^*)^2}{np_{i.}^*p_{.j}^*}.
+\end{align*}
+Om $H_0$ är sann, är $Q$ approximativt $\chi^2((r - 1)(s - 1))$. Vi förkastar då $H_0$ om $Q_{\text{obs}} > \chi_{\alpha}^2((r - 1)(s - 1))$ med signifikans $\alpha$. Testen fungerar bra om $np_{i.}^*p_{.j}^*\geq 5\ \forall\ i, j$.

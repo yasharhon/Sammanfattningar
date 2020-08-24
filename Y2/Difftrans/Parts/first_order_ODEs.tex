@@ -1,0 +1,106 @@
+\subsection{Första ordningen}
+
+\paragraph{Existens av lösning}
+Betrakta differentialekvationen
+\begin{align*}
+	\deval{y}{t}{t} &= f(y), \\
+	y(0)            &= y_0.
+\end{align*}
+Detta har en lösning om $f$ är Lipschitzkontinuerlig.
+
+\subparagraph{Bevis}
+Bilda två diskreta approximationer $\bar{y}, \bar{\bar{y}}$ av $y$. Vi kan visa att
+\begin{align*}
+	\max\limits_{t\in [0, T]}\abs{\bar{y}, \bar{\bar{y}}}\leq K\Delta t
+\end{align*}
+där $\Delta t$ är det största tidsavståndet mellan två punkter i någon av de diskreta approximationerna. Detta implicerar konvergens mot ett gränsvärde $y(t)$ när $\Delta t\to 0$. Detta gränsvärdet uppfyller
+\begin{align*}
+	y(t) &= \lim\limits_{\Delta t\to 0}\bar{y}(t) \\
+	     &= \lim\limits_{\Delta t\to 0}\bar{y}(0) + \inteval{0}{t}{f(\bar{y}(s))}{s} \\
+	     &= y(0) + \inteval{0}{t}{f(y(s))}{s},
+\end{align*}
+där sista likheten kommer av integrandens Lipschitzkontinuitet. Integralkalkylens fundamentalsats ger då
+\begin{align*}
+	\deval{y}{t}{t} &= f(y),
+\end{align*}
+vilket skulle visas.
+
+\paragraph{Entydighet av lösning}
+Betrakta differentialekvationen
+\begin{align*}
+	\deval{y}{t}{t} &= f(y), \\
+	y(0)            &= y_0.
+\end{align*}
+Detta har en unik lösning om $f$ är Lipschitzkontinuerlig.
+
+Observera att beviset kan även göras för en funktion $f(t, y)$ vid att skriva differentialekvationen som ett system och komma med en motsvarande sats för system av differentialekvationer.
+
+\subparagraph{Bevis}
+Betrakta två lösningar $y, z$ av differentialekvationen. Vi får
+\begin{align*}
+	y(\tau) - y_{0} = \inteval{0}{\tau}{f(y)}{t}
+\end{align*}
+och samma för $z$. Vi subtraherar dessa två resultat och får
+\begin{align*}
+	y(\tau) - z(\tau) = y_{0} - z_{0} + \inteval{0}{\tau}{f(y) - f(z)}{t}.
+\end{align*}
+Vid att beräkna absolutbeloppet av båda sidor och använda Cauchy-Schwarz' oliket får man vidare
+\begin{align*}
+	\abs{y(\tau) - z(\tau)} \leq \abs{y_{0} - z_{0}} + \inteval{0}{\tau}{\abs{f(y) - f(z)}}{t}.
+\end{align*}
+Kravet om Lipschitzkontinuitet av $f$ ger vidare
+\begin{align*}
+	\abs{y(\tau) - z(\tau)} \leq \abs{y_{0} - z_{0}} + \inteval{0}{\tau}{K\abs{y(t) - z(t)}}{t}.
+\end{align*}
+Grönwalls lemma ger slutligen
+\begin{align*}
+	\abs{y(\tau) - z(\tau)} \leq \abs{y_{0} - z_{0}}e^{K\tau}.
+\end{align*}
+Om $y_{0} = z_{0}$ är $y = z$, och beviset är klart.
+
+\paragraph{Lösning av linjära ODE av första ordning}
+Antag att vi har en differentialekvation på formen
+\begin{align*}
+	\deval{y}{t}{t} + p(t)y(t) = g(t).
+\end{align*}
+Beräkna
+\begin{align*}
+	P(t) = \inteval{a}{t}{p}{x}
+\end{align*}
+och inför den integrerande faktorn $e^{P(t)}$. Multiplicera med den på båda sidor för att få
+\begin{align*}
+	e^{P(t)}\deval{y}{t}{t} + p(t)e^{P(t)}y(t) = e^{P(t)}g(t).
+\end{align*}
+Detta kan skrivas om till
+\begin{align*}
+	\dv{t}\left(ye^{P}\right)(t) = e^{P(t)}g(t) = \deval{H}{t}{t}.
+\end{align*}
+Analysens huvudsats ger då
+\begin{align*}
+	y(t)e^{P(t)} = H(t) + c
+\end{align*}
+och slutligen
+\begin{align*}
+	y(t) = ce^{-P(t)} + e^{-P(t)}H(t).
+\end{align*}
+
+Låt oss lägga till bivillkoret $y(a) = y_0$. Man kan då visa att lösningen kan skrivas som
+\begin{align*}
+	y(t) = y_0e^{-\inteval{a}{t}{p}{x}} + \inteval{a}{t}{g(x)e^{-\inteval{x}{t}{p}{s}}}{x}.
+\end{align*}
+
+\paragraph{Separabla ODE av första ordning}
+Antag att vi har en differentialekvation som kan skrivas på formen
+\begin{align*}
+	m(x) + n(y(x))\deval{y}{x}{x} = 0.
+\end{align*}
+Denna betecknas som en separabel ODE av första ordning.
+
+För att lösa den, beräkna primitiv funktion på båda sidor, vilket ger
+\begin{align*}
+	M(x) + N(y(x)) = c,\ c\in\R.
+\end{align*}
+Om $N$ är inverterbar, får man då $y$ enligt
+\begin{align*}
+	y(x) = N^{-1}(c - M(x)).
+\end{align*}

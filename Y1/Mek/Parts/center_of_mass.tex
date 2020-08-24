@@ -1,0 +1,49 @@
+\section{Masscentrum}
+Masscentrum till ett system av partikler definieras av
+\begin{align*}
+	\vect{r}_G = \frac{\sum m_i\vect{r}_i}{\sum m_i}.
+\end{align*}
+För en kontinuerlik kropp går detta mot
+\begin{align*}
+	\vect{r}_G = \frac{\int\dd{m}\vect{r}}{\int\dd{m}}.
+\end{align*}
+Detta kan skrivas som
+\begin{align*}
+	\vect{r}_G &= \frac{1}{M}\sum\int\limits_{V_i}\dd{m}\vect{r} \\
+	           &= \frac{1}{M}\sum\frac{M_i}{M_i}\int\limits_{V_i}\dd{m}\vect{r} \\
+	           &= \frac{1}{M}\sum M_i\vect{r}_{G, i}.
+\end{align*}
+Kroppen kan då partitioneras på lämpliga sätt, och man kan använda enkla resultat för att beräkna mer komplicerade masscentra.
+
+Masscentrumets läge är så att om en kraft verkar i ett partikelsystems masscentrum, kommer dets verkan kunna reduceras till en enkraftsresultant.
+
+%Detta är en punkt så att i ett homogent kraftfält är fältets verkan på partiklerna ekvivalent med att kraftsumman verkar i masscentrum.
+
+\paragraph{Motivering: Tyngdkraft}
+Betrakta ett system av partikler i ett homogent tyngdfält som verkar i $-z$-riktning. Kraftsumman ges av
+\begin{align*}
+	\vect{F} = \sum\vect{F}_i = -\sum m_ig\vect{e}_z = -mg\vect{e}_z
+\end{align*}
+där $m$ är den totala massan till partiklerna. Det totala kraftmomentet kring någon punkt $O$ är
+\begin{align*}
+	\vect{M}_O = \sum\vect{r}_i\times\vect{F}_i = -\sum \vect{r}_i\times m_ig\vect{e}_z = -\sum m_ig\vect{r}_i\times\vect{e}_z.
+\end{align*}
+Detta är ett system av parallella krafter, vilket alltid har ett enkraftsresulat. Låt enkraftsresulantens angrespunkt ges av ortsvektorn $\vect{r}$ relativt $O$. Eftersom enkraftsresultanten är ekvimoment med det ursprungliga kraftsystemet, får man
+\begin{align*}
+	\vect{r}\times\vect{F}                                       &= \vect{M}_O \\
+	\vect{r}\times (-mg\vect{e}_z)                               &= -\sum m_ig\vect{r}_i\times\vect{e}_z \\
+	\left(m\vect{r} - \sum m_i\vect{r}_i\right)\times\vect{e}_z &= 0
+\end{align*}
+Detta innebär att uttrycket i parentesen är parallellt med $\vect{e}_z$, vilket ger
+\begin{align*}
+	m\vect{r} - \sum m_i\vect{r}_i = \mu\vect{e}_z
+\end{align*}
+och slutligen
+\begin{align*}
+	\vect{r} &= \frac{1}{m}\sum m_i\vect{r}_i + \frac{\mu}{m}\vect{e}_z \\
+	         &= \vect{r}_{G} + \frac{\mu}{m}\vect{e}_z
+\end{align*}
+där vi har introducerat masscentrum. Enkraftsresultanten verkar då i en linje som går genom masscentrum.
+
+\paragraph{Tyngdpunkt}
+Tyngdpunktet spelar samma roll som masscentrum, fast i det allmäna tyngdfältet.

@@ -1,0 +1,73 @@
+\section{Gränsvärden}
+
+\subsection{Definitioner}
+
+\paragraph{Gränsvärde vid oändligheten}
+Låt $f$ vara en funktion definierad i $(a, \infty)$. $f$ konvergerar mot gränsvärdet $A$ när $x\to\infty$ om det for varje $\varepsilon > 0$ finns ett $N$ sådant att $\abs{f(x) - A} < \varepsilon$ för varje $x > N$. Detta skrivs
+\begin{align*}
+	\lim_{x \to \infty} f(x) = A
+\end{align*}
+eller $f(x) \to A$ när $x \to \infty$.
+
+\paragraph{Divergens}
+Om det för en funktion $f$ inte finns ett sådant $A$, sägs $f$ vara divergent då $x\to\infty$.
+
+\paragraph{Det oegentliga gränsvärdet}
+Låt $f$ vara en funktion definierad i $(a, \infty)$. $f$ har det oegentliga gränsvärdet $\infty$ då $x \ to \infty$ om det för varje $M$ finns ett $N$ sådant att $f(x) > M$ för varje $x > N$. Detta skrivs
+\begin{align*}
+	\lim_{x \to \infty} f(x) = \infty.
+\end{align*}
+
+\paragraph{Lokalt gränsvärde}
+Låt $f$ vara en reellvärd funktion med $D_f\subset\R$ sådan att varje punkterad omgivning till $x = a$ innehåller punkter i $D_f$. $f$ konvergerar mot $A$ när $x$ går mot $a$ om det för varje $\varepsilon > 0$ finns ett $\delta > 0$ sådant att $\abs{f(x) - A} < \varepsilon$ för varje $x\in D_f$ som uppfyllar $0 < \abs{x - a} < \delta$. Detta skrivs $\lim\limits_{x\to a} f(x) = A$.
+
+\paragraph{Vänster- och högergränsvärden}
+Vid att endast studera $x > a$ eller $x < a$ kan man definiera ett vänster- och högergränsvärde för en funktion $f$. Dessa skrivs $\lim\limits_{x\to a^-} f(x) = A$ eller $\lim\limits_{x\to a^+} f(x) = A$. För en funktion $f$ definierad i en punkterad omgivning till $a$ existerar $\lim\limits_{x\to a} f(x)$ om och endast om vänster- och högergränsvärden existerar och är lika.
+
+\paragraph{Det oegentliga lokala gränsvärdet}
+Låt $f$ vara en funktion sådan att varje punkterad omgivning till  $x = a$ innehåller punkter i $D_f$. $f$ har det oegentliga gränsvärdet $\infty$ då $x\to a$ om det för varje $K$ finns ett $delta$ sådant att $f(x) > K$ för varje $x\in D_f$ som uppfyll	ar $0 < \abs{x - a} < \delta$
+
+\subsection{Satser}
+
+\paragraph{Gränsvärden för kombinationer av funktioner}
+Låt $f,g$ vara kontinuerliga funktioner sådana att $f(x)\to A, g(x)\to B$ när $x\to\infty$. Då gäller att
+\begin{itemize}
+	\item[a)] $f(x) + g(x)\to A + B$ när $x\to\infty$.
+	\item[b)] $f(x)g(x)\to AB$ när $x\to\infty$.
+	\item[c)] om $B\neq 0$ så följer att $\frac{f(x)}{g(x)}\to\frac{A}{B}$ när $x\to\infty$.
+	\item[d)] om $f(x)\leq g(x)$ för alla $x\in (a,\infty)$ så gäller att $A\leq B$.
+\end{itemize}
+
+\subparagraph{Bevis}
+Mjo.
+
+\paragraph{Gränsvärden och supremum}
+Låt $f: (a, \infty)\to\R$ för något $a\in\R$ vara växande och uppåt begränsad. Då gäller att
+\begin{align*}
+	\lim\limits_{n\to\infty} = \sup{f(x): x\geq a}.
+\end{align*}
+
+\subparagraph{Bevis}
+Nä.
+
+\paragraph{Standardgränsvärden mot oändligheten}
+Låt $a > 1, b > 0$. Då gäller att
+\begin{align*}
+	\lim\limits_{x\to\infty}\frac{a^x}{x^b} = \infty \\
+	\lim\limits_{x\to\infty}\frac{x^b}{\log_a x} = \infty
+\end{align*}
+
+\proof
+
+\paragraph{Standardgränsvärden mot $0$}
+\begin{align*}
+	&\lim\limits_{x\to 0}\frac{\ln{1 + x}}{x} = 1 \\
+	&\lim\limits_{x\to 0}\frac{e^x - 1}{x} = 1 \\
+	&\lim\limits_{x\to 0}\frac{\sin{x}}{x} = 1
+\end{align*}
+
+\proof
+Too much.
+
+\subparagraph{Bevis}
+Orkar inte.

@@ -1,0 +1,171 @@
+\section{Gaugetransformationer}
+
+Vi kommer här att delvis starta om dynamiken genom att studera potentialerna i stället för fälten. Vi kommer ihåg att
+\begin{align*}
+	\vb{E} = -\grad{V} - \del{t}{\vb{A}},\ \vb{B} = \curl{\vb{A}}.
+\end{align*}
+
+\paragraph{Modifierade vågekvationer för potentialerna}
+Vi har
+\begin{align*}
+	\div{\vb{E}}                                   &= -\laplacian{V} - \del{t}{\div{\vb{A}}} \\
+	                                               &= -\dalemb{V} - \del{t}{\left(\div{\vb{A}} + \frac{1}{c^{2}}\del{t}{V}\right)} \\
+	                                               &= \frac{\rho}{\varepsilon_{0}}, \\
+	\curl{\vb{B}} - \frac{1}{c^{2}}\del{t}{\vb{E}} &= \curl(\curl{\vb{A}}) + \frac{1}{c^{2}}(\grad{\del{t}{V}} + \del[2]{t}{\vb{A}}) \\
+	                                               &= -\dalemb{\vb{A}} + \grad(\div{\vb{A}} + \frac{1}{c^{2}}\del{t}{V}) \\
+	                                               &= \mu_{0}\vb{J}.
+\end{align*}
+Vi inför den så kallade ``gauge''-termen
+\begin{align*}
+	g = \div{\vb{A}} + \frac{1}{c^{2}}\del{t}{V},
+\end{align*}
+och får då
+\begin{align*}
+	\dalemb{V} + \del{t}{g} = -\frac{\rho}{\varepsilon_{0}},\ \dalemb{\vb{A}} - \grad{g} = -\mu_{0}\vb{J}.
+\end{align*}
+
+\paragraph{Lorenz' gaugevillkor}
+Lorenz' gaugevillkor är
+\begin{align*}
+	g = 0.
+\end{align*}
+
+\paragraph{Gaugetransformationer}
+Här kommer vi till en del av fysiken där man inte har bra ord på svenska. Därför kommer vi använda det engelska ordet gauge om den sortens transformationer som kommer diskuteras. Ordet är besläktad med mått och mätning, och uttalas g\textipa{eIdZ}.
+
+Låt $\lambda$ vara ett godtycklig skalärfält, och transformera potentialerna enligt
+\begin{align*}
+	V' = V - \del{t}{\lambda},\ \vb{A}' = \vb{A} + \grad{\lambda}.
+\end{align*}
+Det är fortfarande fälten som har en direkt fysikalisk tolkning, och dessa ges av
+\begin{align*}
+	\vb{B}' &= \curl{\vb{A}'} = \curl{\vb{A}} + \curl{\grad{\lambda}} = \curl{\vb{A}} = \vb{B}, \\
+	\vb{E}' &= -\grad{V'} - \del{t}{\vb{A}'} = -\grad{V} + \grad{\del{t}{\lambda}} - \del{t}{\vb{A}} - \del{t}{\grad{\lambda}} = -\grad{V} - \del{t}{\vb{A}} = \vb{E}.
+\end{align*}
+
+\paragraph{Kausala Greenfunktioner till d'Alembertoperatorn}
+Vi söker en lösning till
+\begin{align*}
+	\dalemb{G} = -\delta(\vb{r} - \vb{r}')\delta(t - t')
+\end{align*}
+med randvillkor $G = 0$ i oändligheten och initialvillkor $G = 0$. Denna (eller i alla fall en kausal sådan) ges av
+\begin{align*}
+	G(\vb{r}, t | \vb{r}', t') = \frac{1}{4\pi R}\delta\left(t - t' - \frac{R}{c}\right),\ R = \abs{\vb{r} - \vb{r}'},
+\end{align*}
+motsvarande en sfärisk våg. I fall där man inte har några randbidrag och homogena begynnelsevillkor fås potentialerna genom att falta med Greenfunktionen. Detta ger i Lorenzgaugen
+\begin{align*}
+	V &= \frac{1}{\varepsilon_{0}}\integ{}{}{\tau'}{\integ{}{}{t'}{G\rho(\vb{r}', t')}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R}\rho\left(\vb{r}', t - \frac{R}{c}\right)},
+\end{align*}
+och $\vb{A}$ beräknas på samma sätt.
+
+\paragraph{Retarderad tid}
+Vi definierar den retarderade tiden som
+\begin{align*}
+	t_{\text{r}} = t - \frac{R}{c}.
+\end{align*}
+Denna dyker upp i båda potentialerna, och motsvarar att informationen om källornas ändringar propagerar med hastighet $c$.
+
+\paragraph{Vågekvationer för fälten}
+Vi vill nu ta fram vågekvationer för fälten, och kommer använda att gradientoperatorn och tidsderivationsoperatorn kommuterar både med varandra och med d'Alembertoperatorn. Vi får
+\begin{align*}
+	\dalemb{\vb{E}} &= -\dalemb{\grad{V}} - \dalemb{\del{t}{\vb{A}}} = \frac{1}{\varepsilon_{0}}\grad{\rho} + \del{t}{\grad{g}} + \mu_{0}\del{t}{\vb{J}} - \del{t}{\grad{g}} = \frac{1}{\varepsilon_{0}}\grad{\rho} + \mu_{0}\del{t}{\vb{J}}, \\
+	\dalemb{\vb{B}} &= \dalemb{\curl{\vb{A}}} = -\mu_{0}\curl{\vb{J}} + \curl{\grad{g}} = -\mu_{0}\curl{\vb{J}}.
+\end{align*}
+
+\paragraph{Lösningar av vågekvationen}
+%TODO: SHOW
+Lösningar av vågekvationerna ges av
+\begin{align*}
+	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{1}{R^{2}}\rho(\vb{r}', t_{\text{r}})\ub{R} + \frac{1}{cR}\del{t_{\text{r}}}{\rho(\vb{r}', t_{\text{r}})}\ub{R} - \frac{1}{c^{2}R}\del{t_{\text{r}}}{\vb{J}(\vb{r}', t_{\text{r}})}}, \\
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R} + \frac{1}{cR}\del{t_{\text{r}}}{\vb{J}(\vb{r}', t_{\text{r}})}\times\ub{R}}.
+\end{align*}
+
+\paragraph{Kvasistatiska fält}
+Betrakta långsamma förlopp där vi kan approximera
+\begin{align*}
+	\rho(\vb{r}', t_{\text{r}})   &\approx \rho(\vb{r}', t) + (t_{\text{r}} - t)\del{t}{\rho(\vb{r}', t)} = \rho(\vb{r}', t) - \frac{R}{c}\del{t}{\rho(\vb{r}', t)}, \\
+	\vb{J}(\vb{r}', t_{\text{r}}) &\approx \vb{J}(\vb{r}', t) + (t_{\text{r}} - t)\del{t}{\vb{J}(\vb{r}', t)} = \vb{J}(\vb{r}', t) - \frac{R}{c}\del{t}{\vb{J}(\vb{r}', t)}.
+\end{align*}
+De motsvarande tidsderivatorna är
+\begin{align*}
+	\del{t_{\text{r}}}{\rho(\vb{r}', t_{\text{r}})}   &= \del{t}{\rho(\vb{r}', t_{\text{r}})} \approx \del{t}{\rho(\vb{r}', t)}, \\
+	\del{t_{\text{r}}}{\vb{J}(\vb{r}', t_{\text{r}})} &= \del{t}{\vb{J}(\vb{r}', t_{\text{r}})} \approx \del{t}{\vb{J}(\vb{r}', t)},
+\end{align*}
+där vi kan evaluera derivatorna i $t$ eftersom förloppet är tillräckligt långsamt för att derivatan är ungefär konstant under tiden det tar för fälten att propagera. Insatt i uttryckten för fälten fås
+\begin{align*}
+	\vb{E} &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\frac{\rho(\vb{r}', t)}{R^{2}}\ub{R}} - \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}\del{t}{\vb{J}(\vb{r}', t)}}, \\
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}})\times\ub{R}},
+\end{align*}
+som vi känner igen som de kvasistatiska fälten.
+
+\paragraph{Punktladdningar i rörelse}
+Betrakta en punktladdning $q$ i en föreskriven rörelse som beskrivs av ortsvektorn $\vb{w}(t)$. Laddningen har hastighet $\vb{v}$ och acceleration $\vb{a}$. Vi vill nu ta fram potentialerna och fälten från denna. Då återvänder vi till Greenfunktionslösningen
+\begin{align*}
+	V &= \frac{1}{\varepsilon_{0}}\integ{}{}{\tau'}{\integ{}{}{t'}{G(\vb{r}, t | \vb{r}', t')\rho(\vb{r}', t')}}.
+\end{align*}
+För en punktladdning är laddningstätheten $\rho(\vb{r}', t') = q\delta(\vb{r}' - \vb{w}(t'))$, vilket ger
+\begin{align*}
+	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{\tau'}{\integ{}{}{t'}{q\delta(\vb{r}' - \vb{w}(t'))\frac{1}{\abs{\vb{r} - \vb{r}'}}\delta\left(t - t' - \frac{\abs{\vb{r} - \vb{r}'}}{c}\right)}} \\
+	  &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{t'}{q\frac{1}{\abs{\vb{r} - \vb{w}(t')}}\delta\left(t - t' - \frac{\abs{\vb{r} - \vb{w}(t')}}{c}\right)}.
+\end{align*}
+Att integrera detta över tid är inte så icke-trivialt som det kanske ser ut, eftersom tidsberoendet dyker upp på två ställen i Diracdeltat. Vi kan däremot införa $f(t') = - t + t' + \frac{\abs{\vb{r} - \vb{w}(t')}}{c}$. Om $f$ har enkla nollställen, dvs. nollställen där derivatan är nollskild, kan vi använda en identitet för Diracdeltat för att beräkna integralen. Det visar sig att för $v < c$ har $f$ ett enda nollställe, vilket enligt definitionen måste vara $t_{\text{r}}$. Att hitta retarderade tiden innebär därmed att lösa den implicita ekvationen $c(t - t_{\text{r}}) = \abs{\vb{r} - \vb{w}(t_{\text{r}})}$.
+
+Låt oss nu anta att vi har hittat retarderade tiden. För att beräkna potentialen behövs derivatan av $f$, som ges av
+\begin{align*}
+	\dv{f}{t'}\/(t_{\text{r}}) &= \dv{f}{t_{\text{r}}}\/(t_{\text{r}}) \\
+	                          &= 1 + \frac{1}{c}\dv{t_{\text{r}}}\sqrt{\vb{R}\cdot\vb{R}} \\
+	                          &= 1 + \frac{1}{cR}\vb{R}\cdot\del{t_{\text{r}}}{\vb{R}} \\
+	                          &= 1 - \frac{1}{c}\ub{R}\cdot\vb{v}.
+\end{align*}
+Nu fås potentialen enligt
+\begin{align*}
+	V &= \frac{1}{4\pi\varepsilon_{0}}\integ{}{}{t'}{q\frac{1}{\abs{\vb{r} - \vb{w}(t')}}\delta\left(t - t' - \frac{\abs{\vb{r} - \vb{w}(t')}}{c}\right)} \\
+	  &= \frac{q}{4\pi\varepsilon_{0}}\frac{1}{\abs{\vb{r} - \vb{w}(t_{\text{r}})}}\frac{1}{\abs{1 - \frac{1}{c}\ub{R}\cdot\vb{v}}}.
+\end{align*}
+Vi kan även införa den normerade hastigheten $\vb*{\beta} = \frac{1}{c}\vb{v}$ för att få
+\begin{align*}
+	V = \frac{q}{4\pi\varepsilon_{0}}\frac{1}{\abs{\vb{r} - \vb{w}(t_{\text{r}})}}\frac{1}{\abs{1 - \ub{R}\cdot\vb*{\beta}}}.
+\end{align*}
+På samma sätt fås vektorpotentialen genom att skriva strömtätheten som $\vb{J} = \rho\vb{v}$ att bli
+\begin{align*}
+	\vb{A} = \frac{\mu_{0}q}{4\pi}\frac{1}{\abs{\vb{r} - \vb{w}(t_{\text{r}})}}\frac{1}{\abs{1 - \ub{R}\cdot\vb*{\beta}}}\vb{v}.
+\end{align*}
+
+\paragraph{Komplext fjärrfält från utbredd strömtäthet}
+Betrakta en strömtäthet som ligger fullständigt innanför ett område med maximal dimension $d_{\text{max}}$. Magnetfältet från denna ges av
+\begin{align*}
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\left(\frac{1}{R^{2}}\vb{J}(\vb{r}', t_{\text{r}}) + \frac{1}{cR}\del{t}{\vb{J}(\vb{r}', t_{\text{r}})}\right)\times\ub{R}}.
+\end{align*}
+Om strömtätheten har ett harmoniskt tidsberoende $e^{j\omega t}$, där $j = i$ (konventionen används pga det positiva tecknet i exponenten) fås i integranden
+\begin{align*}
+	\vb{J} = \Re\left(\vb{J}(\vb{r}')e^{j\omega t_{\text{r}}}\right) = \Re\left(\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}}\right),\ \del{t}{\vb{J}} = \Re\left(j\omega\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}}\right).
+\end{align*}
+Vi kommer bortse från det harmoniska tidsberoende då det inte ändras, och inför $k = \frac{\omega}{c}$.
+
+För att studera fältet långt borta från strömfördelningen antar vi att $kR >> 1$, vilket ger det komplexa fältet
+\begin{align*}
+	\vb{B} &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\left(\frac{1}{R^{2}}\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}} + \frac{1}{cR}j\omega\vb{J}(\vb{r}')e^{j\omega t}e^{-j\frac{\omega R}{c}}\right)\times\ub{R}} \\
+	       &= \frac{\mu_{0}}{4\pi}\integ{}{}{\tau'}{\frac{1}{R^{2}}e^{-jkR}\left(1 + jkR\right)\vb{J}(\vb{r}')\times\ub{R}} \\
+	       &\approx j\frac{\mu_{0}k}{4\pi}\integ{}{}{\tau'}{\frac{1}{R}e^{-jkR}\vb{J}(\vb{r}')\times\ub{R}}.
+\end{align*}
+Om $r >> d_{\text{max}}$ kan vi göra en parallelliseringsansats $kR \approx k(r - \ub{r}\cdot\vb{r}') = kr - \vb{k}\cdot\vb{r}'$, där $\vb{k} = k\ub{r}$. Detta ger
+\begin{align*}
+	\vb{B} &= j\frac{\mu_{0}k}{4\pi r}e^{-jkr}\integ{}{}{\tau'}{e^{j\vb{k}\cdot\vb{r}'}\vb{J}(\vb{r}')\times\ub{r}} \\
+	       &= j\frac{\mu_{0}}{4\pi r}e^{-jkr}\left(\integ{}{}{\tau'}{e^{j\vb{k}\cdot\vb{r}'}\vb{J}(\vb{r}')}\right)\times\vb{k}.
+\end{align*}
+Vi känner igen uttrycket i parentesen som Fouriertransformen av strömtätheten med avseende på rum. Vi får vidare
+\begin{align*}
+	\expval{\vb{S}} = \frac{\mu_{0}c}{32\pi^{2}r^{2}}F\ub{r},
+\end{align*}
+där
+\begin{align*}
+	F = \abs{\fou{\vb{J}}\times\vb{k}}^{2} = (\fou{\vb{J}}\times\vb{k})\cdot(\fou{\vb{J}}\times\vb{k})^{*}.
+\end{align*}
+Vektorn $\fou{\vb{J}}\times\vb{k}$ kommer i vissa fall betecknas $\vb{f}$.
+
+\paragraph{Riktverkan för en trådantenn}
+För en trådantenn definieras riktverkan som
+\begin{align*}
+	D = \frac{\max{F}}{\expval{F}}.
+\end{align*}

@@ -1,0 +1,45 @@
+\section{Kollisioner}
+
+\paragraph{Stötimpuls och fundamentala betraktningar}
+Om två partiklar krockar, genomgår de ett stöt. Då verkar det en kraft $\vb{S}_{12}$ på partikel $1$ från $2$, och vice versa, under den korta stöttiden $\tau$. Om varje partikel även känner den yttre kraftsumman $\vb{F}_{i}$, ger impulslagen
+\begin{align*}
+	\Delta\vb{p}_{1} = \integ{0}{\tau}{t}{\vb{S}_{12} + \vb{F}_{1}},
+\end{align*}
+och motsvarande för partikel $2$. Vi inför stötimpulsen
+\begin{align*}
+	\vb{I}_{12} = \lim\limits_{\tau\to 0}\integ{0}{\tau}{t}{\vb{S}_{12}},
+\end{align*}
+som är konvergent. Vi uppskattar den andra integralen som
+\begin{align*}
+	\abs{\integ{0}{\tau}{t}{\vb{F}_{1}}}\leq\abs{\vb{F}_{1}}_{\text{max}}\tau,
+\end{align*}
+och denna kommer då försvinna när vi betraktar systemet precis innan och efter stötet. Vi får då
+\begin{align*}
+	\Delta\vb{p}_{1} = \vb{I}_{12},
+\end{align*}
+och motsvarande för andra partikeln. För hela systemet får man
+\begin{align*}
+	\Delta\vb{p} = \integ{0}{\tau}{t}{\vb{S}_{12} + \vb{S}_{21}},
+\end{align*}
+vilket blir $\vb{0}$ med Newtons tredje lag, och rörelsesmängden bevaras i stötet. Denna sista punkten är även en konsekvens av att stötkrafterna är inre krafter.
+
+\paragraph{Studstalet}
+Låt en kollision hända i två faser: en kompressionsfas och en expansionsfas, och projicera ned på en axel. Kompressionen händer mellan tiderna $0$ och $t_0$, och expansionen händer mellan $t_0$ och $t_1$. När kompressionsfasen är över, kommer de två involverade kropparna hänga i hop och röra sig med samma hastighet $v_0$. Om det under kompressionen verkar en kraft $F_{k}$ mellan kropparna under kompressionen och en kraft$F_{e}$ under expansionen, får man ekvationerna
+\begin{align*}
+	mv_0 - mv_1  &= -\integ{0}{t_0}{t}{F_{k}}, \\
+	mv_0 - mv_2  &= \integ{0}{t_0}{t}{F_{k}}, \\
+	mv_1' - mv_0 &= -\integ{t_0}{t_1}{t}{F_{e}}, \\
+	mv_2' - mv_0 &= \integ{t_0}{t_1}{t}{F_{e}}.
+\end{align*}
+Vi inför studstalet
+\begin{align*}
+	e = \frac{\integ{t_0}{t_1}{t}{F_{e}}}{\integ{0}{t_0}{t}{F_{k}}}
+\end{align*}
+och får då
+\begin{align*}
+	e = \frac{v_1' - v_0}{v_0 - v_1} = \frac{v_2' - v_0}{v_0 - v_2}.
+\end{align*}
+Detta kan lösas för att ge
+\begin{align*}
+	e = \frac{v_2' - v_1'}{v_1 - v_2}.
+\end{align*}

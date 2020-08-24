@@ -1,0 +1,117 @@
+\section{Diskreta sannolikhetsfunktioner}
+
+\paragraph{Enpunktsfördelningen}
+Enpunktsfördelningen ges av $p(a) = 1$ och $p(x) = 0, x\neq a$.
+
+\begin{itemize}
+	\item Väntevärde: $a$.
+	\item Varians: $0$.
+\end{itemize}
+
+\paragraph{Tvåpunktsfördelningen}
+Tvåpunktsfördelningen ges av $p(a) = p$, $p(b) = 1 - p$ och $p(x) = 0, x\neq a, b$.
+
+\begin{itemize}
+	\item Väntevärde: $b + p(a - b)$.
+	\item Varians: ?.
+\end{itemize}
+
+\paragraph{Likformiga fördelningen}
+Om $X$ antar $m$ olika värden, är $p(x) = \frac{1}{m}$ för dessa värden och $0$ annars.
+
+\begin{itemize}
+	\item Väntevärde: ?.
+	\item Varians: ?.
+\end{itemize}
+
+\paragraph{För-första-gången-fördelningen}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = (1 - p)^{k - 1}p,\ k\in\N.
+\end{align*}
+Om en stokastisk variabel är fördelat så, skrivs det som $X\in\text{ffg}(p)$.
+
+\begin{itemize}
+	\item Väntevärde: $\frac{1}{p}$.
+	\item Varians: $\frac{1 - p}{p^2}$.
+\end{itemize}
+
+\paragraph{Geometrisk fördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = (1 - p)^{k}p.
+\end{align*}
+Om en stokastisk variabl är fördelat så, skrivs det som $X\in\text{Ge}(p)$.
+
+\begin{itemize}
+	\item Väntevärde: ?.
+	\item Varians: ?.
+\end{itemize}
+
+\paragraph{Binomisk fördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = \binom{n}{k}p^{k}(1 - p)^{n - k}.
+\end{align*}
+Om en stokastisk variabel är fördelat så, skrivs det som $X\in\text{Bin}(n, p)$.
+
+\begin{itemize}
+	\item Väntevärde: $np$.
+	\item Varians: $np(1 - p)$.
+\end{itemize}
+
+\paragraph{Hypergeometrisk fördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = \frac{\binom{Np}{k}\binom{N(1 - p)}{n - k}}{\binom{N}{n}},
+\end{align*}
+med $0\leq k\leq Np$, $0\leq n - k\leq N(1 - p)$ och $N\geq 2$. Om en stokastisk variabel är fördelat så, skrivs det som $X\in\text{Hyp}(N, n, p)$.
+
+\begin{itemize}
+	\item Väntevärde: $np$.
+	\item Varians: $\frac{N - n}{N - 1}np(1 - p)$.
+\end{itemize}
+
+\paragraph{Poissonfördelning}
+Denna sannolikhetsfördelningen ges av
+\begin{align*}
+	p(k) = \frac{\mu^k}{k!}e^{-\mu}.
+\end{align*}
+Om en stokastisk variabel är fördelat så, skrivs det som $X\in\text{Po}(\mu)$. Fun fact: Poisson betyder fisk på franska.
+
+\begin{itemize}
+	\item Väntevärde: $\mu$.
+	\item Varians: $\mu$.
+\end{itemize}
+
+\subsection{Satser}
+
+\paragraph{Två binomiskt fördelade variabler}
+Låt $X\in\text{Bin}(n_1, p), Y\in\text{Bin}(n_2, p)$. Då gäller att $X + Y\in\text{Bin}(n_1 + n_2, p)$.
+
+\proof
+
+\paragraph{Två Poissonfördelade variabler}
+Låt $X\in\text{Po}(\mu_1), Y\in\text{Po}(\mu_2)$. Då gäller att $X + Y\in\text{Po}(\mu_1 + \mu_2)$.
+
+\proof
+
+\paragraph{Binomisk approximation av hypergeometriska fördelningen}
+Låt $X\in\text{Hyp}(N, n, p)$. Då är $X$ approximativt $\text{Bin}(n, p)$. Approximationen är typiskt bra om $\frac{n}{N}\leq 0.1$.
+
+\proof
+
+\paragraph{Poissonapproximation av binomiska fördelningen}
+Låt $X\in\text{Bin}(n, p)$. Då är $X$ approximativt $\text{Po}(np)$. Approximationen är typiskt bra om $p\leq 0.1$.
+
+\proof
+
+\paragraph{Normalapproximation av binomiska fördelningen}
+Låt $X\in\text{Bin}(n, p)$. Då är $X$ approximativt $\text{N}(np, \sqrt{np(1 - p)})$. Approximationen är typiskt bra om $\sqrt{np(1 - p)}\geq 10$.
+
+\proof
+
+\paragraph{Normalapproximation av Poissonfördelningen}
+Låt $X\in\text{Po}(\mu)$. Då är $X$ approximativt $\text{N}(\mu, \sqrt{\mu})$. Approximationen är typiskt bra om $\mu\geq 10$.
+
+\proof
