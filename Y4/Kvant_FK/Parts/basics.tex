@@ -1,0 +1,44 @@
+\section{Basic Concepts}
+
+\paragraph{Observables}
+An observable is a Hermitian operator whose orthonormal eigenvectors form a basis.
+
+\paragraph{The Postulates of Quantum Mechanics}
+The postulates of quantum mechanics are:
+\begin{itemize}
+	\item At any fixed time the state of a physical system is specified by a ket in Hilbert space.
+	\item Every measurable physical quantity corresponds to an operator on Hilbert space. This is a Hermitian observable. The possible outcomes of a measurement are the eigenvalues of $A$.
+	\item The probability of measuring the value $a$ of operator $A$ in a normalized state $\ket{\Psi}$ is $P(a) = \expval{P_{a}}{\Psi}$, where $P_{a}$ is the projector onto the subspace corresponding to the eigenvalue $a$ given by $P_{a} = \dyad{a}{a}$.
+	\item If a measurement of an observable $A$ gives an outcome $a$, the state of the system immediately after the measurement is the projection of the state onto the subspace with eigenvalue $a$.
+\end{itemize}
+
+\paragraph{Consequences of the Probability Picture}
+The form of writing the projection operator implies $P(a) = \abs{\bra{a}\ket{\Psi}}^{2}$, or $P(a)\dd{a} = \abs{\bra{a}\ket{\Psi}}^{2}\dd{a}$ in the continuous case. In order for the probability interpretation to be consistent, i.e. for the sum of all probabilities to amount to $1$, it must hold that $\bra{\Psi}\ket{\Psi} = 1$.
+
+\paragraph{Expectation Values}
+Expectation values are given by
+\begin{align*}
+	\expval{A} = \sum aP(a) = \sum a\expval{P_{a}}{\Psi} = \bra{\Psi}\sum a\ket{a}\bra{a}\ket{\Psi} = \expval{A}{\Psi}.
+\end{align*}
+
+\paragraph{Physical States}
+Modifying a state by a phase factor $e^{i\alpha}$ does not change any expectation values.
+
+\paragraph{Mixed States}
+
+\paragraph{Density Matrix}
+The density matrix is defined as
+\begin{align*}
+	\rho = \op{\Psi}{\Psi}.
+\end{align*}
+It has some cool properties. For instance:
+\begin{align*}
+	&\tr{\rho} = \sum\limits_{n}\expval{\rho}{n} = \ev**{\sum\limits_{n}\op{n}{n}}{\psi} = \braket{\Psi} = 1, \\
+	&\adj{\rho} = \rho, \\
+	&\expval{A} = \sum\limits_{n, m}\braket{\Psi}{n}\mel{n}{A}{m}\braket{m}{\Psi} = \sum\limits_{n, m}\braket{m}{\Psi}\braket{\Psi}{n}\mel{n}{A}{m} = \sum\limits_{n, m}\mel{m}{\rho}{n}\mel{n}{A}{m} = \tr(\rho A), \\
+	&\rho^{2} = \rho.
+\end{align*}
+Note that the latter is only true for pure states. Mixed states have a density matrix of the form
+\begin{align*}
+	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}}.
+\end{align*}
