@@ -10,6 +10,7 @@ The postulates of quantum mechanics are:
 	\item Every measurable physical quantity corresponds to an operator on Hilbert space. This is a Hermitian observable. The possible outcomes of a measurement are the eigenvalues of $A$.
 	\item The probability of measuring the value $a$ of operator $A$ in a normalized state $\ket{\Psi}$ is $P(a) = \expval{P_{a}}{\Psi}$, where $P_{a}$ is the projector onto the subspace corresponding to the eigenvalue $a$ given by $P_{a} = \dyad{a}{a}$.
 	\item If a measurement of an observable $A$ gives an outcome $a$, the state of the system immediately after the measurement is the projection of the state onto the subspace with eigenvalue $a$.
+	\item The time evolution of a state is governed by the Schrödinger equation.
 \end{itemize}
 
 \paragraph{Consequences of the Probability Picture}
@@ -41,4 +42,82 @@ It has some cool properties. For instance:
 Note that the latter is only true for pure states. Mixed states have a density matrix of the form
 \begin{align*}
 	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}}.
+\end{align*}
+
+\paragraph{The Time Evolution Operator}
+Suppose that there exists an operator $u_{t'}(t)$ which evolves $\ket{\Psi(t')}$ to $\ket{\Psi(t)}$. Such an operator should satisfy
+\begin{itemize}
+	\item $u_{t'}(t) = u_{t''}(t)u_{t'}(t'')$ for consistency.
+	\item $u_{t'}(t)$ is unitary to preserve the normalization.
+	\item $u_{t}(t) = 1$.
+\end{itemize}
+Inserting this into the Schrödinger equation yields
+\begin{align*}
+	i\hbar\dv{t}u_{t^{\prime}}(t)\ket{\Psi(t^{\prime})} = Hu_{t^{\prime}}(t)\ket{\Psi(t^{\prime})}, \\
+	i\hbar\del{t}{t^{\prime}} = Hu_{t^{\prime}}(t).
+\end{align*}
+In the case of a time-independent Hamiltonian, the solution must be of the form $u_{t^{\prime}}(t) = u(t - t^{\prime})$, and the equation above can be integrated to yield
+\begin{align*}
+	u_{t^{\prime}}(t) = e^{-i\frac{t - t^{\prime}}{\hbar}H}.
+\end{align*}
+
+\paragraph{Symmetries in Quantum Mechanics}
+A symmetry in a quantum mechanics context is any transformation acting on Hilbert space that leaves all probabilities invariant.
+
+\paragraph{Wigner's Theorem}
+Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary (the latter adds a complex conjucation when acting on a state multiplied by a number).
+
+\paragraph{Transformation of Operators}
+Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
+
+\paragraph{Time Evolution From Symmetry}
+Consider some system with time translation symmetry - that is, any system for which time translations do not change the theory. Introduce the transformation operator
+\begin{align*}
+	u_{\tau}\ket{\Psi(t)} = \ket{\Psi(t + \tau)}.
+\end{align*}
+This transformation is a smooth map acting on a manifold - namely, Hilbert space. Hence we can use the language of Lie algebra to treat this (if you know nothing about Lie algebra, pretend that I didn't write this and carry on. If you want some reference material, please look at my summary of SI2360). We expand the transformation operator around the identity as
+\begin{align*}
+	u_{\tau} = 1 - i\frac{\tau}{\hbar}H
+\end{align*}
+for some operator $H$. The requirement that this be unitary yields $\adj{H} - H = 0$, and hence the generator $H$ is self-adjoint. By continuous application of this we obtain
+\begin{align*}
+	u_{\tau} = e^{-i\frac{\tau}{\hbar}H}.
+\end{align*}
+This reproduces the Schrödinger equation, tying it all together neatly. It also demonstrates that the Hamiltonian generates time translation in a mathematical sense.
+
+\paragraph{Space Translation}
+Consider the space operator $x^{i}$. A space translation $u$ transforms $x^{i}$ to $x^{i} + a^{i}$, meaning $ux^{i}\adj{u} = x^{i} + a^{i}$. Expanding the translation around the identity yields
+\begin{align*}
+	u = 1 + i\frac{a^{i}}{\hbar}p_{i}
+\end{align*}
+for some operator $p_{i}$. The requirement that $u$ be unitary implies that $p$ is self-adjoint. The transformation rule yields
+\begin{align*}
+	(1 + i\frac{a^{i}}{\hbar}p_{i})x^{i}(1 - i\frac{a^{i}}{\hbar}p_{i}) = x^{i} + i\frac{a^{i}}{\hbar}\pb{p_{i}}{x^{i}}
+\end{align*}
+and the requirement
+\begin{align*}
+	\comm{p_{i}}{x^{i}} = -i\hbar.
+\end{align*}
+
+\paragraph{Time Evolution of the Density Matrix}
+The time evolution of the density matrix is given by
+\begin{align*}
+	\rho(t) = \sum P_{i}u_{t_{0}}(t)\ket{\Psi_{i}}\bra{\Psi_{i}}\adj{u_{t_{0}}(t)} = u_{t_{0}}(t)\rho(t_{0})\adj{u_{t_{0}}(t)}.
+\end{align*}
+This implies
+\begin{align*}
+	i\hbar\dv{t}\rho = Hu_{t_{0}}(t)\rho(t_{0})\adj{u_{t_{0}}(t)} - u_{t_{0}}(t)\rho(t_{0})\adj{u_{t_{0}}(t)}H = H\rho(t) - \rho(t)H = \comm{H}{\rho}.
+\end{align*}
+
+\paragraph{The Heisenberg Equation}
+Heisenberg's outlook starts from preserving expectation values under time translations, arriving at the transformation rule
+\begin{align*}
+	A_{\text{H}} = \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t).
+\end{align*}
+$A_{\text{H}}$ is the operator according to Heisenberg and $A_{\text{S}}$ is the operator according to Schrödinger. We now have
+\begin{align*}
+	i\hbar\dv{t}\expval{A_{\text{H}}} &= -\adj{u_{t_{0}}}(t)HA_{\text{S}}u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)A_{\text{S}}Hu_{t_{0}}(t) \\
+	                                  &= -\adj{u_{t_{0}}}(t)Hu_{t_{0}}(t)\adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t)\adj{u_{t_{0}}}(t)Hu_{t_{0}}(t) \\
+	                                  &= -H_{\text{H}}A_{\text{H}} + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + A_{\text{H}}H_{\text{H}} \\
+	                                  &= -{H_{\text{H}}}\comm{A_{\text{H}}} + (i\hbar\del{t}{A_{\text{S}}})_{\text{H}}.
 \end{align*}
