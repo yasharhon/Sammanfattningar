@@ -1,0 +1,244 @@
+\section{Statistical Physics}
+
+\paragraph{Probability and Observables}
+The purpose of statistical mechanics is to treat systems in a statistical manner. We will describe systems in terms of probability distributions in phase space and compute observables as expectation values from this probability. A first step to note is that, in terms of classical mechanics, these observables must be computed as time averages. However, the fundamental postulate allows us to replace this by ensemble averages. We thus obtain the formula
+\begin{align*}
+	\expval{A} = \sum A_{i}P_{i}
+\end{align*}
+where the summation is performed over all of phase space.
+
+\subsection{The Microcanonical Ensemble}
+
+\subsection{The Canonical Ensemble}
+
+\paragraph{The Partition Function}
+The partition function is defined as
+\begin{align*}
+	Z = \sum e^{-\beta E_{i}},
+\end{align*}
+where the $E_{i}$ are possible values of the energy (or, rather, the Hamiltonian) and we now formally introduce $\beta = \frac{1}{\kb T}$. The summation is performed over all of phase space.
+
+\paragraph{Probability}
+Combining our knowledge we obtain
+\begin{align*}
+	P_{i} = \frac{1}{Z}e^{-\beta E_{i}}.
+\end{align*}
+
+\paragraph{Properties of the Partition Function}
+Suppose that the Hamiltonian is redefined by adding a constant. We then obtain
+\begin{align*}
+	Z' = \sum e^{-\beta (E_{i} + E_{0})} = e^{-\beta E_{0}}Z.
+\end{align*}
+The value of any observable is thus
+\begin{align*}
+	\expval{A'} = \sum A'_{i}P'_{i} = \sum A'_{i}\frac{e^{-\beta(E_{i} + E_{0})}}{e^{-\beta E_{0}}Z} = \frac{1}{Z}\sum A'_{i}e^{-\beta E_{i}}.
+\end{align*}
+We see that the only way for the expectation value to change is if $A_{i}$ itself depends on the energy (as is the case if $A$ is the internal energy, for instance). Otherwise, we have
+\begin{align*}
+	\expval{A'} = \expval{A}.
+\end{align*}
+
+Suppose that the Hamiltonian is separable, i.e. can be written as a sum over Hamiltonians $H_{j}$ describing the $j$th degree of freedom. We thus obtain
+\begin{align*}
+	Z = \sum e^{-\sum\beta H_{j}} = \sum\limits_{\text{dof 1}}\dots\sum\limits_{\text{dof }N}e^{-\sum\beta H_{j}} = \prod\limits_{j}\sum\limits_{\text{dof j}}e^{-\beta H_{j}} = \prod\limits_{j}Z_{j}
+\end{align*}
+where each partition function describes a given degree of freedom. This also has the consequence that observables which only depend on a subset of the degrees of freedom may be computed without considering the other degrees of freedom.
+
+\paragraph{Distinguishability}
+For distinguishable particles (distinguished by, for instance, spatial separation) of the same kind we have
+\begin{align*}
+	Z_{N} = Z_{1}^{N}.
+\end{align*}
+However, for indistinguishable particles, an issue arises due to overcounting of states where two or more particles have different energies. This overcounting is by a factor of $n!$, where $n$ is the number of particles occupying different states, as switching the $n$ particles around does not yield a new state. However, if states where two or more particles have the same energy can be ignored, we can solve the overcounting problem by accounting for the degeneracy of the remaining states according to
+\begin{align*}
+	Z_{N} = \frac{Z_{1}^{N}}{N!}.
+\end{align*}
+
+But hold on! In classical mechanics, the equations of motions themselves imply that all particles are distinguishable. After all, any set of positions and momenta are directly connected to a single particle. How can the issue of distinguishability be relevant? The answer is that in the beginning, this factor was added ad hoc in order to guarantee that the entropy would be extensive. At its heart, however, the idea of indistinguishable particles is quantum mechanical. This could be taken as an early sign of the strong connection between statistical physics and quantum mechanics.
+
+\paragraph{Internal Energy}
+In a statistical context, we define the internal energy as $U = \expval{E}$. We have
+\begin{align*}
+	U &= \frac{\sum E_{i}e^{-\beta E_{i}}}{\sum e^{-\beta E_{i}}} \\
+	  &= \frac{-\dv{Z}{\beta}}{Z} \\
+	  &= -\pdv{\ln{Z}}{\beta}.
+\end{align*}
+Alternatively, in terms of temperature,
+\begin{align*}
+	U = -\pdv{\ln{Z}}{T}\pdv{T}{\beta} = \frac{1}{\kb\beta^{2}}\pdv{\ln{Z}}{T} = \kb T^{2}\pdv{\ln{Z}}{T}.
+\end{align*}
+
+\paragraph{Entropy}
+We have
+\begin{align*}
+	\ln{P_{i}} = -\beta E_{i} - \ln{Z}.
+\end{align*}
+The definition of entropy from probability thus implies
+\begin{align*}
+	S = -\kb\sum P_{i}\ln{P_{i}} = \kb\sum P_{i}(\beta E_{i} + \ln{Z}) = \kb\ln{Z} + \frac{U}{T}.
+\end{align*}
+
+\paragraph{Helmholtz Free Energy}
+We have
+\begin{align*}
+	F = U - TS = U - \frac{1}{\kb\beta}S = U - U - \frac{1}{\beta}\ln{Z} = -\frac{1}{\beta}\ln{Z},
+\end{align*}
+or
+\begin{align*}
+	Z = e^{-\beta F}.
+\end{align*}
+
+\paragraph{Heat Capacity}
+The heat capacity is given by
+\begin{align*}
+	C = \pdv{U}{T} = 2\kb T\pdv{\ln{Z}}{T} + \kb T^{2}\pdv[2]{\ln{Z}}{T}.
+\end{align*}
+Alternatively, we may write
+\begin{align*}
+	C &= \pdv{T}\left(\sum E_{i}\frac{1}{Z}e^{-\beta E_{i}}\right) \\
+	  &= \frac{Z\cdot\frac{1}{\kb T^{2}}\sum E_{i}^{2}e^{-\beta E_{i}} - \pdv{Z}{T}\sum E_{i}e^{-\beta E_{i}}}{Z^{2}} \\
+	  &= \frac{1}{\kb T^{2}}\expval{E^{2}} + \frac{\expval{E}}{Z}\cdot -\frac{1}{\kb T^{2}}\pdv{Z}{\beta} \\
+	  &= \frac{1}{\kb T^{2}}\left(\expval{E^{2}} - \expval{E}^{2}\right).
+\end{align*}
+In other words, heat capacities correspond to energy fluctuations.
+
+\paragraph{Heat Capacities With Discrete Energy Levels}
+For systems with discrete energies the energy fluctuations must vanish at low temperatures, as only the lowest energy states becomes accessible.
+
+\paragraph{Pressure}
+The pressure is given by
+\begin{align*}
+	p = -\pdv{F}{V} = \frac{1}{\beta}\pdv{\ln{Z}}{V}.
+\end{align*}
+
+\paragraph{Enthalpy}
+The enthalpy is given by
+\begin{align*}
+	H = \kb T^{2}\pdv{\ln{Z}}{T} + \frac{V}{\beta}\pdv{\ln{Z}}{V} = \kb T\left(T\pdv{\ln{Z}}{T} + V\pdv{\ln{Z}}{V}\right).
+\end{align*}
+
+\paragraph{Gibbs Free Energy}
+The Gibbs free energy is given by
+\begin{align*}
+	G = \kb T\left(-\ln{Z} + V\pdv{\ln{Z}}{V}\right).
+\end{align*}
+
+\paragraph{The Equipartition Theorem}
+Suppose that some degree of freedom $x$, which may take any value, of a system without degenerate microstates only appears in the Hamiltonian as a term $\alpha\abs{x}^{\nu}$. Its contribution to the internal energy is
+\begin{align*}
+	\expval{\alpha\abs{x}^{\nu}} &= \frac{\integ{-\infty}{\infty}{x}{\alpha\abs{x}^{\nu}e^{-\beta\alpha\abs{x}^{\nu}}}}{\integ{-\infty}{\infty}{x}{e^{-\beta\alpha\abs{x}^{n}}}} \\
+	                             &= \frac{\integ{0}{\infty}{x}{\alpha x^{n}e^{-\beta\alpha x^{n}}}}{\integ{0}{\infty}{x}{e^{-\beta\alpha x^{n}}}}.
+\end{align*}
+Defining
+\begin{align*}
+	I_{\nu} = \integ{0}{\infty}{x}{e^{-\beta\alpha x^{n}}}
+\end{align*}
+we can write
+\begin{align*}
+	\expval{\alpha\abs{x}^{\nu}} = -\frac{1}{I_{\nu}}\dv{I_{\nu}}{\beta} = -\dv{\ln{I_{\nu}}}{\beta}.
+\end{align*}
+We have
+\begin{align*}
+	I_{\nu} &= \integ{0}{\infty}{u}{\frac{1}{\nu\beta\alpha}x^{1 - \nu}e^{-u}} \\
+	        &= \frac{1}{\nu\beta\alpha}\integ{0}{\infty}{u}{\left(\frac{u}{\beta\alpha}\right)^{\frac{1}{\nu} - 1}e^{-u}} \\
+	        &= \frac{1}{\nu}\left(\frac{1}{\beta\alpha}\right)^{\frac{1}{\nu}}\integ{0}{\infty}{u}{u^{\frac{1}{\nu} - 1}e^{-u}} \\
+	        &= \beta^{-\frac{1}{\nu}}\frac{\Gamma\left(\frac{1}{\nu}\right)}{\nu\alpha^{\frac{1}{\nu}}}.
+\end{align*}
+From this we obtain
+\begin{align*}
+	\expval{\alpha\abs{x}^{\nu}} = \frac{1}{\nu\beta} = \frac{1}{\nu}\kb T.
+\end{align*}
+
+Examples of such degrees of freedom (assuming a sufficient number of states is thermally available, which may not be the case for systems with a quantum nature) are
+\begin{itemize}
+	\item translations, rotations and vibrations in a gas.
+	\item vibrations in a crystal.
+\end{itemize}
+
+\paragraph{The Ideal Gas}
+We will now study the statistical mechanics of an ideal gas. We will do this by considering the gas as a set of non-interacting free quantum particles in an $L\times L\times L$ box. The single-state wave function is
+\begin{align*}
+	\psi = \left(\frac{2}{L}\right)\sin(k_{x}x)\sin(k_{y}y)\sin(k_{z}z),
+\end{align*}
+where each quantum number is given by $k_{i} = \frac{\pi}{L}n_{i}$. Representing each possible state in a $3$-dimensional space where each point represents a sate, the available states of the system occupy the first octant, each state taking up a cube with dimensions $\frac{\pi}{L}$. The number of states with wave vector of length $k$ to $k + \dd{k}$ is given by $\frac{1}{8}4\pi k^{2}\dd{k}$. Defining the density of states $g$ as the number of states in a small $k$-interval divided by the interval length and the volume occupied by each state implies 
+\begin{align*}
+	g(k) = \frac{\frac{1}{2}\pi k^{2}}{\left(\frac{\pi}{L}\right)^{3}} = \frac{Vk^{2}}{2\pi^{2}}.
+\end{align*}
+The single-particle partition function can now be calculated as
+\begin{align*}
+	Z_{1} = \integ{0}{\infty}{k}{e^{-\beta E}g(k)} = \integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}\frac{Vk^{2}}{2\pi^{2}}} = \frac{V}{2\pi^{2}}\integ{0}{\infty}{k}{e^{-\beta\frac{\hbar^{2}k^{2}}{2m}}k^{2}} = \frac{V}{\hbar^{3}}\left(\frac{m\kb T}{2\pi}\right)^{\frac{3}{2}}.
+\end{align*}
+We can now define the quantum concentration
+\begin{align*}
+	n_{\text{Q}} = \left(\frac{m\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}
+\end{align*}
+and the thermal wavelength
+\begin{align*}
+	\lambda_{\text{th}} = \frac{1}{n_{\text{Q}}^{\frac{1}{3}}},
+\end{align*}
+allowing us to write
+\begin{align*}
+	Z_{1} = Vn_{\text{Q}} = \frac{V}{\lambda_{\text{th}}^{3}}.
+\end{align*}
+The partition function for the entire system can be written as
+\begin{align*}
+	Z_{N} = \frac{1}{N!}\frac{V^{N}}{\lambda_{\text{th}}^{3N}}
+\end{align*}
+assuming that the number of thermally accessible energy levels is much larger than the density of particles, i.e. $\frac{N}{V} << n_{\text{Q}}$.
+
+It is now time to derive thermodynamic properties of the system. We have
+\begin{align*}
+	U = \frac{3}{2}\kb T,\ p = \frac{N\kb T}{V},\ S = N\kb\left(\frac{5}{2} - \ln(\frac{N}{V}\lambda_{\text{th}}^{3})\right),\ G = N\kb T\ln(\frac{N}{V}\lambda_{\text{th}}^{3}).
+\end{align*}
+
+\paragraph{Heat Capacity of a Diatomic Gas}
+A major challenge of classical thermodynamics was explaining the behaviour of the heat capacity of diatomic gases. A diatomic ideal gas has translational, vibrational and rotational degrees of freedom. Classical equipartition theory would imply their heat capacity to be $C_{V} = \frac{7}{2}\kb T$, but this was only observed after heating above a certain temperature.
+
+To understand this we have to study diatomic gases with quantum mechanics. We find that higher rotational energy levels are only thermally accessible for temperatures close to or above $\frac{\hbar^{2}}{2I\kb}$, and vibrational levels close to or above $\frac{\hbar\omega}{\kb}$.
+
+\subsection{The Grand Canonical Ensemble}
+
+\paragraph{The Grand Canonical Partition Function}
+For a system which may exchange energy and particles with its surroundings, we define the grand canonical partition function
+\begin{align*}
+	\Z = \sum e^{-\beta(E_{i} - \mu N_{i})},
+\end{align*}
+which may be written as
+\begin{align*}
+	\Z = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z_{N}.
+\end{align*}
+
+\paragraph{Fugacity}
+We now introduce the often-occuring fugacity
+\begin{align*}
+	z = e^{\beta\mu}.
+\end{align*}
+
+\paragraph{Number of Particles}
+The number of particles is given by
+\begin{align*}
+	N = \frac{1}{\Z}\sum N_{i}e^{-\beta(E_{i} - \mu N_{i})} = \frac{1}{\Z}\pdv{\Z}{\beta\mu} = \kb T\pdv{\ln{\Z}}{\mu}.
+\end{align*}
+
+\paragraph{Internal Energy}
+The internal energy is given by
+\begin{align*}
+	U = \frac{1}{\Z}\sum E_{i}e^{-\beta(E_{i} - \mu N_{i})} = \frac{1}{\Z}\left(-\pdv{\Z}{\beta} + \sum\mu N_{i}e^{-\beta(E_{i} - \mu N_{i})}\right) = -\pdv{\ln{\Z}}{\beta} + \mu N.
+\end{align*}
+
+\paragraph{Entropy}
+The entropy is given by
+\begin{align*}
+	S &= -\kb\sum P_{i}\ln{P_{i}} \\
+	  &= \kb\sum \frac{1}{\Z}e^{-\beta(E_{i} - \mu N_{i})}\cdot\left(\beta(E_{i} - \mu N_{i}) - \ln{\Z}\right) \\
+	  &= \frac{U}{T} - \frac{\mu N}{T} - \kb\sum P_{i}\ln{\Z} \\
+	  &= \frac{U - \mu N + \kb T\ln{\Z}}{T}.
+\end{align*}
+
+\paragraph{Grand Potential}
+The grand potential is given by
+\begin{align*}
+	\GP = U - TS - \mu N = -\kb T\ln{\Z}.
+\end{align*}
+
+%TODO: Fugacity

@@ -1,0 +1,56 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\newcommand{\kb}{\ensuremath{k_{\text{B}}}}
+\newcommand{\Na}{\ensuremath{N_{\text{A}}}}
+\newcommand{\cc}[1]{#1^{\star}}
+\newcommand{\adj}[1]{#1^{\dagger}}
+\newcommand{\commut}[2]{[#1, #2]}
+\newcommand{\cdir}[1]{\ensuremath{\left[#1\right]}}
+\newcommand{\cplane}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\cpset}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\del}[3][]{\partial_{#2}^{#1}#3}
+\newcommand{\deval}[4][]{\eval{\dv[#1]{#2}{#3}}_{#4}}
+\newcommand{\pdeval}[4][]{\eval{\del[#1]{#2}{#3}}_{#4}}
+\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+
+\title{Summary of SK2758 Solid State Physics}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/crystals.tex}
+
+\input{./Parts/phonons.tex}
+
+\input{./Parts/electrons.tex}
+
+\input{./Parts/magnetism.tex}
+
+\input{./Parts/superconductivity.tex}
+
+\end{document}
