@@ -7,8 +7,57 @@ Landau introduced the concept that phase transitions are defined by spontaneous 
 An order parameter describes spontaneous symmetry breaking. It is zero in one phase and non-zero in another.
 
 \paragraph{The Ising Model}
-The Ising model is a simple model of magnets. In this model, a magnet is a collection of spins on a lattice. Its generalized coordinates are $\sigma_{i}$, which may take the values $\pm 1$, signifying a particular spin pointing up or down. The Hamiltonian is
+The Ising model is a simple model of magnets. In this model, a magnet is a collection of interacting spins on a lattice under the influence of an external field. Its generalized coordinates are $\sigma_{i}$, which may take the values $\pm 1$, signifying a particular spin pointing up or down. The Hamiltonian is
 \begin{align*}
-	\ham = -J\sum\limits_{i, j}\sigma_{i}\sigma_{j}.
+	\ham = -J\sum\limits_{i}\sum\limits_{j = \text{nn}(i)}\sigma_{i}\sigma_{j} - h\sum\limits_{i}\sigma_{i}.
 \end{align*}
-The order parameter defining its phase transition is $m = \expval{\sigma_{i}}$.
+The inner summation is carried out over the neares neighbours of site $i$ in the Ising model, but is generally a sum over the whole lattice. The order parameter defining its phase transition is $m = \expval{\sigma_{i}}$.
+
+\paragraph{Mean-Field Theory}
+Consider the effect of flipping some particular spin $i$ from $1$ to $-1$ while leaving the others unchanged. The change in the Hamiltonian is given by
+\begin{align*}
+	\Delta\ham = 2h + 2J\sum\limits_{j = \text{nn}(i)}\sigma_{j} = -\left(h + J\sum\limits_{j = \text{nn}(i)}\sigma_{j}\right)\Delta\sigma_{i}.
+\end{align*}
+This is the same as would be obtained for a set of non-interacting spins in a magnetic field
+\begin{align*}
+	h^{\prime} = h + J\sum\limits_{j = \text{nn}(i)}\sigma_{j}.
+\end{align*}
+The difficulties in solving the Ising model arise due to the fact that the nearest neighbours themselves fluctuate, making the endeavour to solve this with previously developed methods impossible. Instead, we proceed by reducing the interactions to their mean value, the core idea of mean-field theory. The effective field is thus
+\begin{align*}
+	h^{\prime} = h + J\sum\limits_{j = \text{nn}(i)}\expval{\sigma_{j}}.
+\end{align*}
+Using previously developed methods we obtain
+\begin{align*}
+	&Z = \sum e^{-\beta\ham} = \sum e^{\beta h^{\prime}\sum\limits_{i}\sigma_{i}} = \left(\sum\limits_{\sigma = \pm 1}e^{\beta h^{\prime}\sigma}\right)^{N} = 2^{N}\cosh[N](\beta h^{\prime}), \\
+	&\expval{\sigma_{i}} = \frac{1}{Z}\sum\sigma_{i}e^{\beta h^{\prime}\sum\limits_{j}\sigma_{j}} = \dv{\beta h^{\prime}}\ln(2\cosh(\beta h^{\prime})) = \tanh(\beta h^{\prime}).
+\end{align*}
+Note that this implies that all spins are expected to point in the same direction. Baked into the process there is a specific idea of the structure of the solution, and it is therefore important to make such a guess. We proceed with the ferromagnetic case, where the implication holds true, and introduce $m = \expval{\sigma_{i}}$ to obtain
+\begin{align*}
+	m = \tanh(\beta\left(h + J\sum\limits_{j = \text{nn}(i)}m\right)).
+\end{align*}
+Introducing the coordination number $z$ of a lattice site we obtain
+\begin{align*}
+	m = \tanh(\beta\left(h + zJm\right)).
+\end{align*}
+This equation can be solved graphically to yield the magnetization, but we will discuss it qualitatively here. Depending on the parameters, the number of solutions is between one and three. In the case where $h = 0$, one solution is $m = 0$, and two other solutions may be found at $m = \pm m_{0}$. At low temperatures the right-hand side approaches $\pm$, yielding $m_{0} = 1$. As the temperature approaches the critical temperature, above which no spontaneous magnetism is found, $m_{0}$ is small and we obtain
+\begin{align*}
+	m_{0}                              &\approx \beta zJm_{0} - \frac{1}{3}\left(\beta zJm_{0}\right)^{3}, \\
+	\left(\beta zJ\right)^{3}m_{0}^{2} &= 3(\beta zJ - 1), \\
+	m_{0}                              &= \frac{1}{\left(\beta zJ\right)^{\frac{3}{2}}}\sqrt{3}\sqrt{\beta zJ - 1} \\
+	                                   &= \sqrt{3}\left(\frac{\kb T}{zJ}\right)^{\frac{3}{2}}\sqrt{\frac{zJ}{\kb T} - 1}.
+\end{align*}
+We can now identify the temperature such that this is zero, namely
+\begin{align*}
+	T_{\text{C}} = \frac{zJ}{\kb}
+\end{align*}
+to write
+\begin{align*}
+	m_{0} = \sqrt{3}\left(\frac{T}{T_{\text{C}}}\right)^{\frac{3}{2}}\sqrt{\frac{T_{\text{C}}}{T} - 1}.
+\end{align*}
+While the existence of solutions to $m = \tanh(\beta zJm)$ would have sufficed to identify the critical temperature, we have now characterized the behaviour of the magnetization close to the phase transition as well. One of the uses of mean-field theory is exactly this qualitative description of the phase diagram.
+
+One more thing should be mentioned, namely the assertion that there actually is spontaneous magnetization. After all, if three solutions are possible, who is to say that one of the non-zero ones are found? To do this, we consider the entropy of an ideal paramagnet, which can be shown to be
+\begin{align*}
+	S = -N\kb\left(\frac{1 - m}{2}\ln(\frac{1 - m}{2}) + \frac{1 + m}{2}\ln(\frac{1 + m}{2})\right).
+\end{align*}
+We see that the non-zero solutions maximize entropy - a relief.
