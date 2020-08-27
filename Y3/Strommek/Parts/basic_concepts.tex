@@ -1,0 +1,185 @@
+\section{Grundläggande koncept}
+
+\paragraph{Fluider}
+Stela kroppar ger typiskt motstånd om de utsätts för skjuvning. Vi definierar fluider som ämnen som inte gör detta utan deformeras snabbare ju mer skjuvspänning de utsätts för.
+
+\paragraph{Kontinua}
+Ett kontinuum är ett medium så att egenskaper som temperatur och tryck är definierade i varje punkt i mediet som ett fält. När vi nu vet att all materia består av atomer, kan vi förstå kontinuumsbaserad teori som en approximation där fält tas som medelvärden över regioner av rummet. Detta är typiskt en bra approximation så länge alla relevanta storleksskalor är mycket större än atomära storheter.
+
+\paragraph{Strömlinjer}
+Strömlinjer är linjer som är så att hastigheten är tangentiell till linjen.
+
+\paragraph{Ekvation för strömlinjen}
+För en strömlinje ger formlikhet att
+\begin{align*}
+	\dv{y}{x} = \frac{v}{u}.
+\end{align*}
+
+\paragraph{Acceleration}
+Accelerationen är materiella derivatan av hastighetsfältet.
+
+\paragraph{Kontrollvolymer}
+I strömningsmekanik kommer vi betrakta fixa kontrollvolymer, som kommer betecknas $V$, och materiella kontrollvolymer, som betecknas $\mathcal{V}$. En materiell kontrollvolym rör sig med fluidet, så att dens gränsyta ändras.
+
+\paragraph{Inkompressibla fluider}
+En fluid är inkompresibel om volymsmåttet av en godtycklig materiell kontrollvolym av fluiden ej ändras med tiden. Detta är automatiskt uppfyld för en fix kontrollvolym. För en materiell kontrollvolym gäller det att
+\begin{align*}
+	\dv{t}\integ{\V}{}{\V}{} = \integ{\V}{}{\V}{0 + \div{\vb{u}}}.
+\end{align*}
+Kontrollvolymen är godtycklig, vilket ger
+\begin{align*}
+	\div{\vb{u}} = 0.
+\end{align*}
+
+\paragraph{Massa}
+Massan av en fluid inom en volym $V$ ges av
+\begin{align*}
+	\integ{V}{}{V}{\rho}
+\end{align*}
+där $\rho$ är tätheten.
+
+\paragraph{Kontinuitetsekvationen}
+Eftersom randen för en materiell kontrollvolym följer med den strömmande vätskan måste massan av volymen vara konstant. Detta ger
+\begin{align*}
+	\dv{t}\integ{\V}{}{V}{\rho} = \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
+\end{align*}
+Om detta gäller överallt, måste integranden vara noll överallt. Detta kan skrivas som
+\begin{align*}
+	\mdv{\rho} + \rho\div{\vb{u}} = 0.
+\end{align*}
+
+Man kan alternativt studera kontinuitetsekvationen i en fix kontrollvolym. Massbevarandet ger i en källfri volym
+\begin{align*}
+	\dv{t}\integ{V}{}{V}{\rho} = -\vinteg{S}{}{S}{\rho\vb{u}}.
+\end{align*}
+Med Gauss' sats och derivering under integraltecknet kan detta skrivas som
+\begin{align*}
+	\integ{V}{}{V}{\del{t}{\rho} + \div(\rho\vb{u})} = 0.
+\end{align*}
+Härifrån går argumentet på exakt samma sätt.
+
+\paragraph{Kontinuitetsekvationen för en inkompressibel fluid}
+För en inkompressibel fluid är då
+\begin{align*}
+	\mdv{\rho} = 0.
+\end{align*}
+I praktiken antar vi att en inkompressibel fluid har ungefär konstant täthet överallt. Om alla relevanta hastigheter är mycket mindre än ljudhastigheten i mediet, kan fluidet approximeras som inkompressibelt.
+
+\paragraph{Hjälpsats för fältintegraler i inkompressibla fluider}
+Det gäller att
+\begin{align*}
+	\dv{t}\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\phi} &= \integ{\mathcal{V}}{}{\mathcal{V}}{\del{t}{\rho\phi} + \div(\rho\phi\vb{u})} \\
+	                                               &= \integ{\mathcal{V}}{}{\mathcal{V}}{\rho\del{t}{\phi} + \phi\del{t}{\rho} + \phi\div(\rho\vb{u}) + (\rho\vb{u}\cdot\grad)\phi} \\
+	                                               &= \integ{\mathcal{V}}{}{\mathcal{V}}{\rho\mdv{\phi} + \phi\del{t}{\rho} + \phi\div(\rho\vb{u})}.
+\end{align*}
+Kontinuitetsekvationen ger att de två andra termerna försvinner och
+\begin{align*}
+	\dv{t}\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\phi} =\integ{\mathcal{V}}{}{\mathcal{V}}{\rho\mdv{\phi}}.
+\end{align*}
+
+\paragraph{Rörelsemängd}
+Rörelsemängden av en fluid inom en volym $V$ ges av
+\begin{align*}
+	\integ{V}{}{V}{\rho\vb{u}}.
+\end{align*}
+
+\paragraph{Vorticitet}
+Vorticiteten för en fluid definieras som
+\begin{align*}
+	\vb*{\omega} = \curl{\vb{u}}.
+\end{align*}
+
+\paragraph{Spänningstensorn}
+Spänningstensorns komponenter $\tau_{ij}$ är kraften i riktning $j$ på ett ytelement med ytnormal i riktning $i$. För en (liten) volym med ytnormal $\vb{n}$ gäller därmed för krafttätheten $\vb{f}$ att
+\begin{align*}
+	f_{i} = \tau_{ji}n_{j}.
+\end{align*}
+Spänningstensorn är ett tensorfält då den ger ett kraftfält i fluiden som måste integreras för att få totala kraften. Den totala kraften ges av
+\begin{align*}
+	F_{i} = \integ{S}{}{S_{j}}{\tau_{ji}} = \integ{V}{}{V}{\del{j}{\tau_{ji}}}.
+\end{align*}
+
+Man kan visa genom momentjämvikt att spänningstensorn är symmetriskt, varför jag väljer att formulera om definitionerna ovan till
+\begin{align*}
+	f_{i} = \tau_{ij}n_{j},\ F_{i} = \integ{S}{}{S_{j}}{\tau_{ij}} = \integ{V}{}{V}{\del{j}{\tau_{ij}}},
+\end{align*}
+som är den (för mig) mer kända formen.
+
+\paragraph{Newtons andra lag}
+Newtons andra lag för en fluid ger
+\begin{align*}
+	\dv{t}\integ{\V}{}{\V}{\rho u_{i}} = \integ{\V}{}{\V}{\rho g_{i} + \del{j}{\tau_{ji}}},
+\end{align*}
+där $\vb{g}$ är volymkraften. Med hjälp av hjälpsatsen från innan fås
+\begin{align*}
+	\integ{\V}{}{\V}{\rho\mdv{u_{i}}} = \integ{\V}{}{\V}{\rho g_{i} + \del{j}{\tau_{ji}}}.
+\end{align*}
+Detta gäller för en godtycklig materiell kontrollvolym, vilket ger
+\begin{align*}
+	\mdv{u_{i}} = g_{i} + \frac{1}{\rho}\del{j}{\tau_{ji}}.
+\end{align*}
+Kontinuitetsekvationen och Newtons andra lag är de fundamentala lagarna hastighetsfältet och spänningstensorns måste uppfylla. Tyvärr ger detta bara fyra ekvationer för att bestämma de tolv okända som ingår. Genom att betrakta bevarande av rörelsemängdsmoment får man att spänningstensorn är symmetrisk, men problemet återstår. Därför behöver vi göra approximationer och dylikt.
+
+\paragraph{Inviskösa fluider}
+Inviskösa fluider definieras av
+\begin{align*}
+	\tau_{ij} = -p\delta_{ij}.
+\end{align*}
+I såna fluider finns det inga friktionskrafter, varken inbördes i fluidet eller mellan fluidet och omgivningen.
+
+\paragraph{Eulers ekvationer}
+Betrakta en inviskös fluid. För denna förenklas Newtons andra lag till
+\begin{align*}
+	\mdv{u_{i}} = g_{i} - \frac{1}{\rho}\del{i}{p},
+\end{align*}
+eller på vektorform
+\begin{align*}
+	\del{t}{\vb{u}} + (\vb{u}\cdot\grad)\vb{u} = \vb{g} - \frac{1}{\rho}\grad{p}.
+\end{align*}
+Detta är Eulers ekvationer. De har randvillkoret att $\vb{u}\cdot\vb{n} = 0$ på randytan.
+
+\paragraph{Bernoullis ekvation}
+Bernoullis ekvation är en ekvation som ger en förenklad beskrivning av en inviskös fluid. Det gäller att
+\begin{align*}
+	(\vb{u}\cdot\grad)\vb{u} = \frac{1}{2}\grad{u^{2}} - \vb{u}\times\vb*{\omega}.
+\end{align*}
+Genom att betrakta konstanta kraftfält i $z$-riktning och definiera $B = \frac{1}{2}u^{2} + \frac{p}{\rho} + gz$ blir Newtons andra lag
+\begin{align*}
+	\del{t}{\vb{u}} + \grad{B} = \vb{u}\times\vb*{\omega}.
+\end{align*}
+
+Betrakta nu stationärt flöde av en fluid. Genom att integrera ekvationen ovan längsmed en strömlinje försvinner högersidan, vilket ger att
+\begin{align*}
+	B = \frac{1}{2}u^{2} + \frac{p}{\rho} + gz
+\end{align*}
+är konstant längsmed strömlinjen.
+
+\paragraph{Newtons andra lag för stationära inviskösa flöden}
+För en konstant $\vb{g}$ kan vi integrera Newtons andra lag över en fix kontrollvolym för att ge
+\begin{align*}
+	\integ{V}{}{V}{\rho\del{t}{u_{i}} + \rho u_{j}\del{j}{u_{i}}} = Mg_{i} + \integ{V}{}{V}{\del{j}{\tau_{ij}}}.
+\end{align*}
+För en inkompressibel fluid är $\rho u_{j}\del{j}{u_{i}} = \rho \del{j}{(u_{j}u_{i})}$. I stationära fall fås då
+\begin{align*}
+¨	\integ{S}{}{S_{j}}{\rho u_{j}u_{i}} = Mg_{i} + \integ{S}{}{S_{j}}{\tau_{ij}}.
+\end{align*}
+På vektorform, specifikt för en inviskös vätska, blir detta
+\begin{align*}
+	\int\limits_{S}(\dd{\vb{S}}\cdot\vb{u})\vb{u} = Mg_{i} - \integ{S}{}{\vb{S}}{p}.
+\end{align*}
+
+\paragraph{Kelvins teorem}
+Betrakta cirkulationen
+\begin{align*}
+	\Gamma = \vinteg{\C}{}{r}{\vb{u}} = \vinteg{\S}{}{\S}{\vb*{\omega}}
+\end{align*}
+kring en materiell kurva. Med hjälp av Eulers ekvationer kan man visa att för en inviskös, inkompressibel fluid är
+\begin{align*}
+	\dv{\Gamma}{t} = 0.
+\end{align*}
+
+\paragraph{d'Alemberts paradox}
+d'Alemberts paradox är att teorin för potentialströmning ger att luftmotståndet på en godtycklig kropp är $0$. Detta är rimligt eftersom vi inte tar med viskösa effekter, som kommer introduceras.
+
+\paragraph{Kutta-Jukowskis sats}
+Kutta-Jukowskis sats säjer att lyftkraften på en kropp ges av $\rho U\Gamma$, där $\Gamma$ är cirkulationen kring kroppen. Detta är en god approximation för många olika kroppar, speciellt tunna, strömlinjeformade kroppar.

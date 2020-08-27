@@ -1,0 +1,109 @@
+\section{Energimetoder}
+
+\paragraph{Töjningsenergi för en stång}
+Vid axial belastning av en stång med längd $l$ och tvärsnittsarea $A$ med en kraft $F$ görs ett arbete
+\begin{align*}
+	W = \integ{0}{u}{x}{F}.
+\end{align*}
+Vi kan introducera definitionen av spänning och göra en substitution där vi inför töjningen som ny integrationsvariabel för att få
+\begin{align*}
+	W = AL\integ{0}{\varepsilon}{\varepsilon}{\sigma}.
+\end{align*}
+Vi definierar då töjningsenergin per volym
+\begin{align*}
+	w_{V} = \integ{0}{\varepsilon}{\varepsilon}{\sigma}.
+\end{align*}
+Eftersom stången har volym $Al$, ger detta
+\begin{align*}
+	W = Vw_{V}.
+\end{align*}
+
+Vi kan nu introducera Hookes lag, vilket ger
+\begin{align*}
+	w_{W} = \frac{1}{2}E\varepsilon^{2}.
+\end{align*}
+
+\paragraph{Skjuvenergi}
+Betrakta ett rätblock med höjd $h$, brädd $b$ och längd $L$ som skjuvs så att höjdriktningen bildar vinkeln $\gamma$ med vertikalen. Det infinitesimala arbetet vid en liten skjuvning ges av
+\begin{align*}
+	\dd{W} = \tau bt\cdot h\dd{\gamma},
+\end{align*}
+och det totala arbetet ges av
+\begin{align*}
+	W = \integ{0}{\gamma}{\gamma}{\tau bth},
+\end{align*}
+vilket implicerar
+\begin{align*}
+	w_{V} = \integ{0}{\gamma}{\gamma}{\tau}.
+\end{align*}
+
+Vid att införa Hookes lag kan man visa att
+\begin{align*}
+	W = \frac{1}{2}VG\gamma^{2}.
+\end{align*}
+
+\paragraph{Energi för böjning av en balk}
+Om balken har utböjning $w$, kommer man få
+\begin{align*}
+	W = \integ{0}{L}{x}{\frac{1}{2}EI\left(\dv[2]{w}{x}\right)^{2}}.
+\end{align*}
+
+\paragraph{Energi för vridning av en balk}
+Om balken vris i axelriktning en vinkel $\phi$, får man
+\begin{align*}
+	W = \integ{0}{L}{x}{\frac{1}{2}GK\left(\dv{\phi}{x}\right)^{2}}.
+\end{align*}
+
+\paragraph{Allmän töjningsenergi}
+Helt allmänt har man
+\begin{align*}
+	W = \integ[3]{V}{}{r}{\frac{1}{2}\sigma_{ij}\varepsilon_{ij}}.
+\end{align*}
+
+\paragraph{Axialbelastad stång och virtuellt arbete}
+Betrakta en axialbelastad stång som belastas med en kraft $F$ som producerar volymskraften $K_{x}$ i axelriktningen. Kraftjämvikt, till sammmans med definitionen av töjning, ger
+\begin{align*}
+	\dv{x}\left(EA\dv{u}{x}\right) + K_{x} = 0.
+\end{align*}
+Om balken är inspänd i ena ändan, fås
+\begin{align*}
+	u(0) = 0,\ EA\deval{u}{x}{L} = F.
+\end{align*}
+Enligt argumentet ovan har balken energi
+\begin{align*}
+	W = \integ{0}{L}{x}{\frac{1}{2}EA\left(\dv{u}{x}\right)^{2}},
+\end{align*}
+som är en funktional av deformationen $u$. Allmänt är jämviktsläget för balken ett extremum till denna funktionalen.
+
+Vi betraktar elastiska fall nu, och antar att $u$ uppfyller differentialekvationen som beskriver balken och alla randvillkor. Vi introducerar variationen $\var{u}$ av $u$. Ändring av $u$ med denna variation ger en variation av energin
+\begin{align*}
+	\var{W} &= \integ{0}{L}{x}{\frac{1}{2}EA\var{\left(\dv{u}{x}\right)^{2}}} \\
+	        &= \integ{0}{L}{x}{\frac{1}{2}EA2\dv{u}{x}\var{\dv{u}{x}}}.
+\end{align*}
+Vi antar nu att variationen uppfyller de kinematiska randvillkoren, vilket ger $\var{u}(0) = 0$. Partiell integration ger
+\begin{align*}
+	\var{W} &= EA\deval{u}{x}{L}\var{u}(L) - \integ{0}{L}{x}{\var{\dv{u}{x}}\dv{x}\left(EA\dv{u}{x}\right)} \\
+	        &= F\var{u}(L) - \integ{0}{L}{x}{\var{\dv{u}{x}}\dv{x}K_{x}}.
+\end{align*}
+
+\paragraph{Potentiell energi för en axialbelastad balk}
+I vissa fall, typiskt elastiska fall, kan vi nu införa potentiella energin
+\begin{align*}
+	U = W - Fu(L) - \integ{0}{l}{x}{K_{x}}.
+\end{align*}
+En funktion som är ett extremum till $U$ ger $\var{U} = 0$. Det kan visas att $U$ är positivt definit, så extremumet måste vara ett minimum, och ämviktsläget är ett minimum för potentiella energin, som väntat. Vi ser att detta kriteriet är ekvivalent med att $\var{W}$ ges av uttrycket ovan. Alltså är variationsprincipen ett specialfall av variationsprincipen för $W$.
+
+\paragraph{Potentiell energi för en böjd balk}
+Vi kan även definiera en potential
+\begin{align*}
+	U =& \integ{0}{L}{x}{\frac{1}{2}EI\left(\dv[2]{w}{x}\right)^{2}} + M(L)\deval{w}{x}{L} - M(0)\deval{w}{x}{0} - T(L)w(L) + T(0)w(0)\\
+	   &- \sum F_{i}w(x_{i}) + \sum M_{i}\deval{w}{x}{x_{i}} - \integ{0}{L}{x}{qw},
+\end{align*}
+där summorna görs över alla yttre krafter och moment.
+
+\paragraph{Energimetoder i hållfasthetslära}
+Man vill inte alltid lösa variationsproblemen som dyker upp i hållfasthetslära, utan man gör ansatsen
+\begin{align*}
+	u = \sum a_{i}u_{i},
+\end{align*}
+där alla $u_{i}$ är kända, och ser vilka koefficienter $a_{i}$ som minimerar de olika funktionalerna. Om man väljer de olika $u_{i}$ smart, blir lösningen bättre desto fler termer man har.

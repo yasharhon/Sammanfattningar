@@ -1,0 +1,25 @@
+\section{Optimering}
+Denna delen kommer handla om att försöka hitta minima till en funktion över ett rum. Att hitta maxpunkter är det samma som att byta tecken och hitta minimun, så vi fokuserar därför på att hitta minima.
+
+\paragraph{Gyllene snitt-sökning}
+Antag att $f$ är kontinuerlig och har endast ett lokalt minimum på $[a, b]$, och betrakta två punkter $x_{1}$ och $x_{2}$. Om $f(x_{1}) \leq f(x_{2})$ finns minimumspunkten på $[a, x_{2}]$, och om $f(x_{1}) \geq f(x_{2})$ finns minimumspunkten på $[x_{1}, b]$. Detta gäller eftersom derivatan endast byter tecken en gång på $[a, b]$, och vi med hjälp av funktionsvärdena i två punkter får information om derivatan imellan dessa punkterna. Man kan få en ganska säker metod vid att välja både $x_{1}$ och $x_{2}$ nära mitten av intervallet.
+
+Metoden kan förbättras vid att återanvända funktionsvärden i kommande interationer. Sätt $a = 0, b = 1$. Vi väljer $x_{1}$ och $x_{2}$ symmetriskt och likformigt, så att $x_{2} = 1 - x_{1}$ och
+\begin{align*}
+	\frac{x_{1}}{x_{2}} = \frac{x_{2}}{1}.
+\end{align*}
+Vi kan lösa detta och få
+\begin{align*}
+	x_{1} = \frac{3 \pm \sqrt{5}}{2},\ x_{2} = \frac{\sqrt{5} - 1}{2}.
+\end{align*}
+Vi ser att $x_{2}$ är det gyllene snitt. Med detta val gäller att intervallängden avtar med en faktor $g$ per iteration.
+
+\paragraph{Newtons metod}
+Newtons metod för att hitta minima till en funktion $f(\vb{x})$ är att använda Newtons metod för att lösa ekvationssystemet $\grad{f}(\vb{x}) = \vb{0}$.
+
+\paragraph{Gradientmetoden}
+Vi vet att $f$ avtar snabbast i riktningen $-\grad{f}(\vb{x})$. Vi gör därför iterationen
+\begin{align*}
+	\vb{x}_{n + 1} = \vb{x}_{n} - \gamma_{n}\grad{f}(\vb{x}_{n}).
+\end{align*}
+$\gamma_{n}$ kan väljas konstant eller så att den minimerar $f(\vb{x}_{n + 1})$. Jämförd med Newtons

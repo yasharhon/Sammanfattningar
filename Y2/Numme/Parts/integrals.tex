@@ -1,0 +1,153 @@
+\section{Integration}
+
+\paragraph{Eulers metod}
+Antag att vi vill integrera en funktion $f$ över $[a, b]$. En enkel metod är att dela upp $[a, b]$ i $N$ steg, låta $x_{0} = a, x_{N} = b$. Eulers metod ger
+\begin{align*}
+	y_{N} &= y_{N - 1} + hf(x_{N - 1}) \\
+	      &= y_{N - 2} + hf(x_{N - 2}) + hf(x_{N - 1}) \\
+	      &\vdots \\
+	      &= y_{0} + h\sum\limits_{i = 0}^{N - 1}f(x_{i}).
+\end{align*}
+Vi får slutligen approximationen
+\begin{align*}
+	\inteval{a}{b}{f(x)}{x} \approx h\sum\limits_{i = 0}^{N - 1}f(x_{i}).
+\end{align*}
+
+\subparagraph{Fel}
+Utgå från differentialekvationen
+\begin{align*}
+	\dv{y}{x} = f, y(a) = y_{0},
+\end{align*}
+och antag att vi vill integrera $f$ över $[a, b]$. Analysens huvudsats ger
+\begin{align*}
+	\inteval{a}{b}{f(x)}{x} = y(b) - y(a).
+\end{align*}
+Att beräkna denna integralen är alltså helt ekvivalent med Eulers metod. Vi försöker därför först att hitta det lokala felet på $[x_{i}, x_{i + 1}]$, som enligt argumentet från Eulers metod ges av
+\begin{align*}
+	\abs{y_{i + 1} - y(x_{i + 1})} \leq \frac{1}{2}\abs{\deval[2]{y}{t}{c}}h^{2},
+\end{align*}
+där $c\in [x_{i}, x_{i + 1}]$. Enligt sats ges det globala felet då av
+\begin{align*}
+	\abs{y_{N} - y(x_{N})} \leq \frac{e^{L(a - b)}}{2L}\max\limits_{c\in [a, b]}\abs{\deval[2]{y}{t}{c}}h,
+\end{align*}
+där vi har ändrat derivatan för att vara säker på att den anger en övre begränsning av det lokala felet. Detta kan skrivas om till
+\begin{align*}
+	\abs{y_{N} - y(x_{N})} \leq \frac{e^{L(a - b)}}{2L}\max\limits_{c\in [a, b]}\abs{\deval{f}{t}{c}}h.
+\end{align*}
+
+\paragraph{Trapetsmetoden}
+Betrakta integralen av en funktion $f$ över $[a, b]$. Dela nu upp $[a, b]$ i $N$ lika långa delintervall, och låt $x_{0} = a, x_{N} = b$. I trapetsmetoden interpolerar vi $f$ i $x_{i}$ och $x_{i + 1}$ och integrerar denna räta linjen. Integralen är lika med arean av en trapets, vilket vi enkelt kan beräkna. En approximation av integralen över $[x_{i}, x_{i + 1}]$ är därmed
+\begin{align*}
+	h\frac{f(x_{i + 1}) + f(x_{i})}{2},
+\end{align*}
+där $h = \frac{b - a}{N}$. En approximation av hela integralen är då
+\begin{align*}
+	\inteval{a}{b}{f(x)}{x} &\approx h\sum\limits_{i = 0}^{N - 1}\frac{f(x_{i + 1}) + f(x_{i})}{2} \\
+	                        &= h\left(\frac{f(x_{0}) + f(x_{N})}{2} + \sum\limits_{i = 1}^{N - 1}f(x_{i})\right).
+\end{align*}
+
+\subparagraph{Fel}
+Låt $T_{h}$ vara skattningsfelet av integralen av $C^{2}$-funktionen $f$ med trapetsmetoden med steglängd $h$. Felet ges då av
+\begin{align*}
+	\abs{\inteval{a}{b}{f(x)}{x} - T_{h}} \leq \max\limits_{x\in [a, b]}\frac{1}{12}\abs{\deval[2]{f}{x}{x}}(b - a)h^{2}.
+\end{align*}
+
+För att visa detta, försöker vi först hitta det lokala felet och sedan skatta det globala felet. Vi söker alltså först det lokala felet
+\begin{align*}
+	e_{i} = \abs{\frac{h}{2}(f(x_{i + 1}) - f(x_{i})) - \inteval{x_{i}}{x_{i + 1}}{f(x)}{x}}.
+\end{align*}
+Partiell integration ger
+\begin{align*}
+	e_{i} = \abs{\frac{h}{2}(f(x_{i + 1}) - f(x_{i})) - x_{i + 1}f(x_{i + 1}) + x_{i}f(x_{i}) + \inteval{x_{i}}{x_{i + 1}}{xf'(x)}{x}}.
+\end{align*}
+Vi inför $c = \frac{x_{i + 1} + x_{i}}{2}$ och får
+\begin{align*}
+	e_{i} = \abs{\frac{h}{2}(f(x_{i + 1}) - f(x_{i})) - (x_{i + 1} - c)f(x_{i + 1}) + (x_{i} - c)f(x_{i}) + \inteval{x_{i}}{x_{i + 1}}{(x - c)f'(x)}{x}}.
+\end{align*}
+Eftersom $c$ ligger mitt i mellan $x_{i}$ och $x_{i + 1}$, som ligger ett avstånd $h$ från varandra, kan detta skrivas om till
+\begin{align*}
+	e_{i} = \abs{\inteval{x_{i}}{x_{i + 1}}{(x - c)f'(x)}{x}}.
+\end{align*}
+En ny delvis integration ger
+\begin{align*}
+	e_{i} &= \abs{\frac{1}{8}h^{2}(f'(x_{i + 1}) - f'(x_{i})) - \frac{1}{2}\inteval{x_{i}}{x_{i + 1}}{(x - c)^{2}f''(x)}{x}} \\
+	      &= \abs{\frac{1}{2}\inteval{x_{i}}{x_{i + 1}}{\left(\left(\frac{h}{2}\right)^{2} - (x - c)^{2}\right)f''(x)}{x}}.
+\end{align*}
+Om $\abs{f''(x)} \leq M_{i}$ på intervallet, fås
+\begin{align*}
+	e_{i} &\leq \frac{1}{2}M_{i}\abs{\inteval{x_{i}}{x_{i + 1}}{\left(\left(\frac{h}{2}\right)^{2} - (x - c)^{2}\right)}{x}} \\
+	      &= \frac{1}{2}M_{i}\abs{\frac{h^{3}}{4} - \frac{2}{3}\left(\frac{h}{2}\right)^{3}} \\
+	      &= \frac{1}{12}M_{i}h^{3}.
+\end{align*}
+För att skatta det globala felet $E$, skriver vi
+\begin{align*}
+	E \leq \sum\limits_{i = 0}^{N - 1}e_{i}
+\end{align*}
+där integrationsintervallet har delats i $N + 1$ steg. Om $\abs{f''(x)} \leq M$ på hela integrationsintervallet, kan detta skrivas som
+\begin{align*}
+	E \leq MN\frac{1}{12}h^{3}.
+\end{align*}
+Sambandet $h = \frac{b - a}{N}$ gör att detta kan skrivas som
+\begin{align*}
+	E \leq \frac{1}{12}M(b - a)h^{2}.
+\end{align*}
+
+\paragraph{Simpsons metod}
+Använder kvadratisk interpolation.
+
+\subparagraph{Fel}
+Låt $S_{h}$ vara skattningsfelet av integralen med Simpsons metod med steglängd $h$. Felet ges då av
+\begin{align*}
+	\abs{\inteval{a}{b}{f(x)}{x} - S_{h}} \leq \max\limits_{x\in [a, b]}\frac{1}{80}\abs{\deval[4]{f}{x}{x}}(b - a)h^{4}.
+\end{align*}
+
+\paragraph{Monte Carlo-integration}
+Medelvärdesatsen för integraler ger att
+\begin{align*}
+	\frac{1}{b - a}\inteval{a}{b}{f(x)}{x} = f(c),
+\end{align*}
+där $f(c)$ är funktionens medelvärde på $[a, b]$. Vi kan skatta medelvärdet som
+\begin{align*}
+	\frac{1}{N}\sum\limits_{i = 1}{N}f(x_{i}),
+\end{align*}
+där alla $x_{i}$ är dragna oberoende från en likformig fördelning på $[a, b]$. Detta kallas för Monte Carlo-integration.
+
+Metoden är helt analog i högre dimensioner.
+
+\paragraph{Fel}
+Om vi antar att alla $x_{i}$ dras från en likformig sannolikhetstäthet, kan vi skriva
+\begin{align*}
+	\frac{1}{b - a}\inteval{a}{b}{f(x)}{x} = \inteval{a}{b}{f(x)p(x)}{x},
+\end{align*}
+där $p$ är sannolikhetstätheten. Vänstersidan kan även skrivas som $\expec{f(X)}$.
+
+Vi inför den stokastiska variabeln
+\begin{align*}
+	\varepsilon_{n} = \frac{1}{N}\sum\limits_{i = 1}{N}f(X_{i}) - \expec{f(X)}.
+\end{align*}
+Dens väntevärde ges av
+\begin{align*}
+	\expec{\varepsilon_{n}} &= \frac{1}{N}\sum\limits_{i = 1}{N}\expec{f(X_{i})} - \expec{f(X)} \\
+	                         &= \expec{f(X)} - \expec{f(X)} \\
+	                         &= 0.
+\end{align*}
+Vi har vidare
+\begin{align*}
+	\expec{\varepsilon_{n}^{2}} &= \expec{\left(\frac{1}{N}\sum\limits_{i = 1}^{N}f(X_{i}) - \expec{f(X)}\right)^{2}} \\
+	                         &= \frac{1}{N^{2}}\expec{\left(\sum\limits_{i = 1}^{N}(f(X_{i}) - \expec{f(X)})\right)^{2}} \\
+	                         &= \frac{1}{N^{2}}\expec{\left(\sum\limits_{i = 1}^{N}(f(X_{i}) - \expec{f(X)})\right)^{2}} \\
+	                         &= \frac{1}{N^{2}}\expec{\left(\sum\limits_{i = 1}^{N}(f(X_{i}) - \expec{f(X)})\right)^{2}} \\
+	                         &= \frac{1}{N^{2}}\expec{\sum\limits_{i = 1}^{N}(f(X_{i}) - \expec{f(X)})^{2} + \sum\limits_{n\neq m}(f(X_{n}) - \expec{f(X)})(f(X_{m}) - \expec{f(X)})} \\
+	                         &= \frac{1}{N^{2}}\sum\limits_{i = 1}^{N}\expec{(f(X_{i}) - \expec{f(X)})^{2}} + \expec{\sum\limits_{n\neq m}(f(X_{n}) - \expec{f(X)})(f(X_{m}) - \expec{f(X)})} \\
+	                         &= \frac{\sigma_{f}^{2}}{N} + 0.
+\end{align*}
+Korstermerna har väntevärde
+\begin{align*}
+	\expec{(f(X_{n}) - \expec{f(X)})(f(X_{m}) - \expec{f(X)})} &= \expec{f(X_{n}) - \expec{f(X)}}\expec{f(X_{m}) - \expec{f(X)}} \\
+	                                                           &= 0,
+\end{align*}
+då de olika $X_{i}$ är oberoende. Därmed är standardavvikelsen av $\varepsilon_{N}$ lika med $\frac{\sigma}{\sqrt{N}}$, och felet i metoden är proportionellt mot $\frac{1}{\sqrt{N}}$.
+
+Vi noterar att centrala gränsvärdesatsen ger att $\nu = \frac{\sqrt{N}}{\sigma}\varepsilon_{N}$ är standard normalfördelat.
+
+I $d$ dimensioner är felet proportionellt mot $N^{-\frac{d}{2}}$, och vi ser att den är bättre än trapetsmetoden för $d > 4$.

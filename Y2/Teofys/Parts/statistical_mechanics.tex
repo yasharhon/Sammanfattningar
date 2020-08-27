@@ -1,0 +1,184 @@
+\section{Statistisk mekanik}
+
+\paragraph{Klassisk statistisk mekanik}
+I den klassiska statistiska mekaniken är vi intresserade av att ange tillståndet till ett system med $N$ partiklar. Med tillstånd avses punkter i fasrummet på formen $x = (\vb{r}_{1}, \dots, \vb{r}_{N}, \vb{p}_{1}, \dots, \vb{p}_{N}) = (\vb{r}, \vb{p})$. Vi vill veta observablernas medelvärden
+\begin{align*}
+	\expval{A} = \frac{1}{\tau}\integ{0}{\tau}{t}{A(x(t))}.
+\end{align*}
+Att beräkna sådana tidsmedelvärden är opratiskt, då det skulle innebära att lösa för systemets fullständiga bana i fasrummet. Därför medlar vi i stället över ensembler, som är identiska kopior av systemet.
+
+\paragraph{Statistiska mekanikens grundpostulat}
+För våra behov kommer vi postulera att två tillstånd med samma energi antas med samma sannolikhet
+
+\paragraph{Mikrokanonisk ensemble}
+Det mikrokanoniska ensemblet motsvarar ett slutet system där energien är lik för alla tillstånd.
+
+Antalet tillstånd är proportionellt mot volymen i fasrummet
+\begin{align*}
+	\Omega(E) = \frac{1}{h^{3N}N!}\int\limits_{E < H < E + \delta E}\dd[3N]{\vb{r}}\dd[3N]{\vb{p}}.
+\end{align*}
+Då fås ensemblemedelvärdet vid en given energi som
+\begin{align*}
+	\expval{A} = \frac{1}{\Omega N!}\int\limits_{E < H < E + \delta E}\dd[3N]{\vb{r}}\dd[3N]{\vb{p}}A = \frac{1}{\Omega N!}\int\limits_{E < H < E + \delta E}\dd{x}A.
+\end{align*}
+
+\paragraph{Entropi}
+Boltzmann definierade den termodynamiska entropin som
+\begin{align*}
+	S = k\ln{\Omega}.
+\end{align*}
+Denna definitionen kopplar ihop mikroskopiska tendenser i systemet med dets makroskopiska beteende genom termodynamik.
+
+\paragraph{Kanoniska ensemblem}
+I det kanoniska ensemblet betraktar vi ett system som omges av ett energireservoir. Om reservoiren har energi $E_{2}$ och systemet energi $E_{1}$, är kombinationen av dessa ett mikrokanoniskt ensemble. Kombinatoriska argument ger
+\begin{align*}
+	\Omega(E_{1}, E_{2}) = \Omega_{1}(E_{1})\Omega_{2}(E_{2}),
+\end{align*}
+då $\Omega$ är ett mått på antal tillstånd. Om systemet har total energi $E$, kan detta skrivas som
+\begin{align*}
+	\Omega(E_{1}, E_{2}) = \Omega_{1}(E_{1})\Omega_{2}(E - E_{1}).
+\end{align*}
+Tillståndet med störst sannolikhet motsvarar maximalt $\Omega(E_{1}, E_{2})$ (ett argument kanske behövs här), vilket fås vid entropins maximum. Vi får
+\begin{align*}
+	S = k(\ln{\Omega_{1}(E_{1})} + \ln{\Omega_{2}(E - E_{1})}) = S_{1} + S_{2}.
+\end{align*}
+Maximum fås vid $\del{E_{1}}{S} = 0$. Vi får
+\begin{align*}
+	\del{E_{1}}{S} = \del{E_{1}}{S_{1}} + \del{E_{1}}{S_{2}} = \del{E_{1}}{S_{1}} - \del{E_{2}}{S_{2}}.
+\end{align*}
+Vi inför temperaturen genom
+\begin{align*}
+	\frac{1}{T} = \left(\pdv{S_{i}}{E_{i}}\right)_{N, V},
+\end{align*}
+enligt vad vi vet från termodynamiken, och får att sannolikheten maximeras då $T_{1} = T_{2}$.
+
+Maximumet motsvarande detta kriteriet är mycket skarpt, så makroskopiska system har sällant avvikelser från detta. För att inse detta, skriv
+\begin{align*}
+	\Omega = e^{\frac{S}{k}}.
+\end{align*}
+Exponenten beror bara av $E_{1}$, så vi Taylorutvecklar den kring jämviktsenergin $E_{1}^{*}$ för att få
+\begin{align*}
+	\Omega = e^{\frac{1}{k}\left(S(E_{1}^{*}) + \frac{1}{2}(E_{1} - E_{1}^{*})^{2}\del[2]{E_{1}}{S}\right)}.
+\end{align*}
+Eftersom vi har ett maximum för sannolikheten, måste andraderivatan i exponenten vara negativ. Vidare, eftersom både energin och entropin är extensiva, kan den uppskattas som
+\begin{align*}
+	\del[2]{E_{1}}{S}\propto N^{2}\frac{N}{N^{2}} = N,
+\end{align*}
+vilket indikerar det givna beteendet.
+
+\paragraph{Sannolikhetsfördelning i kanoniska ensemblet}
+Vi har att sannolikheten för att systemet är i ett visst tillstånd ges av
+\begin{align*}
+	p(E_{1})\dd{E_{1}} = \frac{1}{\integ{}{}{E_{1}}{\Omega_{1}(E_{1})\Omega_{2}(E - E_{1})}}\Omega_{1}(E_{1})\Omega_{2}(E - E_{1})\dd{E_{1}}.
+\end{align*}
+Andra faktorn kan skrivas som
+\begin{align*}
+	\Omega_{2}(E - E_{1}) = e^{\frac{1}{k}S_{2}(E - E_{1})}.
+\end{align*}
+Om vi antar att reservoiren är mycket större än systemet, fås
+\begin{align*}
+	S_{2}(E - E_{1}) \approx S_{2}(E) - E_{1}\del{E}{S_{2}} = S_{2}(E) - \frac{E_{1}}{T_{2}}.
+\end{align*}
+Detta kan kombineras med jämviktskriteriet för att ge
+\begin{align*}
+	p(E_{1})\dd{E_{1}} &= \frac{1}{\integ{}{}{E_{1}}{\Omega_{1}(E_{1})e^{\frac{1}{k}\left(S_{2}(E) - \frac{E_{1}}{T_{1}}\right)}}}\Omega_{1}(E_{1})e^{\frac{1}{k}\left(S_{2}(E) - \frac{E_{1}}{T_{1}}\right)}\dd{E_{1}} \\
+	                   &= \frac{1}{\integ{}{}{E_{1}}{\Omega_{1}(E_{1})e^{-\frac{E_{1}}{kT_{1}}}}}\Omega_{1}(E_{1})e^{-\frac{E_{1}}{kT_{1}}}\dd{E_{1}},
+\end{align*}
+och vid att byta beteckning till systemets egna storheter
+\begin{align*}
+	p(E)\dd{E} = \frac{1}{\integ{}{}{E}{\Omega_{1}(E)e^{-\frac{E}{kT}}}}\Omega_{1}(E)e^{-\frac{E}{kT}}\dd{E}.
+\end{align*}
+Vid att införa partitionsfunktionen
+\begin{align*}
+	Z = \integ{}{}{E}{\Omega_{1}(E)e^{-\frac{E}{kT}}}
+\end{align*}
+fås
+\begin{align*}
+	p(E)\dd{E} = \frac{1}{Z}\Omega_{1}(E)e^{-\frac{E}{kT}}\dd{E}.
+\end{align*}
+
+Vid jämvikt ges fria energin av $F = \expval{E} - TS(\expval{E})$. Då ges partitionsfunktionen av
+\begin{align*}
+	Z = \integ{}{}{E}{\Omega_{1}(E)e^{-\beta E}} = Z = \integ{}{}{E}{e^{\frac{S}{k}}Omega_{1}(E)e^{-\beta E}}.
+\end{align*}
+Eftersom volymen i fasrummet har en skarp topp vid $\expval{E}$ fås
+\begin{align*}
+	Z = e^{-\beta(\expval{E} - TS(\expval{E}))} = e^{-\beta F},
+\end{align*}
+där vi har infört $\beta = \frac{1}{kT}$.
+
+Nu kan vi skriva energins väntevärde som
+\begin{align*}
+	\expval{E} &= \frac{1}{Z}\integ{}{}{E}{E\Omega_{1}(E)e^{-\beta E}} \\
+	           &= \frac{1}{Zadsfsad}\integ{}{}{x}{\integ{}{}{E}{E\delta(H - E)e^{-\beta E}}} \\
+	           &= \frac{1}{Z}\integ{}{}{x}{He^{-\beta H}},
+\end{align*}
+alltså en summation över alla tillstånd. Detta kommer vara sättet vi gör det på sedan.
+
+\paragraph{Storkanonisk ensemble}
+Detta motsvarar system som kan utväxla både energi och materia med reservoiren. Vi får jämvikt vid $T_{1} = T_{2}$ och $\mu_{1} = \mu_{2}$, där
+\begin{align*}
+	\frac{\mu}{T} = -\left(\pdv{S}{N}\right)_{E, V}.
+\end{align*}
+Sannolikhetsfördelningen ges av
+\begin{align*}
+	p_{G}(E, N) = \frac{1}{Z_{G}}\Omega(E, N)e^{-\beta(E - \mu N)},
+\end{align*}
+där vi har infört den storkanoniska partitionsfunktionen
+\begin{align*}
+	Z_{G} = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z(T, N),
+\end{align*}
+där $Z(T, N)$ är den kanoniska partitionsfunktionen.
+
+\paragraph{Kvantmekanisk statistisk mekanik}
+I kvantmekanisk statistisk mekanik kommer integralerna över fasrummet att ersättas med summationer över kvantiserade tillstånd.
+
+\paragraph{Ockupationsrepresentation}
+För att förstå hur partiklarna fördelas i kvanttillstånd, kan man använda ockupationsrepresentation. Då skriver man ned en serie siffror som anger hur många partiklar som ockuperar varje tillstånd.
+
+\paragraph{Kvantmekaniska fria partiklar}
+För att titta på dessa vill vi göra betraktningen i det storkanoniska ensemblet. Detta gör vi för att kombinationen av summation över antal partiklar och integration över tillstånd kan övergå i en summa över alla ockupationstal, som täcker kombinationen av dessa summationer. Vi får
+\begin{align*}
+	Z_{G} = \sum\limits_{n_1}\dots e^{-\beta\sum\limits_{k}(E_{k} - \mu)n_{k}} = \prod\limits_{k}\sum\limits_{n_{k}}e^{-\beta(E_{k} - \mu)n_{k}} = \prod\limits_{k}Z_{k} = e^{-\beta F}.
+\end{align*}
+
+Väntevärdet av antal partiklar i något tillstånd ges av
+\begin{align*}
+	\expval{n_{k}} = \frac{\sum ne^{-\beta(E_{k} - \mu)n}}{Z_{k}},
+\end{align*}
+där
+\begin{align*}
+	Z_{k} = \sum e^{-\beta(E_{k} - \mu)n}.
+\end{align*}
+Vi ser att vi kan skriva
+\begin{align*}
+	\expval{n_{k}} = \frac{1}{\beta}\del{\mu}{Z_{k}}.
+\end{align*}
+
+För fermioner vet vi att $n_{k} = 0, 1$ på grund av Pauliprincipen. Därmed fås
+\begin{align*}
+	\expval{n_{k}} = \frac{0 + e^{-\beta(E_{k} - \mu)}}{1 + e^{-\beta(E_{k} - \mu)}} = \frac{1}{e^{\beta(E_{k} - \mu)} + 1},
+\end{align*}
+vilket kallas Fermi-Dirac-fördelningen.
+
+För bosoner fås
+\begin{align*}
+	Z_{k} = \sum e^{-\beta(E_{k} - \mu)n} = \frac{1}{1 - e^{-\beta(E_{k} - \mu)}},
+\end{align*}
+och
+\begin{align*}
+	\expval{n_{k}} = \frac{1}{e^{\beta(E_{k} - \mu)} - 1},
+\end{align*}
+vilket kallas Bose-Einstein-fördelningen.
+
+Vi kan jämföra detta med resultatet från särskiljbara identiska partiklar, som ger
+\begin{align*}
+	\expval{n_{k}} = e^{-\beta(E_{k} - \mu)}.
+\end{align*}
+Detta är gränsen för båda fördelningarna när energierna blir stora jämförd med temperaturen.
+
+\paragraph{Svartkroppsstrålning}
+Fotoner är bosoner med spinn $1$, och följer därmed Bose-Einstein-statistik. Antalet fotoner kommer variera med temperaturen, och detta implicerar $\mu = 0$. Vi får då
+\begin{align*}
+	\expval{n_{k}} = \frac{1}{e^{\beta\hbar\omega} - 1}.
+\end{align*}
