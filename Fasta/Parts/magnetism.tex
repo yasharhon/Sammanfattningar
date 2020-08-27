@@ -1,0 +1,337 @@
+\section{Magnetism}
+
+\paragraph{Magnetic Susceptibility}
+The susceptibility $\chi$ is a tensor field such that
+\begin{align*}
+	\vb{M} = \chi\vb{H}.
+\end{align*}
+
+\paragraph{Types of Magnetic Response}
+The magnetic response of a material is (in many cases) categorized according to the following categories:
+\begin{itemize}
+	\item Diamagnetism, where $\chi < 0$ and $\abs{\chi} \ll 0$.
+	\item Paramagnetism, where $\chi > 0$ and $\abs{\chi} \ll 0$.
+	\item Ferromagnetism, where $\chi \gg 0$. This is often accompanied by the presence of non-zero magnetization at zero external field if the temperature is sufficiently low.
+\end{itemize}
+
+\paragraph{Origins of Magnetic Response}
+Magnetic response in a solid can have many different origins. A few examples are:
+\begin{itemize}
+	\item Atoms
+	\begin{itemize}
+		\item Paramagnetism due to redistribution of atomic electrons.
+		\item Diamagnetism due to wavefunctions changing such that they oppose the external field.
+	\end{itemize}
+	\item Free electrons
+	\begin{itemize}
+		\item Paramagnetism due to redistribution of free electrons.
+		\item Diamagnetism due to wavefunctions changing such that they oppose the external field.
+	\end{itemize}
+	\item Spin-spin interactions
+	\begin{itemize}
+		\item Ferromagnetism or antiferromagnetism, depending on the nature of the interaction.
+		\item Other exotic effects, for instance spin waves.
+	\end{itemize}
+	\item Atomic nuclei, the discussion of which is beyond the scope of this course.
+\end{itemize}
+
+\paragraph{Diamagnetism from Atoms}
+To study diamagnetism from atomic electrons, we start with a classical description of such electrons. Somehow, it can be shown that electrons in an external magnetic field precess around the nucleus with a frequency
+\begin{align*}
+	\omega = \frac{eB}{2m},
+\end{align*}
+termed the Larmor frequency. The current from a single precessing electron is
+\begin{align*}
+	I = -\frac{e\omega}{2\pi} =  -\frac{e^{2}B}{4\pi m},
+\end{align*}
+yielding a total magnetic moment of
+\begin{align*}
+	\mu = \sum\limits_{i}I\pi r_{i}^{2} = -\frac{Ze^{2}B}{4\pi m}\expval{\rho^{2}},
+\end{align*}
+where the latter factor may be taken as a mean over all electrons.
+
+This inspires us to introduce a perturbation Hamiltonian of the form
+\begin{align*}
+	H_{\text{d}} = \frac{e^{2}B^{2}}{8m}(x^{2} + y^{2}),
+\end{align*}
+to each atomic electron. Its expected value is given by
+\begin{align*}
+	\expval{H_{\text{d}}} = \frac{e^{2}B^{2}}{8m}\expval{\rho^{2}}.
+\end{align*}
+Using some implicit statistical mechanics, we obtain
+\begin{align*}
+	\mu = -\grad_{\vb{B}}{\expval{H_{\text{d}}}} = -\frac{e^{2}B}{4m}\expval{\rho^{2}}
+\end{align*}
+for a single electron. The total magnetic moment is thus
+\begin{align*}
+	\mu = -\frac{Ze^{2}B}{4m}\expval{\rho^{2}}.
+\end{align*}
+Rewriting this in terms of the atomic radius, we obtain
+\begin{align*}
+	M = n\mu = -\frac{nZe^{2}B}{6m}\expval{r^{2}},
+\end{align*}
+and finally the susceptibility
+\begin{align*}
+	\chi = -\frac{nZe^{2}\mu_{0}}{6m}\expval{r^{2}}.
+\end{align*}
+
+\paragraph{Paramagnetism in Atoms}
+It turns out that by considering atomic electrons as non-interacting electrons in a Coulomb potential and adding a perturbation Hamiltonian
+\begin{align*}
+	H_{\text{p}} = \frac{e\hbar}{2m}L_{z},
+\end{align*}
+where $\vb{L}$ is now the total angular momentum, paramagnetic effects are obtained.
+
+Paramagnetic effects are often found in atoms with unfilled inner electron shells. The contributions to the total magnetic moment from orbital and spin effects are
+\begin{align*}
+	\vb*{\mu}_{S} = -g_{S}\mu_{\text{B}}\vb{S},\ \vb*{\mu}_{L} = -g_{L}\mu_{\text{B}}\vb{L},
+\end{align*}
+where $\vb{L}$ and $\vb{S}$ are the operators corresponding only to the quantum numbers. The two factors $g$ have their origin in relativistic quantum mechanics, and are given by $g_{L} = 1,\ g_{S} \approx 2$. The total angular momentum for an atom is given by
+\begin{align*}
+	\vb{J} = \vb{L} + \vb{S},
+\end{align*}
+meaning that the corresponding magnetic moment should be on the form
+\begin{align*}
+	\vb*{\mu}_{J} = -g\mu_{\text{B}}\vb{J}.
+\end{align*}
+On the other hand, we have
+\begin{align*}
+	\vb*{\mu} = \vb*{\mu}_{L} + \vb*{\mu}_{S} = -\mu_{\text{B}}(\vb{L} + 2\vb{S}) = -\mu_{\text{B}}(\vb{J} + \vb{S}).
+\end{align*}
+This allows us to compute $g$ by assuming that $\vb{J}$ precesses around the $z$-axis much slower than $\vb{L}$ and $\vb{S}$ around $\vb{J}$ due to the greater strength of the spin-orbit coupling compared to the external field. This means that the total magnetic moment is parallel to $\vb{J}$ on average, and we can thus compute $\vb*{\mu}_{J}$ as the component of the total magnetic moment which is parallel to $\vb{J}$. We obtain
+\begin{align*}
+	\vb*{\mu}_{J} = \frac{\vb*{\mu}\cdot\vb{J}}{J^{2}}\vb{J} = -\left(1 + \frac{\vb{S}\cdot\vb{J}}{J^{2}}\right)\mu_{\text{B}}\vb{J}.
+\end{align*}
+To proceed we use the fact that
+\begin{align*}
+	\vb{L} = \vb{J} - \vb{S},\ L^{2} = J^{2} + S^{2} - 2\vb{S}\cdot\vb{J}
+\end{align*}
+to obtain
+\begin{align*}
+	g = 1 + \frac{J(J + 1) + S(S + 1) - L(L + 1)}{2J(J + 1)}.
+\end{align*}
+While you should use the quantum numbers $S$, $L$ and $J$, I have only seen the quantum numbers $M_{S}$, $M_{L}$ and $M_{J}$ be used in examples. This is a bit of a stretch, if you ask me.
+
+To compute the involved quantum numbers for a given electron configuration, distribute the atomic electrons in hydrogen-like orbitals and use the fact that electrons distribute in the orbitals according to Hund's rules:
+\begin{enumerate}
+	\item Distribute the electrons in the occupied orbitals such that the total spin in the $z$-direction $M_{S}$ is maximized.
+	\item Given this, distribute the electrons in the occupied orbitals such that the total angular momentum in the $z$-direction $M_{L}$ is maximized.
+	\item Compute the total angular momentum in the $z$-direction according to $M_{J} = \abs{M_{L} - M_{S}}$ if the shell is less than half-filled and $M_{J} = M_{L} + M_{S}$ if the shell is more than half-filled.
+\end{enumerate}
+
+To proceed, we will now study the statistics of such a system. Each atom is a multi-level system with partition function
+\begin{align*}
+	Z = \sum\limits_{m_{J} = -M_{J}}^{M_{J}}e^{\beta\vb*{\mu}\cdot\vb{B}} = \sum\limits_{m_{J} = -M_{J}}^{M_{J}}e^{-\beta gm_{J}\mu_{\text{B}}B}.
+\end{align*}
+Relabelling the sum and computing it yields
+\begin{align*}
+	Z &= e^{\beta gM_{J}\mu_{\text{B}}B}\sum\limits_{m_{J} = 0}^{2M_{J} + 1}e^{-\beta gm_{J}\mu_{\text{B}}B} \\
+	  &= e^{\beta gM_{J}\mu_{\text{B}}B}\frac{1 - e^{-\beta g(2M_{J} + 1)\mu_{\text{B}}B}}{1 - e^{-\beta g\mu_{\text{B}}B}} \\
+	  &= \frac{\sinh(\frac{1}{2}\beta g(2M_{J} + 1)\mu_{\text{B}}B)}{\sinh(\frac{1}{2}\beta g\mu_{\text{B}}B)}.
+\end{align*}
+The magnetic moment is given by
+\begin{align*}
+	\expval{\mu_{z}} = \frac{1}{Z}\sum\limits_{m_{J} = -M_{J}}^{M_{J}}-gm_{J}\mu_{\text{B}}e^{-\beta gm_{J}\mu_{\text{B}}B} = \dv{\ln{Z}}{\beta B}.
+\end{align*}
+We obtain
+\begin{align*}
+	\expval{\mu_{z}} = \frac{2M_{J} + 1}{2}g\mu_{\text{B}}\coth(\frac{2M_{J} + 1}{2}\beta g\mu_{\text{B}}B) - \frac{1}{2}g\mu_{\text{B}}\coth(\frac{1}{2}\beta g\mu_{\text{B}}B).
+\end{align*}
+Introducing $x = \beta gM_{J}\mu_{\text{B}}B$ we obtain
+\begin{align*}
+	\expval{\mu_{z}} = g\mu_{\text{B}}M_{J}B_{M_{J}}(x),
+\end{align*}
+where we have defined the Brillouin functions
+\begin{align*}
+	B_{M_{J}}(x) = \frac{2M_{J} + 1}{2M_{J}}\coth(\frac{2M_{J} + 1}{2M_{J}}x) - \frac{1}{2M_{J}}\coth(\frac{1}{2M_{J}}x).
+\end{align*}
+The magnetization is thus
+\begin{align*}
+	M = ng\mu_{\text{B}}M_{J}B_{M_{J}}\left(\beta gM_{J}\mu_{\text{B}}B\right).
+\end{align*}
+
+The low-temperature limit of this is
+\begin{align*}
+	M = M_{J}gn\mu_{\text{B}},
+\end{align*}
+corresponding to full magnetic ordering.
+
+The high-temperature limit satisfies
+\begin{align*}
+	B_{M_{J}}(x) &\approx \frac{2M_{J} + 1}{2M_{J}}\left(\frac{2M_{J}}{(2M_{J} + 1)x} + \frac{1}{3}\frac{2M_{J} + 1}{2M_{J}}x\right) - \frac{1}{2M_{J}}\left(\frac{2M_{J}}{x} + \frac{1}{3}\frac{1}{2M_{J}}x\right) \\
+	             &= \frac{(2M_{J} + 1)^{2} - 1}{12M_{J}^{2}}x \\
+	             &= \frac{M_{J} + 1}{3M_{J}}x,
+\end{align*}
+and thus
+\begin{align*}
+	M &= ng\mu_{\text{B}}M_{J}\frac{M_{J} + 1}{3M_{J}}\beta gM_{J}\mu_{\text{B}}B \\
+	  &= \frac{ng^{2}M_{J}(M_{J} + 1)\mu_{\text{B}}^{2}B}{3\kb T}.
+\end{align*}
+From this the susceptibility is
+\begin{align*}
+	\chi = \frac{\mu_{0}np^{2}\mu_{\text{B}}^{2}}{3\kb T},
+\end{align*}
+where we have introduced the effective number of Bohr magnetons $p = g\sqrt{M_{J}(M_{J} + 1)}$. The high-temperature limit thus satisfies Curie's law with a Curie constant
+\begin{align*}
+	C = \frac{\mu_{0}np^{2}\mu_{\text{B}}^{2}}{3\kb}.
+\end{align*}
+
+\paragraph{Paramagnetism of Filled Shells}
+As an example of Hund's rules, let us study the magnetism of a filled shell. In such a shell, there exist an electron with $m_{s} = -\frac{1}{2}$ for each electron with $m_{s} = \frac{1}{2}$, hence $M_{S} = 0$. Furthermore, for each state with a given $m_{l}$, there exists a state with an equal and opposite $m_{l}$. Both are filled, and thus $M_{L} = 0$ and finally $M_{J} = 0$. This is reassuring, as we now only need to consider valence electrons when performing such studies.
+
+\paragraph{Magnetism in the Electron Gas}
+At zero field, free electrons have an equal probability of having either spin. However, the introduction of an external field skews the statistics towards one configuration, splitting the density of states into two terms corresponding to either spin and creating paramagnetism. This effect is very small as the energy change is much smaller than the Fermi level, which is the energy at which electrons might switch energies.
+
+The number of electrons that switch spins is approximately
+\begin{align*}
+	\Delta N = \mu_{\text{B}}BD_{2}(E_{\text{F}}) \approx \frac{1}{2}\mu_{\text{B}}BD(E_{\text{F}})
+\end{align*}
+where $D_{2}$ is the density of states with unfavorable spin and $D$ is the total density of states. The total magnetization is thus
+\begin{align*}
+	M = \frac{2\mu_{\text{B}}\Delta N}{V} = \frac{\mu_{\text{B}^{2}}BD(E_{\text{F}})}{V} = \frac{3\mu_{\text{B}}^{2}BN}{2E_{\text{F}}},
+\end{align*}
+and the susceptibility is
+\begin{align*}
+	\chi = \frac{3\mu_{0}\mu_{\text{B}}^{2}N}{2E_{\text{F}}}.
+\end{align*}
+
+In addition to this paramagnetic contribution there is a diamagnetic contribution. Landau showed that it was equal to a third of the paramagnetic contribution in magnitude, yielding the total susceptibility
+\begin{align*}
+	\chi = \frac{\mu_{0}\mu_{\text{B}}^{2}N}{E_{\text{F}}}.
+\end{align*}
+While we have neglected the temperature dependence along the way, it turns out that the susceptibility is almost temperature-independent.
+
+\paragraph{Ferromagnetism}
+Ferromagnetic materials exhibit spontaneous magnetization at zero applied field. Their behaviour is characterized by being ferromagnetic at low temperatures before undergoing a phase transition to a paramagnetic phase at higher temperatures. The critical temperature for ferromagnets is termed the Curie temperature. The existence of ferromagnetism can be explained by introducing coupling between atomic angular momenta in a solid.
+
+\paragraph{The Weiss Model}
+The Weiss model is a phenomenological theory of ferromagnetism and, as we will see, antiferromagnetism. It introduces an exchange field
+\begin{align*}
+	\vb{B}_{\text{E}} = \lambda\mu_{0}\vb{M}
+\end{align*}
+which must be taken into consideration when considering interactions with the magnetic field, but not when solving Maxwell's equations. $\lambda$ is a dimensionless constant. The effect of this term is to simulate the coupling effects described above.
+
+\paragraph{Ferromagnetism in the Weiss Model}
+%TODO: Clear up transition to only z-components
+In the paramagnetic phase we have
+\begin{align*}
+	M = ng\mu_{\text{B}}M_{J}B_{M_{J}}\left(\beta gM_{J}\mu_{\text{B}}B\right),
+\end{align*}
+where the total magnetic field is given by $B = B_{\text{a}} + \vb{B}_{\text{E}}$. We thus obtain
+\begin{align*}
+	M = ng\mu_{\text{B}}M_{J}B_{M_{J}}\left(\beta gM_{J}\mu_{\text{B}}(B_{\text{a}} + \lambda\mu_{0}M)\right).
+\end{align*}
+To solve for the magnetization and susceptibility, we consider the high-temperature limit, where we have
+\begin{align*}
+	M = ng\mu_{\text{B}}M_{J}\frac{M_{J} + 1}{3M_{J}}\beta gM_{J}\mu_{\text{B}}(B_{\text{a}} + \lambda\mu_{0}M) = \frac{ng^{2}M_{J}(M_{J} + 1)\mu_{\text{B}}^{2}}{3\kb T}(B_{\text{a}} + \lambda\mu_{0}M).
+\end{align*}
+Re-introducing the Curie constant, we have
+\begin{align*}
+	M(T - \lambda C) = \frac{C}{\mu_{0}}B_{\text{a}}.
+\end{align*}
+The susceptibility is thus
+\begin{align*}
+	\chi = \frac{C}{T - \lambda C}.
+\end{align*}
+This naturally introduces the definition of the Curie temperature $T_{\text{C}} = \lambda C$. Below this temperature, the susceptibility is infinitely large and spontaneous magnetization can exist. In reality, the temperature at which the susceptibility is expected to be infinite and the onset of ferromagnetism differ slightly, but this is usually neglected.
+
+In the ferromagnetic phase, spontaneous magnetization is expected at zero field. Re-employing the multi-level approach, the magnetization at zero field is given by
+\begin{align*}
+	M = ngM_{J}\mu_{\text{B}}B_{M_{J}}\left(\beta\lambda gM_{J}\mu_{\text{B}}\mu_{0}M\right),
+\end{align*}
+which is an implicit equation in terms of the magnetization. The Curie temperature is the lowest temperature at which the solution is $M = 0$. To identify this temperature, we first re-express the above result as
+\begin{align*}
+	m = B_{M_{J}}\left(tm\right),\ m = \frac{M}{ngM_{J}\mu_{\text{B}}},\ t = \beta\lambda g^{2}M_{J}^{2}n\mu_{\text{B}}^{2}\mu_{0} = \lambda\frac{3M_{J}}{M_{J} + 1}\frac{C}{T}.
+\end{align*}
+Identifying the magnetization at a given temperature is now reduced to finding zeros of the function
+\begin{align*}
+	f(m) = B_{M_{J}}\left(tm\right) - m.
+\end{align*}
+At low temperatures $t$ becomes very large and the Brillouin function goes to $1$. The solution is thus $m = 1$, corresponding to
+\begin{align*}
+	M = ngM_{J}\mu_{\text{B}}.
+\end{align*}
+This is the saturation magnetization of the ferromagnetic phase.
+
+%TODO: Explain away trivial zero
+We have $f(0) = 0$ according to the previously shown Taylor expansion and $f$ diverging to negative infinity as $m$ increases, hence the system has a non-zero magnetization if $f$ is positive for small $f$. To identify the phase transition, we identify the lowest temperature at which $m = 0$ is the only zero. We have
+\begin{align*}
+	\dv{f}{m} &= -\left(\frac{2M_{J} + 1}{2M_{J}}\right)^{2}t\csch[2](\frac{2M_{J} + 1}{2M_{J}}tm) + \frac{1}{(2M_{J})^{2}}t\csch[2](\frac{1}{2M_{J}}tm) - 1 \\
+	          &= \frac{1}{(2M_{J})^{2}}t\left(\csch[2](\frac{1}{2M_{J}}tm) - (2M_{J} + 1)^{2}t\csch[2](\frac{2M_{J} + 1}{2M_{J}}tm)\right) - 1.
+\end{align*}
+In order for $m = 0$ to be the only solution, we must therefore have
+\begin{align*}
+	\frac{1}{(2M_{J})^{2}}t\left(\csch[2](\frac{1}{2M_{J}}tm) - (2M_{J} + 1)^{2}t\csch[2](\frac{2M_{J} + 1}{2M_{J}}tm)\right) = 1
+\end{align*}
+for $m = 0$. To proceed, we apply the Taylor expansion
+\begin{align*}
+	\csch(x) \approx \frac{1}{x} - \frac{x}{6},\ \csch[2](x) \approx \frac{1}{x^{2}} - \frac{1}{3}.
+\end{align*}
+to obtain
+\begin{align*}
+	\csch[2](\frac{1}{2M_{J}}tm) - (2M_{J} + 1)^{2}t\csch[2](\frac{2M_{J} + 1}{2M_{J}}tm) &\approx \left(\frac{2M_{J}}{tm}\right)^{2} - \frac{1}{3} - (2M_{J} + 1)^{2}\left(\left(\frac{2M_{J}}{(2M_{J} + 1)tm}\right)^{2} - \frac{1}{3}\right) \\
+	&= \frac{2M_{J}(2M_{J} + 2)}{3}.
+\end{align*}
+Inserting this into the previous expression yields
+\begin{align*}
+	\frac{M_{J} + 1}{3M_{J}}t = 1,
+\end{align*}
+and finally
+\begin{align*}
+	\lambda\frac{3M_{J}}{M_{J} + 1}\frac{C}{T_{\text{c}}} = \frac{3M_{J}}{M_{J} + 1},\ T_{\text{C}} = \lambda C.
+\end{align*}
+Great - the presence of the phase transition checks out.
+
+In a more general case the orbital angular momenta in the paramagnetic phase cancel out, leaving $M_{J} = M_{S}$ - a minor modification that might be useful to remember
+
+The Weiss model has certain complications. Some solids have weak coupling between angular momenta, as opposed to the strong coupling which is required for the Weiss model to work. For these cases, $J$ is a better quantum number than $S$. In addition, certain materials have interactions between the atomic structure and the band electrons, altering the effectiveness of the interactions and thereby certain parameters in the model. This also has an effect on the ferromagnetic phase, where the saturation magnetization is $M = n_{\text{B}}n\mu_{\text{B}}$, where $n_{\text{B}} \neq p$ is the effective number of Bohr magnetons.
+
+\paragraph{The Heisenberg Model}
+The Heisenberg model is a quantum theory of ferromagnetism and antiferromagnetism. It adds the interaction energy
+\begin{align*}
+	U = -2J\vb{J}_{i}\cdot\vb{J}_{j}
+\end{align*}
+between two angular momenta, where $J$ is the so-called exchange integral which arises due to overlap of wavefunctions.
+
+To see how it connects to the Weiss model, we will compute the value of the exchange integral in the Weiss model. We have
+\begin{align*}
+	U_{i} = -\vb*{\mu}_{i}\cdot\vb{B}_{\text{eff}} = g\mu_{\text{B}}\vb{J}\cdot\lambda\mu_{0}\vb{M}_{\text{eff}} = g\mu_{\text{B}}\vb{J}_{i}\cdot -\lambda\mu_{0}ng\mu_{\text{B}}\vb{J}_{\text{eff}} = -\lambda\mu_{0}ng^{2}\mu_{\text{B}}^{2}\vb{J}_{i}\cdot\vb{J}_{\text{eff}}.
+\end{align*}
+Replacing $\lambda$ with the Curie temperature and constant, we obtain
+\begin{align*}
+	U_{i} = -\frac{3\kb T_{\text{C}}}{\mu_{0}ng^{2}M_{J}(M_{J} + 1)\mu_{\text{B}}^{2}}\mu_{0}ng^{2}\mu_{\text{B}}^{2}\vb{J}_{i}\cdot\vb{J}_{\text{eff}} = -\frac{3\kb T_{\text{C}}}{M_{J}(M_{J} + 1)}\vb{J}_{i}\cdot\vb{J}_{\text{eff}}
+\end{align*}
+Attributing the effective angular momentum to a mean of the angular momenta of the $z$ nearest neighbours and splitting the interaction energy evenly between the two angular momenta, we obtain
+\begin{align*}
+	J = \frac{3\kb T_{\text{C}}}{2zM_{J}(M_{J} + 1)}.
+\end{align*}
+
+The sign of the exchange integral need not be positive, and negative exchange integrals describe both antiferromagnetism and frustrated magnets.
+
+\paragraph{Antiferromagnetism}
+Antiferromagnetic materials exhibit spontaneous spin ordering at zero applied field. Their behaviour is characterized by being antiferromagnetic at low temperatures before undergoing a phase transition to a paramagnetic phase at higher temperatures. The critical temperature for antiferromagnets is termed the Néel temperature.
+
+\paragraph{The Weiss Model for Antiferromagnets}
+To describe antiferromagnets, they are first divided into two sublattices $A$ and $B$ corresponding to each spin configuration and considering only nearest-neighbour interactions - in other words, only interactions with the other lattice. The field experienced by the two lattices are given by
+\begin{align*}
+	\vb{B}_{A} = \vb{B}_{\text{a}} - \lambda\mu_{0}\vb{M}_{B},\ \vb{B}_{B} = \vb{B}_{\text{a}} - \lambda\mu_{0}\vb{M}_{A}
+\end{align*}
+where the exchange field necessarily has similar parameters. At high temperatures we have
+\begin{align*}
+	M_{A} \approx \frac{C}{\mu_{0}T}B_{A},\ M_{B} \approx \frac{C\mu_{0}}{T}B_{B},\ C = \frac{n\mu_{0}g^{2}M_{J}(M_{J} + 1)\mu_{\text{B}}^{2}}{3\kb},
+\end{align*}
+where the Curie constants are assumed to be the same, an assumption corresponding to the lattices containing equal amounts of atoms and the angular momenta being of equal magnitude. This thus yields
+\begin{align*}
+	\frac{\mu_{0}T}{C}M_{A} = B_{\text{a}} - \lambda\mu_{0}M_{B},\ \frac{\mu_{0}T}{C}M_{B} = B_{\text{a}} - \lambda\mu_{0}M_{A}.
+\end{align*}
+To identify the Néel, temperature, we identify the temperature such that a non-zero solution for the magnetization exists. This occurs at
+\begin{align*}
+	\left(\frac{\mu_{0}T}{C}\right)^{2} - \lambda^{2}\mu_{0}^{2} = 0,
+\end{align*}
+meaning that the Néel temperature is $T_{\text{N}} = \lambda C$.
+
+To find the susceptibility, we need the total magnetization, which can be found by adding the two equations. Multiplying by $\mu_{0}$ and dividing by the external field yields
+\begin{align*}
+	\chi = \mu_{0}\frac{M_{A} + M_{B}}{B_{\text{a}}} = \mu_{0}\frac{2}{\frac{\mu_{0}T}{C} + \lambda\mu_{0}} = \frac{2C}{T + T_{\text{N}}}.
+\end{align*}
+This can be interpreted as being similar to Curie's law but with a Curie constant equal to the total Curie constant of the lattice. The susceptibility is not singular, but the measured behaviour has a kink in the susceptibility at the Néel temperature.
