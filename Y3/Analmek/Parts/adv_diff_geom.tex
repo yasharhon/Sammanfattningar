@@ -1,0 +1,246 @@
+\section{Advanced Differential Geometry}
+
+In this part we will expand on the previously discussed concepts of differential geometry, mainly by incorporating our knowledge of tensors into it.
+
+\paragraph{The Metric Tensor}
+The metric tensor $g$ is a rank $2$ tensor. We start by defining it as $g(\vb{v}, \vb{w}) = \vb{v}\cdot\vb{w}$, but more generally the metric tensor defines the inner product.
+
+The metric tensor is symmetric. Its components satisfy
+\begin{align*}
+	v_{a} = \vb{E}_{a}\cdot v^{b}\vb{E}_{b} = g(\vb{E}_{a}, \vb{E}_{b})v^{b} = g_{ab}v^{b},
+\end{align*}
+and likewise
+\begin{align*}
+	v^{a} = g^{ab}v_{b}
+\end{align*}
+where $\vb{v}$ is a vector. This demonstrates the capabilities of the metric to raise and lower indices.
+
+We note that
+\begin{align*}
+	v_{a} = g_{ab}v^{b} = g_{ab}g^{bc}v_{c},
+\end{align*}
+which implies $g_{ab}g^{bc} = \kdelta{a}{c}$.
+
+\example{The Metric in Polar Coordinates}
+The contravariant components of the metric tensor, according to the definition, are
+\begin{align*}
+	g_{rr} = \tb{r}\cdot\tb{r} = 1,\ g_{r\phi} = g_{\phi r} = \tb{r}\cdot\tb{\phi} = 0,\ g_{\phi\phi} = \tb{\phi}\cdot\tb{\phi} = r^{2}.
+\end{align*}
+Likewise, the covariant components are
+\begin{align*}
+	g^{rr} = \db{r}\cdot\db{r} = 1,\ g_{r\phi} = g_{\phi r} = \db{r}\cdot\db{\phi} = 0,\ g_{\phi\phi} = \db{\phi}\cdot\db{\phi} = \frac{1}{r^{2}}.
+\end{align*}
+
+\paragraph{Christoffel Symbols}
+When computing the derivative of a vector quantity, one must account both for the change in the quantity itself and the change in the basis vectors. We define the Christoffel symbols according to
+\begin{align*}
+	\del{b}{\tb{a}} = \chris{c}{b}{a}\tb{c}.
+\end{align*}
+These can be computed according to
+\begin{align*}
+	\db{c}\cdot\del{b}{\tb{a}} = \db{c}\cdot\chris{d}{b}{a}\tb{d} = \kdelta{d}{c}\chris{d}{b}{a} = \chris{c}{b}{a}.
+\end{align*}
+Note that
+\begin{align*}
+	\del{a}{\tb{b}} = \del{a}{\del{b}{\vb{r}}} = \del{b}{\del{a}{\vb{r}}} = \del{b}{\tb{a}},
+\end{align*}
+which implies
+\begin{align*}
+	\chris{c}{b}{a} = \chris{c}{a}{b}.
+\end{align*}
+
+Do the Christoffel symbols define a tensor? Someone should probably study that.
+
+\example{Christoffel Symbols in Polar Coordinates}
+To compute these, we need partial derivative of the basis vectors. We have
+\begin{align*}
+	\del{r}{\tb{r}} = \vb{0},\ \del{\phi}{\tb{r}} = \del{r}{\tb{\phi}} = \frac{1}{r}\tb{\phi},\ \del{\phi}{\tb{\phi}} = -r\tb{r}.
+\end{align*}
+We thus obtain
+\begin{align*}
+	\chris{a}{r}{r} = 0,\ \chris{r}{r}{\phi} = 0,\ \chris{\phi}{r}{\phi} = \frac{1}{r},\ \chris{r}{\phi}{\phi} = -r,\ \chris{\phi}{\phi}{\phi} = 0.
+\end{align*}
+
+\paragraph{Covariant Derivatives}
+The partial derivate of $\vb{v} = v^{a}\tb{a}$ with respect to $\chi^{a}$ is given by
+\begin{align*}
+	\del{a}{\vb{v}} = \tb{b}\del{a}{v^{b}} + v^{b}\del{a}{\tb{b}} = \tb{b}\del{a}{v^{b}} + v^{b}\chris{c}{a}{b}\tb{c}.
+\end{align*}
+Renaming the summation indices yields
+\begin{align*}
+	\del{a}{\vb{v}} = \tb{b}(\del{a}{v^{b}} + v^{c}\chris{b}{a}{c}),
+\end{align*}
+which contains one term from the change in the coordinates and one term from the change in basis.
+
+Realizing that derivatives of vector quantities must take both of these into account in order to transform like a tensor, we would like to define a differentiation operation that takes both of these to account when differentiating vector components. This is the covariant derivative. We define its action on contravariant vector components as
+\begin{align*}
+	\dcov{a}{v^{b}} = \del{a}{v^{b}} + v^{c}\chris{b}{a}{c},
+\end{align*}
+such that
+\begin{align*}
+	\del{a}{\vb{v}} = E_{b}\dcov{a}{v^{a}}.
+\end{align*}
+In a similar fashion we would like to define its action on covariant vector components. To do this, we use the fact that
+\begin{align*}
+	\del{a}{(\tb{b}\cdot\db{c})} = \del{a}{\kdelta{b}{c}} = 0.
+\end{align*}
+The product rule yields
+\begin{align*}
+	\tb{b}\cdot\del{a}{\db{c}} + \db{c}\cdot\del{a}{\tb{b}} = \tb{b}\cdot\del{a}{\db{c}} + \db{c}\cdot\chris{d}{a}{b}\tb{d} = \tb{b}\cdot\del{a}{\db{c}} + \kdelta{d}{c}\cdot\chris{d}{a}{b} = \tb{b}\cdot\del{a}{\db{c}} + \chris{c}{a}{b},
+\end{align*}
+which implies
+\begin{align*}
+	\del{a}{\db{c}} = -\chris{c}{a}{b}\db{b}.
+\end{align*}
+Repeating the steps above now yields
+\begin{align*}
+	\dcov{a}{v_{b}} = \del{a}{v_{b}} - \chris{c}{a}{b}v_{c}.
+\end{align*}
+
+\paragraph{Covariant Derivatives of Tensor Fields}
+
+\paragraph{Christoffel Symbols and the Metric}
+The derivatives of the metric tensor are given by
+\begin{align*}
+	\del{c}{g_{ab}} = \tb{a}\cdot\del{c}{\tb{b}} + \tb{b}\cdot\del{c}{\tb{a}} = \tb{a}\cdot\chris{d}{c}{b}\tb{d} + \tb{b}\cdot\chris{d}{c}{a}\tb{d} = \chris{d}{c}{b}g_{ad} + \chris{d}{c}{a}g_{bd}.
+\end{align*}
+Multiplying by $g^{ea}$ and summing over $a$ yields
+\begin{align*}
+	g^{ea}\del{c}{g_{ab}} = \chris{d}{c}{b}g_{ad}g^{ea} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{d}{c}{b}g_{da}g^{ae} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{e}{c}{b} + \chris{d}{c}{a}g_{bd}g^{ea}.
+\end{align*}
+The hope is that this can be used to obtain an expression for the Christoffel symbols. To try to do that, we will compare this to the expression obtained by switching $c$ and $b$. This expression is
+\begin{align*}
+	g^{ea}\del{b}{g_{ac}} = \chris{e}{b}{c} + \chris{d}{b}{a}g_{cd}g^{ea} = \chris{e}{c}{b} + \chris{d}{b}{a}g_{cd}g^{ea},
+\end{align*}
+yielding
+\begin{align*}
+	\chris{e}{c}{b} &= \frac{1}{2}\left(g^{ea}\del{c}{g_{ab}} + g^{ea}\del{b}{g_{ac}} - \chris{d}{c}{a}g_{bd}g^{ea} - \chris{d}{b}{a}g_{cd}g^{ea}\right) \\
+	                &= \frac{1}{2}g^{ea}\left(\del{c}{g_{ab}} + \del{b}{g_{ac}} - \chris{d}{a}{c}g_{bd} - \chris{d}{a}{c}g_{cd}\right) \\
+	                &= \frac{1}{2}g^{ea}\left(\del{c}{g_{ab}} + \del{b}{g_{ac}} - \del{a}{g_{bc}}\right).
+\end{align*}
+
+\paragraph{Curve Length}
+Consider some curve parametrized by $t$, and let $\dot{\vb{\gamma}}$ denote its tangent. The curve length is given by
+\begin{align*}
+	\dd{s}^{2} = \dd{\vb{x}}\cdot\dd{\vb{x}} = g(\dot{\vb{\gamma}}, \dot{\vb{\gamma}})\dd{t}^{2} = g_{ab}\dot{\chi^{a}}\dot{\chi^{b}}\dd{t}^{2}.
+\end{align*}
+The curve length is now given by
+\begin{align*}
+	L = \integ{}{}{t}{\sqrt{g_{ab}\dot{\chi^{a}}\dot{\chi^{b}}}}.
+\end{align*}
+
+\paragraph{Geodesics}
+A geodesic is a curve that extremises the curve length between two points. From variational calculus, it is known that such curves satisfy the Euler-Lagrange equations, and we would like a differential equation that describes such a curve. By defining $\mathcal{L} = \sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}$, the Euler-Lagrange equations for the curve length becomes
+\begin{align*}
+	\del{\chi^{a}}{\mathcal{L}} - \dv{t}\del{\dot{\chi}^{a}}{\mathcal{L}} = 0.
+\end{align*}
+The Euler-Lagrange equation thus becomes
+\begin{align*}
+	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}g_{bc}(\dot{\chi}^{b}\kdelta{a}{c} + \dot{\chi}^{c}\kdelta{a}{b})\right) = 0, \\
+	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}(g_{ba}\dot{\chi}^{b} + g_{ac}\dot{\chi}^{c}\right) = 0, \\
+	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{\mathcal{L}}g_{ac}\dot{\chi}^{c}\right) = 0.
+\end{align*}
+Expanding the time derivative yields
+\begin{align*}
+	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \frac{1}{\mathcal{L}}\dv{t}(g_{ac}\dot{\chi}^{c}) + g_{ac}\dot{\chi}^{c}\frac{1}{\mathcal{L}^{2}}\dv{\lag}{t} = \frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \frac{1}{\lag}\dv{t}(g_{ac}\dot{\chi}^{c}) + \frac{1}{\lag}g_{ac}\dot{\chi}^{c}\dv{\ln{\lag}}{t} = 0.
+\end{align*}
+The curve may be reparametrized such that $\lag$ is equal to $1$ everywhere, yielding
+\begin{align*}
+	\frac{1}{2\mathcal{L}}\left(\dot{\chi}^{a}\dot{\chi}^{b}\del{c}{g_{ab}} - \dv{t}(2\dot{\chi}^{a}g_{ac})\right) = 0.
+\end{align*}
+We note that the expression in the paranthesis is the Euler-Lagrange equation for the integral of $\mathcal{L}^{2}$, a nice fact for the future. Expanding the derivative yields
+\begin{align*}
+	\frac{1}{\mathcal{L}}\left(\frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}\del{c}{g_{ab}} - g_{ac}\ddot{\chi}^{a} - \dot{\chi}^{a}\dot{\chi}^{b}\del{b}{g_{ac}}\right) = 0.
+\end{align*}
+To remove the metric from the second derivative, we multiply by $-g^{cd}\mathcal{L}$ to obtain
+\begin{align*}
+	&g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(2\del{b}{g_{ac}} - \del{c}{g_{ab}}) = 0, \\
+	&g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{bc}} - \del{c}{g_{ab}}) = 0, \\
+	&\ddot{\chi}^{d} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{bc}} - \del{c}{g_{ab}}) = 0.
+\end{align*}
+This is the geodesic equation. It may alternatively be written in terms of the Christoffel symbols as
+\begin{align*}
+	\ddot{\chi}^{d} + \chris{d}{a}{b}\dot{\chi}^{a}\dot{\chi}^{b} = 0.
+\end{align*}
+
+\paragraph{Christoffel Symbols and the Geodesic Equation}
+Consider a straight line with a tangent vector of constant magnitude. In euclidean space, this is a geodesic. This curve satisfies
+\begin{align*}
+	\vb{0} = \dv{\dot{\vb*{\gamma}}}{t} = (\dot{\vb*{\gamma}}\cdot\grad)\dot{\vb*{\gamma}} = \dot{\chi}^{a}\del{a}{\dot{\vb*{\gamma}}} = \dot{\chi}^{a}(\dcov{a}{\dot{\chi}^{d}})\tb{d} = (\dot{\chi}^{a}\del{a}{\dot{\chi}^{d}} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{d}{a}{c})\tb{d}.
+\end{align*}
+Comparing this to the geodesic equation yields
+\begin{align*}
+	\chris{d}{a}{b} = \frac{1}{2}g^{dc}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}).
+\end{align*}
+A better approach would have been to go through the derivation of the geodesic equation again, identifying the Christoffel symbols as you go, but I am not sure if that is what I did in the previous paragraph. In any case we have already obtained this result.
+
+\paragraph{Manifolds}
+A manifold is a set which is locally isomorphic to $\R^{n}$. We will take this to mean that we can locally impose coordinates $\chi^{a}$ on the manifold.
+
+Along with the definition of a manifold come certain other definitions. A local description of the manifold is called a chart. A collection of charts such that the combination of the charts describe the entire manifold is called an atlas. $n$ is called the dimension of the manifold.
+
+\paragraph{Manifolds and Vectors}
+Even though manifolds are locally isomorphic to Euclidean space, the vectors that were previously developed do not make sense when applied to this Euclidean space.
+
+\example{Tangent Vectors on $S_{2}$}
+Consider $S_{2}$, the unit sphere in $\R^{3}$, and suppose you cover it with a layer of water like an ocean, introduce north and south poles, place two sailors on opposite sides of the equator and tell both of them to sail south at some given speed. In practice, this means that they should both travel in their local $-y$ direction. Assuming vectors in the two spaces to make sense, you would conclude that the sailors are sailing in the same direction at the same speed and could not possibly hit each other. The accident which would occur at the south pole would of course prove you wrong. This example is one, very verbose, way of expressing why the vectors in the local Euclidean spaces do not make sense.
+
+This argument seems to have one hole in it, namely that $S_{2}$ is implicitly embedded in $\R^{3}$. Using this fact, the collision between the sailors could be deduced using the previously developed concepts of vectors. The reason why this would work is that you could impose a position vector in $\R^{3}$ onto every point on $S_{2}$. This is not a feature of more general manifold, meaning that this hole does not exist for more general manifolds.
+
+\paragraph{Tangent Vectors}
+Tangent vectors describe how scalar fields change with displacement along a curve. In Euclidean space the tangent basis was composed of derivatives with respect to the set of coordinates. In general curved spaces, we define
+\begin{align*}
+	\tb{a} = \del{a}{}.
+\end{align*}
+Derivatives are linear operators, so at least the set of tangent bases span some vector space and it makes sense to call a derivative a vector. A general tangent vector is now
+\begin{align*}
+	X = X^{a}\tb{a} = X^{a}\del{a}{}.
+\end{align*}
+To get more of a sense of how this can be related to vectors, consider the directional derivative
+\begin{align*}
+	\grad_{\vb{n}} = \vb{n}\cdot\grad = n^{a}\del{a}{}.
+\end{align*}
+When applied to Euclidean space, there is a direct correspondence between $\vb{n}$ and the directional derivative, as $\grad_{\vb{n}}{\vb{x}} = \vb{n}$. For more general manifolds, tangent vectors are defined to be directional derivatives. Note that this definition carries with it the same dependence on position as was previously warned about.
+
+Tangent vectors transform according to
+\begin{align*}
+	X^{a}\del{a}{} = X^{a}\del{a}{(\chi^{\prime})^{b}}\del[\prime]{b}{},
+\end{align*}
+implying the transformation rule
+\begin{align*}
+	(X^{\prime})^{a} = \del{b}{(\chi^{\prime})^{a}}X^{b},
+\end{align*}
+which is the same as the transformation rule for contravariant vector components in Euclidean space.
+
+\paragraph{Dual Vectors}
+To define dual vectors, we first introduce the dual space as the set of all linear operations from the tangent space to real numbers. This is also a vector space. The basis for the space is defined such that
+\begin{align*}
+	\db{a}(\del{b}{}) = \kdelta{b}{a}.
+\end{align*}
+
+In Euclidean space the dual basis was constructed from the gradient. The only concept here that carries over to manifolds is a definition based on small changes in the coordinates. More specifically, for any smooth scalar field $f$ we define a dual vector field according to
+\begin{align*}
+	df(X) = Xf = X^{a}\del{a}{f}
+\end{align*}
+and call it the differential (it is still not clear to me whether this has anything to do with the actual differential of a function). This has a similar structure to an inner product if the dual vector field has components $df_{a} = \del{a}{f}$. These components correspond to those of the gradient in Euclidean space. The basis we desire is $d\chi^{a}$.
+
+The components transform according to
+\begin{align*}
+	\del{a}{f} = \del[\prime]{b}{f}\del{a}{(\chi^{\prime})^{b}},
+\end{align*}
+which is the transformation rule for covariant vector components.
+
+\paragraph{The Geometry of Curved Space}
+We can also impose a metric tensor such that $\vb{v}\cdot\vb{w} = g_{ab}v^{a}w^{b}$, where the metric tensor is symmetric and positive definite.
+
+Dual vectors can be defined as linear maps from tangent vectors to scalars, i. e. on the form
+\begin{align*}
+	V(\vb{w}) = V_{a}w^{a}.
+\end{align*}
+In particular, the dual vector $\dd{f}$ can be defined as
+\begin{align*}
+	\dd{f}(\vb{v}) = v^{a}\del{a}{f} = \dv{f}{t}
+\end{align*}
+along a curve with $\vb{v}$ as a tangent. A basis for the space of dual vectors is $e^{a} = \dd{\chi^{a}}$. The tangent and dual spaces, if a metric exists, are related by $v_{a} = g_{ab}v^{b}$.
+
+Curve lengths are defined and computed as before. By defining geodesics as curves that extremize path length, this gives a set of Christoffel symbols and therefore a covariant derivative and a sense of what it means for a vector to change along a curve.
