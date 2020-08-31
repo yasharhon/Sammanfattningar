@@ -65,7 +65,7 @@ In the case of a time-independent Hamiltonian, the solution must be of the form 
 A symmetry in a quantum mechanics context is any transformation acting on Hilbert space that leaves all probabilities invariant.
 
 \paragraph{Wigner's Theorem}
-Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary (the latter adds a complex conjucation when acting on a state multiplied by a number).
+Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary ($\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$).
 
 \paragraph{Transformation of Operators}
 Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
@@ -110,7 +110,7 @@ This implies
 \end{align*}
 
 \paragraph{The Heisenberg Equation}
-Heisenberg's outlook starts from preserving expectation values under time translations, arriving at the transformation rule
+Heisenberg's outlook starts from preserving expectation values under time translations in such a way that all (total) time evolution is contained in the operators, arriving at the transformation rule
 \begin{align*}
 	A_{\text{H}} = \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t).
 \end{align*}
@@ -121,3 +121,75 @@ $A_{\text{H}}$ is the operator according to Heisenberg and $A_{\text{S}}$ is the
 	                                  &= -H_{\text{H}}A_{\text{H}} + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + A_{\text{H}}H_{\text{H}} \\
 	                                  &= -{H_{\text{H}}}\comm{A_{\text{H}}} + (i\hbar\del{t}{A_{\text{S}}})_{\text{H}}.
 \end{align*}
+
+\paragraph{Propagators}
+The probability amplitude at some point $x$ at time $t$ is given by
+\begin{align*}
+	\Psi(x, t) = \braket{x}{\Psi(t)} = \mel{x}{u_{0}(t)}{\Psi(0)} = \integ{}{}{x^{\prime}}{\mel{x}{u_{0}(t)}{x^{\prime}}\braket{x^{\prime}}{\Psi(0)}}.
+\end{align*}
+Defining the propagator $G_{x^{\prime}, t^{\prime}}(x, t) = \mel{x}{u_{t^{\prime}}(t)}{x^{\prime}}$, we arrive at
+\begin{align*}
+	\Psi(x, t) = \integ{}{}{x^{\prime}}{G_{x^{\prime}, 0}(x, t)\braket{x^{\prime}}{\Psi(0)}} = \integ{}{}{x^{\prime}}{G_{x^{\prime}, 0}(x, t)\Psi(x^{\prime}, 0)}.
+\end{align*}
+Hence the propagator acts as a Green's function with respect to time, in some sense.
+
+\paragraph{Arriving at Path Integrals}
+The general propagator of some state is given by
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) = \sum\limits_{\gamma}G_{\gamma; x^{\prime}, t^{\prime}}(x, t),
+\end{align*}
+where the summation is performed over all possible paths $\gamma$ between the two points.
+
+Suppose now that the time evolution is divided into steps such that
+\begin{align*}
+	u_{t^{\prime}}(t) = \prod\limits_{k = 1}^{n}u_{t_{k - 1}}(t_{k}),\ t_{0} = t^{\prime},\ t_{n} = t,\ t_{k} - t_{k - 1} = \delta t.
+\end{align*}
+Then
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) = \mel**{x}{\prod\limits_{k = 1}^{n}u_{t_{k - 1}}(t_{k})}{x^{\prime}}.
+\end{align*}
+For every $k$ we now introduce an identity according to
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) &= \mel**{x}{\prod\limits_{k = 1}^{n}u_{t_{k - 1}}(t_{k})\integ{}{}{x_{k}}{\op{x_{k - 1}}{x_{k - 1}}}}{x^{\prime}} \\
+	                                 &= \mel**{x}{\prod\limits_{k = 1}^{n}\integ{}{}{x_{k}}{u_{t_{k - 1}}(t_{k})\op{x_{k - 1}}{x_{k - 1}}}}{x^{\prime}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}\mel{x_{k}}{u_{t_{k - 1}}(t_{k})}{x_{k - 1}}.
+\end{align*}
+The time translation operator has the form $u_{t_{k - 1}}(t_{k}) = e^{-i\frac{\Delta t}{\hbar}H}$. For a Hamiltonian of the form $H = \frac{p^{2}}{2m} + V(\vb{x})$, the terms do not necessarily commute. However, to second order we have
+\begin{align*}
+	e^{\alpha A}e^{\alpha B} &= \left(1 + \alpha A + \frac{1}{2}\alpha^{2}A^{2} + \dots\right)\left(1 + \alpha B + \frac{1}{2}\alpha^{2}B^{2} + \dots\right), \\
+	e^{\alpha(A + B)}  &= 1 + \alpha A + \alpha B + \frac{1}{2}\alpha^{2}(A^{2} + B^{2} + AB + BA) + \dots, \\
+	           &= e^{A}e^{B}\left(1 - \frac{1}{2}\alpha^{2}AB + \frac{1}{2}\alpha^{2}BA + \dots\right) \\
+	           &= e^{\alpha A}e^{\alpha B}e^{\frac{1}{2}\alpha^{2}\comm{A}{B}}.
+\end{align*}
+Ignoring the second-order term yields
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}\mel{x_{k}}{e^{-i\frac{\Delta t}{\hbar}(T + V)}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\mel{x_{k}}{e^{-i\frac{\Delta t}{\hbar}T}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\mel**{x_{k}}{e^{-i\frac{\Delta t}{\hbar}T}\integ{}{}{p_{k}}{\op{p_{k}}{p_{k}}}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\mel**{x_{k}}{\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{\hbar}T}\op{p_{k}}{p_{k}}}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{2m\hbar}p_{k}^{2}}\braket{x_{k}}{p_{k}}\braket{p_{k}}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{2m\hbar}p_{k}^{2}}\frac{1}{2\pi\hbar}e^{i\frac{p_{k}(x_{k} - x_{k - 1})}{\hbar}}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}e^{i\frac{m}{2\hbar\Delta t}(x_{k} - x_{k - 1})^{2}}\frac{1}{2\pi\hbar}\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{2m\hbar}\left(p_{k} - \frac{m}{\Delta t}(x_{k} - x_{k - 1})\right)^{2}}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}e^{i\frac{m}{2\hbar\Delta t}(x_{k} - x_{k - 1})^{2}}\sqrt{\frac{m}{2\pi^{2}\hbar\Delta ti}}\integ{}{}{v_{k}}{e^{-v_{k}^{2}}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}e^{i\frac{m}{2\hbar\Delta t}(x_{k} - x_{k - 1})^{2}}\sqrt{\frac{m}{2\pi\hbar\Delta ti}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}\sqrt{\frac{m}{2\pi\hbar\Delta ti}}e^{i\frac{1}{\hbar}\sum\limits_{k = 1}^{n}\left(\frac{1}{2}m\left(\frac{x_{k} - x_{k - 1}}{\Delta t}\right)^{2} - V(x_{k - 1})\right)\Delta t}.
+\end{align*}
+In the continuous limit the exponent becomes
+\begin{align*}
+	i\frac{1}{\hbar}\integ{}{}{t}{\frac{1}{2}m\dot{x}^{2} - V(x)} = i\frac{S}{\hbar}
+\end{align*}
+where $S$ is the action. The remaining factor, termed the measure, is
+\begin{align*}
+	D(x(t)) = \lim\limits_{\Delta t \to 0}\prod\limits_{k = 1}^{n}\dd{x_{k}}\sqrt{\frac{m}{2\pi\hbar\Delta ti}}.
+\end{align*}
+Finally the propagator is given by
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) &= \int D(x(t))e^{-i\frac{S}{\hbar}}.
+\end{align*}
+This is termed the path integral.
+
+As a side note, if the action is large compared to $\hbar$, the action varies strongly, causing destructive interference from all paths except for the one such that
+\begin{align*}
+	\fdv{S}{x} = 0.
+\end{align*}
+This is Hamilton's principle, the fundamental postulate of classical mechanics.
