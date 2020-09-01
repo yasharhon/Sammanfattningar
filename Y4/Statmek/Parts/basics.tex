@@ -6,6 +6,29 @@ Landau introduced the concept that phase transitions are defined by spontaneous 
 \paragraph{Order Parameters}
 An order parameter describes spontaneous symmetry breaking. It is zero in one phase and non-zero in another.
 
+\paragraph{Density Matrices}
+The probability distribution is of the form
+\begin{align*}
+	p_{n} = \frac{1}{\sum\limits_{m}P_{m}}P_{n} = \frac{1}{Z}P_{n},
+\end{align*}
+where the summation is performed over some set of states. We now introduce the density matrix
+\begin{align*}
+	\rho = \frac{1}{Z}\sum\limits_{n}P_{n}\op{n}{n},
+\end{align*}
+yielding
+\begin{align*}
+	\expval{O} = \sum\limits_{n}p_{n}O_{nn} = \sum\limits_{n}\frac{1}{Z}P_{n}\expval{O}{n} = \frac{1}{Z}\sum\limits_{n}\sum\limits_{m}P_{n}\braket{n}{m}\mel{m}{O}{n} = \frac{1}{Z}\sum\limits_{n}\sum\limits_{m}\mel{n}{\rho}{m}\mel{m}{O}{n} = \tr(O\rho).
+\end{align*}
+
+As a side note, $\rho$ takes the form
+\begin{align*}
+	\rho = \frac{1}{Z}e^{-\beta K},
+\end{align*}
+where $K$ is the Hamiltonian in the canonical ensemble and $H - \mu N$ in the grand canonical ensemble. In these cases, the partition function $Z$ may be computed according to
+\begin{align*}
+	Z = \sum\limits_{m}P_{m} = \sum\limits_{m}e^{-\beta K_{m}} = \sum\limits_{m}\mel{m}{e^{-\beta K}}{m} = \tr(e^{-\beta K}).
+\end{align*}
+
 \paragraph{The Ising Model}
 The Ising model is a simple model of magnets. In this model, a magnet is a collection of interacting spins on a lattice under the influence of an external field. Its generalized coordinates are $\sigma_{i}$, which may take the values $\pm 1$, signifying a particular spin pointing up or down. The Hamiltonian is
 \begin{align*}
