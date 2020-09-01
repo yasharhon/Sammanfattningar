@@ -25,7 +25,8 @@ Expectation values are given by
 \paragraph{Physical States}
 Modifying a state by a phase factor $e^{i\alpha}$ does not change any expectation values.
 
-\paragraph{Mixed States}
+\paragraph{Pure and Mixed States}
+Pure states are states with a well-defined state vector. Mixed states are states wherein the state vector is not well-defined.
 
 \paragraph{Density Matrix}
 The density matrix is defined as
@@ -41,8 +42,9 @@ It has some cool properties. For instance:
 \end{align*}
 Note that the latter is only true for pure states. Mixed states have a density matrix of the form
 \begin{align*}
-	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}}.
+	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}},
 \end{align*}
+where the $P_{j}$ are the probability that the state of the system is $\ket{\Psi_{j}}$.
 
 \paragraph{The Time Evolution Operator}
 Suppose that there exists an operator $u_{t'}(t)$ which evolves $\ket{\Psi(t')}$ to $\ket{\Psi(t)}$. Such an operator should satisfy
@@ -193,3 +195,83 @@ As a side note, if the action is large compared to $\hbar$, the action varies st
 	\fdv{S}{x} = 0.
 \end{align*}
 This is Hamilton's principle, the fundamental postulate of classical mechanics.
+
+\paragraph{The Harmonic Oscillator}
+The Hamiltonian of the harmonic oscillator is
+\begin{align*}
+	H = \frac{1}{2m}p^{2} + \frac{1}{2}m\omega^{2}x^{2}.
+\end{align*}
+To diagonalize it we introduce the lowering operator
+\begin{align*}
+	a = \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}x + \frac{i}{\sqrt{m\omega\hbar}}p\right)
+\end{align*}
+and its adjoint, the raising operator. Their commutator is
+\begin{align*}
+	\comm{a}{\adj{a}} &= \comm{\frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}x + \frac{i}{\sqrt{m\omega\hbar}}p\right)}{\frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}x - \frac{i}{\sqrt{m\omega\hbar}}p\right)} \\
+	                  &= \comm{\frac{1}{\sqrt{2}}\sqrt{\frac{m\omega}{\hbar}}x}{-\frac{1}{\sqrt{2}}\frac{i}{\sqrt{m\omega\hbar}}p} + \comm{\frac{1}{\sqrt{2}}\frac{i}{\sqrt{m\omega\hbar}}p}{\frac{1}{\sqrt{2}}\sqrt{\frac{m\omega}{\hbar}}x} \\
+	                  &= \frac{1}{2}\frac{i}{\hbar}\left(\comm{x}{-p} + \comm{p}{x}\right) \\
+	                  &= 1.
+\end{align*}
+The definition of the raising and lowering operators may be inverted to obtain
+\begin{align*}
+	x = \frac{1}{\sqrt{2}}\sqrt{\frac{\hbar}{m\omega}}(\adj{a} + a),\ p = \frac{i}{\sqrt{2}}\sqrt{m\omega\hbar}(\adj{a} - a).
+\end{align*}
+The Hamiltonian may now be written in terms of these operators as
+\begin{align*}
+	H &= \frac{1}{2m}\cdot -\frac{1}{2}m\omega\hbar(\adj{a} - a)^{2} + \frac{1}{2}m\omega^{2}\frac{1}{2}\frac{\hbar}{m\omega}(\adj{a} + a)^{2} \\
+	  &= -\frac{1}{4}\hbar\omega(\adj{a} - a)^{2} + \frac{1}{4}\hbar\omega(\adj{a} + a)^{2} \\
+	  &= \frac{1}{4}\hbar\omega\left((\adj{a})^{2} + \adj{a}a + a\adj{a} + a^{2} - \left((\adj{a})^{2} - \adj{a}a - a\adj{a} + a^{2}\right)\right) \\
+	  &= \frac{1}{2}\hbar\omega\left(\adj{a}a + a\adj{a}\right) \\
+	  &= \hbar\omega\left(\adj{a}a + \frac{1}{2}\right).
+\end{align*}
+We now define the operator $n = \adj{a}a$. It is Hermitian, meaning that an orthonormal basis of its eigenvectors exists (fortunately, as it constitutes the Hamiltonian). These eigenvectors must be studied next. To do this, we use the commutation relations\footnote{What might inspire this? A suggestion might be the fact that if $n$ and the raising and lowering operators commuted, we would find that they share eigenvectors.}
+\begin{align*}
+	\comm{n}{a} = \adj{a}\comm{a}{a} + \comm{\adj{a}}{a}a = -a,\ \comm{n}{\adj{a}} = \adj{a}\comm{a}{\adj{a}} + \comm{\adj{a}}{\adj{a}}a = \adj{a}
+\end{align*}
+applied to some eigenvector $\ket{\nu}$ with eigenvalue $\nu$ to obtain
+\begin{align*}
+	na\ket{\nu} = (an - a)\ket{\nu} = (\nu - 1)a\ket{\nu}.
+\end{align*}
+Hence, if some eigenvalue $\nu$ exists, we can repeat this argument to show that $\nu - 1,\ \nu - 2, \dots$ are also eigenvalues, assuming no value in this sequence is zero. The length of these eigenvectors is given by
+\begin{align*}
+	\expval{\adj{a}a}{\nu} = \nu\braket{\nu} \geq 0,
+\end{align*}
+where the latter is due to the positivity of the inner product. In order for this to work, no negative eigenvalues may exist. This only fits with the previous sequence of eigenvalues if $\nu = 0$ is an eigenvalue.
+
+Having established that, we rename the eigenvalues to $n$. Next, we have
+\begin{align*}
+	n\adj{a}\ket{n} = (\adj{a}n + \adj{a})\ket{n} = (n + 1)\adj{a}\ket{n}.
+\end{align*}
+Hence the sequence $n + 1, n + 2, \dots$ also consists of eigenvalues of $n$. The length of such vectors is
+\begin{align*}
+	\expval{a\adj{a}}{n} = \expval{\adj{a}a + 1}{n} = (n + 1)\braket{n} > 0.
+\end{align*}
+Now the eigenvalues of the Hamiltonian are found to be
+\begin{align*}
+	H_{n} = \hbar\omega\left(n + \frac{1}{2}\right),\ H\ket{n} = H_{n}\ket{n}.
+\end{align*}
+
+With respect to degeneracy, suppose there is a set of eigenvectors denoted by the index $k$ such that $a\ket{0, k} = 0$. In the coordinate basis we obtain
+\begin{align*}
+	\mel**{x}{\frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}x + \frac{i}{\sqrt{m\omega\hbar}}p\right)}{0, k} = \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}x + \sqrt{\frac{\hbar}{m\omega}}\dv{x}\right)\Psi_{0, k} = 0.
+\end{align*}
+The solution to this differential equation is unique, hence the ground state is non-degenerate. The linearity of the raising operator therefore implies that the other eigenvalues are non-degenerate as well.
+
+With respect to normalization, we may require all states to be normalized. Then
+\begin{align*}
+	\adj{a}\ket{n}      &= c_{n + 1}\ket{n + 1}, \\
+	\abs{c_{n + 1}}^{2} &= \expval{a\adj{a}}{n} = \expval{n + 1}{n} = n + 1, \\
+	c_{n}               &= \sqrt{n}.
+\end{align*}
+Next we have
+\begin{align*}
+	a\adj{a}\ket{n - 1} &= \sqrt{n}a\ket{n} \\
+	n\ket{n - 1}        &= \sqrt{n}a\ket{n}, \\
+	a\ket{n}            &= \sqrt{n}\ket{n - 1}.
+\end{align*}
+
+Finally, the excited states may be found according to
+\begin{align*}
+	\ket{n} = \frac{1}{\sqrt{n}}\adj{a}\ket{n - 1} = \dots = \frac{1}{\sqrt{n!}}(\adj{a})^{n}\ket{0},
+\end{align*}
+which when applied to the ground state will reproduce some special function.
