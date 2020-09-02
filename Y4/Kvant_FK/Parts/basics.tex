@@ -275,3 +275,79 @@ Finally, the excited states may be found according to
 	\ket{n} = \frac{1}{\sqrt{n}}\adj{a}\ket{n - 1} = \dots = \frac{1}{\sqrt{n!}}(\adj{a})^{n}\ket{0},
 \end{align*}
 which when applied to the ground state will reproduce some special function.
+
+\paragraph{Symmetries and Conserved Quantities}
+Suppose that there exists some unitary transformation $u = e^{-i\frac{\varepsilon}{\hbar}A}$ such that $\adj{u}Hu = H$. Expanding the symmetry yields
+\begin{align*}
+	\left(1 + i\frac{\varepsilon}{\hbar}A + \dots\right)H\left(1 - i\frac{\varepsilon}{\hbar}A + \dots\right) = H + i\frac{\varepsilon}{\hbar}(-HA + AH) + \dots = H + i\frac{\varepsilon}{\hbar}\comm{A}{H} + \dots = H,
+\end{align*}
+implying that $A$ and $H$ commute. Assuming $A$ to have no explicit time dependence, Heisenberg's equations yield that $\expval{A}$ is conserved. These arguments form the basis of some form of Nöether's theorem in quantum mechanics.
+
+\paragraph{Rotations}
+Consider an axis $\vb{n}$. The rotation symmetry operator about this axis is termed $u(\theta\vb{n})$. There must be three generators of rotations in three dimensions, and if we want them to correspond to the classical notion of rotations, they must satisfy the commutation relation
+\begin{align*}
+	\comm{J_{i}}{J_{j}} = i\hbar\varepsilon_{ijk}J_{k}.
+\end{align*}
+These generators are the operators for angular momentum, as will be shown.
+
+The total angular momentum is given by $J^{2} = J_{i}J_{i}$, and thus commutes with all of its component. Hence we can find a basis for Hilbert space composed of joint eigenvectors of $J^{2}$ and any one component of $\vb{J}$ (usually $J_{z}$).
+
+\paragraph{Properties of Angular Momentum}
+To study the properties of angular momentum, we will use the method of raising and lowering operators. Working in the basis of eigenvectors of $J^{2}$ and $J_{z}$, the raising and lowering operators are
+\begin{align*}
+	J_{+} = J_{x} + iJ_{y},\ J_{-} = J_{x} - iJ_{y}.
+\end{align*}
+We have
+\begin{align*}
+	\comm{J_{z}}{J_{\pm}} = \comm{J_{z}}{J_{x} \pm iJ_{y}} = i\hbar(J_{y} \mp iJ_{x}) = \hbar(iJ_{y} \pm J_{x}) = \pm\hbar(J_{x} \pm iJ_{y}) = \pm\hbar J_{\pm}.
+\end{align*}
+Now introduce the eigenstates $\ket{j, m}$ such that $J^{2}\ket{j, m} = \hbar^{2}j(j + 1)\ket{j, m}$ and $J_{z}\ket{j, m} = \hbar m\ket{j, m}$. We have
+\begin{align*}
+	J_{z}J_{\pm}\ket{j, m} = (J_{\pm}J_{z} \pm \hbar J_{\pm})\ket{j, m} = (m \pm \hbar)J_{\pm}\ket{j, m}.
+\end{align*}
+Hence the raising and lowering operators do indeed raise and lower the angular momentum. Next we have
+\begin{align*}
+	J^{2}J_{\pm}\ket{j, m} = J_{\pm}J^{2}\ket{j, m} = \hbar^{2}j(j + 1)J_{\pm}\ket{j, m}.
+\end{align*}
+Hence the raising and lowering operators do not change the value of the total angular momentum. This imposes a constraint on the possible set of angular momenta - namely, all components of the angular momentum are Hermitian, meaning that $J_{z}^{2}$ may not have eigenvalues larger than $j^{2}$. Hence states exists such that
+\begin{align*}
+	J_{-}\ket{j, m} = 0,\ J_{+}\ket{j, m} = 0.
+\end{align*}
+To identify these, consider the operators
+\begin{align*}
+	J_{-}J_{+} &= J_{x}^{2} + J_{y}^{2} + i\comm{J_{x}}{J_{y}} = J_{x}^{2} + J_{y}^{2} - \hbar J_{z} = J^{2} - J_{z}^{2} - \hbar J_{z}, \\
+	J_{+}J_{-} &= J_{x}^{2} + J_{y}^{2} - i\comm{J_{x}}{J_{y}} = J_{x}^{2} + J_{y}^{2} + \hbar J_{z} = J^{2} - J_{z}^{2} + \hbar J_{z}
+\end{align*}
+Suppose now that we are working on the first eigenstate such that $J_{+}\ket{j, m} = 0$. Then
+\begin{align*}
+	J_{-}J_{+}\ket{j, m} = (J^{2} - J_{z}^{2} - \hbar J_{z})\ket{j, m} = \hbar^{2}(j(j + 1) - m(m + 1))\ket{j, m} = 0.
+\end{align*}
+Hence this $m$ satisfies $m = j$. Similarly, for the state such that $J_{-}\ket{j, m} = 0$, we have
+\begin{align*}
+	J_{-}J_{+}\ket{j, m} = (J^{2} - J_{z}^{2} + \hbar J_{z})\ket{j, m} = \hbar^{2}(j(j + 1) - m^{2} + m)\ket{j, m} = \hbar^{2}(j(j + 1) - m(m - 1))\ket{j, m} = 0.
+\end{align*}
+Hence this $m$ satisfies $m = -j$. Now, as we know that $m$ changes in integer steps between real numbers from $-j$ to $+j$, we must have that $2j$ is an integer.
+
+Next, we choose the basis states to be normalized. Writing $J_{+}\ket{j, m} = c_{j, m}\ket{j, m + 1}$ we have
+\begin{align*}
+	\abs{c_{j, m}}^{2} = \expval{J_{-}J_{+}}{j, m} = \hbar^{2}(j(j + 1) - m(m + 1)),\ J_{+}\ket{j, m} = \hbar\sqrt{j(j + 1) - m(m + 1)}\ket{j, m + 1}.
+\end{align*}
+Similarly, writing $J_{-}\ket{j, m} = c_{j, m}\ket{j, m - 1}$ we have
+\begin{align*}
+	\abs{c_{j, m}}^{2} = \expval{J_{+}J_{-}}{j, m} = \hbar^{2}(j(j + 1) - m(m - 1)),\ J_{-}\ket{j, m} = \hbar\sqrt{j(j + 1) - m(m - 1)}\ket{j, m - 1}.
+\end{align*}
+
+\paragraph{Orbital Angular Momentum}
+Supposing the spatial rotation to be described by some rotation matrix $R$, we require $u_{R}\ket{\vb{r}} = \ket{R\vb{r}}$. This yields
+\begin{align*}
+	\Psi^{\prime}(\vb{r}^{\prime}) = \mel{\vb{r}}{u_{R}}{\Psi} \braket{R^{-1}\vb{r}}{\Psi} = \Psi(R^{-1}\vb{r}).
+\end{align*}
+%TODO: Show this
+It can be shown that this implies that $\Psi$ was acted on by an operator $e^{-i\frac{\theta}{\hbar}L_{i}}$ where
+\begin{align*}
+	L_{i} = \varepsilon_{ijk}x_{j}p_{k}.
+\end{align*}
+This completes the argument that the generators of rotations are indeed angular momenta in the classical sense.
+
+%TODO: Show?
+It turns out that the orbital angular momenta may only have integer multiples of $\hbar$ as their eigenvalue, meaning that classical angular momentum does not by itself contain all the properties of angular momenta, as we have seen. It also turns out that the rest comes from spin.
