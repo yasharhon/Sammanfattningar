@@ -28,18 +28,18 @@ m = \tanh(\beta\left(h + zJm\right)).
 \end{align*}
 This equation can be solved graphically to yield the magnetization, but we will discuss it qualitatively here. Depending on the parameters, the number of solutions is between one and three. In the case where $h = 0$, one solution is $m = 0$, and two other solutions may be found at $m = \pm m_{0}$. At low temperatures the right-hand side approaches $\pm$, yielding $m_{0} = 1$. As the temperature approaches the critical temperature, above which no spontaneous magnetism is found, $m_{0}$ is small and we obtain
 \begin{align*}
-m_{0}                              &\approx \beta zJm_{0} - \frac{1}{3}\left(\beta zJm_{0}\right)^{3}, \\
-\left(\beta zJ\right)^{3}m_{0}^{2} &= 3(\beta zJ - 1), \\
-m_{0}                              &= \frac{1}{\left(\beta zJ\right)^{\frac{3}{2}}}\sqrt{3}\sqrt{\beta zJ - 1} \\
-&= \sqrt{3}\left(\frac{\kb T}{zJ}\right)^{\frac{3}{2}}\sqrt{\frac{zJ}{\kb T} - 1}.
+	m_{0}                              &\approx \beta zJm_{0} - \frac{1}{3}\left(\beta zJm_{0}\right)^{3}, \\
+	\left(\beta zJ\right)^{3}m_{0}^{2} &= 3(\beta zJ - 1), \\
+	m_{0}                              &= \frac{1}{\left(\beta zJ\right)^{\frac{3}{2}}}\sqrt{3}\sqrt{\beta zJ - 1} \\
+	                                   &= \sqrt{3}\left(\frac{\kb T}{zJ}\right)^{\frac{3}{2}}\sqrt{\frac{zJ}{\kb T} - 1}.
 \end{align*}
 We can now identify the temperature such that this is zero, namely
 \begin{align*}
-T_{\text{C}} = \frac{zJ}{\kb}
+	T_{\text{C}} = \frac{zJ}{\kb}
 \end{align*}
 to write
 \begin{align*}
-m_{0} = \sqrt{3}\left(\frac{T}{T_{\text{C}}}\right)^{\frac{3}{2}}\sqrt{\frac{T_{\text{C}}}{T} - 1}.
+	m_{0} = \sqrt{3}\left(\frac{T}{T_{\text{C}}}\right)^{\frac{3}{2}}\sqrt{\frac{T_{\text{C}}}{T} - 1}.
 \end{align*}
 While the existence of solutions to $m = \tanh(\beta zJm)$ would have sufficed to identify the critical temperature, we have now characterized the behaviour of the magnetization close to the phase transition as well. One of the uses of mean-field theory is exactly this qualitative description of the phase diagram.
 
@@ -48,3 +48,88 @@ One more thing should be mentioned, namely the assertion that there actually is 
 S = -N\kb\left(\frac{1 - m}{2}\ln(\frac{1 - m}{2}) + \frac{1 + m}{2}\ln(\frac{1 + m}{2})\right).
 \end{align*}
 We see that the non-zero solutions maximize entropy - a relief.
+
+\paragraph{Critical Behaviour}
+Using the mean-field result, we may now study other quantities close to the phase transition. The susceptibility is given by
+\begin{align*}
+	\chi = \fix{\pdv{m}{h}}{T}.
+\end{align*}
+The implicit equation for the magnetization yields
+\begin{align*}
+	\chi &= \frac{1}{\cosh[2](\beta(qJm + h))}(\beta qJ\chi + \beta), \\
+	\chi &= \frac{\beta}{\cosh[2](\beta(qJm + h)) - \beta qJ} = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - \frac{qJ}{\kb}\right)}.
+\end{align*}
+Introducing the critical temperature, we write this as
+\begin{align*}
+	\chi = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - T{\text{c}}\right)}.
+\end{align*}
+In particular, for $h = 0$ and temperatures above $T_{\text{c}}$, where there is no magnetization, we obtain
+\begin{align*}
+	\chi = \frac{1}{\kb\left(T - T{\text{c}}\right)}.
+\end{align*}
+When approaching the phase transition from below for $h = 0$, we use the asympotic expression for the magnetization to obtain
+\begin{align*}
+	\chi &= \frac{1}{\kb \left(T\cosh[2](\beta qJ\sqrt{3}\left(\frac{T}{T_{\text{C}}}\right)^{\frac{3}{2}}\sqrt{\frac{T_{\text{c}}}{T} - 1}) - T{\text{c}}\right)} \\
+	     &= \frac{1}{\kb \left(T\cosh[2](\sqrt{3}\sqrt{1 - \frac{T}{T_{\text{c}}}}) - T{\text{c}}\right)} \\
+	     &= \frac{1}{\kb \left(T\left(1 + 3\left(1 - \frac{T}{T_{\text{c}}}\right)\right) - T{\text{c}}\right)} \\
+	     &= \frac{1}{\kb T_{\text{c}}\left(\frac{T}{T_{\text{c}}}\left(1 + 3\left(1 - \frac{T}{T_{\text{c}}}\right)\right) - 1\right)} \\
+	     &= \frac{1}{\kb T_{\text{c}}\left(\frac{T}{T_{\text{c}}} + 3\left(1 - \frac{T}{T_{\text{c}}}\right) - 1\right)} \\
+	     &= \frac{1}{2\kb(T - T{\text{c}})}.
+\end{align*}
+I hate this.
+
+\paragraph{The Bragg-Williams Approximation}
+The Bragg-Williams approximation to mean-field theory starts with constructing the availability in terms of the order parameter. In the case of the Ising model, we introduce the numbers $N_{\pm}$ of spins with values $\pm 1$. Furthermore, we introduce the numbers $N_{\pm\pm}$ of spin pairs of any kind. The Hamiltonian is thus
+\begin{align*}
+	\ham = -J(N_{++} + N_{--} - N_{+-}) - h(N_{+} - N_{-}).
+\end{align*}
+Treating the spins as independent allows us to write
+\begin{align*}
+	S = -\kb\left(N_{+}\ln(N_{+}) + N_{-}\ln(N_{-})\right).
+\end{align*}
+%TODO: Show
+The number of pairs is given by
+\begin{align*}
+	N_{\pm\pm} = \frac{qN_{\pm}^{2}}{2N},\ N_{+-} = \frac{qN_{+}N_{-}}{N}.
+\end{align*}
+To proceed, we re-express the spin numbers in terms of the order parameter by using $N = N_{+} + N_{-}$ and $\sigma = N_{+} - N_{-}$ to obtain
+\begin{align*}
+	N_{+} = \frac{1}{2}N(1 + m),\ N_{-} = \frac{1}{2}N(1 - m).
+\end{align*}
+The Hamiltonian is now given by
+\begin{align*}
+	\ham &= -\frac{qJ}{2N}(N_{+}^{2} + N_{-}^{2} - 2N_{+}N_{-}) - Nhm \\
+	     &= -\frac{qJN}{8}((1 + m)^{2} + (1 - m)^{2} - 2(1 + m)(1 - m)) - Nhm \\
+	     &= -\frac{qJN}{2}m^{2} - Nhm,
+\end{align*}
+and the free energy is somehow
+\begin{align*}
+	G(h, T) &= \ham - TS \\
+	        &= -\frac{qJN}{2}m^{2} - Nhm + \frac{1}{2}N\kb T\left((1 + m)\ln(\frac{1}{2}N(1 + m)) + (1 - m)\ln(\frac{1}{2}N(1 - m))\right).
+\end{align*}
+Minimizing it with respect to the order parameter yields
+\begin{align*}
+	&-qJNm - Nh + \frac{1}{2}N\kb T\left(\ln(\frac{1}{2}N(1 + m)) + 1 - \ln(\frac{1}{2}N(1 - m)) - 1\right) = 0, \\
+	&-qJm - h + \frac{1}{2}\kb T\ln(\frac{1 + m}{1 - m}) = 0.
+\end{align*}
+Its solution is
+\begin{align*}
+	\frac{1 + m}{1 - m} = e^{2\beta(qJm + h)}, \\
+	1 + m = (1 - m)e^{2\beta(qJm + h)}, \\
+	m(1 + e^{2\beta(qJm + h)}) = e^{2\beta(qJm + h)} - 1, \\
+	m = \tanh(\beta(qJm + h)),
+\end{align*}
+as expected.
+
+\paragraph{Inaccuracies of Mean-Field Theories}
+The mean-field arguments predict the existence of a phase transition, but this cannot be the case in one dimension. To see this, consider a chain in its ground state and the set of excitations that flips all spins to the right of some spin $k$. The change in energy is $2J$, and the number of possible states corresponding to this energy is $N - 1$, hence the free energy changes by $2J - \kb\ln(N - 1)$. For large $N$ such states are thus always preferable. Their removal of translation invariance implies that there is no magnetization, in contradiction of the mean-field results.
+
+A slightly better result is obtained for a $N\times N$ lattice in two dimensions. The set of excitations now consists of excitations that split the system in two distinct magnetic domains. Any particular excitation is described by a chain running through the bonds. Each segment crosses one bond, and the energy change due to the excitation is $2LJ$, where $L$ is the number of segments. The typical length is $2N$. The next segment may always be placed in at least two sites, neglecting the boundaries. Including the $N$ possible starting points, the multiplicity of the chain is $N2^{L}$, and the free energy change of the excitation is
+\begin{align*}
+	\Delta G = 4NJ - \kb T\ln(2^{2N}N).
+\end{align*}
+The phase transition occurs when this energy change is negative, i.e. when
+\begin{align*}
+	\kb T\ln(2^{2N}N) > 4NJ,\ \kb T(2N\ln(2) + \ln(N)) > 4NJ,\ T < T_{\text{c}} \approx \frac{2J}{\kb\ln(2)},
+\end{align*}
+which is decently close to the analytically obtained results.

@@ -37,3 +37,64 @@ The Ising model is a simple model of magnets. In this model, a magnet is a colle
 The inner summation is carried out over the nearest neighbours of site $i$ in the Ising model, but is generally a sum over the whole lattice. The order parameter defining its phase transition is $m = \expval{\sigma_{i}}$.
 
 This model will be used to demonstrate core concepts in the course.
+
+\paragraph{Exact Solution in One Dimension}
+To solve the Ising model in one dimension we will impose periodic boundary conditions $\sigma_{N} = \sigma_{0}$. In the absence of an external magnetic field the Hamiltonian is
+\begin{align*}
+	\ham = -J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1}.
+\end{align*}
+This yields
+\begin{align*}
+	e^{-\beta\ham} = \prod\limits_{i = 0}^{N - 1}e^{\beta J\sigma_{i}\sigma_{i + 1}}.
+\end{align*}
+Consider one particular factor $T_{\sigma_{i}\sigma_{i + 1}} = e^{\beta J\sigma_{i}\sigma_{i + 1}}$. If we could compute the trace of any one of these, that would directly give us the partition function. However, this rewriting does not decouple the Hamiltonian, making the trace hard to compute. To do that, let us now treat $T_{\sigma_{i}\sigma_{i + 1}}$ as an operator $T_{\sigma_{i + 1}}$ working solely on $\sigma_{i}$ and fix $\sigma_{i + 1}$. The matrix elements of $\sigma_{i}\sigma_{i + 1}$ are
+\begin{align*}
+	\mel{i}{\sigma_{i}\sigma_{i + 1}}{j} = ij\sigma_{i + 1}.
+\end{align*}
+The redefined transfer matrix may thus be written as
+\begin{align*}
+	T_{\sigma_{i + 1}} =
+	\mqty[
+		e^{\beta J \sigma_{i + 1}} & e^{-\beta J \sigma_{i + 1}} \\
+		e^{\beta J \sigma_{i + 1}} & e^{-\beta J \sigma_{i + 1}}.
+	]
+\end{align*}
+Its eigenvalues are the solution to
+\begin{align*}
+	\left(\lambda - e^{\beta J \sigma_{i + 1}}\right)\left(\lambda - e^{-\beta J \sigma_{i + 1}}\right) - 1 = 0.
+\end{align*}
+This is nice as the eigenvalues do not depend on $\sigma_{i + 1}$. Expanding the polynomial yield
+\begin{align*}
+	\lambda^{2} - 2\lambda\cosh(\beta J \sigma_{i + 1}) = 0
+\end{align*}
+and finally the trace
+\begin{align*}
+	\tr(T_{\sigma_{i + 1}}) = 2\cosh(\beta J),
+\end{align*}
+where we have omitted the dependence on $\sigma_{i + 1}$ as it does not factor into the final solution.
+
+Alternatively, we may write the partition function as
+\begin{align*}
+	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}e^{\beta J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1}}.
+\end{align*}
+Introducing $t_{\sigma\sigma^{\prime}} = e^{\beta J\sigma\sigma^{\prime}}$ we have
+\begin{align*}
+	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}\prod\limits_{i = 0}^{N - 1}t_{\sigma_{i}\sigma_{i + 1}}.
+\end{align*}
+Now consider some particular spin and perform the summation over this one first. We obtain
+\begin{align*}
+	\sum\limits_{\sigma_{j} = \pm 1}t_{\sigma_{j - 1}\sigma_{j}}t_{\sigma_{j}\sigma_{j + 1}} = t_{\sigma_{j - 1}\sigma_{j + 1}}^{2}.
+\end{align*}
+This process is repeated until you obtain
+\begin{align*}
+	Z = \tr(t^{N}).
+\end{align*}
+The matrix representation of the transfer matrix is
+\begin{align*}
+	t =
+	\mqty[
+		e^{\beta J}  & e^{-\beta J} \\
+		e^{-\beta J} & e^{\beta J}
+	].
+\end{align*}
+Its eigenvalues are $2\cosh(\beta J)$ and $2\sinh(\beta J)$.
