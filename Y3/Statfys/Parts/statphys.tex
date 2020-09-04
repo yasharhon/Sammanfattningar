@@ -71,7 +71,7 @@ This expression might be useful in some contexts.
 \paragraph{Temperature Balance From Microscopic Arguments}
 Consider two isolated systems in contact. The total energy and multiplicity is given by
 \begin{align*}
-	E = E_{1} + E_{2},\ \Omega \propto \integ{E < E_{\text{T} < E + \delta E}}{}{E_{\text{T}}}{\integ{-\infty}}{E_{\text{T}}}{E_{1}}{\Omega_{2}(E_{\text{T}} - E_{1})\Omega_{1}(E_{1})}.
+	E = E_{1} + E_{2},\ \Omega \propto \integ{E < E_{\text{T}} < E + \delta E}{}{E_{\text{T}}}{\integ{-\infty}}{E_{\text{T}}}{E_{1}}{\Omega_{2}(E_{\text{T}} - E_{1})\Omega_{1}(E_{1})}.
 \end{align*}
 This function is often sharply peaked around some particular $E_{1}$, as both multiplicities are rapidly increasing functions. Hence the total entropy is
 \begin{align*}
@@ -98,7 +98,7 @@ The entropy is extensive, hence we have
 The entropy may be expanded in a series as
 \begin{align*}
 	S_{2}(E - E_{1}) &= S_{2}(E) - \pdv{S_{2}}{E}E_{1} + \frac{1}{2}\pdv[2]{S_{2}}{E}E_{1}^{2} + \dots \\
-	                 &= S_{2}(E) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}}\pdv{E}\left(\frac{1}{T}\right)_{V_{2}, N_{2}}E_{1}^{2} + \dots \\
+	                 &= S_{2}(E) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}}\fix{\pdv{E}\left(T\right)}{V_{2}, N_{2}}E_{1}^{2} + \dots \\
 	                 &= S_{2}(E) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}C_{2}}E_{1}^{2} + \dots
 \end{align*}
 As system $2$ is very large, the higher-order terms may be neglected, yielding
@@ -292,15 +292,104 @@ To understand this we have to study diatomic gases with quantum mechanics. We fi
 
 \subsection{The Grand Canonical Ensemble}
 
+\paragraph{The Grand Canonical Probability Distribution}
+The derivation performed to obtain the canonical partition function was not unique to that transformation. The microcanonical ensemble is specified only in terms of extensive variables, but a switch could be made to any number of intensive variables. This will be demonstrated for the grand canonical ensemble, where the number of particles in a system is allowed to vary.
+
+To show this, consider two systems in contact such that they may exchange energy and particles only between themselves. The total multiplicity is given by
+\begin{align*}
+	\Omega \propto \sum\limits_{N_{1} = 0}^{N}\integ{E < E_{\text{T}} < E + \delta E}{}{E_{\text{T}}}{\integ{-\infty}}{E_{\text{T}}}{E_{1}}{\Omega_{2}(E_{\text{T}} - E_{1}, N - N_{1})\Omega_{1}(E_{1}, N_{1})}.
+\end{align*}
+This function is often sharply peaked around some particular $E_{1}$ and $N_{1}$. Hence the total entropy is
+\begin{align*}
+	S_{1 + 2}(E_{\text{T}}, E_{1}, N, N_{1}) = S_{1}(E_{1}, N_{1}) + S_{2}(E_{\text{T}} - E_{1}, N - N_{1}).
+\end{align*}
+The peak value corresponds to a maximal entropy. Differentiating with respect to $E_{1}$ gives
+\begin{align*}
+	\pdv{S_{1 + 2}}{E_{1}} = \pdv{S_{1}}{E_{1}} + \pdv{S_{2}}{E_{2}}\dv{E_{2}}{E_{1}} = \pdv{S_{1}}{E_{1}} - \pdv{S_{2}}{E_{2}} = 0,\ \frac{1}{T_{1}} = \frac{1}{T_{2}}.
+\end{align*}
+Similarly, with respect to the number of particles we have
+\begin{align*}
+	\pdv{S_{1 + 2}}{N_{1}} = \pdv{S_{1}}{N_{1}} + \pdv{S_{2}}{N_{2}}\dv{N_{2}}{N_{1}} = \pdv{S_{1}}{N_{1}} - \pdv{S_{2}}{N_{2}} = 0,\ \pdv{S_{1}}{N_{1}} = \pdv{S_{2}}{N_{2}}.
+\end{align*}
+The first and second laws of thermodynamics yield
+\begin{align*}
+	\dd{U} = T\dd{S} + \mu\dd{N}.
+\end{align*}
+The derivatives with respect to numbers are taken such that energy is fixed. Hence we have
+\begin{align*}
+	T\fix{\pdv{S}{N}}{U} + \mu = 0,\ \fix{\pdv{S}{N}}{U} = -\frac{\mu}{T}
+\end{align*}
+and the equilibrium condition
+\begin{align*}
+	\frac{\mu_{1}}{T_{1}} = \frac{\mu_{2}}{T_{2}}.
+\end{align*}
+
+Suppose now that system $2$ is much larger than system $1$. We have
+\begin{align*}
+	p(E_{1}, N_{1})\dd{E_{1}} = \frac{\Omega_{2}(E - E_{1}, N - N_{1})\Omega_{1}(E_{1}, N_{1})}{\sum\limits_{N_{1} = 0}^{N}\integ{}{}{E_{1}}{\Omega_{2}(E - E_{1}, N - N_{1})\Omega_{1}(E_{1}, N_{1})}}\dd{E_{1}}.
+\end{align*}
+The entropy is extensive, hence we have
+\begin{align*}
+	\Omega_{2}(E - E_{1}) = e^{\frac{S_{2}(E - E_{1}, N - N_{1})}{\kb}}.
+\end{align*}
+This may be expanded in a series as
+\begin{align*}
+	S_{2}(E - E_{1}) &= S_{2}(E, N) - \pdv{S_{2}}{E}E_{1} + \frac{1}{2}\pdv[2]{S_{2}}{E}E_{1}^{2} - \pdv{S_{2}}{N}N_{1} + \frac{1}{2}\pdv[2]{S_{2}}{N}N_{1}^{2} + \dots \\
+	                  &= S_{2}(E, N) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}}\fix{\pdv{T}{E}}{N_{2}}E_{1}^{2} + \frac{\mu}{T}N_{1} + \frac{1}{2}\fix{\pdv{E}\left(-\frac{\mu}{T}\right)}{T_{2}}N_{1}^{2} + \dots \\
+	                  &= S_{2}(E, N) - \frac{1}{T}(E_{1} - \mu N_{1}) - \frac{1}{2T}\left(\frac{1}{C_{2}T}E_{1}^{2} + \fix{\pdv{\mu}{E}}{T_{2}}N_{1}^{2}\right) + \dots
+\end{align*}
+As system $2$ is very large, the higher-order terms may be neglected, yielding
+\begin{align*}
+	\Omega_{2}(E - E_{1}, N - N_{1}) = e^{\frac{1}{\kb}\left(S_{2}(E, N) - \frac{1}{T}(E_{1} - \mu N_{1})\right)} = Ce^{-\frac{1}{\kb T}(E_{1} - \mu N_{1})}.
+\end{align*}
+Finally we obtain
+\begin{align*}
+	p(E_{1}, N_{1})\dd{E_{1}} = \frac{e^{-\frac{1}{\kb T}(E_{1} - \mu N_{1})}\Omega_{1}(E_{1}, N_{1})}{\sum\limits_{N_{1} = 0}^{N}\integ{}{}{E_{1}}{e^{-\frac{1}{\kb T}(E_{1} - \mu N_{1})}\Omega_{1}(E_{1}, N_{1})}}\dd{E_{1}}.
+\end{align*}
+This is the grand canonical probability distribution, sometimes termed the Gibbs distribution.
+
 \paragraph{The Grand Canonical Partition Function}
-For a system which may exchange energy and particles with its surroundings, we define the grand canonical partition function
+The grand canonical partition function is defined as
 \begin{align*}
-	\Z = \sum e^{-\beta(E_{i} - \mu N_{i})},
+	\Z = \sum\limits_{N = 0}^{\infty}\integ{}{}{E}{e^{-\beta(E - \mu N)}\Omega_{1}(E, N)}.
 \end{align*}
-which may be written as
+The number of particles in the system and reservoir is typically very large and large $N$ add small terms to the sum, hence it may be extended to infinity. This may also be written as
 \begin{align*}
-	\Z = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z_{N}.
+	\Z = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}\integ{}{}{E}{e^{-\beta E}\Omega_{1}(E, N)} = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z_{N}.
 \end{align*}
+
+\paragraph{The Grand Potential}
+The probability distribution may be written as
+\begin{align*}
+	p(E, N) \propto e^{-\beta(E - TS - \mu N)}.
+\end{align*}
+A large system is overwhelmingly likely to be found in the state that maximizes the exponent. Expanding around this maximum yields
+\begin{align*}
+	-\beta(E - TS - \mu N) \approx& -\beta(\expval{E} - T\expval{S} - \mu \expval{N}) \\
+	                              &+ \frac{1}{2}\left(\fix{\pdv[2]{E}\left(-\beta(E - TS - \mu N)\right)}{N}(E - \expval{E})^{2} +  \fix{\pdv[2]{N}\left(-\beta(E - TS - \mu N)\right)}{E}(N - \expval{N})^{2}\right) \\
+	                              &+ \pdv{}{E}{N}\left(-\beta(E - TS - \mu N)\right)(E - \expval{E})(N - \expval{N}).
+\end{align*}
+Letting $\vb{w}$ be a vector containing the fluctuations and $H_{\GP}$ the Hessian matrix of the grand potential with the given restrictions, the higher-order terms take the form of a quadratic form. The grand canonical partition function is thus
+\begin{align*}
+	\Z &= \sum\limits_{N = 0}^{\infty}\integ{}{}{E}{e^{-\beta(\expval{\GP}) + \frac{1}{2}\vb{w}^{T}H_{\GP}\vb{w}}} \\
+	   &= e^{-\beta\expval{\GP}}\sum\limits_{N = 0}^{\infty}\integ{}{}{E}{e^{-\frac{1}{2}\beta\vb{w}^{T}H_{\GP}\vb{w}}}.
+\end{align*}
+The total exponent must be negative definite, hence $\Z$ converges. To compute it, the sum may be approximated as an integral. A change of variables yields
+\begin{align*}
+	\Z \propto e^{-\beta\expval{\GP}}\sqrt{\frac{1}{\beta^{2}\lambda_{1}\lambda_{2}}},
+\end{align*}
+where $\lambda_{i}$ are the eigenvalues of $H_{\GP}$. These are equal to the determinant of $H_{\GP}$, hence we have
+\begin{align*}
+	\ln(\Z) = C - \beta\expval{\GP} + \ln(\frac{\kb}{E_{0}\sqrt{\fix{\pdv[2]{S}{E}}{N}\fix{\pdv[2]{S}{N}}{E} - \left(\pdv{S}{E}{N}\right)^{2}}}).
+\end{align*}
+Entropy is extensive, hence the argument of the logarithm can at most be proportional to $N$. In the thermodynamic limit we thus have
+\begin{align*}
+	\GP = -\kb T\ln(Z).
+\end{align*}
+
+An important point is that this procedure, apart from the summation over $N$ instead of integration, applies to any case where you want to switch from controlling an extensive variable to the conjugate intensive variable. The only special case is the one where $T$ is controlled instead of $U$, but that case has been handled explicitly.
+
+%TODO: Fluctuations in extensive variable
 
 \paragraph{Fugacity}
 We now introduce the often-occuring fugacity

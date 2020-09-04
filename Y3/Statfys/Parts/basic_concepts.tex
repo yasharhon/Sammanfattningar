@@ -17,18 +17,3 @@ The fundamental postulate of statistical mechanics is that all microstates avail
 
 \paragraph{Equilibrium and Multiplicity}
 Combining the fundamental postulate with our knowledge of thermodynamics, it is clear that a system in thermal equilibrium is in the macrostate corresponding to maximal multiplicity.
-
-\paragraph{The Gibbs Factor}
-Consider a system of $N$ particles with internal energy $U$ exchanging energy and particles with a smaller system with energy $\varepsilon$ and $n$ particles. The entropy of the reservoir is
-\begin{align*}
-	S \approx S_{0} - \varepsilon\fix{\pdv{S}{U}}{N, V} - n\fix{\pdv{S}{N}}{U, V} = S_{0} - \frac{1}{T}\left(\varepsilon - \mu n\right).
-\end{align*}
-Writing this in terms of the multiplicity we have
-\begin{align*}
-	\ln{\Omega(E - \varepsilon, N - n)} &= \ln{\Omega(E, N)} - \frac{\varepsilon - \mu n}{\kb T}, \\
-	\Omega(E - \varepsilon, N - n)      &= \Omega(E, N)e^{-\frac{\varepsilon - \mu n}{\kb T}},
-\end{align*}
-implying
-\begin{align*}
-	P(\varepsilon, n) \propto e^{-\beta\left(\varepsilon - \mu n\right)}.
-\end{align*}
