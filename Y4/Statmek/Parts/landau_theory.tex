@@ -1,0 +1,87 @@
+\section{Landau Theory}
+
+\paragraph{Things}
+Close to the phase transition temperature the free energy may be expanded as
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{i}(T)m^{2i}.
+\end{align*}
+At $T = 0$ you will have $\abs{\vb{m}} = 1$. The free energy may only depend on the length of the free energy, hence we have
+\begin{align*}
+	G(\vb{m}, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{2i}(T)m^{2i}.
+\end{align*}
+In order for the free energy to be bounded, the highest-order coefficient must be positive.
+
+Suppose now that as the temperature is lowered, $a_{2}$ is the first coefficient to change sign (one coefficient must do this in order for a minimum to exist). Expand it close to the transition temperature as
+\begin{align*}
+	a_{2}(T) = a_{2, 0}(T - T_{\text{c}}).
+\end{align*}
+The temperature dependence of the order parameter may now be obtained as
+\begin{align*}
+	a_{2}m + a_{4}(T_{\text{c}})m^{3} + \dots = 0.
+\end{align*}
+Ignoring higher-order terms we obtain
+\begin{align*}
+	m = \sqrt{\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}(T_{\text{c}} - T)}.
+\end{align*}
+Next we study the heat capacity
+\begin{align*}
+	C = T\fix{\pdv{S}{T}}{h}.
+\end{align*}
+We have
+\begin{align*}
+	S = -\pdv{G}{T} = -\dv{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv{a_{2i}}{T}m^{2i} + a_{2i}\dv{m^{2i}}{T}\right).
+\end{align*}
+Close to and below the critical temperature we have
+\begin{align*}
+	C &= T\left(-\dv[2]{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} + \dv{a_{2i}}{T}\dv{m^{2i}}{T} + \dv{a_{2i}}{T}\dv{m^{2i}}{T} + a_{2i}\dv[2]{m^{2i}}{T}\right)\right) \\
+	  &= T\left(-\dv[2]{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} + 2\dv{a_{2i}}{T}\dv{m^{2i}}{T} + a_{2i}\dv[2]{m^{2i}}{T}\right)\right).
+\end{align*}
+We have
+\begin{align*}
+	&\dv{m^{2i}}{T} = im^{2(i - 1)}\dv{m^{2}}{T} = -im^{2(i - 1)}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}, \\
+	&\dv[2]{m^{2i}}{T} = i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})},
+\end{align*}
+and thus
+\begin{align*}
+	C =& T\left(-\dv[2]{a_{0}}{T} - \sum\limits_{i = 1}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right)\right) \\
+	  =& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{a_{4}(T_{\text{c}})} - T\sum\limits_{i = 2}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
+	  =& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{a_{4}(T_{\text{c}})} - \frac{1}{4}T\left(\dv[2]{a_{4}}{T}m^{4} - 4\dv{a_{4}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2} + 2a_{4}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
+	   &- T\sum\limits_{i = 3}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
+	  \approx& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{2a_{4}(T_{\text{c}})},
+\end{align*}
+where we have ignored terms containing the magnetization and set all temperatures to be the critical temperature. Above the critical temperature the magnetization is instead identically zero, netting
+\begin{align*}
+	C = -T\dv[2]{a_{0}}{T}.
+\end{align*}
+
+Suppose instead that $a_{4}$ is the first coefficient to change sign. In this case a discontinuous step in the order parameter might occur. To show that such a step exists, we need to show that $a_{2}(T_{\text{c}}) > 0$. We investigate this by comparing $G(m_{0}, T_{\text{c}})$ to $G(0, T_{\text{c}})$, where $m_{0}$ is the magnetization at the minimum. The phase transition occurs when the two are equal, i.e. when
+\begin{align*}
+	G(m_{0}, T_{\text{c}}) - G(0, T_{\text{c}}) = \sum\limits_{i}\frac{1}{2i}a_{2i}(T_{\text{c}})m_{0}^{2i} = 0.
+\end{align*}
+The magnetization corresponds to a minimum of $G$, and thus satisfies
+\begin{align*}
+	\sum\limits_{i}a_{2i}(T_{\text{c}})m_{0}^{2i - 1} = 0.
+\end{align*}
+Ignoring terms above order $6$ we have
+\begin{align*}
+	a_{2}(T_{\text{c}})m_{0} + a_{4}(T_{\text{c}})m_{0}^{3} + a_{6}(T_{\text{c}})m_{0}^{5} = 0,\ \frac{1}{2}a_{2}(T_{\text{c}})m_{0}^{2} + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{4} + \frac{1}{6}a_{4}(T_{\text{c}})m_{0}^{6} = 0.
+\end{align*}
+The non-trivial value satisfies
+\begin{align*}
+	a_{2}(T_{\text{c}}) + a_{4}(T_{\text{c}})m_{0}^{2} + a_{6}(T_{\text{c}})m_{0}^{4} = 0,\ \frac{1}{2}a_{2}(T_{\text{c}}) + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{2} + \frac{1}{6}a_{4}(T_{\text{c}})m_{0}^{4} = 0.
+\end{align*}
+Combining the equation nets
+\begin{align*}
+	\frac{1}{2}a_{4}(T_{\text{c}})m_{0}^{2} + \frac{2}{3}a_{6}(T_{\text{c}})m_{0}^{4} &= 0, \\
+	\frac{1}{2}a_{4}(T_{\text{c}}) + \frac{2}{3}a_{6}(T_{\text{c}})m_{0}^{2}          &= 0, \\
+	m_{0}^{2}                                                                         &= -\frac{3a_{4}(T_{\text{c}})}{4a_{6}(T_{\text{c}})}.
+\end{align*}
+For this to work, we must have $a_{6}(T_{\text{c}}) > 0$ to keep the global minimum at finite magnetization and $a_{4}(T_{\text{c}}) < 0$ per our assumption of the existence of a local minimum, making the magnetization real. Inserting this into a previous expression yields
+\begin{align*}
+	a_{2}(T_{\text{c}}) - a_{4}(T_{\text{c}})\frac{3a_{4}(T_{\text{c}})}{4a_{6}(T_{\text{c}})} + a_{6}(T_{\text{c}})\frac{9a_{4}^{2}(T_{\text{c}})}{16a_{6}^{2}(T_{\text{c}})} = a_{2}(T_{\text{c}}) - \frac{3}{4}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} + \frac{9}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} = a_{2}(T_{\text{c}}) - \frac{3}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} = 0,
+\end{align*}
+and thus
+\begin{align*}
+	a_{2}(T_{\text{c}}) = \frac{3}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} > 0,
+\end{align*}
+as we wanted to show.

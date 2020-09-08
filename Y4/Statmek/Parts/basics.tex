@@ -41,11 +41,11 @@ This model will be used to demonstrate core concepts in the course.
 \paragraph{Exact Solution in One Dimension}
 To solve the Ising model in one dimension we will impose periodic boundary conditions $\sigma_{N} = \sigma_{0}$. In the absence of an external magnetic field the Hamiltonian is
 \begin{align*}
-	\ham = -J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1}.
+	\ham = -J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} - h\sum\limits_{i = 0}^{N - 1}\sigma_{i}.
 \end{align*}
 This yields
 \begin{align*}
-	e^{-\beta\ham} = \prod\limits_{i = 0}^{N - 1}e^{\beta J\sigma_{i}\sigma_{i + 1}}.
+	e^{-\beta\ham} = \prod\limits_{i = 0}^{N - 1}e^{\beta(J\sigma_{i}\sigma_{i + 1} + h\sigma_{i})}.
 \end{align*}
 Consider one particular factor $T_{\sigma_{i}\sigma_{i + 1}} = e^{\beta J\sigma_{i}\sigma_{i + 1}}$. If we could compute the trace of any one of these, that would directly give us the partition function. However, this rewriting does not decouple the Hamiltonian, making the trace hard to compute. To do that, let us now treat $T_{\sigma_{i}\sigma_{i + 1}}$ as an operator $T_{\sigma_{i + 1}}$ working solely on $\sigma_{i}$ and fix $\sigma_{i + 1}$. The matrix elements of $\sigma_{i}\sigma_{i + 1}$ are
 \begin{align*}
@@ -55,29 +55,21 @@ The redefined transfer matrix may thus be written as
 \begin{align*}
 	T_{\sigma_{i + 1}} =
 	\mqty[
-		e^{\beta J \sigma_{i + 1}} & e^{-\beta J \sigma_{i + 1}} \\
-		e^{\beta J \sigma_{i + 1}} & e^{-\beta J \sigma_{i + 1}}.
+		e^{\beta J \sigma_{i + 1} + h} & e^{-\beta J \sigma_{i + 1} - h} \\
+		e^{\beta J \sigma_{i + 1} + h} & e^{-\beta J \sigma_{i + 1} - h}.
 	]
 \end{align*}
 Its eigenvalues are the solution to
 \begin{align*}
-	\left(\lambda - e^{\beta J \sigma_{i + 1}}\right)\left(\lambda - e^{-\beta J \sigma_{i + 1}}\right) - 1 = 0.
+	\left(\lambda - e^{\beta J \sigma_{i + 1} + h}\right)\left(\lambda - e^{-\beta J \sigma_{i + 1} - h}\right) - 1 = 0.
 \end{align*}
-This is nice as the eigenvalues do not depend on $\sigma_{i + 1}$. Expanding the polynomial yield
-\begin{align*}
-	\lambda^{2} - 2\lambda\cosh(\beta J \sigma_{i + 1}) = 0
-\end{align*}
-and finally the trace
-\begin{align*}
-	\tr(T_{\sigma_{i + 1}}) = 2\cosh(\beta J),
-\end{align*}
-where we have omitted the dependence on $\sigma_{i + 1}$ as it does not factor into the final solution.
+This sucks
 
 Alternatively, we may write the partition function as
 \begin{align*}
-	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}e^{\beta J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1}}.
+	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}e^{\left(\beta J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h\sum\limits_{i = 0}^{N - 1}\sigma_{i} + \sigma_{i + 1}\right)}.
 \end{align*}
-Introducing $t_{\sigma\sigma^{\prime}} = e^{\beta J\sigma\sigma^{\prime}}$ we have
+Introducing $t_{\sigma\sigma^{\prime}} = e^{\beta J\sigma\sigma^{\prime} + \frac{1}{2}h(\sigma + \sigma^{\prime})}$ we have
 \begin{align*}
 	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}\prod\limits_{i = 0}^{N - 1}t_{\sigma_{i}\sigma_{i + 1}}.
 \end{align*}
@@ -93,8 +85,70 @@ The matrix representation of the transfer matrix is
 \begin{align*}
 	t =
 	\mqty[
-		e^{\beta J}  & e^{-\beta J} \\
-		e^{-\beta J} & e^{\beta J}
+		e^{\beta(J + h)}  & e^{-\beta J} \\
+		e^{-\beta J} & e^{\beta(J - h)}
 	].
 \end{align*}
-Its eigenvalues are $2\cosh(\beta J)$ and $2\sinh(\beta J)$.
+Its eigenvalues are the solutions to
+\begin{align*}
+	\left(\lambda - e^{\beta(J + h)}\right)\left(\lambda - e^{\beta(J - h)}\right) - e^{-2\beta J} = 0,
+\end{align*}
+and are given by
+\begin{align*}
+	\lambda^{2} - 2e^{\beta J}\cosh(\beta h)\lambda + 2\sinh(2\beta J) &= 0, \\
+	\lambda_{\pm}                                                      &= e^{\beta J}\cosh(\beta h) \pm \sqrt{e^{2\beta J}\cosh[2](\beta h) - 2\sinh(2\beta J)} \\
+	                                                                   &= e^{\beta J}\cosh(\beta h) \pm \sqrt{e^{2\beta J}\sinh[2](\beta h) + e^{-2\beta J}}.	
+\end{align*}
+
+Now that we have the eigenvalues, we identify the partition function as
+\begin{align*}
+	Z = \lambda_{+}^{N} + \lambda_{-}^{N}.
+\end{align*}
+This can be further simplified to
+\begin{align*}
+	Z = \lambda_{+}^{N}\left(1 + \left(\frac{\lambda_{-}}{\lambda_{+}}\right)^{N}\right) \approx \lambda_{+}^{N}.
+\end{align*}
+
+Next, the free energy is given by
+\begin{align*}
+	G = -\kb T\left(N\ln(\lambda_{+}) + \ln(1 + \left(\frac{\lambda_{-}}{\lambda_{+}}\right)^{N})\right).
+\end{align*}
+The magnetization is given by
+\begin{align*}
+	m &= -\frac{1}{N}\fix{\pdv{G}{\beta h}}{T} \\
+	  &\approx \frac{e^{\beta J}\sinh(\beta h) + \frac{e^{2\beta J}\sinh(\beta h)\cosh(\beta h)}{\sqrt{e^{2\beta J}\sinh[2](\beta h) + e^{-2\beta J}}}}{e^{\beta J}\cosh(\beta h) + \sqrt{e^{2\beta J}\sinh[2](\beta h) + e^{-2\beta J}}} \\
+	  &= \sinh(\beta h)\frac{1 + \frac{\cosh(\beta h)}{\sqrt{\sinh[2](\beta h) + e^{-4\beta J}}}}{\cosh(\beta h) + \sqrt{\sinh[2](\beta h) + e^{-4\beta J}}} \\
+	  &= \frac{\sinh(\beta h)}{\sqrt{\sinh[2](\beta h) + e^{-4\beta J}}}.
+\end{align*}
+If $h = 0$ there is no spontaneous magnetization. However, at low temperatures a very small field will produce saturation magnetization. This corresponds to a phase transition at $T = 0$.
+
+Next consider the pair distribution function
+\begin{align*}
+	g(j) = \expval{\sigma_{0}\sigma_{j}}.
+\end{align*}
+The error introduced by assuming uncorrelated spins, as will be done later, is
+\begin{align*}
+	\Gamma(j) = \expval{\sigma_{i}\sigma_{i + j}} - \expval{\sigma_{i}}\expval{\sigma_{i + j}}.
+\end{align*}
+In a general case with different couplings between spins and without an external field we have
+\begin{align*}
+	\expval{\sigma_{i}\sigma_{i + j}} &= \frac{1}{Z}\sum\sigma_{i}\sigma_{i + j}e^{\beta \sum\limits_{i = 0}^{N - 1}J_{i}\sigma_{i}\sigma_{i + 1}} \\
+	                                  &= \frac{1}{Z}\sum\sigma_{i}\sigma_{i + 1}\sigma_{i + 1}\sigma_{i + 2}\dots\sigma_{i + j - 1}\sigma_{i + j}e^{\beta \sum\limits_{i = 0}^{N - 1}J_{i}\sigma_{i}\sigma_{i + 1}} \\
+	                                  &= \frac{1}{Z}\pdv{\beta J_{i}}\dots\pdv{\beta J_{i + j}}Z.
+\end{align*}
+Using the fact that
+\begin{align*}
+	Z = 2\prod\limits_{i = 1}^{N}2\cosh(\beta J_{i})
+\end{align*}
+we obtain
+\begin{align*}
+	\expval{\sigma_{i}\sigma_{i + j}} = \prod\limits_{k = i}^{i + j}\tanh(\beta J_{k}).
+\end{align*}
+In one dimension there is no magnetization. In the case where all couplings are the same we obtain
+\begin{align*}
+	\Gamma(j) = \tanh[j](\beta J) = e^{-\frac{j}{\xi}},
+\end{align*}
+where we have introduced the correlation length
+\begin{align*}
+	\xi = -\frac{1}{\ln(\tanh(\beta J))}.
+\end{align*}
