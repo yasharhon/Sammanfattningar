@@ -1,6 +1,9 @@
 \section{Landau Theory}
 
-\paragraph{Things}
+\paragraph{The Idea}
+Landau's theory is a general theory of phase transitions. The core idea is to series expand the free energy in terms of the order parameter close to the phase transition. This isn't really valid, but this method works nevertheless.
+
+\paragraph{Landau Theory of the Ising Model}
 Close to the phase transition temperature the free energy may be expanded as
 \begin{align*}
 	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{i}(T)m^{2i}.
@@ -85,3 +88,141 @@ and thus
 	a_{2}(T_{\text{c}}) = \frac{3}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} > 0,
 \end{align*}
 as we wanted to show.
+
+\paragraph{Non-Symmetric Cases}
+Suppose we have some case where this symmetry does not hold. Then we would instead use the series expansion
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{i}a_{i}(T)m^{i}.
+\end{align*}
+It might be of interest to remove linear terms. This can be done by introducing a new order parameter $\tilde{m} = m + \Delta$ (the tilde will be omitted from now) where $\Delta$ is chosen appropriately so that
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i = 2}\frac{1}{i}a_{i}(T)m^{i}.
+\end{align*}
+The coefficients have implicitly been modified as well. Truncating the sum at $a_{4}$, we have
+\begin{align*}
+	a_{2}(T_{\text{c}})m_{0} + a_{3}(T_{\text{c}})m_{0}^{2} + a_{4}(T_{\text{c}})m_{0}^{3} = 0.
+\end{align*}
+In addition, at the transition point we have
+\begin{align*}
+	\frac{1}{2}a_{2}(T_{\text{c}})m_{0}^{2} + \frac{1}{3}a_{3}(T_{\text{c}})m_{0}^{3} + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{4} = 0.
+\end{align*}
+The non-zero solution satisfies
+\begin{align*}
+	\frac{1}{3}a_{3}(T_{\text{c}}) + \frac{1}{2}a_{4}(T_{\text{c}})m_{0} = 0,\ m_{0} = -\frac{2}{3}\frac{a_{3}(T_{\text{c}})}{a_{4}(T_{\text{c}})}
+\end{align*}
+and
+\begin{align*}
+	a_{2}(T_{\text{c}}) - \frac{2}{3}\frac{a_{3}^{2}(T_{\text{c}})}{a_{4}(T_{\text{c}})} + \frac{4}{9}\frac{a_{3}^{2}(T_{\text{c}})}{a_{4}(T_{\text{c}})} = 0,\ a_{2}(T_{\text{c}}) = \frac{2}{9}\frac{a_{3}^{2}(T_{\text{c}})}{a_{4}(T_{\text{c}})}
+\end{align*}
+%TODO: Finish
+
+\paragraph{Ginzburg-Landau Theory}
+Landau theory characterizes a system in terms of a single order parameter. Ginzburg-Landau theory instead characterizes the system in terms of a field $m(\vb{r})$. This field could be thought of as at any particular point describing the order parameter when calculated based only on the vicinity of that point. In other words, it is a high-resolution version of Landau theory.
+
+The order parameter extremizes the free energy, which in this theory is given by
+\begin{align*}
+	F = \integ[d]{}{}{\vb{x}}{a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{2i}(T)m^{2i} + \frac{1}{2}f(\grad{m})^{2}}.
+\end{align*}
+The series expansion generalize Landau theory, whereas the last term is a simple extra term that gives non-trivial behaviour of $m$. We assume $f > 0$ as fluctuations should add to the free energy.
+
+The corresponding extensive variable (the external field in the Ising model) is in this theory given by
+\begin{align*}
+	h = \fdv{F}{m}.
+\end{align*}
+We have
+\begin{align*}
+	\var{F} = \integ[d]{}{}{\vb{x}}{\var{m}\sum\limits_{2i}a_{2i}(T)m^{2i - 1} + f\grad{(\var{m})}\cdot\grad{m}}.
+\end{align*}
+Fixing boundary conditions and integrating by parts yields
+\begin{align*}
+	\var{F} = \integ[d]{}{}{\vb{x}}{\var{m}\left(\sum\limits_{i}a_{2i}(T)m^{2i - 1} - f\laplacian{m}\right)},
+\end{align*}
+and finally
+\begin{align*}
+	h = \sum\limits_{i}a_{2i}(T)m^{2i - 1} - f\laplacian{m}.
+\end{align*}
+Truncating the sum yields the result
+\begin{align*}
+	m_{0}^{2} = -\frac{a_{2}(T)}{a_{4}(T)}
+\end{align*}
+below the critical temperature for a second-order transition.
+
+Suppose we add some perturbation $h\delta(\vb{x})$ from $h = 0$, which changes the field to $m_{0} + \phi$. T, where $m_{0}$ is a constant. Truncating the sum at $i = 2$ we obtain
+\begin{align*}
+	h_{0}\delta(\vb{x}) = a_{2}(T)(m_{0} + \phi) + a_{4}(T)(m_{0} + \phi)^{3} - f\laplacian{m_{0}} - f\laplacian{\phi}.
+\end{align*}
+Neglecting higher-order terms in $\phi$ we obtain
+\begin{align*}
+	\laplacian{\phi} - \frac{a_{2}(T)}{f}\phi - \frac{a_{2}(T)}{f}m_{0} - \frac{3a_{4}(T)m_{0}^{2}}{f}\phi - \frac{a_{4}(T)}{f}m_{0}^{3} = -\frac{h_{0}}{f}\delta(\vb{x}).
+\end{align*}
+This simplifies to
+\begin{align*}
+	\laplacian{\phi} + \frac{2a_{2}(T)}{f}\phi = -\frac{h_{0}}{f}\delta(\vb{x})
+\end{align*}
+below the critical temperature and
+\begin{align*}
+	\laplacian{\phi} - \frac{a_{2}(T)}{f}\phi = -\frac{h_{0}}{f}\delta(\vb{x})
+\end{align*}
+above the critical temperature. The solution to these equations is
+\begin{align*}
+	\phi = \frac{h_{0}}{4\pi f}\frac{e^{-\frac{r}{\xi}}}{r},
+\end{align*}
+where
+\begin{align*}
+	\xi =
+	\begin{cases}
+		\sqrt{\frac{f}{a_{2}(T)}},\ T > T_{\text{c}}, \\
+		\sqrt{-\frac{f}{2a_{2}(T)}},\ T < T_{\text{c}}.
+	\end{cases}
+\end{align*}
+$\xi$ is the correlation length, and according to the linearization $a_{2} = a_{2, 0}(T - T_{\text{c}})$ it diverges when approaching the phase transition.
+
+Next, if we add a term
+\begin{align*}
+	-\integ[3]{}{}{\vb{x}}{mh}
+\end{align*}
+to the Hamiltonian, we obtain
+\begin{align*}
+	\expval{m} = \frac{\tr(me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}{\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}.
+\end{align*}
+This implies
+\begin{align*}
+	\fdv{\expval{m}}{h(0)} &= \frac{\beta \tr(m(\vb{0})me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)}) - \beta\tr(me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\tr(m(\vb{0})e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}{\left(\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\right)^{2}} \\
+	                       &= \beta(\expval{m(\vb{0})m} - \expval{m(\vb{0})}\expval{m}) \\
+	                       &= \beta\Gamma(\vb{r}).
+\end{align*}
+Somehow this is supposed to be equal to $\frac{\phi}{h_{0}}$, hence $\phi$ is an order parameter correlation function. The susceptibility is given by
+\begin{align*}
+	\chi = \integ[3]{}{}{\vb{x}}{\beta\Gamma(\vb{r})},
+\end{align*}
+and this implies that the mean-field result $\chi\propto\abs{T_{\text{c}} - T}^{-1}$ is obtained.
+
+\paragraph{The Ginzburg Criterion}
+The Ginzburg criterion is a self-consistency criterion for mean-field or Landau theories.
+
+To obtain it, we generalize to $d$ dimensions. In such cases the solution above does not hold, but we may still use the order-of-magnitude approximation
+\begin{align*}
+	\phi = \frac{e^{-\frac{r}{\xi}}}{r^{d - 2}}.
+\end{align*}
+We would like to crudely approximate the correlation function at large distances. This is expected to be valid if
+\begin{align*}
+	\frac{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\expval{m(\vb{0})m} - \expval{m(\vb{0})}\expval{m}}}{\integ[d]{\Omega(\xi)}{}{\vb{x}}{m_{0}^{2}}} \ll 1,
+\end{align*}
+where $\Omega(\xi)$ is the $d$-dimensional hypersphere of radius $\xi$. I believe this is the Ginzburg criterion
+
+We will now use the Ginzburg criterion to try to estimate the dimensionality for which Landau theory correctly predicts the critical behaviour. Close to the critical point we should have $m_{0}^{2} \approx \abs{T_{\text{c}} - T}^{2\beta}$ for some $\beta$. Using $\phi$ as an estimate of the correlation function we have
+\begin{align*}
+	\frac{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\frac{e^{-\frac{r}{\xi}}}{r^{d - 2}}}}{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\abs{T_{\text{c}} - T}^{2\beta}}} \ll 1.
+\end{align*}
+Computing this in spherical coordinates yields
+\begin{align*}
+	\frac{d\integ{0}{\xi}{r}{re^{-\frac{r}{\xi}}}}{\xi^{d}\abs{T_{\text{c}} - T}^{2\beta}} = \frac{d\xi^{2}\integ{0}{1}{u}{ue^{-u}}}{\xi^{d}\abs{T_{\text{c}} - T}^{2\beta}} = \xi^{2 - d}\abs{T_{\text{c}} - T}^{-2\beta}d\integ{0}{1}{u}{ue^{-u}}.
+\end{align*}
+Introducing the critical exponent $\nu$ for the correlation length, the left-hand side is proportional to
+\begin{align*}
+	\abs{T_{\text{c}} - T}^{2\beta + (d - 2)\nu}.
+\end{align*}
+The inequality is thus satisfied if and only if
+\begin{align*}
+	d > 2 + \frac{2\beta}{\nu}.
+\end{align*}
