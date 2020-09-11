@@ -45,7 +45,7 @@ Assuming $\comm{A}{B}$ to commute with $A$, we have
 \end{align*}
 
 \paragraph{Symmetries on Hilbert Space}
-A symmetry on Hilbert space is a transformation that leaves all expectation values unaltered.
+A symmetry on Hilbert space is a transformation that leaves all inner products unaltered.
 
 \paragraph{Wigner's Theorem}
 Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary (the latter meaning $\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$).
@@ -53,20 +53,51 @@ Wigner's theorem states that any operator that is a symmetry is either unitary o
 \paragraph{Transformation of Operators}
 Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
 
-\paragraph{Time Evolution From Symmetry}
-Consider some system with time translation symmetry - that is, any system for which time translations do not change the theory. Introduce the transformation operator
+\paragraph{Continuous Symmetries}
+Continuous symmetries are found in two forms: One which operates on the coefficients of the state and one which operates on the basis vectors. Denoting some symmetry as $u_{\var{\theta}}$, which changes $\theta$ to $\var{\theta}$, we require symmetries to have the following properties:
+\begin{itemize}
+	\item $u_{\var{\theta_{1}}}u_{\var{\theta_{2}}} = u_{\var{\theta_{1}} + \var{\theta_{2}}}$.
+	\item $u_{\var{\theta}}^{-1} = u_{-\var{\theta}}$.
+	\item $\lim\limits_{\var{\theta} \to 0}u_{\var{\theta}} = 1$.
+\end{itemize}
+
+\paragraph{Generators of Continuous Symmetries}
+Symmetry operators are smooth maps acting on a manifold - namely, Hilbert space. Hence we can use the language of Lie algebra to study them (if you know nothing about Lie algebra, pretend that I didn't write this and carry on. If you want some reference material, please look at my summary of SI2360). We expand the symmetry operator around the identity as
 \begin{align*}
-	u_{\tau}\ket{\Psi(t)} = \ket{\Psi(t + \tau)}.
+	u_{\var{\theta}} = 1 - i\var{\theta}T + \dots
 \end{align*}
-This transformation is a smooth map acting on a manifold - namely, Hilbert space. Hence we can use the language of Lie algebra to treat this (if you know nothing about Lie algebra, pretend that I didn't write this and carry on. If you want some reference material, please look at my summary of SI2360). We expand the transformation operator around the identity as
+for some operator $T$. We have
 \begin{align*}
-	u_{\tau} = 1 - i\frac{\tau}{\hbar}H
+	\adj{u_{\var{\theta}}}u_{\var{\theta}} = (1 + i\var{\theta}\adj{T})(1 - i\var{\theta}T) = 1 + i\var{\theta}\left(T - \adj{T}\right) + \dots,
 \end{align*}
-for some operator $H$. The requirement that this be unitary yields $\adj{H} - H = 0$, and hence the generator $H$ is self-adjoint. By continuous application of this we obtain
+where we have ignored higher-order terms in $\var{\theta}$. The requirement that the symmetry be unitary yields $\adj{T} - T = 0$, and hence the generator $T$ is self-adjoint. By continuous application of this we obtain
 \begin{align*}
-u_{\tau} = e^{-i\frac{\tau}{\hbar}H}.
+	u_{\var{\theta}} = e^{-i\var{\theta}T}.
 \end{align*}
-This reproduces the Schrödinger equation, tying it all together neatly. It also demonstrates that the Hamiltonian generates time translation in a mathematical sense.
+This operator satisfies all of the above criteria for a continuous symmetry.
+
+\paragraph{Effect of Symmetries on Wavefunctions}
+Let $u_{\var{\theta}}$ act on $\theta$ and $\vb{x}$ be a vector containing any other parameters describing the basis. We have
+\begin{align*}
+	u_{\var{\theta}}\ket{\Psi} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{u_{\var{\theta}}\ket{\theta}\braket{\theta}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta + \var{\theta}}\braket{\theta}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta}\braket{\theta - \var{\theta}}{\Psi}}},
+\end{align*}
+meaning that the symmetry transforms $\Psi(\theta, \vb{x})$ to $\Psi(\theta - \var{\theta}, \vb{x})$.
+
+Suppose instead that $\theta$ parametrizes the coefficients - in other words, $\ket{\Psi(\theta)} = \Psi(\theta, \vb{x})\ket{\vb{x}}$. In this case, the symmetry transforms the wavefunction to $\Psi(\theta + \var{\theta}, \vb{x})$.
+
+\paragraph{Commutation Relations Between Parameters and Generators}
+For a symmetry of the first kind, we use the transformation rule for operators to obtain commutation relations between parameters and their generators. More specifically, we require
+\begin{align*}
+	(1 - i\var{\theta}T)\theta(1 + i\var{\theta}T) = \theta + \var{\theta}
+\end{align*}
+to first order. The left-hand side is given by
+\begin{align*}
+	\theta + i\var{\theta}\theta T - i\var{\theta}(T\theta + i\var{\theta}T\theta T) = \theta + i\var{\theta}\comm{\theta}{T}
+\end{align*}
+to first order, implying
+\begin{align*}
+	i\comm{\theta}{T} = 1.
+\end{align*}
 
 \paragraph{Tensors}
 A tensor of rank $n$ is a multilinear map from $n$ vectors in some vector space to a scalar.
