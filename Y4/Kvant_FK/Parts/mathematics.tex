@@ -1,1 +1,45 @@
 \section{Useful Mathematics}
+
+\paragraph{A Useful Commutation Relation}
+You might happen upon commutation relations of the form $\comm{f(A)}{B}$ show up. We would like to try to simplify it for the particular case where $\comm{A}{B} = C$, where $C$ is some operator commuting with $A$. To do this, we first study $\comm{A^{n}}{B}$ in a general case. We have
+\begin{align*}
+	\comm{A^{n}}{B} = A\comm{A^{n - 1}}{B} + \comm{A}{B}A^{n - 1},
+\end{align*}
+prompting us to find this commutator by induction. For $n = 2$ we have
+\begin{align*}
+	\comm{A^{2}}{B} = A\comm{A}{B} + \comm{A}{B}A.
+\end{align*}
+For $n = 3$ we obtain
+\begin{align*}
+	\comm{A^{3}}{B} = A\comm{A^{2}}{B} + \comm{A}{B}A^{2} = A(A\comm{A}{B} + \comm{A}{B}A) + \comm{A}{B}A^{2} = A^{2}\comm{A}{B} + A\comm{A}{B}A + \comm{A}{B}A^{2}.
+\end{align*}
+A suitable induction hypothesis looks to be
+\begin{align*}
+	\comm{A^{n}}{B} = \sum\limits_{k = 1}^{n}A^{n - k}\comm{A}{B}A^{k - 1}.
+\end{align*}
+Assuming it to be true, we have
+\begin{align*}
+	\comm{A^{n + 1}}{B} &= A\comm{A^{n}}{B} + \comm{A}{B}A^{n} \\
+	                    &= A\sum\limits_{k = 1}^{n}A^{n - k}\comm{A}{B}A^{k - 1} + \comm{A}{B}A^{n} \\
+	                    &= \sum\limits_{k = 1}^{n}A^{n + 1 - k}\comm{A}{B}A^{k - 1} + \comm{A}{B}A^{n} \\
+	                    &= \sum\limits_{k = 1}^{n + 1}A^{n + 1 - k}\comm{A}{B}A^{k - 1},
+\end{align*}
+proving the hypothesis by induction.
+
+Now we write
+\begin{align*}
+	f(A) = \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}A^{n}
+\end{align*}
+to obtain
+\begin{align*}
+	\comm{f(A)}{B} &= \comm{\sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}A^{n}}{B} \\
+	               &= \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}\comm{A^{n}}{B} \\
+	               &= \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}\sum\limits_{k = 1}^{n}A^{n - k}\comm{A}{B}A^{k - 1}.
+\end{align*}
+Assuming $\comm{A}{B}$ to commute with $A$, we have
+\begin{align*}
+	\comm{f(A)}{B} &= \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}A^{n - 1}\comm{A}{B}\sum\limits_{k = 1}^{n} \\
+	               &= \comm{A}{B}\sum\limits_{n = 1}^{\infty}\frac{1}{(n - 1)!}f_{n}A^{n - 1} \\
+	               &= \comm{A}{B}\sum\limits_{m = 0}^{\infty}\frac{1}{m!}f_{m + 1}A^{m} \\
+	               &= \comm{A}{B}\dv{f}{A}.
+\end{align*}
