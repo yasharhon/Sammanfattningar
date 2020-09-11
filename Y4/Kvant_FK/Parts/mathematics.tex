@@ -43,3 +43,52 @@ Assuming $\comm{A}{B}$ to commute with $A$, we have
 	               &= \comm{A}{B}\sum\limits_{m = 0}^{\infty}\frac{1}{m!}f_{m + 1}A^{m} \\
 	               &= \comm{A}{B}\dv{f}{A}.
 \end{align*}
+
+\paragraph{Symmetries on Hilbert Space}
+A symmetry on Hilbert space is a transformation that leaves all expectation values unaltered.
+
+\paragraph{Wigner's Theorem}
+Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary (the latter meaning $\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$).
+
+\paragraph{Transformation of Operators}
+Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
+
+\paragraph{Time Evolution From Symmetry}
+Consider some system with time translation symmetry - that is, any system for which time translations do not change the theory. Introduce the transformation operator
+\begin{align*}
+	u_{\tau}\ket{\Psi(t)} = \ket{\Psi(t + \tau)}.
+\end{align*}
+This transformation is a smooth map acting on a manifold - namely, Hilbert space. Hence we can use the language of Lie algebra to treat this (if you know nothing about Lie algebra, pretend that I didn't write this and carry on. If you want some reference material, please look at my summary of SI2360). We expand the transformation operator around the identity as
+\begin{align*}
+	u_{\tau} = 1 - i\frac{\tau}{\hbar}H
+\end{align*}
+for some operator $H$. The requirement that this be unitary yields $\adj{H} - H = 0$, and hence the generator $H$ is self-adjoint. By continuous application of this we obtain
+\begin{align*}
+u_{\tau} = e^{-i\frac{\tau}{\hbar}H}.
+\end{align*}
+This reproduces the Schrödinger equation, tying it all together neatly. It also demonstrates that the Hamiltonian generates time translation in a mathematical sense.
+
+\paragraph{Tensors}
+A tensor of rank $n$ is a multilinear map from $n$ vectors in some vector space to a scalar.
+
+It is clear that the set of tensors of some rank form a vector space, and so we would like to identify some basis for the space of tensors.
+
+\paragraph{Basis for $n = 1$}
+We start with rank $1$ tensors. The inner product is certainly a rank $1$ tensor according to the definition, and so we would like to use that. Now let the set of $v_{i}$ denote the set of orthonormal basis vectors for the space $V$. We then choose the basis
+\begin{align*}
+	e_{i}(v) = \bra{v_{i}}{v}
+\end{align*}
+as the basis for the set of rank $1$ tensors. This may also be denoted simply as the tensor $v_{i}$ (the confusion will disappear later).
+
+\paragraph{The Tensor Product}
+To find a basis for tensors of higher order, we first need to introduce the tensor product. We define it for rank $1$ tensors as
+\begin{align*}
+	s(v)\otimes t(w) = \braket{s}{v}\braket{t}{w}.
+\end{align*}
+The tensor product has allowed us to construct a rank $2$ tensor from two rank $1$ tensors. Repeatedly applying it allows us to construct tensors of any rank. The tensor product is also bilinear, in line with our definition.
+
+\paragraph{The Tensor Product of Operators}
+It follows naturally that
+\begin{align*}
+	(S\otimes T)(v\otimes w) = S(v)\otimes T(w).
+\end{align*}

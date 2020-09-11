@@ -64,10 +64,7 @@ In the case of a time-independent Hamiltonian, the solution must be of the form 
 \end{align*}
 
 \paragraph{Symmetries in Quantum Mechanics}
-A symmetry in a quantum mechanics context is any transformation acting on Hilbert space that leaves all probabilities invariant.
-
-\paragraph{Wigner's Theorem}
-Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary ($\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$).
+A symmetry in a quantum mechanics context is any transformation that leaves all probabilities invariant. Such symmetries must be symmetries on Hilbert space.
 
 \paragraph{Transformation of Operators}
 Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
@@ -284,6 +281,7 @@ Suppose that there exists some unitary transformation $u = e^{-i\frac{\varepsilo
 implying that $A$ and $H$ commute. Assuming $A$ to have no explicit time dependence, Heisenberg's equations yield that $\expval{A}$ is conserved. These arguments form the basis of some form of Nöether's theorem in quantum mechanics.
 
 \paragraph{Rotations}
+%TODO: Show commutation relations
 Consider an axis $\vb{n}$. The rotation symmetry operator about this axis is termed $u(\theta\vb{n})$. There must be three generators of rotations in three dimensions, and if we want them to correspond to the classical notion of rotations, they must satisfy the commutation relation
 \begin{align*}
 	\comm{J_{i}}{J_{j}} = i\hbar\varepsilon_{ijk}J_{k}.
@@ -343,7 +341,7 @@ Supposing the spatial rotation to be described by some rotation matrix $R$, we r
 	\Psi^{\prime}(\vb{r}^{\prime}) = \mel{\vb{r}}{u_{R}}{\Psi} \braket{R^{-1}\vb{r}}{\Psi} = \Psi(R^{-1}\vb{r}).
 \end{align*}
 %TODO: Show this
-It can be shown that this implies that $\Psi$ was acted on by an operator $e^{-i\frac{\theta}{\hbar}L_{i}}$ where
+It can be shown that this implies that $\Psi$ was acted on by an operator $e^{-\frac{i}{\hbar}\theta_{i}L_{i}}$ where
 \begin{align*}
 	L_{i} = \varepsilon_{ijk}x_{j}p_{k}.
 \end{align*}
@@ -351,6 +349,68 @@ This completes the argument that the generators of rotations are indeed angular 
 
 %TODO: Show?
 It turns out that the orbital angular momenta may only have integer multiples of $\hbar$ as their eigenvalue, meaning that classical angular momentum does not by itself contain all the properties of angular momenta, as we have seen. It also turns out that the rest comes from spin.
+
+\paragraph{Spin}
+In addition to the transformation of coordinates, the rotation operator could in principle permute the basis. Thus we add an extra factor $D_{\vb{n}}(R)$. It commutes with the previously discussed operators as $e^{-i\frac{\theta}{\hbar}L}$ acts equally on all of the basis and $D_{\vb{n}}(R)$ is linear in the basis.
+
+Using the machinery of Lie algebra, we may write
+\begin{align*}
+	D_{n}(R) = e^{-\frac{i}{\hbar}\theta_{i}S_{i}}.
+\end{align*}
+The total rotation operator is thus
+\begin{align*}
+	e^{-\frac{i}{\hbar}\vb*{\theta}\cdot(\vb{L} + \vb{S})},
+\end{align*}
+prompting us to define the total angular momentum $\vb{J} = \vb{L} + \vb{S}$.
+
+$\vb{J}$ must generate a rotation, hence $\vb{S}$ must satisfy the same commutation relation, implying that $\vb{S}$ must also be an angular momentum operator. Furthermore, it does not have the same restrictions as orbital angular momentum, and may therefore correspond to $j$ being a half-integer. This is termed the spin.
+
+\paragraph{Spin-$\frac{1}{2}$}
+In the particular case of $j = \frac{1}{2}$ we may construct matrices for the spin operator in the eigenbasis of $S_{z}$. The resulting matrices are $S_{i} = \frac{1}{2}\hbar\sigma_{i}$, where $\sigma_{i}$ are the Pauli matrices. The spin factor of the rotation operator may now be written as
+\begin{align*}
+D_{\vb{n}}(R) = e^{-i\frac{\theta}{2}\vb{n}\cdot\vb*{\sigma}}.
+\end{align*}
+To simplify this, we note that
+\begin{align*}
+(\vb{n}\cdot\vb*{\sigma})^{2} &= n_{i}n_{j}\sigma_{i}\sigma_{j} \\
+                              &= \sum\limits_{i = j}n_{i}^{2}\sigma_{i}^{2} + \frac{1}{2}\sum\limits_{i\neq j}n_{i}n_{j}(\sigma_{i}\sigma_{j} + \sigma_{j}\sigma_{i}).
+\end{align*}
+The Pauli matrices anticommute and square to identity, hence we have
+\begin{align*}
+	(\vb{n}\cdot\vb*{\sigma})^{2} = 1.
+\end{align*}
+
+This yields
+\begin{align*}
+	D_{\vb{n}}(R) &= \sum\limits_{m = 0}\frac{1}{(2m)!}\left(-i\frac{\theta}{2}\right)^{2m}(\vb{n}\cdot\vb*{\sigma})^{2m} + \frac{1}{(2m + 1)!}\left(-i\frac{\theta}{2}\right)^{2m + 1}(\vb{n}\cdot\vb*{\sigma})^{2m + 1} \\
+	              &= \sum\limits_{m = 0}\frac{1}{(2m)!}(-1)^{m}\left(\frac{\theta}{2}\right)^{2m} - \frac{i}{(2m + 1)!}(-1)^{m}\left(\frac{\theta}{2}\right)^{2m + 1}\vb{n}\cdot\vb*{\sigma} \\
+	              &= \cos(\frac{\theta}{2}) - i\sin(\frac{\theta}{2})\vb{n}\cdot\vb*{\sigma}.
+\end{align*}
+
+\paragraph{Addition of Angular Momenta}
+We would like to identify eigenstates of the total angular momentum $\vb{J} = \vb{J}_{1} + \vb{J}_{2}$ in terms of the eigenstates of its components. The basis we are starting with is the product basis
+\begin{align*}
+	\ket{l_{1}, l_{2}; m_{1}, m_{2}} = \ket{l_{1}, m_{1}}\otimes\ket{l_{2}, m_{2}}.
+\end{align*}
+The components of the angular momentum are given by
+\begin{align*}
+	J_{i} = (L_{1})_{i}\otimes 1 + 1\otimes (L_{2})_{i},
+\end{align*}
+and we therefore have
+\begin{align*}
+	J_{z}\ket{l_{1}, l_{2}; m_{1}, m_{2}} = \hbar(m_{1} + m_{2})\ket{l_{1}, l_{2}; m_{1}, m_{2}}.
+\end{align*}
+As $\vb{J}$ is indeed an angular momentum, we may now use what we now to introduce the eigenbasis of $\vb{J}$ as $\ket{l_{1}, l_{2}; j, m}$. It may be expressed in terms of the previous basis as
+\begin{align*}
+	\ket{l_{1}, l_{2}; j, m} = \sum\limits_{m_{1}, m_{2}}\braket{l_{1}, l_{2}; m_{1}, m_{2}}{l_{1}, l_{2}; j, m}\ket{l_{1}, l_{2}; m_{1}, m_{2}}.
+\end{align*}
+The $\braket{l_{1}, l_{2}; m_{1}, m_{2}}{l_{1}, l_{2}; j, m}$ are called Clebsch-Gordan coefficients, and may be found in tables.
+
+Using what we found in a previous step, we must have $m\leq l_{1} + l_{2}$ and $j = l_{1} + l_{2}$. This also allows us to identify one eigenstate
+\begin{align*}
+	\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2}} = \ket{l_{1}, l_{2}; l_{1}, l_{2}}.
+\end{align*}
+To identify other states, one simply applies the lowering operator $J_{\pm} = J_{x}\pm iJ_{y} = (L_{1})_{-} + (L_{2})_{-}$. This will produce $2(l_{1} + l_{2}) + 1$ new states. Next, we identify
 
 \paragraph{Quantum Hall Effect}
 The Hamiltonian of a charged particle in a magnetic field is
