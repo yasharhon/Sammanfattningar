@@ -126,8 +126,97 @@ As $\vb{J}$ is indeed an angular momentum, we may now use what we now to introdu
 \end{align*}
 The $\braket{l_{1}, l_{2}; m_{1}, m_{2}}{l_{1}, l_{2}; j, m}$ are called Clebsch-Gordan coefficients, and may be found in tables.
 
-Using what we found in a previous step, we must have $m\leq l_{1} + l_{2}$ and $j = l_{1} + l_{2}$. This also allows us to identify one eigenstate
+The previously obtained eigenvalue implies $m \leq l_{1} + l_{2}$ and $j \leq l_{1} + l_{2}$. This allows us to identify one eigenstate
 \begin{align*}
 	\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2}} = \ket{l_{1}, l_{2}; l_{1}, l_{2}}.
 \end{align*}
-To identify other states, one simply applies the lowering operator $J_{\pm} = J_{x}\pm iJ_{y} = (L_{1})_{-} + (L_{2})_{-}$. This will produce $2(l_{1} + l_{2}) + 1$ new states. Next, we identify
+To identify other states, one simply applies the lowering operator $J_{\pm} = J_{x}\pm iJ_{y} = (L_{1})_{-} + (L_{2})_{-}$. This will produce $2(l_{1} + l_{2}) + 1$ new states. Next, we study the state
+\begin{align*}
+	J_{-}\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2}} &= \hbar(\sqrt{l_{1}(l_{1} + 1) - l_{1}(l_{1} - 1)}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} + \sqrt{l_{2}(l_{2} + 1) - l_{2}(l_{2} - 1)}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}) \\
+	                                                      &= \hbar(\sqrt{2l_{1}}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} + \sqrt{2l_{2}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}).
+\end{align*}
+We thus have
+\begin{align*}
+	\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2} - 1} = \frac{1}{\sqrt{l_{1} + l_{2}}}(\sqrt{l_{1}}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} + \sqrt{l_{2}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}).
+\end{align*}
+It is orthogonal to the state
+\begin{align*}
+	\frac{1}{\sqrt{l_{1} + l_{2}}}(\sqrt{l_{2}}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} - \sqrt{l_{1}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}).
+\end{align*}
+To study this state, we use the fact that
+\begin{align*}
+	\vb{J}^{2} = J_{x}^{2} + J_{y}^{2} + J_{z}^{2} = J_{z}^{2} + J_{+}J_{-} - \hbar J_{z}.
+\end{align*}
+Clearly the state we are working with is an eigenstate of $J_{z}$ with eigenvalue $\hbar(l_{1} + l_{2} - 1)$, meaning that two of these terms are easily handled. The others are not as trivial, but we have
+\begin{align*}
+	J_{+}J_{-} = (L_{1, +} + L_{2, +})(L_{1, -} + L_{2, -}) = L_{1, +}L_{1, -} + L_{1, +}L_{2, -} + L_{2, +}L_{1, -} + L_{2, +}L_{2, -},
+\end{align*}
+meaning that we might be able to look at how these terms work separately.
+
+We consider the effect on the left-hand term, as the effect on the other is obtained by simply switching the numbers $1$ and $2$. The first and last terms can be rewritten nicely as
+\begin{align*}
+	L_{1, +}L_{1, -} = \vb{L}_{1}^{2} - L_{1, z}^{2} + \hbar L_{1, z},
+\end{align*}
+meaning
+\begin{align*}
+	L_{1, +}L_{1, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= \hbar^{2}(l_{1}(l_{1} + 1) - (l_{1} - 1)^{2} + l_{1} - 1)\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} \\
+	                                                     &= \hbar^{2}(l_{1}^{2} + 2l_{1} - 1 - (l_{1}^{2} - 2l_{1} + 1))\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} \\
+	                                                     &= 2\hbar^{2}(2l_{1} - 1)\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}}, \\
+	L_{2, +}L_{2, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= \hbar^{2}(l_{2}(l_{2} + 1) - l_{2}^{2} + l_{2})\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} \\
+	                                                     &= 2\hbar^{2}l_{2}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}}.
+\end{align*}
+The other two are not so nice, but let us try anyway. We have
+\begin{align*}
+	L_{1, +}L_{2, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= \hbar\sqrt{l_{2}(l_{2} + 1) - l_{2}(l_{2} - 1)}L_{1, +}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2} - 1} \\
+	                                                     &= \hbar^{2}\sqrt{l_{1}(l_{1} + 1) - (l_{1} - 1)l_{1}}\sqrt{l_{2}(l_{2} + 1) - l_{2}(l_{2} - 1)}L_{1, +}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1} \\
+	                                                     &= 2\hbar^{2}\sqrt{l_{1}l_{2}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}, \\
+	L_{2, +}L_{1, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= 0.
+\end{align*}
+The latter comes from me skipping to the fun part of raising the second spin, which returns $0$.
+
+Let us now look at what we have. We write the total angular momentum operator as
+\begin{align*}
+	\vb{J}^{2} = J_{z}^{2} - \hbar J_{z} + L_{1, +}L_{1, -} + L_{2, +}L_{2, -} + L_{1, +}L_{2, -} + L_{2, +}L_{1, -}.
+\end{align*}
+Let us first consider its effect on the term $\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}}$. All operators but the last two have this state as an eigenvector, and the total eigenvalue is
+\begin{align*}
+	\hbar^{2}\left((l_{1} + l_{2} - 1)^{2} - (l_{1} + l_{2} - 1) + 2(2l_{1} - 1) + 2l_{2}\right) &= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2} - 2) + 4l_{1} - 2 + 2l_{2}\right) \\
+	&= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{1}\right).
+\end{align*}
+Next, the total eigenvalue from acting on $\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}$ is
+\begin{align*}
+	\hbar^{2}\left((l_{1} + l_{2} - 1)^{2} - (l_{1} + l_{2} - 1) + 2l_{1} + 2(2l_{2} - 1)\right) &= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2} - 2) + 2(l_{1} + 2l_{2} - 1)\right) \\
+	&= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{2}\right).
+\end{align*}
+Collecting the terms of the first kind nets us the coefficient
+\begin{align*}
+	\sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{1}\right) - 2\sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}\sqrt{l_{1}l_{2}} &= \sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{1} - 2l_{1}\right) \\
+	                                                                              &= \sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}(l_{1} + l_{2} - 1)(l_{1} + l_{2}).
+\end{align*}
+Next, collecting the terms of the second kind nets us
+\begin{align*}
+	2\sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}\sqrt{l_{1}l_{2}} - \sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{2}\right) &= \sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}\left(2l_{2} - (l_{1} + l_{2} - 1)(l_{1} + l_{2}) - 2l_{2}\right) \\
+	                                                                         &= -\sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}(l_{1} + l_{2} - 1)(l_{1} + l_{2}),
+\end{align*}
+meaning that we have identified an eigenstate of $\vb{J}^{2}$ with eigenvalue $\hbar^{2}(l_{1} + l_{2})(l_{1} + l_{2} - 1)$. How nice. This is the recipe for obtaining all the states.
+
+As a final sanity check, how many states are there? We may without loss of generality assume that $l_{1} > l_{2}$, meaning that the lowest eigenvalue of $\vb{J}^{2}$ that is found should be $l_{1} - l_{2}$. Hence the total nunber of states is
+\begin{align*}
+	N &= \sum\limits_{n = l_{1} - l_{2}}^{l_{1} + l_{2}}2n + 1 \\
+	  &= \frac{1}{2}(l_{1} + l_{2} - (l_{1} - l_{2}) + 1)\left(2(l_{1} - l_{2}) + 1 + 2(l_{1} + l_{2}) + 1\right) \\
+	  &= (2l_{1} + 1)\left(2l_{1} + 1\right),
+\end{align*}
+as expected.
+
+\paragraph{Spatial Inversion}
+In addition to the commutation relations with which we started, we would like angular momentum to be unaffected by spatial inversion. This requirement is taken from the fact that spatial inversion should flip the signs of both position and momentum, preserving the orbital angular momentum.
+
+\paragraph{Time Reversal}
+We also require that angular momenta change sign under time reversal symmetry for similar reasons.
+
+\paragraph{Time Reversal of Non-Integral Spin}
+While our requirement is satisfied for integral spin, we do not really know how time reversal acts on non-integral spin. To help with this, we note that any anti-unitary operator may be written as $T = uK$, where $u$ is unitary and $K$ is complex conjucation. To show how this works, we consider spin-$\frac{1}{2}$, for which $\vb{S} = \frac{1}{2}\hbar\vb*{\sigma}$. We write $T = uK$, hence the problem is now to find an operator such that $\sigma_{x}$ and $\sigma_{z}$ change sign, while $\sigma_{y}$ is unaltered. The answer turns out to be
+\begin{align*}
+	u = e^{i\frac{\pi}{2}\sigma_{y}} = i\sigma_{y}.
+\end{align*}
+We thus have time reversal on non-integral spin as $T = i\sigma_{y}K$. The general case is $u = e^{i\frac{\pi}{\hbar}S_{y}}$.

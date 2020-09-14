@@ -82,6 +82,39 @@ implying
 	\bra{\vb{x}}p_{i} = \frac{\hbar}{i}\del{x}{}.
 \end{align*}
 
+\paragraph{Spatial Inversion}
+Let $\Pi$ be the spatial inversion operator such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
+\begin{align*}
+	\vb{x}\Pi\ket{\vb{x}^{\prime}} = -\Pi\vb{x}\ket{\vb{x}^{\prime}} = -\vb{x}^{\prime}\Pi\ket{\vb{x}^{\prime}},
+\end{align*}
+hence $\Pi\ket{\vb{x}^{\prime}} = \ket{-\vb{x}^{\prime}}$, as the phase provided by spatial inversion may be chosen freely. Next we have
+\begin{align*}
+	\Pi\ket{\Psi} = \mel{\vb{x}}{\Pi}{\Psi} = \braket{-\vb{x}}{\Psi} = \Psi(-\vb{x}).
+\end{align*}
+Furthermore, we note that $\Pi^{2} = 1$, hence $\Pi$ has eigenvalues $\pm 1$ and $\Pi^{-1} = \Pi$.
+
+\paragraph{Inversion Symmetry and Selection Rules}
+Most observables are either even or odd under inversions, namely $\Pi A\Pi^{-1} = \pi_{A}A,\ \pi_{a} = \pm 1$. If we are working with states with definite parity, we have
+\begin{align*}
+	\mel{\Psi}{A}{\Phi} &= \pi_{a}\mel{\Psi}{\Pi A\Pi}{\Phi} \\
+	                    &= \pi_{a}\pi_{\Psi}\pi_{\Phi}\mel{\Psi}{A}{\Phi},
+\end{align*}
+meaning that this matrix element is zero if $\pi_{a}\pi_{\Psi}\pi_{\Phi} = -1$. This is an example of a selection rule.
+
+\paragraph{Time Reversal}
+Time reversal should preserve position and flip the sign of momentum. This implies, however, that
+\begin{align*}
+	T(i\hbar)T^{-1} = -i\hbar,
+\end{align*}
+which can only be satisfied if $T$ is anti-linear and anti-unitary. It can be shown that for spinless particles, the time reversal operator is simply the complex conjugation operator.
+
+\paragraph{Kramer's Degeneracy}
+Consider a system which is invariant under time reversal. It would seem that for any eigenvector $\ket{E}$, there must also exist an eigenvector $T\ket{E}$. However, in cases with spin-$\frac{1}{2}$, for which $T^{2} = -1$, we have
+\begin{align*}
+	\mel{E}{T}{E} &= \cc{(\bra{TE})(\ket{T^{2}E})} = -\cc{(\bra{TE})(\ket{E})} = -\mel{E}{T}{E},
+\end{align*}
+implying the two vectors are orthogonal. This is called Kramer's degeneracy.
+
 \paragraph{Time Evolution of the Density Matrix}
 The time evolution of the density matrix is given by
 \begin{align*}
