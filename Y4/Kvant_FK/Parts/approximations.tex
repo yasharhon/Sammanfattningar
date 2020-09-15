@@ -1,0 +1,85 @@
+\section{Approximation Methods}
+
+\paragraph{Perturbation Theory}
+Consider a Hamiltonian of the form
+\begin{align*}
+	H = H_{0} + \lambda V,
+\end{align*}
+where $\lambda$ is a dimensionless parameter, and suppose that we know the eigenstates $\ket{n_{0}}$ of $H_{0}$. We are then interested in the eigenstates
+\begin{align*}
+	H\ket{n(\lambda)} = E_{n}(\lambda)\ket{n(\lambda)}.
+\end{align*}
+To do this we expand the new eigenstates as
+\begin{align*}
+	\ket{n(\lambda)} = \ket{n_{0}} + \lambda\ket{n_{1}} + \lambda^{2}\ket{n_{2}} + \dots
+\end{align*}
+and the new eigenvalues as
+\begin{align*}
+	E_{n}(\lambda) = E_{n}^{(0)} + \lambda E_{n}^{(1)} + \lambda^{2}E_{n}^{(2)} + \dots
+\end{align*}
+and obtain
+\begin{align*}
+	(H_{0} + \lambda V)\left(\ket{n_{0}} + \lambda\ket{n_{1}} + \lambda^{2}\ket{n_{2}} + \dots\right) = \left(E_{n}^{(0)} + \lambda E_{n}^{(1)} + \lambda^{2}E_{n}^{(2)} + \dots\right)\left(\ket{n_{0}} + \lambda\ket{n_{1}} + \lambda^{2}\ket{n_{2}} + \dots\right).
+\end{align*}
+We may now identify terms, one order at a time. The zeroth-order terms are trivial. The first-order terms are
+\begin{align*}
+	H_{0}\ket{n_{1}} + V\ket{n_{0}} = E_{n}^{(0)}\ket{n_{1}} + E_{n}^{(1)}\ket{n_{0}}.
+\end{align*}
+To simplify this, we must first say something about the states. We first require $\braket{n_{0}}{n_{i}}$ to be real. Requiring orthonormality for the new eigenvectors, we obtain
+\begin{align*}
+	\braket{n_{0}} + 2\lambda\braket{n_{0}}{n_{1}} + \dots = 1,
+\end{align*}
+meaning $\braket{n_{0}}{n_{1}}$ = 0. Using this, we obtain
+\begin{align*}
+	E_{n}^{(1)} = \expval{V}{n_{0}}.
+\end{align*}
+Next, we ty to identify the expansion coefficients by projecting onto some other state $\ket{m_{0}}$, yielding
+\begin{align*}
+	E_{m}^{(0)}\braket{m_{0}}{n_{1}} + \mel{m_{0}}{V}{n_{0}} = E_{n}^{(0)}\braket{m_{0}}{n_{1}},
+\end{align*}
+and thus
+\begin{align*}
+	\braket{m_{0}}{n_{1}} = \frac{\mel{m_{0}}{V}{n_{0}}}{E_{n}^{(0)} - E_{m}^{(0)}}.
+\end{align*}
+Hence we have
+\begin{align*}
+	\ket{n_{1}} = \sum\limits_{m\neq n}\frac{\mel{m_{0}}{V}{n_{0}}}{E_{n}^{(0)} - E_{m}^{(0)}}\ket{m_{0}}.
+\end{align*}
+This causes certain issues if any eigenvalue is degenerate, but in such cases you choose an orthogonal basis for that particular eigenspace so that the corresponding term becomes zero.
+
+Next we collect the second-order terms. We have
+\begin{align*}
+	H_{0}\ket{n_{2}} + V\ket{n_{1}} = E_{n}^{(0)}\ket{n_{2}} + E_{n}^{(1)}\ket{n_{1}} + E_{n}^{(2)}\ket{n_{0}}.
+\end{align*}
+Orthonormality yields
+\begin{align*}
+	\braket{n_{0}} + 2\lambda\braket{n_{0}}{n_{1}} + \lambda^{2}(2\braket{n_{0}}{n_{2}} + \braket{n_{1}}{n_{1}}) = 1,
+\end{align*}
+and thus
+\begin{align*}
+	\braket{n_{0}}{n_{2}} = -\frac{1}{2}\braket{n_{1}}{n_{1}}.
+\end{align*}
+The second-order expression from earlier then yields
+\begin{align*}
+	E_{n}^{(2)} = \mel{n_{0}}{V}{n_{1}} = \sum\limits_{m\neq n}\frac{\mel{m_{0}}{V}{n_{0}}}{E_{n}^{(0)} - E_{m}^{(0)}}\mel{n_{0}}{V}{m_{0}} = \sum\limits_{m\neq n}\frac{\abs{\mel{m_{0}}{V}{n_{0}}}^{2}}{E_{n}^{(0)} - E_{m}^{(0)}}.
+\end{align*}
+We may now compute the second-order state in a similar manner.
+
+\paragraph{The Variational Principle}
+Any state $\ket{\Psi}$ produces a limit on the ground-state energy of a system according to
+\begin{align*}
+	E_{0} \leq \frac{\expval{H}{\Psi}}{\braket{\Psi}}.
+\end{align*}
+This is easily shown by the fact that
+\begin{align*}
+	\ket{\Psi} = \sum\limits_{n}c_{n}\ket{E_{n}},
+\end{align*}
+yielding
+\begin{align*}
+	\expval{H}{\Psi} = \sum\limits_{n}E_{n}\abs{c_{n}}^{2} \leq E_{0}\sum\limits_{n}\abs{c_{n}}^{2} = E_{0}\braket{\Psi}.
+\end{align*}
+The variational principle uses this to approximate the ground state energy. The trick is to introduce a family of states parametrized by some set of parameters $\vb*{\alpha}$ and minimize the expression
+\begin{align*}
+	\frac{\expval{H}{\Psi(\vb*{\alpha})}}{\braket{\Psi(\vb*{\alpha})}}
+\end{align*}
+with respect to these parameters.
