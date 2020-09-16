@@ -73,15 +73,6 @@ which contains one term generating the identity and one causing the translation.
 \end{align*}
 One could of course have started with these as postulates instead, prompting a stronger analogy to classical mechanics. But the symmetry approach is nice too.
 
-What is the representation of a momentum operator in the position basis? We have
-\begin{align*}
-	\left(1 - i\frac{\var{x_{i}}}{\hbar}p_{i}\right)\ket{\Psi} = \integ{}{}{\vb{x}}{\ket{\vb{x}}\braket{\vb{x} - \var{x}_{i}}{\Psi}} = \integ{}{}{\vb{x}}{\ket{\vb{x}}(\braket{\vb{x}}{\Psi} - \var{x}_{i}\del{x}{\braket{\vb{x}}{\Psi}})},
-\end{align*}
-implying
-\begin{align*}
-	\bra{\vb{x}}p_{i} = \frac{\hbar}{i}\del{x}{}.
-\end{align*}
-
 \paragraph{Spatial Inversion}
 Let $\Pi$ be the spatial inversion operator such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
 \begin{align*}
@@ -372,3 +363,5 @@ this implies that the phase of the state is determined by the path taken. Combin
 	T = \abs{t_{\text{upper}}}^{2} + \abs{t_{\text{lower}}}^{2} + 2\Re\left(t_{\text{upper}}\cc{t_{\text{upper}}}e^{iq\left(\integ{\gamma_{\text{lower}}}{}{\vb{x}}{\cdot\vb{A}} - \integ{\gamma_{\text{upper}}}{}{\vb{x}}{\cdot\vb{A}}\right)}\right) = \abs{t_{\text{upper}}}^{2} + \abs{t_{\text{lower}}}^{2} + 2\Re\left(t_{\text{upper}}\cc{t_{\text{upper}}}e^{-iq\Phi}\right).
 \end{align*}
 This oscillating transmission probability is the Aharanov-Bohm effect.
+
+\paragraph{The Interaction Picture}

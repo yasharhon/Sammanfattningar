@@ -83,3 +83,117 @@ The variational principle uses this to approximate the ground state energy. The 
 	\frac{\expval{H}{\Psi(\vb*{\alpha})}}{\braket{\Psi(\vb*{\alpha})}}
 \end{align*}
 with respect to these parameters.
+
+\paragraph{Time-Dependent Perturbation Theory}
+Suppose we have a Hamiltonian of the form
+\begin{align*}
+	H = H_{0} + V(t),
+\end{align*}
+where $H_{0}$ has known eigenstates $\ket{n}$ with eigenvalues $E_{n}$. We write a general time-dependent state as
+\begin{align*}
+	\ket{\Psi} = \sum\limits_{n}c_{n}(t)e^{-i\frac{E_{n}}{\hbar}t}\ket{n}.
+\end{align*}
+This is useful as all the information about the time dependence of the Hamiltonian is contained in the expansion coefficients. Inserting this into the Schrödinger equation yields
+\begin{align*}
+	i\hbar\sum\limits_{n}\left(\dv{c_{n}}{t}e^{-i\frac{E_{n}}{\hbar}t} -  i\frac{E_{n}}{\hbar}c_{n}(t)e^{-i\frac{E_{n}}{\hbar}t}\right)\ket{n} = \sum\limits_{n}(E_{n} + V)c_{n}(t)e^{-i\frac{E_{n}}{\hbar}t}\ket{n}, \\
+	i\hbar\sum\limits_{n}\dv{c_{n}}{t}e^{-i\frac{E_{n}}{\hbar}t} \ket{n} = \sum\limits_{n}Vc_{n}(t)e^{-i\frac{E_{n}}{\hbar}t}\ket{n}.
+\end{align*}
+This may be projected onto any basis state, implying
+\begin{align*}
+	i\hbar\dv{c_{n}}{t} = \sum\limits_{m}c_{m}(t)e^{-i\frac{(E_{m} - E_{n})}{\hbar}t}\mel{n}{V}{m}.
+\end{align*}
+Integrating this yields
+\begin{align*}
+	c_{n}(t) = c_{n} - \frac{i}{\hbar}\integ{0}{t}{\tau}{\sum\limits_{m}c_{m}(t)e^{-i\frac{(E_{m} - E_{n})}{\hbar}\tau}\mel{n}{V}{m}}
+\end{align*}
+This only gives an implicit solution for the expansion coefficients. To obtain a solution, we use the fact that time dependence of the coefficients should be at least proportional to the magnitude of $V$. Hence we use the first-order approximation
+\begin{align*}
+	c_{n}^{(1)}(t) = c_{n} - \frac{i}{\hbar}\integ{0}{t}{\tau}{\sum\limits_{m}c_{m}e^{-i\frac{(E_{m} - E_{n})}{\hbar}\tau}\mel{n}{V}{m}}.
+\end{align*}
+We can iterate this to obtain higher-order terms. For instance,
+\begin{align*}
+	c_{n}^{(2)}(t) = c_{n} - \frac{i}{\hbar}\integ{0}{t}{\tau}{\sum\limits_{m}e^{-i\frac{(E_{m} - E_{n})}{\hbar}\tau}\mel{n}{V}{m}\left(c_{m} - \frac{i}{\hbar}\integ{0}{\tau}{\tau^{\prime}}{\sum\limits_{k}c_{k}e^{-i\frac{(E_{k} - E_{m})}{\hbar}\tau^{\prime}}\mel{m}{V}{k}}\right)}.
+\end{align*}
+
+\paragraph{A Typical Example}
+In a typical setup a system is prepared in some state $i$ and the perturbation is turned on at $t = 0$. This yields
+\begin{align*}
+	c_{n}^{(1)}(t) &= \delta_{ni} - \frac{i}{\hbar}\integ{0}{t}{\tau}{\sum\limits_{m}\delta_{mi}e^{-i\frac{(E_{m} - E_{n})}{\hbar}\tau}\mel{n}{V}{m}} \\
+	               &= \delta_{ni} - \frac{i}{\hbar}\integ{0}{t}{\tau}{e^{-i\frac{(E_{i} - E_{n})}{\hbar}\tau}\mel{n}{V}{i}}.
+\end{align*}
+This allows us to exclude certain transitions depending on the properties of the potential.
+
+\paragraph{Harmonic Perturbations}
+Let us use a harmonic perturbation
+\begin{align*}
+	V(t) = V\left(e^{i\omega t} + e^{-i\omega t}\right).
+\end{align*}
+In the typical case previously described, we obtain
+\begin{align*}
+	c_{n}^{(1)}(t) = \delta_{ni} - \frac{i}{\hbar}\integ{0}{t}{\tau}{e^{-i\frac{(E_{i} - E_{n})}{\hbar}\tau}\mel{n}{V}{i}}.
+\end{align*}
+Introducing
+\begin{align*}
+	\omega_{in} = \frac{(E_{i} - E_{n})}{\hbar},
+\end{align*}
+we obtain
+\begin{align*}
+	c_{n}^{(1)}(t) &= \delta_{ni} - \frac{i}{\hbar}\mel{n}{V}{i}\integ{0}{t}{\tau}{e^{-i\omega_{in}\tau}\left(e^{i\omega\tau} + e^{-i\omega\tau}\right)} \\
+	               &= \delta_{ni} - \frac{i}{\hbar}\mel{n}{V}{i}\integ{0}{t}{\tau}{e^{i(\omega - \omega_{in})\tau} + e^{i(-\omega - \omega_{in})\tau}}.
+\end{align*}
+Consider now some $n\neq i$. For this case we obtain
+\begin{align*}
+	c_{n}^{(1)}(t) &= -\frac{1}{\hbar}\mel{n}{V}{i}\left(\frac{e^{i(\omega - \omega_{in})t} - 1}{(\omega - \omega_{in})} - \frac{e^{i(-\omega - \omega_{in})t} - 1}{\omega + \omega_{in}}\right).
+\end{align*}
+In the limit of large times, one obtains
+\begin{align*}
+	P(i\to n) = \frac{2\pi}{\hbar}\abs{\mel{n}{V}{i}}^{2}\delta(E_{n} - E_{i} - \hbar\omega),
+\end{align*}
+which is called Fermi's golden rule.
+
+\paragraph{Adiabatic Evolution}
+Consider some time-dependent Hamiltonian. Imagining that we can diagonalize the Hamiltonian at any time, energy levels obtained may or may not cross as a function of time. For two energy levels to cross, there can be no coupling in the Hamiltonian between the corresponding states. A general state may now be written as
+\begin{align*}
+	\ket{\Psi(t)} = \sum\limits_{n}c_{n}(t)\ket{n(t)}.
+\end{align*}
+Inserted into the Schrödinger equation, we obtain
+\begin{align*}
+	i\hbar\sum\limits_{n}\dv{c_{n}}{t}\ket{n(t)} + c_{n}(t)\dv{t}\ket{n(t)} = \sum\limits_{n}c_{n}(t)E_{n}(t)\ket{n(t)}.
+\end{align*}
+Projecting onto some particular state $\ket{m(t)}$ yields
+\begin{align*}
+	i\hbar\left(\dv{c_{m}}{t} + \sum\limits_{n}c_{n}(t)\bra{m}\dv{t}\ket{n(t)}\right) = c_{m}(t)E_{m}(t).
+\end{align*}
+The Schrödinger equation may not be used on the basis states due to how they are defined (I should say more about this). However, we have
+\begin{align*}
+	\dv{t}(H\ket{n(t)}) = \dv{t}(E_{n}(t)\ket{n(t)}), \\
+	\dv{H}{t}\ket{n(t)} + H\dv{t}\ket{n(t)} = \dv{E_{n}}{t}\ket{n(t)} + E_{n}(t)\dv{t}\ket{n(t)}.
+\end{align*}
+Projecting onto the state $\ket{m}$ (with suppressed time dependence) yields
+\begin{align*}
+	\mel{m}{\dv{H}{t}}{n} + E_{m}(t)\bra{m}\dv{t}\ket{n(t)} = \dv{E_{n}}{t}\delta_{mn} + E_{n}(t)\bra{m}\dv{t}\ket{n(t)}.
+\end{align*}
+For $m\neq n$ we thus have
+\begin{align*}
+	\bra{m}\dv{t}\ket{n(t)} = -\frac{\mel{m}{\dv{H}{t}}{n}}{E_{m} - E_{n}}.
+\end{align*}
+Inserted into our previous expression we obtain
+\begin{align*}
+	i\hbar\left(\dv{c_{m}}{t} + c_{m}(t)\bra{m}\dv{t}\ket{m} - \sum\limits_{n \neq m}c_{n}(t)\frac{\mel{m}{\dv{H}{t}}{n}}{E_{m} - E_{n}}\right) = c_{m}(t)E_{m}(t)
+\end{align*}
+
+This means that we may ignore contribution from states such that the potential varies sufficiently slowly that the above matrix elements are much smaller than the energy differences. These are the states causing crossings, meaning that in the limit of very slowly varying potentials the above equation is diagonal in $c_{m}$, and if one starts in $\ket{m}$, one will stay there.
+
+\paragraph{Berry Phase}
+Dropping non-diagonal terms we obtain
+\begin{align*}
+	i\hbar\left(\dv{c_{m}}{t} + c_{m}(t)\bra{m}\dv{t}\ket{m}\right) = c_{m}(t)E_{m}(t),
+\end{align*}
+with the solution
+\begin{align*}
+	c_{m}(t) = c_{m}(0)e^{-\frac{i}{\hbar}\integ{0}{t}{\tau}{E(\tau)} + i\gamma(t)}.
+\end{align*}
+$\gamma$ is termed the Berry phase, and given by
+\begin{align*}
+	\gamma(t) = i\integ{0}{t}{\tau}{\bra{m}\dv{t}\ket{m}}.
+\end{align*}

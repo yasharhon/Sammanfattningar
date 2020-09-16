@@ -79,7 +79,7 @@ This operator satisfies all of the above criteria for a continuous symmetry.
 \paragraph{Effect of Symmetries on Wavefunctions}
 Let $u_{\var{\theta}}$ act on $\theta$ and $\vb{x}$ be a vector containing any other parameters describing the basis. We have
 \begin{align*}
-	u_{\var{\theta}}\ket{\Psi} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{u_{\var{\theta}}\ket{\theta}\braket{\theta}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta + \var{\theta}}\braket{\theta}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta}\braket{\theta - \var{\theta}}{\Psi}}},
+	u_{\var{\theta}}\ket{\Psi} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{u_{\var{\theta}}\ket{\theta, \vb{x}}\braket{\theta, \vb{x}}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta + \var{\theta}, \vb{x}}\braket{\theta, \vb{x}}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\braket{\theta - \var{\theta}, \vb{x}}{\Psi}}},
 \end{align*}
 meaning that the symmetry transforms $\Psi(\theta, \vb{x})$ to $\Psi(\theta - \var{\theta}, \vb{x})$.
 
@@ -99,7 +99,17 @@ to first order, implying
 	i\comm{\theta}{T} = 1.
 \end{align*}
 
-\paragraph{Generator in the Operator Basis}
+\paragraph{Generators in the Operator Basis}
+We have
+\begin{align*}
+	\left(1 - i\var{\theta}T\right)\ket{\Psi} &= \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\mel{\theta, \vb{x}}{\left(1 - i\var{\theta}T\right)}{\Psi}}} \\
+	                                          &= \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\braket{\theta - \var{\theta}, \vb{x}}{\Psi}}} \\
+	                                          &= \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\left(\braket{\theta, \vb{x}}{\Psi} - \var{\theta}\del{\theta}{\braket{\theta, \vb{x}}{\Psi}}\right)}},
+\end{align*}
+implying
+\begin{align*}
+	\bra{\theta, \vb{x}}T = \frac{1}{i}\del{\theta}{}.
+\end{align*}
 
 \paragraph{Discrete Symmetries}
 A discrete symmetry is an operator for which the previously stated machinery does not hold.
