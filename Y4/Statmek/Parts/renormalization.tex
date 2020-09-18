@@ -1,0 +1,48 @@
+\section{Renormalization}
+
+\paragraph{Decimation of the Ising Chain}
+Before proceeding, we define the dimensionless operator
+\begin{align*}
+	H = -\beta\ham = K\sum\limits_{i}\sum\limits_{j = \text{nn}(i)}\sigma_{i}\sigma_{j} + \frac{1}{2}h\sum\limits_{i}\sigma_{i} + \sigma_{i + 1}.
+\end{align*}
+When computing the partition function, we may do this by first summing over spins with odd indices. For any one of these, we obtain the (partial) sum
+\begin{align*}
+	2\cosh(K(\sigma_{i - 1} + \sigma_{i + 1}) + h).
+\end{align*}
+Next we may write
+\begin{align*}
+	2e^{\frac{1}{2}h(\sigma_{i - 1} + \sigma_{i + 1})}\cosh(K(\sigma_{i - 1} + \sigma_{i + 1}) + h) &= e^{2g + K^{\prime}\sigma_{i - 1}\sigma_{i + 1} + \frac{1}{2}h^{\prime}(\sigma_{i - 1} + \sigma_{i + 1})}
+\end{align*}
+for quantities
+\begin{align*}
+	K^{\prime} &= \frac{1}{4}\ln(\frac{\cosh(2K + h)\cosh(2K - h)}{\cosh[2](h)}), \\
+	h^{\prime} &= h + \frac{1}{2}\ln(\frac{\cosh(2K + h)}{\cosh(2K - h)}), \\
+	g          &= \frac{1}{8}\ln(16\cosh(2K + h)\cosh(2K - h)\cosh[2](h)).
+\end{align*}
+Thus the trace over odd-numbered spins is
+\begin{align*}
+	e^{Ng + K^{\prime}\sum\limits_{i}\sigma_{2i}\sigma_{2i + 2} + h^{\prime}\sum\limits_{i}\sigma_{2i}}.
+\end{align*}
+When computing the trace over the even-numbered spins, we notice that it has the same structure as for the total chain, apart from the modified constants. We thus obtain
+\begin{align*}
+	Z(N, K, h) = e^{Ng(K, h)}Z\left(\frac{1}{2}N, K^{\prime}, h^{\prime}\right).
+\end{align*}
+We may repeat this procedure indefinitely. Hence we obtain
+\begin{align*}
+	-\frac{\beta G}{N} = \sum\limits_{j = 0}^{\infty}\frac{1}{2^{j}}g(K_{j}, h_{j}).
+\end{align*}
+
+\paragraph{A More General Discussion}
+The more general approach is to consider a model on a $d$-dimensional lattice with a set of degrees of freedom $\sigma_{i}$ and coupling constants $K_{\alpha}$, and suppose that a transform of the kind we have discussed, now termed a renormalization transform, preserves the form of the Hamiltonian. We describe the system with the dimensionless quantity
+\begin{align*}
+	H = -\beta\ham = \sum\limits_{\alpha = 1}^{n}K_{\alpha}\psi_{\alpha}(\sigma)
+\end{align*}
+where the functions $\psi_{\alpha}(\sigma)$ describe one particular kind of interaction. As an example, the Ising model with coupling all over the lattice may have one function $\psi_{1}$ which contains all nearest-neighbour interactions, one function $\psi_{2}$ which describes next-to-nearest neighbours and so on. The renormalization transforms the Hamiltonian to
+\begin{align*}
+	H^{\prime} = Ng(K_{\alpha}) + \sum\limits_{\alpha = 1}^{n}K_{\alpha}^{\prime}\psi_{\alpha}(\sigma^{\prime}),
+\end{align*}
+where $\sigma^{\prime}$ is the set of reduced degrees of freedom, which must have the same algebraic property as the non-reduced ones, and we have new coupling coefficients which are functions of the old. Supposing that the number of degrees of freedom is reduced by a factor $b^{d}$ we obtain
+\begin{align*}
+	-\frac{\beta}{N}G\left(N, K_{\alpha}\right) = f\left(K_{\alpha}\right) = g(K_{\alpha}) + b^{-d}f\left(K_{\alpha}^{\prime}\right).
+\end{align*}
+We may now rec
