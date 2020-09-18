@@ -4,13 +4,15 @@
 Landau introduced the concept that phase transitions are defined by spontaneous symmetry breaking.
 
 \paragraph{Order Parameters}
-An order parameter describes spontaneous symmetry breaking. It is zero in one phase and non-zero in another.
+An order parameter is a quantity that describes spontaneous symmetry breaking. It is zero in one phase and non-zero in another. An order parameter need not have a physical interpretation.
 
 \paragraph{First- and Second-Order Phase Transitions}
-Second-order phase transitions have continuous free energy and order parameter, whereas second-order phase transitions do not.
+Second-order phase transitions have continuous free energy and order parameter, whereas first-order phase transitions have discontinous order parameter.
 
 \paragraph{Critical Exponents}
-Many phenomena exhibit a behaviour of the form $\abs{T - T_{\text{c}}}^{-\nu}$ close to phase transitions. The exponent $\nu$ is termed the critical exponent.
+Many phenomena exhibit a behaviour of the form $\abs{T - T_{\text{c}}}^{-c}$ close to phase transitions. The exponent $c$ is termed the critical exponent.
+
+Some specific critical exponents that may appear are $\gamma$ for $\chi$, $\alpha$ for $C$, $-\beta$ for the order parameter, $-\delta\beta$ for the conjugate field $h$, $\gamma$ for the corresponding susceptibility $\chi$ and $\nu$ for the correlation length.
 
 \paragraph{Density Matrices}
 The probability distribution is of the form
@@ -40,42 +42,39 @@ The Ising model is a simple model of magnets. In this model, a magnet is a colle
 \begin{align*}
 	\ham = -J\sum\limits_{i}\sum\limits_{j = \text{nn}(i)}\sigma_{i}\sigma_{j} - h\sum\limits_{i}\sigma_{i}.
 \end{align*}
-The inner summation is carried out over the nearest neighbours of site $i$ in the Ising model, but is generally a sum over the whole lattice. The order parameter defining its phase transition is $m = \expval{\sigma_{i}}$.
+The inner summation is carried out over the nearest neighbours of site $i$ in the Ising model, but is generally a sum over the whole lattice. The order parameter defining its phase transition for the case $J > 0$ is $m = \expval{\sigma_{i}}$.
 
 This model will be used to demonstrate core concepts in the course.
 
-\paragraph{Exact Solution in One Dimension}
-To solve the Ising model in one dimension we will impose periodic boundary conditions $\sigma_{N} = \sigma_{0}$. In the absence of an external magnetic field the Hamiltonian is
+\paragraph{Scaling Laws}
+While we will use the Ising model as a reference in this summary, it has been found that very different systems display similar critical exponents. Such exponents are also found to obey so-called scaling laws. As an example, it may be shown that
 \begin{align*}
-	\ham = -J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} - h\sum\limits_{i = 0}^{N - 1}\sigma_{i}.
+	\chi(C_{H} - C_{M}) = T\fix{\left(\pdv{M}{T}\right)^{2}}{H}.
 \end{align*}
-This yields
+This can only be satisfied if
 \begin{align*}
-	e^{-\beta\ham} = \prod\limits_{i = 0}^{N - 1}e^{\beta(J\sigma_{i}\sigma_{i + 1} + h\sigma_{i})}.
+	\chi C_{H} > T\fix{\left(\pdv{M}{T}\right)^{2}}{H}.
 \end{align*}
-Consider one particular factor $T_{\sigma_{i}\sigma_{i + 1}} = e^{\beta J\sigma_{i}\sigma_{i + 1}}$. If we could compute the trace of any one of these, that would directly give us the partition function. However, this rewriting does not decouple the Hamiltonian, making the trace hard to compute. To do that, let us now treat $T_{\sigma_{i}\sigma_{i + 1}}$ as an operator $T_{\sigma_{i + 1}}$ working solely on $\sigma_{i}$ and fix $\sigma_{i + 1}$. The matrix elements of $\sigma_{i}\sigma_{i + 1}$ are
+Introducing the critical exponent of the involved quantities, we must therefore have
 \begin{align*}
-	\mel{i}{\sigma_{i}\sigma_{i + 1}}{j} = ij\sigma_{i + 1}.
+	-\gamma - \alpha \leq 2(\beta - 1),\ \gamma + \alpha + 2\beta \geq 2.
 \end{align*}
-The redefined transfer matrix may thus be written as
+The intriguing part is that each side is in fact almost equal, meaning that we may treat them as such. Three other scaling laws are:
 \begin{align*}
-	T_{\sigma_{i + 1}} =
-	\mqty[
-		e^{\beta J \sigma_{i + 1} + h} & e^{-\beta J \sigma_{i + 1} - h} \\
-		e^{\beta J \sigma_{i + 1} + h} & e^{-\beta J \sigma_{i + 1} - h}.
-	]
+	\beta(\delta - 1) = \gamma,\ \nu d = 2 - \alpha,\ \gamma = \nu(2 - \eta).
 \end{align*}
-Its eigenvalues are the solution to
-\begin{align*}
-	\left(\lambda - e^{\beta J \sigma_{i + 1} + h}\right)\left(\lambda - e^{-\beta J \sigma_{i + 1} - h}\right) - 1 = 0.
-\end{align*}
-This sucks
+We have also included the exponent $\Gamma(r, T_{\text{c}}) \propto r^{-(d - 2 + \eta)}$.
 
-Alternatively, we may write the partition function as
+\paragraph{Exact Solution in One Dimension}
+To solve the Ising model in one dimension we will impose periodic boundary conditions $\sigma_{N} = \sigma_{0}$. The Hamiltonian may be written as
 \begin{align*}
-	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}e^{\left(\beta J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h\sum\limits_{i = 0}^{N - 1}\sigma_{i} + \sigma_{i + 1}\right)}.
+	\ham = -J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} - \frac{1}{2}h\sum\limits_{i = 0}^{N - 1}\sigma_{i} + \sigma_{i + 1}.
 \end{align*}
-Introducing $t_{\sigma\sigma^{\prime}} = e^{\beta J\sigma\sigma^{\prime} + \frac{1}{2}h(\sigma + \sigma^{\prime})}$ we have
+The partition function is thus
+\begin{align*}
+	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}e^{\beta\left(J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h\sum\limits_{i = 0}^{N - 1}\sigma_{i} + \sigma_{i + 1}\right)}.
+\end{align*}
+Introducing the transfer matrix with elements $t_{\sigma\sigma^{\prime}} = e^{\beta J\sigma\sigma^{\prime} + \frac{1}{2}h(\sigma + \sigma^{\prime})}$ we have
 \begin{align*}
 	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}\prod\limits_{i = 0}^{N - 1}t_{\sigma_{i}\sigma_{i + 1}}.
 \end{align*}
@@ -157,4 +156,112 @@ In one dimension there is no magnetization. In the case where all couplings are 
 where we have introduced the correlation length
 \begin{align*}
 	\xi = -\frac{1}{\ln(\tanh(\beta J))}.
+\end{align*}
+
+\paragraph{Kadanoff Block Spins}
+Consider the Ising model on a $d$-dimensional hypercubic lattice with lattice constant $a$. Divide the lattice into blocks with $l$ spins in each direction, meaning that each block contains $l^{d}$ lattice sites. These blocks then also form a lattice with lattice constant $la$. If we assume that $la \ll \xi$, most of the spins in a block are correlated, allowing us to introduce a scaling hypothesis. Denoting the total spin of some block as $S_{I, \text{tot}}$ we introduce the new variables
+\begin{align*}
+	S_{I} = l^{-x_{S}}S_{I, \text{tot}}.
+\end{align*}
+
+Assume now that the Hamiltonian looks the same when expressed in terms of the block spins. The free energy should then be unchanged by the choice of new variables. Introducing the variable
+\begin{align*}
+	t = \frac{T - T_{\text{c}}}{T_{\text{c}}},
+\end{align*}
+we expect both this parameter and $h$ to scale with the transformation of variables according to
+\begin{align*}
+	t\to tl^{x_{t}},\ h\to hl^{x_{h}}.
+\end{align*}
+We now expect the free energy to scale according to
+\begin{align*}
+	G = Ng(t, h) = N_{l}g(t_{l}, h_{l}) = \frac{N}{l^{d}}g(t_{l}, h_{l}).
+\end{align*}
+The correlation length is also expected to scale as
+\begin{align*}
+	\xi\to\frac{\xi}{l}.
+\end{align*}
+This implies that in our new variables, the reduced temperature is increased. Similarly the field is given by
+\begin{align*}
+	h = h\sum S_{i} = h\sum S_{I, \text{tot}} = hl^{x_{S}}\sum S_{I},
+\end{align*}
+and has thus increased. The scaling hypothesis is now
+\begin{align*}
+	g(t, h) = l^{-d}g(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+In other words, the free energy per particle is a homogenous function of $t$ and $h$.
+
+Near $t = 0$ the correlation length is the only characteristic length scale. As it diverges in this limit, the system is invariant under scale transformations. This implies that all thermodynamic functions are homogenous, somehow.
+
+Let us now derive some critical exponents in this way. For instance, we compute the order parameter as
+\begin{align*}
+	m(t, h) = \pdv{h}(l^{-d}g(tl^{x_{t}}, hl^{x_{h}})) = l^{x_{h} - d}m(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+This is true for any scaling factor according to the hypothesis, meaning that we may choose $l = \abs{t}^{-\frac{1}{x_{t}}}$ (and $h = 0$, I believe), which one can squint to see as
+\begin{align*}
+	\beta = -\frac{y_{h} - d}{y_{t}}.
+\end{align*}
+%TODO: Constant on RHS
+To determine $\delta$, we choose $t = 0,\ l = \abs{h}^{-\frac{1}{y_{h}}}$ to obtain
+\begin{align*}
+	\delta = -\frac{y_{h}}{y_{h} - d}.
+\end{align*}
+To determine $\gamma$ we instead use
+\begin{align*}
+	\chi(t, h) = \pdv{h}(l^{x_{h} - d}m(tl^{x_{t}}, hl^{x_{h}})) = l^{2x_{h} - d}\chi(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+Choosing the scale factor $l = \abs{t}$ nets
+\begin{align*}
+	\gamma = \frac{2y_{h} - d}{y_{t}}.
+\end{align*}
+To determine $\alpha$, we use
+\begin{align*}
+	C(t, h) = -t\pdv[2]{g}{t} = l^{2y_{h} - d}C(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+This yields
+\begin{align*}
+	\alpha = \frac{2y_{t} - d}{y_{t}}.
+\end{align*}
+%TODO: Re-obtain scaling laws
+
+The scaling assumptions must be verified experimentally. For one method, consider the order parameter. Choosing $l = \abs{t}^{-\frac{1}{y_{t}}}$ we obtain
+\begin{align*}
+	\abs{t}^{-\beta}m(t, h) = m(\pm 1, h\abs{t}^{-\Delta}),
+\end{align*}
+where $\Delta$ is the gap exponent, given by $\frac{y_{h}}{y_{t}}$. In other words, plotting $\abs{t}^{-\beta}m(t, h)$ against $h\abs{t}^{-\Delta}$, one should see different curves depending on the sign of $t$.
+
+We now turn to the correlation length. We expect
+\begin{align*}
+	\xi(t, h) = l\xi(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+Setting $l = \abs{t}^{-\frac{1}{x_{t}}}$ we find
+\begin{align*}
+	\nu = \frac{1}{x_{t}}.
+\end{align*}
+This yields
+\begin{align*}
+	\nu d = 2 - \alpha.
+\end{align*}
+
+Next, the correlation function. We have
+\begin{align*}
+	\Gamma(r_{l}, t_{l}) &= \expval{S_{I}S_{J}} -\expval{S_{I}}\expval{S_{J}} \\
+	                     &= l^{-2x_{h}}\sum\limits_{i\in I, j\in j}\expval{S_{i}S_{j}} -\expval{S_{i}}\expval{S_{j}} \\
+	                     &= l^{d - 2x_{h}}(\expval{S_{i}S_{j}} -\expval{S_{i}}\expval{S_{j}}) \\
+	                     &= l^{d - 2x_{h}}\Gamma(r, t),
+\end{align*}
+implying
+\begin{align*}
+	\Gamma(r, t) = l^{2x_{h} - d}\Gamma\left(\frac{r}{l}, l^{x_{t}}\right).
+\end{align*}
+Setting $l = r$ and $t = 0$ we obtain
+\begin{align*}
+	\Gamma(r, 0) = r^{2x_{h} - d}\Gamma\left(1, 0\right).
+\end{align*}
+By the order-of-magnitude estimate $\Gamma\propto r^{d - 2 + \nu}$ for the correlation function we thus have
+\begin{align*}
+	2 - \eta = 2x_{h} - d = \frac{\gamma}{\nu}
+\end{align*}
+and finally
+\begin{align*}
+	\gamma = \nu(2 - \eta).
 \end{align*}

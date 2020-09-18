@@ -1,51 +1,55 @@
 \section{Mean-Field Theory}
 
+\paragraph{The Idea}
+The idea between mean-field theory is to separate the Hamiltonian by for any component of the system replace the ones with which it is interacting by an expectation value. Alternatively one may also replace the interactions themselves by mean values. This way a partition function may be computed more easily.
+
+One usually requires self-consistency, meaning that expectation values should be computable from this partition function. This implies that the partition function implicitly gives the expectation values which were used to separate the Hamiltonian.
+
 \paragraph{Mean-Field Theory of the Ising Model}
-Consider the effect of flipping some particular spin $i$ from $1$ to $-1$ while leaving the others unchanged. The change in the Hamiltonian is given by
+To construct a mean-field theory for the Ising model, we write the Hamiltonian as
 \begin{align*}
-\Delta\ham = 2h + 2J\sum\limits_{j = \text{nn}(i)}\sigma_{j} = -\left(h + J\sum\limits_{j = \text{nn}(i)}\sigma_{j}\right)\Delta\sigma_{i}.
+	\ham = -\sum\limits_{i}\sigma_{i}\left(J\sum\limits_{j = \text{nn}(i)}\sigma_{j} + h\right).
 \end{align*}
-This is the same as would be obtained for a set of non-interacting spins in a magnetic field
+We note that the replacement $\sigma_{j}\to m$ will make the Hamiltonian separable, hence we propose the mean-field Hamiltonian
 \begin{align*}
-h^{\prime} = h + J\sum\limits_{j = \text{nn}(i)}\sigma_{j}.
+	\ham = -\sum\limits_{i}\sigma_{i}\left(J\sum\limits_{j = \text{nn}(i)}m + h\right) = -\sum\limits_{i}\sigma_{i}\left(qJm + h\right) = -h^{\prime}\sum\limits_{i}\sigma_{i}
 \end{align*}
-The difficulties in solving the Ising model arise due to the fact that the nearest neighbours themselves fluctuate, making the endeavour to solve this with previously developed methods impossible. Instead, we proceed by reducing the interactions to their mean value, the core idea of mean-field theory. The effective field is thus
+where we have introduced the number $q$ of nearest neighbours to any one site and the effective field
 \begin{align*}
-h^{\prime} = h + J\sum\limits_{j = \text{nn}(i)}\expval{\sigma_{j}}.
+	h^{\prime} = h + qJm.
 \end{align*}
-Using previously developed methods we obtain
+
+Using this Hamiltonian, the partition function is now given by
 \begin{align*}
-&Z = \sum e^{-\beta\ham} = \sum e^{\beta h^{\prime}\sum\limits_{i}\sigma_{i}} = \left(\sum\limits_{\sigma = \pm 1}e^{\beta h^{\prime}\sigma}\right)^{N} = 2^{N}\cosh[N](\beta h^{\prime}), \\
-&\expval{\sigma_{i}} = \frac{1}{Z}\sum\sigma_{i}e^{\beta h^{\prime}\sum\limits_{j}\sigma_{j}} = \dv{\beta h^{\prime}}\ln(2\cosh(\beta h^{\prime})) = \tanh(\beta h^{\prime}).
+	&Z = \tr(e^{-\beta\ham}) = \sum\limits_{\{\sigma\}}e^{\beta h^{\prime}\sum\limits_{i}\sigma_{i}} = \left(\sum\limits_{\sigma = \pm 1}e^{\beta h^{\prime}\sigma}\right)^{N} = 2^{N}\cosh[N](\beta h^{\prime}), \\
+	&m = \frac{1}{N}\expval{\sum\limits_{i}\sigma_{i}} = \frac{1}{NZ}\sum\sum\limits_{i}\sigma_{i}e^{\beta h^{\prime}\sum\limits_{j}\sigma_{j}} = \frac{1}{N}\dv{\beta h^{\prime}}\ln(2^{N}\cosh[N](\beta h^{\prime})) = \tanh(\beta h^{\prime}).
 \end{align*}
-Note that this implies that all spins are expected to point in the same direction. Baked into the process there is a specific idea of the structure of the solution, and it is therefore important to make such a guess. We proceed with the ferromagnetic case, where the implication holds true, and introduce $m = \expval{\sigma_{i}}$ to obtain
+Note that this implies that all spins are expected to point in the same direction. Baked into the process there is a specific idea of the structure of the solution, and it is therefore important to make a good guess about this. We proceed with the ferromagnetic case, where the guess is good, and obtain
 \begin{align*}
-m = \tanh(\beta\left(h + J\sum\limits_{j = \text{nn}(i)}m\right)).
+	m = \tanh(\beta\left(h + qJm\right)).
 \end{align*}
-Introducing the coordination number $z$ of a lattice site we obtain
+This equation can be solved graphically to yield the magnetization, but we will discuss it qualitatively here. The expression above is anti-symmetric in $m$, meaning we may consider $m \geq 0$. Depending on the parameters, the number of solutions is between one and three. In the case where $h = 0$, one solution is $m = 0$, and two other solutions may be found at $m = \pm m_{0}$. At low temperatures the right-hand side approaches $\pm 1$, yielding $m_{0} = 1$. For $h = 0$ solutions are only found where the right-hand side grows faster than the left-hand side at zero. This is satisfied if
 \begin{align*}
-m = \tanh(\beta\left(h + zJm\right)).
+	\beta qJ > 1.
 \end{align*}
-This equation can be solved graphically to yield the magnetization, but we will discuss it qualitatively here. Depending on the parameters, the number of solutions is between one and three. In the case where $h = 0$, one solution is $m = 0$, and two other solutions may be found at $m = \pm m_{0}$. At low temperatures the right-hand side approaches $\pm$, yielding $m_{0} = 1$. As the temperature approaches the critical temperature, above which no spontaneous magnetism is found, $m_{0}$ is small and we obtain
+This defines the critical temperature
 \begin{align*}
-	m_{0}                              &\approx \beta zJm_{0} - \frac{1}{3}\left(\beta zJm_{0}\right)^{3}, \\
-	\left(\beta zJ\right)^{3}m_{0}^{2} &= 3(\beta zJ - 1), \\
-	m_{0}                              &= \frac{1}{\left(\beta zJ\right)^{\frac{3}{2}}}\sqrt{3}\sqrt{\beta zJ - 1} \\
-	                                   &= \sqrt{3}\left(\frac{\kb T}{zJ}\right)^{\frac{3}{2}}\sqrt{\frac{zJ}{\kb T} - 1}.
+	T_{\text{c}} = \frac{qJ}{\kb},
 \end{align*}
-We can now identify the temperature such that this is zero, namely
+above which no non-zero solutions are found.
+
+As the temperature approaches the critical temperature, above which no spontaneous magnetism is found, $m_{0}$ is small (but non-zero) and we obtain
 \begin{align*}
-	T_{\text{C}} = \frac{zJ}{\kb}
+	m_{0}                              &\approx \beta qJm_{0} - \frac{1}{3}\left(\beta qJm_{0}\right)^{3}, \\
+	\left(\frac{T_{\text{c}}}{T}\right)^{3}m_{0}^{2} &= 3\left(\frac{T_{\text{c}}}{T} - 1\right), \\
+	m_{0}                              &= \left(\frac{T}{T_{\text{c}}}\right)^{\frac{3}{2}}\sqrt{3\left(\frac{T_{\text{c}}}{T} - 1\right)} \\
+	                                   &= \sqrt{\frac{3}{T_{\text{c}}}\left(\frac{T}{T_{\text{c}}}\right)^{2}\left(T_{\text{c}} - T\right)}.
 \end{align*}
-to write
-\begin{align*}
-	m_{0} = \sqrt{3}\left(\frac{T}{T_{\text{C}}}\right)^{\frac{3}{2}}\sqrt{\frac{T_{\text{C}}}{T} - 1}.
-\end{align*}
-While the existence of solutions to $m = \tanh(\beta zJm)$ would have sufficed to identify the critical temperature, we have now characterized the behaviour of the magnetization close to the phase transition as well. One of the uses of mean-field theory is exactly this qualitative description of the phase diagram.
+This identifies the critical exponent $\beta = 1$. One of the uses of mean-field theory is determining asymptotic behaviour close to phase transitions.
 
 One more thing should be mentioned, namely the assertion that there actually is spontaneous magnetization. After all, if three solutions are possible, who is to say that one of the non-zero ones are found? To do this, we consider the entropy of an ideal paramagnet, which can be shown to be
 \begin{align*}
-S = -N\kb\left(\frac{1 - m}{2}\ln(\frac{1 - m}{2}) + \frac{1 + m}{2}\ln(\frac{1 + m}{2})\right).
+	S = -N\kb\left(\frac{1 - m}{2}\ln(\frac{1 - m}{2}) + \frac{1 + m}{2}\ln(\frac{1 + m}{2})\right).
 \end{align*}
 We see that the non-zero solutions maximize entropy - a relief.
 
@@ -56,27 +60,27 @@ Using the mean-field result, we may now study other quantities close to the phas
 \end{align*}
 The implicit equation for the magnetization yields
 \begin{align*}
-	\chi &= \frac{1}{\cosh[2](\beta(qJm + h))}(\beta qJ\chi + \beta), \\
+	\chi &= \frac{\beta}{\cosh[2](\beta(qJm + h))}(qJ\chi + 1), \\
 	\chi &= \frac{\beta}{\cosh[2](\beta(qJm + h)) - \beta qJ} = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - \frac{qJ}{\kb}\right)}.
 \end{align*}
 Introducing the critical temperature, we write this as
 \begin{align*}
-	\chi = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - T{\text{c}}\right)}.
+	\chi = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - T_{\text{c}}\right)}.
 \end{align*}
 In particular, for $h = 0$ and temperatures above $T_{\text{c}}$, where there is no magnetization, we obtain
 \begin{align*}
-	\chi = \frac{1}{\kb\left(T - T{\text{c}}\right)}.
+	\chi = \frac{1}{\kb\left(T - T_{\text{c}}\right)}.
 \end{align*}
-When approaching the phase transition from below for $h = 0$, we use the asympotic expression for the magnetization to obtain
+When approaching the phase transition from below for $h = 0$, we use the asymptotic expression for the magnetization to obtain
 \begin{align*}
-	\chi &= \frac{1}{\kb \left(T\cosh[2](\beta qJ\sqrt{3}\left(\frac{T}{T_{\text{C}}}\right)^{\frac{3}{2}}\sqrt{\frac{T_{\text{c}}}{T} - 1}) - T{\text{c}}\right)} \\
-	     &= \frac{1}{\kb \left(T\cosh[2](\sqrt{3}\sqrt{1 - \frac{T}{T_{\text{c}}}}) - T{\text{c}}\right)} \\
-	     &= \frac{1}{\kb \left(T\left(1 + 3\left(1 - \frac{T}{T_{\text{c}}}\right)\right) - T{\text{c}}\right)} \\
+	\chi &= \frac{1}{\kb \left(T\cosh[2](\beta qJ\sqrt{\frac{3}{T_{\text{c}}}\left(\frac{T}{T_{\text{c}}}\right)^{2}\left(T_{\text{c}} - T\right)}) - T_{\text{c}}\right)} \\
+	     &= \frac{1}{\kb \left(T\cosh[2](\sqrt{3\left(1 - \frac{T}{T_{\text{c}}}\right)}) - T_{\text{c}}\right)} \\
 	     &= \frac{1}{\kb T_{\text{c}}\left(\frac{T}{T_{\text{c}}}\left(1 + 3\left(1 - \frac{T}{T_{\text{c}}}\right)\right) - 1\right)} \\
-	     &= \frac{1}{\kb T_{\text{c}}\left(\frac{T}{T_{\text{c}}} + 3\left(1 - \frac{T}{T_{\text{c}}}\right) - 1\right)} \\
-	     &= \frac{1}{2\kb(T - T{\text{c}})}.
+	     &=	\frac{1}{\kb T_{\text{c}}\left(4\frac{T}{T_{\text{c}}} - 3\left(\frac{T}{T_{\text{c}}}\right)^{2} - 1\right)} \\
+	     &= \frac{1}{\kb T_{\text{c}}\left(3\frac{T}{T_{\text{c}}}\left(1 - \frac{T}{T_{\text{c}}}\right) + \frac{T}{T_{\text{c}}} - 1\right)} \\
+	     &\approx \frac{1}{\kb T_{\text{c}}\left(3\left(1 - \frac{T}{T_{\text{c}}}\right) + \frac{T}{T_{\text{c}}} - 1\right)} \\
+	     &= \frac{1}{2\kb\left(T_{\text{c}} - T\right)}.
 \end{align*}
-I hate this.
 
 \paragraph{The Bragg-Williams Approximation}
 The Bragg-Williams approximation to mean-field theory starts with constructing the availability in terms of the order parameter. In the case of the Ising model, we introduce the numbers $N_{\pm}$ of spins with values $\pm 1$. Furthermore, we introduce the numbers $N_{\pm\pm}$ of spin pairs of any kind. The Hamiltonian is thus
@@ -135,3 +139,33 @@ The phase transition occurs when this energy change is negative, i.e. when
 which is decently close to the analytically obtained results.
 
 \paragraph{Antiferromagnetism}
+The case of $J < 0$ is another interesting case, and gives rise to some interesting phases. One phenomenon which may occur is frustration, where the lattice structure is such that for any group of spins, the state of lowest energy is degenerate and not such that all interactions are beneficial. Assuming this not to be the case, we find that the ground state corresponds to an ordered phase such that two lattice translations combined leave the system invariant. This symmetry is broken by the phase transition, hence we introduce the order parameter
+\begin{align*}
+	m = \frac{1}{N}\sum(-1)^{j}\sigma_{j},
+\end{align*}
+which may be written as
+\begin{align*}
+	m = \frac{1}{2}(m_{A} - m_{B}),
+\end{align*}
+where the lattice has been divided into two sublattices.
+
+The mean-field Hamiltonian is
+\begin{align*}
+	\ham = \ham_{A} + \ham_{B} = -Jq\left(m_{B}\sum\limits_{A}\sigma_{i} + m_{A}\sum\limits_{B}\sigma_{i}\right),
+\end{align*}
+and by the same methods as previously, the mean-field partition function is
+\begin{align*}
+	Z = 2^{N}\cosh[\frac{1}{2}N](\beta Jqm_{B})\cosh[\frac{1}{2}N](\beta Jqm_{A}).
+\end{align*}
+From this we obtain
+\begin{align*}
+	m_{A} = \tanh(\beta Jqm_{B}).
+\end{align*}
+By construction we have $m_{A} = -m_{B}$, which yields
+\begin{align*}
+	m_{A} = -\tanh(\beta Jqm_{A}).
+\end{align*}
+This is the same as we obtained for the ferromagnetic case, and we may immediately identify the critical temperature
+\begin{align*}
+	T_{\text{c}} = -\frac{qJ}{\kb}.
+\end{align*}

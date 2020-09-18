@@ -3,29 +3,39 @@
 \paragraph{The Idea}
 Landau's theory is a general theory of phase transitions. The core idea is to series expand the free energy in terms of the order parameter close to the phase transition. This isn't really valid, but this method works nevertheless.
 
-\paragraph{Landau Theory of the Ising Model}
-Close to the phase transition temperature the free energy may be expanded as
+The general form of the series expansion is
 \begin{align*}
-	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{i}(T)m^{2i}.
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{i}a_{i}(T)m^{i},
 \end{align*}
-At $T = 0$ you will have $\abs{\vb{m}} = 1$. The free energy may only depend on the length of the free energy, hence we have
-\begin{align*}
-	G(\vb{m}, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{2i}(T)m^{2i}.
-\end{align*}
-In order for the free energy to be bounded, the highest-order coefficient must be positive.
+where certain terms may be zero depending on the symmetry of the system. We assume the order parameter to be finite at equilibrium, meaning that the free energy must be bounded from below. One generally truncates this sum to make it possible to handle, and the free energy being bounded is guaranteed by the highest-order term to be even in $m$ and positive.
 
-Suppose now that as the temperature is lowered, $a_{2}$ is the first coefficient to change sign (one coefficient must do this in order for a minimum to exist). Expand it close to the transition temperature as
+\paragraph{Landau Theory of the Ising Model}
+For the Ising model we expect the system to be invariant with respect to flipping all spins, hence we have the series expansion
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{2i}(T)m^{2i}.
+\end{align*}
+At $T = 0$ you will have $\abs{\vb{m}} = 1$.
+
+Suppose now that as the temperature is lowered, $a_{2}$ is the first coefficient to change sign (at least one coefficient must do this in order for a minimum to exist). Close to the temperature $T_{\text{c}}$ at which it changes sign, it may be linearized as
 \begin{align*}
 	a_{2}(T) = a_{2, 0}(T - T_{\text{c}}).
 \end{align*}
-The temperature dependence of the order parameter may now be obtained as
+At equilibrium we have
 \begin{align*}
-	a_{2}m + a_{4}(T_{\text{c}})m^{3} + \dots = 0.
+	\pdv{G}{m} = \sum\limits_{i}a_{2i}(T)m^{2i - 1} = 0.
 \end{align*}
-Ignoring higher-order terms we obtain
+Assuming that other coefficients are approximately constant close to the transition temperature and approaching $T_{\text{c}}$ from below, where $m$ is small but non-zero, we have
 \begin{align*}
-	m = \sqrt{\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}(T_{\text{c}} - T)}.
+	a_{2, 0}(T - T_{\text{c}}) + \sum\limits_{i > 2}a_{2i}(T_{\text{c}})m^{2i - 2} = 0.
 \end{align*}
+We truncate this sum at order $2$ in $m$ to obtain
+\begin{align*}
+	m = \sqrt{\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}(T_{\text{c}} - T)},
+\end{align*}
+which reproduces the correct critical exponent.
+
+We see that the series expansion and our assumption about which coefficients change sign produce a theory with a second-order phase transition. This is profound, and both the nature of the phase transition and the critical exponent are general. This is part of the power of Landau theory.
+
 Next we study the heat capacity
 \begin{align*}
 	C = T\fix{\pdv{S}{T}}{h}.
@@ -52,7 +62,7 @@ and thus
 	   &- T\sum\limits_{i = 3}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
 	  \approx& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{2a_{4}(T_{\text{c}})},
 \end{align*}
-where we have ignored terms containing the magnetization and set all temperatures to be the critical temperature. Above the critical temperature the magnetization is instead identically zero, netting
+where we have ignored terms containing the magnetization. Above the critical temperature the magnetization is instead identically zero, netting
 \begin{align*}
 	C = -T\dv[2]{a_{0}}{T}.
 \end{align*}
