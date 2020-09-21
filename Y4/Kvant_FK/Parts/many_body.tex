@@ -1,0 +1,36 @@
+\paragraph{Quantum Mechanics for Many-Body Physics}
+
+\paragraph{Identical Particles}
+For different particles the total Hilbert space may be constructed as the tensor product of the Hilbert spaces describing the individual particles. For identical particles, swapping the states of the particles seems to produce a different states. This does not match with experiments, which indicate identical particles to be indistinguishable. Hence only parts of the total product space is physical.
+
+We introduce the permutation operator $P_{12}$ for two particles such that
+\begin{align*}
+	P_{12}\ket{\alpha}\otimes\ket{\beta} = \ket{\beta}\otimes\ket{\alpha}.
+\end{align*}
+This operator satisfies
+\begin{align*}
+	P_{12}^{2} = 1,\ \adj{P_{12}} = P_{12}.
+\end{align*}
+In addition, as identical particles are indistinguishable, it should not modify expectation values. Hence
+\begin{align*}
+	\expval{A}{\Psi} = \expval{\adj{P_{12}}AP_{12}}{\Psi} = \expval{P_{12}AP_{12}}{\Psi}.
+\end{align*}
+This implies that $P_{12}AP_{12} = A$ and that $P_{12}$ commutes with any operator. Furthermore, the permutation operator has eigenvalues $\pm 1$, hence we may change introduce basis states
+\begin{align*}
+	\ket{\alpha\beta}_{\text{S}} = \frac{1}{\sqrt{2}}(\ket{\alpha\beta} + \ket{\beta\alpha}),\ \ket{\alpha\beta}_{\text{A}} = \frac{1}{\sqrt{2}}(\ket{\alpha\beta} - \ket{\beta\alpha})
+\end{align*}
+and write Hilbert space as the direct sum of the subspaces spanned by these basis states.
+
+Similarly, for multiple particles we have states $\ket{\alpha_{1}, \alpha_{2}, \dots, \alpha_{N}}$ and introduce permutation operators $P_{ijk}$, which cyclically permute the corresponding particles. Such permutations constitute a non-Abelian discrete group, and its generators are permutations of two particles. For such operators we may also introduce a sign of a permutation, equal to $-1$ to the power of the number of generators involved. As the permutation operators do not commute, one cannot simultaneously diagonalize them. However, one can find subspaces of Hilbert space which are invariant under any permutation. These may be constructed from single product kets using the symmetrizer and antisymmetrizer, defined as
+\begin{align*}
+	S = \frac{1}{N!}\sum\limits_{p}P_{p},\ A = \frac{1}{N!}\sum\limits_{p}\text{sgn}(P)P_{p}.
+\end{align*}
+These operators are projectors, and are therefore their own squares. While they are self-adjoint, they do not add to the identity. Hence Hilbert space must be constructed as a direct sum of the eigenbases of $S$ and $A$, as well as other states.
+
+Note that on these subspaces, where the physical states exist according to our postulates, the permutation operators are multiples of identity. This explains why there is no observable corresponding to them.
+
+\paragraph{The Spin-Statistics Theorem}
+Particles with half-integer spins are called fermions, and particles with integer spins are called bosons.
+
+\paragraph{Many-Body Operators}
+Many-body operators may be constructed from adding single-particle operators or by adding operators containing interactions.

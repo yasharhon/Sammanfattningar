@@ -197,3 +197,39 @@ $\gamma$ is termed the Berry phase, and given by
 \begin{align*}
 	\gamma(t) = i\integ{0}{t}{\tau}{\bra{m}\dv{t}\ket{m}}.
 \end{align*}
+We find that it is imaginary, as
+\begin{align*}
+	\braket{m} = 1 \rightarrow 2\Re(\bra{m}\dv{t}\ket{m}) = 0.
+\end{align*}
+
+The Berry phase has a geometric interpretation. To understand it, construct a vector $\vb{R}(t)$ of parameters entering into the Hamiltonian. The eigenvalues of the instantaneous eigenstates are thus functions of these parameters. The Berry phase is given by
+\begin{align*}
+	\gamma &= i\integ{0}{t}{\tau}{\bra{m}\dv{t}\ket{m}} \\
+	       &= i\integ{0}{t}{\tau}{\braket{m}{\grad_{\vb{R}}{m}}}\cdot\dv{\vb{R}}{t} \\
+	       &= i\integ{}{}{\vb{R}}{\cdot\braket{m}{\grad_{\vb{R}}{m}}},
+\end{align*}
+where the integral is now converted to a curve integral in parameter space. This is the geometric interpretation.
+
+Imagine now that we vary the parameters periodically with period $T$. The Berry phase then contains an integral over a closed curve. By introducing the Berry connection
+\begin{align*}
+	\vb{A}_{m} = \braket{m}{\grad_{\vb{R}}{m}},
+\end{align*}
+which indeed satisfies
+\begin{align*}
+	i\braket{m}{\grad_{\vb{R}}{m}} = \vb{A},
+\end{align*}
+we may also introduce the Berry curvature
+\begin{align*}
+	\vb*{\Omega} = \curl{\vb{A}},
+\end{align*}
+the flux of which may equally well determine the Berry phase.
+
+Prior to Berry's paper, it was believed that the Berry phase could be eliminated. Namely, by modifying the phase of the basis states by
+\begin{align*}
+	\ket{n}\to e^{i\chi(\vb{R})}\ket{n},
+\end{align*}
+the Berry connection would be transformed to
+\begin{align*}
+	\vb{A}\to \vb{A} - \grad_{\vb{R}}{\chi}.
+\end{align*}
+For non-periodic paths through parameter space, this would indeed be the case. However, for a closed path, we may instead compute the Berry phase using a flux integral of the Berry curvature. As the Berry curvature is unchanged by this change of phase, the Berry phase is also left unchanged.
