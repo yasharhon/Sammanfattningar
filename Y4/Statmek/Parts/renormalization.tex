@@ -45,4 +45,48 @@ where $\sigma^{\prime}$ is the set of reduced degrees of freedom, which must hav
 \begin{align*}
 	-\frac{\beta}{N}G\left(N, K_{\alpha}\right) = f\left(K_{\alpha}\right) = g(K_{\alpha}) + b^{-d}f\left(K_{\alpha}^{\prime}\right).
 \end{align*}
-We may now rec
+
+We will now study the critical points of such model. To do this, consider a model described by two coupling constants. The set of critical points for this model will form a line in coupling constant space. Under a renormalization transform, points in this space are made to flow. This flow cannot approach the critical line, as the correlation length there is infinite and generally decreased by a renormalization transform. The long-range order may not be changed by such transforms either, hence the flow cannot make points cross the critical line. Certain points on the critical line may be fixed points, but generally all of them are not. To proceed, consider some particular fixed point $K_{1}^{\star}, K_{2}^{\star}$ and a flow close to this point. We introduce displacements $\Delta K$ from the critical point, and obtain to first order
+\begin{align*}
+	K_{1}^{\prime} = R_{1}(K_{1}^{\star} + \Delta K_{1}, K_{2}^{\star} + \Delta K_{2}) = K_{1}^{\star} + \Delta K_{1}\pdv{R_{1}}{K_{1}} + \Delta K_{2}\pdv{R_{1}}{K_{2}},
+\end{align*}
+with a similar expression for $K_{2}\prime$. Introducing the matrix
+\begin{align*}
+	M_{ij} = \pdv{R_{i}}{K_{j}}
+\end{align*}
+and the displacements
+\begin{align*}
+	\Delta K_{1}^{\prime} = K_{1}^{\prime} - K_{1}^{\star}
+\end{align*}
+we have
+\begin{align*}
+	\Delta K_{1}^{\prime} = M_{11}\Delta K_{1} + M_{12}\Delta K_{2},\ \Delta K_{2}^{\prime} = M_{21}\Delta K_{1} + M_{22}\Delta K_{2}.
+\end{align*}
+To continue, we change variables as determined by the eigenvectors of $M$. Naming these $\vb*{\phi}_{1}$ and $\vb*{\phi}_{2}$, the new variables, called scaling fields, are
+\begin{align*}
+	U_{i} = \phi_{1, i}\Delta K_{1} + \phi_{2, i}\Delta K_{2}.
+\end{align*}
+One somehow obtains
+\begin{align*}
+	U_{i}^{\prime} = b^{y_{i}}U_{i}.
+\end{align*}
+
+As we have assumed that points on the critical line flow towards the fixed point, one of the $y_{i}$ must be negative while the other is positive. This also means that one of the eigenvectors must be tangential to the critical line at the fixed point. The possibility $y_{i} = 0$ corresponds to a line of fixed points.
+
+Returning to the energy function, we expect $g$ to be analytic, which somehow implies that $f$ satisfies the recursion relation
+\begin{align*}
+	f\left(K_{\alpha}\right) = b^{-d}f\left(K_{\alpha}^{\prime}\right).
+\end{align*}
+Close to the critical point, this may be written as
+\begin{align*}
+	f(U_{1}^{\prime}, U_{2}^{\prime}) = b^{-d}f\left(b^{y_{1}}U_{1}^{\prime}, b^{y_{2}}U_{2}^{\prime}\right)
+\end{align*}
+Suppose now that $U_{1}\propto t$ while $U_{2}$ is approximately unchanged by the temperature. Then
+\begin{align*}
+	f(t, U_{2}^{\prime}) = b^{-d}f\left(b^{y_{1}}t, b^{y_{2}}U_{2}^{\prime}\right).
+\end{align*}
+Hence $f\propto\abs{t}̂^{\frac{d}{y_{1}}}$.
+
+Two things may be concluded from this. First, the critical exponents are determined by the character of the fixed point. Second, it turns out that the flow is independent of $U_{2}$. Hence, all systems whose Hamiltonians flow to the same critical fixed points have the same critical exponents, which is reminiscent of the previously studied universality arguments.
+
+The previous analysis generalizes to higher-dimensional coupling constant spaces.
