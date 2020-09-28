@@ -85,8 +85,77 @@ Suppose now that $U_{1}\propto t$ while $U_{2}$ is approximately unchanged by th
 \begin{align*}
 	f(t, U_{2}^{\prime}) = b^{-d}f\left(b^{y_{1}}t, b^{y_{2}}U_{2}^{\prime}\right).
 \end{align*}
-Hence $f\propto\abs{t}̂^{\frac{d}{y_{1}}}$.
+Hence $f\propto\abs{t}^{\frac{d}{y_{1}}}$.
 
 Two things may be concluded from this. First, the critical exponents are determined by the character of the fixed point. Second, it turns out that the flow is independent of $U_{2}$. Hence, all systems whose Hamiltonians flow to the same critical fixed points have the same critical exponents, which is reminiscent of the previously studied universality arguments.
 
 The previous analysis generalizes to higher-dimensional coupling constant spaces.
+
+\paragraph{The Cumulant Method}
+For more examples, we study the Ising model on a two-dimensional triangular lattice. The dimensionless Hamiltonian is
+\begin{align*}
+	H = \frac{1}{2}\sum\limits_{i, j}K_{ij}\sigma_{i}\sigma_{j} + h\sum\limits_{i}\sigma_{i},
+\end{align*}
+where we now allow interactions throughout the lattice.
+
+The triangular lattice may be divided into triangular blocks of three spins. The lattice of such blocks is a triangular lattice with a lattice constant greater by a factor $\sqrt{3}$. We will perform a renormalization procedure on these blocks defined by the projection operator $P(\mu_{I}, \{\sigma_{I}\})$. $\mu_{I}$ are the new variables and $\{\sigma_{I}\}$ are the spin configurations in the blocks. We somehow have
+\begin{align*}
+	e^{Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime})} = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H(\{\sigma\}, K , h)}).
+\end{align*}
+If we require the projection operators to have trace $1$, this somehow implies
+\begin{align*}
+	\tr\limits_{\{\mu\}}(e^{Ng + H^{\prime}}) = \tr\limits_{\{\sigma\}}(e^{H}),
+\end{align*}
+and the free energy is preserved.
+
+We wish to treat this system approximately, and do this by dividing the Hamiltonian into two terms
+\begin{align*}
+	H(\{\sigma\}, K, h) = H_{0}(\{\sigma\}, K, h) + V(\{\sigma\}, K, h).
+\end{align*}
+$H_{0}$ contains all terms that operate within block and $V$ contains all interactions between blocks. We introduce $K_{n}$ as the coupling constant $n$-th nearest neighbours and thus have
+\begin{align*}
+	H_{0} = \sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3}),\ V = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\sigma_{I, \alpha}\sigma_{J, \beta}.
+\end{align*}
+This yields
+\begin{align*}
+	\tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H(\{\sigma\}, K , h)}) = Z_{0}\expval{e^{V}}
+\end{align*}
+where we have defined expectation values in terms of considering only interactions within the block. This is not an approximation.
+
+Let us now approximate by using a so-called truncated cumulant expansion
+\begin{align*}
+	\expval{e^{V}} = e^{\expval{V} + \frac{1}{2!}\expval{(V - \expval{V})^{2}} + \frac{1}{3!}\expval{(V - \expval{V})^{3}} + \dots}.
+\end{align*}
+We name the terms in the exponent $C_{i}$.
+
+Let us now include only nearest-neighbour interactions. We thus write the partition function as
+\begin{align*}
+	Z_{0} = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H_{0}}) = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{\sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3})}).
+\end{align*}
+We may somehow write this as
+\begin{align*}
+	Z_{0} = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{A + B\mu_{i}}).
+\end{align*}
+Asssuming the block spins to be designated according to a majority rule, this somehow implies
+\begin{align*}
+	e^{A + B} = e^{3K + 3h} + 3e^{-K + h},\ e^{A - B} = e^{3K - 3h} + 3e^{-K - h}.
+\end{align*}
+Using block independence, the expectation value of $\expval{V}$ is easy to compute. We may write
+\begin{align*}
+	\expval{\sigma_{I, \alpha}} = C + D\mu_{I}.
+\end{align*}
+This is somehow combined to
+\begin{align*}
+	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) = \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\text{nn}(I, J)}(C + D\mu_{I})(C + D\mu_{J}),
+\end{align*}
+yielding the recursion relations
+\begin{align*}
+	K^{\prime} = 2KD^{2}(K, h),\ h^{\prime} = B(K, h) + 12KC(K, h)D(K, h),\ g(K, h) = \frac{1}{3}NA(K, h) + 2KC^{2}(K, h).
+\end{align*}
+For $h = 0$, this reduces to
+\begin{align*}
+	K^{\prime} = 2K\left(\frac{e^{3K} + e^{-K}}{e^{3K} + 3e^{-K}}\right)^{2}.
+\end{align*}
+It turns out that this has a fixed point corresponding to $K = 0.3356$. One may also obtain $y_{t} = 0.882,\ y_{h} = 2.034$. These results do not agree particularly well with the exact results, but nevertheless demonstrate the power of the framework.
+
+Next we consider the second-order approximation.

@@ -16,7 +16,7 @@ For the Ising model we expect the system to be invariant with respect to flippin
 \end{align*}
 At $T = 0$ you will have $\abs{\vb{m}} = 1$.
 
-Suppose now that as the temperature is lowered, $a_{2}$ is the first coefficient to change sign (at least one coefficient must do this in order for a minimum to exist). Close to the temperature $T_{\text{c}}$ at which it changes sign, it may be linearized as
+Suppose now that as the temperature is lowered, $a_{2}$ is the first coefficient to change sign (at least one coefficient must do this in order for a phase transition to exist). Close to the temperature $T_{\text{c}}$ at which it changes sign, it may be linearized as
 \begin{align*}
 	a_{2}(T) = a_{2, 0}(T - T_{\text{c}}).
 \end{align*}
@@ -34,13 +34,13 @@ We truncate this sum at order $2$ in $m$ to obtain
 \end{align*}
 which reproduces the correct critical exponent.
 
-We see that the series expansion and our assumption about which coefficients change sign produce a theory with a second-order phase transition. This is profound, and both the nature of the phase transition and the critical exponent are general. This is part of the power of Landau theory.
+We see that the series expansion and our assumption about which coefficients change sign produce a theory with a second-order phase transition. This is profound, and both the nature of the phase transition and the critical exponent are general. This is part of the power of Landau theory. This is also expected as the truncated free energy series is expected to transition between having a single minimum and two minima.
 
-Next we study the heat capacity
+The heat capacity is given by
 \begin{align*}
 	C = T\fix{\pdv{S}{T}}{h}.
 \end{align*}
-We have
+In the case of a second-order phase transition we have
 \begin{align*}
 	S = -\pdv{G}{T} = -\dv{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv{a_{2i}}{T}m^{2i} + a_{2i}\dv{m^{2i}}{T}\right).
 \end{align*}
@@ -66,8 +66,13 @@ where we have ignored terms containing the magnetization. Above the critical tem
 \begin{align*}
 	C = -T\dv[2]{a_{0}}{T}.
 \end{align*}
+Hence there is a step in the phase transition of
+\begin{align*}
+	-\frac{a_{2, 0}^{2}T_{\text{c}}}{2a_{4}(T_{\text{c}})}
+\end{align*}
+when approaching the phase transition from below.
 
-Suppose instead that $a_{4}$ is the first coefficient to change sign. In this case a discontinuous step in the order parameter might occur. To show that such a step exists, we need to show that $a_{2}(T_{\text{c}}) > 0$. We investigate this by comparing $G(m_{0}, T_{\text{c}})$ to $G(0, T_{\text{c}})$, where $m_{0}$ is the magnetization at the minimum. The phase transition occurs when the two are equal, i.e. when
+Suppose instead that $a_{4}$ is the first coefficient to change sign. In this case the free energy might have several local minima, meaning that a discontinuous step in the order parameter might occur. To show that such a step exists, we need to show that $a_{2}(T_{\text{c}}) > 0$. We investigate this by comparing $G(m_{0}, T_{\text{c}})$ to $G(0, T_{\text{c}})$, where $m_{0}$ is the magnetization at the minimum. The phase transition occurs when the two are equal, i.e. when
 \begin{align*}
 	G(m_{0}, T_{\text{c}}) - G(0, T_{\text{c}}) = \sum\limits_{i}\frac{1}{2i}a_{2i}(T_{\text{c}})m_{0}^{2i} = 0.
 \end{align*}
@@ -75,11 +80,11 @@ The magnetization corresponds to a minimum of $G$, and thus satisfies
 \begin{align*}
 	\sum\limits_{i}a_{2i}(T_{\text{c}})m_{0}^{2i - 1} = 0.
 \end{align*}
-Ignoring terms above order $6$ we have
+Truncating at order $6$ we have
 \begin{align*}
 	a_{2}(T_{\text{c}})m_{0} + a_{4}(T_{\text{c}})m_{0}^{3} + a_{6}(T_{\text{c}})m_{0}^{5} = 0,\ \frac{1}{2}a_{2}(T_{\text{c}})m_{0}^{2} + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{4} + \frac{1}{6}a_{4}(T_{\text{c}})m_{0}^{6} = 0.
 \end{align*}
-The non-trivial value satisfies
+The non-trivial value of the order parameter satisfies
 \begin{align*}
 	a_{2}(T_{\text{c}}) + a_{4}(T_{\text{c}})m_{0}^{2} + a_{6}(T_{\text{c}})m_{0}^{4} = 0,\ \frac{1}{2}a_{2}(T_{\text{c}}) + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{2} + \frac{1}{6}a_{4}(T_{\text{c}})m_{0}^{4} = 0.
 \end{align*}
@@ -108,11 +113,11 @@ It might be of interest to remove linear terms. This can be done by introducing 
 \begin{align*}
 	G(m, T) = a_{0}(T) + \sum\limits_{i = 2}\frac{1}{i}a_{i}(T)m^{i}.
 \end{align*}
-The coefficients have implicitly been modified as well. Truncating the sum at $a_{4}$, we have
+The coefficients have implicitly been modified as well. Truncating the sum at $a_{4}$, the equilibrium magnetization satisfies
 \begin{align*}
 	a_{2}(T_{\text{c}})m_{0} + a_{3}(T_{\text{c}})m_{0}^{2} + a_{4}(T_{\text{c}})m_{0}^{3} = 0.
 \end{align*}
-In addition, at the transition point we have
+In addition, at the transition point the free energy is equal at the post-transition equilibrium and zero, yielding
 \begin{align*}
 	\frac{1}{2}a_{2}(T_{\text{c}})m_{0}^{2} + \frac{1}{3}a_{3}(T_{\text{c}})m_{0}^{3} + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{4} = 0.
 \end{align*}
@@ -127,7 +132,7 @@ and
 %TODO: Finish
 
 \paragraph{Ginzburg-Landau Theory}
-Landau theory characterizes a system in terms of a single order parameter. Ginzburg-Landau theory instead characterizes the system in terms of a field $m(\vb{r})$. This field could be thought of as at any particular point describing the order parameter when calculated based only on the vicinity of that point. In other words, it is a high-resolution version of Landau theory.
+Landau theory characterizes a system in terms of a single order parameter. Ginzburg-Landau theory instead characterizes the system in terms of a field $m(\vb{r})$. This field could be thought of as at any particular point describing the order parameter when calculated based only on the vicinity of that point. In other words, it is a more resolved version of Landau theory.
 
 The order parameter extremizes the free energy, which in this theory is given by
 \begin{align*}
@@ -151,13 +156,13 @@ and finally
 \begin{align*}
 	h = \sum\limits_{i}a_{2i}(T)m^{2i - 1} - f\laplacian{m}.
 \end{align*}
-Truncating the sum yields the result
+Close to a second-order phase transition we may re-obtain the result from Landau theory, namely
 \begin{align*}
-	m_{0}^{2} = -\frac{a_{2}(T)}{a_{4}(T)}
+	m_{0}^{2} = -\frac{a_{2}(T)}{a_{4}(T)},
 \end{align*}
-below the critical temperature for a second-order transition.
+by setting $h = 0$.
 
-Suppose we add some perturbation $h\delta(\vb{x})$ from $h = 0$, which changes the field to $m_{0} + \phi$. T, where $m_{0}$ is a constant. Truncating the sum at $i = 2$ we obtain
+Ginzburg-Landau theory allow us to study fluctuations, which is what we will do next. Suppose we add some small perturbation $h_{0}\delta(\vb{x})$ from $h = 0$, which changes the field to $m_{0} + \phi$, where $m_{0}$ depends on temperature and $\phi$ on position. Truncating the sum at $i = 2$ we obtain
 \begin{align*}
 	h_{0}\delta(\vb{x}) = a_{2}(T)(m_{0} + \phi) + a_{4}(T)(m_{0} + \phi)^{3} - f\laplacian{m_{0}} - f\laplacian{\phi}.
 \end{align*}
@@ -187,21 +192,21 @@ where
 \end{align*}
 $\xi$ is the correlation length, and according to the linearization $a_{2} = a_{2, 0}(T - T_{\text{c}})$ it diverges when approaching the phase transition.
 
-Next, if we add a term
+The perturbation $\phi$ may be related to a correlation function. To see this, we add a term
 \begin{align*}
 	-\integ[3]{}{}{\vb{x}}{mh}
 \end{align*}
-to the Hamiltonian, we obtain
+to the Hamiltonian, yielding
 \begin{align*}
 	\expval{m} = \frac{\tr(me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}{\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}.
 \end{align*}
 This implies
 \begin{align*}
-	\fdv{\expval{m}}{h(0)} &= \frac{\beta \tr(m(\vb{0})me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)}) - \beta\tr(me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\tr(m(\vb{0})e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}{\left(\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\right)^{2}} \\
+	\fdv{\expval{m}}{h_{0}} &= \frac{\beta \tr(m(\vb{0})me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)}) - \beta\tr(me^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\tr(m(\vb{0})e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})}{\left(\tr(e^{-\beta\left(\ham - \integ[3]{}{}{\vb{x}}{mh}\right)})\right)^{2}} \\
 	                       &= \beta(\expval{m(\vb{0})m} - \expval{m(\vb{0})}\expval{m}) \\
 	                       &= \beta\Gamma(\vb{r}).
 \end{align*}
-Somehow this is supposed to be equal to $\frac{\phi}{h_{0}}$, hence $\phi$ is an order parameter correlation function. The susceptibility is given by
+As $\phi$ contains the entire effect of the perturbation, this is equal to $\frac{\phi}{h_{0}}$, hence $\phi$ is an order parameter correlation function. The susceptibility is given by
 \begin{align*}
 	\chi = \integ[3]{}{}{\vb{x}}{\beta\Gamma(\vb{r})},
 \end{align*}
@@ -210,21 +215,21 @@ and this implies that the mean-field result $\chi\propto\abs{T_{\text{c}} - T}^{
 \paragraph{The Ginzburg Criterion}
 The Ginzburg criterion is a self-consistency criterion for mean-field or Landau theories.
 
-To obtain it, we generalize to $d$ dimensions. In such cases the solution above does not hold, but we may still use the order-of-magnitude approximation
+To obtain it, we generalize to $d$ dimensions. In such cases $\phi$ will generally have a different form, but we may still use the order-of-magnitude approximation
 \begin{align*}
 	\phi = \frac{e^{-\frac{r}{\xi}}}{r^{d - 2}}.
 \end{align*}
-We would like to crudely approximate the correlation function at large distances. This is expected to be valid if
+We would like to crudely approximate the correlation function at large distances. This is expected to be valid if the correlation function is small compared to the overall order parameter, which is satisfied if
 \begin{align*}
 	\frac{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\expval{m(\vb{0})m} - \expval{m(\vb{0})}\expval{m}}}{\integ[d]{\Omega(\xi)}{}{\vb{x}}{m_{0}^{2}}} \ll 1,
 \end{align*}
-where $\Omega(\xi)$ is the $d$-dimensional hypersphere of radius $\xi$. I believe this is the Ginzburg criterion
+where $\Omega(\xi)$ is the $d$-dimensional hypersphere of radius $\xi$. I believe this is the Ginzburg criterion.
 
-We will now use the Ginzburg criterion to try to estimate the dimensionality for which Landau theory correctly predicts the critical behaviour. Close to the critical point we should have $m_{0}^{2} \approx \abs{T_{\text{c}} - T}^{2\beta}$ for some $\beta$. Using $\phi$ as an estimate of the correlation function we have
+We will now use the Ginzburg criterion to try to estimate the dimensionality for which Landau theory correctly predicts the critical behaviour. Using our estimate of the correlation function and introducing the critical exponent for the order parameter, we have
 \begin{align*}
-	\frac{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\frac{e^{-\frac{r}{\xi}}}{r^{d - 2}}}}{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\abs{T_{\text{c}} - T}^{2\beta}}} \ll 1.
+	\frac{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\frac{e^{-\frac{r}{\xi}}}{r^{d - 2}}}}{\integ[d]{\Omega(\xi)}{}{\vb{x}}{\abs{T_{\text{c}} - T}^{2\beta}}} \ll 1
 \end{align*}
-Computing this in spherical coordinates yields
+when close to criticality. Computing this in spherical coordinates yields
 \begin{align*}
 	\frac{d\integ{0}{\xi}{r}{re^{-\frac{r}{\xi}}}}{\xi^{d}\abs{T_{\text{c}} - T}^{2\beta}} = \frac{d\xi^{2}\integ{0}{1}{u}{ue^{-u}}}{\xi^{d}\abs{T_{\text{c}} - T}^{2\beta}} = \xi^{2 - d}\abs{T_{\text{c}} - T}^{-2\beta}d\integ{0}{1}{u}{ue^{-u}}.
 \end{align*}
