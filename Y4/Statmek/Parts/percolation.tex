@@ -1,1 +1,64 @@
 \section{Percolation}
+
+\paragraph{The Idea}
+In many contexts the existence of certain behaviour depends on the structure of microscopic clusters. The study of such clusters is called percolation theory.
+
+Percolation models come in two forms: site percolation, in which lattice sites are occupied with some probability $p$, and bond percolation, in which nearest-neighbour bonds are formed with some probability $p$.
+
+\paragraph{Definition of Quantities}
+We now define the following quantities for such models:
+
+\begin{itemize}
+	\item the occupation probability $p$.
+	\item the site percolation probability $p_{\text{c}}$, which is the lowest probability such that infinite clusters form in the thermodynamic limit.
+	\item $n_{s}(p)$, which is the number of clusters of size $s$ per lattice site given the occupation probability.
+	\item $P(p)$, which is the fraction of occupied sites belonging to a spanning cluster (a cluster which goes from one end of the lattice to the other).
+	\item $S(p)$, which is the mean size of finite clusters.
+	\item the pair connectedness $C(p, r)$, which is the probability that two occupied sites separated by a distance $r$ belong to the same cluster.
+\end{itemize}
+
+Given these definitions, we may infer the following: First, the probability that a particular site is occupied and belongs to a cluster of size $s$ is equal to $sn_{s}(p)$. Next, we must have $P(1) = 1$ and $P(p) = 0$ for $p < p_{\text{c}}$ in the thermodynamic limit. In addition, all sites either belong to a spanning cluster or a cluster of finite size, implying
+\begin{align*}
+	pP(p) + \sum\limits_{s}sn_{s}(p) = p,
+\end{align*}
+where the summation is over clusters of finite size. Finally, we have
+\begin{align*}
+	S(p) = \frac{\sum\limits_{s}s^{2}n_{s}(p)}{\sum\limits_{s}sn_{s}(p)}.
+\end{align*}
+
+\paragraph{Scaling Theory}
+For doing scaling theory, we postulate that the quantity
+\begin{align*}
+	G(p) = \sum\limits_{s}n_{s}(p)
+\end{align*}
+is analogous to the free energy per site in such models. According to this analogy, $P(p)$ plays the role of the order parameter, $S(p)$ the role of the susceptibility and $C(p, r)$ that of the correlation function. Based on this, we define critical exponents as previously. The interesting part is that the critical exponents will not depend on details of our work.
+
+To this we add an extra piece of conjecture, namely that there exists a typical cluster size $s_{\xi}$ close to $p = p_{\text{c}}$ which dominates the critical behaviour of $G, P$ and $S$. We define its critical exponent according to
+\begin{align*}
+	s_{\xi} \propto \abs{p - p_{\text{c}}}^{-\frac{1}{\sigma}}.
+\end{align*}
+We also assume that
+\begin{align*}
+	n_{s}(p) = n_{s}(p_{\text{c}})f\left(\frac{s}{s_{\xi}}\right).
+\end{align*}
+$f$ must, by construction, approach zero as its argument increases to infinity and approach $1$ as its argument approaches zero. For large $s$, it has been observed that $n_{s}$ behaves as a power law in $s$ with power $-\tau$, which is dependent on dimensionality. Thus we have
+\begin{align*}
+	n_{s}(p) = s^{-\tau}\phi\left(s\abs{p - p_{\text{c}}}^{\frac{1}{\sigma}}\right).
+\end{align*}
+We may now write $G$ as
+\begin{align*}
+	G = \sum\limits_{s}s^{-\tau}\phi\left(s\abs{p - p_{\text{c}}}^{\frac{1}{\sigma}}\right) \approx \abs{p - p_{\text{c}}}^{\frac{\tau - 1}{\sigma}}\integ{0}{\infty}{x}{x\phi(x)}.
+\end{align*}
+Assuming the integral to converge, we have
+\begin{align*}
+	\alpha = 2 - \frac{\tau - 1}{\sigma}.
+\end{align*}
+%TODO: Show
+In similar ways one obtains
+\begin{align*}
+	\gamma = \frac{3 - \tau}{\sigma},\ \beta = \frac{2 - \tau}{\sigma},
+\end{align*}
+and thus the scaling relationship $\alpha + 2\beta + \gamma = 2$ is satisfied.
+
+%TODO: SHow
+Next, we somehow expect that the integral of $C$ should be equal to $S$. This will yield $\gamma = \nu(2 - \eta)$. One may also obtain $d\nu = 2 - \alpha$.
