@@ -1,4 +1,4 @@
-\paragraph{Quantum Mechanics for Many-Body Physics}
+\section{Quantum Mechanics for Many-Body Physics}
 
 \paragraph{Identical Particles}
 For different particles the total Hilbert space may be constructed as the tensor product of the Hilbert spaces describing the individual particles. For identical particles, swapping the states of the particles seems to produce a different states. This does not match with experiments, which indicate identical particles to be indistinguishable. Hence only parts of the total product space is physical.
@@ -161,10 +161,37 @@ Assuming that all $T_{i}$ work the same on the individual bodies we have
 \begin{align*}
 	TA\ket{\alpha_{1}, \alpha_{2}, \dots} &= \sum\limits_{\alpha, \beta}T_{\alpha\beta}\sum\limits_{i}\delta_{\beta, \alpha_{i}}\adj{c_{\alpha}}c_{\alpha_{i}}A\ket{\alpha_{1}, \alpha_{2}, \dots}.
 \end{align*}
-Somehow we go from here to the operator identity
+Now, there are two cases which occur here: $\alpha_{i} = \beta$ or not. For the term where this is true we may switch the index of the annihilation operator. For the term where this is not true the annihilation operator will cause the corresponding contribution to be zero. Hence we have
+\begin{align*}
+	TA\ket{\alpha_{1}, \alpha_{2}, \dots} &= \sum\limits_{\alpha, \beta}T_{\alpha\beta}\adj{c_{\alpha}}c_{\beta}A\ket{\alpha_{1}, \alpha_{2}, \dots},
+\end{align*}
+and thus the operator identity
 \begin{align*}
 	T = \sum\limits_{\alpha, \beta}T_{\alpha\beta}\adj{c_{\alpha}}c_{\beta}.
 \end{align*}
 The expression is the same for bosons.
 
-\paragraph{Diagonalizing a One-Body Operator}
+\paragraph{Diagonalization of Two-Body Operators}
+We may always (I think) identify some change of basis caused by a unitary operator $u$ such that $T$ is diagonal. We thus have
+\begin{align*}
+	T &= \sum\limits_{\alpha, \beta, \gamma}((\adj{u})_{\alpha\gamma}\tilde{T}_{\gamma\gamma}u_{\gamma\beta})\adj{c_{\alpha}}c_{\beta} \\
+	  &= \sum\limits_{\alpha, \beta, \gamma}\tilde{T}_{\gamma\gamma}(\adj{u})_{\alpha\gamma}\adj{c_{\alpha}}u_{\gamma\beta}c_{\beta} \\
+	  &= \sum\limits_{\gamma}\tilde{T}_{\gamma\gamma}\adj{\tilde{c}_{\gamma}}\tilde{c}_{\beta}.
+\end{align*}
+
+\paragraph{Two-Body Operators}
+%TODO: Show
+As can be shown, the corresponding relation for two-body operators is
+\begin{align*}
+	T = \sum\limits_{\alpha, \beta, \gamma, \delta}T_{\alpha\beta\gamma\delta}\adj{c_{\alpha}}\adj{c_{\beta}}c_{\delta}c_{\gamma}.
+\end{align*}
+
+\paragraph{Quantum Field Operators}
+I make brief mention of quantum field operators, which are in essence everything we have seen performed in the coordinate basis. These may be written as
+\begin{align*}
+	\adj{\Psi}(\vb{r}) = \sum\limits_{\alpha}\braket{\alpha}{\vb{r}}\adj{a_{\alpha}} = \sum\limits_{\alpha}\cc{\Psi_{\alpha}}\adj{a_{\alpha}},\ \Psi(\vb{r}) = \sum\limits_{\alpha}\Psi_{\alpha}a_{\alpha}.
+\end{align*}
+The commutation (or anti-commutation) relation is
+\begin{align*}
+	\comm{\Psi(\vb{r})}{\adj{\Psi}(\vb{r}^{\prime})} = \sum\limits_{\alpha, \beta}\Psi_{\alpha}(\vb{r})\cc{\Psi_{\beta}}(\vb{r}^{\prime})\comm{c_{\alpha}}{\adj{c_{\beta}}} = \sum\limits_{\alpha}\Psi_{\alpha}(\vb{r})\cc{\Psi_{\alpha}}(\vb{r}^{\prime}) = \delta(\vb{r} - \vb{r}^{\prime}).
+\end{align*}
