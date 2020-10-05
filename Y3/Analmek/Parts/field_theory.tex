@@ -15,6 +15,7 @@ Alternatively, by defining $x^{0} = ct$ for some speed $c$ and extending the sum
 \begin{align*}
 	\pdv{\lag}{\phi^{a}} - \pdv{x^{\mu}}\pdv{\lag}{(\del{\mu}{\phi^{a}})} = 0.
 \end{align*}
+We will also later be using the metric $g$, which is diagonal in spacetime and has a value of $1$ for time and $-1$ for space.
 
 \example{A String}
 A string has the Lagrangian density
@@ -40,6 +41,22 @@ or alternatively
 \begin{align*}
 	\del{\mu}{\del[\mu]{}{\phi}} + m^{2}\phi = 0.
 \end{align*}
+
+\example{Galilei Non-Invariance of the Wave Equation}
+While the wave equation appears in many contexts in classical physics, it turns out that it is generally not invariant under Galilei boosts. Such a boost is of the form $\var{\phi} = 0,\ \var{x}^{\mu} = \frac{v}{c}x^{0}\delta_{1}^{\mu}$. The new derivatives are
+\begin{align*}
+	\del{0}{} = \delp{0}{} - \frac{v}{c}\delp{1}{},\ \del{i}{} = \delp{i}{},
+\end{align*}
+with squares
+\begin{align*}
+	\del{0}{\del[0]{}{}} = \delp{0}{\delp[0]{}{}} + \left(\frac{v}{c}\right)^{2}\delp{1}{\delp[1]{}{}} - 2\frac{v}{c}\delp{0}{\del[1]{}{}},\ \del{i}{\del[i]{}{}} = \delp{i}{\delp[i]{}{}}.
+\end{align*}
+The wave equation now reads
+\begin{align*}
+	\del{\mu}{\del[\mu]{}{\phi}} &= \left(\delp{0}{\delp[0]{}{}} + \left(\frac{v}{c}\right)^{2}\delp{1}{\del[1]{}{}} - 2\frac{v}{c}\delp{0}{\delp[1]{}{}} + \delp{i}{\delp[i]{}{}}\right)\phi \\
+	                             &= \delp{\mu}{\delp[\mu]{}{\phi}} + \frac{v}{c}\left(\frac{v}{c}\delp{1}{\del[1]{}{}} - 2\delp{0}{\delp[1]{}{}}\right)\phi,
+\end{align*}
+which is generally different. The wave equation itself thus implies the existence of a special frame of reference in which it is satisfied, namely the rest frame of the medium.
 
 \example{Complex Klein-Gordon Theory}
 Klein-Gordon theory can be extended to complex fields by considering the original field $\phi$ and its complex conjugate as two separate fields. The Lagrangian density is
@@ -126,10 +143,14 @@ We can somehow show that
 \pob{\phi(x)}{\phi(y)} = \pob{\pi(x)}{\pi(y)} = 0,\ \pob{\phi(x)}{\pi(y)} = \delta(x - y).
 \end{align*}
 
+\example{A String}
+
 \paragraph{Reduction to Discrete Problems}
 For a problem on a compact domain, one can Fourier expand the fields (and the momentum densities) to obtain a discrete set of Fourier coefficients, the dynamics of which can be studied. It is this approach which will be the basis for quantum mechanics, where the coefficients will be replaced by occupation operators.
 
 For problems on non-compact domains, we instead employ the Fourier transform as a tool. However, we have not really helped ourselves in this case.
+
+\example{A String}
 
 \paragraph{Symmetries of Field Theories}
 Consider a field theory (on Euclidean space) described by the Lagrangian density \lag. A symmetry of the system is a transformation of all involved coordinates and fields such that:
