@@ -1,5 +1,7 @@
 \section{Useful Mathematics}
 
+\paragraph{Hilbert Space}
+
 \paragraph{A Useful Commutation Relation}
 You might happen upon commutation relations of the form $\comm{f(A)}{B}$ show up. We would like to try to simplify it for the particular case where $\comm{A}{B} = C$, where $C$ is some operator commuting with $A$. To do this, we first study $\comm{A^{n}}{B}$ in a general case. We have
 \begin{align*}
@@ -112,9 +114,39 @@ implying
 \end{align*}
 
 \paragraph{Discrete Symmetries}
-A discrete symmetry is an operator for which the previously stated machinery does not hold.
+A discrete symmetry is an operator for which the previously described machinery does not hold.
 
 \paragraph{Complex Conjugation}
+The complex conjugation operator $K$ is defined as
+\begin{align*}
+	Kc\ket{\alpha} = \cc{c}K\ket{\alpha}.
+\end{align*}
+There is some ambiguity in terms of how this operator acts on the basis. To resolve this, we may choose a representation such that the Hilbert space is spanned by vectors with single ones. These vectors should not be affected by complex conjugation, hence
+\begin{align*}
+	K\ket{\alpha} = K\sum\limits_{a}\ket{a}\braket{a}{\alpha} = \sum\limits_{a}\braket{\alpha}{a}K\ket{a} = \sum\limits_{a}\braket{\alpha}{a}\ket{a}.
+\end{align*}
+The trade-off to this solution is that the action of this operator is only clearly specified once a basis has been chosen.
+
+\paragraph{Antiunitary Operators and Complex Conjucation}
+We claim that any antiunitary operator $\theta$ may be written as $\theta = UK$ for some unitary operator $U$. To show this, we show that this factorization is antiunitary and take $UK$ to be given. We first have
+\begin{align*}
+	\theta(c_{1}\ket{\alpha} + c_{2}\ket{\beta}) = U(\cc{c_{1}}K\ket{\alpha} + \cc{c_{2}}K\ket{\beta}) = \cc{c_{1}}UK\ket{\alpha} + \cc{c_{2}}UK\ket{\beta} = \cc{c_{1}}\theta\ket{\alpha} + \cc{c_{2}}\theta\ket{\beta},
+\end{align*}
+hence the given factorization is antilinear. To show antiunitarity, we work in ket space, as the ambiguity with respect to the basis makes it risky to work with bras. We have
+\begin{align*}
+	\theta\ket{\alpha} &= UK\sum\limits_{a}\ket{a}\braket{a}{\alpha}, \\
+	                   &= U\sum\limits_{a}\braket{\alpha}{a}K\ket{a} \\
+	                   &= \sum\limits_{a}\braket{\alpha}{a}U\ket{a}.
+\end{align*}
+Similarly, the bra corresponding to $\theta\ket{\beta}$ is
+\begin{align*}
+	\sum\limits_{a}\braket{a}{\beta}\bra{a}\adj{U}.
+\end{align*}
+The inner product between the two is
+\begin{align*}
+	\sum\limits_{a}\braket{a}{\beta}\bra{a}\adj{U}\sum\limits_{b}\braket{\alpha}{b}U\ket{b} = \sum\limits_{a}\sum\limits_{b}\braket{\alpha}{b}\braket{a}{\beta}\braket{a}\ket{b} = \sum\limits_{a}\braket{\alpha}{a}\braket{a}{\beta} = \braket{\alpha}{\beta},
+\end{align*}
+completing the proof.
 
 \paragraph{Tensors}
 A tensor of rank $n$ is a multilinear map from $n$ vectors in some vector space to a scalar.

@@ -75,23 +75,40 @@ which contains one term generating the identity and one causing the translation.
 One could of course have started with these as postulates instead, prompting a stronger analogy to classical mechanics. But the symmetry approach is nice too.
 
 \paragraph{Spatial Inversion}
-Let $\Pi$ be the spatial inversion operator such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
+Let $\Pi$ be the spatial inversion operator, or parity operator, such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
 \begin{align*}
 	\vb{x}\Pi\ket{\vb{x}^{\prime}} = -\Pi\vb{x}\ket{\vb{x}^{\prime}} = -\vb{x}^{\prime}\Pi\ket{\vb{x}^{\prime}},
 \end{align*}
 hence $\Pi\ket{\vb{x}^{\prime}} = \ket{-\vb{x}^{\prime}}$, as the phase provided by spatial inversion may be chosen freely. Next we have
 \begin{align*}
-	\Pi\ket{\Psi} = \mel{\vb{x}}{\Pi}{\Psi} = \braket{-\vb{x}}{\Psi} = \Psi(-\vb{x}).
+	\Pi\Psi = \mel{\vb{x}}{\Pi}{\Psi} = \braket{-\vb{x}}{\Psi} = \Psi(-\vb{x}).
 \end{align*}
-Furthermore, we note that $\Pi^{2} = 1$, hence $\Pi$ has eigenvalues $\pm 1$ and $\Pi^{-1} = \Pi$.
+Furthermore, as we chose the operator to provide no phase, we have $\Pi^{2} = 1$, hence $\Pi$ has eigenvalues $\pm 1$ and $\Pi^{-1} = \adj{\Pi} = \Pi$.
+
+How does spatial inversion affect other quantities? The geometry of space implores us to require
+\begin{align*}
+	\Pi e^{-i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}} = e^{i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}}\Pi,
+\end{align*}
+namely a spatial translation followed by inversion is equal to inversion followed by an opposite translation. Expanding yields
+\begin{align*}
+	\Pi\left(1 -i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}\right)\adj{\Pi} = 1 + i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p},
+\end{align*}
+and we may therefore identify $\Pi\vb{p}\adj{\Pi} = -\vb{p}$. Next, we require that rotations and inversions commute (that this must be is clear as the matrix representation of a rotation is diagonal). Hence we obtain
+\begin{align*}
+	\Pi\vb{J}\adj{\Pi} = \vb{J}
+\end{align*}
+by a similar procedure. Notably, this is true for spin as well - a result which we could only arrive at by enforcing these requirements.
 
 \paragraph{Inversion Symmetry and Selection Rules}
-Most observables are either even or odd under inversions, namely $\Pi A\Pi^{-1} = \pi_{A}A,\ \pi_{a} = \pm 1$. If we are working with states with definite parity, we have
+Most observables are either even or odd under inversions, namely $\Pi A\Pi^{-1} = \pi_{A}A,\ \pi_{A} = \pm 1$. If we are working with states with definite parity, we have
 \begin{align*}
-	\mel{\Psi}{A}{\Phi} &= \pi_{a}\mel{\Psi}{\Pi A\Pi}{\Phi} \\
-	                    &= \pi_{a}\pi_{\Psi}\pi_{\Phi}\mel{\Psi}{A}{\Phi},
+	\mel{\Psi}{A}{\Phi} &= \pi_{A}\mel{\Psi}{\Pi A\Pi}{\Phi} \\
+	                    &= \pi_{A}\pi_{\Psi}\pi_{\Phi}\mel{\Psi}{A}{\Phi},
 \end{align*}
-meaning that this matrix element is zero if $\pi_{a}\pi_{\Psi}\pi_{\Phi} = -1$. This is an example of a selection rule.
+meaning that this matrix element is zero if $\pi_{a}\pi_{\Psi}\pi_{\Phi} = -1$. This is an example of a so-called selection rule.
+
+\paragraph{Mirror Symmetries}
+Other discrete spatial symmetries exist. One example is mirror symmetry. This particular example may be written as a composition of an inversion and a rotation.
 
 \paragraph{Time Reversal}
 Time reversal should preserve position and flip the sign of momentum. This implies, however, that
@@ -129,6 +146,13 @@ $A_{\text{H}}$ is the operator according to Heisenberg and $A_{\text{S}}$ is the
 	                                  &= -H_{\text{H}}A_{\text{H}} + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + A_{\text{H}}H_{\text{H}} \\
 	                                  &= -{H_{\text{H}}}\comm{A_{\text{H}}} + (i\hbar\del{t}{A_{\text{S}}})_{\text{H}}.
 \end{align*}
+
+\paragraph{Symmetries and Conserved Quantities}
+Suppose that there exists some unitary transformation $u = e^{-i\frac{\varepsilon}{\hbar}A}$ such that $\adj{u}Hu = H$. Expanding the symmetry yields
+\begin{align*}
+	\left(1 + i\frac{\varepsilon}{\hbar}A + \dots\right)H\left(1 - i\frac{\varepsilon}{\hbar}A + \dots\right) = H + i\frac{\varepsilon}{\hbar}(-HA + AH) + \dots = H + i\frac{\varepsilon}{\hbar}\comm{A}{H} + \dots = H,
+\end{align*}
+implying that $A$ and $H$ commute. Assuming $A$ to have no explicit time dependence, Heisenberg's equations yield that $\expval{A}$ is conserved. This is essentially a kind of Nöether's theorem in quantum mechanics.
 
 \paragraph{Propagators}
 The probability amplitude at some point $x$ at time $t$ is given by
@@ -201,12 +225,5 @@ As a side note, if the action is large compared to $\hbar$, the action varies st
 	\fdv{S}{x} = 0.
 \end{align*}
 This is Hamilton's principle, the fundamental postulate of classical mechanics.
-
-\paragraph{Symmetries and Conserved Quantities}
-Suppose that there exists some unitary transformation $u = e^{-i\frac{\varepsilon}{\hbar}A}$ such that $\adj{u}Hu = H$. Expanding the symmetry yields
-\begin{align*}
-	\left(1 + i\frac{\varepsilon}{\hbar}A + \dots\right)H\left(1 - i\frac{\varepsilon}{\hbar}A + \dots\right) = H + i\frac{\varepsilon}{\hbar}(-HA + AH) + \dots = H + i\frac{\varepsilon}{\hbar}\comm{A}{H} + \dots = H,
-\end{align*}
-implying that $A$ and $H$ commute. Assuming $A$ to have no explicit time dependence, Heisenberg's equations yield that $\expval{A}$ is conserved. These arguments form the basis of some form of Nöether's theorem in quantum mechanics.
 
 \paragraph{The Interaction Picture}

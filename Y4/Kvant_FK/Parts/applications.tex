@@ -187,4 +187,44 @@ For the given state we have
 	\mel{a}{\rho_{A}}{b} &= \sum\limits_{d}\cc{\Psi}_{ad}\Psi_{bd} = 0, \\
 	\mel{b}{\rho_{A}}{b} &= \sum\limits_{d}\cc{\Psi}_{bd}\Psi_{bd} = \frac{1}{2}.
 \end{align*}
-Note that such density matrices do not necessarily correspond to pure states.
+Note that such density matrices do not necessarily correspond to pure states. One case that does, however, is when the product state is a single tensor product.
+
+We now introduce the von Neumann entanglement entropy
+\begin{align*}
+	S = -\tr(\rho_{A}\log(\rho_{A}))_{A} = -\tr(\rho_{B}\log(\rho_{B}))_{B}.
+\end{align*}
+By expanding the density matrix in terms of its eigenvalues and eigenkets, one obtains
+\begin{align*}
+	S = -\sum\limits_{i}\lambda_{i}\log(\lambda_{i}).
+\end{align*}
+For a pure state, we thus have $S = 0$. Hence the von Neumann entropy is a measure of how separable the states are.
+
+\paragraph{Bell's Inequalities}
+Suppose the two observers measure two entangled particles in two (generally different) directions $\vb{a}$ and $\vb{b}$, and denote the correlation between the measurements as $C(\vb{a}, \vb{b})$. Bell's inequality states that if the measurement is an outcome of a classical distribution, then
+\begin{align*}
+	\abs{C(\vb{a}, \vb{b}) - C(\vb{a}, \vb{b}^{\prime})} + \abs{C(\vb{a}^{\prime}, \vb{b}^{\prime}) + C(\vb{a}^{\prime}, \vb{b})} \leq 2.
+\end{align*}
+Experiments have been performed on quantum systems where values greater than $2$ have been observed. This disproves the statement that quantum mechanics is merely classical mechanics described by some so-called hidden variables.
+
+\paragraph{Quantum Computing}
+A single qubit is a two-level system, denoted as
+\begin{align*}
+	\ket{\Psi} = \alpha\ket{0} + \beta\ket{1}.
+\end{align*}
+In a quantum computer you have a set of these which interact with some Hamiltonian. A quantum computation is simply evolving the qubits with some unitary operator and measuring them.
+
+Numbers are represented according to
+\begin{align*}
+	x = q_{1}2^{0} + q_{2}2^{1} + \dots,\ \ket{x} = \ket{q_{1}, q_{2}, \dots}.
+\end{align*}
+Suppose now that there exists some operator $U_{f}$ such that $U_{f}\ket{x} = \ket{f(x)}$. Then if you prepare a state
+\begin{align*}
+	\ket{\Psi_{0}} = \sum\limits_{x = 0}^{N}\ket{x},
+\end{align*}
+you have
+\begin{align*}
+	U_{f}\ket{\Psi_{0}} = \sum\limits_{x = 0}^{N}\ket{f(x)}.
+\end{align*}
+Hence by performing a single operation, an exponential number of computations has been performed. However, the question remains about how to extract the results.
+
+The solution to this problem is the Deutsch algorithm.
