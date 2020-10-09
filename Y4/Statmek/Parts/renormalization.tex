@@ -1,58 +1,41 @@
-\section{Renormalization}
+\section{The Renormalization Group}
 
-\paragraph{Decimation of the Ising Chain}
-Before proceeding, we define the dimensionless operator
-\begin{align*}
-	H = -\beta\ham = K\sum\limits_{i}\sum\limits_{j = \text{nn}(i)}\sigma_{i}\sigma_{j} + \frac{1}{2}h\sum\limits_{i}\sigma_{i} + \sigma_{i + 1}.
-\end{align*}
-When computing the partition function, we may do this by first summing over spins with odd indices. For any one of these, we obtain the (partial) sum
-\begin{align*}
-	2\cosh(K(\sigma_{i - 1} + \sigma_{i + 1}) + h).
-\end{align*}
-Next we may write
-\begin{align*}
-	2e^{\frac{1}{2}h(\sigma_{i - 1} + \sigma_{i + 1})}\cosh(K(\sigma_{i - 1} + \sigma_{i + 1}) + h) &= e^{2g + K^{\prime}\sigma_{i - 1}\sigma_{i + 1} + \frac{1}{2}h^{\prime}(\sigma_{i - 1} + \sigma_{i + 1})}
-\end{align*}
-for quantities
-\begin{align*}
-	K^{\prime} &= \frac{1}{4}\ln(\frac{\cosh(2K + h)\cosh(2K - h)}{\cosh[2](h)}), \\
-	h^{\prime} &= h + \frac{1}{2}\ln(\frac{\cosh(2K + h)}{\cosh(2K - h)}), \\
-	g          &= \frac{1}{8}\ln(16\cosh(2K + h)\cosh(2K - h)\cosh[2](h)).
-\end{align*}
-Thus the trace over odd-numbered spins is
-\begin{align*}
-	e^{Ng + K^{\prime}\sum\limits_{i}\sigma_{2i}\sigma_{2i + 2} + h^{\prime}\sum\limits_{i}\sigma_{2i}}.
-\end{align*}
-When computing the trace over the even-numbered spins, we notice that it has the same structure as for the total chain, apart from the modified constants. We thus obtain
-\begin{align*}
-	Z(N, K, h) = e^{Ng(K, h)}Z\left(\frac{1}{2}N, K^{\prime}, h^{\prime}\right).
-\end{align*}
-We may repeat this procedure indefinitely. Hence we obtain
-\begin{align*}
-	-\frac{\beta G}{N} = \sum\limits_{j = 0}^{\infty}\frac{1}{2^{j}}g(K_{j}, h_{j}).
-\end{align*}
-
-\paragraph{A More General Discussion}
-The more general approach is to consider a model on a $d$-dimensional lattice with a set of degrees of freedom $\sigma_{i}$ and coupling constants $K_{\alpha}$, and suppose that a transform of the kind we have discussed, now termed a renormalization transform, preserves the form of the Hamiltonian. We describe the system with the dimensionless quantity
+\paragraph{The Idea}
+The concept which we will study considers models on a $d$-dimensional lattice with a set of degrees of freedom $\sigma_{i}$ and coupling constants $K_{\alpha}$. We describe the system with the dimensionless Hamiltonian
 \begin{align*}
 	H = -\beta\ham = \sum\limits_{\alpha = 1}^{n}K_{\alpha}\psi_{\alpha}(\sigma)
 \end{align*}
-where the functions $\psi_{\alpha}(\sigma)$ describe one particular kind of interaction. As an example, the Ising model with coupling all over the lattice may have one function $\psi_{1}$ which contains all nearest-neighbour interactions, one function $\psi_{2}$ which describes next-to-nearest neighbours and so on. The renormalization transforms the Hamiltonian to
+where the functions $\psi_{\alpha}(\sigma)$ describe one particular kind of interaction. As an example, the Ising model with coupling all over the lattice may have one function $\psi_{1}$ which contains all nearest-neighbour interactions, one function $\psi_{2}$ which describes next-to-nearest neighbours and so on. We suppose that there exists a transformation $R_{b}(\sigma)$ which rescales the system and introduces degrees of freedom $\sigma^{\prime}$ that are a factor of $b^{d}$ fewer than the original degrees of freedom. We also suppose that it works in such a way that the Hamiltonian expressed in the new degrees of freedom has the same form as that describing the original degrees of freedom, up to the addition of constants. Such a transform is called a renormalization transform. Its effect on the dimensionless Hamiltonian is
 \begin{align*}
 	H^{\prime} = Ng(K_{\alpha}) + \sum\limits_{\alpha = 1}^{n}K_{\alpha}^{\prime}\psi_{\alpha}(\sigma^{\prime}),
 \end{align*}
-where $\sigma^{\prime}$ is the set of reduced degrees of freedom, which must have the same algebraic property as the non-reduced ones, and we have new coupling coefficients which are functions of the old. Supposing that the number of degrees of freedom is reduced by a factor $b^{d}$ we obtain
+where $\sigma^{\prime}$ is the set of reduced degrees of freedom, which must have the same algebraic property as the non-reduced ones, and we have new coupling coefficients which are functions of the old. Similarly, the free energy may be written as
 \begin{align*}
 	-\frac{\beta}{N}G\left(N, K_{\alpha}\right) = f\left(K_{\alpha}\right) = g(K_{\alpha}) + b^{-d}f\left(K_{\alpha}^{\prime}\right).
 \end{align*}
+Repeated application of such a transformation will yield
+\begin{align*}
+	-\frac{\beta}{N}G\left(N, K_{\alpha}\right) = \sum\limits_{j = 0}b^{-jd}g(K_{\alpha, j}).
+\end{align*}
+In other words, by determining the sequence of coupling constants and the function $g$, the free energy may be written as a series of this form.
 
-We will now study the critical points of such model. To do this, consider a model described by two coupling constants. The set of critical points for this model will form a line in coupling constant space. Under a renormalization transform, points in this space are made to flow. This flow cannot approach the critical line, as the correlation length there is infinite and generally decreased by a renormalization transform. The long-range order may not be changed by such transforms either, hence the flow cannot make points cross the critical line. Certain points on the critical line may be fixed points, but generally all of them are not. To proceed, consider some particular fixed point $K_{1}^{\star}, K_{2}^{\star}$ and a flow close to this point. We introduce displacements $\Delta K$ from the critical point, and obtain to first order
+A characteristic feature of renormalization transforms is that $R_{b}^{2}(\sigma) = R_{b^{2}}(\sigma)$. This was a motivation to dub the set of all renormalization transforms the renormalization group. This is a misnomer, however, as there is no inverse renormalization transform - the price we pay for doing this is losing information about microscopic details of the system.
+
+\paragraph{Fixed Point Analysis}
+%TODO: Complete
+Consider a transformation as described above. There exist values of the coupling constants such that $K_{\alpha}^{\prime}(K_{\alpha}) = K_{\alpha}$. These are called fixed points. The renormalization transform causes the coupling constants to flow in coupling constant space. Depending on the direction of this flow, the fixed point is termed either stable or unstable.
+
+We will now study the critical points of such model. To do this, consider a model described by two coupling constants. The set of critical points for this model will form a curve in coupling constant space. Changing the temperature for a fixed system corresponds to moving along a straight line in this space. We will try to relate the flow under renormalization transformations to that of changing temperature.
+
+Under a renormalization transform, the coupling constant flow cannot approach the critical line, as the correlation length there is infinite and generally decreased by a renormalization transform (when measured in transformed length units). The long-range order may not be changed by such transforms either, hence the flow cannot make points cross the critical line. Certain points on the critical line may be fixed points, but generally all of them are not. Hence the flow around a fixed point is parallel to the critical line and away from the fixed point, or towards the fixed point for points starting on the critical line.
+
+To proceed, consider some particular fixed point $K_{1}^{\star}, K_{2}^{\star}$ and a flow close to this point. Denoting the functions $R_{\alpha}$, which perform the flow, we introduce displacements $\Delta K$ from the critical point, and obtain to first order
 \begin{align*}
 	K_{1}^{\prime} = R_{1}(K_{1}^{\star} + \Delta K_{1}, K_{2}^{\star} + \Delta K_{2}) = K_{1}^{\star} + \Delta K_{1}\pdv{R_{1}}{K_{1}} + \Delta K_{2}\pdv{R_{1}}{K_{2}},
 \end{align*}
-with a similar expression for $K_{2}\prime$. Introducing the matrix
+with a similar expression for $K_{2}^{\prime}$. Introducing the matrix
 \begin{align*}
-	M_{ij} = \pdv{R_{i}}{K_{j}}
+M_{ij} = \pdv{R_{i}}{K_{j}}
 \end{align*}
 and the displacements
 \begin{align*}
@@ -66,30 +49,97 @@ To continue, we change variables as determined by the eigenvectors of $M$. Namin
 \begin{align*}
 	U_{i} = \phi_{1, i}\Delta K_{1} + \phi_{2, i}\Delta K_{2}.
 \end{align*}
-One somehow obtains
+The property of renormalization transforms imply that the corresponding eigenvalues are $\lambda_{i} = b^{y_{i}}$, hence
 \begin{align*}
 	U_{i}^{\prime} = b^{y_{i}}U_{i}.
 \end{align*}
 
-As we have assumed that points on the critical line flow towards the fixed point, one of the $y_{i}$ must be negative while the other is positive. This also means that one of the eigenvectors must be tangential to the critical line at the fixed point. The possibility $y_{i} = 0$ corresponds to a line of fixed points.
+At this point we take a break to obtain an explicit expression for the exponents. We have
+\begin{align*}
+	y_{i} = \frac{\ln(\lambda_{i})}{\ln(b)}.
+\end{align*}
+In other words, they are given by the structure of the fixed points.
 
-Returning to the energy function, we expect $g$ to be analytic, which somehow implies that $f$ satisfies the recursion relation
+Due to our assumptions about the flow close to the fixed point, one of the $y_{i}$ must be positive while the other is not. The other exponent corresponds to an eigenvector which is tangential to the critical line at the fixed point. The possibility of the non-positive exponent being zero corresponds to a line of fixed points.
+
+Returning to the energy function, we expect $g$ to be analytic as it only contains information about short-range fluctuations, hence the singular part of $f$ satisfies the recursion relation
 \begin{align*}
 	f\left(K_{\alpha}\right) = b^{-d}f\left(K_{\alpha}^{\prime}\right).
 \end{align*}
 Close to the critical point, this may be written as
 \begin{align*}
-	f(U_{1}^{\prime}, U_{2}^{\prime}) = b^{-d}f\left(b^{y_{1}}U_{1}^{\prime}, b^{y_{2}}U_{2}^{\prime}\right)
+	f(U_{1}^{\prime}, U_{2}^{\prime}) = b^{-d}f\left(b^{y_{1}}U_{1}^{\prime}, b^{y_{2}}U_{2}^{\prime}\right).
 \end{align*}
-Suppose now that $U_{1}\propto t$ while $U_{2}$ is approximately unchanged by the temperature. Then
+Suppose now that a change in temperature affects only $U_{1}$. At any point on the critical line close to the one around which we linearized, we must have $U_{1} = 0$. The converse is true elsewhere in the surrounding. Hence we may identify $U_{1} = t$ and obtain.
 \begin{align*}
 	f(t, U_{2}^{\prime}) = b^{-d}f\left(b^{y_{1}}t, b^{y_{2}}U_{2}^{\prime}\right).
 \end{align*}
-Hence $f\propto\abs{t}^{\frac{d}{y_{1}}}$.
+Similarly, $U_{2}$ may be identified with some other variable. By combining this with the previously obtained expressions for the exponents, we may obtain scaling exponents and thus critical exponents from the structure of the fixed points.
 
-Two things may be concluded from this. First, the critical exponents are determined by the character of the fixed point. Second, it turns out that the flow is independent of $U_{2}$. Hence, all systems whose Hamiltonians flow to the same critical fixed points have the same critical exponents, which is reminiscent of the previously studied universality arguments.
+As renormalization transforms are expected to either enhance or weaken long-range interactions, we must have $y_{1} > 0$. Hence by approaching criticality at fixed $U_{2}$, we obtain that the flow is in fact independent of $U_{2}$ (you can verify this by using a scaling argument analogous to the ones previously performed). Hence, all systems whose Hamiltonians flow to the same critical fixed points have the same critical exponents, which is reminiscent of the previously studied universality arguments.
 
 The previous analysis generalizes to higher-dimensional coupling constant spaces.
+
+\paragraph{Decimation of the Ising Chain}
+Before proceeding, we define the dimensionless operator
+\begin{align*}
+	H = -\beta\ham = K\sum\limits_{i}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h\sum\limits_{i}\sigma_{i} + \sigma_{i + 1}.
+\end{align*}
+When computing the partition function, we may do this by first summing over spins with odd indices. For any one of these, we obtain the (partial) sum
+\begin{align*}
+	2\cosh(K(\sigma_{i - 1} + \sigma_{i + 1}) + h)e^{\frac{1}{2}h\sum\limits_{i}\sigma_{i - 1} + \sigma_{i + 1}}.
+\end{align*}
+The partition function is thus
+\begin{align*}
+	Z &= tr(e^{H}) \\
+	  &= \sum\limits_{\sigma_{1}}\sum\limits_{\sigma_{3}}\dots\sum\limits_{\sigma_{2}}\sum\limits_{\sigma_{4}}\dots e^{K\sum\limits_{i}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h\sum\limits_{i}\sigma_{i} + \sigma_{i + 1}} \\
+	  &= \sum\limits_{\sigma_{1}}\sum\limits_{\sigma_{3}}\dots\sum\limits_{\sigma_{N - 1}}\prod\limits_{i = 1}^{\frac{N}{2}}2e^{\frac{1}{2}h(\sigma_{2i - 1} + \sigma_{2i + 1})}\cosh(K(\sigma_{2i - 1} + \sigma_{2i + 1}) + h).
+\end{align*}
+Reindexing according to $2i - 1 \to i,\ 2i + 1 \to i + 1$ and introducing the new number of degrees of freedom $N^{\prime} = \frac{1}{2}N$, we obtain
+\begin{align*}
+	Z &= \sum\limits_{\{\sigma_{1}\}}\prod\limits_{i = 1}^{N^{\prime}}2e^{\frac{1}{2}h(\sigma_{i} + \sigma_{i + 1})}\cosh(K(\sigma_{i} + \sigma_{i + 1}) + h).
+\end{align*}
+This is a Hamiltonian of an Ising chain if we can identify quantities $g, K^{\prime}, h^{\prime}$ such that
+\begin{align*}
+	2e^{\frac{1}{2}h(\sigma_{i} + \sigma_{i + 1})}\cosh(K(\sigma_{i} + \sigma_{i + 1}) + h) &= e^{2g + K^{\prime}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h^{\prime}(\sigma_{i} + \sigma_{i + 1})}.
+\end{align*}
+This must be true for any value of the involved functions $\sigma_{i} + \sigma_{i + 1},\ \sigma_{i}\sigma_{i + 1}$. There are three possible combinations of these values, yielding the four equations
+\begin{align*}
+	2e^{h}\cosh(2K + h)   &= e^{2g + K^{\prime} + h^{\prime}}, \\
+	2e^{-h}\cosh(-2K + h) &= e^{2g + K^{\prime} - h^{\prime}}, \\
+	2\cosh(h)             &= e^{2g - K^{\prime}}.
+\end{align*}
+Multiplying the former yields
+\begin{align*}
+	4\cosh(2K + h)\cosh(2K - h) &= e^{4g + 2K^{\prime}}.
+\end{align*}
+Multiplying or dividing by the square of the latter yields
+\begin{align*}
+	16\cosh(2K + h)\cosh(2K - h)\cosh[2](h)        &= e^{8g}, \\
+	\frac{\cosh(2K + h)\cosh(2K - h)}{\cosh[2](h)} &= e^{4K^{\prime}}.
+\end{align*}
+We thus have
+\begin{align*}
+	K^{\prime} &= \frac{1}{4}\ln(\frac{\cosh(2K + h)\cosh(2K - h)}{\cosh[2](h)}), \\
+	g          &= \frac{1}{8}\ln(16\cosh(2K + h)\cosh(2K - h)\cosh[2](h)).
+\end{align*}
+Inserting this into one of the former yields
+\begin{align*}
+	h^{\prime} &= h - 2g - K^{\prime} + \ln(2\cosh(2K + h)) \\
+	           &= h - \frac{1}{4}\ln(16\cosh(2K + h)\cosh(2K - h)\cosh[2](h)) - \frac{1}{4}\ln(\frac{\cosh(2K + h)\cosh(2K - h)}{\cosh[2](h)}) + \ln(2\cosh(2K + h)) \\
+	           &= h - \frac{1}{4}\ln(16\cosh[2](2K + h)\cosh[2](2K - h)) + \ln(2\cosh(2K + h)) \\
+	           &= h + \frac{1}{2}\ln(\frac{\cosh(2K + h)}{\cosh(2K - h)}).
+\end{align*}
+The partition function may thus be written
+\begin{align*}
+	Z(N, K, h) = e^{Ng(K, h)}Z\left(\frac{1}{2}N, K^{\prime}, h^{\prime}\right).
+\end{align*}
+Repeating this procedure generates a sequence of constants and a prefactor given by the same function $g$. Doing this an infinite number of times yields
+\begin{align*}
+	-\frac{\beta G}{N} = \sum\limits_{j = 0}^{\infty}\frac{1}{2^{j}}g(K_{j}, h_{j}).
+\end{align*}
+
+%TODO: FLow in constant space
 
 \paragraph{The Cumulant Method}
 For more examples, we study the Ising model on a two-dimensional triangular lattice. The dimensionless Hamiltonian is
@@ -158,4 +208,81 @@ For $h = 0$, this reduces to
 \end{align*}
 It turns out that this has a fixed point corresponding to $K = 0.3356$. One may also obtain $y_{t} = 0.882,\ y_{h} = 2.034$. These results do not agree particularly well with the exact results, but nevertheless demonstrate the power of the framework.
 
+%TODO: Finish
 Next we consider the second-order approximation.
+
+\paragraph{$\epsilon$-Expansion}
+Consider some system of $N$ vectorized degrees of freedom on a $d$-dimensional lattice with lattice parameter $a$. The  Hamiltonian is given by
+\begin{align*}
+	\ham = -\sum\limits{\vb{r}}\sum\limits{\vb{a}}J_{\vb{a}}\vb{S}_{\vb{r}}\cdot\vb{S}_{\vb{a}} - h\sum\limits{\vb{r}}J_{\vb{a}}\vb{S}_{\vb{r}, \alpha},
+\end{align*}
+where all sums are performed over all lattice vectors. The vectors $\vb{r}$ and $\vb{a}$ refer to points on a lattice and $\alpha$ is some particular direction in which the field points. We introduce a weighting function $W$ to allow the magnitudes of the vectors $\vb{S}$ to vary. The partition function is thus
+\begin{align*}
+	Z = \left(\prod\limits_{\vb{r}}\integ[d]{}{}{\vb{S}_{\vb{r}}}{W(S_{\vb{r}})}\right)e^{-\beta\ham}.
+\end{align*}
+To proceed, we choose new variables according to
+\begin{align*}
+	\vb{S}_{\vb{r}} = \frac{1}{\sqrt{N}}\sum\limits_{\vb{q}}\vb{S}_{\vb{q}}e^{i\vb{q}\cdot\vb{r}},
+\end{align*}
+where the vectors $\vb{q}$ are restricted to the first Brillouin zone of the simple cubic lattice with the same parameters. We also choose a weighting function
+\begin{align*}
+	W(S) = e^{-\frac{1}{2}bS^{2} - cS^{4}},
+\end{align*}
+as the parameters of such a function may be chosen such that the weighting is highly localized about some particular length. We now introduce the effective Hamiltonian
+%TODO: Check
+\begin{align*}
+	H &= -\beta\ham + \sum\limits_{\vb{r}}W(S_{\vb{r}}) \\
+	  &= -\sum\limits_{\vb{q}}\left(\frac{1}{2}b - K(\vb{q})\right)\vb{S}_{\vb{q}}\cdot\vb{S}_{-\vb{q}} - \sum\limits_{\vb{q}_{1}, \vb{q}_{2}, \vb{q}_{3}}(\vb{S}_{\vb{q}_{1}}\cdot\vb{S}_{\vb{q}_{2}})(\vb{S}_{\vb{q}_{3}}\cdot\vb{S}_{-\vb{q}_{1} - \vb{q}_{2} - \vb{q}_{3}}) + \sqrt{N}h_{0}S_{\vb{0}}^{\alpha}
+\end{align*}
+where
+\begin{align*}
+	K(\vb{q}) = \beta\sum\limits_{\vb{a}}J(\vb{a})e^{-i\vb{q}\cdot\vb{a}},\ h_{0} = \beta h.
+\end{align*}
+By introducing $\beta J(\vb{a}) = \frac{1}{2}K_{0}$ only for nearest-neighbours and restricting ourselves to a simple cubic lattice we have in the long-wavelength limit
+\begin{align*}
+	K(\vb{q}) = K_{0}\sum\limits_{j = 1}^{d}dK_{0} - \frac{1}{2}K_{0}a^{2}q^{2}.
+\end{align*}
+We may somehow rescale things to obtain
+\begin{align*}
+	H &= -\frac{1}{2}\sum\limits_{\vb{q}}\left(r + q^{2}\right)\vb{S}_{\vb{q}}\cdot\vb{S}_{-\vb{q}} - \frac{u}{N}\sum\limits_{\vb{q}_{1}, \vb{q}_{2}, \vb{q}_{3}}(\vb{S}_{\vb{q}_{1}}\cdot\vb{S}_{\vb{q}_{2}})(\vb{S}_{\vb{q}_{3}}\cdot\vb{S}_{-\vb{q}_{1} - \vb{q}_{2} - \vb{q}_{3}}) + \sqrt{N}h_{0}S_{\vb{0}}^{\alpha}
+\end{align*}
+for
+\begin{align*}
+	r = \frac{b - 2dK_{0}}{K_{0}a^{2}},\ h = \frac{h_{0}}{\sqrt{K_{0}a^{2}}},\ u = \frac{c}{K_{0}^{2}a^{4}}.
+\end{align*}
+
+We now proceed with the case $u = 0$, known as the Gaussian model. Its partition function is given by
+\begin{align*}
+	Z = \left(\prod\limits_{\vb{q}}\integ[d]{}{}{\vb{S}_{\vb{q}}}{}\right)e^{-\frac{1}{2}\sum\limits_{\vb{q}}\left(r + q^{2}\right)\vb{S}_{\vb{q}}\cdot\vb{S}_{-\vb{q}} + \sqrt{N}h_{0}S_{\vb{0}}^{\alpha}}.
+\end{align*}
+Rather than computing this exactly, we will approach it with the renormalization group. To do that, we first carry out the functional integration for all $\vb{S}_{\vb{q}}$ such that $q > q_{l} = \frac{\pi}{l}$ for some parameter $l > 1$. This corresponds to dividing the spins into blocks. The resulting partition function is
+\begin{align*}
+	Z = A\left(\prod\limits_{q < q_{l}}\integ[d]{}{}{\vb{S}_{q < l}}{}\right)e^{-\frac{1}{2}\sum\limits_{\vb{q}}\left(r + q^{2}\right)\vb{S}_{\vb{q}}\cdot\vb{S}_{-\vb{q}} + \sqrt{N}h_{0}S_{\vb{0}}^{\alpha}}
+\end{align*}
+for some constant $A$. Next we introduce $\vb{q}^{\prime} = l\vb{q}$ - in other words, we rescale lengths - and multiply the summation by a factor $l^{-d}$ to compensate for the extra degrees of freedom. The rescaled dimensionless Hamiltonian is thus
+\begin{align*}
+	H^{\prime} = -\frac{1}{2}\sum\limits_{\vb{q}^{\prime}}\left(r + \left(\frac{q^{\prime}}{l}\right)^{2}\right)\vb{S}_{\frac{1}{l}\vb{q}^{\prime}}\cdot\vb{S}_{-\frac{1}{l}\vb{q}^{\prime}} + \sqrt{N}h_{0}S_{\vb{0}}^{\alpha}.
+\end{align*}
+For this to have the same functional form as before, we must rescale the degrees of freedom according to
+\begin{align*}
+	\vb{S}_{\frac{1}{l}\vb{q}^{\prime}} = l^{1 + \frac{d}{2}}\vb{S}_{\vb{q}^{\prime}}.
+\end{align*}
+This will yield
+\begin{align*}
+	H^{\prime} = -\frac{1}{2}\sum\limits_{\vb{q}^{\prime}}\left(r^{\prime} + (q^{\prime})^{2}\right)\vb{S}_{\vb{q}^{\prime}}\cdot\vb{S}_{-\vb{q}^{\prime}} + \sqrt{N}h^{\prime}S_{\vb{0}}^{\alpha},\ r^{\prime} = rl^{2},\ h^{\prime} = hl^{1 + \frac{d}{2}}.
+\end{align*}
+Assuming $r$ to be temperature-like, we have the scaling relation
+\begin{align*}
+	g(t, h) = l^{-d}g(tl^{2}, hl^{1 + \frac{d}{2}}).
+\end{align*}
+Some critical exponents are $\alpha = 2 - \frac{d}{2},\ \beta = \frac{d}{4} - \frac{1}{2},\ \gamma = 1$.
+
+\paragraph{The $S^{4}$ Model}
+Consider an effective Hamiltonian
+\begin{align*}
+	H =& -\frac{1}{2}\sum\limits_{\vb{q}}(r + q^{2})\vb{S}_{\vb{q}}\cdot\vb{S}_{-\vb{q}} - \frac{u}{N}\sum\limits_{\vb{q}_{1}, \dots, \vb{q}_{3}}(\vb{S}_{\vb{q}_{1}}\cdot\vb{S}_{\vb{q}_{2}})(\vb{S}_{\vb{q}_{3}}\cdot\vb{S}_{-\vb{q}_{1} - \vb{q}_{2} - \vb{q}_{3}}) \\
+	   &- \frac{w}{N^{2}}\sum\limits_{\vb{q}_{1}, \dots, \vb{q}_{3}}(\vb{S}_{\vb{q}_{1}}\cdot\vb{S}_{\vb{q}_{2}})(\vb{S}_{\vb{q}_{3}}\cdot\vb{S}_{\vb{q}_{4}})(\vb{S}_{\vb{q}_{5}}\cdot\vb{S}_{-\vb{q}_{1} - \vb{q}_{2} - \vb{q}_{3} - \vb{q}_{4} - \vb{q}_{5}}) + \dots + h\sqrt{N}S_{\vb{0}}^{\alpha}.
+\end{align*}
+We will handle this using a renormalization transform, but as traces over the higher-order terms are difficult to compute, we will use a cumulant expansion.
+
+%TODO: Do this pls

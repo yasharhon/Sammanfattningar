@@ -12,7 +12,7 @@ Second-order phase transitions have continuous free energy and order parameter, 
 \paragraph{Critical Exponents}
 Many phenomena exhibit a behaviour of the form $\abs{T - T_{\text{c}}}^{-c}$ close to phase transitions. The exponent $c$ is termed the critical exponent.
 
-Some specific critical exponents that may appear are $\gamma$ for $\chi$, $\alpha$ for $C$, $-\beta$ for the order parameter, $-\delta\beta$ for the conjugate field $h$, $\gamma$ for the corresponding susceptibility $\chi$ and $\nu$ for the correlation length.
+Some specific critical exponents that may appear are $\gamma$ for $\chi$, $\alpha$ for $C$, $-\beta$ for the order parameter, $-\delta$ for the conjugate field $h$, $\gamma$ for the corresponding susceptibility $\chi$ and $\nu$ for the correlation length.
 
 \paragraph{Density Matrices}
 The probability distribution is of the form
@@ -37,6 +37,46 @@ where $K$ is the Hamiltonian in the canonical ensemble and $H - \mu N$ in the gr
 	Z = \sum\limits_{m}P_{m} = \sum\limits_{m}e^{-\beta K_{m}} = \sum\limits_{m}\mel{m}{e^{-\beta K}}{m} = \tr(e^{-\beta K}).
 \end{align*}
 
+\paragraph{Scaling Laws}
+Suppose that close to a phase transition, the free energy is dominated by a term $G$ which scales according to
+\begin{align*}
+	G(t, h) = \lambda^{-d}G(\lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+The idea of scaling laws is to use such relations to compute critical exponents. Namely, we obtain
+\begin{align*}
+	m(t, h)     &= \lambda^{-d + y_{h}}m(\lambda^{y_{t}}t, \lambda^{y_{h}}h), \\
+	\chi(t, h)  &= \lambda^{-d + 2y_{h}}\chi(\lambda^{y_{t}}t, \lambda^{y_{h}}h), \\
+	C_{h}(t, h) &= \lambda^{-d + 2y_{t}}C_{h}(\lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+To identify the critical exponents, we approach the critical point from $h = 0$. The scaling laws apply for any scale factor, hence we may choose $\lambda^{y_{t}} = \frac{1}{\abs{t}}$, yielding
+\begin{align*}
+	m(t, 0)     &= \abs{t}^{\frac{d - y_{h}}{y_{t}}}m(\pm 1, 0), \\
+	\chi(t, 0)  &= \abs{t}^{\frac{d - 2y_{h}}{y_{t}}}\chi(\pm 1, 0), \\
+	C_{h}(t, 0) &= \abs{t}^{\frac{d}{y_{t}} - 2}C_{h}(\pm 1, 0).
+\end{align*}
+On the right-hand side we have the different quantities evaluated at points far from criticality, meaning they are finite. This also implies that if critical exponents exist on either side of the critical point, they are identical (this is for instance not the case for the order parameter, as it is zero on the other side of the transition). We now identify
+\begin{align*}
+	\alpha = 2 - \frac{d}{y_{t}},\ \beta = \frac{d - y_{h}}{y_{t}},\ \gamma = 2 - \frac{d}{y_{t}}.
+\end{align*}
+By instead approaching from $t = 0$ and choosing $\lambda^{y_{h}} = \frac{1}{\abs{h}}$ we obtain
+\begin{align*}
+	m(t, h) &= \abs{h}^{\frac{d}{y_{h}} - 1}m(0, \pm 1),
+\end{align*}
+and we identify
+\begin{align*}
+	\delta= \frac{1}{\frac{d}{y_{h}} - 1} = \frac{y_{h}}{y_{h} - d}.
+\end{align*}
+
+Based on this, we may identify certain general scaling laws. Two of these are
+\begin{align*}
+	\alpha + 2\beta + \gamma = 2,\ \beta(\delta - 1) = \gamma.
+\end{align*}
+These are the Rushbrook and Widom scaling laws.
+
+%TODO: Rest of the scaling laws
+
+\paragraph{Universality}
+
 \paragraph{The Ising Model}
 The Ising model is a simple model of magnets. In this model, a magnet is a collection of interacting spins on a lattice under the influence of an external field. Its generalized coordinates are $\sigma_{i}$, which may take the values $\pm 1$, signifying a particular spin pointing up or down. The Hamiltonian is
 \begin{align*}
@@ -46,7 +86,7 @@ The inner summation is carried out over the nearest neighbours of site $i$ in th
 
 This model will be used to demonstrate core concepts in the course.
 
-\paragraph{Scaling Laws}
+\paragraph{Scaling Laws for Magnetic Systems}
 While we will use the Ising model as a reference in this summary, it has been found that very different systems display similar critical exponents. Such exponents are also found to obey so-called scaling laws. As an example, it may be shown that
 \begin{align*}
 	\chi(C_{H} - C_{M}) = T\fix{\left(\pdv{M}{T}\right)^{2}}{H}.
