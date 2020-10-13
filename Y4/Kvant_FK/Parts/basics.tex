@@ -7,7 +7,7 @@ An observable is a Hermitian operator whose orthonormal eigenvectors form a basi
 The postulates of quantum mechanics are:
 \begin{itemize}
 	\item At any fixed time the state of a physical system is specified by a ket in Hilbert space.
-	\item Every measurable physical quantity corresponds to an operator on Hilbert space. This is a Hermitian observable. The possible outcomes of a measurement are the eigenvalues of $A$.
+	\item Every measurable physical quantity corresponds to an observable on Hilbert space. The possible outcomes of a measurement are the eigenvalues of $A$.
 	\item The probability of measuring the value $a$ of operator $A$ in a normalized state $\ket{\Psi}$ is $P(a) = \expval{P_{a}}{\Psi}$, where $P_{a}$ is the projector onto the subspace corresponding to the eigenvalue $a$ given by $P_{a} = \dyad{a}{a}$.
 	\item If a measurement of an observable $A$ gives an outcome $a$, the state of the system immediately after the measurement is the projection of the state onto the subspace with eigenvalue $a$.
 	\item The time evolution of a state is governed by the Schrödinger equation.
@@ -32,21 +32,21 @@ Pure states are states with a well-defined state vector. Mixed states are states
 \paragraph{Density Matrices}
 The density matrix is defined as
 \begin{align*}
-	\rho = \op{\Psi}{\Psi}.
+	\rho = \op{\Psi}{\Psi}
 \end{align*}
-It has some cool properties. For instance:
+for a pure state and
 \begin{align*}
-	&\tr{\rho} = \sum\limits_{n}\expval{\rho}{n} = \ev**{\sum\limits_{n}\op{n}{n}}{\psi} = \braket{\Psi} = 1, \\
+	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}}
+\end{align*}
+for a mixed state, where the $P_{j}$ are the probability that the state of the system is $\ket{\Psi_{j}}$. It satisfies:
+\begin{align*}
+	&\tr(\rho) = \sum\limits_{n}\expval{\rho}{n} = \sum\limits_{j}P_{j}\ev{\sum\limits_{n}\op{n}{n}}{\Psi_{j}} = \sum\limits_{j}P_{j}\braket{\Psi_{j}} = 1, \\
 	&\adj{\rho} = \rho, \\
 	&\expval{A} = \sum\limits_{n, m}\braket{\Psi}{n}\mel{n}{A}{m}\braket{m}{\Psi} = \sum\limits_{n, m}\braket{m}{\Psi}\braket{\Psi}{n}\mel{n}{A}{m} = \sum\limits_{n, m}\mel{m}{\rho}{n}\mel{n}{A}{m} = \tr(\rho A), \\
 	&\rho^{2} = \rho.
 \end{align*}
 %TODO: Introduce mixed states
-Note that the latter is only true for pure states. Mixed states have a density matrix of the form
-\begin{align*}
-	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}},
-\end{align*}
-where the $P_{j}$ are the probability that the state of the system is $\ket{\Psi_{j}}$.
+Note that the latter is only true for pure states.
 
 \paragraph{The Time Evolution Operator}
 Consider the operator $u_{t'}(t)$ which evolves $\ket{\Psi(t')}$ to $\ket{\Psi(t)}$. Inserting it into the Schrödinger equation yields
@@ -54,75 +54,25 @@ Consider the operator $u_{t'}(t)$ which evolves $\ket{\Psi(t')}$ to $\ket{\Psi(t
 	i\hbar\dv{t}u_{t^{\prime}}(t)\ket{\Psi(t^{\prime})} = Hu_{t^{\prime}}(t)\ket{\Psi(t^{\prime})}, \\
 	i\hbar\del{t}{u_{t^{\prime}}} = Hu_{t^{\prime}}(t).
 \end{align*}
-It follows from In the case of a time-independent Hamiltonian, the solution must be of the form $u_{t^{\prime}}(t) = u(t - t^{\prime})$, and the equation above can be integrated to yield
+In the case of a time-independent Hamiltonian, the solution must be of the form $u_{t^{\prime}}(t) = u(t - t^{\prime})$, and the equation above can be integrated to yield
 \begin{align*}
 	u_{t^{\prime}}(t) = e^{-i\frac{t - t^{\prime}}{\hbar}H}.
 \end{align*}
 Hence $H$ generates time translation - at least in time-independent cases.
 
 \paragraph{Space and Space Translation}
-We introduce the notion of space as a set of operators $x_{i}$ on the basis states. These operators are postulated to commute, as are their corresponding translations. The latter implies that their generators $k_{i}$ commute as well.
+We introduce the notion of space as a set of operators $x_{i}$ on the basis states. These operators are postulated to commute, as are their corresponding translations. The latter implies that their generators $k_{i}$ commute as well. These are essentially quantum analogues of the canonical Poisson brackets.
 
 \paragraph{The Momentum Operator}
-It turns out that the generators of space translations have a physical interpretation. TO understand this, we note that the generating function of a spatial translation in classical mechanics is
+It turns out that the generators of space translations have a physical interpretation. To understand this, we note that the generating function of a spatial translation in classical mechanics is
 \begin{align*}
 	F(\vb{x}, \vb{P}) = \vb{x}\cdot\vb{P} + \vb{p}\cdot\vb{x},
 \end{align*}
-which contains one term generating the identity and one causing the translation. We are therefore prompted to guess that $k_{i} \propto p_{i}$. When studying de Broglie waves, one finds that the constant of proportionality is $\hbar$. We thus arrive at the final analogue to the canonical commutation relations, namely
+which contains one term generating the identity and one causing the translation. We are therefore prompted to guess that $k_{i} \propto p_{i}$. If this were to be true, the constant of proportionality according to de Broglie's hypothesis would be exactly $\hbar$, as expected. We thus arrive at the final analogue to the canonical Poisson brackets, namely
 \begin{align*}
 	\comm{x_{i}}{p_{j}} = i\hbar\delta_{ij}.
 \end{align*}
 One could of course have started with these as postulates instead, prompting a stronger analogy to classical mechanics. But the symmetry approach is nice too.
-
-\paragraph{Spatial Inversion}
-Let $\Pi$ be the spatial inversion operator, or parity operator, such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
-\begin{align*}
-	\vb{x}\Pi\ket{\vb{x}^{\prime}} = -\Pi\vb{x}\ket{\vb{x}^{\prime}} = -\vb{x}^{\prime}\Pi\ket{\vb{x}^{\prime}},
-\end{align*}
-hence $\Pi\ket{\vb{x}^{\prime}} = \ket{-\vb{x}^{\prime}}$, as the phase provided by spatial inversion may be chosen freely. Next we have
-\begin{align*}
-	\Pi\Psi = \mel{\vb{x}}{\Pi}{\Psi} = \braket{-\vb{x}}{\Psi} = \Psi(-\vb{x}).
-\end{align*}
-Furthermore, as we chose the operator to provide no phase, we have $\Pi^{2} = 1$, hence $\Pi$ has eigenvalues $\pm 1$ and $\Pi^{-1} = \adj{\Pi} = \Pi$.
-
-How does spatial inversion affect other quantities? The geometry of space implores us to require
-\begin{align*}
-	\Pi e^{-i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}} = e^{i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}}\Pi,
-\end{align*}
-namely a spatial translation followed by inversion is equal to inversion followed by an opposite translation. Expanding yields
-\begin{align*}
-	\Pi\left(1 -i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}\right)\adj{\Pi} = 1 + i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p},
-\end{align*}
-and we may therefore identify $\Pi\vb{p}\adj{\Pi} = -\vb{p}$. Next, we require that rotations and inversions commute (that this must be is clear as the matrix representation of a rotation is diagonal). Hence we obtain
-\begin{align*}
-	\Pi\vb{J}\adj{\Pi} = \vb{J}
-\end{align*}
-by a similar procedure. Notably, this is true for spin as well - a result which we could only arrive at by enforcing these requirements.
-
-\paragraph{Inversion Symmetry and Selection Rules}
-Most observables are either even or odd under inversions, namely $\Pi A\Pi^{-1} = \pi_{A}A,\ \pi_{A} = \pm 1$. If we are working with states with definite parity, we have
-\begin{align*}
-	\mel{\Psi}{A}{\Phi} &= \pi_{A}\mel{\Psi}{\Pi A\Pi}{\Phi} \\
-	                    &= \pi_{A}\pi_{\Psi}\pi_{\Phi}\mel{\Psi}{A}{\Phi},
-\end{align*}
-meaning that this matrix element is zero if $\pi_{a}\pi_{\Psi}\pi_{\Phi} = -1$. This is an example of a so-called selection rule.
-
-\paragraph{Mirror Symmetries}
-Other discrete spatial symmetries exist. One example is mirror symmetry. This particular example may be written as a composition of an inversion and a rotation.
-
-\paragraph{Time Reversal}
-Time reversal should preserve position and flip the sign of momentum. This implies, however, that
-\begin{align*}
-	T(i\hbar)T^{-1} = -i\hbar,
-\end{align*}
-which can only be satisfied if $T$ is anti-linear and anti-unitary. It can be shown that for spinless particles, the time reversal operator is simply the complex conjugation operator.
-
-\paragraph{Kramer's Degeneracy}
-Consider a system which is invariant under time reversal. It would seem that for any eigenvector $\ket{E}$, there must also exist an eigenvector $T\ket{E}$. However, in cases with spin-$\frac{1}{2}$, for which $T^{2} = -1$, we have
-\begin{align*}
-	\mel{E}{T}{E} &= \cc{(\bra{TE})(\ket{T^{2}E})} = -\cc{(\bra{TE})(\ket{E})} = -\mel{E}{T}{E},
-\end{align*}
-implying the two vectors are orthogonal. This is called Kramer's degeneracy.
 
 \paragraph{Time Evolution of the Density Matrix}
 The time evolution of the density matrix is given by
@@ -137,7 +87,7 @@ This implies
 \paragraph{The Heisenberg Equation}
 Heisenberg's outlook starts from preserving expectation values under time translations in such a way that all (total) time evolution is contained in the operators, arriving at the transformation rule
 \begin{align*}
-	A_{\text{H}} = \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t).
+A_{\text{H}} = \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t).
 \end{align*}
 $A_{\text{H}}$ is the operator according to Heisenberg and $A_{\text{S}}$ is the operator according to Schrödinger. We now have
 \begin{align*}
@@ -153,6 +103,47 @@ Suppose that there exists some unitary transformation $u = e^{-i\frac{\varepsilo
 	\left(1 + i\frac{\varepsilon}{\hbar}A + \dots\right)H\left(1 - i\frac{\varepsilon}{\hbar}A + \dots\right) = H + i\frac{\varepsilon}{\hbar}(-HA + AH) + \dots = H + i\frac{\varepsilon}{\hbar}\comm{A}{H} + \dots = H,
 \end{align*}
 implying that $A$ and $H$ commute. Assuming $A$ to have no explicit time dependence, Heisenberg's equations yield that $\expval{A}$ is conserved. This is essentially a kind of Nöether's theorem in quantum mechanics.
+
+\paragraph{Spatial Inversion}
+Let $\Pi$ be the spatial inversion operator, or parity operator, such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
+\begin{align*}
+	\vb{x}\Pi\ket{\vb{x}^{\prime}} = -\Pi\vb{x}\ket{\vb{x}^{\prime}} = -\vb{x}^{\prime}\Pi\ket{\vb{x}^{\prime}},
+\end{align*}
+hence $\Pi\ket{\vb{x}^{\prime}} = \ket{-\vb{x}^{\prime}}$, as the phase provided by spatial inversion may be chosen freely. Next we have
+\begin{align*}
+	\Pi\Psi = \mel{\vb{x}}{\Pi}{\Psi} = \braket{-\vb{x}}{\Psi} = \Psi(-\vb{x}).
+\end{align*}
+Furthermore, as we chose the operator to provide no phase, we have $\Pi^{2} = 1$, hence $\Pi$ has eigenvalues $\pm 1$ and $\Pi^{-1} = \adj{\Pi} = \Pi$.
+
+The geometry of space implores us to require
+\begin{align*}
+	\Pi e^{-i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}} = e^{i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}}\Pi,
+\end{align*}
+namely a spatial translation followed by inversion is equal to inversion followed by an opposite translation. Expanding yields
+\begin{align*}
+	\Pi\left(1 -i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}\right)\adj{\Pi} = 1 + i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p},
+\end{align*}
+and we may therefore identify $\Pi\vb{p}\adj{\Pi} = -\vb{p}$.
+
+\paragraph{Inversion Symmetry and Selection Rules}
+Most observables are either even or odd under inversions, namely $\Pi A\Pi^{-1} = \pi_{A}A,\ \pi_{A} = \pm 1$. If we are working with states with definite parity, we have
+\begin{align*}
+	\mel{\Psi}{A}{\Phi} &= \pi_{A}\mel{\Psi}{\Pi A\Pi}{\Phi} \\
+	                    &= \pi_{A}\pi_{\Psi}\pi_{\Phi}\mel{\Psi}{A}{\Phi},
+\end{align*}
+meaning that this matrix element is zero if $\pi_{a}\pi_{\Psi}\pi_{\Phi} = -1$. This is an example of a so-called selection rule.
+
+\paragraph{Mirror Symmetries}
+Other discrete spatial symmetries exist. One example is mirror symmetry. This particular example may be written as a composition of an inversion and a rotation.
+
+\paragraph{Time Reversal}
+
+
+Time reversal should preserve position and flip the sign of momentum. This implies, however, that
+\begin{align*}
+	T(i\hbar)T^{-1} = -i\hbar,
+\end{align*}
+which can only be satisfied if $T$ is anti-linear and anti-unitary. It can be shown that for spinless particles, the time reversal operator is simply the complex conjugation operator.
 
 \paragraph{Propagators}
 The probability amplitude at some point $x$ at time $t$ is given by

@@ -209,10 +209,21 @@ As a final sanity check, how many states are there? We may without loss of gener
 as expected.
 
 \paragraph{Spatial Inversion}
-In addition to the commutation relations with which we started, we would like angular momentum to be unaffected by spatial inversion. This requirement is taken from the fact that spatial inversion should flip the signs of both position and momentum, preserving the orbital angular momentum.
+Next, we require that rotations and inversions commute (that this must be is clear as the matrix representation of a rotation is diagonal). Hence we obtain
+\begin{align*}
+	\Pi\vb{J}\adj{\Pi} = \vb{J}
+\end{align*}
+by a similar procedure. Notably, this is true for spin as well - a result which we could only arrive at by enforcing these requirements.
 
 \paragraph{Time Reversal}
 We also require that angular momenta change sign under time reversal symmetry for similar reasons.
+
+\paragraph{Kramer's Degeneracy}
+Consider a system which is invariant under time reversal. It would seem that for any eigenvector $\ket{E}$, there must also exist an eigenvector $T\ket{E}$. However, in cases with spin-$\frac{1}{2}$, for which $T^{2} = -1$, we have
+\begin{align*}
+	\mel{E}{T}{E} &= \cc{(\bra{TE})(\ket{T^{2}E})} = -\cc{(\bra{TE})(\ket{E})} = -\mel{E}{T}{E},
+\end{align*}
+implying the two vectors are orthogonal. This is called Kramer's degeneracy.
 
 \paragraph{Time Reversal of Non-Integral Spin}
 While our requirement is satisfied for integral spin, we do not really know how time reversal acts on non-integral spin. To help with this, we note that any anti-unitary operator may be written as $T = uK$, where $u$ is unitary and $K$ is complex conjucation. To show how this works, we consider spin-$\frac{1}{2}$, for which $\vb{S} = \frac{1}{2}\hbar\vb*{\sigma}$. We write $T = uK$, hence the problem is now to find an operator such that $\sigma_{x}$ and $\sigma_{z}$ change sign, while $\sigma_{y}$ is unaltered. The answer turns out to be
