@@ -139,7 +139,7 @@ Repeating this procedure generates a sequence of constants and a prefactor given
 	-\frac{\beta G}{N} = \sum\limits_{j = 0}^{\infty}\frac{1}{2^{j}}g(K_{j}, h_{j}).
 \end{align*}
 
-%TODO: FLow in constant space
+%TODO: Flow in constant space
 
 \paragraph{The Cumulant Method}
 For more examples, we study the Ising model on a two-dimensional triangular lattice. The dimensionless Hamiltonian is
@@ -148,65 +148,113 @@ For more examples, we study the Ising model on a two-dimensional triangular latt
 \end{align*}
 where we now allow interactions throughout the lattice.
 
-The triangular lattice may be divided into triangular blocks of three spins. The lattice of such blocks is a triangular lattice with a lattice constant greater by a factor $\sqrt{3}$. We will perform a renormalization procedure on these blocks defined by the projection operator $P(\mu_{I}, \{\sigma_{I}\})$. $\mu_{I}$ are the new variables and $\{\sigma_{I}\}$ are the spin configurations in the blocks. We somehow have
+The triangular lattice may be divided into triangular blocks of three spins. The lattice of such blocks is a triangular lattice with a lattice constant a factor $\sqrt{3}$ greater than that of the original lattice. We will perform a renormalization procedure on these blocks defined by the projection operator $P(\mu_{I}, \{\sigma_{I}\})$, which transforms the spins into the block into new variables $\mu_{I}$. For our transformation to work, we must have
 \begin{align*}
-	e^{Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime})} = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H(\{\sigma\}, K , h)}).
+	e^{Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime})} = \tr\limits_{\{\sigma\}}(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H(\{\sigma\}, K , h)}).
 \end{align*}
-If we require the projection operators to have trace $1$, this somehow implies
+In other words, the trace over spin configurations is carried out in such a way that the configuration of new variables is pre-determined. If we require the projection operators to have trace $1$, we may trace out the new variables and reorder the summation to obtain
 \begin{align*}
 	\tr\limits_{\{\mu\}}(e^{Ng + H^{\prime}}) = \tr\limits_{\{\sigma\}}(e^{H}),
 \end{align*}
 and the free energy is preserved.
 
-We wish to treat this system approximately, and do this by dividing the Hamiltonian into two terms
+We wish to treat this system using the cumulant method, and do this by dividing the Hamiltonian into two terms
 \begin{align*}
 	H(\{\sigma\}, K, h) = H_{0}(\{\sigma\}, K, h) + V(\{\sigma\}, K, h).
 \end{align*}
-$H_{0}$ contains all terms that operate within block and $V$ contains all interactions between blocks. We introduce $K_{n}$ as the coupling constant $n$-th nearest neighbours and thus have
+$H_{0}$ contains all terms that operate within the blocks and $V$ contains all interactions between blocks. We introduce $K_{n}$ as the coupling constant $n$-th nearest neighbours and thus have
 \begin{align*}
 	H_{0} = \sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3}),\ V = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\sigma_{I, \alpha}\sigma_{J, \beta}.
 \end{align*}
 This yields
 \begin{align*}
-	\tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H(\{\sigma\}, K , h)}) = Z_{0}\expval{e^{V}}
+	\tr\limits_{\{\sigma\}}\left(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H(\{\sigma\}, K , h)}\right) = Z_{0}\expval{e^{V}}
 \end{align*}
-where we have defined expectation values in terms of considering only interactions within the block. This is not an approximation.
+where
+\begin{align*}
+	Z_{0} = \tr\limits_{\{\sigma\}}\left(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H_{0}(\{\sigma\}, K , h)}\right)
+\end{align*}
+and the expectation value is defined in terms this partition function, i.e. considering only interactions within the block. Note that it is done for some particular configuration of the new variables. This is not yet an approximation.
 
-Let us now approximate by using a so-called truncated cumulant expansion
+%TODO: Generating function
+The approximation comes now, when we introduce a so-called truncated cumulant expansion
 \begin{align*}
 	\expval{e^{V}} = e^{\expval{V} + \frac{1}{2!}\expval{(V - \expval{V})^{2}} + \frac{1}{3!}\expval{(V - \expval{V})^{3}} + \dots}.
 \end{align*}
-We name the terms in the exponent $C_{i}$.
+We name the terms in the exponent $C_{i}$. Where does this approximation come from? When computing the free energy we have
+\begin{align*}
+	F &= F_{0} - \kb T\ln(\expval{e^{V}}) \\
+	  &= F_{0} - \kb T\ln(\expval{\sum\limits_{i = 0}^{\infty}\frac{(-1)^{i}}{i!}V^{i}}) \\
+	  &= F_{0} - \kb T\ln(\sum\limits_{i = 0}^{\infty}\frac{(-1)^{i}}{i!}\expval{V^{i}}) \\
+	  &= F_{0} - \kb T\ln(1 + \sum\limits_{i = 1}^{\infty}\frac{(-1)^{i}}{i!}\expval{V^{i}}) \\
+	  &= F_{0} + \kb T\left(\sum\limits_{j = 1}^{\infty}\frac{(-1)^{j}}{j}\left(\sum\limits_{i = 1}^{\infty}\frac{(-1)^{i}}{i!}\expval{V^{i}}\right)^{j}\right),
+\end{align*}
+and working out some terms and computing the exponential should yield the correct result. It might be nice to show this.
 
 Let us now include only nearest-neighbour interactions. We thus write the partition function as
 \begin{align*}
-	Z_{0} = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{H_{0}}) = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{\sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3})}).
+	Z_{0} = \tr\limits_{\{\sigma\}}\left(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{\sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3})}\right).
 \end{align*}
-We may somehow write this as
+For the renormalization transform to work, $Z_{0}$ must represent the interaction-free parts of the renormalized Hamiltonians. We must therefore have
 \begin{align*}
-	Z_{0} = \tr(\left(\prod\limits_{I}P(\mu_{I}, \{\sigma_{I}\})\right)e^{A + B\mu_{i}}).
+	Z_{0} = \prod\limits_{I}e^{A + B\mu_{i}}.
 \end{align*}
-Asssuming the block spins to be designated according to a majority rule, this somehow implies
+Asssuming the new variables to be designated according to a majority rule, we fix these. By tracing out the individual blocks we obtain
 \begin{align*}
-	e^{A + B} = e^{3K + 3h} + 3e^{-K + h},\ e^{A - B} = e^{3K - 3h} + 3e^{-K - h}.
+	e^{A + B} = e^{3K + 3h} + 3e^{-K + h},\ e^{A - B} = e^{3K - 3h} + 3e^{-K - h},
 \end{align*}
-Using block independence, the expectation value of $\expval{V}$ is easy to compute. We may write
+with solutions
+\begin{align*}
+	A = \frac{1}{2}\ln((e^{3K + 3h} + 3e^{-K + h})(e^{3K - 3h} + 3e^{-K - h})),\ B = \frac{1}{2}\ln(\frac{e^{3K + 3h} + 3e^{-K + h}}{e^{3K - 3h} + 3e^{-K - h}}).
+\end{align*}
+As the blocks do not interact in the base Hamiltonian, we obtain
+\begin{align*}
+	\expval{V} = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\expval{\sigma_{I, \alpha}\sigma_{J, \beta}} = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\expval{\sigma_{I, \alpha}}\expval{\sigma_{J, \beta}}.
+\end{align*}
+In particular, as there are only nearest-neighbour interactions we have
+\begin{align*}
+	\expval{V} = K\sum\limits_{I, J, \alpha, \beta}\expval{\sigma_{I, \alpha}}\expval{\sigma_{J, \beta}}.
+\end{align*}
+Translational invariance yields that all these expectation values must be equal. To reproduce a Hamiltonian of the same form in the new variables, we must have
 \begin{align*}
 	\expval{\sigma_{I, \alpha}} = C + D\mu_{I}.
 \end{align*}
-This is somehow combined to
+These expectation values can be calculated directly from $Z_{0}$ according to
 \begin{align*}
-	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) = \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\text{nn}(I, J)}(C + D\mu_{I})(C + D\mu_{J}),
+	\expval{\sigma} = \frac{1}{e^{A + B\mu_{I}}}\sum\limits_{\alpha}\sigma_{1}e^{K(\sigma_{1}\sigma_{2} + \sigma_{1}\sigma_{3} + \sigma_{2}\sigma_{3}) + h(\sigma_{1} + \sigma_{2} + \sigma_{3})},
 \end{align*}
-yielding the recursion relations
+where we chose some arbitrary spin with respect to which we compute the expectation values. The two choices of the new variables yield
 \begin{align*}
-	K^{\prime} = 2KD^{2}(K, h),\ h^{\prime} = B(K, h) + 12KC(K, h)D(K, h),\ g(K, h) = \frac{1}{3}NA(K, h) + 2KC^{2}(K, h).
+	C + D &= \frac{1}{e^{A + B}}(e^{3K + 3h} + 2e^{-K + h} - e^{-K + h}) = \frac{e^{3K + 3h} + e^{-K + h}}{e^{3K + 3h} + 3e^{-K + h}}, \\
+	C - D &= \frac{1}{e^{A - B}}(-e^{-3K - 3h} - 2e^{-K - h} + e^{-K - h}) = -\frac{e^{-3K - 3h} + e^{-K - h} }{e^{3K - 3h} + 3e^{-K - h}},
 \end{align*}
-For $h = 0$, this reduces to
+with solution
 \begin{align*}
-	K^{\prime} = 2K\left(\frac{e^{3K} + e^{-K}}{e^{3K} + 3e^{-K}}\right)^{2}.
+	C &= \frac{1}{2}\left(\frac{e^{3K + 3h} + e^{-K + h}}{e^{3K + 3h} + 3e^{-K + h}} - \frac{e^{-3K - 3h} + e^{-K - h} }{e^{3K - 3h} + 3e^{-K - h}}\right), \\
+	D &= \frac{1}{2}\left(\frac{e^{3K + 3h} + e^{-K + h}}{e^{3K + 3h} + 3e^{-K + h}} + \frac{e^{-3K - 3h} + e^{-K - h} }{e^{3K - 3h} + 3e^{-K - h}}\right).
 \end{align*}
-It turns out that this has a fixed point corresponding to $K = 0.3356$. One may also obtain $y_{t} = 0.882,\ y_{h} = 2.034$. These results do not agree particularly well with the exact results, but nevertheless demonstrate the power of the framework.
+
+This is combined with the renormalization anzats to yield
+\begin{align*}
+	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\text{nn}(I, J)}(C + D\mu_{I})(C + D\mu_{J}) \\
+	                                                       &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\text{nn}(I, J)}C^{2} + CD(\mu_{I} + \mu_{J}) + D^{2}\mu_{I}\mu_{J}.
+\end{align*}
+where we have added a factor $2$ to the interaction due to double counting when tracing out the individual $\sigma$. We may also relabel one of the $\mu$ in the sums on the right-hand side. Somehow double counting is an issue for certain terms, and we obtain
+\begin{align*}
+	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) &= \frac{1}{3}NA(K, h) + 2KNC^{2} + (B + 12KCD)\sum\limits_{I}\mu_{I} + 2KD^{2}\sum\limits_{\text{nn}(I, J)}\mu_{I}\mu_{J}.
+\end{align*}
+This yields the recursion relations
+\begin{align*}
+	g(K, h)    &= \frac{1}{3}A(K, h) + 2KC^{2}(K, h), \\
+	K^{\prime} &= 2KD^{2}(K, h), \\
+	h^{\prime} &= B(K, h) + 12KC(K, h)D(K, h),\ .
+\end{align*}
+
+For $h = 0$, we obtain $B = C = 0$, and thus
+\begin{align*}
+	K^{\prime} = 2K\left(\frac{e^{3K} + e^{-K}}{e^{3K} + 3e^{-K}}\right)^{2},\ h^{\prime} = 0.
+\end{align*}
+For small $K$ the recursion becomes $K^{\prime} = \frac{1}{2}K$, and for large $K$ it is $K^{\prime} = 2K$, meaning that the flow reverses at some point. The final fixed point is $K = 0.3356$. Using the fact that $b = \sqrt{3}$ one obtains  $y_{t} = 0.882,\ y_{h} = 2.034$. These results do not agree particularly well with the exact results, but nevertheless demonstrate the power of the framework.
 
 %TODO: Finish
 Next we consider the second-order approximation.

@@ -56,7 +56,7 @@ To identify the critical exponents, we approach the critical point from $h = 0$.
 \end{align*}
 On the right-hand side we have the different quantities evaluated at points far from criticality, meaning they are finite. This also implies that if critical exponents exist on either side of the critical point, they are identical (this is for instance not the case for the order parameter, as it is zero on the other side of the transition). We now identify
 \begin{align*}
-	\alpha = 2 - \frac{d}{y_{t}},\ \beta = \frac{d - y_{h}}{y_{t}},\ \gamma = 2 - \frac{d}{y_{t}}.
+	\alpha = 2 - \frac{d}{y_{t}},\ \beta = \frac{d - y_{h}}{y_{t}},\ \gamma = \frac{2y_{h} - d}{y_{t}}.
 \end{align*}
 By instead approaching from $t = 0$ and choosing $\lambda^{y_{h}} = \frac{1}{\abs{h}}$ we obtain
 \begin{align*}
@@ -64,18 +64,56 @@ By instead approaching from $t = 0$ and choosing $\lambda^{y_{h}} = \frac{1}{\ab
 \end{align*}
 and we identify
 \begin{align*}
-	\delta= \frac{1}{\frac{d}{y_{h}} - 1} = \frac{y_{h}}{y_{h} - d}.
+	\delta= \frac{1}{\frac{d}{y_{h}} - 1} = \frac{y_{h}}{d - y_{h}}.
 \end{align*}
 
 Based on this, we may identify certain general scaling laws. Two of these are
 \begin{align*}
 	\alpha + 2\beta + \gamma = 2,\ \beta(\delta - 1) = \gamma.
 \end{align*}
-These are the Rushbrook and Widom scaling laws.
+These are the Rushbrook and Widom scaling laws. As can be seen, they do not uniquely specify the critical exponents. This can also be seen from the scaling laws themselves.
 
-%TODO: Rest of the scaling laws
+We started the derivation with the assumption that the free energy satisfies some generalized homogeneity relation. The same must be true for the  correlation length and correlation function:
+\begin{align*}
+	\xi(t, h) = \lambda^{-b}\xi(\lambda^{y_{t}}t, \lambda^{y_{h}}h),\ \Gamma(\vb{k}, t, h) = \lambda^{-c}\Gamma(\lambda^{y_{\vb{k}}}\vb{k}, \lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+%TODO: Add derivation here
+For the correlation length we also added its dependence on the wavevector. As will be shown, the correlation function is proportional to the susceptibility for $\vb{k} = \vb{0}$, hence
+\begin{align*}
+	\Gamma(\vb{k}, t, h) = \lambda^{-d + 2y_{h}}\Gamma(\lambda^{y_{\vb{k}}}\vb{k}, \lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+At $t = h = 0$ we have
+\begin{align*}
+	\Gamma(\vb{k}) \propto k^{-2 + \eta},
+\end{align*}
+which defines the exponent $\eta$. This result is obtained by choosing $\lambda = k^{-\frac{1}{y_{\vb{k}}}}$, and we thus have
+\begin{align*}
+	\frac{2y_{h} - d}{y_{\vb{k}}} = \frac{\gamma y_{t}}{y_{\vb{k}}} = 2 - \eta.
+\end{align*}
+The correlation length is given by
+\begin{align*}
+	\xi^{2} \propto \frac{1}{C(0)}\eval{\pdv{C}{k^{2}}}_{k = 0},
+\end{align*}
+which scales as $\lambda^{-y_{\vb{k}}}$, hence $b = y_{\vb{k}}$. By a scaling law, we further obtain
+\begin{align*}
+	\nu = \frac{y_{\vb{k}}}{y_{t}}
+\end{align*}
+and Fisher's law
+\begin{align*}
+	\frac{\gamma}{\nu} = 2 - \eta.
+\end{align*}
 
-\paragraph{Universality}
+The laws we have derived thus far have considered the order parameter and susceptibility or the correlation function and correlation length by themselves. To derive the final scaling law, the hyperscaling law, we must connect the two. A scaling of the correlation length by a factor $l$ should scale the energy density by $l^{-d}$. A rescaling of the correlation length by $\lambda^{-b}$ is possible either by direct rescaling or by rescaling the field and temperature. If the previous claim is true, then we must have
+\begin{align*}
+	\lambda^{d}G(t, h) = \lambda^{bd}G(t, h).
+\end{align*}
+This can only be true if
+\begin{align*}
+	d = \nu dy_{t},\ d\nu = 2 - \alpha.
+\end{align*}
+
+\paragraph{The Universality Hypothesis}
+The universality hypothesis is an experimentally based hypothesis. It states that all phase transitions can be sorted into a set of universality classes characterized by the dimensions of the system and order parameter, and that the critical exponents are the same for all phase transitions in a given universality class.
 
 \paragraph{The Ising Model}
 The Ising model is a simple model of magnets. In this model, a magnet is a collection of interacting spins on a lattice under the influence of an external field. Its generalized coordinates are $\sigma_{i}$, which may take the values $\pm 1$, signifying a particular spin pointing up or down. The Hamiltonian is
@@ -99,11 +137,7 @@ Introducing the critical exponent of the involved quantities, we must therefore 
 \begin{align*}
 	-\gamma - \alpha \leq 2(\beta - 1),\ \gamma + \alpha + 2\beta \geq 2.
 \end{align*}
-The intriguing part is that each side is in fact almost equal, meaning that we may treat them as such. Three other scaling laws are:
-\begin{align*}
-	\beta(\delta - 1) = \gamma,\ \nu d = 2 - \alpha,\ \gamma = \nu(2 - \eta).
-\end{align*}
-We have also included the exponent $\Gamma(r, T_{\text{c}}) \propto r^{-(d - 2 + \eta)}$.
+This is the Rushbrook scaling law back in action.
 
 \paragraph{Exact Solution in One Dimension}
 To solve the Ising model in one dimension we will impose periodic boundary conditions $\sigma_{N} = \sigma_{0}$. The Hamiltonian may be written as
