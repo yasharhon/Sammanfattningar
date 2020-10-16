@@ -50,7 +50,7 @@ Assuming $\comm{A}{B}$ to commute with $A$, we have
 A symmetry on Hilbert space is a transformation that leaves all inner products unaltered.
 
 \paragraph{Wigner's Theorem}
-Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary (the latter meaning $\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$).
+Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary. An anti-unitary operator is an operator such that $\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$ and $U\adj{U} = 1$. The adjoint of such an operator is defined by $(U\ket{\Phi}, \ket{\Psi}) = (\adj{U}\ket{\Psi}, \ket{\Phi})$.
 
 \paragraph{Transformation of Operators}
 Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
@@ -114,7 +114,7 @@ implying
 \end{align*}
 
 \paragraph{Discrete Symmetries}
-A discrete symmetry is an operator for which the previously described machinery does not hold.
+A discrete symmetry is an operator for which the previously described machinery does not hold, namely a symmetry which is not parametrized by a continuous parameter.
 
 \paragraph{Complex Conjugation}
 The complex conjugation operator $K$ is defined as
@@ -147,6 +147,22 @@ The inner product between the two is
 	\sum\limits_{a}\braket{a}{\beta}\bra{a}\adj{U}\sum\limits_{b}\braket{\alpha}{b}U\ket{b} = \sum\limits_{a}\sum\limits_{b}\braket{\alpha}{b}\braket{a}{\beta}\braket{a}\ket{b} = \sum\limits_{a}\braket{\alpha}{a}\braket{a}{\beta} = \braket{\alpha}{\beta},
 \end{align*}
 completing the proof.
+
+\paragraph{Anti-Unitary Operators and Expectation Values}
+Let $U$ be some anti-unitary operator and $A$ some operator. Then
+\begin{align*}
+	\mel{\beta}{A}{\alpha} = \mel{\tilde{\alpha}}{U\adj{A}U^{-1}}{\tilde{\beta}},
+\end{align*}
+where the tildes denote vectors acted upon by $U$.
+
+To prove this, let $\ket{\gamma} = \adj{A}\ket{\beta}$. Then
+\begin{align*}
+	\mel{\beta}{A}{\alpha} &= \braket{\gamma}{\alpha} \\
+	                       &= \braket{\tilde{\alpha}}{\tilde{\gamma}} \\
+	                       &= \mel{\tilde{\alpha}}{U\adj{A}}{\beta} \\
+	                       &= \mel{\tilde{\alpha}}{U\adj{A}U^{-1}U}{\beta} \\
+	                       &= \mel{\tilde{\alpha}}{U\adj{A}U^{-1}}{\tilde{\beta}}.
+\end{align*}
 
 \paragraph{Tensors}
 A tensor of rank $n$ is a multilinear map from $n$ vectors in some vector space to a scalar.

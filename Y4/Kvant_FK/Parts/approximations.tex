@@ -1,6 +1,6 @@
 \section{Approximation Methods}
 
-\paragraph{Perturbation Theory}
+\paragraph{Time-Independent Perturbation Theory}
 Consider a Hamiltonian of the form
 \begin{align*}
 	H = H_{0} + \lambda V,
@@ -45,7 +45,9 @@ Hence we have
 \begin{align*}
 	\ket{n_{1}} = \sum\limits_{m\neq n}\frac{\mel{m_{0}}{V}{n_{0}}}{E_{n}^{(0)} - E_{m}^{(0)}}\ket{m_{0}}.
 \end{align*}
-This causes certain issues if any eigenvalue is degenerate, but in such cases you choose an orthogonal basis for that particular eigenspace so that the corresponding term becomes zero.
+
+%TODO: Show
+This causes certain issues if any eigenvalue is degenerate. In such a case, you should for each degenerate subspace choose a basis such that the perturbation is diagonal. This will produce the same formula in the end.
 
 Next we collect the second-order terms. We have
 \begin{align*}

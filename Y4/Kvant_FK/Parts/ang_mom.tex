@@ -1,12 +1,38 @@
 \section{Angular Momentum}
 
 \paragraph{Rotations}
-%TODO: Show commutation relations
-Consider an axis $\vb{n}$. The rotation symmetry operator about this axis is termed $u(\theta\vb{n})$. There must be three generators of rotations in three dimensions, and if we want them to correspond to the classical notion of rotations, they must satisfy the commutation relation
+Consider an axis $\vb{n}$. The rotation symmetry operator about this axis is termed $u(\theta\vb{n})$. In three dimensions we have
+\begin{align*}
+	u_{-\var{\theta_{y}}\ub{y}}u_{-\var{\theta_{x}}\ub{x}}u_{\var{\theta_{y}}\ub{y}}u_{\var{\theta_{x}}\ub{x}} = u_{-\var{\theta_{x}}\var{\theta_{y}}\ub{z}},
+\end{align*}
+with similar relations obtained by cyclic permutations. In quantum mechanics there must be three generators of rotations in three dimensions, and if we want the corresponding transformations to correspond to the classical notion of rotations, they must satisfy this same property. Expanding to second order in generators yields
+\begin{align*}
+	&\left(1 + i\var{\theta_{y}}T_{y} - \frac{1}{2}\var{\theta_{y}}^{2}T_{y}^{2}\right)\left(1 + i\var{\theta_{x}}T_{x} - \frac{1}{2}\var{\theta_{x}}^{2}T_{x}^{2}\right)\left(1 - i\var{\theta_{y}}T_{y} - \frac{1}{2}\var{\theta_{y}}^{2}T_{y}^{2}\right)\left(1 - i\var{\theta_{x}}T_{x} - \frac{1}{2}\var{\theta_{x}}^{2}T_{x}^{2}\right) \\
+	=& 1 + i\var{\theta_{x}}\var{\theta_{y}}T_{z}.
+\end{align*}
+Expanding the parentheses we obtain
+\begin{align*}
+	1 + \var{\theta_{x}}\var{\theta_{y}}(-T_{y}T_{x} + T_{x}T_{y}) = 1 + i\var{\theta_{x}}\var{\theta_{y}}T_{z},
+\end{align*}
+implying the commutation relation
+\begin{align*}
+	\comm{T_{x}}{T_{y}} = iT_{z}.
+\end{align*}
+Cyclic permutation as well as the antisymmetry of the commutator finally yields
+\begin{align*}
+	\comm{T_{i}}{T_{j}} = i\varepsilon_{ijk}T_{k},
+\end{align*}
+with summation.
+
+As we will show later, these generators are related to angular momentum according to
+\begin{align*}
+	J_{i} = \hbar T_{i}.
+\end{align*}
+This produces the commutation relation
 \begin{align*}
 	\comm{J_{i}}{J_{j}} = i\hbar\varepsilon_{ijk}J_{k}.
 \end{align*}
-These generators are the operators for angular momentum, as will be shown.
+We will be working with these for the rest of the discussion.
 
 The total angular momentum is given by $J^{2} = J_{i}J_{i}$, and thus commutes with all of its component. Hence we can find a basis for Hilbert space composed of joint eigenvectors of $J^{2}$ and any one component of $\vb{J}$ (usually $J_{z}$).
 
@@ -60,18 +86,39 @@ Supposing the spatial rotation to be described by some rotation matrix $R$, we r
 \begin{align*}
 	\Psi^{\prime}(\vb{r}^{\prime}) = \mel{\vb{r}}{u_{R}}{\Psi} \braket{R^{-1}\vb{r}}{\Psi} = \Psi(R^{-1}\vb{r}).
 \end{align*}
-%TODO: Show this
-It can be shown that this implies that $\Psi$ was acted on by an operator $e^{-\frac{i}{\hbar}\theta_{i}L_{i}}$ where
+To get a better understanding of what is going on, consider a small rotation about the $z$-axis. Its effect on the position vector is
+\begin{align*}
+	R^{-1}\vb{r} =
+	\mqty[
+		1             & \var{\theta} & 0 \\
+		-\var{\theta} & 1            & 0 \\
+		0             & 0            & 1
+	]
+	\mqty[
+		x \\
+		y \\
+		z \\
+	] =
+	\mqty[
+		x + \var{\theta}y \\
+		y - \var{\theta} x \\
+		z
+	].
+\end{align*}
+Linearizing the wavefunction yields
+\begin{align*}
+	\Psi(R^{-1}\vb{r}) \approx \Psi(\vb{r}) + \varepsilon\left(y\del{x}{\Psi} - x\del{y}{\Psi}\right),
+\end{align*}
+which in the general case corresponds to $\Psi$ being acted on by an operator $e^{-\frac{i}{\hbar}\theta_{i}L_{i}}$ where
 \begin{align*}
 	L_{i} = \varepsilon_{ijk}x_{j}p_{k}.
 \end{align*}
 This completes the argument that the generators of rotations are indeed angular momenta in the classical sense.
 
-%TODO: Show?
-It turns out that the orbital angular momenta may only have integer multiples of $\hbar$ as their eigenvalue, meaning that classical angular momentum does not by itself contain all the properties of angular momenta, as we have seen. It also turns out that the rest comes from spin.
+When finding the eigenfunctions of $L^{2}$ and $L_{z}$, however, the eigenvalues may only be integer multiples of $\hbar$, meaning that classical angular momentum does not by itself contain all the properties of angular momenta. It also turns out that the rest comes from spin.
 
 \paragraph{Spin}
-In addition to the transformation of coordinates, the rotation operator could in principle permute the basis. Thus we add an extra factor $D_{\vb{n}}(R)$. It commutes with the previously discussed operators as $e^{-i\frac{\theta}{\hbar}L}$ acts equally on all of the basis and $D_{\vb{n}}(R)$ is linear in the basis.
+In addition to the transformation of coordinates, the rotation operator could also act on some non-orbital degrees of freedom. Thus we add an extra factor $D_{\vb{n}}(R)$. It commutes with the previously discussed operators as $e^{-i\frac{\theta}{\hbar}L}$ acts equally on all of the basis and $D_{\vb{n}}(R)$ is linear in the basis.
 
 Using the machinery of Lie algebra, we may write
 \begin{align*}
@@ -216,7 +263,23 @@ Next, we require that rotations and inversions commute (that this must be is cle
 by a similar procedure. Notably, this is true for spin as well - a result which we could only arrive at by enforcing these requirements.
 
 \paragraph{Time Reversal}
-We also require that angular momenta change sign under time reversal symmetry for similar reasons.
+Requiring that rotations and time reversal commute will yield that angular momentum is odd under time reversal, just as was shown for momentum.
+
+\paragraph{Time Reversal of Non-Integral Spin}
+While our requirement is satisfied for integral spin, we do not really know how time reversal acts on non-integral spin. To help with this, we factorize the time reversal as $T = uK$, where $u$ is unitary and $K$ is complex conjucation. For spin-$\frac{1}{2}$, we have $\vb{S} = \frac{1}{2}\hbar\vb*{\sigma}$, and we must thus have
+\begin{align*}
+	uK\vb*{\sigma}\adj{u}K = -\vb*{\sigma}.
+\end{align*}
+The complex conjugation in this basis produces the complex conjugate of the Pauli matrices
+We write $T = uK$, hence the problem is now to find an operator such that $\sigma_{x}$ and $\sigma_{z}$ change sign, while $\sigma_{y}$ is unaltered. The answer turns out to be
+\begin{align*}
+	u = e^{i\frac{\pi}{2}\sigma_{y}} = i\sigma_{y}.
+\end{align*}
+We thus have time reversal on non-integral spin as $T = i\sigma_{y}K$. The general case is $u = e^{i\frac{\pi}{\hbar}S_{y}}$.
+
+\paragraph{A More General Case}
+%TODO: Show
+The general case is in fact that $T^{2}$ produces a minus sign when acting on half-integer spins and a plus sign otherwise.
 
 \paragraph{Kramer's Degeneracy}
 Consider a system which is invariant under time reversal. It would seem that for any eigenvector $\ket{E}$, there must also exist an eigenvector $T\ket{E}$. However, in cases with spin-$\frac{1}{2}$, for which $T^{2} = -1$, we have
@@ -224,10 +287,3 @@ Consider a system which is invariant under time reversal. It would seem that for
 	\mel{E}{T}{E} &= \cc{(\bra{TE})(\ket{T^{2}E})} = -\cc{(\bra{TE})(\ket{E})} = -\mel{E}{T}{E},
 \end{align*}
 implying the two vectors are orthogonal. This is called Kramer's degeneracy.
-
-\paragraph{Time Reversal of Non-Integral Spin}
-While our requirement is satisfied for integral spin, we do not really know how time reversal acts on non-integral spin. To help with this, we note that any anti-unitary operator may be written as $T = uK$, where $u$ is unitary and $K$ is complex conjucation. To show how this works, we consider spin-$\frac{1}{2}$, for which $\vb{S} = \frac{1}{2}\hbar\vb*{\sigma}$. We write $T = uK$, hence the problem is now to find an operator such that $\sigma_{x}$ and $\sigma_{z}$ change sign, while $\sigma_{y}$ is unaltered. The answer turns out to be
-\begin{align*}
-	u = e^{i\frac{\pi}{2}\sigma_{y}} = i\sigma_{y}.
-\end{align*}
-We thus have time reversal on non-integral spin as $T = i\sigma_{y}K$. The general case is $u = e^{i\frac{\pi}{\hbar}S_{y}}$.
