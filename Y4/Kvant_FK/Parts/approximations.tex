@@ -108,7 +108,9 @@ Integrating this yields
 \begin{align*}
 	c_{n}(t) = c_{n} - \frac{i}{\hbar}\integ{0}{t}{\tau}{\sum\limits_{m}c_{m}(t)e^{-i\frac{(E_{m} - E_{n})}{\hbar}\tau}\mel{n}{V}{m}}
 \end{align*}
-This only gives an implicit solution for the expansion coefficients. To obtain a solution, we use the fact that time dependence of the coefficients should be at least proportional to the magnitude of $V$. Hence we use the first-order approximation
+This only gives an implicit solution for the expansion coefficients.
+
+To proceed, we imagine that we do a series expansion in the strength of $V$ with a corresponding expansion of $c_{n}$. The first-order terms will yield
 \begin{align*}
 	c_{n}^{(1)}(t) = c_{n} - \frac{i}{\hbar}\integ{0}{t}{\tau}{\sum\limits_{m}c_{m}e^{-i\frac{(E_{m} - E_{n})}{\hbar}\tau}\mel{n}{V}{m}}.
 \end{align*}
@@ -143,6 +145,8 @@ we obtain
 	c_{n}^{(1)}(t) &= \delta_{ni} - \frac{i}{\hbar}\mel{n}{V}{i}\integ{0}{t}{\tau}{e^{-i\omega_{in}\tau}\left(e^{i\omega\tau} + e^{-i\omega\tau}\right)} \\
 	               &= \delta_{ni} - \frac{i}{\hbar}\mel{n}{V}{i}\integ{0}{t}{\tau}{e^{i(\omega - \omega_{in})\tau} + e^{i(-\omega - \omega_{in})\tau}}.
 \end{align*}
+This is sharply peaked around the two cases $\omega = \pm \omega_{in}$. The perturbation is independent of the sign of $\omega$, hence we may take it to be positive. This means that the peaks are found where an energy quantum is either absorbed or emitted.
+
 Consider now some $n\neq i$. For this case we obtain
 \begin{align*}
 	c_{n}^{(1)}(t) &= -\frac{1}{\hbar}\mel{n}{V}{i}\left(\frac{e^{i(\omega - \omega_{in})t} - 1}{(\omega - \omega_{in})} - \frac{e^{i(-\omega - \omega_{in})t} - 1}{\omega + \omega_{in}}\right).
