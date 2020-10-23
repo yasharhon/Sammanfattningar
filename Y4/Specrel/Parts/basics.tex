@@ -1,0 +1,98 @@
+\section{Basic concepts}
+
+\paragraph{What is special relativity?}
+Special relativity is not just a way to do mechanics. It is a way to do theoretical physics involving a new way of thinking about space and time.
+
+\paragraph{Fundamental postulates of special relativity}
+Einstein built the theory of special relativity based on the following postulates:
+
+\begin{itemize}
+	\item The laws of physics are the same inertial frames.
+	\item The speed of light is the same in all inertial frames.
+\end{itemize}
+
+\paragraph{Inertial frames}
+An inertial frame of reference is a kind of frame of reference, meaning that it is a certain way to consider time and space. In an inertial frame free particles move in straight lines with constant velocity.
+
+It can be shown that all inertial frames move uniformly with constant velocity relative to each other. When considering two inertial frames, we will usually choose the coordinate systems in each frame such that the axes are parallel to each other and one axis is parallel to the relative velocity.
+
+\paragraph{Galileian transformations}
+Consider two frames of reference $S$ and $S'$ moving with relative velocity $v$ in the $x$-direction. Galilei transforms are of the form $x' = x - vt$. A consequence of this is that velocities transform by simply adding or subtracting $v\ub{x}$. A consequence of this is that the speed of light is not invariant in all frames, meaning that Galileian transformations are insufficient in special relativity.
+
+\paragraph{Simultaneity}
+To observe a consequence of special relativity, consider a light source at the origin in its rest frame $S$ sending a pulse of light towards to detectors in $x = \pm x_{0}$. In $S$ the light reaches each detector at the same time.
+
+Consider now a frame $S'$ moving in with velocity $v\ub{x}$. According to an observer in this frame, one detector will approach the light source and the other recede from it, making the light reach one detector before the other. This makes it obvious that the classical concept of absolute time cannot persist in special relativity.
+
+\paragraph{On the synchronization of clocks}
+
+\paragraph{Time dilation}
+Consider two frames of reference $S$ and $S'$ moving with relative velocity $v$ in the $x$-direction. The time between two events transform according to
+\begin{align*}
+	t = \gamma t',
+\end{align*}
+where we introduce the Lorentz factor
+\begin{align*}
+	\gamma = \frac{1}{\sqrt{1 - \beta^{2}}},\ \beta = \frac{v}{c}.
+\end{align*}
+
+\paragraph{Length contraction}
+In a similar scenario lengths contract according to
+\begin{align*}
+	x = \frac{1}{\gamma}x'.
+\end{align*}
+
+Do the lengths in other directions contract as well? The answer is no. To understand this, consider the following thought experiment:
+
+\paragraph{Deriving the Lorentz transformation}
+The Lorentz transformation is the transformation that takes us from one inertial frame to another. We will now derive it using the following assumptions:
+\begin{itemize}
+	\item The transformation is linear, so as to not cause non-accelerating motion in one frame to be accelerating in another.
+	\item Inverting the transformation corresponds to swapping coordinates in different frames and changing the sign of the relative velocity.
+	\item The speed of light must be preserved by the transformation.
+\end{itemize}
+
+After a strenuous process you will obtain
+\begin{align*}
+	x' = \gamma(x - vt),\ t' = \gamma(t - \frac{\beta}{c}x).
+\end{align*}
+
+\paragraph{Transforming velocities}
+Using the chain rule, velocities along the $x$-axis are transformed according to
+\begin{align*}
+	u' = \dv{x'}{t'} = \frac{\dv{x'}{t}}{\dv{t'}{t}} = \frac{\gamma(u - v)}{\gamma(1 - \frac{v}{c^{2}}u)} = \frac{u - v}{1 - \beta\frac{u}{c}}.
+\end{align*}
+The velocities in other directions, for instance the $y$-direction transform according to
+\begin{align*}
+	u_{y}' = \dv{y'}{t'} = \frac{\dv{y}{t}}{\dv{t'}{t}} = \frac{1}{1 - \beta\frac{u}{c}}u_{y}.
+\end{align*}
+
+\paragraph{Transforming accelerations}
+We can in a similar way show that
+\begin{align*}
+	a' = \frac{1}{\gamma^{3}\left(1 - \beta\frac{u}{c}\right)^{3}}a.
+\end{align*}
+
+\paragraph{The garage paradox}
+Consider a garage of length $L_{0}$ and a car of length $l_{0} > L_{0}$. If the car drives into the garage at a high speed, the garage will contract in the car's frame, making sure that it does not fit, while the car will contract in the garage's frame, making it (possibly) fit. How is this possible?
+
+The resolution comes in the form of simultaneity. We consider two events: the front hitting the wall and the rear entering the garage. Assume that these are simultaneous in the rest frame $S$ of the garage. Applying the Lorentz transformation formula yields
+\begin{align*}
+	\Delta x' = \gamma\Delta x,
+\end{align*}
+corresponding to the length of the car being contracted in $S$. Furthermore, the time between the two events in $S'$ is
+\begin{align*}
+	\Delta t' = (1 - \frac{1}{\gamma})\frac{\Delta x'}{v},
+\end{align*}
+I think.
+
+\paragraph{The twin paradox}
+Consider a pair of twins, where one twin remains on earth and the other travels into space at a high velocity, eventually returning to Earth. According to the twin on Earth, time will pass more quickly for him, while according to the twin in space, time will pass more quickly for him. Which twin is older when they meet again?
+
+The answer is that the travelling twin must change inertial system, removing the assumed symmetry of the scenario.
+
+\paragraph{Minkowski diagrams}
+A Minkowski diagram is a diagram of a scenario with $ct$ on the vertical axis and space, usually represented by $x$, on the other. Trajectories of particles, called world lines, must have a slope greater than $1$ in this representation.
+
+\paragraph{Lorentz transformations in Minkowski diagrams}
+A Lorentz transformation in a Minkowski diagram corresponds to making the (transformed) space and time axes move closer together, approaching the identity line at equal rates.
