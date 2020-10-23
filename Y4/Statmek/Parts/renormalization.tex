@@ -5,11 +5,13 @@ The concept which we will study considers models on a $d$-dimensional lattice wi
 \begin{align*}
 	H = -\beta\ham = \sum\limits_{\alpha = 1}^{n}K_{\alpha}\psi_{\alpha}(\sigma)
 \end{align*}
-where the functions $\psi_{\alpha}(\sigma)$ describe one particular kind of interaction. As an example, the Ising model with coupling all over the lattice may have one function $\psi_{1}$ which contains all nearest-neighbour interactions, one function $\psi_{2}$ which describes next-to-nearest neighbours and so on. We suppose that there exists a transformation $R_{b}(\sigma)$ which rescales the system and introduces degrees of freedom $\sigma^{\prime}$ that are a factor of $b^{d}$ fewer than the original degrees of freedom. We also suppose that it works in such a way that the Hamiltonian expressed in the new degrees of freedom has the same form as that describing the original degrees of freedom, up to the addition of constants. Such a transform is called a renormalization transform. Its effect on the dimensionless Hamiltonian is
+where the functions $\psi_{\alpha}(\sigma)$ describe one particular kind of interaction. As an example, the Ising model with coupling all over the lattice may have one function $\psi_{1}$ which contains all nearest-neighbour interactions, one function $\psi_{2}$ which describes next-to-nearest neighbours and so on. We suppose that there exists a transformation $R_{b}(\sigma)$ which rescales the system and introduces degrees of freedom $\sigma^{\prime}$ that are a factor of $b^{d}$ fewer than the original degrees of freedom. We also suppose that it works in such a way that the Hamiltonian expressed in the new degrees of freedom has the same form as that describing the original degrees of freedom, up to the addition of constants, i.e.
 \begin{align*}
 	H^{\prime} = Ng(K_{\alpha}) + \sum\limits_{\alpha = 1}^{n}K_{\alpha}^{\prime}\psi_{\alpha}(\sigma^{\prime}),
 \end{align*}
-where $\sigma^{\prime}$ is the set of reduced degrees of freedom, which must have the same algebraic property as the non-reduced ones, and we have new coupling coefficients which are functions of the old. Similarly, the free energy may be written as
+where $\sigma^{\prime}$ is the set of reduced degrees of freedom, which must have the same algebraic property as the non-reduced ones, and we have new coupling coefficients which are functions of the old. Such a transform is called a renormalization transform.
+
+For a renormalization transform we obtain a new free energy
 \begin{align*}
 	-\frac{\beta}{N}G\left(N, K_{\alpha}\right) = f\left(K_{\alpha}\right) = g(K_{\alpha}) + b^{-d}f\left(K_{\alpha}^{\prime}\right).
 \end{align*}
@@ -17,15 +19,16 @@ Repeated application of such a transformation will yield
 \begin{align*}
 	-\frac{\beta}{N}G\left(N, K_{\alpha}\right) = \sum\limits_{j = 0}b^{-jd}g(K_{\alpha, j}).
 \end{align*}
-In other words, by determining the sequence of coupling constants and the function $g$, the free energy may be written as a series of this form.
+In other words, by determining the sequence of coupling constants and the function $g$, the free energy may be written as a series of this form. A more relevant use, however, comes from the fact that singularities in the free energy must be captured in the function $f$ and not $g$ as they also occur in the non-transformed system. Hence we may study the critical behaviour of the system by studying $f$. As we will see later, we will be doing this using scaling theory. 
 
 A characteristic feature of renormalization transforms is that $R_{b}^{2}(\sigma) = R_{b^{2}}(\sigma)$. This was a motivation to dub the set of all renormalization transforms the renormalization group. This is a misnomer, however, as there is no inverse renormalization transform - the price we pay for doing this is losing information about microscopic details of the system.
 
 \paragraph{Fixed Point Analysis}
-%TODO: Complete
 Consider a transformation as described above. There exist values of the coupling constants such that $K_{\alpha}^{\prime}(K_{\alpha}) = K_{\alpha}$. These are called fixed points. The renormalization transform causes the coupling constants to flow in coupling constant space. Depending on the direction of this flow, the fixed point is termed either stable or unstable.
 
-We will now study the critical points of such model. To do this, consider a model described by two coupling constants. The set of critical points for this model will form a curve in coupling constant space. Changing the temperature for a fixed system corresponds to moving along a straight line in this space. We will try to relate the flow under renormalization transformations to that of changing temperature.
+To study the critical behaviour of the system, we will now study the critical points of such model. By assuming that we are close to criticality and linearizing, we hope that we obtain scaling laws for the system.
+
+We introduce this approach by considering a model described by two coupling constants. The set of critical points for this model will form a curve in coupling constant space. Changing the temperature for a fixed system corresponds to moving along a straight line in this space. We will try to relate the flow under renormalization transformations to that of changing temperature.
 
 Under a renormalization transform, the coupling constant flow cannot approach the critical line, as the correlation length there is infinite and generally decreased by a renormalization transform (when measured in transformed length units). The long-range order may not be changed by such transforms either, hence the flow cannot make points cross the critical line. Certain points on the critical line may be fixed points, but generally all of them are not. Hence the flow around a fixed point is parallel to the critical line and away from the fixed point, or towards the fixed point for points starting on the critical line.
 
@@ -141,12 +144,23 @@ Repeating this procedure generates a sequence of constants and a prefactor given
 
 %TODO: Flow in constant space
 
+\paragraph{Renormalization And Universality}
+Consider an Ising model with coupling between nearest and next-to-nearest neighbours and suppose that we are able to identify a renormalization transform of the system. We would thus have
+\begin{align*}
+	f\left(t, h, \frac{J_{2}}{J_{1}}\right) = l^{-d}f\left(tl^{y_{t}}, hl^{y_{h}}, \frac{J_{2}}{J_{1}}l^{y}\right).
+\end{align*}
+The quotient between the coupling constants is also necessary to specify the free energy in this case. We expect that $y < 0$ for such a transform as there are no interactions beyond next-to-nearest neighbours. Choosing $l = \abs{t}^{-\frac{1}{y_{t}}}$ will yield
+\begin{align*}
+	f\left(t, h, \frac{J_{2}}{J_{1}}\right) = \abs{t}^{\frac{d}{y_{t}}}l^{-d}f\left(\pm 1, h\abs{t}^{-\frac{y_{h}}{y_{t}}}, \frac{J_{2}}{J_{1}}\abs{t}^{-\frac{y}{y_{t}}}\right).
+\end{align*}
+Close to criticality the coupling constant argument on the right-hand side vanishes, hence coupling may be neglected close to criticality. This is an example of universality emerging from renormalization transforms.
+
 \paragraph{The Cumulant Method}
 For more examples, we study the Ising model on a two-dimensional triangular lattice. The dimensionless Hamiltonian is
 \begin{align*}
 	H = \frac{1}{2}\sum\limits_{i, j}K_{ij}\sigma_{i}\sigma_{j} + h\sum\limits_{i}\sigma_{i},
 \end{align*}
-where we now allow interactions throughout the lattice.
+where we now allow interactions throughout the lattice. Note that the wedge brackets signify that each bond is to be counted once.
 
 The triangular lattice may be divided into triangular blocks of three spins. The lattice of such blocks is a triangular lattice with a lattice constant a factor $\sqrt{3}$ greater than that of the original lattice. We will perform a renormalization procedure on these blocks defined by the projection operator $P(\mu_{I}, \{\sigma_{I}\})$, which transforms the spins into the block into new variables $\mu_{I}$. For our transformation to work, we must have
 \begin{align*}
@@ -164,7 +178,7 @@ We wish to treat this system using the cumulant method, and do this by dividing 
 \end{align*}
 $H_{0}$ contains all terms that operate within the blocks and $V$ contains all interactions between blocks. We introduce $K_{n}$ as the coupling constant $n$-th nearest neighbours and thus have
 \begin{align*}
-	H_{0} = \sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3}),\ V = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\sigma_{I, \alpha}\sigma_{J, \beta}.
+	H_{0} = \sum\limits_{I}K_{1}(\sigma_{I, 1}\sigma_{I, 2} + \sigma_{I, 1}\sigma_{I, 3} + \sigma_{I, 2}\sigma_{I, 3}) + h(\sigma_{I, 1} + \sigma_{I, 2} + \sigma_{I, 3}),\ V = \frac{1}{2}\sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\sigma_{I, \alpha}\sigma_{J, \beta}.
 \end{align*}
 This yields
 \begin{align*}
@@ -209,13 +223,13 @@ with solutions
 \end{align*}
 As the blocks do not interact in the base Hamiltonian, we obtain
 \begin{align*}
-	\expval{V} = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\expval{\sigma_{I, \alpha}\sigma_{J, \beta}} = \sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\expval{\sigma_{I, \alpha}}\expval{\sigma_{J, \beta}}.
+	\expval{V} = \frac{1}{2}\sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\expval{\sigma_{I, \alpha}\sigma_{J, \beta}} = \frac{1}{2}\sum\limits_{I, J, n}K_{n}\sum\limits_{\alpha, \beta}\expval{\sigma_{I, \alpha}}\expval{\sigma_{J, \beta}}.
 \end{align*}
 In particular, as there are only nearest-neighbour interactions we have
 \begin{align*}
-	\expval{V} = K\sum\limits_{I, J, \alpha, \beta}\expval{\sigma_{I, \alpha}}\expval{\sigma_{J, \beta}}.
+	\expval{V} = K\sum\limits_{\nn{I, J}}\sum\limits_{\nn{\alpha, \beta}}\expval{\sigma_{I, \alpha}}\expval{\sigma_{J, \beta}},
 \end{align*}
-Translational invariance yields that all these expectation values must be equal. To reproduce a Hamiltonian of the same form in the new variables, we must have
+where the wedge bracket is taken to mean that each interaction be included only once. Translational invariance yields that all these expectation values must be equal. To reproduce a Hamiltonian of the same form in the new variables, we must have
 \begin{align*}
 	\expval{\sigma_{I, \alpha}} = C + D\mu_{I}.
 \end{align*}
@@ -236,10 +250,14 @@ with solution
 
 This is combined with the renormalization anzats to yield
 \begin{align*}
-	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\text{nn}(I, J)}(C + D\mu_{I})(C + D\mu_{J}) \\
-	                                                       &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\text{nn}(I, J)}C^{2} + CD(\mu_{I} + \mu_{J}) + D^{2}\mu_{I}\mu_{J}.
+	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + K\sum\limits_{\nn{I, J}}\sum\limits_{\nn{\alpha, \beta}}(C + D\mu_{I})(C + D\mu_{J}) \\
+	                                                       &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + K\sum\limits_{\nn{I, J}}\sum\limits_{\nn{\alpha, \beta}}C^{2} + CD(\mu_{I} + \mu_{J}) + D^{2}\mu_{I}\mu_{J}.
 \end{align*}
-where we have added a factor $2$ to the interaction due to double counting when tracing out the individual $\sigma$. We may also relabel one of the $\mu$ in the sums on the right-hand side. Somehow double counting is an issue for certain terms, and we obtain
+Let us now count terms. The inner summation gives two contributions for any fixed pair $I, J$, hence
+\begin{align*}
+	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) &= \frac{1}{3}NA(K, h) + B\sum\limits_{I}\mu_{I} + 2K\sum\limits_{\nn{I, J}}C^{2} + CD(\mu_{I} + \mu_{J}) + D^{2}\mu_{I}\mu_{J}.
+\end{align*}
+The last term is now fine. The first term may be multiplied by a factor $\frac{1}{3}N$ due to the number of $I$s, $6$ due to the number of $J$s for each $I$ and $\frac{1}{2}$ due to double counting. Next, relabelling $J$ to $I$ in the middle term adds a factor $2$. We also add a factor $6$ from summing over $J$ and divide by $2$ due to double counting. The final result is
 \begin{align*}
 	Ng(K, h) + H^{\prime}(\{\mu\}, K^{\prime}, h^{\prime}) &= \frac{1}{3}NA(K, h) + 2KNC^{2} + (B + 12KCD)\sum\limits_{I}\mu_{I} + 2KD^{2}\sum\limits_{\text{nn}(I, J)}\mu_{I}\mu_{J}.
 \end{align*}
@@ -260,33 +278,44 @@ For small $K$ the recursion becomes $K^{\prime} = \frac{1}{2}K$, and for large $
 Next we consider the second-order approximation.
 
 \paragraph{$\epsilon$-Expansion}
-Consider some system of $N$ vectorized degrees of freedom on a $d$-dimensional lattice with lattice parameter $a$. The  Hamiltonian is given by
+Consider some system of $N = n^{d}$ vectorized degrees of freedom on a $d$-dimensional simple cubic lattice with lattice parameter $a$. The  Hamiltonian is given by
 \begin{align*}
-	\ham = -\sum\limits{\vb{r}}\sum\limits{\vb{a}}J_{\vb{a}}\vb{S}_{\vb{r}}\cdot\vb{S}_{\vb{a}} - h\sum\limits{\vb{r}}J_{\vb{a}}\vb{S}_{\vb{r}, \alpha},
+	\ham = -\sum\limits_{\vb{r}}\sum\limits_{\vb{r}^{\prime}}J_{\vb{r} - \vb{r}^{\prime}}\vb{S}_{\vb{r}}\cdot\vb{S}_{\vb{r}^{\prime}} - h\sum\limits_{\vb{r}}S_{\vb{r}, \alpha},
 \end{align*}
-where all sums are performed over all lattice vectors. The vectors $\vb{r}$ and $\vb{a}$ refer to points on a lattice and $\alpha$ is some particular direction in which the field points. We introduce a weighting function $W$ to allow the magnitudes of the vectors $\vb{S}$ to vary. The partition function is thus
+where all sums are performed over all lattice vectors, meaning $r_{i} = ma,\ m = 0, \dots, n - 1$,  and $\alpha$ is some particular direction in which the field points. We introduce a weighting function $W$ to allow the magnitudes of the vectors $\vb{S}$ to vary. The partition function is thus
 \begin{align*}
 	Z = \left(\prod\limits_{\vb{r}}\integ[d]{}{}{\vb{S}_{\vb{r}}}{W(S_{\vb{r}})}\right)e^{-\beta\ham}.
 \end{align*}
-To proceed, we choose new variables according to
+
+To proceed, we impose periodic boundary conditions on the spins, namely $\vb{S}_{\vb{r} + na\vb{e}_{i}} = \vb{S}_{\vb{r}}$ and Fourier transform the spins according to
 \begin{align*}
-	\vb{S}_{\vb{r}} = \frac{1}{\sqrt{N}}\sum\limits_{\vb{q}}\vb{S}_{\vb{q}}e^{i\vb{q}\cdot\vb{r}},
+	\vb{S}_{\vb{r}} = \frac{1}{\sqrt{N}}\sum\limits_{\vb{q}}\vb{S}_{\vb{q}}e^{i\vb{q}\cdot\vb{r}},\ q_{i} = \frac{2\pi}{na}m,\ m = 0, \pm 1, \dots, \pm (n - 1).
 \end{align*}
-where the vectors $\vb{q}$ are restricted to the first Brillouin zone of the simple cubic lattice with the same parameters. We also choose a weighting function
+The Fourier components must satisfy $\vb{S}_{\vb{q}}^{\star} = \vb{S}_{-\vb{q}}$. We thus have
 \begin{align*}
-	W(S) = e^{-\frac{1}{2}bS^{2} - cS^{4}},
+	\sum\limits_{\vb{r}}S_{\vb{r}, \alpha} = \frac{1}{\sqrt{N}}\sum\limits_{\vb{r}}\sum\limits_{\vb{q}}S_{\vb{q}, \alpha}e^{i\vb{q}\cdot\vb{r}}.
 \end{align*}
-as the parameters of such a function may be chosen such that the weighting is highly localized about some particular length. We now introduce the effective Hamiltonian
+The term such that $\vb{q} = \vb{0}$ produces a factor $N$. I wave my hands to remove the rest for now. Next we have
+\begin{align*}
+	\sum\limits_{\vb{r}}\sum\limits_{\vb{r}^{\prime}}J_{\vb{r} - \vb{r}^{\prime}}\vb{S}_{\vb{r}}\cdot\vb{S}_{\vb{r}^{\prime}} &= \frac{1}{N}\sum\limits_{\vb{r}}\sum\limits_{\vb{r}^{\prime}}J_{\vb{r} - \vb{r}^{\prime}}\sum\limits_{\vb{q}}\sum\limits_{\vb{k}}\vb{S}_{\vb{q}}^{\star}\cdot\vb{S}_{\vb{k}}e^{i(\vb{q}\cdot\vb{r} - \vb{k}\cdot\vb{r}^{\prime})} \\
+	&= \frac{1}{N}\sum\limits_{\vb{q}}\sum\limits_{\vb{k}}\vb{S}_{-\vb{q}}\cdot\vb{S}_{\vb{k}}\sum\limits_{\vb{r}}\sum\limits_{\vb{r}^{\prime}}J_{\vb{r} - \vb{r}^{\prime}}e^{i(\vb{q}\cdot\vb{r} - \vb{k}\cdot\vb{r}^{\prime})}
+\end{align*}
+
+We also choose a weighting function
+\begin{align*}
+	W(S) = e^{-\frac{1}{2}bS^{2} - cS^{4}}
+\end{align*}
+to simplify calculations. If $b < 0$  and $c = \frac{b}{4}$ then the exponent has a maximum at $S = 1$. By choosing $b$ to be large this function may be arbitrarily sharply peaked around the maximum value. We now introduce the effective Hamiltonian
 %TODO: Check
 \begin{align*}
-	H &= -\beta\ham + \sum\limits_{\vb{r}}W(S_{\vb{r}}) \\
+	H &= -\beta\ham + \sum\limits_{\vb{r}}\ln(W(S_{\vb{r}})) \\
 	  &= -\sum\limits_{\vb{q}}\left(\frac{1}{2}b - K(\vb{q})\right)\vb{S}_{\vb{q}}\cdot\vb{S}_{-\vb{q}} - \sum\limits_{\vb{q}_{1}, \vb{q}_{2}, \vb{q}_{3}}(\vb{S}_{\vb{q}_{1}}\cdot\vb{S}_{\vb{q}_{2}})(\vb{S}_{\vb{q}_{3}}\cdot\vb{S}_{-\vb{q}_{1} - \vb{q}_{2} - \vb{q}_{3}}) + \sqrt{N}h_{0}S_{\vb{0}}^{\alpha}
 \end{align*}
 where
 \begin{align*}
-	K(\vb{q}) = \beta\sum\limits_{\vb{a}}J(\vb{a})e^{-i\vb{q}\cdot\vb{a}},\ h_{0} = \beta h.
+	K(\vb{q}) = \beta\sum\limits_{\vb{a}}J_{\vb{a}}e^{-i\vb{q}\cdot\vb{a}},\ h_{0} = \beta h.
 \end{align*}
-By introducing $\beta J(\vb{a}) = \frac{1}{2}K_{0}$ only for nearest-neighbours and restricting ourselves to a simple cubic lattice we have in the long-wavelength limit
+By introducing $\beta J_{\vb{a}} = \frac{1}{2}K_{0}$ only for nearest-neighbours and restricting ourselves to a simple cubic lattice we have in the long-wavelength limit
 \begin{align*}
 	K(\vb{q}) = K_{0}\sum\limits_{j = 1}^{d}dK_{0} - \frac{1}{2}K_{0}a^{2}q^{2}.
 \end{align*}

@@ -17,7 +17,7 @@ We now define the following quantities for such models:
 	\item the pair connectedness $C(p, r)$, which is the probability that two occupied sites separated by a distance $r$ belong to the same cluster.
 \end{itemize}
 
-Given these definitions, we may infer the following: First, the probability that a particular site is occupied and belongs to a cluster of size $s$ is equal to $sn_{s}(p)$. Next, we must have $P(1) = 1$ and $P(p) = 0$ for $p < p_{\text{c}}$ in the thermodynamic limit. In addition, all sites either belong to a spanning cluster or a cluster of finite size, implying
+Given these definitions, we may infer the following: First, the product $sn_{s}(p)$ is equal to the number of sites in clusters of size $s$ per lattice site, i.e. the probability that a particular site is occupied and belongs to a cluster of size $s$. Next, we must have $P(1) = 1$ and $P(p) = 0$ for $p < p_{\text{c}}$ in the thermodynamic limit. In addition, all occupied sites either belong to a spanning cluster or a cluster of finite size, implying
 \begin{align*}
 	pP(p) + \sum\limits_{s}sn_{s}(p) = p,
 \end{align*}
@@ -31,7 +31,7 @@ For doing scaling theory, we postulate that the quantity
 \begin{align*}
 	G(p) = \sum\limits_{s}n_{s}(p)
 \end{align*}
-is analogous to the free energy per site in such models. According to this analogy, $P(p)$ plays the role of the order parameter, $S(p)$ the role of the susceptibility and $C(p, r)$ that of the correlation function. Based on this, we define critical exponents as previously. The interesting part is that the critical exponents will not depend on details of our work.
+is analogous to the free energy per site in such models. According to this analogy, $P(p)$ plays the role of the order parameter, $S(p)$ the role of the susceptibility and $C(p, r)$ that of the correlation function. Based on this, we define critical exponents as previously. The interesting part is that if universality holds, the critical exponents will not depend on most of the details of our work.
 
 To this we add an extra piece of conjecture, namely that there exists a typical cluster size $s_{\xi}$ close to $p = p_{\text{c}}$ which dominates the critical behaviour of $G, P$ and $S$. We define its critical exponent according to
 \begin{align*}
@@ -41,26 +41,32 @@ We also assume that
 \begin{align*}
 	n_{s}(p) = n_{s}(p_{\text{c}})f\left(\frac{s}{s_{\xi}}\right).
 \end{align*}
-$f$ must, by construction, approach zero as its argument increases to infinity and approach $1$ as its argument approaches zero. For large $s$, it has been observed that $n_{s}$ behaves as a power law in $s$ with power $-\tau$, which is dependent on dimensionality. Thus we have
+$f$ must, by construction, approach zero as its argument increases to infinity and approach $1$ as its argument approaches zero. For large $s$, it has been observed that $n_{s}(p_{\text{c}})$ behaves as a power law in $s$ with power $-\tau$, which is dependent on dimensionality. Thus we have
 \begin{align*}
 	n_{s}(p) = s^{-\tau}\phi\left(s\abs{p - p_{\text{c}}}^{\frac{1}{\sigma}}\right).
 \end{align*}
 We may now write $G$ as
 \begin{align*}
-	G = \sum\limits_{s}s^{-\tau}\phi\left(s\abs{p - p_{\text{c}}}^{\frac{1}{\sigma}}\right) \approx \abs{p - p_{\text{c}}}^{\frac{\tau - 1}{\sigma}}\integ{0}{\infty}{x}{x\phi(x)}.
+	G = \sum\limits_{s}s^{-\tau}\phi\left(s\abs{p - p_{\text{c}}}^{\frac{1}{\sigma}}\right) \approx \integ{0}{\infty}{s}{s^{-\tau}\phi(s\abs{p - p_{\text{c}}}^{\frac{1}{\sigma}})} = \abs{p - p_{\text{c}}}^{\frac{\tau - 1}{\sigma}}\integ{0}{\infty}{x}{x^{-\tau}\phi(x)}.
 \end{align*}
-Assuming the integral to converge, we have
+Assuming the integral to converge and treating $p$ as a temperature-like parameter we may use scaling theory to obtain
 \begin{align*}
-	\alpha = 2 - \frac{\tau - 1}{\sigma}.
+	\alpha = 2 - \frac{\tau - 1}{\sigma},\ \gamma = \frac{3 - \tau}{\sigma},\ \beta = \frac{2 - \tau}{\sigma}.
 \end{align*}
-%TODO: Show
-In similar ways one obtains
-\begin{align*}
-	\gamma = \frac{3 - \tau}{\sigma},\ \beta = \frac{2 - \tau}{\sigma},
-\end{align*}
-and thus the scaling relationship $\alpha + 2\beta + \gamma = 2$ is satisfied.
 
 %TODO: SHow
-Next, we somehow expect that the integral of $C$ should be equal to $S$. This will yield $\gamma = \nu(2 - \eta)$. One may also obtain $d\nu = 2 - \alpha$.
+Next, we expect that the integral of $C$ should be equal to $S$. This will yield
+\begin{align*}
+	S \propto \integ{}{}{r}{r^{d - 1}\frac{e^{-\frac{r}{\xi}}}{r^{d - 2 + \eta}}} = \xi^{d - 1 - (d - 2 + \eta)}\integ{}{}{u}{u^{d}\frac{e^{-u}}{u^{d - 2 + \eta}}} \propto \abs{p - p_{\text{c}}}^{-\nu(2 - \eta)},
+\end{align*}
+yielding
+\begin{align*}
+	\gamma = \nu(2 - \eta).
+\end{align*}
+We also assume the dominance of clusters of size $s_{\xi}$ around the critical point. Their concentration is proportional to $\abs{p - p_{\text{c}}}^{\frac{\tau}{\sigma}}$. This concentration should be inversely proportional to $\xi^{d}$ as the clusters have size $\xi$, yielding
+\begin{align*}
+	\frac{\tau}{\sigma} = d\nu,
+\end{align*}
+which is (definitely not, but anyway) equivalent to $d\nu = 2 - \alpha$.
 
 %TODO: Brief mention of renormalization?
