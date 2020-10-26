@@ -1,0 +1,76 @@
+\section{Superconductivity}
+
+\paragraph{Superconductivity}
+Superconductors are materials which exhibit a state in which their resistivity vanishes below measurable levels. Their study started with the discovery of metals which did not follow Mathiessen's rule at low temperatures, but instead saw a sudden drop in resistivity below a certain temperature. Since then, many different superconducting materials have been discovered.
+
+The transition to superconductivity is a phase transition, and can thus only be maintained in a certain regime. This regime is characterized by critical temperatures, magnetic fields and current densities.
+
+\paragraph{The Meissner Effect}
+When exposed to an external magnetic field, currents are induced in the superconductor. Because there is no resistance, these currents increase in magnitude until they cancel the external field. This is termed the Meissner effect.
+
+Based on this, we can compute the susceptibility of a superconductor. For a superconductor in an external field $\vb{B}_{\text{a}} = \mu_{0}\vb{H}$ the total magnetic field in the superconductor is
+\begin{align*}
+	\vb{B} = \mu_{0}(\vb{H} + \vb{M}),
+\end{align*}
+and the requirement that the flux be zero implies
+\begin{align*}
+	\vb{M} = -\vb{H},
+\end{align*}
+corresponding to $\chi = -1$.
+
+\paragraph{Type I and II Superconductors}
+Type I superconductors exhibit the Meissner effect all the way until their phase transition. Type II superconductors have two phases characterized by different critical fields. For fields below the first critical field, type II superconductors exhibit the Meissner effect, whereas between the two critical fields the magnetization decreases with the external fields until it vanishes at the second critical field. This implies that in this phase external fields can penetrate the material.
+
+\paragraph{The Heat Capacity of a Superconductor}
+When cooling below the critical temperature, the heat capacity of superconductors increases discontinuously and attains a new behaviour, vanishing at low temperatures. This is evidence of superconductivity being a different phase.
+
+\paragraph{The Isotope Effect}
+For a given element, the isotope forming the superconductor determines the critical temperature of the superconductor. The critical temperature and isotope mass satisfy that $M^{\alpha}T_{\text{c}}$ is a constant for some $\alpha$.
+
+\paragraph{Vortices in Type II Superconductors}
+The second state for type II superconductors is called a vortex state. In this state, so-called vortices are formed in the material. The vortex is composed of a cylindrical region where current is conducted normally. The radius of the cylinder is characterized by a length scale $\xi$, termed the coherence length. Outside the vortices, the material is superconducting and currents arise around the vortices which shield the rest of the superconductor from the magnetic field going through the vortices. The size of this region is characterized by a length scale $\lambda$, termed the penetration depth. Each vortex mediates a flux $\phi_{0} = \frac{h}{2e}$.
+
+It turns out that this allows us to separate between type I and II superconductors, as type I superconductors satisfy $\xi > \sqrt{2}\lambda$, and vice versa for a type II superconductor.
+
+\paragraph{London Theory}
+The London theory of superconductivity is a phenomenological theory describing superconductivity. By minimizing the free energy of the electrons and fields, one obtains the equation
+\begin{align*}
+	\lambda_{L}^{2}\curl{\curl{\vb{B}}} + \vb{B} = \vb{0},
+\end{align*}
+which, together with Maxwell's equations, give a complete description of the superconductor. $\lambda_{L}$ is called the London penetration depth.
+
+Alternative formulations can be obtained. For instance, in stationary cases, Ampère's law yields
+\begin{align*}
+	\curl{\vb{H}} = \vb{J}.
+\end{align*}
+This is combined with $\vb{B} = \mu_{0}\vb{H}$, where there is no magnetization term as all magnetization comes from currents in the superconductor, which are integrated in Ampère's law. Inserting this into the London equation yields
+\begin{align*}
+	\curl{\vb{J}} = -\frac{1}{\mu_{0}\lambda_{L}^{2}}\vb{B}.
+\end{align*}
+Alternatively, in terms of the vector potential and in the correct gauge for a homogenous superconductor, we have
+\begin{align*}
+	\vb{J} = -\frac{1}{\mu_{0}\lambda_{L}^{2}}\vb{A}.
+\end{align*}
+
+\paragraph{BCS Theory}
+The BCS theory of superconductivity answered two important questions. Firstly, electrons in a superconductor are free electron-like at low temperatures and close to their lowest energy state. This does not fit with the occurrence of a phase transition. Second, the isotope effect was experimentally discovered, but was not incorporated into the theory, as the nucleus does not interact with the outer electrons in a way such that the mass of the nucleus plays a part.
+
+The idea behind the BCS theory can be summarized by the following thought experiment: Consider an electron passing through the lattice. It interacts with the lattice by Coulomb interactions, distorting the lattice as it moves. This, in turn, leaves behind a region where the lattice is positively charged, attracting a new electron to it. Hence BCS theory is based on studying electron-phonon interactions. This reveals the answer to the second question, as phonons are connected to the masses of the lattice atoms. Furthermore, this implies an attraction between electrons. In fact, it turns out that electrons with opposite wave vectors and spins form pairs which are called Cooper pairs. Cooper pairs are quasiparticles with bosonic character, explaining the lowered energy and presence of a phase transition.
+
+This lowering of energy manifests as a change in the density of states, which goes from its typical fermion-like shape to shifting the most energetic electrons to an energy slightly below the Fermi energy. Between this energy and the Fermi energy there will be an energy region which is not occupied, and thus an energy gap. The concentration close to the Fermi level is due to the lowering of energy being comparable to a typical phonon energy, which is small compared to electron energies.
+
+The BCS theory thus describes many-body effects in solids which give rise to exotic material behaviour. Physics of this kind are called emergent physics.
+
+\paragraph{The Condensation Energy of a Superconductor}
+The free energy difference between the normal and superconducting states is called the condensation energy. To estimate it, consider a small superconductor at infinite separation from a large magnet which is moved to the point where the magnetic field is equal to the critical magnetic field. The work done on the superconductor is
+\begin{align*}
+	W = -V\integ{0}{B_{\text{c}}}{\vb{B}_{\text{a}}}{\cdot\vb{M}}.
+\end{align*}
+This work is equal to the change in Helmholtz free energy of the superconductor. Using the fact that the superconductor is a perfect diamagnet, we obtain
+\begin{align*}
+	F = F_{0} + \frac{V}{\mu_{0}}\integ{0}{B_{\text{c}}}{\vb{B}_{\text{a}}}{\cdot\vb{B}_{\text{a}}} = F_{0} + \frac{V}{2\mu_{0}}B_{\text{c}}^{2}.
+\end{align*}
+The free energy $F_{n}$ of the normal conducting state, on the other hand, is approximately constant when the magnetic field is varied. At the phase boundary, the two are equal, meaning that the condensation energy is
+\begin{align*}
+	F_{n} - F_{0} = \frac{V}{2\mu_{0}}B_{\text{c}}^{2}.
+\end{align*}

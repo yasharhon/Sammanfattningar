@@ -1,0 +1,496 @@
+\section{Quantum Statistical Mechanics}
+
+\paragraph{Distinguishability and Exchange Symmetry}
+The concepts developed in this chapter will be based on the concepts of distinguishability. Classical particles are distinguishable, but quantum particles are not. As is postulated ad hoc in non-relativistic quantum mechanics, the operation of exchanging the two quantum particles with each other has a certain symmetry depending on the type of considered particles. Boson states are symmetric under exchange, and fermions are antisymmetric.
+
+\paragraph{The Pauli Exclusion Principle}
+Consider a many-particle state of fermions where two particles occupy the same state. Exchanging these two particles does not modify the total state. Combining this with the requirement that the state be antisymmetric under particle exchange implies that such a state cannot exist for fermions. This gives rise to the Pauli exclusion principle, which states that two indistinguishable fermions cannot occupy the same quantum state.
+
+\paragraph{Quantum Grand Partition Functions}
+Consider a system with a set of quantum states with energies $E_{i}$ occupied by $n_{i}$ particles each. Such a system would correspond to a set of non-interacting particles. The partition function for such a system is
+\begin{align*}
+	Z = \sum\limits_{\text{States}}e^{-\beta\sum n_{i}(E_{i} - \mu)} = \sum\limits_{\text{States}}e^{\beta\left(\mu N - \sum n_{i}E_{i}\right)}.
+\end{align*}
+A first question might be what happened to the factor $N!$ signifying that the particles are indistinguishable - after all, we said that distinguishability would be important. The answer is that the occupancy numbers themselves are not quantum numbers directly defining any state, but rather numbers defining the composition of the states. Due to the (anti)symmetry of the total state, it must be that any set of occupancy numbers can only correspond to a single quantum state, and thus there is no overcounting.
+
+Computing this sum for any significant $N$ is very difficult, as fixing one occupation number leaves constraints on the next, making the computation very intricate. However, the grand canonical partition function for such a system is of the form
+\begin{align*}
+	\Z = \sum\limits_{N = 0}^{\infty}\sum\limits_{\text{States}}e^{\beta\left(\mu N - \sum n_{i}E_{i}\right)}.
+\end{align*}
+The sum over states is a sum over all configurations such that the sum of all occupancy numbers is equal to $N$. Combining this with the summation over $N$ yields that this sum may be replaced by a sum over all conceivable occupancy configurations, removing the intricacies in the canonical ensemble. Furthermore, we have
+\begin{align*}
+	\Z &= \sum\limits_{n_{1}}\dots\sum\limits_{n_{\infty}}e^{n_{i}\beta(\mu - E_{i})} \\
+	   &= \prod\limits_{i}\left(\sum\limits_{n_{i}}e^{n_{i}\beta(\mu - E_{i})}\right),
+\end{align*}
+where the summation is performed over all possible values of the quantum numbers.
+
+At this point we must specify what kinds of particles are discussed in order to proceed. For bosons $n_{i}$ may be any positive integer, yielding
+\begin{align*}
+	\Z = \prod\limits_{i}\left(\frac{1}{1 - e^{\beta(\mu - E_{i})}}\right),
+\end{align*}
+whereas for fermions $n_{i}$ may only be $0$ or $1$, yielding
+\begin{align*}
+	\Z = \prod\limits_{i}\left(1 + e^{\beta(\mu - E_{i})}\right).
+\end{align*}
+We can also write
+\begin{align*}
+	\ln{\Z} = \pm\sum\limits_{i}\ln(1 \pm e^{\beta(\mu - E_{i})}),
+\end{align*}
+where the $+$ is for fermions and the $-$ is for bosons.
+
+\paragraph{Constraints on the Chemical Potential}
+At this point it is wise to explicitly state a constraint which is often placed on the chemical potential, namely that it is chosen such that the number of particles does not change when either $V$ or $T$ are varied.
+
+\paragraph{The Bose-Einstein and Fermi-Dirac Distributions}
+When considering the statistics of quantum gases, we will base our work on distribution functions written in terms of energy rather than occupancy. This choice is highly analogous to, say, converting from the Maxwell-Boltzmann velocity distribution to a corresponding speed distribution for ideal gases. We have
+\begin{align*}
+\expval{n_{i}} = -\frac{1}{\beta}\pdv{\ln{\Z}}{E_{i}} = \frac{e^{\beta(\mu - E_{i})}}{1 \pm e^{\beta(\mu - E_{i})}} = \frac{1}{e^{\beta(E_{i} - \mu)} \pm 1}.
+\end{align*}
+As there is a one-to-one correspondence between a given occupancy number and the corresponding energy, we can now write the distribution functions as
+\begin{align*}
+	f(E) = \frac{1}{e^{\beta(E - \mu)} - 1}
+\end{align*}
+for bosons and
+\begin{align*}
+	f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}
+\end{align*}
+for fermions. These functions are called the Bose-Einstein and Fermi-Dirac distribution functions.
+
+Note that the Bose-Einstein distribution imposes a constraint on the chemical potential, as it becomes singular if the chemical potential is greater than the lowest available energy state.
+
+\paragraph{The Density of States}
+When performing studies of quantum systems in terms of energy, we will need a way of counting the number of states corresponding to a specific energy. This is why we need the density of states, which is a function that under continuous assumptios (i.e. we can integrate over quantum numbers instead of summing over them) counts the number of states corresponding to a given energy.
+
+In all problems to be studied, we will consider particles in a $d$-dimensional periodic cube with a dispersion relation on the form of a power law. For such particles the components of the wave vector are of the form
+\begin{align*}
+	k_{i} = \frac{2\pi}{L}n,\ n = 0, \pm 1, \pm 2, \dots
+\end{align*}
+where $L$ is the dimension of the cube. In addition, there is a degeneracy factor, hence termed $\eta$, such that the density of states in k-space is
+\begin{align*}
+	\rho(\vb{k}) = \eta\frac{1}{\left(\frac{2\pi}{L}\right)^{d}} = \eta\frac{V}{(2\pi)^{d}}.
+\end{align*}
+In terms of the length of the wave vector we have
+\begin{align*}
+	\rho(k) = \eta\frac{V}{(2\pi)^{d}}\cdot \Omega_{d}k^{d - 1} = \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}Vk^{d - 1}.
+\end{align*}
+To express this in terms of the energy, we use the dispersion relation
+\begin{align*}
+	E = \alpha k^{t},
+\end{align*}
+which yields that the density of states is
+\begin{align*}
+	\rho(E) &= \frac{1}{\alpha tk^{t - 1}(E)}\cdot \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}Vk^{d - 1}(E) \\
+	        &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha}k^{d - t}(E) \\
+	        &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha}\left(\frac{E}{\alpha}\right)^{\frac{d}{t} - 1} \\
+	        &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t} - 1}.
+\end{align*}
+
+We can also compute the number of states with energy less than $E$, which is given by
+\begin{align*}
+	\sigma(E) &= \integ{0}{E}{\varepsilon}{\rho(\varepsilon)} \\
+              &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\integ{0}{E}{\varepsilon}{\varepsilon^{\frac{d}{t} - 1}} \\
+              &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}d}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t}}.
+\end{align*}
+
+One specific examples is massive particles in three dimensions, for which $\alpha = \frac{\hbar^{2}}{2m},\ t = 2$ and $\eta = \eta(s)$, and thus
+\begin{align*}
+	\rho(E)   &= \frac{\eta(s)}{8\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}E^{\frac{1}{2}} = \frac{\eta(s)}{(2\pi)^{2}}\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}VE^{\frac{1}{2}}, \\
+	\sigma(E) &= \frac{\eta(s)}{12\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}E^{\frac{3}{2}} = \frac{\eta(s)}{6\pi^{2}}\left(\frac{2m}{\hbar^{2}}\right)^{\frac{3}{2}}VE^{\frac{3}{2}}.
+\end{align*}
+Another is massless ultra-relativistic particles in three dimensions, for which $\alpha = \hbar c,\ t = 1$ and $\eta = 2$, and thus
+\begin{align*}
+	\rho(E)   &= \frac{2}{4\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\hbar c\right)^{3}}E^{2} = \frac{1}{\pi^{2}}\frac{V}{\left(\hbar c\right)^{3}}E^{2}, \\
+	\sigma(E) &= \frac{2}{12\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\hbar c\right)^{3}}E^{3} = \frac{1}{3\pi^{2}}\frac{V}{\left(\hbar c\right)^{3}}E^{3}.
+\end{align*}
+
+\paragraph{The Non-Interacting Quantum Gas}
+Consider a fluid of non-interacting quantum particles. The partition function of a quantum gas is thus given by
+\begin{align*}
+	\ln{\Z} &= \pm\sum\limits_{\vb{k}}\ln(1 \pm e^{-\beta(E_{\vb{k}} - \mu)}) \\
+	        &= \pm\integ{0}{\infty}{E}{\rho(E)\ln(1 \pm e^{-\beta(E - \mu)}}) \\
+	        &= \mp\integ{0}{\infty}{E}{\sigma(E)\frac{\mp\beta e^{-\beta(E - \mu)}}{1 \pm e^{-\beta(E - \mu)}}} \\
+	        &= \beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}},
+\end{align*}
+where the top sign is for fermions and the bottom for bosons. This will be the convention from now on.
+
+The grand potential of such a quantum gas is given by
+\begin{align*}
+	\GP = -\kb T\ln{\Z} = -\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}}.
+\end{align*}
+
+The total number of occupied states may be computed in two ways. The first is
+\begin{align*}
+	N &= \sum\limits_{\vb{k}}n_{\vb{k}} \\
+	  &= \sum\limits_{\vb{k}}\kb T\pdv{\ln{\Z_{\vb{k}}}}{\mu} \\
+	  &= \kb T\integ{0}{\infty}{E}{\rho(E)\pdv{\ln{\Z_{\vb{k}}}}{\mu}}.
+\end{align*}
+The second is
+\begin{align*}
+	N &= \pdv{\ln{\Z}}{\beta\mu}.
+\end{align*}
+We now use the fact that the integrand in $\ln{\Z}$ is of the form $\sigma(E)f(\beta(E - \mu))$. For $f$ we have
+\begin{align*}
+	\pdv{}{\beta\mu} = -\pdv{}{\beta E} = -\kb T\pdv{}{E},
+\end{align*}
+yielding
+\begin{align*}
+	N &= \pdv{\beta\mu}\left(\beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}}\right) \\
+	  &= \beta\integ{0}{\infty}{E}{\sigma(E)\pdv{\beta\mu}\left(\frac{1}{e^{\beta(E - \mu)} \pm 1}\right)} \\
+	  &= -\integ{0}{\infty}{E}{\sigma(E)\pdv{E}\left(\frac{1}{e^{\beta(E - \mu)} \pm 1}\right)} \\
+	  &= \integ{0}{\infty}{E}{\frac{\rho(E)}{e^{\beta(E - \mu)} \pm 1}}.
+\end{align*}
+
+The internal energy is given by
+\begin{align*}
+	U &= \mu N - \pdv{\ln{Z}}{\beta} \\
+	  &= \mu\integ{0}{\infty}{E}{\frac{\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \pdv{\beta}\left(\beta\integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}}\right) \\
+	  &= \integ{0}{\infty}{E}{\frac{\mu\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}} - \beta\integ{0}{\infty}{E}{\sigma(E)\cdot -\frac{(E - \mu)e^{\beta(E - \mu)}}{(e^{\beta(E - \mu)} \pm 1)^{2}}} \\
+	  &= \integ{0}{\infty}{E}{\frac{\mu\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}} + \beta\integ{0}{\infty}{E}{\sigma(E)(E - \mu)\frac{e^{\beta(E - \mu)}}{(e^{\beta(E - \mu)} \pm 1)^{2}}} \\
+	  &= \integ{0}{\infty}{E}{\frac{\mu\rho(E)}{e^{\beta(E - \mu)} \pm 1}} - \integ{0}{\infty}{E}{\frac{\sigma(E)}{e^{\beta(E - \mu)} \pm 1}} + \integ{0}{\infty}{E}{(\rho(E)(E - \mu) + \sigma(E))\frac{1}{e^{\beta(E - \mu)} \pm 1}} \\
+	  &= \integ{0}{\infty}{E}{\frac{E\rho(E)}{e^{\beta(E - \mu)} \pm 1}},
+\end{align*}
+or alternatively as
+\begin{align*}
+	U = \sum\limits_{\vb{k}}n_{\vb{k}}E_{\vb{k}}.
+\end{align*}
+
+All of these integrals are of the form
+\begin{align*}
+	A = \integ{0}{\infty}{E}{\frac{CE^{n}}{z^{-1}e^{\beta E} \pm 1}}.
+\end{align*}
+We rewrite them as
+\begin{align*}
+	A &= \integ{0}{\infty}{E}{\frac{CE^{n}}{z^{-1}e^{\beta E} \pm 1}} \\
+	  &= C\integ{0}{\infty}{E}{\frac{E^{n}ze^{-\beta E}}{1 \pm ze^{-\beta E}}} \\
+	  &= C\left(\frac{1}{\beta}\right)^{n + 1}\integ{0}{\infty}{u}{\frac{u^{n}ze^{-u}}{1 \pm ze^{-u}}} \\
+	  &= C\left(\kb T\right)^{n + 1}\integ{0}{\infty}{u}{u^{n}ze^{-u}\sum\limits_{k = 0}^{\infty}\left(\mp ze^{-u}\right)^{k}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\sum\limits_{k = 0}^{\infty}\left(\mp z\right)^{k + 1}\integ{0}{\infty}{u}{u^{n}e^{-(k + 1)u}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\sum\limits_{k = 0}^{\infty}\left(\mp z\right)^{k + 1}\left(\frac{1}{k + 1}\right)^{n + 1}\integ{0}{\infty}{x}{x^{n}e^{-x}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\gf{n + 1}\sum\limits_{k = 0}^{\infty}\frac{\left(\mp z\right)^{k + 1}}{(k + 1)^{n + 1}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\gf{n + 1}\sum\limits_{m = 1}^{\infty}\frac{\left(\mp z\right)^{m}}{m^{n + 1}} \\
+	  &= \mp C\left(\kb T\right)^{n + 1}\gf{n + 1}\Li{n + 1}{\mp z}.
+\end{align*}
+
+\paragraph{The Fermi Energy}
+Consider a gas of fermions, a Fermi gas, at $T = 0$. At this temperature, the fermions will fill up states from the lowest energy, $\eta(s)$ at a time, until they hit a certain maximal energy, defined to be the Fermi energy. As the chemical potential is the cost of adding a new particle, a more explicit definition of the Fermi energy is
+\begin{align*}
+	E_{\text{F}} = \eval{\mu}_{T = 0}.
+\end{align*}
+
+\paragraph{The Fermi Wave Vector}
+At $T = 0$, $\beta$ is very large. This means that the occupation number for a quantum gas is
+\begin{align*}
+	n_{\vb{k}} = \frac{1}{e^{\beta(E_{\vb{k}} - \mu)} + 1} \to \theta(\mu - E_{\vb{k}}) = \theta(E_{\text{F}} - E_{\vb{k}})
+\end{align*}
+where $\theta$ is the Heaviside function. We thus obtain
+\begin{align*}
+	N = \integ[3]{}{}{\vb{k}}{\rho(\vb{k})}
+\end{align*}
+where we integrate over a sphere of radius $k_{\text{F}} = k(E_{\text{F}})$. This wave vector is called the Fermi wave vector.
+
+\paragraph{The Fermi Temperature}
+The Fermi temperature is defined as
+\begin{align*}
+	T_{\text{F}} = \frac{E_{\text{F}}}{\kb}.
+\end{align*}
+
+\paragraph{The Fermi Surface}
+The Fermi surface is the surface in k-space made up of points corresponding to states with energy equal to that of the chemical potential.
+
+\paragraph{The Sommerfeld Formula}
+Consider a integral of the form
+\begin{align*}
+	I = \integ{0}{\infty}{E}{\phi(E)f(E)},\ f(E) = \frac{1}{e^{\beta(E - \mu)} + 1}.
+\end{align*}
+Introduce the antiderivative $\psi$ of $\phi$ such that $\psi(0) = 0$. We thus have
+\begin{align*}
+	I = -\integ{0}{\infty}{E}{\psi(E)\dv{f}{E}}.
+\end{align*}
+Introducing $x = \beta(E - \mu)$, we can expand $\psi$ as
+\begin{align*}
+	\psi = \sum\limits_{s = 0}^{\infty}\eval{\dv[s]{\psi}{x}}_{x = 0}\frac{x^{s}}{s!},
+\end{align*}
+compute
+\begin{align*}
+	\dv{f}{E} = -\beta\frac{e^{x}}{(e^{x} + 1)^{2}}
+\end{align*}
+and write
+\begin{align*}
+	I &= \sum\limits_{s = 0}^{\infty}\frac{\beta}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{0}{\infty}{E}{x^{s}\frac{e^{x}}{(e^{x} + 1)^{2}}} \\
+	  &= \sum\limits_{s = 0}^{\infty}\frac{1}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{-\beta\mu}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}}.
+\end{align*}
+If the temperature is much lower than the Fermi temperature, we can extend the integral to $-\infty$, where the odd terms disappear and the even terms take the form
+\begin{align*}
+	\integ{-\infty}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} &= 2\integ{0}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} \\
+	                                                               &= 2\integ{0}{\infty}{x}{\frac{x^{s}e^{-x}}{(e^{-x} + 1)^{2}}} \\
+	                                                               &= 2\integ{0}{\infty}{x}{x^{s}e^{-x}\sum\limits_{m = 0}^{\infty}(-1)^{m}(m + 1)e^{-mx}} \\
+	                                                               &= 2\sum\limits_{m = 0}^{\infty}(-1)^{m}(m + 1)\integ{0}{\infty}{x}{x^{s}e^{-(m + 1)x}} \\
+	                                                               &= 2\sum\limits_{m = 1}^{\infty}(-1)^{m + 1}m\integ{0}{\infty}{x}{x^{s}e^{-mx}} \\
+	                                                               &= 2(s!)\sum\limits_{m = 1}^{\infty}\frac{(-1)^{m + 1}}{m^{s}} \\
+	                                                               &= 2(s!)(1 - 2^{1 - s})\zeta(s).
+\end{align*}
+We thus finally obtain the Sommerfeld formula
+\begin{align*}
+	I &\approx \sum\limits_{s = 0}^{\infty}\frac{1}{s!}\eval{\dv[s]{\psi}{x}}_{x = 0}\integ{-\infty}{\infty}{x}{\frac{x^{s}e^{x}}{(e^{x} + 1)^{2}}} \\
+	  &= \sum\limits_{s = 0}^{\infty}\frac{1}{(2s)!}\eval{\dv[2s]{\psi}{x}}_{x = 0}2(2s!)(1 - 2^{1 - 2s})\zeta(2s) \\
+	  &= 2\sum\limits_{s = 0}^{\infty}(1 - 2^{1 - 2s})\zeta(2s)\eval{\dv[2s]{\psi}{x}}_{x = 0} \\
+	  &= \psi(x = 0) + \frac{\pi^{2}}{6}\eval{\dv[2]{\psi}{x}}_{x = 0} + \frac{7\pi^{4}}{360}\eval{\dv[4]{\psi}{x}}_{x = 0} + \dots \\
+	  &= \integ{0}{\mu}{E}{\phi} + \frac{\pi^{2}}{6}(\kb T)^{2}\eval{\dv[2]{\psi}{E}}_{E = \mu} + \frac{7\pi^{4}}{360}(\kb T)^{4}\eval{\dv[4]{\psi}{E}}_{E = \mu} + \dots \\
+	  &= \integ{0}{\mu}{E}{\phi} + \frac{\pi^{2}}{6}(\kb T)^{2}\eval{\dv{\phi}{E}}_{E = \mu} + \frac{7\pi^{4}}{360}(\kb T)^{4}\eval{\dv[3]{\phi}{E}}_{E = \mu} + \dots
+\end{align*}
+
+\paragraph{Thermodynamics of the Fermi Gas}
+We are now ready to write the thermodynamics of the Fermi gas in a new way using the Sommerfeld formula, as well as a few other tricks. The number of particles in the gas is given by
+\begin{align*}
+	N &= \integ{0}{\infty}{E}{\frac{\rho(E)}{e^{\beta(E - \mu)} \pm 1}} \\
+	  &= \integ{0}{\mu}{E}{\frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t} - 1}} +  \frac{\pi^{2}}{6}(\kb T)^{2}\frac{\eta\left(\frac{d}{t} - 1\right)}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t} - 2} + \dots \\
+	  &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}d}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t}} +  \frac{\pi^{2}}{6}(\kb T)^{2}\frac{\eta\left(\frac{d}{t} - 1\right)}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t} - 2} + \dots \\
+	  &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}d}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t}}\left(1 + \frac{\pi^{2}}{6}\frac{d(d - t)}{t^{2}}\left(\frac{\kb T}{\mu}\right)^{2} + \dots\right).
+\end{align*}
+In order to obtain an expression for the chemical potential, we continue from the second step, ignoring the temperature dependence of $\mu$, and write
+\begin{align*}
+	N &= \integ{0}{\mu}{E}{\frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t} - 1}} +  \frac{\pi^{2}}{6}(\kb T)^{2}\frac{\eta\left(\frac{d}{t} - 1\right)}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t} - 2} + \dots \\
+      &\approx \eval{N}_{T = 0} + (\mu - E_{\text{F}})\frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E_{\text{F}}^{\frac{d}{t} - 1} +  \frac{\pi^{2}}{6}(\kb T)^{2}\frac{\eta\left(\frac{d}{t} - 1\right)}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E_{\text{F}}^{\frac{d}{t} - 2} + \dots \\
+      &= \eval{N}_{T = 0} + \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\left((\mu - E_{\text{F}})E_{\text{F}}^{\frac{d}{t} - 1} +  \frac{\pi^{2}}{6}(\kb T)^{2}\left(\frac{d}{t} - 1\right)E_{\text{F}}^{\frac{d}{t} - 2} + \dots\right),
+\end{align*}
+The constraint on the chemical potenital thus implies
+\begin{align*}
+	&(\mu - E_{\text{F}})E_{\text{F}}^{\frac{d}{t} - 1} +  \frac{\pi^{2}}{6}(\kb T)^{2}\left(\frac{d}{t} - 1\right)E_{\text{F}}^{\frac{d}{t} - 2} + \dots = 0, \\
+	&\mu = E_{\text{F}} - \frac{\pi^{2}}{6}(\kb T)^{2}\left(\frac{d}{t} - 1\right)E_{\text{F}}^{-1} + \dots = E_{\text{F}}\left(1 - \frac{\pi^{2}}{6}\left(\frac{d}{t} - 1\right)\left(\frac{\kb T}{E_{\text{F}}}\right)^{2} + \dots\right).
+\end{align*}
+
+The internal energy of a Fermi gas is given by
+\begin{align*}
+	U &= \integ{0}{\infty}{E}{\frac{E\rho(E)}{e^{\beta(E - \mu)} \pm 1}} \\
+	  &= \integ{0}{\mu}{E}{\frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}E^{\frac{d}{t}}} + \frac{\pi^{2}}{6}(\kb T)^{2}\frac{\eta d}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t^{2}}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t} - 1} + \dots \\
+	  &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\frac{1}{\frac{d}{t} + 1}\mu^{\frac{d}{t} + 1} + \frac{\pi^{2}}{6}(\kb T)^{2}\frac{\eta d}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t^{2}}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t} - 1} + \dots \\
+	  &\approx \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{1}{d + t}\frac{V}{\alpha^{\frac{d}{t}}}\mu^{\frac{d}{t} + 1}\left(1 + \frac{\pi^{2}}{6}\frac{d(d + t)}{t^{2}}\left(\frac{\kb T}{E_{\text{F}}}\right)^{2} + \dots\right)
+\end{align*}
+where we have ignored the temperature dependence of $\mu$. Performing a sneaky polynomial division yields
+\begin{align*}
+	U &= \frac{d}{d + t}N\mu\left(1 + \frac{\pi^{2}}{6}\frac{2d}{t}\left(\frac{\kb T}{E_{\text{F}}}\right)^{2} + \dots\right) \\
+	  &= \frac{d}{d + t}NE_{\text{F}}\left(1 + \frac{\pi^{2}}{6}\frac{d + t}{t}\left(\frac{\kb T}{E_{\text{F}}}\right)^{2} + \dots\right),
+\end{align*}
+and the heat capacity is thus
+\begin{align*}
+	C = \frac{\pi^{2}}{3}\frac{d}{t}\frac{\kb T}{E_{\text{F}}}N\kb + \dots
+\end{align*}
+
+\paragraph{Hints of a Phase Transition}
+For a Bose gas we have
+\begin{align*}
+	N &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\left(\kb T\right)^{\frac{d}{t}}\gf{\frac{d}{t}}\Li{\frac{d}{t}}{z}, \\
+	U &= \frac{\eta}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}t}\frac{V}{\alpha^{\frac{d}{t}}}\left(\kb T\right)^{\frac{d}{t} + 1}\gf{\frac{d}{t} + 1}\Li{\frac{d}{t} + 1}{z}.
+\end{align*}
+Specifically, for a massive particle in $3$ dimensions, we have
+\begin{align*}
+	N &= \frac{\eta}{8\pi^{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}\left(\kb T\right)^{\frac{3}{2}}\Li{\frac{3}{2}}{z} \\
+	  &= \eta V\left(\frac{m\kb T}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}\Li{\frac{3}{2}}{z} \\
+	  &= \eta\frac{V}{\lambda_{\text{th}}^{3}}\Li{\frac{3}{2}}{z}, \\
+	U &= \frac{\eta}{8\pi^{\frac{3}{2}}\gf{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}\left(\kb T\right)^{\frac{5}{2}}\gf{\frac{5}{2}}\Li{\frac{5}{2}}{z} \\
+	  &= \frac{3\eta}{16\pi^{\frac{3}{2}}}\frac{V}{\left(\frac{\hbar^{2}}{2m}\right)^{\frac{3}{2}}}\left(\kb T\right)^{\frac{5}{2}}\Li{\frac{5}{2}}{z} \\
+	  &= \frac{3}{2}N\kb T\frac{\Li{\frac{5}{2}}{z}}{\Li{\frac{3}{2}}{z}}.
+\end{align*}
+This has no solution if
+\begin{align*}
+	\frac{N\lambda_{\text{th}}^{3}}{\eta(s)V} > \zeta\left(\frac{3}{2}\right),
+\end{align*}
+corresponding to $\mu$ approaching $0$ from below. What happens is that the integral approximations of the sums for the macroscopic quantities fails due to the ground state being macroscopically occupied. This occurs at a temperature
+\begin{align*}
+	\kb T_{\text{c}} = \frac{2\pi\hbar^{2}}{m}\left(\frac{N}{\eta\zeta\left(\frac{3}{2}\right)V}\right)^{\frac{2}{d}}.
+\end{align*}
+
+\paragraph{Corrected Analysis of the Bose Gas}
+Suppose that the total number of occupied states is
+\begin{align*}
+	N = N_{0} + N_{1}
+\end{align*}
+where the two terms are the number of particles in the ground state and the number of particles in all other states respectively. Above the critical temperature the ground state is not macroscopically occupied, and we have
+\begin{align*}
+	N_{0} = \frac{1}{z^{-1} - 1},\ N_{1} \approx \frac{\eta V}{\lambda_{\text{th}}^{3}}\Li{\frac{3}{2}}{z}.
+\end{align*}
+To examine what happens below the critical temperature, we set $z = 1$, which yields
+\begin{align*}
+	N_{1} = \frac{\eta\zeta\left(\frac{3}{2}\right)V}{\lambda_{\text{th}}^{3}}.
+\end{align*}
+The remaining number of particles, all in the ground state, is given by
+\begin{align*}
+	\frac{n_{0}}{n} = 1 - \left(\frac{T}{T_{\text{c}}}\right)^{\frac{3}{2}}.
+\end{align*}
+
+%TODO: Add thermodynamics
+
+\paragraph{The Photon Gas}
+%TODO: Add all of chapter
+For a photon gas we have
+\begin{align*}
+	\rho(k) = \frac{2}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}Vk^{d - 1}
+\end{align*}
+as two different polarizations are possible. Using the linear dispersion relation for photons we have
+\begin{align*}
+	\rho(\omega) = \frac{1}{c}\frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}Vk(\omega)^{d - 1} = \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{V}{c^{d}}\omega^{d - 1}.
+\end{align*}
+The internal energy for a single photon is given by
+\begin{align*}
+	U_{\omega} = \hbar\omega\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\omega} - 1}\right).
+\end{align*}
+We thus obtain
+\begin{align*}
+	U = \integ{0}{\infty}{\omega}{\frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{V}{c^{d}}\omega^{d - 1}\hbar\omega\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\omega} - 1}\right)} = \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\hbar V}{c^{d}}\integ{0}{\infty}{\omega}{\omega^{d}\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\omega} - 1}\right)}.
+\end{align*}
+One issue with this is that the first term diverges, which is typically undesirable. However, we note that its value is independent of temperature, so we conclude that it must correspond to a vacuum energy - an energy which is present in any black body. We thus ignore it to obtain
+\begin{align*}
+	U &= \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\hbar V}{c^{d}}\integ{0}{\infty}{\omega}{\frac{\omega^{d}}{e^{\beta\hbar\omega} - 1}} \\
+      &= \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\hbar V}{c^{d}}\left(\frac{1}{\beta\hbar}\right)^{d + 1}\integ{0}{\infty}{x}{\frac{x^{d}}{e^{x} - 1}} \\
+      &= \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\hbar V}{(\hbar c)^{d}}\left(\kb T\right)^{d + 1}\gf{d + 1}\rz{d + 1} \\
+      &= \frac{\gf{d + 1}\rz{d + 1}}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\kb^{d + 1}}{(\hbar c)^{d}}VT^{d + 1}.
+\end{align*}
+The original integrand, divided by the volume, defines the black-body distribution
+\begin{align*}
+	u_{\omega} = \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\hbar}{c^{d}}\frac{\omega^{d}}{e^{\beta\hbar\omega} - 1},
+\end{align*}
+which may be rewritten in terms of the wavelength as
+\begin{align*}
+	u_{\lambda} = \frac{1}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{\hbar}{c^{d}}\frac{1}{\frac{2\pi c}{\omega^{2}}}\frac{\left(\frac{2\pi c}{\lambda}\right)^{d}}{e^{\frac{\beta hc}{\lambda}} - 1} = \frac{(2\pi)^{d}}{2^{d - 2}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{hc}{\lambda^{d + 2}}\frac{1}{e^{\frac{\beta hc}{\lambda}} - 1} = \frac{4\pi^{\frac{d}{2}}}{\gf{\frac{d}{2}}}\frac{hc}{\lambda^{d + 2}}\frac{1}{e^{\frac{\beta hc}{\lambda}} - 1}.
+\end{align*}
+
+\paragraph{The Phonon Gas}
+Phonons are quantized excitations in a crystal lattice. They are bosonic in nature, with degeneracy occuring not due to spin but the existence of different oscillation modes.
+
+We will start by studying the statistics of a monoatomic lattice in $d$ dimensions with only one unique lattice position. To study their statistics, we first need a dispersion relation. To obtain this, we consider a chain of similar atoms with nearest-neighbour interactions where the displacement of each atom from its equilibrium position is denoted as $u_{i}$. Assuming the chain to be infinite and expanding the forces to first order, we obtain
+\begin{align*}
+	m\ddot{u}_{n} = K(u_{n + 1} - u_{n}) - K(u_{n} - u_{n - 1}) = K(u_{n + 1} + u_{n - 1} - 2u_{n}).
+\end{align*}
+We are looking for periodic solutions of the form $u_{n} = Ce^{i(kna - \omega t)}$. Inserting this into the equation above yields
+\begin{align*}
+	-m\omega^{2} = K(e^{ika} + e^{-ika} - 2) = K(2\cos(ka) - 2) = -4K\sin[2](\frac{ka}{2}),
+\end{align*}
+and thus
+\begin{align*}
+	\omega = 2\sqrt{\frac{K}{m}}\abs{\sin(\frac{ka}{2})}.
+\end{align*}
+Studying the dispersion in the long-wavelength limit, we have
+\begin{align*}
+	\omega = 2\sqrt{\frac{K}{m}}\frac{ka}{2} = a\sqrt{\frac{K}{m}}k.
+\end{align*}
+This implies a speed for long-wavelength phonons equal to
+\begin{align*}
+	v_{\text{s}} = a\sqrt{\frac{K}{m}}.
+\end{align*}
+
+Next we need a density of states. This is less trivial for phonons than for photons due to the fact that the number of modes is finite - $d(N - 2)$, to be precise (approximated to $dN$). Two models were proposed. The first is the Einstein model
+\begin{align*}
+	\rho(\omega) = dN\delta(\omega - \omega_{\text{E}}),
+\end{align*}
+corresponding to all phonons oscillating at the same frequency. As we will see, this makes it natural to define the Einstein temperature
+\begin{align*}
+	T_{\text{E}} = \frac{\hbar\omega_{\text{E}}}{\kb}.
+\end{align*}
+The other model starts with the normal k-space density of states
+\begin{align*}
+	\rho(\vb{k}) = \frac{d}{\left(\frac{2\pi}{L}\right)^{d}} = \frac{dV}{(2\pi)^{d}},\ g(k) = \frac{dV}{(2\pi)^{d}}\frac{2\pi^{\frac{d}{2}}}{\gf{\frac{d}{2}}}k^{d - 1} = \frac{d}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}Vk^{d - 1}.
+\end{align*}
+Using the long-wavelength approximation (which is at least partially valid, as it is those states which are counted first) we obtain
+\begin{align*}
+	\rho(\omega) = \frac{d}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{V}{v_{\text{s}}^{d}}\omega^{d - 1}.
+\end{align*}
+As the number of vibration modes is finite, we are required to introduce the Debye frequency, defined by
+\begin{align*}
+	\integ{0}{\omega_{\text{D}}}{\omega}{\rho(\omega)} = dN.
+\end{align*}
+We obtain
+\begin{align*}
+	\integ{0}{\omega_{\text{D}}}{\omega}{\rho(\omega)} = \frac{1}{2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}}\frac{V}{v_{\text{s}}^{d}}\omega_{\text{D}}^{d},
+\end{align*}
+and thus
+\begin{align*}
+	\omega_{\text{D}} = \left(2^{d - 1}\pi^{\frac{d}{2}}\gf{\frac{d}{2}}dN\right)^{\frac{1}{d}}\frac{v_{\text{s}}}{V^{\frac{1}{d}}}.
+\end{align*}
+We may thus write
+\begin{align*}
+	\rho(\omega) = \frac{d^{2}N}{\omega_{\text{D}}^{d}}\omega^{d - 1}.
+\end{align*}
+We also introduce the Debye temperature
+\begin{align*}
+	T_{\text{D}} = \frac{\hbar\omega_{\text{D}}}{\kb}.
+\end{align*}
+
+Now we are ready to handle the statistical mechanics of the gas. Assuming linear dispersion, we have
+\begin{align*}
+	\ln{\Z} = -\integ{0}{\infty}{E}{\rho(E)\ln(1 - e^{-\beta E})} = -\integ{0}{\infty}{\omega}{\rho(\omega)\ln(1 - e^{-\beta\hbar\omega})}.
+\end{align*}
+For the Einstein case we obtain
+\begin{align*}
+	\ln{\Z} = -dN\ln(1 - e^{-\beta\hbar\omega_{\text{E}}}).
+\end{align*}
+The internal energy is given by
+\begin{align*}
+	U = dN\frac{\hbar\omega_{\text{E}}e^{-\beta\hbar\omega_{\text{E}}}}{1 - e^{-\beta\hbar\omega_{\text{E}}}} = dN\hbar\omega_{\text{E}}\frac{1}{e^{\beta\hbar\omega_{\text{E}}} - 1}.
+\end{align*}
+The heat capacity is given by
+\begin{align*}
+	C = dN\hbar\omega_{\text{E}}\frac{1}{\kb T^{2}}\frac{\hbar\omega_{\text{E}}e^{\beta\hbar\omega_{\text{E}}}}{\left(e^{\beta\hbar\omega_{\text{E}}} - 1\right)^{2}} = dN\kb\left(\frac{T_{\text{E}}}{T}\right)^{2}\frac{e^{\frac{T_{\text{E}}}{T}}}{\left(e^{\frac{T_{\text{E}}}{T}} - 1\right)^{2}}.
+\end{align*}
+At this moment we want to consider the limiting behaviour of the heat capacity in order to make sure that it coincides with experimental values. At high temperatures we may expand the exponentials to obtain
+\begin{align*}
+	C \approx dN\kb\left(\frac{T_{\text{E}}}{T}\right)^{2}\frac{1 + \frac{T_{\text{E}}}{T}}{\left(\frac{T_{\text{E}}}{T}\right)^{2}} = dN\kb,
+\end{align*}
+corresponding to the equipartition result. At low temperatures we obtain
+\begin{align*}
+	C \approx dN\kb\left(\frac{T_{\text{E}}}{T}\right)^{2}e^{-\frac{T_{\text{E}}}{T}}.
+\end{align*}
+While it does predict that the heat capacity vanishes at low temperatures, a failure of classical equipartition theory, the experimental results show a behaviour like $T^{3}$ at low temperatures, meaning that the Einstein model is too simple.
+
+For the Debye case we have
+\begin{align*}
+	\ln{\Z} &= -\frac{d^{2}N}{\omega_{\text{D}}^{d}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d - 1}\ln(1 - e^{-\beta\hbar\omega})}.
+\end{align*}
+The internal energy is thus given by
+\begin{align*}
+	U = \frac{d^{2}N}{\omega_{\text{D}}^{d}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d - 1}\frac{\hbar\omega e^{-\beta}}{1 - e^{-\beta\hbar\omega}}} = \frac{d^{2}N}{\omega_{\text{D}}^{d}}\hbar\integ{0}{\omega_{\text{D}}}{\omega}{\frac{\omega^{d}}{e^{\beta\hbar\omega} - 1}}.
+\end{align*}
+The heat capacity is
+\begin{align*}
+	C &= \frac{d^{2}N}{\omega_{\text{D}}^{d}}\frac{\hbar}{\kb T^{2}}\integ{0}{\omega_{\text{D}}}{\omega}{\omega^{d}\frac{\hbar\omega e^{\beta\hbar\omega}}{(e^{\beta\hbar\omega} - 1)^{2}}} \\
+	  &= \frac{d^{2}N}{\omega_{\text{D}}^{d}}\frac{\hbar^{2}}{\kb T^{2}}\integ{0}{\omega_{\text{D}}}{\omega}{\frac{\omega^{d + 1} e^{\beta\hbar\omega}}{(e^{\beta\hbar\omega} - 1)^{2}}} \\
+	  &= \frac{d^{2}N}{\omega_{\text{D}}^{d}}\frac{\hbar^{2}}{\kb T^{2}}\left(\frac{\kb T}{\hbar}\right)^{d + 2}\integ{0}{\beta\hbar\omega_{\text{D}}}{u}{\frac{u^{d + 1} e^{u}}{(e^{u} - 1)^{2}}} \\
+	  &= d^{2}N\kb\left(\frac{\kb T}{\hbar\omega_{\text{D}}}\right)^{d}\integ{0}{\beta\hbar\omega_{\text{D}}}{u}{\frac{u^{d + 1} e^{u}}{(e^{u} - 1)^{2}}}.
+\end{align*}
+Analyzing the limiting behaviour of this expression is somewhat harder, but we will try anyway. At high temperatures the integration interval is small, and we have
+\begin{align*}
+	C &\approx d^{2}N\kb\left(\frac{\kb T}{\hbar\omega_{\text{D}}}\right)^{d}\integ{0}{\beta\hbar\omega_{\text{D}}}{u}{\frac{u^{d + 1}(1 + u)}{u^{2}}} \\
+	  &= d^{2}N\kb\left(\frac{\kb T}{\hbar\omega_{\text{D}}}\right)^{d}\integ{0}{\beta\hbar\omega_{\text{D}}}{u}{u^{d - 1}(1 + u)} \\
+	  &= d^{2}N\kb\left(\frac{\kb T}{\hbar\omega_{\text{D}}}\right)^{d}\left(\frac{1}{d}(\beta\hbar\omega_{\text{D}})^{d} + \frac{1}{d + 1}(\beta\hbar\omega_{\text{D}})^{d + 1}\right) \\
+	  &= dN\kb\left(1 + \frac{d}{d + 1}\beta\hbar\omega_{\text{D}}\right) \\
+	  &= dN\kb.
+\end{align*}
+At low temperatures we have
+\begin{align*}
+	C \approx d^{2}N\kb\left(\frac{\kb T}{\hbar\omega_{\text{D}}}\right)^{d}\integ{0}{\infty}{u}{\frac{u^{d + 1} e^{u}}{(e^{u} - 1)^{2}}}.
+\end{align*}
+To study this integral, we introduce
+\begin{align*}
+	I_{n} = \integ{0}{\infty}{u}{\frac{u^{n - 1}}{e^{au} - 1}},
+\end{align*}
+for which we have
+\begin{align*}
+	\dv{I}{a} = -\integ{0}{\infty}{u}{\frac{u^{n}e^{au}}{(e^{au} - 1)^{2}}}.
+\end{align*}
+On the other hand, we have
+\begin{align*}
+	I_{n} = \frac{1}{a^{n}}\integ{0}{\infty}{x}{\frac{x^{n - 1}}{e^{x} - 1}} = \frac{1}{a^{n}}\gf{n}\rz{n},
+\end{align*}
+and thus
+\begin{align*}
+	\dv{I_{n}}{a} = -\frac{n}{a^{n + 1}}\gf{n}\rz{n}.
+\end{align*}
+Equating these expressions yields
+\begin{align*}
+	\integ{0}{\infty}{u}{\frac{u^{n}e^{au}}{(e^{au} - 1)^{2}}} = \frac{n}{a^{n + 1}}\gf{n}\rz{n}.
+\end{align*}
+We thus obtain
+\begin{align*}
+	C &= d^{2}N\kb\left(\frac{\kb T}{\hbar\omega_{\text{D}}}\right)^{d}\cdot (d + 1)\rz{d + 1}\gf{d + 1} \\
+	  &= d^{2}(d + 1)\rz{d + 1}\gf{d + 1}N\kb\left(\frac{T}{T_{\text{D}}}\right)^{d}.
+\end{align*}
+Specifically, in three dimensions, we obtain the desired $T^{3}$ dependence at low temperatures. How swell.
