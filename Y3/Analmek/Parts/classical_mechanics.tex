@@ -1,115 +1,140 @@
-\section{Classical mechanics}
-In classical mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $\chi^{a}$ on this space in order to use what we know.
+\section{Classical Mechanics}
 
-\paragraph{Kinetic energy}
-Kinetic energy is defined by a rank $2$ tensor as
+\paragraph{Lagrangian Mechanics and Differential Geometry}
+In Lagrangian mechanics, configuration space is the space of all possible configurations of a system. We can impose coordinates $q^{a}$ on this space in order to use what we know from the previous parts on differential geometry. Note that the term configuration does not exclude the discussion of systems other than the purely mechanical with Lagrangian mechanics. This is a clear advantage of Lagrangian mechanics as opposed to Newtonian mechanics.
+
+\paragraph{Hamilton's Principle}
+Hamilton's principle replaces Newton's laws as the fundamental law of nature that is postulated in order to start off the theory. To formulate it, we first define the action of a system over time as
 \begin{align*}
-	E_{\text{k}} = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b},
+	S = \integ{}{}{t}{\lag},
 \end{align*}
-where the dot now really represents the time derivative.
+where $\lag$ is the Lagrangian. Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$.
 
-%Can be used to show H = T + V
-
-\paragraph{Hamilton's principle}
-We define the Lagrangian of a system as $\lag = E_{\text{k}} - V$, where $V$ is the potential energy and taken to be a function on coordinate space. The action of a system over time is defined as
+\paragraph{Lagrange's Equations of Motion}
+Hamilton's principle can be expressed as
 \begin{align*}
-	S = \integ{}{}{t}{\lag}.
+	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag}\right)\var{q^{a}}} = 0.
 \end{align*}
-Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$. This can be expressed as
+The equations of motion of the system are thus of the form
 \begin{align*}
-	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{\chi^{a}}{\lag} - \dv{t}\del{\dot{\chi}^{a}}{\lag}\right)\var{\chi^{a}}} = 0.
+	\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag} = 0.
 \end{align*}
 
-\paragraph{The kinetic metric}
-Consider a system with no potential energy. The Lagrangian simply becomes $\lag = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. This is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to define $T_{ab}$ as the kinetic metric, with corresponding Christoffel symbols.
+\paragraph{Invariances of Lagrangian Dynamics}
+Lagrangian dynamics are invariant if the Lagrangian is changed by a total time derivative. This is because such a term adds only two boundary terms to the action, which should not be affected by variations of the coordinates.
 
-\paragraph{Motion of a classical system}
+Lagrangian dynamics are also invariant under coordinate changes. To realize this, suppose that the Lagrangian is expressed in coordinates $q^{a}$ such that the equations of motion are satisfied. Now write these as $q^{a} = q^{a}(Q^{a}, t)$. This implies
+\begin{align*}
+	&\dot{q}^{a} = \pdv{q^{a}}{Q^{b}}\dot{Q}^{b} + \del{t}{q^{a}}, \\
+	&\pdv{\lag}{q^{a}} - \dv{t}\pdv{\lag}{\dot{q}^{a}} = 0.
+\end{align*}
+We would like to show that
+\begin{align*}
+	\pdv{\lag}{Q^{a}} - \dv{t}\pdv{\lag}{\dot{Q}^{a}} = 0.
+\end{align*}
+Using the chain rule, we obtain
+\begin{align*}
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\pdv{\dot{q}^{b}}{Q^{a}} - \dv{t}\left(\pdv{\lag}{\dot{q}^{b}}\pdv{\dot{q}^{b}}{\dot{Q}^{a}}\right) = 0, \\
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\pdv{Q^{a}}\left(\pdv{q^{b}}{Q^{c}}\dot{Q}^{c} + \del{t}{q^{b}}\right) - \dv{t}\left(\pdv{\lag}{\dot{q}^{b}}\pdv{q^{b}}{Q^{a}}\right) = 0, \\
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\left(\pdv{q^{b}}{Q^{a}}{Q^{c}}\dot{Q}^{c} + \pdv{\del{t}{q^{b}}}{Q^{a}}\right) - \pdv{\lag}{\dot{q}^{b}}\dv{t}\pdv{q^{b}}{Q^{a}} - \pdv{q^{b}}{Q^{a}}\dv{t}\pdv{\lag}{\dot{q}^{b}} = 0, \\
+	&\pdv{\lag}{q^{b}}\pdv{q^{b}}{Q^{a}} + \pdv{\lag}{\dot{q}^{b}}\left(\pdv{q^{b}}{Q^{a}}{Q^{c}}\dot{Q}^{c} + \pdv{\del{t}{q^{b}}}{Q^{a}}\right) - \pdv{q^{b}}{Q^{a}}\dv{t}\pdv{\lag}{\dot{q}^{b}} - \pdv{\lag}{\dot{q}^{b}}\left(\pdv{q^{b}}{Q^{a}}{Q^{c}}\dot{Q}^{c} + \del{t}{\pdv{q^{b}}{Q^{ax}}}\right) = 0, \\
+	&\pdv{q^{b}}{Q^{a}}\left(\pdv{\lag}{q^{b}} - \dv{t}\pdv{\lag}{\dot{q}^{b}}\right) = 0.
+\end{align*}
+As the coordinate change is invertible, the equations of motion are still satisfied.
+
+\paragraph{How to Construct a Theory}
+In Lagrangian mechanics, the recipe for formulating a theory to describe a system is simple: Introduce its Lagrangian and extremize the action to find the equations describing the system.
+
+\example{An Inductor}
+Consider a lone inductor with inductance $L$ over which some (possibly time-dependent) potential $V$ is applied. According to classical electrodynamics, we have that
+\begin{align*}
+V = L\dv{I}{t}.
+\end{align*}
+Let us see if we can reconstruct this using Lagrangian mechanics.
+
+We first need to impose coordinates on the system. I choose the lone coordinate $q$ as the amount of charge carried across the inductor to ground. Suppose that the system had a Lagrangian $\lag = \frac{1}{2}L\dot{q}^{2} + qV$. The equation of motion is
+\begin{align*}
+V - \dv{t}(L\dot{q}) = 0,\ L\ddot{q} = V.
+\end{align*}
+Recognizing that $\dot{q} = I$, we arrive at the desired result
+\begin{align*}
+V = L\dv{I}{t}.
+\end{align*}
+
+At this point I feel it only reasonable to discuss how I (or rather, Goldstein) arrived at this particular Lagrangian. To the trained eye it is very clear that the given equation of motion would result from that Lagrangian, but surely the core idea cannot be to just guess Lagrangians based on what we already know? Well, yes it can. The goal of physics is to describe reality, so if someone told you that their measurements implied the given equations of motion, is it not your job as a theorist to construct a theory which describes that experiment? And how do you that, if not by constructing an appropriate Lagrangian? It might seem somewhat ad hoc to construct theories based on desired results in this fashion, but the most important check for a theory to satisfy is its compliance with the reality around us. If that is ad hoc to you, then perhaps mathematics will feel more satisfactory to you than physics.
+
+There is also an argument from the physics we already know. Having introduced the coordinate $q$, we know that the loss of potential energy is $qV$. In addition, the instantaneous power absorbed by the inductor is $P = IV = \dot{q}V$. Using the already known equation of motion, this can be written as $P = L\dot{q}\ddot{q}$. Integrating this over time gives that the inductor has energy $\frac{1}{2}L\dot{q}^{2}$. This has velocity dependence, so we can use it as a kinetic term in the Lagrangian. Thus we arrive at the Lagrangian we used.
+
+Again I feel my own skepticism, as it seems that the Lagrangian we constructed already contained some information about the system which it describes. It seems that the Lagrangian method couldn't possibly arrive at a different result, so now we are just using what we already know to rederive what we knew to begin with. And in a certain sense, this is correct. That doesn't mean that Lagrangian mechanics is useless or superfluous. The logical structure of physical theory is Babylonian, meaning that it is made to contain certain core results (namely, experimental results) and is constructed from certain starting points (namely, postulates). Beyond this it is non-directional, meaning that there is no need for certain results to build on others in a specific order. Translated and isolated to our example, there is no difference between going from the Lagrangian to the equations of motion and the other way round. Of course, physics as a whole value the Lagrangian formalism higher, as it is a more consistent way of doing a wide range of physics than simply starting from a wide variety of individual relations between quantities.
+
+\example{The Lagrangian Mechanics of a Charged Particle}
+Consider a particle with mass $m$ and charge $q$ in an external electromagnetic field. Newton's equations for this particle is
+\begin{align*}
+	m\dv{\vb{v}}{t} = q(\vb{E} + \vb{v}\times\vb{B}).
+\end{align*}
+In terms of the potentials we have
+\begin{align*}
+	\vb{E} = -\grad{\phi} - \del{t}{\vb{A}},\ \vb{B} = \curl{\vb{A}}
+\end{align*}
+yielding
+\begin{align*}
+	m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{t}{\vb{A}} + \vb{v}\times(\curl{\vb{A}})\right).
+\end{align*}
+The components of the latter term are
+\begin{align}
+	V_{i} &= \leci{ijk}v_{j}\leci{kmn}\del{m}{A_{n}} \\
+	      &= \leci{kij}\leci{kmn}v_{j}\del{m}{A_{n}} \\
+	      &= (\kdelta{im}{}\kdelta{jn}{} - \kdelta{in}{}\kdelta{jm}{})v_{j}\del{m}{A_{n}} \\
+	      &= v_{j}\del{i}{A_{j}} - v_{j}\del{j}{A_{i}},
+\end{align}
+hence the magnetic term can be expanded to yield
+\begin{align*}
+	&m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{t}{\vb{A}} + \grad{(\vb{v}\cdot\vb{A})} - (\vb{v}\cdot\grad)\vb{A}\right) = q\left(-\grad{\phi} - \dv{\vb{A}}{t} + \grad{(\vb{v}\cdot\vb{A})}\right). \\
+	&m\dv{\vb{v}}{t} + q\left(\grad{\phi} + \dv{\vb{A}}{t} - \grad{(\vb{v}\cdot\vb{A})}\right) = \vb{0}.
+\end{align*}
+
+To construct a Lagrangian with the same equations of motion, note that all terms but the ones containing the magnetic potential are easily created as $\lag = \frac{1}{2}mv^{2} - q\phi$. To create the remaining terms, add a term $q\vb{v}\cdot\vb{A}$ for a total Lagrangian of
+\begin{align*}
+	\lag = \frac{1}{2}mv^{2} - q(\phi - \vb{v}\cdot\vb{A}).
+\end{align*}
+The corresponding equations of motion in (Cartesian) vector notation are
+\begin{align*}
+	\grad_{\vb{r}}{\lag} - \dv{t}\left(\grad_{\vb{v}}{\lag}\right) = \vb{0}.
+\end{align*}
+With this Lagrangian we obtain
+\begin{align*}
+	-q\grad{\phi} + q\grad{(\vb{v}\cdot\vb{A})} - \dv{t}\left(m\vb{v} + q\vb{A}\right) = \vb{0}, \\
+	m\dv{\vb{v}}{t} + q\left(\grad{\phi} + \dv{\vb{A}}{t} - \grad{(\vb{v}\cdot\vb{A})}\right) = \vb{0}.
+\end{align*}
+Great - we did it!
+
+As a side note, how does this Lagrangian change under a gauge transform? Such a transform adds a partial time derivative of a function $-f$ to the electric potential and the gradient $f$ to the magnetic potential. Under such a transform we have
+\begin{align*}
+	\lag^{\prime} &= \frac{1}{2}mv^{2} - q(\phi - \del{t}{f}  - \vb{v}\cdot(\vb{A} + \grad{f})) \\
+	              &= \lag + q(\del{t}{f} + \vb{v}\cdot\grad{f}) \\
+	              &= \lag + \dv{f}{t}.
+\end{align*}
+
+\paragraph{Kinetic Energy}
+Kinetic energy is defined in terms of the rank $2$ kinetic metric tensor as
+\begin{align*}
+	E_{\text{k}} = \frac{1}{2}T_{ab}\dot{q}^{a}\dot{q}^{b}.
+\end{align*}
+
+\paragraph{The Kinetic Metric}
+Consider a system with no potential energy. The Lagrangian simply becomes $\lag = \frac{1}{2}T_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$. The action computed from this Lagrangian is very similar to the integral of curve length (or, rather its square, the extremum of which was noted to be the same), except $g_{ab}$ has been replaced by $T_{ab}$. This inspires us to name $T_{ab}$ the kinetic metric. From this we may repeat the process performed in the section on differential geometry, for instance to obtain the geodesic equations as the equations of motion or to introduce Christoffel symbols.
+
+\paragraph{Motion of a Classical System}
+%TODO: Clarify
 By defining $a^{b} = \dot{\chi}^{a}\dcov{a}{\dot{\chi}^{b}}$, the previous work leads us to a system with no potential satisfying $a^{b} = \ddot{\chi}^{b} + \chris{b}{a}{c}\dot{\chi}^{a}\dot{\chi}^{c} = 0$. In other words, a system with no potential moves along the geodesics of the kinetic metric.
 
 For a system with a potential, only the $\del{\chi^{a}}{\lag}$ term is affected, and
 \begin{align*}
-	a^{b} = - T^{ba}\del{a}{V} = T^{ba}F,
+	a^{b} = - T^{ba}\del{a}{V} = F^{a},
 \end{align*}
 which is a generalization of Newton's second law.
 
-\paragraph{Noether's theorem}
-Noether's theorem relates symmetries of physical systems to conservation laws.
-
-What is a symmetry, then? Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, s) = q^{a}$ and for small $s = \varepsilon$ that $t\to t + \varepsilon\var{t},\ q^{a}\to q^{a} + \varepsilon\var{q^{a}}$. This is assumed to be normalized such that $\var{t}$ is either $0$ or $1$. How? Don't ask. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that
-\begin{align*}
-	\varepsilon\var{\lag} = \lag(Q, \dot{Q}, \tau) - \lag(q, \dot{q}, t) = \varepsilon\dv{F}{t}
-\end{align*}
-for some $F$. The variation of the Lagrangian can be written as
-\begin{align*}
-	\var{\lag} = \del{q^{a}}{\lag}\var{q^{a}} + \del{\dot{q}^{a}}{\lag}\var{\dot{q}^{a}} + \del{t}{\lag}\var{t}.
-\end{align*}
-The total time derivative of the Lagrangian is given by
-\begin{align*}
-	\dv{\lag}{t} = \del{t}{\lag} + \del{q^{a}}{\lag}\dot{q}^{a} + \del{\dot{q}^{a}}{\lag}\ddot{q}^{a},
-\end{align*}
-which yields
-\begin{align*}
-	\var{\lag} = \del{q^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t}.
-\end{align*}
-The equations of motion are $\del{q^{a}}{\lag} = \dv{t}\del{\dot{q}^{a}}{\lag}$. For a set of coordinates that satisfy this - a so-called on-shell solution - we have
-\begin{align*}
-	\var{\lag} &= \dv{t}\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \del{\dot{q}^{a}}{\lag}(\var{\dot{q}^{a}} - \ddot{q}^{a}\var{t}) + \dv{\lag}{t}\var{t} \\
-	           &= \dv{t}\left(\del{\dot{q}^{a}}{\lag}(\var{q^{a}} - \dot{q}^{a}\var{t}) + \lag\var{t}\right).
-\end{align*}
-If the transformation is a quasi-symmetry of the system, then this is equal to a total time derivative of $F$, and the quantity
-\begin{align*}
-	J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q}^{a}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
-\end{align*}
-thus satisfies $\dv{J}{t} = 0$. We can introduce the general momenta $p_{a} = \del{\dot{q}^{a}}{\lag}$ and the Hamiltonian $\ham = p_{a}\dot{q}^{a} - \lag$ to write
-\begin{align*}
-	J = F - p_{a}\var{q^{a}} + \ham\var{t}.
-\end{align*}
-
-We arrive at the conclusion that $J$ is a conserved quantity under a quasi-symmetry of the system. Identifying the conservation laws of a system is thus a matter of identifying the quasi-symmetries of a system and computing $J$ under that transformation.
-
-\example{A free particle in space}
-Consider a free particle in space. Its Lagrangian is given by $\lag = \frac{1}{2}m\dot{\vb{x}}^{2}$, and the variation of this is
-\begin{align*}
-	\var{\lag} = m\dot{\vb{x}}\cdot\var{\dot{\vb{x}}}.
-\end{align*}
-Its general momentum is
-\begin{align*}
-	\vb{p} = \del{\dot{\vb{x}}}{\lag} = m\dot{\vb{x}}.
-\end{align*}
-The Hamiltonian is
-\begin{align*}
-	\ham = \vb{p}\cdot\dot{\vb{x}} - \lag = \frac{1}{2}m\dot{\vb{x}}^{2}.
-\end{align*}
-We now want to identify quasi-symmetries of the system that make the variation of the Lagrangian either zero or the time derivative of some quantity. A key idea here is that we are only allowed to change the variations (or so I think).
-
-A first attempt is keeping $\var{\vb{x}}$ constant and not varying thiime(a spatial translation), which implies $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. This implies that $F$ is constant. The conserved quantity is thus
-\begin{align*}
-	J = F - \vb{p}\cdot\var{\vb{x}} = F - \vb{p}\cdot\vb{c},
-\end{align*}
-i.e. the momentum of the system is conserved. We also note that the constant $F$ in this case is arbitrary, and we might as well have set it to $0$. This will be the case at least sometimes.
-
-A second attempt is varying time, i.e. $\var{t} = 1$, but keeping the coordinates fixed, i.e. $\var{\vb{x}} = 0$ (a time translation). This yields $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. Once again $F$ is constant and taken to be zero, and the conserved quantity is thus $J = H$, i.e. the Hamiltonian of the system is conserved.
-
-A third attempt is to somehow make the scalar product in the variation of the Lagrangian zero, without varying time. An option is $\var{\vb{x}} = \vb{\omega}\times\vb{x}$, where $\vb{\omega}$ is a constant vector. This yields $\var{\dot{\vb{x}}} = \vb{\omega}\times\dot{\vb{x}}$ and $\var{\lag} = 0$. The conserved quantity is thus
-\begin{align*}
-	J &= -\vb{p}\cdot(\vb{\omega}\times\vb{x}) \\
-	  &= -\vb{\omega}\cdot(\vb{x}\times\vb{p}).
-\end{align*}
-Since $\vb{\omega}$ is constant, that means that $\vb{x}\times\vb{p}$, i.e. the angular momentum, is conserved.
-
-\paragraph{Hamiltonian mechanics}
-Hamiltonian mechanics starts with trying to transform $\lag(q, \dot{q}, t)$ to $\ham(q, p, t)$. To start with this, we reintroduce the general momenta $p_{i} = \del{\dot{q}_{i}}{\lag}$ and define the Hamiltonian
-\begin{align*}
-	\ham = p_{i}\dot{q}_{i} - \lag.
-\end{align*}
-This is a Legendre transform of the Hamiltonian, which is discussed below. In Lagrangian mechanics, we considered paths in configuration space. In Hamiltonian mechanics, we instead consider paths in phase space, i.e. a space where the points are $(q, t)$. In this space, paths do not intersect as the system is deterministic. The new equations of motion in this formalism is
-\begin{align*}
-	\dot{p}_{i} = -\del{q_{i}}{\ham},\ \dot{q}_{i} = \del{p_{i}}{\ham}.
-\end{align*}
-
-Paths in phase space are periodic for integrable systems and fill out the accessible parts of phase space for chaotic systems.
-
-\paragraph{Legendre transforms}
+\paragraph{Legendre Transforms}
 To illustrate the Legendre transform, consider a function $f(x, y)$ and $g(x, y, u) = ux - f(x, y)$. Its total derivative is given by
 \begin{align*}
 	\dd{g} = u\dd{x} + x\dd{u} - \del{x}{f}\dd{x} - \del{y}{f}\dd{y}.
@@ -120,48 +145,83 @@ By choosing $u = \del{x}{f}$, we obtain
 \end{align*}
 implying that $g$ is only a function of $u$ and $y$. To obtain $g$, invert the definition of $u$ to obtain $x(u, y)$.
 
-\paragraph{Equations of motion}
-The variation of the Hamiltonian is given by
+The Legendre transform is thus, as shown, a way to transform a function from one set of variables to another. If the function to be transformed describes the behaviour of some system, the Legendre transform allows us to describe the behaviour of the system in terms of different variables, which might be practical.
+
+\paragraph{Hamiltonian Mechanics}
+The Lagrangian equations of motion are $n$ coupled second-order differential equations. Hamiltonian mechanics starts with trying to decouple these into $2n$ first-order differential equations. To illustrate how this is done, consider an equation of motion
 \begin{align*}
-	\dd{\ham} &= \dot{q}_{i}\dd{p_{i}} + p_{i}\dd{\dot{q}_{i}} - \del{q_{i}}{\lag}\dd{q_{i}} - \del{\dot{q}_{i}}{\lag}\dd{\dot{q}_{i}} - \del{t}{\lag}\dd{t} \\
-	          &= \dot{q}_{i}\dd{p_{i}} - \del{q_{i}}{\lag}\dd{q_{i}} - \del{t}{\lag}\dd{t}.
+	\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag} = 0.
 \end{align*}
-Combining this with the equations of motion
+The second-order term is the place to hack away at. We thus define the generalized momenta
 \begin{align*}
-	\del{q_{i}}{\lag} = \dv{t}\left(\del{\dot{q}_{i}}{\lag}\right) = \dv{t}\left(p_{i}\right) = \dot{p}_{i}
+	p_{a} = \del{\dot{q}^{a}}{\lag}.
 \end{align*}
-yields
+Up until now, we have mathematically treated the coordinates and velocities as variables, making no difference between them in a technical manner. The next step is now to replace the velocities with momenta. As the Lagrangian describes the system, we do this by Legendre transforming the Lagrangian.
+
+We now define the Hamiltonian
 \begin{align*}
-	\dot{q}_{i} = \del{p_{i}}{\ham},\ \dot{p}_{i} = -\del{q_{i}}{\ham},\ \del{t}{\lag} = -\del{t}{\ham}.
+	\ham = p_{i}\dot{q}^{i} - \lag.
+\end{align*}
+From this definition we would like to obtain new equations of motion. This is done by computing the differential of the Hamiltonian. We have
+\begin{align*}
+	\dd{\lag} = \del{q^{i}}{\lag}\dd{q^{i}} + \del{\dot{q}^{i}}{\lag}\dd{\dot{q}^{i}} + \del{t}{\lag}\dd{t}.
+\end{align*}
+The definition of the general momenta and the equations of motion allows us to write this as
+\begin{align*}
+	\dd{\lag} = \dot{p}_{i}\dd{q^{i}} + p_{i}\dd{\dot{q}^{i}} + \del{t}{\lag}\dd{t}.
+\end{align*}
+The differential of the Hamiltonian is
+\begin{align*}
+	\dd{\ham} = p_{i}\dd{\dot{q}^{i}} + \dot{q}^{i}\dd{p_{i}} - \dot{p}_{i}\dd{q^{i}} - p_{i}\dd{\dot{q}^{i}} - \del{t}{\lag}\dd{t} = \dot{q}^{i}\dd{p_{i}} - \dot{p}_{i}\dd{q^{i}} - \del{t}{\lag}\dd{t},
+\end{align*}
+serving as an example of how the Legendre transform works. This implies that the equations  of motion are
+\begin{align*}
+	\dot{p}_{i} = -\del{q_{i}}{\ham},\ \dot{q}_{i} = \del{p_{i}}{\ham}.
 \end{align*}
 
-We also have
+Alternatively, we could obtain this from Hamilton's principle. The action is given by
+\begin{align*}
+	S = \integ{}{}{t}{p_{i}\dot{q}^{i} - \ham},
+\end{align*}
+the extremization of which is a variational problem in the coordinates, momenta and their time derivatives. The equations of motion yield
+\begin{align*}
+	-\del{q_{i}}{\ham} - \dv{t}(p_{i}) = 0,\ \dot{q}^{i} - \del{p_{i}}{\ham} = 0,
+\end{align*}
+which are the same equations of motion.
+
+In Lagrangian mechanics, we considered paths in configuration space. In Hamiltonian mechanics, we instead consider paths in phase space, i.e. a space where the points are $(q, p)$. In this space, paths do not intersect as the system is deterministic. Paths in phase space are periodic for integrable systems and fill out the accessible parts of phase space for chaotic systems.
+
+We note that
 \begin{align*}
 	\dv{\ham}{t} &= \del{q_{i}}{\ham}\dot{q}_{i} + \del{p_{i}}{\ham}\dot{p}_{i} + del{t}{\ham} \\
+	             &= -\dot{p}_{i}\dot{q}_{i} + \dot{q}_{i}{\ham}\dot{p}_{i} + del{t}{\ham} \\
 	             &= \del{t}{\ham},
 \end{align*}
-and so the Hamiltonian is conserved if it has no explicit time dependance.
+and so the Hamiltonian is conserved if it has no explicit time dependence.
 
-\paragraph{Liouville's theorem}
-As paths in phase space do not cross, we can think of the time evolution of a system as a flow in phase space. The volume element is $\dd{V} = \dd{q}\dd{p}$. Liouville's theorem states that flow in phase space is incompressible.
+%TODO: Hamiltonian total energy
 
-To show this, consider the state at some point in time and after some infinitesimal time $\dd{t}$. Denote the point in phase space at the start as $(q, p)$ and after $\dd{t}$ as $(q', p').$ To first order in time we have
+\example{The Hamiltonian Mechanics of a Charged Particle}
+Starting with the Lagrangian
 \begin{align*}
-	q_{i}' = q_{i} + \dot{q}_{i}\dd{t} = q_{i} + \del{p_{i}}{\ham}\dd{t},\ p_{i}' = p_{i} + \dot{p}_{i}\dd{t} = p_{i} - \del{q_{i}}{\ham}\dd{t}.
+	\lag = \frac{1}{2}mv^{2} - q\phi + q\vb{v}\cdot\vb{A}.
 \end{align*}
-The volume element is given by
+we have
 \begin{align*}
-	\dd{V}' &= \left(\dd{q} +  \left(\del{q}{\del{p}{\ham}}\dd{q} + \del[2]{p}{\ham}\dd{p}\right)\dd{t}\right)\left(\dd{p} -  \left(\del[2]{q}{\ham}\dd{q} + \del{p}{\del{q}{\ham}}\dd{p}\right)\dd{t}\right) \\
-	        &= \dd{q}\dd{p} + \left(-\dd{q}\left(\del[2]{q}{\ham}\dd{q} + \del{p}{\del{q}{\ham}}\dd{p}\right) + \dd{p\left(\del{q}{\del{p}{\ham}}\dd{q} + \del[2]{p}{\ham}\dd{p}\right)}\right)\dd{t} \\
-	        &= \dd{q}\dd{p} + \left(-\del[2]{q}{\ham}(\dd{q})^{2} + (\del{q}{\del{p}{\ham}} - \del{p}{\del{q}{\ham}})\dd{q}\dd{p} + \del[2]{p}{\ham}(\dd{p})^{2}\right)\dd{t}.
+	\vb{p} = \grad_{\vb{v}}{\lag} = m\vb{v} + q\vb{A},
 \end{align*}
-The equations of motion imply that the terms containing two consecutive derivatives with respect to the same variable are equal to zero. Assuming the Hamiltonian to be sufficiently smooth, the cross-derivatives are equal. This implies
+and the Hamiltonian is thus
 \begin{align*}
-	\dd{V}' = \dd{V}.
+	\ham &= \vb{p}\cdot\vb{v} - \lag \\
+	     &= \vb{p}\cdot\frac{1}{m}(\vb{p} - q\vb{A}) - \frac{1}{2m}(\vb{p} - q\vb{A})^{2} + q\phi - \frac{q}{m}(\vb{p} - q\vb{A})\cdot\vb{A} \\
+	     &= \frac{1}{m}\left(\vb{p}\cdot(\vb{p} - q\vb{A}) - \frac{1}{2}(\vb{p} - q\vb{A})^{2} - q\vb{A}\cdot(\vb{p} - q\vb{A})\right) + q\phi \\
+	     &= \frac{1}{2m}\left(\vb{p} - q\vb{A}\right)^{2} + q\phi.
 \end{align*}
 
-\paragraph{Poisson brackets}
-Consider a function $f(q, p, t)$. Its time derivative is given by
+%TODO: Gauge transform
+
+\paragraph{Poisson Brackets}
+Consider a function $f(\vb{q}, \vb{p}, t)$. Its time derivative is given by
 \begin{align*}
 	\dv{f}{t} &= \del{q_{i}}{f}\dot{q}_{i} + \del{p_{i}}{f}\dot{p}_{i} + \del{t}{f} \\
 	          &= \del{q_{i}}{f}\del{p_{i}}{\ham} - \del{p_{i}}{f}\del{q_{i}}{\ham} + \del{t}{f} \\
@@ -175,7 +235,322 @@ where we now have defined the Poisson bracket. It is bilinear and satisfies
 \end{align*}
 The expression above implies that if $\pob{f}{\ham} = 0$ and $f$ does not depend explicitly on time, then it is a constant of motion.
 
-\paragraph{Restatement of Liouville's theorem}
+\paragraph{Canonical Transformations}
+A canonical transformation is a transformation $(\vb{q}, \vb{p})\to (\vb{Q}, \vb{P})$ such that the Hamiltonian $H$, which is the old Hamiltonian expressed in terms of the new coordinates, also satisfies Hamilton's equations, i.e.
+\begin{align*}
+	\dot{Q}_{i} = \del{P_{i}}{H},\ \dot{P}_{i} = -\del{Q_{i}}{H}.
+\end{align*}
+
+\paragraph{Symplectic Description of Canonical Transforms}
+It is not clear that all transformations are canonical, so we would like to find a way to check whether a given transformation is canonical. We will do this by introducing a different way of handling mechanics, termed the symplectic approach. This approach considers the canonical transformation as a map from a point $\vb{x}$ to a point $\vb{y}$ between old and new phase spaces, where we have
+\begin{align*}
+	x_{i} =
+	\begin{cases}
+		q^{i},    \ &i < n, \\
+		p_{i - n},\ &i > n
+	\end{cases}
+\end{align*}
+and similarly for $\vb{y}$. The equations of motion can thus be written
+\begin{align*}
+	\dot{\vb{x}} = J\grad_{\vb{x}}{H},\ J_{ij} = \delta_{i + n, j} - \delta_{i, j + n}.
+\end{align*}
+
+%TODO: Time-dependent proof
+To begin our investigation, we consider a canonical transformation which is time-independent. Under such a transformation, the Hamiltonian is unchanged. In order to find a criterion, we will study the equations of motion under a canonical transformation. We have
+\begin{align*}
+	\dot{y}^{i} = M_{ij}\dot{x}^{j},\ M_{ij} = \del{x^{j}}{y^{i}},
+\end{align*}
+and we thus recognize $M$ as the Jacobian of the coordinate change. Inserting the equations of motion yields
+\begin{align*}
+	\dot{\vb{y}} = MJ\grad_{\vb{x}}{\ham}.
+\end{align*}
+On the other hand, according to the chain rule, we have
+\begin{align*}
+	\pdv{\ham}{x^{i}} = \pdv{\ham}{y^{j}}\pdv{y^{j}}{x^{i}},
+\end{align*}
+in matrix form
+\begin{align*}
+	\grad_{\vb{y}}{\ham} = (M^{T})^{-1}\grad_{\vb{x}}{\ham}.
+\end{align*}
+In order for Hamilton's equations to be satisfied, a sufficient condition is thus
+\begin{align*}
+	MJ = J(M^{T})^{-1},\ J = MJM^{T}.
+\end{align*}
+To show that it is necessary, you could reverse this proof. It can also be shown that this is true for time-dependent transforms. Someone should probably do that.
+
+Using this formalism, we can also rewrite Poisson brackets. We have
+\begin{align*}
+	\pob[\vb{x}]{u}{v} = \del{x^{i}}{u}J_{ij}\del{x^{j}}{v} = (\grad_{\vb{x}}{u})^{T}J\grad_{\vb{x}}{v}.
+\end{align*}
+
+\paragraph{Canonical Transformations and Poisson Brackets}
+The requirement for a canonical transformation can be restated in terms of Poisson brackets. A transformation is canonical if and only if it preserves
+\begin{align*}
+	\pob{q_{i}}{q_{j}} = \pob{p_{i}}{p_{j}} = 0,\ \pob{q_{i}}{p_{j}} = \delta_{ij}.
+\end{align*}
+
+To show this, we apply the symplectic approach, which yields
+\begin{align*}
+	\pob[\vb{x}]{x^{i}}{x^{j}} = \delta_{ik}J_{km}\delta_{mj} = J_{ij},
+\end{align*}
+the exact same relations that should be conserved by a canonical transformation.
+
+Under the assumption that the equations of motion are satisfied in both the old and new phase space, the above relation holds under the change $\vb{x} \to \vb{y}$. The question remains, however, whether the new phase space variables satisfy this relation in terms of the old ones. The truth of this statement would imply that the transformation is canonical, so we want to show this. We have
+\begin{align*}
+	\pob[\vb{x}]{y^{i}}{y^{j}} =  \del{x^{k}}{y^{i}}J_{km}\del{x^{m}}{y^{j}} = M_{ik}J_{km}M_{jm} = (MJM^{T})_{ij}.
+\end{align*}
+Under the assumption that the transformation is canonical, we have
+\begin{align*}
+	\pob[\vb{x}]{y^{i}}{y^{j}} = J_{ij}.
+\end{align*}
+Thus the stated criterion is sufficient. Assuming this yields that it is necessary, in perfect analogy with the previous proof.
+
+\paragraph{Generators of Canonical Transforms}
+As both the old and new phase space variables must obey Hamilton's equations, they both satisfy the principle of least action. The action is given by
+\begin{align*}
+	S = \integ{}{}{t}{p_{i}\dot{q}_{i} - \ham}
+\end{align*}
+in the old variables and
+\begin{align*}
+	\integ{}{}{t}{P_{i}\dot{Q}_{i} - H},
+\end{align*}
+in the new variables. One way for the two to be extremal at the same time is if
+\begin{align*}
+	\lambda(p_{i}\dot{q}_{i} - \ham) = P_{i}\dot{Q}_{i} - H + \dv{F}{t}.
+\end{align*}
+
+We note that $\lambda$ is essentially a matter of units - for instance, if you scale the Hamiltonian and all coordinates by a factor $\lambda$, the scaled coordinates satisfy Hamilton's equations. Thus the general case can be obtained by combining any given transformation with a scaling, and we only need to study the case $\lambda = 1$.
+
+The time derivative of $F$ is
+\begin{align*}
+	\dv{F}{t} = \del{q_{i}}{F}\dot{q}_{i} + \del{p_{i}}{F}\dot{p}_{i} + \del{Q_{i}}{F}\dot{Q}_{i} + \del{P_{i}}{F}\dot{P}_{i} + \del{t}{F}.
+\end{align*}
+Inserting this into the requirement above gives
+\begin{align*}
+	p_{i}\dot{q}_{i} - \ham = P_{i}\dot{Q}_{i} - H + \del{q_{i}}{F}\dot{q}_{i} + \del{p_{i}}{F}\dot{p}_{i} + \del{Q_{i}}{F}\dot{Q}_{i} + \del{P_{i}}{F}\dot{P}_{i} + \del{t}{F}.
+\end{align*}
+Comparing similar terms yields
+\begin{align*}
+	p_{i}\dot{q}_{i} = \del{q_{i}}{F}\dot{q}_{i},\ 0 = \del{p_{i}}{F}\dot{p}_{i},\ 0 = P_{i}\dot{Q}_{i} + \del{Q_{i}}{F}\dot{Q}_{i},\ 0 = \del{P_{i}}{F}\dot{P}_{i},\ -\ham = -H + \del{t}{F}, 
+\end{align*}
+and finally
+\begin{align*}
+	\del{q_{i}}{F} = p_{i},\ \del{p_{i}}{F} = 0,\ \del{Q_{i}}{F} = -P_{i},\ \del{P_{i}}{F} = 0,\ \ham = H - \del{t}{F}.
+\end{align*}
+The solution to this is $F = F_{1}(\vb{q}, \vb{Q}, t)$, and is called a generator of the canonical transform. We dub it a generator because, given the expression for the old and new coordinates and a given $F_{1}$, the momenta can be obtained according to
+\begin{align*}
+	\del{q_{i}}{F_{1}} = p_{i},\ \del{Q_{i}}{F_{1}} = -P_{i}.
+\end{align*}
+In other words, the generator contains information about the nature of the canonical transformation. Naturally, given the complete nature of the transformation, one can solve the equation above to obtain its generator.
+
+The form of the generatore is not unique. Another choice is a function $F = F_{2} - P_{i}Q_{i}$. Inserting this into the above criterion yields
+\begin{align*}
+	\del{q_{i}}{F_{2}} = p_{i},\ \del{p_{i}}{F_{2}} = 0,\ \del{Q_{i}}{F_{2}} = 0,\ \del{P_{i}}{F} = Q_{i},\ \ham = H - \del{t}{F_{2}}.
+\end{align*}
+The solution to this is $F_{2} = F_{2}(\vb{q}, \vb{P}, t)$.
+
+A third choice is a function $F = F_{3} + p_{i}q_{i}$. Inserting this into the above criterion yields
+\begin{align*}
+	\del{q_{i}}{F_{3}} = 0,\ \del{p_{i}}{F} = -q_{i},\ \del{Q_{i}}{F} = -P_{i},\ \del{P_{i}}{F} = 0,\ \ham = H - \del{t}{F_{3}}.
+\end{align*}
+The solution to this is $F_{3} = F_{3}(\vb{p}, \vb{Q}, t)$.
+
+A fourth choice is a function $F = F_{4} + p_{i}q_{i} - P_{i}Q_{i}$. Inserting this into the above criterion yields
+\begin{align*}
+	\del{q_{i}}{F_{4}} = 0,\ \del{p_{i}}{F_{4}} = -q_{i},\ \del{Q_{i}}{F_{4}} = 0,\ \del{P_{i}}{F_{4}} = Q_{i},\ \ham = H - \del{t}{F_{4}}.
+\end{align*}
+The solution to this is $F_{4} = F_{4}(\vb{p}, \vb{P}, t)$.
+
+Going from one type of generator to another looks very similar to a Legendre transform, and computationally is a (somewhat) clear demonstration of what the Legendre transform does. However, the one thing separating it from a Legendre transform is the fact that performing this transformation to obtain a generator is not always possible. In addition, it might not be possible to find a generator of a certain kind, and you might have to use a mixed type of generator.
+
+\example{A Failed Choice of Generator}
+Suppose that we want to perform a canonical transform that preserves the first coordinate. Looking for a generator of the first kind, we find that it must satisfy
+\begin{align*}
+	\del{q_{1}}{F} = p_{1},\ \del{Q_{1}}{F} = -P_{1}.
+\end{align*}
+However, as the two coordinates are equal, the partial derivatives represent equivalent operations. The only way to resolve this is for the transformation to satisfy $p_{1} = -P_{1}$ - otherwise you cannot find a generator of the first kind.
+
+\paragraph{Symmetries and Quasi-Symmetries}
+Consider a one-parameter transformation $t\to\tau(t, s),\ q^{a}\to Q^{a}(q, s)$, where $s$ is the parameter with respect to which the system is transformed, such that $\tau(t, 0) = t,\ Q^{a}(q, 0) = q^{a}$. A quasi-symmetry of a system with Lagrangian $\lag$ is a transformation such that the Lagrangian does not change its functional form and the action is changed by some constant depending on the boundary conditions. Symmetries are the transformations such that this constant is $0$.
+
+\paragraph{Noether's Theorem}
+Noether's theorem relates quasi-symmetries of physical systems to conservation laws.
+
+%TODO: Explain better
+To prove it, we must first convert the definitions we have to local form. The new coordinates are given by $Q_{i}(\tau) = q_{i}(t) + \var{q_{i}}(\tau)$, and thus mix up the time, which we have to fix. By the definition of a quasi-symmetry, we have
+\begin{align*}
+	\integ{t_{1} + \var{t_{1}}}{t_{2} + \var{t_{2}}}{\tau}{\lag(Q_{i}, \tau)} - \integ{t_{1}}{t_{2}}{t}{\lag(q_{i}, t)} = \integ{t_{1}}{t_{2}}{t}{\dv{F}{t}},
+\end{align*}
+for some function $F$. This is of the form
+\begin{align*}
+	\integ{a + \var{a}}{b + \var{b}}{x'}{f + \var{f}} - \integ{a}{b}{x}{f} = c.
+\end{align*}
+This can be rewritten as
+\begin{align*}
+	\integ{a + \var{a}}{b + \var{b}}{x}{\var{f}} + \integ{b}{b + \var{b}}{x}{f} - \integ{a}{a + \var{a}}{x}{f} = c.
+\end{align*}
+The terms containing an integral of a variation over an interval containing a variation will be of order greater than one, and may thus be ignored. In addition, the two latter integrals may be linearized to obtain
+\begin{align*}
+	f(b)\var{b} - f(a)\var{a} + \integ{a}{b}{x}{\var{f}} = \integ{a}{b}{x}{\var{f} + \dv{x}(f\var{x})} = c.
+\end{align*}
+Hence, we have
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{\tau}{\lag(Q_{i}, t) - \lag(q_{i}, t) + \dv{t}(\lag(q_{i}, t)\var{t}) - F} = 0.
+\end{align*}
+This completes the conversion of time.
+
+Next, the two first terms can be expanded to first order as
+\begin{align*}
+	\lag(Q_{i}, t) - \lag(q_{i}, t) = \del{q^{a}}{\lag}\bvar{q^{a}} + \del{\dot{q}^{a}}{\lag}\bvar{\dot{q}^{a}} = \del{q^{a}}{\lag}\bvar{q^{a}} + \del{\dot{q}^{a}}{\lag}\dv{t}\bvar{q^{a}},
+\end{align*}
+where we have introduced $\bvar{q^{a}} = \var{q^{a}}(t)$. Using the equations of motion, we further have
+\begin{align*}
+	\lag(Q_{i}, t) - \lag(q_{i}, t) = \bvar{q^{a}}\dv{t}\del{\dot{q}^{a}}{\lag} + \del{\dot{q}^{a}}{\lag}\dv{t}\bvar{q^{a}} = \dv{t}\left(\bvar{q^{a}}\del{\dot{q}^{a}}{\lag}\right).
+\end{align*}
+Hence we have
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{\tau}{\dv{t}\left(\lag(q_{i}, t)\var{t} + \bvar{q^{a}}\del{\dot{q}^{a}}{\lag}\right) - F} = 0.
+\end{align*}
+
+Finally, we have to first order
+\begin{align*}
+	\var{q^{a}} = \bvar{q^{a}} + \dot{q^{a}}\var{t},
+\end{align*}
+yielding
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{\tau}{\dv{t}\left(\lag\var{t} + (\var{q^{a}} - \dot{q^{a}}\var{t})\del{\dot{q}^{a}}{\lag} - F\right)} = 0.
+\end{align*}
+The time interval in consideration may now be taken to be arbitrarily small, hence we must have that
+\begin{align*}
+	J = F - \del{\dot{q}^{a}}{\lag}\var{q^{a}} + (\dot{q^{a}}\del{\dot{q}^{a}}{\lag} - \lag)\var{t}
+\end{align*}
+is a conserved quantity for this system. We can introduce the general momenta and the Hamiltonian to rewrite this as
+\begin{align*}
+	J = F - p_{a}\var{q^{a}} + \ham\var{t}.
+\end{align*}
+This is the statement of Nöether's theorem. Identifying the conservation laws of a system is thus a matter of identifying the quasi-symmetries of a system and computing $J$ under that transformation.
+
+\example{A Free Particle in Space}
+Consider a free particle in space. Its Lagrangian is given by $\lag = \frac{1}{2}m\dot{\vb{x}}^{2}$, and the variation of this is
+\begin{align*}
+\var{\lag} = m\dot{\vb{x}}\cdot\var{\dot{\vb{x}}}.
+\end{align*}
+Its general momentum is
+\begin{align*}
+\vb{p} = \del{\dot{\vb{x}}}{\lag} = m\dot{\vb{x}}.
+\end{align*}
+The Hamiltonian is
+\begin{align*}
+\ham = \vb{p}\cdot\dot{\vb{x}} - \lag = \frac{1}{2}m\dot{\vb{x}}^{2}.
+\end{align*}
+We now want to identify quasi-symmetries of the system that make the variation of the Lagrangian either zero or the time derivative of some quantity. A key idea here is that we are only allowed to change the variations (or so I think).
+
+A first attempt is keeping $\var{\vb{x}}$ constant and not varying time(a spatial translation), which implies $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. This implies that $F$ is constant. The conserved quantity is thus
+\begin{align*}
+J = F - \vb{p}\cdot\var{\vb{x}} = F - \vb{p}\cdot\vb{c},
+\end{align*}
+i.e. the momentum of the system is conserved. We also note that the constant $F$ in this case is arbitrary, and we might as well have set it to $0$. This will be the case at least sometimes.
+
+A second attempt is varying time, i.e. $\var{t} = 1$, but keeping the coordinates fixed, i.e. $\var{\vb{x}} = 0$ (a time translation). This yields $\var{\dot{\vb{x}}} = \vb{0}$ and $\var{\lag} = 0$. Once again $F$ is constant and taken to be zero, and the conserved quantity is thus $J = H$, i.e. the Hamiltonian of the system is conserved.
+
+A third attempt is to somehow make the scalar product in the variation of the Lagrangian zero, without varying time. An option is $\var{\vb{x}} = \vb{\omega}\times\vb{x}$, where $\vb{\omega}$ is a constant vector. This yields $\var{\dot{\vb{x}}} = \vb{\omega}\times\dot{\vb{x}}$ and $\var{\lag} = 0$. The conserved quantity is thus
+\begin{align*}
+J &= -\vb{p}\cdot(\vb{\omega}\times\vb{x}) \\
+&= -\vb{\omega}\cdot(\vb{x}\times\vb{p}).
+\end{align*}
+Since $\vb{\omega}$ is constant, that means that $\vb{x}\times\vb{p}$, i.e. the angular momentum, is conserved.
+
+\paragraph{Symmetry Groups in Classical Mechanics}
+
+\example{Newton's Second Law}
+Newton's second law $m\ddot{\vb{x}} = -\grad{V}$, assuming the potential to be fixed, has certain symmetry properties:
+\begin{itemize}
+	\item The transformation $t\to t' = t + t_{0}$ is a symmetry, as $\dv{t} = \dv{t'}$ and $V$ is not changed under the transformation.
+	\item The transformation $t\to\tau = -t$ is a symmetry as $\dv{t} = \dv{\tau}{t}\dv{\tau} = -\dv{\tau}$, which implies $\dv[2]{t} = \dv[2]{\tau}$ and $V$ is not changed under the transformation.
+	\item Considering a system of particles, if the forces between these only depend on differences between the position vectors, the translation $\vb{x}_{i}\to\vb{y}_{i} = \vb{x}_{i} + \vb{x}_{0}$ is a symmetry as it does not change any differences.
+\end{itemize}
+
+\example{Constraining Solutions Using Symmetries}
+If a system is invariant under some transformation $\vb{x}\to\vb{R}(\vb{x})$, then any property $u$ dependant on those coordinates satisfies $u(\vb{x}) = u(\vb{R}(\vb{x}))$.
+
+\paragraph{Connection to Noether's Theorem}
+We defined symmetries of the action as transformations that satisy $\var{\lag} = 0$. In particular, we can construct a set of transformations such that $\del{s}{t} = \var{t},\ \del{s}{q^{a}} = \var{q^{a}}$, where $s$ is the symmetry parameter. This is a one-parameter family of symmetries. By defining $T_{s}q(t, 0) = q(t, s)$, these symmetries satisfy
+\begin{align*}
+T_{s_{2}}T_{s_{1}}q(t, 0) = T_{s_{1} + s_{2}}q(t, 0).
+\end{align*}
+We see that these symmetries define a group.
+
+\example{A Particle in a Moving Potential}
+
+\paragraph{Symmetry Breaking}
+Suppose that a system is approximately symmetric under a a group $G$ of transformations. When studying this system, a first approach is thus to treat it as symmetric under $G$ and use the mathematics of $G$ to compute corrections to the symmetric approximation. This is known as symmetry breaking.
+
+%TODO: Add example
+
+\paragraph{Generators and Quasi-Symmetries}
+Consider an infinitesimal canonical transformation of the form
+\begin{align*}
+	q_{i} \to q_{i} + \alpha F_{i},\ p_{i} \to p_{i} + \alpha E_{i}.
+\end{align*}
+Computing the Poisson brackets of the new coordinates and momenta yields
+\begin{align*}
+	\pob{Q_{i}}{P_{j}} &= \pob{q_{i}}{p_{j}} + \pob{q_{i}}{\alpha E_{j}} + \pob{\alpha F_{i}}{p_{j}} + \pob{\alpha F_{i}}{\alpha E_{j}} \\
+                       &= \delta_{ij} + \alpha(\pob{q_{i}}{E_{j}} + \pob{F_{i}}{p_{j}}) + \alpha^{2}\pob{F_{i}}{E_{j}} \\
+                       &= \delta_{ij} + \alpha(\delta_{ik}\del{p_{k}}{E_{j}} + \delta_{jk}\del{q_{k}}{F_{i}}) + \alpha^{2}\pob{F_{i}}{E_{j}} \\
+                       &= \delta_{ij} + \alpha(\del{p_{i}}{E_{j}} + \del{q_{j}}{F_{i}}) + \dots
+\end{align*}
+and the requirement
+\begin{align*}
+	\del{p_{i}}{E_{j}} = -\del{q_{j}}{F_{i}}.
+\end{align*}
+A simple choice of solution is
+\begin{align*}
+	E_{j} = -\del{q_{j}}{G},\ F_{i} = \del{p_{i}}{G}
+\end{align*}
+for some (smooth) function $G$, which  may be said to generate the transformation.
+
+%We now reinsert this into the coordinate transformations. By considering the transformation as a map onto the same phase space, we obtain
+%\begin{align*}
+%	\del{\alpha}{q_{i}} = \del{p_{i}}{G},\ \del{\alpha}{p_{i}} = -\del{q_{i}}{G},
+%\end{align*}
+%noticing the strong analogy with Hamilton's equations. This kind of transformation can be thought of as a flow in phase space. 
+
+Suppose now that we perform an infinitesimal transformation generated by $G$. We then obtain
+\begin{align*}
+	\dv{\ham}{\alpha} = \del{q^{i}}{\ham}\dv{q^{i}}{\alpha} + \del{p_{i}}{\ham}\dv{p_{i}}{\alpha} = \del{q^{i}}{\ham}\del{p_{i}}{G} - \del{p_{i}}{\ham}\del{q_{i}}{G} = \pob{\ham}{G}.
+\end{align*}
+Hence there is an equivalence between $G$ being a quasi-symmetry of the Hamiltonian and being conserved.
+
+\example{The Central Force Problem}
+Consider a particle in two dimensions moving under the influence of a central force. The Lagrangian is
+\begin{align*}
+	\lag = \frac{1}{2}m\left(\dot{r}^{2} + r^{2}\dot{\phi}^{2}\right) - V(r).
+\end{align*}
+The transformation $\var{\phi} = 1$ is a symmetry of the Lagrangian, with corresponding conserved quantity
+\begin{align*}
+	J = -p_{\phi}.
+\end{align*}
+The symmetry generated by $p_{\phi}$ is indeed $\var{\phi} = 1$, demonstrating the equivalence.
+
+\paragraph{Liouville's Theorem}
+As paths in phase space do not cross, we can think of the time evolution of a system as a flow in phase space. The volume element is $\dd{V} = \prod\limits_{i}\dd{q_{i}}\dd{p_{i}}$. Liouville's theorem states that flow in phase space is incompressible.
+
+To show this, consider the state at some point in time and after some infinitesimal time $\dd{t}$. Denote the point in phase space at the start as $(\vb{q}, \vb{p})$ and after $\dd{t}$ as $(\vb{q}', \vb{p}').$ To first order in time we have
+\begin{align*}
+q_{i}' = q_{i} + \dot{q}_{i}\dd{t} = q_{i} + \del{p_{i}}{\ham}\dd{t},\ p_{i}' = p_{i} + \dot{p}_{i}\dd{t} = p_{i} - \del{q_{i}}{\ham}\dd{t}.
+\end{align*}
+Considering a specific coordinate-momentum pair, we have
+\begin{align*}
+	\dd{q_{i}'}\dd{p_{i}'} &= \left(\dd{q_{i}} +  \left(\del{q_{i}}{\del{p_{i}}{\ham}}\dd{q_{i}} + \del[2]{p_{i}}{\ham}\dd{p_{i}}\right)\dd{t}\right)\left(\dd{p_{i}} -  \left(\del[2]{q_{i}}{\ham}\dd{q_{i}} + \del{p_{i}}{\del{q_{i}}{\ham}}\dd{p_{i}}\right)\dd{t}\right) \\
+                           &= \dd{q_{i}}\dd{p_{i}} + \left(-\dd{q_{i}}\left(\del[2]{q_{i}}{\ham}\dd{q_{i}} + \del{p_{i}}{\del{q_{i}}{\ham}}\dd{p_{i}}\right) + \dd{p_{i}\left(\del{q_{i}}{\del{p_{i}}{\ham}}\dd{q_{i}} + \del[2]{p_{i}}{\ham}\dd{p_{i}}\right)}\right)\dd{t} \\
+                           &= \dd{q_{i}}\dd{p_{i}} + \left(-\del[2]{q_{i}}{\ham}(\dd{q_{i}})^{2} + (\del{q_{i}}{\del{p_{i}}{\ham}} - \del{p_{i}}{\del{q_{i}}{\ham}})\dd{q_{i}}\dd{p_{i}} + \del[2]{p_{i}}{\ham}(\dd{p_{i}})^{2}\right)\dd{t}.
+\end{align*}
+The equations of motion imply that the terms containing two consecutive derivatives with respect to the same variable are equal to zero. Assuming the Hamiltonian to be sufficiently smooth, the cross-derivatives are equal. This means that this specific product is preserved. Multiplying them up for all coordinates and momenta yields
+\begin{align*}
+	\dd{V}' = \dd{V}.
+\end{align*}
+
+\paragraph{Liouville's Theorem in Statistical Mechanics}
 We define $\rho(q, p, t)$ as the probability that a particle is close to $(q, p)$. Alternatively, for a large number of particles, we can define it as the number of particles close to $(q, p)$.
 
 We have
@@ -188,124 +563,150 @@ implying
 \end{align*}
 This is an equivalent statement of Liouville's theorem.
 
-\paragraph{Canonical transformation}
-A canonical transformation is a transformation $(\vb{q}, \vb{p})\to (\vb{Q}, \vb{P})$ such that the Hamiltonian $H$ expressed in these new coordinates also satisfies Hamilton's equations in the new coordinates, i.e.
-\begin{align*}
-	\dot{Q}_{i} = \del{P_{i}}{H},\ \dot{P}_{i} = -\del{Q_{i}}{\ham}.
-\end{align*}
-
-\paragraph{Canonical transformations and Poisson brackets}
-It turns out that a transformation in phase space is canonical if and only if they preserve the following equations:
-\begin{align*}
-	\pob{q_{i}}{q_{j}} = \pob{p_{i}}{p_{j}} = 0,\ \pob{q_{i}}{p_{j}} = \delta_{ij}.
-\end{align*}
-
-To show this, consider some point $x$ in phase space. Under the canonical transformation, it transforms to $y$. Suppose now that the relation
-\begin{align*}
-	\dot{x}_{i} = J_{ij}\del{x_{j}}{\ham}
-\end{align*}
-to be true. According to the equations of motion, this would imply
-\begin{align*}
-	J_{ij} = 
-	\begin{cases}
-		 1, &j = i + n, i = 1, 2, \dots, n, \\
-		-1, &j = i - n, i = n + 1, \dots, 2n.
-	\end{cases}
-\end{align*}
-If the transformation is canonical, then the same should be true after the transformation. On the other hand, the chain rule yields
-\begin{align*}
-	\dot{y}_{i} = \del{x_{j}}{y_{i}}J_{ik}\del{x_{k}}{y_{m}}\del{y_{m}}{H}.
-\end{align*}
-Comparing this with the Jacobian $\mathcal{J}$ yields
-\begin{align*}
-	J = \mathcal{J}J\mathcal{J}^{T}.
-\end{align*}
-
-\paragraph{Infinitesimal transformations}
-Consider a transformation of the form
-\begin{align*}
-	q_{i} \to q_{i} + \alpha F_{i},\ p_{i} \to p_{i} + \alpha E_{i}.
-\end{align*}
-Computing the Poisson brackets of the new coordinates and momenta, and requiring it to be zero, yields
-%Show this with Jacobian instead?
-\begin{align*}
-	\pob{Q_{i}}{P_{j}} &= \pob{q_{i}}{p_{j}} + \pob{q_{i}}{\alpha E_{j}} + \pob{\alpha F_{i}}{p_{j}} + \pob{\alpha F_{i}}{\alpha E_{j}} \\
-	                   &= \dots \\
-	                   &= \delta_{ij} + \alpha(\del{p_{i}}{E_{j}} + \del{q_{j}}{F_{i}}) + \dots
-\end{align*}
-and the requirement
-\begin{align*}
-	\del{p_{i}}{E_{j}} = -\del{q_{j}}{F_{i}}.
-\end{align*}
-A simple choice of solution is
-\begin{align*}
-	E_{j} = -\del{q_{j}}{G},\ F_{i} = \del{p_{i}}{G}
-\end{align*}
-for some (smooth) function $G$. We say that $G$ generates the transformation.
-
-We now reinsert this into the coordinate transformations. By considering the transformation as a map onto the same phase space, we obtain
-\begin{align*}
-	\del{\alpha}{q_{i}} = \del{p_{i}}{G},\ \del{\alpha}{p_{i}} = -\del{q_{i}}{G}.
-\end{align*}
-We notice the strong analogy with Hamilton's equations. This kind of transformations can be thought of as flows in phase space. 
-
-\paragraph{Symmetries and infinitesimal transformations}
-Suppose now that we perform an infinitesimal transformation generated by $G$. We then obtain
-%TODO: SHOW
-\begin{align*}
-	\dv{\ham}{\alpha} = \pob{\ham}{G}.
-\end{align*}
-%TODO: SHOW
-We have seen that a symmetry of the Hamiltonian is a transformation such that $\var{\ham} = 0$. Supposing this to be true, we have $\dot{G} = \pob{\ham}{G} = 0$, and $G$ is conserved. In other words, if $G$ generates a symmetry, then it is conserved.
-
-\paragraph{Symmetries and canonical transformations}
-We return to the principle of least action. Symmetries of the Lagrangian were on the form $\lag\to\lag + \dv{F}{t}$. We can now see the correspondence between $F$ and the generators $G$ of symmetries, and choose to ignore any differences. The principle of least action can be stated as a variational problem on phase space instead, where we seek the extrema of
-\begin{align*}
-	S = \integ{}{}{t}{p_{i}\dot{q}_{i} - \ham}.
-\end{align*}
-Recalling that the equations of motion must be preserved under canonical transformations, the action under a canonical transformation can be written as
-\begin{align*}
-	\integ{}{}{t}{P_{i}\dot{Q}_{i} - H},
-\end{align*}
-and this is still extremal under the transformation. This is certainly true if
-\begin{align*}
-	p_{i}\dot{q}_{i} - \ham = P_{i}\dot{Q}_{i} - H + \dv{F}{t}.
-\end{align*}
-
-There are various functions that can satisfy this. For instance, consider a function $F(q, Q, t)$. We obtain that 
-%What do we obtain?
-
-Another choice is a function $F = F_{2}(q, P, t) - P_{i}Q_{i}$. We have
-\begin{align*}
-	\dv{F}{t} = \del{q_{i}}{F_{2}}\dot{q}_{i} + \del{P_{i}}{F_{2}}\dot{P}_{i} - \dot{P}_{i}Q_{i} - P_{i}\dot{Q}_{i} + \del{t}{F_{2}}.
-\end{align*}
-Inserting this into the above criterion yields
-\begin{align*}
-	p_{i} = \del{q_{i}}{F_{2}},\ Q_{i} = \del{p_{i}}{F_{2}},\ H = \ham + \del{t}{F_{2}}.
-\end{align*}
-
 \paragraph{Hamilton-Jacobi theory}
-Suppose that we could perform a transformation on the form $F = F_{2}(q, P, t) - P_{i}Q_{i}$ such that $H = 0$. This would imply that all $Q_{i}$ and $P_{i}$ were to be constant. The equation
+Suppose that we could perform a canonical transformation on a system generated by a generator of the second kind such that $H = 0$. As the transformed Hamiltonian is constant, this implies that all $Q_{i}$ and $P_{i}$ are constant, and so the equations of motion are trivial. The equation
 \begin{align*}
 	\ham + \del{t}{F_{2}} = 0
 \end{align*}
-would thus define a differential equation in $F_{2}$. We can now, with some reasoning behind it, I guess, call $F_{2}$ the action $S$. This yields the Hamilton-Jacobi equation
+thus defines a differential equation for the generator of the transformation we seek. Identifying the generator as the action with no readily apparent argument yields the Hamilton-Jacobi equation
 \begin{align*}
-	H + \del{t}{S} = 0,
+	\ham + \del{t}{S} = 0.
 \end{align*}
-where the Hamiltonian, according to previous arguments, would depend on the time derivative of $S$.
 
-%Prove S action
+How does this define a differential equation for the action? The Hamiltonian can be written in terms of the generalized coordinates and momenta, and the momenta are, according to the argument above, derivatives of the generator (i.e. the action) with respect to the coordinates. Thus the different terms include some combination of the coordinates and the derivatives of the action, as well as the final time derivative.
+
+Is the generator actually equal to the action? The total time derivative of the action is
+\begin{align*}
+	\dv{S}{t} = p_{i}\dot{q}^{i} - \ham.
+\end{align*}
+On the other hand, considering the supposed action we have been studying, we have
+\begin{align*}
+	\dv{S}{t} = \del{q^{i}}{S}\dot{q}^{i} + \del{P^{i}}{S}\dot{P}^{i} + \del{t}{S}.
+\end{align*}
+As the transformed system is trivial, the second (collection of) term(s) vanishes, and combining this with the equations defining the generator we are left with
+\begin{align*}
+	\dv{S}{t} = p_{i}\dot{q}^{i} + \del{t}{S}.
+\end{align*}
+Finally, using the Hamilton-Jacobi equation, we obtain
+\begin{align*}
+	\dv{S}{t} = p_{i}\dot{q}^{i} - \ham.
+\end{align*}
+
+By solving the Hamilton-Jacobi equation, we see that we obtain the action. According to the theory of generators, it is a function of the old coordinates, the new momenta and time. As the new momenta are constant, these appear as integration constants in the action.
+
+\example{The Harmonic Oscillator}
+We first try studying the harmonic oscillator. By doing this we will demonstrate the general procedure of Hamilton-Jacobi theory.
+
+We start with the familiar Hamiltonian
+\begin{align*}
+	\ham = \frac{1}{2m}p^{2} + \frac{1}{2}m\omega^{2}x^{2}.
+\end{align*}
+We know that $p = \del{x}{S}$, and so the Hamilton-Jacobi equation becomes
+\begin{align*}
+	\frac{1}{2m}\left(\del{x}{S}\right)^{2} + \frac{1}{2}m\omega^{2}x^{2} + \del{t}{S} = 0.
+\end{align*}
+
+Looking at this PDE, we see that it is non-homogenous and non-linear. Those are two words you typically do not want to hear in such a context. We have no boundary conditions, so it cannot be reduced to a Sturm-Liouville problem. In desperation, we turn to variable separation. The fact that different terms contain different powers of the action and its derivative is a hindrance to using a product anzats, so instead we will try an anzats of the form
+\begin{align*}
+	S(x, t) = X(x) + T(t).
+\end{align*}
+Inserting this into the Hamilton-Jacobi equation yields
+\begin{align*}
+	\frac{1}{2m}\left(\dv{X}{x}\right)^{2} + \frac{1}{2}m\omega^{2}x^{2} + \dv{T}{t} = 0.
+\end{align*}
+Subtracting the time term, we see that each side must be equal to a constant which I dub $\alpha$.
+
+Solving the time part first, we have
+\begin{align*}
+	T = -\alpha(t - t_{0}) + T(t_{0}).
+\end{align*}
+
+Returning to the space part, we are left with
+\begin{align*}
+	\frac{1}{2m}\left(\dv{X}{x}\right)^{2} + \frac{1}{2}m\omega^{2}x^{2} = \alpha.
+\end{align*}
+Solving this for the derivative yields
+\begin{align*}
+	\dv{X}{x} = \sqrt{2m\alpha - m^{2}\omega^{2}x^{2}}.
+\end{align*}
+$X$ is now given by integrating. The action is thus
+\begin{align*}
+	S = \integ{x_{0}}{x}{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha(t - t_{0}) + T(t_{0}) + X(x_{0}).
+\end{align*}
+Constant terms in the action are of course of no physical significance, and so we are free to set these to zero. We thus write
+\begin{align*}
+	S = \integ{x_{0}}{x}{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha t.
+\end{align*}
+We note that the action only depends on one integration constant $\alpha$. This is therefore the canonical momentum $P$.
+
+The next step is to compute the generalized (old) coordinates and momenta. To do this, we use the properties of the generator. We have
+\begin{align*}
+	Q &= \beta = \del{P}{S} = \del{\alpha}{S} = \integ{x_{0}}{x}{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t, \\
+	p &= \del{x}{S} = \sqrt{2m\alpha - m^{2}\omega^{2}x^{2}},
+\end{align*}
+where we have redubbed $Q$ to the constant of motion $\beta$. In theory we now have a sufficient amount of equations to solve the system, as the relation for $Q$ can be inverted to give $q$ over time, and this will in turn give $p$. In this particular case, this can be done analytically, as
+\begin{align*}
+	\beta &= \integ{x_{0}}{x}{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t \\
+	      &= \sqrt{\frac{m}{2\alpha}}\integ{x_{0}}{x}{y}{\frac{1}{\sqrt{1 - \frac{m\omega^{2}y^{2}}{2\alpha}}}} - t \\
+	      &= \frac{1}{\omega}\integ{s_{0}}{s(x)}{s}{\frac{1}{\sqrt{1 - s^{2}}}} - t \\
+	      &= \frac{1}{\omega}(\arcsin{s(x)} - \arcsin{s_{0}}) - t \\
+	      &= \frac{1}{\omega}\left(\arcsin(\sqrt{\frac{m}{2\alpha}}\omega x) - \arcsin(\sqrt{\frac{m}{2\alpha}}\omega x_{0})\right) - t.
+\end{align*}
+This yields
+\begin{align*}
+	x = \sqrt{\frac{2\alpha}{m\omega^{2}}}\sin(\phi + \omega t),
+\end{align*}
+where we have defined
+\begin{align*}
+	\phi = \omega\beta + \arcsin(\sqrt{\frac{m}{2\alpha}}\omega x_{0}).
+\end{align*}
+We then obtain
+\begin{align*}
+	p = \sqrt{2m\alpha - 2m\alpha\sin[2](\phi + \omega t)} = \sqrt{2m\alpha}\cos(\phi + \omega t),
+\end{align*}
+which is the familiar solution of the harmonic oscillator.
+
+Are the constants of motion also familiar? The answer is yes. We see that $\beta$ corresponds to the phase in the position and momentum, which are known to be constant. We also see that the Hamiltonian is equal to $\alpha$, and we also know that the Hamiltonian is constant. So that is nice.
+
+\example{Hamilton-Jacobi theory in spherical coordinates}
 
 \paragraph{The Schrödinger equation from Hamilton-Jacobi theory}
 
 \paragraph{Quantum mechanics and the action}
 
 \paragraph{Integrable systems}
-Consider a system with some Hamiltonian. This system is integrable if there is a canonical transformation $(q, p)\to (\theta, I)$ suc that the transformed Hamiltonian only depends on the momenta. For such a system, the equations of motion become
+Consider a system with some Hamiltonian. This system is integrable if there is a canonical transformation $(q, p)\to (\theta, I)$ such that the transformed Hamiltonian only depends on the momenta. For such a system, the equations of motion become
 \begin{align*}
-	\dot{\theta}_{i} = \del{I_{i}}{H} = \omega_{i},\ \dot{I}_{i} = 0.
+	\dot{\theta}^{i} = \del{I_{i}}{H} = \omega_{i},\ \dot{I}_{i} = 0.
 \end{align*}
+This set of coordinates and momenta is called action-angle variables.
+
+\paragraph{Action-Angle Variables}
+The action-angle variables of a system is the set of generalized coordinates $\theta^{i}$ and generalized momenta $I_{i}$ such that the Hamiltonian only depends on the generalized momenta. The claim is that the generalized momenta are
+\begin{align*}
+	I_{i} = \frac{1}{2\pi}\integ{\gamma_{i}}{}{q^{j}}{p_{j}},
+\end{align*}
+where the integration is performed twice over the set of available coordinates in phase space, i.e. over the period of the motion.
+
+\example{The Harmonic Oscillator}
+Consider a harmonic oscillator with energy $E$. In this case we have the one action-angle momentum
+\begin{align*}
+	I = \frac{1}{2\pi}\integ{}{}{q}{p}.
+\end{align*}
+The momentum can be re-expressed in terms of the coordinate to obtain
+\begin{align*}
+	I = \frac{1}{2\pi}\integ{}{}{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}}.
+\end{align*}
+The extremal values of the coordinate are $\pm\sqrt{\frac{2E}{m\omega^{2}}}$, yielding
+\begin{align*}
+	I &= \frac{1}{\pi}\integ{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}} \\
+	  &= \frac{\sqrt{2mE}}{\pi}\integ{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}{q}{\sqrt{1 - \frac{m\omega^{2}}{2E}q^{2}}} \\
+	  &= \frac{\sqrt{2mE}}{\pi}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{\sqrt{\frac{2E}{m\omega^{2}}}\cos{x}\sqrt{1 - \sin[2](x)}} \\
+	  &= \frac{2E}{\pi\omega}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{\cos[2](x)} \\
+	  &= \frac{E}{\pi\omega}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{1 + \cos{2x}} \\
+	  &= \frac{E}{\omega}.
+\end{align*}
+In other words, the Hamiltonian in the new variables is $H = \omega I$, and the frequency of the corresponding coordinate is simply $\omega$.
 
 \paragraph{Structures of theory}
 A theory in physics contain

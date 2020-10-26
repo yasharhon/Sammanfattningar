@@ -1,0 +1,115 @@
+\section{Handy Mathematics}
+
+\paragraph{Combinations and Permutations}
+Permutations are sequences of some kind. Combinations are permutations where order does not matter. From a collection of $n$ elements, the number of possible permutations of $k$ elements is
+\begin{align*}
+\Omega = \frac{n!}{(n - k)!}
+\end{align*}
+and the number of possible combinations is
+\begin{align*}
+\Omega = \binom{n}{k}.
+\end{align*}
+
+\paragraph{Stirling's Formula}
+In the limit of large $n$, Stirling's formula gives
+\begin{align*}
+	\ln{n!}\approx n\ln{n} - n.
+\end{align*}
+
+\paragraph{Exact Differentials}
+The differential of a quantity $f$ on a phase space described by the vector $\vb{r}$ is an exact differential if
+\begin{align*}
+	\dd{f} = \grad{f}\cdot\vb{r}.
+\end{align*}
+The implication is that $f$ is a function on phase space, which is not true for all quantities.
+
+\paragraph{The Reciprocal and Reciprocity Theorems}
+Consider a function $x(y, z)$, and suppose that this function can be inverted to a function $z(x, y)$. We can write the differentials of $x$ and $z$ to obtain
+\begin{align*}
+	\dd{x} = \fix{\pdv{x}{z}}{y}\dd{z} + \fix{\pdv{x}{y}}{z}\dd{y},\ \dd{z} = \fix{\pdv{z}{x}}{y}\dd{x} + \fix{\pdv{z}{y}}{x}\dd{y}.
+\end{align*}
+Combining these yields
+\begin{align*}
+	\dd{x} &= \fix{\pdv{x}{z}}{y}\left(\fix{\pdv{z}{x}}{y}\dd{x} + \fix{\pdv{z}{y}}{x}\dd{y}\right) + \fix{\pdv{x}{y}}{z}\dd{y} \\
+	       &= \left(\fix{\pdv{x}{z}}{y}\fix{\pdv{z}{x}}{y}\right)\dd{x} + \left(\fix{\pdv{x}{z}}{y}\fix{\pdv{z}{y}}{x} + \fix{\pdv{x}{y}}{z}\right)\dd{y}.
+\end{align*}
+This implies
+\begin{align*}
+	\fix{\pdv{x}{z}}{y} = \frac{1}{\fix{\pdv{z}{x}}{y}},\ \fix{\pdv{x}{y}}{z} = -\fix{\pdv{z}{y}}{x}\fix{\pdv{x}{z}}{y},
+\end{align*}
+which can be combined to yield
+\begin{align*}
+	 \fix{\pdv{x}{y}}{z}\fix{\pdv{y}{z}}{x}\fix{\pdv{z}{x}}{y} = -1.
+\end{align*}
+
+\paragraph{The Gamma Function}
+The gamma function is defined as
+\begin{align*}
+	\gf{z} = \integ{0}{\infty}{x}{x^{z - 1}e^{-x}}.
+\end{align*}
+It is convergent for $\Re(z) \leq 0$. It has the following properties:
+\begin{itemize}
+	\item $\gf{z + 1} = z\gf{z}$.
+\end{itemize}
+
+\paragraph{The Riemann Zeta Function}
+The Riemann zeta function is defined as
+\begin{align*}
+	\zeta(z) = \sum\limits_{n = 1}^{\infty}\frac{1}{n^{z}}.
+\end{align*}
+It is convergent for $z > 1$.
+
+\paragraph{The Dirichlet Eta Function}
+The Dirichlet eta function is defined as
+\begin{align*}
+	\eta(z) = \sum\limits_{n = 1}^{\infty}\frac{(-1)^{n + 1}}{n^{z}}.
+\end{align*}
+It is very similar to the Riemann zeta function, and we will derive a connection between the two. We have
+\begin{align*}
+	\zeta(z) - \eta(z) &= \sum\limits_{n = 1}^{\infty}\frac{1}{n^{z}} + \frac{(-1)^{n}}{n^{z}} \\
+	                   &= 2\sum\limits_{n = 1}^{\infty}\frac{1}{(2n)^{z}} \\
+	                   &= 2^{1 - z}\zeta(z),
+\end{align*}
+and thus
+\begin{align*}
+	\eta(z) = (1 - 2^{1 - z})\zeta(z).
+\end{align*}
+
+\paragraph{The Polylogarithm Function}
+The polylogarithm function is defined as
+\begin{align*}
+	\Li{n}{z} = \sum\limits_{k = 1}^{\infty}\frac{z^{k}}{k^{n}}
+\end{align*}
+on the open unit disc in the complex plane, but can be analytically continued over the rest of the complex plane. It has the following properties:
+\begin{itemize}
+	\item $\Li{n}{1} = \zeta(n)$.
+\end{itemize}
+
+\paragraph{Solid Angle}
+Consider a function in $d$ dimensions such that $f(\vb{r}) = f(r)$. When integrating such functions, we would like to do it in a coordinate system which separates out direction from distance (an example of a fitting coordinate system is spherical coordinates for $d = 3$), such that the integral of $f$ is simplified. In order to do that, however, it would seem that we have to identify the coordinate change from cartesian coordinates which allows us to separate the integral. However, for a function with directional symmetry, we can circumvent this problem by introducing the solid angle. Before doing that, we need to study the Jacobian of the coordinate change. As only one of the new coordinates contains the distance, the Jacobian must depend on $r$ only according to a factor $r^{d - 1}$. In other words, we have
+\begin{align*}
+	J(r, \vb{\theta}) = r^{d - 1}g_{d}(\vb{\theta})
+\end{align*}
+where $\vb{\theta}$ is the set of new coordinates describing direction. We thus have
+\begin{align*}
+	\integ[d]{}{}{\vb{r}}{f(r)} = \integ[d - 1]{}{}{\vb{\theta}}{g_{d}(\vb{\theta})}\integ{}{}{r}{f(r)r^{d - 1}}.
+\end{align*}
+This defines the solid angle as
+\begin{align*}
+	\Omega_{d} = \integ[d - 1]{}{}{\vb{\theta}}{g_{d}(\vb{\theta})}.
+\end{align*}
+
+What is its value, then? In order to determine that, we need a reference integral which we can compute. A good example is a Gaussian in $d$ dimensions. We have
+\begin{align*}
+	\integ[d]{}{}{\vb{r}}{e^{-r^{2}}} = \left(\integ{-\infty}{\infty}{x}{e^{-x^{2}}}\right)^{d} = \pi^{\frac{d}{2}}.
+\end{align*}
+On the other hand, we have
+\begin{align*}
+	\integ[d]{}{}{\vb{r}}{e^{-r^{2}}} &= \Omega_{d}\integ{0}{\infty}{r}{r^{d - 1}e^{-r^{2}}} \\
+                                      &= \frac{1}{2}\Omega_{d}\integ{0}{\infty}{u}{u^{\frac{d}{2} - 1}e^{-u}} \\
+                                      &= \frac{1}{2}\gf{\frac{d}{2}}\Omega_{d},
+\end{align*}
+and thus
+\begin{align*}
+	\Omega_{d} = \frac{2\pi^{\frac{d}{2}}}{\gf{\frac{d}{2}}}.
+\end{align*}

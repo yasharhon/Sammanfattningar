@@ -1,54 +1,401 @@
-\section{Classical field theory}
+\section{Classical Field theory}
 
-Classical field theory can be considered a limit of classical dynamics when the number of particles is infinite. The system obtains new ``coordinates'' $\phi^{A}$, which are functions of position and time. Summations over coordinates now become integrals over space.
+Classical field theory can be considered a limit of classical dynamics when the number of particles is infinite. The system obtains new ``coordinates'' $\phi^{a}$, which are functions of position and time. Summations over coordinates now become integrals over space.
 
-\paragraph{Lagrangian dynamics}
+\paragraph{Lagrangian Formulation of Field Theory}
 The Lagrangian in a field theory now becomes
 \begin{align*}
-	L = \integ[D]{}{}{\vb{r}}{\lag}
+	L = \integ[d]{}{}{\vb{r}}{\lag}
 \end{align*}
-where $\lag$ is the Lagrangian density, which in general depends on all involved fields, their derivatives and the coordinates. From this we can obtain the action, and extremize it to obtain the equations for the time evolution of the system.
-
-\paragraph{Solving models}
-To solve models, we usually allow for periodic boundary conditions. The field is then expanded as a Fourier series, or a Fourier transform in the limit of a large domain or small lattice constant. We will in any case find that the system is compact in Fourier space, i.e. there are only non-zero contributions within some compact region.
-
-\paragraph{Nöether's theorem}
-In this context Nöether's theorem states that symmetries of a system are associated with conservative current. In field theory, a symmetry is a transformation $\phi\to\phi_{a}$, where $a$ is some continuous transformation parameter, such that for the quantity
+where $\lag$ is the Lagrangian density, which in general depends on all involved fields, their derivatives with respect to both space and time and space and time themselves. From this we can obtain the action, and extremize it to obtain the equations for the time evolution of the system. The equations of motion are of the form
 \begin{align*}
-	\dv{\lag}{a} = \dv{V^{\mu}}{x^{\mu}}
+	\pdv{\lag}{\phi^{a}} - \pdv{t}\pdv{\lag}{(\del{t}{\phi^{a}})} - \pdv{x^{i}}\pdv{\lag}{(\del{i}{\phi^{a}})} = 0.
 \end{align*}
-there are quantities $j^{\mu}$ such that
+Alternatively, by defining $x^{0} = ct$ for some speed $c$ and extending the summation, we can write
 \begin{align*}
-	\dv{j^{\mu}}{x^{\mu}} = 0.
+	\pdv{\lag}{\phi^{a}} - \pdv{x^{\mu}}\pdv{\lag}{(\del{\mu}{\phi^{a}})} = 0.
 \end{align*}
 
-\paragraph{Hamiltonian dynamics}
-In Hamiltonian dynamics, we define the momentum density
+\example{A String}
+A string has the Lagrangian density
 \begin{align*}
-	\pi = \del{\phi}{\lag}.
+	\lag = \frac{1}{2}\left(\rho(\del{t}{\phi})^{2} - \frac{1}{2}T(\grad{\phi})^{2}\right).
+\end{align*}
+The equation of motion is
+\begin{align*}
+	0 - \rho\del[2]{t}{\phi} + T\del[2]{i}{\phi} = 0,
+\end{align*}
+which is the wave equation.
+
+\example{Klein-Gordon Theory}
+The Klein-Gordon Lagrangian density is
+\begin{align*}
+	\lag = \frac{1}{2}\left(\frac{1}{c^{2}}\rho(\del{t}{\phi})^{2} - (\grad{\phi})^{2} - m^{2}\phi^{2}\right) = .
+\end{align*}
+The equation of motion is
+\begin{align*}
+	-m^{2}\phi - \frac{1}{c^{2}}\del[2]{t}{\phi} + \del[2]{i}{\phi} = 0,
+\end{align*}
+or alternatively
+\begin{align*}
+	\del{\mu}{\del[\mu]{}{\phi}} + m^{2}\phi = 0.
+\end{align*}
+
+\example{Complex Klein-Gordon Theory}
+Klein-Gordon theory can be extended to complex fields by considering the original field $\phi$ and its complex conjugate as two separate fields. The Lagrangian density is
+\begin{align*}
+	\lag = \del{\mu}{\phi}\del[\mu]{}{\cc{\phi}} - V(\cc{\phi}\phi),\ V(\alpha) = m^{2}\alpha.
+\end{align*}
+
+\example{The Schrödinger Equation}
+Wave mechanics can be formulated as a field theory with the Lagrangian density
+\begin{align*}
+	\lag = \frac{\hbar^{2}}{2m}\del{i}{\cc{\psi}}\del[i]{}{\psi} + V\cc{\psi}\psi + \frac{\hbar c}{2i}(\cc{\psi}\del{0}{\psi} - \psi\del{0}{\cc{\psi}}).
+\end{align*}
+
+\example{The Electromagnetic Field}
+We will try to formulate a Lagrangian density which reproduces Maxwell's equations as its equations of motion. To do this, we introduce the fields $A^{0} = \frac{1}{c}\phi, A^{i} = A^{i}$, the metric $g_{\mu\nu}$, which is $1$ if $\mu = \nu = 0$, $-1$ if $\mu$ and $\nu$ refer to spatial coordinates and $0$ otherwise, the object $j^{\mu}$, which is $c\rho$ for $\mu = 0$ and $j^{i}$ otherwise, and the tensor
+\begin{align*}
+	F_{\mu\nu} = \del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}.
+\end{align*}
+The Lagrangian density we propose as the correct one is
+\begin{align*}
+	\lag = -\frac{1}{4\mu_{0}}F_{\mu\nu}F^{\mu\nu} - A_{\mu}j^{\mu}.
+\end{align*}
+%TODO: Complete this
+To show that this is the correct one, we first use the fact that $g_{\mu\nu} = g^{\mu\nu}$ to obtain
+\begin{align*}
+	F^{\mu\nu} = g^{\mu\alpha}g^{\nu\beta}F_{\alpha\beta}.
+\end{align*}
+Next we write the Lagrangian density as
+\begin{align*}
+	\lag &= -\frac{1}{4\mu_{0}}g^{\mu\alpha}g^{\nu\beta}F_{\alpha\beta}F_{\mu\nu} - A_{\mu}j^{\mu} \\
+	     &= -\frac{1}{4\mu_{0}}g^{\mu\alpha}g^{\nu\beta}(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}})(\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}) - A_{\mu}j^{\mu}.
+\end{align*}
+To clear things up further, we should remember that in the formal sense, the derivatives of the fields are all independent variables, yielding
+\begin{align*}
+	\pdv{(\del{\alpha}{A_{\beta}})}{(\del{\nu}{A_{\mu}})} = \delta_{\alpha\nu}\delta_{\beta\mu}.
+\end{align*}
+The equations of motion are
+\begin{align*}
+	\pdv{\lag}{A_{\sigma}} - \del{\kappa}{\pdv{\lag}{(\del{\kappa}{A_{\sigma}})}} &= 0, \\
+	-j^{\sigma} + \del{\kappa}{\frac{1}{4\mu_{0}}g^{\mu\alpha}g^{\nu\beta}\left((\delta_{\kappa\alpha}\delta_{\sigma\beta} - \delta_{\kappa\beta}\delta_{\sigma\alpha})(\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}}) + (\delta_{\kappa\mu}\delta_{\sigma\nu} - \delta_{\kappa\nu}\delta_{\sigma\mu})(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}})\right)} &= 0, \\
+	-j^{\sigma} + \del{\kappa}{\frac{1}{4\mu_{0}}\left((g^{\mu\kappa}g^{\nu\sigma} - g^{\mu\sigma}g^{\nu\kappa})F_{\mu\nu} + (g^{\kappa\alpha}g^{\sigma\beta} - g^{\sigma\alpha}g^{\kappa\beta})F_{\alpha\beta}\right)} &= 0, \\
+	-j^{\sigma} + \del{\kappa}{\frac{1}{4\mu_{0}}\left((F^{\kappa\sigma} - F^{\sigma\kappa}) + (g^{\kappa\alpha}g^{\sigma\beta}F_{\kappa\sigma} - g^{\sigma\alpha}g^{\kappa\beta}F_{\alpha\beta})\right)} &= 0, \\
+	\del{\kappa}{F^{\kappa\sigma}} &= \mu_{0}j^{\sigma}.
+\end{align*}
+
+%TODO: Complete
+Let's examine the equations of motion more carefully. The first is
+\begin{align*}
+	\del{\kappa}{F^{\kappa 0}} &= \mu_{0}j^{0} = \frac{1}{\varepsilon_{0}c}\rho,
+\end{align*}
+which is a Maxwell equation if $F^{i 0} = \frac{1}{c}E^{i}$. Let's try to show that. We have
+\begin{align*}
+	F^{i0} &= g^{i\alpha}g^{0\beta}(\del{\alpha}{A_{\beta}} - \del{\beta}{A_{\alpha}}) \\
+	       &= g^{i\alpha}(\frac{1}{c}\del{\alpha}{\phi} - \del{0}{A_{\alpha}}) \\
+	       &= \frac{1}{c}\del[i]{}{\phi} - \del{0}{A^{i}} \\
+	       &= \frac{1}{c}\left(\del[i]{}{\phi} - \del{t}{A^{i}}\right) \\
+	       &= \frac{1}{c}E^{i}.
+\end{align*}
+
+\paragraph{Hamiltonian Formulation}
+In the Hamiltonian formalism, we define the momentum density
+\begin{align*}
+	\pi_{a} = \del{\phi^{a}}{\lag}.
 \end{align*}
 The Hamiltonian is now given by
 \begin{align*}
 	H = \integ[D]{}{}{\vb{r}}{\ham},
 \end{align*}
-where $\ham = \pi\del{t}{\phi} - \lag$.
+where $\ham = \pi_{a}\del{t}{\phi^{a}} - \lag$. The Hamiltonian equations of motion become
+\begin{align*}
+	\dot{\phi} = \fdv{H}{\pi},\ \dot{\pi} = -\fdv{H}{\phi}.
+\end{align*}
+While the Hamiltonian formalism carries no issues with it in classical contexts, it does not generalize well to relativity due to the fact that it treats the time derivative differently to the spatial derivatives, which is a big no-no.
 
-\paragraph{Poisson brackets}
+\example{A String}
+
+\paragraph{Poisson Brackets}
 Poisson brackets of two functionals on phase space are defined as
 \begin{align*}
-	\pob{F}{G} = \integ[D]{}{}{\vb{r}}{\del{\phi}{F}\del{\pi}{G} - \del{\pi}{F}\del{\phi}{G}}
+\pob{F}{G} = \integ[D]{}{}{\vb{r}}{\del{\phi}{F}\del{\pi}{G} - \del{\pi}{F}\del{\phi}{G}}
 \end{align*}
 We can somehow show that
 \begin{align*}
-	\pob{\phi(x)}{\phi(y)} = \pob{\pi(x)}{\pi(y)} = 0,\ \pob{\phi(x)}{\pi(y)} = \delta(x - y).
+\pob{\phi(x)}{\phi(y)} = \pob{\pi(x)}{\pi(y)} = 0,\ \pob{\phi(x)}{\pi(y)} = \delta(x - y).
 \end{align*}
 
-\paragraph{Equations of motion}
-The Hamiltonian equations of motion become
+\paragraph{Reduction to Discrete Problems}
+For a problem on a compact domain, one can Fourier expand the fields (and the momentum densities) to obtain a discrete set of Fourier coefficients, the dynamics of which can be studied. It is this approach which will be the basis for quantum mechanics, where the coefficients will be replaced by occupation operators.
+
+For problems on non-compact domains, we instead employ the Fourier transform as a tool. However, we have not really helped ourselves in this case.
+
+\paragraph{Symmetries of Field Theories}
+Consider a field theory (on Euclidean space) described by the Lagrangian density \lag. A symmetry of the system is a transformation of all involved coordinates and fields such that:
+\begin{enumerate}
+	\item $\lag$ retains its functional form under the transformation - in other words, the expression for the Lagrangian density is unchanged.
+	\item The transformation changes the action by a constant value
+\end{enumerate}
+
+Before proceeding, it would also be useful to clarify what kinds of transformation we are considering. Transformations in field theory concern both transformations of the coordinates according to
 \begin{align*}
-	\dot{\phi} = \fdv{H}{\pi},\ \dot{\pi} = -\fdv{H}{\phi},
+	(x^{\prime})^{\mu} = x^{\mu} + \var{x^{\mu}}
 \end{align*}
-where the functional derivative is given by
+and of the fields according to
 \begin{align*}
-	\fdv{H}{\pi} = \del{\pi}{\ham} - \del{x}{\del{\pi_{x}}{\ham}} + \dots
+	(\phi^{\prime})^{a}((x^{\prime})^{\mu}) = \phi^{a}(x^{\mu}) + \var{\phi^{a}}((x^{\prime})^{\mu}).
 \end{align*}
+We will distinguish between the transformed fields and the change in the field at a particular point, given by
+\begin{align*}
+	(\phi^{\prime})^{a}(x^{\mu}) = \phi^{a}(x^{\mu}) + \bvar{\phi^{a}}(x^{\mu}).
+\end{align*}
+
+Note that the second requirement in the definition implies that
+\begin{align*}
+	\var{\lag} = \del{\mu}{V^{\mu}}.
+\end{align*}
+
+\paragraph{Nöether's Theorem}
+Field theory also carries with it a version of Nöether's theorem, which will be covered here. A version will be presented here which is somewhat more restricted than the version presented for systems with discrete degrees of freedom - if you wanted to compare the two, you could say that this version only contains symmetries.
+
+Consider the action of a symmetry on a given system. The requirement on the action can be written as
+\begin{align*}
+	\integ{\Omega^{\prime}}{}{(x^{\prime})^{\mu}}{\lag^{\prime}} - \integ{\Omega}{}{x^{\mu}}{\lag} = \integ{\Omega}{}{x^{\mu}}{\del{\mu}{V^{\mu}}}.
+\end{align*}
+The functional form of the Lagrangian density is unchanged, which also carries the consequence that the integration variables may be renamed. This yields
+\begin{align*}
+	\integ{\Omega^{\prime}}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu})} - \integ{\Omega}{}{x^{\mu}}{\lag(\phi^{a}, x^{\mu})} = \integ{\Omega}{}{x^{\mu}}{\del{\nu}{V^{\nu}}}.
+\end{align*}
+
+%TODO: Extend to multiple dimensions
+We reuse the argument from the previous proof, generalizing it (somehow) to multiple dimensions to obtain
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu})} + \integ{S}{}{S_{\mu}}{\lag(\phi^{a}, x^{\mu})\var{x^{\mu}}} = \integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})},
+\end{align*}
+and thus
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})} = \integ{\Omega}{}{x^{\mu}}{\del{\nu}{V^{\nu}}},
+\end{align*}
+where $S$ is the boundary of $\Omega$ and we have made (hopefully proper) use of the $n$-dimensional divergence theorem. The difference in the first two terms can be expanded to first order as
+\begin{align*}
+	\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) &= \pdv{\lag}{\phi^{a}}\bvar{\phi}^{a} + \pdv{\lag}{(\del{\nu}{\phi^{a}})}\bvar{(\del{\nu}{\phi^{a}})}.
+\end{align*}
+The use of the variation at a specific point is due to the fact that both Lagrangians are now evaluated at the same points. This is significant because while the total variation does not commute with the differentiation operators, this one does. Using the equations of motion, we additionally obtain
+\begin{align*}
+	\pdv{\lag}{\phi^{a}}\bvar{\phi}^{a} + \pdv{\lag}{(\del{\nu}{\phi^{a}})}\del{\nu}{\bvar{\phi^{a}}} = \bvar{\phi}^{a}\pdv{x^{\nu}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \pdv{\lag}{(\del{\nu}{\phi^{a}})}\del{\nu}{\bvar{\phi^{a}}} = \pdv{x^{\nu}}\left(\bvar{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})}\right).
+\end{align*}
+Hence we have
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\pdv{x^{\nu}}\left(\bvar{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}} - V^{\nu}\right)} = 0,
+\end{align*}
+which is already in the form of a conservation law for the quantities
+\begin{align*}
+	\bvar{\phi}^{a}\pdv{\lag}{(\del{0}{\phi^{a}})} + \lag\var{x^{0}} - V^{0}
+\end{align*}
+and the corresponding currents
+\begin{align*}
+	\bvar{\phi}^{a}\pdv{\lag}{(\del{i}{\phi^{a}})} + \lag\var{x^{i}} - V^{i}.
+\end{align*}
+
+Next, we use the expansion
+\begin{align*}
+	\var{\phi}^{a}  &= \bvar{\phi}^{a} + \del{\mu}{\phi^{a}}\var{x}^{\mu}
+\end{align*}
+to obtain
+\begin{align*}
+	\integ{\Omega}{}{x^{\mu}}{\pdv{x^{\nu}}\left((\var{\phi}^{a} - \del{\mu}{\phi^{a}}\var{x}^{\mu})\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}} - V^{\nu}\right)} = 0.
+\end{align*}
+The argument extends arbitrarily to the interior of the integration domain, hence we must have
+\begin{align*}
+	\del{\nu}{J^{\nu}} = 0,
+\end{align*}
+where
+\begin{align*}
+	J^{\nu} = V^{\nu} - \var{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \left(\del{\mu}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{\mu}{\nu}\lag\right)\var{x^{\mu}}.
+\end{align*}
+This is the final form of Nöether's theorem.
+
+\example{Energy Conservation}
+Consider a transformation where only time is varied (normalized to $1$) acting on a Lagrangian density with no explicit time dependence. The variation of the Lagragian is zero under this transformation as it has no time dependence. Nöether's theorem gives the currents as
+\begin{align*}
+	J^{\nu} = \left(\del{\mu}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{\mu}{\nu}\lag\right)\kdelta{0}{\mu} = \del{0}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{0}{\nu}\lag.
+\end{align*}
+Its time component is
+\begin{align*}
+	J^{0} = \del{i}{\phi^{a}}\pdv{\lag}{(\del{0}{\phi^{a}})} - \lag = \ham,
+\end{align*}
+hence this symmetry corresponds to the conservation of total energy.
+
+\example{Momentum Conservation}
+Consider a transformation where only a single coordinate is varied (normalized to $1$) acting on a Lagrangian density with no explicit dependence on that coordinate. The variation of the Lagragian is zero under this transformation. The corresponding Nöether current is
+\begin{align*}
+	J^{\nu} = \left(\del{\mu}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{\mu}{\nu}\lag\right)\kdelta{i}{\mu} = \del{i}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{i}{\nu}\lag.
+\end{align*}
+Its time component is
+\begin{align*}
+	J^{0} = c\del{i}{\phi^{a}}\pdv{\lag}{(\del{t}{\phi^{a}})} = c\pi_{a}\del{i}{\phi^{a}},
+\end{align*}
+which can be shown to be a momentum density in the $i$-direction.
+
+\example{The Energy-Momentum Tensor}
+Consider a transformation akin to the ones above, where a single coordinate is varied and the Lagrangian is independent of that coordinate. Denoting its index as $\kappa$, the Nöether current is
+\begin{align*}
+	J^{\nu} = \left(\del{\mu}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{\mu}{\nu}\lag\right)\kdelta{\kappa}{\mu} = \del{\kappa}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{\kappa}{\nu}\lag = \Theta_{\kappa}^{\nu}.
+\end{align*}
+These are the components of the energy-momentum tensor. If the theory is invariant under space-time translations corresponding to index $\nu$, it satisfies
+\begin{align*}
+	\del{\mu}{\Theta_{\nu}^{\mu}} = 0
+\end{align*}
+according to Nöether's theorem.
+
+\example{Rotations}
+%TODO: Add my own answer
+Consider a theory subject to rotation about the $z$-axis by a small angle $\alpha$. This rotation is described by $\var{x^{i}} = \alpha\varepsilon^{3\;i}_{j}x^{\;j},\ \var{x^{0}} = 0$. If this is a symmetry of the Lagrangian, the corresponding Nöether current is
+\begin{align*}
+	J^{\nu} = \left(\del{\mu}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{\mu}{\nu}\lag\right) \alpha\varepsilon^{3\;i}_{j}x^{\;j}.
+\end{align*}
+\begin{align*}
+	J^{\nu} = \varepsilon^{3\;i}_{j}x^{\;j}\left(\del{i}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{i}{\nu}\lag\right) = \varepsilon^{3\;i}_{j}x^{\;j}\Theta_{i}^{\nu}.
+\end{align*}
+Raising and unraising an index and defining $\kdelta{\mu}{\nu} = g_{\mu\alpha}\eta^{\alpha\nu}$, we write the Nöether current as
+\begin{align*}
+	M^{\nu;12} = \varepsilon^{3\;i}_{j}x^{\;j}\Theta^{\nu i}.
+\end{align*}
+One can convince oneself that the general case for a rotation about any axis is obtained by simply replacing the $1$ and $2$.
+
+\example{Lorentz Boosts}
+Lorentz boosts can be treated similarly by introducing $\gamma = \cosh(\lambda)$, which implies $\beta\gamma = \sinh(\lambda)$. Boosting along the $x$-direction, the transformation is given by
+\begin{align*}
+	(x^{0})^{\prime} = x^{0}\cosh(\lambda) - x^{1}\sinh(\lambda),\ (x^{1})^{\prime} = x^{1}\cosh(\lambda) - x^{0}\sinh(\lambda).
+\end{align*}
+For a small boost such that it is a symmetry of the Lagrangian, we have $\var{x^{0}} = - x^{1},\ \var{x^{1}} = -x^{0}$ and the Nöether current
+\begin{align*}
+	J^{\nu} &= -\left(\del{0}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{0}{\nu}\lag\right)x^{1} - \left(\del{1}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \kdelta{1}{\nu}\lag\right)x^{0} \\
+	        &= -\left(\del[0]{}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} - \eta^{\nu 0}\lag\right)x^{1} - \left(-\del[1]{}{\phi^{a}}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \eta^{\nu 1}\lag\right)x^{0} \\
+	        &= \Theta^{\nu 1}x^{0} - \Theta^{\nu 0}x^{1} \\
+	        &= M^{\nu;01},
+\end{align*}
+where we have generalized our previous definition to
+\begin{align*}
+	M^{\mu;\alpha\beta} = \Theta^{\nu\beta}x^{\alpha} - \Theta^{\nu\alpha}x^{\beta}.
+\end{align*}
+
+\paragraph{Gauge Principles}
+A gauge principle is the construction of a theory, starting with one which is invariant under some unitary group, and then constructing a new theory by adding a gauge field. This is better shown by example, because I really have no idea what it means.
+
+\example{Maxwell Theory From Pure Arguments}
+Suppose we did not now the Lagrangian density of Maxwell theory, but wanted a theory of the fields $A^{\mu}$ such that
+\begin{enumerate}
+	\item The equations of motion are second-order.
+	\item The theory is relativistically invariant.
+	\item The theory is invariant under gauge transformations $A^{\mu}\to A^{\mu} + \del{\mu}{\alpha}$ for any function $\alpha$.
+\end{enumerate}
+Can this be done?
+
+The first criterion implies that at most the first-order derivative of the fields may enter. The third implies that the derivative appears as
+\begin{align*}
+	\del{\mu}{A_{\nu}} - \del{\nu}{A_{\mu}} = F_{\mu\nu}.
+\end{align*}
+The second criterion implies that $F$ appears a scalar, that is as $F_{\mu\nu}F^{\mu\nu}$. Hence the Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+\end{align*}
+satisfies all the criterial. Higher-order terms may exist, but come with other issues. Other second-order terms may also be constructed, but can be shown to be total derivatives.
+
+As a side note, what happens if the fields also enter into the Lagrangian? This would need to happen as
+\begin{align*}
+	\lag = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} + j_{\mu}A^{\mu}.
+\end{align*}
+In this case, the gauge transformation yields
+\begin{align*}
+	\lag \to \lag + j_{\mu}\del[\mu]{}{\alpha} = \lag + \del[\mu]{}{\alpha j_{\mu}} - \alpha\del[\mu]{}{j_{\mu}}.
+\end{align*}
+The middle term does not affect the equations of motion and thus can be ignored. For the gauge transformation to be a symmetry of the Lagrangian, we must therefore have $\del[\mu]{}{j_{\mu}}$, which was necessary for the Maxwell equations to be consistent to begin with.
+
+\example{Gauge Transformations of Complex Klein-Gordon Theory and Connections to Maxwell Theory}
+Complex Klein-Gordon theory is already invariant under multiplication of the field by a constant $e^{i\alpha}$. This cannot immediately be extended to $\alpha$ being a function, as the derivatives (when treated strictly as operators on the field) transform with it according to
+\begin{align*}
+	\del{\mu}{} \to \del{\mu}{} + i\del{\mu}{\alpha},
+\end{align*}
+hence this cannot be a symmetry of the Lagrangian. What can be done, however, is to construct a new operator
+\begin{align*}
+	D_{\mu} = \del{\mu}{} - iA_{\mu}
+\end{align*}
+with functions $A_{\mu}$ which are transformed with the field according to $A_{\mu} \to A_{\mu} + \del{\mu}{\alpha}$. The Lagrangian
+\begin{align*}
+	\lag = D_{\mu}\phi D^{\mu}\cc{\phi} - V(\cc{\phi}\phi)
+\end{align*}
+thus has such gauge transforms as a symmetry.
+
+This Lagrangian can also be coupled to the functions $A_{\mu}$ by adding the first term from the Maxwell theory Lagrangian with a coupling parameter $\lambda$, netting a new Lagrangian
+\begin{align*}
+	\lag = D_{\mu}\phi D^{\mu}\cc{\phi} - V(\cc{\phi}\phi) - \frac{1}{4\lambda^{2}}F_{\mu\nu}F^{\mu\nu}.
+\end{align*}
+This Lagrangian describes an electromagnetic field which is coupled to another field described by the Klein-Gordon equation.
+
+\example{Coupling of Schrödinger Theory to the Electromagnetic Field}
+The previously demonstrated method is typical for theories whose symmetries contain $U(1)$, and can be generalized to the field theory of wave mechanics. By repeating the same procedure as previously with a transformation
+\begin{align*}
+	D_{\mu} = \del{\mu}{} + iqa_{\mu},
+\end{align*}
+we obtain the Lagrangian
+\begin{align*}
+	\lag = \frac{\hbar^{2}}{2m}(\del{i}{\cc{\psi}} - iqa_{i}\cc{\psi})(\del[i]{}{\psi} + iqa^{i}\psi) + V\cc{\psi}\psi + \frac{\hbar c}{2i}(\cc{\psi}(\del{0}{\psi} + iqa_{0}\psi) - \psi(\del{0}{\cc{\psi}} - iqa_{0}\cc{\psi})),
+\end{align*}
+where we have changed the sign of the gauge field when the complex conjugate is involved. The equations of motion for $\cc{\psi}$ are
+\begin{align*}
+	0 &= -\frac{\hbar^{2}}{2m}iqa_{i}(\del[i]{}{\psi} - iqa^{i}\psi) + V\psi + \frac{\hbar c}{2i}(\del{0}{\psi} + iqa_{0}\psi + iqa_{0}\psi) - \del{0}{\frac{\hbar c}{2i}( - \psi)} - \del{i}{\frac{\hbar^{2}}{2m}(\del[i]{}{\psi} + iqa^{i}\psi)}, \\
+	0 &= -\frac{\hbar^{2}}{2m}(\del{i}{\del[i]{}{\psi}} - \del{i}{iqa^{i}\psi} - iqa_{i}\del[i]{}{\psi} - q^{2}a_{i}a^{i}\psi) + V\psi + \frac{\hbar c}{i}\del{0}{\psi} + \hbar cqa_{0}\psi, \\
+	i\hbar\del{t}{\psi} &= -\frac{\hbar^{2}}{2m}(\del{i}{\del[i]{}{\psi}} + \del{i}{iqa^{i}\psi} + iqa_{i}\del[i]{}{\psi} + q^{2}a_{i}a^{i}\psi) + (V + \hbar cqa_{0})\psi.
+\end{align*}
+Introducing $p_{i} = \frac{\hbar}{i}\del{i}{}$ and identifying $A_{i} = \hbar a_{i}$, we have
+\begin{align*}
+	i\hbar\del{t}{\psi} &= \frac{1}{2m}(p_{i}p^{i}\psi - \hbar qp_{i}a^{i}\psi - \hbar qa_{i}p^{i}\psi + \hbar^{2}q^{2}a_{i}a^{i}\psi) + (V + \hbar cqa_{0})\psi \\
+	                    &= \frac{1}{2m}(p_{i} - qA_{i})(p^{i} - qA^{i})\psi + (V + q\phi)\psi,
+\end{align*}
+which, when compared to the Hamiltonian of a charged particle in a magnetic field, is exactly the correct equation of motion.
+
+\paragraph{Non-Abelian Gauge Theories}
+Similar principles can also be applied to field theories which depend on multiple fields, where the transformation of the fields consists of constructing linear combinations of the old fields by the action of some non-Abelian group.
+
+To be somewhat more specific, consider a Lagrangian such as
+\begin{align*}
+	\lag = \del{\mu}{\cc{(\phi^{a})}}\del[\mu]{}{\phi^{a}} - V(\cc{(\phi^{a})}\phi^{a}),
+\end{align*}
+which is invariant under a transformation $\phi^{a} \to \psi^{a} = U_{b}^{a}\phi^{b}$. To obtain a criterion for the transformations such that this is invariant, note that
+\begin{align*}
+	\lag^{\prime} &= \del{\mu}{\cc{(U_{b}^{a}\phi^{b})}}\del[\mu]{}{U_{c}^{a}\phi^{c}} - V(\cc{(U_{b}^{a}\phi^{b})}U_{c}^{a}\phi^{c}) \\
+	              &= \cc{(U_{b}^{a})}U_{c}^{a}\del{\mu}{\cc{(\phi^{b})}}\del[\mu]{}{\phi^{c}} - V(\cc{(U_{b}^{a})}U_{c}^{a}\cc{(\phi^{b})}\phi^{c}).
+\end{align*}
+Introducing the Hermitian conjugate of the transformation matrix, we have
+\begin{align*}
+	\lag^{\prime} &= (U^{\dagger})_{a}^{b}U_{c}^{a}\del{\mu}{\cc{(\phi^{b})}}\del[\mu]{}{\phi^{c}} - V((U^{\dagger})_{a}^{b}U_{c}^{a}\cc{(\phi^{b})}\phi^{c}).
+\end{align*}
+One way (and, indeed, the only way as far as I can see) for this to be equal to the old Lagrangian is if $(U^{\dagger})_{a}^{b}U_{c}^{a} = \kdelta{c}{b}$, which is the definition of $U$ being unitary. The group of unitary matrices is non-Abelian, somewhat complicating the proceeding matters compared to what we have previously seen.
+
+As a side note, I include a vector notation for this Lagrangian, that being
+\begin{align*}
+	\lag = \del{\mu}{(\vb*{\phi})^{\dagger}}\del[\mu]{}{\vb*{\phi}} - V((\vb*{\phi})^{\dagger}\vb*{\phi}),
+\end{align*}
+with which the symmetry under the action of $U$ is more clear.
+
+We would like to extend the set of symmetries to position-dependent unitary matrices. This will affect the derivative term according to
+\begin{align*}
+	\del[\mu]{}{U\vb*{\phi}} = U\del[\mu]{}{\vb*{\phi}} + (\del[\mu]{}{U})\vb*{\phi} = U(\del[\mu]{}{} + U^{\dagger}(\del[\mu]{}{U}))\vb*{\phi}.
+\end{align*}
+To remove this new term, we add a gauge field $A_{\mu}$, where each component is a matrix, and transform the derivative according to
+\begin{align*}
+	D_{\mu} = \del{\mu}{} - iA_{\mu}.
+\end{align*}
+
+\begin{align*}
+	D_{\mu}U\vb*{\phi} = U(\del{\mu}{} + U^{\dagger}(\del{\mu}{U}))\vb*{\phi} - iA_{\mu}U\vb*{\phi} = U(\del{\mu}{} + U^{\dagger}(\del{\mu}{U}) - iU^{\dagger}A_{\mu}U)\vb*{\phi},
+\end{align*}
+and the transformation is thus a symmetry if the gauge field transforms according to
+\begin{align*}
+	-iA^{\prime}_{\mu} &= U^{\dagger}(\del{\mu}{U}) - iU^{\dagger}A_{\mu}U, \\
+	A^{\prime}_{\mu}   &= iU^{\dagger}(\del{\mu}{U})  + U^{\dagger}A_{\mu}U
+\end{align*}
+
+The interpretation of the gauge fields depend on the context, but this is a powerful tool for handling field theories.
