@@ -49,7 +49,15 @@ which implies
 	\chris{c}{b}{a} = \chris{c}{a}{b}.
 \end{align*}
 
-Do the Christoffel symbols define a tensor? Someone should probably study that.
+Do the Christoffel symbols define a tensor? Clearly they do not. One simple counterexample is when converting from Cartesian coordinates to any non-trivial coordinate system. In Cartesian coordinates all Christoffel symbols are zero, and no linear combination of these could possibly produce non-zero values. There is a transformation rule, however. To find it, we study
+\begin{align*}
+	\tensor{(\Gamma^{\prime})}{^{a}_{bc}} &= (\db{a})^{\prime}\cdot\del[\prime]{b}{(\tb{c})^{\prime}} \\
+	                                      &= \del{d}{(\chi')^{a}}\db{d}\cdot\del[\prime]{b}{(\del[\prime]{c}{\chi^{f}}\tb{f})} \\
+	                                      &= \del{d}{(\chi')^{a}}\db{d}\cdot(\tb{f}\del[\prime]{b}{\del[\prime]{c}{\chi^{f}}} + \del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\tb{f}}) \\
+	                                      &= \del{d}{(\chi')^{a}}(\kdelta{f}{d}\del[\prime]{b}{\del[\prime]{c}{\chi^{f}}} + \del[\prime]{c}{\chi^{f}}\db{d}\cdot\del[\prime]{b}{\chi^{g}}\del{g}{\tb{f}}) \\
+	                                      &= \del{d}{(\chi')^{a}}(\del[\prime]{b}{\del[\prime]{c}{\chi^{d}}} + \del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\chi^{g}}\chris{d}{g}{f}) \\
+	                                      &= \del{d}{(\chi')^{a}}\del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\chi^{g}}\chris{d}{g}{f} + \del{d}{(\chi')^{a}}\del[\prime]{b}{\del[\prime]{c}{\chi^{d}}}.
+\end{align*}
 
 \example{Christoffel Symbols in Polar Coordinates}
 To compute these, we need partial derivative of the basis vectors. We have

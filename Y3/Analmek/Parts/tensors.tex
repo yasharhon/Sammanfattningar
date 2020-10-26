@@ -81,7 +81,27 @@ Explicitly in terms of the contravariant tensor components we may construct such
 \end{align*}
 The components of such a tensor are
 \begin{align*}
-	T(e^{a_{1}\dots a_{n}})\left(\db{b_{1}}, \dots, \db{b_{m}}\right) = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}e^{a_{1}\dots a_{n}}\left(\bigotimes\limits_{k = 1}^{n}\tb{a_{k}}\right)\bigotimes\limits_{l = 1}^{m}\db{b_{l}}\left(\db{b_{1}}, \dots, \db{b_{m}}\right) = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}e^{a_{1}\dots a_{n}}.
+	T(e^{a_{1}\dots a_{n}})\left(\tb{b_{1}}, \dots, \tb{b_{m}}\right) = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}e^{a_{1}\dots a_{n}}\left(\bigotimes\limits_{k = 1}^{n}\tb{c_{k}}\right)\bigotimes\limits_{l = 1}^{m}\tb{b_{l}}\left(\db{d_{1}}, \dots, \db{d_{m}}\right) = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}.
+\end{align*}
+
+Recalling the transformation rules
+\begin{align*}
+	(\tb{b})' = L_{b}^{a}\tb{a},\ L_{b}^{a} = \del[\prime]{b}{\chi^{a}}
+\end{align*}
+and
+\begin{align*}
+	(\db{b})' = K_{a}^{b}\db{a},\ K_{a}^{b} = \del{a}{(\chi')^{b}}
+\end{align*}
+we may obtain general transformation rules for a $(n, m)$ tensor. We first have
+\begin{align*}
+	(e^{\prime})^{a_{1}\dots a_{n}} = \bigotimes\limits_{k = 1}^{n}(\db{a_{k}})^{\prime} = \bigotimes\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\db{c_{k}} = \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)\bigotimes\limits_{k = 1}^{n}\db{c_{k}} = \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)e^{c_{1}\dots c_{n}}.
+\end{align*}
+This yields
+\begin{align*}
+	\tensor*{(T^{\prime})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= T((e^{\prime})^{a_{1}\dots a_{n}})\left((\tb{b_{1}})^{\prime}, \dots, (\tb{b_{m}})^{\prime}\right)\\
+	&= T\left(\left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)e^{c_{1}\dots c_{n}}\right)\left(\del[\prime]{b_{1}}{\chi^{d_{1}}}\tb{d_{1}}, \dots, \del[\prime]{b_{m}}{\chi^{d_{m}}}\tb{d_{m}}\right) \\
+	&= \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)\left(\prod\limits_{l = 1}^{m}\del[\prime]{b_{l}}{\chi^{d_{l}}}\right)T\left(e^{c_{1}\dots c_{n}}\right)\left(\tb{d_{1}}, \dots, \tb{d_{m}}\right) \\
+	&= \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)\left(\prod\limits_{l = 1}^{m}\del[\prime]{b_{l}}{\chi^{d_{l}}}\right)\tensor*{T}{^{c_{1}\dots c_{n}}_{d_{1}\dots d_{m}}}.
 \end{align*}
 
 \paragraph{Tensor Contraction}
