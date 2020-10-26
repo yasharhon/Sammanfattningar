@@ -1,0 +1,56 @@
+\section{Differential Geometry}
+
+For details on much of this, notably the early parts on Euclidean space, please consult my summary of SI2360 Analytical Mechanics and Classical Field Theory.
+
+\paragraph{Euclidean and Affine Spaces}
+A Euclidean space is a set of points such that there to each point can be assigned a position vector. To such spaces we may assign a set of $n$ coordinates $\chi^{a}$ which together uniquely describe each point in the space locally.
+
+\paragraph{Tangent and Dual Bases}
+The tangent and dual bases are defined by
+\begin{align*}
+	\tb{a} = \del{\chi^{a}}{\vb{r}} = \del{a}{\vb{r}},\ \db{a} = \grad{\chi^{a}}.
+\end{align*}
+Using such bases, we may write
+\begin{align*}
+	\vb{v} = v^{a}\tb{a} = v_{a}\db{a}.
+\end{align*}
+The components of these vectors are called contravariant and covariant components respectively.
+
+\paragraph{Christoffel Symbols}
+When computing the derivative of a vector quantity, one must account both for the change in the quantity itself and the change in the basis vectors. We define the Christoffel symbols according to
+\begin{align*}
+	\del{b}{\tb{a}} = \chris{c}{b}{a}\tb{c}.
+\end{align*}
+These can be computed according to
+\begin{align*}
+	\db{c}\cdot\del{b}{\tb{a}} = \db{c}\cdot\chris{d}{b}{a}\tb{d} = \kdelta{d}{c}\chris{d}{b}{a} = \chris{c}{b}{a}.
+\end{align*}
+Note that
+\begin{align*}
+	\del{a}{\tb{b}} = \del{a}{\del{b}{\vb{r}}} = \del{b}{\del{a}{\vb{r}}} = \del{b}{\tb{a}},
+\end{align*}
+which implies
+\begin{align*}
+	\chris{c}{b}{a} = \chris{c}{a}{b}.
+\end{align*}
+Similarly, we might want to consider $\del{b}{\db{a}}$, which might introduce new symbols. We find, however, that
+\begin{align*}
+	\del{a}{\db{b}\cdot\tb{c}} = \db{b}\cdot\del{a}{\tb{c}} + \tb{c}\cdot\del{a}{\db{b}} = 0,
+\end{align*}
+which implies
+\begin{align*}
+	\del{a}{\db{b}} = -\chris{b}{a}{c}\db{c}.
+\end{align*}
+
+\paragraph{Covariant Derivatives}
+Covariant derivatives are defined by
+\begin{align*}
+	\dcov{a}{v^{b}} = \del{a}{v^{b}} + \chris{b}{a}{c}v^{c},
+\end{align*}
+and thus satisfy
+\begin{align*}
+	\del{a}{\vb{v}} = \tb{b}\dcov{a}{v^{b}}.
+\end{align*}
+
+\paragraph{Tensors}
+To define tensors, we first define tensors of the kind $(0, n)$ as maps from $n$ vectors to scalars. Using this, we define tensors of the kind $(n, m)$ as linear maps from $(0, n)$ tensors to $(0, m)$ tensors.
