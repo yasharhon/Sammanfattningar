@@ -1,9 +1,9 @@
-\section{Basic concepts}
+\section{Basic Concepts}
 
-\paragraph{What is special relativity?}
+\paragraph{What is Special Relativity?}
 Special relativity is not just a way to do mechanics. It is a way to do theoretical physics involving a new way of thinking about space and time.
 
-\paragraph{Fundamental postulates of special relativity}
+\paragraph{Fundamental Postulates of Special Relativity}
 Einstein built the theory of special relativity based on the following postulates:
 
 \begin{itemize}
@@ -11,50 +11,140 @@ Einstein built the theory of special relativity based on the following postulate
 	\item The speed of light is the same in all inertial frames.
 \end{itemize}
 
-\paragraph{Inertial frames}
-An inertial frame of reference is a kind of frame of reference, meaning that it is a certain way to consider time and space. In an inertial frame free particles move in straight lines with constant velocity.
+\paragraph{Inertial Frames}
+An inertial frame of reference is a kind of frame of reference, meaning that it is a certain way to consider time and space. In an inertial frame free particles move in straight lines with constant velocity. We will only be talking about such frames.
 
 It can be shown that all inertial frames move uniformly with constant velocity relative to each other. When considering two inertial frames, we will usually choose the coordinate systems in each frame such that the axes are parallel to each other and one axis is parallel to the relative velocity.
 
-\paragraph{Galileian transformations}
-Consider two frames of reference $S$ and $S'$ moving with relative velocity $v$ in the $x$-direction. Galilei transforms are of the form $x' = x - vt$. A consequence of this is that velocities transform by simply adding or subtracting $v\ub{x}$. A consequence of this is that the speed of light is not invariant in all frames, meaning that Galileian transformations are insufficient in special relativity.
+\paragraph{The Galilei Group}
+The Galilei group is the group of transformations of a physical system that do not change the fundamental physics of the system. It is composed of
+\begin{itemize}
+	\item Rotations.
+	\item Translations.
+	\item Galilei boosts, to be described.
+\end{itemize}
+
+\paragraph{Galilei Boosts}
+Consider two frames of reference $S$ and $S'$ moving with relative velocity $v$ in the $x$-direction. Galilei boosts are of the form $x' = x - vt$.
+
+Using such transformations, velocities transform by simply adding or subtracting $v\ub{x}$, meaning that these transforms do not leave the speed of light invariant. When constructing a group of transformations that leave physics invariant under the laws of special relativity, we cannot construct it using Galilei boosts.
 
 \paragraph{Simultaneity}
-To observe a consequence of special relativity, consider a light source at the origin in its rest frame $S$ sending a pulse of light towards to detectors in $x = \pm x_{0}$. In $S$ the light reaches each detector at the same time.
+To observe a consequence of special relativity, consider a light source at the origin in its rest frame $S$ sending a pulse of light towards two detectors in $x = \pm x_{0}$. In $S$ the light reaches each detector at the same time.
 
 Consider now a frame $S'$ moving in with velocity $v\ub{x}$. According to an observer in this frame, one detector will approach the light source and the other recede from it, making the light reach one detector before the other. This makes it obvious that the classical concept of absolute time cannot persist in special relativity.
 
-\paragraph{On the synchronization of clocks}
+\paragraph{Extending Inertial Frames}
+The fact that simultaneity does not exist in special relativity forces us to assign a measure of time to every point in space in a particular frame. This time is synchronized with respect to an observer at rest in the frame.
 
-\paragraph{Time dilation}
-Consider two frames of reference $S$ and $S'$ moving with relative velocity $v$ in the $x$-direction. The time between two events transform according to
+One way to do this is to emit a pulse of light from the origin, setting the time at any point to $t_{0} + \frac{r}{c}$, where $r$ is the distance of the point from the origin.
+
+\paragraph{Light Clocks}
+A light clock is a device that can be used to measure time. It consists of a light source and a mirror separated by a distance $r$. The time taken from a light pulse being emitted to it returning to the source is
 \begin{align*}
-	t = \gamma t',
+	\Delta t = \frac{2L}{c}.
+\end{align*}
+This can be used to "standardize" a measurement of time.
+
+\paragraph{Time Dilation From Light Clocks}
+Consider two frames of reference $S$ and $S'$ moving with relative velocity $v$ in the $x$-direction, and suppose that there exists a light clock at rest in $S$ oriented orthogonally to the $x$-direction. The time taken in $S\p$ for a pulse of light to hit the mirror and return is as before. In $S$, the constancy of light requires
+\begin{align*}
+	\sqrt{(2L)^{2} + (v\Delta t)^{2}} = c\Delta t,
+\end{align*}
+with solution
+\begin{align*}
+	\Delta t = \gamma\frac{2L}{c},
 \end{align*}
 where we introduce the Lorentz factor
 \begin{align*}
 	\gamma = \frac{1}{\sqrt{1 - \beta^{2}}},\ \beta = \frac{v}{c}.
 \end{align*}
 
-\paragraph{Length contraction}
+\paragraph{Length Contraction From Light Clocks}
+Consider the same setup as that above, but suppose instead that the light clock is oriented along the $x$-direction. In $S^{\prime}$ no difference is observed. In $S$ the following sequence takes place:
+\begin{enumerate}
+	\item At time $0$ the pulse is emitted.
+	\item At time $\Delta t_{1}$ the pulse hits the mirror.
+	\item At time $\Delta t_{1} + \Delta t_{2}$ the pulse returns.
+\end{enumerate}
+The constancy of the speed of light implies
+\begin{align*}
+	c\Delta t_{1} = L + v\Delta t_{1},\ -c\Delta t_{2} = -L + v\Delta t_{2},
+\end{align*}
+allowing us to solve for them. The total time elapsed is
+\begin{align*}
+	\Delta t = L\left(\frac{1}{c + v} + \frac{1}{c - v}\right) = \frac{2cL}{c^{2} - v^{2}}.
+\end{align*}
+Note that the distance $L$ is measured in $S$, but is not necessarily equal to the length in $S^{\prime}$ - in fact, as time dilates we must have
+\begin{align*}
+	\frac{2L_{0}}{c} = \gamma\frac{2cL}{c^{2} - v^{2}},
+\end{align*}
+and thus
+\begin{align*}
+	L = 
+\end{align*}
+
 In a similar scenario lengths contract according to
 \begin{align*}
 	x = \frac{1}{\gamma}x'.
 \end{align*}
 
-Do the lengths in other directions contract as well? The answer is no. To understand this, consider the following thought experiment:
+Do the lengths in other directions contract as well? The answer is no. To understand this, consider the following thought experiment: Suppose you throw a ball through a slit of length $L_{0}$ (measured in its rest frame). In the rest frame of the ball, this length may contract, expand or be unaltered. If the lengths were to contract or expand, observers in the rest frames of the slit and the ball would disagree on whether the ball passed through it or not. This would seem to violate some law of physics, which cannot be allowed. Hence perpendicular lengths are not transformed by Lorentz boosts.
 
 \paragraph{Deriving the Lorentz transformation}
-The Lorentz transformation is the transformation that takes us from one inertial frame to another. We will now derive it using the following assumptions:
+The Lorentz transformation is the transformation that takes us from one inertial frame to another which is boosted (has a velocity) relative to the first. We will now derive it using the following assumptions:
 \begin{itemize}
 	\item The transformation is linear, so as to not cause non-accelerating motion in one frame to be accelerating in another.
+	\item Perpendicular lengths do not enter into the transformation and are themselves left unaltered.
 	\item Inverting the transformation corresponds to swapping coordinates in different frames and changing the sign of the relative velocity.
 	\item The speed of light must be preserved by the transformation.
 \end{itemize}
 
-After a strenuous process you will obtain
+To derive it, consider two frames of reference which coincide at $t = 0$ and where the primed frame moves with a speed $v$ in the $x$-direction relative to the other. The transformation is now of the form
 \begin{align*}
-	x' = \gamma(x - vt),\ t' = \gamma(t - \frac{\beta}{c}x).
+	x' = Ax + Bt, \ t' = Cx + Dt.
+\end{align*}
+The point $x' = 0$ is obviously described by $x = vt$, which implies $\frac{B}{A} = -v$ and
+\begin{align*}
+	x' = A(x - vt).
+\end{align*}
+To impose the requirement that the speed of light be constant, we consider a light pulse emitted at $t = 0$ from the origin. Both the Lorentz transform and its inverse should transform between $ct$ and $ct^{\prime}$, yielding
+\begin{align*}
+	ct' = A(c - v)t, \ ct = A(c + v)t'.
+\end{align*}
+Thus we obtain
+\begin{align*}
+	c^{2}tt' = A^{2}(c^{2} - v^{2})tt',
+\end{align*}
+implying
+\begin{align*}
+	A^{2} = \gamma^{2}.
+\end{align*}
+This constant must needs be positive, hence we conclude $A = \gamma$.
+
+To obtain the remaining coefficient, we compose the Lorentz transform with its inverse. The inverse spatial transform is
+\begin{align*}
+	x = \gamma(x' + vt'),
+\end{align*}
+which expressed in terms of the time transformation is
+\begin{align*}
+	x = \gamma(x' + vCx + vDt).
+\end{align*}
+Solving it yields
+\begin{align*}
+	x' = \left(\frac{1}{\gamma} - vC\right)x - vDt.
+\end{align*}
+This must simply be the original transform, hence
+\begin{align*}
+	\frac{1}{\gamma} - vC = \gamma, \ -vD = -v\gamma.
+\end{align*}
+The solutions to this are
+\begin{align*}
+	D = \gamma, \ C = \frac{1}{v}\frac{1 - \gamma^{2}}{\gamma} = \frac{1}{v}\frac{1 - \frac{1}{1 - \beta^{2}}}{\gamma} = -\frac{1}{v}\frac{\frac{\beta^{2}}{1 - \beta^{2}}}{\gamma} = -\frac{\beta\gamma}{c}.
+\end{align*}
+In conclusion, the Lorentz transform is
+\begin{align*}
+	x^{\prime} = \gamma(x - vt),\ t^{\prime} = \gamma\left(t - \frac{\beta}{c}x\right).
 \end{align*}
 
 \paragraph{Transforming velocities}
