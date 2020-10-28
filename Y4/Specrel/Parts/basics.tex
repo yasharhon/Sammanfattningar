@@ -81,15 +81,17 @@ Note that the distance $L$ is measured in $S$, but is not necessarily equal to t
 \end{align*}
 and thus
 \begin{align*}
-	L = 
-\end{align*}
-
-In a similar scenario lengths contract according to
-\begin{align*}
-	x = \frac{1}{\gamma}x'.
+	L = L_{0}\frac{c^{2} - v^{2}}{\gamma c^{2}} = \frac{L_{0}}{\gamma}.
 \end{align*}
 
 Do the lengths in other directions contract as well? The answer is no. To understand this, consider the following thought experiment: Suppose you throw a ball through a slit of length $L_{0}$ (measured in its rest frame). In the rest frame of the ball, this length may contract, expand or be unaltered. If the lengths were to contract or expand, observers in the rest frames of the slit and the ball would disagree on whether the ball passed through it or not. This would seem to violate some law of physics, which cannot be allowed. Hence perpendicular lengths are not transformed by Lorentz boosts.
+
+\paragraph{A Brief Note on Experiments}
+I here briefly mention a few experiments which match with the predictions of special relativity that we have seen.
+\begin{itemize}
+	\item Muons are particles with extremely short half-lives that travel at high speeds. Atmospheric muons should not have a sufficiently long half-life to be found on the surface of the Earth according to classical mechanics. In special relativity, we may explain this in two ways: According to an observer on Earth, the muons' clocks tick slower, meaning that they have the time to reach Earth. According to the muons, the distance to the Earth is contracted, meaning that they travel fast enough to make it to Earth before decaying.
+	\item Very fast airplanes have been sent in different directions, each with their own atomic clock. After travelling a distance comparable to the circumference of the Earth, they meet and the times of the clocks are read off. The difference between the clocks was on the order of magnitude of nanoseconds.
+\end{itemize}
 
 \paragraph{Deriving the Lorentz transformation}
 The Lorentz transformation is the transformation that takes us from one inertial frame to another which is boosted (has a velocity) relative to the first. We will now derive it using the following assumptions:
@@ -100,7 +102,7 @@ The Lorentz transformation is the transformation that takes us from one inertial
 	\item The speed of light must be preserved by the transformation.
 \end{itemize}
 
-To derive it, consider two frames of reference which coincide at $t = 0$ and where the primed frame moves with a speed $v$ in the $x$-direction relative to the other. The transformation is now of the form
+To derive it, consider two frames of reference which coincide at $t = 0$ and where the primed frame moves with a speed $v$ in the $x$-direction relative to the other (this will be standard notation from now on). The transformation is now of the form
 \begin{align*}
 	x' = Ax + Bt, \ t' = Cx + Dt.
 \end{align*}
@@ -147,42 +149,80 @@ In conclusion, the Lorentz transform is
 	x^{\prime} = \gamma(x - vt),\ t^{\prime} = \gamma\left(t - \frac{\beta}{c}x\right).
 \end{align*}
 
-\paragraph{Transforming velocities}
+Note that it approaches Galilei transforms in the limit of $\beta\to 0$, for which $\gamma\to 1$. This is why physicists managed to develop classical mechanics without realizing the existence of relativistic phenomena.
+
+\paragraph{Length Contraction and Time Dilation From the Lorentz Transform}
+The phenomena of length contraction and time direction previously emerged as a consequence of us considering some particular geometry, but we may show that they emerge more naturally from the Lorentz transform itself.
+
+Consider two events happening at $x^{\prime} = \alpha$ within the time interval $\Delta t^{\prime}$ in $S^{\prime}$. We then have
+\begin{align*}
+	\alpha = \gamma(x_{1} - vt_{1}),\ t_{1}^{\prime} = \gamma\left(t_{1} - \frac{\beta}{c}x_{1}\right),\ \alpha = \gamma(x_{2} - vt_{2}),\ t_{2}^{\prime} = \gamma\left(t_{2} - \frac{\beta}{c}x_{2}\right),
+\end{align*}
+hence
+\begin{align*}
+	\Delta x = v\Delta t,\ \Delta t^{\prime} = \gamma\left(\Delta t - \frac{\beta}{c}\Delta x\right) = \gamma\left(\Delta t - \beta^{2}\Delta t\right) = \frac{1}{\gamma}\Delta t,
+\end{align*}
+and time dilates in the non-rest frame of the event.
+
+Next, consider two events which happen at time $\tau$ at a distance $\Delta x^{\prime}$ in $S^{\prime}$. We have
+\begin{align*}
+	x_{1}^{\prime} = \gamma(x_{1} - vt_{1}),\ \tau = \gamma\left(t_{1} - \frac{\beta}{c}x_{1}\right),\ x_{2}^{\prime} = \gamma(x_{2} - vt_{2}),\ \tau = \gamma\left(t_{2} - \frac{\beta}{c}x_{2}\right),
+\end{align*}
+hence
+\begin{align*}
+	\Delta t = \frac{\beta}{c}\Delta x,\ \Delta x^{\prime} = \gamma(\Delta x - v\Delta t) = \gamma\Delta x(1 - \beta^{2}) = \frac{\Delta x}{\gamma},
+\end{align*}
+and lengths contract in the non-rest frame of the event.
+
+\paragraph{New Variables}
+Let us introduce $x^{0} = ct$. The Lorentz transform is thus
+\begin{align*}
+	x^{\prime} = \gamma(x - \beta x^{0}),\ (x^{0})^{\prime} = \gamma\left(x^{0} - \beta x\right).
+\end{align*}
+This has a more obvious symmetry with respect to the involved variables, and this notation is also more enticing for physics in general.
+
+\paragraph{Transforming Velocities}
 Using the chain rule, velocities along the $x$-axis are transformed according to
 \begin{align*}
-	u' = \dv{x'}{t'} = \frac{\dv{x'}{t}}{\dv{t'}{t}} = \frac{\gamma(u - v)}{\gamma(1 - \frac{v}{c^{2}}u)} = \frac{u - v}{1 - \beta\frac{u}{c}}.
+	u' = \dv{x'}{t'} = \frac{\dv{x'}{t}}{\dv{t'}{t}} = \frac{\gamma(u - v)}{\gamma(1 - \frac{v}{c^{2}}u)} = \frac{u - v}{1 - \beta\frac{u}{c}},
 \end{align*}
-The velocities in other directions, for instance the $y$-direction transform according to
+where we have used the Lorentz transform as well as the fact that $u = \dv{x}{t}$ to obtain this expression.
+
+The velocities in other directions, for instance the $y$-direction, transform according to
 \begin{align*}
 	u_{y}' = \dv{y'}{t'} = \frac{\dv{y}{t}}{\dv{t'}{t}} = \frac{1}{1 - \beta\frac{u}{c}}u_{y}.
 \end{align*}
 
-\paragraph{Transforming accelerations}
-We can in a similar way show that
+\paragraph{Transforming Accelerations}
+We can study other quantities in a similar fashion. For instance, an acceleration parallel to the relative velocity transforms according to
 \begin{align*}
-	a' = \frac{1}{\gamma^{3}\left(1 - \beta\frac{u}{c}\right)^{3}}a.
+	a\p &= \dv[2]{x\p}{(t\p)} \\
+	    &= \frac{\dv{t}\dv{x\p}{t\p}}{\dv{t\p}{t}} = \frac{1}{\gamma\left(1 - \beta\frac{u}{c}\right)}\dv{t}\frac{u - v}{1 - \beta\frac{u}{c}} \\
+	    &= \frac{1}{\gamma\left(1 - \beta\frac{u}{c}\right)}\frac{a\left(1 - \beta\frac{u}{c}\right) + (u - v)\beta\frac{1}{c}a}{\left(1 - \beta\frac{u}{c}\right)^{2}} \\
+	    &= \frac{1}{\gamma\left(1 - \beta\frac{u}{c}\right)^{3}}(1 - \beta^{2})a \\
+	    &= \frac{1}{\gamma^{3}\left(1 - \beta\frac{u}{c}\right)^{3}}a.
 \end{align*}
 
-\paragraph{The garage paradox}
+\paragraph{The Garage Paradox}
 Consider a garage of length $L_{0}$ and a car of length $l_{0} > L_{0}$. If the car drives into the garage at a high speed, the garage will contract in the car's frame, making sure that it does not fit, while the car will contract in the garage's frame, making it (possibly) fit. How is this possible?
 
 The resolution comes in the form of simultaneity. We consider two events: the front hitting the wall and the rear entering the garage. Assume that these are simultaneous in the rest frame $S$ of the garage. Applying the Lorentz transformation formula yields
 \begin{align*}
 	\Delta x' = \gamma\Delta x,
 \end{align*}
-corresponding to the length of the car being contracted in $S$. Furthermore, the time between the two events in $S'$ is
+corresponding to the length of the car being contracted in $S$. Hence it fits in $S$. Furthermore, the time between the two events in $S'$ is
 \begin{align*}
-	\Delta t' = (1 - \frac{1}{\gamma})\frac{\Delta x'}{v},
+	\Delta t' = -\frac{\beta}{\gamma c}\Delta x,
 \end{align*}
-I think.
+meaning that the rear of the car enters the garage before the front hits the wall and matching the prediction in $S$.
 
-\paragraph{The twin paradox}
-Consider a pair of twins, where one twin remains on earth and the other travels into space at a high velocity, eventually returning to Earth. According to the twin on Earth, time will pass more quickly for him, while according to the twin in space, time will pass more quickly for him. Which twin is older when they meet again?
+\paragraph{The Twin Paradox}
+Consider a pair of twins, where one twin remains on Earth and the other travels into space at a high velocity, eventually returning to Earth. According to the twin on Earth, time will pass more quickly for him, while according to the twin in space, time will pass more quickly for him. Which twin is older when they meet again?
 
 The answer is that the travelling twin must change inertial system, removing the assumed symmetry of the scenario.
 
-\paragraph{Minkowski diagrams}
+\paragraph{Minkowski Diagrams}
 A Minkowski diagram is a diagram of a scenario with $ct$ on the vertical axis and space, usually represented by $x$, on the other. Trajectories of particles, called world lines, must have a slope greater than $1$ in this representation.
 
-\paragraph{Lorentz transformations in Minkowski diagrams}
+\paragraph{Lorentz Transformations in Minkowski Diagrams}
 A Lorentz transformation in a Minkowski diagram corresponds to making the (transformed) space and time axes move closer together, approaching the identity line at equal rates.
