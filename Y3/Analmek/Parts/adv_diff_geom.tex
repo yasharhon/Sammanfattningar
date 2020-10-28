@@ -106,6 +106,36 @@ Repeating the steps above now yields
 \end{align*}
 
 \paragraph{Covariant Derivatives of Tensor Fields}
+Next we study the derivatives of a tensor field
+\begin{align*}
+	\tau = \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}.
+\end{align*}
+The tensor basis element differentiates according to the product rule, but with multiplication replaced by the tensor product. Hence
+\begin{align*}
+	\del{a}{\tau} &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}} \\
+	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\left(\sum\limits_{k = 1}^{n}\chris{c_{k}}{a}{a_{k}}\tensor*{e}{^{b_{1}\dots b_{m}}_{c_{1}\dots c_{n}}} - \sum\limits_{l = 1}^{m}\chris{b_{l}}{a}{d_{l}}\tensor*{e}{^{d_{1}\dots d_{m}}_{a_{1}\dots a_{n}}}\right) \\
+	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\left(\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}\right).
+\end{align*}
+We thus define
+\begin{align*}
+	\dcov{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} = \del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}.
+\end{align*}
+
+\paragraph{The Gradient of a Tensor Field}
+Based on the above, the directional derivative of a tensor field is
+\begin{align*}
+	\grad_{\vb{n}}{\tau} = n^{a}\del{a}{\tau}.
+\end{align*}
+This is equal to the contraction of $\vb{n}$ with the object
+\begin{align*}
+	\grad{\tau} = \db{c}\otimes\del{c}{\tau},
+\end{align*}
+which is defined as the gradient of $\tau$. More explicitly, we have
+\begin{align*}
+	\grad{\tau} = \tensor*{e}{^{cb_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\dcov{c}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}.
+\end{align*}
+It has the interesting property of having a rank one higher than $\tau$, which matches what we know - for instance, the gradient transforms a scalar into a vector.
 
 \paragraph{Christoffel Symbols and the Metric}
 The derivatives of the metric tensor are given by
