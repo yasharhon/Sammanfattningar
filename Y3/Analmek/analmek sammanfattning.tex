@@ -20,12 +20,13 @@
 
 % Math
 \newcommand{\cc}[1]{#1^{*}}
+\newcommand{\bound}[1]{\ensuremath{\partial #1}}
 \newcommand{\del}[3][]{\partial^{#1}_{#2}#3}
 \newcommand{\delp}[3][]{(\partial^{\prime})^{#1}_{#2}#3}
 \newcommand{\deval}[4][]{\eval{\dv[#1]{#2}{#3}}_{#4}}
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
 \newcommand{\vinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\cdot #4}
-\newcommand{\lieb}[2]{\left[#1, #2\right]}
+\newcommand{\minteg}[2]{\int\limits_{#1}#2}
 
 % Differential geometry and tensors
 \newcommand{\dcov}[2]{\grad_{#1}{#2}}
@@ -44,6 +45,11 @@
 	}
 }
 \newcommand{\chris}[3]{\tensor*{\Gamma}{^{#1}_{#2#3}}}
+\newcommand{\ts}[2]{T_{#1}#2}
+\newcommand{\ds}[2]{T_{#1}^{\star}#2}
+\newcommand{\tbun}[1]{T#1}
+\newcommand{\lied}[2]{\ensuremath{\lag_{#1}#2}}
+\newcommand{\df}[1]{\ensuremath{d#1}}
 
 % Analytical mechanics
 \newcommand{\lag}{\ensuremath{\mathcal{L}}}

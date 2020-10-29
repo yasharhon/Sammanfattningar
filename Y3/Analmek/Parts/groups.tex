@@ -87,19 +87,19 @@ We thus obtain
 	e^{-\theta_{i}T_{i}}e^{-\theta_{j}T_{j}}e^{\theta_{i}T_{i}}e^{\theta_{j}T_{j}} \approx& 1 + \theta_{i}T_{i} + \theta_{j}T_{j} + \frac{1}{2}\left(\theta_{i}^{2}T_{i}^{2} + \theta_{j}^{2}T_{j}^{2}\right) + \theta_{i}\theta_{j}T_{i}T_{j} - \theta_{i}T_{i}\left(1 + \theta_{i}T_{i} + \theta_{j}T_{j}\right) \\
 	 &- \theta_{j}T_{j}\left(1 + \theta_{i}T_{i} + \theta_{j}T_{j}\right) + \frac{1}{2}\left(\theta_{i}^{2}T_{i}^{2} + \theta_{j}^{2}T_{j}^{2}\right) + \theta_{i}\theta_{j}T_{i}T_{j} \\
 	=& 1 + \theta_{i}\theta_{j}T_{i}T_{j} - \theta_{i}\theta_{j}T_{i}T_{j} - \theta_{i}\theta_{j}T_{j}T_{i} + \theta_{i}\theta_{j}T_{i}T_{j} \\
-	=& 1 + \theta_{i}\theta_{j}\lieb{T_{a}}{T_{b}}
+	=& 1 + \theta_{i}\theta_{j}\comm{T_{a}}{T_{b}}
 \end{align*}
 to second order, where we have introduced the Lie bracket
 \begin{align*}
-	\lieb{T_{i}}{T_{j}} = T_{i}T_{j} - T_{j}T_{i}.
+	\comm{T_{i}}{T_{j}} = T_{i}T_{j} - T_{j}T_{i}.
 \end{align*}
 Hence, the non-commutativity of Lie groups close to the identity is described by the Lie brackets, which is why we study them. Furthermore, we have
 \begin{align*}
-	e^{-\theta_{i}T_{i}}e^{-\theta_{j}T_{j}}e^{\theta_{i}T_{i}}e^{\theta_{j}T_{j}} \approx e^{\theta_{i}\theta_{j}\lieb{T_{a}}{T_{b}}},
+	e^{-\theta_{i}T_{i}}e^{-\theta_{j}T_{j}}e^{\theta_{i}T_{i}}e^{\theta_{j}T_{j}} \approx e^{\theta_{i}\theta_{j}\comm{T_{a}}{T_{b}}},
 \end{align*}
 implying that the Lie bracket belongs to the vector space spanned by the generators and allowing us to write
 \begin{align*}
-	\lieb{T_{a}}{T_{b}} = f_{a, b, c}T_{c}.
+	\comm{T_{a}}{T_{b}} = f_{a, b, c}T_{c}.
 \end{align*}
 The constants $f_{a, b, c}$ are called structure constants.
 
@@ -180,21 +180,21 @@ The set of generators of these rotations constitutes the Lie algebra.
 
 We know in general that rotations in three dimensions do not commute. In fact, we obtain in general that
 \begin{align*}
-R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\lieb{J_{a}}{J_{b}},
+R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\comm{J_{a}}{J_{b}},
 \end{align*}
-where $\lieb{J_{a}}{J_{b}}$ is the commutator. This commutator satisfies
+where $\comm{J_{a}}{J_{b}}$ is the commutator. This commutator satisfies
 \begin{align*}
-\lieb{J_{a}}{J_{b}}^{T} = \lieb{J_{b}^{T}}{J_{a}^{T}} = \lieb{-J_{b}}{-J_{a}} = -\lieb{J_{a}}{J_{b}},
+\comm{J_{a}}{J_{b}}^{T} = \comm{J_{b}^{T}}{J_{a}^{T}} = \comm{-J_{b}}{-J_{a}} = -\comm{J_{a}}{J_{b}},
 \end{align*}
 which implies
 \begin{align*}
-\lieb{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
+\comm{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
 \end{align*}
 It can be shown that
 \begin{align*}
-\lieb{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
+\comm{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
 \end{align*}
 or in a physics context (where a factor $i$ is extracted):
 \begin{align*}
-\lieb{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
+\comm{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
 \end{align*}
