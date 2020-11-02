@@ -93,7 +93,7 @@ I here briefly mention a few experiments which match with the predictions of spe
 	\item Very fast airplanes have been sent in different directions, each with their own atomic clock. After travelling a distance comparable to the circumference of the Earth, they meet and the times of the clocks are read off. The difference between the clocks was on the order of magnitude of nanoseconds.
 \end{itemize}
 
-\paragraph{Deriving the Lorentz transformation}
+\paragraph{Deriving the Lorentz Transformation}
 The Lorentz transformation is the transformation that takes us from one inertial frame to another which is boosted (has a velocity) relative to the first. We will now derive it using the following assumptions:
 \begin{itemize}
 	\item The transformation is linear, so as to not cause non-accelerating motion in one frame to be accelerating in another.
@@ -180,6 +180,13 @@ Let us introduce $x^{0} = ct$. The Lorentz transform is thus
 	x^{\prime} = \gamma(x - \beta x^{0}),\ (x^{0})^{\prime} = \gamma\left(x^{0} - \beta x\right).
 \end{align*}
 This has a more obvious symmetry with respect to the involved variables, and this notation is also more enticing for physics in general.
+
+\paragraph{Lorentz Transforms and Hyperbolic Functions}
+As $\gamma^{2}(1 - \beta^{2}) = 1$, we may define $\gamma = \cosh(\theta),\ \gamma\beta = \sinh(\theta)$, where $\theta$ is the so-called rapidity, to write the Lorentz transform as
+\begin{align*}
+	x^{\prime} = \cosh(\theta)x - \sinh(\theta)x^{0},\ (x^{0})^{\prime} = \cosh(\theta)x^{0} - \sinh(\theta)x.
+\end{align*}
+We may also identify the rapidity according to $\beta = \tanh(\theta)$.
 
 \paragraph{Transforming Velocities}
 Using the chain rule, velocities along the $x$-axis are transformed according to

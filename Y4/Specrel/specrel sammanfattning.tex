@@ -4,9 +4,11 @@
 
 \usepackage{amsmath}
 \usepackage[arrowdel]{physics}
+\usepackage{tensor}
 
 \newcommand{\p}{^{\prime}}
 \newcommand{\ub}[1]{\vb{e}_{#1}}
+\newcommand{\del}[3][]{\partial^{#1}_{#2}#3}
 
 \title{Summary of SI2371 Special Relativity}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -32,5 +34,7 @@
 \pagenumbering{arabic}
 
 \input{./Parts/basics.tex}
+
+\input{./Parts/4vecs.tex}
 
 \end{document}
