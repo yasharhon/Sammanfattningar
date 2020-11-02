@@ -215,7 +215,7 @@ A better approach would have been to go through the derivation of the geodesic e
 \paragraph{Manifolds}
 A manifold is a set which is locally isomorphic to $\R^{n}$. We will take this to mean that we can locally impose coordinates $\chi^{a}$ on the manifold.
 
-Along with the definition of a manifold come certain other definitions. A local description of the manifold is called a chart. A collection of charts such that the combination of the charts describe the entire manifold is called an atlas. $n$ is called the dimension of the manifold.
+More formally, a manifold is described by a number of sets $U_{i}\subset\R^{n}$ called charts. To each chart belongs a set of coordinate functions $\chi_{i}$ which map from a subset $M_{i}\subset M$ to $U_{i}$ such that $\chi_{i}$ is a smooth bijection. A set of charts such that every point $p\in M$ is found in at least one chart is called an atlas.
 
 \paragraph{Manifolds and Vectors}
 Even though manifolds are locally isomorphic to Euclidean space, the vectors that were previously developed do not make sense when applied to this Euclidean space.
@@ -286,9 +286,22 @@ Having identified a basis for the tangent and dual spaces, we may now construct 
 \paragraph{Flow of Vector Fields}
 The tangent bundle of a manifold is defined as $TM = \bigcup\limits_{p}\ts{p}{M}$. A vector field is a map $X: M\to\tbun{M}$ such that $X(p)\in\ts{p}{M}$. Given this, we may define the flow of a vector field as a collection of curves $\gamma_{X}$ which given some starting point $p$ satisfy
 \begin{align*}
-	\deval{\gamma_{X}}{\tau}{p, s} = \eval{X}_{\gamma_{X}(p, s)},
+	\deval{\gamma_{X}}{\tau}{p, s} = \eval{X}_{\gamma_{X}(p, s)}.
 \end{align*}
-i.e. the vector field is tangent to the curve.
+
+\paragraph{Pushforwards and Pullbacks}
+Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M}$ as $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
+
+%TODO: Components of puf
+
+We can now use this to define the pullback of a $(0, m)$ tensor on $M_{2}$ according to
+\begin{align*}
+	\pub{f}{\omega}(V_{1}, \dots, V_{m}) = \omega(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}).
+\end{align*}
+If $f$ is a bijection we may also define the more general pullback of a $(n, m)$ tensor on $M_{2}$ as
+\begin{align*}
+	\pub{f}{T}(V_{1}, \dots, V_{m}, \omega_{1}, \dots, \omega_{n}) = T(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}, \pub{(f^{-1})}{\omega_{1}}, \dots, \pub{(f^{-1})}{\omega_{n}}).
+\end{align*}
 
 \paragraph{The Lie Derivative}
 The composition $XY$ of two tangent vectors does not produce a new vector, hence this is not a way to produce a derivative on manifolds. Instead we introduce the Lie bracket
