@@ -1,0 +1,59 @@
+\section{$4$-Vector Formalism}
+
+$4$-vector formalism makes more explicit use of invariance relations that have previously been identified, most importantly the invariance of $c$, or so-called Lorentz invariance.
+
+\paragraph{The Lorentz Group}
+Consider a light pulse sent out from the origin at $t = 0$. The wavefront in the rest frame of the emitter satisfies $r^{2} = (ct)^{2}$. Next, for any frame in the standard configuration we must also have $(r\p)^{2} = (ct\p)^{2}$, implying the invariance of the quantity
+\begin{align*}
+	(ct)^{2} - r^{2}
+\end{align*}
+under any transformation that preserves the laws of physics. The Lorentz group is defined as the group of linear transforms that preserves the above quantity (linearity is to preserve important physical properties such as isotropy of space).
+
+\paragraph{The Lorentz Boost in Matrix Form}
+The Lorentz boost may now be written as
+\begin{align*}
+	\Lambda =
+	\mqty[
+		A & 0 \\
+		0 & 1
+	],\ 
+	A =
+	\mqty[
+		\gamma       & -\beta\gamma \\
+		-\beta\gamma & \gamma
+	]
+\end{align*}
+such that $(x\p)^{\mu} = \tensor{\Lambda}{^{\mu}_{\nu}}x^{\nu}$, with Einstein summation from $0$ to $3$. This is also the general notation for Lorentz transformations, where $\Lambda$ may now be taken to be any element in the Lorentz group.
+
+\paragraph{The Lorentz Group}
+The Lorentz group is the group of all linear transformations that preserve the laws of physics. It consists of rotations and Lorentz boosts.
+
+\paragraph{The Poincare Group}
+The Poincare group is the group of all transformations that preserve the laws of physics. It consists of the Lorentz group as well as translations.
+
+\paragraph{The Spacetime Interval}
+The Lorentz transform transforms infinitesimal intervals in spacetime. We would now like to define the spacetime interval
+\begin{align*}
+	\dd{s}^{2} = (\dd{x^{0}})^{2} - \sum\limits_{i}(\dd{x^{i}})^{2}
+\end{align*}
+under Poincare transformations.
+
+Clearly the spacetime interval is preserved by space-preserving transformations that do not alter time, hence we only need to consider Lorentz boosts. We have
+\begin{align*}
+	(\dd{(x\p)^{0}})^{2} - \sum\limits_{i}(\dd{(x\p)^{i}})^{2} &= (\gamma\dd{x^{0}} - \beta\gamma\dd{x^{1}})^{2} - (\gamma\dd{x^{1}} - \beta\gamma\dd{x^{0}})^{2} - (\dd{x^{2}})^{2} - (\dd{x^{3}})^{2} \\
+	                                                           &= \gamma^{2}(1 - \beta^{2})(\dd{x^{0}})^{2} - \gamma^{2}(1 - \beta^{2})(\dd{x^{1}})^{2} - (\dd{x^{2}})^{2} - (\dd{x^{3}})^{2} \\
+	                                                           &= (\dd{x^{0}})^{2} - (\dd{x^{1}})^{2} - (\dd{x^{2}})^{2} - (\dd{x^{3}})^{2},
+\end{align*}
+hence the spacetime interval is preserved under the Poincare group. This is one of its defining traits.
+
+\paragraph{Tensors}
+A tensor is something that transforms according to the familiar transformation rules under Lorentz transformations. We recall that the transformation coefficients for contravariant indices are $\tensor{\Lambda}{^{\mu}_{\nu}} = \del{\nu}{(x\p)^{\mu}}$ and the coefficients for covariant indices are $\tensor{\Lambda}{_{\nu}^{\mu}} = \del[\prime]{\nu}{x^{\mu}}$.
+
+\paragraph{The Metric Tensor}
+The metric tensor $g$ is defined by
+\begin{align*}
+	\dd{s}^{2} = g_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}}.
+\end{align*}
+By definition it is symmetric.
+
+Clearly in special relativity with Cartesian coordinates we have $g_{00} = 1,\ g_{ii} = -1$ and all other components are zero. In Cartesian coordinates we also have $g_{\mu\nu} = g^{\mu\nu}$.
