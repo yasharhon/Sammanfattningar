@@ -47,7 +47,17 @@ Clearly the spacetime interval is preserved by space-preserving transformations 
 hence the spacetime interval is preserved under the Poincare group. This is one of its defining traits.
 
 \paragraph{Tensors}
-A tensor is something that transforms according to the familiar transformation rules under Lorentz transformations. We recall that the transformation coefficients for contravariant indices are $\tensor{\Lambda}{^{\mu}_{\nu}} = \del{\nu}{(x\p)^{\mu}}$ and the coefficients for covariant indices are $\tensor{\Lambda}{_{\nu}^{\mu}} = \del[\prime]{\nu}{x^{\mu}}$.
+A tensor is something that transforms according to the familiar transformation rules under Lorentz transformations. We recall that the transformation coefficients for contravariant indices are $\trcou{\mu}{\nu} = \del{\nu}{(x\p)^{\mu}}$ and the coefficients for covariant indices are $\trcod{\nu}{\mu} = \del[\prime]{\nu}{x^{\mu}}$. A notation that will be introduced is that transformed tensor components are denoted with primed indices, rather than the symbol of the tensor having the prime. Using this notation we have
+\begin{align*}
+	\trcod{\mu\p}{\mu}\trcou{\mu\p}{\nu} = \del{\mu\p}{x^{\mu}}\del{\nu}{x^{\mu\p}} = \del{\nu}{x^{\mu}} = \kdelta{\mu}{\nu}.
+\end{align*}
+Similarly we may obtain $\trcou{\mu\p}{\mu}\trcod{\nu\p}{\mu} = \kdelta{\mu\p}{\nu\p}$.
+
+The transformation rules for vectors are
+\begin{align*}
+	A^{\mu\p} = \trcou{\mu\p}{\mu}A^{\mu},\ A_{\mu\p} = \trcod{\mu\p}{\mu}A_{\mu},
+\end{align*}
+identifying the general transformation coefficients for covariant and contravariant indices.
 
 \paragraph{The Metric Tensor}
 The metric tensor $g$ is defined by
@@ -57,3 +67,64 @@ The metric tensor $g$ is defined by
 By definition it is symmetric.
 
 Clearly in special relativity with Cartesian coordinates we have $g_{00} = 1,\ g_{ii} = -1$ and all other components are zero. In Cartesian coordinates we also have $g_{\mu\nu} = g^{\mu\nu}$.
+
+In special relativity we take the metric to define the inner product between vectors, which implies that it can be used to raise and lower indices.
+
+\paragraph{Classification of $4$-Vectors}
+$4$-vectors are time-like if $V^{2} > 0$, space-like if $V^{2} < 0$ and light-like if $V^{2} = 0$. Furthermore, if $V^{0} > 0$, $V$ is future-directed, and if $V^{0} < 0$, it is past-directed.
+
+\paragraph{Covariant and Contravariant Derivatives}
+Consider the derivative $\del{\mu}{\tensor*{A}{^{\alpha\dots}_{\dots}}}$. It transforms according to
+\begin{align*}
+	\del{\mu\p}{\tensor*{A}{^{\alpha\p\dots}_{\dots}}} &= \del{\mu\p}{x^{\mu}}\del{\mu}{(\trcou{\alpha\p}{\alpha}\dots\tensor*{A}{^{\alpha\dots}_{\dots}})},
+\end{align*}
+where we have denoted an extra set of transformation coefficients with dots. As all of these are space-independent, we have
+\begin{align*}
+	\del{\mu\p}{\tensor*{A}{^{\alpha\p\dots}_{\dots}}} &= \trcou{\alpha\p}{\alpha}\dots\trcod{\mu\p}{\mu}\del{\mu}{\tensor*{A}{^{\alpha\dots}_{\dots}}},
+\end{align*}
+which transforms as a tensor with an extra covariant index provided by the derivative. Hence the partial derivative transforms covariantly. The space-independence of the metric may be used to derive the machinery in special relativity, but this is not the case in general relativity, and there this derivative does not transform covariantly.
+
+There is also a contravariant derivative defined by $\del[\mu]{}{} = g^{\mu\nu}\del{\nu}{}$, which indeed transforms contravariantly.
+
+I also briefly mention the operator $\del[2]{}{} = \del{\mu}{\del[\mu]{}{}} = g_{\mu\nu}\del{\mu}{\del{\nu}{}} = \del[2]{t}{} - \laplacian{}$. 
+
+\paragraph{The Quotient Rule}
+The quotient rule states that, given a relation of the form
+\begin{align*}
+	A^{\alpha\beta} = \tensor{G}{_{\alpha\beta}^{\delta}}B_{\delta}
+\end{align*}
+for two tensors $A, B$ in some frame, $G$ must also be a tensor.
+
+\paragraph{The Zero Component Lemma}
+Suppose that some particular vector component is zero in all frames. Then the vector is itself the zero vector.
+
+\paragraph{Proper Time}
+The proper time of two events is the time between them measured in their rest frame.
+
+\paragraph{$4$-Velocity}
+While the event vector $x^{\mu}$ transforms as a tensor, the time derivative $\del{t}{x^{\mu}} = c\del{0}{x^{\mu}}$ does not. Explicitly we have
+\begin{align*}
+	\del{0\p}{x^{\mu\p}} = \trcod{0\p}{\nu}\del{\nu}{(\trcou{\mu\p}{\mu}x^{\mu})} = \trcod{0\p}{\nu}\trcou{\mu\p}{\mu}\del{\nu}{x^{\mu}},
+\end{align*}
+which is not the transformation rule for a rank-$1$ tensor. The implication is that transforming $\del{0}{x^{\mu}}$ to a new frame does not allow us to extract velocities from the transformed coefficients. However, as we would still like to be able to find velocities in transformed frames, we would still like to define it.
+
+To do this, consider a particle in some motion. In the lab frame the spacetime interval is given by
+\begin{align*}
+	\dd{s}^{2} = g_{\mu\nu}\del{0}{x^{\mu}}\del{0}{x^{\nu}}\dd{(x^{0})}^{2} = (1 - \beta_{u}^{2})\dd{(x^{0})}^{2},
+\end{align*}
+where $\beta_{u} = \frac{u}{c}$ and $u$ is the instantaneous velocity of the particle in the lab frame. For particles, which move along space-like paths, we have
+\begin{align*}
+	\Delta s = \integ{}{}{x^{0}}{\frac{1}{\gamma_{u}}},
+\end{align*}
+where $\gamma_{u}$ is the instantaneous Lorentz factor calculated using $u$.
+
+As the spacetime interval is invariant, we may calculate it in the rest frame of the particle. Supposing that the particle measures that it takes a (proper) time $\tau$ to traverse the path, we must have $\Delta s = c\tau$. Note that by time dilation, we have $\dd{t} = \gamma_{u}\dd{\tau}$, implying $\tau < \Delta t$. Now, we may reparametrize the path in the lab frame in terms of the proper time $\tau$, such that $x^{\mu} = x^{\mu}(t(\tau))$. Defining
+\begin{align*}
+	u^{\mu} = \dv{x^{\mu}}{\tau} = c\gamma_{u}\dv{x^{\mu}}{x^{0}},
+\end{align*}
+we have a vector. This is a vector because it is the derivative of a vector with respect to a scalar (the proper time, which is invariant under Lorentz transforms). This is termed the $4$-velocity. Its norm is
+\begin{align*}
+	u_{\mu}u^{\mu} = c^{2}\gamma_{u}^{2}(1 - \beta^{2}) = c^{2}.
+\end{align*}
+
+%TODO: Show that same formula is reobtained?
