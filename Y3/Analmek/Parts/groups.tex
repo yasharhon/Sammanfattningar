@@ -93,7 +93,7 @@ to second order, where we have introduced the Lie bracket
 \begin{align*}
 	\comm{T_{i}}{T_{j}} = T_{i}T_{j} - T_{j}T_{i}.
 \end{align*}
-Hence, the non-commutativity of Lie groups close to the identity is described by the Lie brackets, which is why we study them. Furthermore, we have
+Hence, the non-commutativity of Lie groups close to the identity and the structure of the Lie algebra is described by the Lie brackets, which is why we study them. Furthermore, we have
 \begin{align*}
 	e^{-\theta_{i}T_{i}}e^{-\theta_{j}T_{j}}e^{\theta_{i}T_{i}}e^{\theta_{j}T_{j}} \approx e^{\theta_{i}\theta_{j}\comm{T_{a}}{T_{b}}},
 \end{align*}
@@ -103,98 +103,143 @@ implying that the Lie bracket belongs to the vector space spanned by the generat
 \end{align*}
 The constants $f_{a, b, c}$ are called structure constants.
 
-\paragraph{Representations}
-A representation is a homomorphism $D: G\to GL(V)$, where $GL(V)$ is the group of all invertible linear transformations on $V$. The group elements thus act on $V$ according to
-\begin{align*}
-D(g_{1})D(g_{2})v = D(g_{1}g_{2})v,\ v\in V.
-\end{align*}
-
-\paragraph{Reducible and irreducible representations}
-Two representations are equivalent if they satisfy $S^{-1}DS = D'$, where $S$ is a matrix representing a change of basis. Some representations can be written as direct sums in certain bases. For these, there is a basis where the representation is block diagonal. These are reducible. Those that cannot are irreducible.
-
 \example{Rotations in Two Dimensions}
 Consider a rotation of an infinitesimal displacement $\dd{\vb{x}}$ with a rotation $R$. The requirement for length to be preserved implies $R^{T}R = 1$.
 
 Consider now a rotation by a small angle $\var{\theta}$. Taylor expanding it in terms of the angle yields
 \begin{align*}
-R(\var{\theta}) \approx 1 + A\var{\theta}.
+	R(\var{\theta}) \approx 1 + A\var{\theta}.
 \end{align*}
 The requirement for $R$ to be orthogonal yields $A^{T} = -A$. We choose the solution
 \begin{align*}
-J =
-\mqty[
-0  & 1 \\
--1 & 0
-].
+	J =
+	\mqty[
+		0  & 1 \\
+		-1 & 0
+	].
 \end{align*}
 We can now write the rotation matrix as
 \begin{align*}
-R(\var{\theta}) =
-\mqty[
-1             & \var{\theta} \\
--\var{\theta} & 1
-].
+	R(\var{\theta}) =
+	\mqty[
+		1             & \var{\theta} \\
+		-\var{\theta} & 1
+	].
 \end{align*}
 
 We would now like to construct a large rotation in terms of smaller rotations as
 \begin{align*}
-R(\theta) = \lim\limits_{N\to\infty}\left(1 + \frac{\theta}{N}J\right)^{N} = e^{\theta J}.
+	R(\theta) = \lim\limits_{N\to\infty}\left(1 + \frac{\theta}{N}J\right)^{N} = e^{\theta J}.
 \end{align*}
 We can write this as an infinite series and use the fact that $J^{2} = -1$ to obtain
 \begin{align*}
-R(\theta) = \cos{\theta} + J\sin{\theta}.
+	R(\theta) = \cos{\theta} + J\sin{\theta}.
 \end{align*}
 
 \example{Rotations in Three Dimensions}
 The argument done for two dimensions does not use the dimensionality, so we conclude that even for higher dimensions, $R^{T}R = 1$. Expanding a small rotation around the identity yields that the first-order term must include an antisymmetric matrix. The space of antisymmetric $3\times 3$ matrices is three-dimensional. We thus choose the basis
 \begin{align*}
-J_{x} =
-\mqty[
-0 & 0  & 0 \\
-0 & 0  & 1 \\
-0 & -1 & 0
-],
-J_{y} =
-\mqty[
-0 & 0 & -1 \\
-0 & 0 & 0  \\
-1 & 0 & 0
-],
-J_{z} =
-\mqty[
-0  & 1 & 0 \\
--1 & 0 & 0 \\
-0  & 0 & 0
-].
+	J_{x} =
+	\mqty[
+		0 & 0  & 0 \\
+		0 & 0  & 1 \\
+		0 & -1 & 0
+	],
+	J_{y} =
+	\mqty[
+		0 & 0 & -1 \\
+		0 & 0 & 0  \\
+		1 & 0 & 0
+	],
+	J_{z} =
+	\mqty[
+		0  & 1 & 0 \\
+		-1 & 0 & 0 \\
+		0  & 0 & 0
+	].
 \end{align*}
 Exponentiating yields
 \begin{align*}
-R(\theta) = e^{\sum \theta_{i}J_{i}} = e^{\vb{\theta}\cdot\vb{J}}.
+	R(\theta) = e^{\sum \theta_{i}J_{i}} = e^{\vb{\theta}\cdot\vb{J}}.
 \end{align*}
 In physics we usually extract a factor $i$ such that the basis matrices are Hermitian, and the rotation becomes
 \begin{align*}
-R(\theta) = e^{i\vb{\theta}\cdot\vb{J}}.
+	R(\theta) = e^{i\vb{\theta}\cdot\vb{J}}.
 \end{align*}
 
 The set of generators of these rotations constitutes the Lie algebra.
 
 We know in general that rotations in three dimensions do not commute. In fact, we obtain in general that
 \begin{align*}
-R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\comm{J_{a}}{J_{b}},
+	R(\vb{\theta})R(\vb{\theta}')R^{-1}(\vb{\theta}) = \theta_{a}\theta_{b}'\comm{J_{a}}{J_{b}},
 \end{align*}
 where $\comm{J_{a}}{J_{b}}$ is the commutator. This commutator satisfies
 \begin{align*}
-\comm{J_{a}}{J_{b}}^{T} = \comm{J_{b}^{T}}{J_{a}^{T}} = \comm{-J_{b}}{-J_{a}} = -\comm{J_{a}}{J_{b}},
+	\comm{J_{a}}{J_{b}}^{T} = \comm{J_{b}^{T}}{J_{a}^{T}} = \comm{-J_{b}}{-J_{a}} = -\comm{J_{a}}{J_{b}},
 \end{align*}
 which implies
 \begin{align*}
-\comm{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
+	\comm{J_{a}}{J_{b}} = f_{a,b,c}J_{c}.
 \end{align*}
 It can be shown that
 \begin{align*}
-\comm{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
+	\comm{J_{i}}{J_{j}} = \varepsilon_{i,j,k}J_{k},
 \end{align*}
 or in a physics context (where a factor $i$ is extracted):
 \begin{align*}
-\comm{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
+	\comm{J_{i}}{J_{j}} = i\varepsilon_{i,j,k}J_{k}.
 \end{align*}
+
+\paragraph{Representations}
+A representation of a group on a vector space is a homomorphism $D: G\to\GL{V}$, where $\GL{V}$ is the group of all invertible linear transformations on $V$. The dimension of the representation is defined as the dimension of $V$.
+
+\paragraph{Representations on Tensor Product Spaces}
+Suppose that there exists representations $\rho_{V}$ and $\rho_{W}$ of $G$ on $V$ and $W$ respectively. The representation $\rho_{V\otimes W}$ of $G$ on $V\otimes W$ is then defined by
+\begin{align*}
+	\rho_{V\otimes W}(a)(\vb{v}\otimes\vb{w}) = (\rho_{V}(a)(\vb{v}))\otimes(\rho_{W}(a)(\vb{w})).
+\end{align*}
+
+\paragraph{Representations on Direct Product Spaces}
+Suppose that there exists representations $\rho_{V}$ and $\rho_{W}$ of $G$ on $V$ and $W$ respectively. The representation $\rho_{V\oplus W}$ of $G$ on $V\oplus W$ is then defined by
+\begin{align*}
+	\rho_{V\oplus W}(a)(\vb{v}, \vb{w}) = (\rho_{V}(a)(\vb{v}), \rho_{W}(a)(\vb{w})).
+\end{align*}
+
+\paragraph{Reducible and Irreducible Representations}
+Two representations are equivalent if they satisfy $U\rho(a)U^{-1} = \rho^{\prime}(a)$ for any group element $a$ and some linear operator $U$. $\rho$ is reducible if it is equivalent to a representation of the form
+\begin{align*}
+	\mqty[
+		\rho_{1} & \sigma \\
+		0        & \rho_{2}
+	],
+\end{align*}
+where $\rho_{1}$ and $\rho_{2}$ are representations of dimension $n_{1}$ and $n_{2}$ respectively and $\sigma$ is an $n_{1}\times n_{2}$ block satisfying $\sigma(ab) = \rho_{1}(a)\sigma(b) + \sigma(a)\rho_{1}(b)$. If this is not possible, the representation is irreducible.
+
+\example{$\SO{3}$}
+As we know, \SO{3} may be represented by rotations in three dimensions. In particular, we may choose a basis for $\R^{3}$ such that
+\begin{align*}
+	\rho(R_{\vb{e}_{z}}^{3}) = 
+	\mqty[
+		\cos(\theta) & -\sin(\theta) & 0 \\
+		\sin(\theta) & \cos(\theta)  & 0 \\
+		0            & 0             & 1
+	].
+\end{align*}
+The upper left block is a representation of \SO{2}, and the lower right block is the trivial representation $\rho(a) = 1$. Hence $\rho$ is reducible.
+
+Note that the upper right block is zero. For finite-dimensional groups, one can apparently always choose a basis such that this is possible. In this case we may write $\rho(R_{\vb{e}_{z}}^{3}) = \rho_{2}\oplus 1$, where $\rho_{2}$ is the representation of \SO{2}.
+
+\example{Tensor Product Representations}
+Given some representation $\rho$ on $V$, we consider the representation $\rho_{V\otimes V} = \rho\otimes\rho$. Next, we split a tensor $T$ into its symmetric components $T_{\{ij\}}$ and antisymmetric components $T_[ij]$ such that $T_{ij} = T_{\{ij\}} + T_[ij]$. Next, we have for a symmetric tensor $S$
+\begin{align*}
+	(\rho\otimes\rho S)_{ij} = \rho_{ik}\rho_{jl}S_{kl} = \rho_{jl}\rho_{ik}S_{lk} = (\rho\otimes\rho S)_{ji},
+\end{align*}
+i.e. the representation preserves the symmetry of $S$. The same holds for antisymmetric tensors. Denoting the symmetric and antisymmetric subspaces as $(V\otimes V)_{\pm}$ we have $(V\otimes V)_{+}\oplus(V\otimes V)_{-}$, we thus have
+\begin{align*}
+	\rho\otimes\rho =
+	\mqty[
+		\rho_{(V\otimes V)_{+}} & 0 \\
+		0                       & \rho_{(V\otimes V)_{-}}
+	],
+\end{align*}
+and $\rho\otimes\rho$ has been reduced to $\rho_{(V\otimes V)_{+}}\oplus\rho_{(V\otimes V)_{-}}$, which is the direct sum of its symmetric and antisymmetric representation.
