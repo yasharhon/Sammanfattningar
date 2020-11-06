@@ -292,9 +292,23 @@ The tangent bundle of a manifold is defined as $TM = \bigcup\limits_{p}\ts{p}{M}
 \paragraph{Pushforwards and Pullbacks}
 Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M}$ as $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
 
-%TODO: Components of puf
+\paragraph{Tangents and the Pushforward}
+$f$ maps the cooordinates $\chi^{a}$ of $M_{1}$ to the coordinates $\eta^{\mu}$ of $M_{2}$. By definition we have
+\begin{align*}
+	(\puf{f}{V})\phi &= V(\pub{f}{\phi}) \\
+	                 &= V^{a}\del{a}{(\phi\circ f)} \\
+	                 &= V^{a}\del{\mu}{\phi}\del{a}{\eta^{\mu}},
+\end{align*}
+meaning $\puf{f}{V} = V^{a}\del{a}{\eta^{\mu}}\del{\mu}{}$.
 
-We can now use this to define the pullback of a $(0, m)$ tensor on $M_{2}$ according to
+How do we interpret this? Consider some curve $\gamma$ in $M_{1}$ which is mapped to a curve $\alpha$ $M_{2}$ by $f$. If $V$ is the tangent of $\gamma$ at some particular point, we have
+\begin{align*}
+	\dot{\alpha} = \dot{\eta^{\mu}}\del{\mu}{} = \del{a}{\eta^{\mu}}\dot{\chi^{a}}\del{\mu}{} = \del{a}{\eta^{\mu}}V^{a}\del{\mu}{},
+\end{align*}
+meaning that the pushforward of a tangent by $f$ is the tangent of the curve produced by $f$.
+
+\paragraph{The Pullback of Tensors}
+We can now define the pullback of a $(0, m)$ tensor on $M_{2}$ according to
 \begin{align*}
 	\pub{f}{\omega}(V_{1}, \dots, V_{m}) = \omega(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}).
 \end{align*}
@@ -474,6 +488,8 @@ Hence we have
 	\integ{}{}{x^{1}}{\integ{}{}{x^{2}}{\integ{}{}{x^{3}}{\div{\vb*{\omega}}}}} = \integ{\bound{V}}{}{\vb{S}}{\cdot\vb*{\omega}},
 \end{align*}
 which is the divergence theorem.
+
+\example{The $n$-Dimensional Divergence Theorem}
 
 \paragraph{The Geometry of Curved Space}
 We can also impose a metric tensor such that $\vb{v}\cdot\vb{w} = g_{ab}v^{a}w^{b}$, where the metric tensor is symmetric and positive definite.
