@@ -41,3 +41,80 @@ Their advantages and disadvantages may be summarized as follows:
 	\end{tabular}
 	\caption{Advantages and disadvantages of approaches to method choice.}
 \end{table}
+
+\paragraph{Statistics}
+Statistics is a set of mathematical methods for dealing with quantitative data. It is divided into descriptive and inferential statistics.
+
+\paragraph{Lying With Statistics}
+The practice of lying with statistics involves taking good data and using proper statistical methods to produce false or misleading claims.
+
+\paragraph{Methodology and Statistics}
+The methodological aspects of statistics entail choosing the right statistical tool for some particular task, justifying the choice and choosing a proper representation of the data.
+
+\paragraph{Why Use Statistical Inference?}
+Statistical inference might be useful for hypothesis testing if:
+\begin{itemize}
+	\item The hypothesis has stochastic implications.
+	\item One wants to quantify error or confidence.
+\end{itemize}
+
+Note that the statistical treatment generally weakens individual accounts of confirmations and falsification if the hypothesis is deterministic.
+
+\paragraph{Fisher's Significance Testing}
+Fisher's significance testing is a framework for rejecting hypotheses. Its steps are as follows:
+
+\begin{enumerate}
+	\item Specify a hypothesis $H$.
+	\item Devise an experiment to test $H$ and specify the possible outcomes of the experiments.
+	\item Determine the distribution of the test statistics.
+	\item Observe the outcome of the experiment.
+	\item Calculate the $p$-value, defined as the probability of observing a result as least as extreme as the observed one given $H$.
+	\item If $p$ is smaller than some threshold value, reject $H$.
+\end{enumerate}
+
+\paragraph{$p$-Value Abuse}
+Fisher's significance testing leaves room for exploitation. A few examples of how this can be done are:
+\begin{itemize}
+	\item Modifying the hypothesis so as to mislead readers about what you have shown.
+	\item Change the experiment or sample size until you get the desired result.
+	\item Change how outcomes are partitioned.
+	\item Use other sample distributions.
+	\item Change the threshold.
+\end{itemize}
+
+\paragraph{Neyman-Pearson Testing}
+Fisher's framework only leaves room for considering one hypothesis at a time. The Neyman-Pearson framework allows you to test two mutually exclusive and jointly exhaustive hypotheses. Labelling one of them as $H_{0}$, the outcome is designated according to the table below.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{| l | l | l |}
+		\hline
+		                    & $H_{0}$ is true & $H_{0}$ is false \\
+		\hline
+		$H_{0}$ is accepted & Correct         & Type-II error \\
+		\hline
+		$H_{0}$ is rejected & Type-I error    & Correct \\
+		\hline
+	\end{tabular}
+	\caption{Designation of outcomes in Neyman-Pearson testing.}
+\end{table}
+
+The typical approach is to set the desired type-I error rate to some acceptable value and perform power analysis on your test given this. The power of the test is defined as the probability of rejecting $H_{0}$ given that it is true, and depends on the set type-I error rate, the magnitude of the effect of interest and the sample size. Once that is done, you compare the obtained $p$-value to the set type-I error rate and use that to accept or reject $H_{0}$.
+
+\paragraph{Bayesian Statistics}
+The Bayesian approach to statistics provides another way of using statistics for testing a hypothesis. The steps are:
+\begin{enumerate}
+	\item Formulate a set of competing hypothesis.
+	\item Determine prior probabilities of each hypothesis being true.
+	\item Collect data not used for informing your assignment of probabilities.
+	\item Determine the probability of the data given the hypothesis.
+	\item Compute the probability of the hypothesis given the data using Bayes' theorem.
+	\item Update the prior probabilities using the above.
+\end{enumerate}
+
+Some issues with this approach include:
+\begin{itemize}
+	\item The issue of assign prior probabilities. This may be solved by approaching the issue in a subjectivist manner, where one realizes that as long as the priors are not $0$ or $1$ everyone will agree in the end, or an objectivist approach, where one starts the process by dividing one's belief equally between the hypotheses.
+	\item The issue of old evidence, which may not be reused.
+	\item The issue of uncertain evidence, as the Bayesian approach builds on letting the probability of the evidence occuring going to $1$.
+\end{itemize}
