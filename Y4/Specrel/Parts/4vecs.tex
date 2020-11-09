@@ -73,6 +73,8 @@ In special relativity we take the metric to define the inner product between vec
 \paragraph{Classification of $4$-Vectors}
 $4$-vectors are time-like if $V^{2} > 0$, space-like if $V^{2} < 0$ and light-like if $V^{2} = 0$. Furthermore, if $V^{0} > 0$, $V$ is future-directed, and if $V^{0} < 0$, it is past-directed.
 
+This has some useful consequences; First, if $V$ is time-like then there exists a Lorentz transform that eliminates all components of $V$ but $V^{0}$. Likewise, if $V$ is space-like then there exists a Lorentz transform such that all components but $V^{1}$ is eliminated, and if $V$ is light-like then there exists a Lorentz transform such that $V^{2} = V^{3} = 0,\ V^{0} = V^{1}$.
+
 \paragraph{Covariant and Contravariant Derivatives}
 Consider the derivative $\del{\mu}{\tensor*{A}{^{\alpha\dots}_{\dots}}}$. It transforms according to
 \begin{align*}
@@ -120,11 +122,26 @@ where $\gamma_{u}$ is the instantaneous Lorentz factor calculated using $u$.
 
 As the spacetime interval is invariant, we may calculate it in the rest frame of the particle. Supposing that the particle measures that it takes a (proper) time $\tau$ to traverse the path, we must have $\Delta s = c\tau$. Note that by time dilation, we have $\dd{t} = \gamma_{u}\dd{\tau}$, implying $\tau < \Delta t$. Now, we may reparametrize the path in the lab frame in terms of the proper time $\tau$, such that $x^{\mu} = x^{\mu}(t(\tau))$. Defining
 \begin{align*}
-	u^{\mu} = \dv{x^{\mu}}{\tau} = c\gamma_{u}\dv{x^{\mu}}{x^{0}},
+	u^{\mu} = \dv{x^{\mu}}{\tau} = c\gamma_{u}\dv{x^{\mu}}{x^{0}} = \gamma_{u}(c, \vb{u}),
 \end{align*}
 we have a vector. This is a vector because it is the derivative of a vector with respect to a scalar (the proper time, which is invariant under Lorentz transforms). This is termed the $4$-velocity. Its norm is
 \begin{align*}
-	u_{\mu}u^{\mu} = c^{2}\gamma_{u}^{2}(1 - \beta^{2}) = c^{2}.
+	u_{\mu}u^{\mu} = c^{2}\gamma_{u}^{2}(1 - \beta^{2}) = c^{2},
 \end{align*}
+hence it is time-like.
 
 %TODO: Show that same formula is reobtained?
+
+\paragraph{$4$-Acceleration}
+We define the $4$-acceleration as $a^{\mu} = \dv{u^{\mu}}{\tau}$. Using the above we obtain
+\begin{align*}
+	a^{\mu} = \gamma_{u}\left(\dv{\gamma_{u}}{t}c, \dv{\gamma_{u}}{t}\vb{u} + \gamma_{u}\vb{a}\right).
+\end{align*}
+We have $\dv{\gamma_{u}}{t} = \gamma_{u}^{3}\frac{\vb{u}\cdot\vb{a}}{c^{2}}$. In particular, in the instantaneous rest frame of the particle we have $a^{\mu} = (0, \vb{a})$, and we define the proper acceleration $\vb{a}$ according to this expression. Its norm is
+\begin{align*}
+	a_{\mu}a^{\mu} = -a^{2},
+\end{align*}
+hence it is space-like.
+
+\paragraph{The Relation Between Velocity and Acceleration}
+The inner product $a_{\mu}u^{\mu}$ is a scalar, and we may compute it in the instantaneous rest frame. There we obtain $a_{\mu}u^{\mu} = 0$. This can also be obtained by computing $\dv{\tau}u_{\mu}u^{\mu}$.
