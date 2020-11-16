@@ -1,0 +1,28 @@
+\section{Basic Concepts}
+
+\paragraph{A Note on Minkowski Space}
+In special relativity we work with Minkowski space, which is an affine space with a so-called pseudo-metric. This is a metric which is not positive definite, but instead a metric which has only non-zero eigenvalues (and is thus termed non-degenerate). We will work with the signature $(1, 3)$, meaning that there are three eigenvalues of $-1$ and one eigenvalue $1$.
+
+\paragraph{The Description of Spacetime}
+In general relativity we will describe spacetime as a $4$-dimensional manifold with a pseudometric of signature $(1, 3)$ with a Levi-Civita connection imposed on it.
+
+\paragraph{Kinematics of Test Particles}
+A test particle is a particle that itself does not affect the spacetime. Such particles can generally move through spacetime, along curves called world lines. With this motion comes the $4$-velocity $V$, defined as the normalized tangent to a world line. In special relativity we could also define a proper acceleration by differentiating with respect to proper time. In general relativity we replace this with the $4$-acceleration $A = \dcov{V}{V} = \dcov{\dot{\gamma}}{\dot{\gamma}}$.  We may also define the proper acceleration $\alpha$, which satisfies $\alpha^{2} = -A^{2} = -g(A, A)$, and it can be shown that if $V$ is time-like, then $A$ is space-like. Note that the curve parameter we use is $\tau$, which is the proper time and a measure of length in spacetime.
+
+\paragraph{Free Particles}
+A free particle in special relativity is a particle for which $A = 0$. We take this definition to apply in general relativity as well. This implies that free test particles travel along spacetime geodesics.
+
+\paragraph{$4$-Momentum and $4$-Force}
+We also define the $4$-momentum $P = mV$ and the $4$-force $F = \dcov{V}{P}$.
+
+\paragraph{Frequency Shift}
+A wave generally has a phase which depends on both position and time. We define the frequency of a wave as $\omega = \dv{\phi}{t}$. For a general world line we define
+\begin{align*}
+	\omega = \dv{\phi}{\tau} = \dot{\chi}^{a}\del{a}{\phi} = V\phi = \df{\phi}(V).
+\end{align*}
+$\df{\phi}$ is the dual of the $4$-frequency $N^{\mu}$. It can be shown that $\dcov{N}{\df{\pi}} = 0$, and thus $\dcov{N}{N} = 0$. Rays with tangent $N$ are thus light-like geodesics.
+
+In general an observer will measure a frequency $\df{\phi}(V)$.
+
+\paragraph{Simultaneity}
+Two events are simultaneous if they are on the same hypersurface of constant $t$. As this depends very much on the choice of coordinates on spacetime, this notion is not at all well-defined.
