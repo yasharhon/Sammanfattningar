@@ -13,7 +13,7 @@ for some scalar $m_{0}$, as well as the $4$-force
 \paragraph{A First Postulate}
 Any laws of classical mechanics must result from these definitions in the limit of $\gamma_{u}$ approaching $1$. In this limit we have $P^{\mu} = (m_{0}c, m_{0}\vb{u})$, imploring us to recognize $m_{0}$ as the mass of the particle measured at rest and thus the space components to be those of the classical momentum.
 
-To generalize mechanics we thus postulate that $p^{\mu}$ is conserved. This will lead to the conservation of both the spatial components $m_{0}\gamma_{u}\vb{u}$, which is termed the relativistic $3$-momentum $\vb{p}$, and the conversion of $m_{0}\gamma_{u}\vb{u}$, to be discussed.
+To generalize mechanics we thus postulate that $p^{\mu}$ is conserved in the absence of external force. This will lead to the conservation of both the spatial components $m_{0}\gamma_{u}\vb{u}$, which is termed the relativistic $3$-momentum $\vb{p}$, and the conversion of $m_{0}\gamma_{u}\vb{u}$, to be discussed.
 
 \paragraph{Relativistic Energy}
 In the classical limit we obtain
@@ -44,3 +44,70 @@ The expression for the energy may be extended to massless particles. In these ca
 
 \paragraph{de Broglie}
 de Broglie combined experiments showing $E = \hbar\omega$ for photons, which had been discovered to be particles, with the work done above to show that photons could be attributed a momentum $\abs{p} = \hbar\abs{\vb{k}}$. His hypothesis was that this extends to all particles, revealing the wave-particle duality of matter to the world.
+
+\paragraph{$4$-Force}
+In general we have
+\begin{align*}
+	F^{\mu} = \dv{\tau}P^{\mu} = \dv{t}{\tau}\dv{t}P^{\mu} = \gamma_{u}\left(\frac{1}{c}\dv{E}{t}, \vb{f}\right),
+\end{align*}
+where $\vb{f}$ is the $3$-force.
+
+\paragraph{An Invariant From $4$-Force}
+We use Lorentz invariance to construct the invariant
+\begin{align*}
+	F^{\mu}U_{\mu} = \gamma_{u}^{2}\left(\dv{E}{t} - \vb{f}\cdot\vb{u}\right).
+\end{align*}
+In particular we have in the rest frame that
+\begin{align*}
+	F^{\mu}U_{\mu} = \dv{E}{\tau} = \dv{\tau}m_{0}c^{2}.
+\end{align*}
+Using the chain rule we then have in an arbitrary frame
+\begin{align*}
+	F^{\mu}U_{\mu} = \gamma_{u}\dv{t}m_{0}c^{2}.
+\end{align*}
+
+\paragraph{Pure and Heat-Like Forces}
+Consider a force such that $F^{\mu}U_{\mu} = 0$. For such forces we have for a general frame that
+\begin{align*}
+	\dv{E}{t} = \vb{f}\cdot\vb{u},
+\end{align*}
+and thus
+\begin{align*}
+	\dd{E} = \vb{f}\cdot\dd{\vb{r}} = \dd{W},
+\end{align*}
+where $W$ is the work. Such forces are termed pure. Note that they preserve rest mass.
+
+If a force is not pure, we will instead obtain an extra term in the final expression above, and we ascribe that contribution to heat. Such forces are termed heat-like.
+
+In the general case we have
+\begin{align*}
+	F^{\mu} = \dv{\tau}P^{\mu} = m_{0}A^{\mu} + \dv{m_{0}}{\tau}U^{\mu}.
+\end{align*}
+As heat-like forces must be orthogonal to the $4$-velocity, the first term may be interpreted to arise from pure forces and the other from heat-like forces.
+
+\paragraph{Newton's Second Law, or an Attempt at it}
+Using the previously constructed invariants we have
+\begin{align*}
+	\dv{E}{t} = \vb{f}\cdot\vb{u} + \frac{c^{2}}{\gamma_{u}}\dv{t}m_{0}.
+\end{align*}
+By this we obtain
+\begin{align*}
+	\vb{f} = \dv{t}(m_{0}\gamma_{u}\vb{u}) = \dv{t}\left(\frac{E}{c^{2}}\right)\vb{u} + m_{0}\gamma_{u}\dv{u}{t} = \left(\frac{\vb{f}\cdot\vb{u}}{c^{2}} + \frac{1}{\gamma_{u}}\dv{t}m_{0}\right)\vb{u} + m_{0}\gamma_{u}\vb{a},
+\end{align*}
+which generalizes Newton's second law.
+
+\paragraph{Lorentz Force}
+We would like to extend the notion of conservative forces to special relativity. The corresponding notion would be a potential $\phi$ such that its derivative created a pure force. However, we have
+\begin{align*}
+	F_{\mu}U^{\mu} = -\del{\mu}{phi}\dv{x^{\mu}}{\tau} = -\dv{\phi}{\tau} \neq 0,
+\end{align*}
+hence this does not work in general. The next attempt would be of the form $F^{\mu} = \phi U^{\mu}$, but that doesn't work either. The next attempt is of the form $F_{\mu} = F_{\mu\nu}U^{\nu}$, where the tensor components $F_{\mu\nu}$ of the so-called field strength are functions on spacetime..
+We then have $F^{\mu}U_{\nu} = F_{\mu\nu}U^{\mu}U^{\nu}$, which is zero if $F_{\mu\nu}$ is antisymmetric. To obtain this antisymmetry we define $F_{0i} = e_{i},\ F_{ij} = -\varepsilon_{ijk}b_{k}$. We then obtain
+\begin{align*}
+	F_{i} = -\gamma_{u}f_{i} = F_{i\mu}U^{\mu} = \gamma_{u}(-e_{i} - u_{j}\varepsilon_{ijk}b_{k}),
+\end{align*}
+which is on the same form as the Lorentz force. As we only know of one force of this kind in nature, we identify the simplest possible pure force as the Lorentz force. The definition of the field strength is often written
+\begin{align*}
+	F_{\mu} = \frac{q}{c}F_{\mu\nu}U^{\nu},
+\end{align*}
+and redoing the above derivation yields that $e_{i}$ and $b_{i}$ are indeed the components of the electric and magnetic field.
