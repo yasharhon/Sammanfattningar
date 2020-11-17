@@ -26,3 +26,79 @@ In general an observer will measure a frequency $\df{\phi}(V)$.
 
 \paragraph{Simultaneity}
 Two events are simultaneous if they are on the same hypersurface of constant $t$. As this depends very much on the choice of coordinates on spacetime, this notion is not at all well-defined.
+
+\paragraph{Static and Stationary Spacetime}
+If there exists a stime-like Killing field of a spacetime, it is stationary. If the spacetime is also orthogonal to a family of $3$-surfaces, the spacetime is static. The consequences of the latter is that the metric has no off-diagonal components.
+
+\paragraph{The Schwarzschild Solution}
+The Schwarzschild solution is the simplest solution for a spherically symmetric metric. It is of the form
+\begin{align*}
+	\dd{s}^{2} = \left(1 - \frac{R_{\text{S}}}{r}\right)\dd{t}^{2} - \left(1 - \frac{R_{\text{S}}}{r}\right)^{-1}\dd{r}^{2} - r^{2}\dd{\Omega}^{2},
+\end{align*}
+where $R_{\text{S}}$ is the Schwarzschild radius and we work in units where $c = 1$. To reobtain Newtonian gravity at large distances we would need $R_{\text{S}} = 2MG$.
+
+This metric has singularities at $r = R_{\text{S}}$ and $r = 0$. If you study the curvature invariant $R_{\mu\nu\lambda\sigma}R^{\mu\nu\lambda\sigma}$, however, you find that it is finite at $r = R_{\text{S}}$ and diverges at $r = 0$. This would imply that there exists a smart choice of coordinates in which the singularity at $R_{\text{S}}$ would be eliminated.
+
+This set of coordinates, called Eddington-Finkelstein coordinates, replaces $t$ with a coordinate that has the light-like geodesics as coordinate lines. For a purely radial path the requirement $\dd{s}^{2} = 0$ for such a geodesic yields
+\begin{align*}
+	\dd{t}^{2} = \left(1 - \frac{R_{\text{S}}}{r}\right)^{-2}\dd{r}^{2},
+\end{align*}
+with solution
+\begin{align*}
+	t = u - r - R_{\text{S}}\ln(\frac{r}{R_{\text{S}}} - 1),
+\end{align*}
+where $u$ is an integration constant labelling the geodesics. This will be the new coordinate. In these coordinates we obtain
+\begin{align*}
+	\dd{s}^{2} = \left(1 - \frac{R_{\text{S}}}{r}\right)\dd{u}^{2} - 2\dd{u}\dd{r} - r^{2}\dd{\Omega}^{2}.
+\end{align*}
+Notably, there is now only a singularity at $r = 0$.
+
+For radial light cones in these coordinates, one obtains
+\begin{align*}
+	\left(\left(1 - \frac{R_{\text{S}}}{r}\right)\dd{u}^{2} - 2\dd{r}\right)\dd{u} = 0,
+\end{align*}
+with solutions $\dd{u} = 0$ and $\dv{u}{r} = \frac{2}{1 - \frac{R_{\text{S}}}{r}}$. The first case is as discussed above. The second has $\dv{u}{r} > 0$ for $r < R_{\text{S}}$, meaning that world lines moving towards the future are drawn to the singularity at the origin when within the Schwarzschild radius.
+
+To describe space-like world lines, we can use Kruskal-Szekeres coordinates
+\begin{align*}
+	U = \abs{\frac{r}{R_{\text{S}}} - 1}^{\frac{1}{2}}e^{\frac{r}{2R_{\text{S}}}}\sinh(\frac{t}{2R_{\text{S}}}),\ V = \abs{\frac{r}{R_{\text{S}}} - 1}^{\frac{1}{2}}e^{\frac{r}{2R_{\text{S}}}}\cosh(\frac{t}{2R_{\text{S}}}).
+\end{align*}
+One finds that the metric is
+\begin{align*}
+	\dd{s}^{2} = \frac{4R_{\text{S}}^{3}}{r}e^{-\frac{r}{R_{\text{S}}}}(\dd{U}^{2} - \dd{V}^{2}) - r^{2}\dd{\Omega}^{2}.
+\end{align*}
+In these coordinates geodesics are hyperbolae.
+
+\paragraph{Symmetries and Conserved Quantities}
+Assume that a spacetime has a Killing field $K$, and consider a geodesic of the spacetime with tangent $U$. Along the geodesic we then have
+\begin{align*}
+	\dd{\tau}g_{\mu\nu}K^{\mu}U^{\nu} = \dcov{U}{g_{\mu\nu}K^{\mu}U^{\nu}} = (\dcov{U}{g_{\mu\nu}})K^{\mu}U^{\nu} + g_{\mu\nu}\dcov{U}{K^{\mu}U^{\nu}}.
+\end{align*}
+As the Levi-Civita connection is metric-compatible, the former term vanishes, and we are left with
+\begin{align*}
+	\dd{\tau}g_{\mu\nu}K^{\mu}U^{\nu} = g_{\mu\nu}U^{\nu}\dcov{U}{K^{\mu}} + g_{\mu\nu}K^{\mu}\dcov{U}{U^{\nu}}.
+\end{align*}
+As the path is a geodesic, the latter term vanishes and all that is left is
+\begin{align*}
+	\dd{\tau}g_{\mu\nu}K^{\mu}U^{\nu} = g_{\mu\nu}U^{\nu}\dcov{U}{K^{\mu}} = g_{\mu\nu}U^{\nu}U^{\sigma}\dcov{\sigma}{K^{\mu}} = U^{\nu}U^{\sigma}\dcov{\sigma}{K_{\nu}}.
+\end{align*}
+The two first factors are symmetric under permutation of indices, whereas the latter is not, hence this is just $0$. Thus the quantity $g_{\mu\nu}K^{\mu}U^{\nu}$ is a constant of motion along the path.
+
+\paragraph{Symmetries of the Schwarzschild Solution}
+We note that $\del{t}{}$ and $\del{\phi}{}$ are both Killing fields of the Schwarzschild solution. For $r > R_{\text{S}}$ one find that $\del{t}{}$ is time-like.
+
+For a general path we define
+\begin{align*}
+	\sqrt{2E} &= g(\del{t}{}, \dot{\gamma}) = \left(1 - \frac{R_{\text{S}}}{r}\right)\dot{t}, \\
+	L         &= g(\del{\phi}{}, \dot{\gamma}) = r^{s}\sin[2](\theta)\dot{\phi}, \\
+	\alpha    &= g(\dot{\gamma}, \dot{\gamma}).
+\end{align*}
+The latter is $1$ for a time-like path and $0$ for a light-like path. By definition we have
+\begin{align*}
+	\alpha &= \left(1 - \frac{R_{\text{S}}}{r}\right)\dot{t}^{2} - \frac{1}{1 - \frac{R_{\text{S}}}{r}}\dot{r}^{2} - r^{2}\sin[2](\theta)\dot{\phi}^{2} = \frac{2E}{1 - \frac{R_{\text{S}}}{r}} - \frac{1}{1 - \frac{R_{\text{S}}}{r}}\dot{r}^{2} - \frac{L^{2}}{r^{2}},
+\end{align*}
+which may be written as
+\begin{align*}
+	E - \frac{1}{2}\dot{r}^{2} = \frac{1}{2}\left(\alpha + \frac{L^{2}}{r^{2}}\right)\left(1 - \frac{R_{\text{S}}}{r}\right).
+\end{align*}
+This looks like the relation describing the potential energy of a particle in classical mechanics.
