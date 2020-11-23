@@ -101,7 +101,8 @@ We would like to extend the notion of conservative forces to special relativity.
 \begin{align*}
 	F_{\mu}U^{\mu} = -\del{\mu}{phi}\dv{x^{\mu}}{\tau} = -\dv{\phi}{\tau} \neq 0,
 \end{align*}
-hence this does not work in general. The next attempt would be of the form $F^{\mu} = \phi U^{\mu}$, but that doesn't work either. The next attempt is of the form $F_{\mu} = F_{\mu\nu}U^{\nu}$, where the tensor components $F_{\mu\nu}$ of the so-called field strength are functions on spacetime..
+hence this does not work in general. The next attempt would be of the form $F^{\mu} = \phi U^{\mu}$, but that doesn't work either. The next attempt is of the form $F_{\mu} = F_{\mu\nu}U^{\nu}$, where the tensor components $F_{\mu\nu}$ of the so-called field strength, or Faraday tensor, are functions on spacetime.
+
 We then have $F^{\mu}U_{\nu} = F_{\mu\nu}U^{\mu}U^{\nu}$, which is zero if $F_{\mu\nu}$ is antisymmetric. To obtain this antisymmetry we define $F_{0i} = e_{i},\ F_{ij} = -\varepsilon_{ijk}b_{k}$. We then obtain
 \begin{align*}
 	F_{i} = -\gamma_{u}f_{i} = F_{i\mu}U^{\mu} = \gamma_{u}(-e_{i} - u_{j}\varepsilon_{ijk}b_{k}),
@@ -111,3 +112,33 @@ which is on the same form as the Lorentz force. As we only know of one force of 
 	F_{\mu} = \frac{q}{c}F_{\mu\nu}U^{\nu},
 \end{align*}
 and redoing the above derivation yields that $e_{i}$ and $b_{i}$ are indeed the components of the electric and magnetic field.
+
+\paragraph{Transformation of Fields}
+By applying a Lorentz boost to the Faraday tensor, one obtains
+\begin{align*}
+	\vb{e}_{\parallel}\p = \vb{e}_{\parallel},\ \vb{e}_{\perp}\p = \gamma(\vb{e}_{\perp} + c\vb*{\beta}\times\vb{b}),\ \vb{b}_{\parallel}\p = \vb{b}_{\parallel},\ \vb{b}_{\perp}\p = \gamma(\vb{b}_{\perp} - \frac{1}{c}\vb*{\beta}\times\vb{e}).
+\end{align*}
+
+\paragraph{The Dual Field Strength}
+We may construct a dual field strength $\tilde{F}^{\mu\nu} = -\frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$, where $\varepsilon$ is the completely antisymmetric tensor with the convention $\varepsilon_{0123} = 1$.
+
+\paragraph{Invariants From the Field Strength}
+We may now construct Lorentz scalars by contracting indices of the field strength and its dual. We have:
+\begin{align*}
+	\frac{1}{2}F^{\mu\nu}F_{\mu\nu} = \frac{1}{2}\tilde{F}^{\mu\nu}\tilde{F}_{\mu\nu} = c^{2}\vb{b}^{2} - \vb{e}^{2},\ \frac{1}{2}F^{\mu\nu}\tilde{F}_{\mu\nu} = c\vb{e}\cdot\vb{b}.
+\end{align*}
+
+\paragraph{Maxwell's Equations}
+We will now try to formulate Maxwell's equations using the introduced formalism. We start by introducing the $4$-current $J^{\mu} = (c\rho, \vb{j})$. We then have $\del{\mu}{J^{\mu}} = \del{t}{\rho} - \div{\vb{j}}$. Maxwell's equations imply that this quantity is zero, and we will take that to be true. We also take the $4$-current to be a $4$-vector.
+
+A general $4$-current may be written as
+\begin{align*}
+	J^{\mu} = \sum\limits_{i}(c\rho_{i}, \rho_{i}\vb{u}_{i}),
+\end{align*}
+where the charge densities $\rho_{i}$ are defined in frames such that the corresponding current densities are zero.
+
+We try to recreate Maxwell's equation with an anzats
+\begin{align*}
+	\del{\mu}{F^{\mu\nu}} = kJ^{\nu},\ \del{\mu}{\tilde{F}^{\mu\nu}} = kJ_{\text{m}}^{\nu}.
+\end{align*}
+$J_{\text{m}}$ is a quantity that will correspond to magnetic charge and current, but as such a thing has not been found in nature, this quantity must be zero. $k$ is a constant that makes the dimensions match those of Maxwell's equation, and turns out to be $\frac{1}{c\varepsilon_{0}}$. Note that as the field strength is antisymmetric, this form guarantees charge conservation. This turns out to be the correct form of Maxwell's equations.
