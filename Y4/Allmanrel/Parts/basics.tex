@@ -145,3 +145,76 @@ An ideal fluid is a substance such that its energy-momentum tensor is of the for
 	T^{\mu\nu} = (\rho_{0} + p)u^{\mu}u^{\nu} - pg^{\mu\nu},
 \end{align*}
 where $u^{\mu}$ is the $4$-velocity of the rest frame of the fluid and $\rho_{0}$ and $p$ are the energy density and pressure of the fluid as measured in the rest frame.
+
+\paragraph{The Weak Field Limit}
+We will now study the Einstein field equations in a limit where the effects of general relativity are weak, in the hopes of finding some limit that reproduces Newtonian gravity. We will do this by linearizing the metric according to $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$, where $\eta$ is the Minkowski metric and all components of $h$ are small. To raise its components, we use the fact that the metric should produce the Kronecker delta to obtain
+\begin{align*}
+	\kdelta{\mu}{\sigma} = g^{\mu\nu}g_{\nu\sigma} = (\eta^{\mu\nu} + f^{\mu\nu})(\eta_{\nu\sigma} + h_{\nu\sigma}) = \eta^{\mu\nu}\eta_{\nu\sigma} + \eta^{\mu\nu}h_{\nu\sigma} + f^{\mu\nu}\eta_{\nu\sigma},
+\end{align*}
+where the perturbations of the inverse metric must also necessarily be small. This yields
+\begin{align*}
+	f^{\mu\nu} = -\eta^{\sigma\nu}\eta^{\rho\mu}h_{\rho\sigma}.
+\end{align*}
+
+When computing the curvature tensor, we will need squares of the Christoffel symbols. These are linear in the perturbations and may therefore be neglected, yielding
+\begin{align*}
+	\tensor*{R}{^{\mu}_{\nu\lambda\sigma}} = \del{\lambda}{\chris{\mu}{\sigma}{\nu}} - \del{\sigma}{\chris{\mu}{\lambda}{\nu}}
+\end{align*}
+and
+\begin{align*}
+	R_{\nu\sigma} = \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}),
+\end{align*}
+where we have introduced the d'Alembertian $\eta^{\mu\nu}\del{\mu}{\del{\nu}{}}$ and $h = \tensor{h}{^{\mu}_{\mu}}$. The Einstein tensor is
+\begin{align*}
+	G_{\nu\sigma} = \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}} + \eta_{\nu\sigma}\square h).
+\end{align*}
+
+To proceed, we choose coordinates such that $\square\chi^{\mu} = 0$. It may be shown that this leads to
+\begin{align*}
+	g^{\mu\nu}\chris{\lambda}{\mu}{\nu} = 0 \implies \del{\mu}{\tensor{h}{^{\mu}_{\lambda}}} = \frac{1}{2}\del{\lambda}{h}.
+\end{align*}
+This will yield the Einstein field equations
+\begin{align*}
+	G_{\nu\sigma} = -\frac{1}{2}(\square h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}\square h) = 8\pi GT_{\nu\sigma},
+\end{align*}
+or alternatively, by defining $\bar{h}_{\nu\sigma} = h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}h$:
+\begin{align*}
+	\square\bar{h}_{\mu\nu} = -16\pi GT_{\mu\nu}.
+\end{align*}
+
+To proceed we say a little more about the Newtonian limit. It should be found at low speeds, meaning that the energy-momentum tensor will be dominated by $T_{00}$, which is the energy density, or equivalently the mass density. The corresponding component of $\bar{h}$ will thus also dominate the other side. It should also be obtained when the involved masses are small. If the situation also evolves slowly, we may neglect time derivatives to obtain
+\begin{align*}
+	\laplacian{\bar{h}_{00}} = 16\pi G\rho.
+\end{align*}
+We may thus identify $\bar{h}_{00} = 4\Phi$, where $\Phi$ is the Newtonian gravitational potential. The corresponding spacetime length is
+\begin{align*}
+	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{x^{i}}\dd{x^{i}}.
+\end{align*}
+It can also be shown that the geodesics of this metric corresponds to Newton's laws for such a case.
+
+\paragraph{Gravitational Waves}
+We have seen that in the weak field limit the perturbations to the metric in vacuum satisfy the wave equation. The solution is of the form
+\begin{align*}
+	\bar{h}_{\mu\nu} = A_{\mu\nu}e^{-ik^{\sigma}x_{\sigma}}.
+\end{align*}
+This is an eigenfunction of the d'Alembertian with eigenvalue $k^{\mu}k_{\mu}$, hence the wavevector must be light-like and waves in the metric travel at the speed of light.
+
+With the chosen gauge for the coordinates we still have some freedom - namely, the coordinate transform $x^{\mu} \to x^{\mu} + B^{\mu}e^{-k^{\sigma}x_{\sigma}}$ gives the same gauge. We may also choose $B^{\mu}$ such that $\tensor{A}{^{\mu}_{\mu}} = 0$ and $A_{0\mu} = 0$ in some frame. Furthermore, in this gauge we have $\del{\mu}{\bar{h}^{\mu\nu}} = k_{\mu}A^{\mu\nu} = 0$. For a wave propagating in the third Cartesian direction the only non-zero amplitudes are $A^{11} = -A^{22} = A_{+}$ and $A^{12} = A^{21} = A_{\cross}$.
+
+Gravitational waves propagate between geodesics, so we need to consider geodesic deviation. To do this, consider two events close to each other on a simultaneity. Evolution in proper time will then take the events to a new simultaneity. Let $X$ be the vector field that is tangent to the simultaneity and pointing in the direction of the other event for each $\tau$, and $U$ the tangent of the geodesic. We then have:
+\begin{align*}
+	\ddot{X} = \dcov{U}{\dcov{U}{X}} = R(U, X)U,
+\end{align*}
+where we have chosen the torsion such that $\comm{X}{U} = 0$. In component form:
+\begin{align*}
+	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{\lambda\sigma\nu}}U^{\lambda}U^{\sigma}X^{\nu}.
+\end{align*}
+For a slowly moving test particle we obtain
+\begin{align*}
+	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{00\nu}}X^{\nu}.
+\end{align*}
+As we have $\tensor*{R}{_{\mu 00\nu}} = \frac{1}{2}\del[2]{0}{h_{\mu\nu}}$, the solution is
+\begin{align*}
+	X^{1} = X^{1}(0)\left(1 + \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right),\ X^{2} = X^{2}(0)\left(1 - \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right).
+\end{align*}
+Hence spatial distances oscillate due to the oscillating metric. I think.
