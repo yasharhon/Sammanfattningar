@@ -316,11 +316,11 @@ the symmetry yields
 \paragraph{The Exterior Derivative}
 We define the exterior derivative of a differential form according to
 \begin{align*}
-d\omega = \frac{1}{p!}\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{a_{k}},
+	d\omega = \frac{1}{p!}\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{a_{k}},
 \end{align*}
 which is a $p + 1$-form. This notation makes sense, as at least in the case of a $0$-form, we obtain
 \begin{align*}
-d\omega = \del{a}{\omega}d\chi^{a},
+	d\omega = \del{a}{\omega}d\chi^{a},
 \end{align*}
 which is exactly the form of a dual vector. Somehow this transforms as a tensor.
 
@@ -451,18 +451,30 @@ Hence we have
 which is the divergence theorem.
 
 \example{The $n$-Dimensional Divergence Theorem}
-
-\paragraph{The Geometry of Curved Space}
-We can also impose a metric tensor such that $\vb{v}\cdot\vb{w} = g_{ab}v^{a}w^{b}$, where the metric tensor is symmetric and positive definite.
-
-Dual vectors can be defined as linear maps from tangent vectors to scalars, i. e. on the form
+Let us generalize the latter to an $n$-dimensional case. Consider a $n - 1$-form and its exterior derivative. We have
 \begin{align*}
-V(\vb{w}) = V_{a}w^{a}.
+	\minteg{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\minteg{V}{\del{a_{1}}{\omega_{a_{2}\dots a_{n}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}}.
 \end{align*}
-In particular, the dual vector $\dd{f}$ can be defined as
+We may once again choose coordinates such that the components of $\omega$ are completely antisymmetric, yielding
 \begin{align*}
-\dd{f}(\vb{v}) = v^{a}\del{a}{f} = \dv{f}{t}
+	\minteg{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\minteg{V}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\del{a_{1}}{\omega_{a_{n + 1}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}} \\
+	                        &= \frac{1}{(n - 1)!}\integ[n]{}{}{x}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\varepsilon_{a_{1}\dots a_{n}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
+	                        &= \frac{1}{(n - 1)!}\integ[n]{}{}{x}{\varepsilon_{a_{2}\dots a_{n + 1}}\varepsilon_{a_{2}\dots a_{n}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}}.
 \end{align*}
-along a curve with $\vb{v}$ as a tangent. A basis for the space of dual vectors is $e^{a} = \dd{\chi^{a}}$. The tangent and dual spaces, if a metric exists, are related by $v_{a} = g_{ab}v^{b}$.
+Summing over all but the first and last index will give a factor $(n - 1)!$, as this is the number of permutations of $n - 1$ unique indices. The remaining product is non-zero only when the last indices are equal, and is in this case equal to $1$, hence
+\begin{align*}
+\minteg{V}{\df{\omega}} &= \integ[n]{}{}{x}{\delta_{a_{n + 1}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
+                        &= \integ[n]{}{}{x}{\del{a}{\omega_{a}}}.
+\end{align*}
 
-Curve lengths are defined and computed as before. By defining geodesics as curves that extremize path length, this gives a set of Christoffel symbols and therefore a covariant derivative and a sense of what it means for a vector to change along a curve.
+At the same time we have
+\begin{align*}
+	\minteg{\bound{V}}{\omega} &= \frac{1}{(n - 1)!}\minteg{\bound{V}}{\varepsilon_{a_{1}\dots a_{n}}\omega_{a_{n}}\bigwedge\limits_{k = 1}^{n - 1}d\chi^{a_{k}}} \\
+	                           &= \frac{1}{(n - 1)!}\integ{\bound{V}}{}{S_{m}}{\varepsilon_{a_{1}\dots a_{n}}\varepsilon_{a_{1}\dots a_{n - 1}m}\omega_{a_{n}}} \\
+	                           &= \integ{\bound{V}}{}{S_{a}}{\omega_{a}}.
+\end{align*}
+Hence we have
+\begin{align*}
+	\integ[n]{}{}{x}{\del{a}{\omega_{a}}} = \integ{\bound{V}}{}{S_{a}}{\omega_{a}},
+\end{align*}
+which is a generalization of the divergence theorem. Note that this only applies if the coordinates of the manifold are akin to Cartesian coordinates.
