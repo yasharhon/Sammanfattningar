@@ -1,0 +1,37 @@
+\section{Cosmology}
+
+\paragraph{The Cosmological Principle}
+The cosmological principle states that the universe is homogenous and isotropic. As a consequence, the spatial part of the universe must be maximally symmetric, meaning that it has $6$ Killing fields.
+
+\paragraph{Possible Metrics}
+Given the cosmological principle, there are three possible choices of manifold describing simultaneities. We will describe all of them using polar coordinates, hence they will all have a spatial metric of the form $\dd{\Sigma}^{2} = \dd{r}^{2} + s^{2}(r)\dd{\Omega}^{2}$. These are:
+\begin{itemize}
+	\item the $3$-sphere, with $s(r) = \frac{1}{k}\sin(kr)$.
+	\item flat Euclidean space, with $s(r) = r$.
+	\item a hyperbolic surface, with $s(r) = \frac{1}{k}\sinh(kr)$.
+\end{itemize}
+
+We will treat this options generally and introduce the spacetime interval $\dd{s}^{2} = \dd{t}^{2} - a^{2}(t)\dd{\Sigma}^{2}$. This defines the Robertson-Walker (RW) universe. The factor $a(t)$ is called the scale factor. A similar factor could in principle be found in front of the time interval, but can be eliminated by a change of variables.
+
+\paragraph{The Friedman-Lemaitre-Robertson-Walker Universe}
+The FLRW universe assumes the universe to be filled with an ideal fluid. For the universe to be homogenous and isotropic, this would require $\rho$ and $p$ to be functions of time only. We will also use the general equation of state $p = w\rho$ as an assumption. It can be shown that $w = 0$ for dust and $w = \frac{1}{3}$ for radiation. In order to not break isotropy, the fluid rest frame must also coincide with that of a comoving observer.
+
+To proceed, we use the fact that $\dcov{\mu}{G^{\mu\nu}} = 0$, implying $\dcov{\mu}{T^{\mu\nu}} = 0$. As the fluid moves along geodesics, implying $\dcov{U}{U} = 0$, we find
+\begin{align*}
+	U^{\mu}U^{\nu}\del{\mu}{(p + \rho)} + (p + \rho)U^{\nu}\dcov{\mu}{U^{\mu}} - g^{\mu\nu}\del{\mu}{p} = 0.
+\end{align*}
+For $\nu = 0$ we find
+\begin{align*}
+	\dot{p} + \dot{\rho} + (p + \rho)\chris{\mu}{\mu}{0} - \dot{p} = \dot{\rho} + 3(1 + w)\frac{\dot{a}}{a}\rho = 0.
+\end{align*}
+We can integrate this to find $\rho\propto a^{-3(1 + w)}$. Next, the Einstein field equations imply the so-called Friedmann equations
+\begin{align*}
+	R_{\mu\nu} = 8\pi G\left(T_{\mu\nu} - \frac{1}{2}\tensor{T}{^{\sigma}_{\sigma}}\right).
+\end{align*}
+One equation of note is
+\begin{align*}
+	R_{00} = 4\pi G(\rho + 3p) = -3\frac{\ddot{a}}{a}.
+\end{align*}
+
+\paragraph{The Big Bang}
+As we saw above, we have $\frac{\ddot{a}}{a} \propto -(\rho + 3p)$. Now, we have observed that $\dot{a} > 0$, and as $\ddot{a} < 0$ we must have that $\dot{a}$ was greater before. The general shape of the corresponding solution implies that there exists a time when $a$ was equal to zero. The time at which this changed is termed the Big Bang.

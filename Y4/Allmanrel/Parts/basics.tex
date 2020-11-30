@@ -6,6 +6,9 @@ In special relativity we work with Minkowski space, which is an affine space wit
 \paragraph{The Description of Spacetime}
 In general relativity we will describe spacetime as a $4$-dimensional manifold with a pseudometric of signature $(1, 3)$ with a Levi-Civita connection imposed on it.
 
+\paragraph{Comiving Observers}
+A comoving observer is one that has fixed spatial coordinates.
+
 \paragraph{Kinematics of Test Particles}
 A test particle is a particle that itself does not affect the spacetime. Such particles can generally move through spacetime, along curves called world lines. With this motion comes the $4$-velocity $V$, defined as the normalized tangent to a world line. In special relativity we could also define a proper acceleration by differentiating with respect to proper time. In general relativity we replace this with the $4$-acceleration $A = \dcov{V}{V} = \dcov{\dot{\gamma}}{\dot{\gamma}}$.  We may also define the proper acceleration $\alpha$, which satisfies $\alpha^{2} = -A^{2} = -g(A, A)$, and it can be shown that if $V$ is time-like, then $A$ is space-like. Note that the curve parameter we use is $\tau$, which is the proper time and a measure of length in spacetime.
 
@@ -218,3 +221,36 @@ As we have $\tensor*{R}{_{\mu 00\nu}} = \frac{1}{2}\del[2]{0}{h_{\mu\nu}}$, the 
 	X^{1} = X^{1}(0)\left(1 + \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right),\ X^{2} = X^{2}(0)\left(1 - \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right).
 \end{align*}
 Hence spatial distances oscillate due to the oscillating metric. I think.
+
+\paragraph{Gravitational Lensing}
+Consider an object and an observer separated by a distribution of matter producing a gravitational potential $\Phi$. In the weak-field limit the metric is described by
+\begin{align*}
+	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{\vb{x}}^{2},
+\end{align*}
+and the path of a ray of light travelling between the two is described by
+\begin{align*}
+	(1 + 2\Phi)\dot{t}^{2} - (1 - 2\Phi)\dot{\vb{x}}^{2} = 0.
+\end{align*}
+In the weak-field limit we expect $\Phi \ll 1$, and thus $\dot{t}^{2} \approx \dot{\vb{x}}^{2}$.
+
+In the case where the potential is time-independent, the geodesic equation for the time coordinate yields
+\begin{align*}
+	(1 + 2\Phi)\dot{t} = c,
+\end{align*}
+and we are free to choose $c = 1$ by rescaling the parameter. Next, the equation for the spatial coordinates is
+\begin{align*}
+	-\ddot{\vb{x}} + 2(\dot{\vb{x}}\cdot\grad{\Phi})\dot{\vb{x}} = (\dot{t}^{2} + \dot{\vb{x}}^{2})\grad{\Phi}.
+\end{align*}
+
+Choosing a coordinate system such that $\dot{\vb{x}} = \vb{e}_{x}$ initially. In the weak-field we expect
+\begin{align*}
+	\dot{\vb{x}} = (1 + \dots)\vb{e}_{x} + v^{2}\vb{e}_{y} + v^{3}\vb{e}_{z},
+\end{align*}
+where the new velocity components are small and the dots represent perturbations of the path of higher order than the other velocity components. Inserting this into the geodesic equation yields
+\begin{align*}
+	-\dot{v}^{2} = 2(\grad{\Phi})^{2},
+\end{align*}
+where we refer to vector components on either side. We can solve this differential equation by integrating along the unperturbed path. In particular, by moving both the observer and the object to infinity we find
+\begin{align*}
+	\dot{v}^{2} = -\integ{-\infty}{\infty}{t}{2(\grad{\Phi})^{2}}.
+\end{align*}
