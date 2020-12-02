@@ -35,3 +35,52 @@ One equation of note is
 
 \paragraph{The Big Bang}
 As we saw above, we have $\frac{\ddot{a}}{a} \propto -(\rho + 3p)$. Now, we have observed that $\dot{a} > 0$, and as $\ddot{a} < 0$ we must have that $\dot{a}$ was greater before. The general shape of the corresponding solution implies that there exists a time when $a$ was equal to zero. The time at which this changed is termed the Big Bang.
+
+\paragraph{Cosmological Redshift}
+Consider two comoving observers in a RW universe. We may choose our coordinates such that they are connected by a purely radial path. Supposing that a light signal is sent from one to the other, that light signal satisfies
+\begin{align*}
+	\dd{t} = a(t)\dd{r}.
+\end{align*}
+We may integrate this to find
+\begin{align*}
+	r_{2} - r_{1} = \integ{t_{1}}{t_{2}}{t}{\frac{1}{a(t)}}.
+\end{align*}
+A similar relation will hold for the next pulse of the signal, implying
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{t}{\frac{1}{a(t)}} = \integ{t_{1} + \var{t_{1}}}{t_{2} + \var{t_{2}}}{t}{\frac{1}{a(t)}},
+\end{align*}
+which can be rearranged to
+\begin{align*}
+	\integ{t_{2}}{t_{2} + \var{t_{2}}}{t}{\frac{1}{a(t)}} - \integ{t_{1}}{t_{1} + \var{t_{1}}}{t}{\frac{1}{a(t)}} = 0.
+\end{align*}
+Assuming the frequency of the light to be high, we may linearize the above. By assumption we have $f_{i} \propto \frac{1}{\var{t_{i}}}$, and the Doppler shift is thus given by
+\begin{align*}
+	\frac{f_{2}}{f_{1}} = \frac{a(t_{1})}{a(t_{2})}.
+\end{align*}
+
+\paragraph{Evolution of the Universe}
+As we have seen, there is a density $\rho_{\text{c}} = \frac{3H^{2}}{8\pi G}$ such that $\kappa = 0$ and the universe is flat. Introducing the density parameter $\Omega = \frac{\rho}{\rho_{\text{c}}}$ one of the Friedmann equations may be written as
+\begin{align*}
+	\sum\limits_{i}\Omega_{i} + \Omega_{\kappa} = 1,\ \Omega_{\kappa} = -\frac{\kappa}{H^{2}a^{2}},
+\end{align*}
+where the summation is performed over all matter components of the universe. In particular, for a flat universe we may reuse one previous solution to write
+\begin{align*}
+	H^{2} = \left(\frac{\dot{a}}{a}\right)^{2} = \frac{8\pi}{3}G\sum\limits_{i}\rho_{0, i}a^{-3(w_{i} + 1)},
+\end{align*}
+where $\rho$ and $a$ are both evaluated at the current time.
+
+\paragraph{Accelerating Expansion and Cosmological Constant}
+The universe has been found to have accelerating expansion. Furthermore, there is evidence for the existence of an energy component of the universe corresponding to $w = -1$ and $\rho$ constant. This component is called the cosmological constant and is a kind of dark energy.
+
+\paragraph{Cosmological Inflation}
+The Big Bang model has some problems. One is the existence of a singularity of the metric at the time of the Big Bang. A second is the high degree of flatness of the universe. Finally there is the high degree of homogeneity of the universe.
+
+To elaborate, if the universe is dominated by an ideal fluid, one of the Friedmann equations may be shown to be equivalent to
+\begin{align*}
+	1 - \frac{1}{\Omega} \propto a^{1 + 3w}.
+\end{align*}
+This means that if $w > -\frac{1}{3}$ then $1 - \frac{1}{\Omega}$ increases with time. As the universe is currently very flat, $1 - \frac{1}{\Omega}$ must have been close to $1$ shortly after the Big Bang.
+
+Furthermore, when studying the cosmic microwave background, regions that are not in causal contact are very close in temperature. This requires explanation.
+
+Cosmological inflation is an attempt at explaining the above. It posits that shortly after the Big Bang there was a rapid expansion dominated by an ideal fluid with $w < -\frac{1}{3}$. It solves the flatness problem by driving $1 - \frac{1}{\Omega}$ towards $0$ at these early times. It also solves the problem of homogeneity by allowing the previously described regions to be causally connected at early times, before being separated by expansion. This inflation would of course have to be stopped, a problem that can be solved by dynamic inflation.
