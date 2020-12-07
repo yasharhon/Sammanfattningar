@@ -55,3 +55,22 @@ It can be shown from that the above that a corresponding Hamiltonian is
 \begin{align*}
 	\mathcal{H} = \sqrt{(m_{0}c^{2})^{2} + (\vb{p} - q\vb{a})^{2}c^{2}} + q\phi.
 \end{align*}
+
+\paragraph{The Hamilton-Jacobi Equation}
+I mention the Hamilton-Jacobi equation
+\begin{align*}
+	\mathcal{H} + \del{t}{S} = 0.
+\end{align*}
+This defines a partial differential equation for $S$, as the momenta are in this context to be taken to be $p_{\mu} = \del{\mu}{S}$. For details, see my summary of SI2360.
+
+\paragraph{Nöether's Theorem}
+The general formulation of Nöether's theorem is the following: Suppose that there exists a continuous transformation $\tau \to \tilde{\tau} = \tau + \var{\tau},\ x^{\mu}(\tau) \to \tilde{x}^{\mu}(\tilde{\tau}) = x^{\mu}(\tau) + \var{x^{\mu}}(\tilde{\tau})$ that adds a term corresponding to a function $F$ evaluated at the start and end to the action. Corresponding to such a transformation there exists a conserved quantity
+\begin{align*}
+	J = F - \pdv{\lag}{x^{\mu}}\var{x^{\mu}} + \left(\dot{x}^{\mu}\pdv{\lag}{\dot{x}^{\mu}} - \lag\right)\var{\tau}.
+\end{align*}
+
+\paragraph{$4$-Angular Momentum}
+It can be shown that corresponding to a Lorentz boosts there is a conserved quantity
+\begin{align*}
+	L^{\mu\nu} = x^{\mu}p^{\nu} - p^{\mu}x^{\nu}.
+\end{align*}
