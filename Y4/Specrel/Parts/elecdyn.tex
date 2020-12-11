@@ -1,13 +1,135 @@
 \section{Electrodynamics}
 
-\paragraph{Transformation of Fields}
-By applying a Lorentz boost to the Faraday tensor, one obtains
+\paragraph{Lorentz Force}
+We would like to extend the notion of conservative forces to special relativity. The corresponding notion would be a potential $\phi$ such that its derivative created a pure force. However, we have
 \begin{align*}
-	\vb{e}_{\parallel}\p = \vb{e}_{\parallel},\ \vb{e}_{\perp}\p = \gamma(\vb{e}_{\perp} + c\vb*{\beta}\times\vb{b}),\ \vb{b}_{\parallel}\p = \vb{b}_{\parallel},\ \vb{b}_{\perp}\p = \gamma(\vb{b}_{\perp} - \frac{1}{c}\vb*{\beta}\times\vb{e}).
+	F_{\mu}U^{\mu} = -\del{\mu}{\phi}\dv{x^{\mu}}{\tau} = -\dv{\phi}{\tau} \neq 0,
+\end{align*}
+hence this does not work in general. The next attempt would be of the form $F^{\mu} = \phi U^{\mu}$, but that doesn't work either. The next attempt is of the form $F_{\mu} = CF_{\mu\nu}U^{\nu}$, where the tensor components $F_{\mu\nu}$ of the so-called field strength, or Faraday tensor, are functions on spacetime.
+
+We then have $F^{\mu}U_{\nu} = CF_{\mu\nu}U^{\mu}U^{\nu}$, which is zero if $F_{\mu\nu}$ is antisymmetric. To obtain this antisymmetry we define $F_{0i} = e_{i},\ F_{ij} = -\varepsilon_{ijk}cb_{k}$. We then obtain
+\begin{align*}
+	F_{i} = -\gamma_{u}f_{i} = CF_{i\mu}U^{\mu} = -CF_{\mu i}U^{\mu} = -\gamma_{u}C(ce_{i} - u_{j}\varepsilon_{jik}cb_{k}) = -\gamma_{u}cC(e_{i} + \varepsilon_{ijk}u_{j}b_{k}),
+\end{align*}
+and thus
+\begin{align*}
+	f_{i} = cC(e_{i} + \varepsilon_{ijk}u_{j}b_{k})
+\end{align*}
+which is on the same form as the Lorentz force. As we only know of one force of this kind in nature, we identify the simplest possible pure force as the Lorentz force and choose $C = \frac{q}{c}$. With this choice, $e_{i}$ and $b_{i}$ are indeed the components of the electric and magnetic field.
+
+\paragraph{A More Proper Discussion}
+The last few steps above were somewhat dubious, so let us repeat them in a way that relies less on the use of Cartesian coordinates. More specifically, treat the time coordinate as before and use an arbitrary coordinate system for the spatial coordinates. Define
+\begin{align*}
+	F_{0i} = g_{ij}e^{j} = e_{i},\ F_{ij} = -\varepsilon_{ijk}cb^{k}.
+\end{align*}
+We then have
+\begin{align*}
+	F_{i} = CF_{i\mu}U^{\mu} = -CF_{\mu i}U^{\mu} = -C\gamma_{u}(g_{ij}ce^{j} - \varepsilon_{jik}cb^{k}u^{j}) = -C\gamma_{u}(g_{ij}ce^{j} + \varepsilon_{ijk}cb^{k}u^{j}) = -cC\gamma_{u}(e_{i} + \varepsilon_{ijk}u^{j}b^{k}).
+\end{align*}
+This is the form of the Lorentz force in a general coordinate system, I think.
+
+\paragraph{Transformation of Fields}
+A Lorentz boost of the Faraday tensor takes the form
+\begin{align*}
+	F^{\mu\p\nu\p} = \trcou{\mu\p}{\mu}\trcou{\nu\p}{\nu}F^{\mu\nu}.
+\end{align*}
+This can be simplified to a matrix multiplication operation for any particular choice of coordinates - namely, the transformed components of $F$ are given by $F\p = \Lambda F\Lambda^{T}$. For a boost in the $x$-direction we find
+\begin{align*}
+	\mqty[
+		0        & e^{1\p}   & e^{2\p}   & e^{3\p} \\
+		-e^{1\p} & 0         & cb^{3\p}  & -cb^{2\p} \\
+		-e^{2\p} & -cb^{3\p} & 0         & cb^{1\p} \\
+		-e^{3\p} & cb^{2\p}  & -cb^{1\p} & 0
+	] &=
+	\mqty[
+		\gamma       & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma       & 0 & 0 \\
+		0            & 0            & 1 & 0 \\
+		0            & 0            & 0 & 1
+	]
+	\mqty[
+		0      & e^{1}   & e^{2}   & e^{3} \\
+		-e^{1} & 0       & cb^{3}  & -cb^{2} \\
+		-e^{2} & -cb^{3} & 0       & cb^{1} \\
+		-e^{3} & cb^{2}  & -cb^{1}  & 0
+	]
+	\mqty[
+		\gamma       & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma       & 0 & 0 \\
+		0            & 0            & 1 & 0 \\
+		0            & 0            & 0 & 1
+	] \\
+	  &=
+	\mqty[
+		\beta\gamma e^{1} & \gamma e^{1}       & \gamma(e^{2} - \beta cb^{3})  & \gamma(e^{3} + \beta cb^{2}) \\
+		-\gamma e^{1}     & -\beta\gamma e^{1} & \gamma(cb^{3} - \beta e^{2})  & -\gamma(cb^{2} + \beta e^{3}) \\
+		-e^{2}            & -cb^{3}            & 0                             & cb^{1} \\
+		-e^{3}            & cb^{2}             & -cb^{1}                       & 0
+	]
+	\mqty[
+		\gamma       & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma       & 0 & 0 \\
+		0            & 0            & 1 & 0 \\
+		0            & 0            & 0 & 1
+	] \\
+	  &=
+	\mqty[
+		0                             & e^{1}                         & \gamma(e^{2} - \beta cb^{3})  & \gamma(e^{3} + \beta cb^{2}) \\
+		-e^{1}                        & 0                             & \gamma(cb^{3} - \beta e^{2})  & -\gamma(cb^{2} + \beta e^{3}) \\
+		-\gamma(e^{2} - \beta cb^{3}) & -\gamma(cb^{3} - \beta e^{2}) & 0                             & cb^{1} \\
+		-\gamma(e^{3} + \beta cb^{2}) & \gamma(cb^{2} + \beta e^{3})  & -cb^{1}                       & 0
+	].
+\end{align*}
+Note the structure of the Faraday tensor arising due to $\varepsilon^{123} = -1$ and the raising of the indices of $\vb{b}$ adding a minus sign.
+
+One may now read off the transformed field components and compose the above boost with a spatial rotation to infer
+\begin{align*}
+	\vb{e}_{\parallel}\p = \vb{e}_{\parallel},\ \vb{e}_{\perp}\p = \gamma(\vb{e}_{\perp} + c\vb*{\beta}\times\vb{b}),\ \vb{b}_{\parallel}\p = \vb{b}_{\parallel},\ \vb{b}_{\perp}\p = \gamma\left(\vb{b}_{\perp} - \frac{1}{c}\vb*{\beta}\times\vb{e}\right),
+\end{align*}
+where the parallel and perpendicular subscripts refer to orientations with respect to the direction of the Lorentz boost.
+
+Alternatively, expressed in terms of tensor components and transformation coefficients, we have the non-zero transformation coefficients
+\begin{align*}
+	\trcou{0\p}{0} = \trcou{1\p}{1} = \gamma,\ \trcou{1\p}{0} = \trcou{0\p}{1} = -\beta\gamma,\ \trcou{2\p}{2} = \trcou{2\p}{2} = 1.
+\end{align*}
+Thus,
+\begin{align*}
+	e^{i\p} = F^{0\p i\p} = \trcou{0\p}{\mu}\trcou{i\p}{\nu}F^{\mu\nu},\ c\varepsilon^{i\p j\p k\p}b_{k\p} = F^{i\p j\p} = \trcou{i\p}{\mu}\trcou{j\p}{\nu}F^{\mu\nu}.
+\end{align*}
+First:
+\begin{align*}
+	e^{1\p} &= \trcou{0\p}{\mu}\trcou{1\p}{\nu}F^{\mu\nu} = \trcou{0\p}{0}\trcou{1\p}{1}F^{01} + \trcou{0\p}{1}\trcou{1\p}{0}F^{10} = e^{1}(\gamma^{2} - \beta^{2}\gamma^{2}) = e^{1}, \\
+	e^{2\p} &= \trcou{0\p}{\mu}\trcou{2\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{\mu 2} = \gamma e^{2} - \beta\gamma\cdot F^{12} = \gamma(e^{2} - \beta cb^{3}), \\
+	e^{3\p} &= \trcou{0\p}{\mu}\trcou{3\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{\mu 3} = \gamma e^{3} - \beta\gamma\cdot F^{13} = \gamma(e^{3} + \beta cb^{2}).
+\end{align*}
+Next:
+\begin{align*}
+	b^{1\p} &= \frac{1}{c}\trcou{2\p}{\mu}\trcou{3\p}{\nu}F^{\mu\nu} = \frac{1}{c}F^{23} = b^{1}, \\
+	b^{2\p} &= \frac{1}{c}\trcou{3\p}{\mu}\trcou{1\p}{\nu}F^{\mu\nu} = \frac{1}{c}\gamma(F^{31} - \beta F^{30}) = \frac{\gamma}{c}(cb^{2} + \beta e^{3}) \\
+	b^{3\p} &= \frac{1}{c}\trcou{1\p}{\mu}\trcou{2\p}{\nu}F^{\mu\nu} = \frac{1}{c}\gamma(F^{12} - \beta F^{02}) = \frac{1}{c}\gamma(cb^{3} - \beta e^{2}).
 \end{align*}
 
 \paragraph{The Dual Field Strength}
-We may construct a dual field strength $\tilde{F}^{\mu\nu} = -\frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$, where $\varepsilon$ is the completely antisymmetric tensor with the convention $\varepsilon_{0123} = 1$.
+We may construct a dual field strength $\tilde{F}^{\mu\nu} = \frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$, where $\varepsilon$ is the completely antisymmetric tensor with the convention $\varepsilon_{0123} = 1$. We find:
+\begin{align*}
+	\tilde{F}^{0i} = \frac{1}{2}\varepsilon^{0i\rho\sigma}F_{\rho\sigma} = \frac{1}{2}\varepsilon^{0ijk}F_{jk} = -\frac{1}{2}c\varepsilon^{0ijk}\varepsilon_{jkm}b^{m}.
+\end{align*}
+Explicitly:
+\begin{align*}
+	\tilde{F}^{01} &= -\frac{1}{2}c(\varepsilon^{0123}\varepsilon_{231} + \varepsilon^{0132}\varepsilon_{321})b^{1} = cb^{1},
+\end{align*}
+and cyclic permutation of the spatial indexes yields $\tilde{F}^{0i} = -b^{i}$. Next:
+\begin{align*}
+	\tilde{F}^{ij} = \frac{1}{2}\varepsilon^{ij\rho\sigma}F_{\rho\sigma}.
+\end{align*}
+One particular choice is
+\begin{align*}
+	\tilde{F}^{23} = \frac{1}{2}\varepsilon^{23\rho\sigma}F_{\rho\sigma} = \frac{1}{2}(\varepsilon^{2301}F_{01} + \varepsilon^{2310}F_{10}) = -e_{1}.
+\end{align*}
+To obtain the other terms, take the first occurring sequences $23$ and permute in a $1$ from the left or the right. The former will add a minus sign while the latter will not, yielding
+\begin{align*}
+	\tilde{F}^{ij} = \varepsilon^{ijk}e_{k}.
+\end{align*}
 
 \paragraph{Invariants From the Field Strength}
 We may now construct Lorentz scalars by contracting indices of the field strength and its dual. We have:
@@ -86,3 +208,10 @@ where $U$ is the $4$-velocity field. Furthermore, it can be shown that $K_{\mu} 
 	\tensor{M}{_{\mu}^{\nu}} = -\varepsilon_{0}F_{\mu\sigma}F^{\nu\sigma} + \frac{1}{4}\kdelta{\nu}{\mu}F^{\rho\sigma}F_{\rho\sigma}.
 \end{align*}
 When elevating indices to the same height, we find that this tensor is symmetric.
+
+Next, it can be shown that $K^{0} = \frac{1}{c}\vb{e}\cdot\vb{j}$.
+
+In the end, one obtains equations
+\begin{align*}
+	\del{t}{\sigma} + \div{c^{2}\vb{g}} = -\vb{e}\cdot\vb{j},\ \del{t}{g_{i}} + \del{j}{p_{ij}} = -k_{i}.
+\end{align*}
