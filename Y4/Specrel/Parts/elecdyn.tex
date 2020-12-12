@@ -20,11 +20,15 @@ which is on the same form as the Lorentz force. As we only know of one force of 
 \paragraph{A More Proper Discussion}
 The last few steps above were somewhat dubious, so let us repeat them in a way that relies less on the use of Cartesian coordinates. More specifically, treat the time coordinate as before and use an arbitrary coordinate system for the spatial coordinates. Define
 \begin{align*}
-	F_{0i} = g_{ij}e^{j} = e_{i},\ F_{ij} = -\varepsilon_{ijk}cb^{k}.
+	F^{0i} = -e^{i},\ F^{ij} = -\varepsilon^{ijk}cb_{k},\ F_{0i} = -e_{i},\ F_{ij} = -\varepsilon_{ijk}cb^{k}.
 \end{align*}
-We then have
+Here the ''contravariant´´ components of the fields are the ones to recognize as the proper Cartesian coordinates, although the transformation properties of the above are really not those of $4$-vectors. Note also that as $\varepsilon_{123} = 1$, this implies $\varepsilon^{123} = -1$. We then have
 \begin{align*}
-	F_{i} = CF_{i\mu}U^{\mu} = -CF_{\mu i}U^{\mu} = -C\gamma_{u}(g_{ij}ce^{j} - \varepsilon_{jik}cb^{k}u^{j}) = -C\gamma_{u}(g_{ij}ce^{j} + \varepsilon_{ijk}cb^{k}u^{j}) = -cC\gamma_{u}(e_{i} + \varepsilon_{ijk}u^{j}b^{k}).
+	F^{i} = CF^{i\mu}U_{\mu} = -CF^{\mu i}U_{\mu} = C\gamma_{u}(ce^{i} + \varepsilon^{jik}cb_{k}u_{j}) = cC\gamma_{u}(e^{i} - \varepsilon^{ijk}u_{j}b_{k}).
+\end{align*}
+%TODO: Check that part below
+\begin{align*}
+	F_{i} = CF_{i\mu}U^{\mu} = -CF_{\mu i}U^{\mu} = -C\gamma_{u}(ce_{i} - \varepsilon_{jik}cb^{k}u^{j}) = -C\gamma_{u}(ce_{i} + \varepsilon_{ijk}cb^{k}u^{j}) = -cC\gamma_{u}(e_{i} + \varepsilon_{ijk}u^{j}b^{k}).
 \end{align*}
 This is the form of the Lorentz force in a general coordinate system, I think.
 
@@ -36,10 +40,10 @@ A Lorentz boost of the Faraday tensor takes the form
 This can be simplified to a matrix multiplication operation for any particular choice of coordinates - namely, the transformed components of $F$ are given by $F\p = \Lambda F\Lambda^{T}$. For a boost in the $x$-direction we find
 \begin{align*}
 	\mqty[
-		0        & e^{1\p}   & e^{2\p}   & e^{3\p} \\
-		-e^{1\p} & 0         & cb^{3\p}  & -cb^{2\p} \\
-		-e^{2\p} & -cb^{3\p} & 0         & cb^{1\p} \\
-		-e^{3\p} & cb^{2\p}  & -cb^{1\p} & 0
+		0       & -e^{1\p}  & -e^{2\p}  & -e^{3\p} \\
+		e^{1\p} & 0         & -cb^{3\p} & cb^{2\p} \\
+		e^{2\p} & cb^{3\p}  & 0         & -cb^{1\p} \\
+		e^{3\p} & -cb^{2\p} & cb^{1\p}  & 0
 	] &=
 	\mqty[
 		\gamma       & -\beta\gamma & 0 & 0 \\
@@ -48,10 +52,10 @@ This can be simplified to a matrix multiplication operation for any particular c
 		0            & 0            & 0 & 1
 	]
 	\mqty[
-		0      & e^{1}   & e^{2}   & e^{3} \\
-		-e^{1} & 0       & cb^{3}  & -cb^{2} \\
-		-e^{2} & -cb^{3} & 0       & cb^{1} \\
-		-e^{3} & cb^{2}  & -cb^{1}  & 0
+		0     & -e^{1}  & -e^{2}  & -e^{3} \\
+		e^{1} & 0       & -cb^{3} & cb^{2} \\
+		e^{2} & cb^{3}  & 0       & -cb^{1} \\
+		e^{3} & -cb^{2} & cb^{1}  & 0
 	]
 	\mqty[
 		\gamma       & -\beta\gamma & 0 & 0 \\
@@ -61,10 +65,10 @@ This can be simplified to a matrix multiplication operation for any particular c
 	] \\
 	  &=
 	\mqty[
-		\beta\gamma e^{1} & \gamma e^{1}       & \gamma(e^{2} - \beta cb^{3})  & \gamma(e^{3} + \beta cb^{2}) \\
-		-\gamma e^{1}     & -\beta\gamma e^{1} & \gamma(cb^{3} - \beta e^{2})  & -\gamma(cb^{2} + \beta e^{3}) \\
-		-e^{2}            & -cb^{3}            & 0                             & cb^{1} \\
-		-e^{3}            & cb^{2}             & -cb^{1}                       & 0
+		-\beta\gamma e^{1} & -\gamma e^{1}     & -\gamma(e^{2} - \beta cb^{3})  & -\gamma(e^{3} + \beta cb^{2}) \\
+		\gamma e^{1}       & \beta\gamma e^{1} & -\gamma(cb^{3} - \beta e^{2})  & \gamma(cb^{2} + \beta e^{3}) \\
+		e^{2}              & cb^{3}            & 0                              & -cb^{1} \\
+		e^{3}              & -cb^{2}           & cb^{1}                         & 0
 	]
 	\mqty[
 		\gamma       & -\beta\gamma & 0 & 0 \\
@@ -74,14 +78,12 @@ This can be simplified to a matrix multiplication operation for any particular c
 	] \\
 	  &=
 	\mqty[
-		0                             & e^{1}                         & \gamma(e^{2} - \beta cb^{3})  & \gamma(e^{3} + \beta cb^{2}) \\
-		-e^{1}                        & 0                             & \gamma(cb^{3} - \beta e^{2})  & -\gamma(cb^{2} + \beta e^{3}) \\
-		-\gamma(e^{2} - \beta cb^{3}) & -\gamma(cb^{3} - \beta e^{2}) & 0                             & cb^{1} \\
-		-\gamma(e^{3} + \beta cb^{2}) & \gamma(cb^{2} + \beta e^{3})  & -cb^{1}                       & 0
+		0                             & -e^{1}                        & -\gamma(e^{2} - \beta cb^{3})  & -\gamma(e^{3} + \beta cb^{2}) \\
+		e^{1}                        & 0                             & -\gamma(cb^{3} - \beta e^{2})  & \gamma(cb^{2} + \beta e^{3}) \\
+		\gamma(e^{2} - \beta cb^{3}) & \gamma(cb^{3} - \beta e^{2}) & 0                             & -cb^{1} \\
+		\gamma(e^{3} + \beta cb^{2}) & -\gamma(cb^{2} + \beta e^{3})  & cb^{1}                       & 0
 	].
 \end{align*}
-Note the structure of the Faraday tensor arising due to $\varepsilon^{123} = -1$ and the raising of the indices of $\vb{b}$ adding a minus sign.
-
 One may now read off the transformed field components and compose the above boost with a spatial rotation to infer
 \begin{align*}
 	\vb{e}_{\parallel}\p = \vb{e}_{\parallel},\ \vb{e}_{\perp}\p = \gamma(\vb{e}_{\perp} + c\vb*{\beta}\times\vb{b}),\ \vb{b}_{\parallel}\p = \vb{b}_{\parallel},\ \vb{b}_{\perp}\p = \gamma\left(\vb{b}_{\perp} - \frac{1}{c}\vb*{\beta}\times\vb{e}\right),
@@ -90,23 +92,24 @@ where the parallel and perpendicular subscripts refer to orientations with respe
 
 Alternatively, expressed in terms of tensor components and transformation coefficients, we have the non-zero transformation coefficients
 \begin{align*}
-	\trcou{0\p}{0} = \trcou{1\p}{1} = \gamma,\ \trcou{1\p}{0} = \trcou{0\p}{1} = -\beta\gamma,\ \trcou{2\p}{2} = \trcou{2\p}{2} = 1.
+	&\trcou{0\p}{0} = \trcou{1\p}{1} = \gamma,\ \trcou{1\p}{0} = \trcou{0\p}{1} = -\beta\gamma,\ \trcou{2\p}{2} = \trcou{3\p}{3} = 1, \\
+	&\trcod{0\p}{0} = \trcod{1\p}{1} = \gamma,\ \trcod{1\p}{0} = \trcod{0\p}{1} = \beta\gamma,\ \trcod{2\p}{2} = \trcod{3\p}{3} = 1
 \end{align*}
 Thus,
 \begin{align*}
-	e^{i\p} = F^{0\p i\p} = \trcou{0\p}{\mu}\trcou{i\p}{\nu}F^{\mu\nu},\ c\varepsilon^{i\p j\p k\p}b_{k\p} = F^{i\p j\p} = \trcou{i\p}{\mu}\trcou{j\p}{\nu}F^{\mu\nu}.
+	e^{i\p} = F^{i\p 0\p} = \trcou{i\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu},\ \varepsilon_{i\p j\p k\p}b^{k\p} = -\frac{1}{c}F_{i\p j\p} = \frac{1}{c}\trcod{j\p}{\mu}\trcod{i\p}{\nu}F_{\mu\nu}.
 \end{align*}
 First:
 \begin{align*}
-	e^{1\p} &= \trcou{0\p}{\mu}\trcou{1\p}{\nu}F^{\mu\nu} = \trcou{0\p}{0}\trcou{1\p}{1}F^{01} + \trcou{0\p}{1}\trcou{1\p}{0}F^{10} = e^{1}(\gamma^{2} - \beta^{2}\gamma^{2}) = e^{1}, \\
-	e^{2\p} &= \trcou{0\p}{\mu}\trcou{2\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{\mu 2} = \gamma e^{2} - \beta\gamma\cdot F^{12} = \gamma(e^{2} - \beta cb^{3}), \\
-	e^{3\p} &= \trcou{0\p}{\mu}\trcou{3\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{\mu 3} = \gamma e^{3} - \beta\gamma\cdot F^{13} = \gamma(e^{3} + \beta cb^{2}).
+	e^{1\p} &= \trcou{1\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu} = \trcou{0\p}{0}\trcou{1\p}{1}F^{10} + \trcou{0\p}{1}\trcou{1\p}{0}F^{01} = e^{1}(\gamma^{2} - \beta^{2}\gamma^{2}) = e^{1}, \\
+	e^{2\p} &= \trcou{2\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{2\mu} = \gamma e^{2} - \beta\gamma F^{21} = \gamma(e^{2} + \beta c\varepsilon^{213}b_{3}) = \gamma(e^{2} - \beta cb^{3}), \\
+	e^{3\p} &= \trcou{3\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{3\mu} = \gamma e^{3} - \beta\gamma\cdot F^{31} = \gamma(e^{3} + \beta c\varepsilon^{312}b_{2}) = \gamma(e^{3} + \beta cb^{2}).
 \end{align*}
 Next:
 \begin{align*}
-	b^{1\p} &= \frac{1}{c}\trcou{2\p}{\mu}\trcou{3\p}{\nu}F^{\mu\nu} = \frac{1}{c}F^{23} = b^{1}, \\
-	b^{2\p} &= \frac{1}{c}\trcou{3\p}{\mu}\trcou{1\p}{\nu}F^{\mu\nu} = \frac{1}{c}\gamma(F^{31} - \beta F^{30}) = \frac{\gamma}{c}(cb^{2} + \beta e^{3}) \\
-	b^{3\p} &= \frac{1}{c}\trcou{1\p}{\mu}\trcou{2\p}{\nu}F^{\mu\nu} = \frac{1}{c}\gamma(F^{12} - \beta F^{02}) = \frac{1}{c}\gamma(cb^{3} - \beta e^{2}).
+	b^{1\p} &= \frac{1}{c}\trcod{3\p}{\mu}\trcod{2\p}{\nu}F_{\mu\nu} = \frac{1}{c}F_{32} = b^{1}, \\
+	b^{2\p} &= \frac{1}{c}\trcod{1\p}{\mu}\trcod{3\p}{\nu}F_{\mu\nu} = \frac{1}{c}\gamma(F_{13} + \beta F_{03}) = \frac{\gamma}{c}(cb^{2} - \beta e_{3}) = \frac{\gamma}{c}(cb^{2} + \beta e^{3}) \\
+	b^{3\p} &= \frac{1}{c}\trcod{2\p}{\mu}\trcod{1\p}{\nu}F_{\mu\nu} = \frac{1}{c}\gamma(F_{21} + \beta F_{20}) = \frac{1}{c}\gamma(cb^{3} + \beta e_{2}) = \frac{1}{c}\gamma(cb^{3} - \beta e^{2}).
 \end{align*}
 
 \paragraph{The Dual Field Strength}
@@ -118,39 +121,74 @@ Explicitly:
 \begin{align*}
 	\tilde{F}^{01} &= -\frac{1}{2}c(\varepsilon^{0123}\varepsilon_{231} + \varepsilon^{0132}\varepsilon_{321})b^{1} = cb^{1},
 \end{align*}
-and cyclic permutation of the spatial indexes yields $\tilde{F}^{0i} = -b^{i}$. Next:
+and cyclic permutation of the spatial indexes yields $\tilde{F}^{0i} = cb^{i}$. Next:
 \begin{align*}
 	\tilde{F}^{ij} = \frac{1}{2}\varepsilon^{ij\rho\sigma}F_{\rho\sigma}.
 \end{align*}
 One particular choice is
 \begin{align*}
-	\tilde{F}^{23} = \frac{1}{2}\varepsilon^{23\rho\sigma}F_{\rho\sigma} = \frac{1}{2}(\varepsilon^{2301}F_{01} + \varepsilon^{2310}F_{10}) = -e_{1}.
+	\tilde{F}^{23} = \frac{1}{2}\varepsilon^{23\rho\sigma}F_{\rho\sigma} = \frac{1}{2}(\varepsilon^{2301}F_{01} + \varepsilon^{2310}F_{10}) = e_{1}.
 \end{align*}
 To obtain the other terms, take the first occurring sequences $23$ and permute in a $1$ from the left or the right. The former will add a minus sign while the latter will not, yielding
 \begin{align*}
-	\tilde{F}^{ij} = \varepsilon^{ijk}e_{k}.
+	\tilde{F}^{ij} = -\varepsilon^{ijk}e_{k}.
 \end{align*}
+In other words, we obtain the dual by switching $\vb{e} \to -c\vb{b}$ and $c\vb{b} \to \vb{e}$ in the Faraday tensor.
 
 \paragraph{Invariants From the Field Strength}
-We may now construct Lorentz scalars by contracting indices of the field strength and its dual. We have:
+We may now construct Lorentz scalars by contracting indices of the field strength and its dual.
+
+Consider first the quantity $F^{\mu\nu}F_{\mu\nu} = F^{0\nu}F_{0\nu} + F^{i\nu}F_{i\nu} = F^{0i}F_{0i} + F^{i0}F_{i0} + F^{ij}F_{ij} = 2F^{0i}F_{0i} + F^{ij}F_{ij}$, where we have used the fact that the Faraday tensor is antisymmetric. The first term is merely $2e^{i}e_{i}$. The second is:
 \begin{align*}
-	\frac{1}{2}F^{\mu\nu}F_{\mu\nu} = \frac{1}{2}\tilde{F}^{\mu\nu}\tilde{F}_{\mu\nu} = c^{2}\vb{b}^{2} - \vb{e}^{2},\ \frac{1}{2}F^{\mu\nu}\tilde{F}_{\mu\nu} = c\vb{e}\cdot\vb{b}.
+	F^{ij}F_{ij} &= \varepsilon_{ijk}\varepsilon^{ijm}c^{2}b^{k}b_{m}.
+\end{align*}
+Evidently there is only a contribution when $k = m$, implying that every combination of indices such that a non-zero term is produced adds the square of some component. Furthermore, all components appear equally often, so we may fix both $k$ and $m$ to some value and sum over $i$ and $j$ to find the final value. By doing that, we find that each component appears exactly twice, finally yielding
+\begin{align*}
+	\frac{1}{2}F^{\mu\nu}F_{\mu\nu} = e^{i}e_{i} - c^{2}b^{i}b_{i} = c^{2}\abs{\vb{b}}^{2} - \abs{\vb{e}}^{2}.
+\end{align*}
+By performing the above described replacement, we find $F^{\mu\nu}F_{\mu\nu} = -\tilde{F}^{\mu\nu}\tilde{F}_{\mu\nu}$.
+
+Next we form the quantity $F^{\mu\nu}\tilde{F}_{\mu\nu} = F^{0\nu}\tilde{F}_{0\nu} + F^{i\nu}\tilde{F}_{i\nu} = F^{0i}\tilde{F}_{0i} + F^{i0}\tilde{F}_{i0} + F^{ij}\tilde{F}_{ij} = 2F^{0i}\tilde{F}_{0i} + F^{ij}\tilde{F}_{ij}$. The first term is
+\begin{align*}
+	F^{0i}\tilde{F}_{0i} = -ce^{i}b_{i}.
+\end{align*}
+The second term is
+\begin{align*}
+	F^{ij}\tilde{F}_{ij} = \varepsilon^{ijk}\varepsilon_{ijm}cb_{k}e^{m} = -2ce^{i}b_{i},
+\end{align*}
+yielding
+\begin{align*}
+	\frac{1}{4}F^{\mu\nu}\tilde{F}_{\mu\nu} = -ce^{i}b_{i} = -c\vb{e}\cdot\vb{b}.
 \end{align*}
 
 \paragraph{Maxwell's Equations}
-We will now try to formulate Maxwell's equations using the introduced formalism. We start by introducing the $4$-current $J^{\mu} = (c\rho, \vb{j})$. We then have $\del{\mu}{J^{\mu}} = \del{t}{\rho} - \div{\vb{j}}$. Maxwell's equations imply that this quantity is zero, and we will take that to be true. We also take the $4$-current to be a $4$-vector.
-
-A general $4$-current may be written as
+We will now try to formulate Maxwell's equations using the introduced formalism. We start by introducing the $4$-current $J^{\mu} = (c\rho, \vb{j})$, which we take to be a $4$-vector. A general $4$-current may be written as
 \begin{align*}
 	J^{\mu} = \sum\limits_{i}(c\rho_{i}, \rho_{i}\vb{u}_{i}),
 \end{align*}
 where the charge densities $\rho_{i}$ are defined in frames such that the corresponding current densities are zero.
 
-We try to recreate Maxwell's equation with an anzats
+Charge conservation takes the form $\del{\mu}{J^{\mu}} = \del{t}{\rho} - \div{\vb{j}} = 0$ in this formalism, and we will have to formulate alternative Maxwell equations consistent with this. We try an anzats
 \begin{align*}
 	\del{\mu}{F^{\mu\nu}} = kJ^{\nu},\ \del{\mu}{\tilde{F}^{\mu\nu}} = kJ_{\text{m}}^{\nu}.
 \end{align*}
-$J_{\text{m}}$ is a quantity that will correspond to magnetic charge and current, but as such a thing has not been found in nature, this quantity must be zero. $k$ is a constant that makes the dimensions match those of Maxwell's equation, and turns out to be $\frac{1}{c\varepsilon_{0}}$. Note that as the field strength is antisymmetric, this form guarantees charge conservation. This turns out to be the correct form of Maxwell's equations.
+$J_{\text{m}}$ is a quantity that will correspond to magnetic charge and current. Note that this guarantees charge conservation due to the Faraday tensor being antisymmetric.
+
+Let us first study
+\begin{align*}
+	\del{\mu}{F^{\mu 0}} = \del{i}{e^{i}} = kc\rho.
+\end{align*}
+This already has the correct form if $k = \frac{1}{c\varepsilon_{0}}$. Repeating the same on the magnetic expression implies $J_{\text{m}}^{0} = 0$ in some frame, at least.
+
+Next, consider
+\begin{align*}
+	\del{\mu}{F^{\mu i}} = \del{0}{F^{0i}} + \del{j}{F^{ji}} = -\frac{1}{c}\del{t}{e^{i}} - \varepsilon^{jik}c\del{j}{b_{k}} = \frac{1}{c\varepsilon_{0}}j^{i},
+\end{align*}
+or equivalently
+\begin{align*}
+	\varepsilon^{ijk}\del{j}{b_{k}} = \frac{1}{c^{2}}\del{t}{e^{i}} + \frac{1}{c^{2}\varepsilon_{0}}j^{i} = \mu_{0}(j^{i} + \varepsilon_{0}\del{t}{e^{i}}),
+\end{align*}
+reproducing another one of Maxwell's equations. The corresponding expression for the dual tensor creates the final equation if $J_{\text{m}}^{i} = 0$, and having argued that the magnetic $4$-current is zero in one frame, the same must hold in all frames.
 
 \paragraph{The $4$-Potential}
 We define the $4$-potential as $\Phi^{\mu} = (c\phi, \vb{a})$, where $\phi$ is the electric potential and $\vb{a}$ is the magnetic potential. Using this, the Maxwell equation $\del{\mu}{\tilde{F}^{\mu\nu}} = 0$ is automatically satisfied. With this particular choice of $4$-potential, the other will as well. Namely, we infer from the above that 
