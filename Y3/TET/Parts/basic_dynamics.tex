@@ -91,7 +91,7 @@ Vi får i ett system med $n$ statiska slingor
 \end{align*}
 Vi kan ställa upp detta med hjälp av egeninduktansen som
 \begin{align*}
-	\dv{I_{i}}{t} + \frac{I_{i}}{R_{i}L_{i}} = \frac{\emf_{\text{övriga}}}{L_{i}}.
+	\dv{I_{i}}{t} + \frac{R_{i}I_{i}}{L_{i}} = \frac{\emf_{\text{övriga}}}{L_{i}}.
 \end{align*}
 
 \paragraph{Magnetisk energi}
@@ -122,8 +122,6 @@ som alternativt kan skrivas som
 
 \paragraph{Magnetisk energi i material}
 
-\paragraph{Krafter på magneter}
-
 \paragraph{Magnetisk energi för en slinga med tjocklek}
 Vi delar strömslingan i små delar $V_{i}$ med tvärsnitt $S_{i}$. Magnetiska energin ges av
 \begin{align*}
@@ -153,6 +151,40 @@ Vi vet att detta är strikt positivt, så induktansmatrisen måste vara positivt
 Med detta kan vi skriva
 \begin{align*}
 	M_{ij} = \frac{2W_{\text{m}, ij}}{I_{i}I_{j}},\ L_{i} = \frac{2W_{\text{m}, ii}}{I_{i}^{2}}.
+\end{align*}
+
+\paragraph{Krafter på magneter}
+Betrakta en magnet någonstans i närheten av en strömtäthet $\vb{J}$. Magnetens position beskrivs av någon referensvektor $\vb{r}$.
+
+Betrakta magneten först. Om det förflyttas en sträcka $\dd{\vb{r}}$, görs ett arbete $\dd{W}$ av kraften $\vb{F}$. Kraftjämvikten ger
+\begin{align*}
+	\vb{F} + \vb{F}_{\text{m}} = \vb{0},
+\end{align*}
+och därmed
+\begin{align*}
+	\dd{W} = \vb{F}\cdot\dd{\vb{r}} = -\vb{F}_{\text{m}}\cdot\dd{\vb{r}},\ \vb{F}_{\text{m}} = -\grad{W}.
+\end{align*}
+
+Om systemet är isolerad får man att upplagrad magnetisk energi är enda energikällan som finns, vilket ger $\dd{W} = \dd{W}_{\text{m}}$ och
+\begin{align*}
+	\vb{F}_{\text{m}} = -\grad{W_{\text{m}}}.
+\end{align*}
+Jag tror att detta motsvarar att alla magnetiska flöden bevaras. Om detta är sant får man
+\begin{align*}
+	\vb{F}_{\text{m}} = \frac{1}{2}\frac{\Phi^{2}}{L^{2}}\grad{L} = \frac{1}{2}I^{2}\grad{L}.
+\end{align*}
+
+Om systemet i stället är anslutet till strömkällor så att alla strömmar hålls konstanta fås
+\begin{align*}
+	\grad{W_{\text{m}}} = \frac{1}{2}I^{2}\grad{L}.
+\end{align*}
+Samtidigt gör källan ett arbete
+\begin{align*}
+	\dd{W} = -I\dd{\Phi} + \dd{W_{\text{m}}}
+\end{align*}
+för att upprätthålla konstanta strömmar. Eftersom $\Phi = IL$ drar vi slutsatsen att $W = -W_{\text{m}}$, vilket ger
+\begin{align*}
+	\vb{F}_{\text{m}} = \grad{W_{\text{m}}} = \frac{1}{2}I^{2}\grad{L}.
 \end{align*}
 
 \paragraph{Generalisering av Ampères lag}
