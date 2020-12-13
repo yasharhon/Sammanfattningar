@@ -130,27 +130,43 @@ and thus $\lied{X}{Y} = \comm{X}{Y}$. In particular, we have $\lied{X}{\del{a}{}
 
 To find the Lie derivative of dual vectors, we use the fact that the product rule (somehow) respects contraction, meaning
 \begin{align*}
-\lied{X}{\omega(Y)} &= (\lied{X}{\omega})(Y) + \omega(\lied{X}{Y}) \\
+	\lied{X}{\omega(Y)} &= (\lied{X}{\omega})(Y) + \omega(\lied{X}{Y}) \\
 &= (\lied{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\del{b}{Y^{a}} - Y^{b}\del{b}{X^{a}}).
 \end{align*}
 As the left-hand side is simply equal to $X^{a}\del{a}{(\omega_{b}Y^{b})}$, we obtain
 \begin{align*}
-(\lied{X}{\omega})_{a}Y^{a} &= X^{a}\del{a}{(\omega_{b}Y^{b})} - \omega_{b}X^{a}\del{a}{Y^{b}} + \omega_{a}Y^{b}\del{b}{X^{a}} \\
+	(\lied{X}{\omega})_{a}Y^{a} &= X^{a}\del{a}{(\omega_{b}Y^{b})} - \omega_{b}X^{a}\del{a}{Y^{b}} + \omega_{a}Y^{b}\del{b}{X^{a}} \\
 &= Y^{a}X^{b}\del{b}{\omega_{a}} + \omega_{b}Y^{a}\del{a}{X^{b}},
 \end{align*}
 and thus
 \begin{align*}
-(\lied{X}{\omega})_{a} &= X^{b}\del{b}{\omega_{a}} + \omega_{b}\del{a}{X^{b}}.
+	(\lied{X}{\omega})_{a} &= X^{b}\del{b}{\omega_{a}} + \omega_{b}\del{a}{X^{b}}.
 \end{align*}
 In particular, we have $\lied{X}{\df{\chi^{a}}} = \del{c}{X^{a}}\df{\chi^{c}}$.
 
-Finally, for a tensor, we somehow obtain
+We are now ready to compute the Lie derivative of a tensor. Writing
 \begin{align*}
-\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{c}\del{c}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}ca_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{c}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}cb_{j + 1}\dots b_{m}}}\del{b_{j}}{X^{c}}.
+	T = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
+\end{align*}
+the product rule implies
+\begin{align*}
+	\lied{X}{T} &= (\lied{X}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}})\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\lied{X}{\tensor*{e}{_{a_{i}}}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\lied{X}{\tensor*{e}{^{b_{j}}}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes \del{a_{i}}{X^{a}}\tensor*{e}{_{a}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes \del{a}{X^{b_{j}}}\tensor*{e}{^{a}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a_{i}}{X^{a}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{a}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{b_{j}}}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{a}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}}.
+\end{align*}
+There are no free indices, so we may switch the places of the numbered indices and $a$ to obtain
+\begin{align*}
+	\lied{X}{T} =& X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{a_{i}}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} \\
+	             &+ \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{b_{j}}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            =& \left(X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}\right)\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
+\end{align*}
+allowing us to identify
+\begin{align*}
+\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}.
 \end{align*}
 
 \paragraph{Connections}
-A connection is an operator that satisfies the following:
+A connection is an operator on a tensor space that satisfies the following:
 \begin{itemize}
 	\item $\dcov{X}{f} = Xf = X^{a}\del{a}{f}$ for a scalar field $f$.
 	\item $\dcov{X + Y}{T} = \dcov{X}{T} + \dcov{Y}{T}$.
@@ -161,15 +177,48 @@ A connection is an operator that satisfies the following:
 \paragraph{Connections on Manifolds}
 On a manifold, a connection is specified by choosing $n$ independent vectors $X_{i}$ and defining
 \begin{align*}
-\dcov{X_{i}}{X_{j}} = \chris{k}{i}{j}X_{k},
+	\dcov{X_{i}}{X_{j}} = \chris{k}{i}{j}X_{k},
 \end{align*}
 where the expansion coefficients are called connection coefficients or Christoffel symbols. There is no unique way to do this, as the connection then depends on the choice of vectors.
 
 \paragraph{The Connection of a Tensor Field}
-%TODO: Show
-By a lengthy process of product rule application one obtains
+Specify the connection according to $\dcov{\del{a}{}}{\del{b}{}} = \chris{c}{a}{b}\del{c}{}$. For a tensor
 \begin{align*}
-\tensor*{(\dcov{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\left(\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right).
+	T = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}
+\end{align*}
+we find using the product rule
+\begin{align*}
+	\dcov{X}{T} =& (\dcov{X}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}})\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\dcov{X}{\tensor*{e}{_{a_{i}}}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\dcov{X}{\tensor*{e}{^{b_{j}}}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}}.
+\end{align*}
+To proceed we will need to require that the connection respect contraction, yielding
+\begin{align*}
+	\dcov{X}{\omega(Y)} &= \dcov{X}{\omega}(Y) + \omega(\dcov{X}{Y}) \\
+	                    &= (\dcov{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\dcov{b}{(Y^{c}\del{c}{})})^{a} \\
+	                    &= (X^{b}\dcov{b}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}(\del{b}{Y^{c}}\del{c}{} + Y^{c}\chris{d}{b}{c}\del{d}{}))^{a} \\
+	                    &= X^{b}(\dcov{b}{\omega})_{a}Y^{a} + \omega_{a}X^{b}\del{b}{Y^{a}} + \omega_{a}X^{b}Y^{c}\chris{a}{b}{c}.
+\end{align*}
+On the other side we have
+\begin{align*}
+	\dcov{X}{\omega(Y)} = X^{a}(Y^{b}\del{a}{\omega_{b}} + \omega_{b}\del{a}{Y^{b}}),
+\end{align*}
+implying
+\begin{align*}
+	Y^{a}X^{b}(\dcov{b}{\omega})_{a} &= X^{a}(Y^{b}\del{a}{\omega_{b}} + \omega_{b}\del{a}{Y^{b}}) - \omega_{a}X^{b}\del{b}{Y^{a}} - \omega_{a}X^{b}Y^{c}\chris{a}{b}{c} \\
+	                                 &= Y^{a}X^{b}\del{b}{\omega_{a}} - Y^{a}X^{b}\omega_{c}\chris{c}{b}{a},
+\end{align*}
+and as this must be true for all $X$ and $Y$ we have
+\begin{align*}
+	\dcov{b}{\omega} &= (\del{b}{\omega_{a}} - \omega_{c}\chris{c}{b}{a})\df{\chi^{a}}.
+\end{align*}
+
+We now proceed according to
+\begin{align*}
+	\dcov{X}{T} =& X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}X^{a}\chris{b}{a}{a_{i}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{b}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} - \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}X^{a}\chris{b_{j}}{a}{b}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{b}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            =& X^{a}\left(\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right)\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
+\end{align*}
+and we recognize
+\begin{align*}
+	\tensor*{(\dcov{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\left(\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right).
 \end{align*}
 
 \paragraph{Parallel Transport}
