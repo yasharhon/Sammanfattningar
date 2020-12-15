@@ -3,23 +3,50 @@
 \paragraph{A Note on Minkowski Space}
 In special relativity we work with Minkowski space, which is an affine space with a so-called pseudo-metric. This is a metric which is not positive definite, but instead a metric which has only non-zero eigenvalues (and is thus termed non-degenerate). We will work with the signature $(1, 3)$, meaning that there are three eigenvalues of $-1$ and one eigenvalue $1$.
 
-\paragraph{The Description of Spacetime}
-In general relativity we will describe spacetime as a $4$-dimensional manifold with a pseudometric of signature $(1, 3)$ with a Levi-Civita connection imposed on it.
+\paragraph{Problems With Gravitation}
+Newton's law of gravitation states that
+\begin{align*}
+	\vb{a} = \frac{1}{m_{\text{I}}}\vb{f}_{\text{G}} = -\frac{m_{\text{G}}}{m_{\text{I}}}\grad{\Phi},\ \Phi = 4\pi G\rho.
+\end{align*}
+There are a few possible problems and peculiarities with this, namely:
+\begin{itemize}
+	\item It has no explicit time dependence, and can therefore not hold by itself in special relativity.
+	\item As the mass density does not transform as a Lorentz scalar, we cannot generalize gravitation to special relativity like we did with electromagnetism.
+	\item The ratio between gravitational and inertial mass is the same for all particles. This makes gravitation stand out as a fundamental force.
+\end{itemize}
 
-\paragraph{Comiving Observers}
+\paragraph{The Equivalence Principle}
+The equivalence principles states that in a freely-falling, non-rotating- spatially small laboratory, the laws of physics are those of special relativity.
+
+\paragraph{An Extended Description of Spacetime}
+Einstein proposed a solution to the issue of gravitation that also incorporates the equivalence principle.
+
+Einstein's idea was to extend the special theory of relativity to a curved spacetime and propose that this spacetime is bent by matter. This would mean that free particles move along geodesics in this spacetime, explaining the equality of gravitational and inertial mass. For the equivalence principle to hold, i.e. for it to be possible to locally construct a Minkowski spacetime, spacetime must be a pseudo-Riemannian manifold.
+
+This transition is in fact not as big a leap as one might expect. As we have seen in special relativity, simultaneity is no longer guaranteed by the physics, so surfaces of constant time could at least be slanted. As the introduction of spacetime made it possible in principle to introduce curvilinear coordinates on time as well, we have yet to add anything. The only addition in GR is the extension of spacetime from an affine space to a manifold.
+
+In conclusion, we will describe spacetime as a $4$-dimensional manifold immersed in $5$-dimensional spacetime with a pseudometric of signature $(1, 3)$ and the Levi-Civita connection imposed on it.
+
+\paragraph{Comoving Observers}
 A comoving observer is one that has fixed spatial coordinates.
 
 \paragraph{Kinematics of Test Particles}
-A test particle is a particle that itself does not affect the spacetime. Such particles can generally move through spacetime, along curves called world lines. With this motion comes the $4$-velocity $V$, defined as the normalized tangent to a world line. In special relativity we could also define a proper acceleration by differentiating with respect to proper time. In general relativity we replace this with the $4$-acceleration $A = \dcov{V}{V} = \dcov{\dot{\gamma}}{\dot{\gamma}}$.  We may also define the proper acceleration $\alpha$, which satisfies $\alpha^{2} = -A^{2} = -g(A, A)$, and it can be shown that if $V$ is time-like, then $A$ is space-like. Note that the curve parameter we use is $\tau$, which is the proper time and a measure of length in spacetime.
+A test particle is a particle that itself does not affect the spacetime. Such particles can generally move through spacetime, along curves called world lines. With this motion comes the $4$-velocity $V$, defined as the normalized tangent to a world line. In special relativity we could also define a proper acceleration by differentiating with respect to proper time. In general relativity we replace this with the $4$-acceleration $A = \dcov{V}{V} = \dcov{\dot{\gamma}}{\dot{\gamma}}$.  We may also define the proper acceleration $\alpha$, which satisfies $\alpha^{2} = -A^{2} = -g(A, A)$. As $g(V, V) = 1$, we have
+\begin{align*}
+	\dcov{\mu}{g(V, V)} = 2g(V, A) = 0,
+\end{align*}
+which implies that $A$ is space-like. Note that the curve parameter we use is $\tau$, which is the proper time and a measure of length in spacetime.
 
 \paragraph{Free Particles}
-A free particle in special relativity is a particle for which $A = 0$. We take this definition to apply in general relativity as well. This implies that free test particles travel along spacetime geodesics.
+A free particle moves along geodesics, meaning $A = 0$.
 
 \paragraph{$4$-Momentum and $4$-Force}
 We also define the $4$-momentum $P = mV$ and the $4$-force $F = \dcov{V}{P}$.
 
-\paragraph{Simultaneity}
+\paragraph{Simultaneity and Distance}
 Two events are simultaneous if they are on the same hypersurface of constant $t$. As this depends very much on the choice of coordinates on spacetime, this notion is not at all well-defined.
+
+Similarly, distances are defined along simultaneities and are equally ill-defined. It turns out that the only sense of distance that all observers can agree on is proper time.
 
 \paragraph{Static and Stationary Spacetime}
 If there exists a stime-like Killing field of a spacetime, it is stationary. If the spacetime is also orthogonal to a family of $3$-surfaces, the spacetime is static. The consequences of the latter is that the metric has no off-diagonal components.
@@ -29,15 +56,68 @@ The equations describing the metric are the Einstein field equations. We will de
 \begin{align*}
 	S_{\text{EH}} = -\frac{M_{\alpha}^{2}}{2}\integ[4]{}{}{\chi}{\R\sqrt{-\det(g)}}.
 \end{align*}
-%TODO: Derive
-The final equations are
+
+To derive a set of equations describing the extremum of this action, we will need to differentiate the two factors. We choose to do so with respect to the dual metric components. Considering the metric determinant first, we have
 \begin{align*}
-	R_{\mu\nu} - \frac{1}{2}\R = 0.
+	\pdv{g^{\mu\nu}}(g^{\rho\sigma}g_{\rho\sigma}) = \pdv{g^{\rho\sigma}}{g^{\mu\nu}}g_{\rho\sigma} + g^{\rho\sigma}\pdv{g^{\rho\sigma}}{g_{\mu\nu}} = 0.
+\end{align*}
+Next, we study the quantity $\tr(\ln(g))$. We have
+\begin{align*}
+	\pdv{\tr(\ln(g))}{g^{\mu\nu}} = \tr(\pdv{\ln(g)}{g^{\mu\nu}}) = \tr(g^{-1}\pdv{g}{g^{\mu\nu}}).
+\end{align*}
+Using the identity $\tr(\ln(g)) = \ln(\det(g))$, we have
+\begin{align*}
+	\tr(g^{-1}\pdv{g}{g^{\mu\nu}}) = \frac{1}{\det(g)}\pdv{\det(g)}{g^{\mu\nu}},
+\end{align*}
+hence
+\begin{align*}
+	\pdv{\det(g)}{g^{\mu\nu}} = \det(g)g^{\rho\sigma}\pdv{g_{\rho\sigma}}{g^{\mu\nu}} = -\det(g)g_{\rho\sigma}\pdv{g^{\rho\sigma}}{g^{\mu\nu}}
+\end{align*}
+and
+\begin{align*}
+	\pdv{\sqrt{-\det(g)}}{g^{\mu\nu}} = \frac{1}{2\sqrt{-\det(g)}}\det(g)g^{\rho\sigma}\pdv{g^{\rho\sigma}}{g^{\mu\nu}} = -\frac{1}{2}\sqrt{-\det(g)}g_{\rho\sigma}\pdv{g^{\rho\sigma}}{g^{\mu\nu}}.
 \end{align*}
 
-To obtain the field equations for other cases we will add terms to the action. In general, by adding a term $S_{\text{matter}}$ to the action, we obtain
+For the Ricci scalar we have $\R = g^{\mu\nu}R_{\mu\nu}$, hence
 \begin{align*}
-	R_{\mu\nu} - \frac{1}{2}\R = 8\pi GT_{\mu\nu},
+	\pdv{\R}{g^{\mu\nu}} = R_{\mu\nu} + g^{\rho\sigma}\pdv{R_{\rho\sigma}}{g^{\mu\nu}}.
+\end{align*}
+To differentiate the Ricci tensor, we first use the fact that differences in connection coefficients, and thus their derivatives, transform as tensors. Thus
+\begin{align*}
+	\dcov{\alpha}{\pdv{\chris{\beta}{\gamma}{\delta}}{g^{\mu\nu}}} = \del{\alpha}{\pdv{\chris{\beta}{\gamma}{\delta}}{g^{\mu\nu}}} + \chris{\beta}{\alpha}{\rho}\pdv{\chris{\rho}{\gamma}{\delta}}{g^{\mu\nu}} - \chris{\rho}{\alpha}{\gamma}\pdv{\chris{\beta}{\rho}{\delta}}{g^{\mu\nu}} - \chris{\rho}{\alpha}{\delta}\pdv{\chris{\beta}{\gamma}{\rho}}{g^{\mu\nu}}.
+\end{align*}
+Now we have
+\begin{align*}
+	\pdv{R_{\rho\sigma}}{g^{\mu\nu}} &= \pdv{R^{\alpha}_{\rho\alpha\sigma}}{g^{\mu\nu}} \\
+	                                 &= \pdv{g^{\mu\nu}}\left(\del{\alpha}{\chris{\alpha}{\sigma}{\rho}} - \del{\sigma}{\chris{\alpha}{\alpha}{\rho}} + \chris{\gamma}{\sigma}{\rho}\chris{\alpha}{\alpha}{\gamma} - \chris{\gamma}{\alpha}{\rho}\chris{\alpha}{\sigma}{\gamma}\right) \\
+	                                 &= \pdv{\del{\alpha}{\chris{\alpha}{\sigma}{\rho}}}{g^{\mu\nu}} - \pdv{\del{\sigma}{\chris{\alpha}{\alpha}{\rho}}}{g^{\mu\nu}} + \chris{\gamma}{\sigma}{\rho}\pdv{\chris{\alpha}{\alpha}{\gamma}}{g^{\mu\nu}} + \chris{\alpha}{\alpha}{\gamma}\pdv{\chris{\gamma}{\sigma}{\rho}}{g^{\mu\nu}} - \chris{\gamma}{\alpha}{\rho}\pdv{\chris{\alpha}{\sigma}{\gamma}}{g^{\mu\nu}} - \chris{\alpha}{\sigma}{\gamma}\pdv{\chris{\gamma}{\alpha}{\rho}}{g^{\mu\nu}} \\
+	                                 &= \pdv{\del{\alpha}{\chris{\alpha}{\sigma}{\rho}}}{g^{\mu\nu}} + \chris{\alpha}{\alpha}{\gamma}\pdv{\chris{\gamma}{\sigma}{\rho}}{g^{\mu\nu}} - \chris{\gamma}{\alpha}{\rho}\pdv{\chris{\alpha}{\gamma}{\sigma}}{g^{\mu\nu}} - \chris{\gamma}{\alpha}{\sigma}\pdv{\chris{\alpha}{\rho}{\gamma}}{g^{\mu\nu}} - \dcov{\sigma}{\chris{\alpha}{\alpha}{\rho}} \\
+	                                 &= \dcov{\alpha}{\chris{\alpha}{\sigma}{\rho}} - \dcov{\sigma}{\chris{\alpha}{\alpha}{\rho}}.
+\end{align*}
+As the Levi-Civita connection is metric compatible, we have
+\begin{align*}
+	\pdv{\R}{g^{\mu\nu}} = R_{\mu\nu} + \dcov{\alpha}{(g^{\rho\sigma}\chris{\alpha}{\sigma}{\rho})} - \dcov{\sigma}{(g^{\rho\sigma}\chris{\alpha}{\alpha}{\rho})}.
+\end{align*}
+The latter term may be ignored by converting it to a contribution at the boundary.
+
+There are now two ways to proceed. The first is to note that the Lagrangian density has no functional dependence on the derivatives of the metric, implying that its derivatives with respect to the metric are zero, implying
+\begin{align*}
+	\pdv{g^{\mu\nu}}(\R\sqrt{-\det(g)}) = R_{\mu\nu}\sqrt{-\det(g)} - \frac{1}{2}\R\sqrt{-\det(g)}g_{\rho\sigma}\pdv{g^{\rho\sigma}}{g^{\mu\nu}} = 0,
+\end{align*}
+yielding the Einstein field equations
+\begin{align*}
+	R_{\mu\nu} - \frac{1}{2}\R g_{\mu\nu} = G_{\mu\nu} = 0.
+\end{align*}
+The other is to consider variations of the metric and their impact on the action. This will yield
+\begin{align*}
+	\var{S} = -\frac{M_{\alpha}^{2}}{2}\integ[4]{}{}{\chi}{\pdv{\R\sqrt{-\det(g)}}{g^{\mu\nu}}\var{g^{\mu\nu}}} = -\frac{M_{\alpha}^{2}}{2}\integ[4]{}{}{\chi}{\sqrt{-\det(g)}\left(R_{\mu\nu} - \frac{1}{2}\R g_{\mu\nu}\right)\var{g^{\mu\nu}}},
+\end{align*}
+and extremization yields the same equations.
+
+\paragraph{The Energy-Momentum Tensor}
+To obtain the field equations for other cases we will add terms to the action. In general, by adding a term $S_{\text{matter}}$ to the action with the coefficient $\frac{M_{\alpha}^{2}}{2}$ baked into it, we obtain
+\begin{align*}
+	R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}\R = 8\pi GT_{\mu\nu},
 \end{align*}
 where
 \begin{align*}

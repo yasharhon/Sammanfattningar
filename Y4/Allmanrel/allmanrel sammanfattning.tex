@@ -6,11 +6,17 @@
 \usepackage[arrowdel]{physics}
 \usepackage{tensor}
 
+\newcommand{\R}{\ensuremath{\mathcal{R}}}
+\newcommand{\lag}{\ensuremath{\mathcal{L}}}
+
 \newcommand{\cc}[1]{#1^{*}}
+\newcommand{\bound}[1]{\ensuremath{\partial #1}}
 \newcommand{\del}[3][]{\partial^{#1}_{#2}#3}
 \newcommand{\deval}[4][]{\eval{\dv[#1]{#2}{#3}}_{#4}}
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+\newcommand{\minteg}[2]{\int\limits_{#1}#2}
 
+% Differential geometry and tensors
 \newcommand{\dcov}[2]{\grad_{#1}{#2}}
 \newcommand{\db}[1]{\vb{E}^{#1}}
 \newcommand{\tb}[1]{\vb{E}_{#1}}
@@ -34,9 +40,6 @@
 \newcommand{\df}[1]{\ensuremath{d#1}}
 \newcommand{\puf}[2]{#1_{\star}#2}
 \newcommand{\pub}[2]{#1^{\star}#2}
-
-\newcommand{\R}{\ensuremath{\mathcal{R}}}
-\newcommand{\lag}{\ensuremath{\mathcal{L}}}
 
 \title{Summary of SH2372 General Relativity}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
