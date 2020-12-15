@@ -79,7 +79,7 @@ The tangent bundle of a manifold is defined as $TM = \bigcup\limits_{p}\ts{p}{M}
 We may for a fixed $s$ define the function $\gamma_{sX}(p) = \gamma_{X}(p, s)$, which maps $M$ to itself.
 
 \paragraph{Pushforwards and Pullbacks}
-Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M}$ as $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
+Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M_{1}}$ as $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
 
 \paragraph{Tangents and the Pushforward}
 $f$ maps the cooordinates $\chi^{a}$ of $M_{1}$ to the coordinates $\eta^{\mu}$ of $M_{2}$. By definition we have
@@ -99,17 +99,17 @@ meaning that the pushforward of a tangent by $f$ is the tangent of the curve pro
 \paragraph{The Pullback of Tensors}
 We can now define the pullback of a $(0, m)$ tensor on $M_{2}$ according to
 \begin{align*}
-\pub{f}{\omega}(V_{1}, \dots, V_{m}) = \omega(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}).
+	\pub{f}{\omega}(V_{1}, \dots, V_{m}) = \omega(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}).
 \end{align*}
 If $f$ is a bijection we may also define the more general pullback of a $(n, m)$ tensor on $M_{2}$ as
 \begin{align*}
-\pub{f}{T}(V_{1}, \dots, V_{m}, \omega_{1}, \dots, \omega_{n}) = T(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}, \pub{(f^{-1})}{\omega_{1}}, \dots, \pub{(f^{-1})}{\omega_{n}}).
+	\pub{f}{T}(V_{1}, \dots, V_{m}, \omega_{1}, \dots, \omega_{n}) = T(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}, \pub{(f^{-1})}{\omega_{1}}, \dots, \pub{(f^{-1})}{\omega_{n}}).
 \end{align*}
 
 \paragraph{The Lie Derivative}
 For a tensor field $T$ we define the Lie derivative in the $X$-direction as
 \begin{align*}
-\lied{X}{T} = \lim\limits_{\varepsilon\to 0}\frac{1}{\varepsilon}\left(\pub{\gamma_{\varepsilon X}}{T} - T\right).
+	\lied{X}{T} = \lim\limits_{\varepsilon\to 0}\frac{1}{\varepsilon}\left(\pub{\gamma_{\varepsilon X}}{T} - T\right).
 \end{align*}
 
 \paragraph{An Expression for the Lie Derivative}
@@ -119,19 +119,35 @@ First, for scalars we simply have $\lied{X}{f} = X^{a}\del{a}{f}$.
 
 When studying the effect on tangent vectors we will have to be extra careful. Let $\gamma_{\varepsilon X}$ map $p$ to $q$, and let $\eval{Y}_{p}(\omega) = \eval{Y^{a}}_{p}\eval{\del{a}{\omega}}_{p}$ to clarify at what point we are working. To first order in $\varepsilon$ we then have
 \begin{align*}
-\eval{\pub{\gamma_{\varepsilon X}}{Y}}_{q}(\omega) &= \eval{Y}_{q}(\pub{\gamma_{-\varepsilon X}}{\omega}) \\
-&= \eval{Y^{a}}_{q}\eval{\del{a}{(\omega\circ\gamma_{-\varepsilon X})}}_{q} \\
-&\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\right) \eval{\del{c}{\omega}}_{\gamma_{-\varepsilon X}(q)}\eval{\del{a}{(\gamma_{-\varepsilon X})^{c}}}_{q} \\
-&\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\right) \left(\kdelta{a}{c} - \varepsilon\del{a}{X^{c}}\right)\eval{\del{c}{\omega}}_{p} \\
-&\approx \left(\kdelta{a}{c}\eval{Y^{a}}_{p} + \varepsilon\kdelta{a}{c}\eval{ X^{b}\del{b}{Y^{a}}}_{p} - \varepsilon\del{a}{X^{c}}\eval{Y^{a}}_{p}\right)\eval{\del{c}{\omega}}_{p} \\
-&= \eval{Y^{a}}_{p}\eval{\del{a}{\omega}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\eval{\del{a}{\omega}}_{p} - \eval{Y^{a}}_{p}\varepsilon\del{a}{X^{c}}\eval{\del{c}{\omega}}_{p},
+	\eval{\pub{\gamma_{\varepsilon X}}{Y}}_{q}(\omega) &= \eval{Y}_{q}(\pub{\gamma_{-\varepsilon X}}{\omega}) \\
+	                                                   &= \eval{Y^{a}}_{q}\eval{\del{a}{(\omega\circ\gamma_{-\varepsilon X})}}_{q} \\
+	                                                   &\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\right) \eval{\del{c}{\omega}}_{\gamma_{-\varepsilon X}(q)}\eval{\del{a}{(\gamma_{-\varepsilon X})^{c}}}_{q} \\
+	                                                   &\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\right) \left(\kdelta{a}{c} - \varepsilon\del{a}{X^{c}}\right)\eval{\del{c}{\omega}}_{p} \\
+	                                                   &\approx \left(\kdelta{a}{c}\eval{Y^{a}}_{p} + \varepsilon\kdelta{a}{c}\eval{ X^{b}\del{b}{Y^{a}}}_{p} - \varepsilon\del{a}{X^{c}}\eval{Y^{a}}_{p}\right)\eval{\del{c}{\omega}}_{p} \\
+	                                                   &= \eval{Y^{a}}_{p}\eval{\del{a}{\omega}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\eval{\del{a}{\omega}}_{p} - \eval{Y^{a}}_{p}\varepsilon\del{a}{X^{c}}\eval{\del{c}{\omega}}_{p},
 \end{align*}
 and thus $\lied{X}{Y} = \comm{X}{Y}$. In particular, we have $\lied{X}{\del{a}{}} = -(\del{a}{X^{b}})\del{b}{}$.
 
-To find the Lie derivative of dual vectors, we use the fact that the product rule (somehow) respects contraction, meaning
+To find the Lie derivative of dual vectors, we will prove that the Lie derivative respects contradiction. This is evidently the case if the pullback does, so we will consider the pullback of the function $\omega_{a}V^{a}$. Introducing the isomorphism $f: \chi^{a}\to\eta^{\mu}$, where we use latin letters in the new coordinates to distinguish the two, we have
+\begin{align*}
+	\pub{f}{(\omega_{\mu}V^{\mu})}(\chi^{a}) = \omega_{\mu}V^{\mu}(\eta^{\mu}(\chi^{a})).
+\end{align*}
+Next we have, by definition, $\pub{f}{\omega}(U) = \omega(\puf{f}{U})$, and by a previously obtained relation we find
+\begin{align*}
+	(\pub{f}{\omega})_{a} = \omega_{\mu}\del{a}{\eta^{\mu}}.
+\end{align*}
+Finally we have by definition $\pub{f}{V}(\gamma) = V(\pub{(f^{-1})}{\gamma})$. As has been reasoned above, we have $(\pub{(f^{-1})}{\gamma})_{\mu} = \gamma_{a}\del{\mu}{\chi^{a}}$, this implies $\pub{f}{V}(\gamma) = V^{\mu}\gamma_{a}\del{\mu}{\chi^{a}}$, and finally
+\begin{align*}
+	(\pub{f}{V})^{a} = V^{\mu}\del{\mu}{\chi^{a}}.
+\end{align*}
+Putting this together we have
+\begin{align*}
+	\pub{f}{V}(\pub{f}{\omega}) = \omega_{\mu}\del{a}{\eta^{\mu}}V^{\nu}\del{\nu}{\chi^{a}} = \omega_{\mu}V^{\mu}.
+\end{align*}
+Thus the pullback respects contraction, and so must the Lie derivative. This implies
 \begin{align*}
 	\lied{X}{\omega(Y)} &= (\lied{X}{\omega})(Y) + \omega(\lied{X}{Y}) \\
-&= (\lied{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\del{b}{Y^{a}} - Y^{b}\del{b}{X^{a}}).
+	                    &= (\lied{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\del{b}{Y^{a}} - Y^{b}\del{b}{X^{a}}).
 \end{align*}
 As the left-hand side is simply equal to $X^{a}\del{a}{(\omega_{b}Y^{b})}$, we obtain
 \begin{align*}
@@ -162,7 +178,7 @@ There are no free indices, so we may switch the places of the numbered indices a
 \end{align*}
 allowing us to identify
 \begin{align*}
-\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}.
+	\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}.
 \end{align*}
 
 \paragraph{Connections}
@@ -222,18 +238,18 @@ and we recognize
 \end{align*}
 
 \paragraph{Parallel Transport}
-A vector $X$ is termed parallel if $\dcov{a}{X} = 0$. This system is overdetermined, and generally has no solution on a manifold. We may, however, define $X$ to be parallel along a curve $\gamma$ if
+A vector $X$ is termed parallel if $\dcov{a}{X} = 0$. This defines $n^{2}$ equations for the $n$ components of $X$, meaning that the system is overdetermined, and generally has no solution on a manifold. We may, however, define $X$ to be parallel along a curve $\gamma$ if
 \begin{align*}
-\dcov{\dot{\gamma}}{X} = 0.
+	\dcov{\dot{\gamma}}{X} = 0.
 \end{align*}
-This allows us to define the parallel transport as the vector field that solves the above equation with the vector $X$ as its initial condition. This system of equations is solvable.
+This allows us to define the parallel transport as the vector field that solves the above equation with the vector $X$ as its initial condition. This defines $n$ equations for the $n$ components, and the system is solvable.
 
 In particular, using the properties of the connection we find
 \begin{align*}
-\dcov{\dot{\gamma}}{X} &= \dcov{\dot{\chi}^{a}\del{a}{}}{X^{c}\del{c}{}} \\
-&= \dot{\chi}^{a}\dcov{a}{X^{c}\del{c}{}} \\
-&= \dot{\chi}^{a}((\dcov{a}{X^{c}})\del{c}{} + X^{c}\dcov{a}{\del{c}{}}) \\
-&= \dot{\chi}^{a}(\del{a}{X^{b}} + X^{c}\chris{b}{a}{c})\del{b}{}.
+	\dcov{\dot{\gamma}}{X} &= \dcov{\dot{\chi}^{a}\del{a}{}}{X^{c}\del{c}{}} \\
+	                       &= \dot{\chi}^{a}\dcov{a}{X^{c}\del{c}{}} \\
+	                       &= \dot{\chi}^{a}((\dcov{a}{X^{c}})\del{c}{} + X^{c}\dcov{a}{\del{c}{}}) \\
+	                       &= \dot{\chi}^{a}(\del{a}{X^{b}} + X^{c}\chris{b}{a}{c})\del{b}{}.
 \end{align*}
 
 \paragraph{Geodesics and the Geodesic Equation}
@@ -241,37 +257,46 @@ A geodesic is defined as a curve with a tangent vector that is parallel along it
 
 By definition a geodesic satisfies
 \begin{align*}
-\dcov{\dot{\gamma}}{\dot{\gamma}} = \dot{\chi}^{a}(\del{a}{\dot{\chi}^{b}} + \dot{\chi}^{c}\chris{b}{a}{c})\del{b}{} = (\ddot{\chi}^{b} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{b}{a}{c})\del{b}{} = 0.
+	\dcov{\dot{\gamma}}{\dot{\gamma}} = \dot{\chi}^{a}(\del{a}{\dot{\chi}^{b}} + \dot{\chi}^{c}\chris{b}{a}{c})\del{b}{} = (\ddot{\chi}^{b} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{b}{a}{c})\del{b}{} = 0,
+\end{align*}
+and thus
+\begin{align*}
+	\ddot{\chi}^{b} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{b}{a}{c} = 0.
 \end{align*}
 This is the geodesic equation. Given a starting point and a tangent vector, it is solvable.
 
 \paragraph{Torsion}
 The torsion tensor is a $(1, 2)$ tensor defined as
 \begin{align*}
-T(X, Y) = \dcov{X}{Y} - \dcov{Y}{X} - \comm{X}{Y}.
+	T(X, Y) = \dcov{X}{Y} - \dcov{Y}{X} - \comm{X}{Y}.
 \end{align*}
 To find its components, we note that
 \begin{align*}
-T(\del{a}{}, \del{b}{}) &= \dcov{a}{\del{b}{}} - \dcov{b}{\del{a}{}} - \comm{\del{X}{a}}{\del{Y}{b}} \\
-&= (\chris{c}{a}{b} - \chris{c}{b}{a})\del{c}{}.
+	T_{ab} = T(\del{a}{}, \del{b}{}) &= \dcov{a}{\del{b}{}} - \dcov{b}{\del{a}{}} - \comm{\del{a}{}}{\del{b}{}} \\
+	                                 &= \chris{c}{a}{b}\del{c}{} - \chris{c}{b}{a}\del{c}{} - (\del{a}{\del{b}{}} - \del{b}{\del{a}{}}) \\
+	                                 &= (\chris{c}{a}{b} - \chris{c}{b}{a})\del{c}{},
+\end{align*}
+implying
+\begin{align*}
+	T_{ab}^{c} &= \chris{c}{a}{b} - \chris{c}{b}{a}.
 \end{align*}
 
 \paragraph{Curvature}
 Consider some vector $Z$ parallel transported along a small closed loop. The parallel transport is linear, so the result of this process must be connected to some $(1, 1)$ tensor. Supposing that the loop is spanned by $X$ and $Y$, we have
 \begin{align*}
-Z^{\prime} - Z = R(X, Y)Z = \dcov{X}{\dcov{Y}{Z}} - \dcov{Y}{\dcov{X}{Z}} - \dcov{\comm{X}{Y}}{Z}.
+	Z^{\prime} - Z = R(X, Y)Z = \dcov{X}{\dcov{Y}{Z}} - \dcov{Y}{\dcov{X}{Z}} - \dcov{\comm{X}{Y}}{Z}.
 \end{align*}
 We define $R(X, Y)Z$ as the Riemann curvature tensor. It is a $(1, 3)$ tensor. Its components are defined by
 \begin{align*}
-R(\del{a}{}, \del{b}{})\del{c}{} &= \tensor{R}{^{d}_{cab}}\del{d}{} \\
-&= \dcov{a}{\dcov{b}{\del{c}{}}} - \dcov{b}{\dcov{a}{\del{c}{}}} \\
-&= \dcov{a}{\chris{f}{b}{c}\del{f}{}} - \dcov{b}{\chris{f}{a}{c}\del{f}{}} \\
-&= (\dcov{a}{\chris{f}{b}{c}})\del{f}{} + \chris{f}{b}{c}\dcov{a}{\del{f}{}} - (\dcov{b}{\chris{f}{a}{c}})\del{f}{} - \chris{f}{a}{c}\dcov{b}{\del{f}{}} \\
-&= (\del{a}{\chris{d}{b}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \del{b}{\chris{d}{a}{c}} - \chris{f}{a}{c}\chris{d}{b}{f})\del{d}{}, 
+	R(\del{a}{}, \del{b}{})\del{c}{} &= \tensor{R}{^{d}_{cab}}\del{d}{} \\
+	                                 &= \dcov{a}{\dcov{b}{\del{c}{}}} - \dcov{b}{\dcov{a}{\del{c}{}}} \\
+	                                 &= \dcov{a}{\chris{f}{b}{c}\del{f}{}} - \dcov{b}{\chris{f}{a}{c}\del{f}{}} \\
+	                                 &= (\dcov{a}{\chris{f}{b}{c}})\del{f}{} + \chris{f}{b}{c}\dcov{a}{\del{f}{}} - (\dcov{b}{\chris{f}{a}{c}})\del{f}{} - \chris{f}{a}{c}\dcov{b}{\del{f}{}} \\
+	                                 &= (\del{a}{\chris{d}{b}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \del{b}{\chris{d}{a}{c}} - \chris{f}{a}{c}\chris{d}{b}{f})\del{d}{}, 
 \end{align*}
 and thus
 \begin{align*}
-\tensor{R}{^{d}_{cab}} = \del{a}{\chris{d}{b}{c}} - \del{b}{\chris{d}{a}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
+	\tensor{R}{^{d}_{cab}} = \del{a}{\chris{d}{b}{c}} - \del{b}{\chris{d}{a}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
 \end{align*}
 Note the placements of the indices.
 
@@ -281,41 +306,109 @@ The metric tensor will be taken as the $(0, 2)$ tensor that defines inner produc
 \paragraph{Metric Compatibility}
 A connection is metric compatible if $\dcov{X}{g} = 0$ for all vectors $X$.
 
-\paragraph{The Geodesic Equation Revisited}
+\paragraph{The Levi-Civita Connection}
+For any manifold with some metric there exists a unique connection that is both metric compatible and torsion free. This connection is termed the Levi-Civita connection.
+
+To prove that it is unique, suppose that there exists two different metric compatible connections with connection coefficients $\chris{c}{a}{b}$ and $C^{c}_{ab}$. For the connection to be metric compatible, we must have $(\dcov{a}{g})_{bc} = 0$ for both connections, and thus
+\begin{align*}
+	\del{a}{g_{bc}} - \chris{d}{a}{b}g_{dc} - \chris{d}{a}{c}g_{bd} = 0,\ \del{a}{g_{bc}} - C^{d}_{ab}g_{dc} - C^{d}_{ac}g_{bd} = 0,
+\end{align*}
+and we find
+\begin{align*}
+	\chris{d}{a}{b}g_{dc} + \chris{d}{a}{c}g_{bd} = C^{d}_{ab}g_{dc} + C^{d}_{ac}g_{bd}.
+\end{align*}
+We may now construct the difference $\chris{d}{a}{b} - C^{d}_{ab} = D^{d}_{ab}$ to write
+\begin{align*}
+	D^{d}_{ab}g_{dc} + D^{d}_{ac}g_{bd} = 0.
+\end{align*}
+If both connections are torsion free, we may switch the lower indices in every term to find
+\begin{align*}
+	D^{d}_{ac}g_{bd} = D^{d}_{ca}g_{bd} = -D^{d}_{cb}g_{da} = -D^{d}_{bc}g_{da} = D^{d}_{ba}g_{cd} = D^{d}_{ab}g_{dc},
+\end{align*}
+implying $D^{d}_{ab}g_{dc} = 0$. Multiplying by $g^{cf}$ yields $D^{f}_{ab} = 0$, and so the Levi-Civita connection is unique.
+
+\paragraph{Curves of Minimal Length}
 As the metric defines length, we define the curve length as
 \begin{align*}
-l_{\gamma} = \integ{\gamma}{}{s}{} = \integ{0}{1}{t}{\sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}}.
+	l_{\gamma} = \integ{\gamma}{}{s}{} = \integ{0}{1}{t}{\sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}}.
 \end{align*}
 Defining $\sqrt{\lag} = g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$, the curve that minimizes the distance between the start and end points satisfies
 \begin{align*}
-\del{a}{\sqrt{\lag}} - \dv{t}\pdv{\sqrt{\lag}}{\dot{\chi}^{a}} = \frac{1}{2\sqrt{\lag}}\left(\del{a}{\lag} - \sqrt{\lag}\dv{t}\left(\frac{1}{\sqrt{\lag}}\pdv{\lag}{\dot{\chi}^{a}}\right)\right) = 0.
+	\del{a}{\sqrt{\lag}} - \dv{t}\pdv{\sqrt{\lag}}{\dot{\chi}^{a}} = \frac{1}{2\sqrt{\lag}}\left(\del{a}{\lag} - \sqrt{\lag}\dv{t}\left(\frac{1}{\sqrt{\lag}}\pdv{\lag}{\dot{\chi}^{a}}\right)\right) = 0.
 \end{align*}
-One can always choose a parametrization such that $\sqrt{\lag} = 0$ (the arc length parametrization is one example), yielding
+One can always choose a parametrization such that $\sqrt{\lag} = 1$ (the arc length parametrization is one example), yielding
 \begin{align*}
-\frac{1}{2\sqrt{\lag}}\left(\del{a}{\lag} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}}\right) = 0,
+	\frac{1}{2\sqrt{\lag}}\left(\del{a}{\lag} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}}\right) = 0,
 \end{align*}
 which is equivalent to extremizing the integral of $\lag$. In terms of the coordinate functions we thus have
 \begin{align*}
-\del{a}{g_{ab}}\dot{\chi}^{a}\dot{\chi}^{b} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}}
+	\del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}} = \del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - \dv{t}(2g_{ab}\dot{\chi}^{b}) = \del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - 2g_{ab}\ddot{\chi}^{b} - 2\del{c}{g_{ab}}\dot{\chi}^{b}\dot{\chi}^{c} = 0.
 \end{align*}
-%TODO: Finish
+Multiplying by $-\frac{1}{2}g^{da}$ we find
+\begin{align*}
+	g^{da}g_{ab}\ddot{\chi}^{b} - \frac{1}{2}g^{da}\del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} + g^{da}\del{c}{g_{ab}}\dot{\chi}^{b}\dot{\chi}^{c} = \ddot{\chi}^{d} + \frac{1}{2}g^{da}(2\del{c}{g_{ab}} - \del{a}{g_{bc}})\dot{\chi}^{b}\dot{\chi}^{c} = 0.
+\end{align*}
+Renaming indices for convenience we find
+\begin{align*}
+	\ddot{\chi}^{b} + \frac{1}{2}g^{bd}(2\del{c}{g_{da}} - \del{d}{g_{ac}})\dot{\chi}^{a}\dot{\chi}^{c} = 0.
+\end{align*}
 
-\paragraph{The Levi-Civita Connection}
-For any manifold with some metric there exists a unique connection that is both metric compatible and torsion free. This connection is termed the Levi-Civita connection.
+\paragraph{Geodesics and Minimum-Length Curves}
+Geodesics and curves of minimal length coincide if
+\begin{align*}
+	\chris{b}{a}{c} = \frac{1}{2}g^{bd}(2\del{c}{g_{da}} - \del{d}{g_{ac}}).
+\end{align*}
+As the above identification is done based on a quantity that is symmetric in the lower indices, we cannot find any information about the antisymmetric part of the connection coefficients from this.
 
 \paragraph{The Levi-Civita Connection and Geodesics}
 The connection coefficients (or Christoffel symbols) defined by the Levi-Civita connection are symmetric due to the torsion being zero. This implies
 \begin{align*}
-\chris{d}{a}{b} = \frac{1}{2}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{bc}} - \del{c}{g_{ab}}).
+	\chris{d}{a}{b} = \frac{1}{2}(\chris{d}{a}{b} + \chris{d}{b}{a}) = \frac{1}{4}g^{dc}(2\del{b}{g_{ca}} - \del{c}{g_{ab}} + 2\del{a}{g_{cb}} - \del{c}{g_{ba}}) = \frac{1}{2}g^{dc}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}).
 \end{align*}
 
 \paragraph{The Induced Metric}
 Given some immersion $f$ of $M_{1}$ into $M_{2}$ and supposing that the metric $g$ exists on $M_{2}$, this induces a metric $\tilde{g} = \pub{f}{g}$ on $M_{1}$.
 
-\paragraph{Curvature and the Metric}
-Using a Levi-Civita connection, we introduce the covariant curvature with components
+\paragraph{Components of the Induced Metric}
+Suppose that there is an immersion $f: \chi^{a}\to\eta^{\mu}$ of one manifold into another, and that the metric is $g$ in the outer manifold. By definition the induced metric satisfies $\tilde{g}(U, V) = \pub{f}{g}(U, V) = g(\puf{f}{U}, \puf{f}{V})$, implying
 \begin{align*}
-R_{abcd} &= \frac{1}{2}\left(\del{a}{\del{d}{g_{bc}}} + \del{b}{\del{c}{g_{ad}}} - \del{a}{\del{c}{g_{bd}}} - \del{b}{\del{d}{g_{ac}}}\right) + g_{fh}(\chris{f}{b}{c}\chris{h}{a}{d} - \chris{f}{b}{d}\chris{h}{a}{c}).
+	\tilde{g}_{ab}U^{a}V^{b} = g_{\mu\nu}U^{a}\del{a}{\eta^{\mu}}V^{b}\del{b}{\eta^{\nu}},
+\end{align*}
+and as this is true for any pair of vectors we recognize
+\begin{align*}
+	\tilde{g}_{ab} = g_{\mu\nu}\del{a}{\eta^{\mu}}\del{b}{\eta^{\nu}}.
+\end{align*}
+
+\example{A Function Surface In Euclidean Space}
+Consider a surface $\chi^{n} = h(\chi^{\mu})$, where $h$ is independent of $\chi^{n}$, and suppose that we know the metric in these coordinates. This surface is a manifold with the $\chi^{\mu}$ being a natural choice of coordinates, and there is also a natural choice of immersion. All derivatives of the new coordinates reduce to Kronecker deltas for all but the last coordinates. For the final coordinate we find
+\begin{align*}
+	\del{a}{\eta^{n}} = \del{a}{h},
+\end{align*}
+implying
+\begin{align*}
+	\tilde{g}_{ab} = g_{ab} + g_{nn}\del{a}{h}\del{b}{h}.
+\end{align*}
+In particular, if choosing Cartesian coordinates we find
+\begin{align*}
+	\dd{s}^{2} = \sum\limits_{a}(1 + (\del{i}{h})^{2})(\dd{x}^{i})^{2},
+\end{align*}
+which is the expected result.
+
+\paragraph{Curvature and the Metric}
+Using a Levi-Civita connection, we can write the curvature as
+\begin{align*}
+	\tensor{R}{^{d}_{cab}} =& \frac{1}{2}\del{a}{\left(g^{df}(\del{c}{g_{bf}} + \del{b}{g_{fc}} - \del{f}{g_{bc}})\right)} - \frac{1}{2}\del{b}{\left(g^{df}(\del{c}{g_{af}} + \del{a}{g_{fc}} - \del{f}{g_{ac}})\right)} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
+\end{align*}
+We may then introduce the contravariant curvature components
+%d to m
+%c to b
+%a to c
+%b to d
+\begin{align*}
+	R_{abcd} &= g_{am}\tensor{R}{^{m}_{bcd}} \\
+	         &= g_{am}\left(\frac{1}{2}\del{c}{\left(g^{mf}(\del{b}{g_{df}} + \del{d}{g_{fb}} - \del{f}{g_{db}})\right)} - \frac{1}{2}\del{d}{\left(g^{mf}(\del{b}{g_{cf}} + \del{c}{g_{fb}} - \del{f}{g_{cb}})\right)} + \chris{f}{d}{b}\chris{m}{c}{f} - \chris{f}{c}{b}\chris{m}{d}{f}\right) \\
+	         &= g_{am}\left(\frac{1}{2}\del{c}{\left(g^{mf}(\del{b}{g_{df}} + \del{d}{g_{fb}} - \del{f}{g_{db}})\right)} - \frac{1}{2}\del{d}{\left(g^{mf}(\del{b}{g_{cf}} + \del{c}{g_{fb}} - \del{f}{g_{cb}})\right)}\right) + g_{am}\left(\chris{f}{d}{b}\chris{m}{c}{f} - \chris{f}{c}{b}\chris{m}{d}{f}\right) \\
+	R_{abcd} &= \frac{1}{2}\left(\del{a}{\del{d}{g_{bc}}} + \del{b}{\del{c}{g_{ad}}} - \del{a}{\del{c}{g_{bd}}} - \del{b}{\del{d}{g_{ac}}}\right) + g_{fh}(\chris{f}{b}{c}\chris{h}{a}{d} - \chris{f}{b}{d}\chris{h}{a}{c}).
 \end{align*}
 We find $R_{abcd} = R_{cdab} = -R_{abdc} = -R_{bacd}$. In addition, the curvature satisfies the Bianchi identity $R(X, Y)Z + R(Y, Z)X + R(Z, X)Y = 0$, implying $R_{abcd} + R_{acdb} + R_{adbc} = 0$, meaning that the total number of independent components is $\frac{1}{12}n^{2}(n^{2} - 1)$.
 
@@ -334,13 +427,25 @@ $K$ is a Killing field (be careful looking this up on the internet) if $\lied{K}
 \paragraph{The Lie Derivative with Killing Fields}
 Let $K$ be a Killing field. We then obtain
 \begin{align*}
-\lied{K}{g_{ab}} &= K^{a}\del{c}{g_{ab}} + g_{ac}\del{b}{K^{c}} + g_{cb}\del{a}{K^{c}} \\
-&= K^{d}(\chris{c}{d}{a}g_{cb} + \chris{c}{d}{b}g_{ac}) + g_{ac}\del{b}{K^{c}} + g_{cb}\del{a}{K^{c}} \\
-&= g_{ac}(\del{b}{K^{c}} + \chris{c}{d}{b}K^{d}) + g_{cb}(\del{a}{K^{c}} + K^{d}\chris{c}{d}{a}) \\
-&= g_{ac}\dcov{b}{K^{c}} + g_{cb}\dcov{a}{K^{c}} \\
-&= \dcov{b}{K_{a}} + \dcov{a}{K_{b}} = 0,
+	\lied{K}{g_{ab}} &= K^{c}\del{c}{g_{ab}} + g_{ac}\del{b}{K^{c}} + g_{cb}\del{a}{K^{c}}.
 \end{align*}
-where we are now using the proper covariant derivative.
+Using the Levi-Civita connection we find
+\begin{align*}
+	\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}} = 2g_{cd}\chris{d}{a}{b},
+\end{align*}
+hence
+\begin{align*}
+	\del{c}{g_{ab}} = g_{bd}\chris{d}{a}{c} + g_{ad}\chris{d}{b}{c},
+\end{align*}
+yielding
+\begin{align*}
+	\lied{K}{g_{ab}} &= K^{c}(\chris{d}{a}{c}g_{bd} + \chris{d}{b}{c}g_{ad}) + g_{ac}\del{b}{K^{c}} + g_{cb}\del{a}{K^{c}} \\
+	                 &= g_{cb}(K^{d}\chris{c}{a}{d} + \del{a}{K^{c}}) + g_{ac}(K^{d}\chris{c}{b}{d} + \del{b}{K^{c}}) \\
+	                 &= g_{cb}(\del{a}{K^{c}} + K^{d}\chris{c}{d}{a}) + g_{ac}(\del{b}{K^{c}} + K^{d}\chris{c}{d}{b}) \\
+	                 &= g_{cb}\dcov{a}{K^{c}} + g_{ac}\dcov{b}{K^{c}} \\
+	                 &= \dcov{b}{K_{a}} + \dcov{a}{K_{b}} = 0,
+\end{align*}
+and all Killing fields must satisfy this relation.
 
 \paragraph{Differential Forms}
 The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as

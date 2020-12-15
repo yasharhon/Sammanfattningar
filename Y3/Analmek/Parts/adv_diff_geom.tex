@@ -201,6 +201,20 @@ This is the geodesic equation. It may alternatively be written in terms of the C
 	\ddot{\chi}^{d} + \chris{d}{a}{b}\dot{\chi}^{a}\dot{\chi}^{b} = 0.
 \end{align*}
 
+\paragraph{Arc Length Parametrization}
+I claimed the existence of a parametrization such that $\lag = 1$ everywhere, and will now show that one such parametrization is $\chi^{a} = \chi^{a}(s)$. To show this, we note that
+\begin{align*}
+	\dd{s}^{2} = g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}\dd{\tau}^{2} \implies \dv{\tau}{s} = \pm\frac{1}{\sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}}.
+\end{align*}
+Using the chain rule we then find
+\begin{align*}
+	\dv{\chi^{c}}{s} = \pm\dot{\chi}^{c}\frac{1}{\sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}},
+\end{align*}
+and
+\begin{align*}
+	\lag = g_{cd}\dv{\chi^{c}}{s}\dv{\chi^{d}}{s} = \frac{1}{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}g_{cd}\dot{\chi}^{c}\dot{\chi}^{d} = 1.
+\end{align*}
+
 \paragraph{Christoffel Symbols and the Geodesic Equation}
 Consider a straight line with a tangent vector of constant magnitude. In euclidean space, this is a geodesic. This curve satisfies
 \begin{align*}
