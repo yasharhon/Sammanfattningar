@@ -125,17 +125,106 @@ where
 \end{align*}
 is called the energy-momentum tensor.
 
-\paragraph{Frequency Shift}
-A wave generally has a phase which depends on both position and time. We define the frequency of a wave as $\omega = \dv{\phi}{t}$. For a general world line we define
+\paragraph{Alternative Field Equations}
+Starting from the Einstein field equation, we may contract with the metric according to
 \begin{align*}
-	\omega = \dv{\phi}{\tau} = \dot{\chi}^{a}\del{a}{\phi} = V\phi = \df{\phi}(V).
+	g^{\mu\nu}R_{\nu\sigma} - \frac{1}{2}\kdelta{\sigma}{\mu}\R = 8\pi Gg^{\mu\nu}T_{\nu\sigma} = 8\pi G\tensor{T}{^{\mu}_{\sigma}},
 \end{align*}
-$\df{\phi}$ is the dual of the $4$-frequency $N^{\mu}$. It can be shown that $\dcov{N}{\df{\pi}} = 0$, and thus $\dcov{N}{N} = 0$. Rays with tangent $N$ are thus light-like geodesics.
-
-In general an observer will measure a frequency $\df{\phi}(V)$.
+and setting $\mu = \sigma$ and summing yields
+\begin{align*}
+	8\pi G\tensor{T}{^{\mu}_{\mu}} = g^{\mu\nu}R_{\nu\mu} - 2\R = -\R,
+\end{align*}
+which we may insert back into the Einstein field equations to obtain
+\begin{align*}
+	R_{\mu\nu} = 8\pi G\left(T_{\mu\nu} - \frac{1}{2}g_{\mu\nu}\tensor{T}{^{\sigma}_{\sigma}}\right).
+\end{align*}
 
 \paragraph{The Schwarzschild Solution}
-The Schwarzschild solution is the simplest solution for a spherically symmetric metric. It is of the form
+The Schwarzschild solution is the simplest solution for a spherically symmetric metric.
+
+To derive it, we will use spherical coordinates to describe the space part, implying that we construct spacetime as a combination of spherical shells. The metric will then take the form
+\begin{align*}
+	\dd{s}^{2} = f(t, r)\dd{t}^{2} - g(t, r)\dd{r}^{2} - r^{2}\dd{\Omega}^{2},\ \dd{\Omega}^{2} = \dd{\theta}^{2} + \sin[2](\theta)\dd{\phi}^{2}
+\end{align*}
+in units where $c = 1$. The proceeding work will involve dividing the functions $f$ and $g$, so we define $f = e^{2\alpha},\ g = e^{2\beta}$. As the metric is diagonal we can write
+\begin{align*}
+	\chris{\sigma}{\mu}{\nu} = \frac{1}{2g_{\sigma\sigma}}(\del{\nu}{g_{\mu\sigma}} + \del{\mu}{g_{\sigma\nu}} - \del{\sigma}{g_{\mu\nu}}),\ \text{no sum over $\sigma$.}
+\end{align*}
+Again, as the metric is diagonal, at least two of the indices must be equal, immediately identifying any Christoffel symbol with three different indices as zero. The diagonality of the metric and the angle independence of the time and radial components also implies
+\begin{align*}
+	\chris{t}{t}{\theta} = \chris{t}{\theta}{t} = \chris{t}{t}{\phi} = \chris{t}{\phi}{t} = \chris{r}{r}{\theta} = \chris{r}{\theta}{r} = \chris{r}{r}{\phi} = \chris{r}{\phi}{r} = \chris{\theta}{t}{t} = \chris{\theta}{r}{r} = \chris{\phi}{t}{t} = \chris{\phi}{r}{r} = 0.
+\end{align*}
+The time independence of the solid angle also implies $\chris{t}{\theta}{\theta} = \chris{t}{\phi}{\phi} = \chris{t}{\theta}{t} = \chris{t}{t}{\theta} = \chris{t}{\phi}{t} = \chris{t}{t}{\phi} = \chris{\theta}{t}{t} = \chris{\phi}{t}{t} = \chris{\theta}{\theta}{t} = \chris{\theta}{t}{\theta} = \chris{\phi}{\phi}{t} = \chris{\phi}{t}{\phi} = 0$. Next, as the metric is independent of $\phi$, we must also have $\chris{\theta}{\theta}{\phi} =	\chris{\theta}{\phi}{\theta} = \chris{\phi}{\theta}{\theta} = \chris{\phi}{\phi}{\phi} = 0$. We also find $\chris{\theta}{\theta}{\theta} = 0$ as the $\theta$ component is independent of $\theta$. The possibly non-zero ones are
+\begin{align*}
+	\chris{t}{t}{t} &= \frac{1}{2}e^{-2\alpha}\cdot 2\del{t}{\alpha}e^{2\alpha} = \del{t}{\alpha}, \ \chris{t}{t}{r} = \chris{t}{r}{t} = \frac{1}{2}e^{-2\alpha}\cdot 2\del{r}{\alpha}e^{2\alpha} = \del{r}{\alpha},\ \chris{t}{r}{r} = -\frac{1}{2}e^{-2\alpha}\cdot -2\del{t}{\beta}e^{2\beta} = \del{t}{\beta}e^{2(\beta - \alpha)}, \\
+	\chris{r}{t}{t} &= -\frac{1}{2}e^{-2\beta}\cdot -2\del{r}{\alpha}e^{2\alpha} = \del{r}{\alpha}e^{2(\alpha - \beta)},\ \chris{r}{t}{r} = \chris{r}{r}{t} = -\frac{1}{2}e^{-2\beta}\cdot -2\del{t}{\beta}e^{2\beta} = \del{t}{\beta},\ \chris{r}{r}{r} = -\frac{1}{2}e^{-2\beta}\cdot -2\del{r}{\beta}e^{2\beta} = \del{r}{\beta}, \\
+	\chris{r}{\theta}{\theta} &= -\frac{1}{2}e^{-2\beta}\cdot 2r = -re^{-2\beta},\ \chris{r}{\phi}{\phi} = -\frac{1}{2}e^{-2\beta}\cdot 2r\sin[2](\theta) = -r\sin[2](\theta)e^{-2\beta},\ \chris{\theta}{r}{\theta} = \chris{\theta}{\theta}{r} = -\frac{1}{2r^{2}}\cdot -2r = \frac{1}{r}, \\
+	\chris{\theta}{\phi}{\phi} &= -\frac{1}{2r^{2}}\cdot 2r^{2}\sin(\theta)\cos(\theta) = -\sin(\theta)\cos(\theta),\ \chris{\phi}{r}{\phi} = \chris{\phi}{\phi}{r} = -\frac{1}{2r^{2}\sin[2](\theta)}\cdot -2r\sin[2](\theta) = \frac{1}{r}, \\
+	\chris{\phi}{\theta}{\phi} &= \chris{\phi}{\phi}{\theta} = -\frac{1}{2r^{2}\sin[2](\phi)}\cdot -2r^{2}\sin(\theta)\cos(\theta) = \cot(\theta).
+\end{align*}
+
+We will now need to solve the Einstein field equations. We will use the formulation purely in terms of the energy-momentum tensor, which yields $R_{\mu\nu} = 0$ in vacuum. We have
+\begin{align*}
+	R_{\mu\nu} = \del{\rho}{\chris{\rho}{\nu}{\mu}} - \del{\nu}{\chris{\rho}{\rho}{\mu}} + \chris{\sigma}{\nu}{\mu}\chris{\rho}{\rho}{\sigma} - \chris{\sigma}{\rho}{\mu}\chris{\rho}{\nu}{\sigma}.
+\end{align*}
+Let us commence by finding restrictions on the functions $\alpha$ and $\beta$. Cheating by looking into the future I find
+\begin{align*}
+	R_{tr} =& \del{\rho}{\chris{\rho}{r}{t}} - \del{r}{\chris{\rho}{\rho}{t}} + \chris{\sigma}{r}{t}\chris{\rho}{\rho}{\sigma} - \chris{\sigma}{\rho}{t}\chris{\rho}{r}{\sigma} \\
+	       =& \del{t}{\del{r}{\alpha}} + \del{r}{\del{t}{\beta}} - \del{r}{\del{t}{\alpha}} - \del{r}{\del{t}{\beta}} + \chris{t}{r}{t}(\chris{t}{t}{t} + \chris{r}{r}{t}) + \chris{r}{r}{t}(\chris{t}{t}{r} + \chris{r}{r}{r} + \chris{\theta}{\theta}{r} + \chris{\phi}{\phi}{r}) - \chris{t}{t}{t}\chris{t}{r}{t} - \chris{t}{r}{t}\chris{r}{r}{t} \\
+	        &- \chris{r}{t}{t}\chris{t}{r}{r} - \chris{r}{r}{t}\chris{r}{r}{r} - \chris{r}{\theta}{t}\chris{\theta}{r}{r} - \chris{r}{\phi}{t}\chris{\phi}{r}{r} - \chris{\theta}{\theta}{t}\chris{\theta}{r}{\theta} - \chris{\phi}{\phi}{t}\chris{\phi}{r}{\phi} \\
+	       =& \chris{r}{r}{t}(\chris{t}{t}{r} + \chris{\theta}{\theta}{r} + \chris{\phi}{\phi}{r}) - \chris{r}{t}{t}\chris{t}{r}{r} \\
+	       =& \frac{2}{r}\del{t}{\beta} = 0,
+\end{align*}
+hence $\beta$ is a function of $r$ only. Next:
+\begin{align*}
+	R_{\theta\theta} =& \del{\rho}{\chris{\rho}{\theta}{\theta}} - \del{\theta}{\chris{\rho}{\rho}{\theta}} + \chris{\sigma}{\theta}{\theta}\chris{\rho}{\rho}{\sigma} - \chris{\sigma}{\rho}{\theta}\chris{\rho}{\theta}{\sigma} \\
+	                 =& \del{r}{\chris{r}{\theta}{\theta}} - \del{\theta}{\chris{\phi}{\phi}{\theta}} + \chris{r}{\theta}{\theta}(\chris{t}{t}{r} + \chris{r}{r}{r} + \chris{\theta}{\theta}{r} + \chris{\phi}{\phi}{r}) - \chris{\phi}{\phi}{\theta}\chris{\phi}{\theta}{\phi} - \chris{r}{\theta}{\theta}\chris{\theta}{\theta}{r} - \chris{\theta}{r}{\theta}\chris{r}{\theta}{\theta} \\
+	                 =& -\del{r}{(re^{-2\beta})} - \del{\theta}{\cot(\theta)} - re^{-2\beta}\left(\del{r}{\alpha} + \del{r}{\beta} + \frac{2}{r}\right) - \cot[2](\theta) + 2e^{-2\beta} \\
+	                 =& -e^{-2\beta} + 2r\del{r}{\beta}e^{-2\beta} + \csc[2](\theta) - re^{-2\beta}\left(\del{r}{\alpha} + \del{r}{\beta} + \frac{2}{r}\right) - \cot[2](\theta) + 2e^{-2\beta} \\
+	                 =& 1 + e^{-2\beta}\left(-1 + 2r\del{r}{\beta} - r\del{r}{\alpha} - r\del{r}{\beta} - 2 + 2\right) \\
+	                 =& 1 + e^{-2\beta}\left(r\del{r}{\beta} - 1 - r\del{r}{\alpha}\right) = 0.
+\end{align*}
+On its own it provides little information, but differentiating this with respect to $t$ yields
+\begin{align*}
+	\del{t}{\del{r}{\alpha}} = 0,
+\end{align*}
+with solution $\alpha = u(t) + v(r)$.
+
+The function $u$ may be eliminated by a change of variables such that $\dd{t}\to e^{-2u(t)}\dd{t}$, which yields
+\begin{align*}
+	\dd{s}^{2} = e^{2v(r)}\dd{t}^{2} - 2e^{\beta}\dd{r}^{2} - r^{2}\dd{\Omega}^{2}.
+\end{align*}
+Note that with these simplifications we have $\chris{t}{t}{t} = \chris{t}{r}{r} = \chris{r}{r}{t} = \chris{r}{t}{r} = 0$ and no remaining time-dependent components. Next we compute the components
+\begin{align*}
+	R_{tt} =& \del{\rho}{\chris{\rho}{t}{t}} - \del{t}{\chris{\rho}{\rho}{t}} + \chris{\sigma}{t}{t}\chris{\rho}{\rho}{\sigma} - \chris{\sigma}{\rho}{t}\chris{\rho}{t}{\sigma} \\
+	       =& \del{r}{\chris{r}{t}{t}} + \chris{r}{t}{t}\chris{r}{r}{r} + \chris{r}{t}{t}\chris{\theta}{\theta}{r} + \chris{r}{t}{t}\chris{\phi}{\phi}{r} - \chris{\sigma}{t}{t}\chris{t}{t}{\sigma} - \chris{\sigma}{\sigma}{t}\chris{\sigma}{t}{\sigma} \\
+	       =& \del{r}{(\del{r}{\alpha}e^{2(\alpha - \beta)})} + \del{r}{\alpha}e^{2(\alpha - \beta)}\del{r}{\beta} + \del{r}{\alpha}e^{2(\alpha - \beta)}\frac{1}{r} + \del{r}{\alpha}e^{2(\alpha - \beta)}\frac{1}{r} - \del{r}{\alpha}e^{2(\alpha - \beta)}\del{r}{\alpha} \\
+	       =& e^{2(\alpha - \beta)}\del[2]{r}{\alpha} + 2\del{r}{\alpha}(\del{r}{\alpha} - \del{r}{\beta})e^{2(\alpha - \beta)} + e^{2(\alpha - \beta)}\del{r}{\alpha}\del{r}{\beta} + e^{2(\alpha - \beta)}\frac{2\del{r}{\alpha}}{r} - (\del{r}{\alpha})^{2}e^{2(\alpha - \beta)} \\
+	       =& e^{2(\alpha - \beta)}\left(\del[2]{r}{\alpha} + \del{r}{\alpha}\left(\del{r}{\alpha} - \del{r}{\beta} + \frac{2}{r}\right)\right) = 0, \\
+	R_{rr} =& \del{\rho}{\chris{\rho}{r}{r}} - \del{r}{\chris{\rho}{\rho}{r}} + \chris{\sigma}{r}{r}\chris{\rho}{\rho}{\sigma} - \chris{\sigma}{\rho}{r}\chris{\rho}{r}{\sigma} \\
+	       =& \del{r}{\chris{r}{r}{r}} - \del{r}{\chris{t}{t}{r}} - \del{r}{\chris{r}{r}{r}} - \del{r}{\chris{\theta}{\theta}{r}} - \del{r}{\chris{\phi}{\phi}{r}} + \chris{r}{r}{r}(\chris{t}{t}{r} + \chris{r}{r}{r} + \chris{\theta}{\theta}{r} + \chris{\phi}{\phi}{r}) - \chris{r}{r}{r}\chris{r}{r}{r} - \chris{t}{t}{r}\chris{t}{r}{t} - \chris{r}{r}{r}\chris{r}{r}{r} \\
+	        &- \chris{\theta}{\theta}{r}\chris{\theta}{r}{\theta} - \chris{\phi}{\phi}{r}\chris{\phi}{r}{\phi} \\
+	       =& -\del[2]{r}{\alpha} - \del{r}{\frac{1}{r}} - \del{r}{\frac{1}{r}} + \del{r}{\beta}\left(\del{r}{\alpha} + \del{r}{\beta} + \frac{2}{r}\right) - (\del{r}{\beta})^{2} - (\del{r}{\alpha})^{2} - \frac{2}{r^{2}} \\
+	       =& -\del[2]{r}{\alpha} + \del{r}{\beta}\left(\del{r}{\alpha} + \frac{2}{r}\right) - (\del{r}{\alpha})^{2} = 0,
+\end{align*}
+hence
+\begin{align*}
+	(\del{r}{\alpha} + \del{r}{\beta})\left(\del{r}{\alpha} + \frac{2}{r}\right) - \del{r}{\alpha}\del{r}{\beta} - (\del{r}{\alpha})^{2} = \frac{2}{r}(\del{r}{u} + \del{r}{\beta}) = 0,
+\end{align*}
+and $\beta = C - v$. By rescaling $r\to e^{-\frac{1}{2}C}r$ we may set $C = 0$, and find $\beta = -v$. Finally we dig up an old equation and find
+\begin{align*}
+	1 + e^{-2\beta}\left(r\del{r}{\beta} - 1 - r\del{r}{\alpha}\right) = 1 + e^{-2\beta}\left(2r\del{r}{\beta} - 1\right) = 0,
+\end{align*}
+which we may solve and write as
+\begin{align*}
+	\del{r}{(re^{-2\beta})} = 1.
+\end{align*}
+Integrating this yields
+\begin{align*}
+	re^{-2\beta} = r - R_{\text{S}},\ e^{-2\beta} = 1 - \frac{R_{\text{S}}}{r}.
+\end{align*}
+
+Finally we may put this together to find
 \begin{align*}
 	\dd{s}^{2} = \left(1 - \frac{R_{\text{S}}}{r}\right)\dd{t}^{2} - \left(1 - \frac{R_{\text{S}}}{r}\right)^{-1}\dd{r}^{2} - r^{2}\dd{\Omega}^{2},
 \end{align*}
@@ -206,6 +295,15 @@ which may be written as
 	E - \frac{1}{2}\dot{r}^{2} = \frac{1}{2}\left(\alpha + \frac{L^{2}}{r^{2}}\right)\left(1 - \frac{R_{\text{S}}}{r}\right).
 \end{align*}
 This looks like the relation describing the potential energy of a particle in classical mechanics.
+
+\paragraph{Frequency Shift}
+A wave generally has a phase which depends on both position and time. We define the frequency of a wave as $\omega = \dv{\phi}{t}$. For a general world line we define
+\begin{align*}
+	\omega = \dv{\phi}{\tau} = \dot{\chi}^{a}\del{a}{\phi} = V\phi = \df{\phi}(V).
+\end{align*}
+$\df{\phi}$ is the dual of the $4$-frequency $N^{\mu}$. It can be shown that $\dcov{N}{\df{\pi}} = 0$, and thus $\dcov{N}{N} = 0$. Rays with tangent $N$ are thus light-like geodesics.
+
+In general an observer will measure a frequency $\df{\phi}(V)$.
 
 \paragraph{Gravitational Time Dilation and Redshift}
 Consider a static space time. This means that there exists coordinates $\chi^{a}$ such that $\dd{s}^{2} = \alpha^{2}\dd{t}^{2} - h_{ij}\dd{\chi}^{i}\dd{\chi}^{j}$, where the components of the metric are functions of the spatial coordinates only. Now consider two static observers in this spacetime observing two events. As the geodesics have time translation symmetry due to the metric being static, the two observers must observe the same time difference $t_{0}$. Each observer observes an elapsed proper time
