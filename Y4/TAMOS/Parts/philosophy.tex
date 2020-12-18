@@ -1,7 +1,7 @@
 \section{General Philosophy of Science}
 
 \paragraph{Definitions}
-Definitions explain the meaning of words. They consist of a definiendum (what is to be defined), a definiens (that which defines the definiendum) and a defining connective (which describes how the two are connected. Words such as ``is'' as well as logical comparisons are in this category). In addition, there may be delimiters which explain that the definiendum is an aspect of something else. For instance, the definition ``A system is spherically symmetric if it looks the same from all directions,'' ``spherically symmetric'' is the definiendum and ``A system is'' is the delimiter.
+Definitions explain the meaning of words. They consist of a definiendum (what is to be defined), a definiens (that which defines the definiendum) and a defining connective (which describes how the two are connected. Words such as ``is'' as well as logical comparisons are in this category). In addition, there may be delimiters which explain that the definiendum is an aspect of something else. For instance, in the definition ``A system is spherically symmetric if it looks the same from all directions,'' ``spherically symmetric'' is the definiendum and ``A system is'' is the delimiter.
 
 \paragraph{Lexical Definitions}
 A lexical definition is a definition based on a common understanding of a word or phrase.
@@ -21,12 +21,37 @@ A definition is too narrow if it does not apply to something that it should, and
 \paragraph{Knowledge}
 Knowledge is true, justified belief. These three conditions are necessary, but not always sufficient. We will nevertheless proceed with this definition.
 
-This definition is compatible with uncertainty, and recognizing uncertain knowledge is in fact vital in science. Naturally there are degrees of uncertainty.
+This definition is compatible with uncertainty, which is important to us as recognizing uncertain knowledge is vital in science. Naturally there are degrees of uncertainty, and our idea of knowledge should capture that.
 
 In science, the justification of belief is central in the social aspects of its practice. An ideally justified belief requires consideration of all relevant reasons for that belief, and science is publically defended exactly to adhere to this ideal.
 
-\paragraph{Definitions Pertaining to Phenomena}
-A phenomenon $X$ is
+\paragraph{Inference}
+Inference is the logical process of going from a set of facts and/or evidence to some conclusion.
+
+\paragraph{Inductive and Deductive Inference}
+Inductive reasoning is the process of going from a set of observations to a general claim. Such reasoning is an attempt at extending our knowledge beyond what can be directly observed. Deductive reasoning is the process of explicating or extracting knowledge about something particular from previously possessed knowledge.
+
+Inductive reasoning is fallible - even the best of efforts at induction might still overlook something for which one has no evidence. Deductive reasoning, on the other hand, is infallible - deduction necessitates that you have sufficient knowledge, and proper reasoning based on sufficient knowledge preserves the truth of your statements.
+
+\paragraph{Examples of Deduction and Induction}
+A few ways of inductive inference are
+\begin{itemize}
+	\item Direct inference, where a property is extrapolated from a finite set of observations.
+	\item Projection, where a sequence or trend is used to extrapolate a future observation.
+	\item Generalization, where a hypothesis about a population is formed based on a finite set of observations.
+\end{itemize}
+
+A few ways of deductive inference are
+\begin{itemize}
+	\item Modus ponens, in which a set of assumptions $A$ is combined with the idea that if $A$ is true then their implications $B$ are true to infer that $B$ is true.
+	\item Modus tollens, in which a conditional $A\to B$ is combined with the observation that $B$ is false to infer that $A$ is false. 
+\end{itemize}
+
+\paragraph{Ill-Formed Inferences}
+An ill-formed inference is a logically inconsistent inference.
+
+\paragraph{The Goals of Science}
+The goals of science are to predict, explain and design phenomena. A phenomenon $X$ is
 \begin{itemize}
 	\item predicted if one can know at what time $X$ will occur.
 	\item explained if the causes of $X$ are known.
@@ -36,30 +61,8 @@ A phenomenon $X$ is
 \paragraph{Instrumentalism and Realism}
 Do scientific theories constitute claims that are true or false? Realists say yes, whereas instrumentalists say that theory only orders observations and do not in themselves contain truth.
 
-\paragraph{Inference}
-Inference is the logical process of going from a set of facts and/or evidence to some conclusion.
-
-\paragraph{Inductive and Deductive Reasoning}
-Inductive reasoning is the process of going from a set of observations to a general claim. Such reasoning is an attempt at extending our knowledge beyond what can be directly observed. Deductive reasoning is the process of explicating or extracting knowledge about something particular from previously possessed knowledge.
-
-Inductive reasoning is fallible - even the best of efforts at induction might still overlook something for which one has no evidence. Deductive reasoning, on the other hand, is infallible - deduction necessitates that you have sufficient knowledge, and proper reasoning based on sufficient knowledge preserves the truth of your knowledge.
-
-\paragraph{Examples of Inference}
-Some examples of ways to infer follow. A few ways of inductive inference are
-\begin{itemize}
-	\item Direct inference, where a property is extrapolated from a finite set of observations.
-	\item Projection, where a sequence or trend is used to extrapolate a future observation.
-	\item Generalization, where a hypothesis is formed based on a finite set of observations.
-\end{itemize}
-
-A few ways of deductive inference are
-\begin{itemize}
-	\item Modus ponens, in which a set of assumptions $A$ is combined with the idea that if $A$ is true then their implications $B$ are true to infer that $B$ is true.
-	\item Modus tollens, in which a conditional $A\to B$ is combined with the observation that $B$ is false to infer that $A$ is false. 
-\end{itemize}
-
 \paragraph{Hume's Problem}
-As there exists an infinite set of inference rules, in particular inductive inference rules, hence the conclusions of any particular inference are only justified if the choice of inference rule is justified. Hume's problem discusses the justification of inference rules.
+As there exists an infinite set of inference rules, in particular inductive inference rules, the conclusions of any particular inference are only justified if the choice of inference rule is justified. Hume's problem discusses the justification of inference rules.
 
 Hume's argument was the following:
 \begin{enumerate}
@@ -75,29 +78,30 @@ Hume's problem would imply that the practice of science is itself irrational. Th
 
 One way to solve this came from Karl Popper, who denied the premise that science rests on using inference rules. This will be discussed later.
 
-Another solution is to deny the impact of Hume's argument by studying what offers justification, in the hope that this is not destroyed by the infinite regress. Foundationalism asserts that there exists a foundation upon which justification is built. Coherentism is an alternative, which desires for claims to be justified from some coherent system containing the set of previously accepted claims. In this view, inference rules are good if they are coherent with the rest of scientific knowledge. The result is that inference rules are merely manifestations of coherence and a way to connect different practices in a coherent manner.
+Another solution is to deny the impact of Hume's argument by studying what offers justification, in the hope that this is not destroyed by the infinite regress. Foundationalism is one attempt at this that asserts that there exists a foundation upon which justification is built. Coherentism is an alternative, which desires that claims be justified from some coherent system containing the set of previously accepted claims. In this view, inference rules are good if they are coherent with the rest of scientific knowledge. The result is that inference rules are merely manifestations of coherence and a way to connect different practices in a coherent manner.
 
 \paragraph{The Hypothetico-Deductive Method}
 The hypothetico-deductive method consists of
 \begin{enumerate}
 	\item Formulating a hypothesis.
 	\item Deducing consequences of the hypothesis.
-	\item Test whether the consequences are true.
+	\item Testing whether the consequences are true.
 	\item If the consequences are false, reject the hypothesis deductively. Otherwise, strengthen your confidence in the hypothesis inductively.
 \end{enumerate}
 
-There are some requirements on the involved parts. A good hypothesis must be
+\paragraph{Quality Criteria for Hypotheses}
+A good hypothesis must be
 \begin{itemize}
 	\item Either true or false.
 	\item Not a tautology, i.e. something that is necessarily true or false by definition.
 	\item Contain some generalization or discussion of the unobservable.
 \end{itemize}
 
-A good set of consequences must be
+A good set of consequences of a hypothesis must be
 \begin{itemize}
 	\item Observable.
 	\item Follow from valid deduction.
-	\item Relevant for the hypothesis. This part informs what kinds of experiment you want to do. For instance, if the hypothesis is $A$ implies $B$, then you would need to find cases where $A$ is true and $B$ is false at the same time to reject the hypothesis. In other words, studying cases where $A$ is false or $B$ is true does not help.
+	\item Relevant for the hypothesis. This part informs what kinds of experiment you want to do. For instance, if the hypothesis is $A$ implies $B$, then you would need to find cases where $A$ is true and $B$ is false at the same time to reject the hypothesis. In other words, studying cases where $A$ is false or $B$ can at best be a tool for verifying the validity of the deductions made.
 \end{itemize}
 
 \paragraph{Falsifiability and Falsification}
@@ -112,14 +116,21 @@ Popper attempted to circumvent Hume's problem by rejecting the ability of scienc
 \end{itemize}
 
 \paragraph{Confidence}
+Confidence in a hypothesis may be described either qualitatively or quantitatively.
+
+\paragraph{Bayesianism and Frequentism}
+A possible qualitative approach is to assign a probability of truth to a hypothesis and try to find it from observations combined with the probability of these observations given the hypothesis. This way of assigning probabilities is characteristic of the Bayesian approach to probability.
+
+The frequentist view of probability, on the other hand, is that it is the frequency with which some event occurs. As hypotheses are not events, it follows from this view that probabilities cannot be meaningfully assigned to hypotheses, limiting the possibility of quantitatively strengthening confidence.
+
+\paragraph{Strengthening Confidence}
 How can our confidence in a hypothesis be strengthened, and why does observations of consequences of a hypothesis increase our confidence in the hypothesis itself?
 
-One answer might be found in the compatibility of the hypothesis and its consequences. However, relevance is also needed - otherwise, many observations might seemingly verify far-reaching conclusions. The issue of underdetermination is also prominent, as multiple hypotheses might be compatible with the same observations.
+One answer might be found in the compatibility of the hypothesis and its consequences. However, this is not strong enough on its own. Relevance is also needed - otherwise, many observations might seemingly verify far-reaching conclusions.
 
-A better requirement is that the conclusions be unlikely if the hypothesis is false. Eliminating hypotheses based on this is called severe testing. While this is an improvement, one must first of all avoid double-counting evidence - if you use some piece of evidence to construct a hypothesis, you cannot use that evidence to verify your hypothesis. In addition, if there is low confidence in the hypothesis to begin with, severe testing will not sufficiently strengthen it.
+The issue of under-determination is also prominent, as multiple hypotheses might be compatible with the same observations. Given the observation of some consequences, the question then becomes which hypotheses should have strengthened confidence. One solution to this, often used in science, is Occam's razor, where the simplest hypothesis is selected. Another solution is to assign some relevance to the consequences of a hypothesis and only strengthen one's confidence upon the observation of relevant consequences.
 
-\paragraph{Frequentism}
-The frequentist view of probability is that it is the frequency with which some event occurs. As hypotheses are not events, it follows from this view that probabilities cannot be meaningfully assigned to hypotheses, limiting the possibility of quantitatively strengthening hypotheses.
+Another requirement, stronger than the one previously presented, is that the conclusions be unlikely if the hypothesis is false. A test such that a given consequence is unlikely if the hypothesis is false is called severe testing. While this is an improvement, one must first of all avoid double-counting evidence - if you use some piece of evidence to construct a hypothesis, you cannot use that evidence to verify your hypothesis. In addition, if there is low confidence in the hypothesis to begin with, severe testing will not sufficiently strengthen it.
 
 \paragraph{Observation}
 Loosely speaking, observation is the event of experience through the senses. It is key to all scientific practice. Observations can be divided into categories:
@@ -148,8 +159,9 @@ The circular relation between theory and observation is formulated in the proble
 \end{itemize}
 
 \paragraph{Operationalization}
-Direct observation, while powerful in a sense, is generally error-prone and can often only give qualitative descriptions, hence indirect observational methods are usually preferred. The process of linking properties to directly observable effects is called operationalization of that property. The two are linked by some stable relation which guarantees that when the property is present, so is the observed effect. Using operationalization we may infer information about the property from observing the effect.
+Direct observation, while powerful in a sense, is generally error-prone and can often only give qualitative descriptions, hence indirect observational methods are usually preferred. The process of linking properties (a so-called property of interest) to directly observable effects is called operationalization of that property. If the two are linked by some stable relation (a so-called hypothesized causal chain), that guarantees that when the property is present, so is the observed effect. Using operationalization we may infer information about the property from observing the effect.
 
+\paragraph{Quality Criteria for Operationalizations}
 The quality criteria for an operationalization are
 \begin{itemize}
 	\item That the underlying property be well-defined in order to allow for proper inference.
@@ -159,12 +171,13 @@ The quality criteria for an operationalization are
 \end{itemize}
 
 \paragraph{Operationalism}
-Observationalism is the position that everything is defined through the operations by which  we observe or measure them. This is generally not a very helpful position for observationalization.
+Operationalism is the position that everything is defined through the operations by which  we observe or measure them. Its main appeal is to remove the issue of theory-dependence.
 
-The criticisms of observationalism are
+\paragraph{Criticisms of Operationalism}
+The criticisms of operationalism are:
 \begin{itemize}
-	\item Observationalism prohibits two differently performed measurements to pertain to the same underlying concept.
-	\item Observationalism makes it impossible to criticize a measurement for not properly capturing an underlying concept.
+	\item Operationalism prohibits two differently performed measurements to pertain to the same underlying concept.
+	\item Operationalism makes it impossible to criticize a measurement for not properly capturing an underlying concept.
 \end{itemize}
 
 \paragraph{Measurement}
@@ -176,7 +189,8 @@ The process of measurement consists of the following:
 	\item Represent the results with numbers.
 \end{enumerate}
 
-The requirements for a good measurement are:
+\paragraph{Quality Criteria for Measurements}
+The wuality criteria for a measurement are:
 \begin{itemize}
 	\item There must be a unit of comparison.
 	\item The unit must be sufficiently stable.
@@ -198,23 +212,18 @@ Different scales of the same type made to represent the same property must repre
 	\item Transformations that preserve uniqueness for nominal scales.
 	\item Positive monotone transformations for ordinal scales.
 	\item Positive linear transformations for interval scales.
-	\item Positive scalar transformations for ratio scales.
+	\item Positive scaling transformations for ratio scales.
 	\item None for absolute scales.
 \end{itemize}
+Note that any scale also allows the transforms below where it appears in the list.
 
 \paragraph{Measurement Error}
 The measurement error is defined as the difference between the measured and true value of some property. It comes in two forms: Systematic and random error.
 
 Before introducing the two, we introduce the notions of precision and accuracy. Precision is the absence of variation, and accuracy is closeness to the true value. Systematic errors are thus inaccuracies, and random errors are imprecision.
 
-\paragraph{Reducing Error}
-Random error can be reduced by repeating measurements and performing new operationalization in such a way that you obtain more precise measurements.
-
-Before discussing reducing systematic error, we introduce convergent and divergent validity. The former is that different ways to measure the same intended property should yield the same result, and the latter is that different ways to measure different intended properties should yield different results.
-
-Now, to reduce systematic error a first approach is to identify the causes. The convergent and divergent validity of your results is one way to look. You can also work to reduce observer effects, as well as stabilize and standardize your measurements.
-
-The control of error represents a set of auxillary hypotheses which enter in the hypothetico-deductive method.
+\paragraph{Convergent and Divergent Validity}
+Convergent validity is achieved if different methods with causally independent operationalizations measure the same target under the same conditions and yield the same result. Divergent validity is achieved if an operationalization applied to substantially different targets under different conditions yield different results.
 
 \paragraph{Experiments}
 An experiment is a controlled observation in which the observer manipulates the real variables that are believed to influence the outcome, both for the purpose of intervention and control. Its purpose is to justify accepting or rejecting a hypothesis. Its characteristics are:
@@ -239,49 +248,11 @@ Mill's method of difference describes the logic and procedure of experiments. It
 
 Baked into these steps are a number of assertions and ideas which might be difficult to realize - for instance, it might be hard to know what factors are causal. This necessitates good design.
 
-\paragraph{Randomization}
-Randomization is the process of dividing samples into treatment and control groups using randomness. Experiments set up this way are called randomized controlled trials.
-
-Randomness is desired because it might eliminate selection bias, help convince others that your experiment is not rigged and blinds the identity of the treatment from both investigators and subjects. However, randomization is not the only way to achieve these goals.
-
-Randomization does not help to equally distribute background factors between the treatment and control groups. Imbalances may instead be avoided by being checked and controlled for. One might also use so-called stratified randomization, where background factors are included in the randomization process.
-
-Randomization has no bearing of the broadness of your sample, meaning that it adds nothing to the generalizability of your results to other populations than that which you have sampled.
-
 \paragraph{Repeatability, Reproducibility and Replicability}
 If an experiment is described such that it contains enough information that others can repeat it, the experiment is repeatable. If a competent repetition of the experiment yields the same result, the experiment is reproducible. If a competent independent experiment using independent data, methods and experimental infrastructure yields the same results, the experiment is said to be replicable. These categories will be important when looking for errors in experimental design.
 
-\paragraph{Design Errors}
-Erroneous design is design that fails to account for some background factor(s). It may manifest as:
-\begin{itemize}
-	\item Failure to control for all relevant factors.
-	\item Confirmation bias(/interpretation problem) in observations.
-	\item The observer effect(/influence problem) spoiling your results.
-	\item The placebo effect interfering.
-	\item Selection bias in your treatment and control groups.
-\end{itemize}
-
-To detect such errors, one might employ what knowledge one possesses, of either theory or experimental practice, to identify them, or one might investigate the repeatability, reproducibility and replicability of the experiment to find out where it might have gone wrong.
-
-\paragraph{Experimental Control}
-Experimental control consists of identifying relevant features that might interfere with your experiment and being able to influence these features such that alternative explanations can be ruled out.
-
-A few methods for implementing experimental control are:
-\begin{itemize}
-	\item Dividing your subjects into treatment and control groups.
-	\item Keeping other factors constant by finding or creating situations with the same background.
-	\item Eliminating background factors altogether by creating special circumstances. One way to do this is to blind your study.
-	\item Separate out external factors by registering and accounting for their contribution.
-\end{itemize}
-
-\paragraph{Blinding}
-Blinding is the process of obscuring the identity of the control and treatment groups, with the purpose of removing observer effect. There is single blinding, where the subjects do not know whether they are in the treatment or control group, and double blinding, where neither the subject nor the experimenter knows to which group the subject belongs.
-
 \paragraph{Internal and External Validity}
-If the inferred relation between intervention and observed effect in an experiment is true and not clouded by uncontrolled background factors, it is internally valid. If such an inference also holds for different targets and not just the same experiment, it is externally valid.
-
-\paragraph{Non-Experimental Procedures}
-I briefly mention some examples of non-theoretical activities in science that are not experiments. The first is observational studies, where you study subjects with no ability to manipulate, intervene or control the subjects. Two others are natural experiments and field experiments, in which you have no ability to manipulate or intervene, but by construction you may still control for some factors. A final one is simulation, where you have the ability to both manipulate, intervene and control, but only on a representation of your system.
+If the relation between intervention and observed effect inferred from an experiment is true and not clouded by uncontrolled background factors, it is internally valid. If such an inference also holds for different targets and not just the same experiment, it is externally valid.
 
 \paragraph{Models}
 Models are important tools in science used to help us describe the world. They have different aspects, and may be approached through any of them. These are:
@@ -291,9 +262,6 @@ Models are important tools in science used to help us describe the world. They h
 	\item Purpose-dependent tools - some models describe certain properties better than others.
 	\item Things to be manipulated. The kind of analogy provided by the model limits the available set of manipulations - if some property is idealized away in the model, then investigating that property in the model has no bearing on the target. Manipulations may also be used to reveal neutral analogies as either positive or negative.
 \end{itemize}
-
-\paragraph{Models and Experiments}
-Models and experiments are similar in that they contain some variables, the manipulation of something and the observation of the effect. However, they differ in the type of errors that can be made. Experiments rely on internal validity, whereas this is less of a problem for models. By contrast, models have greater issues with justifying neutral analogies.
 
 \paragraph{Quality Criteria for Models}
 Models do not necessarily have quality criteria that apply equally well in all context, and in fact these often trade off with one another. Nevertheless, some criteria are:
@@ -306,12 +274,8 @@ Models do not necessarily have quality criteria that apply equally well in all c
 	\item Transparency. A model is transparent if the user is capable of understanding how the results are produced.
 \end{itemize}
 
-\paragraph{Modelling Strategies}
-I here introduce two modelling strategies. Their approaches reflect how we learn from models.
-
-The first is to consider models as mirrors of the world. In this view you desire your model to be precise, a feature that you typically gain at the cost of simplicity, tractability and transparency. You will still not gain enough precision to avoid issues of external validity, i.e. to guarantee that the model describes the target.
-
-The other view is to view models as isolations of relevant features of a system. This view requires that the target be divisible, at least to some extent, in such a way. It is also difficult to validate, as the target also has interaction effects.
+\paragraph{Models and Experiments}
+Models and experiments are similar in that they contain some variables, the manipulation of something and the observation of the effect. However, they differ in the type of errors that can be made. Experiments rely on internal validity, whereas this is less of a problem for models. By contrast, models have greater issues with justifying neutral analogies.
 
 \paragraph{Scientific Knowledge}
 The aims of scientific knowledge are three-fold:
@@ -322,29 +286,11 @@ The aims of scientific knowledge are three-fold:
 \end{itemize}
 Our description of explanation seemingly makes it very similar to prediction - one looks to the future, the other to the past. This is a weakness, and will require us to modify the above.
 
-\paragraph{The Deductive-Nomological Account}
-The deductive-nomological account is way of providing an explanation. It answers the question of why some particular phenomenon occured by showing it resulted from a set of natural laws and circumstances.
-
-\paragraph{Understanding}
-Understanding a phenomenon can be taken to be the ability to answer questions about what would happen if things were different. The process of understanding thus involves tracing relations between so-called productive relations, which describes what features of a system produces what others.
-
-\paragraph{Critiques of the Deductive-Nomological Account}
-If we modify our concept of explanation to providing understanding, we see that providing explanation must entail identifying productive relations. This is a better notion of explanation because it helps us distinguish between explanation and prediction. The deductive-nomological account does not distinguish between the producer and what is produced, and is therefore insufficient to provide explanations. Furthermore, the deductive-nomological account does not identify the relevance of the different circumstances.
-
-Another critique comes from considering so-called singular causal explanations. These are explanations based purely on recounting a sequence of events. In many practical contexts such explanations are sufficient, but according to the deductive-nomological account they are not. Hence the deductive-nomological account does not cover everything that we would like to consider an explanation.
-
 \paragraph{The Structure of Explanations}
 Explanations consists of an explanandum - what is to explained - and one or more explanans - statements that increase understanding. An important ingredient in explanations is contrasting the explanandum to some other scenario, and this contrast might affect the answer you seek or obtain.
 
-\paragraph{Causal Explanations and their Quality Criteria}
-Causal explanations are explanations that identify difference-making contributing causes to an explanandum. Their quality criteria are:
-\begin{itemize}
-	\item Accuracy - the ability of the explanans to describe the state or properties. The explanans only needs to identify the difference-making contributions.
-	\item Precision - the more precisely the explanandum states a contrast, the better.
-	\item Difference-making - the explanans must identify all contributing causes.
-	\item Non-sensitivity - the explanans must have low sensitivity to background causes.
-	\item Cognitive salience - the explanation should be fit to its audience. This typically means making it simpler.
-\end{itemize}
+\paragraph{Understanding}
+Understanding a phenomenon can be taken to be the ability to answer questions about what would happen if things were different. The process of understanding thus involves tracing so-called productive relations, which describes what features of a system produces what others.
 
 \paragraph{Causation}
 We try to clarify the notion of causation by defining some associated terms.
@@ -353,11 +299,23 @@ $X$ is a direct cause of $Y$ with respect to a set of background variables $V$ i
 
 $X$ is a contributing cause of $Y$ with respect to a set of background variables $V$ if and only if there exists a causal chain comprised of direct causes extending from $X$ to $Y$.
 
-\paragraph{Strategies for Identifying Causality}
-While correlations are not sufficient or even necessary for causal relations, they are an important part of the evidence for certain causal relations. One strategy for identifying causal relations is Mill's method of difference, which has the drawback of requiring experiments. Another is instrumental variable analysis, defined by the following steps:
+\paragraph{The Deductive-Nomological Account}
+The deductive-nomological account is way of providing an explanation. It answers the question of why some particular phenomenon occured by showing it resulted from a set of natural laws and circumstances.
+
+\paragraph{Critiques of the Deductive-Nomological Account}
+If we modify our concept of explanation to providing understanding, we see that providing explanation must entail identifying productive relations. This is a better notion of explanation because it helps us distinguish between explanation and prediction. The deductive-nomological account does not distinguish between the producer and what is produced, and is therefore insufficient to provide explanations. Furthermore, the deductive-nomological account does not identify the relevance of the different circumstances.
+
+Another critique comes from considering so-called singular causal explanations. These are explanations based purely on recounting a sequence of events. In many practical contexts such explanations are sufficient, but according to the deductive-nomological account they are not. Hence the deductive-nomological account does not cover everything that we would like to consider an explanation.
+
+\paragraph{Causal Explanations and their Quality Criteria}
+Causal explanations are explanations that identify difference-making contributing causes to an explanandum.
+
+\paragraph{Quality Criteria for Causal Explanations}
+The quality criteria of causal explanations are:
 \begin{itemize}
-	\item Observe a correlation between $X$ and $Y$.
-	\item Find a variable $Z$ that is known to affect $X$, but not $Y$.
-	\item Use $Z$ instead of $X$ when estimating the effect of $X$ on $Y$.
+	\item Accuracy - the ability of the explanans to describe the state or properties. The explanans only needs to identify the difference-making contributions.
+	\item Precision - the more precisely the explanandum states a contrast, the better.
+	\item Difference-making - the explanans must identify all contributing causes.
+	\item Non-sensitivity - the explanans must have low sensitivity to background causes.
+	\item Cognitive salience - the explanation should be fit to its audience. This typically means making it simpler.
 \end{itemize}
-This strategy lets you work out causal relations only by observing correlations, but requires some causal knowledge in order to be implemented.

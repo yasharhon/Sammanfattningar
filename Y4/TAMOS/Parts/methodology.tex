@@ -10,7 +10,7 @@ To answer the question of what methods should be chosen, three approaches are ty
 	\item The reason-based approach, in which you choose the method for which you have the overall best reasons. Reasons here means considerations of the method with respect to a set of goals that you want to achieve.
 \end{itemize}
 
-Their advantages and disadvantages may be summarized as follows:
+Their advantages and disadvantages may be summarized as in table \ref{tab:methodChoiceComp}.
 
 \begin{table}[!ht]
 	\centering
@@ -18,29 +18,83 @@ Their advantages and disadvantages may be summarized as follows:
 		\hline
 		\textbf{Approach} & \textbf{Advantages} & \textbf{Disadvantages} \\
 		\hline
-		Conventional      & \begin{itemize}
+		Conventional      & \begin{itemize}[topsep = 0pt, itemsep = 0pt, partopsep = 0pt, parsep = 0pt, leftmargin = 12pt]
 			\item Makes choices easy
-		\end{itemize} & \begin{itemize}
+		\end{itemize} & \begin{itemize}[topsep = 0pt, itemsep = 0pt, partopsep = 0pt, parsep = 0pt, leftmargin = 12pt]
 			\item Leaves you less open to correcting methodological mistakes and being critical of your own results
 			\item Makes it hard to collaborate with others due to inflexibililty
 	    \end{itemize} \\
     	\hline
-    	Outcome-oriented & \begin{itemize}
-    		\item Nada
-    	\end{itemize} & \begin{itemize}
+    	Outcome-oriented & \begin{itemize}[topsep = 0pt, itemsep = 0pt, partopsep = 0pt, parsep = 0pt, leftmargin = 12pt]
+    		\item Oriented towards an intelligent choice of method
+    	\end{itemize} & \begin{itemize}[topsep = 0pt, itemsep = 0pt, partopsep = 0pt, parsep = 0pt, leftmargin = 12pt]
     		\item Is too vague - what are the best results, for instance, and who judges this?
     		\item Science often involves long-term planning, so the optimal choice of method might be hard to know a priori
 	    \end{itemize} \\
     	\hline
-    	Reason-based & \begin{itemize}
+    	Reason-based & \begin{itemize}[topsep = 0pt, itemsep = 0pt, partopsep = 0pt, parsep = 0pt, leftmargin = 12pt]
     		\item Flexible
-    	\end{itemize} & \begin{itemize}
-    		\item Nada
+    	\end{itemize} & \begin{itemize}[topsep = 0pt, itemsep = 0pt, partopsep = 0pt, parsep = 0pt, leftmargin = 12pt]
+    		\item Makes choices hard
     	\end{itemize} \\
     	\hline
 	\end{tabular}
 	\caption{Advantages and disadvantages of approaches to method choice.}
+	\label{tab:methodChoiceComp}
 \end{table}
+
+\paragraph{Experimental Control}
+Experimental control consists of identifying relevant features that might interfere with your experiment and being able to influence these features such that alternative explanations can be ruled out.
+
+A few methods for implementing experimental control are:
+\begin{itemize}
+	\item Dividing your subjects into treatment and control groups.
+	\item Keeping other factors constant by finding or creating situations with the same background.
+	\item Eliminating background factors altogether by creating special circumstances. One way to do this is to blind your study.
+	\item Separate out external factors by registering and accounting for their contribution.
+\end{itemize}
+
+\paragraph{Non-Experimental Procedures}
+The types of experiments described by its definition are in principle limited to a lab environment, but there are other kinds of non-theoretical activities that are important in science, but are not experiments.
+
+The first is observational studies, where you study subjects with no ability to manipulate, intervene or control the subjects.
+
+The second is natural experiments, in which you have no ability to manipulate, but circumstances are equivalent to intervention and control having been done.
+
+Next there are field experiments, in which you have the ability to manipulate, but some background factors cannot be controlled through manipulation.
+
+A final one is simulation, where you have the ability to both manipulate, intervene and control, but only on a representation of your system.
+
+\paragraph{Design Errors}
+Erroneous design is design that fails to account for some background factor(s). It may manifest as:
+\begin{itemize}
+	\item Failure to control for all relevant factors.
+	\item Confirmation bias(/interpretation problem) in observations.
+	\item The observer effect(/influence problem) spoiling your results.
+	\item The placebo effect interfering.
+	\item Selection bias in your treatment and control groups.
+\end{itemize}
+
+To detect such errors, one might employ what knowledge one possesses, of either theory or experimental practice, to identify them, or one might investigate the repeatability, reproducibility and replicability of the experiment to find out where it might have gone wrong.
+
+\paragraph{Randomization}
+Randomization is the process of dividing samples into treatment and control groups using randomness. Experiments set up this way are called randomized controlled trials.
+
+Randomness is desired because it might eliminate selection bias, help convince others that your experiment is not rigged and blinds the identity of the treatment from both investigators and subjects. However, randomization is not the only way to achieve these goals.
+
+Randomization does not help to equally distribute background factors between the treatment and control groups. Imbalances may instead be avoided by being checked and controlled for. One might also use so-called stratified randomization, where background factors are included in the randomization process.
+
+Randomization has no bearing of the broadness of your sample, meaning that it adds nothing to the generalizability of your results to other populations than that which you have sampled.
+
+\paragraph{Blinding}
+Blinding is the process of obscuring the identity of the control and treatment groups, with the purpose of removing observer effect. There is single blinding, where the subjects do not know whether they are in the treatment or control group, and double blinding, where neither the subject nor the experimenter knows to which group the subject belongs.
+
+\paragraph{Reducing Error}
+Random error can be reduced by repeating measurements and performing new operationalization in such a way that you obtain more precise measurements.
+
+To reduce systematic error, one must identify the causes. One can only be sure that no systematic errors are present if one has a collection of measurement processes that both exhibit divergent validity individually and convergent validity collectively. If this is not found, the search begins, with few general guidelines. A few examples of places to look are background variables, observer effects and the stability and standardization of measurements.
+
+The control of error represents a set of auxillary hypotheses which enter in the hypothetico-deductive method.
 
 \paragraph{Statistics}
 Statistics is a set of mathematical methods for dealing with quantitative data. It is divided into descriptive and inferential statistics.
@@ -118,6 +172,22 @@ Some issues with this approach include:
 	\item The issue of old evidence, which may not be reused.
 	\item The issue of uncertain evidence, as the Bayesian approach builds on letting the probability of the evidence occuring going to $1$.
 \end{itemize}
+
+\paragraph{Modelling Strategies}
+I here introduce two modelling strategies. Their approaches reflect how we learn from models.
+
+The first is to consider models as mirrors of the world. In this view you desire your model to be precise, a feature that you typically gain at the cost of simplicity, tractability and transparency. You will still not gain enough precision to avoid issues of external validity, i.e. to guarantee that the model describes the target.
+
+The other view is to view models as isolations of relevant features of a system. This view requires that the target be divisible, at least to some extent, in such a way. It is also difficult to validate, as the target also has interaction effects.
+
+\paragraph{Strategies for Identifying Causality}
+While correlations are not sufficient or even necessary for causal relations, they are an important part of the evidence for certain causal relations. One strategy for identifying causal relations is Mill's method of difference, which has the drawback of requiring experiments. Another is instrumental variable analysis, defined by the following steps:
+\begin{itemize}
+	\item Observe a correlation between $X$ and $Y$.
+	\item Find a variable $Z$ that is known to affect $X$, but not $Y$.
+	\item Use $Z$ instead of $X$ when estimating the effect of $X$ on $Y$.
+\end{itemize}
+This strategy lets you work out causal relations only by observing correlations, but requires some causal knowledge in order to be implemented.
 
 \paragraph{Interpretation of Behaviour}
 The interpretation of human behaviour is an important part of qualitative studies. The process of interpretation may be explained using two frameworks. The first is simulation theory, where one's own cognitive mechanisms are used to simulate other people's mental state. The other is theory theory, in which a theory of the mind is constructed using evidence and hypotheses.
