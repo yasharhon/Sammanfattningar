@@ -38,7 +38,7 @@ A test particle is a particle that itself does not affect the spacetime. Such pa
 which implies that $A$ is space-like. Note that the curve parameter we use is $\tau$, which is the proper time and a measure of length in spacetime.
 
 \paragraph{Free Particles}
-A free particle moves along geodesics, meaning $A = 0$.
+A free particle moves along geodesics, meaning $A = 0$. The geodesic equations could in principle be obtained both from a variational principle described by a Lagrangian $\lag = g_{\mu\nu}\dot{\chi}^{\mu}\dot{\chi}^{\nu}$ or by computing Christoffel symbols, of which both approaches will be used.
 
 \paragraph{$4$-Momentum and $4$-Force}
 We also define the $4$-momentum $P = mV$ and the $4$-force $F = \dcov{V}{P}$.
@@ -49,7 +49,7 @@ Two events are simultaneous if they are on the same hypersurface of constant $t$
 Similarly, distances are defined along simultaneities and are equally ill-defined. It turns out that the only sense of distance that all observers can agree on is proper time.
 
 \paragraph{Static and Stationary Spacetime}
-If there exists a stime-like Killing field of a spacetime, it is stationary. If the spacetime is also orthogonal to a family of $3$-surfaces, the spacetime is static. The consequences of the latter is that the metric has no off-diagonal components.
+If there exists a time-like Killing field of a spacetime, it is stationary. If the spacetime is also orthogonal to a family of $3$-surfaces, the spacetime is static. The consequences of the latter is that the metric has no off-diagonal time components.
 
 \paragraph{The Einstein Field Equations}
 The equations describing the metric are the Einstein field equations. We will derive them from a variational principle, starting with the field equations for vacuum. The action from which we will obtain the field equations is the Einstein-Hilbert action
@@ -98,7 +98,7 @@ As the Levi-Civita connection is metric compatible, we have
 \begin{align*}
 	\pdv{\R}{g^{\mu\nu}} = R_{\mu\nu} + \dcov{\alpha}{(g^{\rho\sigma}\chris{\alpha}{\sigma}{\rho})} - \dcov{\sigma}{(g^{\rho\sigma}\chris{\alpha}{\alpha}{\rho})}.
 \end{align*}
-The latter term may be ignored by converting it to a contribution at the boundary.
+The latter terms may be ignored by converting it to a contribution at the boundary.
 
 There are now two ways to proceed. The first is to note that the Lagrangian density has no functional dependence on the derivatives of the metric, implying that its derivatives with respect to the metric are zero, implying
 \begin{align*}
@@ -138,6 +138,194 @@ which we may insert back into the Einstein field equations to obtain
 \begin{align*}
 	R_{\mu\nu} = 8\pi G\left(T_{\mu\nu} - \frac{1}{2}g_{\mu\nu}\tensor{T}{^{\sigma}_{\sigma}}\right).
 \end{align*}
+
+\paragraph{Example Calculations of the Energy-Momentum Tensor}
+The definition of the energy-momentum tensor is by itself not very elucidating. I therefore show two examples, both to illustrate the results one could obtain and how to do the computation in practice.
+
+The first example is for an electromagnetic field in vacuum, defined by the action and the Lagrangian
+\begin{align*}
+	S = \integ[4]{}{}{\chi}{\sqrt{-\det(g)}\lag},\ \lag = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} = -\frac{1}{4}g^{\mu\rho}g^{\nu\sigma}F_{\mu\nu}F_{\rho\sigma}.
+\end{align*}
+Because electromagnetic theory is a field theory, writing the Lagrangian in a proper way is easy, and as the Lagrangian does not depend on derivatives of the metric we have
+\begin{align*}
+	\fdv{S}{g^{\mu\nu}} &= \pdv{\lag}{g^{\mu\nu}} = -\frac{1}{2}\sqrt{-\det(g)}g_{\mu\nu}\cdot -\frac{1}{4}g^{\alpha\sigma}g^{\beta\sigma}F_{\alpha\beta}F_{\rho\sigma} + \sqrt{-\det(g)}\cdot -\frac{1}{4}F_{\alpha\beta}F_{\rho\sigma}(\kdelta{\alpha}{\mu}\kdelta{\rho}{\nu}g^{\beta\sigma} + g^{\alpha\rho}\kdelta{\beta}{\mu}\kdelta{\sigma}{\nu}) \\
+	                    &= \frac{1}{4}\sqrt{-\det(g)}\left(\frac{1}{2}g_{\mu\nu}g^{\alpha\rho}g^{\beta\sigma}F_{\alpha\beta}F_{\rho\sigma} - (F_{\mu\beta}F_{\nu\sigma}g^{\beta\sigma} + F_{\alpha\mu}F_{\rho\nu}g^{\alpha\rho})\right).
+\end{align*}
+As the Faraday tensor is antisymmetric, we may rewrite this as
+\begin{align*}
+	\fdv{S}{g^{\mu\nu}} &= \frac{1}{4}\sqrt{-\det(g)}\left(\frac{1}{2}g_{\mu\nu}g^{\alpha\rho}g^{\beta\sigma}F_{\alpha\beta}F_{\rho\sigma} - (F_{\mu\beta}F_{\nu\sigma}g^{\beta\sigma} + F_{\mu\alpha}F_{\nu\rho}g^{\alpha\rho})\right) \\
+	                    &= \frac{1}{4}\sqrt{-\det(g)}\left(\frac{1}{2}g_{\mu\nu}g^{\alpha\rho}g^{\beta\sigma}F_{\alpha\beta}F_{\rho\sigma} - 2F_{\mu\beta}F_{\nu\sigma}g^{\beta\sigma}\right) \\
+	                    &= \frac{1}{4}\sqrt{-\det(g)}\left(\frac{1}{2}g_{\mu\nu}F^{\rho\sigma}F_{\rho\sigma} - 2F_{\beta\mu}\tensor{F}{^{\beta}_{\nu}}\right),
+\end{align*}
+and arrive at the final expression
+\begin{align*}
+	T_{\mu\nu} = \frac{1}{4}g_{\mu\nu}F^{\rho\sigma}F_{\rho\sigma} - F_{\beta\mu}\tensor{F}{^{\beta}_{\nu}}.
+\end{align*}
+This expression coincides exactly with one derived from other principles in the context of special relativity.
+
+The next example is for a massive free particle, defined by the action and the Lagrangian
+\begin{align*}
+	S = \integ{}{}{\tau}{\lag},\ \lag = m\sqrt{g_{\mu\nu}\dot{\chi}^{\mu}\dot{\chi}^{\nu}}.
+\end{align*}
+An obvious difficulty with this case is that the theory describing the motion of free particles is not a field theory, so we will have to write it as one. We do that by performing the rewrite
+\begin{align*}
+	S = \integ{}{}{\tau}{\integ[4]{}{}{\eta}{m\delta^{4}(\eta - \chi(\tau))\sqrt{g_{\mu\nu}\dot{\eta}^{\mu}\dot{\eta}^{\nu}}}},
+\end{align*}
+where we have introduced the generalized Dirac delta such that the integral over all spacetime of $\delta^{4}(\eta)$ is $1$. To proceed we will need to integrate out the affine parameter $\tau$. We can perform this elimination by integrating out $\chi^{0}$ under the assumption that this particular coordinate is also usable as a parameter for the world line. This will yield
+\begin{align*}
+	S = \integ[4]{}{}{\eta}{m\delta^{3}(\eta - \chi(\tau))\frac{1}{\dot{\chi^{0}}}\sqrt{g_{\mu\nu}\dot{\eta}^{\mu}\dot{\eta}^{\nu}}},
+\end{align*}
+where $\tau$ may in this expression be taken as the inverse function of $\chi^{0}$. Having obtained a proper kind of action, we may now compute
+\begin{align*}
+	\fdv{S}{g_{\mu\nu}} &= \frac{m\delta^{3}(\eta - \chi(\tau))\dot{\eta}^{\mu}\dot{\eta}^{\nu}}{2\dot{\chi^{0}}\sqrt{g_{\mu\nu}\dot{\eta}^{\mu}\dot{\eta}^{\nu}}},
+\end{align*}
+and
+\begin{align*}
+	T^{\mu\nu} = \frac{m\delta^{3}(\eta - \chi(\tau))\dot{\eta}^{\mu}\dot{\eta}^{\nu}}{\dot{\chi^{0}}\sqrt{-\det(g)g_{\mu\nu}\dot{\eta}^{\mu}\dot{\eta}^{\nu}}}.
+\end{align*}
+In particular, choosing proper time as the affine parameter we have
+\begin{align*}
+	T^{\mu\nu} = \frac{m\delta^{3}(\eta - \chi(\tau))\dot{\eta}^{\mu}\dot{\eta}^{\nu}}{\dot{\chi^{0}}\sqrt{-\det(g)}}.
+\end{align*}
+
+To make it even simpler to study, we choose Cartesian coordinates, for which we find
+\begin{align*}
+	T^{00} = m\gamma\delta^{3}(\eta - \chi(\tau)) = E\delta^{3}(\eta - \chi(\tau)),\ T^{0i} = m\delta^{3}(\eta - \chi(\tau))\dot{\eta}^{i} = p^{i}\delta^{3}(\eta - \chi(\tau)),
+\end{align*}
+in other words describing a system with the exact energy and momentum of the free particle located at the position of the particle.
+
+\paragraph{The Weak Field Limit}
+We will now study the Einstein field equations in a limit where the effects of general relativity are weak, in the hopes of finding some limit that reproduces Newtonian gravity. We will do this by linearizing the metric according to $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$, where $\eta$ is the Minkowski metric and all components of $h$ are small. To raise its components, we use the fact that the metric should produce the Kronecker delta to obtain
+\begin{align*}
+	\kdelta{\mu}{\sigma} = g^{\mu\nu}g_{\nu\sigma} = (\eta^{\mu\nu} + f^{\mu\nu})(\eta_{\nu\sigma} + h_{\nu\sigma}) = \eta^{\mu\nu}\eta_{\nu\sigma} + \eta^{\mu\nu}h_{\nu\sigma} + f^{\mu\nu}\eta_{\nu\sigma},
+\end{align*}
+where the perturbations of the inverse metric must also necessarily be small, allowing us to neglect higher-order terms. This yields
+\begin{align*}
+	&\eta^{\mu\nu}h_{\nu\sigma} + f^{\mu\nu}\eta_{\nu\sigma} = 0, \\
+	&f^{\mu\nu} = -\eta^{\sigma\nu}\eta^{\mu\rho}h_{\rho\sigma}.
+\end{align*}
+
+When computing the curvature tensor, we will need the Christoffel symbols, which are given by
+\begin{align*}
+	\chris{\lambda}{\mu}{\nu} &= \frac{1}{2}(\eta^{\lambda\rho} - \eta^{\sigma\rho}\eta^{\lambda\gamma}h_{\gamma\sigma})(\del{\nu}{h_{\mu\rho}} + \del{\mu}{h_{\rho\nu}} - \del{\rho}{h_{\mu\nu}}) \\
+	                          &= \frac{1}{2}(\eta^{\lambda\rho}\del{\nu}{h_{\mu\rho}} + \eta^{\lambda\rho}\del{\mu}{h_{\rho\nu}} - \eta^{\lambda\rho}\del{\rho}{h_{\mu\nu}}).
+\end{align*}
+We will also need products of the Christoffel symbols. As the symbols themselves are linear in the magnitude of the perturbations, we may however neglect these terms, yielding
+\begin{align*}
+	\tensor*{R}{^{\mu}_{\nu\lambda\sigma}} = \del{\lambda}{\chris{\mu}{\sigma}{\nu}} - \del{\sigma}{\chris{\mu}{\lambda}{\nu}}
+\end{align*}
+and
+\begin{align*}
+	R_{\nu\sigma} &= \del{\mu}{\chris{\mu}{\sigma}{\nu}} - \del{\sigma}{\chris{\mu}{\mu}{\nu}} \\
+	              &= \frac{1}{2}\left(\del{\mu}{(\eta^{\mu\rho}\del{\nu}{h_{\sigma\rho}} + \eta^{\mu\rho}\del{\sigma}{h_{\rho\nu}} - \eta^{\mu\rho}\del{\rho}{h_{\sigma\nu}})} - \del{\sigma}{(\eta^{\mu\rho}\del{\nu}{h_{\mu\rho}} + \eta^{\mu\rho}\del{\mu}{h_{\rho\nu}} - \eta^{\mu\rho}\del{\rho}{h_{\mu\nu}})}\right) \\
+	              &= \frac{1}{2}\left(\del{\mu}{(\del{\nu}{\tensor{h}{_{\sigma}^{\mu}}} + \del{\sigma}{\tensor{h}{^{\mu}_{\nu}}} - \eta^{\mu\rho}\del{\rho}{h_{\sigma\nu}})} - \del{\sigma}{(\del{\nu}{\tensor{h}{^{\mu}_{\mu}}} + \del{\mu}{\tensor{h}{^{\mu}_{\nu}}} - \eta^{\mu\rho}\del{\rho}{h_{\mu\nu}})}\right) \\
+	              &= \frac{1}{2}\left(\del{\mu}{\del{\nu}{\tensor{h}{_{\sigma}^{\mu}}}} - \del{\mu}{\eta^{\mu\rho}\del{\rho}{h_{\sigma\nu}}} - \del{\sigma}{\del{\nu}{\tensor{h}{^{\mu}_{\mu}}}} + \del{\sigma}{\eta^{\mu\rho}\del{\rho}{h_{\mu\nu}}}\right) \\
+	              &= \frac{1}{2}\left(\del{\mu}{\del{\nu}{\tensor{h}{^{\mu}_{\sigma}}}} - \del{\mu}{\del[\mu]{}{h_{\sigma\nu}}} - \del{\sigma}{\del{\nu}{h}} + \del{\sigma}{\del[\mu]{}{h_{\mu\nu}}}\right) \\
+	              &= \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}),
+\end{align*}
+where we have introduced the trace of the perturbation $h = \tensor{h}{^{\mu}_{\mu}}$. We can rewrite this further by introducing the d'Alembertian $\square = \dcov[\mu]{}{\dcov{\mu}{}}$. When applied to the perturbations of the metric, the only terms that are linear in its magnitude are the derivative terms, hence $\square h_{\mu\nu} = \del[\sigma]{}{\del{\sigma}{h_{\mu\nu}}}$, and
+\begin{align*}
+	R_{\nu\sigma} &= \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}).
+\end{align*}
+Next, the Ricci scalar is
+\begin{align*}
+	\R &= \frac{1}{2}(\eta^{\nu\sigma} -\eta^{\sigma\nu}\eta^{\mu\rho}h_{\rho\sigma})(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}) \\
+	   &= \frac{1}{2}\eta^{\nu\sigma}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}) \\
+	   &= \frac{1}{2}(\del[\sigma]{}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h - \square h + \del[\nu]{}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}) \\
+	   &= \del[\sigma]{}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h \\
+	   &= \del{\mu}{\del{\sigma}{\tensor{h}{^{\mu\sigma}}}} - \square h,
+\end{align*}
+and the Einstein tensor is
+\begin{align*}
+	G_{\nu\sigma} &= R_{\nu\sigma} - \frac{1}{2}g_{\nu\sigma}\R \\
+	              &= \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}) - \frac{1}{2}(\eta_{\nu\sigma} + h_{\nu\sigma})(\del{\mu}{\del{\lambda}{\tensor{h}{^{\mu\lambda}}}} - \square h) \\
+	              &= \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}} - \eta_{\nu\sigma}(\del{\mu}{\del{\lambda}{\tensor{h}{^{\mu\lambda}}}} - \square h)) \\
+	              &= \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}} - \eta_{\nu\sigma}\del{\mu}{\del{\lambda}{\tensor{h}{^{\mu\lambda}}}} + \eta_{\nu\sigma}\square h).
+\end{align*}
+
+To proceed, we choose coordinates such that $\square\chi^{\mu} = 0$. In these coordinates we have
+\begin{align*}
+	\square \chi^{\mu} &= \dcov[\nu]{}{\dcov{\nu}{\chi^{\mu}}} \\
+	                   &= \dcov[\nu]{}{(\del{\nu}{\chi^{\mu}})} \\
+	                   &= \del[\nu]{}{(\del{\nu}{\chi^{\mu}})} - g^{\sigma\nu}\chris{\gamma}{\nu}{\sigma}\del{\gamma}{\chi^{\mu}} \\
+	                   &= -g^{\nu\sigma}\chris{\mu}{\nu}{\sigma} = 0,
+\end{align*}
+and using the previously obtained Christoffel symbols we find
+\begin{align*}
+	\frac{1}{2}\eta^{\nu\sigma}(\eta^{\mu\rho}\del{\sigma}{h_{\nu\rho}} + \eta^{\mu\rho}\del{\nu}{h_{\rho\sigma}} - \eta^{\mu\rho}\del{\rho}{h_{\nu\sigma}}) &= \frac{1}{2}(\del[\nu]{}{\tensor{h}{_{\nu}^{\mu}}} + \del{\nu}{\tensor{h}{^{\mu\nu}}} - \del[\mu]{}{h}) = 0,
+\end{align*}
+or
+\begin{align*}
+	\del[\mu]{}{h} = \del[\nu]{}{\tensor{h}{_{\nu}^{\mu}}} + \del{\nu}{\tensor{h}{^{\mu\nu}}} = 2\del{\nu}{h^{\nu\mu}}.
+\end{align*}
+Lowering the free index yields
+\begin{align*}
+	\del{\nu}{\tensor{h}{^{\nu}_{\mu}}} = \frac{1}{2}\del{\mu}{h}.
+\end{align*}
+
+The Einstein tensor is now
+\begin{align*}
+	G_{\nu\sigma} &= \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}} - \eta_{\nu\sigma}\del{\mu}{\del{\lambda}{\tensor{h}{^{\mu\lambda}}}} + \eta_{\nu\sigma}\square h) \\
+	              &= \frac{1}{2}\left(\frac{1}{2}\del{\nu}{\del{\sigma}{h}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \frac{1}{2}\del{\sigma}{\del{\nu}{h}} - \eta_{\nu\sigma}\del[\lambda]{}{\del{\mu}{\tensor{h}{^{\mu}_{\lambda}}}} + \eta_{\nu\sigma}\square h\right) \\
+	              &= \frac{1}{2}\left(-\square h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}\del[\lambda]{}{\del{\lambda}{h}} + \eta_{\nu\sigma}\square h\right) \\
+	              &= \frac{1}{2}\left(-\square h_{\nu\sigma} + \frac{1}{2}\eta_{\nu\sigma}\square h\right) \\
+	              &= -\frac{1}{2}\left(\square h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}\square h\right).
+\end{align*}
+The Einstein field equations are thus
+\begin{align*}
+	G_{\nu\sigma} = -\frac{1}{2}\left(\square h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}\square h\right) = 8\pi GT_{\nu\sigma},
+\end{align*}
+or alternatively, by defining $\bar{h}_{\nu\sigma} = h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}h$, the compatibility of the metric implies
+\begin{align*}
+	\square\bar{h}_{\mu\nu} = -16\pi GT_{\mu\nu}.
+\end{align*}
+
+To proceed we say a little more about the Newtonian limit. It should be found at low speeds, meaning that the energy-momentum tensor will be dominated by $T_{00}$, which is the energy density, or equivalently the mass density. The corresponding component of $\bar{h}$ will thus also dominate the other side. It should also be obtained when the involved masses are small. If the situation also evolves slowly, we may neglect time derivatives to obtain
+\begin{align*}
+	\laplacian{\bar{h}_{00}} = 16\pi G\rho.
+\end{align*}
+We may thus identify $\bar{h}_{00} = 4\Phi$, where $\Phi$ is the Newtonian gravitational potential. Next, the trace of $\bar{h}$ is
+\begin{align*}
+	\bar{h} = h - \frac{1}{2}\kdelta{\mu}{\mu}h = -h,
+\end{align*}
+which according to the above should be dominated by the time component. Thus
+\begin{align*}
+	h_{\nu\sigma} = \bar{h}_{\nu\sigma} + \frac{1}{2}\eta_{\nu\sigma}h = \bar{h}_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}\bar{h} = 4\Phi\left(\kdelta{0}{\mu}\kdelta{0}{\nu} - \frac{1}{2}\eta_{\mu\nu}\right)
+\end{align*}
+and
+\begin{align*}
+	h_{00} = 2\phi,\ h_{ij} = 2\Phi.
+\end{align*}
+The corresponding spacetime length is
+\begin{align*}
+	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{x^{i}}\dd{x^{i}}.
+\end{align*}
+
+Next we study geodesics in this spacetime. For example, in a spherically symmetric case we may choose
+\begin{align*}
+	\lag = (1 + 2\Phi)\dot{t}^{2} - (1 - 2\Phi)\left(\dot{r}^{2} + r^{2}(\sin[2](\theta)\dot{\phi}^{2} + \dot{\theta}^{2})\right).
+\end{align*}
+The geodesic equations are
+\begin{align*}
+	&\dv{\tau}((1 + 2\Phi)\dot{t}) = 0, \\
+	&2\del{r}{\Phi}\dot{t}^{2} + 2\del{r}{\Phi}\left(\dot{r}^{2} + r^{2}(\sin[2](\theta)\dot{\phi}^{2} + \dot{\theta}^{2})\right) - (1 - 2\Phi)\left(2r(\sin[2](\theta)\dot{\phi}^{2} + \dot{\theta}^{2})\right) - \dv{\tau}(-2(1 - 2\Phi)\dot{r}) = 0, \\
+	&\dv{\tau}(r^{2}\sin[2](\theta)\dot{\phi}) = 0, \\
+	&(1 - 2\Phi)\left(2r^{2}\sin(\theta)\cos(\theta)\dot{\phi}^{2}\right) - \dv{\tau}(-2(1 - 2\Phi)r^{2}\dot{\theta}) = 0.
+\end{align*}
+We assume to be in a weak-field situation, hence the first equation implies $\dot{t}$ being constant. We may take this constant to be $1$, essentially involving a parametrization in terms of $t$. Next we may by symmetry choose $\theta$ to be constant, this constant necessarily being $\frac{\pi}{2}$, to find
+\begin{align*}
+	&2\del{r}{\Phi} + 2\del{r}{\Phi}\left(\dot{r}^{2} + \frac{L^{2}}{r^{2}}\right) - 2(1 - 2\Phi)\frac{L^{2}}{r^{3}} + \dv{\tau}(2(1 - 2\Phi)\dot{r}) = 0, \\
+	&r^{2}\dot{\phi} = L.
+\end{align*}
+Expanding the derivatives yields
+\begin{align*}
+	\del{r}{\Phi} + \del{r}{\Phi}\left(\dot{r}^{2} + \frac{L^{2}}{r^{2}}\right) - (1 - 2\Phi)\frac{L^{2}}{r^{3}} + (1 - 2\Phi)\ddot{r} - \del{r}{\Phi}\dot{r}^{2} = \del{r}{\Phi}\left(1 + \frac{L^{2}}{r^{2}} - \dot{r}^{2}\right) - (1 - 2\Phi)\frac{L^{2}}{r^{3}} + (1 - 2\Phi)\ddot{r} = 0.
+\end{align*}
+Assuming slow motion, such that $L$ and $\dot{r}$ are all much smaller than $1$, we may simplify the above to
+\begin{align*}
+	\del{r}{\Phi} - \frac{L^{2}}{r^{3}} + \ddot{r} = \ddot{r} + \del{r}{\Phi} - r\dot{\phi}^{2} = 0,
+\end{align*}
+which is the radial equation of motion for a central potential.
 
 \paragraph{The Schwarzschild Solution}
 The Schwarzschild solution is the simplest solution for a spherically symmetric metric.
@@ -228,7 +416,7 @@ Finally we may put this together to find
 \begin{align*}
 	\dd{s}^{2} = \left(1 - \frac{R_{\text{S}}}{r}\right)\dd{t}^{2} - \left(1 - \frac{R_{\text{S}}}{r}\right)^{-1}\dd{r}^{2} - r^{2}\dd{\Omega}^{2},
 \end{align*}
-where $R_{\text{S}}$ is the Schwarzschild radius and we work in units where $c = 1$. To reobtain Newtonian gravity at large distances we would need $R_{\text{S}} = 2MG$.
+where $R_{\text{S}}$ is the Schwarzschild radius. To reobtain Newtonian gravity at large distances we would need $R_{\text{S}} = 2MG$.
 
 This metric has singularities at $r = R_{\text{S}}$ and $r = 0$. If you study the curvature invariant $R_{\mu\nu\lambda\sigma}R^{\mu\nu\lambda\sigma}$, however, you find that it is finite at $r = R_{\text{S}}$ and diverges at $r = 0$. This would imply that there exists a smart choice of coordinates in which the singularity at $R_{\text{S}}$ would be eliminated.
 
@@ -262,46 +450,50 @@ One finds that the metric is
 \end{align*}
 In these coordinates geodesics are hyperbolae.
 
-\paragraph{Symmetries and Conserved Quantities}
+\paragraph{Geometric Symmetries and Conserved Quantities}
 Assume that a spacetime has a Killing field $K$, and consider a geodesic of the spacetime with tangent $U$. Along the geodesic we then have
 \begin{align*}
-	\dd{\tau}g_{\mu\nu}K^{\mu}U^{\nu} = \dcov{U}{g_{\mu\nu}K^{\mu}U^{\nu}} = (\dcov{U}{g_{\mu\nu}})K^{\mu}U^{\nu} + g_{\mu\nu}\dcov{U}{K^{\mu}U^{\nu}}.
+	\dv{\tau}(g_{\mu\nu}K^{\mu}U^{\nu}) = \dcov{U}{(g_{\mu\nu}K^{\mu}U^{\nu})} = (\dcov{U}{g_{\mu\nu}})K^{\mu}U^{\nu} + g_{\mu\nu}\dcov{U}{K^{\mu}U^{\nu}}.
 \end{align*}
 As the Levi-Civita connection is metric-compatible, the former term vanishes, and we are left with
 \begin{align*}
-	\dd{\tau}g_{\mu\nu}K^{\mu}U^{\nu} = g_{\mu\nu}U^{\nu}\dcov{U}{K^{\mu}} + g_{\mu\nu}K^{\mu}\dcov{U}{U^{\nu}}.
+	\dv{\tau}(g_{\mu\nu}K^{\mu}U^{\nu}) = g_{\mu\nu}U^{\nu}\dcov{U}{K^{\mu}} + g_{\mu\nu}K^{\mu}\dcov{U}{U^{\nu}}.
 \end{align*}
 As the path is a geodesic, the latter term vanishes and all that is left is
 \begin{align*}
-	\dd{\tau}g_{\mu\nu}K^{\mu}U^{\nu} = g_{\mu\nu}U^{\nu}\dcov{U}{K^{\mu}} = g_{\mu\nu}U^{\nu}U^{\sigma}\dcov{\sigma}{K^{\mu}} = U^{\nu}U^{\sigma}\dcov{\sigma}{K_{\nu}}.
+	\dv{\tau}(g_{\mu\nu}K^{\mu}U^{\nu}) = g_{\mu\nu}U^{\nu}\dcov{U}{K^{\mu}} = g_{\mu\nu}U^{\nu}U^{\sigma}\dcov{\sigma}{K^{\mu}} = U^{\nu}U^{\sigma}\dcov{\sigma}{K_{\nu}}.
 \end{align*}
-The two first factors are symmetric under permutation of indices, whereas the latter is not, hence this is just $0$. Thus the quantity $g_{\mu\nu}K^{\mu}U^{\nu}$ is a constant of motion along the path.
+The two first factors are symmetric under permutation of indices. The other, on the other hand, is antisymmetric as $K$ is a Killing field, hence $\dv{\tau}(g_{\mu\nu}K^{\mu}U^{\nu}) = 0$. Thus the quantity $g_{\mu\nu}K^{\mu}U^{\nu}$ is constant along geodesics.
 
 \paragraph{Symmetries of the Schwarzschild Solution}
-We note that $\del{t}{}$ and $\del{\phi}{}$ are both Killing fields of the Schwarzschild solution. For $r > R_{\text{S}}$ one find that $\del{t}{}$ is time-like.
+We note that $\del{t}{}$ and $\del{\phi}{}$ are both Killing fields of the Schwarzschild solution. For $r > R_{\text{S}}$ one has
+\begin{align*}
+	g(\del{t}{}, \del{t}{}) = 1 - \frac{R_{\text{S}}}{r} > 0,
+\end{align*}
+and $\del{t}{}$ is time-like.
 
-For a general path we define
+For a geodesic we define
 \begin{align*}
 	\sqrt{2E} &= g(\del{t}{}, \dot{\gamma}) = \left(1 - \frac{R_{\text{S}}}{r}\right)\dot{t}, \\
-	L         &= g(\del{\phi}{}, \dot{\gamma}) = r^{s}\sin[2](\theta)\dot{\phi}, \\
-	\alpha    &= g(\dot{\gamma}, \dot{\gamma}).
+	L         &= -g(\del{\phi}{}, \dot{\gamma}) = r^{2}\sin[2](\theta)\dot{\phi}, \\
+	\alpha    &= g(\dot{\gamma}, \dot{\gamma}),
 \end{align*}
-The latter is $1$ for a time-like path and $0$ for a light-like path. By definition we have
+which are all constants along the path. The latter is $1$ for a time-like geodesic and $0$ for a light-like geodesic. By definition we have
 \begin{align*}
-	\alpha &= \left(1 - \frac{R_{\text{S}}}{r}\right)\dot{t}^{2} - \frac{1}{1 - \frac{R_{\text{S}}}{r}}\dot{r}^{2} - r^{2}\sin[2](\theta)\dot{\phi}^{2} = \frac{2E}{1 - \frac{R_{\text{S}}}{r}} - \frac{1}{1 - \frac{R_{\text{S}}}{r}}\dot{r}^{2} - \frac{L^{2}}{r^{2}},
+	\alpha &= \left(1 - \frac{R_{\text{S}}}{r}\right)\dot{t}^{2} - \frac{1}{1 - \frac{R_{\text{S}}}{r}}\dot{r}^{2} - r^{2}\dot{\theta}^{2}  - r^{2}\sin[2](\theta)\dot{\phi}^{2} = \frac{2E}{1 - \frac{R_{\text{S}}}{r}} - \frac{1}{1 - \frac{R_{\text{S}}}{r}}\dot{r}^{2} - r^{2}\dot{\theta}^{2} - \frac{L^{2}}{r^{2}}.
 \end{align*}
-which may be written as
+Noting that $\theta = \frac{\pi}{2}$ solves the geodesic equations, we may limit our considerations to such a solution by symmetry. We then have
 \begin{align*}
 	E - \frac{1}{2}\dot{r}^{2} = \frac{1}{2}\left(\alpha + \frac{L^{2}}{r^{2}}\right)\left(1 - \frac{R_{\text{S}}}{r}\right).
 \end{align*}
-This looks like the relation describing the potential energy of a particle in classical mechanics.
+This looks like the relation describing a classical particle moving in a potential.
 
 \paragraph{Frequency Shift}
 A wave generally has a phase which depends on both position and time. We define the frequency of a wave as $\omega = \dv{\phi}{t}$. For a general world line we define
 \begin{align*}
 	\omega = \dv{\phi}{\tau} = \dot{\chi}^{a}\del{a}{\phi} = V\phi = \df{\phi}(V).
 \end{align*}
-$\df{\phi}$ is the dual of the $4$-frequency $N^{\mu}$. It can be shown that $\dcov{N}{\df{\pi}} = 0$, and thus $\dcov{N}{N} = 0$. Rays with tangent $N$ are thus light-like geodesics.
+$\df{\phi}$ is the dual of the $4$-frequency $N^{\mu}$. It can be shown that $\dcov{N}{\df{\phi}} = 0$, and thus $\dcov{N}{N} = 0$. Rays with tangent $N$ are thus light-like geodesics.
 
 In general an observer will measure a frequency $\df{\phi}(V)$.
 
@@ -326,52 +518,6 @@ An ideal fluid is a substance such that its energy-momentum tensor is of the for
 	T^{\mu\nu} = (\rho_{0} + p)u^{\mu}u^{\nu} - pg^{\mu\nu},
 \end{align*}
 where $u^{\mu}$ is the $4$-velocity of the rest frame of the fluid and $\rho_{0}$ and $p$ are the energy density and pressure of the fluid as measured in the rest frame.
-
-\paragraph{The Weak Field Limit}
-We will now study the Einstein field equations in a limit where the effects of general relativity are weak, in the hopes of finding some limit that reproduces Newtonian gravity. We will do this by linearizing the metric according to $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$, where $\eta$ is the Minkowski metric and all components of $h$ are small. To raise its components, we use the fact that the metric should produce the Kronecker delta to obtain
-\begin{align*}
-	\kdelta{\mu}{\sigma} = g^{\mu\nu}g_{\nu\sigma} = (\eta^{\mu\nu} + f^{\mu\nu})(\eta_{\nu\sigma} + h_{\nu\sigma}) = \eta^{\mu\nu}\eta_{\nu\sigma} + \eta^{\mu\nu}h_{\nu\sigma} + f^{\mu\nu}\eta_{\nu\sigma},
-\end{align*}
-where the perturbations of the inverse metric must also necessarily be small. This yields
-\begin{align*}
-	f^{\mu\nu} = -\eta^{\sigma\nu}\eta^{\rho\mu}h_{\rho\sigma}.
-\end{align*}
-
-When computing the curvature tensor, we will need squares of the Christoffel symbols. These are linear in the perturbations and may therefore be neglected, yielding
-\begin{align*}
-	\tensor*{R}{^{\mu}_{\nu\lambda\sigma}} = \del{\lambda}{\chris{\mu}{\sigma}{\nu}} - \del{\sigma}{\chris{\mu}{\lambda}{\nu}}
-\end{align*}
-and
-\begin{align*}
-	R_{\nu\sigma} = \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}}),
-\end{align*}
-where we have introduced the d'Alembertian $\eta^{\mu\nu}\del{\mu}{\del{\nu}{}}$ and $h = \tensor{h}{^{\mu}_{\mu}}$. The Einstein tensor is
-\begin{align*}
-	G_{\nu\sigma} = \frac{1}{2}(\del{\nu}{\del{\mu}{\tensor{h}{^{\mu}_{\sigma}}}} - \square h_{\nu\sigma} - \del{\nu}{\del{\sigma}{h}} + \del{\sigma}{\del{\mu}{\tensor{h}{^{\mu}_{\nu}}}} + \eta_{\nu\sigma}\square h).
-\end{align*}
-
-To proceed, we choose coordinates such that $\square\chi^{\mu} = 0$. It may be shown that this leads to
-\begin{align*}
-	g^{\mu\nu}\chris{\lambda}{\mu}{\nu} = 0 \implies \del{\mu}{\tensor{h}{^{\mu}_{\lambda}}} = \frac{1}{2}\del{\lambda}{h}.
-\end{align*}
-This will yield the Einstein field equations
-\begin{align*}
-	G_{\nu\sigma} = -\frac{1}{2}(\square h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}\square h) = 8\pi GT_{\nu\sigma},
-\end{align*}
-or alternatively, by defining $\bar{h}_{\nu\sigma} = h_{\nu\sigma} - \frac{1}{2}\eta_{\nu\sigma}h$:
-\begin{align*}
-	\square\bar{h}_{\mu\nu} = -16\pi GT_{\mu\nu}.
-\end{align*}
-
-To proceed we say a little more about the Newtonian limit. It should be found at low speeds, meaning that the energy-momentum tensor will be dominated by $T_{00}$, which is the energy density, or equivalently the mass density. The corresponding component of $\bar{h}$ will thus also dominate the other side. It should also be obtained when the involved masses are small. If the situation also evolves slowly, we may neglect time derivatives to obtain
-\begin{align*}
-	\laplacian{\bar{h}_{00}} = 16\pi G\rho.
-\end{align*}
-We may thus identify $\bar{h}_{00} = 4\Phi$, where $\Phi$ is the Newtonian gravitational potential. The corresponding spacetime length is
-\begin{align*}
-	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{x^{i}}\dd{x^{i}}.
-\end{align*}
-It can also be shown that the geodesics of this metric corresponds to Newton's laws for such a case.
 
 \paragraph{Gravitational Waves}
 We have seen that in the weak field limit the perturbations to the metric in vacuum satisfy the wave equation. The solution is of the form

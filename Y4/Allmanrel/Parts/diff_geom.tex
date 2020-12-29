@@ -264,12 +264,22 @@ and as this is true for any pair of vectors we recognize
 	\tilde{g}_{ab} = g_{\mu\nu}\del{a}{\eta^{\mu}}\del{b}{\eta^{\nu}}.
 \end{align*}
 
-\paragraph{Curvature and the Metric}
-Using the Levi-Civita connection, we may then introduce the contravariant curvature components
+\paragraph{Contravariant Curvature Components}
+Using the Levi-Civita connection, we may introduce the contravariant curvature components
 \begin{align*}
 	R_{abcd} &= \frac{1}{2}\left(\del{a}{\del{d}{g_{bc}}} + \del{b}{\del{c}{g_{ad}}} - \del{a}{\del{c}{g_{bd}}} - \del{b}{\del{d}{g_{ac}}}\right) + g_{fh}(\chris{f}{b}{c}\chris{h}{a}{d} - \chris{f}{b}{d}\chris{h}{a}{c}).
 \end{align*}
-We find $R_{abcd} = R_{cdab} = -R_{abdc} = -R_{bacd}$. In addition, the curvature satisfies the Bianchi identity $R(X, Y)Z + R(Y, Z)X + R(Z, X)Y = 0$, implying $R_{abcd} + R_{acdb} + R_{adbc} = 0$, meaning that the total number of independent components is $\frac{1}{12}n^{2}(n^{2} - 1)$.
+As we see, the contravariant components are antisymmetric in the two first and two last indices. Furthermore, a simultaneous switch of the pairs of first and last indices leaves the components invariant, hence $R_{abcd} = R_{cdab} = -R_{abdc} = -R_{bacd}$. In addition we have
+\begin{align*}
+	R(X, Y)Z + R(Y, Z)X + R(Z, X)Y =& \dcov{X}{\dcov{Y}{Z}} - \dcov{Y}{\dcov{X}{Z}} - \dcov{\comm{X}{Y}}{Z} + \dcov{Y}{\dcov{Z}{X}} - \dcov{Z}{\dcov{Y}{X}} - \dcov{\comm{Y}{Z}}{X} \\
+	                                &+ \dcov{Z}{\dcov{X}{Y}} - \dcov{X}{\dcov{Z}{Y}} - \dcov{\comm{Z}{X}}{Y} \\
+	                               =& \dots = 0.
+\end{align*}
+In component form this becomes $R_{abcd} + R_{acdb} + R_{adbc} = 0$. There also exists a differential Bianchi identity
+\begin{align*}
+	(\dcov{Z}{R})(X, Y) + (\dcov{X}{R})(Y, Z) + (\dcov{Y}{R})(Z, X) = 0,
+\end{align*}
+which in coordinate form becoms $\dcov{f}{R_{abcd}} + \dcov{c}{R_{abdf}} + \dcov{d}{R_{abfc}} = 0$, meaning that the total number of independent components is $\frac{1}{12}n^{2}(n^{2} - 1)$.
 
 \paragraph{Killing Fields}
 $K$ is a Killing field if $\lied{K}{g} = 0$.
@@ -292,6 +302,20 @@ The Ricci scalar is defined as the trace of the Ricci scalar: $\mathcal{R} = g^{
 
 \paragraph{The Einstein Tensor}
 The Einstein tensor is defined as $G_{ab} = R_{ab} - \frac{1}{2}g_{ab}\mathcal{R}$.
+
+\paragraph{The Divergence of the Einstein Tensor}
+With the Levi-Civita connection we have
+\begin{align*}
+	g^{ac}g^{bd}(\dcov{f}{R_{abcd}} + \dcov{c}{R_{abdf}} + \dcov{d}{R_{abfc}}) &= \dcov{f}{(g^{ac}g^{bd}R_{abcd})} + \dcov{c}{(g^{ac}g^{bd}R_{abdf})} + \dcov{d}{(g^{ac}g^{bd}R_{abfc})} \\
+	&= \dcov{f}{(g^{bd}\tensor{R}{^{c}_{bcd}})} - \dcov{c}{(g^{ac}\tensor{R}{^{d}_{adf}})} - \dcov{d}{(g^{bd}\tensor{R}{^{c}_{bcf}})} \\
+	&= \dcov{f}{\R} - \dcov{c}{(g^{ac}\tensor{R}{_{af}})} - \dcov{d}{(g^{bd}\tensor{R}{_{bf}})} \\
+	&= \dcov{f}{\R} - 2\dcov{c}{\tensor{R}{^{c}_{f}}} = 0.
+\end{align*}
+By comparison we have
+\begin{align*}
+	\dcov{a}{G^{ab}} &= \dcov{a}{\left(R^{ab} - \frac{1}{2}g^{ab}\R\right)},
+\end{align*}
+and by lowering the index $b$ we find that this must be zero.
 
 \paragraph{Differential Forms}
 The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as

@@ -17,10 +17,10 @@
 \newcommand{\minteg}[2]{\int\limits_{#1}#2}
 
 % Differential geometry and tensors
-\newcommand{\dcov}[2]{\grad_{#1}{#2}}
+\newcommand{\dcov}[3][]{\grad_{#2}^{#1}{#3}}
 \newcommand{\db}[1]{\vb{E}^{#1}}
 \newcommand{\tb}[1]{\vb{E}_{#1}}
-\newcommand{\kdelta}[2]{\tensor*{\delta}{_{#1}^{#2}}}
+\newcommand{\kdelta}[2]{\tensor*{\delta}{_{#2}^{#1}}}
 \newcommand{\leci}[1]{\varepsilon_{#1}}
 \newcommand{\tenprod}[1]
 {
