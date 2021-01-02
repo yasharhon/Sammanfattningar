@@ -194,6 +194,13 @@ To make it even simpler to study, we choose Cartesian coordinates, for which we 
 \end{align*}
 in other words describing a system with the exact energy and momentum of the free particle located at the position of the particle.
 
+\paragraph{Ideal Fluids}
+An ideal fluid is a substance such that its energy-momentum tensor is of the form
+\begin{align*}
+	T^{\mu\nu} = (\rho_{0} + p)U^{\mu}U^{\nu} - pg^{\mu\nu},
+\end{align*}
+where $u^{\mu}$ is the $4$-velocity of the rest frame of the fluid and $\rho_{0}$ and $p$ are the energy density and pressure of the fluid as measured in the rest frame.
+
 \paragraph{The Weak Field Limit}
 We will now study the Einstein field equations in a limit where the effects of general relativity are weak, in the hopes of finding some limit that reproduces Newtonian gravity. We will do this by linearizing the metric according to $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$, where $\eta$ is the Minkowski metric and all components of $h$ are small. To raise its components, we use the fact that the metric should produce the Kronecker delta to obtain
 \begin{align*}
@@ -327,6 +334,66 @@ Assuming slow motion, such that $L$ and $\dot{r}$ are all much smaller than $1$,
 \end{align*}
 which is the radial equation of motion for a central potential.
 
+\paragraph{Gravitational Waves}
+We have seen that in the weak field limit the perturbations to the metric in vacuum satisfy the wave equation. The solution is of the form
+\begin{align*}
+	\bar{h}_{\mu\nu} = A_{\mu\nu}e^{-ik^{\sigma}x_{\sigma}}.
+\end{align*}
+This is an eigenfunction of the d'Alembertian with eigenvalue $k^{\mu}k_{\mu}$, hence the wavevector must be light-like and waves in the metric travel at the speed of light.
+
+With the chosen gauge for the coordinates we still have some freedom - namely, the coordinate transform $x^{\mu} \to x^{\mu} + B^{\mu}e^{-k^{\sigma}x_{\sigma}}$ gives the same gauge. We may also choose $B^{\mu}$ such that $\tensor{A}{^{\mu}_{\mu}} = 0$ and $A_{0\mu} = 0$ in some frame. Furthermore, in this gauge we have $\del{\mu}{\bar{h}^{\mu\nu}} = k_{\mu}A^{\mu\nu} = 0$. For a wave propagating in the third Cartesian direction the only non-zero amplitudes are $A^{11} = -A^{22} = A_{+}$ and $A^{12} = A^{21} = A_{\cross}$.
+
+Gravitational waves propagate between geodesics, so we need to consider geodesic deviation. To do this, consider two events close to each other on a simultaneity. Evolution in proper time will then take the events to a new simultaneity. Let $X$ be the vector field that is tangent to the simultaneity and pointing in the direction of the other event for each $\tau$, and $U$ the tangent of the geodesic. We then have:
+\begin{align*}
+	\ddot{X} = \dcov{U}{\dcov{U}{X}} = R(U, X)U,
+\end{align*}
+where we have chosen the torsion such that $\comm{X}{U} = 0$. In component form:
+\begin{align*}
+	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{\lambda\sigma\nu}}U^{\lambda}U^{\sigma}X^{\nu}.
+\end{align*}
+For a slowly moving test particle we obtain
+\begin{align*}
+	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{00\nu}}X^{\nu}.
+\end{align*}
+As we have $\tensor*{R}{_{\mu 00\nu}} = \frac{1}{2}\del[2]{0}{h_{\mu\nu}}$, the solution is
+\begin{align*}
+	X^{1} = X^{1}(0)\left(1 + \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right),\ X^{2} = X^{2}(0)\left(1 - \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right).
+\end{align*}
+Hence spatial distances oscillate due to the oscillating metric. I think.
+
+\paragraph{Gravitational Lensing}
+Consider an object and an observer separated by a distribution of matter producing a gravitational potential $\Phi$. In the weak-field limit the metric is described by
+\begin{align*}
+	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{\vb{x}}^{2},
+\end{align*}
+and the path of a ray of light travelling between the two is described by
+\begin{align*}
+	(1 + 2\Phi)\dot{t}^{2} - (1 - 2\Phi)\dot{\vb{x}}^{2} = 0.
+\end{align*}
+In the weak-field limit we expect $\Phi \ll 1$, and thus $\dot{t}^{2} \approx \dot{\vb{x}}^{2}$.
+
+In the case where the potential is time-independent, the geodesic equation for the time coordinate yields
+\begin{align*}
+	(1 + 2\Phi)\dot{t} = c,
+\end{align*}
+and we are free to choose $c = 1$ by rescaling the parameter. Next, the equation for the spatial coordinates is
+\begin{align*}
+	-\ddot{\vb{x}} + 2(\dot{\vb{x}}\cdot\grad{\Phi})\dot{\vb{x}} = (\dot{t}^{2} + \dot{\vb{x}}^{2})\grad{\Phi}.
+\end{align*}
+
+Choosing a coordinate system such that $\dot{\vb{x}} = \vb{e}_{x}$ initially. In the weak-field we expect
+\begin{align*}
+	\dot{\vb{x}} = (1 + \dots)\vb{e}_{x} + v^{2}\vb{e}_{y} + v^{3}\vb{e}_{z},
+\end{align*}
+where the new velocity components are small and the dots represent perturbations of the path of higher order than the other velocity components. Inserting this into the geodesic equation yields
+\begin{align*}
+	-\dot{v}^{2} = 2(\grad{\Phi})^{2},
+\end{align*}
+where we refer to vector components on either side. We can solve this differential equation by integrating along the unperturbed path. In particular, by moving both the observer and the object to infinity we find
+\begin{align*}
+	\dot{v}^{2} = -\integ{-\infty}{\infty}{t}{2(\grad{\Phi})^{2}}.
+\end{align*}
+
 \paragraph{The Schwarzschild Solution}
 The Schwarzschild solution is the simplest solution for a spherically symmetric metric.
 
@@ -342,7 +409,7 @@ Again, as the metric is diagonal, at least two of the indices must be equal, imm
 \begin{align*}
 	\chris{t}{t}{\theta} = \chris{t}{\theta}{t} = \chris{t}{t}{\phi} = \chris{t}{\phi}{t} = \chris{r}{r}{\theta} = \chris{r}{\theta}{r} = \chris{r}{r}{\phi} = \chris{r}{\phi}{r} = \chris{\theta}{t}{t} = \chris{\theta}{r}{r} = \chris{\phi}{t}{t} = \chris{\phi}{r}{r} = 0.
 \end{align*}
-The time independence of the solid angle also implies $\chris{t}{\theta}{\theta} = \chris{t}{\phi}{\phi} = \chris{t}{\theta}{t} = \chris{t}{t}{\theta} = \chris{t}{\phi}{t} = \chris{t}{t}{\phi} = \chris{\theta}{t}{t} = \chris{\phi}{t}{t} = \chris{\theta}{\theta}{t} = \chris{\theta}{t}{\theta} = \chris{\phi}{\phi}{t} = \chris{\phi}{t}{\phi} = 0$. Next, as the metric is independent of $\phi$, we must also have $\chris{\theta}{\theta}{\phi} =	\chris{\theta}{\phi}{\theta} = \chris{\phi}{\theta}{\theta} = \chris{\phi}{\phi}{\phi} = 0$. We also find $\chris{\theta}{\theta}{\theta} = 0$ as the $\theta$ component is independent of $\theta$. The possibly non-zero ones are
+The time independence of the solid angle also implies $\chris{t}{\theta}{\theta} = \chris{t}{\phi}{\phi} = \chris{\theta}{t}{t} = \chris{\phi}{t}{t} = \chris{\theta}{\theta}{t} = \chris{\theta}{t}{\theta} = \chris{\phi}{\phi}{t} = \chris{\phi}{t}{\phi} = 0$. Next, as the metric is independent of $\phi$, we must also have $\chris{\theta}{\theta}{\phi} =	\chris{\theta}{\phi}{\theta} = \chris{\phi}{\theta}{\theta} = \chris{\phi}{\phi}{\phi} = 0$. We also find $\chris{\theta}{\theta}{\theta} = 0$ as the $\theta$ component is independent of $\theta$. The possibly non-zero ones are
 \begin{align*}
 	\chris{t}{t}{t} &= \frac{1}{2}e^{-2\alpha}\cdot 2\del{t}{\alpha}e^{2\alpha} = \del{t}{\alpha}, \ \chris{t}{t}{r} = \chris{t}{r}{t} = \frac{1}{2}e^{-2\alpha}\cdot 2\del{r}{\alpha}e^{2\alpha} = \del{r}{\alpha},\ \chris{t}{r}{r} = -\frac{1}{2}e^{-2\alpha}\cdot -2\del{t}{\beta}e^{2\beta} = \del{t}{\beta}e^{2(\beta - \alpha)}, \\
 	\chris{r}{t}{t} &= -\frac{1}{2}e^{-2\beta}\cdot -2\del{r}{\alpha}e^{2\alpha} = \del{r}{\alpha}e^{2(\alpha - \beta)},\ \chris{r}{t}{r} = \chris{r}{r}{t} = -\frac{1}{2}e^{-2\beta}\cdot -2\del{t}{\beta}e^{2\beta} = \del{t}{\beta},\ \chris{r}{r}{r} = -\frac{1}{2}e^{-2\beta}\cdot -2\del{r}{\beta}e^{2\beta} = \del{r}{\beta}, \\
@@ -510,73 +577,6 @@ This means that
 From this the gravitational redshift follows. If the two events are successive crests of a light pulse, we find
 \begin{align*}
 	\frac{f_{B}}{f_{A}} = \frac{\alpha_{A}}{\alpha_{B}}.
-\end{align*}
-
-\paragraph{Ideal Fluids}
-An ideal fluid is a substance such that its energy-momentum tensor is of the form
-\begin{align*}
-	T^{\mu\nu} = (\rho_{0} + p)u^{\mu}u^{\nu} - pg^{\mu\nu},
-\end{align*}
-where $u^{\mu}$ is the $4$-velocity of the rest frame of the fluid and $\rho_{0}$ and $p$ are the energy density and pressure of the fluid as measured in the rest frame.
-
-\paragraph{Gravitational Waves}
-We have seen that in the weak field limit the perturbations to the metric in vacuum satisfy the wave equation. The solution is of the form
-\begin{align*}
-	\bar{h}_{\mu\nu} = A_{\mu\nu}e^{-ik^{\sigma}x_{\sigma}}.
-\end{align*}
-This is an eigenfunction of the d'Alembertian with eigenvalue $k^{\mu}k_{\mu}$, hence the wavevector must be light-like and waves in the metric travel at the speed of light.
-
-With the chosen gauge for the coordinates we still have some freedom - namely, the coordinate transform $x^{\mu} \to x^{\mu} + B^{\mu}e^{-k^{\sigma}x_{\sigma}}$ gives the same gauge. We may also choose $B^{\mu}$ such that $\tensor{A}{^{\mu}_{\mu}} = 0$ and $A_{0\mu} = 0$ in some frame. Furthermore, in this gauge we have $\del{\mu}{\bar{h}^{\mu\nu}} = k_{\mu}A^{\mu\nu} = 0$. For a wave propagating in the third Cartesian direction the only non-zero amplitudes are $A^{11} = -A^{22} = A_{+}$ and $A^{12} = A^{21} = A_{\cross}$.
-
-Gravitational waves propagate between geodesics, so we need to consider geodesic deviation. To do this, consider two events close to each other on a simultaneity. Evolution in proper time will then take the events to a new simultaneity. Let $X$ be the vector field that is tangent to the simultaneity and pointing in the direction of the other event for each $\tau$, and $U$ the tangent of the geodesic. We then have:
-\begin{align*}
-	\ddot{X} = \dcov{U}{\dcov{U}{X}} = R(U, X)U,
-\end{align*}
-where we have chosen the torsion such that $\comm{X}{U} = 0$. In component form:
-\begin{align*}
-	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{\lambda\sigma\nu}}U^{\lambda}U^{\sigma}X^{\nu}.
-\end{align*}
-For a slowly moving test particle we obtain
-\begin{align*}
-	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{00\nu}}X^{\nu}.
-\end{align*}
-As we have $\tensor*{R}{_{\mu 00\nu}} = \frac{1}{2}\del[2]{0}{h_{\mu\nu}}$, the solution is
-\begin{align*}
-	X^{1} = X^{1}(0)\left(1 + \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right),\ X^{2} = X^{2}(0)\left(1 - \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right).
-\end{align*}
-Hence spatial distances oscillate due to the oscillating metric. I think.
-
-\paragraph{Gravitational Lensing}
-Consider an object and an observer separated by a distribution of matter producing a gravitational potential $\Phi$. In the weak-field limit the metric is described by
-\begin{align*}
-	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{\vb{x}}^{2},
-\end{align*}
-and the path of a ray of light travelling between the two is described by
-\begin{align*}
-	(1 + 2\Phi)\dot{t}^{2} - (1 - 2\Phi)\dot{\vb{x}}^{2} = 0.
-\end{align*}
-In the weak-field limit we expect $\Phi \ll 1$, and thus $\dot{t}^{2} \approx \dot{\vb{x}}^{2}$.
-
-In the case where the potential is time-independent, the geodesic equation for the time coordinate yields
-\begin{align*}
-	(1 + 2\Phi)\dot{t} = c,
-\end{align*}
-and we are free to choose $c = 1$ by rescaling the parameter. Next, the equation for the spatial coordinates is
-\begin{align*}
-	-\ddot{\vb{x}} + 2(\dot{\vb{x}}\cdot\grad{\Phi})\dot{\vb{x}} = (\dot{t}^{2} + \dot{\vb{x}}^{2})\grad{\Phi}.
-\end{align*}
-
-Choosing a coordinate system such that $\dot{\vb{x}} = \vb{e}_{x}$ initially. In the weak-field we expect
-\begin{align*}
-	\dot{\vb{x}} = (1 + \dots)\vb{e}_{x} + v^{2}\vb{e}_{y} + v^{3}\vb{e}_{z},
-\end{align*}
-where the new velocity components are small and the dots represent perturbations of the path of higher order than the other velocity components. Inserting this into the geodesic equation yields
-\begin{align*}
-	-\dot{v}^{2} = 2(\grad{\Phi})^{2},
-\end{align*}
-where we refer to vector components on either side. We can solve this differential equation by integrating along the unperturbed path. In particular, by moving both the observer and the object to infinity we find
-\begin{align*}
-	\dot{v}^{2} = -\integ{-\infty}{\infty}{t}{2(\grad{\Phi})^{2}}.
 \end{align*}
 
 \paragraph{Experimental Evidence for General Relativity}
