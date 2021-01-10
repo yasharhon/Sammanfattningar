@@ -27,13 +27,16 @@ This transition is in fact not as big a leap as one might expect. As we have see
 
 In conclusion, we will describe spacetime as a $4$-dimensional manifold immersed in $5$-dimensional spacetime with a pseudometric of signature $(1, 3)$ and the Levi-Civita connection imposed on it.
 
+\paragraph{Static and Stationary Spacetime}
+If there exists a time-like Killing field of a spacetime, it is stationary. If the spacetime is also orthogonal to a family of $3$-surfaces, the spacetime is static. The consequences of the latter is that the metric is block diagonal, with one time block and one space block.
+
 \paragraph{Comoving Observers}
 A comoving observer is one that has fixed spatial coordinates.
 
 \paragraph{Kinematics of Test Particles}
 A test particle is a particle that itself does not affect the spacetime. Such particles can generally move through spacetime, along curves called world lines. With this motion comes the $4$-velocity $V$, defined as the normalized tangent to a world line. In special relativity we could also define a proper acceleration by differentiating with respect to proper time. In general relativity we replace this with the $4$-acceleration $A = \dcov{V}{V} = \dcov{\dot{\gamma}}{\dot{\gamma}}$.  We may also define the proper acceleration $\alpha$, which satisfies $\alpha^{2} = -A^{2} = -g(A, A)$. As $g(V, V) = 1$, we have
 \begin{align*}
-	\dcov{\mu}{g(V, V)} = 2g(V, A) = 0,
+	\dcov{V}{g(V, V)} = 2g(V, A) = 0,
 \end{align*}
 which implies that $A$ is space-like. Note that the curve parameter we use is $\tau$, which is the proper time and a measure of length in spacetime.
 
@@ -47,9 +50,6 @@ We also define the $4$-momentum $P = mV$ and the $4$-force $F = \dcov{V}{P}$.
 Two events are simultaneous if they are on the same hypersurface of constant $t$. As this depends very much on the choice of coordinates on spacetime, this notion is not at all well-defined.
 
 Similarly, distances are defined along simultaneities and are equally ill-defined. It turns out that the only sense of distance that all observers can agree on is proper time.
-
-\paragraph{Static and Stationary Spacetime}
-If there exists a time-like Killing field of a spacetime, it is stationary. If the spacetime is also orthogonal to a family of $3$-surfaces, the spacetime is static. The consequences of the latter is that the metric has no off-diagonal time components.
 
 \paragraph{The Einstein Field Equations}
 The equations describing the metric are the Einstein field equations. We will derive them from a variational principle, starting with the field equations for vacuum. The action from which we will obtain the field equations is the Einstein-Hilbert action
@@ -219,7 +219,7 @@ When computing the curvature tensor, we will need the Christoffel symbols, which
 \end{align*}
 We will also need products of the Christoffel symbols. As the symbols themselves are linear in the magnitude of the perturbations, we may however neglect these terms, yielding
 \begin{align*}
-	\tensor*{R}{^{\mu}_{\nu\lambda\sigma}} = \del{\lambda}{\chris{\mu}{\sigma}{\nu}} - \del{\sigma}{\chris{\mu}{\lambda}{\nu}}
+	\tensor{R}{^{\mu}_{\nu\lambda\sigma}} = \del{\lambda}{\chris{\mu}{\sigma}{\nu}} - \del{\sigma}{\chris{\mu}{\lambda}{\nu}}
 \end{align*}
 and
 \begin{align*}
@@ -339,30 +339,55 @@ We have seen that in the weak field limit the perturbations to the metric in vac
 \begin{align*}
 	\bar{h}_{\mu\nu} = A_{\mu\nu}e^{-ik^{\sigma}x_{\sigma}}.
 \end{align*}
-This is an eigenfunction of the d'Alembertian with eigenvalue $k^{\mu}k_{\mu}$, hence the wavevector must be light-like and waves in the metric travel at the speed of light.
+This is an eigenfunction of the d'Alembertian with eigenvalue $-k^{\mu}k_{\mu}$, hence the wavevector must be light-like and waves in the metric travel at the speed of light.
 
-With the chosen gauge for the coordinates we still have some freedom - namely, the coordinate transform $x^{\mu} \to x^{\mu} + B^{\mu}e^{-k^{\sigma}x_{\sigma}}$ gives the same gauge. We may also choose $B^{\mu}$ such that $\tensor{A}{^{\mu}_{\mu}} = 0$ and $A_{0\mu} = 0$ in some frame. Furthermore, in this gauge we have $\del{\mu}{\bar{h}^{\mu\nu}} = k_{\mu}A^{\mu\nu} = 0$. For a wave propagating in the third Cartesian direction the only non-zero amplitudes are $A^{11} = -A^{22} = A_{+}$ and $A^{12} = A^{21} = A_{\cross}$.
+With the chosen gauge for the coordinates we still have some freedom - namely, the coordinate transform $x^{\mu} \to x^{\mu} + B^{\mu}e^{-ik^{\sigma}x_{\sigma}}$ does not change the gauge condition. We may also choose $B^{\mu}$ such that $\tensor{A}{^{\mu}_{\mu}} = 0$ and $A_{0\mu} = 0$ in some frame. Furthermore, in this gauge we have
+\begin{align*}
+	\del{\mu}{\bar{h}^{\mu\nu}} = \del{\mu}{h^{\mu\nu}} - \frac{1}{2}\del{\mu}{(\eta^{\mu\nu}h)} = \del{\mu}{h^{\nu\mu}} - \frac{1}{2}\del[\nu]{}{h} = 0.
+\end{align*}
+This implies $k_{\mu}A^{\mu\nu} = 0$.
 
-Gravitational waves propagate between geodesics, so we need to consider geodesic deviation. To do this, consider two events close to each other on a simultaneity. Evolution in proper time will then take the events to a new simultaneity. Let $X$ be the vector field that is tangent to the simultaneity and pointing in the direction of the other event for each $\tau$, and $U$ the tangent of the geodesic. We then have:
+Specializing to a wave propagating in the third Cartesian direction, the only non-zero amplitudes are $A^{11} = -A^{22} = A_{+}$ and $A^{12} = A^{21} = A_{\cross}$. As gravitational waves propagate between geodesics, we need to consider geodesic deviation. To do this, consider two events close to each other on a simultaneity. Evolution in proper time will then take the events to a new simultaneity. Let $X$ be the vector field that is tangent to the simultaneity and pointing in the direction of the other event for each $\tau$, and $U$ the tangent of one of the geodesics. We then have
 \begin{align*}
 	\ddot{X} = \dcov{U}{\dcov{U}{X}} = R(U, X)U,
 \end{align*}
 where we have chosen the torsion such that $\comm{X}{U} = 0$. In component form:
 \begin{align*}
-	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{\lambda\sigma\nu}}U^{\lambda}U^{\sigma}X^{\nu}.
+	\ddot{X}^{\mu} = \tensor{R}{^{\mu}_{\lambda\sigma\nu}}U^{\lambda}U^{\sigma}X^{\nu}.
 \end{align*}
 For a slowly moving test particle we obtain
 \begin{align*}
-	\ddot{X}^{\mu} = \tensor*{R}{^{\mu}_{00\nu}}X^{\nu}.
+	\ddot{X}^{\mu} \approx \tensor{R}{^{\mu}_{00\nu}}X^{\nu}.
 \end{align*}
-As we have $\tensor*{R}{_{\mu 00\nu}} = \frac{1}{2}\del[2]{0}{h_{\mu\nu}}$, the solution is
+We have
 \begin{align*}
-	X^{1} = X^{1}(0)\left(1 + \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right),\ X^{2} = X^{2}(0)\left(1 - \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right).
+	\tensor{R}{_{\mu 00\nu}} &= (\eta_{\mu\sigma} + h_{\mu\sigma})(\del{0}{\chris{\sigma}{\nu}{0}} - \del{\nu}{\chris{\sigma}{0}{0}}) \\
+	                         &= \frac{1}{2}\eta_{\mu\sigma}\left(\del{0}{(\eta^{\sigma\rho}\del{0}{h_{\nu\rho}} + \eta^{\sigma\rho}\del{\nu}{h_{\rho 0}} - \eta^{\sigma\rho}\del{\rho}{h_{\nu 0}})} - \del{\nu}{(\eta^{\sigma\rho}\del{0}{h_{0\rho}} + \eta^{\sigma\rho}\del{0}{h_{\rho 0}} - \eta^{\sigma\rho}\del{\rho}{h_{00}})}\right) \\
+	                         &= \frac{1}{2}\eta_{\mu\sigma}\left(\eta^{\sigma\rho}\del{0}{\del{0}{h_{\nu\rho}}} + \eta^{\sigma\rho}\del{0}{\del{\nu}{h_{\rho 0}}} - \eta^{\sigma\rho}\del{0}{\del{\rho}{h_{\nu 0}}} - \eta^{\sigma\rho}\del{\nu}{\del{0}{h_{0\rho}}} - \eta^{\sigma\rho}\del{\nu}{\del{0}{h_{\rho 0}}} + \eta^{\sigma\rho}\del{\nu}{\del{\rho}{h_{00}}}\right) \\
+	                         &= \frac{1}{2}\kdelta{\rho}{\mu}\left(\del[2]{0}{h_{\nu\rho}} - \del{0}{\del{\rho}{h_{\nu 0}}} - \del{\nu}{\del{0}{h_{\rho 0}}} + \del{\nu}{\del{\rho}{h_{00}}}\right) \\
+	                         &= \frac{1}{2}\left(\del[2]{0}{h_{\nu\mu}} - \del{0}{\del{\mu}{h_{\nu 0}}} - \del{\nu}{\del{0}{h_{\mu 0}}} + \del{\nu}{\del{\mu}{h_{00}}}\right) \\
+	                         &= \frac{1}{2}\del[2]{0}{h_{\mu\nu}},
 \end{align*}
-Hence spatial distances oscillate due to the oscillating metric. I think.
+where the last equality follows from the particular geometry. Writing this out we find
+\begin{align*}
+	\ddot{X}^{\mu} = \frac{1}{2}X^{\nu}\del[2]{0}{\tensor{h}{^{\mu}_{\nu}}} = \frac{1}{2}X^{\nu}\tensor{A}{^{\mu}_{\nu}}\del[2]{0}{e^{-ik^{\sigma}x_{\sigma}}}.
+\end{align*}
+In the case of $A_{\cross} = 0$ we can simplify this to
+\begin{align*}
+	\ddot{X}^{1} = \frac{1}{2}X^{\nu}\tensor{A}{^{1}_{\nu}}\del[2]{0}{e^{-ik^{\sigma}x_{\sigma}}} = -\frac{1}{2}X^{1}A_{+}\del[2]{0}{e^{-ik^{\sigma}x_{\sigma}}},\ \ddot{X}^{2} =  \frac{1}{2}X^{2}A_{+}\del[2]{0}{e^{-ik^{\sigma}x_{\sigma}}}.
+\end{align*}
+To leading order in the amplitude, we thus find
+\begin{align*}
+	X^{1} = X^{1}(0)\left(1 - \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right),\ X^{2} = X^{2}(0)\left(1 + \frac{1}{2}A_{+}e^{-ik^{\sigma}x_{\sigma}}\right).
+\end{align*}
+I believe the idea is that because the components of the tangent vector oscillate, so do the distances between the events on the two geodesics. In this case the oscillations are in the two coordinate directions. For the case $A_{+} = 0$ we instead have
+\begin{align*}
+	\ddot{X}^{1} = -\frac{1}{2}X^{2}A_{+}\del[2]{0}{e^{-ik^{\sigma}x_{\sigma}}},\ \ddot{X}^{2} = -\frac{1}{2}X^{1}A_{+}\del[2]{0}{e^{-ik^{\sigma}x_{\sigma}}}.
+\end{align*}
+This produces the same behaviour, but in a coordinate system rotate $45^{\circ}$ relative to the original system.
 
 \paragraph{Gravitational Lensing}
-Consider an object and an observer separated by a distribution of matter producing a gravitational potential $\Phi$. In the weak-field limit the metric is described by
+Consider a light source and an observer separated by a distribution of matter producing a gravitational potential $\Phi$. In the weak-field limit the metric is described by
 \begin{align*}
 	\dd{s}^{2} = (1 + 2\Phi)\dd{t}^{2} - (1 - 2\Phi)\dd{\vb{x}}^{2},
 \end{align*}
@@ -376,12 +401,12 @@ In the case where the potential is time-independent, the geodesic equation for t
 \begin{align*}
 	(1 + 2\Phi)\dot{t} = c,
 \end{align*}
-and we are free to choose $c = 1$ by rescaling the parameter. Next, the equation for the spatial coordinates is
+and we are free to choose $c = 1$ by rescaling. Next, the equation for the spatial coordinates is
 \begin{align*}
 	-\ddot{\vb{x}} + 2(\dot{\vb{x}}\cdot\grad{\Phi})\dot{\vb{x}} = (\dot{t}^{2} + \dot{\vb{x}}^{2})\grad{\Phi}.
 \end{align*}
 
-Choosing a coordinate system such that $\dot{\vb{x}} = \vb{e}_{x}$ initially. In the weak-field we expect
+Choosing a coordinate system such that $\dot{\vb{x}} = \vb{e}_{x}$ initially, we expect in the weak-field limit
 \begin{align*}
 	\dot{\vb{x}} = (1 + \dots)\vb{e}_{x} + v^{2}\vb{e}_{y} + v^{3}\vb{e}_{z},
 \end{align*}
@@ -389,7 +414,7 @@ where the new velocity components are small and the dots represent perturbations
 \begin{align*}
 	-\dot{v}^{2} = 2(\grad{\Phi})^{2},
 \end{align*}
-where we refer to vector components on either side. We can solve this differential equation by integrating along the unperturbed path. In particular, by moving both the observer and the object to infinity we find
+where we refer to vector components on either side. We can solve this differential equation by integrating along the unperturbed path. In particular, by moving both the observer and the source to infinity we find
 \begin{align*}
 	\dot{v}^{2} = -\integ{-\infty}{\infty}{t}{2(\grad{\Phi})^{2}}.
 \end{align*}
@@ -556,25 +581,37 @@ Noting that $\theta = \frac{\pi}{2}$ solves the geodesic equations, we may limit
 This looks like the relation describing a classical particle moving in a potential.
 
 \paragraph{Frequency Shift}
-A wave generally has a phase which depends on both position and time. We define the frequency of a wave as $\omega = \dv{\phi}{t}$. For a general world line we define
+A wave generally has a phase $\phi$ which depends on both position and time. For a general world line with tangent $V$ we define
 \begin{align*}
-	\omega = \dv{\phi}{\tau} = \dot{\chi}^{a}\del{a}{\phi} = V\phi = \df{\phi}(V).
+	\omega = \dcov{V}{\phi} = V^{\mu}\del{\mu}{\phi} = \df{\phi}(V).
 \end{align*}
-$\df{\phi}$ is the dual of the $4$-frequency $N^{\mu}$. It can be shown that $\dcov{N}{\df{\phi}} = 0$, and thus $\dcov{N}{N} = 0$. Rays with tangent $N$ are thus light-like geodesics.
+By raising the indices of $\df{\phi}$, one obtains the $4$-frequency $N^{\mu}$.
 
-In general an observer will measure a frequency $\df{\phi}(V)$.
+Consider the case of light-like surfaces of constant phase, implying $g^{\mu\nu}(\df{\phi})_{\mu}(\df{\phi})_{\nu} = g^{\mu\nu}\del{\mu}{\phi}\del{\nu}{\phi} = 0$. We then find
+\begin{align*}
+	(\dcov{N}{\df{\phi}})_{\mu} &= N^{\nu}(\del{\nu}{\del{\mu}{\phi}} - \chris{\sigma}{\nu}{\mu}\del{\sigma}{\phi}) \\
+	                            &= g^{\nu\rho}(\del{\rho}{\phi}\del{\nu}{\del{\mu}{\phi}} - \chris{\sigma}{\nu}{\mu}\del{\rho}{\phi}\del{\sigma}{\phi}) \\
+	                            &= \frac{1}{2}g^{\nu\rho}\left(\del{\rho}{\phi}\del{\nu}{\del{\mu}{\phi}} - \chris{\sigma}{\nu}{\mu}\del{\rho}{\phi}\del{\sigma}{\phi} + \del{\nu}{\phi}\del{\rho}{\del{\mu}{\phi}} - \chris{\sigma}{\rho}{\mu}\del{\nu}{\phi}\del{\sigma}{\phi}\right) \\
+	                            &= \frac{1}{2}g^{\nu\rho}\left(\del{\mu}{(\del{\rho}{\phi}\del{\nu}{\phi})} - \chris{\sigma}{\nu}{\mu}\del{\rho}{\phi}\del{\sigma}{\phi} - \chris{\sigma}{\rho}{\mu}\del{\nu}{\phi}\del{\sigma}{\phi}\right) \\
+	                            &= \frac{1}{2}g^{\nu\rho}\dcov{\mu}{(\del{\rho}{\phi}\del{\nu}{\phi})} \\
+	                            &= \frac{1}{2}\dcov{\mu}{(g^{\nu\rho}\del{\rho}{\phi}\del{\nu}{\phi})} \\
+	                            &= 0.
+\end{align*}
+In other words, $\df{\phi}$ is parallel along the world line defined by $N$, implying that these world lines are light-like geodesics.
+
+In general an observer will measure a frequency $f = g(N, V) = \df{\phi}(V)$. The emitted frequency will simply be this inner product, while the frequency observed at a different point will be found by the same process after having parallel transported $N$. Computing this parallel transport is usually cumbersome, so we will avoid applying it directly in favor of other arguments.
 
 \paragraph{Gravitational Time Dilation and Redshift}
-Consider a static space time. This means that there exists coordinates $\chi^{a}$ such that $\dd{s}^{2} = \alpha^{2}\dd{t}^{2} - h_{ij}\dd{\chi}^{i}\dd{\chi}^{j}$, where the components of the metric are functions of the spatial coordinates only. Now consider two static observers in this spacetime observing two events. As the geodesics have time translation symmetry due to the metric being static, the two observers must observe the same time difference $t_{0}$. Each observer observes an elapsed proper time
+Consider a static space time with spacetime interval $\dd{s}^{2} = \alpha^{2}\dd{t}^{2} - h_{ij}\dd{\chi}^{i}\dd{\chi}^{j}$, where the components of the metric are functions of the spatial coordinates only. Now consider two comoving observers in this spacetime observing two events. As $\del{t}{}$ is a Killing field, the geodesics have time translation symmetry, hence the two observers must observe the same time difference $t_{0}$. Each observer observes an elapsed proper time
 \begin{align*}
 	\tau = \integ{t}{t + t_{0}}{t}{\sqrt{g_{tt}}} = \alpha t_{0}.
 \end{align*}
-This means that
+This means that the elapsed proper time dilates according to
 \begin{align*}
 	\frac{\tau_{A}}{\tau_{B}} = \frac{\alpha_{A}}{\alpha_{B}}.
 \end{align*}
 
-From this the gravitational redshift follows. If the two events are successive crests of a light pulse, we find
+In particular, if the two events are successive crests of a light pulse, we find the gravitational redshift formula
 \begin{align*}
 	\frac{f_{B}}{f_{A}} = \frac{\alpha_{A}}{\alpha_{B}}.
 \end{align*}

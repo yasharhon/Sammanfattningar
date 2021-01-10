@@ -94,8 +94,23 @@ We may obtain an even nicer form by noting that all the relevant $s$ are eigenfu
 	H^{2}          &= \frac{8\pi}{3}G\rho - \frac{\kappa}{a^{2}}.
 \end{align*}
 
+\paragraph{A Note on Multi-Component Ideal Fluids}
+In order to study a universe composed of multiple kinds of ideal fluids we will need to use an energy-momentum tensor of the form
+\begin{align*}
+	T = \sum\limits_{i}T_{i},
+\end{align*}
+where each term is of the form of an ideal fluid with a particular density and pressure. The statement that the divergence of the energy-momentum tensor is in fact a statement about conservation of energy and momentum, hence it must apply to each of the terms of the sum if the corresponding fluids are non-interacting. This implies that
+\begin{align*}
+	\rho_{i} \propto a^{-3(1 + w_{i})}
+\end{align*}
+for all the fluids individually. The Friedmann equations may now be written as
+\begin{align*}
+	\frac{a\pp}{a} &= -\frac{4\pi}{3}G\sum\limits_{i}(\rho_{i} + 3p_{i}), \\
+	H^{2}          &=  - \frac{\kappa}{a^{2}} + \frac{8\pi}{3}G\sum\limits_{i}\rho_{i}.
+\end{align*}
+
 \paragraph{The Big Bang}
-As we saw above, we have $\frac{\ddot{a}}{a} \propto -(\rho + 3p)$. Now, we have observed that $\dot{a} > 0$, and as $\ddot{a} < 0$ we must have that $\dot{a}$ was greater before. The general shape of the corresponding solution implies that there exists a time when $a$ was equal to zero. The time at which this changed is termed the Big Bang.
+As we saw above, we have $\frac{\ddot{a}}{a} \propto -(\rho + 3p)$. Today we observe that $\dot{a} > 0$. Assuming $\rho + 3p > 0$ we have $\ddot{a} < 0$, hence $\dot{a}$ must have been greater in the past. The general shape of $a$ thus implies that there exists a time when $a$ was equal to zero. The time at which this changed, defined to be $t = 0$, is termed the Big Bang.
 
 \paragraph{Cosmological Redshift}
 Consider two comoving observers in a RW universe. We may choose our coordinates such that they are connected by a purely radial path. Supposing that a light signal is sent from one to the other, that light signal satisfies
@@ -119,16 +134,27 @@ Assuming the frequency of the light to be high, we may linearize the above. By a
 	\frac{f_{2}}{f_{1}} = \frac{a(t_{1})}{a(t_{2})}.
 \end{align*}
 
-\paragraph{Evolution of the Universe}
-As we have seen, there is a density $\rho_{\text{c}} = \frac{3H^{2}}{8\pi G}$ such that $\kappa = 0$ and the universe is flat. Introducing the density parameter $\Omega = \frac{\rho}{\rho_{\text{c}}}$ one of the Friedmann equations may be written as
+\paragraph{The Cosmological Redshift}
+We define the cosmological redshift as follows: Choosing comoving coordinates such that $a(t_{0}) = 1$, we introduce the redshift
 \begin{align*}
-	\sum\limits_{i}\Omega_{i} + \Omega_{\kappa} = 1,\ \Omega_{\kappa} = -\frac{\kappa}{H^{2}a^{2}},
+	z = \frac{f_{0}}{f} - 1.
 \end{align*}
-where the summation is performed over all matter components of the universe. In particular, for a flat universe we may reuse one previous solution to write
+According to the previous example we have
+\begin{align*}
+	z = \frac{1}{a(t)} - 1 \implies a(t) = \frac{1}{1 + z}.
+\end{align*}
+for some previous time $t$. The redshift thus acts as a stand-in for cosmological time, larger redshifts corresponding to earlier times.
+
+\paragraph{Evolution of the Universe}
+From the Friedmann equations we see that if the density of the ideal fluid is equal to a critical value $\rho_{\text{c}} = \frac{3H^{2}}{8\pi G}$, we find $\kappa = 0$, implying that the universe is flat. Introducing the density parameter $\Omega = \frac{\rho}{\rho_{\text{c}}}$ one of the Friedmann equations may be written as
+\begin{align*}
+	\sum\limits_{i}\Omega_{i} + \Omega_{\kappa} = 1,\ \Omega_{\kappa} = -\frac{\kappa}{H^{2}a^{2}}.
+\end{align*}
+In particular, for a flat universe where we define $a(t_{0}) = 1$ we may reuse one previous solution to write
 \begin{align*}
 	H^{2} = \left(\frac{\dot{a}}{a}\right)^{2} = \frac{8\pi}{3}G\sum\limits_{i}\rho_{0, i}a^{-3(w_{i} + 1)},
 \end{align*}
-where $\rho$ and $a$ are both evaluated at the current time.
+where the densities are all evaluated at $t_{0}$.
 
 \paragraph{Accelerating Expansion and Cosmological Constant}
 The universe has been found to have accelerating expansion. Furthermore, there is evidence for the existence of an energy component of the universe corresponding to $w = -1$ and $\rho$ constant. This component is called the cosmological constant and is a kind of dark energy.
@@ -136,11 +162,15 @@ The universe has been found to have accelerating expansion. Furthermore, there i
 \paragraph{Cosmological Inflation}
 The Big Bang model has some problems. One is the existence of a singularity of the metric at the time of the Big Bang. A second is the high degree of flatness of the universe. Finally there is the high degree of homogeneity of the universe.
 
-To elaborate, if the universe is dominated by an ideal fluid, one of the Friedmann equations may be shown to be equivalent to
+To elaborate, one of the Friedmann equations may be written as
+\begin{align*}
+	-\kappa = H^{2}a^{2} - \frac{8\pi G}{3}Ga^{2}\rho = \frac{8\pi G}{3}a^{2}\left(\rho_{\text{c}} - \rho\right) = \frac{8\pi G}{3}a^{2}\rho\left(\frac{1}{\Omega} - 1\right)
+\end{align*}
+If the universe is dominated by an ideal fluid, we use the fact that $\rho\propto a^{-3(1 + w)}$ to write this as
 \begin{align*}
 	1 - \frac{1}{\Omega} \propto a^{1 + 3w}.
 \end{align*}
-This means that if $w > -\frac{1}{3}$ then $1 - \frac{1}{\Omega}$ increases with time. As the universe is currently very flat, $1 - \frac{1}{\Omega}$ must have been close to $1$ shortly after the Big Bang.
+This means that if $w > -\frac{1}{3}$ then $1 - \frac{1}{\Omega}$, and thus the curvature of the universe, increases with time. As the universe is currently very flat, $1 - \frac{1}{\Omega}$ must have been close to $1$ shortly after the Big Bang, and the universe must have been even flatter.
 
 Furthermore, when studying the cosmic microwave background, regions that are not in causal contact are very close in temperature. This requires explanation.
 
