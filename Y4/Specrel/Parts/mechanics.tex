@@ -29,13 +29,26 @@ and relativistic total energy as
 	E = m_{0}\gamma_{u}c^{2}.
 \end{align*}
 
-Having done this, we may generally write $P^{\mu} = \left(\frac{E}{c}, \vb{p}\right)$. In particular, we obtain in the rest frame that $p_{\mu}p^{\mu} = m_{0}c$, and thus the mass invariant
+Having done this, we may generally write $P^{\mu} = \left(\frac{E}{c}, \vb{p}\right)$. In particular, we obtain in the rest frame that $P_{\mu}P^{\mu} = (m_{0}c)^{2}$, and thus the mass invariant
 \begin{align*}
 	(m_{0}c^{2})^{2} = E^{2} - (c\vb{p})^{2}.
 \end{align*}
 The $4$-momentum is thus time-like.
 
 \paragraph{Potential Energy}
+The classical total energy of a free particle comes in the low-velocity limit of $P_{\mu}P^{\mu} = (m_{0}c)^{2}$. Attempting the replacement
+\begin{align*}
+	(m_{0}c^{2})^{2} = (E - U)^{2} - (c\vb{p})^{2}
+\end{align*}
+when adding a potential does not work, however, as it is does not represent a manipulation of $4$-vectors. Instead we introduce the $4$-potential
+\begin{align*}
+	Q^{\mu} = \left(\frac{U}{c}, \vb{q}\right),
+\end{align*}
+which contains the potential in its time component and the so-called potential momentum ind its space components. In the presence of a potential the proper equation is
+\begin{align*}
+	(m_{0}c^{2})^{2} = (E - U)^{2} - (c\vb{p} - c\vb{q})^{2}.
+\end{align*}
+It carries strong similarities to expressions taken from particles moving in electromagnetic field, an early warning sign.
 
 \paragraph{A Note on Relativistic Mass}
 I make a brief note of how the above is modified by defining the relativistic mass $m = m_{0}\gamma_{u}$. In this case you would obtain $E = mc^{2}$ and $\vb{p} = m\vb{u}$. In this context $m_{0}$ is termed the rest mass. This way of doing this is generally not preferred in modern contexts.
@@ -47,6 +60,7 @@ The expression for the energy may be extended to massless particles. In these ca
 de Broglie combined experiments showing $E = \hbar\omega$ for photons, which had been discovered to be particles, with the work done above to show that photons could be attributed a momentum $\abs{p} = \hbar\abs{\vb{k}}$. His hypothesis was that this extends to all particles, revealing the wave-particle duality of matter to the world.
 
 \paragraph{Center-of-Momentum Frames}
+If the $4$-momentum is time-like, there exists a frame in which it has no spatial components. This frame is termed the center-of-momentum frame. In many scenarios it is useful to consider because it has a high degree of symmetry.
 
 \paragraph{$4$-Force and $3$-Force}
 In general we have
@@ -89,7 +103,7 @@ In the general case we have
 As heat-like forces must be orthogonal to the $4$-velocity, the first term may be interpreted to arise from pure forces and the other from heat-like forces.
 
 \paragraph{Newton's Second Law With $3$-Vectors}
-Using the previously constructed invariants we have
+Using the previously constructed invariant we have
 \begin{align*}
 	\dv{E}{t} = \vb{f}\cdot\vb{u} + \frac{c^{2}}{\gamma_{u}}\dv{t}m_{0}.
 \end{align*}

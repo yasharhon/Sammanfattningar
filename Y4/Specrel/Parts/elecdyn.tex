@@ -200,6 +200,19 @@ and the other Maxwell equation takes the form
 	\del{\mu}{\del[\mu]{}{\Phi^{\nu}}} - \del{\mu}{\del[\nu]{}{\Phi^{\mu}}} = \frac{1}{c\varepsilon_{0}}J^{\nu}.
 \end{align*}
 
+\paragraph{A Jacobi Identity}
+We have
+\begin{align*}
+	\del{\mu}{F_{\nu\sigma}} + \del{\nu}{F_{\sigma\mu}} &= \del{\mu}{(\del{\nu}{\Phi_{\sigma}} - \del{\sigma}{\Phi_{\nu}})} + \del{\nu}{(\del{\sigma}{\Phi_{\mu}} - \del{\mu}{\Phi_{\sigma}})} \\
+	                                                    &= \del{\nu}{\del{\sigma}{\Phi_{\mu}}} - \del{\mu}{\del{\sigma}{\Phi_{\nu}}} \\
+	                                                    &= \del{\sigma}{(\del{\nu}{\Phi_{\mu}} - \del{\mu}{\Phi_{\nu}})} \\
+	                                                    &= -\del{\sigma}{F_{\mu\nu}},
+\end{align*}
+implying the Jacobi identity
+\begin{align*}
+	\del{\mu}{F_{\nu\sigma}} + \del{\nu}{F_{\sigma\mu}} + \del{\sigma}{F_{\mu\nu}} = 0.
+\end{align*}
+
 \paragraph{Gauge}
 The choice of $4$-potential is not unique - namely, if two $4$-potentials differ by a term $\del{\mu}{\Psi}$, then they produce the same field strength. This means that there is a so-called gauge degree of freedom in the choice of the $4$-potential.
 
