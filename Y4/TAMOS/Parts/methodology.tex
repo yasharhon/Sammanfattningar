@@ -78,9 +78,9 @@ Erroneous design is design that fails to account for some background factor(s). 
 To detect such errors, one might employ what knowledge one possesses, of either theory or experimental practice, to identify them, or one might investigate the repeatability, reproducibility and replicability of the experiment to find out where it might have gone wrong.
 
 \paragraph{Randomization}
-Randomization is the process of dividing samples into treatment and control groups using randomness. Experiments set up this way are called randomized controlled trials.
+Randomization is the process of dividing samples into treatment and control groups using randomness. Experiments set up this way are called randomized control trials.
 
-Randomness is desired because it might eliminate selection bias, help convince others that your experiment is not rigged and blinds the identity of the treatment from both investigators and subjects. However, randomization is not the only way to achieve these goals.
+Randomness is desired because it might eliminate selection bias, help convince others that your experiment is not rigged and can be helpful in blinding the identity of the treatment from both investigators and subjects. However, randomization is not the only way to achieve these goals.
 
 Randomization does not help to equally distribute background factors between the treatment and control groups. Imbalances may instead be avoided by being checked and controlled for. One might also use so-called stratified randomization, where background factors are included in the randomization process.
 
@@ -123,7 +123,7 @@ Fisher's significance testing is a framework for rejecting hypotheses. Its steps
 	\item Determine the distribution of the test statistics.
 	\item Observe the outcome of the experiment.
 	\item Calculate the $p$-value, defined as the probability of observing a result as least as extreme as the observed one given $H$.
-	\item If $p$ is smaller than some threshold value, reject $H$.
+	\item If $p$ is smaller than some threshold value, termed the significance level, reject $H$.
 \end{enumerate}
 
 \paragraph{$p$-Value Abuse}
@@ -156,7 +156,7 @@ Fisher's framework only leaves room for considering one hypothesis at a time. Th
 The typical approach is to set the desired type-I error rate to some acceptable value and perform power analysis on your test given this. The power of the test is defined as the probability of rejecting $H_{0}$ given that it is true, and depends on the set type-I error rate, the magnitude of the effect of interest and the sample size. Once that is done, you compare the obtained $p$-value to the set type-I error rate and use that to accept or reject $H_{0}$.
 
 \paragraph{Bayesian Statistics}
-The Bayesian approach to statistics provides another way of using statistics for testing a hypothesis. The steps are:
+The Bayesian approach to statistics provides another way of using statistics for testing a hypothesis. In this approach, probabilities of hypotheses being true are interpreted as subjective confidence in hypotheses. The steps are:
 \begin{enumerate}
 	\item Formulate a set of competing hypothesis.
 	\item Determine prior probabilities of each hypothesis being true.
