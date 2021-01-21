@@ -1,0 +1,83 @@
+\section{Basic Concepts}
+
+\section{Diffusion and Random Walks}
+Macroscopic diffusion is governed by the diffusion equation
+\begin{align*}
+	\del{t}{\rho} = D\laplacian{\rho}.
+\end{align*}
+In particular, with the initial condition $\rho(\vb{x}, t_{0}) = \delta(\vb{x} - \vb{x}_{0})$ we find
+\begin{align*}
+	\rho(\vb{x}, t) = \left(4\pi D(t - t_{0})\right)^{-\frac{d}{2}}e^{-\frac{\abs{\vb{x} - \vb{x}_{0}}^{2}}{4D(t - t_{0})}}.
+\end{align*}
+
+Can we re-obtain this result from microscopic dynamics? One way to do this is to consider a random walk with coordinates
+\begin{align*}
+	x^{i}(t + \Delta t) = x^{i}(t) + \Delta x_{n}^{i},
+\end{align*}
+where the $\Delta x_{n}^{i}$ are random variables assumed to be independent and from the same probability distribution. It turns out that all the information we need is contained in the first two moments
+\begin{align*}
+	\expval{\Delta x_{n}^{i}} = 0,\ \expval{(\Delta x_{n}^{i})^{2}} = \sigma^{2},
+\end{align*}
+as with this recursion we find
+\begin{align*}
+	x^{i}(t) = x^{i}_{0} + \sum\limits_{n}\Delta x_{n}^{i}.
+\end{align*}
+For a large number of steps $N$ the coordinates then follow a normal distribution. Its expectation value is
+\begin{align*}
+	\expval{x^{i}(t)} = \expval{x^{i}_{0} + \sum\limits_{n}\Delta x_{n}^{i}} = x^{i}_{0}.
+\end{align*}
+Its variance is
+\begin{align*}
+	\expval{(x^{i}(t) - \expval{x^{i}(t)})^{2}} &= \expval{\left(\sum\limits_{n}\Delta x_{n}^{i}\right)^{2}} \\
+	                                            &= \sum\limits_{m, n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} \\
+	                                            &= \sum\limits_{m = n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} + \sum\limits_{m \neq n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} \\
+	                                            &= N\sigma^{2},
+\end{align*}
+where we have used the fact that the steps are independent and the covariance therefore is $0$, implying
+\begin{align*}
+	\expval{(\Delta x_{m}^{i} - \expval{\Delta x_{m}^{i}})(\Delta x_{n}^{i} - \expval{\Delta x_{n}^{i}})} &= \expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} - \expval{\Delta x_{m}^{i}\expval{\Delta x_{n}^{i}}} - \expval{\expval{\Delta x_{m}^{i}}\Delta x_{n}^{i}} + \expval{\expval{\Delta x_{m}^{i}}\expval{\Delta x_{n}^{i}}} \\
+	             &= \expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} = 0.
+\end{align*}
+To rewrite this in the appropriate form, we introduce the time as $t = N\Delta t$ and define
+\begin{align*}
+	\frac{\sigma^{2}}{\Delta t}t = 2Dt,
+\end{align*}
+meaning that things have the right form somehow.
+
+\paragraph{Irreversibility and Classical Mechanics}
+The example with random walks showed that the diffusion result was produced under the assumption that the microscopic process did not have time reversal symmetry. Classical mechanics, however, does. How do we reconcile the two?
+
+One ad hoc answer is that classical dynamics, while allowing for dynamics with time reversal, will not necessarily admit this with a high probability, accounting for why it is not observed.
+
+A more computational example might be found by defining the statistical entropy
+\begin{align*}
+	S = -\kb\integ{}{}{\vb{x}}{f(\vb{x}, t)\ln(f(\vb{x}, t))}.
+\end{align*}
+$f$ is the probability density in phase space, and according to Liouville's theorem we have
+\begin{align*}
+	\del{t}{f} = \pb{\ham}{f},
+\end{align*}
+where \ham is the Hamiltonian. Defining the velocity field $\vb{v} = \dv{\vb{x}}{t}$ in phase space and using Hamilton's equations we may alternatively write the above as
+\begin{align*}
+	\del{t}{f} = -\vb{v}\cdot\grad_{\vb{x}}{f}.
+\end{align*}
+As
+\begin{align*}
+	\div_{\vb{x}}{\vb{v}} = \del{q^{i}}{\del{p_{i}}{\ham}} - \del{p^{i}}{\del{q_{i}}{\ham}} = 0,
+\end{align*}
+we have
+\begin{align*}
+	\del{t}{f} = -\div_{\vb{x}}{(f\vb{v})}.
+\end{align*}
+The derivative of the entropy is thus
+\begin{align*}
+	\del{t}{S} &= -\kb\integ{}{}{\vb{x}}{\del{t}{f}\ln(f) + \del{t}{f}} \\
+	           &= \kb\integ{}{}{\vb{x}}{\div_{\vb{x}}{(f\vb{v})}(\ln(f) + 1)}.
+\end{align*}
+The latter term may be converted to a surface term using Gauss' theorem, and choosing boundaries at infinity it produces no contribution. Similarly for the other term we may write
+\begin{align*}
+	\del{t}{S} &= \kb\integ{}{}{\vb{x}}{\div_{\vb{x}}{(f\ln(f)\vb{v})} - f\vb{v}\cdot\grad_{\vb{x}}{\ln(f)}} \\
+	           &= -\kb\integ{}{}{\vb{x}}{f\vb{v}\cdot\frac{1}{f}\grad_{\vb{x}}{f}} \\
+	           &= -\kb\integ{}{}{\vb{x}}{\vb{v}\cdot\grad_{\vb{x}}{f}}.
+\end{align*}
+Repeating a previous step, we find that this term gives no contribution either, meaning $\del{t}{S} = 0$.
