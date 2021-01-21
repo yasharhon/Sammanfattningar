@@ -5,3 +5,84 @@ We use the metric signature $(1, -1, -1, -1)$ for the Minkowski metric.
 
 \paragraph{The Levi-Civita Tensor}
 We use the convention $\tensor{\varepsilon}{^{0123}} = 1$.
+
+\paragraph{The Poincare Group}
+Elements of the Poincare group are specified by a Lorentz transformation $\Lambda$ and a translation $a$. Its elements follow the multiplication rule
+\begin{align*}
+	(\Lambda_{2}, a_{2})(\Lambda_{1}, a_{1}) = (\Lambda_{2}\Lambda_{1}, \Lambda_{2}a_{1} + a_{2}).
+\end{align*}
+We may instead construct a representation of the Poincare group with matrices of the form
+\begin{align*}
+	\mqty[
+		\Lambda & a \\
+		0       & 1
+	],
+\end{align*}
+from which the multiplication rule directly follows.
+
+\paragraph{The Lie Algebra of the Lorentz Group}
+The Lorentz group is defined as the set of transformations such that
+\begin{align*}
+	g = \Lambda^{T}g\Lambda.
+\end{align*}
+There are a maximum of $16$ generators, meaning we may label them using our index convention. Expanding around the identity we find
+\begin{align*}
+	g = (1 + \omega_{\mu\nu}M^{\mu\nu})^{T}g(1 + \omega_{\rho\sigma}M^{\rho\sigma}) \approx g + \omega_{\mu\nu}(M^{\mu\nu})^{T}g + g\omega_{\rho\sigma}M^{\rho\sigma},
+\end{align*}
+implying
+\begin{align*}
+	\omega_{\mu\nu}((M^{\mu\nu})^{T}g + gM^{\mu\nu}) = 0,
+\end{align*}
+or
+\begin{align*}
+	M^{T}g = -gM
+\end{align*}
+for all generators. Constructing the generator in block form as
+\begin{align*}
+	M = 
+	\mqty[
+		A & B \\
+		C & D
+	]
+\end{align*}
+and using the fact that the Minkowski metric is its own universe we find
+\begin{align*}
+	\mqty[
+		A & B \\
+		-C & -D
+	]g = \mqty[
+		A & -B \\
+		-C & D
+	] = \mqty[
+		-A^{T} & -C^{T} \\
+		-B^{T} & -D^{T}
+	].
+\end{align*}
+The solutions to this have antisymmetric blocks $A$ and $D$, as well as off-diagonal blocks that are transposes of each other. There are six degrees of freedom for this solution, meaning that the Lorentz group has six degrees of freedom, corresponding to the three rotations and boosts. To preserve the index notation, we may then choose the generators such that $M^{\mu\nu} = -M^{\nu\mu}$. The corresponding choice of parameters must then also be antisymmetric. To get the appropriate amounts of terms we will also divide by $2$, as you will see in the following section.
+
+To more explicitly introduce the boosts and rotations, we introduce their generators
+\begin{align*}
+	J^{i} = -\frac{1}{2}\varepsilon^{ijk}M^{jk},\ K^{i} = M^{0i},
+\end{align*}
+with commutation relations
+\begin{align*}
+	\comm{J^{i}}{J^{j}} = i\varepsilon^{ijk}J^{k},\ \comm{K^{i}}{K^{j}} = -i\varepsilon^{ijk}J^{k},\ \comm{J^{i}}{K^{j}} = i\varepsilon^{ijk}K^{k}.
+\end{align*}
+We can solve for the original generators as
+\begin{align*}
+	M^{0i} = J^{i},\ M^{ij} = \varepsilon^{kij}J^{k}.
+\end{align*}
+
+\paragraph{Generators of the Poincare Group}
+The generators of the Poincare group are the $M^{\mu\nu}$ of the Lorentz group, as well as the four $P^{\mu}$ that generate translations in spacetime. We will need their Lie algebra, and thus their commutation relations, which are
+\begin{align*}
+	\comm{M^{\mu\nu}}{M^{\rho\sigma}} = i\left(g^{\mu\rho}M^{\nu\sigma} + g^{\nu\sigma}M^{\mu\rho} - g^{\nu\rho}M^{\mu\sigma} - g^{\mu\sigma}M^{\nu\rho}\right),\ \comm{P^{\mu}}{P^{\nu}} = 0,\ \comm{M^{\mu\nu}}{P^{\sigma}} = i(g^{\nu\sigma}P^{\mu} - g^{\mu\sigma}P^{\nu}).
+\end{align*}
+The representations $U$ of the group elements are then
+\begin{align*}
+	U(\Lambda, 0) = e^{-\frac{i}{2}\omega_{\mu\nu}M^{\mu\nu}},\ U(1, a) = e^{ia_{\mu}P^{\mu}},
+\end{align*}
+and to first order
+\begin{align*}
+	U(\Lambda, a) = e^{i\left(a_{\mu}P^{\mu} - \frac{1}{2}\omega_{\mu\nu}M^{\mu\nu}\right)}.
+\end{align*}
