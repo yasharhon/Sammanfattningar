@@ -33,3 +33,70 @@ As we will consider unitary representations of the Poincare group acting on stat
 	\item $P^{2} = 0$ and $P^{0} = 0$.
 	\item $P^{2} < 0$, corresponding to tachyons.
 \end{enumerate}
+
+\paragraph{Lorentz Covariance and the Schrödinger Equation}
+Using the 4-momentum $P^{\mu} = (E, \vb{p})$ and the correspondence principle $P^{\mu} = i\del{\mu}{}{}$, the quantization of the classical energy $E = \frac{1}{2m}\vb{p}^{2}$ of a free particle is
+\begin{align*}
+	i\del{}{t}{\Psi} = -\frac{1}{2m}\laplacian{\Psi}.
+\end{align*}
+This does not in general respect Lorentz transformations, which one might expect given that it is not taken from a Lorentz covariant expression. In other words, the Schrödinger equation is not Lorentz covariant.
+
+The quantization of the relativistic $E^{2} = m^{2} + \vb{p}^{2}$ is instead
+\begin{align*}
+	-\del{2}{t}{\phi} = m^{2}\phi - \laplacian{\phi}.
+\end{align*}
+By introducing the d'Alembertian $\dalem{} = \del{}{\mu}{\del{\mu}{}{}}$ we can write the above as
+\begin{align*}
+	\dalem{\phi} + m^{2}\phi = 0.
+\end{align*}
+This is the Klein-Gordon equation, which is an appropriate quantization of a spinless particle.
+
+\paragraph{A Conserved Current}
+Corresponding to the Klein-Gordon equation there exists a density and a current
+\begin{align*}
+	\rho = \frac{i}{2m}(\cc{\phi}\del{}{0}{\phi} - \phi\del{}{0}{\cc{\phi}}),\ \vb{j} = \frac{1}{2im}(\cc{\phi}\grad{\phi} - \phi\grad{\cc{\phi}})
+\end{align*}
+such that
+\begin{align*}
+	\del{}{t}{\rho} + \div{\vb{j}} = 0.
+\end{align*}
+Alternatively, by combining the two into a 4-current $J^{\mu} = (\rho, \vb{j})$ we find
+\begin{align*}
+	\del{}{\mu}{J^{\mu}} = 0.
+\end{align*}
+
+\paragraph{Problems With Stationary States}
+A stationary state is a state such that
+\begin{align*}
+	P^{0}\phi = E\phi.
+\end{align*}
+For such a state we have
+\begin{align*}
+	J^{0} = \frac{E}{m}\abs{\phi}^{2}.
+\end{align*}
+In the classical limit we have $\frac{E}{m} \approx 1$, whereas in the general case we have $E = \pm\sqrt{m^{2} + \vb{p}^{2}}$, meaning that $J^{0}$ is not positive definite and the conserved Nöether cannot be interpreted as conservation of probability density. This implores us to reinterpret the Klein-Gordon equation as a general field equation.
+
+\paragraph{Plane-Wave Solutions}
+Plane-wave solutions of the Klein-Gordon equation are of the form
+\begin{align*}
+	\phi = Ne^{-iP_{\mu}x^{\mu}}.
+\end{align*}
+In order for these to be solutions, we require
+\begin{align*}
+	P^{0} = \pm\sqrt{m^{2} + \abs{\vb{p}}}.
+\end{align*}
+This does not pose a problem in non-interacting cases, as the solutions maintain their signs.
+
+\paragraph{Charged Particles}
+When treating charged particles in external electromagnetic fields, we employ the minimal coupling scheme and perform the replacement $P^{\mu}\to P^{\mu} - qA^{\mu}$. The Klein-Gordon equation then becomes
+\begin{align*}
+	((\del{}{\mu}{} + iqA_{\mu})(\del{\mu}{}{} + iqA^{\mu}) + m^{2})\phi = 0.
+\end{align*}
+This will cause additional terms
+\begin{align*}
+	J^{\mu} \to J^{\mu} - \frac{q}{m}\abs{\phi}^{2}A^{\mu}
+\end{align*}
+in the Nöether current, further destroying our hopes of creating a one-particle theory.
+
+\paragraph{The Klein Paradox}
+Consider scattering after normal incidence on a step potential described by $A^{\mu} = (V\theta(x), \vb{0})$. Performing an anzats similar to that in the non-relativistic case, the Klein-Gordon equation predicts the same behaviour as the Schrödinger equation, except for the case where $V > E + m$. In this case the transmitted 4-momentum has a negative space component. Furthermore, the transmission probability becomes negative, but still preserving $T + R = 1$. This peculiar behaviour is known as Klein's paradox.
