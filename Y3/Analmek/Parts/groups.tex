@@ -193,19 +193,22 @@ or in a physics context (where a factor $i$ is extracted):
 \paragraph{Representations}
 A representation of a group on a vector space is a homomorphism $D: G\to\GL{V}$, where $\GL{V}$ is the group of all invertible linear transformations on $V$. The dimension of the representation is defined as the dimension of $V$.
 
-\paragraph{Representations on Tensor Product Spaces}
-Suppose that there exists representations $\rho_{V}$ and $\rho_{W}$ of $G$ on $V$ and $W$ respectively. The representation $\rho_{V\otimes W}$ of $G$ on $V\otimes W$ is then defined by
-\begin{align*}
-	\rho_{V\otimes W}(a)(\vb{v}\otimes\vb{w}) = (\rho_{V}(a)(\vb{v}))\otimes(\rho_{W}(a)(\vb{w})).
-\end{align*}
-
 \paragraph{Representations on Direct Product Spaces}
 Suppose that there exists representations $\rho_{V}$ and $\rho_{W}$ of $G$ on $V$ and $W$ respectively. The representation $\rho_{V\oplus W}$ of $G$ on $V\oplus W$ is then defined by
 \begin{align*}
 	\rho_{V\oplus W}(a)(\vb{v}, \vb{w}) = (\rho_{V}(a)(\vb{v}), \rho_{W}(a)(\vb{w})).
 \end{align*}
 
-\paragraph{Reducible and Irreducible Representations}
+\paragraph{Representations on Tensor Product Spaces}
+Suppose that there exists representations $\rho_{V}$ and $\rho_{W}$ of $G$ on $V$ and $W$ respectively. The representation $\rho_{V\otimes W}$ of $G$ on $V\otimes W$ is then defined by
+\begin{align*}
+	\rho_{V\otimes W}(a)(\vb{v}\otimes\vb{w}) = (\rho_{V}(a)(\vb{v}))\otimes(\rho_{W}(a)(\vb{w})).
+\end{align*}
+
+\paragraph{The Unitarity Theorem}
+Finite groups have unitary representations - with some inner product, at least. Such representations will be the primary concern of the following discussion.
+
+\paragraph{Reducible Representations}
 Two representations are equivalent if they satisfy $U\rho(a)U^{-1} = \rho^{\prime}(a)$ for any group element $a$ and some linear operator $U$. $\rho$ is reducible if it is equivalent to a representation of the form
 \begin{align*}
 	\mqty[
@@ -213,7 +216,7 @@ Two representations are equivalent if they satisfy $U\rho(a)U^{-1} = \rho^{\prim
 		0        & \rho_{2}
 	],
 \end{align*}
-where $\rho_{1}$ and $\rho_{2}$ are representations of dimension $n_{1}$ and $n_{2}$ respectively and $\sigma$ is an $n_{1}\times n_{2}$ block satisfying $\sigma(ab) = \rho_{1}(a)\sigma(b) + \sigma(a)\rho_{1}(b)$. If this is not possible, the representation is irreducible.
+where $\rho_{1}$ and $\rho_{2}$ are representations of dimension $n_{1}$ and $n_{2}$ respectively and $\sigma$ is an $n_{1}\times n_{2}$ block satisfying $\sigma(ab) = \rho_{1}(a)\sigma(b) + \sigma(a)\rho_{1}(b)$. A basis can often be chosen such that $\sigma = 0$.
 
 \example{$\SO{3}$}
 As we know, \SO{3} may be represented by rotations in three dimensions. In particular, we may choose a basis for $\R^{3}$ such that
@@ -243,3 +246,132 @@ i.e. the representation preserves the symmetry of $S$. The same holds for antisy
 	],
 \end{align*}
 and $\rho\otimes\rho$ has been reduced to $\rho_{(V\otimes V)_{+}}\oplus\rho_{(V\otimes V)_{-}}$, which is the direct sum of its symmetric and antisymmetric representation.
+
+\paragraph{Irreducible Representations}
+If a representation cannot be reduced, it is irreducible. Such representations are often called irreps.
+
+By their very nature, all representations leave at least some part of the vector space invariant - all of it, in the worst case. Suppose now that there is a part of the vector space that is left invariant by the representation and another that is not. In this case, the representation would necessarily take the above block diagonal form, meaning that it can be reduced. The consequence of this is that for any non-zero $v\in V$, the fact that $\rho$ is an irrep implies that $V$ is spanned by elements of the form $\rho(a)v$.
+
+\paragraph{Schur's Lemma}
+Schur's lemma has two statements:
+\begin{itemize}
+	\item Given an irrep $\rho$ on $V$, any operator $A$ that commutes with $\rho$ is a multiple of the identity on $V$.
+	\item Given two inequivalent irreps $\rho_{1}$ and $\rho_{2}$ on vector spaces $V_{1}$ and $V_{2}$, the only linear transformation $B$ such that $B\rho_{1} = \rho_{2}B$ is the zero transformations.
+\end{itemize}
+
+To prove the first, consider an eigenvector $v$ of $A$ with eigenvalue $\lambda$, the existence of which is guaranteed by the fundamental theorem of algebra. Assuming $A$ to commute with $\rho$, we have
+\begin{align*}
+	A\rho(a)v = \rho(a)Av = \lambda\rho(a)v,
+\end{align*}
+hence $\rho$ leaves eigenspaces of $A$ invariant. As $V$ is spanned by elements of the form $\rho(a)v$, we conclude that $A = \lambda$ on all of $V$.
+
+To prove the second, assume the two representations to satisfy the above and let the $V_{i}$ having dimensionalities $n_{i}$. The first case is $n_{2} < n_{1}$. The kernel of $B$ is then non-trivial, and for any vector $v$ in it we find
+\begin{align*}
+	B\rho_{1}v = \rho_{2}Bv = 0,
+\end{align*}
+hence $\rho_{1}$ leaves the kernel of $B$ invariant. This implies, however, that all of $V_{1}$ must be the kernel of $B$ and $B = 0$ in this case. The second case is $n_{2} \geq n_{1}$, for which we study vectors $w = Bv$. We find
+\begin{align*}
+	\rho_{2}w = \rho_{2}Bv = B\rho_{1}v,
+\end{align*}
+hence $\rho_{2}$ preserves the image of $B$. The possible consequences of this are either that $B = 0$ or that the image of $B$ is all of $V_{2}$. The latter is impossible if $n_{2} > n_{1}$, meaning that $B = 0$ in this case. Finally, if $n_{1} = n_{2}$ and the image of $B$ is all of $V_{2}$, that would imply that $B$ is bijective, This would, however, imply that $\rho_{1}$ and $\rho_{2}$ are equivalent, which was assumed not to be the case, hence $B = 0$ for this case too.
+
+\paragraph{The Orthogonality Theorem}
+For a group $G$ we can number the possible inequivalent irreps $\rho_{\mu}$, as well as the vector spaces and corresponding dimensionalities $V_{\mu}$ and $n_{\mu}$. Given an operator $T: V_{\nu}\to V_{\mu}$ we may then define the operator
+\begin{align*}
+	B = \sum\limits_{a}\rho_{\mu}(a)T\rho_{\nu}(a^{-1}).
+\end{align*}
+We then find
+\begin{align*}
+	\rho_{\mu}(b)B &= \rho_{\mu}(b)\sum\limits_{a}\rho_{\mu}(a)T\rho_{\nu}(a^{-1}) \\
+	               &= \sum\limits_{a}\rho_{\mu}(ba)T\rho_{\nu}(a^{-1}) \\
+	               &= \sum\limits_{c}\rho_{\mu}(c)T\rho_{\nu}(cb^{-1}) \\
+	               &= \sum\limits_{c}\rho_{\mu}(c)T\rho_{\nu}(c)\rho_{\nu}(b^{-1}) \\
+	               &= B\rho_{\nu}(b^{-1}).
+\end{align*}
+Schur's lemma implies that $B = \lambda_{\mu, T}$ (where we have labelled the eigenvalue with the necessary information) if $\mu = \nu$ and $B = 0$ otherwise. We may summarize this as
+\begin{align*}
+	B = \lambda_{\mu, T}\delta_{\mu\nu},
+\end{align*}
+where we forego Einstein notation for the rest of this group theory discussion.
+
+In particular, we consider the operator such that $T_{ij} = \delta_{ip}\delta_{jq}$ for some particular $p, q$. Relabelling the eigenvalue as $\lambda_{\mu, pq}$ we find
+\begin{align*}
+	\sum\limits_{k, l}\sum\limits_{a}\rho_{\mu, ik}(a)T_{kl}\rho_{\nu, lj}(a^{-1}) = \sum\limits_{k, l}\sum\limits_{a}\rho_{\mu, ik}(a)\delta_{kp}\delta_{lq}\rho_{\nu, lj}(a^{-1}) = \sum\limits_{a}\rho_{\mu, ip}(a)\rho_{\nu, qj}(a^{-1}) = \lambda_{pq, \mu}\delta_{\mu\nu}\delta_{ij}.
+\end{align*}
+We will try to simplify this by computing the eigenvalue. In order for the above to be non-trivial, we must set $\mu = \nu$. Computing the trace of either side we find
+\begin{align*}
+	\lambda_{pq, \mu}n_{\mu} = \sum\limits_{i}\sum\limits_{a}\rho_{\mu, ip}(a)\rho_{\mu, qi}(a^{-1}) = \sum\limits_{a}(\rho_{\mu}(a^{-1})\rho_{\mu}(a))_{qp} = \sum\limits_{a}(\rho_{\mu}(e))_{qp} = \sum\limits_{a}\delta_{qp} = \delta_{qp}N_{G},
+\end{align*}
+where $N_{G}$ is the order of the group. Thus we have the orthogonality relation
+\begin{align*}
+	\sum\limits_{a}\rho_{\mu, ip}(a)\rho_{\nu, qj}(a^{-1}) = \frac{N_{G}}{n_{\mu}}\delta_{qp}\delta_{\mu\nu}\delta_{ij}.
+\end{align*}
+
+\paragraph{The Character}
+We will need to classify representations in terms of something that is basis-independent. One such property is the trace, as if $\rho_{1}$ and $\rho_{2}$ are equivalent we have
+\begin{align*}
+	\tr(\rho_{2}) = \tr(U\rho_{2}U^{-1}) = \tr(U^{-1}U\rho_{2}) = \tr(\rho_{2}).
+\end{align*}
+Hence we define the character
+\begin{align*}
+	\chi_{\rho}(a) = \tr(\rho(a)),
+\end{align*}
+which is the same for all equivalent representations.
+
+\paragraph{Properties of the Character}
+We have
+\begin{align*}
+	\chi_{\rho}(e) = n_{\rho},
+\end{align*}
+where $n_{\rho}$ is the dimension of the representation. Next, if $a$ and $b$ belong to the same conjugacy class we have
+\begin{align*}
+	\chi_{\rho}(a) = \chi_{\rho}(gbg^{-1}) = \tr(\rho(gbg^{-1})) = \tr(\rho(g)\rho(b)\rho(g^{-1})) = \chi_{\rho}(b).
+\end{align*}
+Finally, if
+\begin{align*}
+	\rho = \bigoplus\limits_{\mu}\rho_{\mu}
+\end{align*}
+we have
+\begin{align*}
+	\chi_{\rho} = \sum\limits_{\mu}\chi_{\rho_{\mu}}.
+\end{align*}
+
+\paragraph{The Character inner Product}
+We define the character inner product
+\begin{align*}
+	\braket{\chi_{\mu}}{\chi_{\nu}} = \frac{1}{N_{G}}\sum\limits_{a}\chi_{\mu}(a)\chi_{\nu}(a^{-1}) = \frac{1}{N_{G}}\sum\limits_{a}\chi_{\mu}(a)\cc{\chi_{\nu}(a)},
+\end{align*}
+where the last step follows from assuming unitarity. it may also be computed as
+\begin{align*}
+	\braket{\chi_{\mu}}{\chi_{\nu}} = \frac{1}{N_{G}}\sum\limits_{C_{i}}k_{i}\chi_{\mu}(C_{i})\cc{\chi_{\nu}(C_{i})},
+\end{align*}
+where the $C_{i}$ are the different conjugacy classes and $k_{i}$ their order.
+
+\paragraph{Orthogonality of Characters}
+Starting from the relation we may consider element $pq$ and sum over $p$ and $q$ to find
+\begin{align*}
+	\sum\limits_{p, q}\sum\limits_{a}\rho_{\mu, pp}(a)\rho_{\nu, qq}(a^{-1}) = \sum\limits_{a}\chi_{\mu}(a)\chi_{\nu}(a^{-1}) = N_{G}\delta_{\mu\nu},
+\end{align*}
+where we have introduced the shorthand $\chi_{\mu} = \chi_{\rho_{\mu}}$. We can now use the character inner product to arrive at the orthogonality relation
+\begin{align*}
+	\braket{\chi_{\mu}}{\chi_{\nu}} = \delta_{\mu\nu}.
+\end{align*}
+
+\paragraph{Decomposition of Representations}
+Any representations may be written as a direct sum over irreps according to
+\begin{align*}
+	\rho = \bigoplus\limits_{k}\rho_{\mu_{k}},
+\end{align*}
+where the $\rho_{\mu_{k}}$ are the different irreps. Alternatively we may sum over the various types of irreps according to
+\begin{align*}
+	\rho = \bigoplus\limits_{\mu}k_{\mu}\rho_{\mu},
+\end{align*}
+where the $k_{\mu}$ are the numbers of times each individual irrep occurs. The character of this representation is
+\begin{align*}
+	\chi_{\rho} = \sum\limits_{\mu}k_{\mu}\chi_{\mu}.
+\end{align*}
+Projection onto a particular $\chi_{\nu}$ yields
+\begin{align*}
+	\braket{\chi_{\rho}}{\chi_{\mu}} = \sum\limits_{\mu}k_{\mu}\braket{\chi_{\mu}}{\chi_{\nu}} = \sum\limits_{\mu}k_{\mu}\delta_{\mu\nu} = k_{\nu}.
+\end{align*}
+This implies that the decomposition may be specified by computing the inner products $\braket{\chi_{\rho}}{\chi_{\mu}}$.
