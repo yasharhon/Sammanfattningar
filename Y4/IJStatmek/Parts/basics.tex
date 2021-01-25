@@ -1,5 +1,15 @@
 \section{Basic Concepts}
 
+\paragraph{Stochastic Processes}
+A stochastic process is a function of a random variable. We use the notation $f(X, t)$, and outcomes of $X$ corresponds to functions
+\begin{align*}
+	f(x, t) = f_{x}(t).
+\end{align*}
+The moments of a stochastic process are
+\begin{align*}
+	\expval{\prod\limits_{i}f(X, t_{i})} = \integ{}{}{x}{P(x)\prod\limits_{i}f_{x}(t_{i})}.
+\end{align*}
+
 \section{Diffusion and Random Walks}
 Macroscopic diffusion is governed by the diffusion equation
 \begin{align*}
@@ -81,3 +91,67 @@ The latter term may be converted to a surface term using Gauss' theorem, and cho
 	           &= -\kb\integ{}{}{\vb{x}}{\vb{v}\cdot\grad_{\vb{x}}{f}}.
 \end{align*}
 Repeating a previous step, we find that this term gives no contribution either, meaning $\del{t}{S} = 0$.
+
+\paragraph{Brownian Motion and the Langevin Equation}
+To describe Brownian motion we consider particles much heavier than the molecules in the medium in which they are immersed and perform the anzats
+\begin{align*}
+	m\dv{v^{i}}{t} = R_{i}(t),
+\end{align*}
+where the $R_{i}(t)$ are stochastic processes with the underlying random variable being the initial position of the particle (I think). In order to produce Brownian motion we expect $\expval{R_{i}(t)} = 0$. Next we introduce the autocorrelation function
+\begin{align*}
+	k(t, t\p) = \expval{(R_{i}(t) - \expval{R_{i}(t)})(R_{i}(t\p) - \expval{R_{i}(t\p)})} = \expval{R_{i}(t)R_{i}(t\p)} - \expval{R_{i}(t)}\expval{R_{i}(t\p)}.
+\end{align*}
+It measures for how long deviations from the mean force remain correlated, and thus the time scales of the fluctuations and typical amplitudes of the force. In the case of a single time scale being relevant, we name it the autocorrelation time and denote it $\tau_{\text{c}}$. For Brownian motion this time scale is the typical time between collisions. In the relevant limits in which we are working we expect
+\begin{align*}
+	k(t, t\p) = \expval{R_{i}(t)R_{i}(t\p)} = \Gamma\delta(t - t\p),
+\end{align*}
+as the autocorrelation time is assumed to be unresolvable on the relevant time scales, and may therefore be taken to be zero. $\sqrt{\Gamma}$ is a typical intensity of the fluctuations in the force. If we assume the stochastic processes to be Gaussian, we have now completely specified them.
+
+Does the anzats work? No! By computing expectation values, we see that constant drift is allowed, which is certainly not what we expect. The liquid will in fact resist the motion of the particle with a velocity-dependent force, which we will remedy by adding a first-order correction. By also incorporating an external force $\vb{F}$ we arrive at the Langevin equation
+\begin{align*}
+	m\dv{v^{i}}{t} = R_{i}(t) + F_{i} - \alpha v_{i}.
+\end{align*}
+
+What kind of behaviour is produced now? To begin with, let us assume there are no external forces. The expectation value then evolves according to
+\begin{align*}
+	m\dv{\expval{v^{i}}}{t} =  -\alpha\expval{v_{i}},
+\end{align*}
+with solution
+\begin{align*}
+	\expval{v_{i}} = v_{i, 0}e^{-\frac{t}{\tau_{v}}},\ \tau_{v} = \frac{1}{\gamma} = \frac{m}{\alpha}.
+\end{align*}
+To be consistent with our assumptions, we thus require $\tau_{v} \gg \tau_{\text{c}}$.
+
+In a general case we have
+\begin{align*}
+	v_{i}(t) = e^{-\gamma t}v_{i, 0} + \frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R(s) + F(s))}.
+\end{align*}
+Expecting
+\begin{align*}
+	\frac{1}{2}m\expval{v^{2}} = \frac{d}{2}\kb T,
+\end{align*}
+we find
+\begin{align*}
+	\Gamma = 2dm\gamma\kb T.
+\end{align*}
+We can also introduce the velocity correlation function
+\begin{align*}
+	C(t, t\p) = \expval{v(t)v(t\p)} - \expval{v(t)}\expval{v(t\p)},
+\end{align*}
+and we find
+\begin{align*}
+	C(t, t\p) = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t + t\p)}(e^{2\gamma t\p} - 1).
+\end{align*}
+This can be used to show
+\begin{align*}
+	\frac{1}{\alpha} = \frac{1}{2\kb T}\integ{-\infty}{\infty}{t}{C(t)}.
+\end{align*}
+
+Next, the position is
+\begin{align*}
+	x_{i}(t) = x_{i, 0} + \frac{v_{i, 0}}{\gamma}(1 - e^{-\gamma t}) + \frac{1}{m}\integ{0}{t}{s}{\integ{0}{s}{s\p}{R(s\p)e^{-\gamma(s - s\p)}}}.
+\end{align*}
+We can thus find
+\begin{align*}
+	\expval{(x_{i}(t) - \expval{x_{i}(t)})^{2}} = 2Dt.
+\end{align*}
