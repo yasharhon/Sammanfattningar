@@ -100,3 +100,158 @@ in the Nöether current, further destroying our hopes of creating a one-particle
 
 \paragraph{The Klein Paradox}
 Consider scattering after normal incidence on a step potential described by $A^{\mu} = (V\theta(x), \vb{0})$. Performing an anzats similar to that in the non-relativistic case, the Klein-Gordon equation predicts the same behaviour as the Schrödinger equation, except for the case where $V > E + m$. In this case the transmitted 4-momentum has a negative space component. Furthermore, the transmission probability becomes negative, but still preserving $T + R = 1$. This peculiar behaviour is known as Klein's paradox.
+
+\paragraph{The Dirac Equation}
+We will now try to develop a theory that remedies the problems with the Klein-Gordon equation. The hope is that this equations has a positive-definite conserved density. An important source of the bad time was the second-order time derivative, so we will try to remedy this with a first-order time derivative. We also make the space derivatives first-order, perhaps because of Lorentz stuff. This leads us to the anzats
+\begin{align*}
+	\del{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi = 0,
+\end{align*}
+where $\beta$ and $\alpha^{i}$ are matrices and $\Psi$ is a vector. The sizes of these are yet to be determined. The corresponding equation for $\Psi\adj$ is
+\begin{align*}
+	\del{t}{\Psi\adj} + (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj - im\Psi\adj\beta\adj = 0.
+\end{align*}
+Considering the quantity $\Psi\adj\Psi$ we have
+\begin{align*}
+	\del{t}{(\Psi\adj\Psi)} &= (\del{t}{\Psi\adj})\Psi + \Psi\adj\del{t}{\Psi} \\
+	                        &= (im\Psi\adj\beta\adj - (\grad{\Psi\adj})\cdot\vb*{\alpha})\Psi + \Psi\adj(-(\vb*{\alpha}\cdot\grad{})\Psi - im\beta\Psi) \\
+	                        &= im\Psi\adj(\beta\adj - \beta) - (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj\Psi - \Psi\adj(\vb*{\alpha}\cdot\grad{})\Psi.
+\end{align*}
+We really want the right-hand side to be the 3-divergence of some 3-current. To do that, we may choose $\alpha^{i}$ and $\beta$ to be Hermitian, yielding
+\begin{align*}
+	(\grad{\Psi\adj})\cdot\vb*{\alpha}\adj\Psi + \Psi\adj(\vb*{\alpha}\cdot\grad{})\Psi = \div{\Psi\adj\vb*{\alpha}\Psi}.
+\end{align*}
+The conserved 4-current is thus $j^{\mu} = (\Psi\adj\Psi, \Psi\adj\vb*{\alpha}\Psi)$.
+
+To reobtain something like the 4-vector norm we had when discussing the Klein-Gordon equation, we apply the operator $\del{t}{} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi$ to our anzats to find
+\begin{align*}
+	(\del{t}{} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi)(\del{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi) = 0.
+\end{align*}
+As the derivatives commute with the matrices, the cross terms vanish, yielding
+\begin{align*}
+	\del[2]{t}{\Psi} - (\vb*{\alpha}\cdot\grad{})^{2}\Psi - (\vb*{\alpha}\cdot\grad{})im\beta\Psi - im\beta(\vb*{\alpha}\cdot\grad{})\Psi + m^{2}\beta^{2}\Psi &= 0,
+\end{align*}
+or more explicitly
+\begin{align*}
+	\del[2]{t}{\Psi} - (\alpha^{i}\del{i}{})(\alpha^{j}\del{j}{})\Psi - im((\alpha^{i}\del{i}{})\beta + \beta\alpha^{i}\del{i}{})\Psi + m^{2}\beta^{2}\Psi = \del[2]{t}{\Psi} - \alpha^{i}\alpha^{j}\del{i}{\del{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
+\end{align*}
+We can symmetrize the second term to find
+\begin{align*}
+	\del[2]{t}{\Psi} - \frac{1}{2}(\alpha^{i}\alpha^{j} + \alpha^{j}\alpha^{i})\del{i}{\del{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
+\end{align*}
+This produces the same 4-vector norm if
+\begin{align*}
+	\acomm{\alpha^{i}}{\alpha^{j}} = 2\delta^{ij},\ \beta^{2} = 1,\ \alpha^{i}\beta + \beta\alpha^{i} = 0.
+\end{align*}
+Computing the determinant of the last equation, we find
+\begin{align*}
+	\det(\alpha^{i}\beta) = (-1)^{N}\det(\beta\alpha^{i}),
+\end{align*}
+where $N$ is the length of $\Psi$. The only way for the above equations to be solvable is then that $N$ be odd. It can also be shown that $\alpha^{i}$ and $\beta$ are all traceless. By a series of arguments we find that $N = 4$ is correct.
+
+To complete our discussion, we define $\gamma^{0} = \beta,\ \gamma^{i} = \beta\alpha^{i}$. With this we multiply our anzats by $-i\beta$ and find
+\begin{align*}
+	(-i\beta\del{0}{} - i(\beta\vb*{\alpha}\cdot\grad{}))\Psi + m\Psi = 0.
+\end{align*}
+Defining the inner product $\gamma^{\mu}A_{\mu} = \fsl{A}$ we arrive at the Dirac equation
+\begin{align*}
+	i\fsl{\del{}{}}\Psi - m\Psi = 0.
+\end{align*}
+
+\paragraph{Properties of the $\gamma^{\mu}$}
+The $\gamma^{\mu}$ satisfy
+\begin{align*}
+	(\gamma^{\mu})\adj = \gamma^{0}\gamma^{\mu}\gamma^{0}.
+\end{align*}
+
+Defining the matrix $\gamma^{5} = i\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$, we find that it must be Hermitian.
+
+We also have
+\begin{align*}
+	\acomm{\gamma^{5}}{\gamma^{\mu}} = 0.
+\end{align*}
+
+We have
+\begin{align*}
+	\tr(\prod\limits_{i = 1}^{n}\gamma^{\mu_{i}}) &= 0,\ n\text{ odd}, \\
+	\tr(\gamma^{5})                               &= 0.
+\end{align*}
+
+\paragraph{The Dirac Algebra}
+The $\gamma^{\mu}$ are a representation of the Dirac algebra
+\begin{align*}
+	\acomm{\gamma^{\mu}}{\gamma^{\nu}} = 2g^{\mu\nu}.
+\end{align*}
+We may compute explicit representations of this algebra as
+\begin{align*}
+	\gamma^{0} = 
+	\mqty[
+		1 & 0 \\
+		0 & -1
+	],\ 
+	\gamma^{i} = 
+	\mqty[
+		0           & \sigma^{i} \\
+		-\sigma^{i} & 0
+	].
+\end{align*}
+In this representation we have
+\begin{align*}
+	\gamma^{5} =
+	\mqty[
+		0 & 1 \\
+		1 & 0
+	].
+\end{align*}
+
+\paragraph{The Dirac Adjoint}
+The Dirac adjoint is defined as
+\begin{align*}
+	\bar{A} = A\adj\gamma^{0}.
+\end{align*}
+
+\paragraph{Rewriting the 4-Current}
+We may use the properties of the $\gamma^{\mu}$ to write
+\begin{align*}
+	j^{\mu} = \Psi\adj\gamma^{0}\gamma^{\mu}\Psi = \bar{\Psi}\gamma^{\mu}\Psi.
+\end{align*}
+
+\paragraph{Plane-Wave Solutions}
+Plane-wave solutions of the Dirac equation are of the form
+%TODO: Add negative energy solutions
+\begin{align*}
+	\Psi_{P} = e^{-iP_{\mu}x^{\mu}}u(P^{\mu}),
+\end{align*}
+where $u(P^{\mu})$ is a so-called spinor. Inserting it into the Dirac equation we find
+\begin{align*}
+	(-\fsl{P} + m)u(P^{\mu}) = 0.
+\end{align*}
+Multiplying by $\fsl{P} + m$ we find
+\begin{align*}
+	(-\fsl{P}^{2} + m^{2})u(P^{\mu}) = (-\gamma^{\mu}\gamma^{\nu}P_{\mu}P_{\nu} + m^{2})u(P^{\mu}) = 0.
+\end{align*}
+We can symmetrize the first term and use the anticommutation relations of the $\gamma^{\mu}$ to find
+\begin{align*}
+	(-P^{2} + m^{2})u(P^{\mu}) = 0.
+\end{align*}
+In other words, the solution satisfies the relativistic energy-momentum relation. This also implies that for non-trivial solutions, the 4-momentum is time-like.
+
+In the corresponding rest frame, there are four independent spinor solutions. These are $u_{\pm}$ and $v_{\pm}$, and with this representation they are as you would expect.
+
+\paragraph{A Hamiltonian}
+As the plane-wave solutions have time-like 4-momenta, there is a corresponding rest frame. In this rest frame, the Hamiltonian, which is generally
+\begin{align*}
+	\ham = \beta m + \vb*{\alpha}\cdot\vb{p},
+\end{align*}
+reduces to
+\begin{align*}
+	\ham = \beta m.
+\end{align*}
+Defining
+\begin{align*}
+	\vb*{\Sigma} =
+	\mqty[
+		\vb*{\sigma} & 0 \\
+		0            & \vb*{\sigma}
+	],
+\end{align*}
+we have $\comm{\ham}{\vb*{\Sigma}} = 0$.
