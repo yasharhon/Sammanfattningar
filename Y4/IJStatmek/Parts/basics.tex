@@ -101,57 +101,116 @@ where the $R_{i}(t)$ are stochastic processes with the underlying random variabl
 \begin{align*}
 	k(t, t\p) = \expval{(R_{i}(t) - \expval{R_{i}(t)})(R_{i}(t\p) - \expval{R_{i}(t\p)})} = \expval{R_{i}(t)R_{i}(t\p)} - \expval{R_{i}(t)}\expval{R_{i}(t\p)}.
 \end{align*}
-It measures for how long deviations from the mean force remain correlated, and thus the time scales of the fluctuations and typical amplitudes of the force. In the case of a single time scale being relevant, we name it the autocorrelation time and denote it $\tau_{\text{c}}$. For Brownian motion this time scale is the typical time between collisions. In the relevant limits in which we are working we expect
+It measures for how long deviations from the mean force remain correlated, and thus the time scales of the fluctuations and typical amplitudes of the force. In the case of a single time scale being relevant, we name it the autocorrelation time and denote it $\tau_{\text{c}}$. For Brownian motion this time scale is the typical time between collisions. In the relevant limits in which we are working we expect the correlations in forces at different times to be irresolvable, and thus
 \begin{align*}
-	k(t, t\p) = \expval{R_{i}(t)R_{i}(t\p)} = \Gamma\delta(t - t\p),
+	k(t, t\p) = \expval{R_{i}(t)R_{i}(t\p)} = \Gamma\delta(t - t\p).
 \end{align*}
-as the autocorrelation time is assumed to be unresolvable on the relevant time scales, and may therefore be taken to be zero. $\sqrt{\Gamma}$ is a typical intensity of the fluctuations in the force. If we assume the stochastic processes to be Gaussian, we have now completely specified them.
+$\sqrt{\Gamma}$ is a typical intensity of the fluctuations in the force. If we assume the stochastic processes to be Gaussian, we have now completely specified them.
 
 Does the anzats work? No! By computing expectation values, we see that constant drift is allowed, which is certainly not what we expect. The liquid will in fact resist the motion of the particle with a velocity-dependent force, which we will remedy by adding a first-order correction. By also incorporating an external force $\vb{F}$ we arrive at the Langevin equation
 \begin{align*}
-	m\dv{v^{i}}{t} = R_{i}(t) + F_{i} - \alpha v_{i}.
+	m\dv{v^{i}}{t} = R^{i}(t) + F^{i} - \alpha v^{i}.
+\end{align*}
+The general solution is
+\begin{align*}
+	v^{i}(t) = e^{-\gamma t}v^{i}_{0} + \frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R^{i}(s) + F^{i}(s))},
+\end{align*}
+which we can verify according to
+\begin{align*}
+	m\dv{v^{i}}{t} &= -m\gamma e^{-\gamma t}v^{i}_{0} + R^{i}(t) + F^{i}(t) - \frac{\gamma}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R^{i}(s) + F^{i}(s))} \\
+	               &= -m\gamma v^{i}(t) + R^{i}(t) + F^{i}(t) \\
+	               &= -\alpha v^{i}(t) + R^{i}(t) + F^{i}(t).
 \end{align*}
 
 What kind of behaviour is produced now? To begin with, let us assume there are no external forces. The expectation value then evolves according to
 \begin{align*}
-	m\dv{\expval{v^{i}}}{t} =  -\alpha\expval{v_{i}},
+	m\dv{\expval{v^{i}}}{t} =  -\alpha\expval{v^{i}},
 \end{align*}
 with solution
 \begin{align*}
-	\expval{v_{i}} = v_{i, 0}e^{-\frac{t}{\tau_{v}}},\ \tau_{v} = \frac{1}{\gamma} = \frac{m}{\alpha}.
+	\expval{v^{i}} = v^{i}_{0}e^{-\frac{t}{\tau_{v}}},\ \tau_{v} = \frac{1}{\gamma} = \frac{m}{\alpha}.
 \end{align*}
-To be consistent with our assumptions, we thus require $\tau_{v} \gg \tau_{\text{c}}$.
+To be consistent with our assumptions, we thus require $\tau_{v} \gg \tau_{\text{c}}$. Next we have
+\begin{align*}
+	\expval{(v^{i}(t) - \expval{v^{i}(t)})^{2}} &= \expval{\left(\frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}R^{i}(s)}\right)^{2}} \\
+	                                            &= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{t}{u}{e^{-\gamma(t - s)}e^{-\gamma(t - u)}\expval{R^{i}(s)R^{i}(u)}}} \\
+	                                            &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{t}{u}{e^{-\gamma(2t - s - u)}\delta(s - u)}} \\
+	                                            &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{e^{-2\gamma(t - s)}} \\
+	                                            &= \frac{\Gamma}{2\gamma m^{2}}e^{-2\gamma t}(e^{2\gamma t} - 1) \\
+	                                            &= \frac{\Gamma}{2\gamma m^{2}}(1 - e^{-2\gamma t}).
+\end{align*}
 
-In a general case we have
+At long times, when equilibrium is established, we have $\expval{v^{i}(t)} = 0$. At this point we expect
 \begin{align*}
-	v_{i}(t) = e^{-\gamma t}v_{i, 0} + \frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R(s) + F(s))}.
+	\frac{1}{2}m\expval{v^{2}} = \frac{d}{2}\kb T.
 \end{align*}
-Expecting
+This implies
 \begin{align*}
-	\frac{1}{2}m\expval{v^{2}} = \frac{d}{2}\kb T,
+	\Gamma = 2m\gamma\kb T.
 \end{align*}
-we find
-\begin{align*}
-	\Gamma = 2dm\gamma\kb T.
-\end{align*}
+We pause at this result for a second, noting that the random forces increase in intensity with temperature. This is expected as the molecular motion increases in intensity with temperature. We also note that there is an equivalence between the rate of dissipation and the intensity of the fluctuations, a special case of the fluctuation-dissipation theorem.
+
 We can also introduce the velocity correlation function
 \begin{align*}
 	C(t, t\p) = \expval{v(t)v(t\p)} - \expval{v(t)}\expval{v(t\p)},
 \end{align*}
 and we find
 \begin{align*}
-	C(t, t\p) = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t + t\p)}(e^{2\gamma t\p} - 1).
+	C(t, t\p) &= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{t\p}{u}{e^{-\gamma(t - s)}e^{-\gamma(t\p - u)}\expval{R^{i}(s)R^{i}(u)}}} \\
+	          &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{t\p}{u}{e^{-\gamma(t + t\p - s - u)}\delta(s - u)}} \\
+	          &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\theta(t\p - s)e^{-\gamma(t + t\p - 2s)}} \\
+	          &= \frac{\Gamma}{m^{2}}\integ{0}{\min(t, t\p)}{s}{e^{-\gamma(t + t\p - 2s)}}.
 \end{align*}
-This can be used to show
+We may without loss of generality assume $t > t\p$, for which we find
+\begin{align*}
+	C(t, t\p) &= \frac{\Gamma}{m^{2}}e^{-\gamma(t + t\p)}\integ{0}{t\p}{s}{e^{2\gamma s}} = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t + t\p)}(e^{2\gamma t\p} - 1) = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t - t\p)}(1 - e^{-2\gamma t\p}).
+\end{align*}
+Consider now the limit of large times where $t - t\p$ is fixed. In this limit we find
+\begin{align*}
+	C(t, t\p) = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t - t\p)}.
+\end{align*}
+The dependence on the time difference is expected as this limit concerns correlations between two velocities at equilibrium, and that should only depend on the time difference. Note that due to the previously occuring minimum, its dependence is in fact on $\abs{t - t\p}$. Denoting this function as $C(t - t\p)$ we have
+\begin{align*}
+	\integ{-\infty}{\infty}{t}{C(t)} = \frac{\Gamma}{\gamma^{2} m^{2}} = \frac{2\kb T}{\gamma m},
+\end{align*}
+or
 \begin{align*}
 	\frac{1}{\alpha} = \frac{1}{2\kb T}\integ{-\infty}{\infty}{t}{C(t)}.
 \end{align*}
+In other words, there is a relation between correlation functions and friction coefficients. This applies generally.
 
-Next, the position is
+Next, the position in the absence of external forces is
 \begin{align*}
-	x_{i}(t) = x_{i, 0} + \frac{v_{i, 0}}{\gamma}(1 - e^{-\gamma t}) + \frac{1}{m}\integ{0}{t}{s}{\integ{0}{s}{s\p}{R(s\p)e^{-\gamma(s - s\p)}}}.
+	x^{i}(t) &= x^{i}_{0} + \integ{0}{t}{s}{\left(e^{-\gamma s}v^{i}_{0} + \frac{1}{m}\integ{0}{s}{u}{e^{-\gamma(s - u)}R^{i}(u)}\right)} \\
+	         &= x^{i}_{0} + \frac{v^{i}_{0}}{\gamma}(1 - e^{-\gamma t}) + \frac{1}{m}\integ{0}{t}{s}{\integ{0}{s}{u}{e^{-\gamma(s - u)}R^{i}(u)}},
 \end{align*}
-We can thus find
+from which we compute
 \begin{align*}
-	\expval{(x_{i}(t) - \expval{x_{i}(t)})^{2}} = 2Dt.
+	\expval{x^{i}(t)} = x^{i}_{0} + \frac{v^{i}_{0}}{\gamma}(1 - e^{-\gamma t}).
+\end{align*}
+Next the correlation function is
+\begin{align*}
+	\expval{x^{i}(t)x^{i}(t\p) - \expval{x^{i}(t)}\expval{x^{i}(t\p)}} &= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t\p}{s\p}{\integ{0}{s\p}{u\p}{e^{-\gamma(s - u)}e^{-\gamma(s\p - u\p)}\expval{R^{i}(u)R^{i}(u\p)}}}}} \\
+	&= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t\p}{s\p}{\integ{0}{s\p}{u\p}{e^{-\gamma(s + s\p - u - u\p)}\expval{R^{i}(u)R^{i}(u\p)}}}}}.
+\end{align*}
+In particular, for $t = t\p$ we find
+\begin{align*}
+	\expval{x^{i}(t)x^{i}(t\p) - \expval{x^{i}(t)}\expval{x^{i}(t\p)}} &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t}{s\p}{\integ{0}{s\p}{u\p}{e^{-\gamma(s + s\p - u - u\p)}\delta(u - u\p)}}}} \\
+	&= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t}{s\p}{e^{-\gamma(s + s\p - 2u)}\theta(s\p - u)}}} \\
+	&= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{u}{t}{s\p}{e^{-\gamma(s + s\p - 2u)}}}} \\
+	&= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{e^{-\gamma s}\integ{0}{s}{u}{e^{2\gamma u}\integ{u}{t}{s\p}{e^{-\gamma s\p}}}} \\
+	&= \frac{\Gamma}{\gamma m^{2}}\integ{0}{t}{s}{e^{-\gamma s}\integ{0}{s}{u}{e^{2\gamma u}(e^{-\gamma u} - e^{-\gamma t})}} \\
+	&= \frac{\Gamma}{\gamma^{2}m^{2}}\integ{0}{t}{s}{e^{-\gamma s}\left(e^{\gamma s} - 1 - \frac{1}{2}e^{-\gamma t}(e^{2\gamma s} - 1)\right)} \\
+	&= \frac{\Gamma}{\gamma^{2}m^{2}}\integ{0}{t}{s}{\left(1 - e^{-\gamma s} - \frac{1}{2}e^{-\gamma t}(e^{\gamma s} - e^{-\gamma s})\right)} \\
+	&= \frac{\Gamma}{\gamma^{2}m^{2}}\left(t + \frac{1}{\gamma}(e^{-\gamma t} - 1) - \frac{1}{2\gamma}e^{-\gamma t}(e^{\gamma t} - 1 + e^{-\gamma t} - 1)\right) \\
+	&= \frac{2\kb T}{\gamma m}\left(t + \frac{1}{\gamma}(e^{-\gamma t} - 1) - \frac{1}{2\gamma}(1 - 2e^{-\gamma t} + e^{-2\gamma t})\right) \\
+	&= \frac{2\kb T}{\gamma m}\left(t + \frac{1}{\gamma}(e^{-\gamma t} - 1) - \frac{1}{2\gamma}(1 - e^{-\gamma t})^{2}\right).
+\end{align*}
+At large times we find
+\begin{align*}
+	\expval{x^{i}(t)x^{i}(t\p) - \expval{x^{i}(t)}\expval{x^{i}(t\p)}} = \frac{2\kb T}{\gamma m}\left(t - \frac{3}{2\gamma}\right) \approx \frac{2\kb T}{\gamma m}t.
+\end{align*}
+Comparing with the previously obtained random walk result we find
+\begin{align*}
+	D = \frac{\kb T}{\gamma m}t.
 \end{align*}
