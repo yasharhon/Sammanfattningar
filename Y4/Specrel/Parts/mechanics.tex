@@ -1,0 +1,114 @@
+\section{Relativistic Mechanics}
+
+\paragraph{$4$-Momentum and $4$-Force}
+To formulate Newton's laws in a relativistic manner, we start with Newton's second law. We try extending it to relativistic mechanics by introducing the $4$-momentum
+\begin{align*}
+	P^{\mu} = m_{0}U^{\mu}
+\end{align*}
+for some scalar $m_{0}$, as well as the $4$-force
+\begin{align*}
+	F^{\mu} = \dv{\tau}P^{\mu}.
+\end{align*}
+
+\paragraph{A First Postulate}
+Any laws of classical mechanics must result from these definitions in the limit of $\gamma_{u}$ approaching $1$. In this limit we have $P^{\mu} = (m_{0}c, m_{0}\vb{u})$, imploring us to take $m_{0}$ to be the mass of the particle measured at rest and thus the space components to be those of the classical momentum.
+
+To generalize mechanics we thus postulate that $P^{\mu}$ is conserved in the absence of external forces, a generalization of Newton's first law. This will lead to the conservation of both the spatial components $m_{0}\gamma_{u}\vb{u}$, which is termed the relativistic $3$-momentum $\vb{p}$, and the conservation of $m_{0}\gamma_{u}c$, to be discussed.
+
+\paragraph{Relativistic Energy}
+In the classical limit we obtain
+\begin{align*}
+	m_{0}\gamma_{u}c^{2} \approx m_{0}c^{2} + \frac{1}{2}m_{0}u^{2},
+\end{align*}
+imploring us to define relativistic kinetic energy as
+\begin{align*}
+	T = m_{0}c^{2}(\gamma_{u} - 1)
+\end{align*}
+and relativistic total energy as
+\begin{align*}
+	E = m_{0}\gamma_{u}c^{2}.
+\end{align*}
+
+Having done this, we may generally write $P^{\mu} = \left(\frac{E}{c}, \vb{p}\right)$. In particular, we obtain in the rest frame that $P_{\mu}P^{\mu} = (m_{0}c)^{2}$, and thus the mass invariant
+\begin{align*}
+	(m_{0}c^{2})^{2} = E^{2} - (c\vb{p})^{2}.
+\end{align*}
+The $4$-momentum is thus time-like.
+
+\paragraph{Potential Energy}
+The classical total energy of a free particle comes in the low-velocity limit of $P_{\mu}P^{\mu} = (m_{0}c)^{2}$. Attempting the replacement
+\begin{align*}
+	(m_{0}c^{2})^{2} = (E - U)^{2} - (c\vb{p})^{2}
+\end{align*}
+when adding a potential does not work, however, as it is does not represent a manipulation of $4$-vectors. Instead we introduce the $4$-potential
+\begin{align*}
+	Q^{\mu} = \left(\frac{U}{c}, \vb{q}\right),
+\end{align*}
+which contains the potential in its time component and the so-called potential momentum ind its space components. In the presence of a potential the proper equation is
+\begin{align*}
+	(m_{0}c^{2})^{2} = (E - U)^{2} - (c\vb{p} - c\vb{q})^{2}.
+\end{align*}
+It carries strong similarities to expressions taken from particles moving in electromagnetic field, an early warning sign.
+
+\paragraph{A Note on Relativistic Mass}
+I make a brief note of how the above is modified by defining the relativistic mass $m = m_{0}\gamma_{u}$. In this case you would obtain $E = mc^{2}$ and $\vb{p} = m\vb{u}$. In this context $m_{0}$ is termed the rest mass. This way of doing this is generally not preferred in modern contexts.
+
+\paragraph{Massless Particles}
+The expression for the energy may be extended to massless particles. In these cases we have $E = \abs{\vb{p}}c$, and we thus obtain $P^{\mu} = \frac{E}{c}\left(1, \vb{e}\right)$, where $\vb{e}$ is a unit vector. Hence the $4$-momentum is light-like for massless particles.
+
+\paragraph{de Broglie}
+de Broglie combined experiments showing $E = \hbar\omega$ for photons, which had been discovered to be particles, with the work done above to show that photons could be attributed a momentum $\abs{p} = \hbar\abs{\vb{k}}$. His hypothesis was that this extends to all particles, revealing the wave-particle duality of matter to the world.
+
+\paragraph{Center-of-Momentum Frames}
+If the $4$-momentum is time-like, there exists a frame in which it has no spatial components. This frame is termed the center-of-momentum frame. In many scenarios it is useful to consider because it has a high degree of symmetry.
+
+\paragraph{$4$-Force and $3$-Force}
+In general we have
+\begin{align*}
+	F^{\mu} = \dv{\tau}P^{\mu} = \dv{t}{\tau}\dv{t}P^{\mu} = \gamma_{u}\left(\frac{1}{c}\dv{E}{t}, \vb{f}\right),
+\end{align*}
+a generalization of Newton's second law, where $\vb{f}$ is the $3$-force, defined as $\vb{f} = \dv{t}\vb{p}$.
+
+\paragraph{An Invariant From $4$-Force}
+We use Lorentz invariance to construct the invariant
+\begin{align*}
+	F^{\mu}U_{\mu} = \gamma_{u}^{2}\left(\dv{E}{t} - \vb{f}\cdot\vb{u}\right).
+\end{align*}
+In particular we have in the rest frame, where $\gamma_{u}  =1$, that
+\begin{align*}
+	F^{\mu}U_{\mu} = \dv{E}{\tau} = \dv{\tau}m_{0}c^{2}.
+\end{align*}
+Using the chain rule we then have in an arbitrary frame
+\begin{align*}
+	F^{\mu}U_{\mu} = \gamma_{u}\dv{t}m_{0}c^{2}.
+\end{align*}
+
+\paragraph{Pure and Heat-Like Forces}
+Consider a force such that $F^{\mu}U_{\mu} = 0$, i.e. a force that preserves rest mass. For such forces we have for a general frame that
+\begin{align*}
+	\dv{E}{t} = \vb{f}\cdot\vb{u},
+\end{align*}
+and thus
+\begin{align*}
+	\dd{E} = \vb{f}\cdot\dd{\vb{r}} = \dd{W},
+\end{align*}
+where $W$ is the work as defined in classical mechanics. Such forces are termed pure.
+
+If a force is not pure, we will instead obtain an extra term in the final expression above, and we ascribe that contribution to heat. Such forces are termed heat-like.
+
+In the general case we have
+\begin{align*}
+	F^{\mu} = \dv{\tau}P^{\mu} = m_{0}A^{\mu} + \dv{m_{0}}{\tau}U^{\mu}.
+\end{align*}
+As heat-like forces must be orthogonal to the $4$-velocity, the first term may be interpreted to arise from pure forces and the other from heat-like forces.
+
+\paragraph{Newton's Second Law With $3$-Vectors}
+Using the previously constructed invariant we have
+\begin{align*}
+	\dv{E}{t} = \vb{f}\cdot\vb{u} + \frac{c^{2}}{\gamma_{u}}\dv{t}m_{0}.
+\end{align*}
+By this we obtain
+\begin{align*}
+	\vb{f} = \dv{t}(m_{0}\gamma_{u}\vb{u}) = \dv{t}\left(\frac{E}{c^{2}}\right)\vb{u} + m_{0}\gamma_{u}\dv{\vb{u}}{t} = \left(\frac{\vb{f}\cdot\vb{u}}{c^{2}} + \frac{1}{\gamma_{u}}\dv{t}m_{0}\right)\vb{u} + m_{0}\gamma_{u}\vb{a},
+\end{align*}
+which expresses Newton's second law with $3$-vectors.
