@@ -132,11 +132,11 @@ As the derivatives commute with the matrices, the cross terms vanish, yielding
 \end{align*}
 or more explicitly
 \begin{align*}
-	\del[2]{t}{\Psi} - (\alpha^{i}\del{i}{})(\alpha^{j}\del{j}{})\Psi - im((\alpha^{i}\del{i}{})\beta + \beta\alpha^{i}\del{i}{})\Psi + m^{2}\beta^{2}\Psi = \del[2]{t}{\Psi} - \alpha^{i}\alpha^{j}\del{i}{\del{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
+	\del{2}{t}{\Psi} - (\alpha^{i}\del{}{i}{})(\alpha^{j}\del{}{j}{})\Psi - im((\alpha^{i}\del{}{i}{})\beta + \beta\alpha^{i}\del{}{i}{})\Psi + m^{2}\beta^{2}\Psi = \del{2}{t}{\Psi} - \alpha^{i}\alpha^{j}\del{}{i}{\del{}{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{}{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
 \end{align*}
 We can symmetrize the second term to find
 \begin{align*}
-	\del[2]{t}{\Psi} - \frac{1}{2}(\alpha^{i}\alpha^{j} + \alpha^{j}\alpha^{i})\del{i}{\del{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
+	\del{2}{t}{\Psi} - \frac{1}{2}(\alpha^{i}\alpha^{j} + \alpha^{j}\alpha^{i})\del{}{i}{\del{}{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{}{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
 \end{align*}
 This produces the same 4-vector norm if
 \begin{align*}
@@ -154,7 +154,7 @@ To complete our discussion, we define $\gamma^{0} = \beta,\ \gamma^{i} = \beta\a
 \end{align*}
 Defining the inner product $\gamma^{\mu}A_{\mu} = \fsl{A}$ we arrive at the Dirac equation
 \begin{align*}
-	i\fsl{\del{}{}}\Psi - m\Psi = 0.
+	i\fsl{\del{}{}{}}\Psi - m\Psi = 0.
 \end{align*}
 
 \paragraph{Properties of the $\gamma^{\mu}$}
@@ -255,3 +255,98 @@ Defining
 	],
 \end{align*}
 we have $\comm{\ham}{\vb*{\Sigma}} = 0$.
+
+\paragraph{Lorentz Transformation of Spinors}
+Suppose that $\Psi$ is a solution to the Dirac equation. Under a Lorentz transform it should transform according to
+\begin{align*}
+	\Psi\p(x\p) = S(\Lambda)\Psi(x).
+\end{align*}
+We would like to identify the transformation matrix $S$.
+
+Because the Dirac equation is Lorentz covariant, it looks the same in all frames. We can use the chain rule to find
+\begin{align*}
+	\del{\mu}{} = \tensor{\Lambda}{^{\mu\p}_{\mu}}\del{\mu\p}{}
+\end{align*}
+and thus
+\begin{align*}
+	(-i\gamma^{\mu}\del{\mu}{} + m)\Psi = (-i\gamma^{\mu}\tensor{\Lambda}{^{\mu\p}_{\mu}}\del{\mu\p}{} + m)S^{-1}\Psi\p = 0.
+\end{align*}
+Note that as $m$ is a Lorentz scalar, it is also the same in all frames. Multiplication by $S$ yields
+\begin{align*}
+	(-i\tensor{\Lambda}{^{\mu\p}_{\mu}}S\gamma^{\mu}S^{-1}\del{\mu\p}{} + m)\Psi\p = 0.
+\end{align*}
+Comparing this with the Dirac equation in the primed frame, we must therefore have
+\begin{align*}
+	\tensor{\Lambda}{^{\mu\p}_{\mu}}S\gamma^{\mu}S^{-1} = \gamma^{\mu\p} \iff \tensor{\Lambda}{^{\mu\p}_{\mu}}\gamma^{\mu} = S^{-1}\gamma^{\mu\p}S.
+\end{align*}
+To proceed, we apply the expansion
+\begin{align*}
+	\tensor{\Lambda}{^{\mu\p}_{\mu}} = \kdelta{\mu\p}{\mu} + \varepsilon\tensor{\omega}{^{\mu\p}_{\mu}},\ \omega^{\mu\nu} = -\omega^{\nu\mu},
+\end{align*}
+and expand $S$ in terms of $\varepsilon$ as
+\begin{align*}
+	S = 1 - \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu},\ \sigma_{\mu\nu} = -\sigma_{\nu\mu}
+\end{align*}
+for some set of matrices $\sigma_{\mu\nu}$. We see that its inverse to first order must be
+\begin{align*}
+	S^{-1} = 1 + \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}.
+\end{align*}
+We now have
+\begin{align*}
+	(\kdelta{\mu\p}{\mu} + \varepsilon\tensor{\omega}{^{\mu\p}_{\mu}})\gamma^{\mu} &= \left(1 + \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}\right)\gamma^{\mu\p}\left(1 - \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}\right) \\
+	&= \gamma^{\mu\p} + \frac{i}{4}\varepsilon\omega^{\mu\nu}(\sigma_{\mu\nu}\gamma^{\mu\p} - \gamma^{\mu\p}\sigma_{\mu\nu}),
+\end{align*}
+which is somehow
+\begin{align*}
+	\comm{\gamma^{\mu\p}}{\sigma_{\mu\nu}} = 2i(\tensor{g}{^{\mu\p}_{\mu}}\gamma_{\nu} - \tensor{g}{^{\mu\p}_{\nu}}\gamma_{\mu}),
+\end{align*}
+with the solution
+\begin{align*}
+	\sigma_{\mu\nu} = \frac{i}{2}\comm{\gamma_{\mu}}{\gamma_{\nu}}.
+\end{align*}
+
+\paragraph{Charged Particles}
+When introducing charge, we employ the minimal coupling scheme. The Dirac equation then becomes
+\begin{align*}
+	(-\gamma^{\mu}(i\del{}{\mu}{} - qA_{\mu}) + m)\Psi = (\fsl{p} - q\fsl{A} - m)\Psi = 0.
+\end{align*}
+To proceed we write the solution as
+\begin{align*}
+	\Psi = (\fsl{p} - q\fsl{A} + m)\chi,
+\end{align*}
+yielding
+\begin{align*}
+	(\fsl{p} - q\fsl{A} - m)(\fsl{p} - q\fsl{A} + m)\chi = ((\fsl{p} - q\fsl{A})^{2} - m^{2})\chi = 0.
+\end{align*}
+
+We investigate the operator appearing in this modified solution as
+\begin{align*}
+	(\fsl{p} - q\fsl{A})^{2} &= \gamma^{\mu}\gamma^{\nu}(p_{\mu} - qA_{\mu})(p_{\nu} - qA_{\nu}) \\
+	                         &= \frac{1}{2}\left(\gamma^{\mu}\gamma^{\nu}(p_{\mu} - qA_{\mu})(p_{\nu} - qA_{\nu}) + \gamma^{\nu}\gamma^{\mu}(p_{\nu} - qA_{\nu})(p_{\mu} - qA_{\mu})\right) \\
+	                         &= \frac{1}{2}\left(\gamma^{\mu}\gamma^{\nu}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) + \gamma^{\nu}\gamma^{\mu}(p_{\nu}p_{\mu} - q(p_{\nu}A_{\mu} + A_{\nu}p_{\mu}) + q^{2}A_{\nu}A_{\mu})\right) \\
+	                         &= \frac{1}{2}\left(\acomm{\gamma^{\mu}}{\gamma^{\nu}}(p_{\mu}p_{\nu} + q^{2}A_{\mu}A_{\nu}) - q(\gamma^{\mu}\gamma^{\nu}(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + \gamma^{\nu}\gamma^{\mu}(p_{\nu}A_{\mu} + A_{\nu}p_{\mu}))\right) \\
+	                         &= \frac{1}{2}\left(\acomm{\gamma^{\mu}}{\gamma^{\nu}}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) - q\gamma^{\nu}\gamma^{\mu}(p_{\nu}A_{\mu} + A_{\nu}p_{\mu} - p_{\mu}A_{\nu} - A_{\mu}p_{\nu})\right) \\
+	                         &= \frac{1}{2}\left(2g^{\mu\nu}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) - q\gamma^{\nu}\gamma^{\mu}(\comm{p_{\nu}}{A_{\mu}} - \comm{p_{\mu}}{A_{\nu}}\right).
+\end{align*}
+We have
+\begin{align*}
+	\comm{p_{\mu}}{A_{\nu}} = i((\del{}{\mu}{A_{\nu}}) + A_{\nu}\del{}{\mu}{} - A_{\nu}\del{}{\mu}{}) = i(\del{}{\mu}{A_{\nu}}),
+\end{align*}
+and thus
+\begin{align*}
+	(\fsl{p} - q\fsl{A})^{2} &= \frac{1}{2}\left(2g^{\mu\nu}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) - iq\gamma^{\nu}\gamma^{\mu}(\del{}{\nu}{A_{\mu}} - \del{}{\mu}{A_{\nu}})\right) \\
+	                         &= (p - qA)^{2} + \frac{i}{2}q\gamma^{\nu}\gamma^{\mu}F_{\mu\nu}.
+\end{align*}
+As
+\begin{align*}
+	\gamma^{\nu}\gamma^{\mu} = \frac{1}{2}(\comm{\gamma^{\nu}}{\gamma^{\mu}} + \acomm{\gamma^{\nu}}{\gamma^{\mu}}),
+\end{align*}
+where the first term is symmetric and the second is antisymmetric, we have
+\begin{align*}
+	(\fsl{p} - q\fsl{A})^{2} &= (p - qA)^{2} + \frac{1}{2}q\sigma^{\nu\mu}F_{\mu\nu} = (p - qA)^{2} - \frac{1}{2}q\sigma^{\mu\nu}F_{\mu\nu}.
+\end{align*}
+It can be shown that
+\begin{align*}
+	\frac{1}{2}q\sigma^{\mu\nu}F_{\mu\nu} = -q(\vb*{\Sigma}\cdot\vb{B} - i\vb*{\alpha}\cdot\vb{E}),
+\end{align*}
+where the first term is interpreted as a magnetic dipole contribution and the second as an electric monopole contribution.
