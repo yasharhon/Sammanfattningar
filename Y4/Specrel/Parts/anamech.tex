@@ -1,0 +1,76 @@
+\section{Analytical Mechanics}
+
+\paragraph{On the Handling of Constraints}
+Suppose that the system moves under some constraint $g(x^{\mu}) = 0$. There are two ways to handle this.
+
+The first is to introduce a Lagrange multiplier according to
+\begin{align*}
+	S = \integ{}{}{\theta}{\mathcal{L} + \lambda g}
+\end{align*}
+and extremize the action with the condition as an extra equation.
+
+The other is to perform a coordinate transformation. Such transformations preserve the form of the equations of motion. The new coordinates are $q^{\mu}$ for all $\mu$ but the final one, and the final coordinate is $g$ itself. You can somehow then obtain equations of motion which can be solved by explicitly constraining $g$.
+
+\paragraph{Constructing an Action}
+To do analytical mechanics in a way that respects relativity, we will need an action. This will reasonably have to be constructed from some non-trivial Lorentz scalars. We try
+\begin{align*}
+	S = -\integ{}{}{\theta}{\sqrt{g_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}}m_{0}c + \frac{q}{c}\Phi_{\mu}\dot{x}^{\mu}},
+\end{align*}
+where we have parametrized the path in terms of some affine parameter. The involved quantities are the proper time and a line integral of the $4$-potential. The dots now signify derivatives with respect to this parameter. The equations of motion are
+\begin{align*}
+	\dv{\theta}\left(\frac{m_{0}c}{\sqrt{g_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}}}g_{\mu\nu}\dot{x}^{\nu} + \frac{q}{c}\Phi_{\mu}\right) - \frac{q}{c}\dot{x}^{\nu}\del{\mu}{\Phi_{\nu}} = 0.
+\end{align*}
+
+\paragraph{Reobtaining The Lorentz Force Law}
+One way to proceed with the above is to choose $\theta = \tau$, for which we obtain
+\begin{align*}
+	\dv{\tau}\left(m_{0}g_{\mu\nu}\dot{x}^{\nu} + \frac{q}{c}\Phi_{\mu}\right) - \frac{q}{c}\dot{x}^{\nu}\del{\mu}{\Phi_{\nu}} = 0.
+\end{align*}
+Expanding the derivative yields
+\begin{align*}
+	m_{0}\ddot{x}_{\mu} = \frac{q}{c}\dot{x}^{\nu}\left(\del{\mu}{\Phi_{\nu}} - \del{\nu}{\Phi_{\mu}}\right) = \frac{q}{c}F_{\mu\nu}\dot{x}^{\nu},
+\end{align*}
+which is the expected equation of motion.
+
+\paragraph{The Action and $3$-Vectors}
+Another way to express the above is to choose $t$ as the parameter, whence the action becomes
+\begin{align*}
+	S = -\integ{}{}{t}{\sqrt{g_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}}m_{0}c + \frac{q}{c}(c\phi - c\vb{u}\cdot\vb{a})} = -\integ{}{}{t}{\sqrt{1 - \frac{\abs{\vb{u}}^{2}}{c^{2}}}m_{0}c^{2} + q(\phi - \vb{u}\cdot\vb{a})}.
+\end{align*}
+The corresponding generalized momentum is
+\begin{align*}
+	\vb{p} = -\frac{1}{2\sqrt{1 - \frac{\abs{\vb{u}}^{2}}{c^{2}}}}m_{0}c^{2}\cdot -\frac{2}{c^{2}}\vb{u} + q\vb{a} = \frac{1}{\sqrt{1 - \frac{\abs{\vb{u}}^{2}}{c^{2}}}}m_{0}\vb{u} + q\vb{a} = \gamma_{u}m_{0}\vb{u} + q\vb{a}.
+\end{align*}
+The equation of motion is
+\begin{align*}
+	\dv{t}(\gamma_{u}m_{0}\vb{u} + q\vb{a}) = -q\grad{\phi} + u_{j}\grad{a_{j}}.
+\end{align*}
+It can be shown that this is equivalent to
+\begin{align*}
+	\dv{t}(\gamma_{u}m_{0}\vb{u}) = q\vb{e} + q\vb{u}\times\vb{b}.
+\end{align*}
+
+\paragraph{A $3$-Vector Hamiltonian}
+It can be shown from that the above that a corresponding Hamiltonian is
+\begin{align*}
+	\mathcal{H} = \sqrt{(m_{0}c^{2})^{2} + (\vb{p} - q\vb{a})^{2}c^{2}} + q\phi.
+\end{align*}
+
+\paragraph{The Hamilton-Jacobi Equation}
+I mention the Hamilton-Jacobi equation
+\begin{align*}
+	\mathcal{H} + \del{t}{S} = 0.
+\end{align*}
+This defines a partial differential equation for $S$, as the momenta are in this context to be taken to be $p_{\mu} = \del{\mu}{S}$. For details, see my summary of SI2360.
+
+\paragraph{Nöether's Theorem}
+The general formulation of Nöether's theorem is the following: Suppose that there exists a continuous transformation $\tau \to \tilde{\tau} = \tau + \var{\tau},\ x^{\mu}(\tau) \to \tilde{x}^{\mu}(\tilde{\tau}) = x^{\mu}(\tau) + \var{x^{\mu}}(\tilde{\tau})$ that adds a term corresponding to a function $F$ evaluated at the start and end to the action. Corresponding to such a transformation there exists a conserved quantity
+\begin{align*}
+	J = F - \pdv{\lag}{x^{\mu}}\var{x^{\mu}} + \left(\dot{x}^{\mu}\pdv{\lag}{\dot{x}^{\mu}} - \lag\right)\var{\tau}.
+\end{align*}
+
+\paragraph{$4$-Angular Momentum}
+It can be shown that corresponding to a Lorentz boosts there is a conserved quantity
+\begin{align*}
+	L^{\mu\nu} = x^{\mu}p^{\nu} - p^{\mu}x^{\nu}.
+\end{align*}

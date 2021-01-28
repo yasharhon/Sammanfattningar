@@ -1,0 +1,49 @@
+\section{Relativistic Optics}
+
+\paragraph{The $4$-Wavevector}
+The overall phase of a wave is given by $\phi_{0} + \omega t - \vb{k}\cdot\vb{r}$. By defining the $4$-wavevector $K^{\mu} = \left(\frac{\omega}{c}, \vb{k}\right)$, we may write the overall phase as $\phi_{0} + K_{\mu}x^{\mu}$.
+
+\paragraph{The $4$-Frequency}
+We may also define a $4$-frequency $N^{\mu} = \frac{c}{2\pi}K^{\mu}$, where $c$ is the wave speed.
+%TODO: Check this
+
+\paragraph{Light and Matter}
+For light we have $P^{\mu} = \hbar K^{\mu} = \frac{h}{c}N^{\mu}$. For matter the same holds, but we now have $\omega = w(\vb{k})k$, where $w$ is termed the phase velocity.
+
+\paragraph{Phase and Group Velocity}
+%TODO: Same with gradients
+The group velocity is defined as $u = \dv{\omega}{k}$. We have
+\begin{align*}
+	u = \dv{\omega}{k} = \dv{E}{p} = \frac{c^{2}p}{E} = \frac{p}{m_{0}\gamma_{u}},
+\end{align*}
+reproducing the known expression $p = m_{0}\gamma_{u}u$. Furthermore we have
+\begin{align*}
+	uw = \frac{c^{2}p}{E}\nu\lambda = c^{2},
+\end{align*}
+and as $u$ corresponds to the momentum and must therefore be smaller than $c$, the phase velocity is thus higher than $c$.
+
+\paragraph{Doppler Effect for Light}
+The Doppler effect is the observation of frequency change when moving relative to a source of a wave. Specifically for light, we may derive expressions for how much the frequency changes.
+
+While it can be done by considering specific geometries, we instead consider the following scenario: In $S$ there is a light source at rest. Light from this source is received by an observer from a direction $\vb{n}$ as seen in $S$. Suppose that the observer is moving with velocity $\vb{v}$, and let $S^{\prime}$ be its rest frame. We will find the Doppler shift by considering the invariance of the scalar $N^{\mu}V_{\mu}$. In $S$ we have
+\begin{align*}
+	N^{\mu}V_{\mu} = \nu\gamma_{v}(c - \vb{n}\cdot\vb{v}),
+\end{align*}
+whereas in $S^{\prime}$ we have
+\begin{align*}
+	N^{\mu^{\prime}}V_{\mu^{\prime}} = \nu^{\prime}c,
+\end{align*}
+yielding
+\begin{align*}
+	\nu^{\prime} = \nu\gamma_{v}\left(1 - \frac{\vb{n}\cdot\vb{v}}{c}\right).
+\end{align*}
+
+\paragraph{Aberration of Light}
+Consider a similar scenario to the above, and restrict $\vb{n}$ to the $xy$-plane. We may then write $\vb{n} = -(\cos(\theta)\vb{e}_{x} + \sin(\theta)\vb{e}_{y})$. In $S^{\prime}$ we may write a similar expression. Applying the Lorentz transform to $N^{\mu}$ and equating it to $N^{\mu\prime}$ yields
+\begin{align*}
+	\sin(\theta^{\prime}) = \frac{\sin(\theta)}{\gamma_{v}(1 + \beta\cos(\theta))},\ \cos(\theta^{\prime}) = \frac{\cos(\theta) + \beta}{1 + \beta\cos(\theta)}.
+\end{align*}
+Furthermore we have
+\begin{align*}
+	\tan(\frac{\theta^{\prime}}{2}) = \frac{\sin(\theta^{\prime})}{1 + \cos(\theta^{\prime})} = \frac{\sin(\theta)}{\gamma_{v}(1 + \beta)(1 + \cos(\theta))} = \sqrt{\frac{1 - \beta}{1 + \beta}}\tan(\frac{\theta}{2}).
+\end{align*}

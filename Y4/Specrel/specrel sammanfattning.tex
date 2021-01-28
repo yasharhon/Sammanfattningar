@@ -1,0 +1,55 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+\usepackage{tensor}
+
+\newcommand{\lag}{\ensuremath{\mathcal{L}}}
+\newcommand{\p}{^{\prime}}
+\newcommand{\ub}[1]{\vb{e}_{#1}}
+\newcommand{\trcou}[2]{\tensor{\Lambda}{^{#1}_{#2}}}
+\newcommand{\trcod}[2]{\tensor{\Lambda}{_{#1}^{#2}}}
+\newcommand{\kdelta}[2]{\tensor*{\delta}{^{#1}_{#2}}}
+\newcommand{\del}[3][]{\partial^{#1}_{#2}#3}
+\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+
+\title{Summary of SI2371 Special Relativity}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/basics.tex}
+
+\input{./Parts/4vecs.tex}
+
+\input{./Parts/mechanics.tex}
+
+\input{./Parts/elecdyn.tex}
+
+\input{./Parts/contmech.tex}
+
+\input{./Parts/optics.tex}
+
+\input{./Parts/anamech.tex}
+
+\end{document}

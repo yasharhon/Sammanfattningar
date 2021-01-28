@@ -1,0 +1,346 @@
+\section{Basic Concepts}
+
+\paragraph{Phase Transitions}
+Landau introduced the concept that phase transitions are defined by spontaneous symmetry breaking.
+
+\paragraph{Spontaneous Symmetry Breaking}
+Consider a Hamiltonian with some particular symmetry and suppose that a system with this Hamiltonian solves the equation of motion in such a way that the aforementioned symmetry does not leave the system invariant. This is called spontaneous symmetry breaking.
+
+A classical example is a particle on a sombrero. The Hamiltonian of such a system is invariant with respect to rotations about the hat's axis of symmetry. This symmetry also leaves the system invariant if the ball is on top of the sombrero. However, if the ball rolls down from the top, the system loses its rotational symmetry (the Hamiltonian is still invariant, but the system has changed). This process happens spontaneously, hence this system spontaneously breaks rotational symmetry.
+
+\paragraph{Order Parameters}
+An order parameter is a quantity that describes spontaneous symmetry breaking. It is zero in one phase and non-zero in another. An order parameter need not have a physical interpretation.
+
+\paragraph{First- and Second-Order Phase Transitions}
+Second-order phase transitions have continuous free energy and order parameter, whereas first-order phase transitions have discontinous order parameter.
+
+\paragraph{Critical Exponents}
+Many phenomena exhibit a behaviour of the form $\abs{T - T_{\text{c}}}^{-c}$ close to phase transitions. The exponent $c$ is termed the critical exponent.
+
+Some specific critical exponents that may appear are $\gamma$ for $\chi$, $\alpha$ for $C$, $-\beta$ for the order parameter, $-\delta$ for the conjugate field $h$, $\gamma$ for the corresponding susceptibility $\chi$ and $\nu$ for the correlation length.
+
+\paragraph{Density Matrices}
+The probability distribution is of the form
+\begin{align*}
+	p_{n} = \frac{1}{\sum\limits_{m}P_{m}}P_{n} = \frac{1}{Z}P_{n},
+\end{align*}
+where the summation is performed over some set of states. We now introduce the density matrix
+\begin{align*}
+	\rho = \frac{1}{Z}\sum\limits_{n}P_{n}\op{n}{n},
+\end{align*}
+yielding
+\begin{align*}
+	\expval{O} = \sum\limits_{n}p_{n}O_{nn} = \sum\limits_{n}\frac{1}{Z}P_{n}\expval{O}{n} = \frac{1}{Z}\sum\limits_{n}\sum\limits_{m}P_{n}\braket{n}{m}\mel{m}{O}{n} = \frac{1}{Z}\sum\limits_{n}\sum\limits_{m}\mel{n}{\rho}{m}\mel{m}{O}{n} = \tr(O\rho).
+\end{align*}
+
+As a side note, $\rho$ takes the form
+\begin{align*}
+	\rho = \frac{1}{Z}e^{-\beta K},
+\end{align*}
+where $K$ is the Hamiltonian in the canonical ensemble and $H - \mu N$ in the grand canonical ensemble. In these cases, the partition function $Z$ may be computed according to
+\begin{align*}
+	Z = \sum\limits_{m}P_{m} = \sum\limits_{m}e^{-\beta K_{m}} = \sum\limits_{m}\mel{m}{e^{-\beta K}}{m} = \tr(e^{-\beta K}).
+\end{align*}
+
+\paragraph{Scaling Laws}
+Suppose that close to a phase transition, the free energy is dominated by a term $G$ which scales according to
+\begin{align*}
+	G(t, h) = \lambda^{-d}G(\lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+The idea of scaling laws is to use such relations to compute critical exponents. Namely, we obtain
+\begin{align*}
+	m(t, h)     &= \lambda^{-d + y_{h}}m(\lambda^{y_{t}}t, \lambda^{y_{h}}h), \\
+	\chi(t, h)  &= \lambda^{-d + 2y_{h}}\chi(\lambda^{y_{t}}t, \lambda^{y_{h}}h), \\
+	C_{h}(t, h) &= \lambda^{-d + 2y_{t}}C_{h}(\lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+To identify the critical exponents, we approach the critical point from $h = 0$. The scaling laws apply for any scale factor, hence we may choose $\lambda^{y_{t}} = \frac{1}{\abs{t}}$, yielding
+\begin{align*}
+	m(t, 0)     &= \abs{t}^{\frac{d - y_{h}}{y_{t}}}m(\pm 1, 0), \\
+	\chi(t, 0)  &= \abs{t}^{\frac{d - 2y_{h}}{y_{t}}}\chi(\pm 1, 0), \\
+	C_{h}(t, 0) &= \abs{t}^{\frac{d}{y_{t}} - 2}C_{h}(\pm 1, 0).
+\end{align*}
+On the right-hand side we have the different quantities evaluated at points far from criticality, meaning they are finite. This also implies that if critical exponents exist on either side of the critical point, they are identical (this is for instance not the case for the order parameter, as it is zero on the other side of the transition). We now identify
+\begin{align*}
+	\alpha = 2 - \frac{d}{y_{t}},\ \beta = \frac{d - y_{h}}{y_{t}},\ \gamma = \frac{2y_{h} - d}{y_{t}}.
+\end{align*}
+By instead approaching from $t = 0$ and choosing $\lambda^{y_{h}} = \frac{1}{\abs{h}}$ we obtain
+\begin{align*}
+	m(t, h) &= \abs{h}^{\frac{d}{y_{h}} - 1}m(0, \pm 1),
+\end{align*}
+and we identify
+\begin{align*}
+	\delta= \frac{1}{\frac{d}{y_{h}} - 1} = \frac{y_{h}}{d - y_{h}}.
+\end{align*}
+
+Based on this, we may identify certain general scaling laws. Two of these are
+\begin{align*}
+	\alpha + 2\beta + \gamma = 2,\ \beta(\delta - 1) = \gamma.
+\end{align*}
+These are the Rushbrook and Widom scaling laws. As can be seen, they do not uniquely specify the critical exponents. This can also be seen from the scaling laws themselves.
+
+We started the derivation with the assumption that the free energy satisfies some generalized homogeneity relation. The same must be true for the  correlation length and correlation function:
+\begin{align*}
+	\xi(t, h) = \lambda^{-b}\xi(\lambda^{y_{t}}t, \lambda^{y_{h}}h),\ \Gamma(\vb{k}, t, h) = \lambda^{-c}\Gamma(\lambda^{y_{\vb{k}}}\vb{k}, \lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+%TODO: Add derivation here
+For the correlation length we also added its dependence on the wavevector. As will be shown, the correlation function is proportional to the susceptibility for $\vb{k} = \vb{0}$, hence
+\begin{align*}
+	\Gamma(\vb{k}, t, h) = \lambda^{-d + 2y_{h}}\Gamma(\lambda^{y_{\vb{k}}}\vb{k}, \lambda^{y_{t}}t, \lambda^{y_{h}}h).
+\end{align*}
+At $t = h = 0$ we have
+\begin{align*}
+	\Gamma(\vb{k}) \propto k^{-2 + \eta},
+\end{align*}
+which defines the exponent $\eta$. This result is obtained by choosing $\lambda = k^{-\frac{1}{y_{\vb{k}}}}$, and we thus have
+\begin{align*}
+	\frac{2y_{h} - d}{y_{\vb{k}}} = \frac{\gamma y_{t}}{y_{\vb{k}}} = 2 - \eta.
+\end{align*}
+The correlation length is given by
+\begin{align*}
+	\xi^{2} \propto \frac{1}{C(0)}\eval{\pdv{C}{k^{2}}}_{k = 0},
+\end{align*}
+which scales as $\lambda^{-y_{\vb{k}}}$, hence $b = y_{\vb{k}}$. By a scaling law, we further obtain
+\begin{align*}
+	\nu = \frac{y_{\vb{k}}}{y_{t}}
+\end{align*}
+and Fisher's law
+\begin{align*}
+	\frac{\gamma}{\nu} = 2 - \eta.
+\end{align*}
+
+The laws we have derived thus far have considered the order parameter and susceptibility or the correlation function and correlation length by themselves. To derive the final scaling law, the hyperscaling law, we must connect the two. A scaling of the correlation length by a factor $l$ should scale the energy density by $l^{-d}$. A rescaling of the correlation length by $\lambda^{-b}$ is possible either by direct rescaling or by rescaling the field and temperature. If the previous claim is true, then we must have
+\begin{align*}
+	\lambda^{d}G(t, h) = \lambda^{bd}G(t, h).
+\end{align*}
+This can only be true if
+\begin{align*}
+	d = \nu dy_{t},\ d\nu = 2 - \alpha.
+\end{align*}
+
+\paragraph{The Universality Hypothesis}
+The universality hypothesis is an experimentally based hypothesis. It states that all phase transitions can be sorted into a set of universality classes characterized by the dimensions of the system and order parameter, and that the critical exponents are the same for all phase transitions in a given universality class.
+
+\paragraph{The Ising Model}
+The Ising model is a simple model of magnets. In this model, a magnet is a collection of interacting spins on a lattice under the influence of an external field. Its generalized coordinates are $\sigma_{i}$, which may take the values $\pm 1$, signifying a particular spin pointing up or down. The Hamiltonian is
+\begin{align*}
+	\ham = -J\sum\limits_{i}\sum\limits_{j = \text{nn}(i)}\sigma_{i}\sigma_{j} - h\sum\limits_{i}\sigma_{i}.
+\end{align*}
+The inner summation is carried out over the nearest neighbours of site $i$ in the Ising model, but is generally a sum over the whole lattice. The order parameter defining its phase transition for the case $J > 0$ is $m = \expval{\sigma_{i}}$.
+
+This model will be used to demonstrate core concepts in the course.
+
+\paragraph{Scaling Laws for Magnetic Systems}
+While we will use the Ising model as a reference in this summary, it has been found that very different systems display similar critical exponents. Such exponents are also found to obey so-called scaling laws. As an example, it may be shown that
+\begin{align*}
+	\chi(C_{H} - C_{M}) = T\fix{\left(\pdv{M}{T}\right)^{2}}{H}.
+\end{align*}
+This can only be satisfied if
+\begin{align*}
+	\chi C_{H} > T\fix{\left(\pdv{M}{T}\right)^{2}}{H}.
+\end{align*}
+Introducing the critical exponent of the involved quantities, we must therefore have
+\begin{align*}
+	-\gamma - \alpha \leq 2(\beta - 1),\ \gamma + \alpha + 2\beta \geq 2.
+\end{align*}
+This is the Rushbrook scaling law back in action.
+
+\paragraph{Exact Solution in One Dimension}
+To solve the Ising model in one dimension we will impose periodic boundary conditions $\sigma_{N} = \sigma_{0}$. The Hamiltonian may be written as
+\begin{align*}
+	\ham = -J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} - \frac{1}{2}h\sum\limits_{i = 0}^{N - 1}\sigma_{i} + \sigma_{i + 1}.
+\end{align*}
+The partition function is thus
+\begin{align*}
+	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}e^{\beta\left(J\sum\limits_{i = 0}^{N - 1}\sigma_{i}\sigma_{i + 1} + \frac{1}{2}h\sum\limits_{i = 0}^{N - 1}\sigma_{i} + \sigma_{i + 1}\right)}.
+\end{align*}
+Introducing the transfer matrix with elements $t_{\sigma\sigma^{\prime}} = e^{\beta J\sigma\sigma^{\prime} + \frac{1}{2}h(\sigma + \sigma^{\prime})}$ we have
+\begin{align*}
+	Z = \sum\limits_{\sigma_{0} = \pm 1}\dots \sum\limits_{\sigma_{N - 1} = \pm 1}\prod\limits_{i = 0}^{N - 1}t_{\sigma_{i}\sigma_{i + 1}}.
+\end{align*}
+Now consider some particular spin and perform the summation over this one first. We obtain
+\begin{align*}
+	\sum\limits_{\sigma_{j} = \pm 1}t_{\sigma_{j - 1}\sigma_{j}}t_{\sigma_{j}\sigma_{j + 1}} = t_{\sigma_{j - 1}\sigma_{j + 1}}^{2}.
+\end{align*}
+This process is repeated until you obtain
+\begin{align*}
+	Z = \tr(t^{N}).
+\end{align*}
+The matrix representation of the transfer matrix is
+\begin{align*}
+	t =
+	\mqty[
+		e^{\beta(J + h)}  & e^{-\beta J} \\
+		e^{-\beta J} & e^{\beta(J - h)}
+	].
+\end{align*}
+Its eigenvalues are the solutions to
+\begin{align*}
+	\left(\lambda - e^{\beta(J + h)}\right)\left(\lambda - e^{\beta(J - h)}\right) - e^{-2\beta J} = 0,
+\end{align*}
+and are given by
+\begin{align*}
+	\lambda^{2} - 2e^{\beta J}\cosh(\beta h)\lambda + 2\sinh(2\beta J) &= 0, \\
+	\lambda_{\pm}                                                      &= e^{\beta J}\cosh(\beta h) \pm \sqrt{e^{2\beta J}\cosh[2](\beta h) - 2\sinh(2\beta J)} \\
+	                                                                   &= e^{\beta J}\cosh(\beta h) \pm \sqrt{e^{2\beta J}\sinh[2](\beta h) + e^{-2\beta J}}.	
+\end{align*}
+
+Now that we have the eigenvalues, we identify the partition function as
+\begin{align*}
+	Z = \lambda_{+}^{N} + \lambda_{-}^{N}.
+\end{align*}
+This can be further simplified to
+\begin{align*}
+	Z = \lambda_{+}^{N}\left(1 + \left(\frac{\lambda_{-}}{\lambda_{+}}\right)^{N}\right) \approx \lambda_{+}^{N}.
+\end{align*}
+
+Next, the free energy is given by
+\begin{align*}
+	G = -\kb T\left(N\ln(\lambda_{+}) + \ln(1 + \left(\frac{\lambda_{-}}{\lambda_{+}}\right)^{N})\right).
+\end{align*}
+The magnetization is given by
+\begin{align*}
+	m &= -\frac{1}{N}\fix{\pdv{G}{\beta h}}{T} \\
+	  &\approx \frac{e^{\beta J}\sinh(\beta h) + \frac{e^{2\beta J}\sinh(\beta h)\cosh(\beta h)}{\sqrt{e^{2\beta J}\sinh[2](\beta h) + e^{-2\beta J}}}}{e^{\beta J}\cosh(\beta h) + \sqrt{e^{2\beta J}\sinh[2](\beta h) + e^{-2\beta J}}} \\
+	  &= \sinh(\beta h)\frac{1 + \frac{\cosh(\beta h)}{\sqrt{\sinh[2](\beta h) + e^{-4\beta J}}}}{\cosh(\beta h) + \sqrt{\sinh[2](\beta h) + e^{-4\beta J}}} \\
+	  &= \frac{\sinh(\beta h)}{\sqrt{\sinh[2](\beta h) + e^{-4\beta J}}}.
+\end{align*}
+If $h = 0$ there is no spontaneous magnetization. However, at low temperatures a very small field will produce saturation magnetization. This corresponds to a phase transition at $T = 0$.
+
+Next consider the pair distribution function
+\begin{align*}
+	g(j) = \expval{\sigma_{0}\sigma_{j}}.
+\end{align*}
+The error introduced by assuming uncorrelated spins, as will be done later, is
+\begin{align*}
+	\Gamma(j) = \expval{\sigma_{i}\sigma_{i + j}} - \expval{\sigma_{i}}\expval{\sigma_{i + j}}.
+\end{align*}
+In a general case with different couplings between spins and without an external field we have
+\begin{align*}
+	\expval{\sigma_{i}\sigma_{i + j}} &= \frac{1}{Z}\sum\sigma_{i}\sigma_{i + j}e^{\beta \sum\limits_{i = 0}^{N - 1}J_{i}\sigma_{i}\sigma_{i + 1}} \\
+	                                  &= \frac{1}{Z}\sum\sigma_{i}\sigma_{i + 1}\sigma_{i + 1}\sigma_{i + 2}\dots\sigma_{i + j - 1}\sigma_{i + j}e^{\beta \sum\limits_{i = 0}^{N - 1}J_{i}\sigma_{i}\sigma_{i + 1}} \\
+	                                  &= \frac{1}{Z}\pdv{\beta J_{i}}\dots\pdv{\beta J_{i + j}}Z.
+\end{align*}
+Using the fact that
+\begin{align*}
+	Z = 2\prod\limits_{i = 1}^{N}2\cosh(\beta J_{i})
+\end{align*}
+we obtain
+\begin{align*}
+	\expval{\sigma_{i}\sigma_{i + j}} = \prod\limits_{k = i}^{i + j}\tanh(\beta J_{k}).
+\end{align*}
+In one dimension there is no magnetization. In the case where all couplings are the same we obtain
+\begin{align*}
+	\Gamma(j) = \tanh[j](\beta J) = e^{-\frac{j}{\xi}},
+\end{align*}
+where we have introduced the correlation length
+\begin{align*}
+	\xi = -\frac{1}{\ln(\tanh(\beta J))}.
+\end{align*}
+
+\paragraph{Kadanoff Block Spins}
+Consider the Ising model on a $d$-dimensional hypercubic lattice with lattice constant $a$. Divide the lattice into blocks with $l$ spins in each direction, meaning that each block contains $l^{d}$ lattice sites. These blocks then also form a lattice with lattice constant $la$. If we assume that $la \ll \xi$, most of the spins in a block are correlated, allowing us to introduce a scaling hypothesis. Denoting the total spin of some block as $S_{I, \text{tot}}$ we introduce the new variables
+\begin{align*}
+	S_{I} = l^{-x_{S}}S_{I, \text{tot}}.
+\end{align*}
+
+Assume now that the Hamiltonian looks the same when expressed in terms of the block spins. The free energy should then be unchanged by the choice of new variables. Introducing the variable
+\begin{align*}
+	t = \frac{T - T_{\text{c}}}{T_{\text{c}}},
+\end{align*}
+we expect both this parameter and $h$ to scale with the transformation of variables according to
+\begin{align*}
+	t\to tl^{x_{t}},\ h\to hl^{x_{h}}.
+\end{align*}
+We now expect the free energy to scale according to
+\begin{align*}
+	G = Ng(t, h) = N_{l}g(t_{l}, h_{l}) = \frac{N}{l^{d}}g(t_{l}, h_{l}).
+\end{align*}
+The correlation length is also expected to scale as
+\begin{align*}
+	\xi\to\frac{\xi}{l}.
+\end{align*}
+This implies that in our new variables, the reduced temperature is increased. Similarly the field is given by
+\begin{align*}
+	h = h\sum S_{i} = h\sum S_{I, \text{tot}} = hl^{x_{S}}\sum S_{I},
+\end{align*}
+and has thus increased. The scaling hypothesis is now
+\begin{align*}
+	g(t, h) = l^{-d}g(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+In other words, the free energy per particle is a homogenous function of $t$ and $h$.
+
+Near $t = 0$ the correlation length is the only characteristic length scale. As it diverges in this limit, the system is invariant under scale transformations. This implies that all thermodynamic functions are homogenous, somehow.
+
+Let us now derive some critical exponents in this way. For instance, we compute the order parameter as
+\begin{align*}
+	m(t, h) = \pdv{h}(l^{-d}g(tl^{x_{t}}, hl^{x_{h}})) = l^{x_{h} - d}m(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+This is true for any scaling factor according to the hypothesis, meaning that we may choose $l = \abs{t}^{-\frac{1}{x_{t}}}$ (and $h = 0$, I believe), which one can squint to see as
+\begin{align*}
+	\beta = -\frac{y_{h} - d}{y_{t}}.
+\end{align*}
+%TODO: Constant on RHS
+To determine $\delta$, we choose $t = 0,\ l = \abs{h}^{-\frac{1}{y_{h}}}$ to obtain
+\begin{align*}
+	\delta = -\frac{y_{h}}{y_{h} - d}.
+\end{align*}
+To determine $\gamma$ we instead use
+\begin{align*}
+	\chi(t, h) = \pdv{h}(l^{x_{h} - d}m(tl^{x_{t}}, hl^{x_{h}})) = l^{2x_{h} - d}\chi(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+Choosing the scale factor $l = \abs{t}$ nets
+\begin{align*}
+	\gamma = \frac{2y_{h} - d}{y_{t}}.
+\end{align*}
+To determine $\alpha$, we use
+\begin{align*}
+	C(t, h) = -t\pdv[2]{g}{t} = l^{2y_{h} - d}C(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+This yields
+\begin{align*}
+	\alpha = \frac{2y_{t} - d}{y_{t}}.
+\end{align*}
+%TODO: Re-obtain scaling laws
+
+The scaling assumptions must be verified experimentally. For one method, consider the order parameter. Choosing $l = \abs{t}^{-\frac{1}{y_{t}}}$ we obtain
+\begin{align*}
+	\abs{t}^{-\beta}m(t, h) = m(\pm 1, h\abs{t}^{-\Delta}),
+\end{align*}
+where $\Delta$ is the gap exponent, given by $\frac{y_{h}}{y_{t}}$. In other words, plotting $\abs{t}^{-\beta}m(t, h)$ against $h\abs{t}^{-\Delta}$, one should see different curves depending on the sign of $t$.
+
+We now turn to the correlation length. We expect
+\begin{align*}
+	\xi(t, h) = l\xi(tl^{x_{t}}, hl^{x_{h}}).
+\end{align*}
+Setting $l = \abs{t}^{-\frac{1}{x_{t}}}$ we find
+\begin{align*}
+	\nu = \frac{1}{x_{t}}.
+\end{align*}
+This yields
+\begin{align*}
+	\nu d = 2 - \alpha.
+\end{align*}
+
+Next, the correlation function. We have
+\begin{align*}
+	\Gamma(r_{l}, t_{l}) &= \expval{S_{I}S_{J}} -\expval{S_{I}}\expval{S_{J}} \\
+	                     &= l^{-2x_{h}}\sum\limits_{i\in I, j\in j}\expval{S_{i}S_{j}} -\expval{S_{i}}\expval{S_{j}} \\
+	                     &= l^{d - 2x_{h}}(\expval{S_{i}S_{j}} -\expval{S_{i}}\expval{S_{j}}) \\
+	                     &= l^{d - 2x_{h}}\Gamma(r, t),
+\end{align*}
+implying
+\begin{align*}
+	\Gamma(r, t) = l^{2x_{h} - d}\Gamma\left(\frac{r}{l}, l^{x_{t}}\right).
+\end{align*}
+Setting $l = r$ and $t = 0$ we obtain
+\begin{align*}
+	\Gamma(r, 0) = r^{2x_{h} - d}\Gamma\left(1, 0\right).
+\end{align*}
+By the order-of-magnitude estimate $\Gamma\propto r^{d - 2 + \nu}$ for the correlation function we thus have
+\begin{align*}
+	2 - \eta = 2x_{h} - d = \frac{\gamma}{\nu}
+\end{align*}
+and finally
+\begin{align*}
+	\gamma = \nu(2 - \eta).
+\end{align*}
