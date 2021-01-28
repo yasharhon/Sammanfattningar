@@ -73,7 +73,7 @@ where \ham is the Hamiltonian. Defining the velocity field $\vb{v} = \dv{\vb{x}}
 \end{align*}
 As
 \begin{align*}
-	\div_{\vb{x}}{\vb{v}} = \del{q^{i}}{\del{p_{i}}{\ham}} - \del{p^{i}}{\del{q_{i}}{\ham}} = 0,
+	\div_{\vb{x}}{\vb{v}} = \del{}{q^{i}}{\del{}{p_{i}}{\ham}} - \del{}{p^{i}}{\del{}{q_{i}}{\ham}} = 0,
 \end{align*}
 we have
 \begin{align*}
@@ -214,3 +214,22 @@ Comparing with the previously obtained random walk result we find
 \begin{align*}
 	D = \frac{\kb T}{\gamma m}t.
 \end{align*}
+
+\paragraph{The Focker-Planck Equation for the Langevin Equation}
+For a stochastic process of the form
+\begin{align*}
+	\dd{x} = a(x)\dd{t} + b(x)\dd{W}
+\end{align*}
+where $W(t)$ is a Wiener process we have
+\begin{align*}
+	\expval{\dd{x}} = a(x)\dd{t},\ \expval{(\dd{x})^{2}} \approx b^{2}(x)\dd{t},
+\end{align*}
+where we have used the Ito prescription. For the Langevin equation, here in the form
+\begin{align*}
+	\dv{v}{t} &= -\gamma v + \frac{\sqrt{\Gamma}}{m}\eta(t),
+\end{align*}
+we have
+\begin{align*}
+	\del{}{t}{P} = \gamma\del{}{v}{(vP)} + \frac{\Gamma}{2m^{2}}\del{2}{v}{P}.
+\end{align*}
+In particular, the Gaussian distribution expected at equilibrium is a stationary solution.

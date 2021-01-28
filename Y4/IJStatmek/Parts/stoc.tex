@@ -1,1 +1,83 @@
 \section{A Litte Bit About Stochastic Processes}
+
+\paragraph{Stochastic Processes}
+
+\paragraph{Probability Distributions for Stochastic Processes}
+The probability distribution for a stochastic process is defined as
+\begin{align*}
+	P(x, t) = \expval{\delta(x - X(t))}.
+\end{align*}
+Similarly a joint probability distribution is defined as
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N}) = \expval{\prod\limits_{i = 1}^{N}\delta(x_{i} - X(t_{i}))}.
+\end{align*}
+
+Conditional probabilities may be defined for stochastic processes as well, and from basic probability theory we have
+\begin{align*}
+	P(x_{1}, t_{1}; x_{0}, t_{0}) = P(x_{1}, t_{1} \cond x_{0}, t_{0})P(x_{0}, t_{0}).
+\end{align*}
+Using the notation
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}; \dots; y_{M}, \tau_{M})
+\end{align*}
+we have the convention that the events are ordered from latest to earliest with the $\tau$ corresponding to events before the $t$.
+
+\paragraph{Markov Processes}
+A Markov process is a process such that
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}; \dots; y_{M}, \tau_{M}) = P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}).
+\end{align*}
+For such processes we have
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N}) &= P(x_{1}, t_{1} \cond x_{2}, t_{2}; \dots; x_{N}, t_{N})P(x_{2}, t_{2}; \dots; x_{N}, t_{N}) \\
+	                                     &= P(x_{1}, t_{1} \cond x_{2}, t_{2})P(x_{2}, t_{2} \cond x_{3}, t_{3}; \dots; x_{N}, t_{N})P(x_{3}, t_{3}; \dots; x_{N}, t_{N}) \\
+	                                     &= \dots \\
+	                                     &= P(x_{N}, t_{N})\prod\limits_{i = 1}^{N - 1}P(x_{i}, t_{i} \cond x_{i + 1}, t_{i + 1}).
+\end{align*}
+
+\paragraph{The Chapman-Kolgomorov Equation}
+In general we have
+\begin{align*}
+	P(x_{1}, t_{1}) = \integ{}{}{x_{2}}{P(x_{1}, t_{1}; x_{2}, t_{2})} = \integ{}{}{x_{2}}{P(x_{1}, t_{1} \cond x_{2}, t_{2})P(x_{2}, t_{2})},
+\end{align*}
+and similarly for a conditional probability
+\begin{align*}
+	P(x_{1}, t_{1} \cond x_{3}, t_{3}) = \integ{}{}{x_{2}}{P(x_{1}, t_{1}; x_{2}, t_{2} \cond x_{3}, t_{3})} = \integ{}{}{x_{2}}{P(x_{1}, t_{1} \cond x_{2}, t_{2}; x_{3}, t_{3})P(x_{2}, t_{2} \cond x_{3}, t_{3})}.
+\end{align*}
+In particular, for a Markov process, we find
+\begin{align*}
+	P(x_{1}, t_{1} \cond x_{3}, t_{3}) = \integ{}{}{x_{2}}{P(x_{1}, t_{1} \cond x_{2}, t_{2})P(x_{2}, t_{2} \cond x_{3}, t_{3})},
+\end{align*}
+which is the Chapman-Kolgomorov equation.
+
+\paragraph{The Focker-Planck Equation}
+The Focker-Planck equation is a partial differential equation describes the evolution of the probability distribution for a Markov process. Given an initial condition at $x_{0}, t_{0}$, the Chapman-Kolmogorov equation implies
+\begin{align*}
+	P(x, t + \delta t \cond x_{0}, t_{0}) = \integ{}{}{x\p}{P(x, t + \delta \cond x\p, t)P(x\p, t \cond x_{0}, t_{0})}.
+\end{align*}
+To proceed we will need some assumptions about the stochastic process $x(t)$. We define $\delta x(t) = x(t + \delta t) - x(t)$ and choose the assumptions
+\begin{align*}
+	\expval{\delta x(t)} = A(x(t))\delta t,\ \expval{(\delta x(t))^{2}} = B(x(t))\delta t,
+\end{align*}
+as well as higher-order moments being of order 2 or more in terms of $\delta t$.
+
+By definition we have
+\begin{align*}
+	P(x, t + \delta \cond x\p, t) &= \expval{\delta(x - x\p - \delta x(t))} \\
+	                              &\approx \expval{\delta(x - x\p) + \delta x(t)\del{}{x}{\delta(x - x\p)} + \frac{1}{2}(\delta x(t))^{2}\del{2}{x}{\delta(x - x\p)}} \\
+	                              &= \delta(x - x\p) + \del{}{x}{\delta(x - x\p)}\expval{\delta x(t)} + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}\expval{(\delta x(t))^{2}} \\
+	                              &= \delta(x - x\p) + \del{}{x}{\delta(x - x\p)}A(x(t))\delta t + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}B(x(t))\delta t.
+\end{align*}
+Inserting this into the Chapman-Kolmogorov equation and using our knowledge of distribution theory we find
+\begin{align*}
+	P(x, t + \delta t \cond x_{0}, t_{0}) &= \integ{}{}{x\p}{\left(\delta(x - x\p) + \del{}{x}{\delta(x - x\p)}A(x(t))\delta t + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}B(x(t))\delta t\right)P(x\p, t \cond x_{0}, t_{0})} \\
+	                                      &= P(x, t \cond x_{0}, t_{0}) + \left(\frac{1}{2}\del{2}{x}{(B(x(t))P(x, t \cond x_{0}, t_{0}))} - \del{}{x}{(A(x(t))P(x, t \cond x_{0}, t_{0}))}\right)\delta t.
+\end{align*}
+Simplifying notation a little, we have
+\begin{align*}
+	P(x, t + \delta t) &= P(x, t) + \left(\frac{1}{2}\del{2}{x}{(B(x)P(x, t))} - \del{}{x}{(A(x)P(x, t))}\right)\delta t,
+\end{align*}
+and in the limit of infinitesimal time steps
+\begin{align*}
+	\del{}{t}{P(x, t)} = \frac{1}{2}\del{2}{x}{(B(x)P(x, t))} - \del{}{x}{(A(x)P(x, t))}.
+\end{align*}
