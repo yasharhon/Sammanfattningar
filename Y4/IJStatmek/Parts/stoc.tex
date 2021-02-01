@@ -81,3 +81,73 @@ and in the limit of infinitesimal time steps
 \begin{align*}
 	\del{}{t}{P(x, t)} = \frac{1}{2}\del{2}{x}{(B(x)P(x, t))} - \del{}{x}{(A(x)P(x, t))}.
 \end{align*}
+
+\paragraph{The Master Equation}
+Consider a Markov process with discrete state space. The Chapman-Kolgomorov equation then takes the form
+\begin{align*}
+	P(x, t \cond x_{0}, t_{0}) = \sum\limits_{x\p}P(x, t \cond x\p, t\p)P(x\p, t\p \cond x_{0}, t_{0}).
+\end{align*}
+From this point we will omit the initial condition in the notation. We assume the transition probabilities to be stationary, i.e. to only depend on time differences according to
+\begin{align*}
+	P(x, t \cond x\p, t\p) = P_{t - t\p}(x \cond x\p).
+\end{align*}
+
+For a small time step we may expand according to
+\begin{align*}
+	P_{\delta t}(x \cond x\p) \approx (1 - \gamma(x\p)\delta t)\delta_{x, x\p} + w(x \cond x\p)\delta t,
+\end{align*}
+where we may assume the first term to contain all information about staying in the same spot, and thus $w(x \cond x) = 0$. Probability conservation implies
+\begin{align*}
+	1 = \sum\limits_{x}P_{\delta t}(x \cond x\p) = 1 - \gamma(x\p)\delta t + \sum\limits_{x}w(x \cond x\p)\delta t,
+\end{align*}
+and thus
+\begin{align*}
+	\gamma(x\p) = \sum\limits_{x}w(x \cond x\p),
+\end{align*}
+written in integral form in the notes. We now have
+\begin{align*}
+	P_{t + \delta t}(x) &= \sum\limits_{x\p}P_{\delta t}(x \cond x\p)P_{t}(x\p) \\
+	                    &= \sum\limits_{x\p}((1 - \gamma(x\p)\delta t)\delta_{x, x\p} + w(x \cond x\p)\delta t)P_{t}(x\p),
+\end{align*}
+and thus
+\begin{align*}
+	\frac{1}{\delta t}(P_{t + \delta t} - P_{t + \delta t}) &= -\gamma(x)P_{t}(x) + \sum\limits_{x\p}w(x \cond x\p)P_{t}(x\p) \\
+	                                                        &= \sum\limits_{x\p}w(x \cond x\p)P_{t}(x\p) - w(x\p \cond x)P_{t}(x).
+\end{align*}
+Labelling the positions with integer indices we arrive at the master equation
+\begin{align*}
+	\del{}{t}{P_{n}} = \sum\limits_{m}W_{nm}P_{m} - W_{mn}P_{n}.
+\end{align*}
+Alternatively, in matrix form we may write
+\begin{align*}
+	\del{}{t}{P} = \Gamma P,\ \Gamma_{nm} = W_{nm} - \delta_{nm}\sum\limits_{k}W_{kn}.
+\end{align*}
+
+Formally the solution is
+\begin{align*}
+	P(t) = P(0)e^{\Gamma t}.
+\end{align*}
+
+While $\Gamma$ must have the same left and right eigenvalues, the corresponding eigenvectors may differ. Another property it has is
+\begin{align*}
+	\sum\limits_{n}\Gamma_{nm} = 0,
+\end{align*}
+as
+\begin{align*}
+	\dv{t}\sum\limits_{n}P_{n} = \sum\limits_{n}\sum\limits_{m}\Gamma_{nm}P_{m} = \sum\limits_{m}P_{m}\sum\limits_{n}\Gamma_{nm} = 0,
+\end{align*}
+and for this to be true for any set of initial probabilities the statement in question must hold. This implies that the vector with only ones is a left eigenvector of $\Gamma$ with eigenvalue $0$. To show this, call this vector $v$. We then have
+\begin{align*}
+	(v\Gamma)_{n} = \sum\limits_{m}v_{m}\Gamma_{mn} = \sum\limits_{m}\Gamma_{mn} = 0.
+\end{align*}
+This implies that there exists a right eigenvector with the same eigenvalue, meaning that this kind of systems has at least one stationary state.
+
+The equilibrium condition for a state is
+\begin{align*}
+	\sum\limits_{m}W_{nm}P_{m} = \sum\limits_{m}W_{mn}P_{n},
+\end{align*}
+but a stronger equilibrium condition is that of detailed balance - namely,
+\begin{align*}
+	W_{nm}P_{m} = W_{mn}P_{n}.
+\end{align*}
+This generally holds for systems with time reversal symmetry. Its interpretation is that there is an equal exchange of probability between different sites at equilibrium.

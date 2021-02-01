@@ -233,3 +233,17 @@ we have
 	\del{}{t}{P} = \gamma\del{}{v}{(vP)} + \frac{\Gamma}{2m^{2}}\del{2}{v}{P}.
 \end{align*}
 In particular, the Gaussian distribution expected at equilibrium is a stationary solution.
+
+\paragraph{The Pauli Master Equation}
+Consider a quantum system with a set of possible states. Using the eigenbasis of the Hamiltonian the elements of the density matrix are
+\begin{align*}
+	\rho_{nm} = c_{n}(0)\cc{c}_{m}(0)e^{-i\frac{E_{n} - E_{m}}{\hbar}t}.
+\end{align*}
+If the system is weakly coupled to a surrounding environment, that can be hard to incorporate. However, one can think of it like this: If the energy exchanges with the surroundings are large compared to the eigenenergies, the phase of off-diagonal elements in the density matrix fluctuates, this fluctuation being on a time scale $\tau_{\phi}$. If the relevant time scales of the dynamics of the system are much larger than $\tau_{\phi}$, we expect the phase to be uniformly distributed, yielding that the time average of the off-diagonal matrix elements is
+\begin{align*}
+	\expval{\rho_{nm}} = 0.
+\end{align*}
+This means that the density matrix is diagonal, and its non-zero elements can now be thought of as probabilities. We can thus apply the master equation to such a system. The transition rates are usually calculated with time-independent perturbation theory. One basic result which is often used is Fermi's golden rule
+\begin{align*}
+	W_{nm} = \frac{2\pi}{\hbar}\abs{\mel{n}{V}{m}}^{2}\delta(E_{n} - E_{m}).
+\end{align*}
