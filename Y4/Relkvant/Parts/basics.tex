@@ -296,11 +296,23 @@ We now have
 	(\kdelta{\mu\p}{\mu} + \varepsilon\tensor{\omega}{^{\mu\p}_{\mu}})\gamma^{\mu} &= \left(1 + \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}\right)\gamma^{\mu\p}\left(1 - \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}\right) \\
 	&= \gamma^{\mu\p} + \frac{i}{4}\varepsilon\omega^{\mu\nu}(\sigma_{\mu\nu}\gamma^{\mu\p} - \gamma^{\mu\p}\sigma_{\mu\nu}),
 \end{align*}
-which is somehow
+or
 \begin{align*}
-	\comm{\gamma^{\mu\p}}{\sigma_{\mu\nu}} = 2i(\tensor{g}{^{\mu\p}_{\mu}}\gamma_{\nu} - \tensor{g}{^{\mu\p}_{\nu}}\gamma_{\mu}),
+	\frac{i}{4}\omega^{\mu\nu}\comm{\sigma_{\mu\nu}}{\gamma^{\mu\p}} = \tensor{\omega}{^{\mu\p}_{\mu}}\gamma^{\mu} = \tensor{\omega}{^{\mu\p\mu}}\gamma_{\mu}.
 \end{align*}
-with the solution
+To remove the $\omega^{\mu\nu}$ we will use the fact that
+\begin{align*}
+	\tensor{\omega}{^{\mu\p}_{\nu}}\gamma^{\nu} = g^{\mu\p\mu}\tensor{\omega}{_{\mu\nu}}\gamma^{\nu} = -g^{\mu\mu\p}\tensor{\omega}{_{\nu\mu}}\gamma^{\nu} = -g^{\nu\mu\p}\tensor{\omega}{_{\mu\nu}}\gamma^{\mu} = -g^{\mu\p\nu}\tensor{\omega}{_{\mu\nu}}\gamma^{\mu},
+\end{align*}
+hence
+\begin{align*}
+	\frac{i}{4}\omega^{\mu\nu}\comm{\sigma_{\mu\nu}}{\gamma^{\mu\p}} = \frac{1}{2}\tensor{\omega}{_{\mu\nu}}(g^{\mu\p\mu}\gamma^{\nu} - g^{\mu\p\nu}\gamma^{\mu}) = \frac{1}{2}\tensor{\omega}{^{\mu\nu}}(\tensor{g}{^{\mu\p}_{\mu}}\gamma_{\nu} - \tensor{g}{^{\mu\p}_{\nu}}\gamma_{\mu}),
+\end{align*}
+which must finally imply
+\begin{align*}
+	\comm{\gamma^{\mu\p}}{\sigma_{\mu\nu}} = 2i(\tensor{g}{^{\mu\p}_{\mu}}\gamma_{\nu} - \tensor{g}{^{\mu\p}_{\nu}}\gamma_{\mu}).
+\end{align*}
+The solution to this is
 \begin{align*}
 	\sigma_{\mu\nu} = \frac{i}{2}\comm{\gamma_{\mu}}{\gamma_{\nu}}.
 \end{align*}
@@ -494,3 +506,130 @@ Expanding this we find
 	\frac{E}{m} \approx 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{\left(j + \frac{1}{2}\right)^{2}} + \dots = 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{n^{2}}\left(1 + \frac{Z^{2}\alpha^{2}}{n^{2}}\left(\frac{n}{j + \frac{1}{2}} - \frac{3}{4}\right)\right),
 \end{align*}
 which is similar to the result found with perturbation theory of the non-relativistic problem, except for the angular momentum-dependence of the perturbation.
+
+\paragraph{The Non-Relativistic String}
+Consider a non-relativistic string with a coordinate $x$ along its equilibrium position. To study it, we impose periodic boundary conditions and discretize the string, dividing it into $N$ points separated by a distance $a$. Denoting the displacements at each point as $\phi_{i}$ and assigning each point a mass $m$, the total kinetic energy of the string is
+\begin{align*}
+	T = \frac{1}{2}m\sum\limits_{i = 0}^{N - 1}\left(\dv{\phi_{i}}{t}\right)^{2}.
+\end{align*}
+Implementing a simple Hook-like tension in the string we also have a total potential energy
+\begin{align*}
+	V = \frac{1}{2}k\sum\limits_{i = 0}^{N - 1}\left(\phi_{i + 1} - \phi_{i}\right)^{2}.
+\end{align*}
+
+We will now consider a continuum limit, where $N$ goes to infinity and $a$ to zero such that $l = Na$ is constant. Introducing
+\begin{align*}
+	\mu = \frac{m}{a},\ \tau = ka
+\end{align*}
+and relabelling the displacements by noting that
+\begin{align*}
+	\phi_{i}(t) = \phi(t, x_{i}) = \phi(t, ia),
+\end{align*}
+allowing us to use the label $\phi(t, x)$ in the continuum limit, we find that the kinetic energy is
+\begin{align*}
+	T = \frac{1}{2}\mu\sum\limits_{i = 0}^{N - 1}a\left(\dv{\phi_{i}}{t}\right)^{2} \to \frac{1}{2}\mu\integ{0}{l}{z}{\left(\del{}{t}{\phi}\right)^{2}}
+\end{align*}
+and the potential energy is
+\begin{align*}
+	V = \frac{1}{2}\frac{\tau}{a}\sum\limits_{i = 0}^{N - 1}a^{2}\left(\frac{\phi_{i + 1} - \phi_{i}}{a}\right)^{2} \to \frac{1}{2}\tau\integ{0}{l}{x}{(\del{}{x}{\phi})^{2}}.
+\end{align*}
+The system is then described by a Lagrangian density
+\begin{align*}
+	\lag = \frac{1}{2}\mu\left(\del{}{t}{\phi}\right)^{2} - \frac{1}{2}\tau(\del{}{x}{\phi})^{2}.
+\end{align*}
+Rescaling the field by a factor $\frac{1}{\sqrt{\tau}}$ and introducing $v^{2} = \frac{\tau}{\mu}$ we have
+\begin{align*}
+	\lag = \frac{1}{2}\left(\frac{1}{v^{2}}\left(\del{}{t}{\phi}\right)^{2} - (\del{}{x}{\phi})^{2}\right).
+\end{align*}
+
+The equations of motion is the discrete case are
+\begin{align*}
+	-k(-\phi_{i + 1} + 2\phi_{i} - \phi_{i - 1}) - m\dv[2]{\phi_{i}}{t} = 0,
+\end{align*}
+which can be written as
+\begin{align*}
+	\frac{m}{k}\dv[2]{\phi_{i}}{t} - \left(\phi_{i + 1} - 2\phi_{i} + \phi_{i - 1}\right) = \frac{m}{k}\dv[2]{\phi_{i}}{t} - a^{2}\frac{1}{a}\left(\frac{\phi_{i + 1} - \phi_{i}}{a} - \frac{\phi_{i} - \phi_{i - 1}}{a}\right) = 0.
+\end{align*}
+We note that
+\begin{align*}
+	\frac{m}{k} = \frac{a^{2}\mu}{\tau} = \frac{a^{2}}{v^{2}},
+\end{align*}
+hence
+\begin{align*}
+	\frac{1}{v^{2}}\dv[2]{\phi_{i}}{t} - \frac{1}{a}\left(\frac{\phi_{i + 1} - \phi_{i}}{a} - \frac{\phi_{i} - \phi_{i - 1}}{a}\right) = 0.
+\end{align*}
+The equations for the continuum limit are
+\begin{align*}
+	\frac{1}{v^{2}}\del{2}{t}{\phi} - \del{2}{x}{\phi} = 0,
+\end{align*}
+which are indeed the continuum limits of the discretized solutions.
+
+The solutions of the equations of motion are so-called normal modes. They are denoted as having positive or negative frequency (or equivalently, energy). The solutions are
+\begin{align*}
+	\phi_{n} = \frac{1}{\sqrt{l}}e^{i(k_{n}x - \omega_{n}t)},\ \cc{\phi_{n}} = \frac{1}{\sqrt{l}}e^{-i(k_{n}x - \omega_{n}t)},\ k_{n} = \frac{2\pi n}{l},\ \omega_{n}^{2} = v^{2}k_{n}^{2}.
+\end{align*}
+Their normalization is
+\begin{align*}
+	\integ{0}{l}{x}{\cc{\phi_{n}}\phi_m} = \delta_{nm}.
+\end{align*}
+A general solution can then be written as
+\begin{align*}
+	\phi = \sum\limits_{n = -\infty}^{\infty}\frac{c_{n}}{\sqrt{l}}\left(a_{n}(t)e^{ik_{n}x} + \cc{a_{n}}(t)e^{-ik_{n}x}\right),\ a_{n}(t) = a_{n}(0)e^{-i\omega_{n}t}.
+\end{align*}
+The expansion coefficients thus satisfy
+\begin{align*}
+	\dv[2]{a_{n}}{t} + \omega_{n}^{2}a_{n} = 0,
+\end{align*}
+and we treat them as simple harmonic oscillators.
+
+We also make a brief note of the Hamiltonian. As we know for the discrete system we have $\ham = T + V$, so we would find the Hamiltonian density to be
+\begin{align*}
+	\ham = \frac{1}{2}\mu\left(\del{}{t}{\phi}\right)^{2} + \frac{1}{2}\tau(\del{}{x}{\phi})^{2}.
+\end{align*}
+This doesn't really work, however. To do this properly, we will need the canonical momentum density
+\begin{align*}
+	\pi = \pdv{\lag}{\del{}{t}{\phi}} = \mu\del{}{t}{\phi}.
+\end{align*}
+The Hamiltonian density is thus
+\begin{align*}
+	\ham = \frac{1}{\mu}\pi^{2} - \frac{1}{2\mu}\pi^{2} + \frac{1}{2}\tau(\del{}{x}{\phi})^{2} = \frac{1}{2\mu}\pi^{2} + \frac{1}{2}\tau(\del{}{x}{\phi})^{2}.
+\end{align*}
+
+When quantizing the non-relativistic strings, we will only quantize the simple harmonic oscillators. It can be shown that
+\begin{align*}
+	\ham = \sum\limits_{n = -\infty}^{\infty}c_{n}^{2}\frac{2\omega_{n}^{2}}{v^{2}}\cc{a}_{n}a_{n},
+\end{align*}
+which with an appropriate choice of $c_{n}$ becomes
+\begin{align*}
+	\ham = \sum\limits_{n = -\infty}^{\infty}\omega_{n}\cc{a}_{n}a_{n}.
+\end{align*}
+Alternatively, by introducing generalized coordinates and momenta
+\begin{align*}
+	q_{m} = \frac{1}{\sqrt{2\omega_{n}}}(a_{n} + \cc{a}_{n}),\ p_{m} = -i\sqrt{\frac{\omega_{n}}{2}}(a_{n} - \cc{a}_{n})
+\end{align*}
+the Hamiltonian becomes
+\begin{align*}
+	\ham = \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}(p_{n}^{2} + \omega_{n}^{2}q_{n}^{2}).
+\end{align*}
+
+\paragraph{Quantizing the Non-Relativistic String}
+To quantize the relativistic string, we replace the expansion coefficients with operators and impose the canonical commutation relations - that is, the $p$ and $q$ commute and $\comm{q_{m}}{p_{m}} = i\delta_{nm}$. This leads to the $a$ and $a\adj$ commuting, and $\comm{a_{n}}{a_{m}\adj} = \delta_{nm}$. The so-called quantum field is then
+\begin{align*}
+	\phi = v\sum\limits_{n = -\infty}^{\infty}\frac{1}{\sqrt{2\omega_{n}l}}\left(a_{n}e^{i(k_{n}x - \omega_{n}t)} + a_{n}\adj e^{-i(k_{n}x - \omega_{n}t)}\right) = \phi\pl + \phi\mi,
+\end{align*}
+where the two terms contain only creation and annihilation operators respectively. The Hamiltonian is now somehow
+\begin{align*}
+	H = \sum\limits_{n = -\infty}^{\infty}\frac{1}{2}\omega_{n}(a_{n}\adj a_{n} + a_{n}a_{n}\adj) = \sum\limits_{n = -\infty}^{\infty}\omega_{n}\left(a_{n}\adj a_{n} + \frac{1}{2}\right).
+\end{align*}
+We may subtract the latter term, which is a vacuum energy contribution. We may also introduce the number operators $\mathcal{N}_{n} = a_{n}\adj a_{n}$.
+
+With the introduction of the canonical momentum density comes a canonical commutation relation
+\begin{align*}
+	\comm{\phi(x, t)}{\pi(x\p, t)} = i\delta(x - x\p).
+\end{align*}
+
+There is also the introduction of the normal ordered product
+\begin{align*}
+	N(\phi^{1}, \phi^{2}) = \nop{\phi^{1}}{\phi^{2}} = \phi^{1}\phi^{2} - \expval{\phi^{1}\phi^{2}}{0}.
+\end{align*}
+One usually splits up the two fields in their creation and annihilation terms. In this division one makes sure to move annihilation operators to the left.
