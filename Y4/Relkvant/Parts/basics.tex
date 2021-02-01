@@ -350,3 +350,147 @@ It can be shown that
 	\frac{1}{2}q\sigma^{\mu\nu}F_{\mu\nu} = -q(\vb*{\Sigma}\cdot\vb{B} - i\vb*{\alpha}\cdot\vb{E}),
 \end{align*}
 where the first term is interpreted as a magnetic dipole contribution and the second as an electric monopole contribution.
+
+\paragraph{The Hydrogenic Atom}
+A system with a Coulomb potential $V(r) = -\frac{Ze^{2}}{4\pi r}$ is an example of an exactly solvable model with the Dirac formalism. The corresponding Hamiltonian is
+\begin{align*}
+	H = \beta m + \vb*{\alpha}\cdot\vb{p} + V(r),
+\end{align*}
+which commutes with $\vb{J}$ and the parity operator $P$. We thus seek simultaneous eigenstates of $H, \vb{J}^{2}, J^{3}$ and $P$. The corresponding eigenvalues are $E, j(j + 1), m$ and $(-1)^{j + \frac{\bar{\omega}}{2}}$, where
+\begin{align*}
+	\bar{\omega} =
+	\begin{cases}
+		 1,\ P = (-1)^{j + \frac{1}{2}}, \\
+		-1,\ P = (-1)^{j - \frac{1}{2}}.
+	\end{cases}
+\end{align*}
+As the problem is divided into blocks, we write the desired states as
+\begin{align*}
+	\Psi = 
+	\mqty[
+		\phi \\
+		\chi
+	].
+\end{align*}
+The angular part may be separated out, and corresponding to them are two sets of solutions $\mathcal{Y}^{m}_{lj}$, where $l$ is the eigenvalue of $L$ and takes on values $j \pm \frac{1}{2}\bar{\omega}$ for the two sets of solutions. Explicitly the solutions are
+\begin{align*}
+	\mathcal{Y}^{m}_{lj} =
+	\mqty[
+		\sqrt{\frac{j + m}{2j}}Y_{j - \frac{1}{2}, m - \frac{1}{2}} \\
+		\sqrt{\frac{j - m}{2j}}Y_{j - \frac{1}{2}, m + \frac{1}{2}}
+	],\ j = l + \frac{1}{2}
+\end{align*}
+and
+\begin{align*}
+	\mathcal{Y}^{m}_{lj} =
+	\mqty[
+		\sqrt{\frac{j - m + 1}{2(j + 1)}}Y_{j + \frac{1}{2}, m - \frac{1}{2}} \\
+		-\sqrt{\frac{j + m + 1}{2(j + 1)}}Y_{j + \frac{1}{2}, m + \frac{1}{2}}
+	],\ j = l - \frac{1}{2},\ l > 0.
+\end{align*}
+
+To proceed, we make the anzats
+\begin{align*}
+	\phi = \frac{1}{r}F(r)\mathcal{Y}^{m}_{lj},\ \chi = \frac{1}{r}G(r)\mathcal{Y}^{m}_{lj}.
+\end{align*}
+We also introduce
+\begin{align*}
+	\vb{r}\cdot\vb{p} = -ir\del{}{r}{},\ p_{r} = -\frac{i}{r}\del{}{r}{} = \frac{1}{r}(\vb{r}\cdot\vb{p} - i),
+\end{align*}
+as well as
+\begin{align*}
+	\alpha_{r} = \frac{1}{r}\vb*{\alpha}\cdot\vb{r},
+\end{align*}
+from which one can show
+\begin{align*}
+	\vb*{\alpha}\cdot\vb{p} = \alpha_{r}(p_{r} + \frac{i}{r}\beta K),
+\end{align*}
+where $K = \beta(\vb*{\Sigma}\cdot\vb{L} + 1)$, with eigenvalues $-\bar{\omega}\left(j + \frac{1}{2}\right)$. The Hamiltonian can now be written as
+\begin{align*}
+	H = \alpha_{r}(p_{r} - \frac{i\bar{\omega}\left(j + \frac{1}{2}\right)}{r}\beta) + \beta m + V(r).
+\end{align*}
+The eigenvalue equation then becomes
+\begin{align*}
+	\left(\mqty[
+		0           & -\del{}{r}{} \\
+		\del{}{r}{} & 0
+	] + \mqty[
+		0                                                   & \frac{\bar{\omega}\left(j + \frac{1}{2}\right)}{r} \\
+		\frac{i\bar{\omega}\left(j + \frac{1}{2}\right)}{r} & 0
+	]\right)\mqty[
+		F \\
+		G
+	] = (E - m - V(r))\mqty[
+		F \\
+		G
+	].
+\end{align*}
+
+In the particular case of the hydrogenic atom, we introduce the following notation:
+\begin{align*}
+	\kappa = \sqrt{m^{2} - E^{2}},\ \rho = \kappa r,\ \tau = \bar{\omega}\left(j + \frac{1}{2}\right),´ \nu = \sqrt{\frac{m - E}{m + E}},\ Z\p = \frac{Ze^{2}}{4\pi}
+\end{align*}
+to find
+\begin{align*}
+	\left(\mqty[
+		0              & -\del{}{\rho}{} \\
+		\del{}{\rho}{} & 0
+	] + \mqty[
+		0                                                   & \frac{\tau}{\rho} \\
+		\frac{\tau}{\rho} & 0
+	]\right)\mqty[
+		F \\
+		G
+	] = \mqty[
+		-\nu + \frac{Z\p}{\rho} & 0 \\
+		0                       & \frac{1}{\nu} + \frac{Z\p}{\rho}
+	]\mqty[
+		F \\
+		G
+	].
+\end{align*}
+We can show that close to the origin the functions behave like power laws, and at infinity they decay exponentially. We thus make the anzats
+\begin{align*}
+	F = e^{-\rho}f,\ G = e^{-\rho}g
+\end{align*}
+and introduce
+\begin{align*}
+	w = \mqty[
+		f \\
+		g
+	],\ A = \mqty[
+		-\tau & Z\p \\
+		Z\p & \tau
+	],\ B = \mqty[
+		1   & \frac{1}{\nu} \\
+		\nu & 1
+	],
+\end{align*}
+from which we obtain
+\begin{align*}
+	\rho\del{}{\rho}{w} = (A + \rho B)w.
+\end{align*}
+
+We solve this problem with a Frobenius anzats
+\begin{align*}
+	w = \rho^{\mu}\sum\limits_{s = 0}^{N}w_{s}\rho^{s},
+\end{align*}
+where $N$ is some number to be determined. The recursion relation one obtains is
+\begin{align*}
+	\mu w_{0} = Aw_{0},\ (s + \lambda - A)w_{s} = Bw_{s - 1},
+\end{align*}
+where $\lambda = \sqrt{\tau^{2} - (Z\p)^{2}}$ is the magnitude of the eigenvalues of $A$. It can be shown that $w$ converges and that $N$ is finite. More specifically it holds that
+\begin{align*}
+	N + \lambda - \frac{1}{2}Z\p\left(\frac{1}{\nu} - \nu\right) = 0,
+\end{align*}
+implying
+\begin{align*}
+	\frac{E}{m} = \frac{1}{\sqrt{1 + \frac{Z^{2}\alpha^{2}}{N + \sqrt{\left(j + \frac{1}{2}\right)^{2} - (Z\alpha)^{2}}}}},\ N + j + \frac{1}{2} = 1, \dots, n,
+\end{align*}
+where $n$ is termed the little quantum number and $\alpha$ is the fine structure constant.
+
+Expanding this we find
+\begin{align*}
+	\frac{E}{m} \approx 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{\left(j + \frac{1}{2}\right)^{2}} + \dots = 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{n^{2}}\left(1 + \frac{Z^{2}\alpha^{2}}{n^{2}}\left(\frac{n}{j + \frac{1}{2}} - \frac{3}{4}\right)\right),
+\end{align*}
+which is similar to the result found with perturbation theory of the non-relativistic problem, except for the angular momentum-dependence of the perturbation.
