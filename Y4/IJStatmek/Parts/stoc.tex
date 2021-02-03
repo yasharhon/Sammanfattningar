@@ -1,6 +1,38 @@
 \section{A Litte Bit About Stochastic Processes}
 
+\paragraph{The Characteristic Function}
+For a continuous probability distribution we define the characteristic function
+\begin{align*}
+	G(k) = \integ{}{}{x}{e^{ikx}P(x)}.
+\end{align*}
+This function satisfies
+\begin{align*}
+	\frac{1}{i^{n}}\eval{\dv[n]{G}{k}}_{k = 0} = \expval{X^{n}}.
+\end{align*}
+
+\paragraph{The Cumulant-Generating Function}
+Likewise we define the cumulant-generating function $\ln(G)$. We expand it according to
+\begin{align*}
+	\ln(G) = \sum\limits_{m = 0}^{m}\frac{(ik)^{m}}{m!}\cum{X^{m}}.
+\end{align*}
+From this relations between the cumulants and the moments can be derived.
+
+\paragraph{Discrete Characteristic Functions}
+For functions with a discrete state space we define the characteristic function
+\begin{align*}
+	F(z) = \expval{z^{X}}.
+\end{align*}
+Derivatives of this function evaluated at $1$ will produce moments.
+
 \paragraph{Stochastic Processes}
+A stochastic process is a function of a random variable. We use the notation $f(X, t)$, and outcomes of $X$ corresponds to functions
+\begin{align*}
+	f(x, t) = f_{x}(t).
+\end{align*}
+The moments of a stochastic process are
+\begin{align*}
+	\expval{\prod\limits_{i}f(X, t_{i})} = \integ{}{}{x}{P(x)\prod\limits_{i}f_{x}(t_{i})}.
+\end{align*}
 
 \paragraph{Probability Distributions for Stochastic Processes}
 The probability distribution for a stochastic process is defined as
@@ -151,3 +183,6 @@ but a stronger equilibrium condition is that of detailed balance - namely,
 	W_{nm}P_{m} = W_{mn}P_{n}.
 \end{align*}
 This generally holds for systems with time reversal symmetry. Its interpretation is that there is an equal exchange of probability between different sites at equilibrium.
+
+\paragraph{One-Step Processes}
+A one-step process is a special case of the above where the process may only move a single step in the chain of possible states. The process is labeled by transition probabilities $\alpha_{n}$ to the right and $\beta_{n}$ to the left.
