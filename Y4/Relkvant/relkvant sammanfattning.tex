@@ -3,6 +3,7 @@
 \usepackage[margin=0.5in]{geometry}
 
 \usepackage{slashed}
+\usepackage{tikz-feynman}
 
 \input{./../../Mall/Aux/math.tex}
 
@@ -14,6 +15,10 @@
 \newcommand{\dalem}[1]{\ensuremath{\square #1}}
 \newcommand{\fsl}[1]{\ensuremath{\slashed{#1}}}
 \newcommand{\nop}[2]{\ensuremath{:#1#2:}}
+\newcommand{\torp}[2]{\ensuremath{T#1#2}}
+\newcommand{\kgprop}[1]{\ensuremath{\Delta_{\text{F}}\left(#1\right)}}
+\newcommand{\dirprop}[3]{\ensuremath{S_{\text{F}, #1#2}\left(#3\right)}}
+\newcommand{\phprop}[3]{\ensuremath{D_{\text{F}, #1#2}\left(#3\right)}}
 
 \title{Summary of SI2390 Relativistic Quantum Physics}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
@@ -41,5 +46,7 @@
 \input{./Parts/sr.tex}
 
 \input{./Parts/basics.tex}
+
+\input{./Parts/qft.tex}
 
 \end{document}
