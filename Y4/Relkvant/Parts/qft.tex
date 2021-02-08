@@ -297,3 +297,90 @@ for the two cases. The two corresponding functions are dubbed $\pm i\Delta_{\pm}
 \begin{align*}
 	i\kgprop{x - y} = i(\theta(x^{0} - y^{0})\Delta_{+}(x - y) - \theta(y^{0} - x^{0})\Delta_{+}(x - y)).
 \end{align*}
+
+\paragraph{Quantizing the Dirac Field}
+We start with the Lagrangian of a free Dirac field
+\begin{align*}
+	\lag = -\frac{1}{2}\bar{\Psi}(-i\fsl{\del{}{}{}} + m)\Psi - \frac{1}{2}(i\del{}{\mu}{\bar{\Psi}}\gamma^{\mu} + m\bar{\Psi})\Psi.
+\end{align*}
+Another Lagrangian is
+\begin{align*}
+	\lag_{\text{D}} = \bar{\Psi}(i\fsl{\del{}{}{}} - m)\Psi.
+\end{align*}
+The corresponding momentum densities are
+\begin{align*}
+	\pi = \frac{i}{2}\Psi\adj,\ \bar{\pi} = -\frac{i}{2}\gamma^{0}\Psi
+\end{align*}
+for the first choice and
+\begin{align*}
+	\pi = i\Psi\adj,\ \bar{\pi} = 0
+\end{align*}
+for the second. The corresponding energy-momentum tensor is
+\begin{align*}
+	T^{\mu\nu} = \frac{i}{2}(\bar{\Psi}\gamma^{\mu}\gamma^{\nu}\Psi - (\del{\nu}{}{\Psi}\gamma^{\mu}\Psi)),
+\end{align*}
+with corresponding momentum densities
+\begin{align*}
+	P^{\mu} = i\integ[3]{}{}{\vb{x}}{\Psi\adj\gamma^{0}\gamma^{\mu}\Psi}.
+\end{align*}
+
+To quantize the field, we expand it as
+\begin{align*}
+	\Psi     &= \sum\limits_{s}\integ[3]{}{}{\vb{p}}{\frac{1}{(2\pi)^{\frac{3}{2}}}\sqrt{\frac{m}{E(\vb{p})}}(b(\vb{p}, s)u(\vb{p}, s)e^{-ipx} + d\adj(\vb{p}, s)v(\vb{p}, s)e^{ipx})}, \\
+	\Psi\adj &= \sum\limits_{s}\integ[3]{}{}{\vb{p}}{\frac{1}{(2\pi)^{\frac{3}{2}}}\sqrt{\frac{m}{E(\vb{p})}}(b\adj(\vb{p}, s)u\adj(\vb{p}, s)e^{ipx} + d(\vb{p}, s)v\adj(\vb{p}, s)e^{-ipx})},
+\end{align*}
+where we have introduced the particle and antiparticle spinors and creation and annihilation operators $b$ and $d$ for particles and antiparticles. This leads to the Hamiltonian becoming
+\begin{align*}
+	\ham = \integ[3]{}{}{\vb{p}}{E(\vb{p})\sum\limits_{s}(b\adj b(\vb{p}, s) - dd\adj(\vb{p}, s))}.
+\end{align*}
+In order to produce positive values, we must therefore choose anticommutation relations
+\begin{align*}
+	\acomm{d(\vb{p}, s)}{d\adj(\vb{p}\p, s\p)} = \delta(\vb{p} - \vb{p}\p)\delta_{ss\p}.
+\end{align*}
+
+Inspired by previous work, we employ the anzats $\dirprop{}{}{x - y} = (i\fsl{\del{}{}{}}_{x} + m)F(x - y)$, implying
+\begin{align*}
+	(\dalem{} + m^{2})F(x - y) = -\delta(x - y),
+\end{align*}
+meaning $F$ is one of the propagators of the Klein-Gordon equation.
+
+To introduce coupling to an electromagnetic field, the Dirac equation becomes
+\begin{align*}
+	(i\fsl{\del{}{}{}} - m)\Psi = q\fsl{A}\Psi
+\end{align*}
+in the minimal-coupling scheme. This somehow produces the solution
+\begin{align*}
+	\Psi = \Psi_{\text{in}} + q\integ[4]{}{}{y}{S_{\text{R}}(x - y)\fsl{A}(y)\Psi(y)},\ \Psi = \Psi_{\text{out}} + q\integ[4]{}{}{y}{S_{\text{A}}(x - y)\fsl{A}(y)\Psi(y)}.
+\end{align*}
+To simplify this we will employ a perturbation scheme
+\begin{align*}
+	\Psi = \Psi^{(0)} + q\Psi^{(1)} + q^{2}\Psi^{(2)} + \dots,
+\end{align*}
+which yields
+\begin{align*}
+	\Psi^{(0)} = \Psi_{\text{in}},\ \Psi^{(1)} = \integ[4]{}{}{y}{S_{\text{R}}(x - y)\fsl{A}(y)\Psi_{\text{in}}(y)},\ \dots
+\end{align*}
+We also introduce a unitary operator $S$ such that
+\begin{align*}
+	\Psi_{\text{out}} = S\adj\Psi_{\text{in}}S,
+\end{align*}
+and expand according to
+\begin{align*}
+	S = 1 + qS^{(1)} + q^{2}S^{(2)} + \dots
+\end{align*}
+The unitarity implies that $S^{(1)}$ is anti-Hermitian. Introducing the function $K = S_{\text{R}} - S_{\text{A}}$ we find
+\begin{align*}
+	\Psi_{\text{out}} = \Psi_{\text{in}} + q\integ[4]{}{}{y}{K(x - y)\fsl{A}\Psi}.
+\end{align*}
+A first-order expansion of the left-hand side yields
+\begin{align*}
+	\Psi_{\text{in}} + q((S^{(1)})\adj\Psi_{\text{in}} - \Psi_{\text{in}}(S^{(1)})\adj) = \Psi_{\text{in}} + q\comm{(S^{(1)})\adj}{\Psi_{\text{in}}},
+\end{align*}
+implying
+\begin{align*}
+	\comm{(S^{(1)})\adj}{\Psi_{\text{in}}} = \integ[4]{}{}{y}{K(x - y)\fsl{A}\Psi},
+\end{align*}
+with solution
+\begin{align*}
+	(S^{(1)})\adj = i\integ[4]{}{}{z}{\nop{\bar{\Psi}_{\text{in}}}{\fsl{A}\Psi_{\text{in}}}}.
+\end{align*}
