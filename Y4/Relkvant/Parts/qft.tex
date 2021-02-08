@@ -234,3 +234,66 @@ There are three fundamental gauge interactions we will consider: electromagnetic
 \begin{align*}
 	\lag \to \lag - g\bar{\Psi}\gamma_{\mu}\Psi A^{\mu}.
 \end{align*}
+
+\paragraph{Quantizing the Klein-Gordon Field}
+We start with the Klein-Gordon equation
+\begin{align*}
+	\lag = \frac{1}{2}(\del{}{\mu}{\phi}\del{\mu}{}{\phi} - m^{2}\phi).
+\end{align*}
+Expanding into eigenfunctions of the parts not involving time a general solution may be written as
+\begin{align*}
+	\phi = \sum\limits_{n}q_{n}(t)u_{n}(\vb{x}).
+\end{align*}
+The Klein-Gordon equation implies that the expansion coefficients satisfy Euler-Lagrange equations for some Lagrangian. We may thus impose the canonical commutation relations on these by also introducing
+\begin{align*}
+	p_{m} = \integ[3]{}{}{\vb{x}}{u_{m}\pi},
+\end{align*}
+where $\pi$ is the momentum density.
+
+Corresponding to the Klein-Gordon field is an energy-momentum tensor
+\begin{align*}
+	T^{\mu\nu} = \del{\mu}{}{\pi}\del{\nu}{}{\pi} + \frac{1}{2}g^{\mu\nu}(m^{2}\phi^{2} - \dalem{\phi}),
+\end{align*}
+which is symmetric and divergence-free. We define the 4-momentum
+\begin{align*}
+	P^{\mu} = \integ[3]{}{}{\vb{x}}{T^{0\mu}}.
+\end{align*}
+It can somehow be shown that
+\begin{align*}
+	P^{\mu} = \integ[3]{}{}{q}{\frac{1}{q^{0}}q^{\mu}a\adj(q)a(q)},
+\end{align*}
+where $\comm{a(\vb{p})}{a\adj(\vb{q})} = q^{0}\delta(\vb{p} - \vb{q})$. It can be shown that $a\adj(p)\ket{0}$ is an eigenstate of this operator.
+
+Let us now consider the commutator between the field at different points. We first introduce the creation and annihilation terms
+\begin{align*}
+	\phi_{+} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}a(\vb{k})e^{-i\vb{k}\cdot\vb{x}}},\ \phi_{-} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}a\adj(\vb{k})e^{i\vb{k}\cdot\vb{x}}}.
+\end{align*}
+From this one can show that
+\begin{align*}
+	\comm{\phi(x)}{\phi(y)} = -\frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}\left(e^{-ik(x - y)} - e^{ik(x - y)}\right)},
+\end{align*}
+defined to be $i\Delta(x - y)$. It can also be shown that
+\begin{align*}
+	i\Delta(x) = -\frac{1}{2\pi}\text{sgn}(x^{0})(\delta(x^{\mu}x{\mu}) - \frac{1}{2}m^{2}\theta(x^{\mu}x{\mu})).
+\end{align*}
+
+The propagator solves the inhomogenous Klein-Gordon equation, with inhomogeneity $-\delta(x - y)$ for convention. We define its Fourier transform as
+\begin{align*}
+	G(x - y) = \frac{1}{(2\pi)^{4}}\integ[4]{}{}{k}{e^{-ik(x - y)}\tilde{G}(k)}.
+\end{align*}
+The Klein-Gordon equation implies
+\begin{align*}
+	\tilde{G} = \frac{1}{k^{2} - m^{2}}.
+\end{align*}
+This function has a pole at $k^{0} = \pm \omega$, where $\omega^{2} = \vb{k}^{2} + m^{2}$. To remedy this, we add a term $-i\varepsilon$ to the denominator, shifting the poles from the real axis. Writing
+\begin{align*}
+	G(x - y) = \frac{1}{(2\pi)^{4}}\integ[3]{}{}{\vb{k}}{e^{i\vb{k}\cdot(\vb{x} - \vb{y})}}\integ{}{}{k^{0}}{\frac{1}{(k^{0})^{2} - \omega^{2} - i\varepsilon}e^{-ik^{0}(x^{0} - y^{0})}}
+\end{align*}
+for $x^{0} > y^{0}$ and switching the sign of the last integral if the opposite is true, we find that the last integral is
+\begin{align}
+	-2\pi i\frac{e^{\pm ik^{0}(x^{0} - y^{0})}}{2k^{0}}
+\end{align}
+for the two cases. The two corresponding functions are dubbed $\pm i\Delta_{\pm}(x - y)$, and we finally have
+\begin{align*}
+	i\kgprop{x - y} = i(\theta(x^{0} - y^{0})\Delta_{+}(x - y) - \theta(y^{0} - x^{0})\Delta_{+}(x - y)).
+\end{align*}

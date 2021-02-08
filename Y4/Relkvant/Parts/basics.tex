@@ -215,6 +215,102 @@ We may use the properties of the $\gamma^{\mu}$ to write
 	j^{\mu} = \Psi\adj\gamma^{0}\gamma^{\mu}\Psi = \bar{\Psi}\gamma^{\mu}\Psi.
 \end{align*}
 
+\paragraph{A Free Dirac Particle}
+For a free we multiply the operator $\fsl{p} - m$ by its conjugate to find
+\begin{align*}
+	(\fsl{p} + m)(\fsl{p} - m) &= \fsl{p}^{2} - m^{2}.
+\end{align*}
+We have
+\begin{align*}
+	\fsl{p}^{2} = \gamma^{\mu}\gamma^{\nu}p_{\mu}p_{\nu} = \gamma^{\mu}\gamma^{\nu}p_{\nu}p_{\mu} = \gamma^{\nu}\gamma^{\mu}p_{\mu}p_{\nu},
+\end{align*}
+hence
+\begin{align*}
+	\fsl{p}^{2} - m^{2} = \frac{1}{2}\acomm{\gamma^{\mu}}{\gamma_{\nu}}p_{\mu}p_{\nu} - m^{2} = g^{\mu\nu}p_{\mu}p_{\nu} - m^{2} = p^{2} - m^{2}.
+\end{align*}
+The Dirac particle has now been diagonalized, and it is in fact separable in terms of its spacetime dependence. The solution is thus a plane wave times a spinor - more specifically,
+\begin{align*}
+	\Psi = e^{-ipx}u,
+\end{align*}
+where $u$ is some spinor. The 4-momentum satisfies the previously derived relation. It can also be shown for such a particle that $\ham = i\del{}{0}{}$, and thus has eigenvalue $p_{0} = E$. The sign of this eigenvalue is yet to be determined, and will in fact produce solutions with positive and negative energy.
+
+Given the energy eigenvalues, the form of the spinors is determined by the Dirac equation itself. As we have
+\begin{align*}
+	\gamma^{\mu}p_{\mu} = E\mqty[
+		1  & 0 \\
+		-1 & 0
+	] - \vb{p}\cdot\mqty[
+		0             & \vb*{\sigma} \\
+		-\vb*{\sigma} & 0
+	] = \mqty[
+	E                       & -\vb{p}\cdot\vb*{\sigma} \\
+	\vb{p}\cdot\vb*{\sigma} & -E
+	],
+\end{align*}
+hence we may write the spinor in block form to find the equation
+\begin{align*}
+	\mqty[
+		E - m                   & -\vb{p}\cdot\vb*{\sigma} \\
+		\vb{p}\cdot\vb*{\sigma} & -E - m
+	]\mqty[
+		u_{A} \\
+		u_{B}
+	] = 
+	\mqty[
+		(E - m)u_{A} - \vb{p}\cdot\vb*{\sigma}u_{B} \\
+		\vb{p}\cdot\vb*{\sigma}u_{A} - (E + m)u_{B}
+	] = \mqty[
+		0 \\
+		0
+	].
+\end{align*}
+Inserting the two equations into the other, we find
+\begin{align*}
+	u_{A} = \frac{1}{E^{2} - m^{2}}(\vb{p}\cdot\vb*{\sigma})^{2}u_{A}.
+\end{align*}
+The matrix quantity on the right is given by
+\begin{align*}
+	(\vb{p}\cdot\vb*{\sigma})^{2} = \sigma^{i}\sigma^{j}p_{i}p_{j} = (2\delta^{ij} - \sigma^{j}\sigma^{i})p_{i}p_{j} = 2\vb{p}^{2} - \sigma^{j}\sigma^{i}p_{j}p_{i},
+\end{align*}
+implying
+\begin{align*}
+	u_{A} = \frac{\vb{p}^{1}}{E^{2} - m^{2}}u_{A},
+\end{align*}
+which in combination with the previously derived energy-momentum relation implies that we may freely choose a basis for the top half. As the same holds for the lower parts, we will for each $p$ find a set of solutions by choosing one half of the spinor and computing the other from that. We have
+\begin{align*}
+	\vb{p}\cdot\vb{\sigma} = \mqty[
+		p_{z}          & p_{x} - ip_{y} \\
+		p_{x} + ip_{y} & -p_{z}
+	],
+\end{align*}
+and the four solutions are thus
+\begin{align*}
+	\mqty[
+		1 \\
+		0 \\
+		\frac{p_{z}}{E + m} \\
+		\frac{p_{x} + ip_{y}}{E + m}
+	],\ \mqty[
+		0 \\
+		1 \\
+		\frac{p_{x} - ip_{y}}{E + m} \\
+		-\frac{p_{z}}{E + m}
+	],\ \mqty[
+		\frac{p_{z}}{E - m} \\
+		\frac{p_{x} + ip_{y}}{E - m} \\
+		1 \\
+		0
+	],\ \mqty[
+		\frac{p_{x} - ip_{y}}{E - m} \\
+		-\frac{p_{z}}{E - m} \\
+		0 \\
+		1
+	].
+\end{align*}
+At this point we must return to the sign of $E$. The two former solutions blow up if $E$ is chosen to be negative, whereas the latter ones blow up if $E$ is positive. Thus we have achieved the assignment of energy signs to the different spinors.
+
+What is the interpretation of this? Dirac's first interpretation involved the so-called Dirac sea, but the current understanding is that the negative energy solutions represent antiparticle states with positive energy.
+
 \paragraph{Plane-Wave Solutions}
 Plane-wave solutions of the Dirac equation are of the form
 %TODO: Add negative energy solutions
