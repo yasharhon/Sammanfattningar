@@ -1,0 +1,179 @@
+\section{$4$-Vector Formalism}
+
+$4$-vector formalism makes more explicit use of invariance relations that have previously been identified, most importantly the invariance of $c$, or so-called Lorentz invariance.
+
+\paragraph{The Spacetime Interval}
+Consider a light pulse sent out from the origin at $t = 0$. The wavefront in the rest frame of the emitter satisfies $r^{2} = (ct)^{2}$. Next, for any frame in the standard configuration we must also have $(r\p)^{2} = (ct\p)^{2}$, implying the invariance of the quantity
+\begin{align*}
+	(ct)^{2} - r^{2}
+\end{align*}
+under any transformation that preserves the laws of physics. This quantity, particularly when studied infinitesimally, is called the spacetime interval or invariant interval.
+
+\paragraph{The Lorentz Group}
+The Lorentz group is the group of all linear transformations that preserve the laws of physics. It consists of rotations and Lorentz boosts.
+
+\paragraph{The Poincare Group}
+The Poincare group is the group of all transformations that preserve the laws of physics. It consists of the Lorentz group as well as translations.
+
+\paragraph{The Lorentz Boost in Matrix Form}
+The Lorentz boost may now be written as
+\begin{align*}
+	\Lambda =
+	\mqty[
+		A & 0 \\
+		0 & 1
+	],\ 
+	A =
+	\mqty[
+		\gamma       & -\beta\gamma \\
+		-\beta\gamma & \gamma
+	]
+\end{align*}
+such that $(x\p)^{\mu} = \tensor{\Lambda}{^{\mu}_{\nu}}x^{\nu}$, with Einstein summation from $0$ to $3$. This is also the general notation for Lorentz transformations, where $\Lambda$ may now be taken to be any element in the Lorentz group.
+
+\paragraph{The Spacetime Interval and Poincare Transformations}
+The Lorentz transform transforms infinitesimal intervals in spacetime. We would now like to study the spacetime interval
+\begin{align*}
+	\dd{s}^{2} = (\dd{x^{0}})^{2} - \sum\limits_{i}(\dd{x^{i}})^{2}
+\end{align*}
+under Poincare transformations.
+
+Clearly the spacetime interval is preserved by space-preserving transformations that do not alter time as well as translations, hence we only need to consider Lorentz boosts. We have
+\begin{align*}
+	(\dd{(x\p)^{0}})^{2} - \sum\limits_{i}(\dd{(x\p)^{i}})^{2} &= (\gamma\dd{x^{0}} - \beta\gamma\dd{x^{1}})^{2} - (\gamma\dd{x^{1}} - \beta\gamma\dd{x^{0}})^{2} - (\dd{x^{2}})^{2} - (\dd{x^{3}})^{2} \\
+	                                                           &= \gamma^{2}(1 - \beta^{2})(\dd{x^{0}})^{2} - \gamma^{2}(1 - \beta^{2})(\dd{x^{1}})^{2} - (\dd{x^{2}})^{2} - (\dd{x^{3}})^{2} \\
+	                                                           &= (\dd{x^{0}})^{2} - (\dd{x^{1}})^{2} - (\dd{x^{2}})^{2} - (\dd{x^{3}})^{2},
+\end{align*}
+hence the spacetime interval is preserved under the Poincare group.
+
+\paragraph{Tensors}
+A tensor is a multilinear map between a set of vectors and real numbers. It transforms according to the familiar transformation rules under Lorentz transformations. We recall that the transformation coefficients for contravariant indices are $\trcou{\mu}{\nu} = \del{\nu}{(x\p)^{\mu}}$ and the coefficients for covariant indices are $\trcod{\mu}{\nu} = \del[\prime]{\mu}{x^{\nu}}$. A notation that will be introduced is that transformed tensor components are denoted with primed indices, rather than the symbol of the tensor having the prime. Using this notation we have
+\begin{align*}
+	\trcod{\mu\p}{\mu}\trcou{\mu\p}{\nu} &= \del{\mu\p}{x^{\mu}}\del{\nu}{x^{\mu\p}} = \del{\nu}{x^{\mu}} = \kdelta{\mu}{\nu}, \\
+	\trcou{\mu\p}{\mu}\trcod{\nu\p}{\mu} &= \del{\mu}{x^{\mu\p}}\del{\nu\p}{x^{\mu}} = \kdelta{\mu\p}{\nu\p}.
+\end{align*}
+
+\paragraph{The Metric Tensor}
+The metric tensor $g$ is defined by
+\begin{align*}
+	\dd{s}^{2} = g_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}}.
+\end{align*}
+By definition it is symmetric.
+
+Clearly in special relativity with Cartesian coordinates we have $g_{00} = 1,\ g_{ii} = -1$ and all other components are zero. In Cartesian coordinates we also have $g_{\mu\nu} = g^{\mu\nu}$.
+
+In special relativity we take the metric to define the inner product between vectors, which implies that it can be used to raise and lower indices.
+
+\paragraph{Classification of $4$-Vectors}
+$4$-vectors are time-like if $V^{2} > 0$, space-like if $V^{2} < 0$ and light-like if $V^{2} = 0$. Furthermore, if $V^{0} > 0$, $V$ is future-directed, and if $V^{0} < 0$, it is past-directed.
+
+This has some useful consequences; First, if $V$ is time-like then there exists a Lorentz transform that eliminates all components of $V$ but $V^{0}$. Likewise, if $V$ is space-like then there exists a Lorentz transform such that all components but $V^{1}$ is eliminated, and if $V$ is light-like then there exists a Lorentz transform such that $V^{2} = V^{3} = 0,\ V^{0} = V^{1}$.
+
+\paragraph{Covariant and Contravariant Derivatives}
+Consider the derivative $\del{\mu}{\tensor*{A}{^{\alpha\dots}_{\dots}}}$. It transforms according to
+\begin{align*}
+	\del{\mu\p}{\tensor*{A}{^{\alpha\p\dots}_{\dots}}} &= \del{\mu\p}{x^{\mu}}\del{\mu}{(\trcou{\alpha\p}{\alpha}\dots\tensor*{A}{^{\alpha\dots}_{\dots}})},
+\end{align*}
+where we have denoted an extra set of transformation coefficients with dots. As all of these are space-independent, we have
+\begin{align*}
+	\del{\mu\p}{\tensor*{A}{^{\alpha\p\dots}_{\dots}}} &= \trcou{\alpha\p}{\alpha}\dots\trcod{\mu\p}{\mu}\del{\mu}{\tensor*{A}{^{\alpha\dots}_{\dots}}},
+\end{align*}
+which transforms as a tensor with an extra covariant index provided by the derivative. Hence the partial derivative transforms covariantly. The space-independence of the metric may be used to derive the machinery in special relativity, but this is not the case in general relativity, and there this derivative does not transform covariantly.
+
+There is also a contravariant derivative defined by $\del[\mu]{}{} = g^{\mu\nu}\del{\nu}{}$, which indeed transforms contravariantly.
+
+I also briefly mention the operator $\del[2]{}{} = \del{\mu}{\del[\mu]{}{}} = g_{\mu\nu}\del{\mu}{\del{\nu}{}} = \del[2]{t}{} - \laplacian{}$. 
+
+\paragraph{The Quotient Rule}
+The quotient rule states that, given a relation of the form
+\begin{align*}
+	A^{\alpha\beta} = \tensor{G}{^{\alpha\beta}_{\delta}}B^{\delta}
+\end{align*}
+for two tensors $A, B$ in some frame, $G$ must also be a tensor.
+
+\paragraph{The Zero Component Lemma}
+Suppose that some particular vector component is zero in all frames. Then the vector is itself the zero vector.
+
+To prove this I propose the following: Let $A^{\mu} = 0$ in all frames. I may identify three different frames and write $A^{\mu\p} = \trcou{\mu\p}{\nu}A^{\nu} = 0$. As the frames are different, these transformations must be linearly independent, and the only solution is thus that all components of $A$ are zero.
+
+\paragraph{Proper Time}
+The proper time of two events is the time between them measured in their rest frame.
+
+\paragraph{$4$-Velocity}
+While the event vector $x^{\mu}$ transforms as a tensor, the time derivative $\del{t}{x^{\mu}} = c\del{0}{x^{\mu}}$ does not. Explicitly we have
+\begin{align*}
+	\del{0\p}{x^{\mu\p}} = \trcod{0\p}{\nu}\del{\nu}{(\trcou{\mu\p}{\mu}x^{\mu})} = \trcod{0\p}{\nu}\trcou{\mu\p}{\mu}\del{\nu}{x^{\mu}},
+\end{align*}
+which is not the transformation rule for a rank-$1$ tensor. The implication is that transforming $\del{0}{x^{\mu}}$ to a new frame does not allow us to extract velocities from the transformed coefficients. However, as we would still like to be able to find velocities in transformed frames, we would still like to define it.
+
+To do this, consider a particle in some motion. In the lab frame the spacetime interval is given by
+\begin{align*}
+	\dd{s}^{2} = g_{\mu\nu}\del{0}{x^{\mu}}\del{0}{x^{\nu}}\dd{(x^{0})}^{2} = (1 - \beta_{u}^{2})\dd{(x^{0})}^{2},
+\end{align*}
+where $\beta_{u} = \frac{u}{c}$ and $u$ is the instantaneous speed of the particle in the lab frame. For particles, which move along space-like paths, we have
+\begin{align*}
+	\Delta s = \integ{}{}{x^{0}}{\frac{1}{\gamma_{u}}},
+\end{align*}
+where $\gamma_{u}$ is the instantaneous Lorentz factor calculated using $u$.
+
+As the spacetime interval is invariant, we may calculate it in the rest frame of the particle. Supposing that the particle measures that it takes a (proper) time $\tau$ to traverse the path, we must have $\Delta s = c\tau$. Note that as the proper time is measured in the rest frame of the particle, we have $\dd{t} = \gamma_{u}\dd{\tau}$, implying $\tau < \Delta t$. Now, we may reparametrize the path in the lab frame in terms of the proper time $\tau$, such that $x^{\mu} = x^{\mu}(t(\tau))$. Defining
+\begin{align*}
+	U^{\mu} = \dv{x^{\mu}}{\tau} = c\gamma_{u}\dv{x^{\mu}}{x^{0}} = \gamma_{u}(c, \vb{u}),
+\end{align*}
+we have a $4$-vector. This is true because it is the derivative of a $4$-vector with respect to a scalar (the proper time, which is invariant under Lorentz transforms). This is termed the $4$-velocity, and may be written such that it contains the $3$-velocity $u^{i} = \dv{x^{i}}{t}$. Its norm is
+\begin{align*}
+	U_{\mu}U^{\mu} = c^{2}\gamma_{u}^{2}(1 - \beta^{2}) = c^{2},
+\end{align*}
+hence it is time-like. There is a simpler way to calculate this, namely in the rest frame of the particle, where $\vb{u} = \vb{0}$. This trick might be useful for other $4$-vectors.
+
+\paragraph{Transformation of $4$-Velocities}
+As an exercise and demonstration of the machinery we will now re-obtain the transformation rules for velocities using the machinery of $4$-vectors. Consider a $4$-velocity $u^{\mu} = \gamma_{u}(c, \vb{u})$ in some frame. In another frame moving with velocity $v\vb{e}_{x}$ relative to this frame we have
+\begin{align*}
+	U^{0\p} = \gamma_{v}(U^{0} - \beta_{v}U^{1}) = \gamma_{u}\gamma_{v}(c - \beta_{v}u^{1}),\ U^{1\p} = \gamma_{v}(U^{1} - \beta_{v}U^{0}) = \gamma_{u}\gamma_{v}(u^{1} - \beta_{v}c),
+\end{align*}
+with the two other components unaffected. As the $4$-velocity transforms like a tensor, this must be equal to $\gamma_{u}(c, \vb{u})$ in all frames, allowing us to identify
+\begin{align*}
+	\gamma_{u\p} = \gamma_{u}\gamma_{v}\left(1 - \beta_{v}\frac{u^{1}}{c}\right),\ u^{1\p} = \frac{1}{\gamma_{u\p}}U^{1\p} = \frac{u^{1} - \beta_{v}c}{1 - \beta_{v}\frac{u^{1}}{c}},\ u^{2\p} = \frac{1}{\gamma_{u\p}}U^{2\p} = \frac{u^{2}}{\gamma_{v}\left(1 - \beta_{v}\frac{u^{1}}{c}\right)},
+\end{align*}
+which are the familiar transformation rules.
+
+\paragraph{$4$-Acceleration}
+We define the $4$-acceleration as $A^{\mu} = \dv{U^{\mu}}{\tau}$. Using the above we may write this as
+\begin{align*}
+	A^{\mu} = \gamma_{u}\dv{U^{\mu}}{t} = \gamma_{u}\left(\dv{\gamma_{u}}{t}c, \dv{\gamma_{u}}{t}\vb{u} + \gamma_{u}\vb{a}\right),
+\end{align*}
+where we have introduced the $3$-acceleration $\vb{a} = \dv{\vb{u}}{t}$.
+
+In particular, in the instantaneous rest frame of the particle we have $A^{\mu} = (0, \vb{a})$, and we define the proper acceleration $\alpha$ in this frame as $\alpha^{2} = \abs{\vb{a}}^{2}$. Thus we have
+\begin{align*}
+	A_{\mu}A^{\mu} = -\alpha^{2}.
+\end{align*}
+As inner products are Lorentz invariant, we conclude that the above holds in all frames and the $4$-acceleration is space-like.
+
+\paragraph{Derivations Related to Acceleration}
+We have
+\begin{align*}
+	\dv{\gamma_{u}}{t} = \pdv{\gamma_{u}}{u^{i}}\dv{u^{i}}{t} = -\frac{1}{2\left(1 - \frac{u^{2}}{c^{2}}\right)^{\frac{3}{2}}}\cdot -2\frac{u^{i}}{c^{2}}\dv{u^{i}}{t} = \gamma_{u}^{3}\frac{\vb{u}\cdot\vb{a}}{c^{2}}.
+\end{align*}
+Another useful relation may be found by considering a particle in linear motion with proper acceleration $\alpha$. In a frame with respect to which the particle moves with instantaneous velocity $u$ we use the transformation rule for velocities to find
+\begin{align*}
+	\dv{u\p}{t\p} = \dv{u\p}{u}\dv{u}{t\p} = \dv{u}{t\p}\frac{1 - \beta_{v}\frac{u}{c} + (u - \beta_{v}c)\frac{\beta_{v}}{c}}{\left(1 - \beta_{v}\frac{u}{c}\right)^{2}} = \dv{u}{t\p}\frac{1 - \beta_{v}^{2}}{\left(1 - \beta_{v}\frac{u}{c}\right)^{2}}
+\end{align*}
+in some arbitrary frame moving colinearly with the particle at velocity $v$ relative to the original frame. In particular, if this colinearly moving frame is the instantaneous rest frame of the particle, we find
+\begin{align*}
+	\dv{u\p}{t\p} = \dv{u}{t\p}\gamma_{u}^{2} = \gamma_{u}^{3}\dv{u}{t}.
+\end{align*}
+Compare this with the quantity
+\begin{align*}
+	\dd(\gamma_{u}u) &= \left(-u\frac{-2\frac{u}{c^{2}}}{2(1 - \beta_{u}^{2})^{\frac{3}{2}}} + \frac{1}{\sqrt{1 - \beta_{u}^{2}}}\right)\dd{u} \\
+	                 &= \left(\frac{\beta_{u}^{2}}{(1 - \beta_{u}^{2})^{\frac{3}{2}}} + \frac{1}{\sqrt{1 - \beta_{u}^{2}}}\right)\dd{u} \\
+	                 &= \frac{1}{(1 - \beta_{u}^{2})^{\frac{3}{2}}}\left(\beta_{u}^{2} + 1 - \beta_{u}^{2}\right)\dd{u} \\
+	                 &= \gamma_{u}^{3}\dd{u},
+\end{align*}
+implying
+\begin{align*}
+	\alpha = \dv{t}(\gamma_{u}u).
+\end{align*}
+
+\paragraph{The Relation Between Velocity and Acceleration}
+The inner product $A_{\mu}U^{\mu}$ is a scalar, and we may compute it in the instantaneous rest frame. There we obtain $A_{\mu}U^{\mu} = 0$. This can also be obtained by computing $\dv{\tau}U_{\mu}U^{\mu}$.

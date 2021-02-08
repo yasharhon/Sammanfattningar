@@ -1,0 +1,268 @@
+\section{Electrodynamics}
+
+\paragraph{Lorentz Force}
+We would like to extend the notion of conservative forces to special relativity. The corresponding notion would be a potential $\phi$ such that its derivative created a pure force. However, we have
+\begin{align*}
+	F_{\mu}U^{\mu} = -\del{\mu}{\phi}\dv{x^{\mu}}{\tau} = -\dv{\phi}{\tau} \neq 0,
+\end{align*}
+hence this does not work in general. The next attempt would be of the form $F^{\mu} = \phi U^{\mu}$, but that doesn't work either. The next attempt is of the form $F_{\mu} = CF_{\mu\nu}U^{\nu}$, where the tensor components $F_{\mu\nu}$ of the so-called field strength, or Faraday tensor, are functions on spacetime.
+
+We then have $F^{\mu}U_{\nu} = CF_{\mu\nu}U^{\mu}U^{\nu}$, which is zero if $F_{\mu\nu}$ is antisymmetric. To obtain this antisymmetry we define $F_{0i} = e_{i},\ F_{ij} = -\varepsilon_{ijk}cb_{k}$. We then obtain
+\begin{align*}
+	F_{i} = -\gamma_{u}f_{i} = CF_{i\mu}U^{\mu} = -CF_{\mu i}U^{\mu} = -\gamma_{u}C(ce_{i} - u_{j}\varepsilon_{jik}cb_{k}) = -\gamma_{u}cC(e_{i} + \varepsilon_{ijk}u_{j}b_{k}),
+\end{align*}
+and thus
+\begin{align*}
+	f_{i} = cC(e_{i} + \varepsilon_{ijk}u_{j}b_{k})
+\end{align*}
+which is on the same form as the Lorentz force. As we only know of one force of this kind in nature, we identify the simplest possible pure force as the Lorentz force and choose $C = \frac{q}{c}$. With this choice, $e_{i}$ and $b_{i}$ are indeed the components of the electric and magnetic field.
+
+\paragraph{A More Proper Discussion}
+The last few steps above were somewhat dubious, so let us repeat them in a way that relies less on the use of Cartesian coordinates. More specifically, treat the time coordinate as before and use an arbitrary coordinate system for the spatial coordinates. Define
+\begin{align*}
+	F^{0i} = -e^{i},\ F^{ij} = -\varepsilon^{ijk}cb_{k},\ F_{0i} = -e_{i},\ F_{ij} = -\varepsilon_{ijk}cb^{k}.
+\end{align*}
+Here the ''contravariant´´ components of the fields are the ones to recognize as the proper Cartesian coordinates, although the transformation properties of the above are really not those of $4$-vectors. Note also that as $\varepsilon_{123} = 1$, this implies $\varepsilon^{123} = -1$. We then have
+\begin{align*}
+	F^{i} = CF^{i\mu}U_{\mu} = -CF^{\mu i}U_{\mu} = C\gamma_{u}(ce^{i} + \varepsilon^{jik}cb_{k}u_{j}) = cC\gamma_{u}(e^{i} - \varepsilon^{ijk}u_{j}b_{k}).
+\end{align*}
+%TODO: Check that part below
+\begin{align*}
+	F_{i} = CF_{i\mu}U^{\mu} = -CF_{\mu i}U^{\mu} = -C\gamma_{u}(ce_{i} - \varepsilon_{jik}cb^{k}u^{j}) = -C\gamma_{u}(ce_{i} + \varepsilon_{ijk}cb^{k}u^{j}) = -cC\gamma_{u}(e_{i} + \varepsilon_{ijk}u^{j}b^{k}).
+\end{align*}
+This is the form of the Lorentz force in a general coordinate system, I think.
+
+\paragraph{Transformation of Fields}
+A Lorentz boost of the Faraday tensor takes the form
+\begin{align*}
+	F^{\mu\p\nu\p} = \trcou{\mu\p}{\mu}\trcou{\nu\p}{\nu}F^{\mu\nu}.
+\end{align*}
+This can be simplified to a matrix multiplication operation for any particular choice of coordinates - namely, the transformed components of $F$ are given by $F\p = \Lambda F\Lambda^{T}$. For a boost in the $x$-direction we find
+\begin{align*}
+	\mqty[
+		0       & -e^{1\p}  & -e^{2\p}  & -e^{3\p} \\
+		e^{1\p} & 0         & -cb^{3\p} & cb^{2\p} \\
+		e^{2\p} & cb^{3\p}  & 0         & -cb^{1\p} \\
+		e^{3\p} & -cb^{2\p} & cb^{1\p}  & 0
+	] &=
+	\mqty[
+		\gamma       & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma       & 0 & 0 \\
+		0            & 0            & 1 & 0 \\
+		0            & 0            & 0 & 1
+	]
+	\mqty[
+		0     & -e^{1}  & -e^{2}  & -e^{3} \\
+		e^{1} & 0       & -cb^{3} & cb^{2} \\
+		e^{2} & cb^{3}  & 0       & -cb^{1} \\
+		e^{3} & -cb^{2} & cb^{1}  & 0
+	]
+	\mqty[
+		\gamma       & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma       & 0 & 0 \\
+		0            & 0            & 1 & 0 \\
+		0            & 0            & 0 & 1
+	] \\
+	  &=
+	\mqty[
+		-\beta\gamma e^{1} & -\gamma e^{1}     & -\gamma(e^{2} - \beta cb^{3})  & -\gamma(e^{3} + \beta cb^{2}) \\
+		\gamma e^{1}       & \beta\gamma e^{1} & -\gamma(cb^{3} - \beta e^{2})  & \gamma(cb^{2} + \beta e^{3}) \\
+		e^{2}              & cb^{3}            & 0                              & -cb^{1} \\
+		e^{3}              & -cb^{2}           & cb^{1}                         & 0
+	]
+	\mqty[
+		\gamma       & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma       & 0 & 0 \\
+		0            & 0            & 1 & 0 \\
+		0            & 0            & 0 & 1
+	] \\
+	  &=
+	\mqty[
+		0                             & -e^{1}                        & -\gamma(e^{2} - \beta cb^{3})  & -\gamma(e^{3} + \beta cb^{2}) \\
+		e^{1}                        & 0                             & -\gamma(cb^{3} - \beta e^{2})  & \gamma(cb^{2} + \beta e^{3}) \\
+		\gamma(e^{2} - \beta cb^{3}) & \gamma(cb^{3} - \beta e^{2}) & 0                             & -cb^{1} \\
+		\gamma(e^{3} + \beta cb^{2}) & -\gamma(cb^{2} + \beta e^{3})  & cb^{1}                       & 0
+	].
+\end{align*}
+One may now read off the transformed field components and compose the above boost with a spatial rotation to infer
+\begin{align*}
+	\vb{e}_{\parallel}\p = \vb{e}_{\parallel},\ \vb{e}_{\perp}\p = \gamma(\vb{e}_{\perp} + c\vb*{\beta}\times\vb{b}),\ \vb{b}_{\parallel}\p = \vb{b}_{\parallel},\ \vb{b}_{\perp}\p = \gamma\left(\vb{b}_{\perp} - \frac{1}{c}\vb*{\beta}\times\vb{e}\right),
+\end{align*}
+where the parallel and perpendicular subscripts refer to orientations with respect to the direction of the Lorentz boost.
+
+Alternatively, expressed in terms of tensor components and transformation coefficients, we have the non-zero transformation coefficients
+\begin{align*}
+	&\trcou{0\p}{0} = \trcou{1\p}{1} = \gamma,\ \trcou{1\p}{0} = \trcou{0\p}{1} = -\beta\gamma,\ \trcou{2\p}{2} = \trcou{3\p}{3} = 1, \\
+	&\trcod{0\p}{0} = \trcod{1\p}{1} = \gamma,\ \trcod{1\p}{0} = \trcod{0\p}{1} = \beta\gamma,\ \trcod{2\p}{2} = \trcod{3\p}{3} = 1
+\end{align*}
+Thus,
+\begin{align*}
+	e^{i\p} = F^{i\p 0\p} = \trcou{i\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu},\ \varepsilon_{i\p j\p k\p}b^{k\p} = -\frac{1}{c}F_{i\p j\p} = \frac{1}{c}\trcod{j\p}{\mu}\trcod{i\p}{\nu}F_{\mu\nu}.
+\end{align*}
+First:
+\begin{align*}
+	e^{1\p} &= \trcou{1\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu} = \trcou{0\p}{0}\trcou{1\p}{1}F^{10} + \trcou{0\p}{1}\trcou{1\p}{0}F^{01} = e^{1}(\gamma^{2} - \beta^{2}\gamma^{2}) = e^{1}, \\
+	e^{2\p} &= \trcou{2\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{2\mu} = \gamma e^{2} - \beta\gamma F^{21} = \gamma(e^{2} + \beta c\varepsilon^{213}b_{3}) = \gamma(e^{2} - \beta cb^{3}), \\
+	e^{3\p} &= \trcou{3\p}{\mu}\trcou{0\p}{\nu}F^{\mu\nu} = \trcou{0\p}{\mu}F^{3\mu} = \gamma e^{3} - \beta\gamma\cdot F^{31} = \gamma(e^{3} + \beta c\varepsilon^{312}b_{2}) = \gamma(e^{3} + \beta cb^{2}).
+\end{align*}
+Next:
+\begin{align*}
+	b^{1\p} &= \frac{1}{c}\trcod{3\p}{\mu}\trcod{2\p}{\nu}F_{\mu\nu} = \frac{1}{c}F_{32} = b^{1}, \\
+	b^{2\p} &= \frac{1}{c}\trcod{1\p}{\mu}\trcod{3\p}{\nu}F_{\mu\nu} = \frac{1}{c}\gamma(F_{13} + \beta F_{03}) = \frac{\gamma}{c}(cb^{2} - \beta e_{3}) = \frac{\gamma}{c}(cb^{2} + \beta e^{3}) \\
+	b^{3\p} &= \frac{1}{c}\trcod{2\p}{\mu}\trcod{1\p}{\nu}F_{\mu\nu} = \frac{1}{c}\gamma(F_{21} + \beta F_{20}) = \frac{1}{c}\gamma(cb^{3} + \beta e_{2}) = \frac{1}{c}\gamma(cb^{3} - \beta e^{2}).
+\end{align*}
+
+\paragraph{The Dual Field Strength}
+We may construct a dual field strength $\tilde{F}^{\mu\nu} = \frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$, where $\varepsilon$ is the completely antisymmetric tensor with the convention $\varepsilon_{0123} = 1$. We find:
+\begin{align*}
+	\tilde{F}^{0i} = \frac{1}{2}\varepsilon^{0i\rho\sigma}F_{\rho\sigma} = \frac{1}{2}\varepsilon^{0ijk}F_{jk} = -\frac{1}{2}c\varepsilon^{0ijk}\varepsilon_{jkm}b^{m}.
+\end{align*}
+Explicitly:
+\begin{align*}
+	\tilde{F}^{01} &= -\frac{1}{2}c(\varepsilon^{0123}\varepsilon_{231} + \varepsilon^{0132}\varepsilon_{321})b^{1} = cb^{1},
+\end{align*}
+and cyclic permutation of the spatial indexes yields $\tilde{F}^{0i} = cb^{i}$. Next:
+\begin{align*}
+	\tilde{F}^{ij} = \frac{1}{2}\varepsilon^{ij\rho\sigma}F_{\rho\sigma}.
+\end{align*}
+One particular choice is
+\begin{align*}
+	\tilde{F}^{23} = \frac{1}{2}\varepsilon^{23\rho\sigma}F_{\rho\sigma} = \frac{1}{2}(\varepsilon^{2301}F_{01} + \varepsilon^{2310}F_{10}) = e_{1}.
+\end{align*}
+To obtain the other terms, take the first occurring sequences $23$ and permute in a $1$ from the left or the right. The former will add a minus sign while the latter will not, yielding
+\begin{align*}
+	\tilde{F}^{ij} = -\varepsilon^{ijk}e_{k}.
+\end{align*}
+In other words, we obtain the dual by switching $\vb{e} \to -c\vb{b}$ and $c\vb{b} \to \vb{e}$ in the Faraday tensor.
+
+\paragraph{Invariants From the Field Strength}
+We may now construct Lorentz scalars by contracting indices of the field strength and its dual.
+
+Consider first the quantity $F^{\mu\nu}F_{\mu\nu} = F^{0\nu}F_{0\nu} + F^{i\nu}F_{i\nu} = F^{0i}F_{0i} + F^{i0}F_{i0} + F^{ij}F_{ij} = 2F^{0i}F_{0i} + F^{ij}F_{ij}$, where we have used the fact that the Faraday tensor is antisymmetric. The first term is merely $2e^{i}e_{i}$. The second is:
+\begin{align*}
+	F^{ij}F_{ij} &= \varepsilon_{ijk}\varepsilon^{ijm}c^{2}b^{k}b_{m}.
+\end{align*}
+Evidently there is only a contribution when $k = m$, implying that every combination of indices such that a non-zero term is produced adds the square of some component. Furthermore, all components appear equally often, so we may fix both $k$ and $m$ to some value and sum over $i$ and $j$ to find the final value. By doing that, we find that each component appears exactly twice, finally yielding
+\begin{align*}
+	\frac{1}{2}F^{\mu\nu}F_{\mu\nu} = e^{i}e_{i} - c^{2}b^{i}b_{i} = c^{2}\abs{\vb{b}}^{2} - \abs{\vb{e}}^{2}.
+\end{align*}
+By performing the above described replacement, we find $F^{\mu\nu}F_{\mu\nu} = -\tilde{F}^{\mu\nu}\tilde{F}_{\mu\nu}$.
+
+Next we form the quantity $F^{\mu\nu}\tilde{F}_{\mu\nu} = F^{0\nu}\tilde{F}_{0\nu} + F^{i\nu}\tilde{F}_{i\nu} = F^{0i}\tilde{F}_{0i} + F^{i0}\tilde{F}_{i0} + F^{ij}\tilde{F}_{ij} = 2F^{0i}\tilde{F}_{0i} + F^{ij}\tilde{F}_{ij}$. The first term is
+\begin{align*}
+	F^{0i}\tilde{F}_{0i} = -ce^{i}b_{i}.
+\end{align*}
+The second term is
+\begin{align*}
+	F^{ij}\tilde{F}_{ij} = \varepsilon^{ijk}\varepsilon_{ijm}cb_{k}e^{m} = -2ce^{i}b_{i},
+\end{align*}
+yielding
+\begin{align*}
+	\frac{1}{4}F^{\mu\nu}\tilde{F}_{\mu\nu} = -ce^{i}b_{i} = -c\vb{e}\cdot\vb{b}.
+\end{align*}
+
+\paragraph{Maxwell's Equations}
+We will now try to formulate Maxwell's equations using the introduced formalism. We start by introducing the $4$-current $J^{\mu} = (c\rho, \vb{j})$, which we take to be a $4$-vector. A general $4$-current may be written as
+\begin{align*}
+	J^{\mu} = \sum\limits_{i}(c\rho_{i}, \rho_{i}\vb{u}_{i}),
+\end{align*}
+where the charge densities $\rho_{i}$ are defined in frames such that the corresponding current densities are zero.
+
+Charge conservation takes the form $\del{\mu}{J^{\mu}} = \del{t}{\rho} - \div{\vb{j}} = 0$ in this formalism, and we will have to formulate alternative Maxwell equations consistent with this. We try an anzats
+\begin{align*}
+	\del{\mu}{F^{\mu\nu}} = kJ^{\nu},\ \del{\mu}{\tilde{F}^{\mu\nu}} = kJ_{\text{m}}^{\nu}.
+\end{align*}
+$J_{\text{m}}$ is a quantity that will correspond to magnetic charge and current. Note that this guarantees charge conservation due to the Faraday tensor being antisymmetric.
+
+Let us first study
+\begin{align*}
+	\del{\mu}{F^{\mu 0}} = \del{i}{e^{i}} = kc\rho.
+\end{align*}
+This already has the correct form if $k = \frac{1}{c\varepsilon_{0}}$. Repeating the same on the magnetic expression implies $J_{\text{m}}^{0} = 0$ in some frame, at least.
+
+Next, consider
+\begin{align*}
+	\del{\mu}{F^{\mu i}} = \del{0}{F^{0i}} + \del{j}{F^{ji}} = -\frac{1}{c}\del{t}{e^{i}} - \varepsilon^{jik}c\del{j}{b_{k}} = \frac{1}{c\varepsilon_{0}}j^{i},
+\end{align*}
+or equivalently
+\begin{align*}
+	\varepsilon^{ijk}\del{j}{b_{k}} = \frac{1}{c^{2}}\del{t}{e^{i}} + \frac{1}{c^{2}\varepsilon_{0}}j^{i} = \mu_{0}(j^{i} + \varepsilon_{0}\del{t}{e^{i}}),
+\end{align*}
+reproducing another one of Maxwell's equations. The corresponding expression for the dual tensor creates the final equation if $J_{\text{m}}^{i} = 0$, and having argued that the magnetic $4$-current is zero in one frame, the same must hold in all frames.
+
+\paragraph{The $4$-Potential}
+We define the $4$-potential as $\Phi^{\mu} = (c\phi, \vb{a})$, where $\phi$ is the electric potential and $\vb{a}$ is the magnetic potential. Using this, the Maxwell equation $\del{\mu}{\tilde{F}^{\mu\nu}} = 0$ is automatically satisfied. With this particular choice of $4$-potential, the other will as well. Namely, we infer from the above that 
+\begin{align*}
+	F_{\mu\nu} = \del{\mu}{\Phi_{\nu}} - \del{\nu}{\Phi_{\mu}},
+\end{align*}
+and the other Maxwell equation takes the form
+\begin{align*}
+	\del{\mu}{\del[\mu]{}{\Phi^{\nu}}} - \del{\mu}{\del[\nu]{}{\Phi^{\mu}}} = \frac{1}{c\varepsilon_{0}}J^{\nu}.
+\end{align*}
+
+\paragraph{A Jacobi Identity}
+We have
+\begin{align*}
+	\del{\mu}{F_{\nu\sigma}} + \del{\nu}{F_{\sigma\mu}} &= \del{\mu}{(\del{\nu}{\Phi_{\sigma}} - \del{\sigma}{\Phi_{\nu}})} + \del{\nu}{(\del{\sigma}{\Phi_{\mu}} - \del{\mu}{\Phi_{\sigma}})} \\
+	                                                    &= \del{\nu}{\del{\sigma}{\Phi_{\mu}}} - \del{\mu}{\del{\sigma}{\Phi_{\nu}}} \\
+	                                                    &= \del{\sigma}{(\del{\nu}{\Phi_{\mu}} - \del{\mu}{\Phi_{\nu}})} \\
+	                                                    &= -\del{\sigma}{F_{\mu\nu}},
+\end{align*}
+implying the Jacobi identity
+\begin{align*}
+	\del{\mu}{F_{\nu\sigma}} + \del{\nu}{F_{\sigma\mu}} + \del{\sigma}{F_{\mu\nu}} = 0.
+\end{align*}
+
+\paragraph{Gauge}
+The choice of $4$-potential is not unique - namely, if two $4$-potentials differ by a term $\del{\mu}{\Psi}$, then they produce the same field strength. This means that there is a so-called gauge degree of freedom in the choice of the $4$-potential.
+
+\paragraph{The Lorentz Gauge}
+The Lorentz gauge is the gauge such that $\del{\mu}{\Phi^{\mu}} = 0$.
+
+\paragraph{Solutions in Vacuum}
+In vacuum and in the Lorentz gauge the second set of Maxwell equations is simply $\del{\mu}{\del[\mu]{}{\Phi^{\nu}}} = 0$, with the solution
+\begin{align*}
+	\Phi^{\mu} = \varepsilon^{\mu}e^{-ik^{\nu}x_{\nu}},
+\end{align*}
+where $k^{\mu}$ is necessarily a light-like wavevector. Reinserting this into the definition of the Lorentz gauge we obtain $k^{\mu}\varepsilon_{\mu} = 0$. The vector $\varepsilon^{\mu}$ is called the $4$-polarization, and it may always be constructed in a given frame such that $\varepsilon^{0} = 0$.
+
+\paragraph{General Solutions}
+In vases where there are sources present, the general solution is constructed using the Green's function
+\begin{align*}
+	G_{x_{0}^{\mu}}(x^{\mu}) = \frac{1}{4\pi\abs{\vb{r} - \vb{r}_{0}}}\delta\left(t - t_{0 - }\frac{1}{c}\abs{\vb{r} - \vb{r}_{0}}\right).
+\end{align*}
+
+\paragraph{Fields from Uniformly Moving Charges}
+From a uniformly moving charge moving at speed $v$ in the $x$-direction one can find
+\begin{align*}
+	\Phi^{0} = \frac{\gamma_{v}q}{4\pi\varepsilon_{0}r\p},\ \Phi^{1} = \frac{\beta_{v}\gamma_{v}q}{4\pi\varepsilon_{0}r\p},\ r\p = \sqrt{\gamma_{v}^{2}(x - vt)^{2} + y^{2} + z^{2}}.
+\end{align*}
+The corresponding electric and magnetic field is
+\begin{align*}
+	\vb{e} = \frac{q}{4\pi\varepsilon_{0}r\p}(\vb{r} - \vb{v}t),\ \vb{b} = \frac{1}{c^{2}}\vb{v}\times\vb{e}.
+\end{align*}
+
+\paragraph{Maxwell's Equations From a Variational Principle}
+It can be shown that the Lagrangian density
+\begin{align*}
+	\lag = -\frac{1}{4}\varepsilon_{0}F^{\mu\nu}F_{\mu\nu} - \frac{1}{c}\Phi_{\mu}J^{\mu}
+\end{align*}
+reproduces Maxwell's equation.
+
+\paragraph{The Electromagnetic Energy Tensor}
+In the case of continuous test charge distributions, the distribution experiences a force described by a force density
+\begin{align*}
+	K_{\mu} = \frac{1}{c}F_{\mu\nu}U^{\nu},
+\end{align*}
+where $U$ is the $4$-velocity field. Furthermore, it can be shown that $K_{\mu} = -\del{\nu}{\tensor{M}{_{\mu}^{\nu}}}$ for
+\begin{align*}
+	\tensor{M}{_{\mu}^{\nu}} = -\varepsilon_{0}F_{\mu\sigma}F^{\nu\sigma} + \frac{1}{4}\kdelta{\nu}{\mu}F^{\rho\sigma}F_{\rho\sigma}.
+\end{align*}
+When elevating indices to the same height, we find that this tensor is symmetric.
+
+Next, it can be shown that $K^{0} = \frac{1}{c}\vb{e}\cdot\vb{j}$.
+
+In the end, one obtains equations
+\begin{align*}
+	\del{t}{\sigma} + \div{c^{2}\vb{g}} = -\vb{e}\cdot\vb{j},\ \del{t}{g_{i}} + \del{j}{p_{ij}} = -k_{i}.
+\end{align*}

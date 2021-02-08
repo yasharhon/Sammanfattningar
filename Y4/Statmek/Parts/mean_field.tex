@@ -1,0 +1,304 @@
+\section{Mean-Field Theory}
+
+\paragraph{The Idea}
+The general idea of mean-field theory is to study a system by averaging over certain degrees of freedom or interactions in order to more easily compute a free energy or partition function.
+
+One usually requires self-consistency, meaning that expectation values should be computable from this partition function. This implies that the partition function implicitly gives the expectation values which were used to separate the Hamiltonian.
+
+\paragraph{Mean-Field Theory of the Ising Model}
+The idea in this approach is to separate the Hamiltonian by for any component of the system replace the ones with which it is interacting by an expectation value.
+
+To construct a mean-field theory for the Ising model, we write the Hamiltonian as
+\begin{align*}
+	\ham = -\sum\limits_{i}\sigma_{i}\left(J\sum\limits_{j = \text{nn}(i)}\sigma_{j} + h\right).
+\end{align*}
+We note that the replacement $\sigma_{j}\to m$ will make the Hamiltonian separable, hence we propose the mean-field Hamiltonian
+\begin{align*}
+	\ham = -\sum\limits_{i}\sigma_{i}\left(J\sum\limits_{j = \text{nn}(i)}m + h\right) = -\sum\limits_{i}\sigma_{i}\left(qJm + h\right) = -h^{\prime}\sum\limits_{i}\sigma_{i}
+\end{align*}
+where we have introduced the number $q$ of nearest neighbours to any one site and the effective field
+\begin{align*}
+	h^{\prime} = h + qJm.
+\end{align*}
+
+Using this Hamiltonian, the partition function is now given by
+\begin{align*}
+	&Z = \tr(e^{-\beta\ham}) = \sum\limits_{\{\sigma\}}e^{\beta h^{\prime}\sum\limits_{i}\sigma_{i}} = \left(\sum\limits_{\sigma = \pm 1}e^{\beta h^{\prime}\sigma}\right)^{N} = 2^{N}\cosh[N](\beta h^{\prime}), \\
+	&m = \frac{1}{N}\expval{\sum\limits_{i}\sigma_{i}} = \frac{1}{NZ}\sum\sum\limits_{i}\sigma_{i}e^{\beta h^{\prime}\sum\limits_{j}\sigma_{j}} = \frac{1}{N}\dv{\beta h^{\prime}}\ln(2^{N}\cosh[N](\beta h^{\prime})) = \tanh(\beta h^{\prime}).
+\end{align*}
+Note that this implies that all spins are expected to point in the same direction. Baked into the process there is a specific idea of the structure of the solution, and it is therefore important to make a good guess about this. We proceed with the ferromagnetic case, where the guess is good, and obtain
+\begin{align*}
+	m = \tanh(\beta\left(h + qJm\right)).
+\end{align*}
+This equation can be solved graphically to yield the magnetization, but we will discuss it qualitatively here. The expression above is anti-symmetric in $m$, meaning we may consider $m \geq 0$. Depending on the parameters, the number of solutions is between one and three. In the case where $h = 0$, one solution is $m = 0$, and two other solutions may be found at $m = \pm m_{0}$. At low temperatures the right-hand side approaches $\pm 1$, yielding $m_{0} = 1$. For $h = 0$ solutions are only found where the right-hand side grows faster than the left-hand side at zero. This is satisfied if
+\begin{align*}
+	\beta qJ > 1.
+\end{align*}
+This defines the critical temperature
+\begin{align*}
+	T_{\text{c}} = \frac{qJ}{\kb},
+\end{align*}
+above which no non-zero solutions are found.
+
+As the temperature approaches the critical temperature, above which no spontaneous magnetism is found, $m_{0}$ is small (but non-zero) and we obtain
+\begin{align*}
+	m_{0}                              &\approx \beta qJm_{0} - \frac{1}{3}\left(\beta qJm_{0}\right)^{3}, \\
+	\left(\frac{T_{\text{c}}}{T}\right)^{3}m_{0}^{2} &= 3\left(\frac{T_{\text{c}}}{T} - 1\right), \\
+	m_{0}                              &= \left(\frac{T}{T_{\text{c}}}\right)^{\frac{3}{2}}\sqrt{3\left(\frac{T_{\text{c}}}{T} - 1\right)} \\
+	                                   &= \sqrt{\frac{3}{T_{\text{c}}}\left(\frac{T}{T_{\text{c}}}\right)^{2}\left(T_{\text{c}} - T\right)}.
+\end{align*}
+This identifies the critical exponent $\beta = 1$. One of the uses of mean-field theory is determining asymptotic behaviour close to phase transitions.
+
+One more thing should be mentioned, namely the assertion that there actually is spontaneous magnetization. After all, if three solutions are possible, who is to say that one of the non-zero ones are found? To do this, we consider the entropy of an ideal paramagnet, which can be shown to be
+\begin{align*}
+	S = -N\kb\left(\frac{1 - m}{2}\ln(\frac{1 - m}{2}) + \frac{1 + m}{2}\ln(\frac{1 + m}{2})\right).
+\end{align*}
+We see that the non-zero solutions maximize entropy - a relief.
+
+\paragraph{Critical Behaviour}
+Using the mean-field result, we may now study other quantities close to the phase transition. The susceptibility is given by
+\begin{align*}
+	\chi = \fix{\pdv{m}{h}}{T}.
+\end{align*}
+The implicit equation for the magnetization yields
+\begin{align*}
+	\chi &= \frac{\beta}{\cosh[2](\beta(qJm + h))}(qJ\chi + 1), \\
+	\chi &= \frac{\beta}{\cosh[2](\beta(qJm + h)) - \beta qJ} = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - \frac{qJ}{\kb}\right)}.
+\end{align*}
+Introducing the critical temperature, we write this as
+\begin{align*}
+	\chi = \frac{1}{\kb \left(T\cosh[2](\beta(qJm + h)) - T_{\text{c}}\right)}.
+\end{align*}
+In particular, for $h = 0$ and temperatures above $T_{\text{c}}$, where there is no magnetization, we obtain
+\begin{align*}
+	\chi = \frac{1}{\kb\left(T - T_{\text{c}}\right)}.
+\end{align*}
+When approaching the phase transition from below for $h = 0$, we use the asymptotic expression for the magnetization to obtain
+\begin{align*}
+	\chi &= \frac{1}{\kb \left(T\cosh[2](\beta qJ\sqrt{\frac{3}{T_{\text{c}}}\left(\frac{T}{T_{\text{c}}}\right)^{2}\left(T_{\text{c}} - T\right)}) - T_{\text{c}}\right)} \\
+	     &= \frac{1}{\kb \left(T\cosh[2](\sqrt{3\left(1 - \frac{T}{T_{\text{c}}}\right)}) - T_{\text{c}}\right)} \\
+	     &= \frac{1}{\kb T_{\text{c}}\left(\frac{T}{T_{\text{c}}}\left(1 + 3\left(1 - \frac{T}{T_{\text{c}}}\right)\right) - 1\right)} \\
+	     &=	\frac{1}{\kb T_{\text{c}}\left(4\frac{T}{T_{\text{c}}} - 3\left(\frac{T}{T_{\text{c}}}\right)^{2} - 1\right)} \\
+	     &= \frac{1}{\kb T_{\text{c}}\left(3\frac{T}{T_{\text{c}}}\left(1 - \frac{T}{T_{\text{c}}}\right) + \frac{T}{T_{\text{c}}} - 1\right)} \\
+	     &\approx \frac{1}{\kb T_{\text{c}}\left(3\left(1 - \frac{T}{T_{\text{c}}}\right) + \frac{T}{T_{\text{c}}} - 1\right)} \\
+	     &= \frac{1}{2\kb\left(T_{\text{c}} - T\right)}.
+\end{align*}
+
+\paragraph{The Bragg-Williams Approximation}
+The Bragg-Williams approximation to mean-field theory starts with constructing the availability in terms of the order parameter. In the case of the Ising model, we introduce the numbers $N_{\pm}$ of spins with values $\pm 1$. Furthermore, we introduce the numbers $N_{\pm\pm}$ of spin pairs of any kind. The Hamiltonian is thus
+\begin{align*}
+	\ham = -J(N_{++} + N_{--} - N_{+-}) - h(N_{+} - N_{-}).
+\end{align*}
+Treating the spins as independent allows us to write
+\begin{align*}
+	S = -\kb\left(N_{+}\ln(N_{+}) + N_{-}\ln(N_{-})\right).
+\end{align*}
+%TODO: Show
+The number of pairs is given by
+\begin{align*}
+	N_{\pm\pm} = \frac{qN_{\pm}^{2}}{2N},\ N_{+-} = \frac{qN_{+}N_{-}}{N}.
+\end{align*}
+To proceed, we re-express the spin numbers in terms of the order parameter by using $N = N_{+} + N_{-}$ and $\sigma = N_{+} - N_{-}$ to obtain
+\begin{align*}
+	N_{+} = \frac{1}{2}N(1 + m),\ N_{-} = \frac{1}{2}N(1 - m).
+\end{align*}
+The Hamiltonian is now given by
+\begin{align*}
+	\ham &= -\frac{qJ}{2N}(N_{+}^{2} + N_{-}^{2} - 2N_{+}N_{-}) - Nhm \\
+	     &= -\frac{qJN}{8}((1 + m)^{2} + (1 - m)^{2} - 2(1 + m)(1 - m)) - Nhm \\
+	     &= -\frac{qJN}{2}m^{2} - Nhm,
+\end{align*}
+and the free energy is somehow
+\begin{align*}
+	G(h, T) &= \ham - TS \\
+	        &= -\frac{qJN}{2}m^{2} - Nhm + \frac{1}{2}N\kb T\left((1 + m)\ln(\frac{1}{2}N(1 + m)) + (1 - m)\ln(\frac{1}{2}N(1 - m))\right).
+\end{align*}
+Minimizing it with respect to the order parameter yields
+\begin{align*}
+	&-qJNm - Nh + \frac{1}{2}N\kb T\left(\ln(\frac{1}{2}N(1 + m)) + 1 - \ln(\frac{1}{2}N(1 - m)) - 1\right) = 0, \\
+	&-qJm - h + \frac{1}{2}\kb T\ln(\frac{1 + m}{1 - m}) = 0.
+\end{align*}
+Its solution is
+\begin{align*}
+	\frac{1 + m}{1 - m} = e^{2\beta(qJm + h)}, \\
+	1 + m = (1 - m)e^{2\beta(qJm + h)}, \\
+	m(1 + e^{2\beta(qJm + h)}) = e^{2\beta(qJm + h)} - 1, \\
+	m = \tanh(\beta(qJm + h)),
+\end{align*}
+as expected.
+
+\paragraph{Inaccuracies of Mean-Field Theories}
+The mean-field arguments predict the existence of a phase transition, but this cannot be the case in one dimension. To see this, consider a chain in its ground state and the set of excitations that flips all spins to the right of some spin $k$. The change in energy is $2J$, and the number of possible states corresponding to this energy is $N - 1$, hence the free energy changes by $2J - \kb\ln(N - 1)$. For large $N$ such states are thus always preferable. Their removal of translation invariance implies that there is no magnetization, in contradiction of the mean-field results.
+
+A slightly better result is obtained for a $N\times N$ lattice in two dimensions. The set of excitations now consists of excitations that split the system in two distinct magnetic domains. Any particular excitation is described by a chain running through the bonds. Each segment crosses one bond, and the energy change due to the excitation is $2LJ$, where $L$ is the number of segments. The typical length is $2N$. The next segment may always be placed in at least two sites, neglecting the boundaries. Including the $N$ possible starting points, the multiplicity of the chain is $N2^{L}$, and the free energy change of the excitation is
+\begin{align*}
+	\Delta G = 4NJ - \kb T\ln(2^{2N}N).
+\end{align*}
+The phase transition occurs when this energy change is negative, i.e. when
+\begin{align*}
+	\kb T\ln(2^{2N}N) > 4NJ,\ \kb T(2N\ln(2) + \ln(N)) > 4NJ,\ T < T_{\text{c}} \approx \frac{2J}{\kb\ln(2)},
+\end{align*}
+which is decently close to the analytically obtained results.
+
+\paragraph{Antiferromagnetism}
+The case of $J < 0$ is another interesting case, and gives rise to some interesting phases. One phenomenon which may occur is frustration, where the lattice structure is such that for any group of spins, the state of lowest energy is degenerate and not such that all interactions are beneficial. Assuming this not to be the case, we find that the ground state corresponds to an ordered phase such that two lattice translations combined leave the system invariant. This symmetry is broken by the phase transition, hence we introduce the order parameter
+\begin{align*}
+	m = \frac{1}{N}\sum(-1)^{j}\sigma_{j},
+\end{align*}
+which may be written as
+\begin{align*}
+	m = \frac{1}{2}(m_{A} - m_{B}),
+\end{align*}
+where the lattice has been divided into two sublattices.
+
+The mean-field Hamiltonian is
+\begin{align*}
+	\ham = \ham_{A} + \ham_{B} = -Jq\left(m_{B}\sum\limits_{A}\sigma_{i} + m_{A}\sum\limits_{B}\sigma_{i}\right),
+\end{align*}
+and by the same methods as previously, the mean-field partition function is
+\begin{align*}
+	Z = 2^{N}\cosh[\frac{1}{2}N](\beta Jqm_{B})\cosh[\frac{1}{2}N](\beta Jqm_{A}).
+\end{align*}
+From this we obtain
+\begin{align*}
+	m_{A} = \tanh(\beta Jqm_{B}).
+\end{align*}
+By construction we have $m_{A} = -m_{B}$, which yields
+\begin{align*}
+	m_{A} = -\tanh(\beta Jqm_{A}).
+\end{align*}
+This is the same as we obtained for the ferromagnetic case, and we may immediately identify the critical temperature
+\begin{align*}
+	T_{\text{c}} = -\frac{qJ}{\kb}.
+\end{align*}
+
+\paragraph{The Idea}
+Landau's theory is a general theory of phase transitions. The core idea is to series expand the free energy in terms of the order parameter close to the phase transition. This isn't really valid, but this method works nevertheless.
+
+The general form of the series expansion is
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{i}a_{i}(T)m^{i},
+\end{align*}
+where certain terms may be zero depending on the symmetry of the system. We assume the order parameter to be finite at equilibrium, meaning that the free energy must be bounded from below. One generally truncates this sum to make it possible to handle, and the free energy being bounded is guaranteed by the highest-order term to be even in $m$ and positive.
+
+\paragraph{Landau Theory of the Ising Model}
+For the Ising model we expect the system to be invariant with respect to flipping all spins, hence we have the series expansion
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{2i}a_{2i}(T)m^{2i}.
+\end{align*}
+At $T = 0$ you will have $\abs{\vb{m}} = 1$.
+
+Suppose now that as the temperature is lowered, $a_{2}$ is the first coefficient to change sign (at least one coefficient must do this in order for a phase transition to exist). Close to the temperature $T_{\text{c}}$ at which it changes sign, it may be linearized as
+\begin{align*}
+	a_{2}(T) = a_{2, 0}(T - T_{\text{c}}).
+\end{align*}
+At equilibrium we have
+\begin{align*}
+	\pdv{G}{m} = \sum\limits_{i}a_{2i}(T)m^{2i - 1} = 0.
+\end{align*}
+Assuming that other coefficients are approximately constant close to the transition temperature and approaching $T_{\text{c}}$ from below, where $m$ is small but non-zero, we have
+\begin{align*}
+	a_{2, 0}(T - T_{\text{c}}) + \sum\limits_{i > 2}a_{2i}(T_{\text{c}})m^{2i - 2} = 0.
+\end{align*}
+We truncate this sum at order $2$ in $m$ to obtain
+\begin{align*}
+	m = \sqrt{\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}(T_{\text{c}} - T)},
+\end{align*}
+which reproduces the correct critical exponent.
+
+We see that the series expansion and our assumption about which coefficients change sign produce a theory with a second-order phase transition. This is profound, and both the nature of the phase transition and the critical exponent are general. This is part of the power of Landau theory. This is also expected as the truncated free energy series is expected to transition between having a single minimum and two minima.
+
+The heat capacity is given by
+\begin{align*}
+	C = T\fix{\pdv{S}{T}}{h}.
+\end{align*}
+In the case of a second-order phase transition we have
+\begin{align*}
+	S = -\pdv{G}{T} = -\dv{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv{a_{2i}}{T}m^{2i} + a_{2i}\dv{m^{2i}}{T}\right).
+\end{align*}
+Close to and below the critical temperature we have
+\begin{align*}
+	C &= T\left(-\dv[2]{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} + \dv{a_{2i}}{T}\dv{m^{2i}}{T} + \dv{a_{2i}}{T}\dv{m^{2i}}{T} + a_{2i}\dv[2]{m^{2i}}{T}\right)\right) \\
+	  &= T\left(-\dv[2]{a_{0}}{T} - \sum\limits_{i}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} + 2\dv{a_{2i}}{T}\dv{m^{2i}}{T} + a_{2i}\dv[2]{m^{2i}}{T}\right)\right).
+\end{align*}
+We have
+\begin{align*}
+	&\dv{m^{2i}}{T} = im^{2(i - 1)}\dv{m^{2}}{T} = -im^{2(i - 1)}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}, \\
+	&\dv[2]{m^{2i}}{T} = i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})},
+\end{align*}
+and thus
+\begin{align*}
+	C =& T\left(-\dv[2]{a_{0}}{T} - \sum\limits_{i = 1}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right)\right) \\
+	  =& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{a_{4}(T_{\text{c}})} - T\sum\limits_{i = 2}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
+	  =& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{a_{4}(T_{\text{c}})} - \frac{1}{4}T\left(\dv[2]{a_{4}}{T}m^{4} - 4\dv{a_{4}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2} + 2a_{4}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
+	   &- T\sum\limits_{i = 3}^{\infty}\frac{1}{2i}\left(\dv[2]{a_{2i}}{T}m^{2i} - 2i\dv{a_{2i}}{T}\frac{a_{2, 0}}{a_{4}(T_{\text{c}})}m^{2(i - 1)} + a_{2i}i(i - 1)m^{2(i - 2)}\frac{a_{2, 0}^{2}}{a_{4}^{2}(T_{\text{c}})}\right) \\
+	   \approx& -T\dv[2]{a_{0}}{T} + T\frac{a_{2, 0}^{2}}{2a_{4}(T_{\text{c}})},
+\end{align*}
+where we have ignored terms containing the magnetization. Above the critical temperature the magnetization is instead identically zero, netting
+\begin{align*}
+	C = -T\dv[2]{a_{0}}{T}.
+\end{align*}
+Hence there is a step in the phase transition of
+\begin{align*}
+	-\frac{a_{2, 0}^{2}T_{\text{c}}}{2a_{4}(T_{\text{c}})}
+\end{align*}
+when approaching the phase transition from below.
+
+Suppose instead that $a_{4}$ is the first coefficient to change sign. In this case the free energy might have several local minima, meaning that a discontinuous step in the order parameter might occur. To show that such a step exists, we need to show that $a_{2}(T_{\text{c}}) > 0$. We investigate this by comparing $G(m_{0}, T_{\text{c}})$ to $G(0, T_{\text{c}})$, where $m_{0}$ is the magnetization at the minimum. The phase transition occurs when the two are equal, i.e. when
+\begin{align*}
+	G(m_{0}, T_{\text{c}}) - G(0, T_{\text{c}}) = \sum\limits_{i}\frac{1}{2i}a_{2i}(T_{\text{c}})m_{0}^{2i} = 0.
+\end{align*}
+The magnetization corresponds to a minimum of $G$, and thus satisfies
+\begin{align*}
+	\sum\limits_{i}a_{2i}(T_{\text{c}})m_{0}^{2i - 1} = 0.
+\end{align*}
+Truncating at order $6$ we have
+\begin{align*}
+	a_{2}(T_{\text{c}})m_{0} + a_{4}(T_{\text{c}})m_{0}^{3} + a_{6}(T_{\text{c}})m_{0}^{5} = 0,\ \frac{1}{2}a_{2}(T_{\text{c}})m_{0}^{2} + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{4} + \frac{1}{6}a_{4}(T_{\text{c}})m_{0}^{6} = 0.
+\end{align*}
+The non-trivial value of the order parameter satisfies
+\begin{align*}
+a_{2}(T_{\text{c}}) + a_{4}(T_{\text{c}})m_{0}^{2} + a_{6}(T_{\text{c}})m_{0}^{4} = 0,\ \frac{1}{2}a_{2}(T_{\text{c}}) + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{2} + \frac{1}{6}a_{4}(T_{\text{c}})m_{0}^{4} = 0.
+\end{align*}
+Combining the equation nets
+\begin{align*}
+	\frac{1}{2}a_{4}(T_{\text{c}})m_{0}^{2} + \frac{2}{3}a_{6}(T_{\text{c}})m_{0}^{4} &= 0, \\
+	\frac{1}{2}a_{4}(T_{\text{c}}) + \frac{2}{3}a_{6}(T_{\text{c}})m_{0}^{2}          &= 0, \\
+	m_{0}^{2}                                                                         &= -\frac{3a_{4}(T_{\text{c}})}{4a_{6}(T_{\text{c}})}.
+\end{align*}
+For this to work, we must have $a_{6}(T_{\text{c}}) > 0$ to keep the global minimum at finite magnetization and $a_{4}(T_{\text{c}}) < 0$ per our assumption of the existence of a local minimum, making the magnetization real. Inserting this into a previous expression yields
+\begin{align*}
+	a_{2}(T_{\text{c}}) - a_{4}(T_{\text{c}})\frac{3a_{4}(T_{\text{c}})}{4a_{6}(T_{\text{c}})} + a_{6}(T_{\text{c}})\frac{9a_{4}^{2}(T_{\text{c}})}{16a_{6}^{2}(T_{\text{c}})} = a_{2}(T_{\text{c}}) - \frac{3}{4}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} + \frac{9}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} = a_{2}(T_{\text{c}}) - \frac{3}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} = 0,
+\end{align*}
+and thus
+\begin{align*}
+	a_{2}(T_{\text{c}}) = \frac{3}{16}\frac{a_{4}^{2}(T_{\text{c}})}{a_{6}(T_{\text{c}})} > 0,
+\end{align*}
+as we wanted to show.
+
+\paragraph{Non-Symmetric Cases}
+Suppose we have some case where this symmetry does not hold. Then we would instead use the series expansion
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i}\frac{1}{i}a_{i}(T)m^{i}.
+\end{align*}
+It might be of interest to remove linear terms. This can be done by introducing a new order parameter $\tilde{m} = m + \Delta$ (the tilde will be omitted from now) where $\Delta$ is chosen appropriately so that
+\begin{align*}
+	G(m, T) = a_{0}(T) + \sum\limits_{i = 2}\frac{1}{i}a_{i}(T)m^{i}.
+\end{align*}
+The coefficients have implicitly been modified as well. Truncating the sum at $a_{4}$, the equilibrium magnetization satisfies
+\begin{align*}
+	a_{2}(T_{\text{c}})m_{0} + a_{3}(T_{\text{c}})m_{0}^{2} + a_{4}(T_{\text{c}})m_{0}^{3} = 0.
+\end{align*}
+In addition, at the transition point the free energy is equal at the post-transition equilibrium and zero, yielding
+\begin{align*}
+	\frac{1}{2}a_{2}(T_{\text{c}})m_{0}^{2} + \frac{1}{3}a_{3}(T_{\text{c}})m_{0}^{3} + \frac{1}{4}a_{4}(T_{\text{c}})m_{0}^{4} = 0.
+\end{align*}
+The non-zero solution satisfies
+\begin{align*}
+	\frac{1}{3}a_{3}(T_{\text{c}}) + \frac{1}{2}a_{4}(T_{\text{c}})m_{0} = 0,\ m_{0} = -\frac{2}{3}\frac{a_{3}(T_{\text{c}})}{a_{4}(T_{\text{c}})}
+\end{align*}
+and
+\begin{align*}
+	a_{2}(T_{\text{c}}) - \frac{2}{3}\frac{a_{3}^{2}(T_{\text{c}})}{a_{4}(T_{\text{c}})} + \frac{4}{9}\frac{a_{3}^{2}(T_{\text{c}})}{a_{4}(T_{\text{c}})} = 0,\ a_{2}(T_{\text{c}}) = \frac{2}{9}\frac{a_{3}^{2}(T_{\text{c}})}{a_{4}(T_{\text{c}})}
+\end{align*}
+%TODO: Finish
