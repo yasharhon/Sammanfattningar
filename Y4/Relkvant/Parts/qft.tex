@@ -384,3 +384,57 @@ with solution
 \begin{align*}
 	(S^{(1)})\adj = i\integ[4]{}{}{z}{\nop{\bar{\Psi}_{\text{in}}}{\fsl{A}\Psi_{\text{in}}}}.
 \end{align*}
+
+\paragraph{Quantizing the Electromagnetic Field}
+The quantization of the electromagnetic field carries a few more difficulties with it. First, the photons, which build up the quantum theory, are massless. Second, photons have a vector character to them.
+
+While the electric and magnetic fields are measurable, and should at first glance be the quantities we replace by operators, we instead do this to the 4-potential. The question of gauge then arises. Starting with Maxwell's equations, written in the two forms
+\begin{align*}
+	\del{}{\mu}{F^{\mu\nu}} = J^{\nu},\ \dalem{A^{\nu}} - \del{\nu}{}{\del{}{\mu}{A^{\mu}}} = J^{\nu}.
+\end{align*}
+One choice of gauge is $\del{}{\mu}{A^{\mu}} = 0$, called the Lorenz gauge. Another is the temporal gauge $A^{0} = 0$. Third there is the axial gauge $A^{3} = 0$. Finally there is the Coulomb gauge $\del{}{i}{A^{i}} = 0$. For a free electromagnetic field the temporal and Coulomb gauges can be satisfied simultaneously. The combination of these is known as the radiation gauge. In this gauge we have for a free field that
+\begin{align*}
+	\dalem{A^{\mu}} = 0.
+\end{align*}
+The Coulomb gauge requirement in momentum space is $\vb{k}\cdot\vb{A} = 0$. This means that this gauge has no longitudinal photons.
+
+We will quantize the electromagnetic field in four attempts. The first is to employ the familiar non-relativistic scheme
+\begin{align*}
+	\vb{A} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{\omega}}\sum\limits_{\eta = \pm 1}e^{i(\vb{k}\cdot\vb{x} - \omega t)}\vb*{\varepsilon}(\vb{k}, \eta)a_{\text{nr}}(\vb{k}, \eta) + e^{-i(\vb{k}\cdot\vb{x} - \omega t)}\cc{\vb*{\varepsilon}}(\vb{k}, \eta)a_{\text{nr}}\adj(\vb{k}, \eta)},
+\end{align*}
+which guarantees that $\vb{A}$ is Hermitian. The classical interpretation of this is that the field is composed of harmonic oscillators, with commutation relations
+\begin{align*}
+	\comm{a_{\text{nr}}(\vb{k}, \eta)}{a_{\text{nr}}\adj(\vb{k}\p, \eta\p)} = \delta_{\eta\eta\p}\delta(\vb{k} - \vb{k}\p).
+\end{align*}
+
+In our next attempt we introduce $a = \sqrt{k^{0}}a_{\text{nr}}$. This yields
+\begin{align*}
+	\vb{A} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k_{0}}\sum\limits_{\eta = \pm 1}e^{-ikx}\vb*{\varepsilon}(\vb{k}, \eta)a(\vb{k}, \eta) + e^{ikx}\cc{\vb*{\varepsilon}}(\vb{k}, \eta)a\adj(\vb{k}, \eta)},
+\end{align*}
+as well as the commutation relation
+\begin{align*}
+	\comm{a(\vb{k}, \eta)}{a\adj(\vb{k}\p, \eta\p)} = k^{0}\delta_{\eta\eta\p}\delta(\vb{k} - \vb{k}\p).
+\end{align*}
+
+These formulations have not been covariant. Strochi discovered that one cannot have a covariant quantization and a positive definite metric on Hilbert space at the same time. Our third attempt will be
+\begin{align*}
+	A^{\mu} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k_{0}}\sum\limits_{\eta = 1}^{2}\left(e^{-ikx}a(\vb{k}, \eta) + e^{ikx}a\adj(\vb{k}, \eta)\right)e^{\mu}(\vb{k}, \eta)}.
+\end{align*}
+
+Finally we try to extend this to something that has an inner product, with the result
+\begin{align*}
+	A^{\mu} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k_{0}}\sum\limits_{\lambda = 0}^{3}-g_{\lambda\lambda}\left(e^{-ikx}a(\vb{k}, \lambda) + e^{ikx}a\adj(\vb{k}, \lambda)\right)e^{\mu}(\vb{k}, \lambda)}.
+\end{align*}
+However, this contains creation and annihilation operators for longitudinal and scalar photons, which have not been found. We need to get rid of them. We also have the commutation relations
+\begin{align*}
+	\comm{a^{\mu}(\vb{k})}{(a^{\nu})\adj(\vb{k}\p)} = -g^{\mu\nu}k^{0}\delta(\vb{k} - \vb{k}\p)
+\end{align*}
+for the operators
+\begin{align*}
+	a^{\mu}(\vb{k}) = -\sum\limits_{\lambda = 0}^{3}g_{\lambda\lambda}e^{\mu}(\vb{k}, \lambda)a(\vb{k}, \lambda).
+\end{align*}
+This implies
+\begin{align*}
+	\abs{(a^{0})\adj\ket{0}} = -g^{00}k^{0}\delta(\vb{0}),
+\end{align*}
+which is negative. Fermi's solution was to switch the interpretations of $a(\vb{k}, 0)$ and $a\adj(\vb{k}, 0)$. Another idea is to just keep the indefinite metric.
