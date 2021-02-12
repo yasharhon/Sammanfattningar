@@ -438,3 +438,80 @@ This implies
 	\abs{(a^{0})\adj\ket{0}} = -g^{00}k^{0}\delta(\vb{0}),
 \end{align*}
 which is negative. Fermi's solution was to switch the interpretations of $a(\vb{k}, 0)$ and $a\adj(\vb{k}, 0)$. Another idea is to just keep the indefinite metric.
+
+\paragraph{More on the Electromagnetic Field}
+The classical Lagrangian for an electromagnetic field is
+\begin{align*}
+	\lag = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} - j_{\mu}A^{\mu}.
+\end{align*}
+It turns out that if $j$ is a conserved current, this Lagrangian is invariant under gauge transformations $A^{\mu} \to A^{\mu} + \del{\mu}{}{\chi}$.
+
+By adding a mass term to the Lagrangian, making it of the form
+\begin{align*}
+	\lag = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} + \frac{1}{2}M^{2}A_{\mu}A^{\mu} - j_{\mu}A^{\mu},
+\end{align*}
+we find the equations of motion to be
+\begin{align*}
+	\del{}{\mu}{F^{\mu\nu}} + M^{2}A^{\nu} = j^{\nu}.
+\end{align*}
+This implies that the current is only conserved in the Lorenz gauge. Proceeding with this gauge, the equation of motion becomes
+\begin{align*}
+	(\dalem{} + M^{2})A^{\mu} = j^{\mu}.
+\end{align*}
+Another possible extension is with a term
+\begin{align*}
+	\lag = G_{\mu\nu}G^{\mu\nu}, G_{\mu\nu} = \del{}{\mu}{A_{\nu}} + \del{}{\nu}{A_{\mu}},
+\end{align*}
+which also has gauge issues.
+
+When performing a gauge transformation we assume the field and potentials to transform according to
+\begin{align*}
+	A_{\mu} \to A_{\mu} + \del{}{\mu}{\chi},\ \Psi \to e^{i\alpha(x)}\Psi,
+\end{align*}
+where $\alpha = -e\chi$. Introducing the so-called covariant derivative
+\begin{align*}
+	\cdel{}{\mu} = \del{}{\mu}{} + ieA_{\mu}.
+\end{align*}
+By applying the gauge transformation we find
+\begin{align*}
+	\cdel{}{\mu}\Psi \to e^{i\alpha}\cdel{}{\mu}\Psi,
+\end{align*}
+or $\cdel{}{\mu}\to e^{i\alpha}\cdel{}{\mu}$, which the ordinary derivative does not satisfy. We can also show that
+\begin{align*}
+	\comm{\cdel{}{\mu}}{\cdel{}{\nu}} = e^{i\alpha}\comm{\cdel{}{\mu}}{\cdel{}{\nu}}\Psi,
+\end{align*}
+although this commutator is not a covariant derivative. We also find
+\begin{align*}
+	\comm{\cdel{}{\mu}}{\cdel{}{\nu}} = ieF_{\mu\nu}.
+\end{align*}
+
+\paragraph{Classical Yang-Mills Theory}
+The idea behind Yang-Mills theory is to construct a doublet of Dirac fields, from now termed $\Psi$, which transforms according to
+\begin{align*}
+	\Psi \to e^{\frac{i}{2}\sigma^{j}\alpha^{j}(x)}\Psi
+\end{align*}
+under gauge transformations. We introduce a covariant derivative
+\begin{align*}
+	\cdel{}{\mu} = \del{}{\mu}{} - \frac{i}{2}gA_{\mu}^{j}\sigma^{j},
+\end{align*}
+which satisfies
+\begin{align*}
+	\comm{\cdel{}{\mu}}{\cdel{}{\nu}} = - \frac{i}{2}gF_{\mu\nu}^{j}\sigma^{j},
+\end{align*}
+where
+\begin{align*}
+	\frac{i}{2}F_{\mu\nu}^{j}\sigma^{j} = \frac{1}{2}\left(\del{}{\mu}{A_{\nu}^{j}} - \del{}{\nu}{A_{\mu}^{j}}\right)\sigma^{j} - ig\comm{\frac{1}{2}A_{\mu}^{j}\sigma^{j}}{\frac{1}{2}A_{\nu}^{k}\sigma^{k}}.
+\end{align*}
+This can be solved to yield
+\begin{align*}
+	F_{\mu\nu}^{i} = \del{}{\mu}{A_{\nu}^{i}} - \del{}{\nu}{A_{\mu}^{i}} + g\varepsilon^{ijk}A_{\mu}^{j}A_{\nu}^{k},
+\end{align*}
+a so-called non-abelian field strength. It transforms according to
+\begin{align*}
+	\frac{i}{2}F_{\mu\nu}^{j}\sigma^{j} \to \frac{i}{2}F_{\mu\nu}^{j}\sigma^{j} + \comm{\frac{i}{2}\alpha^{j}\sigma^{j}}{\frac{1}{2}F_{\mu\nu}^{k}\sigma^{k}}.
+\end{align*}
+The Lagrangian corresponding to this theory is
+\begin{align*}
+	\lag = -\frac{1}{2}\tr(\left(\frac{1}{2}F_{\mu\nu}^{j}\sigma^{j}\right)^{2}) = -\frac{1}{4}F_{\mu\nu}^{j}F^{\mu\nu, j},
+\end{align*}
+which is gauge invariant.
