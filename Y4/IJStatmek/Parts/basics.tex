@@ -342,3 +342,21 @@ For $\chi$ to be conserved, $n$ should be conserved in collisions. In other word
 	(\del{}{t}{n})_{\text{coll}} = \integ[3]{}{}{\vb{p}}{\chi (\del{}{t}{n})_{\text{coll}}} = 0.
 \end{align*}
 To show that this is in fact the case, we repeat the derivation of the $H$ theorem, netting us a term $\chi(\vb{p}) + \chi(\vb{p}_{2}) - \chi(\vb{p}_{1}\p) - \chi(\vb{p}_{2}\p)$, meaning that if $\chi$ is conserved in collisions, then $(\del{}{t}{n})_{\text{coll}} = 0$.
+
+\paragraph{Local Equilibrium}
+While the only explicit conserved quantities of (almost-ideal) gas Hamiltonians are momentum and energy, the logarithm of the equilibrium distribution $ln(f^{0})$ is also conserved. This must mean
+\begin{align*}
+	\ln(f^{0}) = \beta(\mu + \vb{v}\cdot\vb{p} - \varepsilon),
+\end{align*}
+with the different variables being chemical potential and reciprocal temperature, or
+\begin{align*}
+	f^{0} \propto e^{-\frac{\beta}{2m}(\vb{p} - m\vb{v})^{2}}.
+\end{align*}
+This is the state of equilibrium. In local equilibrium the various quantities are allowed to vary in space. It turns out that such a solution is not affected by collisions, but as it does not solve the Boltzmann equation, it is affected by the streaming terms. Thus, after local equilibrium is established, there is hydrodynamic evolution of these macroscopic observables.
+
+\paragraph{The Relaxation Time Approximation}
+In the relaxation time approximation, one arrives at an expression of the form
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}} = -\frac{f - f^{0}}{\tau}.
+\end{align*}
+The quantity $f - f^{0}$ evolves exponentially in this approach as $f^{0}$ is not affected by collision terms.
