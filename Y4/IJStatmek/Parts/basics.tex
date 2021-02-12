@@ -237,3 +237,108 @@ This means that the density matrix is diagonal, and its non-zero elements can no
 \begin{align*}
 	W_{nm} = \frac{2\pi}{\hbar}\abs{\mel{n}{V}{m}}^{2}\delta(E_{n} - E_{m}).
 \end{align*}
+
+\paragraph{The Boltzmann Equation}
+Consider some classical system (with many degrees of freedom) moving with some Hamiltonian. The phase space probability distribution, which in principle describes this system, is hard to handle. Instead we would like to work with the one-body distribution $f(\vb{r}, \vb{p}, t)$ which describes the number of particle at a particular position with a particular momentum. Formally it satisfies
+\begin{align*}
+	f(\vb{r}, \vb{q}, t) = \sum\limits_{i}\expval{\delta(\vb{x}_{i} - \vb{r})\delta(\vb{p}_{i} - \vb{q})} = N\int\prod\limits_{i = 2}^{N}\dd[d]{\vb{x}_{i}}\dd[d]{\vb{p}_{i}}\frac{1}{h^{2}}\rho(\vb{r}, \vb{x}_{2}, \dots, \vb{x}_{N}; \vb{q}, \vb{p}_{2}, \dots, \vb{p}_{N}).
+\end{align*}
+It should then satisfy
+\begin{align*}
+	\integ[3]{}{}{\vb{p}}{f(\vb{r}, \vb{p}, t)} = n(\vb{r}, t),\ \integ[3]{}{}{\vb{r}}{n} = N.
+\end{align*}
+
+$f$ flows through this constructed phase space with time. Liouville's theorem states that phase space volume is preserved, hence
+\begin{align*}
+	f(\vb{r}, \vb{p}, t)\dd{\vb{r}}\dd{\vb{p}} = f(\vb{r} + \dot{\vb{r}}\dd{t}, \vb{p} + \dot{\vb{p}}\dd{t}, t + \dd{t})\dd{\vb{r}}\p\dd{\vb{p}}\p.
+\end{align*}
+Neglecting collisions, all forces are external. Defining $\vb{v} = \dot{\vb{r}}$ and $\vb{F} = \dot{\vb{p}}$, we can then Taylor expand the above to find
+\begin{align*}
+	\del{}{t}{f} + \vb{v}\cdot\grad_{\vb{x}}{f} + \vb{F}\cdot\grad_{\vb{p}}{f} = 0.
+\end{align*}
+We may now also introduce Liouville operator $L = \del{}{t}{} + \vb{v}\cdot\grad_{\vb{x}}{} + \vb{F}\cdot\grad_{\vb{p}}{}$.
+
+When accounting for collisions and other scattering events, we write this as
+\begin{align*}
+	Lf = (\del{}{t}{f})_{\text{coll}}.
+\end{align*}
+We will focus on two-particle scattering events. These are caused by an interaction potential $V(\vb{r}, \vb{r}\p)$. We coarse grain over the time and length scale of the collision, the latter meaning that the typical time between two collisions involving the same particle should be much longer than the collision time. This is achieved if the density is low.
+
+We distinguish between two kinds of events: those that increase and decrease $f(\vb{r}, \vb{p}, t)$. We need two quantities to proceed. The first is the scattering rate $\omega(\vb{p}_{1}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p)$. The second is the probability of two particles with momenta $\vb{p}_{1}$ and $\vb{p}_{2}$ to be at $\vb{r}$ at the same time. This is computed from the two-particle distribution function
+\begin{align*}
+	f_{2}(\vb{r}, \vb{q}; \vb{r}\p, \vb{q}\p; t) &= \sum\limits_{i}\sum\limits_{j\neq i}\expval{\delta(\vb{x}_{i} - \vb{r})\delta(\vb{p}_{i} - \vb{q})\delta(\vb{x}_{j} - \vb{r}\p)\delta(\vb{p}_{i} - \vb{q}\p)} \\
+	                                             &= N(N - 1)\int\prod\limits_{i = 3}^{N}\dd[d]{\vb{x}_{i}}\dd[d]{\vb{p}_{i}}\frac{1}{h^{2}}\rho(\vb{r}, \vb{r}\p, \vb{x}_{3}, \dots, \vb{x}_{N}; \vb{q}, \vb{q}\p, \vb{p}_{3}, \dots, \vb{p}_{N}).
+\end{align*}
+We can then write down
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}}(\vb{r}, \vb{p}, t) = \integ[3]{}{}{\vb{p}_{2}}{\integ[3]{}{}{\vb{p}_{1}\p}{\integ[3]{}{}{\vb{p}_{1}\p}{\omega(\vb{p}_{1}\p, \vb{p}_{2}\p \to \vb{p}, \vb{p}_{2})f_{2}(\vb{r}, \vb{p}_{1}\p; \vb{r}, \vb{p}_{2}\p; t) - \omega(\vb{p}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p)f_{2}(\vb{r}, \vb{p}; \vb{r}, \vb{p}_{2}; t)}}}
+\end{align*}
+using a master equation-like argument. This does not really help, as the determination of $f$ now rests on determining $f_{2}$. One could imagine propagating this argument by letting $f_{2}$ depend on $f_{3}$, all the way back to $\rho$, which is precisely what we do not want. Instead we introduce the assumption of molecular chaos, namely $f_{2}(\vb{r}_{1}, \vb{p}_{1}; \vb{r}_{2}, \vb{p}_{2}; t) = f(\vb{r}_{1}, \vb{p}_{1}; t)f(\vb{r}_{2}, \vb{p}_{2}; t)$. This assumption manifests an assumption that the evolution of the system is chaotic, and two incoming particles in a collision are therefore uncorrelated. We also assume the dynamics of the system to have both time reversal and parity symmetry. The first implies
+\begin{align*}
+	\omega(\vb{p}_{1}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p) = \omega(-\vb{p}_{1}\p, -\vb{p}_{2}\p \to -\vb{p}_{1}, -\vb{p}_{2}),
+\end{align*}
+while the second implies
+\begin{align*}
+	\omega(-\vb{p}_{1}\p, -\vb{p}_{2}\p \to -\vb{p}_{1}, -\vb{p}_{2}) = \omega(\vb{p}_{1}\p, \vb{p}_{2}\p \to \vb{p}_{1}, \vb{p}_{2}).
+\end{align*}
+The transition rate is thus symmetric. We thus obtain
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}}(\vb{r}, \vb{p}, t) = \integ[3]{}{}{\vb{p}_{2}}{\integ[3]{}{}{\vb{p}_{1}\p}{\integ[3]{}{}{\vb{p}_{1}\p}{\omega(\vb{p}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p)\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}.
+\end{align*}
+
+We proceed by interpreting the coordinates and momenta as those of point particles, and require conservation of energy and momentum. If all the particles have identical masses, we then find
+\begin{align*}
+	(\vb{p}_{1} + \vb{p}_{2})^{2} = \vb{p}_{1}^{2} + \vb{p}_{2}^{2} + 2\vb{p}_{1}\cdot\vb{p}_{2},
+\end{align*}
+and energy conservation implies the scalar product to be conserved. This further implies that the length of the momentum difference is conserved, and thus
+\begin{align*}
+	\vb{p}_{2}\p - \vb{p}_{1}\p = \abs{\vb{p}_{2} - \vb{p}_{1}}\vb*{\Omega},
+\end{align*}
+where $\vb*{\Omega}$ is some unit vector. This means that we can specify the collision by specifying the incoming momenta and the scattering direction of the difference.
+
+We can also introduce the differential cross-section, defined as $\pdv{\sigma}{\Omega}$ being the ratio of incoming and outgoing intensities in some interval of solid angle, corrected for travelling time. Somehow we find that
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}}(\vb{r}, \vb{p}, t) = \integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}.
+\end{align*}
+The final equation, named the Boltzmann equation, is thus
+\begin{align*}
+	\del{}{t}{f} + \vb{v}\cdot\grad_{\vb{x}}{f} + \vb{F}\cdot\grad_{\vb{p}}{f} = \integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}.
+\end{align*}
+
+\paragraph{The Boltzmann $H$ Theorem}
+Consider the function
+\begin{align*}
+	H = \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{f\ln(f)}}.
+\end{align*}
+As the integral of $f$ itself is constant we have
+\begin{align*}
+	\dv{H}{t} =& \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\del{}{t}{f}\ln(f)}} \\
+	          =& \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\left(-\vb{v}\cdot\grad_{\vb{x}}{f} - \vb{F}\cdot\grad_{\vb{p}}{f}\right)}} \\
+	           &+ \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}}.
+\end{align*}
+As the velocity field in (this projection of) phase space is divergence-free, we can somehow eliminate the first term and find
+\begin{align*}
+	\dv{H}{t} = \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}}.
+\end{align*}
+The integrand is now entirely symmetric under the switch of $\vb{p}$ and $\vb{p}_{2}$, assuming we also switch the $f$ in the logarithm. We thus find
+\begin{align*}
+	\dv{H}{t} = \frac{1}{2}\integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)\ln(f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t))}}}}.
+\end{align*}
+The cross section is symmetric under parity and time reversal, hence we may switch the primed and non-primed momenta to find
+\begin{align*}
+	\dv{H}{t} = \frac{1}{4}\integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p) - f(\vb{p})f(\vb{p}_{2})\right)(\ln(f(\vb{p})f(\vb{p}_{2})) - \ln(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p))}}}},
+\end{align*}
+where redundant variables have been suppressed. This must be negative, as the expression $(y - x)(\ln(y) -\ln(x))$ is non-negative.
+
+This result implies that entropy is increasing. How come? It is due to the assumption of molecular chaos, causing loss of information.
+
+\paragraph{Conservation Laws}
+Consider a local observable $\chi$ with a corresponding density
+\begin{align*}
+	n = \integ[3]{}{}{\vb{p}}{\chi f}.
+\end{align*}
+For $\chi$ to be conserved, $n$ should be conserved in collisions. In other words,
+\begin{align*}
+	(\del{}{t}{n})_{\text{coll}} = \integ[3]{}{}{\vb{p}}{\chi (\del{}{t}{n})_{\text{coll}}} = 0.
+\end{align*}
+To show that this is in fact the case, we repeat the derivation of the $H$ theorem, netting us a term $\chi(\vb{p}) + \chi(\vb{p}_{2}) - \chi(\vb{p}_{1}\p) - \chi(\vb{p}_{2}\p)$, meaning that if $\chi$ is conserved in collisions, then $(\del{}{t}{n})_{\text{coll}} = 0$.
