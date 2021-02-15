@@ -1,4 +1,75 @@
 \section{Quantum Systems}
 
+\paragraph{The Idea}
+For this consideration of quantum systems, the idea is to have the system interact with some bath containing an enormous number of degrees of freedom relative to those of the system.
+
 \paragraph{The Reduced Density Matrix}
 The reduced density matrix is found by tracing out a particular set of degrees of freedom from a total density matrix.
+
+\paragraph{Product Operators}
+We recall that for a tensor product, the expectation value of the product is the product of the expectation values. This means that expectation values of system observables make sense.
+
+\paragraph{The Schrödinger Langevin Equation}
+We will now perform a similar consideration as that done in the classical case, namely extending the Schrödinger equation to
+\begin{align*}
+	i\dv{t}\ket{\Psi} = (H - iW + i\eta(t)V)\ket{\Psi}.
+\end{align*}
+$W$ is a Hermitian damping term and $\eta$ is a random process such that
+\begin{align*}
+	\expval{\expval{\eta(t)}} = 1,\ \expval{\expval{\eta(t)\eta\cc(t\p)}} = \delta(t - t\p),
+\end{align*}
+where we are now referring to averages over the random process rather than quantum mechanical expectation values. This term then corresponds to a noise term. A time step $\delta t$ yields
+\begin{align*}
+	\ket{\Psi}_{t + \delta t} = \left(1 - (iH + W)\delta t + \integ{t}{t + \delta t}{t\p}{\eta(t\p)V}\right)\ket{\Psi}_{t}.
+\end{align*}
+Using this we may compute the norm of $\ket{\Psi}$ after this time step according to
+\begin{align*}
+	\braket{\Psi}_{t + \delta t} =& \expval{\left(1 + (iH - W)\delta t + \integ{t}{t + \delta t}{t\p}{\eta\cc(t\p)V\adj}\right)\left(1 - (iH + W)\delta t + \integ{t}{t + \delta t}{t\p}{\eta(t\p)V}\right)}{\Psi} \\
+	                             =& \expval{\left(1 + (iH - W)\delta t\right)\left(1 - (iH + W)\delta t\right)}{\Psi} \\
+	                              &+ \expval{\left(1 + (iH - W)\delta t\right)\left(\integ{t}{t + \delta t}{t\p}{\eta(t\p)V}\right)}{\Psi} + \expval{\left(\integ{t}{t + \delta t}{t\p}{\eta\cc(t\p)V\adj}\right)\left(1 - (iH + W)\delta t\right)}{\Psi} \\
+	                              &+ \expval{\integ{t}{t + \delta t}{t\p}{\integ{t}{t + \delta t}{t^{\prime\prime}}{\eta(t\p)\eta\cc(t^{\prime\prime})V\adj V}}}{\Psi}.
+\end{align*}
+Averaging over the random process removes the two terms in the middle. To first order in the time step we therefore have
+\begin{align*}
+	\braket{\Psi}_{t + \delta t} &= \expval{\left(1 + -2W\delta t\right)}{\Psi} + \expval{\integ{t}{t + \delta t}{t\p}{\integ{t}{t + \delta t}{t^{\prime\prime}}{\delta(t\p - t^{\prime\prime})V\adj V}}}{\Psi} \\
+	                             &= \expval{\left(1 - 2W\delta t\right)}{\Psi} + \expval{\integ{t}{t + \delta t}{t\p}{V\adj V}}{\Psi} \\
+	                             &= \expval{\left(1 - 2W\delta t\right)}{\Psi} + \delta t\expval{V\adj V}{\Psi},
+\end{align*}
+and requiring the norm to be preserved by the time step implies
+\begin{align*}
+	W = \frac{1}{2}V\adj V.
+\end{align*}
+In summary, the Schrödinger Langevin equation is
+\begin{align*}
+	i\dv{t}\ket{\Psi} = \left(H - \frac{i}{2}V\adj V + i\eta(t)V\right)\ket{\Psi}.
+\end{align*}
+
+\paragraph{The Lindblad Equation}
+Using the Schrödinger Langevin equation we may derive a time evolution equation for the density matrix. We have the time evolution operator
+\begin{align*}
+	U(t, t_{0}) = e^{-i\left(\left(H - \frac{i}{2}V\adj V\right)(t - t_{0}) + i\integ{t_{0}}{t}{t\p}{\eta(t\p)V}\right)},
+\end{align*}
+and thus
+\begin{align*}
+	\rho(t) = U(t, t_{0})\rho(t_{0})U\adj(t, t_{0}).
+\end{align*}
+In particular, for a small time step $\delta t$ we may expand to find
+\begin{align*}
+	\rho(t + \delta t) =& \left(1 - i\left(\left(H - \frac{i}{2}V\adj V\right)\delta t + i\integ{t}{t + \delta t}{t\p}{\eta(t\p)V}\right)\right)\rho(t)\left(1 + i\left(\left(H + \frac{i}{2}V\adj V\right)\delta t - i\integ{t}{t + \delta t}{t\p}{\eta\cc(t\p)V\adj}\right)\right) \\
+	                   =& \rho(t) - i\left(\left(H - \frac{i}{2}V\adj V\right)\delta t + i\integ{t}{t + \delta t}{t\p}{\eta(t\p)V}\right)\rho(t) + i\rho(t)\left(\left(H + \frac{i}{2}V\adj V\right)\delta t - i\integ{t}{t + \delta t}{t\p}{\eta\cc(t\p)V\adj}\right) \\
+	                    &+ \integ{t}{t + \delta t}{t\p}{\integ{t}{t + \delta t}{t^{\prime\prime}}{\eta(t\p)\eta\cc(t^{\prime\prime})V\rho(t)V\adj}}.
+\end{align*}
+Averaging over the noise yields
+\begin{align*}
+	\rho(t + \delta t) &= \rho(t) - i\left(\left(H - \frac{i}{2}V\adj V\right)\delta t\right)\rho(t) + i\rho(t)\left(\left(H + \frac{i}{2}V\adj V\right)\delta t\right) + \integ{t}{t + \delta t}{t\p}{\integ{t}{t + \delta t}{t^{\prime\prime}}{\delta(t\p - t^{\prime\prime})V\rho(t)V\adj}} \\
+	                   &= \rho(t) + i\delta t\left(-\left(H - \frac{i}{2}V\adj V\right)\rho(t) + \rho(t)\left(H + \frac{i}{2}V\adj V\right)\right) + \integ{t}{t + \delta t}{t\p}{V\rho(t)V\adj} \\
+	                   &= \rho(t) + \delta t\left(-i\comm{H}{\rho(t)} - \frac{1}{2}\acomm{V\adj V}{\rho(t)} + V\rho(t)V\adj\right),
+\end{align*}
+and in the limit of infinitesimal time steps we obtain the Lindblad equation
+\begin{align*}
+	\dv{t}\rho = -i\comm{H}{\rho(t)} - \frac{1}{2}\acomm{V\adj V}{\rho(t)} + V\rho(t)V\adj.
+\end{align*}
+It may be generalized to a set of interactions with the surroundings by applying a linearity and choosing a basis for the space of operators such that
+\begin{align*}
+	\dv{t}\rho = -i\comm{H}{\rho(t)} + \sum\limits_{\alpha}V_{\alpha}\rho(t)V_{\alpha}\adj - \frac{1}{2}\acomm{V_{\alpha}\adj V_{\alpha}}{\rho(t)}.
+\end{align*}
