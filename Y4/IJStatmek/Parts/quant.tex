@@ -73,3 +73,39 @@ It may be generalized to a set of interactions with the surroundings by applying
 \begin{align*}
 	\dv{t}\rho = -i\comm{H}{\rho(t)} + \sum\limits_{\alpha}V_{\alpha}\rho(t)V_{\alpha}\adj - \frac{1}{2}\acomm{V_{\alpha}\adj V_{\alpha}}{\rho(t)}.
 \end{align*}
+
+\paragraph{Quantum Quenching}
+We will now develop a Monte Carlo method for solving the Lindblad equation by noting that the jump operators represent jumps whereas the remaining terms in the Schrödinger Langevin equation represent continuous time evolution given by the operator
+\begin{align*}
+	J = H - \frac{i}{2}\sum\limits_{\alpha}L_{\alpha}\adj L_{\alpha}.
+\end{align*}
+Time evolving for a short time and assuming no jumps to occur we find
+\begin{align*}
+	\braket{\Psi}_{t + \delta t} = \braket{\Psi}_{t} + \expval{-iJ\delta t + iJ\adj\delta t}{\Psi} = 1 + i\delta t\expval{J\adj - J}{\Psi} = 1 - \delta t\expval{\sum\limits_{\alpha}L_{\alpha}\adj L_{\alpha}}{\Psi},
+\end{align*}
+assuming the Hamiltonian to be self-adjoint and the state to initially be normalized. To interpret this, we define
+\begin{align*}
+	p_{0} = 1 - \delta t\expval{\sum\limits_{\alpha}L_{\alpha}\adj L_{\alpha}}{\Psi}
+\end{align*}
+and
+\begin{align*}
+	p_{\alpha} = \delta t\expval{L_{\alpha}\adj L_{\alpha}}{\Psi},
+\end{align*}
+which satisfy
+\begin{align*}
+	p_{0} + \sum\limits_{\alpha}p_{\alpha} = 1,
+\end{align*}
+and our interpretation is thus that $p_{0}$ is the probability of no jump happening and $p_{\alpha}$ being the probability that the jump given by $L_{\alpha}$ happened. This defines a Monte Carlo algorithm to time evolve a quantum state:
+\begin{enumerate}
+	\item Given some initial state, a system Hamiltonian and jump operators, compute $p_{0}$ and all $p_{\alpha}$.
+	\item Get a random number between $0$ and $1$.
+	\item If $r < p_{0}$, no jump has occured, meaning that one time evolves using $J$. Otherwise, a jump occured. To determine which jump occured, identify the smallest $\nu$ such that $\sum\limits_{\alpha = 1}^{\nu}p_{\alpha}  > r$ and evolve the state by simply multiplying by $L_{\nu}$.
+	\item Normalize the state.
+\end{enumerate}
+The Monte Carlo approach consists of performing a set of such evolutions from some initial state and compute the density matrix from a statistical overage over different runs.
+
+\paragraph{Quantum Quenches}
+In a quantum quench, one prepares a system in an eigenstate $\ket{\Psi_{0}}$ of some Hamiltonian $H_{0}$, and then switch the Hamiltonian to $H_{1}$ and let the system evolve. These two Hamiltonians generally do not share eigenstates, hence the system has non-trivial dynamics. This switch can be performed globally or locally.
+
+\paragraph{A Conundrum of Thermalization}
+Quantum mechanics preserves the purity of the density matrix, but the thermalized density matrix $\rho = \frac{1}{Z}e^{-\beta H}$ is always mixed. How, then, can quantum mechanics produce thermalization? It will turn out that this is the same problem as the one we faced with classical mechanics.
