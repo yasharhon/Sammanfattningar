@@ -147,7 +147,7 @@ The propagator is the amplitude of probability from travelling between two point
 
 One propagator is the Klein-Gordon propagator, defined as
 \begin{align*}
-	i\kgprop{x} = \expval{\torp{\phi(x)}{\phi(0)}}{0}.
+	i\kgprop{F}{x} = \expval{\torp{\phi(x)}{\phi(0)}}{0}.
 \end{align*}
 It can be represented as a Feynman diagram according to
 \begin{figure}[!ht]
@@ -160,11 +160,11 @@ and is interpreted as a particle being created at $0$, propagated to $x$ and ann
 
 In Fourier space we may also introduce a propagator according to
 \begin{align*}
-	i\kgprop{x} = \integ[4]{}{}{k}{\frac{1}{(2\pi)^{4}}e^{-ik^{\mu}x_{\mu}}\frac{i}{k^{2} - m^{2} - i0}},
+	i\kgprop{F}{x} = \integ[4]{}{}{k}{\frac{1}{(2\pi)^{4}}e^{-ik^{\mu}x_{\mu}}\frac{i}{k^{2} - m^{2} - i0}},
 \end{align*}
 and thus define
 \begin{align*}
-	i\kgprop{k} = \frac{i}{k^{2} - m^{2} - i0}.
+	i\kgprop{F}{k} = \frac{i}{k^{2} - m^{2} - i0}.
 \end{align*}
 Note the constant $i0 = \lim\limits_{\varepsilon = 0}\varepsilon i$. In a Feynman diagram it looks like this:
 \begin{figure}[!ht]
@@ -295,7 +295,7 @@ for $x^{0} > y^{0}$ and switching the sign of the last integral if the opposite 
 \end{align}
 for the two cases. The two corresponding functions are dubbed $\pm i\Delta_{\pm}(x - y)$, and we finally have
 \begin{align*}
-	i\kgprop{x - y} = i(\theta(x^{0} - y^{0})\Delta_{+}(x - y) - \theta(y^{0} - x^{0})\Delta_{+}(x - y)).
+	i\kgprop{F}{x - y} = i(\theta(x^{0} - y^{0})\Delta_{+}(x - y) - \theta(y^{0} - x^{0})\Delta_{+}(x - y)).
 \end{align*}
 
 \paragraph{Quantizing the Dirac Field}
@@ -515,3 +515,73 @@ The Lagrangian corresponding to this theory is
 	\lag = -\frac{1}{2}\tr(\left(\frac{1}{2}F_{\mu\nu}^{j}\sigma^{j}\right)^{2}) = -\frac{1}{4}F_{\mu\nu}^{j}F^{\mu\nu, j},
 \end{align*}
 which is gauge invariant.
+
+\paragraph{Asymptotic Fields}
+Consider some theory desccribed by
+\begin{align*}
+	\lag = \frac{1}{2}\left(\del{}{\mu}\phi\del{\mu}{}\phi - m^{2}\phi^{2}\right) + \lag_{\text{int}},
+\end{align*}
+where the interaction term contains no derivatives and we have used the so-valled bare mass $m_{0}$. The equation of motion is
+\begin{align*}
+	(\dalem{} + m_{0}^{2})\phi = j(x),
+\end{align*}
+where $j(x)$ arises from the interaction term. We want to find a so-called asymptotic field $\phi_{\text{in}}$, which is a free Klein-Gordon field with mass $m$ that transforms the same as $\phi$ under the Poincare group. The two field can be related by adding a term $(m^{2} - m_{0}^{2})\phi$ to the equation of motion, which modifies the right-hand side to $\tilde{j}(x)$. This somehow implies that $\phi_{\text{in}}$ creates one-particle states from the physical vacuum $\ket{\Omega}$. This is not the same as the vacuum $\ket{0}$ of the free theory. We then find
+\begin{align*}
+	\sqrt{Z}\phi_{\text{in}} = \phi + \integ[4]{}{}{y}{\kgprop{R}{x - y, m}\tilde{j}(y)},
+\end{align*}
+where $Z$ is a normalization constant. We want $\tilde{j}$ to satisfy the strong asymptotic condition
+\begin{align*}
+	\lim\limits_{x^{0}\to -\inf}\phi(x) = \sqrt{Z}\phi_{\text{in}}(x).
+\end{align*}
+This condition implies no scattering. We can then consider two normalizable states $\ket{\alpha}$ and $\ket{\beta}$ and introduce the functional
+\begin{align*}
+	\Phi(t, f) = i\integ[3]{}{}{\vb{x}}{f\cc(t, \vb{x})\delsw{}{0}\phi(t, \vb{x})},\ a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b,
+\end{align*}
+where $f$ is a normalizable Klein-Gordon field with mass $m$, and thus acts as a test function in the Schwarz class. We then have the weak asymptotic condition
+\begin{align*}
+	\lim\limits_{x^{0} \to -\infty}\mel{\alpha}{\Phi(t, f)}{\beta} = \sqrt{Z}\mel{\alpha}{\phi_{\text{in}}(t, f)}{\beta}.
+\end{align*}
+
+We can expand $\phi_{\text{in}}$ in normal modes as
+\begin{align*}
+	\phi_{\text{in}} = \integ[3]{}{}{\vb{p}}{\frac{1}{p_{0}}(f_{p}(x)a_{\text{in}}(\vb{p}) + f_{p}\cc(x)a_{\text{in}}\adj(\vb{p}))},\ f_{p}(x) = \frac{1}{\sqrt{2(2\pi)^{3}}}e^{-ipx},
+\end{align*}
+which can somehow be inverted to
+\begin{align*}
+	a_{\text{in}}(\vb{p}) = i\integ[3]{}{}{\vb{x}}{f_{p}(x)\delsw{}{0}\phi_{\text{in}}(x)}.
+\end{align*}
+
+\paragraph{The LSZ Formalism}
+In the LSZ formalism we write the elements of the S-matrix as vacuum expectation values of products of the field operators.
+
+To demonstrate it, consider a real scalar field $\phi$ and states $\ket{\alpha, \vb{p}_{n}, \text{in}}$ and $\ket{\beta, \text{out}}$, where $\alpha$ is a shorthand for a set of momenta $\vb{p}$ and $\beta$ similarly a shorthand for momenta $\vb{q}$. We then write
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
+	                                                          &= \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} + \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} - \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
+	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - i\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}(\phi_{\text{in}} - \phi_{\text{out}})}}{\alpha, \text{in}}.
+\end{align*}
+The hat signifies that $\vb{p}_{n}$ has been removed, which might mean annihilation depending on the structure of $\beta$. Using the asymptotic limit we have
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - \frac{i}{\sqrt{Z}}\left(\lim\limits_{x^{0} \to \infty} - \lim\limits_{x^{0} \to -\infty}\right)\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}\phi}}{\alpha, \text{in}} \\
+	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\mel{\beta, \text{out}}{\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\phi}\right)}{\alpha, \text{in}} \\
+	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\right)} \\
+	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}\del{2}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\del{2}{0}f_{p_{n}}}.
+\end{align*}
+The first term is the so-called elastic term, and is zero if $\vb{p}_{n}$ is not in $\beta$. In this case we can use the Klein-Gordon equation to find
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\del{2}{0} + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\laplacian f_{p_{n}}}.
+\end{align*}
+Two integrations by parts yield
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\dalem + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}}.
+\end{align*}
+
+What we have achieved is to remove a single momentum from the state on the right. We can perform a similar analysis to find
+\begin{align*}
+	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{y}{(\dalem_{y} + m^{2})\mel{\gamma, \text{out}}{\torp{\phi(x)}{\phi(y)}}{\alpha, \text{in}}f_{q_{n}}\cc(y)}.
+\end{align*}
+Repeating this, we finally arrive at the LSZ reduction formula for Klein-Gordon fields
+\begin{align*}
+	\braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}} = \left(\frac{i}{\sqrt{Z}}\right)^{n + m}\prod\limits_{i = 1}^{n}\prod\limits_{j = 1}^{m}\int\dd[4]{x_{i}}\dd[4]{y_{j}}&f_{p_{i}}(x_{i})f_{q_{j}}(y_{j})(\dalem{}_{x_{i}} + m^{2})(\dalem{}_{y_{j}} + m^{2}) \\
+	                                    &\times\expval{\torp{\phi(y_{1})\dots\phi(y_{m})}{\phi(x_{1})\dots\phi(x_{n})}}{\Omega}.
+\end{align*}
