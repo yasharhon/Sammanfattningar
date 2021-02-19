@@ -1,0 +1,98 @@
+\section{Perturbation Theory}
+
+\paragraph{A Field Transformation Operator}
+$\phi$ and $\phi_{\text{in}}$, together with their conjugate momenta, are complete fields that satisfy the same commutation relations. This implies that there is a unitary operator $U(t)$ such that
+\begin{align*}
+	\phi = U^{-1}\phi_{\text{in}}U,\ \pi = U^{-1}\pi_{\text{in}}U.
+\end{align*}
+To find this operator, we will use the Heisenberg equation. We note that the total Hamiltonian is a sum of the free-field Hamiltonian $H_{\text{in}}$ and the interaction Hamiltonian $H_{\text{I}}$. We have:
+\begin{align*}
+	\del{}{t}\phi_{\text{in}} = \dot{U}\phi U^{-1} + U\del{}{t}\phi U^{-1} + U\phi \dot{U}^{-1}.
+\end{align*}
+The unitarity of $U$ yields
+\begin{align*}
+	\dot{U}\phi U^{-1} + U\phi\dot{U}^{-1} = 0 \iff \dot{U}^{-1} = -U^{-1}\dot{U}U^{-1},
+\end{align*}
+hence
+\begin{align*}
+	\del{}{t}\phi_{\text{in}} &= \dot{U}\phi U^{-1} + U\del{}{t}\phi U^{-1} - U\phi U^{-1}\dot{U}U^{-1} \\
+	                          &= \dot{U}U^{-1}\phi_{\text{in}} + iU\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi} U^{-1} - \phi_{\text{in}}\dot{U}U^{-1} \\
+	                          &= \comm{\dot{U}U^{-1}}{\phi_{\text{in}}} + i\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}},
+\end{align*}
+assuming the Hamiltonian to commute with $H$. Now, the Heisenberg equation dictates that the time evolution of the asymptotic field is dictated only by the free-field Hamiltonian, hence
+\begin{align*}
+	\comm{\dot{U}U^{-1} + iH_{\text{I}}(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}} = 0.
+\end{align*}
+Because this commutator is zero, presumably for any free field, we must have
+\begin{align*}
+	\dot{U}U^{-1} + iH_{\text{I}} = -iE_{0},
+\end{align*}
+yielding the differential equation
+\begin{align*}
+	i\dot{U} = (H_{\text{I}} + E_{0})U = H_{\text{I}}\p U.
+\end{align*}
+
+We note that the above equation is very similar to that describing the time evolution operator in non-relativistic quantum mechanics. We therefore introduce the operator
+\begin{align*}
+	U(t, t\p) = U(t)U^{-1}(t\p),
+\end{align*}
+which satisfies $U(t, t\p) = U(t, \tau)U(\tau, t\p)$ and
+\begin{align*}
+	i\del{}{t}U(t, t\p) = H_{\text{I}}\p U(t, t\p).
+\end{align*}
+We must have $U(t\p, t\p) = 1$, and we thus obtain the integral equation
+\begin{align*}
+	U(t, t\p) = 1 -i\integ{t\p}{t}{t_{1}}{H_{\text{I}}\p(t_{1})U(t_{1}, t\p)}.
+\end{align*}
+This can be solved using an iteration scheme
+\begin{align*}
+	U(t, t\p) =& 1 -i\integ{t\p}{t}{t_{1}}{H_{\text{I}}\p(t_{1})} + (-i)^{2}\integ{t\p}{t}{t_{1}}{\integ{t\p}{t_{1}}{t_{2}}{H_{\text{I}}\p(t_{1})H_{\text{I}}\p(t_{2})}} \\
+	           &+ (-i)^{n}\integ{t\p}{t}{t_{1}}{\dots\integ{t\p}{t_{n - 1}}{t_{n}}{\prod\limits_{i = 1}^{n}H_{\text{I}}\p(t_{i})}} + \dots.
+\end{align*}
+Now we note that this setup is such that the different times appear in order, meaning we can use the time-ordered product. We can show that
+\begin{align*}
+	\integ{t\p}{t}{t_{1}}{\integ{t\p}{t_{1}}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}} = \frac{1}{2}\integ{t\p}{t}{t_{1}}{\integ{t\p}{t}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}},
+\end{align*}
+and we thus end up with
+\begin{align*}
+	U(t, t\p) = 1 + \sum\limits_{n = 1}^{\infty}\frac{(-i)^{n}}{n!}\integ{t\p}{t}{t_{1}}{\dots\integ{t\p}{t}{t_{n}}{\torp\prod\limits_{i = 1}^{n}H_{\text{I}}\p(t_{i})}} = \torp\exp(-i\integ{t\p}{t}{\tau}{H_{\text{I}}\p(\tau)}) = \torp\exp(-i\integ[4]{}{}{x}{H_{\text{I}}\p(\phi_{\text{in}}, \pi_{\text{in}})}),
+\end{align*}
+where we have introduced the time-ordered exponential.
+
+We now return to the issue of computing vacuum expectation values. Consider the expectation value
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) = \expval{\torp\prod\limits_{i = 1}^{n}\phi(x_{i})}{\Omega}.
+\end{align*}
+We have
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) &= \expval{\torp\prod\limits_{i = 1}^{n}U^{-1}(t_{i})\phi_{\text{in}}(x_{i})U(t_{i})}{\Omega} \\
+	                          &= \expval{\torp U^{-1}(t_{1})\phi_{\text{in}}(x_{1})U(t_{1}, t_{2})\phi_{\text{in}}(x_{2})\dots U(t_{n - 1}, t_{n})\phi_{\text{in}}(x_{n})U(t_{n})}{\Omega}.
+\end{align*}
+Introducing a $t$ that is greater than all involved times (implying that $-t$ is smaller than all times) we have
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) = \expval{\torp U^{-1}(t)U(t, t_{1})\phi_{\text{in}}(x_{1})U(t_{1}, t_{2})\phi_{\text{in}}(x_{2})\dots U(t_{n - 1}, t_{n})\phi_{\text{in}}(x_{n})U(t_{n}, -t)U(-t)}{\Omega}.
+\end{align*}
+In the limit of $t\to\infty$ we somehow find
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})U(t, -t)\right)U(-t)}{\Omega} \\
+	                          &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}\right)U(-t)}{\Omega}
+\end{align*}
+
+Next we want to show that $\ket{\Omega}$ is an eigenstate of $U(-t)$. We therefore look at the state $\mel{\alpha, \vb{p}, \text{in}}{U(-t)}{\Omega}$. It can be shown that as $t$ goes to infinity, this matrix element approaches zero, meaning
+\begin{align*}
+	\lim\limits_{t\to\infty}U(\pm t)\ket{\Omega} = \lambda_{\pm}\ket{\Omega}.
+\end{align*}
+This also means that for such states, adding the completeness relation amounts to just multiplying by $\op{\Omega}$. In the limit we thus have
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}\right)U(-t)}{\Omega} \\ 
+	                          &=\expval{U^{-1}(t)}{\Omega}\expval{\torp\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}\expval{U(-t)}{\Omega} \\
+	                          &= \lambda_{+}\cc\lambda_{-}\expval{\torp\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}.
+\end{align*}
+To prepare for the final step, we note that
+\begin{align*}
+	\lambda_{+}\cc\lambda_{-} = \expval{U(-t, t)}{\Omega}
+\end{align*}
+according to the definition, hence
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) = \frac{\expval{\torp\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}}{\expval{\torp e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}}.
+\end{align*}
