@@ -9,18 +9,22 @@
 \newcommand{\nosum}{\ensuremath{\ \text{(no sum)}}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\p}{\ensuremath{^{\prime}}}
+\newcommand{\cc}{\ensuremath{^{\star}}}
 \renewcommand{\O}[1]{\ensuremath{\text{O}(#1)}}
 \newcommand{\SU}[1]{\ensuremath{\text{SU}(#1)}}
 \newcommand{\SO}[1]{\ensuremath{\text{SO}(#1)}}
 \newcommand{\GL}[1]{\ensuremath{\text{GL}(#1)}}
-\newcommand{\cc}[1]{#1^{*}}
+
+% Quantum mechanics
+\newcommand{\adj}{\ensuremath{^{\dagger}}}
 
 % Calculus
 \newcommand{\bound}[1]{\ensuremath{\partial #1}}
-\newcommand{\del}[3]{\partial^{#1}_{#2}#3}
-\newcommand{\delp}[3][]{(\partial^{\prime})^{#1}_{#2}#3}
+\newcommand{\del}[2]{\ensuremath{\partial^{#1}_{#2}}}
+\newcommand{\delp}[2][]{\ensuremath{(\partial^{\prime})^{#1}_{#2}}}
 \newcommand{\deval}[4][]{\eval{\dv[#1]{#2}{#3}}_{#4}}
 \newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
+\newcommand{\integf}[4]{\int\limits_{#1}^{#2}#3#4}
 \newcommand{\vinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\cdot #4}
 \newcommand{\minteg}[2]{\int\limits_{#1}#2}
 
