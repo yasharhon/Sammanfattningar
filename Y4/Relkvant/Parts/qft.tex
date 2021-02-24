@@ -400,7 +400,7 @@ The Coulomb gauge requirement in momentum space is $\vb{k}\cdot\vb{A} = 0$. This
 
 We will quantize the electromagnetic field in four attempts. The first is to employ the familiar non-relativistic scheme
 \begin{align*}
-	\vb{A} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{\omega}}\sum\limits_{\eta = \pm 1}e^{i(\vb{k}\cdot\vb{x} - \omega t)}\vb*{\varepsilon}(\vb{k}, \eta)a_{\text{nr}}(\vb{k}, \eta) + e^{-i(\vb{k}\cdot\vb{x} - \omega t)}\cc{\vb*{\varepsilon}}(\vb{k}, \eta)a_{\text{nr}}\adj(\vb{k}, \eta)},
+	\vb{A} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{\omega}}\sum\limits_{\eta = \pm 1}e^{i(\vb{k}\cdot\vb{x} - \omega t)}\vb*{\varepsilon}(\vb{k}, \eta)a_{\text{nr}}(\vb{k}, \eta) + e^{-i(\vb{k}\cdot\vb{x} - \omega t)}\vb*{\varepsilon}\cc(\vb{k}, \eta)a_{\text{nr}}\adj(\vb{k}, \eta)},
 \end{align*}
 which guarantees that $\vb{A}$ is Hermitian. The classical interpretation of this is that the field is composed of harmonic oscillators, with commutation relations
 \begin{align*}
@@ -409,7 +409,7 @@ which guarantees that $\vb{A}$ is Hermitian. The classical interpretation of thi
 
 In our next attempt we introduce $a = \sqrt{k^{0}}a_{\text{nr}}$. This yields
 \begin{align*}
-	\vb{A} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k_{0}}\sum\limits_{\eta = \pm 1}e^{-ikx}\vb*{\varepsilon}(\vb{k}, \eta)a(\vb{k}, \eta) + e^{ikx}\cc{\vb*{\varepsilon}}(\vb{k}, \eta)a\adj(\vb{k}, \eta)},
+	\vb{A} = \frac{1}{\sqrt{2(2\pi)^{3}}}\integ[3]{}{}{\vb{k}}{\frac{1}{k_{0}}\sum\limits_{\eta = \pm 1}e^{-ikx}\vb*{\varepsilon}(\vb{k}, \eta)a(\vb{k}, \eta) + e^{ikx}\vb*{\varepsilon}\cc(\vb{k}, \eta)a\adj(\vb{k}, \eta)},
 \end{align*}
 as well as the commutation relation
 \begin{align*}

@@ -96,3 +96,59 @@ according to the definition, hence
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) = \frac{\expval{\torp\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}}{\expval{\torp e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}}.
 \end{align*}
+
+\paragraph{The Different Vacuua}
+We have thus far been using the physical and free vacuua without being clear on what they are. The physical vacuum $\ket{\Omega}$ is the ground state of the total Hamiltonian $H$, while the free vacuum $\ket{0}$ is the ground state of the free Hamiltonian $H_{\text{in}}$. These two are not orthogonal in the case of small perturbations. Expanding in eigenstates of the total Hamiltonian we have
+\begin{align*}
+	e^{-iHt}\ket{0} = e^{-iE_{n}t}\ket{\Omega}\braket{\Omega}{0} + \sum\limits_{n > 0}e^{-iE_{n}t}\ket{n}\braket{n}{0}.
+\end{align*}
+Because the energies are ordered, we somehow find that all the exponentials corresponding to excited states approach zero faster than the others, meaning
+\begin{align*}
+	\ket{\Omega} = \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}t}e^{-iHt}\ket{0}.
+\end{align*}
+In this limit we may add a small time shift without changing the result, yielding
+\begin{align*}
+	\ket{\Omega} &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t + t_{0})}e^{-iH(t + t_{0})}\ket{0} \\
+	             &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t - (-t_{0}))}e^{-iH(t - (-t_{0}))}e^{-iH_{\text{in}}(t - (-t_{0}))}\ket{0} \\
+	             &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t - (-t_{0}))}U(t_{0}, -t)\ket{0}.
+\end{align*}
+Returning to the issue of the time-ordered product we have
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{U(t, 0)U^{-1}(t)\torp(\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}))U(t, -t)U(-t)U(0, t)}{0} \\
+	                          &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{\torp \phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}.
+\end{align*}
+Requiring the physical vacuum to be normalized we find
+\begin{align*}
+	\lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{U(t, -t)}{0} = 1,
+\end{align*}
+and thus
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) = \lim\limits_{t\to\infty}\frac{\expval{\torp \phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}}{\expval{U(t, -t)}{0}}.
+\end{align*}
+
+\paragraph{Wick's Theorem}
+To compute expectation values of the form $\expval{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}$, we divide the fields into two terms $\phi_{\text{in}}(x) = \phi_{\text{in}, +}(x) + \phi_{\text{in}, }(x_{1})$ where the two terms contain all positive and negative frequencies respectively, i.e. all annihilation and creation operators. Assuming $x_{1}^{0} > x_{2}^{0}$ we have:
+\begin{align*}
+	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =& \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, -}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, -}(x_{2}).
+\end{align*}
+The second term is not normal-ordered, complicating things. We remedy this by writing
+\begin{align*}
+	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =& \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2}) + \comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{2})} + \phi_{\text{in}, -}(x_{2})\phi_{\text{in}, +}(x_{1}) \\
+	                                                     &+ \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, -}(x_{2}).
+\end{align*}
+To proceed we define the contraction
+\begin{align*}
+	\contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =
+	\begin{cases}
+		\comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{2})},\ x_{1}^{0} > x_{2}^{0} \\
+		\comm{\phi_{\text{in}, +}(x_{2})}{\phi_{\text{in}, -}(x_{1})},\ x_{2}^{0} > x_{1}^{0}.
+	\end{cases}
+\end{align*}
+Wick's theorem states that
+\begin{align*}
+	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) = \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})} + \contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}),
+\end{align*}
+or in general
+\begin{align*}
+	\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}) = \nop{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})} + \text{ all possible contractions}.
+\end{align*}
