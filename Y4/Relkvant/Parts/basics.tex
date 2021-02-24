@@ -274,7 +274,7 @@ The matrix quantity on the right is given by
 \end{align*}
 implying
 \begin{align*}
-	u_{A} = \frac{\vb{p}^{1}}{E^{2} - m^{2}}u_{A},
+	u_{A} = \frac{\vb{p}^{2}}{E^{2} - m^{2}}u_{A},
 \end{align*}
 which in combination with the previously derived energy-momentum relation implies that we may freely choose a basis for the top half. As the same holds for the lower parts, we will for each $p$ find a set of solutions by choosing one half of the spinor and computing the other from that. We have
 \begin{align*}
@@ -602,3 +602,82 @@ Expanding this we find
 	\frac{E}{m} \approx 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{\left(j + \frac{1}{2}\right)^{2}} + \dots = 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{n^{2}}\left(1 + \frac{Z^{2}\alpha^{2}}{n^{2}}\left(\frac{n}{j + \frac{1}{2}} - \frac{3}{4}\right)\right),
 \end{align*}
 which is similar to the result found with perturbation theory of the non-relativistic problem, except for the angular momentum-dependence of the perturbation.
+
+\paragraph{Chirality}
+For a massless particle we have
+\begin{align*}
+	i\fsl{\del{}{}}\Psi = 0.
+\end{align*}
+Choosing the representation
+\begin{align*}
+	\gamma^{0} = \mqty[
+		0 & 1 \\
+		1 & 0
+	], \gamma^{i} = \mqty[
+		0           & \sigma^{i} \\
+		-\sigma^{i} & 0
+	],\gamma^{5} = \mqty[
+		-1 & 0 \\
+		0  & 1
+	],
+\end{align*}
+we find the Dirac equation to be block diagonal. The equations defining the two halves of the state are
+\begin{align*}
+	i\del{}{0}\Psi_{2} + i\vb*{\sigma}\cdot\grad\Psi_{2} = 0,\ i\del{}{0}\Psi_{1} - i\vb*{\sigma}\cdot\grad\Psi_{1} = 0,
+\end{align*}
+or alternatively, using the correspondence principle and introducing $\sigma^{\mu} = (1, \vb*{\sigma})$ and $\tilde{\sigma}^{\mu} = (1, -\vb*{\sigma})$,
+\begin{align*}
+	\sigma^{\mu}p_{\mu}\Psi_{2} = 0,\ \tilde{\sigma}^{\mu}p_{\mu}\Psi_{1} = 0.
+\end{align*}
+The spinors constructed with only one of these are eigenstates of $\gamma^{5}$, $\Psi_{1}$ having eigenvalue $-1$ and $\Psi_{2}$ having eigenvalue $1$. These eigenvalues are called the chirality of the state. The chosen representation is called the chiral representation because in this representation the Dirac equation decouples with respect to chiral eigenstates. Introducing the total state
+\begin{align*}
+	\Psi = \mqty[
+		\Psi_{1} \\
+		\Psi_{2}
+	]
+\end{align*}
+and the chiral states
+\begin{align*}
+	\Psi_{+} = \mqty[
+		0 \\
+		\Psi_{2}
+	],\ \Psi_{-} = \mqty[
+		\Psi_{1} \\
+		0
+	]
+\end{align*}
+we find
+\begin{align*}
+	\Psi_{\pm} = \frac{1}{2}(1 \pm \gamma^{5})\Psi,
+\end{align*}
+which defines the chiral projection operators
+\begin{align*}
+	P_{\pm} =  \frac{1}{2}(1 \pm \gamma^{5}).
+\end{align*}
+
+Inserting a plane-wave solution $u_{p}e^{-ipx}$ we find for the negative-chirality part that
+\begin{align*}
+	p^{0}u_{p} = -\vb*{\sigma}\cdot\vb{p}u_{p},
+\end{align*}
+which squares to imply
+\begin{align*}
+	(p^{0})^{2} - \vb{p}^{2} = 0,
+\end{align*}
+with solutions $p^{0} = \pm\abs{\vb{p}}$. Similarly we find
+\begin{align*}
+	p^{0}u_{p} = -\vb*{\sigma}\cdot\vb{p}u_{p}
+\end{align*}
+for the positive-chirality state, which has the same solution. The case $p^{0} = \abs{\vb{p}}$ is called a Weyl state, whereas the other case is called an anti-Weyl state.
+
+What does chirality mean? It can be shown that Weyl states have parallel 3-momentum and spin, whereas for anti-Weyl states the two are anti-parallel.
+
+\paragraph{Helicity (and Chirality)}
+Helicity is defined as the scalar product between the 3-momentum and the spin. This definition holds for both massive and massless particles. States with parallel spin and 3-momentum are said to have right helicity, and the opposite is termed left helicity.
+
+For massless particles we now redefine chirality in terms of left-chiral and right-chiral objects. Massless particles distinguish themselves in that the helicity is preserved by Lorentz transformations due to the scalar product being a Lorentz invariant.
+
+For a massless particle, multiplication of a solution to the Dirac equation by $\gamma^{5}$ produces a new solution. Using the notation $P_{\text{L}} = P_{-},\ P_{\text{R}} = P_{+}$ we have
+\begin{align*}
+	\gamma^{5}P_{\text{L}}\Psi = -P_{\text{L}}\Psi,\ \gamma^{5}P_{\text{R}}\Psi = -P_{\text{R}}\Psi,
+\end{align*}
+which means that chiral states transform among themselves under Lorentz transformations.
