@@ -608,7 +608,7 @@ For a massless particle we have
 \begin{align*}
 	i\fsl{\del{}{}}\Psi = 0.
 \end{align*}
-Choosing the representation
+Choosing the so-called chiral representation
 \begin{align*}
 	\gamma^{0} = \mqty[
 		0 & 1 \\
@@ -621,9 +621,9 @@ Choosing the representation
 		0  & 1
 	],
 \end{align*}
-we find the Dirac equation to be block diagonal. The equations defining the two halves of the state are
+we find the Dirac equation to be block off-diagonal, meaning that the upper and lower halves of the spinor are decoupled. The Dirac equation for the two halves becomes
 \begin{align*}
-	i\del{}{0}\Psi_{2} + i\vb*{\sigma}\cdot\grad\Psi_{2} = 0,\ i\del{}{0}\Psi_{1} - i\vb*{\sigma}\cdot\grad\Psi_{1} = 0,
+	i\del{}{0}\Psi_{2} - i\vb*{\sigma}\cdot\grad\Psi_{2} = 0,\ i\del{}{0}\Psi_{1} + i\vb*{\sigma}\cdot\grad\Psi_{1} = 0,
 \end{align*}
 or alternatively, using the correspondence principle and introducing $\sigma^{\mu} = (1, \vb*{\sigma})$ and $\tilde{\sigma}^{\mu} = (1, -\vb*{\sigma})$,
 \begin{align*}
@@ -665,19 +665,27 @@ which squares to imply
 \end{align*}
 with solutions $p^{0} = \pm\abs{\vb{p}}$. Similarly we find
 \begin{align*}
-	p^{0}u_{p} = -\vb*{\sigma}\cdot\vb{p}u_{p}
+	p^{0}u_{p} = \vb*{\sigma}\cdot\vb{p}u_{p}
 \end{align*}
 for the positive-chirality state, which has the same solution. The case $p^{0} = \abs{\vb{p}}$ is called a Weyl state, whereas the other case is called an anti-Weyl state.
 
-What does chirality mean? It can be shown that Weyl states have parallel 3-momentum and spin, whereas for anti-Weyl states the two are anti-parallel.
-
 \paragraph{Helicity (and Chirality)}
-Helicity is defined as the scalar product between the 3-momentum and the spin. This definition holds for both massive and massless particles. States with parallel spin and 3-momentum are said to have right helicity, and the opposite is termed left helicity.
-
-For massless particles we now redefine chirality in terms of left-chiral and right-chiral objects. Massless particles distinguish themselves in that the helicity is preserved by Lorentz transformations due to the scalar product being a Lorentz invariant.
-
-For a massless particle, multiplication of a solution to the Dirac equation by $\gamma^{5}$ produces a new solution. Using the notation $P_{\text{L}} = P_{-},\ P_{\text{R}} = P_{+}$ we have
+Helicity is defined as the scalar product between the 3-momentum and the spin. This definition holds for both massive and massless particles. States with parallel spin and 3-momentum are said to have right helicity, and the opposite is termed left helicity. Repeating the derivation we did for massless particles, we find
 \begin{align*}
-	\gamma^{5}P_{\text{L}}\Psi = -P_{\text{L}}\Psi,\ \gamma^{5}P_{\text{R}}\Psi = -P_{\text{R}}\Psi,
+	\sigma^{\mu}p_{\mu}\Psi_{\text{R}} = m\Psi_{\text{L}},\ \tilde{\sigma}^{\mu}p_{\mu}\Psi_{1} = m\Psi_{\text{R}},
 \end{align*}
-which means that chiral states transform among themselves under Lorentz transformations.
+where we now denote the lower and upper halves of the spinor with what will manifest as the helicity.
+
+For massless particles we now reconsider chirality in terms of helicity. For such particles, helicity manifests as left-chiral and right-chiral objects. Massless particles distinguish themselves in that the Dirac equation completely decouples the left- and right chiral parts, hence helicity is preserved by Lorentz transformations. Massive particles, by contrast, oscillate between the two, as indicated by the form of the Dirac equation.
+
+We now consider massless particle solutions, which satisfy $p^{0} = \abs{\vb{p}}$. We find
+\begin{align*}
+	\frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}\Psi_{\text{R}} = \Psi_{\text{R}},\ \frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}\Psi_{\text{L}} = -\Psi_{\text{L}}.
+\end{align*}
+These states are thus eigenstates of the helicity operator
+\begin{align*}
+	h = \frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}.
+\end{align*}
+For antiparticles we instead have $p^{0} = -\abs{\vb{p}}$, hence right-handed antiparticles have negative helicity and vice versa.
+
+What does helicity mean? It can be shown that the helicity indicates whether the spin and momentum are parallel or anti-parallel.

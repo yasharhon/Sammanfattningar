@@ -59,21 +59,79 @@ which are indeed the continuum limits of the discretized solutions.
 
 The solutions of the equations of motion are so-called normal modes. They are denoted as having positive or negative frequency (or equivalently, energy). The solutions are
 \begin{align*}
-	\phi_{n} = \frac{1}{\sqrt{l}}e^{i(k_{n}x - \omega_{n}t)},\ \cc{\phi_{n}} = \frac{1}{\sqrt{l}}e^{-i(k_{n}x - \omega_{n}t)},\ k_{n} = \frac{2\pi n}{l},\ \omega_{n}^{2} = v^{2}k_{n}^{2}.
+	\phi_{n} = \frac{1}{\sqrt{l}}e^{i(k_{n}x - \omega_{n}t)},\ \phi_{n}\cc = \frac{1}{\sqrt{l}}e^{-i(k_{n}x - \omega_{n}t)},\ k_{n} = \frac{2\pi n}{l},\ \omega_{n}^{2} = v^{2}k_{n}^{2}.
 \end{align*}
 Their normalization is
 \begin{align*}
-	\integ{0}{l}{x}{\cc{\phi_{n}}\phi_m} = \delta_{nm}.
+	\integ{0}{l}{x}{\phi_{n}\cc\phi_m} = \delta_{nm}.
 \end{align*}
 A general solution can then be written as
 \begin{align*}
-	\phi = \sum\limits_{n = -\infty}^{\infty}\frac{c_{n}}{\sqrt{l}}\left(a_{n}(t)e^{ik_{n}x} + \cc{a_{n}}(t)e^{-ik_{n}x}\right),\ a_{n}(t) = a_{n}(0)e^{-i\omega_{n}t}.
+	\phi = \sum\limits_{n = -\infty}^{\infty}\frac{c_{n}}{\sqrt{l}}\left(a_{n}(t)e^{ik_{n}x} + a_{n}\cc(t)e^{-ik_{n}x}\right),\ a_{n}(t) = a_{n}(0)e^{-i\omega_{n}t}.
 \end{align*}
-The expansion coefficients thus satisfy
+The two terms correspond to positive and negative frequencies. The expansion coefficients thus satisfy
 \begin{align*}
 	\dv[2]{a_{n}}{t} + \omega_{n}^{2}a_{n} = 0,
 \end{align*}
 and we treat them as simple harmonic oscillators.
+
+This treatment is a bit unclear, so let us one-up it by computing the Lagrangian using the above expansion. We have
+\begin{align*}
+	L &= \integ{0}{l}{x}{\frac{1}{2}\left(\frac{1}{v^{2}}\left(\sum\limits_{n = -\infty}^{\infty}\frac{c_{n}}{\sqrt{l}}\left(\dot{a}_{n}(t)e^{ik_{n}x} + \dot{a}_{n}\cc(t)e^{-ik_{n}x}\right)\right)^{2} - \left(\sum\limits_{n = -\infty}^{\infty}\frac{k_{n}c_{n}}{\sqrt{l}}\left(a_{n}(t)e^{ik_{n}x} - a_{n}\cc(t)e^{-ik_{n}x}\right)\right)^{2}\right)} \\
+	 =& \frac{1}{2l}\integ{0}{l}{x}{\frac{1}{v^{2}}\sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}c_{n}c_{m}\left(\dot{a}_{n}(t)e^{ik_{n}x} + \dot{a}_{n}\cc(t)e^{-ik_{n}x}\right)\left(\dot{a}_{m}(t)e^{ik_{m}x} + \dot{a}_{m}\cc(t)e^{-ik_{,}x}\right) \\
+	  &- \sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}k_{n}k_{m}c_{n}c_{m}\left(a_{n}(t)e^{ik_{n}x} - a_{n}\cc(t)e^{-ik_{n}x}\right)\left(a_{m}(t)e^{ik_{m}x} - a_{m}\cc(t)e^{-ik_{m}x}\right)} \\
+     =& \frac{1}{2l}\integ{0}{l}{x}{\sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}\frac{c_{n}c_{m}}{v^{2}}\left(\dot{a}_{n}\dot{a}_{m}e^{i(k_{n} + k_{m})x} + \dot{a}_{n}\dot{a}_{m}\cc e^{i(k_{n} - k_{m})x} + \dot{a}_{n}\cc\dot{a}_{m}e^{-i(k_{m} - k_{n})x} + \dot{a}_{n}\cc\dot{a}_{m}\cc e^{-i(k_{m} + k_{n})x}\right) \\
+      &- k_{n}k_{m}c_{n}c_{m}\left(a_{n}a_{m}e^{i(k_{n} + k_{m})x} - a_{n}a_{m}\cc e^{i(k_{n} - k_{m})x} - a_{m}a_{n}\cc e^{i(k_{m} - k_{n})x} + a_{n}\cc a_{m}\cc e^{-i(k_{n} + k_{m})x}\right)} \\
+     =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}\frac{c_{n}c_{m}}{v^{2}}\left(\dot{a}_{n}\dot{a}_{m}\delta_{n, -m} + \dot{a}_{n}\dot{a}_{m}\cc\delta_{n, m} + \dot{a}_{n}\cc\dot{a}_{m}\delta_{n, m} + \dot{a}_{n}\cc\dot{a}_{m}\cc\delta_{n, -m}\right) \\
+      &- k_{n}k_{m}c_{n}c_{m}\left(a_{n}a_{m}\delta_{n, -m} - a_{n}a_{m}\cc\delta_{n, m} - a_{m}a_{n}\cc\delta_{n, m} + a_{n}\cc a_{m}\cc\delta_{n, -m}\right) \\
+     =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\frac{1}{v^{2}}\left(c_{n}c_{-n}\dot{a}_{n}\dot{a}_{-n} + 2c_{n}^{2}\dot{a}_{n}\dot{a}_{n}\cc + c_{n}c_{-n}\dot{a}_{n}\cc\dot{a}_{-n}\cc\right) - \left(k_{n}k_{-n}c_{n}c_{-n}a_{n}a_{-n} - 2k_{n}^{2}c_{n}^{2}a_{n}a_{n}\cc + k_{n}k_{-n}c_{n}c_{-n}a_{n}\cc a_{-n}\cc\right).
+\end{align*}
+Restricting ourselves to real solutions we find
+\begin{align*}
+	a_{-n} = a_{n}\cc,\ c_{-n} = c_{n},
+\end{align*}
+and the Lagrangian may be written as
+\begin{align*}
+	L =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\frac{4c_{n}^{2}}{v^{2}}\dot{a}_{n}\dot{a}_{-n} - 4k_{n}^{2}c_{n}^{2}a_{n}a_{-n} = 4\sum\limits_{n = 0}^{\infty}\frac{c_{n}^{2}}{v^{2}}\dot{a}_{n}\dot{a}_{-n} - k_{n}^{2}c_{n}^{2}a_{n}a_{-n},
+\end{align*}
+which is a Lagrangian in a set of discrete degrees of freedom. The corresponding canonical momenta are
+\begin{align*}
+	p_{\pm n} = \frac{4c_{n}^{2}}{v^{2}}\dot{a}_{\mp n},
+\end{align*}
+and the Hamiltonian is
+\begin{align*}
+	H = \sum\limits_{n = 0}^{\infty}\frac{4c_{n}^{2}}{v^{2}}\dot{a}_{\mp n} - 4\sum\limits_{n = 0}^{\infty}\frac{c_{n}^{2}}{v^{2}}\dot{a}_{n}\dot{a}_{-n} - k_{n}^{2}c_{n}^{2}a_{n}a_{-n} = 4\sum\limits_{n = 0}^{\infty}k_{n}^{2}c_{n}^{2}a_{n}a_{-n} = 4\sum\limits_{n = 0}^{\infty}k_{n}^{2}c_{n}^{2}a_{n}a_{n}\cc,
+\end{align*}
+where we switched to the notation of complex conjugates to emphasize the distinctness of the degrees of freedom. We move the dimensionanlity away from the degrees of freedom by choosing
+\begin{align*}
+	c_{n}^{2} = \frac{v}{2k_{n}},
+\end{align*}
+yielding
+\begin{align*}
+	H = \sum\limits_{n = -\infty}^{\infty}vk_{n}a_{n}\cc a_{n} = \sum\limits_{n = -\infty}^{\infty}\omega_{n}a_{n}\cc a_{n}.
+\end{align*}
+Introducing new canonical coordinates and momenta
+\begin{align*}
+	q_{n} = \frac{1}{\sqrt{2\omega_{n}}}(a_{n} + a_{n}\cc),\ p_{n} = i\sqrt{\frac{\omega_{n}}{2}}(a_{n} - a_{n}\cc),
+\end{align*}
+which invert to
+\begin{align*}
+	a_{n} = \frac{1}{\sqrt{2\omega_{n}}}(\omega_{n}q_{n} + ip_{n}),\ a_{n}\cc = \frac{1}{\sqrt{2\omega_{n}}}(\omega_{n}q_{n} - ip_{n}),
+\end{align*}
+we find
+\begin{align*}
+	H =& \sum\limits_{n = 0}^{\infty}\frac{1}{2}(\omega_{n}q_{n} + ip_{n})(\omega_{n}q_{n} - ip_{n}) \\ 
+	  =& \frac{1}{2}\sum\limits_{n = 0}^{\infty}p_{n}^{2} + \omega_{n}^{2}q_{n}^{2},
+\end{align*}
+which is that of a system of harmonic oscillators. The coordinates and momenta satisfy canonical commutation relations, which means
+\begin{align*}
+	\pb{a_{n}}{a_{m}}      =& \frac{1}{2\sqrt{\omega_{n}\omega_{m}}}\left(\omega_{n}\omega_{m}\pb{q_{n}}{q_{m}} + i(\omega_{n}\pb{q_{n}}{p_{m}} + \omega_{m}\pb{p_{n}}{q_{m}}) - \pb{p_{n}}{p_{m}}\right)  \\
+	                        =& \frac{i}{2\sqrt{\omega_{n}\omega_{m}}}(\omega_{n}\delta_{nm} -  \omega_{m}\delta_{nm}) = 0, \\
+	\pb{a_{n}}{a_{m}\cc}    =& \frac{1}{2\sqrt{\omega_{n}\omega_{m}}}\left(\omega_{n}\omega_{m}\pb{q_{n}}{q_{m}} + i(-\omega_{n}\pb{q_{n}}{p_{m}} + \omega_{m}\pb{p_{n}}{q_{m}}) + \pb{p_{n}}{p_{m}}\right) \\
+	                        =& \frac{i}{2\sqrt{\omega_{n}\omega_{m}}}\left(-\omega_{n}\delta_{nm} - \omega_{m}\delta_{nm}\right) = -i\delta_{nm}, \\
+	\pb{a_{n}\cc}{a_{m}\cc} =& \frac{1}{2\sqrt{\omega_{n}\omega_{m}}}\left(\omega_{n}\omega_{m}\pb{q_{n}}{q_{m}} - i(\omega_{n}\pb{q_{n}}{p_{m}} + \omega_{m}\pb{p_{n}}{q_{m}}) - \pb{p_{n}}{p_{m}}\right) \\
+	                        =& -\frac{i}{2\sqrt{\omega_{n}\omega_{m}}}\left(\omega_{n}\delta_{nm} - \omega_{m}\delta_{nm}\right) = 0,
+\end{align*}
 
 We also make a brief note of the Hamiltonian. As we know for the discrete system we have $\ham = T + V$, so we would find the Hamiltonian density to be
 \begin{align*}
@@ -86,23 +144,6 @@ This doesn't really work, however. To do this properly, we will need the canonic
 The Hamiltonian density is thus
 \begin{align*}
 	\ham = \frac{1}{\mu}\pi^{2} - \frac{1}{2\mu}\pi^{2} + \frac{1}{2}\tau(\del{}{x}{\phi})^{2} = \frac{1}{2\mu}\pi^{2} + \frac{1}{2}\tau(\del{}{x}{\phi})^{2}.
-\end{align*}
-
-When quantizing the non-relativistic strings, we will only quantize the simple harmonic oscillators. It can be shown that
-\begin{align*}
-	\ham = \sum\limits_{n = -\infty}^{\infty}c_{n}^{2}\frac{2\omega_{n}^{2}}{v^{2}}\cc{a}_{n}a_{n},
-\end{align*}
-which with an appropriate choice of $c_{n}$ becomes
-\begin{align*}
-	\ham = \sum\limits_{n = -\infty}^{\infty}\omega_{n}\cc{a}_{n}a_{n}.
-\end{align*}
-Alternatively, by introducing generalized coordinates and momenta
-\begin{align*}
-	q_{m} = \frac{1}{\sqrt{2\omega_{n}}}(a_{n} + \cc{a}_{n}),\ p_{m} = -i\sqrt{\frac{\omega_{n}}{2}}(a_{n} - \cc{a}_{n})
-\end{align*}
-the Hamiltonian becomes
-\begin{align*}
-	\ham = \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}(p_{n}^{2} + \omega_{n}^{2}q_{n}^{2}).
 \end{align*}
 
 \paragraph{Quantizing the Non-Relativistic String}
@@ -515,73 +556,3 @@ The Lagrangian corresponding to this theory is
 	\lag = -\frac{1}{2}\tr(\left(\frac{1}{2}F_{\mu\nu}^{j}\sigma^{j}\right)^{2}) = -\frac{1}{4}F_{\mu\nu}^{j}F^{\mu\nu, j},
 \end{align*}
 which is gauge invariant.
-
-\paragraph{Asymptotic Fields}
-Consider some theory desccribed by
-\begin{align*}
-	\lag = \frac{1}{2}\left(\del{}{\mu}\phi\del{\mu}{}\phi - m^{2}\phi^{2}\right) + \lag_{\text{int}},
-\end{align*}
-where the interaction term contains no derivatives and we have used the so-valled bare mass $m_{0}$. The equation of motion is
-\begin{align*}
-	(\dalem{} + m_{0}^{2})\phi = j(x),
-\end{align*}
-where $j(x)$ arises from the interaction term. We want to find a so-called asymptotic field $\phi_{\text{in}}$, which is a free Klein-Gordon field with mass $m$ that transforms the same as $\phi$ under the Poincare group. The two field can be related by adding a term $(m^{2} - m_{0}^{2})\phi$ to the equation of motion, which modifies the right-hand side to $\tilde{j}(x)$. This somehow implies that $\phi_{\text{in}}$ creates one-particle states from the physical vacuum $\ket{\Omega}$. This is not the same as the vacuum $\ket{0}$ of the free theory. We then find
-\begin{align*}
-	\sqrt{Z}\phi_{\text{in}} = \phi + \integ[4]{}{}{y}{\kgprop{R}{x - y, m}\tilde{j}(y)},
-\end{align*}
-where $Z$ is a normalization constant. We want $\tilde{j}$ to satisfy the strong asymptotic condition
-\begin{align*}
-	\lim\limits_{x^{0}\to -\inf}\phi(x) = \sqrt{Z}\phi_{\text{in}}(x).
-\end{align*}
-This condition implies no scattering. We can then consider two normalizable states $\ket{\alpha}$ and $\ket{\beta}$ and introduce the functional
-\begin{align*}
-	\Phi(t, f) = i\integ[3]{}{}{\vb{x}}{f\cc(t, \vb{x})\delsw{}{0}\phi(t, \vb{x})},\ a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b,
-\end{align*}
-where $f$ is a normalizable Klein-Gordon field with mass $m$, and thus acts as a test function in the Schwarz class. We then have the weak asymptotic condition
-\begin{align*}
-	\lim\limits_{x^{0} \to -\infty}\mel{\alpha}{\Phi(t, f)}{\beta} = \sqrt{Z}\mel{\alpha}{\phi_{\text{in}}(t, f)}{\beta}.
-\end{align*}
-
-We can expand $\phi_{\text{in}}$ in normal modes as
-\begin{align*}
-	\phi_{\text{in}} = \integ[3]{}{}{\vb{p}}{\frac{1}{p_{0}}(f_{p}(x)a_{\text{in}}(\vb{p}) + f_{p}\cc(x)a_{\text{in}}\adj(\vb{p}))},\ f_{p}(x) = \frac{1}{\sqrt{2(2\pi)^{3}}}e^{-ipx},
-\end{align*}
-which can somehow be inverted to
-\begin{align*}
-	a_{\text{in}}(\vb{p}) = i\integ[3]{}{}{\vb{x}}{f_{p}(x)\delsw{}{0}\phi_{\text{in}}(x)}.
-\end{align*}
-
-\paragraph{The LSZ Formalism}
-In the LSZ formalism we write the elements of the S-matrix as vacuum expectation values of products of the field operators.
-
-To demonstrate it, consider a real scalar field $\phi$ and states $\ket{\alpha, \vb{p}_{n}, \text{in}}$ and $\ket{\beta, \text{out}}$, where $\alpha$ is a shorthand for a set of momenta $\vb{p}$ and $\beta$ similarly a shorthand for momenta $\vb{q}$. We then write
-\begin{align*}
-	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
-	                                                          &= \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} + \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} - \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
-	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - i\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}(\phi_{\text{in}} - \phi_{\text{out}})}}{\alpha, \text{in}}.
-\end{align*}
-The hat signifies that $\vb{p}_{n}$ has been removed, which might mean annihilation depending on the structure of $\beta$. Using the asymptotic limit we have
-\begin{align*}
-	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - \frac{i}{\sqrt{Z}}\left(\lim\limits_{x^{0} \to \infty} - \lim\limits_{x^{0} \to -\infty}\right)\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}\phi}}{\alpha, \text{in}} \\
-	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\mel{\beta, \text{out}}{\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\phi}\right)}{\alpha, \text{in}} \\
-	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\right)} \\
-	                                                          &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}\del{2}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\del{2}{0}f_{p_{n}}}.
-\end{align*}
-The first term is the so-called elastic term, and is zero if $\vb{p}_{n}$ is not in $\beta$. In this case we can use the Klein-Gordon equation to find
-\begin{align*}
-	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\del{2}{0} + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\laplacian f_{p_{n}}}.
-\end{align*}
-Two integrations by parts yield
-\begin{align*}
-	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\dalem + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}}.
-\end{align*}
-
-What we have achieved is to remove a single momentum from the state on the right. We can perform a similar analysis to find
-\begin{align*}
-	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{y}{(\dalem_{y} + m^{2})\mel{\gamma, \text{out}}{\torp{\phi(x)}{\phi(y)}}{\alpha, \text{in}}f_{q_{n}}\cc(y)}.
-\end{align*}
-Repeating this, we finally arrive at the LSZ reduction formula for Klein-Gordon fields
-\begin{align*}
-	\braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}} = \left(\frac{i}{\sqrt{Z}}\right)^{n + m}\prod\limits_{i = 1}^{n}\prod\limits_{j = 1}^{m}\int\dd[4]{x_{i}}\dd[4]{y_{j}}&f_{p_{i}}(x_{i})f_{q_{j}}(y_{j})(\dalem{}_{x_{i}} + m^{2})(\dalem{}_{y_{j}} + m^{2}) \\
-	                                    &\times\expval{\torp{\phi(y_{1})\dots\phi(y_{m})}{\phi(x_{1})\dots\phi(x_{n})}}{\Omega}.
-\end{align*}

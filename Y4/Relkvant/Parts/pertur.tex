@@ -1,5 +1,87 @@
 \section{Perturbation Theory}
 
+\paragraph{The $S$-Matrix}
+Consider a set of particles moving from infinity to some point, where they all interact before being scattered and moving back to infinity. Denoting incoming states at infinity with in and outgoing states with out, we are interested in probability amplitudes of the form
+\begin{align*}
+	A = \braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}}.
+\end{align*}
+These are states of the real-world Hamiltonian, but the states at infinity should be similar to those of an interaction-free theory. Denoting states of the corresponding interaction-free theory without the text, we define the operator $S$, or the $S$-matrix, as
+\begin{align*}
+	\braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}} = \mel{\vb{q}_{1}, \dots, \vb{q}_{m}}{S}{\vb{p}_{1}, \dots, \vb{p}_{n}}.
+\end{align*}
+
+\paragraph{Asymptotic Fields}
+Consider some theory described by
+\begin{align*}
+	\lag = \frac{1}{2}\left(\del{}{\mu}\phi\del{\mu}{}\phi - m^{2}\phi^{2}\right) + \lag_{\text{int}},
+\end{align*}
+where the interaction term contains no derivatives and we have used the so-called bare mass $m_{0}$. The equation of motion is
+\begin{align*}
+	(\dalem{} + m_{0}^{2})\phi = j(x),
+\end{align*}
+where $j(x)$ arises from the interaction term. We want to find a so-called asymptotic field $\phi_{\text{in}}$, which is a free Klein-Gordon field with mass $m$, that transforms the same as $\phi$ under the Poincare group. This field is then to be associated with the vacuum $\ket{0}$ of the free theory, which is distinct from the physical vacuum $\ket{\Omega}$ of the interacting theory.
+
+The two fields can be related by adding a term $(m^{2} - m_{0}^{2})\phi$ to the equation of motion, which modifies the right-hand side to $\tilde{j}(x)$. We then find
+\begin{align*}
+	\sqrt{Z}\phi_{\text{in}} = \phi + \integ[4]{}{}{y}{\kgprop{R}{x - y, m}\tilde{j}(y)},
+\end{align*}
+where $Z$ is a normalization constant. We want $\tilde{j}$ to satisfy the strong asymptotic condition
+\begin{align*}
+	\lim\limits_{x^{0}\to -\inf}\phi(x) = \sqrt{Z}\phi_{\text{in}}(x).
+\end{align*}
+This condition implies no scattering. We can then consider two normalizable states $\ket{\alpha}$ and $\ket{\beta}$ and introduce the functional
+\begin{align*}
+	\Phi(t, f) = i\integ[3]{}{}{\vb{x}}{f\cc(t, \vb{x})\delsw{}{0}\phi(t, \vb{x})},\ a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b,
+\end{align*}
+where $f$ is a normalizable Klein-Gordon field with mass $m$, and thus acts as a test function in the Schwarz class. We then have the weak asymptotic condition
+\begin{align*}
+	\lim\limits_{x^{0} \to -\infty}\mel{\alpha}{\Phi(t, f)}{\beta} = \sqrt{Z}\mel{\alpha}{\phi_{\text{in}}(t, f)}{\beta}.
+\end{align*}
+
+We can expand $\phi_{\text{in}}$ in normal modes as
+\begin{align*}
+	\phi_{\text{in}} = \integ[3]{}{}{\vb{p}}{\frac{1}{p_{0}}(f_{p}(x)a_{\text{in}}(\vb{p}) + f_{p}\cc(x)a_{\text{in}}\adj(\vb{p}))},\ f_{p}(x) = \frac{1}{\sqrt{2(2\pi)^{3}}}e^{-ipx},
+\end{align*}
+which can somehow be inverted to
+\begin{align*}
+	a_{\text{in}}(\vb{p}) = i\integ[3]{}{}{\vb{x}}{f_{p}(x)\delsw{}{0}\phi_{\text{in}}(x)}.
+\end{align*}
+
+\paragraph{The LSZ Formalism}
+In the LSZ formalism we write the elements of the S-matrix as vacuum expectation values of products of the field operators.
+
+To demonstrate it, consider a real scalar field $\phi$ and states $\ket{\alpha, \vb{p}_{n}, \text{in}}$ and $\ket{\beta, \text{out}}$, where $\alpha$ is a shorthand for a set of momenta $\vb{p}$ and $\beta$ similarly a shorthand for momenta $\vb{q}$. We then write
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
+	&= \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} + \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} - \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - i\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}(\phi_{\text{in}} - \phi_{\text{out}})}}{\alpha, \text{in}}.
+\end{align*}
+The hat signifies that $\vb{p}_{n}$ has been removed, which might mean annihilation depending on the structure of $\beta$. Using the asymptotic limit we have
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - \frac{i}{\sqrt{Z}}\left(\lim\limits_{x^{0} \to \infty} - \lim\limits_{x^{0} \to -\infty}\right)\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}\phi}}{\alpha, \text{in}} \\
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\mel{\beta, \text{out}}{\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\phi}\right)}{\alpha, \text{in}} \\
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\right)} \\
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}\del{2}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\del{2}{0}f_{p_{n}}}.
+\end{align*}
+The first term is the so-called elastic term, and is zero if $\vb{p}_{n}$ is not in $\beta$. In this case we can use the Klein-Gordon equation to find
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\del{2}{0} + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\laplacian f_{p_{n}}}.
+\end{align*}
+Two integrations by parts yield
+\begin{align*}
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\dalem + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}}.
+\end{align*}
+
+What we have achieved is to remove a single momentum from the state on the right. We can perform a similar analysis to find
+\begin{align*}
+	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{y}{(\dalem_{y} + m^{2})\mel{\gamma, \text{out}}{\torp{\phi(x)}{\phi(y)}}{\alpha, \text{in}}f_{q_{n}}\cc(y)}.
+\end{align*}
+Repeating this, we finally arrive at the LSZ reduction formula for Klein-Gordon fields
+\begin{align*}
+	\braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}} = \left(\frac{i}{\sqrt{Z}}\right)^{n + m}\prod\limits_{i = 1}^{n}\prod\limits_{j = 1}^{m}\int\dd[4]{x_{i}}\dd[4]{y_{j}}&f_{p_{i}}(x_{i})f_{q_{j}}(y_{j})(\dalem{}_{x_{i}} + m^{2})(\dalem{}_{y_{j}} + m^{2}) \\
+	&\times\expval{\torp{\phi(y_{1})\dots\phi(y_{m})}{\phi(x_{1})\dots\phi(x_{n})}}{\Omega}.
+\end{align*}
+
 \paragraph{A Field Transformation Operator}
 $\phi$ and $\phi_{\text{in}}$, together with their conjugate momenta, are complete fields that satisfy the same commutation relations. This implies that there is a unitary operator $U(t)$ such that
 \begin{align*}
@@ -151,4 +233,155 @@ Wick's theorem states that
 or in general
 \begin{align*}
 	\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}) = \nop{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})} + \text{ all possible contractions}.
+\end{align*}
+
+\paragraph{More on Feynman Diagrams}
+We will now illustrate some more uses of Feynman diagrams in obtaining mathematical expressions that can be computed. First, we consider a Klein-Gordon theory with perturbation
+\begin{align*}
+	H_{\text{I}}\p = \frac{\lambda}{4!}\phi^{4}.
+\end{align*}
+We will write the expectation value
+\begin{align*}
+	\expval{\torp\phi_{\text{in}}(x)\phi_{\text{in}}(y)e^{-i\integ{-\infty}{\infty}{\tau}{H_{\text{I}}\p(\tau)}}}{0}
+\end{align*}
+as a sum of Feynman diagrams with two external points. We have already seen the propagator in both position and momentum space, corresponding to multiplication by a propagator. In addition we introduce the vertex
+\begin{figure}[!ht]
+	\centering
+	\subfloat[Position space.]{
+		\feynmandiagram[vertical = i1 to i3]{
+			{i1, i3} --[scalar] a[dot, label = $z$] --[scalar] {i2, i4},
+		};
+	}
+	\subfloat[Momentum space.]{
+		\feynmandiagram[vertical = i1 to i3]{
+			{i1, i3} --[charged scalar] a[dot, label = $z$] --[charged scalar] {i2, i4},
+		};
+	}
+\end{figure}
+which corresponds to adding $-i\lambda\integ[4]{}{}{z}{}$ and $-i\lambda$. There are also external points
+\begin{figure}[!ht]
+	\centering
+	\subfloat[Position space.]{
+		\feynmandiagram[horizontal = a to b]{
+			a[dot, label = $x$] --[scalar] b,
+		};
+	}
+	\subfloat[Momentum space.]{
+		\feynmandiagram[horizontal = a to b]{
+			a[dot] --[anti charged scalar, edge label = $p$] b,
+		};
+	}
+\end{figure}
+which correspond to multiplication by $1$ and $e^{-ipx}$ respectively. One also has to divide by symmetry factors. In addition, $p$ must be conserved at all vertices and undetermined momenta add $\frac{1}{(2\pi)^{4}}\integ[4]{}{}{p}{}$ in momentum space.
+
+Returning to the expectation value in question, we find to different orders in the perturbation that it is equal to
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		a[dot, label = $x$] --[scalar] b[dot, label = $y$],
+	}; + 
+	\feynmandiagram[horizontal = a to b, layered layout]{
+		a[dot, label = $x$] --[scalar] b --[scalar, out = 135, in = 45, loop, min distance = 2cm]b --[scalar] c[dot, label = $y$],
+	}; + 
+	\feynmandiagram[horizontal = a to b, layered layout]{
+		a[dot, label = $x$] --[scalar] b --[scalar] c --[scalar] d[dot, label = $y$],
+		b --[scalar, half left] c,
+		c --[scalar, half left] b,
+	}; + \dots
+\end{figure}
+multiplied by the exponential of the sum of the diagrams
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[]{
+		a --[scalar, out = 135, in = 45, loop, min distance = 2cm] a --[scalar, out = -135, in = -45, loop, min distance = 2cm] a,
+	}; + 
+	\feynmandiagram[vertical = a to b]{
+		a --[scalar, out = 135, in = 45, loop, min distance = 2cm] a --[scalar, half left] b --[scalar, out = -135, in = -45, loop, min distance = 2cm] b --[scalar, half left] a,
+	}; + 
+	\feynmandiagram[vertical = a to b]{
+		a --[scalar, half left] b --[scalar, half left] a --[scalar, out = -60, in = 60] b --[scalar, out = 120, in = -120] a,
+	};
+\end{figure}
+which is equal to
+\begin{align*}
+	\expval{\torp e^{-i\integ{-\infty}{\infty}{\tau}{H_{\text{I}}\p(\tau)}}}{0}.
+\end{align*}
+This implies
+\begin{align*}
+	\mel{\torp\phi_{\text{in}}(x)\phi_{\text{in}}(y)}{\Omega} = \expval{\torp\phi_{\text{in}}(x)\phi_{\text{in}}(y)e^{-i\integ{-\infty}{\infty}{\tau}{H_{\text{I}}\p(\tau)}}}{0}_{\text{c}},
+\end{align*}
+where the subscript denotes a division by $\expval{\torp e^{-i\integ{-\infty}{\infty}{\tau}{H_{\text{I}}\p(\tau)}}}{0}$.
+
+Next we consider Yukawa theory, which is a simplified version of QED consisting of a Dirac field and a Klein-Gordon field interacting with
+\begin{align*}
+	H_{\text{I}}\p = g\bar{\Psi}\phi\Psi.
+\end{align*}
+In momentum space we represent $\contraction{}{\phi(x)}{}{\phi(y)}\phi(x)\phi(y)$ and $\Psi\bar{\Psi}$ by the Feynman diagrams
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		a --[charged scalar, edge label = $q$] b,
+	};
+	\feynmandiagram[horizontal = a to b]{
+		a --[fermion, edge label = $p$] b,
+	};
+\end{figure}
+which correspond to multiplication by
+\begin{align*}
+	\frac{1}{q^{2} - m_{\phi}^{2} + i\varepsilon},\ i\frac{\fsl{p} + m}{p^{2} - m^{2} + i\varepsilon}
+\end{align*}
+respectively, where $m_{\phi}$ is the bare mass of the Klein-Gordon field. We also have the vertex
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		i1 --[anti fermion] a --[anti fermion] i2,
+		a --[scalar] b,
+	};
+\end{figure}
+which corresponds to a multiplication by $-ig$.
+
+Finally there is quantum electrodynamics, which contains of a Dirac field interacting with the electromagnetic field. The interaction Hamiltonian is
+\begin{align*}
+	H_{\text{I}}\p = \integ[3]{}{}{\vb{x}}{e\bar{\Psi}\gamma^{\mu}\Psi A_{\mu}}.
+\end{align*}
+The two relevant propagators are represented as
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		a --[fermion, edge label = $p$] b,
+	};
+	\feynmandiagram[horizontal = a to b]{
+		a[label = $\mu$] --[photon, momentum = {$q$}] b[label = $\nu$],
+};
+\end{figure}
+where the momentum arrow is supposed to point left. This corresponds to multiplication by
+\begin{align*}
+	i\frac{\fsl{p} + m}{p^{2} - m^{2} + i\varepsilon},\ -i\frac{g^{\mu\nu}}{q^{2} + i\varepsilon}
+\end{align*}
+respectively. There is also the vertex
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		i1 --[anti fermion] a --[anti fermion] i2,
+		a --[photon] b[label = \mu],
+	};
+\end{figure}
+which corresponds to multiplication by $-ie\gamma^{\mu}$.
+
+\paragraph{Scattering Cross-Sections}
+Consider two volumes of particles with lengths $l_{A}$ and $l_{B}$ and particle densities $\rho_{A}$ and $\rho_{B}$ normal to the length approaching one another. If $\Phi$ is the cross-sectional area common to the volumes we define the scattering cross-section as
+\begin{align*}
+	\sigma = \frac{\text{number of scattering events}}{l_{A}\rho_{A}l_{B}\rho_{B}\Phi}.
+\end{align*}
+The number of scattering events is then
+\begin{align*}
+	\sigma l_{A}l_{B}\integ[2]{}{}{\vb{x}}{\rho_{A}\rho_{B}}.
+\end{align*}
+To study this, we will expand the S-matrix as $S = 1 + iT$. In particular, for the case of two particles, there exists an invariant element $M$ such that
+\begin{align*}
+	\mel{\vb{p}_{a}, p_{b}}{iT}{p_{A}, p_{B}} = (2\pi)^{4}\delta\left(p_{A} + p_{B} - \sum\limits_{f}p_{f}\right)iM(p_{A} + p_{B} \to p_{f}).
+\end{align*}
+We can on this basis show that
+\begin{align*}
+	\dd{\sigma} = \frac{1}{4E_{A}E_{B}\abs{v_{A} - v_{B}}}\prod\limits_{f}\dd[3]{\vb{p}_{f}}\frac{1}{(2\pi)^{3}}\frac{1}{2E_{f}}\abs{M}^{2}\cdot (2\pi)^{4}\delta\left(p_{A} + p_{B} - \sum\limits_{f}p_{f}\right).
 \end{align*}
