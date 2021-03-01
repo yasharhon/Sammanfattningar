@@ -29,90 +29,162 @@ where $Z$ is a normalization constant. We want $\tilde{j}$ to satisfy the strong
 \begin{align*}
 	\lim\limits_{x^{0}\to -\inf}\phi(x) = \sqrt{Z}\phi_{\text{in}}(x).
 \end{align*}
-This condition implies no scattering. We can then consider two normalizable states $\ket{\alpha}$ and $\ket{\beta}$ and introduce the functional
+This would imply that when particles are at large separations, they do not interact. However, this assumption neglects self-interactions as well, and can therefore never truly hold. In fact, if it were to hold by assumption, the S matrix would be trivial. The claim of Lehmann, Symanzik and Zimmermann is that we can consider two normalizable states $\ket{\alpha}$ and $\ket{\beta}$ and introduce the functional
 \begin{align*}
-	\Phi(t, f) = i\integ[3]{}{}{\vb{x}}{f\cc(t, \vb{x})\delsw{}{0}\phi(t, \vb{x})},\ a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b,
+	\phi(t, f) = i\integ[3]{}{}{\vb{x}}{f\cc(t, \vb{x})\delsw{}{0}\phi(t, \vb{x})},\ a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b,
 \end{align*}
-where $f$ is a normalizable Klein-Gordon field with mass $m$, and thus acts as a test function in the Schwarz class. We then have the weak asymptotic condition
+where $f$ is a normalizable Klein-Gordon field (a function, not an operator) with mass $m$, and thus acts as a test function in the Schwarz class. We then have the weak asymptotic condition
 \begin{align*}
-	\lim\limits_{x^{0} \to -\infty}\mel{\alpha}{\Phi(t, f)}{\beta} = \sqrt{Z}\mel{\alpha}{\phi_{\text{in}}(t, f)}{\beta}.
+	\lim\limits_{x^{0} \to -\infty}\mel{\alpha}{\phi(t, f)}{\beta} = \sqrt{Z}\mel{\alpha}{\phi_{\text{in}}(t, f)}{\beta},
 \end{align*}
+which is more well-defined.
 
-We can expand $\phi_{\text{in}}$ in normal modes as
+At this point we introduce another asymptotic free field $\phi_{\text{out}}$, which should satisfy the same conditions as $\phi_{\text{in}}$. We can expand $\phi_{\text{in}}$ in normal modes as
 \begin{align*}
 	\phi_{\text{in}} = \integ[3]{}{}{\vb{p}}{\frac{1}{p_{0}}(f_{p}(x)a_{\text{in}}(\vb{p}) + f_{p}\cc(x)a_{\text{in}}\adj(\vb{p}))},\ f_{p}(x) = \frac{1}{\sqrt{2(2\pi)^{3}}}e^{-ipx},
 \end{align*}
-which can somehow be inverted to
+with a similar expansion for $\phi_{\text{out}}$. This can somehow be inverted to
 \begin{align*}
-	a_{\text{in}}(\vb{p}) = i\integ[3]{}{}{\vb{x}}{f_{p}(x)\delsw{}{0}\phi_{\text{in}}(x)}.
+	a_{\text{in}}(\vb{p}) = i\integ[3]{}{}{\vb{x}}{f_{p}\cc(x)\delsw{}{0}\phi_{\text{in}}(x)}.
 \end{align*}
 
 \paragraph{The LSZ Formalism}
 In the LSZ formalism we write the elements of the S-matrix as vacuum expectation values of products of the field operators.
 
-To demonstrate it, consider a real scalar field $\phi$ and states $\ket{\alpha, \vb{p}_{n}, \text{in}}$ and $\ket{\beta, \text{out}}$, where $\alpha$ is a shorthand for a set of momenta $\vb{p}$ and $\beta$ similarly a shorthand for momenta $\vb{q}$. We then write
+\paragraph{The LSZ Formula for Klein-Gordon Fields}
+To demonstrate it, consider a real scalar Klein-Gordon field $\phi$ and states $\ket{\alpha, \vb{p}_{n}, \text{in}}$ and $\ket{\beta, \text{out}}$, where $\alpha$ is a shorthand for a set of momenta $\vb{p}$ and $\beta$ similarly a shorthand for momenta $\vb{q}$. We then write
 \begin{align*}
 	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
 	&= \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} + \mel{\beta, \text{out}}{a_{\text{in}}\adj(\vb{p_{n}})}{\alpha, \text{in}} - \mel{\beta, \text{out}}{a_{\text{out}}\adj(\vb{p_{n}})}{\alpha, \text{in}} \\
-	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - i\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}(\phi_{\text{in}} - \phi_{\text{out}})}}{\alpha, \text{in}}.
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - i\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}(\phi_{\text{in}}\adj - \phi_{\text{out}}\adj)}}{\alpha, \text{in}} \\
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - i\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}(\phi_{\text{in}} - \phi_{\text{out}})}}{\alpha, \text{in}},
 \end{align*}
-The hat signifies that $\vb{p}_{n}$ has been removed, which might mean annihilation depending on the structure of $\beta$. Using the asymptotic limit we have
+assuming the asymptotic fields to be self-adjoint. The hat signifies that $\vb{p}_{n}$ has been removed, which might mean annihilation depending on the structure of $\beta$. Using the asymptotic limit we have
 \begin{align*}
-	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} - \frac{i}{\sqrt{Z}}\left(\lim\limits_{x^{0} \to \infty} - \lim\limits_{x^{0} \to -\infty}\right)\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}\phi}}{\alpha, \text{in}} \\
+	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\left(\lim\limits_{x^{0} \to \infty} - \lim\limits_{x^{0} \to -\infty}\right)\mel{\beta, \text{out}}{\integ[3]{}{}{\vb{x}}{f_{p_{n}}\delsw{}{0}\phi}}{\alpha, \text{in}} \\
 	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\mel{\beta, \text{out}}{\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\phi}\right)}{\alpha, \text{in}} \\
 	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{\del{}{0}\left(f_{p_{n}}\delsw{}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\right)} \\
-	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}\del{2}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\del{2}{0}f_{p_{n}}}.
+	&= \braket{\beta, \hat{\vb{p}}_{n}, \text{out}}{\alpha, \text{in}} + \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}\del{2}{0}\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - (\del{2}{0}f_{p_{n}})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}},
 \end{align*}
-The first term is the so-called elastic term, and is zero if $\vb{p}_{n}$ is not in $\beta$. In this case we can use the Klein-Gordon equation to find
+where we have used the fact that
+\begin{align*}
+	\del{}{}(a\delsw{}{}b) = \del{}{}(a\del{}{}b - (\del{}{}a)b) = (\del{}{}a)\del{}{}b + a\del{2}{}b - (\del{2}{}a)b - (\del{}{}a)\del{}{}b = a\del{2}{}b - (\del{2}{}a)b.
+\end{align*}
+The first term is the so-called elastic term, and is zero if $\vb{p}_{n}$ is not in $\beta$, i.e. if there is no forward scattering. In this case we can use the fact that the normal modes solve the Klein-Gordon equation to find
 \begin{align*}
 	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\del{2}{0} + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}} - \mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\laplacian f_{p_{n}}}.
 \end{align*}
-Two integrations by parts yield
+Studying the last term we find
+\begin{align*}
+	\integ[3]{}{}{\vb{x}}{\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\laplacian f_{p_{n}}} &= \integ{}{}{\vb{S}}{\cdot\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\grad f_{p_{n}}} - \integ[3]{}{}{\vb{x}}{\grad\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}\cdot\grad f_{p_{n}}} \\
+	           &= -\integ{}{}{\vb{S}}{\cdot f_{p_{n}}\grad\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}} + \integ[3]{}{}{\vb{x}}{f_{p_{n}}\laplacian\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}} \\
+	           &= \integ[3]{}{}{\vb{x}}{f_{p_{n}}\laplacian\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}},
+\end{align*}
+assuming the field to vanish at infinity. Hence
 \begin{align*}
 	\braket{\beta, \text{out}}{\alpha, \vb{p}_{n}, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{x}{f_{p_{n}}(\dalem + m^{2})\mel{\beta, \text{out}}{\phi}{\alpha, \text{in}}}.
 \end{align*}
-
-What we have achieved is to remove a single momentum from the state on the right. We can perform a similar analysis to find
+We continue with the matrix element in the integrand. Rewriting it slightly we find
+\begin{align*}
+	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} =& \mel{\gamma, \text{out}}{a_{\text{out}}(\vb{q}_{m})\phi(x)}{\alpha, \text{in}} - \mel{\gamma, \text{out}}{\phi(x)a_{\text{in}}(\vb{q}_{m})}{\alpha, \text{in}} + \mel{\gamma, \text{out}}{\phi(x)a_{\text{in}}(\vb{q}_{m})}{\alpha, \text{in}} \\
+	=& \mel{\gamma, \text{out}}{\phi(x)}{\hat{\vb{q}}_{m}, \alpha, \text{in}} \\
+	 &+ \mel{\gamma, \text{out}}{i\integ[3]{}{}{\vb{y}}{f_{q_{m}}\cc(y)\delsw{}{y, 0}\phi_{\text{out}}(y)\phi(x)} - i\phi(x)\integ[3]{}{}{\vb{y}}{f_{q_{m}}\cc(y)\delsw{}{y, 0}\phi_{\text{in}}(y)}}{\alpha, \text{in}}.
+\end{align*}
+Because the normal modes commute with the fields, we find
+\begin{align*}
+	f_{q_{m}}\cc(y)\delsw{}{y, 0}\phi_{\text{out}}(y) &= f_{q_{m}}\cc(y)\del{}{y, 0}\phi_{\text{out}}(y) - (\del{}{y, 0}f_{q_{m}}\cc(y))\phi_{\text{out}}(y) \\
+	                                                  &= \phi_{\text{out}}(y)\del{}{y, 0}f_{q_{m}}\cc(y) + (\del{}{y, 0}\phi_{\text{out}}(y))f_{q_{m}}\cc(y) \\
+	                                                  &= -\phi_{\text{out}}(y)\delsw{}{y, 0}f_{q_{m}}\cc(y),
+\end{align*}
+and thus
+\begin{align*}
+	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} =& \mel{\gamma, \text{out}}{\phi(x)}{\hat{\vb{q}}_{m}, \alpha, \text{in}} \\
+	&- i\mel{\gamma, \text{out}}{\integ[3]{}{}{\vb{y}}{\phi_{\text{out}}(y)\phi(x)\delsw{}{y, 0}f_{q_{m}}\cc(y) - \phi(x)\phi_{\text{in}}(y)\delsw{}{y, 0}f_{q_{m}}\cc(y)}}{\alpha, \text{in}} \\
+	=& \mel{\gamma, \text{out}}{\phi(x)}{\hat{\vb{q}}_{m}, \alpha, \text{in}} - i\integ[3]{}{}{\vb{y}}{\mel{\gamma, \text{out}}{\phi_{\text{out}}(y)\phi(x) - \phi(x)\phi_{\text{in}}(y)}{\alpha, \text{in}}\delsw{}{y, 0}f_{q_{m}}\cc(y)}.
+\end{align*}
+Assuming no forward scattering, we use the limit procedure to find
+\begin{align*}
+	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} = - \frac{i}{\sqrt{Z}}\integ[4]{}{}{y}{\del{}{0}\left(\mel{\gamma, \text{out}}{\torp\phi(y)\phi(x)}{\alpha, \text{in}}\delsw{}{y, 0}f_{q_{m}}\cc(y)\right)},
+\end{align*}
+where we have introduced the time-ordered product to account for the switching of the order when evaluated in the two limits. Repeating the final steps of the previous derivation we find
 \begin{align*}
 	\mel{\gamma, \vb{q}_{m}, \text{out}}{\phi(x)}{\alpha, \text{in}} &= \frac{i}{\sqrt{Z}}\integ[4]{}{}{y}{(\dalem_{y} + m^{2})\mel{\gamma, \text{out}}{\torp{\phi(x)}{\phi(y)}}{\alpha, \text{in}}f_{q_{n}}\cc(y)}.
 \end{align*}
-Repeating this, we finally arrive at the LSZ reduction formula for Klein-Gordon fields
+
+What we have seen now is how removing single momenta from each side of the matrix element. Generalizing this argument to repetitions we find
 \begin{align*}
-	\braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}} = \left(\frac{i}{\sqrt{Z}}\right)^{n + m}\prod\limits_{i = 1}^{n}\prod\limits_{j = 1}^{m}\int\dd[4]{x_{i}}\dd[4]{y_{j}}&f_{p_{i}}(x_{i})f_{q_{j}}(y_{j})(\dalem{}_{x_{i}} + m^{2})(\dalem{}_{y_{j}} + m^{2}) \\
+	\braket{\vb{q}_{1}, \dots, \vb{q}_{m}, \text{out}}{\vb{p}_{1}, \dots, \vb{p}_{n}, \text{in}} = \left(\frac{i}{\sqrt{Z}}\right)^{n + m}\prod\limits_{i = 1}^{n}\prod\limits_{j = 1}^{m}\int\dd[4]{x_{i}}\dd[4]{y_{j}}&f_{p_{i}}(x_{i})f_{q_{j}}\cc(y_{j})(\dalem{}_{x_{i}} + m^{2})(\dalem{}_{y_{j}} + m^{2}) \\
 	&\times\expval{\torp{\phi(y_{1})\dots\phi(y_{m})}{\phi(x_{1})\dots\phi(x_{n})}}{\Omega}.
 \end{align*}
 
+\paragraph{The Interaction Picture}
+The most basic pictures of quantum mechanics are the Schrödinger picture, where states evolve by multiplying by the time evolution operator $e^{-iHt}$ and operators are time-independent, and the Heisenberg picture, where operators evolve according to $A(t) = e^{iHt}A(0)e^{-iHt}$. A third picture, which will be used in the proceeding discussion of perturbation theory, is the interaction picture. In this picture, both the states and the operators will evolve in time.
+
+Consider a Hamiltonian of the form
+\begin{align*}
+	H = H_{\text{in}} + H_{\text{I}}.
+\end{align*}
+The two terms are the free part and the interaction part. The operators evolve according to
+\begin{align*}
+	O(t) = e^{iH_{\text{in}}t}O(0)e^{-iH_{\text{in}}t},
+\end{align*}
+implying an equation of motion
+\begin{align*}
+	i\dv{O}{t} = \comm{O}{H_{\text{in}}}.
+\end{align*}
+
+To preserve expectation values when compared to the Schrödinger picture, we require
+\begin{align*}
+	\ket{\Psi_{\text{I}}(t)} = e^{iH_{\text{in}}t}\ket{\Psi(t)}.
+\end{align*}
+Differentiating with respect to time
+\begin{align*}
+	\dv{t}\ket{\Psi_{\text{I}}(t)} = iH_{\text{in}}e^{iH_{\text{in}}t}\ket{\Psi(t)} + e^{iH_{\text{in}}t}\dv{t}\ket{\Psi(t)} = e^{iH_{\text{in}}t}\left(iH_{\text{in}} - iH\right)\ket{\Psi(t)}.
+\end{align*}
+We can write this as
+\begin{align*}
+	i\dv{t}\ket{\Psi_{\text{I}}(t)} = e^{iH_{\text{in}}t}H_{\text{I}}e^{-iH_{\text{in}}t}\ket{\Psi_{\text{I}}(t)},
+\end{align*}
+or alternatively, by defining $H\p = e^{iH_{\text{in}}t}H_{\text{I}}e^{-iH_{\text{in}}t}$, we have
+\begin{align*}
+	i\dv{t}\ket{\Psi_{\text{I}}(t)} = H\p\ket{\Psi_{\text{I}}(t)}.
+\end{align*}
+
 \paragraph{A Field Transformation Operator}
-$\phi$ and $\phi_{\text{in}}$, together with their conjugate momenta, are complete fields that satisfy the same commutation relations. This implies that there is a unitary operator $U(t)$ such that
+$\phi$ and $\phi_{\text{in}}$, together with their conjugate momenta, are complete fields that satisfy the same commutation relations. Treating the interacting fields in the Heisenberg picture and the asymptotic fields in the interaction picture, there must be a unitary operator $U(t)$ such that
 \begin{align*}
 	\phi = U^{-1}\phi_{\text{in}}U,\ \pi = U^{-1}\pi_{\text{in}}U.
 \end{align*}
-To find this operator, we will use the Heisenberg equation. We note that the total Hamiltonian is a sum of the free-field Hamiltonian $H_{\text{in}}$ and the interaction Hamiltonian $H_{\text{I}}$. We have:
+Our task is to find this operator.
+
+We note that the total Hamiltonian is a sum of the free-field Hamiltonian $H_{\text{in}}$ and the interaction Hamiltonian $H_{\text{I}}$. Differentiating the above relation we have:
 \begin{align*}
-	\del{}{t}\phi_{\text{in}} = \dot{U}\phi U^{-1} + U\del{}{t}\phi U^{-1} + U\phi \dot{U}^{-1}.
+	\dv{t}\phi_{\text{in}} = \dot{U}\phi U^{-1} + U\del{}{t}\phi U^{-1} + U\phi \dot{U}^{-1}.
 \end{align*}
 The unitarity of $U$ yields
 \begin{align*}
-	\dot{U}\phi U^{-1} + U\phi\dot{U}^{-1} = 0 \iff \dot{U}^{-1} = -U^{-1}\dot{U}U^{-1},
+	\dot{U}U^{-1} + U\dot{U}^{-1} = 0 \iff \dot{U}^{-1} = -U^{-1}\dot{U}U^{-1},
 \end{align*}
 hence
 \begin{align*}
-	\del{}{t}\phi_{\text{in}} &= \dot{U}\phi U^{-1} + U\del{}{t}\phi U^{-1} - U\phi U^{-1}\dot{U}U^{-1} \\
-	                          &= \dot{U}U^{-1}\phi_{\text{in}} + iU\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi} U^{-1} - \phi_{\text{in}}\dot{U}U^{-1} \\
-	                          &= \comm{\dot{U}U^{-1}}{\phi_{\text{in}}} + i\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}},
+	\dv{t}\phi_{\text{in}} &= \dot{U}\phi U^{-1} + U\del{}{t}\phi U^{-1} - U\phi U^{-1}\dot{U}U^{-1} \\
+	                       &= \dot{U}U^{-1}\phi_{\text{in}} + iU\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi} U^{-1} - \phi_{\text{in}}\dot{U}U^{-1} \\
+	                       &= \comm{\dot{U}U^{-1}}{\phi_{\text{in}}} + i\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}},
 \end{align*}
-assuming the Hamiltonian to commute with $H$. Now, the Heisenberg equation dictates that the time evolution of the asymptotic field is dictated only by the free-field Hamiltonian, hence
+assuming the Hamiltonian to commute with $U$. Now, in the interaction picture the time evolution of the asymptotic field is dictated only by the free-field Hamiltonian, hence
 \begin{align*}
-	\comm{\dot{U}U^{-1} + iH_{\text{I}}(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}} = 0.
+	&\comm{\dot{U}U^{-1}}{\phi_{\text{in}}} + i\comm{H(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}} = i\comm{H_{\text{in}}(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}}, \\
+	&\comm{\dot{U}U^{-1}}{\phi_{\text{in}}} + i\comm{H_{\text{I}}(\phi_{\text{in}}, \pi_{\text{in}})}{\phi_{\text{in}}} = 0.
 \end{align*}
-Because this commutator is zero, presumably for any free field, we must have
+Because this commutator is zero for any free field, we must have
 \begin{align*}
 	\dot{U}U^{-1} + iH_{\text{I}} = -iE_{0},
 \end{align*}
 yielding the differential equation
 \begin{align*}
-	i\dot{U} = (H_{\text{I}} + E_{0})U = H_{\text{I}}\p U.
+	i\dot{U} = (H_{\text{I}} + E_{0})U = H_{\text{I}}\p U,
 \end{align*}
+where we introduced the shifted interaction Hamiltionian $H_{\text{I}}\p = H_{\text{I}} + E_{0}$.
 
 We note that the above equation is very similar to that describing the time evolution operator in non-relativistic quantum mechanics. We therefore introduce the operator
 \begin{align*}
@@ -131,16 +203,21 @@ This can be solved using an iteration scheme
 	U(t, t\p) =& 1 -i\integ{t\p}{t}{t_{1}}{H_{\text{I}}\p(t_{1})} + (-i)^{2}\integ{t\p}{t}{t_{1}}{\integ{t\p}{t_{1}}{t_{2}}{H_{\text{I}}\p(t_{1})H_{\text{I}}\p(t_{2})}} \\
 	           &+ (-i)^{n}\integ{t\p}{t}{t_{1}}{\dots\integ{t\p}{t_{n - 1}}{t_{n}}{\prod\limits_{i = 1}^{n}H_{\text{I}}\p(t_{i})}} + \dots.
 \end{align*}
-Now we note that this setup is such that the different times appear in order, meaning we can use the time-ordered product. We can show that
+Now we note that this setup is such that the different times appear in order, meaning we can use the time-ordered product. A sneaky trick we can use is that operators commute within time-ordered products, as the time ordering fixes the order. We thus have
 \begin{align*}
-	\integ{t\p}{t}{t_{1}}{\integ{t\p}{t_{1}}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}} = \frac{1}{2}\integ{t\p}{t}{t_{1}}{\integ{t\p}{t}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}},
+	\integ{t\p}{t}{t_{1}}{\integ{t\p}{t_{1}}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}} = \integ{t\p}{t}{t_{2}}{\integ{t\p}{t_{2}}{t_{1}}{\torp{H_{\text{I}}\p(t_{2})}{H_{\text{I}}\p(t_{1})}}} = \integ{t\p}{t}{t_{2}}{\integ{t\p}{t_{2}}{t_{1}}{\torp H_{\text{I}}\p(t_{1})H_{\text{I}}\p(t_{2})}},
 \end{align*}
-and we thus end up with
+and we can symmetrize according to
 \begin{align*}
-	U(t, t\p) = 1 + \sum\limits_{n = 1}^{\infty}\frac{(-i)^{n}}{n!}\integ{t\p}{t}{t_{1}}{\dots\integ{t\p}{t}{t_{n}}{\torp\prod\limits_{i = 1}^{n}H_{\text{I}}\p(t_{i})}} = \torp\exp(-i\integ{t\p}{t}{\tau}{H_{\text{I}}\p(\tau)}) = \torp\exp(-i\integ[4]{}{}{x}{H_{\text{I}}\p(\phi_{\text{in}}, \pi_{\text{in}})}),
+	\integ{t\p}{t}{t_{1}}{\integ{t\p}{t_{1}}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}} = \frac{1}{2}\integ{t\p}{t}{t_{1}}{\integ{t\p}{t}{t_{2}}{\torp{H_{\text{I}}\p(t_{1})}{H_{\text{I}}\p(t_{2})}}}.
 \end{align*}
-where we have introduced the time-ordered exponential.
+We thus end up with
+\begin{align*}
+	U(t, t\p) = 1 + \sum\limits_{n = 1}^{\infty}\frac{(-i)^{n}}{n!}\integ{t\p}{t}{t_{1}}{\dots\integ{t\p}{t}{t_{n}}{\torp\prod\limits_{i = 1}^{n}H_{\text{I}}\p(t_{i})}} = \torp\exp(-i\integ{t\p}{t}{\tau}{H_{\text{I}}\p(\tau)}) = \torp\exp(-i\integ[4]{}{}{x}{\ham_{\text{I}}\p(\phi_{\text{in}}, \pi_{\text{in}})}),
+\end{align*}
+where we have introduced the time-ordered exponential and the Hamiltonian density corresponding to the interaction. This expansion, in particular, the second-to-last expression, is called the Dyson expansion.
 
+\paragraph{Back To VEVs}
 We now return to the issue of computing vacuum expectation values. Consider the expectation value
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) = \expval{\torp\prod\limits_{i = 1}^{n}\phi(x_{i})}{\Omega}.
@@ -154,9 +231,10 @@ Introducing a $t$ that is greater than all involved times (implying that $-t$ is
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) = \expval{\torp U^{-1}(t)U(t, t_{1})\phi_{\text{in}}(x_{1})U(t_{1}, t_{2})\phi_{\text{in}}(x_{2})\dots U(t_{n - 1}, t_{n})\phi_{\text{in}}(x_{n})U(t_{n}, -t)U(-t)}{\Omega}.
 \end{align*}
-In the limit of $t\to\infty$ we somehow find
+In the limit of $t\to\infty$ we can somehow extract the $U$ to find
 \begin{align*}
-	\tau(x_{1}, \dots, x_{n}) &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})U(t, -t)\right)U(-t)}{\Omega} \\
+	\tau(x_{1}, \dots, x_{n}) &= \expval{U^{-1}(t)\torp (\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})\dots \phi_{\text{in}}(x_{n})U(t, t_{1})U(t_{1}, t_{2})\dots U(t_{n - 1}, t_{n})U(t_{n}, -t))U(-t)}{\Omega} \\
+	                          &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})U(t, -t)\right)U(-t)}{\Omega} \\
 	                          &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}\right)U(-t)}{\Omega}
 \end{align*}
 
