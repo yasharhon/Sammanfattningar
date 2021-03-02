@@ -9,6 +9,35 @@ The reduced density matrix is found by tracing out a particular set of degrees o
 \paragraph{Product Operators}
 We recall that for a tensor product, the expectation value of the product is the product of the expectation values. This means that expectation values of system observables make sense.
 
+\paragraph{Schmidt Decomposition}
+Consider a system in contact with a bath. A general state can be written as
+\begin{align*}
+	\ket{\Psi} = \sum\limits_{a}\sum\limits_{\alpha}\Psi_{a\alpha}\ket{a}\otimes\ket{\alpha},
+\end{align*}
+where the latin and greek indices indicate states in the system and bath respectively. We may equivalently consider a state as specified by a matrix $\Psi$ with elements $\Psi_{a\alpha}$. The singular value decomposition of $\Psi$ is
+\begin{align*}
+	\Psi = U\Lambda V\adj
+\end{align*}
+for some set of matrices $U, \Lambda$ and $V$ such that $\Lambda$ is a rectangular diagonal matrix with positive elements and $U$ and $V$ are unitary. We may then write
+\begin{align*}
+	\Psi_{a\alpha} = \sum\limits_{b}U_{ab}(\Lambda V\adj)_{b\alpha} = \sum\limits_{b}\sum\limits_{\beta}U_{ab}\Lambda_{b\beta}(V\adj)_{\beta\alpha}.
+\end{align*}
+Because $\Lambda$ is diagonal, summing over $\beta$ only gives a contribution when $b = \beta$, hence
+\begin{align*}
+	\Psi_{a\alpha} = \sum\limits_{b}U_{ab}\lambda_{b}(V\adj)_{b\alpha},
+\end{align*}
+and
+\begin{align*}
+	\ket{\Psi} &= \sum\limits_{a}\sum\limits_{\alpha}\sum\limits_{b}U_{ab}\lambda_{b}(V\adj)_{b\alpha}\ket{a}\otimes\ket{\alpha} \\
+	           &= \sum\limits_{b}\lambda_{b}\sum\limits_{a}U_{ab}\ket{a}\otimes\sum\limits_{\alpha}(V\adj)_{b\alpha}\ket{\alpha}.
+\end{align*}
+Because $U$ and $V$ are unitary, the above product contains two proper states. Naming them $\ket{b}_{\text{S}}$ and $\ket{b}_{\text{B}}$ we have
+\begin{align*}
+	\ket{\Psi} &= \sum\limits_{b}\lambda_{b}\ket{b}_{\text{S}}\otimes\ket{b}_{\text{B}}.
+\end{align*}
+
+One thing that was somewhat brushed over in this treatment is the kind of summation performed in the decomposition. Its limits depend on the structure of $\Psi$. This case is valid for when $\Psi$ has more columns than rows, but if the other were to be the case, we could use a similar treatment to obtain a sum over greek indices instead. The point is that we are summing over the singular values, the number of which is equal to the smaller of the sizes of $\Psi$.
+
 \paragraph{The Schrödinger Langevin Equation}
 We will now perform a similar consideration as that done in the classical case, namely extending the Schrödinger equation to
 \begin{align*}
@@ -111,5 +140,14 @@ In a quantum quench, one prepares a system in an eigenstate $\ket{\Psi_{0}}$ of 
 Quantum mechanics preserves the purity of the density matrix, but the thermalized density matrix $\rho = \frac{1}{Z}e^{-\beta H}$ is always mixed. How, then, can quantum mechanics produce thermalization? It will turn out that this is the same problem as the one we faced with classical mechanics.
 
 Von Neumann provided a suggestion for how to handle this in a previously-forgotten paper. In it he suggested that states themselves do not thermalize, but that expectation values of local observables do. This would require that the reduced density matrix for a system in consideration approaches that predicted by statistical mechanics.
+
+\paragraph{Entanglement Entropy}
+We define the von Neumann entanglement entropy as
+\begin{align*}
+	S = -\tr_{\text{S}}(\rho_{\text{S}}\ln(\rho_{\text{S}})) = -\tr_{\text{B}}(\rho_{\text{B}}\ln(\rho_{\text{B}})).
+\end{align*}
+
+\paragraph{Volume-Law Entanglement}
+In order for systems to thermalize as we would like, we need the entanglement entropy to approach the thermal entropy. The thermal entropy is extensive, and thus scales as $L^{d}$, where $d$ is the dimensionality. We therefore need there to exist states with this kind of entanglement. Such states have volume-law entanglement.
 
 \paragraph{Random Matrix Theory}
