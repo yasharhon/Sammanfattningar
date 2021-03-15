@@ -286,17 +286,21 @@ and thus
 	\tau(x_{1}, \dots, x_{n}) = \lim\limits_{t\to\infty}\frac{\expval{\torp \phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}}{\expval{U(t, -t)}{0}}.
 \end{align*}
 
-\paragraph{Wick's Theorem}
-To compute expectation values of the form $\expval{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}$, we divide the fields into two terms $\phi_{\text{in}}(x) = \phi_{\text{in}, +}(x) + \phi_{\text{in}, }(x_{1})$ where the two terms contain all positive and negative frequencies respectively, i.e. all annihilation and creation operators. Assuming $x_{1}^{0} > x_{2}^{0}$ we have:
+\paragraph{Relating Time and Normal Ordering}
+To compute expectation values of the form $\expval{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}$, we divide the fields into two terms $\phi_{\text{in}}(x) = \phi_{\text{in}, +}(x) + \phi_{\text{in}, }(x_{1})$ where the two terms contain all positive and negative frequencies respectively, i.e. all annihilation and creation operators. The purpose is to express the time-ordered product as something containing a normal ordered product, which has zero vacuum expectation value. Assuming $x_{1}^{0} > x_{2}^{0}$ we have
 \begin{align*}
 	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =& \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, -}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, -}(x_{2}).
 \end{align*}
-The second term is not normal-ordered, complicating things. We remedy this by writing
+We reorder the terms by writing
 \begin{align*}
 	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =& \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2}) + \comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{2})} + \phi_{\text{in}, -}(x_{2})\phi_{\text{in}, +}(x_{1}) \\
 	                                                     &+ \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, -}(x_{2}).
 \end{align*}
-To proceed we define the contraction
+We now define the Wick contraction
+\begin{align*}
+	\contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) = \phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) - \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})},
+\end{align*}
+and from the above we see that
 \begin{align*}
 	\contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =
 	\begin{cases}
@@ -304,14 +308,92 @@ To proceed we define the contraction
 		\comm{\phi_{\text{in}, +}(x_{2})}{\phi_{\text{in}, -}(x_{1})},\ x_{2}^{0} > x_{1}^{0}.
 	\end{cases}
 \end{align*}
+This yields
+\begin{align*}
+	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) &= \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) + \contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})}.
+\end{align*}
+
+What is this contraction? Using the expression for the two kinds of modes we have
+\begin{align*}
+	\comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{2})} &= \frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{k^{0}q^{0}}e^{i\vb{q}\cdot\vb{x}_{2} - i\vb{k}\cdot\vb{x}_{1}}\comm{a(\vb{k})}{a\adj(\vb{q})}}} \\
+	&= \frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{k^{0}}e^{i\vb{q}\cdot\vb{x}_{2} - i\vb{k}\cdot\vb{x}_{1}}\delta(\vb{k} - \vb{q})}} \\
+	&= \frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}e^{-i\vb{k}\cdot(\vb{x}_{1} - \cdot\vb{x}_{2})}} \\
+	&= i\kgprop{+}{x_{1} - x_{2}}, \\
+	\comm{\phi_{\text{in}, +}(x_{2})}{\phi_{\text{in}, -}(x_{1})} &= \frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}e^{-i\vb{k}\cdot(\vb{x}_{2} - \cdot\vb{x}_{1})}} = -i\kgprop{-}{x - y},
+\end{align*}
+hence we conclude
+\begin{align*}
+	\contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) = i\kgprop{F}{x - y}.
+\end{align*}
+
+Other contractions may also be computed. We have
+\begin{align*}
+	\contraction{}{\psi_{\text{in}}(x_{1})}{}{\overline{\psi}_{\text{in}}(x_{2})}\psi_{\text{in}}(x_{1})\overline{\psi}_{\text{in}}(x_{2}) = -\contraction{}{\overline{\psi}_{\text{in}}(x_{2})}{}{\psi_{\text{in}}(x_{1})}\overline{\psi}_{\text{in}}(x_{2})\psi_{\text{in}}(x_{1}) = i\dirprop{F}{}{x_{1} - x_{2}},\ \contraction{}{A_{\mu}(x_{1})}{}{A_{\nu}(x_{2})}A_{\mu}(x_{1})A_{\nu}(x_{2}) = i\phprop{\mu}{\nu}{x_{1} - x_{2}}.
+\end{align*}
+
+\paragraph{Wick's Theorem}
 Wick's theorem states that
 \begin{align*}
-	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) = \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})} + \contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}),
+	\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}) = \nop{\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}) + \text{ all possible contractions}}
 \end{align*}
-or in general
+for bosonic fields. For fermionic fields, the connection terms are multiplied by a factor of $-1$ to the power of the number of times the fields must be reordered to appear in the order in which they are contracted.
+
+We will prove this theorem for the case of a bosonic field. We have already shown it to be true for the product of two fields, setting us up for a proof by induction. Assume Wick's theorem to hold for $n$ fields, and add an extra field. Because operators commute within time ordering, we may relabel the coordinates such that they are in order, implying
 \begin{align*}
-	\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}) = \nop{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})} + \text{ all possible contractions}.
+	\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n + 1}) &= \phi_{\text{in}}(x_{1})\torp\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{n + 1}) \\
+	&= \phi_{\text{in}}(x_{1})\left(\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{n + 1}) + \sum\text{contractions}}\right).
 \end{align*}
+To prove the theorem, we must bring this expression to normal ordered form. It might be useful to strategize first, however, so let us do that. Consider the terms containing exclusively contractions of the last $n - k$ fields as an example. In the $n$ case, these contain the normal ordered product of the first $k$ fields. If Wick's theorem is to hold for the $n + 1$ case, we expect that the corresponding terms should contain a normal ordered product of the first $k + 1$ fields, as well as terms with a single contractions of the new field with all the old ones. The truth of this would imply that all contractions are both preserved and augmented by an extra contraction, proving the induction statement. We would therefore like to prove that
+\begin{align*}
+	\phi_{\text{in}}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} = \nop{\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{k + 1}) + \sum\limits_{m = 2}^{k + 1}\contraction{}{\phi_{\text{in}}(x_{1})}{\dots}{\phi_{\text{in}}(x_{m})}\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{m})\dots}.
+\end{align*}
+Note that this guarantees the truth of the theorem because this is done for all $k$ and by swapping the first $k + 1$ fields with other fields that are contracted in this case.
+
+Looking at the left-hand side, splitting $\phi_{\text{in}}(x_{1})$ into its creation and annihilation parts reveals that the creation part is already in normal order. To handle the annihilation part, we write the normal ordered product as
+\begin{align*}
+	\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots\phi_{\text{in}, +}(x_{P(k + 1)}) \\
+	                                                               &+ \phi_{\text{in}, +}(x_{2})\dots\phi_{\text{in}, +}(x_{k + 1}),
+\end{align*}
+hence
+\begin{align*}
+	\phi_{\text{in}, +}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \phi_{\text{in}, +}(x_{1})\sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots\phi_{\text{in}, +}(x_{P(k + 1)}) \\
+	&+ \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2})\dots\phi_{\text{in}, +}(x_{k + 1}).
+\end{align*}
+The last term is normal ordered. The first term produces two kinds of contributions, the 
+
+Looking at the left-hand side, splitting $\phi_{\text{in}}(x_{1})$ into its creation and annihilation parts reveals that the creation part is already in normal order. By introducing the commutator, we find
+\begin{align*}
+	\phi_{\text{in}}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \phi_{\text{in}, -}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} + \comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}} \\
+	 &+ \nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}\phi_{\text{in}, +}(x_{1}) \\
+	=& \nop{\phi_{\text{in}, -}(x_{1})\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} + \nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})\phi_{\text{in}, +}(x_{1})} \\
+	 &+ \comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}} \\
+	=& \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} + \comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}}.
+\end{align*}
+The hope is that the commutator term contains all the connections.
+
+To whittle it down, we note that
+\begin{align*}
+	\comm{A_{1}}{A_{2}\dots A_{k + 1}} &= \comm{A_{1}}{A_{2}\dots A_{k}}A_{k + 1} + A_{2}\dots A_{k}\comm{A_{1}}{A_{k + 1}} \\
+	                                   &= \left(\comm{A_{1}}{A_{2}\dots A_{k - 1}}A_{k} + A_{2}\dots A_{k - 1}\comm{A_{1}}{A_{k}}\right)A_{k + 1} + A_{2}\dots A_{k}\comm{A_{1}}{A_{k + 1}}
+	                                   &= \dots \\
+	                                   &= \sum\limits_{i = 2}^{k + 1}A_{2}\dots A_{i - 1}\comm{A_{1}}{A_{i}}A_{i + 1}\dots A_{k + 1}.
+\end{align*}
+Writing the normal ordered product as
+\begin{align*}
+	\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots\phi_{\text{in}, +}(x_{P(k + 1)}) \\
+	&+ \phi_{\text{in}, +}(x_{2})\dots\phi_{\text{in}, +}(x_{k + 1}),
+\end{align*}
+we have
+\begin{align*}
+	&\comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}} \\
+	=& \sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots\phi_{\text{in}, +}(x_{P(k + 1)})} \\
+	=& \sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\sum\limits_{i = 2}^{m}\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(i)})\comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{P(i)})}\phi_{\text{in}, -}(x_{P(i + 1)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots
+\end{align*}
+We can extend the summation over $i$ to stop at $k + 1$, yielding
+\begin{align*}
+	\comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}} &= \sum\limits_{i = 2}^{k + 1}\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{i - 1})\comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}}(x_{i})}\phi_{\text{in}}(x_{i + 1})\dots\phi_{\text{in}}(x_{k + 1})}.
+\end{align*}
+We recognize the commutator in the sum as the desired contraction, and the proof is thus complete.
 
 \paragraph{More on Feynman Diagrams}
 We will now illustrate some more uses of Feynman diagrams in obtaining mathematical expressions that can be computed. First, we consider a Klein-Gordon theory with perturbation
@@ -446,6 +528,47 @@ respectively. There is also the vertex
 \end{figure}
 which corresponds to multiplication by $-ie\gamma^{\mu}$.
 
+\paragraph{Obtaining Feynman Rules: An Example}
+We will here demonstrate how to obtain Feynman rules using the results we have derived, using $\phi^{4}$ theory as an example.
+
+We start with the interaction Hamiltonian
+\begin{align*}
+	H_{\text{I}} = \frac{\lambda}{4!}\phi^{4}.
+\end{align*}
+Suppose now that we want to study incoming and outgoing states with defined momenta. We are looking for
+\begin{align*}
+	\mel{q}{S}{p} = (2\pi)^{3}\sqrt{4E_{\vb{p}}E_{\vb{q}}}\expval{a_{\vb{q}}Sa_{\vb{p}}\adj}{0}.
+\end{align*}
+Next we use the Dyson expansion
+\begin{align*}
+	S = \torp\left(e^{-i\integ[4]{}{}{x}{H_{\text{I}}}}\right) = \torp\left(1 - i\integ[4]{}{}{x}{H_{\text{I}}(x)} - \frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{H_{\text{I}}(x)H_{\text{I}}(y)}} + \dots\right)
+\end{align*}
+to write the desired matrix element as
+\begin{align*}
+	\mel{q}{S}{p} &= (2\pi)^{3}\sqrt{4E_{\vb{p}}E_{\vb{q}}}\expval{a_{\vb{q}}\torp\left(1 - i\integ[4]{}{}{x}{H_{\text{I}}(x)} - \frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{H_{\text{I}}(x)H_{\text{I}}(y)}} + \dots\right)a_{\vb{p}}\adj}{0} \\
+	              &= (2\pi)^{3}\sqrt{4E_{\vb{p}}E_{\vb{q}}}\expval{a_{\vb{q}}\torp\left(1 - \frac{i\lambda}{4!}\integ[4]{}{}{x}{\phi^{4}(x)} - \frac{1}{2}\left(\frac{i\lambda}{4!}\right)^{4}\integ[4]{}{}{x}{\integ[4]{}{}{y}{\phi^{4}(x)\phi^{4}(y)}} + \dots\right)a_{\vb{p}}\adj}{0}.
+\end{align*}
+This is a perturbative expansion of the matrix element. The next step is to use Wick's theorem to simplify this. Writing the different orders as $S_{qp}^{(n)}$, we first study the first-order correction
+\begin{align*}
+	S_{qp}^{(1)} = -\frac{i\lambda}{4!}(2\pi)^{3}\sqrt{4E_{\vb{p}}E_{\vb{q}}}\expval{a_{\vb{q}}\torp\left(\integ[4]{}{}{x}{\phi^{4}(x)}\right)a_{\vb{p}}\adj}{0} = -\frac{i\lambda}{4!}(2\pi)^{3}\sqrt{4E_{\vb{p}}E_{\vb{q}}}\expval{\torp \integ[4]{}{}{x}{a_{\vb{q}}\phi^{4}(x)a_{\vb{p}}}\adj}{0}.
+\end{align*}
+Looking at this, Wick's theorem produces a term which separates the single operators from the fields. There are three such terms. The other contains contractions of the fields with the single operators. We somehow find
+\begin{align*}
+	\contraction{}{\phi}{(x)}{a\adj}\phi(x)a\adj(\vb{p}) = \frac{1}{(2\pi)^{\frac{3}{2}}}\frac{1}{\sqrt{2\omega(\vb{p})}}e^{-ipx},\ \contraction{}{a}{(\vb{p})}{\phi}a(\vb{p})\phi(x) = \frac{1}{(2\pi)^{\frac{3}{2}}}\frac{1}{\sqrt{2\omega(\vb{p})}}e^{ipx},\ \contraction{}{a}{(\vb{p})}{a\adj}a(\vb{p})a\adj(\vb{q}) = \delta(\vb{p} - \vb{q}).
+\end{align*}
+There are twelve terms of this kind, and it is given by
+\begin{align*}
+	&12(2\pi)^{3}\sqrt{4\omega(\vb{p})\omega(\vb{q})}\frac{-i\lambda}{4!}\integ[4]{}{}{z}{\frac{1}{(2\pi)^{\frac{3}{2}}}\frac{1}{\sqrt{2\omega(\vb{p})}}e^{-ipz}\frac{1}{(2\pi)^{\frac{3}{2}}}\frac{1}{\sqrt{2\omega(\vb{p})}}e^{iqz}\integ[4]{}{}{k}{\frac{1}{(2\pi)^{4}}\frac{e^{-ik(z - z)}}{k^{2} - m^{2} + i\varepsilon}}} \\
+	=& \frac{-i\lambda}{2}\integ[4]{}{}{z}{e^{-i(p - q)z}\integ[4]{}{}{k}{\frac{1}{(2\pi)^{4}}\frac{1}{k^{2} - m^{2} + i\varepsilon}}}
+\end{align*}
+
+Finally we try to make sense of the individual terms in Wick's theorem by drawing a Feynman diagram according to the following rules:
+\begin{itemize}
+	\item Draw a number of vertices equal to the number of interactions you are considering.
+	\item Contractions between the incoming state and a field produce a leg with an external point and incoming direction. Similarly, contractions with the outgoing state create outgoing legs.
+	\item Contractions between fields create loops in the diagram.
+\end{itemize}
+
 \paragraph{Scattering Cross-Sections}
 Consider two volumes of particles with lengths $l_{A}$ and $l_{B}$ and particle densities $\rho_{A}$ and $\rho_{B}$ normal to the length approaching one another. If $\Phi$ is the cross-sectional area common to the volumes we define the scattering cross-section as
 \begin{align*}
@@ -461,5 +584,12 @@ To study this, we will expand the S-matrix as $S = 1 + iT$. In particular, for t
 \end{align*}
 We can on this basis show that
 \begin{align*}
-	\dd{\sigma} = \frac{1}{4E_{A}E_{B}\abs{v_{A} - v_{B}}}\prod\limits_{f}\dd[3]{\vb{p}_{f}}\frac{1}{(2\pi)^{3}}\frac{1}{2E_{f}}\abs{M}^{2}\cdot (2\pi)^{4}\delta\left(p_{A} + p_{B} - \sum\limits_{f}p_{f}\right).
+	\dd{\sigma} = \frac{1}{4E_{A}E_{B}\abs{v_{A} - v_{B}}}\prod\limits_{f}\dd[3]{\vb{p}_{f}}\frac{1}{(2\pi)^{3}}\frac{1}{2E_{f}}\abs{M}^{2}\cdot (2\pi)^{4}\delta^{4}\left(p_{A} + p_{B} - \sum\limits_{f}p_{f}\right).
 \end{align*}
+
+\paragraph{Decay Rates}
+Consider a reaction $a\to b + c + \dots$. It can be shown that decay rates can be computed according to
+\begin{align*}
+	\dd{\Gamma} = \frac{1}{2m_{a}}(2\pi)^{4}\delta^{4}\left(p_{a} - \sum\limits_{\text{products}}p_{f}\right)\abs{M(a \to b + c + \dots)}^{2}\left(\prod\limits_{\text{products}}\dd[3]{\vb{p}_{f}}\frac{1}{(2\pi)^{3}}\right).
+\end{align*}
+From this, lifetimes are given by $\tau = \frac{1}{\Gamma}$.
