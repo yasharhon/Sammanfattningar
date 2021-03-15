@@ -231,18 +231,18 @@ Introducing a $t$ that is greater than all involved times (implying that $-t$ is
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) = \expval{\torp U^{-1}(t)U(t, t_{1})\phi_{\text{in}}(x_{1})U(t_{1}, t_{2})\phi_{\text{in}}(x_{2})\dots U(t_{n - 1}, t_{n})\phi_{\text{in}}(x_{n})U(t_{n}, -t)U(-t)}{\Omega}.
 \end{align*}
-In the limit of $t\to\infty$ we can somehow extract the $U$ to find
+In the limit of $t\to\infty$ we can somehow extract the $U$ and rearrange the operators to find
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) &= \expval{U^{-1}(t)\torp (\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})\dots \phi_{\text{in}}(x_{n})U(t, t_{1})U(t_{1}, t_{2})\dots U(t_{n - 1}, t_{n})U(t_{n}, -t))U(-t)}{\Omega} \\
 	                          &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})U(t, -t)\right)U(-t)}{\Omega} \\
 	                          &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}\right)U(-t)}{\Omega}
 \end{align*}
 
-Next we want to show that $\ket{\Omega}$ is an eigenstate of $U(-t)$. We therefore look at the state $\mel{\alpha, \vb{p}, \text{in}}{U(-t)}{\Omega}$. It can be shown that as $t$ goes to infinity, this matrix element approaches zero, meaning
+Next we want to show that $\ket{\Omega}$ is an eigenstate of $U(-t)$, as that will allow us to remove the $U$s. We therefore look at the state $\mel{\alpha, \vb{p}, \text{in}}{U(-t)}{\Omega}$. It can be shown that as $t$ goes to infinity, this matrix element approaches zero, meaning
 \begin{align*}
 	\lim\limits_{t\to\infty}U(\pm t)\ket{\Omega} = \lambda_{\pm}\ket{\Omega}.
 \end{align*}
-This also means that for such states, adding the completeness relation amounts to just multiplying by $\op{\Omega}$. In the limit we thus have
+This means that for the physical vacuum, adding the completeness relation amounts to just multiplying by $\op{\Omega}$. In the limit we thus have
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) &= \expval{U^{-1}(t)\torp\left(\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}\right)U(-t)}{\Omega} \\ 
 	                          &=\expval{U^{-1}(t)}{\Omega}\expval{\torp\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}\expval{U(-t)}{\Omega} \\
@@ -257,25 +257,35 @@ according to the definition, hence
 	\tau(x_{1}, \dots, x_{n}) = \frac{\expval{\torp\phi_{\text{in}}(x_{1})\dots \phi_{\text{in}}(x_{n})e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}}{\expval{\torp e^{-i\integ{-t}{t}{\tau}{H_{\text{I}\p(\tau)}}}}{\Omega}}.
 \end{align*}
 
-\paragraph{The Different Vacuua}
-We have thus far been using the physical and free vacuua without being clear on what they are. The physical vacuum $\ket{\Omega}$ is the ground state of the total Hamiltonian $H$, while the free vacuum $\ket{0}$ is the ground state of the free Hamiltonian $H_{\text{in}}$. These two are not orthogonal in the case of small perturbations. Expanding in eigenstates of the total Hamiltonian we have
+\paragraph{Switching Vacuua}
+The physical and free vacuua are not orthogonal in the case of small perturbations. Expanding in eigenstates of the total Hamiltonian we have
 \begin{align*}
-	e^{-iHt}\ket{0} = e^{-iE_{n}t}\ket{\Omega}\braket{\Omega}{0} + \sum\limits_{n > 0}e^{-iE_{n}t}\ket{n}\braket{n}{0}.
+	e^{-iHt}\ket{0} = e^{-iE_{0}t}\ket{\Omega}\braket{\Omega}{0} + \sum\limits_{n > 0}e^{-iE_{n}t}\ket{n}\braket{n}{0}.
 \end{align*}
-Because the energies are ordered, we somehow find that all the exponentials corresponding to excited states approach zero faster than the others, meaning
+Because the energies are ordered, we can approach infinite time as $t\to (1 + i\varepsilon)\infty$ for some small $\varepsilon$ to find that all the exponentials corresponding to excited states approach zero faster than the others, meaning
 \begin{align*}
 	\ket{\Omega} = \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}t}e^{-iHt}\ket{0}.
 \end{align*}
-In this limit we may add a small time shift without changing the result, yielding
+In this limit we may add a small time shift without changing the result. Defining energy such that the ground state of the free Hamiltonian has zero energy, we may write
 \begin{align*}
 	\ket{\Omega} &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t + t_{0})}e^{-iH(t + t_{0})}\ket{0} \\
-	             &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t - (-t_{0}))}e^{-iH(t - (-t_{0}))}e^{-iH_{\text{in}}(t - (-t_{0}))}\ket{0} \\
+	             &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t_{0} - (-t))}e^{-iH(t_{0} - (-t))}e^{iH_{\text{in}}(t_{0} - (-t))}\ket{0} \\
+	             &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t_{0} - (-t))}e^{-i(H - H_{\text{in}})(t_{0} - (-t))}\ket{0} \\
 	             &= \lim\limits_{t\to\infty}\frac{1}{\braket{\Omega}{0}}e^{iE_{0}(t - (-t_{0}))}U(t_{0}, -t)\ket{0}.
 \end{align*}
+By similar arguments it can be shown that
+\begin{align*}
+	\bra{\Omega} &= \lim\limits_{t\to\infty}\frac{1}{\braket{0}{\Omega}}e^{iE_{0}(t - t_{0})}\bra{0}U(t, t_{0}).
+\end{align*}
+
 Returning to the issue of the time-ordered product we have
 \begin{align*}
-	\tau(x_{1}, \dots, x_{n}) &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{U(t, 0)U^{-1}(t)\torp(\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}))U(t, -t)U(-t)U(0, t)}{0} \\
-	                          &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{\torp \phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}.
+	\tau(x_{1}, \dots, x_{n}) &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{U(t, t_{0})U^{-1}(t)\torp(\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}))U(t, -t)U(-t)U(t_{0}, -t)}{0}.
+\end{align*}
+Choosing $t_{0} = 0$ we have
+\begin{align*}
+	\tau(x_{1}, \dots, x_{n}) &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{U(t)U^{-1}(t)\torp(\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n}))U(t, -t)U(-t)U(-t)^{-1}}{0} \\
+	                          &= \lim\limits_{t\to\infty}\frac{1}{\abs{\braket{\Omega}{0}}^{2}}e^{2iE_{0}t}\expval{\torp \phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})U(t, -t)}{0}.
 \end{align*}
 Requiring the physical vacuum to be normalized we find
 \begin{align*}
@@ -285,6 +295,7 @@ and thus
 \begin{align*}
 	\tau(x_{1}, \dots, x_{n}) = \lim\limits_{t\to\infty}\frac{\expval{\torp \phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}}{\expval{U(t, -t)}{0}}.
 \end{align*}
+We have thus reduced the problem of computing expectation values in the interacting theory to that of computing them in the free theory.
 
 \paragraph{Relating Time and Normal Ordering}
 To compute expectation values of the form $\expval{\torp\phi_{\text{in}}(x_{1})\dots\phi_{\text{in}}(x_{n})}{0}$, we divide the fields into two terms $\phi_{\text{in}}(x) = \phi_{\text{in}, +}(x) + \phi_{\text{in}, }(x_{1})$ where the two terms contain all positive and negative frequencies respectively, i.e. all annihilation and creation operators. The purpose is to express the time-ordered product as something containing a normal ordered product, which has zero vacuum expectation value. Assuming $x_{1}^{0} > x_{2}^{0}$ we have
@@ -296,7 +307,7 @@ We reorder the terms by writing
 	\torp\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =& \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2}) + \comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{2})} + \phi_{\text{in}, -}(x_{2})\phi_{\text{in}, +}(x_{1}) \\
 	                                                     &+ \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, +}(x_{2}) + \phi_{\text{in}, -}(x_{1})\phi_{\text{in}, -}(x_{2}).
 \end{align*}
-We now define the Wick contraction
+We now define the Wick contraction of two fields
 \begin{align*}
 	\contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) = \phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) - \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})},
 \end{align*}
@@ -305,7 +316,7 @@ and from the above we see that
 	\contraction{}{\phi_{\text{in}}(x_{1})}{}{\phi_{\text{in}}(x_{2})}\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2}) =
 	\begin{cases}
 		\comm{\phi_{\text{in}, +}(x_{1})}{\phi_{\text{in}, -}(x_{2})},\ x_{1}^{0} > x_{2}^{0} \\
-		\comm{\phi_{\text{in}, +}(x_{2})}{\phi_{\text{in}, -}(x_{1})},\ x_{2}^{0} > x_{1}^{0}.
+		\comm{\phi_{\text{in}, +}(x_{2})}{\phi_{\text{in}, -}(x_{1})},\ x_{2}^{0} > x_{1}^{0},
 	\end{cases}
 \end{align*}
 This yields
@@ -349,19 +360,7 @@ To prove the theorem, we must bring this expression to normal ordered form. It m
 \end{align*}
 Note that this guarantees the truth of the theorem because this is done for all $k$ and by swapping the first $k + 1$ fields with other fields that are contracted in this case.
 
-Looking at the left-hand side, splitting $\phi_{\text{in}}(x_{1})$ into its creation and annihilation parts reveals that the creation part is already in normal order. To handle the annihilation part, we write the normal ordered product as
-\begin{align*}
-	\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots\phi_{\text{in}, +}(x_{P(k + 1)}) \\
-	                                                               &+ \phi_{\text{in}, +}(x_{2})\dots\phi_{\text{in}, +}(x_{k + 1}),
-\end{align*}
-hence
-\begin{align*}
-	\phi_{\text{in}, +}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \phi_{\text{in}, +}(x_{1})\sum\limits_{P(2, \dots, k + 1)}\sum\limits_{m = 2}^{k}\phi_{\text{in}, -}(x_{P(2)})\dots\phi_{\text{in}, -}(x_{P(m)})\phi_{\text{in}, +}(x_{P(m + 1)})\dots\phi_{\text{in}, +}(x_{P(k + 1)}) \\
-	&+ \phi_{\text{in}, +}(x_{1})\phi_{\text{in}, +}(x_{2})\dots\phi_{\text{in}, +}(x_{k + 1}).
-\end{align*}
-The last term is normal ordered. The first term produces two kinds of contributions, the 
-
-Looking at the left-hand side, splitting $\phi_{\text{in}}(x_{1})$ into its creation and annihilation parts reveals that the creation part is already in normal order. By introducing the commutator, we find
+On the left-hand side we may split $\phi_{\text{in}}(x_{1})$ into its creation and annihilation parts. By introducing the commutator, we find
 \begin{align*}
 	\phi_{\text{in}}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} =& \phi_{\text{in}, -}(x_{1})\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} + \comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}} \\
 	 &+ \nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}\phi_{\text{in}, +}(x_{1}) \\
@@ -369,7 +368,7 @@ Looking at the left-hand side, splitting $\phi_{\text{in}}(x_{1})$ into its crea
 	 &+ \comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}} \\
 	=& \nop{\phi_{\text{in}}(x_{1})\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})} + \comm{\phi_{\text{in}, +}(x_{1})}{\nop{\phi_{\text{in}}(x_{2})\dots\phi_{\text{in}}(x_{k + 1})}}.
 \end{align*}
-The hope is that the commutator term contains all the connections.
+The hope is then that the commutator term contains all the connections.
 
 To whittle it down, we note that
 \begin{align*}
