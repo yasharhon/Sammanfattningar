@@ -279,46 +279,65 @@ where $\pi$ is the momentum density. From these we introduce creation and annihi
 	a_{n} = \frac{1}{\sqrt{2}}(q_{n} + ip_{m}),
 \end{align*}
 which satisfy the correct commutation relations.
+%a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b
 
-We will now introduce a slightly different scheme for quantization. We start with eigenfunctions
+To proceed we start with the expansion
 \begin{align*}
-	\phi_{k} = c_{k}e^{-ikx},\ k^{2} = m^{2}
+	\phi = \integ[4]{}{}{k}{a(k)e^{-ikx}\delta(k^{2} - m^{2})}.
 \end{align*}
-on an unbound space. The inner product is
+We have introduced a Dirac delta to guarantee that only solutions of the Klein-Gordon equation are included. We can use the properties of the Dirac delta to obtain
 \begin{align*}
-	(\phi_{k}, \phi_{q}) = i\integ[4]{}{}{x}{\phi_{k}(x)\cc\delsw{}{t}\phi_{q}(x)},\ a\delsw{}{}b = a\del{}{}b - (\del{}{}a)b,
+	\phi = \integ[4]{}{}{k}{a(k)e^{-ikx}\frac{1}{\abs{2k^{0}}}\left(\delta(k^{0} - \omega_{\vb{k}}) + \delta(k^{0} + \omega_{\vb{k}})\right)},
 \end{align*}
-which implies $(\phi_{k}, \phi_{q})\propto \delta(k - q)$. The choice
+at least for the purposes of integration, where $\omega_{\vb{k}} = \sqrt{\vb{k}^{2} + m^{2}}$. Integrating we find
 \begin{align*}
-	c_{k} = \frac{1}{\sqrt{2k_{0}}} = \frac{1}{\sqrt{2k^{0}}}
+	\phi = \frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{2\omega_{\vb{k}}}\left(a_{k}(t)e^{i\vb{k}\cdot\vb{x}} + a_{k}\cc(t)e^{-i\vb{k}\cdot\vb{x}}\right)},
 \end{align*}
-gives orthonormality. We take $k_{0}$ to be positive in the normalization for both solutions. Armed with this we write a general field as
+where we have introduced a particular choice of normalization and done some renaming and relabelling.
+
+We can obtain a nicer expression by introducing coefficients in terms of $3$-momentum. We will take $a_{k} = c_{k}a_{\vb{k}}$. The canonical Poisson bracket is
 \begin{align*}
-	\phi = \integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{2k^{0}}}\left(a(\vb{k})e^{-ikx} + a\cc(\vb{k})e^{ikx}\right)},%\frac{1}{\sqrt{2(2\pi)^{3}}}
+	\pb{a_{\vb{k}}}{a_{\vb{q}}\cc} = -i\delta^{3}(\vb{k} - \vb{q}).
 \end{align*}
-using a particular choice of normalization for the field, similarly to the non-relativistic string. The positive energy solutions are on the left and the negative energy ones on the right. Note that $k^{0}$ is fixed once $\vb{k}$ is chose. From this we can compute the momentum density
+Taking this to be true, we compute the momentum density
 \begin{align*}
-	\pi = i\integ[3]{}{}{\vb{k}}{\sqrt{\frac{k^{0}}{2}}\left(-a(\vb{k})e^{-ikx} + a\cc(\vb{k})e^{ikx}\right)}.
+	\pi = \frac{i}{(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{2}\left(-a_{k}(t)e^{i\vb{k}\cdot\vb{x}} + a_{k}\cc(t)e^{-i\vb{k}\cdot\vb{x}}\right)},
+\end{align*}
+and find
+\begin{align*}
+	\pb{\phi(t, \vb{x})}{\pi(t, \vb{y})} &= \frac{i}{(2\pi)^{6}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{4\omega_{\vb{k}}}\pb{a_{k}(t)e^{i\vb{k}\cdot\vb{x}} + a_{k}\cc(t)e^{-i\vb{k}\cdot\vb{x}}}{-a_{q}(t)e^{i\vb{q}\cdot\vb{y}} + a_{q}\cc(t)e^{-i\vb{q}\cdot\vb{y}}}}} \\
+	&= \frac{i}{(2\pi)^{6}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{2\omega_{\vb{k}}}e^{i(\vb{k}\cdot\vb{x} - \vb{q}\cdot\vb{y})}\pb{a_{k}(t)}{a_{q}\cc(t)}}} \\
+	&= \frac{1}{(2\pi)^{6}}\integ[3]{}{}{\vb{k}}{\frac{\abs{c_{k}}^{2}}{2\omega_{\vb{k}}}e^{i\vb{k}\cdot(\vb{x} - \vb{y})}},
+\end{align*}
+and the choice
+\begin{align*}
+	c_{k} = (2\pi)^{\frac{3}{2}}\sqrt{2\omega_{\vb{k}}}
+\end{align*}
+yields the correct Poisson bracket. We then rewrite the field as
+\begin{align*}
+	\phi = \frac{1}{(2\pi)^{\frac{3}{2}}}\integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{2\omega_{\vb{k}}}}\left(a_{\vb{k}}(t)e^{i\vb{k}\cdot\vb{x}} + a_{\vb{k}}\cc(t)e^{-i\vb{k}\cdot\vb{x}}\right)}.
 \end{align*}
 
-The above expressions are ripe for quantization. We first solve for the creation and annihilation operators by noting
+The above expressions are ripe for quantization. To separate the time dependence from the creation and annihilation operators, we note that the Hamiltonian does not act on functions. As the creation and annihilation operators create eigenstates of the Hamiltonian, we have
 \begin{align*}
-	\frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{x}}{\phi e^{iqx}} = \frac{1}{\sqrt{2q^{0}}}(a(\vb{q})e^{-ik^{0}t} + a(\vb{q})\adj e^{ik^{0}t}),\ \frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{x}}{\pi e^{iqx}} = \sqrt{\frac{q^{0}}{2}}(-a(\vb{q})e^{-ik^{0}t} + a(\vb{q})\adj e^{ik^{0}t})
+	a_{\vb{k}}(t) &= e^{iHt}a_{\vb{k}}(0)e^{-iHt}\ket{n_{\vb{k}},\ \text{rest}} \\
+	              &= e^{iHt}a_{\vb{k}}(0)e^{-it(n_{\vb{k}}\omega_{\vb{k}} + \text{rest})}\ket{n_{\vb{k}},\ \text{rest}} \\
+	              &= \sqrt{n_{\vb{q}}}e^{it((n_{\vb{k}} - 1)\omega_{\vb{k}} + \text{rest})}e^{-it(n_{\vb{k}}\omega_{\vb{k}} + \text{rest})}\ket{n_{\vb{k}} - 1,\ \text{rest}} \\
+	              &= e^{-it\omega_{\vb{k}}}\ket{n_{\vb{k}},\ \text{rest}}.
 \end{align*}
-
-We introduce the creation and annihilation terms
+A similar argument can be performed for the annihilation operators, meaning that the creation and annihilation terms of the field are
 \begin{align*}
-	\phi_{+} = \integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{2k^{0}}}a(\vb{k})e^{-ikx}},\ \phi_{-} = \integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{2k^{0}}}a\adj(\vb{k})e^{ikx}}.
+	\phi_{+} = \integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{2\omega_{\vb{k}}}}a_{\vb{k}}e^{-ikx}},\ \phi_{-} = \integ[3]{}{}{\vb{k}}{\frac{1}{\sqrt{2\omega_{\vb{k}}}}a\adj_{\vb{k}}e^{ikx}}.
 \end{align*}
-Given this, the two terms commute, even when evaluated at different points. We also have
+It is now clear that the two terms commute, even when evaluated at different points. We also have
 \begin{align*}
-	\comm{\phi_{+}(x)}{\phi_{-}(y)} &= \integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{2\sqrt{k^{0}q^{0}}}\comm{a(\vb{k})}{a\adj(\vb{q})}e^{-i(kx - qy)}}} \\
-	                                &= \frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{2\sqrt{k^{0}q^{0}}}\delta(\vb{k} - \vb{q})e^{-i(kx - qy)}}} \\
-	                                &= \frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}e^{-ik(x - y)}},
+	\comm{\phi_{+}(x)}{\phi_{-}(y)} &= \frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{2\sqrt{\omega_{\vb{k}}\omega_{\vb{q}}}}\comm{a(\vb{k})}{a\adj(\vb{q})}e^{-i(kx - qy)}}} \\
+	                                &= \frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\integ[3]{}{}{\vb{q}}{\frac{1}{2\sqrt{\omega_{\vb{k}}\omega_{\vb{q}}}}\delta(\vb{k} - \vb{q})e^{-i(kx - qy)}}} \\
+	                                &= \frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{\omega_{\vb{k}}}e^{-ik(x - y)}},
 \end{align*}
 which we define as $\kgprop{+}{x - y}$. Similarly we define
 \begin{align*}
-	\comm{\phi_{-}(x)}{\phi_{+}(y)} = \kgprop{-}{x - y} = -\frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{k^{0}}e^{ik(x - y)}}.
+	\comm{\phi_{-}(x)}{\phi_{+}(y)} = \kgprop{-}{x - y} = -\frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{k}}{\frac{1}{\omega_{\vb{k}}}e^{ik(x - y)}}.
 \end{align*}
 This implies
 \begin{align*}
