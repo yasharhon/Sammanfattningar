@@ -1,4 +1,4 @@
-\section{A Litte Bit About Stochastic Processes}
+\section{A Litte Bit About Probability Theory}
 
 \paragraph{The Characteristic Function}
 For a continuous probability distribution we define the characteristic function
@@ -53,6 +53,62 @@ Using the notation
 	P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}; \dots; y_{M}, \tau_{M})
 \end{align*}
 we have the convention that the events are ordered from latest to earliest with the $\tau$ corresponding to events before the $t$.
+
+\paragraph{Wiener Processes}
+In this course we will be studying equations of the form
+\begin{align*}
+	\dv{x}{t} = a(x; t) + b(x; t)\eta(t),
+\end{align*}
+where $\eta$ is a stochastic process that satisfies
+\begin{align*}
+	\expval{\eta(t)},\ \expval{\eta(t)\eta(t\p)} = \delta(t - t\p).
+\end{align*}
+This equation is not well-defined, however, due to the Dirac delta. However, as the integral of $\eta$ is continuous, we can define
+\begin{align*}
+	W = \integ{t_{0}}{t}{t\p}{\eta(t\p)}.
+\end{align*}
+It satisfies
+\begin{align*}
+	\expval{W(t)} = 0,\ \expval{W(t)W(t\p)} = \integ{t_{0}}{t}{\tau}{\integ{t_{0}}{t\p}{\tau\p}{\expval{\eta(\tau)\eta(\tau\p)}}} = \integ{t_{0}}{t}{\tau}{\integ{t_{0}}{t\p}{\tau\p}{\delta(\tau - \tau\p)}} = \integ{t_{0}}{t}{\tau}{\theta(t\p - \tau)} = \min(t - t_{0}, t\p - t_{0}).
+\end{align*}
+From this we can consider infinitesimal increments
+\begin{align*}
+	\dd{W} = W(t + \dd{t}) - W(t) = \integ{t}{t + \dd{t}}{t\p}{\eta(t\p)},
+\end{align*}
+which satisfy
+\begin{align*}
+	\expval{\dd{W}} = 0,\ \expval{\dd{W}(t)\dd{W}(t\p)} = \delta(t - t\p)\dd{t}.
+\end{align*}
+This is a warning sign that care should be taken when doing calculus with such processes. Using this, we reformulate the equation we wanted to study as
+\begin{align*}
+	\dv{x}{t} = a(x; t) + b(x; t)\dd{W},
+\end{align*}
+where we take the previous version to be a shorthand for this one. This can be formally integrated as
+\begin{align*}
+	x(t) = x(t_{0}) + \integ{t_{0}}{t}{t\p}{a(x; t)} + \integ{t_{0}}{t}{W(t\p)}{b(x; t)}.
+\end{align*}
+
+\paragraph{Integral Prescription}
+The last integral in the previous section introduces a complication, as it is not uniquely defined. Namely, depending on how you define your Riemann sum you might get different results. Two choices we will discuss here are the Ito prescription, which chooses function values from the left of the interval, and the Stratonovich prescription, which chooses them from the right.
+
+To relate the two, consider the expression
+\begin{align*}
+	I = \integ{t_{0}}{t}{W}{b(x; t)}.
+\end{align*}
+In the two prescriptions, distinguished by a subscript, we have
+\begin{align*}
+	I_{\text{I}} = \sum\limits_{i = 0}^{n - 1}b(x(t_{i}); t_{i})\Delta W(t_{i}),\ I_{\text{S}} = \sum\limits_{i = 0}^{n - 1}b(x(t_{i + 1}); t_{i + 1})\Delta W(t_{i}).
+\end{align*}
+We have
+\begin{align*}
+	b(x(t_{i + 1}); t_{i + 1}) = b(x(t_{i}); t_{i}) + \alpha\Delta\p W(t_{i}),
+\end{align*}
+where $\Delta\p$ indicates a different realization of the Wiener process. In the limit of the increments vanishing we find
+\begin{align*}
+	\expval{I_{\text{I}}} &= \expval{\integ{t_{0}}{t}{W(\tau)}{b(x(\tau); \tau)}} = 0, \\
+	\expval{I_{\text{S}}} &= \integ{t_{0}}{t}{\tau}{\alpha(\tau)}.
+\end{align*}
+The Ito prescription thus allows us to ignore the $b$ term in such equations when taking expectation values.
 
 \paragraph{Markov Processes}
 A Markov process is a process such that

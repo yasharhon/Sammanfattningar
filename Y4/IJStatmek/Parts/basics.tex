@@ -18,15 +18,15 @@ where the $\Delta x_{n}^{i}$ are random variables assumed to be independent and 
 \begin{align*}
 	\expval{\Delta x_{n}^{i}} = 0,\ \expval{(\Delta x_{n}^{i})^{2}} = \sigma^{2},
 \end{align*}
-as with this recursion we find
+as we recursively find
 \begin{align*}
 	x^{i}(t) = x^{i}_{0} + \sum\limits_{n}\Delta x_{n}^{i}.
 \end{align*}
-For a large number of steps $N$ the coordinates then follow a normal distribution. Its expectation value is
+For a large number of steps $N$ the coordinates then follow a normal distribution, according to the central limit theorem. Their expectation values are
 \begin{align*}
 	\expval{x^{i}(t)} = \expval{x^{i}_{0} + \sum\limits_{n}\Delta x_{n}^{i}} = x^{i}_{0}.
 \end{align*}
-Its variance is
+Their variances are
 \begin{align*}
 	\expval{(x^{i}(t) - \expval{x^{i}(t)})^{2}} &= \expval{\left(\sum\limits_{n}\Delta x_{n}^{i}\right)^{2}} \\
 	                                            &= \sum\limits_{m, n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} \\
@@ -40,60 +40,65 @@ where we have used the fact that the steps are independent and the covariance th
 \end{align*}
 To rewrite this in the appropriate form, we introduce the time as $t = N\Delta t$ and define
 \begin{align*}
-	\frac{\sigma^{2}}{\Delta t}t = 2Dt,
+	\frac{\sigma^{2}}{\Delta t}(t - t_{0}) = 2D(t - t_{0}).
 \end{align*}
-meaning that things have the right form somehow.
+We then find
+\begin{align*}
+	P(\vb{x}) = \frac{1}{(4\pi D(t - t_{0}))^{\frac{d}{2}}}e^{-\frac{\abs{\vb{x} - x_{0}}^{2}}{4D(t - t_{0})}},
+\end{align*}
+which is the correct result.
 
 \paragraph{Irreversibility and Classical Mechanics}
 The example with random walks showed that the diffusion result was produced under the assumption that the microscopic process did not have time reversal symmetry. Classical mechanics, however, does. How do we reconcile the two?
 
 One ad hoc answer is that classical dynamics, while allowing for dynamics with time reversal, will not necessarily admit this with a high probability, accounting for why it is not observed.
 
-A more computational example might be found by defining the statistical entropy
+\paragraph{Entropy and Classical Mechanics}
+Consider the statistical entropy
 \begin{align*}
-	S = -\kb\integ{}{}{\vb{x}}{f(\vb{x}, t)\ln(f(\vb{x}, t))}.
+	S = -\kb\integ{}{}{\vb{x}}{f(\vb{x}, t)\ln(f(\vb{x}, t))},
 \end{align*}
-$f$ is the probability density in phase space, and according to Liouville's theorem we have
+where $f$ is the probability density in phase space. According to Liouville's theorem we have
 \begin{align*}
-	\del{t}{f} = \pb{\ham}{f},
+	\del{}{t}f = \pb{\ham}{f},
 \end{align*}
-where \ham is the Hamiltonian. Defining the velocity field $\vb{v} = \dv{\vb{x}}{t}$ in phase space and using Hamilton's equations we may alternatively write the above as
+where $\ham$ is the Hamiltonian. Defining the velocity field $\vb{v} = \dv{\vb{x}}{t}$ in phase space and using Hamilton's equations we may alternatively write the above as
 \begin{align*}
-	\del{t}{f} = -\vb{v}\cdot\grad_{\vb{x}}{f}.
+	\del{}{t}f = -\vb{v}\cdot\grad_{\vb{x}}{f}.
 \end{align*}
 As
 \begin{align*}
-	\div_{\vb{x}}{\vb{v}} = \del{}{q^{i}}{\del{}{p_{i}}{\ham}} - \del{}{p^{i}}{\del{}{q_{i}}{\ham}} = 0,
+	\grad_{\vb{x}}\cdot\vb{v} = \del{}{q^{i}}{\del{}{p_{i}}{\ham}} - \del{}{p^{i}}{\del{}{q_{i}}{\ham}} = 0,
 \end{align*}
 we have
 \begin{align*}
-	\del{t}{f} = -\div_{\vb{x}}{(f\vb{v})}.
+	\del{}{t}f = -\grad_{\vb{x}}\cdot(f\vb{v}).
 \end{align*}
 The derivative of the entropy is thus
 \begin{align*}
-	\del{t}{S} &= -\kb\integ{}{}{\vb{x}}{\del{t}{f}\ln(f) + \del{t}{f}} \\
-	           &= \kb\integ{}{}{\vb{x}}{\div_{\vb{x}}{(f\vb{v})}(\ln(f) + 1)}.
+	\del{}{t}S &= -\kb\integ{}{}{\vb{x}}{\ln(f)\del{}{t}f + \del{}{t}f} \\
+	           &= \kb\integ{}{}{\vb{x}}{(\ln(f) + 1)\grad_{\vb{x}}\cdot(f\vb{v})}.
 \end{align*}
 The latter term may be converted to a surface term using Gauss' theorem, and choosing boundaries at infinity it produces no contribution. Similarly for the other term we may write
 \begin{align*}
-	\del{t}{S} &= \kb\integ{}{}{\vb{x}}{\div_{\vb{x}}{(f\ln(f)\vb{v})} - f\vb{v}\cdot\grad_{\vb{x}}{\ln(f)}} \\
+	\del{}{t}S &= \kb\integ{}{}{\vb{x}}{\grad_{\vb{x}}\cdot(f\ln(f)\vb{v}) - f\vb{v}\cdot\grad_{\vb{x}}{\ln(f)}} \\
 	           &= -\kb\integ{}{}{\vb{x}}{f\vb{v}\cdot\frac{1}{f}\grad_{\vb{x}}{f}} \\
-	           &= -\kb\integ{}{}{\vb{x}}{\vb{v}\cdot\grad_{\vb{x}}{f}}.
+	           &= -\kb\integ{}{}{\vb{x}}{\vb{v}\cdot\grad_{\vb{x}}{f}},
 \end{align*}
-Repeating a previous step, we find that this term gives no contribution either, meaning $\del{t}{S} = 0$.
+where we removed an intermediate surface term. The previous steps show that the remaining term may also be converted to a surface term, meaning $\del{t}{S} = 0$.
 
 \paragraph{Brownian Motion and the Langevin Equation}
 To describe Brownian motion we consider particles much heavier than the molecules in the medium in which they are immersed and perform the anzats
 \begin{align*}
-	m\dv{v^{i}}{t} = R_{i}(t),
+	m\dv{v^{i}}{t} = R^{i}(t),
 \end{align*}
-where the $R_{i}(t)$ are stochastic processes with the underlying random variable being the initial position of the particle (I think). In order to produce Brownian motion we expect $\expval{R_{i}(t)} = 0$. Next we introduce the autocorrelation function
+where the $R^{i}(t)$ are stochastic processes with the underlying random variable being the initial position of the particle (I think). In order to produce Brownian motion we expect $\expval{R^{i}(t)} = 0$. Next we introduce the autocorrelation function
 \begin{align*}
-	k(t, t\p) = \expval{(R_{i}(t) - \expval{R_{i}(t)})(R_{i}(t\p) - \expval{R_{i}(t\p)})} = \expval{R_{i}(t)R_{i}(t\p)} - \expval{R_{i}(t)}\expval{R_{i}(t\p)}.
+	k(t, t\p) = \expval{(R^{i}(t) - \expval{R^{i}(t)})(R^{i}(t\p) - \expval{R^{i}(t\p)})} = \expval{R^{i}(t)R^{i}(t\p)} - \expval{R^{i}(t)}\expval{R^{i}(t\p)}.
 \end{align*}
-It measures for how long deviations from the mean force remain correlated, and thus the time scales of the fluctuations and typical amplitudes of the force. In the case of a single time scale being relevant, we name it the autocorrelation time and denote it $\tau_{\text{c}}$. For Brownian motion this time scale is the typical time between collisions. In the relevant limits in which we are working we expect the correlations in forces at different times to be irresolvable, and thus
+It measures for how long deviations from the mean force remain correlated, and thus the time scales of the fluctuations and typical amplitudes of the force. In the case of a single time scale being relevant, we name it the autocorrelation time and denote it $\tau_{\text{c}}$. For Brownian motion this time scale is the typical time between collisions. In the relevant limits in which we are working we expect the force correlations at different times to be irresolvable, and thus
 \begin{align*}
-	k(t, t\p) = \expval{R_{i}(t)R_{i}(t\p)} = \Gamma\delta(t - t\p).
+	k(t, t\p) = \expval{R^{i}(t)R^{i}(t\p)} = \Gamma\delta(t - t\p).
 \end{align*}
 $\sqrt{\Gamma}$ is a typical intensity of the fluctuations in the force. If we assume the stochastic processes to be Gaussian, we have now completely specified them.
 
@@ -101,9 +106,9 @@ Does the anzats work? No! By computing expectation values, we see that constant 
 \begin{align*}
 	m\dv{v^{i}}{t} = R^{i}(t) + F^{i} - \alpha v^{i}.
 \end{align*}
-The general solution is
+The formal solution is
 \begin{align*}
-	v^{i}(t) = e^{-\gamma t}v^{i}_{0} + \frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R^{i}(s) + F^{i}(s))},
+	v^{i}(t) = e^{-\gamma t}v^{i}_{0} + \frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R^{i}(s) + F^{i}(s))},\ \gamma = \frac{\alpha}{m},
 \end{align*}
 which we can verify according to
 \begin{align*}
@@ -118,7 +123,7 @@ What kind of behaviour is produced now? To begin with, let us assume there are n
 \end{align*}
 with solution
 \begin{align*}
-	\expval{v^{i}} = v^{i}_{0}e^{-\frac{t}{\tau_{v}}},\ \tau_{v} = \frac{1}{\gamma} = \frac{m}{\alpha}.
+	\expval{v^{i}} = v^{i}_{0}e^{-\frac{t}{\tau_{v}}},\ \tau_{v} = \frac{1}{\gamma}.
 \end{align*}
 To be consistent with our assumptions, we thus require $\tau_{v} \gg \tau_{\text{c}}$. Next we have
 \begin{align*}
@@ -205,7 +210,7 @@ Comparing with the previously obtained random walk result we find
 	D = \frac{\kb T}{\gamma m}t.
 \end{align*}
 
-\paragraph{The Focker-Planck Equation for the Langevin Equation}
+\paragraph{The Fokker-Planck Equation for the Langevin Equation}
 For a stochastic process of the form
 \begin{align*}
 	\dd{x} = a(x)\dd{t} + b(x)\dd{W}
@@ -227,7 +232,7 @@ In particular, the Gaussian distribution expected at equilibrium is a stationary
 \paragraph{The Pauli Master Equation}
 Consider a quantum system with a set of possible states. Using the eigenbasis of the Hamiltonian the elements of the density matrix are
 \begin{align*}
-	\rho_{nm} = c_{n}(0)\cc{c}_{m}(0)e^{-i\frac{E_{n} - E_{m}}{\hbar}t}.
+	\rho_{nm} = c_{n}(0)c\cc_{m}(0)e^{-i\frac{E_{n} - E_{m}}{\hbar}t}.
 \end{align*}
 If the system is weakly coupled to a surrounding environment, that can be hard to incorporate. However, one can think of it like this: If the energy exchanges with the surroundings are large compared to the eigenenergies, the phase of off-diagonal elements in the density matrix fluctuates, this fluctuation being on a time scale $\tau_{\phi}$. If the relevant time scales of the dynamics of the system are much larger than $\tau_{\phi}$, we expect the phase to be uniformly distributed, yielding that the time average of the off-diagonal matrix elements is
 \begin{align*}
@@ -344,7 +349,7 @@ For $\chi$ to be conserved, $n$ should be conserved in collisions. In other word
 To show that this is in fact the case, we repeat the derivation of the $H$ theorem, netting us a term $\chi(\vb{p}) + \chi(\vb{p}_{2}) - \chi(\vb{p}_{1}\p) - \chi(\vb{p}_{2}\p)$, meaning that if $\chi$ is conserved in collisions, then $(\del{}{t}{n})_{\text{coll}} = 0$.
 
 \paragraph{Local Equilibrium}
-While the only explicit conserved quantities of (almost-ideal) gas Hamiltonians are momentum and energy, the logarithm of the equilibrium distribution $ln(f^{0})$ is also conserved. This must mean
+While the only explicit conserved quantities of (almost-ideal) gas Hamiltonians are momentum and energy, the logarithm of the equilibrium distribution $\ln(f^{0})$ is also conserved. This must mean
 \begin{align*}
 	\ln(f^{0}) = \beta(\mu + \vb{v}\cdot\vb{p} - \varepsilon),
 \end{align*}
