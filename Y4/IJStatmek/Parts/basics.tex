@@ -1,0 +1,376 @@
+\section{Basic Concepts}
+
+\paragraph{Diffusion and Random Walks}
+Macroscopic diffusion is governed by the diffusion equation
+\begin{align*}
+	\del{}{t}\rho = D\laplacian{\rho}.
+\end{align*}
+In particular, with the initial condition $\rho(\vb{x}, t_{0}) = \delta(\vb{x} - \vb{x}_{0})$ we find
+\begin{align*}
+	\rho(\vb{x}, t) = \left(4\pi D(t - t_{0})\right)^{-\frac{d}{2}}e^{-\frac{\abs{\vb{x} - \vb{x}_{0}}^{2}}{4D(t - t_{0})}}.
+\end{align*}
+
+Can we re-obtain this result from microscopic dynamics? One way to do this is to consider a random walk with coordinates
+\begin{align*}
+	x^{i}(t + \Delta t) = x^{i}(t) + \Delta x_{n}^{i},
+\end{align*}
+where the $\Delta x_{n}^{i}$ are random variables assumed to be independent and from the same probability distribution. It turns out that all the information we need is contained in the first two moments
+\begin{align*}
+	\expval{\Delta x_{n}^{i}} = 0,\ \expval{(\Delta x_{n}^{i})^{2}} = \sigma^{2},
+\end{align*}
+as we recursively find
+\begin{align*}
+	x^{i}(t) = x^{i}_{0} + \sum\limits_{n}\Delta x_{n}^{i}.
+\end{align*}
+For a large number of steps $N$ the coordinates then follow a normal distribution, according to the central limit theorem. Their expectation values are
+\begin{align*}
+	\expval{x^{i}(t)} = \expval{x^{i}_{0} + \sum\limits_{n}\Delta x_{n}^{i}} = x^{i}_{0}.
+\end{align*}
+Their variances are
+\begin{align*}
+	\expval{(x^{i}(t) - \expval{x^{i}(t)})^{2}} &= \expval{\left(\sum\limits_{n}\Delta x_{n}^{i}\right)^{2}} \\
+	                                            &= \sum\limits_{m, n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} \\
+	                                            &= \sum\limits_{m = n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} + \sum\limits_{m \neq n}\expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} \\
+	                                            &= N\sigma^{2},
+\end{align*}
+where we have used the fact that the steps are independent and the covariance therefore is $0$, implying
+\begin{align*}
+	\expval{(\Delta x_{m}^{i} - \expval{\Delta x_{m}^{i}})(\Delta x_{n}^{i} - \expval{\Delta x_{n}^{i}})} &= \expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} - \expval{\Delta x_{m}^{i}\expval{\Delta x_{n}^{i}}} - \expval{\expval{\Delta x_{m}^{i}}\Delta x_{n}^{i}} + \expval{\expval{\Delta x_{m}^{i}}\expval{\Delta x_{n}^{i}}} \\
+	             &= \expval{\Delta x_{m}^{i}\Delta x_{n}^{i}} = 0.
+\end{align*}
+To rewrite this in the appropriate form, we introduce the time as $t = N\Delta t$ and define
+\begin{align*}
+	\frac{\sigma^{2}}{\Delta t}(t - t_{0}) = 2D(t - t_{0}).
+\end{align*}
+We then find
+\begin{align*}
+	P(\vb{x}) = \frac{1}{(4\pi D(t - t_{0}))^{\frac{d}{2}}}e^{-\frac{\abs{\vb{x} - x_{0}}^{2}}{4D(t - t_{0})}},
+\end{align*}
+which is the correct result.
+
+\paragraph{Irreversibility and Classical Mechanics}
+The example with random walks showed that the diffusion result was produced under the assumption that the microscopic process did not have time reversal symmetry. Classical mechanics, however, does. How do we reconcile the two?
+
+One ad hoc answer is that classical dynamics, while allowing for dynamics with time reversal, will not necessarily admit this with a high probability, accounting for why it is not observed.
+
+\paragraph{Entropy and Classical Mechanics}
+Consider the statistical entropy
+\begin{align*}
+	S = -\kb\integ{}{}{\vb{x}}{f(\vb{x}, t)\ln(f(\vb{x}, t))},
+\end{align*}
+where $f$ is the probability density in phase space. According to Liouville's theorem we have
+\begin{align*}
+	\del{}{t}f = \pb{\ham}{f},
+\end{align*}
+where $\ham$ is the Hamiltonian. Defining the velocity field $\vb{v} = \dv{\vb{x}}{t}$ in phase space and using Hamilton's equations we may alternatively write the above as
+\begin{align*}
+	\del{}{t}f = -\vb{v}\cdot\grad_{\vb{x}}{f}.
+\end{align*}
+As
+\begin{align*}
+	\grad_{\vb{x}}\cdot\vb{v} = \del{}{q^{i}}{\del{}{p_{i}}{\ham}} - \del{}{p^{i}}{\del{}{q_{i}}{\ham}} = 0,
+\end{align*}
+we have
+\begin{align*}
+	\del{}{t}f = -\grad_{\vb{x}}\cdot(f\vb{v}).
+\end{align*}
+The derivative of the entropy is thus
+\begin{align*}
+	\del{}{t}S &= -\kb\integ{}{}{\vb{x}}{\ln(f)\del{}{t}f + \del{}{t}f} \\
+	           &= \kb\integ{}{}{\vb{x}}{(\ln(f) + 1)\grad_{\vb{x}}\cdot(f\vb{v})}.
+\end{align*}
+The latter term may be converted to a surface term using Gauss' theorem, and choosing boundaries at infinity it produces no contribution. Similarly for the other term we may write
+\begin{align*}
+	\del{}{t}S &= \kb\integ{}{}{\vb{x}}{\grad_{\vb{x}}\cdot(f\ln(f)\vb{v}) - f\vb{v}\cdot\grad_{\vb{x}}{\ln(f)}} \\
+	           &= -\kb\integ{}{}{\vb{x}}{f\vb{v}\cdot\frac{1}{f}\grad_{\vb{x}}{f}} \\
+	           &= -\kb\integ{}{}{\vb{x}}{\vb{v}\cdot\grad_{\vb{x}}{f}},
+\end{align*}
+where we removed an intermediate surface term. The previous steps show that the remaining term may also be converted to a surface term, meaning $\del{t}{S} = 0$.
+
+\paragraph{Brownian Motion and the Langevin Equation}
+To describe Brownian motion we consider particles much heavier than the molecules in the medium in which they are immersed and perform the anzats
+\begin{align*}
+	m\dv{v^{i}}{t} = R^{i}(t),
+\end{align*}
+where the $R^{i}(t)$ are stochastic processes with the underlying random variable being the initial position of the particle (I think). In order to produce Brownian motion we expect $\expval{R^{i}(t)} = 0$. Next we introduce the autocorrelation function
+\begin{align*}
+	k(t, t\p) = \expval{(R^{i}(t) - \expval{R^{i}(t)})(R^{i}(t\p) - \expval{R^{i}(t\p)})} = \expval{R^{i}(t)R^{i}(t\p)} - \expval{R^{i}(t)}\expval{R^{i}(t\p)}.
+\end{align*}
+It measures for how long deviations from the mean force remain correlated, and thus the time scales of the fluctuations and typical amplitudes of the force. In the case of a single time scale being relevant, we name it the autocorrelation time and denote it $\tau_{\text{c}}$. For Brownian motion this time scale is the typical time between collisions. In the relevant limits in which we are working we expect the force correlations at different times to be irresolvable, and thus
+\begin{align*}
+	k(t, t\p) = \expval{R^{i}(t)R^{i}(t\p)} = \Gamma\delta(t - t\p).
+\end{align*}
+$\sqrt{\Gamma}$ is a typical intensity of the fluctuations in the force. If we assume the stochastic processes to be Gaussian, we have now completely specified them.
+
+Does the anzats work? No! By computing expectation values, we see that constant drift is allowed, which is certainly not what we expect. The liquid will in fact resist the motion of the particle with a velocity-dependent force, which we will remedy by adding a first-order correction. By also incorporating an external force $\vb{F}$ we arrive at the Langevin equation
+\begin{align*}
+	m\dv{v^{i}}{t} = R^{i}(t) + F^{i} - \alpha v^{i}.
+\end{align*}
+The formal solution is
+\begin{align*}
+	v^{i}(t) = e^{-\gamma t}v^{i}_{0} + \frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R^{i}(s) + F^{i}(s))},\ \gamma = \frac{\alpha}{m},
+\end{align*}
+which we can verify according to
+\begin{align*}
+	m\dv{v^{i}}{t} &= -m\gamma e^{-\gamma t}v^{i}_{0} + R^{i}(t) + F^{i}(t) - \frac{\gamma}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}(R^{i}(s) + F^{i}(s))} \\
+	               &= -m\gamma v^{i}(t) + R^{i}(t) + F^{i}(t) \\
+	               &= -\alpha v^{i}(t) + R^{i}(t) + F^{i}(t).
+\end{align*}
+
+What kind of behaviour is produced now? To begin with, let us assume there are no external forces. The expectation value then evolves according to
+\begin{align*}
+	m\dv{\expval{v^{i}}}{t} =  -\alpha\expval{v^{i}},
+\end{align*}
+with solution
+\begin{align*}
+	\expval{v^{i}} = v^{i}_{0}e^{-\frac{t}{\tau_{v}}},\ \tau_{v} = \frac{1}{\gamma}.
+\end{align*}
+To be consistent with our assumptions, we thus require $\tau_{v} \gg \tau_{\text{c}}$. Next we have
+\begin{align*}
+	\expval{(v^{i}(t) - \expval{v^{i}(t)})^{2}} &= \expval{\left(\frac{1}{m}\integ{0}{t}{s}{e^{-\gamma(t - s)}R^{i}(s)}\right)^{2}} \\
+	                                            &= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{t}{u}{e^{-\gamma(t - s)}e^{-\gamma(t - u)}\expval{R^{i}(s)R^{i}(u)}}} \\
+	                                            &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{t}{u}{e^{-\gamma(2t - s - u)}\delta(s - u)}} \\
+	                                            &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{e^{-2\gamma(t - s)}} \\
+	                                            &= \frac{\Gamma}{2\gamma m^{2}}e^{-2\gamma t}(e^{2\gamma t} - 1) \\
+	                                            &= \frac{\Gamma}{2\gamma m^{2}}(1 - e^{-2\gamma t}).
+\end{align*}
+
+At long times, when equilibrium is established, we have $\expval{v^{i}(t)} = 0$. At this point we expect
+\begin{align*}
+	\frac{1}{2}m\expval{v^{2}} = \frac{d}{2}\kb T.
+\end{align*}
+This implies
+\begin{align*}
+	\Gamma = 2m\gamma\kb T.
+\end{align*}
+We pause at this result for a second, noting that the random forces increase in intensity with temperature. This is expected as the molecular motion increases in intensity with temperature. We also note that there is an equivalence between the rate of dissipation and the intensity of the fluctuations, a special case of the fluctuation-dissipation theorem.
+
+We can also introduce the velocity correlation function
+\begin{align*}
+	C(t, t\p) = \expval{v(t)v(t\p)} - \expval{v(t)}\expval{v(t\p)},
+\end{align*}
+and we find
+\begin{align*}
+	C(t, t\p) &= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{t\p}{u}{e^{-\gamma(t - s)}e^{-\gamma(t\p - u)}\expval{R^{i}(s)R^{i}(u)}}} \\
+	          &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{t\p}{u}{e^{-\gamma(t + t\p - s - u)}\delta(s - u)}} \\
+	          &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\theta(t\p - s)e^{-\gamma(t + t\p - 2s)}} \\
+	          &= \frac{\Gamma}{m^{2}}\integ{0}{\min(t, t\p)}{s}{e^{-\gamma(t + t\p - 2s)}}.
+\end{align*}
+We may without loss of generality assume $t > t\p$, for which we find
+\begin{align*}
+	C(t, t\p) &= \frac{\Gamma}{m^{2}}e^{-\gamma(t + t\p)}\integ{0}{t\p}{s}{e^{2\gamma s}} = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t + t\p)}(e^{2\gamma t\p} - 1) = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t - t\p)}(1 - e^{-2\gamma t\p}).
+\end{align*}
+Consider now the limit of large times where $t - t\p$ is fixed. In this limit we find
+\begin{align*}
+	C(t, t\p) = \frac{\Gamma}{2\gamma m^{2}}e^{-\gamma(t - t\p)}.
+\end{align*}
+The dependence on the time difference is expected as this limit concerns correlations between two velocities at equilibrium, and that should only depend on the time difference. Note that due to the previously occuring minimum, its dependence is in fact on $\abs{t - t\p}$. Denoting this function as $C(t - t\p)$ we have
+\begin{align*}
+	\integ{-\infty}{\infty}{t}{C(t)} = \frac{\Gamma}{\gamma^{2} m^{2}} = \frac{2\kb T}{\gamma m},
+\end{align*}
+or
+\begin{align*}
+	\frac{1}{\alpha} = \frac{1}{2\kb T}\integ{-\infty}{\infty}{t}{C(t)}.
+\end{align*}
+In other words, there is a relation between correlation functions and friction coefficients. This applies generally.
+
+Next, the position in the absence of external forces is
+\begin{align*}
+	x^{i}(t) &= x^{i}_{0} + \integ{0}{t}{s}{\left(e^{-\gamma s}v^{i}_{0} + \frac{1}{m}\integ{0}{s}{u}{e^{-\gamma(s - u)}R^{i}(u)}\right)} \\
+	         &= x^{i}_{0} + \frac{v^{i}_{0}}{\gamma}(1 - e^{-\gamma t}) + \frac{1}{m}\integ{0}{t}{s}{\integ{0}{s}{u}{e^{-\gamma(s - u)}R^{i}(u)}},
+\end{align*}
+from which we compute
+\begin{align*}
+	\expval{x^{i}(t)} = x^{i}_{0} + \frac{v^{i}_{0}}{\gamma}(1 - e^{-\gamma t}).
+\end{align*}
+Next the correlation function is
+\begin{align*}
+	\expval{x^{i}(t)x^{i}(t\p) - \expval{x^{i}(t)}\expval{x^{i}(t\p)}} &= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t\p}{s\p}{\integ{0}{s\p}{u\p}{e^{-\gamma(s - u)}e^{-\gamma(s\p - u\p)}\expval{R^{i}(u)R^{i}(u\p)}}}}} \\
+	&= \frac{1}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t\p}{s\p}{\integ{0}{s\p}{u\p}{e^{-\gamma(s + s\p - u - u\p)}\expval{R^{i}(u)R^{i}(u\p)}}}}}.
+\end{align*}
+In particular, for $t = t\p$ we find
+\begin{align*}
+	\expval{x^{i}(t)x^{i}(t\p) - \expval{x^{i}(t)}\expval{x^{i}(t\p)}} &= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t}{s\p}{\integ{0}{s\p}{u\p}{e^{-\gamma(s + s\p - u - u\p)}\delta(u - u\p)}}}} \\
+	&= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{0}{t}{s\p}{e^{-\gamma(s + s\p - 2u)}\theta(s\p - u)}}} \\
+	&= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{\integ{0}{s}{u}{\integ{u}{t}{s\p}{e^{-\gamma(s + s\p - 2u)}}}} \\
+	&= \frac{\Gamma}{m^{2}}\integ{0}{t}{s}{e^{-\gamma s}\integ{0}{s}{u}{e^{2\gamma u}\integ{u}{t}{s\p}{e^{-\gamma s\p}}}} \\
+	&= \frac{\Gamma}{\gamma m^{2}}\integ{0}{t}{s}{e^{-\gamma s}\integ{0}{s}{u}{e^{2\gamma u}(e^{-\gamma u} - e^{-\gamma t})}} \\
+	&= \frac{\Gamma}{\gamma^{2}m^{2}}\integ{0}{t}{s}{e^{-\gamma s}\left(e^{\gamma s} - 1 - \frac{1}{2}e^{-\gamma t}(e^{2\gamma s} - 1)\right)} \\
+	&= \frac{\Gamma}{\gamma^{2}m^{2}}\integ{0}{t}{s}{\left(1 - e^{-\gamma s} - \frac{1}{2}e^{-\gamma t}(e^{\gamma s} - e^{-\gamma s})\right)} \\
+	&= \frac{\Gamma}{\gamma^{2}m^{2}}\left(t + \frac{1}{\gamma}(e^{-\gamma t} - 1) - \frac{1}{2\gamma}e^{-\gamma t}(e^{\gamma t} - 1 + e^{-\gamma t} - 1)\right) \\
+	&= \frac{2\kb T}{\gamma m}\left(t + \frac{1}{\gamma}(e^{-\gamma t} - 1) - \frac{1}{2\gamma}(1 - 2e^{-\gamma t} + e^{-2\gamma t})\right) \\
+	&= \frac{2\kb T}{\gamma m}\left(t + \frac{1}{\gamma}(e^{-\gamma t} - 1) - \frac{1}{2\gamma}(1 - e^{-\gamma t})^{2}\right).
+\end{align*}
+At large times we find
+\begin{align*}
+	\expval{x^{i}(t)x^{i}(t\p) - \expval{x^{i}(t)}\expval{x^{i}(t\p)}} = \frac{2\kb T}{\gamma m}\left(t - \frac{3}{2\gamma}\right) \approx \frac{2\kb T}{\gamma m}t.
+\end{align*}
+Comparing with the previously obtained random walk result we find
+\begin{align*}
+	D = \frac{\kb T}{\gamma m}t.
+\end{align*}
+
+\paragraph{The Fokker-Planck Equation for the Langevin Equation}
+For a stochastic process of the form
+\begin{align*}
+	\dd{x} = a(x)\dd{t} + b(x)\dd{W}
+\end{align*}
+where $W(t)$ is a Wiener process we have
+\begin{align*}
+	\expval{\dd{x}} = a(x)\dd{t},\ \expval{(\dd{x})^{2}} \approx b^{2}(x)\dd{t},
+\end{align*}
+where we have used the Ito prescription. For the Langevin equation, here in the form
+\begin{align*}
+	\dv{v}{t} &= -\gamma v + \frac{\sqrt{\Gamma}}{m}\eta(t),
+\end{align*}
+we have
+\begin{align*}
+	\del{}{t}{P} = \gamma\del{}{v}{(vP)} + \frac{\Gamma}{2m^{2}}\del{2}{v}{P}.
+\end{align*}
+In particular, the Gaussian distribution expected at equilibrium is a stationary solution.
+
+\paragraph{The Pauli Master Equation}
+Consider a quantum system with a set of possible states. Using the eigenbasis of the Hamiltonian the elements of the density matrix are
+\begin{align*}
+	\rho_{nm} = c_{n}(0)c\cc_{m}(0)e^{-i\frac{E_{n} - E_{m}}{\hbar}t}.
+\end{align*}
+If the system is weakly coupled to a surrounding environment, that can be hard to incorporate. However, one can think of it like this: If the energy exchanges with the surroundings are large compared to the eigenenergies, the phase of off-diagonal elements in the density matrix fluctuates, this fluctuation being on a time scale $\tau_{\phi}$. If the relevant time scales of the dynamics of the system are much larger than $\tau_{\phi}$, we expect the phase to be uniformly distributed, yielding that the time average of the off-diagonal matrix elements is
+\begin{align*}
+	\expval{\rho_{nm}} = 0.
+\end{align*}
+This means that the density matrix is diagonal, and its non-zero elements can now be thought of as probabilities. We can thus apply the master equation to such a system. The transition rates are usually calculated with time-independent perturbation theory. One basic result which is often used is Fermi's golden rule
+\begin{align*}
+	W_{nm} = \frac{2\pi}{\hbar}\abs{\mel{n}{V}{m}}^{2}\delta(E_{n} - E_{m}).
+\end{align*}
+
+\paragraph{The Boltzmann Equation}
+Consider some classical system (with many degrees of freedom) moving with some Hamiltonian. The phase space probability distribution, which in principle describes this system, is hard to handle. Instead we would like to work with the one-body distribution $f(\vb{r}, \vb{p}, t)$ which describes the number of particle at a particular position with a particular momentum. Formally it satisfies
+\begin{align*}
+	f(\vb{r}, \vb{q}, t) = \sum\limits_{i}\expval{\delta(\vb{x}_{i} - \vb{r})\delta(\vb{p}_{i} - \vb{q})} = N\int\prod\limits_{i = 2}^{N}\dd[d]{\vb{x}_{i}}\dd[d]{\vb{p}_{i}}\frac{1}{h^{2}}\rho(\vb{r}, \vb{x}_{2}, \dots, \vb{x}_{N}; \vb{q}, \vb{p}_{2}, \dots, \vb{p}_{N}).
+\end{align*}
+It should then satisfy
+\begin{align*}
+	\integ[3]{}{}{\vb{p}}{f(\vb{r}, \vb{p}, t)} = n(\vb{r}, t),\ \integ[3]{}{}{\vb{r}}{n} = N.
+\end{align*}
+
+$f$ flows through this constructed phase space with time. Liouville's theorem states that phase space volume is preserved, hence
+\begin{align*}
+	f(\vb{r}, \vb{p}, t)\dd{\vb{r}}\dd{\vb{p}} = f(\vb{r} + \dot{\vb{r}}\dd{t}, \vb{p} + \dot{\vb{p}}\dd{t}, t + \dd{t})\dd{\vb{r}}\p\dd{\vb{p}}\p.
+\end{align*}
+Neglecting collisions, all forces are external. Defining $\vb{v} = \dot{\vb{r}}$ and $\vb{F} = \dot{\vb{p}}$, we can then Taylor expand the above to find
+\begin{align*}
+	\del{}{t}{f} + \vb{v}\cdot\grad_{\vb{x}}{f} + \vb{F}\cdot\grad_{\vb{p}}{f} = 0.
+\end{align*}
+We may now also introduce Liouville operator $L = \del{}{t}{} + \vb{v}\cdot\grad_{\vb{x}}{} + \vb{F}\cdot\grad_{\vb{p}}{}$.
+
+When accounting for collisions and other scattering events, we write this as
+\begin{align*}
+	Lf = (\del{}{t}{f})_{\text{coll}}.
+\end{align*}
+We will focus on two-particle scattering events. These are caused by an interaction potential $V(\vb{r}, \vb{r}\p)$. We coarse grain over the time and length scale of the collision, the latter meaning that the typical time between two collisions involving the same particle should be much longer than the collision time. This is achieved if the density is low.
+
+We distinguish between two kinds of events: those that increase and decrease $f(\vb{r}, \vb{p}, t)$. We need two quantities to proceed. The first is the scattering rate $\omega(\vb{p}_{1}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p)$. The second is the probability of two particles with momenta $\vb{p}_{1}$ and $\vb{p}_{2}$ to be at $\vb{r}$ at the same time. This is computed from the two-particle distribution function
+\begin{align*}
+	f_{2}(\vb{r}, \vb{q}; \vb{r}\p, \vb{q}\p; t) &= \sum\limits_{i}\sum\limits_{j\neq i}\expval{\delta(\vb{x}_{i} - \vb{r})\delta(\vb{p}_{i} - \vb{q})\delta(\vb{x}_{j} - \vb{r}\p)\delta(\vb{p}_{i} - \vb{q}\p)} \\
+	                                             &= N(N - 1)\int\prod\limits_{i = 3}^{N}\dd[d]{\vb{x}_{i}}\dd[d]{\vb{p}_{i}}\frac{1}{h^{2}}\rho(\vb{r}, \vb{r}\p, \vb{x}_{3}, \dots, \vb{x}_{N}; \vb{q}, \vb{q}\p, \vb{p}_{3}, \dots, \vb{p}_{N}).
+\end{align*}
+We can then write down
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}}(\vb{r}, \vb{p}, t) = \integ[3]{}{}{\vb{p}_{2}}{\integ[3]{}{}{\vb{p}_{1}\p}{\integ[3]{}{}{\vb{p}_{1}\p}{\omega(\vb{p}_{1}\p, \vb{p}_{2}\p \to \vb{p}, \vb{p}_{2})f_{2}(\vb{r}, \vb{p}_{1}\p; \vb{r}, \vb{p}_{2}\p; t) - \omega(\vb{p}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p)f_{2}(\vb{r}, \vb{p}; \vb{r}, \vb{p}_{2}; t)}}}
+\end{align*}
+using a master equation-like argument. This does not really help, as the determination of $f$ now rests on determining $f_{2}$. One could imagine propagating this argument by letting $f_{2}$ depend on $f_{3}$, all the way back to $\rho$, which is precisely what we do not want. Instead we introduce the assumption of molecular chaos, namely $f_{2}(\vb{r}_{1}, \vb{p}_{1}; \vb{r}_{2}, \vb{p}_{2}; t) = f(\vb{r}_{1}, \vb{p}_{1}; t)f(\vb{r}_{2}, \vb{p}_{2}; t)$. This assumption manifests an assumption that the evolution of the system is chaotic, and two incoming particles in a collision are therefore uncorrelated. We also assume the dynamics of the system to have both time reversal and parity symmetry. The first implies
+\begin{align*}
+	\omega(\vb{p}_{1}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p) = \omega(-\vb{p}_{1}\p, -\vb{p}_{2}\p \to -\vb{p}_{1}, -\vb{p}_{2}),
+\end{align*}
+while the second implies
+\begin{align*}
+	\omega(-\vb{p}_{1}\p, -\vb{p}_{2}\p \to -\vb{p}_{1}, -\vb{p}_{2}) = \omega(\vb{p}_{1}\p, \vb{p}_{2}\p \to \vb{p}_{1}, \vb{p}_{2}).
+\end{align*}
+The transition rate is thus symmetric. We thus obtain
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}}(\vb{r}, \vb{p}, t) = \integ[3]{}{}{\vb{p}_{2}}{\integ[3]{}{}{\vb{p}_{1}\p}{\integ[3]{}{}{\vb{p}_{1}\p}{\omega(\vb{p}, \vb{p}_{2} \to \vb{p}_{1}\p, \vb{p}_{2}\p)\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}.
+\end{align*}
+
+We proceed by interpreting the coordinates and momenta as those of point particles, and require conservation of energy and momentum. If all the particles have identical masses, we then find
+\begin{align*}
+	(\vb{p}_{1} + \vb{p}_{2})^{2} = \vb{p}_{1}^{2} + \vb{p}_{2}^{2} + 2\vb{p}_{1}\cdot\vb{p}_{2},
+\end{align*}
+and energy conservation implies the scalar product to be conserved. This further implies that the length of the momentum difference is conserved, and thus
+\begin{align*}
+	\vb{p}_{2}\p - \vb{p}_{1}\p = \abs{\vb{p}_{2} - \vb{p}_{1}}\vb*{\Omega},
+\end{align*}
+where $\vb*{\Omega}$ is some unit vector. This means that we can specify the collision by specifying the incoming momenta and the scattering direction of the difference.
+
+We can also introduce the differential cross-section, defined as $\pdv{\sigma}{\Omega}$ being the ratio of incoming and outgoing intensities in some interval of solid angle, corrected for travelling time. Somehow we find that
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}}(\vb{r}, \vb{p}, t) = \integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}.
+\end{align*}
+The final equation, named the Boltzmann equation, is thus
+\begin{align*}
+	\del{}{t}{f} + \vb{v}\cdot\grad_{\vb{x}}{f} + \vb{F}\cdot\grad_{\vb{p}}{f} = \integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}.
+\end{align*}
+
+\paragraph{The Boltzmann $H$ Theorem}
+Consider the function
+\begin{align*}
+	H = \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{f\ln(f)}}.
+\end{align*}
+As the integral of $f$ itself is constant we have
+\begin{align*}
+	\dv{H}{t} =& \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\del{}{t}{f}\ln(f)}} \\
+	          =& \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\left(-\vb{v}\cdot\grad_{\vb{x}}{f} - \vb{F}\cdot\grad_{\vb{p}}{f}\right)}} \\
+	           &+ \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}}.
+\end{align*}
+The streaming part is zero, yielding, as was shown previously, yielding
+\begin{align*}
+	\dv{H}{t} = \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}}.
+\end{align*}
+The integrand is now entirely symmetric under the switch of $\vb{p}$ and $\vb{p}_{2}$, assuming we also switch the $f$ in the logarithm. We thus find
+\begin{align*}
+	\dv{H}{t} = \frac{1}{2}\integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)\ln(f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t))}}}}.
+\end{align*}
+The cross section is symmetric under parity and time reversal, hence we may switch the primed and non-primed momenta to find
+\begin{align*}
+	\dv{H}{t} = \frac{1}{4}\integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p) - f(\vb{p})f(\vb{p}_{2})\right)(\ln(f(\vb{p})f(\vb{p}_{2})) - \ln(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p))}}}},
+\end{align*}
+where redundant variables have been suppressed. This must be negative, as the expression $(y - x)(\ln(y) -\ln(x))$ is non-negative.
+
+This result implies that entropy is increasing. How come? It is due to the assumption of molecular chaos, causing loss of information.
+
+\paragraph{Conservation Laws}
+Consider a local observable $\chi$ with a corresponding density
+\begin{align*}
+	n = \integ[3]{}{}{\vb{p}}{\chi f}.
+\end{align*}
+For $n$ to be conserved, $\chi$ should be conserved in collisions. In other words,
+\begin{align*}
+	(\del{}{t}{n})_{\text{coll}} = \integ[3]{}{}{\vb{p}}{\chi (\del{}{t}{n})_{\text{coll}}} = 0.
+\end{align*}
+
+To show that this is in fact the case, we repeat the derivation done for the $H$ theorem. Ignoring streaming terms we find
+\begin{align*}
+	\del{}{t}n = \integ[3]{}{}{\vb{p}}{\chi(\vb{r}, \vb{p})\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p) - f(\vb{p})f(\vb{p}_{2})\right)}}}.
+\end{align*}
+Applying the symmetry of the integral as well as time reversal and parity symmety we find
+\begin{align*}
+	\del{}{t}n = \integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p) - f(\vb{p})f(\vb{p}_{2})\right)\left(\chi(\vb{r}, \vb{p}) + \chi(\vb{r}, \vb{p}_{2}) - \chi(\vb{r}, \vb{p}_{1}\p) - \chi(\vb{r}, \vb{p}_{2}\p)\right)}}},
+\end{align*}
+meaning that if $\chi$ is conserved in collisions, then $(\del{}{t}{n})_{\text{coll}} = 0$.
+
+\paragraph{Local Equilibrium}
+While the only explicit conserved quantities of (almost-ideal) gas Hamiltonians are momentum and energy, the logarithm of the equilibrium distribution $\ln(f^{0})$ is also conserved. This must mean
+\begin{align*}
+	\ln(f^{0}) = \beta(\mu + \vb{v}\cdot\vb{p} - \varepsilon),
+\end{align*}
+with the different variables being chemical potential and reciprocal temperature, or
+\begin{align*}
+	f^{0} \propto e^{-\frac{\beta}{2m}(\vb{p} - m\vb{v})^{2}}.
+\end{align*}
+This is the state of equilibrium. In local equilibrium the various quantities are allowed to vary in space. It turns out that such a solution is not affected by collisions, but as it does not solve the Boltzmann equation, it is affected by the streaming terms. Thus, after local equilibrium is established, there is hydrodynamic evolution of these macroscopic observables.
+
+\paragraph{The Relaxation Time Approximation}
+In the relaxation time approximation, one arrives at an expression of the form
+\begin{align*}
+	(\del{}{t}{f})_{\text{coll}} = -\frac{f - f^{0}}{\tau}.
+\end{align*}
+The quantity $f - f^{0}$ evolves exponentially in this approach as $f^{0}$ is not affected by collision terms.

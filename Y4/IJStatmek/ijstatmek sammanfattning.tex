@@ -1,0 +1,45 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\input{./../../Mall/Aux/math.tex}
+
+\usepackage{graphicx}
+
+\newcommand{\cond}{\ensuremath{\ | \ }}
+\newcommand{\kb}{\ensuremath{k_{\text{B}}}}
+\newcommand{\ham}{\ensuremath{\mathcal{H}}}
+\newcommand{\cum}[1]{\ensuremath{\expval{\expval{#1}}}}
+
+\renewcommand{\mod}{\ensuremath{\ \text{mod}\ }}
+
+\title{Summary of SI2520 Non-Equilibrium Statistical Mechanics}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/stoc.tex}
+
+\input{./Parts/basics.tex}
+
+\input{./Parts/quant.tex}
+
+\end{document}

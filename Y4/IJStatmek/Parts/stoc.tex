@@ -1,0 +1,244 @@
+\section{A Litte Bit About Probability Theory}
+
+\paragraph{The Characteristic Function}
+For a continuous probability distribution we define the characteristic function
+\begin{align*}
+	G(k) = \integ{}{}{x}{e^{ikx}P(x)}.
+\end{align*}
+This function satisfies
+\begin{align*}
+	\frac{1}{i^{n}}\eval{\dv[n]{G}{k}}_{k = 0} = \expval{X^{n}}.
+\end{align*}
+
+\paragraph{The Cumulant-Generating Function}
+Likewise we define the cumulant-generating function $\ln(G)$. We expand it according to
+\begin{align*}
+	\ln(G) = \sum\limits_{m = 0}^{m}\frac{(ik)^{m}}{m!}\cum{X^{m}}.
+\end{align*}
+From this relations between the cumulants and the moments can be derived.
+
+\paragraph{Discrete Characteristic Functions}
+For functions with a discrete state space we define the characteristic function
+\begin{align*}
+	F(z) = \expval{z^{X}}.
+\end{align*}
+Derivatives of this function evaluated at $1$ will produce moments.
+
+\paragraph{Stochastic Processes}
+A stochastic process is a function of a random variable. We use the notation $f(X, t)$, and outcomes of $X$ corresponds to functions
+\begin{align*}
+	f(x, t) = f_{x}(t).
+\end{align*}
+The moments of a stochastic process are
+\begin{align*}
+	\expval{\prod\limits_{i}f(X, t_{i})} = \integ{}{}{x}{P(x)\prod\limits_{i}f_{x}(t_{i})}.
+\end{align*}
+
+\paragraph{Probability Distributions for Stochastic Processes}
+The probability distribution for a stochastic process is defined as
+\begin{align*}
+	P(x, t) = \expval{\delta(x - X(t))}.
+\end{align*}
+Similarly a joint probability distribution is defined as
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N}) = \expval{\prod\limits_{i = 1}^{N}\delta(x_{i} - X(t_{i}))}.
+\end{align*}
+
+Conditional probabilities may be defined for stochastic processes as well, and from basic probability theory we have
+\begin{align*}
+	P(x_{1}, t_{1}; x_{0}, t_{0}) = P(x_{1}, t_{1} \cond x_{0}, t_{0})P(x_{0}, t_{0}).
+\end{align*}
+Using the notation
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}; \dots; y_{M}, \tau_{M})
+\end{align*}
+we have the convention that the events are ordered from latest to earliest with the $\tau$ corresponding to events before the $t$.
+
+\paragraph{Wiener Processes}
+In this course we will be studying equations of the form
+\begin{align*}
+	\dv{x}{t} = a(x; t) + b(x; t)\eta(t),
+\end{align*}
+where $\eta$ is a stochastic process that satisfies
+\begin{align*}
+	\expval{\eta(t)},\ \expval{\eta(t)\eta(t\p)} = \delta(t - t\p).
+\end{align*}
+This equation is not well-defined, however, due to the Dirac delta. However, as the integral of $\eta$ is continuous, we can define
+\begin{align*}
+	W = \integ{t_{0}}{t}{t\p}{\eta(t\p)}.
+\end{align*}
+It satisfies
+\begin{align*}
+	\expval{W(t)} = 0,\ \expval{W(t)W(t\p)} = \integ{t_{0}}{t}{\tau}{\integ{t_{0}}{t\p}{\tau\p}{\expval{\eta(\tau)\eta(\tau\p)}}} = \integ{t_{0}}{t}{\tau}{\integ{t_{0}}{t\p}{\tau\p}{\delta(\tau - \tau\p)}} = \integ{t_{0}}{t}{\tau}{\theta(t\p - \tau)} = \min(t - t_{0}, t\p - t_{0}).
+\end{align*}
+From this we can consider infinitesimal increments
+\begin{align*}
+	\dd{W} = W(t + \dd{t}) - W(t) = \integ{t}{t + \dd{t}}{t\p}{\eta(t\p)},
+\end{align*}
+which satisfy
+\begin{align*}
+	\expval{\dd{W}} = 0,\ \expval{\dd{W}(t)\dd{W}(t\p)} = \delta(t - t\p)\dd{t}.
+\end{align*}
+This is a warning sign that care should be taken when doing calculus with such processes. Using this, we reformulate the equation we wanted to study as
+\begin{align*}
+	\dv{x}{t} = a(x; t) + b(x; t)\dd{W},
+\end{align*}
+where we take the previous version to be a shorthand for this one. This can be formally integrated as
+\begin{align*}
+	x(t) = x(t_{0}) + \integ{t_{0}}{t}{t\p}{a(x; t)} + \integ{t_{0}}{t}{W(t\p)}{b(x; t)}.
+\end{align*}
+
+\paragraph{Integral Prescription}
+The last integral in the previous section introduces a complication, as it is not uniquely defined. Namely, depending on how you define your Riemann sum you might get different results. Two choices we will discuss here are the Ito prescription, which chooses function values from the left of the interval, and the Stratonovich prescription, which chooses them from the right.
+
+To relate the two, consider the expression
+\begin{align*}
+	I = \integ{t_{0}}{t}{W}{b(x; t)}.
+\end{align*}
+In the two prescriptions, distinguished by a subscript, we have
+\begin{align*}
+	I_{\text{I}} = \sum\limits_{i = 0}^{n - 1}b(x(t_{i}); t_{i})\Delta W(t_{i}),\ I_{\text{S}} = \sum\limits_{i = 0}^{n - 1}b(x(t_{i + 1}); t_{i + 1})\Delta W(t_{i}).
+\end{align*}
+We have
+\begin{align*}
+	b(x(t_{i + 1}); t_{i + 1}) = b(x(t_{i}); t_{i}) + \alpha\Delta\p W(t_{i}),
+\end{align*}
+where $\Delta\p$ indicates a different realization of the Wiener process. In the limit of the increments vanishing we find
+\begin{align*}
+	\expval{I_{\text{I}}} &= \expval{\integ{t_{0}}{t}{W(\tau)}{b(x(\tau); \tau)}} = 0, \\
+	\expval{I_{\text{S}}} &= \integ{t_{0}}{t}{\tau}{\alpha(\tau)}.
+\end{align*}
+The Ito prescription thus allows us to ignore the $b$ term in such equations when taking expectation values.
+
+\paragraph{Markov Processes}
+A Markov process is a process such that
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}; \dots; y_{M}, \tau_{M}) = P(x_{1}, t_{1}; \dots; x_{N}, t_{N} \cond y_{1}, \tau_{1}).
+\end{align*}
+For such processes we have
+\begin{align*}
+	P(x_{1}, t_{1}; \dots; x_{N}, t_{N}) &= P(x_{1}, t_{1} \cond x_{2}, t_{2}; \dots; x_{N}, t_{N})P(x_{2}, t_{2}; \dots; x_{N}, t_{N}) \\
+	                                     &= P(x_{1}, t_{1} \cond x_{2}, t_{2})P(x_{2}, t_{2} \cond x_{3}, t_{3}; \dots; x_{N}, t_{N})P(x_{3}, t_{3}; \dots; x_{N}, t_{N}) \\
+	                                     &= \dots \\
+	                                     &= P(x_{N}, t_{N})\prod\limits_{i = 1}^{N - 1}P(x_{i}, t_{i} \cond x_{i + 1}, t_{i + 1}).
+\end{align*}
+
+\paragraph{The Chapman-Kolgomorov Equation}
+In general we have
+\begin{align*}
+	P(x_{1}, t_{1}) = \integ{}{}{x_{2}}{P(x_{1}, t_{1}; x_{2}, t_{2})} = \integ{}{}{x_{2}}{P(x_{1}, t_{1} \cond x_{2}, t_{2})P(x_{2}, t_{2})},
+\end{align*}
+and similarly for a conditional probability
+\begin{align*}
+	P(x_{1}, t_{1} \cond x_{3}, t_{3}) = \integ{}{}{x_{2}}{P(x_{1}, t_{1}; x_{2}, t_{2} \cond x_{3}, t_{3})} = \integ{}{}{x_{2}}{P(x_{1}, t_{1} \cond x_{2}, t_{2}; x_{3}, t_{3})P(x_{2}, t_{2} \cond x_{3}, t_{3})}.
+\end{align*}
+In particular, for a Markov process, we find
+\begin{align*}
+	P(x_{1}, t_{1} \cond x_{3}, t_{3}) = \integ{}{}{x_{2}}{P(x_{1}, t_{1} \cond x_{2}, t_{2})P(x_{2}, t_{2} \cond x_{3}, t_{3})},
+\end{align*}
+which is the Chapman-Kolgomorov equation.
+
+\paragraph{The Fokker-Planck Equation}
+The Fokker-Planck equation is a partial differential equation that describes the evolution of the probability distribution for a Markov process. Given an initial condition at $x_{0}, t_{0}$, the Chapman-Kolmogorov equation implies
+\begin{align*}
+	P(x, t + \delta t \cond x_{0}, t_{0}) = \integ{}{}{x\p}{P(x, t + \delta \cond x\p, t)P(x\p, t \cond x_{0}, t_{0})}.
+\end{align*}
+To proceed we will need some assumptions about the stochastic process $x(t)$. We define $\delta x(t) = x(t + \delta t) - x(t)$ and choose the assumptions
+\begin{align*}
+	\expval{\delta x(t)} = A(x(t))\delta t,\ \expval{(\delta x(t))^{2}} = B(x(t))\delta t,
+\end{align*}
+as well as higher-order moments being of order 2 or more in terms of $\delta t$.
+
+By definition we have
+\begin{align*}
+	P(x, t + \delta t \cond x\p, t) &= \expval{\delta(x - x\p - \delta x(t))} \\
+	                              &\approx \expval{\delta(x - x\p) + \delta x(t)\del{}{x}{\delta(x - x\p)} + \frac{1}{2}(\delta x(t))^{2}\del{2}{x}{\delta(x - x\p)}} \\
+	                              &= \delta(x - x\p) + \del{}{x}{\delta(x - x\p)}\expval{\delta x(t)} + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}\expval{(\delta x(t))^{2}} \\
+	                              &= \delta(x - x\p) + \del{}{x}{\delta(x - x\p)}A(x(t))\delta t + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}B(x(t))\delta t.
+\end{align*}
+Inserting this into the Chapman-Kolmogorov equation and using our knowledge of distribution theory we find
+\begin{align*}
+	P(x, t + \delta t \cond x_{0}, t_{0}) &= \integ{}{}{x\p}{\left(\delta(x - x\p) + \del{}{x}{\delta(x - x\p)}A(x(t))\delta t + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}B(x(t))\delta t\right)P(x\p, t \cond x_{0}, t_{0})} \\
+	                                      &= P(x, t \cond x_{0}, t_{0}) + \left(\frac{1}{2}\del{2}{x}{(B(x(t))P(x, t \cond x_{0}, t_{0}))} - \del{}{x}{(A(x(t))P(x, t \cond x_{0}, t_{0}))}\right)\delta t.
+\end{align*}
+Simplifying notation a little, we have
+\begin{align*}
+	P(x, t + \delta t) &= P(x, t) + \left(\frac{1}{2}\del{2}{x}{(B(x)P(x, t))} - \del{}{x}{(A(x)P(x, t))}\right)\delta t,
+\end{align*}
+and in the limit of infinitesimal time steps
+\begin{align*}
+	\del{}{t}{P(x, t)} = \frac{1}{2}\del{2}{x}{(B(x)P(x, t))} - \del{}{x}{(A(x)P(x, t))}.
+\end{align*}
+
+\paragraph{The Master Equation}
+Consider a Markov process with discrete state space. The Chapman-Kolgomorov equation then takes the form
+\begin{align*}
+	P(x, t \cond x_{0}, t_{0}) = \sum\limits_{x\p}P(x, t \cond x\p, t\p)P(x\p, t\p \cond x_{0}, t_{0}).
+\end{align*}
+From this point we will omit the initial condition in the notation. We assume the transition probabilities to be stationary, i.e. to only depend on time differences according to
+\begin{align*}
+	P(x, t \cond x\p, t\p) = P_{t - t\p}(x \cond x\p).
+\end{align*}
+
+For a small time step we may expand according to
+\begin{align*}
+	P_{\delta t}(x \cond x\p) \approx (1 - \gamma(x\p)\delta t)\delta_{x, x\p} + w(x \cond x\p)\delta t,
+\end{align*}
+where we may assume the first term to contain all information about staying in the same spot, and thus $w(x \cond x) = 0$. Probability conservation implies
+\begin{align*}
+	1 = \sum\limits_{x}P_{\delta t}(x \cond x\p) = 1 - \gamma(x\p)\delta t + \sum\limits_{x}w(x \cond x\p)\delta t,
+\end{align*}
+and thus
+\begin{align*}
+	\gamma(x\p) = \sum\limits_{x}w(x \cond x\p),
+\end{align*}
+written in integral form in the notes. We now have
+\begin{align*}
+	P_{t + \delta t}(x) &= \sum\limits_{x\p}P_{\delta t}(x \cond x\p)P_{t}(x\p) \\
+	                    &= \sum\limits_{x\p}((1 - \gamma(x\p)\delta t)\delta_{x, x\p} + w(x \cond x\p)\delta t)P_{t}(x\p),
+\end{align*}
+and thus
+\begin{align*}
+	\frac{1}{\delta t}(P_{t + \delta t} - P_{t + \delta t}) &= -\gamma(x)P_{t}(x) + \sum\limits_{x\p}w(x \cond x\p)P_{t}(x\p) \\
+	                                                        &= \sum\limits_{x\p}w(x \cond x\p)P_{t}(x\p) - w(x\p \cond x)P_{t}(x).
+\end{align*}
+Labelling the positions with integer indices we arrive at the master equation
+\begin{align*}
+	\del{}{t}{P_{n}} = \sum\limits_{m}W_{nm}P_{m} - W_{mn}P_{n}.
+\end{align*}
+Alternatively, in matrix form we may write
+\begin{align*}
+	\del{}{t}{P} = \Gamma P,\ \Gamma_{nm} = W_{nm} - \delta_{nm}\sum\limits_{k}W_{kn}.
+\end{align*}
+
+Formally the solution is
+\begin{align*}
+	P(t) = P(0)e^{\Gamma t}.
+\end{align*}
+
+While $\Gamma$ must have the same left and right eigenvalues, the corresponding eigenvectors may differ. Another property it has is
+\begin{align*}
+	\sum\limits_{n}\Gamma_{nm} = 0,
+\end{align*}
+as
+\begin{align*}
+	\dv{t}\sum\limits_{n}P_{n} = \sum\limits_{n}\sum\limits_{m}\Gamma_{nm}P_{m} = \sum\limits_{m}P_{m}\sum\limits_{n}\Gamma_{nm} = 0,
+\end{align*}
+and for this to be true for any set of initial probabilities the statement in question must hold. This implies that the vector with only ones is a left eigenvector of $\Gamma$ with eigenvalue $0$. To show this, call this vector $v$. We then have
+\begin{align*}
+	(v\Gamma)_{n} = \sum\limits_{m}v_{m}\Gamma_{mn} = \sum\limits_{m}\Gamma_{mn} = 0.
+\end{align*}
+This implies that there exists a right eigenvector with the same eigenvalue, meaning that this kind of systems has at least one stationary state.
+
+The equilibrium condition for a state is
+\begin{align*}
+	\sum\limits_{m}W_{nm}P_{m} = \sum\limits_{m}W_{mn}P_{n},
+\end{align*}
+but a stronger equilibrium condition is that of detailed balance - namely,
+\begin{align*}
+	W_{nm}P_{m} = W_{mn}P_{n}.
+\end{align*}
+This generally holds for systems with time reversal symmetry. Its interpretation is that there is an equal exchange of probability between different sites at equilibrium.
+
+\paragraph{One-Step Processes}
+A one-step process is a special case of the above where the process may only move a single step in the chain of possible states. The process is labeled by transition probabilities $\alpha_{n}$ to the right and $\beta_{n}$ to the left.
