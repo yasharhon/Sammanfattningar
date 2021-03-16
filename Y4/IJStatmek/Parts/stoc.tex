@@ -138,8 +138,8 @@ In particular, for a Markov process, we find
 \end{align*}
 which is the Chapman-Kolgomorov equation.
 
-\paragraph{The Focker-Planck Equation}
-The Focker-Planck equation is a partial differential equation describes the evolution of the probability distribution for a Markov process. Given an initial condition at $x_{0}, t_{0}$, the Chapman-Kolmogorov equation implies
+\paragraph{The Fokker-Planck Equation}
+The Fokker-Planck equation is a partial differential equation that describes the evolution of the probability distribution for a Markov process. Given an initial condition at $x_{0}, t_{0}$, the Chapman-Kolmogorov equation implies
 \begin{align*}
 	P(x, t + \delta t \cond x_{0}, t_{0}) = \integ{}{}{x\p}{P(x, t + \delta \cond x\p, t)P(x\p, t \cond x_{0}, t_{0})}.
 \end{align*}
@@ -151,7 +151,7 @@ as well as higher-order moments being of order 2 or more in terms of $\delta t$.
 
 By definition we have
 \begin{align*}
-	P(x, t + \delta \cond x\p, t) &= \expval{\delta(x - x\p - \delta x(t))} \\
+	P(x, t + \delta t \cond x\p, t) &= \expval{\delta(x - x\p - \delta x(t))} \\
 	                              &\approx \expval{\delta(x - x\p) + \delta x(t)\del{}{x}{\delta(x - x\p)} + \frac{1}{2}(\delta x(t))^{2}\del{2}{x}{\delta(x - x\p)}} \\
 	                              &= \delta(x - x\p) + \del{}{x}{\delta(x - x\p)}\expval{\delta x(t)} + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}\expval{(\delta x(t))^{2}} \\
 	                              &= \delta(x - x\p) + \del{}{x}{\delta(x - x\p)}A(x(t))\delta t + \frac{1}{2}\del{2}{x}{\delta(x - x\p)}B(x(t))\delta t.

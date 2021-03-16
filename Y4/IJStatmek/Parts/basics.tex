@@ -3,7 +3,7 @@
 \paragraph{Diffusion and Random Walks}
 Macroscopic diffusion is governed by the diffusion equation
 \begin{align*}
-	\del{t}{\rho} = D\laplacian{\rho}.
+	\del{}{t}\rho = D\laplacian{\rho}.
 \end{align*}
 In particular, with the initial condition $\rho(\vb{x}, t_{0}) = \delta(\vb{x} - \vb{x}_{0})$ we find
 \begin{align*}
@@ -321,7 +321,7 @@ As the integral of $f$ itself is constant we have
 	          =& \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\left(-\vb{v}\cdot\grad_{\vb{x}}{f} - \vb{F}\cdot\grad_{\vb{p}}{f}\right)}} \\
 	           &+ \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}}.
 \end{align*}
-As the velocity field in (this projection of) phase space is divergence-free, we can somehow eliminate the first term and find
+The streaming part is zero, yielding, as was shown previously, yielding
 \begin{align*}
 	\dv{H}{t} = \integ[3]{}{}{\vb{r}}{\integ[3]{}{}{\vb{p}}{\ln(f)\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{r}, \vb{p}_{1}\p, t)f(\vb{r}, \vb{p}_{2}\p, t) - f(\vb{r}, \vb{p}, t)f(\vb{r}, \vb{p}_{2}, t)\right)}}}}.
 \end{align*}
@@ -342,11 +342,20 @@ Consider a local observable $\chi$ with a corresponding density
 \begin{align*}
 	n = \integ[3]{}{}{\vb{p}}{\chi f}.
 \end{align*}
-For $\chi$ to be conserved, $n$ should be conserved in collisions. In other words,
+For $n$ to be conserved, $\chi$ should be conserved in collisions. In other words,
 \begin{align*}
 	(\del{}{t}{n})_{\text{coll}} = \integ[3]{}{}{\vb{p}}{\chi (\del{}{t}{n})_{\text{coll}}} = 0.
 \end{align*}
-To show that this is in fact the case, we repeat the derivation of the $H$ theorem, netting us a term $\chi(\vb{p}) + \chi(\vb{p}_{2}) - \chi(\vb{p}_{1}\p) - \chi(\vb{p}_{2}\p)$, meaning that if $\chi$ is conserved in collisions, then $(\del{}{t}{n})_{\text{coll}} = 0$.
+
+To show that this is in fact the case, we repeat the derivation done for the $H$ theorem. Ignoring streaming terms we find
+\begin{align*}
+	\del{}{t}n = \integ[3]{}{}{\vb{p}}{\chi(\vb{r}, \vb{p})\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p) - f(\vb{p})f(\vb{p}_{2})\right)}}}.
+\end{align*}
+Applying the symmetry of the integral as well as time reversal and parity symmety we find
+\begin{align*}
+	\del{}{t}n = \integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{p}_{2}}{\integ{}{}{\Omega}{\pdv{\sigma}{\Omega}\abs{\vb{v} - \vb{v}_{2}}\left(f(\vb{p}_{1}\p)f(\vb{p}_{2}\p) - f(\vb{p})f(\vb{p}_{2})\right)\left(\chi(\vb{r}, \vb{p}) + \chi(\vb{r}, \vb{p}_{2}) - \chi(\vb{r}, \vb{p}_{1}\p) - \chi(\vb{r}, \vb{p}_{2}\p)\right)}}},
+\end{align*}
+meaning that if $\chi$ is conserved in collisions, then $(\del{}{t}{n})_{\text{coll}} = 0$.
 
 \paragraph{Local Equilibrium}
 While the only explicit conserved quantities of (almost-ideal) gas Hamiltonians are momentum and energy, the logarithm of the equilibrium distribution $\ln(f^{0})$ is also conserved. This must mean
