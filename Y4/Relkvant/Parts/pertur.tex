@@ -567,6 +567,111 @@ Finally we try to make sense of the individual terms in Wick's theorem by drawin
 	\item Contractions between the incoming state and a field produce a leg with an external point and incoming direction. Similarly, contractions with the outgoing state create outgoing legs.
 	\item Contractions between fields create loops in the diagram.
 \end{itemize}
+Considering the two diagrams we have shown, they are represented by
+\begin{center}
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex(a);
+			\vertex[right=of a] (b);
+			
+			\diagram*{
+				(a)-- [scalar] (b),
+			};
+		\end{feynman}
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a);
+			
+			\diagram*{
+				a --[scalar, out=135, in=-135, loop, min distance=1cm] a,
+				a --[scalar, out=45, in=-45, loop, min distance=1cm] a,
+			};
+		\end{feynman}
+	\end{tikzpicture}
+\end{center}
+and
+\begin{center}
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a) at (0, 0);
+			\vertex (b) at (1, 0);
+			\vertex (c) at (2, 0);
+			
+			\diagram*{
+				a --[scalar] b[dot] --[scalar] c,
+				b --[scalar, out=135, in=45, loop, min distance=1cm] b,
+			};
+		\end{feynman}
+	\end{tikzpicture}
+\end{center}
+In the future we will now be content to draw Feynman diagrams and set up computations directly from them.
+
+Some combinatorics were needed to arrive at the final form of the matrix elements. We would like to aviod them in the future, and it turns out that we can do this by dividing by a symmetry factor. They are different for each theory, but for this theory we use the following rule: \textit{If a part of a diagram can be rearranged in $n$ equivalent ways without changing external lines, it contributes a factor of $n$ to the symmetry factor}. For example, the diagram for the second kind of term has a symmetry factor of $2$, so we could arrive at the prefactor by taking the vertex to contribute $-i\lambda$ and dividing by $2$.
+
+To understand how this works in momentum space, we consider the somewhat more exotic diagram
+\begin{center}
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a);
+			\vertex[right=of a] (b);
+			\vertex[right=of b] (c);
+			\vertex[right=of c] (d);
+			
+			\diagram*{
+				a --[scalar] b[dot, label = $y$] --[scalar] c[dot, label = $z$] --[scalar] d,
+				b --[scalar, half left] c --[scalar, half left] b,
+			};
+		\end{feynman}
+	\end{tikzpicture}
+\end{center}
+Using the Feynman rules from above we find its contribution to be
+\begin{align*}
+	S_{qp} &= -\frac{\lambda^{2}}{6}(2\pi)^{3}\sqrt{4\omega_{\vb{p}}\omega_{\vb{q}}}\integ[4]{}{}{y}{\integ[4]{}{}{z}{e^{iqz}i\kgprop{F}{z - y}i\kgprop{F}{z - y}i\kgprop{F}{z - y}e^{-ipy}}} \\
+	       &\propto -\frac{\lambda^{2}}{6}\integ[4]{}{}{y}{\integ[4]{}{}{z}{e^{iqz}e^{-ipy}\integ[4]{}{}{k_{1}}{\frac{1}{(2\pi)^{4}}\integ[4]{}{}{k_{2}}{\frac{1}{(2\pi)^{4}}\integ[4]{}{}{k_{3}}{\frac{1}{(2\pi)^{4}}\frac{ie^{-ik_{1}(z - y)}}{k_{1}^{2} - m^{2} + i\varepsilon}\frac{ie^{-ik_{2}(z - y)}}{k_{2}^{2} - m^{2} + i\varepsilon}\frac{ie^{-ik_{3}(z - y)}}{k_{3}^{2} - m^{2} + i\varepsilon}}}}}}.
+\end{align*}
+To obtain momenum space rules, we want to integrate out the positions first. We can write these as
+\begin{align*}
+	\frac{1}{(2\pi)^{8}}\integ[4]{}{}{y}{\integ[4]{}{}{z}{e^{-iz(k_{1} + k_{2} + k_{3} - q)}e^{iz(k_{1} + k_{2} + k_{3} - p)}}} &= \frac{1}{(2\pi)^{4}}\integ[4]{}{}{y}{\delta^{4}(p - k_{1} - k_{2} - k_{3})e^{-iz(k_{1} + k_{2} + k_{3} - q)}}.
+\end{align*}
+We see that this enforces momentum conservation on the outgoing vertex, with the same applying at the incoming vertex. To visualize this, we may draw a momentum space Feynman diagram
+\begin{center}
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a);
+			\vertex[right=of a] (b);
+			\vertex[right=of b] (c);
+			\vertex[right=of c] (d);
+			
+			\diagram*{
+				a --[scalar, momentum = $p$] b[dot] --[scalar, momentum = $k_{2}$] c[dot] --[scalar, momentum = $q$] d,
+				b --[scalar, half left, momentum = $k_{1}$] c,
+				b --[scalar, half right, momentum' = $k_{3}$] c,
+			};
+		\end{feynman}
+	\end{tikzpicture}
+\end{center}
+In this picture there are two undetermined momenta which we will have to integrate over. Taking the vertices to contribute $-i\lambda$ each and lines between the vertices to add momentum space propagators, we find
+\begin{align*}
+	S_{qp} \propto -\frac{\lambda^{2}}{6}(2\pi)^{4}\delta(p - q)\frac{1}{(2\pi)^{8}}\integ[4]{}{}{k_{1}}{\integ[4]{}{}{k_{2}}{\frac{i}{k_{1}^{2} - m^{2} + i\varepsilon}\frac{i}{k_{2}^{2} - m^{2} + i\varepsilon}\frac{i}{(q - k_{1} - k_{2})^{2} - m^{2} + i\varepsilon}}},
+\end{align*}
+which is the same result as we would have gotten by proceeding with the previous calculations.
+
+\paragraph{The Invariant Matrix Element}
+The $S$ operator will always contain a part equal to the identity, and this does not produce interesting physics. We then define
+\begin{align*}
+	S = 1 + iT.
+\end{align*}
+The new $T$ operator does of course not contain just anything, as it requires conservation of 4-momentum. We then introduce another operator $\hat{T}$ such that
+\begin{align*}
+	\mel{\beta}{T}{\alpha} = (2\pi)^{4}\delta^{4}(p_{\alpha} - p_{\beta})\mel{\beta}{\hat{T}}{\alpha}.
+\end{align*}
+In particular, for a binary reaction we dub these matrix elements
+\begin{align*}
+	\mel{c, d}{i\hat{T}}{a, b} = iM(a + b\to c + d),
+\end{align*}
+where $M$ is the invariant matrix elements.
 
 \paragraph{Scattering Cross-Sections}
 Consider two volumes of particles with lengths $l_{A}$ and $l_{B}$ and particle densities $\rho_{A}$ and $\rho_{B}$ normal to the length approaching one another. If $\Phi$ is the cross-sectional area common to the volumes we define the scattering cross-section as
@@ -576,10 +681,6 @@ Consider two volumes of particles with lengths $l_{A}$ and $l_{B}$ and particle 
 The number of scattering events is then
 \begin{align*}
 	\sigma l_{A}l_{B}\integ[2]{}{}{\vb{x}}{\rho_{A}\rho_{B}}.
-\end{align*}
-To study this, we will expand the S-matrix as $S = 1 + iT$. In particular, for the case of two particles, there exists an invariant element $M$ such that
-\begin{align*}
-	\mel{\vb{p}_{a}, p_{b}}{iT}{p_{A}, p_{B}} = (2\pi)^{4}\delta\left(p_{A} + p_{B} - \sum\limits_{f}p_{f}\right)iM(p_{A} + p_{B} \to p_{f}).
 \end{align*}
 We can on this basis show that
 \begin{align*}
@@ -592,3 +693,32 @@ Consider a reaction $a\to b + c + \dots$. It can be shown that decay rates can b
 	\dd{\Gamma} = \frac{1}{2m_{a}}(2\pi)^{4}\delta^{4}\left(p_{a} - \sum\limits_{\text{products}}p_{f}\right)\abs{M(a \to b + c + \dots)}^{2}\left(\prod\limits_{\text{products}}\dd[3]{\vb{p}_{f}}\frac{1}{(2\pi)^{3}}\right).
 \end{align*}
 From this, lifetimes are given by $\tau = \frac{1}{\Gamma}$.
+
+\paragraph{Mandelstam Variables}
+For a binary reaction with two products we define the Mandelstam variables
+\begin{align*}
+	s = (p_{a} + p_{b})^{2},\ t = (p_{a} - p_{c})^{2},\ u = (p_{a} - p_{d})^{2}.
+\end{align*}
+We have
+\begin{align*}
+	s + t + u &= p_{a}^{2} + p_{b}^{2} + 2p_{a}p_{b} + p_{a}^{2} + p_{c}^{2} - 2p_{a}p_{c} + p_{a}^{2} + p_{d}^{2} - 2p_{a}p_{d} \\
+	          &= m_{a}^{2} + m_{b}^{2} + m_{c}^{2} + m_{d}^{2} + 2p_{a}(p_{a} + p_{b} - p_{c} - p_{d}) \\
+	          &= m_{a}^{2} + m_{b}^{2} + m_{c}^{2} + m_{d}^{2},
+\end{align*}
+as collisions conserve 4-momentum. Some invariant matrix elements are just as well expressed in these variables. This notation is helpful because changing the geometry of the Feynman diagram merely amounts to swapping two of the Mandelstam variables.
+
+\paragraph{Feynman Parameters}
+Feynman parameters are a useful tool for computing integrals in quantum field theory. The parameters themselves are integration variables introduced according to
+\begin{align*}
+	\prod\limits_{i = 1}^{n}\frac{1}{A_{i}^{m_{i}}} = \prod\limits_{i = 1}^{n}\left(\integ{0}{1}{x_{i}}{}\right)\delta\left(\sum\limits_{i = 1}^{n}x_{i} - 1\right)\frac{\Gamma\left(\sum\limits_{i = 1}^{n}m_{i}\right)}{\left(\sum\limits_{i = 1}^{n}x_{i}A_{i}\right)^{\sum\limits_{i = 1}^{n}m_{i}}}\prod\limits_{i = 1}^{n}\frac{x_{i}^{m_{i} - 1}}{\Gamma(m_{i})}.
+\end{align*}
+One often needs to shift momenta over which one is to integrate by constant momenta multiplied by these Feynman parameters.
+
+\paragraph{Pauli-Villars Regularization}
+Pauli-Villars regularization is the process of introducing a cutoff parameter into the integrals, computing the integrals and letting the parameter approach the limit such that the original integral is recovered.
+
+\paragraph{Dimensional Regularization and Wick Rotations}
+Dimensional regularization is the process of extending an integral to arbitrary dimensionality and computing the limit of the dimensionality approaching the original one. To do this we will often need to perform Wick rotations of the form $l^{0} = il_{\text{E}}^{0},\ \vb{l} = \vb{l}_{\text{E}}$, which satisfies
+\begin{align*}
+	(l_{\text{E}}^{0})^{2} + \vb{l}_{\text{E}}^{2} = -l^{2}.
+\end{align*}

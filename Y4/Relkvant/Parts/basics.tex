@@ -41,6 +41,7 @@ Using the 4-momentum $P^{\mu} = (E, \vb{p})$ and the correspondence principle $P
 \end{align*}
 This does not in general respect Lorentz transformations, which one might expect given that it is not taken from a Lorentz covariant expression. In other words, the Schrödinger equation is not Lorentz covariant.
 
+\paragraph{The Klein-Gordon Equation}
 The quantization of the relativistic $E^{2} = m^{2} + \vb{p}^{2}$ is instead
 \begin{align*}
 	-\del{2}{t}{\phi} = m^{2}\phi - \laplacian{\phi}.
@@ -74,7 +75,7 @@ For such a state we have
 \begin{align*}
 	J^{0} = \frac{E}{m}\abs{\phi}^{2}.
 \end{align*}
-In the classical limit we have $\frac{E}{m} \approx 1$, whereas in the general case we have $E = \pm\sqrt{m^{2} + \vb{p}^{2}}$, meaning that $J^{0}$ is not positive definite and the conserved Nöether cannot be interpreted as conservation of probability density. This implores us to reinterpret the Klein-Gordon equation as a general field equation.
+In the classical limit we have $\frac{E}{m} \approx 1$, whereas in the general case we have $E = \pm\sqrt{m^{2} + \vb{p}^{2}}$, meaning that $J^{0}$ is not positive definite and the conserved Nöether current cannot be interpreted as conservation of probability density. This implores us to reinterpret the Klein-Gordon equation as a general field equation.
 
 \paragraph{Plane-Wave Solutions}
 Plane-wave solutions of the Klein-Gordon equation are of the form
@@ -104,15 +105,15 @@ Consider scattering after normal incidence on a step potential described by $A^{
 \paragraph{The Dirac Equation}
 We will now try to develop a theory that remedies the problems with the Klein-Gordon equation. The hope is that this equations has a positive-definite conserved density. An important source of the bad time was the second-order time derivative, so we will try to remedy this with a first-order time derivative. We also make the space derivatives first-order, perhaps because of Lorentz stuff. This leads us to the anzats
 \begin{align*}
-	\del{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi = 0,
+	\del{}{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi = 0,
 \end{align*}
 where $\beta$ and $\alpha^{i}$ are matrices and $\Psi$ is a vector. The sizes of these are yet to be determined. The corresponding equation for $\Psi\adj$ is
 \begin{align*}
-	\del{t}{\Psi\adj} + (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj - im\Psi\adj\beta\adj = 0.
+	\del{}{t}{\Psi\adj} + (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj - im\Psi\adj\beta\adj = 0.
 \end{align*}
 Considering the quantity $\Psi\adj\Psi$ we have
 \begin{align*}
-	\del{t}{(\Psi\adj\Psi)} &= (\del{t}{\Psi\adj})\Psi + \Psi\adj\del{t}{\Psi} \\
+	\del{}{t}{(\Psi\adj\Psi)} &= (\del{}{t}{\Psi\adj})\Psi + \Psi\adj\del{}{t}{\Psi} \\
 	                        &= (im\Psi\adj\beta\adj - (\grad{\Psi\adj})\cdot\vb*{\alpha})\Psi + \Psi\adj(-(\vb*{\alpha}\cdot\grad{})\Psi - im\beta\Psi) \\
 	                        &= im\Psi\adj(\beta\adj - \beta) - (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj\Psi - \Psi\adj(\vb*{\alpha}\cdot\grad{})\Psi.
 \end{align*}
@@ -122,13 +123,13 @@ We really want the right-hand side to be the 3-divergence of some 3-current. To 
 \end{align*}
 The conserved 4-current is thus $j^{\mu} = (\Psi\adj\Psi, \Psi\adj\vb*{\alpha}\Psi)$.
 
-To reobtain something like the 4-vector norm we had when discussing the Klein-Gordon equation, we apply the operator $\del{t}{} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi$ to our anzats to find
+To reobtain something like the 4-vector norm we had when discussing the Klein-Gordon equation, we apply the operator $\del{}{t} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi$ to our anzats to find
 \begin{align*}
-	(\del{t}{} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi)(\del{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi) = 0.
+	(\del{}{t} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi)(\del{}{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi) = 0.
 \end{align*}
 As the derivatives commute with the matrices, the cross terms vanish, yielding
 \begin{align*}
-	\del[2]{t}{\Psi} - (\vb*{\alpha}\cdot\grad{})^{2}\Psi - (\vb*{\alpha}\cdot\grad{})im\beta\Psi - im\beta(\vb*{\alpha}\cdot\grad{})\Psi + m^{2}\beta^{2}\Psi &= 0,
+	\del{2}{t}{\Psi} - (\vb*{\alpha}\cdot\grad{})^{2}\Psi - (\vb*{\alpha}\cdot\grad{})im\beta\Psi - im\beta(\vb*{\alpha}\cdot\grad{})\Psi + m^{2}\beta^{2}\Psi &= 0,
 \end{align*}
 or more explicitly
 \begin{align*}
@@ -311,28 +312,6 @@ At this point we must return to the sign of $E$. The two former solutions blow u
 
 What is the interpretation of this? Dirac's first interpretation involved the so-called Dirac sea, but the current understanding is that the negative energy solutions represent antiparticle states with positive energy.
 
-\paragraph{Plane-Wave Solutions}
-Plane-wave solutions of the Dirac equation are of the form
-%TODO: Add negative energy solutions
-\begin{align*}
-	\Psi_{P} = e^{-iP_{\mu}x^{\mu}}u(P^{\mu}),
-\end{align*}
-where $u(P^{\mu})$ is a so-called spinor. Inserting it into the Dirac equation we find
-\begin{align*}
-	(-\fsl{P} + m)u(P^{\mu}) = 0.
-\end{align*}
-Multiplying by $\fsl{P} + m$ we find
-\begin{align*}
-	(-\fsl{P}^{2} + m^{2})u(P^{\mu}) = (-\gamma^{\mu}\gamma^{\nu}P_{\mu}P_{\nu} + m^{2})u(P^{\mu}) = 0.
-\end{align*}
-We can symmetrize the first term and use the anticommutation relations of the $\gamma^{\mu}$ to find
-\begin{align*}
-	(-P^{2} + m^{2})u(P^{\mu}) = 0.
-\end{align*}
-In other words, the solution satisfies the relativistic energy-momentum relation. This also implies that for non-trivial solutions, the 4-momentum is time-like.
-
-In the corresponding rest frame, there are four independent spinor solutions. These are $u_{\pm}$ and $v_{\pm}$, and with this representation they are as you would expect.
-
 \paragraph{A Hamiltonian}
 As the plane-wave solutions have time-like 4-momenta, there is a corresponding rest frame. In this rest frame, the Hamiltonian, which is generally
 \begin{align*}
@@ -367,7 +346,7 @@ and thus
 \begin{align*}
 	(-i\gamma^{\mu}\del{\mu}{} + m)\Psi = (-i\gamma^{\mu}\tensor{\Lambda}{^{\mu\p}_{\mu}}\del{\mu\p}{} + m)S^{-1}\Psi\p = 0.
 \end{align*}
-Note that as $m$ is a Lorentz scalar, it is also the same in all frames. Multiplication by $S$ yields
+Note that as $m$ is a Lorentz scalar, it is also the same in all frames. It also turns out that the $\gamma^{\mu}$ are the same in all frames. Multiplication by $S$ yields
 \begin{align*}
 	(-i\tensor{\Lambda}{^{\mu\p}_{\mu}}S\gamma^{\mu}S^{-1}\del{\mu\p}{} + m)\Psi\p = 0.
 \end{align*}
