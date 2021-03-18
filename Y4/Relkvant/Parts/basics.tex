@@ -1,0 +1,670 @@
+\section{Basic Concepts}
+
+\paragraph{Casimir Operators}
+A Casimir operator is an operator that is constructed from the generators of a group and commutes with all generators.
+
+\paragraph{Casimir Operators of the Poincare Group}
+The Casimir operators of the Poincare group are
+\begin{align*}
+	P^{2} = P^{\mu}P_{\mu},\ w^{2} = w^{\mu}w_{\mu},
+\end{align*}
+where we have introduced the Pauli-Lubanski vector
+\begin{align*}
+	w_{\mu} = \frac{1}{2}\varepsilon_{\mu\nu\rho\sigma}M^{\nu\rho}P^{\sigma}. 
+\end{align*}
+It can be shown that
+\begin{align*}
+	w_{0} = \vb{P}\cdot\vb{J},\ \vb{w} = P_{0}\vb{J} + \vb{P}\times\vb{K}.
+\end{align*}
+
+\paragraph{The Wigner Classification}
+As we will consider unitary representations of the Poincare group acting on states and the representations can be decomposed into irreps, we will find that we can reduce our considerations to a set of fundamental systems, termed particles. The classification, divided according to the eigenvalues of $P^{2}$ and $w^{2}$, is according to the Wigner system:
+\begin{enumerate}
+	\item $P^{2} > 0$, with subclasses:
+	\begin{itemize}
+		\item $P^{0} < 0$.
+		\item $P^{0} > 0$.
+	\end{itemize}
+	\item $P^{2} = 0$, with subclasses:
+	\begin{itemize}
+		\item $P^{0} < 0$.
+		\item $P^{0} > 0$.
+	\end{itemize}
+	\item $P^{2} = 0$ and $P^{0} = 0$.
+	\item $P^{2} < 0$, corresponding to tachyons.
+\end{enumerate}
+
+\paragraph{Lorentz Covariance and the Schrödinger Equation}
+Using the 4-momentum $P^{\mu} = (E, \vb{p})$ and the correspondence principle $P^{\mu} = i\del{\mu}{}{}$, the quantization of the classical energy $E = \frac{1}{2m}\vb{p}^{2}$ of a free particle is
+\begin{align*}
+	i\del{}{t}{\Psi} = -\frac{1}{2m}\laplacian{\Psi}.
+\end{align*}
+This does not in general respect Lorentz transformations, which one might expect given that it is not taken from a Lorentz covariant expression. In other words, the Schrödinger equation is not Lorentz covariant.
+
+\paragraph{The Klein-Gordon Equation}
+The quantization of the relativistic $E^{2} = m^{2} + \vb{p}^{2}$ is instead
+\begin{align*}
+	-\del{2}{t}{\phi} = m^{2}\phi - \laplacian{\phi}.
+\end{align*}
+By introducing the d'Alembertian $\dalem{} = \del{}{\mu}{\del{\mu}{}{}}$ we can write the above as
+\begin{align*}
+	\dalem{\phi} + m^{2}\phi = 0.
+\end{align*}
+This is the Klein-Gordon equation, which is an appropriate quantization of a spinless particle.
+
+\paragraph{A Conserved Current}
+Corresponding to the Klein-Gordon equation there exists a density and a current
+\begin{align*}
+	\rho = \frac{i}{2m}(\cc{\phi}\del{}{0}{\phi} - \phi\del{}{0}{\cc{\phi}}),\ \vb{j} = \frac{1}{2im}(\cc{\phi}\grad{\phi} - \phi\grad{\cc{\phi}})
+\end{align*}
+such that
+\begin{align*}
+	\del{}{t}{\rho} + \div{\vb{j}} = 0.
+\end{align*}
+Alternatively, by combining the two into a 4-current $J^{\mu} = (\rho, \vb{j})$ we find
+\begin{align*}
+	\del{}{\mu}{J^{\mu}} = 0.
+\end{align*}
+
+\paragraph{Problems With Stationary States}
+A stationary state is a state such that
+\begin{align*}
+	P^{0}\phi = E\phi.
+\end{align*}
+For such a state we have
+\begin{align*}
+	J^{0} = \frac{E}{m}\abs{\phi}^{2}.
+\end{align*}
+In the classical limit we have $\frac{E}{m} \approx 1$, whereas in the general case we have $E = \pm\sqrt{m^{2} + \vb{p}^{2}}$, meaning that $J^{0}$ is not positive definite and the conserved Nöether current cannot be interpreted as conservation of probability density. This implores us to reinterpret the Klein-Gordon equation as a general field equation.
+
+\paragraph{Plane-Wave Solutions}
+Plane-wave solutions of the Klein-Gordon equation are of the form
+\begin{align*}
+	\phi = Ne^{-iP_{\mu}x^{\mu}}.
+\end{align*}
+In order for these to be solutions, we require
+\begin{align*}
+	P^{0} = \pm\sqrt{m^{2} + \abs{\vb{p}}}.
+\end{align*}
+This does not pose a problem in non-interacting cases, as the solutions maintain their signs.
+
+\paragraph{Charged Particles}
+When treating charged particles in external electromagnetic fields, we employ the minimal coupling scheme and perform the replacement $P^{\mu}\to P^{\mu} - qA^{\mu}$. The Klein-Gordon equation then becomes
+\begin{align*}
+	((\del{}{\mu}{} + iqA_{\mu})(\del{\mu}{}{} + iqA^{\mu}) + m^{2})\phi = 0.
+\end{align*}
+This will cause additional terms
+\begin{align*}
+	J^{\mu} \to J^{\mu} - \frac{q}{m}\abs{\phi}^{2}A^{\mu}
+\end{align*}
+in the Nöether current, further destroying our hopes of creating a one-particle theory.
+
+\paragraph{The Klein Paradox}
+Consider scattering after normal incidence on a step potential described by $A^{\mu} = (V\theta(x), \vb{0})$. Performing an anzats similar to that in the non-relativistic case, the Klein-Gordon equation predicts the same behaviour as the Schrödinger equation, except for the case where $V > E + m$. In this case the transmitted 4-momentum has a negative space component. Furthermore, the transmission probability becomes negative, but still preserving $T + R = 1$. This peculiar behaviour is known as Klein's paradox.
+
+\paragraph{The Dirac Equation}
+We will now try to develop a theory that remedies the problems with the Klein-Gordon equation. The hope is that this equations has a positive-definite conserved density. An important source of the bad time was the second-order time derivative, so we will try to remedy this with a first-order time derivative. We also make the space derivatives first-order, perhaps because of Lorentz stuff. This leads us to the anzats
+\begin{align*}
+	\del{}{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi = 0,
+\end{align*}
+where $\beta$ and $\alpha^{i}$ are matrices and $\Psi$ is a vector. The sizes of these are yet to be determined. The corresponding equation for $\Psi\adj$ is
+\begin{align*}
+	\del{}{t}{\Psi\adj} + (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj - im\Psi\adj\beta\adj = 0.
+\end{align*}
+Considering the quantity $\Psi\adj\Psi$ we have
+\begin{align*}
+	\del{}{t}{(\Psi\adj\Psi)} &= (\del{}{t}{\Psi\adj})\Psi + \Psi\adj\del{}{t}{\Psi} \\
+	                        &= (im\Psi\adj\beta\adj - (\grad{\Psi\adj})\cdot\vb*{\alpha})\Psi + \Psi\adj(-(\vb*{\alpha}\cdot\grad{})\Psi - im\beta\Psi) \\
+	                        &= im\Psi\adj(\beta\adj - \beta) - (\grad{\Psi\adj})\cdot\vb*{\alpha}\adj\Psi - \Psi\adj(\vb*{\alpha}\cdot\grad{})\Psi.
+\end{align*}
+We really want the right-hand side to be the 3-divergence of some 3-current. To do that, we may choose $\alpha^{i}$ and $\beta$ to be Hermitian, yielding
+\begin{align*}
+	(\grad{\Psi\adj})\cdot\vb*{\alpha}\adj\Psi + \Psi\adj(\vb*{\alpha}\cdot\grad{})\Psi = \div{\Psi\adj\vb*{\alpha}\Psi}.
+\end{align*}
+The conserved 4-current is thus $j^{\mu} = (\Psi\adj\Psi, \Psi\adj\vb*{\alpha}\Psi)$.
+
+To reobtain something like the 4-vector norm we had when discussing the Klein-Gordon equation, we apply the operator $\del{}{t} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi$ to our anzats to find
+\begin{align*}
+	(\del{}{t} - (\vb*{\alpha}\cdot\grad{}) - im\beta\Psi)(\del{}{t}{\Psi} + (\vb*{\alpha}\cdot\grad{})\Psi + im\beta\Psi) = 0.
+\end{align*}
+As the derivatives commute with the matrices, the cross terms vanish, yielding
+\begin{align*}
+	\del{2}{t}{\Psi} - (\vb*{\alpha}\cdot\grad{})^{2}\Psi - (\vb*{\alpha}\cdot\grad{})im\beta\Psi - im\beta(\vb*{\alpha}\cdot\grad{})\Psi + m^{2}\beta^{2}\Psi &= 0,
+\end{align*}
+or more explicitly
+\begin{align*}
+	\del{2}{t}{\Psi} - (\alpha^{i}\del{}{i}{})(\alpha^{j}\del{}{j}{})\Psi - im((\alpha^{i}\del{}{i}{})\beta + \beta\alpha^{i}\del{}{i}{})\Psi + m^{2}\beta^{2}\Psi = \del{2}{t}{\Psi} - \alpha^{i}\alpha^{j}\del{}{i}{\del{}{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{}{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
+\end{align*}
+We can symmetrize the second term to find
+\begin{align*}
+	\del{2}{t}{\Psi} - \frac{1}{2}(\alpha^{i}\alpha^{j} + \alpha^{j}\alpha^{i})\del{}{i}{\del{}{j}{\Psi}} - im(\alpha^{i}\beta + \beta\alpha^{i})\del{}{i}{\Psi} + m^{2}\beta^{2}\Psi = 0.
+\end{align*}
+This produces the same 4-vector norm if
+\begin{align*}
+	\acomm{\alpha^{i}}{\alpha^{j}} = 2\delta^{ij},\ \beta^{2} = 1,\ \alpha^{i}\beta + \beta\alpha^{i} = 0.
+\end{align*}
+Computing the determinant of the last equation, we find
+\begin{align*}
+	\det(\alpha^{i}\beta) = (-1)^{N}\det(\beta\alpha^{i}),
+\end{align*}
+where $N$ is the length of $\Psi$. The only way for the above equations to be solvable is then that $N$ be odd. It can also be shown that $\alpha^{i}$ and $\beta$ are all traceless. By a series of arguments we find that $N = 4$ is correct.
+
+To complete our discussion, we define $\gamma^{0} = \beta,\ \gamma^{i} = \beta\alpha^{i}$. With this we multiply our anzats by $-i\beta$ and find
+\begin{align*}
+	(-i\beta\del{0}{} - i(\beta\vb*{\alpha}\cdot\grad{}))\Psi + m\Psi = 0.
+\end{align*}
+Defining the inner product $\gamma^{\mu}A_{\mu} = \fsl{A}$ we arrive at the Dirac equation
+\begin{align*}
+	i\fsl{\del{}{}{}}\Psi - m\Psi = 0.
+\end{align*}
+
+\paragraph{Properties of the $\gamma^{\mu}$}
+The $\gamma^{\mu}$ satisfy
+\begin{align*}
+	(\gamma^{\mu})\adj = \gamma^{0}\gamma^{\mu}\gamma^{0}.
+\end{align*}
+
+Defining the matrix $\gamma^{5} = i\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$, we find that it must be Hermitian.
+
+We also have
+\begin{align*}
+	\acomm{\gamma^{5}}{\gamma^{\mu}} = 0.
+\end{align*}
+
+We have
+\begin{align*}
+	\tr(\prod\limits_{i = 1}^{n}\gamma^{\mu_{i}}) &= 0,\ n\text{ odd}, \\
+	\tr(\gamma^{5})                               &= 0.
+\end{align*}
+
+\paragraph{The Dirac Algebra}
+The $\gamma^{\mu}$ are a representation of the Dirac algebra
+\begin{align*}
+	\acomm{\gamma^{\mu}}{\gamma^{\nu}} = 2g^{\mu\nu}.
+\end{align*}
+We may compute explicit representations of this algebra as
+\begin{align*}
+	\gamma^{0} = 
+	\mqty[
+		1 & 0 \\
+		0 & -1
+	],\ 
+	\gamma^{i} = 
+	\mqty[
+		0           & \sigma^{i} \\
+		-\sigma^{i} & 0
+	].
+\end{align*}
+In this representation we have
+\begin{align*}
+	\gamma^{5} =
+	\mqty[
+		0 & 1 \\
+		1 & 0
+	].
+\end{align*}
+
+\paragraph{The Dirac Adjoint}
+The Dirac adjoint is defined as
+\begin{align*}
+	\bar{A} = A\adj\gamma^{0}.
+\end{align*}
+
+\paragraph{Rewriting the 4-Current}
+We may use the properties of the $\gamma^{\mu}$ to write
+\begin{align*}
+	j^{\mu} = \Psi\adj\gamma^{0}\gamma^{\mu}\Psi = \bar{\Psi}\gamma^{\mu}\Psi.
+\end{align*}
+
+\paragraph{A Free Dirac Particle}
+For a free we multiply the operator $\fsl{p} - m$ by its conjugate to find
+\begin{align*}
+	(\fsl{p} + m)(\fsl{p} - m) &= \fsl{p}^{2} - m^{2}.
+\end{align*}
+We have
+\begin{align*}
+	\fsl{p}^{2} = \gamma^{\mu}\gamma^{\nu}p_{\mu}p_{\nu} = \gamma^{\mu}\gamma^{\nu}p_{\nu}p_{\mu} = \gamma^{\nu}\gamma^{\mu}p_{\mu}p_{\nu},
+\end{align*}
+hence
+\begin{align*}
+	\fsl{p}^{2} - m^{2} = \frac{1}{2}\acomm{\gamma^{\mu}}{\gamma_{\nu}}p_{\mu}p_{\nu} - m^{2} = g^{\mu\nu}p_{\mu}p_{\nu} - m^{2} = p^{2} - m^{2}.
+\end{align*}
+The Dirac particle has now been diagonalized, and it is in fact separable in terms of its spacetime dependence. The solution is thus a plane wave times a spinor - more specifically,
+\begin{align*}
+	\Psi = e^{-ipx}u,
+\end{align*}
+where $u$ is some spinor. The 4-momentum satisfies the previously derived relation. It can also be shown for such a particle that $\ham = i\del{}{0}{}$, and thus has eigenvalue $p_{0} = E$. The sign of this eigenvalue is yet to be determined, and will in fact produce solutions with positive and negative energy.
+
+Given the energy eigenvalues, the form of the spinors is determined by the Dirac equation itself. As we have
+\begin{align*}
+	\gamma^{\mu}p_{\mu} = E\mqty[
+		1  & 0 \\
+		-1 & 0
+	] - \vb{p}\cdot\mqty[
+		0             & \vb*{\sigma} \\
+		-\vb*{\sigma} & 0
+	] = \mqty[
+	E                       & -\vb{p}\cdot\vb*{\sigma} \\
+	\vb{p}\cdot\vb*{\sigma} & -E
+	],
+\end{align*}
+hence we may write the spinor in block form to find the equation
+\begin{align*}
+	\mqty[
+		E - m                   & -\vb{p}\cdot\vb*{\sigma} \\
+		\vb{p}\cdot\vb*{\sigma} & -E - m
+	]\mqty[
+		u_{A} \\
+		u_{B}
+	] = 
+	\mqty[
+		(E - m)u_{A} - \vb{p}\cdot\vb*{\sigma}u_{B} \\
+		\vb{p}\cdot\vb*{\sigma}u_{A} - (E + m)u_{B}
+	] = \mqty[
+		0 \\
+		0
+	].
+\end{align*}
+Inserting the two equations into the other, we find
+\begin{align*}
+	u_{A} = \frac{1}{E^{2} - m^{2}}(\vb{p}\cdot\vb*{\sigma})^{2}u_{A}.
+\end{align*}
+The matrix quantity on the right is given by
+\begin{align*}
+	(\vb{p}\cdot\vb*{\sigma})^{2} = \sigma^{i}\sigma^{j}p_{i}p_{j} = (2\delta^{ij} - \sigma^{j}\sigma^{i})p_{i}p_{j} = 2\vb{p}^{2} - \sigma^{j}\sigma^{i}p_{j}p_{i},
+\end{align*}
+implying
+\begin{align*}
+	u_{A} = \frac{\vb{p}^{2}}{E^{2} - m^{2}}u_{A},
+\end{align*}
+which in combination with the previously derived energy-momentum relation implies that we may freely choose a basis for the top half. As the same holds for the lower parts, we will for each $p$ find a set of solutions by choosing one half of the spinor and computing the other from that. We have
+\begin{align*}
+	\vb{p}\cdot\vb{\sigma} = \mqty[
+		p_{z}          & p_{x} - ip_{y} \\
+		p_{x} + ip_{y} & -p_{z}
+	],
+\end{align*}
+and the four solutions are thus
+\begin{align*}
+	\mqty[
+		1 \\
+		0 \\
+		\frac{p_{z}}{E + m} \\
+		\frac{p_{x} + ip_{y}}{E + m}
+	],\ \mqty[
+		0 \\
+		1 \\
+		\frac{p_{x} - ip_{y}}{E + m} \\
+		-\frac{p_{z}}{E + m}
+	],\ \mqty[
+		\frac{p_{z}}{E - m} \\
+		\frac{p_{x} + ip_{y}}{E - m} \\
+		1 \\
+		0
+	],\ \mqty[
+		\frac{p_{x} - ip_{y}}{E - m} \\
+		-\frac{p_{z}}{E - m} \\
+		0 \\
+		1
+	].
+\end{align*}
+At this point we must return to the sign of $E$. The two former solutions blow up if $E$ is chosen to be negative, whereas the latter ones blow up if $E$ is positive. Thus we have achieved the assignment of energy signs to the different spinors.
+
+What is the interpretation of this? Dirac's first interpretation involved the so-called Dirac sea, but the current understanding is that the negative energy solutions represent antiparticle states with positive energy.
+
+\paragraph{A Hamiltonian}
+As the plane-wave solutions have time-like 4-momenta, there is a corresponding rest frame. In this rest frame, the Hamiltonian, which is generally
+\begin{align*}
+	\ham = \beta m + \vb*{\alpha}\cdot\vb{p},
+\end{align*}
+reduces to
+\begin{align*}
+	\ham = \beta m.
+\end{align*}
+Defining
+\begin{align*}
+	\vb*{\Sigma} =
+	\mqty[
+		\vb*{\sigma} & 0 \\
+		0            & \vb*{\sigma}
+	],
+\end{align*}
+we have $\comm{\ham}{\vb*{\Sigma}} = 0$.
+
+\paragraph{Lorentz Transformation of Spinors}
+Suppose that $\Psi$ is a solution to the Dirac equation. Under a Lorentz transform it should transform according to
+\begin{align*}
+	\Psi\p(x\p) = S(\Lambda)\Psi(x).
+\end{align*}
+We would like to identify the transformation matrix $S$.
+
+Because the Dirac equation is Lorentz covariant, it looks the same in all frames. We can use the chain rule to find
+\begin{align*}
+	\del{\mu}{} = \tensor{\Lambda}{^{\mu\p}_{\mu}}\del{\mu\p}{}
+\end{align*}
+and thus
+\begin{align*}
+	(-i\gamma^{\mu}\del{\mu}{} + m)\Psi = (-i\gamma^{\mu}\tensor{\Lambda}{^{\mu\p}_{\mu}}\del{\mu\p}{} + m)S^{-1}\Psi\p = 0.
+\end{align*}
+Note that as $m$ is a Lorentz scalar, it is also the same in all frames. It also turns out that the $\gamma^{\mu}$ are the same in all frames. Multiplication by $S$ yields
+\begin{align*}
+	(-i\tensor{\Lambda}{^{\mu\p}_{\mu}}S\gamma^{\mu}S^{-1}\del{\mu\p}{} + m)\Psi\p = 0.
+\end{align*}
+Comparing this with the Dirac equation in the primed frame, we must therefore have
+\begin{align*}
+	\tensor{\Lambda}{^{\mu\p}_{\mu}}S\gamma^{\mu}S^{-1} = \gamma^{\mu\p} \iff \tensor{\Lambda}{^{\mu\p}_{\mu}}\gamma^{\mu} = S^{-1}\gamma^{\mu\p}S.
+\end{align*}
+To proceed, we apply the expansion
+\begin{align*}
+	\tensor{\Lambda}{^{\mu\p}_{\mu}} = \kdelta{\mu\p}{\mu} + \varepsilon\tensor{\omega}{^{\mu\p}_{\mu}},\ \omega^{\mu\nu} = -\omega^{\nu\mu},
+\end{align*}
+and expand $S$ in terms of $\varepsilon$ as
+\begin{align*}
+	S = 1 - \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu},\ \sigma_{\mu\nu} = -\sigma_{\nu\mu}
+\end{align*}
+for some set of matrices $\sigma_{\mu\nu}$. We see that its inverse to first order must be
+\begin{align*}
+	S^{-1} = 1 + \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}.
+\end{align*}
+We now have
+\begin{align*}
+	(\kdelta{\mu\p}{\mu} + \varepsilon\tensor{\omega}{^{\mu\p}_{\mu}})\gamma^{\mu} &= \left(1 + \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}\right)\gamma^{\mu\p}\left(1 - \frac{i}{4}\varepsilon\omega^{\mu\nu}\sigma_{\mu\nu}\right) \\
+	&= \gamma^{\mu\p} + \frac{i}{4}\varepsilon\omega^{\mu\nu}(\sigma_{\mu\nu}\gamma^{\mu\p} - \gamma^{\mu\p}\sigma_{\mu\nu}),
+\end{align*}
+or
+\begin{align*}
+	\frac{i}{4}\omega^{\mu\nu}\comm{\sigma_{\mu\nu}}{\gamma^{\mu\p}} = \tensor{\omega}{^{\mu\p}_{\mu}}\gamma^{\mu} = \tensor{\omega}{^{\mu\p\mu}}\gamma_{\mu}.
+\end{align*}
+To remove the $\omega^{\mu\nu}$ we will use the fact that
+\begin{align*}
+	\tensor{\omega}{^{\mu\p}_{\nu}}\gamma^{\nu} = g^{\mu\p\mu}\tensor{\omega}{_{\mu\nu}}\gamma^{\nu} = -g^{\mu\mu\p}\tensor{\omega}{_{\nu\mu}}\gamma^{\nu} = -g^{\nu\mu\p}\tensor{\omega}{_{\mu\nu}}\gamma^{\mu} = -g^{\mu\p\nu}\tensor{\omega}{_{\mu\nu}}\gamma^{\mu},
+\end{align*}
+hence
+\begin{align*}
+	\frac{i}{4}\omega^{\mu\nu}\comm{\sigma_{\mu\nu}}{\gamma^{\mu\p}} = \frac{1}{2}\tensor{\omega}{_{\mu\nu}}(g^{\mu\p\mu}\gamma^{\nu} - g^{\mu\p\nu}\gamma^{\mu}) = \frac{1}{2}\tensor{\omega}{^{\mu\nu}}(\tensor{g}{^{\mu\p}_{\mu}}\gamma_{\nu} - \tensor{g}{^{\mu\p}_{\nu}}\gamma_{\mu}),
+\end{align*}
+which must finally imply
+\begin{align*}
+	\comm{\gamma^{\mu\p}}{\sigma_{\mu\nu}} = 2i(\tensor{g}{^{\mu\p}_{\mu}}\gamma_{\nu} - \tensor{g}{^{\mu\p}_{\nu}}\gamma_{\mu}).
+\end{align*}
+The solution to this is
+\begin{align*}
+	\sigma_{\mu\nu} = \frac{i}{2}\comm{\gamma_{\mu}}{\gamma_{\nu}}.
+\end{align*}
+
+\paragraph{Charged Particles}
+When introducing charge, we employ the minimal coupling scheme. The Dirac equation then becomes
+\begin{align*}
+	(-\gamma^{\mu}(i\del{}{\mu}{} - qA_{\mu}) + m)\Psi = (\fsl{p} - q\fsl{A} - m)\Psi = 0.
+\end{align*}
+To proceed we write the solution as
+\begin{align*}
+	\Psi = (\fsl{p} - q\fsl{A} + m)\chi,
+\end{align*}
+yielding
+\begin{align*}
+	(\fsl{p} - q\fsl{A} - m)(\fsl{p} - q\fsl{A} + m)\chi = ((\fsl{p} - q\fsl{A})^{2} - m^{2})\chi = 0.
+\end{align*}
+
+We investigate the operator appearing in this modified solution as
+\begin{align*}
+	(\fsl{p} - q\fsl{A})^{2} &= \gamma^{\mu}\gamma^{\nu}(p_{\mu} - qA_{\mu})(p_{\nu} - qA_{\nu}) \\
+	                         &= \frac{1}{2}\left(\gamma^{\mu}\gamma^{\nu}(p_{\mu} - qA_{\mu})(p_{\nu} - qA_{\nu}) + \gamma^{\nu}\gamma^{\mu}(p_{\nu} - qA_{\nu})(p_{\mu} - qA_{\mu})\right) \\
+	                         &= \frac{1}{2}\left(\gamma^{\mu}\gamma^{\nu}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) + \gamma^{\nu}\gamma^{\mu}(p_{\nu}p_{\mu} - q(p_{\nu}A_{\mu} + A_{\nu}p_{\mu}) + q^{2}A_{\nu}A_{\mu})\right) \\
+	                         &= \frac{1}{2}\left(\acomm{\gamma^{\mu}}{\gamma^{\nu}}(p_{\mu}p_{\nu} + q^{2}A_{\mu}A_{\nu}) - q(\gamma^{\mu}\gamma^{\nu}(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + \gamma^{\nu}\gamma^{\mu}(p_{\nu}A_{\mu} + A_{\nu}p_{\mu}))\right) \\
+	                         &= \frac{1}{2}\left(\acomm{\gamma^{\mu}}{\gamma^{\nu}}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) - q\gamma^{\nu}\gamma^{\mu}(p_{\nu}A_{\mu} + A_{\nu}p_{\mu} - p_{\mu}A_{\nu} - A_{\mu}p_{\nu})\right) \\
+	                         &= \frac{1}{2}\left(2g^{\mu\nu}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) - q\gamma^{\nu}\gamma^{\mu}(\comm{p_{\nu}}{A_{\mu}} - \comm{p_{\mu}}{A_{\nu}}\right).
+\end{align*}
+We have
+\begin{align*}
+	\comm{p_{\mu}}{A_{\nu}} = i((\del{}{\mu}{A_{\nu}}) + A_{\nu}\del{}{\mu}{} - A_{\nu}\del{}{\mu}{}) = i(\del{}{\mu}{A_{\nu}}),
+\end{align*}
+and thus
+\begin{align*}
+	(\fsl{p} - q\fsl{A})^{2} &= \frac{1}{2}\left(2g^{\mu\nu}(p_{\mu}p_{\nu} - q(p_{\mu}A_{\nu} + A_{\mu}p_{\nu}) + q^{2}A_{\mu}A_{\nu}) - iq\gamma^{\nu}\gamma^{\mu}(\del{}{\nu}{A_{\mu}} - \del{}{\mu}{A_{\nu}})\right) \\
+	                         &= (p - qA)^{2} + \frac{i}{2}q\gamma^{\nu}\gamma^{\mu}F_{\mu\nu}.
+\end{align*}
+As
+\begin{align*}
+	\gamma^{\nu}\gamma^{\mu} = \frac{1}{2}(\comm{\gamma^{\nu}}{\gamma^{\mu}} + \acomm{\gamma^{\nu}}{\gamma^{\mu}}),
+\end{align*}
+where the first term is symmetric and the second is antisymmetric, we have
+\begin{align*}
+	(\fsl{p} - q\fsl{A})^{2} &= (p - qA)^{2} + \frac{1}{2}q\sigma^{\nu\mu}F_{\mu\nu} = (p - qA)^{2} - \frac{1}{2}q\sigma^{\mu\nu}F_{\mu\nu}.
+\end{align*}
+It can be shown that
+\begin{align*}
+	\frac{1}{2}q\sigma^{\mu\nu}F_{\mu\nu} = -q(\vb*{\Sigma}\cdot\vb{B} - i\vb*{\alpha}\cdot\vb{E}),
+\end{align*}
+where the first term is interpreted as a magnetic dipole contribution and the second as an electric monopole contribution.
+
+\paragraph{The Hydrogenic Atom}
+A system with a Coulomb potential $V(r) = -\frac{Ze^{2}}{4\pi r}$ is an example of an exactly solvable model with the Dirac formalism. The corresponding Hamiltonian is
+\begin{align*}
+	H = \beta m + \vb*{\alpha}\cdot\vb{p} + V(r),
+\end{align*}
+which commutes with $\vb{J}$ and the parity operator $P$. We thus seek simultaneous eigenstates of $H, \vb{J}^{2}, J^{3}$ and $P$. The corresponding eigenvalues are $E, j(j + 1), m$ and $(-1)^{j + \frac{\bar{\omega}}{2}}$, where
+\begin{align*}
+	\bar{\omega} =
+	\begin{cases}
+		 1,\ P = (-1)^{j + \frac{1}{2}}, \\
+		-1,\ P = (-1)^{j - \frac{1}{2}}.
+	\end{cases}
+\end{align*}
+As the problem is divided into blocks, we write the desired states as
+\begin{align*}
+	\Psi = 
+	\mqty[
+		\phi \\
+		\chi
+	].
+\end{align*}
+The angular part may be separated out, and corresponding to them are two sets of solutions $\mathcal{Y}^{m}_{lj}$, where $l$ is the eigenvalue of $L$ and takes on values $j \pm \frac{1}{2}\bar{\omega}$ for the two sets of solutions. Explicitly the solutions are
+\begin{align*}
+	\mathcal{Y}^{m}_{lj} =
+	\mqty[
+		\sqrt{\frac{j + m}{2j}}Y_{j - \frac{1}{2}, m - \frac{1}{2}} \\
+		\sqrt{\frac{j - m}{2j}}Y_{j - \frac{1}{2}, m + \frac{1}{2}}
+	],\ j = l + \frac{1}{2}
+\end{align*}
+and
+\begin{align*}
+	\mathcal{Y}^{m}_{lj} =
+	\mqty[
+		\sqrt{\frac{j - m + 1}{2(j + 1)}}Y_{j + \frac{1}{2}, m - \frac{1}{2}} \\
+		-\sqrt{\frac{j + m + 1}{2(j + 1)}}Y_{j + \frac{1}{2}, m + \frac{1}{2}}
+	],\ j = l - \frac{1}{2},\ l > 0.
+\end{align*}
+
+To proceed, we make the anzats
+\begin{align*}
+	\phi = \frac{1}{r}F(r)\mathcal{Y}^{m}_{lj},\ \chi = \frac{1}{r}G(r)\mathcal{Y}^{m}_{lj}.
+\end{align*}
+We also introduce
+\begin{align*}
+	\vb{r}\cdot\vb{p} = -ir\del{}{r}{},\ p_{r} = -\frac{i}{r}\del{}{r}{} = \frac{1}{r}(\vb{r}\cdot\vb{p} - i),
+\end{align*}
+as well as
+\begin{align*}
+	\alpha_{r} = \frac{1}{r}\vb*{\alpha}\cdot\vb{r},
+\end{align*}
+from which one can show
+\begin{align*}
+	\vb*{\alpha}\cdot\vb{p} = \alpha_{r}(p_{r} + \frac{i}{r}\beta K),
+\end{align*}
+where $K = \beta(\vb*{\Sigma}\cdot\vb{L} + 1)$, with eigenvalues $-\bar{\omega}\left(j + \frac{1}{2}\right)$. The Hamiltonian can now be written as
+\begin{align*}
+	H = \alpha_{r}(p_{r} - \frac{i\bar{\omega}\left(j + \frac{1}{2}\right)}{r}\beta) + \beta m + V(r).
+\end{align*}
+The eigenvalue equation then becomes
+\begin{align*}
+	\left(\mqty[
+		0           & -\del{}{r}{} \\
+		\del{}{r}{} & 0
+	] + \mqty[
+		0                                                   & \frac{\bar{\omega}\left(j + \frac{1}{2}\right)}{r} \\
+		\frac{i\bar{\omega}\left(j + \frac{1}{2}\right)}{r} & 0
+	]\right)\mqty[
+		F \\
+		G
+	] = (E - m - V(r))\mqty[
+		F \\
+		G
+	].
+\end{align*}
+
+In the particular case of the hydrogenic atom, we introduce the following notation:
+\begin{align*}
+	\kappa = \sqrt{m^{2} - E^{2}},\ \rho = \kappa r,\ \tau = \bar{\omega}\left(j + \frac{1}{2}\right),´ \nu = \sqrt{\frac{m - E}{m + E}},\ Z\p = \frac{Ze^{2}}{4\pi}
+\end{align*}
+to find
+\begin{align*}
+	\left(\mqty[
+		0              & -\del{}{\rho}{} \\
+		\del{}{\rho}{} & 0
+	] + \mqty[
+		0                                                   & \frac{\tau}{\rho} \\
+		\frac{\tau}{\rho} & 0
+	]\right)\mqty[
+		F \\
+		G
+	] = \mqty[
+		-\nu + \frac{Z\p}{\rho} & 0 \\
+		0                       & \frac{1}{\nu} + \frac{Z\p}{\rho}
+	]\mqty[
+		F \\
+		G
+	].
+\end{align*}
+We can show that close to the origin the functions behave like power laws, and at infinity they decay exponentially. We thus make the anzats
+\begin{align*}
+	F = e^{-\rho}f,\ G = e^{-\rho}g
+\end{align*}
+and introduce
+\begin{align*}
+	w = \mqty[
+		f \\
+		g
+	],\ A = \mqty[
+		-\tau & Z\p \\
+		Z\p & \tau
+	],\ B = \mqty[
+		1   & \frac{1}{\nu} \\
+		\nu & 1
+	],
+\end{align*}
+from which we obtain
+\begin{align*}
+	\rho\del{}{\rho}{w} = (A + \rho B)w.
+\end{align*}
+
+We solve this problem with a Frobenius anzats
+\begin{align*}
+	w = \rho^{\mu}\sum\limits_{s = 0}^{N}w_{s}\rho^{s},
+\end{align*}
+where $N$ is some number to be determined. The recursion relation one obtains is
+\begin{align*}
+	\mu w_{0} = Aw_{0},\ (s + \lambda - A)w_{s} = Bw_{s - 1},
+\end{align*}
+where $\lambda = \sqrt{\tau^{2} - (Z\p)^{2}}$ is the magnitude of the eigenvalues of $A$. It can be shown that $w$ converges and that $N$ is finite. More specifically it holds that
+\begin{align*}
+	N + \lambda - \frac{1}{2}Z\p\left(\frac{1}{\nu} - \nu\right) = 0,
+\end{align*}
+implying
+\begin{align*}
+	\frac{E}{m} = \frac{1}{\sqrt{1 + \frac{Z^{2}\alpha^{2}}{N + \sqrt{\left(j + \frac{1}{2}\right)^{2} - (Z\alpha)^{2}}}}},\ N + j + \frac{1}{2} = 1, \dots, n,
+\end{align*}
+where $n$ is termed the little quantum number and $\alpha$ is the fine structure constant.
+
+Expanding this we find
+\begin{align*}
+	\frac{E}{m} \approx 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{\left(j + \frac{1}{2}\right)^{2}} + \dots = 1 - \frac{1}{2}\frac{Z^{2}\alpha^{2}}{n^{2}}\left(1 + \frac{Z^{2}\alpha^{2}}{n^{2}}\left(\frac{n}{j + \frac{1}{2}} - \frac{3}{4}\right)\right),
+\end{align*}
+which is similar to the result found with perturbation theory of the non-relativistic problem, except for the angular momentum-dependence of the perturbation.
+
+\paragraph{Chirality}
+For a massless particle we have
+\begin{align*}
+	i\fsl{\del{}{}}\Psi = 0.
+\end{align*}
+Choosing the so-called chiral representation
+\begin{align*}
+	\gamma^{0} = \mqty[
+		0 & 1 \\
+		1 & 0
+	], \gamma^{i} = \mqty[
+		0           & \sigma^{i} \\
+		-\sigma^{i} & 0
+	],\gamma^{5} = \mqty[
+		-1 & 0 \\
+		0  & 1
+	],
+\end{align*}
+we find the Dirac equation to be block off-diagonal, meaning that the upper and lower halves of the spinor are decoupled. The Dirac equation for the two halves becomes
+\begin{align*}
+	i\del{}{0}\Psi_{2} - i\vb*{\sigma}\cdot\grad\Psi_{2} = 0,\ i\del{}{0}\Psi_{1} + i\vb*{\sigma}\cdot\grad\Psi_{1} = 0,
+\end{align*}
+or alternatively, using the correspondence principle and introducing $\sigma^{\mu} = (1, \vb*{\sigma})$ and $\tilde{\sigma}^{\mu} = (1, -\vb*{\sigma})$,
+\begin{align*}
+	\sigma^{\mu}p_{\mu}\Psi_{2} = 0,\ \tilde{\sigma}^{\mu}p_{\mu}\Psi_{1} = 0.
+\end{align*}
+The spinors constructed with only one of these are eigenstates of $\gamma^{5}$, $\Psi_{1}$ having eigenvalue $-1$ and $\Psi_{2}$ having eigenvalue $1$. These eigenvalues are called the chirality of the state. The chosen representation is called the chiral representation because in this representation the Dirac equation decouples with respect to chiral eigenstates. Introducing the total state
+\begin{align*}
+	\Psi = \mqty[
+		\Psi_{1} \\
+		\Psi_{2}
+	]
+\end{align*}
+and the chiral states
+\begin{align*}
+	\Psi_{+} = \mqty[
+		0 \\
+		\Psi_{2}
+	],\ \Psi_{-} = \mqty[
+		\Psi_{1} \\
+		0
+	]
+\end{align*}
+we find
+\begin{align*}
+	\Psi_{\pm} = \frac{1}{2}(1 \pm \gamma^{5})\Psi,
+\end{align*}
+which defines the chiral projection operators
+\begin{align*}
+	P_{\pm} =  \frac{1}{2}(1 \pm \gamma^{5}).
+\end{align*}
+
+Inserting a plane-wave solution $u_{p}e^{-ipx}$ we find for the negative-chirality part that
+\begin{align*}
+	p^{0}u_{p} = -\vb*{\sigma}\cdot\vb{p}u_{p},
+\end{align*}
+which squares to imply
+\begin{align*}
+	(p^{0})^{2} - \vb{p}^{2} = 0,
+\end{align*}
+with solutions $p^{0} = \pm\abs{\vb{p}}$. Similarly we find
+\begin{align*}
+	p^{0}u_{p} = \vb*{\sigma}\cdot\vb{p}u_{p}
+\end{align*}
+for the positive-chirality state, which has the same solution. The case $p^{0} = \abs{\vb{p}}$ is called a Weyl state, whereas the other case is called an anti-Weyl state.
+
+\paragraph{Helicity (and Chirality)}
+Helicity is defined as the scalar product between the 3-momentum and the spin. This definition holds for both massive and massless particles. States with parallel spin and 3-momentum are said to have right helicity, and the opposite is termed left helicity. Repeating the derivation we did for massless particles, we find
+\begin{align*}
+	\sigma^{\mu}p_{\mu}\Psi_{\text{R}} = m\Psi_{\text{L}},\ \tilde{\sigma}^{\mu}p_{\mu}\Psi_{1} = m\Psi_{\text{R}},
+\end{align*}
+where we now denote the lower and upper halves of the spinor with what will manifest as the helicity.
+
+For massless particles we now reconsider chirality in terms of helicity. For such particles, helicity manifests as left-chiral and right-chiral objects. Massless particles distinguish themselves in that the Dirac equation completely decouples the left- and right chiral parts, hence helicity is preserved by Lorentz transformations. Massive particles, by contrast, oscillate between the two, as indicated by the form of the Dirac equation.
+
+We now consider massless particle solutions, which satisfy $p^{0} = \abs{\vb{p}}$. We find
+\begin{align*}
+	\frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}\Psi_{\text{R}} = \Psi_{\text{R}},\ \frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}\Psi_{\text{L}} = -\Psi_{\text{L}}.
+\end{align*}
+These states are thus eigenstates of the helicity operator
+\begin{align*}
+	h = \frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}.
+\end{align*}
+For antiparticles we instead have $p^{0} = -\abs{\vb{p}}$, hence right-handed antiparticles have negative helicity and vice versa.
+
+What does helicity mean? It can be shown that the helicity indicates whether the spin and momentum are parallel or anti-parallel.

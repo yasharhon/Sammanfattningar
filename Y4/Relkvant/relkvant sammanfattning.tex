@@ -1,0 +1,57 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{slashed}
+\usepackage{tikz-feynman}
+\usepackage{simplewick}
+\usepackage{subfig}
+
+\input{./../../Mall/Aux/math.tex}
+
+\newcommand{\cdel}[2]{\ensuremath{D^{#1}_{#2}}}
+\newcommand{\delsw}[2]{\ensuremath{\overleftrightarrow{\partial^{#1}_{#2}}}}
+\newcommand{\lag}{\ensuremath{\mathcal{L}}}
+\newcommand{\ham}{\ensuremath{\mathcal{H}}}
+\newcommand{\pl}{^{(+)}}
+\newcommand{\mi}{^{(-)}}
+\newcommand{\dalem}[1]{\ensuremath{\square #1}}
+\newcommand{\fsl}[1]{\ensuremath{\slashed{#1}}}
+\newcommand{\nop}[1]{\ensuremath{:#1:}}
+\newcommand{\torp}{\ensuremath{T}}
+\newcommand{\kgprop}[2]{\ensuremath{\Delta_{\text{#1}}\left(#2\right)}}
+\newcommand{\dirprop}[3]{\ensuremath{S_{\text{F}, #1#2}\left(#3\right)}}
+\newcommand{\phprop}[3]{\ensuremath{D_{\text{F}, #1#2}\left(#3\right)}}
+
+\title{Summary of SI2390 Relativistic Quantum Physics}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/sr.tex}
+
+\input{./Parts/basics.tex}
+
+\input{./Parts/qft.tex}
+
+\input{./Parts/pertur.tex}
+
+\end{document}
