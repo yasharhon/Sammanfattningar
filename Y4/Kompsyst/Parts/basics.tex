@@ -1,0 +1,55 @@
+\section{Basic Concepts}
+
+\paragraph{What is a Complex System?}
+A complex system is a dynamical system characterized by at least one of the following:
+\begin{itemize}
+	\item Nonlinearity.
+	\item High sensitivity to initial conditions - the butterfly effect.
+	\item The existence of bifurcations.
+	\item Emergent phenomena - the formation of patterns in the solution.
+	\item Feedback.
+	\item Dissipation.
+\end{itemize}
+
+\paragraph{The Interesting Aspects of Complex Systems}
+The interesting aspects of complex systems are
+\begin{itemize}
+	\item long-term behaviour.
+	\item dependence on initial conditions.
+	\item parameter dependence.
+\end{itemize}
+
+\paragraph{Autonomous Systems}
+An autonomous system is described by
+\begin{align*}
+	\dv{\vb{x}}{t} = \vb{f}(\vb{x})
+\end{align*}
+where $\vb{x}$ is the state vector of the system.
+
+This is of course not a restriction to first-order systems, as all systems may be written in this form. It is neither a restriction to $f$ being independent of $t$, as one in this case can simply extend $\vb{x}$ to contain $t$.
+
+\paragraph{Deterministic Systems}
+A deterministic system is a system without random noise. Such systems are entirely specified by $\vb{f}$ and an initial condition.
+
+\paragraph{Conservative and Dissipative Systems}
+Conservative systems satisfy $\div{\vb{f}} = 0$. Dissipative systems satisfy $\div{\vb{f}} < 0$.
+
+\paragraph{Orbits}
+An orbit is a solution to an autonomous system corresponding to some particular initial value. The set of all orbits is the set of flow lines of $\vb{f}$. Because the position in phase space fully determines the future solution, flow lines never cross.
+
+\paragraph{Fixed Points}
+A fixed point is a point that satisfies $\vb{f}(\vb{x}) = \vb{0}$. Close to such points, non-zero first derivatives produce exponential behaviour locally and first derivatives equal to zero produce evolution slower than exponential.
+
+\paragraph{Bifurcations}
+A bifurcation is a qualitative in the structure of $\vb{f}$ as some parameter is varied.
+
+\paragraph{Uniqueness of Solutions}
+The weakest condition for the existence and uniqueness of a solution to
+\begin{align*}
+	\dv{\vb{x}}{t} = \vb{f}(\vb{x}),\ \vb{x}(t_{0}) = \vb{x}_{0}
+\end{align*}
+in a finite time interval around $t_{0}$, which we will assume to hold, is the Lipschitz condition
+\begin{align*}
+	\abs{\vb{f}(\vb{x}) - \vb{f}(\vb{y})} \leq \kappa\abs{\vb{x} - \vb{y}}
+\end{align*}
+for some finite $\kappa$. This entails that $\vb{f}$ should be continuous and have piecewise continuous derivatives. If this condition holds, the solution is continuous in $\vb{x}_{0}$.
