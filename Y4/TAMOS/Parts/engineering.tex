@@ -1,0 +1,126 @@
+\section{Engineering}
+
+\paragraph{The Roots of Science and Engineering}
+The natural sciences are rooted in natural philosophy, with the goals of explaining and understanding the world. The knowledge was formulated in terms of abstract reasoning and theory and communicated with books and lectures.
+
+Contrast this with engineering, which is rooted in the crafts. The goal of the crafts is the creation of so-called technical artefacts. The knowledge was specified and local, and communicated to training on the job by masters. From this point of view the distinction between the two is more apparent and can be traced.
+
+\paragraph{Tacit Knowledge}
+Tacit knowledge is a kind of knowledge that is difficult to transfer verbally. Crafts typically deal significantly in this kind of knowledge.
+
+\paragraph{Modern Engineering}
+Modern engineering has changed the engineering of the past, turning the tacit explicit, the local general and the trial-and-error approach into a systematic approach to attaining knowledge.
+
+\paragraph{Technical Artefacts}
+Technical artefacts are:
+\begin{itemize}
+	\item Existing material objects.
+	\item Purposeful.
+	\item Objects that realize their function through their physical properties.
+\end{itemize}
+
+Inherent in this is a duality between the physical properties and function of an artefact - both enter into the notion of a technical artefact, but neither can be reduced to the other. An artefact may be characterized by describing its properties, the intended use by the designer and the application by a user.
+
+\paragraph{Function}
+The function of an object can be ascribed by a user or assigned by a designer. The assignment by a designer is performative, and if successful, the designer has described a new instance of a functional kind.
+
+Devices may:
+\begin{itemize}
+	\item Malfunction - lose the physical property necessary for their function.
+	\item Be misused - engaged in a way that does not establish the intended function or any alternative function.
+	\item Fail - be unable to support he function.
+\end{itemize}
+The latter implies that only assignments backed up by expertise establish function.
+
+The assignment of function by a designer is a normative process in a different way than the ascription by a user is - it establishes normative claims about what the artefact ought to do.
+
+\paragraph{The Design Process}
+In general the design process involves the chain starting at a set of needs, moving trough a functional description and a physical description to create an artefact. The core description of design may be taken as the development of a physical description corresponding to a functional description. A creation-centered description of design is the creation of physical objects that robustly satisfy a functional description. A client oriented description of design is the creation of physical objects that robustly satisfy a client's needs.
+
+Involved in the design process are multiple steps, each requiring knowledge. When moving from needs to a functional description, what functions must the object satisfy to fulfill the given needs? When moving from a functional to a physical description, which structures might satisfy the necessary functions? When moving from the physical description to the object, how does one produce objects with the desired physical properties? The knowledge required for each step is not necessarily contained within science or engaged with by scientists, again highlighting the distinction from engineering as simply applied science. In particular, you might find operational principles, normal configurations, device-restricted simplifying theory, phenomenological theory and quantitative assumptions.
+
+\paragraph{Design Methodology}
+In the above chain there are a number of issues of a methodological nature.
+
+The first is the determination of appropriate functional requirements when going from the needs. Determining these should be done in such a way as to
+\begin{itemize}
+	\item be implementation-independent - refrain from specifying the physical implementation.
+	\item be complete - describe all the desired effects.
+	\item be adjusted to the use-context - takes user behaviour into account.
+	\item have quantitative criteria.
+\end{itemize}
+
+The next is in the determination of the physical description. This can be done by
+\begin{itemize}
+	\item functional decomposition.
+	\item blind variation within the confines of previous knowledge and theory.
+	\item weeding out possibilities through modelling or testing.
+\end{itemize}
+
+Next there is the issue of deciding between possible solutions. One way to do this is by optimization, involving an exhaustive search and complete evaluation of possibilities. This might work, but is a lot of work. Another possibility is so-called satisficing, where one starts by finding a minimal function threshold and searches until that threshold is met. This is often more close to practice.
+
+The final issue is validation, which may be performed in many ways. Some examples are
+\begin{itemize}
+	\item testing.
+	\item proof-of-concept.
+	\item prototypes.
+	\item direct trials.
+	\item usability testing.
+\end{itemize}
+
+\paragraph{Definitions of Risk}
+There are many different defintions of risk in use, each reflecting different aspects of the notion. Some definitions are:
+\begin{itemize}
+	\item an unwanted event that may or may not occur.
+	\item the cause of such an unwanted effect.
+	\item the spread of possible outcomes of some action.
+	\item the probability with which some unwanted effect occurs.
+	\item the severity of some possibly occurring unwanted effect.
+	\item the expected value of some uncertain event.
+\end{itemize}
+
+\paragraph{Primary and Secondary Prevention}
+Primary prevention is eliminating the cause of some unwanted effect. Secondary prevention is providing means of mitigating the unwanted event itself.
+
+\paragraph{Conditions of Decision Making}
+Decisions can be made under
+\begin{itemize}
+	\item certainty, where there is only one outcome.
+	\item risk, where there are several possible outcomes and the results of all outcomes and probabilities with which they occur are known.
+	\item ignorance, where some probabilities are unknown.
+	\item deep uncertainty, where some unknown possibilities exist.
+\end{itemize}
+
+\paragraph{Risk Assessment and Management}
+Risk assessment is the collection of information in order to estimate risk. RIsk management is making a judgment based on the collected information about how to handle the risk.
+
+\paragraph{Expected Value-Based Risk}
+Some arguments for using an expected value-based approach to risk include:
+\begin{itemize}
+	\item It allows for including risk in optimization calculations, assuming that all involved factors are given in or can be converted to the same currency.
+	\item It keeps science value-free by more easily allowing for the separation of risk assessment and management.
+\end{itemize}
+
+There are some problems with this approach as well, including:
+\begin{itemize}
+	\item the existence of risk-adversity and risk-loving, i.e. the preference of possible gains or possible losses. The expectation value tells you nothing of how to make a choice if you lean strongly towards either category. One might counter this by introducing a notion of utility and optimizing this instead.
+	\item the issue of expected value as defining risk, as opposed to merely measuring it. For example, variations might be an interesting to parameter to include in one's assessment, but if expectation value defines risk, variations could not possibly have any relevance.
+	\item the presence of other subjective evaluations. For example, psychological studies show that humans consider involuntary risks worse than voluntary ones, views risks as worse when they lack control, consider novel risks worse and generally underestimate large risks and overestimate small risks, although the importance of these considerations is debated.
+\end{itemize}
+
+\paragraph{Decision Making Under Ignorance}
+If one must make decision under ignorance, some strategies to proceed include:
+\begin{itemize}
+	\item transforming the problem to a format where expectation value or utility optimization is possible. One common way to do this is to appeal to the principle of insufficient reason and assign all outcomes the same probability.
+	\item employing the maximin strategy, where the focus is put on extreme outcomes, primarily the worst ones, and decisions are made only based on those.
+\end{itemize}
+
+\paragraph{Decision Making Under Deep Uncertainty}
+If one must make decisions under deep uncertainty, some strategies to proceed include:
+\begin{itemize}
+	\item working with safety factors. Engineers often do this both to account for quantifiable risks such as high loads and worse material, and for inquantifiable factors such as imperfect failure theory, unknown failure mechanisms and human errors.
+	\item appealing to the precautionary principle.
+\end{itemize}
+
+\paragraph{Reasons for Using Non-Quantitative Risk Assessment}
+One might want to use non-quantitative risk assessment to avoid high computational costs, obtain a simple risk analysis, avoid the lack of accuracy possibly involved in a quantitative assessment or for security purposes not sufficiently accounted for in quantitative assessments.
