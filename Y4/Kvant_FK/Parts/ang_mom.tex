@@ -1,0 +1,289 @@
+\section{Angular Momentum}
+
+\paragraph{Rotations}
+Consider an axis $\vb{n}$. The rotation symmetry operator about this axis is termed $u(\theta\vb{n})$. In three dimensions we have
+\begin{align*}
+	u_{-\var{\theta_{y}}\ub{y}}u_{-\var{\theta_{x}}\ub{x}}u_{\var{\theta_{y}}\ub{y}}u_{\var{\theta_{x}}\ub{x}} = u_{-\var{\theta_{x}}\var{\theta_{y}}\ub{z}},
+\end{align*}
+with similar relations obtained by cyclic permutations. In quantum mechanics there must be three generators of rotations in three dimensions, and if we want the corresponding transformations to correspond to the classical notion of rotations, they must satisfy this same property. Expanding to second order in generators yields
+\begin{align*}
+	&\left(1 + i\var{\theta_{y}}T_{y} - \frac{1}{2}\var{\theta_{y}}^{2}T_{y}^{2}\right)\left(1 + i\var{\theta_{x}}T_{x} - \frac{1}{2}\var{\theta_{x}}^{2}T_{x}^{2}\right)\left(1 - i\var{\theta_{y}}T_{y} - \frac{1}{2}\var{\theta_{y}}^{2}T_{y}^{2}\right)\left(1 - i\var{\theta_{x}}T_{x} - \frac{1}{2}\var{\theta_{x}}^{2}T_{x}^{2}\right) \\
+	=& 1 + i\var{\theta_{x}}\var{\theta_{y}}T_{z}.
+\end{align*}
+Expanding the parentheses we obtain
+\begin{align*}
+	1 + \var{\theta_{x}}\var{\theta_{y}}(-T_{y}T_{x} + T_{x}T_{y}) = 1 + i\var{\theta_{x}}\var{\theta_{y}}T_{z},
+\end{align*}
+implying the commutation relation
+\begin{align*}
+	\comm{T_{x}}{T_{y}} = iT_{z}.
+\end{align*}
+Cyclic permutation as well as the antisymmetry of the commutator finally yields
+\begin{align*}
+	\comm{T_{i}}{T_{j}} = i\varepsilon_{ijk}T_{k},
+\end{align*}
+with summation.
+
+As we will show later, these generators are related to angular momentum according to
+\begin{align*}
+	J_{i} = \hbar T_{i}.
+\end{align*}
+This produces the commutation relation
+\begin{align*}
+	\comm{J_{i}}{J_{j}} = i\hbar\varepsilon_{ijk}J_{k}.
+\end{align*}
+We will be working with these for the rest of the discussion.
+
+The total angular momentum is given by $J^{2} = J_{i}J_{i}$, and thus commutes with all of its component. Hence we can find a basis for Hilbert space composed of joint eigenvectors of $J^{2}$ and any one component of $\vb{J}$ (usually $J_{z}$).
+
+\paragraph{Properties of Angular Momentum}
+To study the properties of angular momentum, we will use the method of raising and lowering operators. Working in the basis of eigenvectors of $J^{2}$ and $J_{z}$, the raising and lowering operators are
+\begin{align*}
+	J_{+} = J_{x} + iJ_{y},\ J_{-} = J_{x} - iJ_{y}.
+\end{align*}
+We have
+\begin{align*}
+	\comm{J_{z}}{J_{\pm}} = \comm{J_{z}}{J_{x} \pm iJ_{y}} = i\hbar(J_{y} \mp iJ_{x}) = \hbar(iJ_{y} \pm J_{x}) = \pm\hbar(J_{x} \pm iJ_{y}) = \pm\hbar J_{\pm}.
+\end{align*}
+Now introduce the eigenstates $\ket{j, m}$ such that $J^{2}\ket{j, m} = \hbar^{2}j(j + 1)\ket{j, m}$ and $J_{z}\ket{j, m} = \hbar m\ket{j, m}$. We have
+\begin{align*}
+	J_{z}J_{\pm}\ket{j, m} = (J_{\pm}J_{z} \pm \hbar J_{\pm})\ket{j, m} = (m \pm \hbar)J_{\pm}\ket{j, m}.
+\end{align*}
+Hence the raising and lowering operators do indeed raise and lower the angular momentum. Next we have
+\begin{align*}
+J^{2}J_{\pm}\ket{j, m} = J_{\pm}J^{2}\ket{j, m} = \hbar^{2}j(j + 1)J_{\pm}\ket{j, m}.
+\end{align*}
+Hence the raising and lowering operators do not change the value of the total angular momentum. This imposes a constraint on the possible set of angular momenta - namely, all components of the angular momentum are Hermitian, meaning that $J_{z}^{2}$ may not have eigenvalues larger than $j^{2}$. Hence states exists such that
+\begin{align*}
+	J_{-}\ket{j, m} = 0,\ J_{+}\ket{j, m} = 0.
+\end{align*}
+To identify these, consider the operators
+\begin{align*}
+	J_{-}J_{+} &= J_{x}^{2} + J_{y}^{2} + i\comm{J_{x}}{J_{y}} = J_{x}^{2} + J_{y}^{2} - \hbar J_{z} = J^{2} - J_{z}^{2} - \hbar J_{z}, \\
+	J_{+}J_{-} &= J_{x}^{2} + J_{y}^{2} - i\comm{J_{x}}{J_{y}} = J_{x}^{2} + J_{y}^{2} + \hbar J_{z} = J^{2} - J_{z}^{2} + \hbar J_{z}
+\end{align*}
+Suppose now that we are working on the first eigenstate such that $J_{+}\ket{j, m} = 0$. Then
+\begin{align*}
+	J_{-}J_{+}\ket{j, m} = (J^{2} - J_{z}^{2} - \hbar J_{z})\ket{j, m} = \hbar^{2}(j(j + 1) - m(m + 1))\ket{j, m} = 0.
+\end{align*}
+Hence this $m$ satisfies $m = j$. Similarly, for the state such that $J_{-}\ket{j, m} = 0$, we have
+\begin{align*}
+	J_{-}J_{+}\ket{j, m} = (J^{2} - J_{z}^{2} + \hbar J_{z})\ket{j, m} = \hbar^{2}(j(j + 1) - m^{2} + m)\ket{j, m} = \hbar^{2}(j(j + 1) - m(m - 1))\ket{j, m} = 0.
+\end{align*}
+Hence this $m$ satisfies $m = -j$. Now, as we know that $m$ changes in integer steps between real numbers from $-j$ to $+j$, we must have that $2j$ is an integer.
+
+Next, we choose the basis states to be normalized. Writing $J_{+}\ket{j, m} = c_{j, m}\ket{j, m + 1}$ we have
+\begin{align*}
+	\abs{c_{j, m}}^{2} = \expval{J_{-}J_{+}}{j, m} = \hbar^{2}(j(j + 1) - m(m + 1)),\ J_{+}\ket{j, m} = \hbar\sqrt{j(j + 1) - m(m + 1)}\ket{j, m + 1}.
+\end{align*}
+Similarly, writing $J_{-}\ket{j, m} = c_{j, m}\ket{j, m - 1}$ we have
+\begin{align*}
+	\abs{c_{j, m}}^{2} = \expval{J_{+}J_{-}}{j, m} = \hbar^{2}(j(j + 1) - m(m - 1)),\ J_{-}\ket{j, m} = \hbar\sqrt{j(j + 1) - m(m - 1)}\ket{j, m - 1}.
+\end{align*}
+
+\paragraph{Orbital Angular Momentum}
+Supposing the spatial rotation to be described by some rotation matrix $R$, we require $u_{R}\ket{\vb{r}} = \ket{R\vb{r}}$. This yields
+\begin{align*}
+	\Psi^{\prime}(\vb{r}^{\prime}) = \mel{\vb{r}}{u_{R}}{\Psi} \braket{R^{-1}\vb{r}}{\Psi} = \Psi(R^{-1}\vb{r}).
+\end{align*}
+To get a better understanding of what is going on, consider a small rotation about the $z$-axis. Its effect on the position vector is
+\begin{align*}
+	R^{-1}\vb{r} =
+	\mqty[
+		1             & \var{\theta} & 0 \\
+		-\var{\theta} & 1            & 0 \\
+		0             & 0            & 1
+	]
+	\mqty[
+		x \\
+		y \\
+		z \\
+	] =
+	\mqty[
+		x + \var{\theta}y \\
+		y - \var{\theta} x \\
+		z
+	].
+\end{align*}
+Linearizing the wavefunction yields
+\begin{align*}
+	\Psi(R^{-1}\vb{r}) \approx \Psi(\vb{r}) + \varepsilon\left(y\del{x}{\Psi} - x\del{y}{\Psi}\right),
+\end{align*}
+which in the general case corresponds to $\Psi$ being acted on by an operator $e^{-\frac{i}{\hbar}\theta_{i}L_{i}}$ where
+\begin{align*}
+	L_{i} = \varepsilon_{ijk}x_{j}p_{k}.
+\end{align*}
+This completes the argument that the generators of rotations are indeed angular momenta in the classical sense.
+
+When finding the eigenfunctions of $L^{2}$ and $L_{z}$, however, the eigenvalues may only be integer multiples of $\hbar$, meaning that classical angular momentum does not by itself contain all the properties of angular momenta. It also turns out that the rest comes from spin.
+
+\paragraph{Spin}
+In addition to the transformation of coordinates, the rotation operator could also act on some non-orbital degrees of freedom. Thus we add an extra factor $D_{\vb{n}}(R)$. It commutes with the previously discussed operators as $e^{-i\frac{\theta}{\hbar}L}$ acts equally on all of the basis and $D_{\vb{n}}(R)$ is linear in the basis.
+
+Using the machinery of Lie algebra, we may write
+\begin{align*}
+	D_{n}(R) = e^{-\frac{i}{\hbar}\theta_{i}S_{i}}.
+\end{align*}
+The total rotation operator is thus
+\begin{align*}
+	e^{-\frac{i}{\hbar}\vb*{\theta}\cdot(\vb{L} + \vb{S})},
+\end{align*}
+prompting us to define the total angular momentum $\vb{J} = \vb{L} + \vb{S}$.
+
+$\vb{J}$ must generate a rotation, hence $\vb{S}$ must satisfy the same commutation relation, implying that $\vb{S}$ must also be an angular momentum operator. Furthermore, it does not have the same restrictions as orbital angular momentum, and may therefore correspond to $j$ being a half-integer. This is termed the spin.
+
+\paragraph{Spin-$\frac{1}{2}$}
+In the particular case of $j = \frac{1}{2}$ we may construct matrices for the spin operator in the eigenbasis of $S_{z}$. The resulting matrices are $S_{i} = \frac{1}{2}\hbar\sigma_{i}$, where $\sigma_{i}$ are the Pauli matrices. The spin factor of the rotation operator may now be written as
+\begin{align*}
+	D_{\vb{n}}(R) = e^{-i\frac{\theta}{2}\vb{n}\cdot\vb*{\sigma}}.
+\end{align*}
+To simplify this, we note that
+\begin{align*}
+(\vb{n}\cdot\vb*{\sigma})^{2} &= n_{i}n_{j}\sigma_{i}\sigma_{j} \\
+                              &= \sum\limits_{i = j}n_{i}^{2}\sigma_{i}^{2} + \frac{1}{2}\sum\limits_{i\neq j}n_{i}n_{j}(\sigma_{i}\sigma_{j} + \sigma_{j}\sigma_{i}).
+\end{align*}
+The Pauli matrices anticommute and square to identity, hence we have
+\begin{align*}
+	(\vb{n}\cdot\vb*{\sigma})^{2} = 1.
+\end{align*}
+
+This yields
+\begin{align*}
+	D_{\vb{n}}(R) &= \sum\limits_{m = 0}\frac{1}{(2m)!}\left(-i\frac{\theta}{2}\right)^{2m}(\vb{n}\cdot\vb*{\sigma})^{2m} + \frac{1}{(2m + 1)!}\left(-i\frac{\theta}{2}\right)^{2m + 1}(\vb{n}\cdot\vb*{\sigma})^{2m + 1} \\
+	              &= \sum\limits_{m = 0}\frac{1}{(2m)!}(-1)^{m}\left(\frac{\theta}{2}\right)^{2m} - \frac{i}{(2m + 1)!}(-1)^{m}\left(\frac{\theta}{2}\right)^{2m + 1}\vb{n}\cdot\vb*{\sigma} \\
+	              &= \cos(\frac{\theta}{2}) - i\sin(\frac{\theta}{2})\vb{n}\cdot\vb*{\sigma}.
+\end{align*}
+
+\paragraph{Addition of Angular Momenta}
+We would like to identify eigenstates of the total angular momentum $\vb{J} = \vb{J}_{1} + \vb{J}_{2}$ in terms of the eigenstates of its components. The basis we are starting with is the product basis
+\begin{align*}
+	\ket{l_{1}, l_{2}; m_{1}, m_{2}} = \ket{l_{1}, m_{1}}\otimes\ket{l_{2}, m_{2}}.
+\end{align*}
+The components of the angular momentum are given by
+\begin{align*}
+	J_{i} = (L_{1})_{i}\otimes 1 + 1\otimes (L_{2})_{i},
+\end{align*}
+and we therefore have
+\begin{align*}
+	J_{z}\ket{l_{1}, l_{2}; m_{1}, m_{2}} = \hbar(m_{1} + m_{2})\ket{l_{1}, l_{2}; m_{1}, m_{2}}.
+\end{align*}
+As $\vb{J}$ is indeed an angular momentum, we may now use what we now to introduce the eigenbasis of $\vb{J}$ as $\ket{l_{1}, l_{2}; j, m}$. It may be expressed in terms of the previous basis as
+\begin{align*}
+	\ket{l_{1}, l_{2}; j, m} = \sum\limits_{m_{1}, m_{2}}\braket{l_{1}, l_{2}; m_{1}, m_{2}}{l_{1}, l_{2}; j, m}\ket{l_{1}, l_{2}; m_{1}, m_{2}}.
+\end{align*}
+The $\braket{l_{1}, l_{2}; m_{1}, m_{2}}{l_{1}, l_{2}; j, m}$ are called Clebsch-Gordan coefficients, and may be found in tables.
+
+The previously obtained eigenvalue implies $m \leq l_{1} + l_{2}$ and $j \leq l_{1} + l_{2}$. This allows us to identify one eigenstate
+\begin{align*}
+	\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2}} = \ket{l_{1}, l_{2}; l_{1}, l_{2}}.
+\end{align*}
+To identify other states, one simply applies the lowering operator $J_{\pm} = J_{x}\pm iJ_{y} = (L_{1})_{-} + (L_{2})_{-}$. This will produce $2(l_{1} + l_{2}) + 1$ new states. Next, we study the state
+\begin{align*}
+	J_{-}\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2}} &= \hbar(\sqrt{l_{1}(l_{1} + 1) - l_{1}(l_{1} - 1)}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} + \sqrt{l_{2}(l_{2} + 1) - l_{2}(l_{2} - 1)}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}) \\
+	                                                      &= \hbar(\sqrt{2l_{1}}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} + \sqrt{2l_{2}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}).
+\end{align*}
+We thus have
+\begin{align*}
+	\ket{l_{1}, l_{2}; l_{1} + l_{2}, l_{1} + l_{2} - 1} = \frac{1}{\sqrt{l_{1} + l_{2}}}(\sqrt{l_{1}}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} + \sqrt{l_{2}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}).
+\end{align*}
+It is orthogonal to the state
+\begin{align*}
+	\frac{1}{\sqrt{l_{1} + l_{2}}}(\sqrt{l_{2}}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} - \sqrt{l_{1}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}).
+\end{align*}
+To study this state, we use the fact that
+\begin{align*}
+	\vb{J}^{2} = J_{x}^{2} + J_{y}^{2} + J_{z}^{2} = J_{z}^{2} + J_{+}J_{-} - \hbar J_{z}.
+\end{align*}
+Clearly the state we are working with is an eigenstate of $J_{z}$ with eigenvalue $\hbar(l_{1} + l_{2} - 1)$, meaning that two of these terms are easily handled. The others are not as trivial, but we have
+\begin{align*}
+	J_{+}J_{-} = (L_{1, +} + L_{2, +})(L_{1, -} + L_{2, -}) = L_{1, +}L_{1, -} + L_{1, +}L_{2, -} + L_{2, +}L_{1, -} + L_{2, +}L_{2, -},
+\end{align*}
+meaning that we might be able to look at how these terms work separately.
+
+We consider the effect on the left-hand term, as the effect on the other is obtained by simply switching the numbers $1$ and $2$. The first and last terms can be rewritten nicely as
+\begin{align*}
+	L_{1, +}L_{1, -} = \vb{L}_{1}^{2} - L_{1, z}^{2} + \hbar L_{1, z},
+\end{align*}
+meaning
+\begin{align*}
+	L_{1, +}L_{1, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= \hbar^{2}(l_{1}(l_{1} + 1) - (l_{1} - 1)^{2} + l_{1} - 1)\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} \\
+	                                                     &= \hbar^{2}(l_{1}^{2} + 2l_{1} - 1 - (l_{1}^{2} - 2l_{1} + 1))\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} \\
+	                                                     &= 2\hbar^{2}(2l_{1} - 1)\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}}, \\
+	L_{2, +}L_{2, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= \hbar^{2}(l_{2}(l_{2} + 1) - l_{2}^{2} + l_{2})\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} \\
+	                                                     &= 2\hbar^{2}l_{2}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}}.
+\end{align*}
+The other two are not so nice, but let us try anyway. We have
+\begin{align*}
+	L_{1, +}L_{2, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= \hbar\sqrt{l_{2}(l_{2} + 1) - l_{2}(l_{2} - 1)}L_{1, +}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2} - 1} \\
+	                                                     &= \hbar^{2}\sqrt{l_{1}(l_{1} + 1) - (l_{1} - 1)l_{1}}\sqrt{l_{2}(l_{2} + 1) - l_{2}(l_{2} - 1)}L_{1, +}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1} \\
+	                                                     &= 2\hbar^{2}\sqrt{l_{1}l_{2}}\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}, \\
+	L_{2, +}L_{1, -}\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}} &= 0.
+\end{align*}
+The latter comes from me skipping to the fun part of raising the second spin, which returns $0$.
+
+Let us now look at what we have. We write the total angular momentum operator as
+\begin{align*}
+	\vb{J}^{2} = J_{z}^{2} - \hbar J_{z} + L_{1, +}L_{1, -} + L_{2, +}L_{2, -} + L_{1, +}L_{2, -} + L_{2, +}L_{1, -}.
+\end{align*}
+Let us first consider its effect on the term $\ket{l_{1}, l_{2}; l_{1} - 1, l_{2}}$. All operators but the last two have this state as an eigenvector, and the total eigenvalue is
+\begin{align*}
+	\hbar^{2}\left((l_{1} + l_{2} - 1)^{2} - (l_{1} + l_{2} - 1) + 2(2l_{1} - 1) + 2l_{2}\right) &= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2} - 2) + 4l_{1} - 2 + 2l_{2}\right) \\
+	&= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{1}\right).
+\end{align*}
+Next, the total eigenvalue from acting on $\ket{l_{1}, l_{2}; l_{1}, l_{2} - 1}$ is
+\begin{align*}
+	\hbar^{2}\left((l_{1} + l_{2} - 1)^{2} - (l_{1} + l_{2} - 1) + 2l_{1} + 2(2l_{2} - 1)\right) &= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2} - 2) + 2(l_{1} + 2l_{2} - 1)\right) \\
+	&= \hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{2}\right).
+\end{align*}
+Collecting the terms of the first kind nets us the coefficient
+\begin{align*}
+	\sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{1}\right) - 2\sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}\sqrt{l_{1}l_{2}} &= \sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{1} - 2l_{1}\right) \\
+	                                                                              &= \sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}(l_{1} + l_{2} - 1)(l_{1} + l_{2}).
+\end{align*}
+Next, collecting the terms of the second kind nets us
+\begin{align*}
+	2\sqrt{\frac{l_{2}}{l_{1} + l_{2}}}\hbar^{2}\sqrt{l_{1}l_{2}} - \sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}\left((l_{1} + l_{2} - 1)(l_{1} + l_{2}) + 2l_{2}\right) &= \sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}\left(2l_{2} - (l_{1} + l_{2} - 1)(l_{1} + l_{2}) - 2l_{2}\right) \\
+	                                                                         &= -\sqrt{\frac{l_{1}}{l_{1} + l_{2}}}\hbar^{2}(l_{1} + l_{2} - 1)(l_{1} + l_{2}),
+\end{align*}
+meaning that we have identified an eigenstate of $\vb{J}^{2}$ with eigenvalue $\hbar^{2}(l_{1} + l_{2})(l_{1} + l_{2} - 1)$. How nice. This is the recipe for obtaining all the states.
+
+As a final sanity check, how many states are there? We may without loss of generality assume that $l_{1} > l_{2}$, meaning that the lowest eigenvalue of $\vb{J}^{2}$ that is found should be $l_{1} - l_{2}$. Hence the total nunber of states is
+\begin{align*}
+	N &= \sum\limits_{n = l_{1} - l_{2}}^{l_{1} + l_{2}}2n + 1 \\
+	  &= \frac{1}{2}(l_{1} + l_{2} - (l_{1} - l_{2}) + 1)\left(2(l_{1} - l_{2}) + 1 + 2(l_{1} + l_{2}) + 1\right) \\
+	  &= (2l_{1} + 1)\left(2l_{1} + 1\right),
+\end{align*}
+as expected.
+
+\paragraph{Spatial Inversion}
+Next, we require that rotations and inversions commute (that this must be is clear as the matrix representation of a rotation is diagonal). Hence we obtain
+\begin{align*}
+	\Pi\vb{J}\adj{\Pi} = \vb{J}
+\end{align*}
+by a similar procedure. Notably, this is true for spin as well - a result which we could only arrive at by enforcing these requirements.
+
+\paragraph{Time Reversal}
+Requiring that rotations and time reversal commute will yield that angular momentum is odd under time reversal, just as was shown for momentum.
+
+\paragraph{Time Reversal of Non-Integral Spin}
+While our requirement is satisfied for integral spin, we do not really know how time reversal acts on non-integral spin. To help with this, we factorize the time reversal as $T = uK$, where $u$ is unitary and $K$ is complex conjucation. For spin-$\frac{1}{2}$, we have $\vb{S} = \frac{1}{2}\hbar\vb*{\sigma}$, and we must thus have
+\begin{align*}
+	uK\vb*{\sigma}\adj{u}K = -\vb*{\sigma}.
+\end{align*}
+The complex conjugation in this basis produces the complex conjugate of the Pauli matrices
+We write $T = uK$, hence the problem is now to find an operator such that $\sigma_{x}$ and $\sigma_{z}$ change sign, while $\sigma_{y}$ is unaltered. The answer turns out to be
+\begin{align*}
+	u = e^{i\frac{\pi}{2}\sigma_{y}} = i\sigma_{y}.
+\end{align*}
+We thus have time reversal on non-integral spin as $T = i\sigma_{y}K$. The general case is $u = e^{i\frac{\pi}{\hbar}S_{y}}$.
+
+\paragraph{A More General Case}
+%TODO: Show
+The general case is in fact that $T^{2}$ produces a minus sign when acting on half-integer spins and a plus sign otherwise.
+
+\paragraph{Kramer's Degeneracy}
+Consider a system which is invariant under time reversal. It would seem that for any eigenvector $\ket{E}$, there must also exist an eigenvector $T\ket{E}$. However, in cases with spin-$\frac{1}{2}$, for which $T^{2} = -1$, we have
+\begin{align*}
+	\mel{E}{T}{E} &= \cc{(\bra{TE})(\ket{T^{2}E})} = -\cc{(\bra{TE})(\ket{E})} = -\mel{E}{T}{E},
+\end{align*}
+implying the two vectors are orthogonal. This is called Kramer's degeneracy.
