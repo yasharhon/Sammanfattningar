@@ -53,3 +53,42 @@ in a finite time interval around $t_{0}$, which we will assume to hold, is the L
 	\abs{\vb{f}(\vb{x}) - \vb{f}(\vb{y})} \leq \kappa\abs{\vb{x} - \vb{y}}
 \end{align*}
 for some finite $\kappa$. This entails that $\vb{f}$ should be continuous and have piecewise continuous derivatives. If this condition holds, the solution is continuous in $\vb{x}_{0}$.
+
+\paragraph{Periodic Motion}
+For a system with a one-dimensional phase space, periodic motion is impossible on the real line or a subset of it. It is possible, however, on spaces with different topologies, such as a circle.
+
+\paragraph{Numerical Integration}
+Numerical integration methods are based around the Taylor expansion
+\begin{align*}
+	\vb{x}(t + \Delta t) = \vb{x}(t) + \eval{\dv{\vb{x}}{t}}_{t}\Delta t + \frac{1}{2!}\eval{\dv[2]{\vb{x}}{t}}_{t}(\Delta t)^{2} + \dots
+\end{align*}
+and specific schemes are usually obtained by truncating this expansion.
+
+\paragraph{The Forward Euler Method}
+The forward Euler method is obtained by truncating at the second step. For an autonomous system we have
+\begin{align*}
+	\vb{x}(t + \Delta t) = \vb{x}(t) + \vb{f}(t)\Delta t.
+\end{align*}
+The error in each step is of ordet $(\Delta t)^{2}$, and the total error after $N$ steps, which integrate a time $\tau$ forward, is of order $N(\Delta t)^{2} = \tau\Delta t$. Note that this is equivalent to the approximation
+\begin{align*}
+	\eval{\dv{\vb{x}}{t}}_{t} = \frac{1}{\Delta t}(\vb{x}(t + \Delta t) - \vb{x}(t)).
+\end{align*}
+
+\paragraph{Runge-Kutta Schemes}
+An improved scheme starts with
+\begin{align*}
+	\frac{1}{\Delta t}(\vb{x}(t + \Delta t) - \vb{x}(t)) = \eval{\dv{\vb{x}}{t}}_{t + \frac{1}{2}\Delta t} = \vb{f}\left(t + \frac{1}{2}\Delta t\right) = \vb{f}\left(\vb{x}(t) + \frac{1}{2}\Delta t\vb{f}\left(\vb{x}(t)\right)\right) = \vb{f}\left(\vb{x}(t)\right) + \frac{1}{2}\Delta t\vb{f}\p(\vb{x}(t))\vb{f}\left(\vb{x}(t)\right) + \dots
+\end{align*}
+From this we devise the second-order Runge-Kutta method
+\begin{align*}
+	\vb{k}_{1} = \Delta t\vb{f}\left(\vb{x}(t)\right),\ \vb{k}_{2} = \Delta t\vb{f}\left(\vb{x}(t) + \frac{1}{2}\vb{k}_{1}\right),\ \vb{x}(t + \Delta t) = \vb{x}(t) + \vb{k}_{2}.
+\end{align*}
+Similarly there is a fourth-order scheme
+\begin{align*}
+	\vb{k}_{1} = \Delta t\vb{f}\left(\vb{x}(t)\right),\ \vb{k}_{2} = \Delta t\vb{f}\left(\vb{x}(t) + \frac{1}{2}\vb{k}_{1}\right),\ \vb{k}_{3} = \Delta t\vb{f}\left(\vb{x}(t) + \frac{1}{2}\vb{k}_{2}\right),\ \vb{k}_{4} = \Delta t\vb{f}\left(\vb{x}(t) + \vb{k}_{3}\right), \\
+	\vb{x}(t + \Delta t) = \vb{x}(t) + \frac{1}{6}\left(\vb{k}_{1} + 2\vb{k}_{2} + 2\vb{k}_{3} + \vb{k}_{4}\right),
+\end{align*}
+with an accumulated error of order $(\Delta t)^{4}$.
+
+\paragraph{Symplectic Methods}
+Symplectic methods are numerical integration schemes that respect conservation laws.
