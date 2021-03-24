@@ -11,6 +11,8 @@ The standard model is a quantum field theory with the gauge group $\SU{3}\times\
 \paragraph{The Fundamental Forces}
 The fundamental forces are the strong and weak nuclear interactions, the electromagnetic interaction and the gravitational interactions. Only the three former have a corresponding quantum field theory, hence this discussion (and in fact the standard model itself at time of writing) will be restricted to those.
 
+An important aspect about the strong force is the fact that its coupling constant is rolling - that is, it varies in space. It is very large at distances comparable to those of nuclei, but very small at the scale of an individual nucleon. This means, for instance, that quarks in a proton are virtually free within the proton, but that the proton itself is stable.
+
 \paragraph{Elementary Particles}
 An elementary particle is a particle without substructure.
 
@@ -27,3 +29,49 @@ In addition to charge and momentum, we introduce quantum numbers that must be co
 	\item colour.
 \end{itemize}
 These quantum numbers are flipped in the antiparticles.
+
+\paragraph{QCD Vertices}
+QCD, or quantum chromodynamics, is the field theory describing the strong force. Unlike QED, it has different kinds of vertices as the gluons carry colour charge. The one including fermions is exemplified as in figure \ref{fig:strong_vert_fer_ex}, and symbolizes an incoming up quark with blue colour charge interacting via a gluon and leaving the interaction with red colour charge. The gluon then carries one positive unit of red colour charge and one unit of negative red colour charge.
+
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		c --[fermion, edge label = $u(b)$] a --[fermion, edge label = $u(r)$] d,
+		a --[gluon, edge label = $g({b, \bar{r}})$] b,
+	};
+	\caption{An example of a strong interaction vertex involving a fermion.}
+	\label{fig:strong_vert_fer_ex}
+\end{figure}
+
+In addition there are two pure gluon vertices, shown in figure \ref{fig:strong_vert_glu}.
+
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		c --[gluon] a --[gluon] d,
+		a --[gluon] b,
+	};
+	\feynmandiagram[vertical = a to b]{
+		a --[gluon] e --[gluon] b,
+		c --[gluon] e --[gluon] d,
+	};
+	\caption{The two strong interaction vertices only involving gluons.}
+	\label{fig:strong_vert_glu}
+\end{figure}
+
+\paragraph{Weak Interaction Vertices}
+The weak interaction is mediated by a charged $W$ boson and a neutral $Z$ boson. The corresponding vertices are shown in figure \ref{fig:weak_verts}.
+
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[horizontal = a to b]{
+		c --[fermion, edge label = $u(b)$] a --[fermion, edge label = $u(r)$] d,
+		a --[charged scalar, edge label = $W$] b,
+	};
+	\feynmandiagram[horizontal = a to b]{
+		c --[fermion] a --[fermion] d,
+		a --[scalar, edge label = $Z$] b,
+	};
+	\caption{The fundamental vertices of the weak interaction.}
+	\label{fig:weak_verts}
+\end{figure}
