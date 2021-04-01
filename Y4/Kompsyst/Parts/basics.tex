@@ -40,6 +40,15 @@ An orbit is a solution to an autonomous system corresponding to some particular 
 \paragraph{Fixed Points}
 A fixed point is a point that satisfies $\vb{f}(\vb{x}) = \vb{0}$. Close to such points, non-zero first derivatives produce exponential behaviour locally and first derivatives equal to zero produce evolution slower than exponential.
 
+\paragraph{Stability}
+A fixed point is stable if it attracts the flow in a neighbourhood around it and unstable if it repels the flow.
+
+\paragraph{Lyapunov Stability}
+A fixed point is Lyuapunov stable if all trajectories that start sufficiently close to it remain close to it for all $t$.
+
+\paragraph{Asymptotic Stability}
+A fixed point is asymptotically stable if it is Lyapunov stable and all orbits that start sufficiently close to the fixed point approach it as $t\to\infty$.
+
 \paragraph{Bifurcations}
 A bifurcation is a qualitative in the structure of $\vb{f}$ as some parameter is varied.
 
@@ -92,3 +101,119 @@ with an accumulated error of order $(\Delta t)^{4}$.
 
 \paragraph{Symplectic Methods}
 Symplectic methods are numerical integration schemes that respect conservation laws.
+
+\paragraph{The Flow Map}
+The flow map is a map on phase space which takes a given point and time evolves it. It is denoted $\phi_{t}$. By construction it satisfies
+\begin{align*}
+	\phi_{t + s} = \phi_{t}\circ\phi_{s},\ \phi_{t}^{-1} = \phi_{-t}.
+\end{align*}
+In addition we have
+\begin{align*}
+	\dv{\vb{x}}{t} = \eval{\dv{\phi_{t}}{t}}_{\vb{x}_{0}} = \vb{f}\circ\phi_{t}(\vb{x}_{0}),
+\end{align*}
+which means
+\begin{align*}
+	\dv{\phi_{t}}{t} = \vb{f}\circ\phi_{t}.
+\end{align*}
+
+\paragraph{Time Reversal}
+Applying time reversal to a system involves introducing a variable $\tilde{t} = -t$. The time reversed solution is
+\begin{align*}
+	\vb{x}(\tilde{t}) = \phi_{-\tilde{t}}(\vb{x}_{0}),
+\end{align*}
+and satisfies
+\begin{align*}
+	\dv{\vb{x}(\tilde{t})}{\tilde{t}} = \dv{\tilde{t}}\phi_{-\tilde{t}}(\vb{x}_{0}) = -\dv{(-\tilde{t})}\phi_{-\tilde{t}}(\vb{x}_{0}) = -\vb{f}(\vb{x}(\tilde{t})).
+\end{align*}
+
+\paragraph{Time Reversal Invariance}
+A system with time reversal invariance changes sign in the odd-indexed components of the state under time reversal, and thus satisfies
+\begin{align*}
+	\dv{\vb{x}(\tilde{t})}{\tilde{t}} = \vb{f}(\vb{x}(\tilde{t})).
+\end{align*}
+
+\paragraph{Invariant Sets}
+An invariant set is a subset $S$ of phase space such that $S = \phi_{t}(S)\ \forall\ t$.
+
+\paragraph{Attractors and Repellors}
+An attractor is a compact subset $A$ which
+\begin{itemize}
+	\item is invariant.
+	\item has an open neighbourhood $U$ contracted onto it, i.e. an open neighbourhood $U$ such that if $\vb{x}_{0}\in U$ then the distance between $\vb{x}(t)$ and $A$ approaches zero as $t\to\infty$. The largest such $U$ is called $A$'s basin of attraction.
+	\item is minimal. i.e. cannot be decomposed into non-overlapping invariant sets.
+\end{itemize}
+A repellor is an attractor for the time-reversed system.
+
+\paragraph{Phase Space Contraction}
+Consider a small volume $\dd{V_{0}}$ around $\vb{x}_{0}$ at $t = 0$. At a later time $t$ the same volume is given by
+\begin{align*}
+	\dd{V} = \abs{\det(M)}\dd{V_{0}},\ M_{ij} = \pdv{\phi_{t}^{i}}{x_{0}^{j}} = \pdv{\phi_{t}^{i}}{x_{0}^{j}}.
+\end{align*}
+Next we want to study the relative rate of volume change, given by
+\begin{align*}
+	\frac{1}{\dd{V}}\dv{\dd{V}}{t} = \dv{t}\ln(\dd{V}) = \dv{t}\ln(\abs{\det(M)}).
+\end{align*}
+To compute the right-hand side we use the fact that
+\begin{align*}
+	\ln(\det(M)) = \tr(\ln(M)).
+\end{align*}
+We thus have
+\begin{align*}
+	\frac{1}{\dd{V}}\dv{\dd{V}}{t} &= \tr(M^{-1}\dv{M}{t}) \\
+	                               &= \sum\limits_{i, j}\pdv{x_{0}^{j}}{\phi_{t}^{i}}\pdv{\dot{\phi}_{t}^{i}}{x_{0}^{j}} \\
+	                               &= \sum\limits_{i}\pdv{\dot{\phi}_{t}^{i}}{\phi_{t}^{i}} \\
+	                               &= \sum\limits_{i}\del{}{x^{i}}f^{i} = \div{\vb{f}}.
+\end{align*}
+
+\paragraph{Linear Stability Analysis}
+Close to a fixed point we may linearize a problem as
+\begin{align*}
+	\dv{\Delta\vb{x}}{t} = \eval{\pdv{\vb{f}}{\vb{x}}}_{\vb{x} = \vb{x}^{\star}}\Delta\vb{x},
+\end{align*}
+assuming the right-hand side matrix to be non-zero. Analysis in this way is called linear stability analysis, and is very powerful because it allows us to characterize the fixed point in terms of stability directly from the character of this matrix.
+
+More specifically the solutions close to such fixed points is a linear combination of eigenvectors multiplied by $e^{\lambda_{i}t}$ for the corresponding eigenvalue $\lambda_{i}$. These eigenvalues are called the characteristic exponents. I will now briefly describe the different cases that may be found, assuming diagonalizability.
+
+The first set of cases corresponds to all eigenvalues being real. If they are all positive the solution must radiate from the fixed point, and the fixed point is unstable. If they are all negative the solutions move inwards towards the fixed point, which is stable. If they have mixed signs we have saddle-node behaviour, where solutions flow in towards, then out from, the fixed point. This case is generally termed unstable.
+
+The second set of cases corresponds to there being complex eigenvalues. We study flows in real space, hence complex eigenvalues appear in conjugate pairs. This means that there are three cases. If the real part is zero, solutions circulate around the fixed point, which is neutrally stable. If the real part is non-zero, its sign will make the solutions spiral either out or in relative to the fixed point. Inwards spirals correspond to stable fixed points and outwards spirals correspond to unstable fixed points.
+
+The third case is when the matrix is not diagonalizable. This case still produces exponential behaviour, but the exact analysis is somewhat more intricate.
+
+\paragraph{Phase Space Contraction Close to Fixed Points}
+Close to a fixed point we find
+\begin{align*}
+	\div{\vb{f}} = \sum\limits_{i}\lambda_{i},
+\end{align*}
+where the $\lambda_{i}$ are eigenvalues of the matrix for the linearized problem.
+
+\paragraph{Hyperbolic Fixed Points}
+A hyperbolic fixed point has characteristic exponents with non-zero real part.
+
+\paragraph{The Harmon-Grobman Theorem}
+The Harmon-Grobman theorem states that for every hyperbolic fixed point there exists a homeomorphism - a one-to-one map with a continuous inverse - which maps orbits of the non-linear problem to orbits of the linearized problem.
+
+\paragraph{Stable and Unstable Manifolds}
+For a hyperbolic fixed point $\vb{x}^{\star}$ the stable manifold is the set $W_{\text{S}}$ of points which converge to $\vb{x}^{\star}$ as $t\to\infty$. Similarly the unstable manifold $W_{\text{U}}$ is the set of points which converge to $\vb{x}^{\star}$ as $t\to -\infty$. These are both invariant sets.
+
+\paragraph{Limit Cycles}
+A limit cycle is an isolated closed orbits.
+
+\paragraph{Lyapunov Functions}
+A Lyapunov function is a function $V$ such that
+\begin{itemize}
+	\item $V(\vb{x}) > 0$ for all $\vb{x} \neq \vb{x}^{\star}$.
+	\item $V(\vb{x}^{\star}) = 0$.
+	\item $\dot{V} < 0$ along all solutions everywhere where $\vb{x} \neq \vb{x}^{\star}$.
+\end{itemize}
+Such a function will have a minimum at $\vb{x}^{\star}$.
+
+\paragraph{The Poincare-Bendixon Theorem}
+Suppose that
+\begin{itemize}
+	\item $R$ is a closed, bounded set.
+	\item $\vb{f}$ is continuously differentiable.
+	\item $R$ contains no fixed points.
+	\item there exists an orbit $C$ confined in $R$.
+\end{itemize}
+Then either $C$ is a closed orbit or it spirals towards a closed orbit.
