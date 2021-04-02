@@ -17,7 +17,7 @@ An important aspect about the strong force is the fact that its coupling constan
 An elementary particle is a particle without substructure.
 
 \paragraph{The Building Blocks of the Standard Model}
-The fermions comprising the standard model come in two kinds: quarks and leptons. Each quark also has an antiquark. The quarks have colour charge red, green or blue, which is involved in the strong interaction. In nature they are not found as free particles, but are either joined with an antiquark to create a meson, or joined with two other quarks to make a baryon. Leptons, by contrast, have no colour charge. Both quarks and leptons may have electric charge, and they all have spin and interact with the weak interaction. They are also divided into three so-called generations.
+The fermions comprising the standard model come in two kinds: quarks and leptons. Each quark also has an antiquark. The quarks have colour charge red, green or blue, which is involved in the strong interaction. In nature they are not found as free particles, but are either joined with an antiquark to create a meson, or joined with two other quarks to make a baryon. In general, combinations of quarks are called hadrons. Leptons, by contrast, have no colour charge. Both quarks and leptons may have electric charge, and they all have spin and interact with the weak interaction. They are also divided into three so-called generations.
 
 \paragraph{Quantum Numbers}
 In addition to charge and momentum, we introduce quantum numbers that must be conserved at vertices in Feynman diagrams. These are:
@@ -75,3 +75,172 @@ The weak interaction is mediated by a charged $W$ boson and a neutral $Z$ boson.
 	\caption{The fundamental vertices of the weak interaction.}
 	\label{fig:weak_verts}
 \end{figure}
+
+\paragraph{A Closer Look at \SU{2}}
+The Lie algebra of \SU{2} is
+\begin{align*}
+	\comm{J_{i}}{J_{j}} = i\varepsilon_{ijk}J_{k}.
+\end{align*}
+Our goal is to block diagonalize the space on which elements in the group act, starting by looking at the generators. There are three generators, so we can only diagonalize the one. We choose $J_{3}$, which will net us the so-called spin representation. Taking the space to be finite dimensional (which in the context of angular momentum is explained by physical arguments), we consider the eigenstate $\ket{j, \alpha}$ with the highest eigenvalue $j$ of $J_{3}$. $\alpha$ contains other information, the existence of which is undetermined as of yet. Next we introduce the raising and lowering operators
+\begin{align*}
+	J_{\pm} = \frac{1}{\sqrt{2}}(J_{1} \pm iJ_{2}).
+\end{align*}
+We have
+\begin{align*}
+	&\comm{J_{+}}{J_{-}} = \frac{1}{2}i(-\comm{J_{1}}{J_{2}} + \comm{J_{2}}{J_{1}}) = J_{3}, \\
+	&\comm{J_{3}}{J_{\pm}} = \frac{1}{\sqrt{2}}(\comm{J_{3}}{J_{1}} \pm i\comm{J_{3}}{J_{2}}) = \frac{1}{\sqrt{2}}(\pm J_{1} + iJ_{2}) = \pm J_{\pm}.
+\end{align*}
+For a general eigenstate we find
+\begin{align*}
+	J_{3}J_{\pm}\ket{m, \alpha} = (\pm J_{\pm} + J_{\pm}J_{3})\ket{m, \alpha} = (m \pm 1)J_{\pm}\ket{m, \alpha},
+\end{align*}
+and the raising and lowering operators do indeed work as expected. This implies $J_{+}\ket{j, \alpha} = 0$. Furthermore, we have
+\begin{align*}
+	\braket{j - 1, \beta}{j - 1, \alpha} &= \mel{j, \beta}{J_{+}J_{-}}{j, \alpha} \\
+	                                     &= \mel{j, \beta}{J_{+}J_{-} - J_{-}J_{+}}{j, \alpha} \\
+	                                     &= \mel{j, \beta}{\comm{J_{+}}{J_{-}}}{j, \alpha} \\
+	                                     &= \mel{j, \beta}{J_{3}}{j, \alpha} \\
+	                                     &= j\delta_{\alpha\beta},
+\end{align*}
+as we assume the $j$ states to be orthonormal. This implies that the raising and lowering operators preserve orthogonality in terms of the other quantum numbers. Introducing $N_{j} = \sqrt{j}$ we may thus write
+\begin{align*}
+	J_{-}\ket{j, \alpha} = N_{j}\ket{j - 1, \alpha}.
+\end{align*}
+Similarly we find
+\begin{align*}
+	J_{+}\ket{j - 1, \alpha} &= \frac{1}{N_{j}}J_{+}J_{-}\ket{j, \alpha} \\
+	                         &= \frac{1}{N_{j}}\comm{J_{+}}{J_{-}}\ket{j, \alpha} \\
+	                         &= N_{j}\ket{j, \alpha}.
+\end{align*}
+Similarly we write
+\begin{align*}
+	J_{-}\ket{m, \alpha} = N_{m}\ket{m - 1, \alpha},\ J_{+}\ket{m, \alpha} = N_{m}\ket{m, \alpha}.
+\end{align*}
+These satisfy a recursion relation which we can find by writing
+\begin{align*}
+	N_{m}^{2} &= \braket{m - 1, \alpha}{m - 1, \alpha} \\
+	          &= \mel{m, \alpha}{J_{+}J_{-}}{m, \alpha} \\
+	          &= \mel{m, \alpha}{\comm{J_{+}}{J_{-}} + J_{-}J_{+}}{m, \alpha} \\
+	          &= m + N_{m + 1}^{2}\braket{m + 1, \alpha}{m + 1, \alpha} \\
+	          &= m + N_{m + 1}^{2}.
+\end{align*}
+Repeating this we find
+\begin{align*}
+	N_{j - k}^{2} = \sum\limits_{a = j - k}^{j}a = (j - (j - k) + 1)j - \frac{1}{2}(k + 1)k = \frac{1}{2}(k + 1)(2j - k),
+\end{align*}
+or
+\begin{align*}
+	N_{m} = \frac{1}{\sqrt{2}}\sqrt{(j - m + 1)(j + m)}.
+\end{align*}
+From this we can infer two things about the spectrum. First, by the assumption that Hilbert space is finite dimensional, there must exist a maximal number of lowerings $l$. This case should satisfy
+\begin{align*}
+	N_{j - l} = \frac{1}{\sqrt{2}}\sqrt{(l + 1)(2j - l)} = 0.
+\end{align*}
+As $l$ is an integer, the possible upper bounds of the spectrum must therefore be half-integer. Next, we can identify the limits of the eigenvalue spectrum: The upper limit corresponds to the fact that $N_{j + 1} = 0$. The lower limit comes from $N_{-j} = 0$, meaning the eigenstate at the bottom of the spectrum is $\ket{-j, \alpha}$. At this point we may ignore the other quantum numbers, as the representation we are working with breaks Hilbert space into invariant subspaces under \SU{2}. Or, rather, we will replace them simply by the value of $j$, which together with $m$ specifies the state. We now know that the dimension of each invariant Hilbert space is $2j + 1$.
+
+We can now work out the particulars of this representation by computing the matrix elements
+\begin{align*}
+	&\mel{j, m}{J_{3}}{j, m\p} = m\delta_{m, m\p}, \\
+	&\mel{j, m}{J_{+}}{j, m\p} = N_{m\p + 1}\delta_{m, m\p + 1} = \frac{1}{\sqrt{2}}\sqrt{(j - m\p)(j + m\p + 1)}\delta_{m, m\p + 1}, \\
+	&\mel{j, m}{J_{-}}{j, m\p} = N_{m\p}\delta_{m, m\p - 1} = \frac{1}{\sqrt{2}}\sqrt{(j - m\p + 1)(j + m\p)}\delta_{m, m\p - 1},
+\end{align*}
+the latter of which can be used to yield
+\begin{align*}
+	&\mel{j, m}{J_{1}}{j, m\p} = \frac{1}{2}\left(\sqrt{(j - m\p)(j + m\p + 1)}\delta_{m, m\p + 1} + \sqrt{(j - m\p + 1)(j + m\p)}\delta_{m, m\p - 1}\right), \\
+	&\mel{j, m}{J_{2}}{j, m\p} = -\frac{i}{2}\left(\sqrt{(j - m\p)(j + m\p + 1)}\delta_{m, m\p + 1} - \sqrt{(j - m\p + 1)(j + m\p)}\delta_{m, m\p - 1}\right).
+\end{align*}
+As an example, the representation on the $j = \frac{1}{2}$ subspace is
+\begin{align*}
+	J_{1} = \frac{1}{2}\mqty[
+		0 & 1 \\
+		1 & 0
+	],\ J_{2} = \frac{1}{2}\mqty[
+		0 & -i \\
+		i & 0
+	],\ J_{3} = \frac{1}{2}\mqty[
+		1 & 0 \\
+		0 & -1
+	].
+\end{align*}
+This is the simplest representation of \SU{2}, and is therefore called the fundamental representation. Another example is found on the $j = 1$ subspace, which yields
+\begin{align*}
+	J_{1} = \mqty[
+		0                  & \frac{1}{\sqrt{2}} & 0 \\
+		\frac{1}{\sqrt{2}} & 0                  & \frac{1}{\sqrt{2}} \\
+		0                  & \frac{1}{\sqrt{2}} & 0
+	],\ J_{2} = \mqty[
+		0                  & -\frac{i}{\sqrt{2}} & 0 \\
+		\frac{i}{\sqrt{2}} & 0                   & -\frac{i}{\sqrt{2}} \\
+		0                  & \frac{i}{\sqrt{2}}  & 0
+	],\ J_{3} = \mqty[
+		1 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & -1
+	].
+\end{align*}
+
+\paragraph{Tensor Product of \SU{2} Representations}
+Taking the tensor product of two angular momentum Hilbert spaces corresponds to creating a new space of eigenstates of either angular momentum operator. As we know, however, it is possible to diagonalize this Hilbert space in terms of another operator, namely the total angular momentum. As an example, for two $j = \frac{1}{2}$, the total Hilbert space may be written as the tensor product of two two-dimensional subspaces, or as the direct sum of the eigenspaces of the total angular momentum. The latter has two eigenspaces, one with dimension $3$ and one with dimension $1$. We often denote this in the ridiculous form
+\begin{align*}
+	2\otimes 2 = 3\oplus 1.
+\end{align*}
+
+\paragraph{Isospin}
+Early particle physicists, noting the very similar masses of the proton and neutron and studying nuclear energy levels, conjectured the existence of a symmetry of nuclei under swapping of the two. This symmetry would then need to be respected by the strong force. More specifically, they wrote the state of each nucleon as a proton-neutron doublet which transforms under action by \SU{2}. The generators of this transformation are called components of isospin. We will do a similar thing, but for quarks instead.
+
+\paragraph{Parity}
+Parity is a discrete symmetry which corresponds to spatial inversion. Strong and electromagnetic interactions respect parity, but weak interactions do not.
+
+It turns out that the ground states of hadrons are eigenstates of the parity operator. It also turns out that the parity of fermions (taken to be positive) is opposite to that of their antiparticles, whereas they are the sames for bosons. In addition to this there comes parity from their orbital angular momentum.
+
+\paragraph{Chirality and Helicity}
+As has been discussed in other summaries, helicity and chirality depend on the combination of spin and momentum. It turns out that helicity is frame-dependent, but chirality is intrinsic to the particle. Furthermore, some particles are only found with certain chiralities.
+
+\paragraph{Going From Particles to Antiparticles}
+Consider the particle and antiparticle states
+\begin{align*}
+	e^{-ipx}\mqty[
+		1 \\
+		0 \\
+		\frac{p_{x} - ip_{y}}{p_{0} + m} \\
+		-\frac{p_{	z}}{p_{0} + m}
+	],\ e^{ipx}\mqty[
+		\frac{p_{z}}{p_{0} + m} \\
+		\frac{p_{x} + ip_{y}}{p_{0} + m} \\
+		1 \\
+		0
+	].
+\end{align*}
+We will try to devise a transformation between the two. The exponent is flipped by complex conjugation, so that will have to be included. Next we need a transformation matrix which is block off-diagonal. The lower left block being
+\begin{align*}
+	\mqty[
+		0  & 1 \\
+		-1 & 0
+	] = -i\sigma^{2}
+\end{align*}
+will get the job done. The upper right block should similarly be $i\sigma^{2}$, meaning that the total matrix should be $-i\gamma^{2}$. The transformation is thus
+\begin{align*}
+	\Psi\p = -i\gamma^{2}\Psi\cc.
+\end{align*}
+This also reveals the need for complex conjugation in changing between and antiparticles.
+
+\paragraph{Charge Conjugation}
+Charge conjugation is a discrete symmetry which corresponds to changing all internal quantum numbers of a state, creating a corresponding antiparticle. It is written as
+\begin{align*}
+	C\ket{p} = \ket{\bar{p}}.
+\end{align*}
+In particular, for a Dirac particle we know that given a particle state $\ket{\Psi}$, we can obtain an 
+
+\paragraph{Transformation of Antiquark Isospin}
+
+\paragraph{$CP$}
+
+\paragraph{Time Reversal}
+
+\paragraph{$CPT$}
+
+\paragraph{Young Tableaux}
+
+\paragraph{Parity}
+
+\paragraph{The Quark Model}
