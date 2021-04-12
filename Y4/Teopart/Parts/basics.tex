@@ -229,18 +229,76 @@ Charge conjugation is a discrete symmetry which corresponds to changing all inte
 \begin{align*}
 	C\ket{p} = \ket{\bar{p}}.
 \end{align*}
-In particular, for a Dirac particle we know that given a particle state $\ket{\Psi}$, we can obtain an 
+It is respected by the strong and electromagnetic interactions, but not the weak one.
+
+In particular, for fermions we can use the transformation rule we derived on the Dirac equation with minimal coupling. For the particle we have
+\begin{align*}
+	\gamma^{\mu}(\del{}{\mu} - ieA_{\mu})\Psi + im\Psi = 0.
+\end{align*}
+For the antiparticle we have
+\begin{align*}
+	-i\gamma^{2}(\gamma^{\mu})\cc(\del{}{\mu} + ieA_{\mu})\Psi\cc - i\gamma^{2}\cdot -im\Psi\cc = -i\gamma^{2}(\gamma^{\mu})\cc(\del{}{\mu} + ieA_{\mu})\Psi\cc - m\gamma^{2}\Psi\cc = 0.
+\end{align*}
+In the Dirac representation the only matrix that is changed by complex conjugation is $\gamma^{2}$, which changes sign. All the other gamma matrices anticommute, and for $\gamma^{2}$ we can simply reshuffle the complex conjugation to find
+\begin{align*}
+	\gamma^{\mu}(\del{}{\mu} + ieA_{\mu})\cdot i\gamma^{2}\Psi\cc + im\cdot i\gamma^{2}\Psi\cc = 0.
+\end{align*}
+This implies
+\begin{align*}
+	C\Psi = i\gamma^{2}\Psi\cc.
+\end{align*}
+
+Such symmetries can be used to determine possible reactions. A trivial example is $\pi^{0} \to \gamma + \gamma$, which balances charge conjugation, whereas $\pi^{0} \to \gamma + \gamma + \gamma$ does not, hence only the former is allowed.
 
 \paragraph{Transformation of Antiquark Isospin}
+We know that quark doublets transform under \SU{2}. An antiquark doublet, however, is related to the complex conjugate of the quark doublet. The complex conjugate itself does not transform the same way as the original doublet - more specifically, we have
+\begin{align*}
+	(\phi\p)\cc = e^{\frac{i}{2}\theta_{i}I_{i}\cc}\phi\cc,
+\end{align*}
+which is the wrong transformation rule. We therefore need to write the antiparticle doublet as $\varepsilon\phi\cc$, and choose $\varepsilon$ such that
+\begin{align*}
+	\varepsilon e^{\frac{i}{2}\theta_{i}I_{i}\cc} = e^{-\frac{i}{2}\theta_{i}I_{i}}\varepsilon,
+\end{align*}
+which produces the correct transformation rule. Expanding each side around the identity we find
+\begin{align*}
+	\varepsilon I_{i}\cc = -I_{i}\varepsilon.
+\end{align*}
+We can choose the fundamental representation, which leaves $I_{1}$ and $I_{3}$ invariant. Choosing $\varepsilon\propto\sigma_{2}$ the corresponding relations work out. This would also make the final relation work out. One choice is $\varepsilon = i\sigma_{2}$. In terms of the up and down quark we denote the two states
+\begin{align*}
+	\phi = \mqty[
+		u \\
+		d
+	],\ \hat{\phi} = \mqty[
+		\hat{d} \\
+		-\hat{u}
+	].
+\end{align*}
+With this we can construct mesons as eigenstates of total isospin.
 
 \paragraph{$CP$}
+$CP$ is the combination of charge conjugation and parity. This combination of symmetries allows for the theory to contain more reactions. For instance, consider
+\begin{align*}
+	\pi^{+} \to \mu^{+} + \nu_{\mu}.
+\end{align*}
+This reaction works provided that the muon and the neutrino have opposite helicities. A parity transformation, however, will reverse all helicities, producing a left-handed muon, which is impossible. Similarly, charge conjugation of this reaction involves a right-handed antineutrino, which is also not allowed. The combined $CP$ symmetry, however, produces the reaction
+\begin{align*}
+	\pi^{-} \to \mu^{-} + \bar{\nu}_{\mu},
+\end{align*}
+where the antineutrino is left-handed, which is allowed. The hope of particle physicists was that the weak force respected $CP$.
+
+\paragraph{$CP$ Violation}
+%TODO: Look up Griffiths on kaons
+$CP$ violation turns out to be one way to explain the domination of matter in the universe.
 
 \paragraph{Time Reversal}
+Time reversal - or rather, motion reversal - is a discrete symmetry corresponding to running a process backwards. It is respected by the strong and electromagnetic interactions. It is hard to test it for the weak interaction.
 
 \paragraph{$CPT$}
+$CPT$ is a combination of the discrete symmetries we have studied.
+
+We can use it to draw conclusions about time reversal. Because quantum field theory is based on $CPT$ invariance and $CP$ is violated by the weak interaction, we expect $T$ to be violated as well in order for $CPT$ to be respected.
 
 \paragraph{Young Tableaux}
 
-\paragraph{Parity}
-
 \paragraph{The Quark Model}
+The quark model is a simplified model which only considers the up, down and strange quarks, combining them into a triplet which transforms under \SU{3}. Taking the generators to be $\frac{\lambda_{a}}{2}$, the generators of transformations on the antiparticle states is $-\frac{\lambda_{a}\cc}{2}$. We denote the particle representation as $3$ and the antiparticle representation as $\bar{3}$.
