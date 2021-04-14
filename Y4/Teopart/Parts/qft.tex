@@ -1,0 +1,95 @@
+\section{Quantum Field Theory}
+
+\paragraph{A Comment on Normalization}
+We will be using the convention where the integral containing the fields has a division by a factor $\sqrt{2\omega_{\vb{k}}}$.
+
+\paragraph{Lorentz Transformations and Dirac Fields}
+We have already established that Dirac fields transform as
+\begin{align*}
+	\psi(x) \to e^{-\frac{i}{4}\omega^{\mu\nu}\sigma_{\mu\nu}}\psi(x),
+\end{align*}
+where $\sigma_{\mu\nu} = \frac{i}{2}\comm{\gamma_{\mu}}{\gamma_{\nu}}$. This means that the adjoint transforms according to
+\begin{align*}
+	\psi\adj(x) \to \psi\adj(x)e^{\frac{i}{4}\omega^{\mu\nu}\sigma_{\mu\nu}\adj}.
+\end{align*}
+As $\sigma_{\mu\nu}$ are not self-adjoint, $\psi\adj\psi$ is not a Lorentz invariant and cannot be included in any field theory. The hope is, however, that there exists some matrix $M$ which we can put in the middle to solve that issue. For this to work we would need
+\begin{align*}
+	e^{\frac{i}{4}\omega^{\mu\nu}\sigma_{\mu\nu}\adj}M = Me^{\frac{i}{4}\omega^{\mu\nu}\sigma_{\mu\nu}}.
+\end{align*}
+Expanding around the identity we find
+\begin{align*}
+	\sigma_{\mu\nu}\adj M = M\sigma_{\mu\nu}.
+\end{align*}
+
+To proceed we need to know a little about the gamma matrices. It can be shown in the Dirac basis that $(\gamma^{\mu})\adj = \gamma^{0}\gamma^{\mu}\gamma^{0}$. Because different bases are related by a unitary similarity transform, this holds in all bases. This means that
+\begin{align*}
+	(\sigma^{\mu\nu})\adj = -\frac{i}{2}\gamma^{0}\comm{\gamma^{\nu}}{\gamma^{\mu}}\gamma^{0} = \gamma^{0}\sigma^{\mu\nu}\gamma^{0},
+\end{align*}
+and $\gamma^{0}M$ must commute with $\sigma_{\mu\nu}$. Two choices for $M$ are thus $\gamma^{5}$ and $\gamma^{0}$, the latter of which we will use to define the Dirac adjoint $\overline{\psi} = \psi\adj\gamma^{0}$, which transforms the right way under Lorentz transformations.
+
+What about forms of the type $\overline{\psi}F\psi$? We will need a basis for the space of matrices, and can choose the identity, the gamma matrices, their commutators, $\gamma_{5}$ and $\gamma_{\mu}\gamma_{5}$. Of these, only the index-free versions will work. To see this, consider
+\begin{align*}
+	\overline{\psi}\gamma^{\rho}\psi &\to \overline{\psi}e^{\frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu}}\gamma^{\rho}e^{-\frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu}}\psi \\
+	                                &\approx \overline{\psi}\left(1 + \frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu}\right)\gamma^{\rho}\left(1 - \frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu}\right)\psi \\
+	                                &\approx \overline{\psi}\left(\gamma^{\rho} + \frac{i}{4}\omega_{\mu\nu}\comm{\sigma^{\mu\nu}}{\gamma^{\rho}}\right)\psi.
+\end{align*}
+The commutator can be simplified as
+\begin{align*}
+	\comm{\sigma^{\mu\nu}}{\gamma^{\rho}} &= \frac{i}{2}\left(\gamma^{\mu}\comm{\gamma^{\nu}}{\gamma^{\rho}} + \comm{\gamma^{\mu}}{\gamma^{\rho}}\gamma^{\nu} - \gamma^{\nu}\comm{\gamma^{\mu}}{\gamma^{\rho}} - \comm{\gamma^{\nu}}{\gamma^{\rho}}\gamma^{\mu}\right) \\
+	                                         &= \frac{i}{2}\left(\gamma^{\mu}(\gamma^{\nu}\gamma^{\rho} - \gamma^{\rho}\gamma^{\nu}) + (\gamma^{\mu}\gamma^{\rho} - \gamma^{\rho}\gamma^{\mu})\gamma^{\nu} - \gamma^{\nu}(\gamma^{\mu}\gamma^{\rho} - \gamma^{\rho}\gamma^{\mu}) - (\gamma^{\nu}\gamma^{\rho} - \gamma^{\rho}\gamma^{\nu})\gamma^{\mu}\right) \\
+	                                         &= \frac{i}{2}\left(2g^{\nu\rho}\gamma^{\mu} - 2g^{\rho\mu}\gamma^{\nu} + 2g^{\nu\rho}\gamma^{\mu} - 2g^{\rho\mu}\gamma^{\nu}\right) \\
+	                                         &= 2i(g^{\nu\rho}\gamma^{\mu} - g^{\rho\mu}\gamma^{\nu}).
+\end{align*}
+Thus we have
+\begin{align*}
+	\omega_{\mu\nu}\comm{\sigma^{\mu\nu}}{\gamma^{\rho}} &= 2i\omega_{\mu\nu}(g^{\nu\rho}\gamma^{\mu} - g^{\rho\mu}\gamma^{\nu}) = -4i\tensor{\omega}{^{\rho}_{\mu}}\gamma^{\mu}
+\end{align*}
+and
+\begin{align*}
+	\overline{\psi}\gamma^{\rho}\psi &\approx \overline{\psi}\left(\kdelta{\rho}{\mu} + \tensor{\omega}{^{\rho}_{\mu}}\right)\gamma^{\mu}\psi,
+\end{align*}
+which is the same transformation rule as for a vector. Similarly objects with more indices transform like tensors, justifying the use of Lorentz indices despite the gamma matrices being the same in all frames.
+
+\paragraph{Energy Change for Klein-Gordon Fields}
+For a Klein-Gordon field the process with the non-relativistic string can be repeated to find
+\begin{align*}
+	\ham = \frac{1}{2}\integ[3]{}{}{\vb{p}}{\omega_{\vb{p}}(a_{\vb{p}}\adj a_{\vb{p}} + a_{\vb{p}}a_{\vb{p}}\adj)}.
+\end{align*}
+Using the commutation relations we find
+\begin{align*}
+	\comm{\ham}{a_{\vb{k}}\adj} =& \frac{1}{2}\integ[3]{}{}{\vb{p}}{\omega_{\vb{p}}(a_{\vb{p}}\adj\comm{a_{\vb{p}}}{a_{\vb{k}}\adj} + \comm{a_{\vb{p}}\adj}{a_{\vb{k}}\adj}a_{\vb{p}} + a_{\vb{p}}\comm{a_{\vb{p}}\adj}{a_{\vb{k}}\adj} + \comm{a_{\vb{p}}}{a_{\vb{k}}\adj}a_{\vb{p}}\adj)} \\
+	                            =& \integ[3]{}{}{\vb{p}}{\delta^{3}(\vb{p} - \vb{k})\omega_{\vb{p}}a_{\vb{p}}\adj} \\
+	                            =& \omega_{\vb{k}}a_{\vb{k}}\adj,
+\end{align*}
+and similarly $\comm{\ham}{a_{\vb{k}}\adj} = -\omega_{\vb{k}}a_{\vb{k}}\adj$. Thus these operators raise and lower the energies of eigenstates of the Hamiltonian, further justifying our interpretations.
+
+\paragraph{The Charge of Charged Klein-Gordon Fields}
+The Lagrangian for the charged Klein-Gordon field is
+\begin{align*}
+	\lag = \del{}{\mu}\phi\cc\del{\mu}{}\phi - m^{2}\phi\cc\phi.
+\end{align*}
+Corresponding to this Lagrangian is a symmetry $\var{\phi} = i\alpha\phi$ which leaves the action unchanged. The corresponding Noether current is
+\begin{align*}
+	j^{\mu} = i(\phi\cc\del{\mu}{}\phi - \phi\del{\mu}{}\phi\cc).
+\end{align*}
+Using the field expansion
+\begin{align*}
+	\phi = \frac{1}{\sqrt{(2\pi)^{3}}}\integ[3]{}{}{\vb{p}}{\frac{1}{\sqrt{2\omega_{\vb{p}}}}\left(a_{\vb{p}}e^{-ipx} + b_{\vb{p}}\cc e^{ipx}\right)}
+\end{align*}
+with distinct amplitudes $a$ and $b$ we find
+\begin{align*}
+	\rho &= -\frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{k}}{\sqrt{\frac{\omega_{\vb{k}}}{\omega_{\vb{p}}}}\left(\left(a_{\vb{p}}\cc e^{ipx} + b_{\vb{p}} e^{-ipx}\right)\left(-a_{\vb{k}}e^{-ikx} + b_{\vb{k}}\cc e^{ikx}\right) - \left(a_{\vb{p}}e^{-ipx} + b_{\vb{p}}\cc e^{ipx}\right)\left(a_{\vb{k}}\cc e^{ikx} - b_{\vb{k}}e^{-ikx}\right)\right)}} \\
+	     &= -\frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{k}}{\sqrt{\frac{\omega_{\vb{k}}}{\omega_{\vb{p}}}}\left(-a_{\vb{p}}\cc a_{\vb{k}}e^{i(p - k)x} + b_{\vb{p}}b_{\vb{k}}\cc e^{i(k - p)x} - a_{\vb{p}}a_{\vb{k}}\cc e^{i(k - p)x} + b_{\vb{p}}\cc b_{\vb{k}}e^{i(p - k)x}\right)}}. 
+\end{align*}
+The quantized version is
+\begin{align*}
+	\rho &= -\frac{1}{2(2\pi)^{3}}\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{k}}{\sqrt{\frac{\omega_{\vb{k}}}{\omega_{\vb{p}}}}\left(-a_{\vb{p}}\adj a_{\vb{k}}e^{i(p - k)x} + b_{\vb{p}}b_{\vb{k}}\adj e^{i(k - p)x} - a_{\vb{p}}a_{\vb{k}}\adj e^{i(k - p)x} + b_{\vb{p}}\adj b_{\vb{k}}e^{i(p - k)x}\right)}}.
+\end{align*}
+Using the commutation relations we find
+\begin{align*}
+	\rho &= -\frac{1}{(2\pi)^{3}}\integ[3]{}{}{\vb{p}}{\integ[3]{}{}{\vb{k}}{\sqrt{\frac{\omega_{\vb{k}}}{\omega_{\vb{p}}}}\left(b_{\vb{p}}\adj b_{\vb{k}}e^{i(p - k)x} - a_{\vb{p}}\adj a_{\vb{k}}e^{i(p - k)x}\right)}}.
+\end{align*}
+Computing the total charge amounts to integrating over space, adding a Dirac delta in momentum space and finally yielding
+\begin{align*}
+	Q &= \integ[3]{}{}{\vb{p}}{a_{\vb{p}}\adj a_{\vb{k}} - b_{\vb{p}}\adj b_{\vb{k}}}.
+\end{align*}
