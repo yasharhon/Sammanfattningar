@@ -93,3 +93,74 @@ Computing the total charge amounts to integrating over space, adding a Dirac del
 \begin{align*}
 	Q &= \integ[3]{}{}{\vb{p}}{a_{\vb{p}}\adj a_{\vb{k}} - b_{\vb{p}}\adj b_{\vb{k}}}.
 \end{align*}
+
+\paragraph{A Trick for Computing Propagators}
+A neat trick to find propagators, at least for the standard theories we will consider, is to write the Lagrangian as
+\begin{align*}
+	\lag = \overline{\phi}A\phi + \dots
+\end{align*}
+where $A$ is some operator and the dots are total derivatives. The bar signifies some relevant conjugate field. For real fields you want a prefactor of $\frac{1}{2}$ as well. The propagator is the inverse of $A$.
+
+Let us show two examples. First, for a charged scalar field we have
+\begin{align*}
+	\lag = \del{}{\mu}\phi\adj\del{\mu}{}\phi - m^{2}\phi\adj\phi = \del{}{\mu}\left(\phi\adj\del{\mu}{}\phi\right) - \phi\adj\left(\dalem + m^{2}\right)\phi,
+\end{align*}
+hence $A = -\dalem - m^{2}$. In momentum space we thus find the familiar formula
+\begin{align*}
+	i\kgprop{\text{F}}{p} = \frac{i}{p^{2} - m^{2}}.
+\end{align*}
+Next, for a Dirac field we have
+\begin{align*}
+	\lag = i\overline{\psi}\fsl{\del{}{}}\psi - m\overline{\psi}\psi = \overline{\psi}\left(i\fsl{\del{}{}} - m\right).
+\end{align*}
+Again, in momentum space we have
+\begin{align*}
+	(\fsl{p} - m)\dirprop{}{}{p} = 1.
+\end{align*}
+Using gamma gymnastics we know that $(\fsl{p} - m)(\fsl{p} + m) = p^{2} - m^{2}$, hence we find
+\begin{align*}
+	i\dirprop{}{}{p} = \frac{i(\fsl{p} + m)}{p^{2} - m^{2}}.
+\end{align*}
+
+\paragraph{The Electromagnetic Field and its Complications}
+For a general gauge the Lagrangian for the electromagnetic field is
+\begin{align*}
+	\lag = -\frac{1}{4}\tensor{F}{_{\mu\nu}}\tensor{F}{^{\mu\nu}} - \frac{1}{2\xi}(\del{}{\mu}A^{\mu})^{2}
+\end{align*}
+for some control parameter $\xi$. The second term, called the gauge fixing term, turns out to be really useful for doing calculations. To show that we expand the Lagrangian as
+\begin{align*}
+	\lag &= -\frac{1}{4}(\del{}{\mu}A_{\nu} - \del{}{\nu}A_{\mu})(\del{\mu}{}A^{\nu} - \del{\nu}{}A^{\mu}) - \frac{1}{2\xi}(\del{}{\mu}A^{\mu})(\del{}{\nu}A^{\nu}) \\
+	     &= -\frac{1}{2}\left(\del{}{\mu}A_{\nu}(\del{\mu}{}A^{\nu} - \del{\nu}{}A^{\mu}) - \frac{1}{\xi}(\del{}{\mu}A^{\mu})(\del{}{\nu}A^{\nu})\right) \\
+	     &= -\frac{1}{2}\left(\del{}{\mu}A_{\nu}(g^{\nu\rho}\del{\mu}{}A_{\rho} - g^{\mu\rho}\del{\nu}{}A_{\rho}) - \frac{1}{\xi}(\del{\mu}{}A_{\mu})(\del{\nu}{}A_{\nu})\right) \\
+	     &= \frac{1}{2}\left(A_{\nu}\del{}{\mu}(g^{\nu\rho}\del{\mu}{}A_{\rho} - g^{\mu\rho}\del{\nu}{}A_{\rho}) + \frac{1}{\xi}A_{\mu}\del{\mu}{}\del{\nu}{}A_{\nu}\right) - \frac{1}{2}\del{}{\mu}\left(A_{\nu}(g^{\nu\rho}\del{\mu}{}A_{\rho} - g^{\mu\rho}\del{\nu}{}A_{\rho})\right) - \frac{1}{2\xi}\del{\mu}{}(A_{\mu}\del{\nu}{}A_{\nu}).
+\end{align*}
+Ignoring the total derivatives we are left with
+\begin{align*}
+	\lag &= \frac{1}{2}A_{\nu}\left(g^{\nu\rho}\del{}{\mu}\del{\mu}{}A_{\rho} - g^{\mu\rho}\del{}{\mu}\del{\nu}{}A_{\rho} + \frac{1}{\xi}\del{\mu}{}\del{\nu}{}A_{\mu}\right) \\
+	     &= \frac{1}{2}A_{\nu}\left(g^{\nu\mu}\dalem A_{\mu} - \del{\mu}{}\del{\nu}{}A_{\mu} + \frac{1}{\xi}\del{\mu}{}\del{\nu}{}A_{\mu}\right) \\
+	     &= \frac{1}{2}A_{\nu}\left(g^{\mu\nu}\dalem - \left(1 - \frac{1}{\xi}\right)\del{\mu}{}\del{\nu}{}\right)A_{\mu},
+\end{align*}
+hence we have found a matrix operator $A^{\mu\nu}$. Its inverse must be the corresponding inverse matrix. Calling the inverse $D_{\nu\rho}$ we require in Fourier space
+\begin{align*}
+	\left(-g^{\mu\nu}p^{2} + \left(1 - \frac{1}{\xi}\right)p^{\mu}p^{\nu}\right)D_{\nu\rho} = \kdelta{\mu}{\rho}.
+\end{align*}
+We can expand $D$ in terms of the metric and the momentum to find
+\begin{align*}
+	\left(-g^{\mu\nu}p^{2} + \left(1 - \frac{1}{\xi}\right)p^{\mu}p^{\nu}\right)(ag_{\nu\rho} + bp_{\nu}p_{\rho}) = -ap^{2}\kdelta{\mu}{\rho} - bp^{2}p^{\mu}p_{\rho} + \left(1 - \frac{1}{\xi}\right)ap^{\mu}p_{\rho} + b\left(1 - \frac{1}{\xi}\right)p^{2}p^{\mu}p_{\rho}.
+\end{align*}
+A first choice is $a = -\frac{1}{p^{2}}$. Given that, we would be left with
+\begin{align*}
+	-bp^{2} + \left(1 - \frac{1}{\xi}\right)\left(-\frac{1}{p^{2}} + bp^{2}\right) = -\frac{1}{\xi}bp^{2} - \frac{1}{p^{2}}\left(1 - \frac{1}{\xi}\right) = 0,
+\end{align*}
+with solution
+\begin{align*}
+	b = \frac{1}{(p^{2})^{2}}(1 - \xi).
+\end{align*}
+Thus we have
+\begin{align*}
+	iD_{\mu\nu} = -\frac{i}{p^{2}}\left(g_{\mu\nu} - (1 - \xi)\frac{p_{\mu}p_{\nu}}{p^{2}}\right).
+\end{align*}
+At this point we may simplify the propagator by simply choosing $\xi = 1$, netting us
+\begin{align*}
+	iD_{\mu\nu} = -\frac{ig_{\mu\nu}}{p^{2}}.
+\end{align*}
