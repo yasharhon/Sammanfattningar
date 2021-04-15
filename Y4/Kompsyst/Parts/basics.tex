@@ -208,6 +208,9 @@ A Lyapunov function is a function $V$ such that
 \end{itemize}
 Such a function will have a minimum at $\vb{x}^{\star}$.
 
+\paragraph{Limit Cycles}
+A limit cycle is an orbit which is approached by at least one other orbit as at infinite times.
+
 \paragraph{The Poincare-Bendixon Theorem}
 Suppose that
 \begin{itemize}
@@ -216,7 +219,34 @@ Suppose that
 	\item $R$ contains no fixed points.
 	\item there exists an orbit $C$ confined in $R$.
 \end{itemize}
-Then either $C$ is a closed orbit or it spirals towards a closed orbit.
+Then either $C$ is a closed orbit or it spirals towards a closed orbit. In other words, the system has a limit cycle.
 
 \paragraph{The Appearance of Bifurcations}
 As hyperbolic fixed points are structurally stable, bifurcations can only arise if the real part of an eigenvalue changes sign.
+
+\paragraph{Reaction-Diffusion Systems}
+Consider a system described by a state $\vb{x}(\vb{r}, t)$ with some dependence on an extended underlying space which satisfies
+\begin{align*}
+	\dot{\vb{x}} = \vb{f}(\vb{x}) + D\laplacian{\vb{x}},
+\end{align*}
+where $D$ is a diagonal matrix. Such systems are called reaction-diffusion systems.
+
+Their treatment is generally difficult, but one trick can be employed: If the diffusion-free system has a fixed point, one can linearize around this fixed point to find
+\begin{align*}
+	\delta\dot{\vb{x}} = J\delta\vb{x} + D\laplacian{\delta\vb{x}}.
+\end{align*}
+Fourier expansion according to
+\begin{align*}
+	\delta\vb{x} = \sum\limits_{\vb{k}}\vb{x}_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}
+\end{align*}
+yields
+\begin{align*}
+	\dot{\delta\vb{x}}_{\vb{k}} = J\vb{x}_{\vb{k}} + D\abs{k}^{2}\vb{x}_{\vb{k}},
+\end{align*}
+which is a system that can be solved using the previously developed techniques.
+
+\paragraph{The Stability of Limit Cycles}
+The stability of limit cycles is difficult to analyze using the previously developed techniques. For instance, an issue with linearization is the choice of point around which to linearize. Instead we will consider the sequence $\vb{x}_{k} = \vb{x}(k\tau)$, where $\tau$ is the period of the limit cycle. An important issue, then, is to determine this period and ascertain whether it is the same as for neighbouring orbits.
+
+\paragraph{Poincare Maps}
+For an $n$-dimensional system, introduce a $n + 1$-dimensional surface $S$ which is crossed by the flow lines and consider the sequence of intersections $x_{k}$. The Poincare map is the map that satisfies $x_{k + 1} = P(x_{k})$. By identifying this map and cosidering its fixed points, limit cycles can be identified.
