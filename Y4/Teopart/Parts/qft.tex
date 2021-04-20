@@ -164,3 +164,26 @@ At this point we may simplify the propagator by simply choosing $\xi = 1$, netti
 \begin{align*}
 	iD_{\mu\nu} = -\frac{ig_{\mu\nu}}{p^{2}}.
 \end{align*}
+
+\paragraph{Dirac Fields}
+%TODO: Finish
+For Dirac fields we will use the normalization
+
+and the completeness relation.
+
+\paragraph{Quantum Electrodynamics}
+%TODO: Finish
+The Dirac field is invariant under a $\text{U}(1)$ symmetry $\psi\to e^{-ieQ\theta}\psi$. The normalization in the exponent contains a parameter $e$ to be discussed, a parameter $Q$ specific to each particle and a parameter $\theta$ accounting for the rest. By convention we take $Q = -1$ for the electron. The corresponding Noether current is
+\begin{align*}
+	j^{\mu} = eQ\overline{\psi}\gamma^{\mu}\psi.
+\end{align*}
+
+Extending $\theta$ to be a function on spacetime breaks this symmetry for the standard Dirac Lagrangian, however. By extending the derivative operator to
+\begin{align*}
+	D_{\mu} = \del{}{\mu} + ieA_{\mu}
+\end{align*}
+and requiring $A_{\mu}\to A_{\mu} + \del{}{\mu}\theta$, however, we have a Lagrangian that respects this symmetry. This is called a gauge symmetry, and corresponds to a gauge theory realized by gauge bosons. We identify this field with the 4-potential and the corresponding transformation as a gauge transformation, adding its contribution to the total Lagrangian. The result when comparing to the non-interacting case is thus an interaction term
+\begin{align*}
+	\lag_{\text{int}} = -eQ\overline{\psi}\gamma^{\mu}\psi A_{\mu}.
+\end{align*}
+This is the interaction term defining quantum electrodynamics. It is a so-called gauge theory based on the $\text{U}(1)$ gauge group.
