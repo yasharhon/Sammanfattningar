@@ -126,11 +126,11 @@ For a general eigenstate we find
 \end{align*}
 and the raising and lowering operators do indeed work as expected. This implies $J_{+}\ket{j, \alpha} = 0$. Furthermore, we have
 \begin{align*}
-	\braket{j - 1, \beta}{j - 1, \alpha} &= \mel{j, \beta}{J_{+}J_{-}}{j, \alpha} \\
-	                                     &= \mel{j, \beta}{J_{+}J_{-} - J_{-}J_{+}}{j, \alpha} \\
-	                                     &= \mel{j, \beta}{\comm{J_{+}}{J_{-}}}{j, \alpha} \\
-	                                     &= \mel{j, \beta}{J_{3}}{j, \alpha} \\
-	                                     &= j\delta_{\alpha\beta},
+	\mel{j, \beta}{J_{-}\adj J_{-}}{j, \alpha} &= \mel{j, \beta}{J_{+}J_{-}}{j, \alpha} \\
+	                                           &= \mel{j, \beta}{J_{+}J_{-} - J_{-}J_{+}}{j, \alpha} \\
+	                                           &= \mel{j, \beta}{\comm{J_{+}}{J_{-}}}{j, \alpha} \\
+	                                           &= \mel{j, \beta}{J_{3}}{j, \alpha} \\
+	                                           &= j\delta_{\alpha\beta},
 \end{align*}
 as we assume the $j$ states to be orthonormal. This implies that the raising and lowering operators preserve orthogonality in terms of the other quantum numbers. Introducing $N_{j} = \sqrt{j}$ we may thus write
 \begin{align*}
@@ -142,21 +142,24 @@ Similarly we find
 	                         &= \frac{1}{N_{j}}\comm{J_{+}}{J_{-}}\ket{j, \alpha} \\
 	                         &= N_{j}\ket{j, \alpha}.
 \end{align*}
-Similarly we write
+We generalize this to
 \begin{align*}
-	J_{-}\ket{m, \alpha} = N_{m}\ket{m - 1, \alpha},\ J_{+}\ket{m, \alpha} = N_{m}\ket{m, \alpha}.
+	J_{-}\ket{m, \alpha} = N_{m}\ket{m - 1, \alpha},\ J_{+}\ket{m - 1, \alpha} = N_{m}\ket{m, \alpha}.
 \end{align*}
 These satisfy a recursion relation which we can find by writing
 \begin{align*}
-	N_{m}^{2} &= \braket{m - 1, \alpha}{m - 1, \alpha} \\
-	          &= \mel{m, \alpha}{J_{+}J_{-}}{m, \alpha} \\
+	N_{m}^{2} &= \mel{m, \alpha}{J_{+}J_{-}}{m, \alpha} \\
 	          &= \mel{m, \alpha}{\comm{J_{+}}{J_{-}} + J_{-}J_{+}}{m, \alpha} \\
 	          &= m + N_{m + 1}^{2}\braket{m + 1, \alpha}{m + 1, \alpha} \\
 	          &= m + N_{m + 1}^{2}.
 \end{align*}
 Repeating this we find
 \begin{align*}
-	N_{j - k}^{2} = \sum\limits_{a = j - k}^{j}a = (j - (j - k) + 1)j - \frac{1}{2}(k + 1)k = \frac{1}{2}(k + 1)(2j - k),
+	N_{j - k}^{2} &= \sum\limits_{a = j - k}^{j}a \\
+	              &= \sum\limits_{n = 1}^{k + 1}j - k + n - 1 \\
+	              &= \frac{k + 1}{2}(2(j - k) + k) \\
+	              &= \frac{(2j - k)(k + 1)}{2} \\
+	              &= (j - (j - k) + 1)j - \frac{1}{2}(k + 1)k = \frac{1}{2}(k + 1)(2j - k),
 \end{align*}
 or
 \begin{align*}
