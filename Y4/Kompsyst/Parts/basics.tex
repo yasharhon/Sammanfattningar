@@ -285,5 +285,70 @@ Given the Lyapunov exponent, the time interval in which the system can be predic
 	t = \frac{1}{\lambda}\ln(\frac{\varepsilon}{\abs{\delta\vb{x}(0)}}).
 \end{align*}
 
+\paragraph{Calculating Lyapunov Exponents}
+We can define a local Lyapunov exponent according to
+\begin{align*}
+	\lambda(\vb{x}_{0}) = \lim\limits_{t\to\infty}\lim\limits_{\delta\vb{x}_{0}\to \vb{0}}ln(\frac{\abs{\delta\vb{x}(t)}}{\abs{\delta\vb{x}_{0}}}).
+\end{align*}
+Note the order of the limits, as we must generally ensure closeness before we start time evolving to guarantee convergence. Note that it also has some directional dependence - generally, an $n$-dimensional system has $n$ Lyapunov exponents. These are typically the same within the same basin of attraction, and thus form a global characteristic of the system.
+
+Let us now consider an iterated map $\vb{x}_{n + 1} = F(\vb{x}_{n})$. The linearized system is characterized by a matrix
+\begin{align*}
+	M = \prod\limits_{k = 0}^{n - 1}J(\vb{x}_{k}),
+\end{align*}
+where $J$ is the Jacobian of $F$. Inserting this into the above formula we find
+\begin{align*}
+	\lambda_{i} = \lim\limits_{k\to\infty}\frac{1}{2k}\ln(M^{T}M).
+\end{align*}
+
+Next we consider a proper dynamical system described by a vector field $\vb{f}$ with Jacobian $J$. Any solution is described by the flow map $\phi_{t}$, with Jacobian $M$. Given this we find
+\begin{align*}
+	\delta\dot{\vb{x}} = \dot{M}(\vb{x}_{0}, t)\delta\vb{x}_{0},\ \delta\dot{\vb{x}} = J(\vb{x}_{0}, t)\delta\vb{x},
+\end{align*}
+hence
+\begin{align*}
+	\dot{M}(\vb{x}_{0}, t)\delta\vb{x}_{0} = J(\vb{x}_{0}, t)M(\vb{x}_{0}, t)\delta\vb{x}_{0}.
+\end{align*}
+Formally the solution for $M$ is
+\begin{align*}
+	M(\vb{x}, t) = \torp e^{\integ[]{0}{t}{t}{J(\vb{x}(t), t)}}.
+\end{align*}
+The Lyapunov exponents, in turn, are eigenvalues of
+\begin{align*}
+	\lim\limits_{t\to\infty}\frac{1}{2t}M(\vb{x}, t)^{T}M(\vb{x}, t).
+\end{align*}
+
+To solve this in practice, one could extend the state to include either the small displacement vector or $M$. The exponential increase can quickly cause overflow, however. To mitigate this, one could integrate over a short time and then rescale the small displacement.
+
+\paragraph{Properties of Lyapunov Exponents}
+In general it can be shown that
+\begin{align*}
+	\lim\limits_{t\to\infty}\frac{1}{t}\integ{0}{t}{t}{\div{\vb{f}}(\vb{x}(t))} = \sum\limits_{i = 1}^{n}\lambda_{i}.
+\end{align*}
+The left-hand sum is then zero for a conservative system and negative for a dissipative system. Chaotic systems have at least one positive Lyapunov exponent. For a dynamical system one of the Lyapunov exponents is zero, corresponding to motion along the trajectory.
+
 \paragraph{Strange Attractors}
 A strange attractor is an attractor that exhibits sensitive dependence on the initial condition. It is often a fractal set.
+
+\paragraph{Fractal Dimension}
+Fractal dimension is a quantity describing the geometry of the fractal. Unlike the dimension of other sets, it is not necessarily an integer. There are many ways to define this number.
+
+One definition is the so-called similarity dimension, possibly the Haussdorf dimension, which applies well to self-similar fractals. Given that a scaling by a factor $r$ increases the number of copies of the fractal by a factor $m$, the Haussdorf dimension is defined according to $m = r^{-d}$. 
+
+The next is the box-counting dimension, which asserts that if the fractal can be covered by $N$ boxes of side length $\varepsilon$, then
+\begin{align*}
+	d = \lim\limits_{\varepsilon\to 0}\frac{\ln(N)}{\ln(\frac{1}{\varepsilon})}.
+\end{align*}
+
+Next is the pointwise dimension, more useful for objects of interest to us. To study it, consider a point $\vb{x}$ on a fractal $A$, and let $N_{\vb{x}}(\varepsilon)$ be the number of points on $A$ inside of a ball of radius $\varepsilon$ around $\vb{x}$. The pointwise dimension is defined according to $N_{\vb{x}}(\varepsilon) \propto \varepsilon^{d}$.
+
+There is also the correlation distance, found by computing the average $C(\varepsilon)$ of $N_{x}(\varepsilon)$ over $A$ and defining the dimension according to $C(\varepsilon) \propto \varepsilon^{d}$.
+
+Finally there is the Renyi dimension. To compute it, one first divides the fractal into boxes with side length $\varepsilon$ and computes the density $\rho_{i}$ of points in each box. The dimension, characterized by a number $q$, is then given by
+\begin{align*}
+	d_{q} = \frac{1}{q - 1}\lim\limits_{\varepsilon\to 0}\frac{\ln(\sum\limits_{i}\rho_{i}^{q})}{\ln(\varepsilon)}.
+\end{align*}
+Particular values of $q$ turn out to correspond to other concepts of dimension.
+
+\paragraph{Multifractals}
+A multifractal is a fractal with varying dimension across it. For such a fractal we may consider subsets $S_{\alpha}$ of points where the dimension is $\alpha$. These may themselves be fractals with dimension $f(\alpha)$. The function $f$ is called the multifractal spectrum.
