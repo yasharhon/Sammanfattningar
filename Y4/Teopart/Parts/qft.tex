@@ -166,13 +166,16 @@ At this point we may simplify the propagator by simply choosing $\xi = 1$, netti
 \end{align*}
 
 \paragraph{Dirac Fields}
-%TODO: Finish
 For Dirac fields we will use the normalization
-
-and the completeness relation.
+\begin{align*}
+	\overline{u}u = 2mc,\ \overline{v}v = -2mc
+\end{align*}
+and the completeness relation
+\begin{align*}
+	\sum\limits_{s}u_{s}\overline{u}_{s} = \fsl{p} + m,\ \sum\limits_{s}v_{s}\overline{v}_{s} = \fsl{p} - m.
+\end{align*}
 
 \paragraph{Quantum Electrodynamics}
-%TODO: Finish
 The Dirac field is invariant under a $\text{U}(1)$ symmetry $\psi\to e^{-ieQ\theta}\psi$. The normalization in the exponent contains a parameter $e$ to be discussed, a parameter $Q$ specific to each particle and a parameter $\theta$ accounting for the rest. By convention we take $Q = -1$ for the electron. The corresponding Noether current is
 \begin{align*}
 	j^{\mu} = eQ\overline{\psi}\gamma^{\mu}\psi.
@@ -187,3 +190,109 @@ and requiring $A_{\mu}\to A_{\mu} + \del{}{\mu}\theta$, however, we have a Lagra
 	\lag_{\text{int}} = -eQ\overline{\psi}\gamma^{\mu}\psi A_{\mu}.
 \end{align*}
 This is the interaction term defining quantum electrodynamics. It is a so-called gauge theory based on the $\text{U}(1)$ gauge group.
+
+Let us now consider the corresponding interaction vertex. Note that a single of these does not represent a physical process. To see this, consider the spontaneous emission of a photon from a particle. Denoting the momenta of the particle before and after the emission as $p$ and $k$, and the photon momentum as $q$, we have
+\begin{align*}
+	q^{2} = 2p\cdot q.
+\end{align*}
+Letting the photon have frequency $\omega$ and the particle have energy $E$ we find
+\begin{align*}
+	\omega^{2} - \vb{q}^{2} = 2(E\omega - \vb{p}\cdot\vb{q}).
+\end{align*}
+By the properties of the scalar product we thus find
+\begin{align*}
+	E\omega - \abs{\vb{p}}\abs{\vb{q}} \leq \frac{1}{2}(\omega^{2} - \vb{q}^{2}) \leq E\omega + \abs{\vb{p}}\abs{\vb{q}}.
+\end{align*}
+Assuming the photon to be physical, the center part must be zero. But if the particle is massive, the left-hand side is positive, creating a contradiction. The only way this can be resolved is for the created photon to not be physical, and merely mediate between two vertices.
+
+In terms of spins, one sums over incoming spins and averages over outgoing spins.
+
+\paragraph{Casimir's Trick}
+In QED, at least, we will need to compute expressions of the form
+\begin{align*}
+	\sum\limits_{s}(\overline{u}_{1}Fu_{2})\cc \overline{u}_{1}Gu_{2}
+\end{align*}
+for some spinor $u$ and some matrices $F$ and $G$. To calculate this we use the fact that
+\begin{align*}
+	(\overline{u}_{1}Fu_{2})\cc = u_{2}\adj F\adj\gamma_{0}u_{1} = \overline{u}_{2}\gamma_{0}F\adj\gamma_{0}u_{1}.
+\end{align*}
+Introducing $F^{\ddagger} = \gamma_{0}F\adj\gamma_{0}$ we have $(\overline{u}_{1}Fu_{2})\cc = \overline{u}_{2}F^{\ddagger}u_{1}$. We can now simplify the above as
+\begin{align*}
+	\sum\limits_{s}(\overline{u}_{1}Fu_{2})\cc \overline{u}_{1}Gu_{2} &= \sum\limits_{s}\overline{u}_{2, a}F^{\ddagger}_{ab}u_{1, b}\overline{u}_{1, c}G_{cd}u_{2, d} \\
+	&= F^{\ddagger}_{ab}G_{cd}\sum\limits_{s_{1}}\sum\limits_{s_{2}}u_{1, b}\overline{u}_{1, c}u_{2, d}\overline{u}_{2, a} \\
+	&= F^{\ddagger}_{ab}G_{cd}\sum\limits_{s_{1}}(u_{1}\overline{u}_{1})_{bc}\sum\limits_{s_{2}}(u_{2}\overline{u}_{2})_{da}.
+\end{align*}
+In the two spin sums we have elements of $u\overline{u}$, which are given by the normalization, hence
+\begin{align*}
+	\sum\limits_{s}(\overline{u}_{1}Fu_{2})\cc \overline{u}_{1}Gu_{2} &= F^{\ddagger}_{ab}G_{cd}(\fsl{p}_{1} + \eta_{1}m_{1})_{bc}(\fsl{p}_{2} + \eta_{2}m_{1})_{da} \\
+	&= \tr((\fsl{p}_{1} + \eta_{1}m_{1})G(\fsl{p}_{2} + \eta_{2}m_{1})F^{\ddagger}),
+\end{align*}
+where the $\eta$ are signs which depend on the relevant fermions being particles or antiparticles. 
+
+We will also need a mixing term of the form
+\begin{align*}
+	\sum\limits_{s}(\overline{u}_{1}Au_{2}\overline{u}_{3}Bu_{4})\cc\overline{u}_{3}Cu_{2}\overline{u}_{1}Du_{4} =& \sum\limits_{s}\overline{u}_{2, a}A_{ab}^{\ddagger}u_{1, b}\overline{u}_{4, c}B_{cd}^{\ddagger}u_{3, d}\overline{u}_{3, e}C_{ef}u_{2, f}\overline{u}_{1, g}D_{gh}u_{4, h} \\
+	=& A_{ab}^{\ddagger}B_{cd}^{\ddagger}C_{ef}D_{gh}\sum\limits_{s_{1}}\sum\limits_{s_{2}}\sum\limits_{s_{3}}\sum\limits_{s_{4}}u_{1, b}\overline{u}_{1, g}u_{2, f}\overline{u}_{2, a}u_{3, d}\overline{u}_{3, e}u_{4, h}\overline{u}_{4, c} \\
+	=& A_{ab}^{\ddagger}B_{cd}^{\ddagger}C_{ef}D_{gh}(\fsl{p}_{1} + \eta_{1}m_{1})_{bg}(\fsl{p}_{2} + \eta_{2}m_{2})_{fa}(\fsl{p}_{3} + \eta_{3}m_{3})_{de}(\fsl{p}_{4} + \eta_{4}m_{4})_{hc} \\
+	=& \tr(A^{\ddagger}(\fsl{p}_{1} + \eta_{1}m_{1})D(\fsl{p}_{4} + \eta_{4}m_{4})B^{\ddagger}(\fsl{p}_{3} + \eta_{3}m_{3})C(\fsl{p}_{2} + \eta_{2}m_{2})).
+\end{align*}
+These are the formulae we need, and we will handle them using trace theorems.
+
+\paragraph{Fundamental QED Processes}
+The fundamental QED processes are the simplest processes we can make with QED vertices. By their nature, these are processes with two incoming and two outgoing particles. These are good for demonstrating Feynman diagrams as there are no undetermined momenta in the diagram, hence we don't have to perform any integrals. The first is electron-electron scattering, represented by
+\begin{figure}[!ht]
+	\centering
+	\feynmandiagram[vertical=b to d]{
+		a[particle = $e^{-}$] --[fermion, momentum = $p_{1}$] b --[fermion, momentum' = $p_{3}$] c[particle = $e^{-}$],
+		b --[photon] d,
+		e[particle = $e^{-}$] --[anti fermion, rmomentum' = $p_{4}$] d --[anti fermion, rmomentum = $p_{2}$] f[particle = $e^{-}$]
+	};
+	\caption{Electron-electron scattering Feynman diagram.}
+	\label{fig:eescat}
+\end{figure}
+
+The Feynman rules dictate that
+\begin{align*}
+	iM = \overline{u}(p_{3})ie\gamma^{\mu}u(p_{1})\frac{-ig_{\mu\nu}}{(p_{1} - p_{3})^{2}}\overline{u}(p_{4})ie\gamma^{\nu}u(p_{2}) = ie^{2}\frac{\overline{u}(p_{3})\gamma^{\mu}u(p_{1})\overline{u}(p_{4})\gamma_{\mu}u(p_{2})}{(p_{1} - p_{3})^{2}}.
+\end{align*}
+This isn't quite correct, however - as
+\begin{align*}
+	iM = \mel{p_{3}p_{4}}{S}{p_{1}p_{2}}
+\end{align*}
+and $\ket{p_{3}p_{4}} = -\ket{p_{4}p_{3}}$, $M$ must be antisymmetric under exchange of the outgoing momenta. This amounts to an equivalent diagram adding to $M$, which means that we must subtract the two. We then find
+\begin{align*}
+	iM = ie^{2}\left(\frac{\overline{u}(p_{3})\gamma^{\mu}u(p_{1})\overline{u}(p_{4})\gamma_{\mu}u(p_{2})}{(p_{1} - p_{3})^{2}} - \frac{\overline{u}(p_{4})\gamma^{\mu}u(p_{1})\overline{u}(p_{3})\gamma_{\mu}u(p_{2})}{(p_{1} - p_{4})^{2}}\right).
+\end{align*}
+Using the Mandelstam variables we write this as
+\begin{align*}
+	iM = ie^{2}\left(\frac{T_{1}}{t} - \frac{T_{2}}{u}\right).
+\end{align*}
+Seeking the spin average of $\abs{M}^{2}$ we need to calculate spin sums of the products of the $T$s, which is handled using Casimir's trick. In the high energy regime, we can neglect the electron mass to find
+\begin{align*}
+	\sum\limits_{s}T_{1}\cc T_{1} &= \tr(\fsl{p}_{1}\gamma^{\mu}\fsl{p}_{3}\gamma^{\nu})\tr(\fsl{p}_{4}\gamma_{\mu}\fsl{p}_{2}\gamma_{\nu}) \\
+	                              &= p_{1, \rho}p_{3, \sigma}\tr(\gamma^{\rho}\gamma^{\mu}\gamma^{\sigma}\gamma^{\nu})p_{2}^{\alpha}p_{4}^{\beta}\tr(\gamma_{\alpha}\gamma_{\mu}\gamma_{\beta}\gamma_{\nu}) \\
+	                              &= 16p_{1, \rho}p_{3, \sigma}p_{2}^{\alpha}p_{4}^{\beta}(g^{\rho\mu}g^{\sigma\nu} - g^{\rho\sigma}g^{\mu\nu} + g^{\rho\nu}g^{\sigma\mu})(g_{\alpha\mu}g_{\beta\nu} - g_{\alpha\beta}g_{\mu\nu} + g_{\alpha\nu}g_{\beta\mu}) \\
+	                              &= 16(p_{1}^{\mu}p_{3}^{\nu} - p_{1}^{\sigma}p_{3, \sigma}g^{\mu\nu} + p_{1}^{\nu}p_{3}^{\mu})(p_{2, \mu}p_{4, \nu} - p_{2, \beta}p_{4}^{\beta}g_{\mu\nu} + p_{2, \nu}p_{4, \mu}).
+\end{align*}
+The collision is satisfies the laws of relativistic dynamics, hence $p_{1}\cdot p_{2} = p_{3}\cdot p_{4}$ as well as $p_{1}\cdot p_{4} = p_{3}\cdot p_{2}$, and
+\begin{align*}
+	\sum\limits_{s}T_{1}\cc T_{1} =& 16((p_{1}\cdot p_{2})^{2} - (p_{1}\cdot p_{3})(p_{2}\cdot p_{4}) + (p_{1}\cdot p_{4})^{2} - (p_{1}\cdot p_{3})(p_{2}\cdot p_{4}) + 4(p_{1}\cdot p_{3})(p_{2}\cdot p_{4}) - (p_{1}\cdot p_{3})(p_{2}\cdot p_{4}) \\
+	                               &+ (p_{1}\cdot p_{4})^{2} - (p_{1}\cdot p_{3})(p_{2}\cdot p_{4}) + (p_{1}\cdot p_{2})^{2}) \\
+	                              =& 32((p_{1}\cdot p_{2})^{2} + (p_{1}\cdot p_{4})^{2}).
+\end{align*}
+Similarly, by exchanging $p_{3}$ and $p_{4}$ we find
+\begin{align*}
+	\sum\limits_{s}T_{2}\cc T_{2} =& 32((p_{1}\cdot p_{2})^{2} + (p_{1}\cdot p_{3})^{2}).
+\end{align*}
+Finally we have the mixed term, given by
+\begin{align*}
+	\sum\limits_{s}T_{1}\cc T_{2} =& \tr(\gamma^{\mu}\fsl{p}_{3}\gamma_{\nu}\fsl{p}_{2}\gamma_{\mu}\fsl{p}_{4}\gamma^{\nu}\fsl{p}_{1}) \\
+	=& \tr(\fsl{p}_{4}\gamma^{\nu}\fsl{p}_{1}\gamma^{\mu}\fsl{p}_{3}\gamma_{\nu}\fsl{p}_{2}\gamma_{\mu}) \\
+	=& -2\tr(\fsl{p}_{4}\fsl{p}_{3}\gamma^{\mu}\fsl{p}_{1}\fsl{p}_{2}\gamma_{\mu}) \\
+	=& -8\tr(\fsl{p}_{4}\fsl{p}_{3}p_{1}\cdot p_{2}) \\
+	=& -32(p_{1}\cdot p_{2})^{2}.
+\end{align*}
+This is real, and therefore equal to its complex conjugate. Finally, neglecting masses we have
+\begin{align*}
+	\overline{M}^{2} = 32e^{4}\left(\frac{s^{2} + u^{2}}{t^{2}} + \frac{s^{2} + t^{2}}{u^{2}} + \frac{2s^{2}}{tu}\right).
+\end{align*}
