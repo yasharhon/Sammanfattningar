@@ -185,7 +185,16 @@ Extending $\theta$ to be a function on spacetime breaks this symmetry for the st
 \begin{align*}
 	D_{\mu} = \del{}{\mu} + ieA_{\mu}
 \end{align*}
-and requiring $A_{\mu}\to A_{\mu} + \del{}{\mu}\theta$, however, we have a Lagrangian that respects this symmetry. This is called a gauge symmetry, and corresponds to a gauge theory realized by gauge bosons. We identify this field with the 4-potential and the corresponding transformation as a gauge transformation, adding its contribution to the total Lagrangian. The result when comparing to the non-interacting case is thus an interaction term
+and requiring $A_{\mu}\to A_{\mu} + \del{}{\mu}\theta$, however, we have a Lagrangian that respects this symmetry. This is called a gauge symmetry, and corresponds to a gauge theory realized by gauge bosons. We identify this field with the 4-potential and the corresponding transformation as a gauge transformation, adding its contribution to the total Lagrangian. To include the gauge field in the Lagrangian, we will need the field strength tensor. We already know how to get it, but I note the result
+\begin{align*}
+	\comm{D_{\mu}}{D_{\nu}} &= (\del{}{\mu} + ieA_{\mu})(\del{}{\nu} + ieA_{\nu}) - (\del{}{\nu} + ieA_{\nu})(\del{}{\mu} + ieA_{\mu}) \\
+	                        &= ie(\del{}{\mu}A_{\nu} + A_{\mu}\del{}{\nu} - \del{}{\nu}A_{\mu} - A_{\nu}\del{}{\mu})  \\
+	                        &= ie(\del{}{\mu}(A_{\nu}) + A_{\nu}\del{}{\mu} + A_{\mu}\del{}{\nu} - \del{}{\nu}(A_{\mu}) - A_{\mu}\del{}{\nu} - A_{\nu}\del{}{\mu}) \\
+	                        &= ieF_{\mu\nu},
+\end{align*}
+which will be useful later.
+
+When comparing to the non-interacting case, we find an interaction term
 \begin{align*}
 	\lag_{\text{int}} = -eQ\overline{\psi}\gamma^{\mu}\psi A_{\mu}.
 \end{align*}
@@ -296,3 +305,166 @@ This is real, and therefore equal to its complex conjugate. Finally, neglecting 
 \begin{align*}
 	\overline{M}^{2} = 32e^{4}\left(\frac{s^{2} + u^{2}}{t^{2}} + \frac{s^{2} + t^{2}}{u^{2}} + \frac{2s^{2}}{tu}\right).
 \end{align*}
+
+\paragraph{Non-Abelian Gauge Theory}
+The gauge theory of QED is an example of an Abelian gauge theory. For the non-Abelian case, consider a representation $R$ of \SU{N} with dimension $d_{R}$ acting on some multiplet $\Psi$. To add gauge theory, we suppose that the components of $\Psi$ have some internal structure, either that of bosonic or fermionic fields, all with the same mass. As we saw for the QED case, any constant unitary operator $U$ leaves the laws of physics invariant. Allowing $U$ to have spacetime dependence, however, messes with this, in particular the invariance of derivatives. To remedy this, we will introduce a covariant derivative
+\begin{align*}
+	D_{\mu} = \del{}{\mu} + igT_{a}A_{\mu}^{a} = \del{}{\mu} + ig\textbf{A}_{\mu},
+\end{align*}
+which contains some coupling constant $g$, the generators $T_{a}$ of \SU{N} and the gauge fields $A_{\mu}^{a}$. This derivative has a matrix structure, and in the final expression, this structure has been baked into the field. The laws of physics will be invariant if
+\begin{align*}
+	D_{\mu}\Psi \to UD_{\mu}\p \Psi
+\end{align*}
+under a transformation. We have
+\begin{align*}
+	D_{\mu}\p(U\Psi) &= (\del{}{\mu} + igT_{a}(A\p)_{\mu}^{a})\left(e^{-igT_{a}\theta^{a}}\Psi\right) \\
+	               &= -igT_{a}\del{}{\mu}\theta^{a}e^{-igT_{a}\theta^{a}}\Psi + e^{-igT_{a}\theta^{a}}\del{}{\mu}\Psi + igT_{a}(A\p)_{\mu}^{a}e^{-igT_{a}\theta^{a}}\Psi \\
+	               &= U\del{}{\mu}\Psi + \left(igT_{a}(A\p)_{\mu}^{a} - igT_{a}\del{}{\mu}\theta^{a}\right)U\Psi.
+\end{align*}
+For the transformation rule to be fulfilled, we therefore require
+\begin{align*}
+	\left(igT_{a}(A\p)_{\mu}^{a} - igT_{a}\del{}{\mu}\theta^{a}\right)U = igUT_{a}A_{\mu}^{a}.
+\end{align*}
+There are two ways to write the condition. The first is representation dependent, and found by combining the generators and the gauge fields to obtain matrix structure, yielding
+\begin{align*}
+	igA\p_{\mu}U + \del{}{\mu}U = igUA_{\mu},
+\end{align*}
+with solution
+\begin{align*}
+	\textbf{A}\p_{\mu} = U\textbf{A}_{\mu}U\adj + \frac{i}{g}(\del{}{\mu}U)U\adj.
+\end{align*}
+The other is to write the above without the matrix structure in the fields as
+\begin{align*}
+	T_{a}(A\p)_{\mu}^{a} = UT_{a}U\adj A_{\mu}^{a} - \frac{i}{g}(igT_{a}\del{}{\mu}\theta^{a})UU\adj = UT_{a}U\adj A_{\mu}^{a} + T_{a}\del{}{\mu}\theta^{a}.
+\end{align*}
+We can expand the first term according to
+\begin{align*}
+	UT_{a}U\adj &\approx \left(1 - igT_{b}\theta^{b}\right)T_{a}\left(1 + igT_{c}\theta^{c}\right) \\
+	            &\approx T_{a} + ig\left(T_{a}T_{c}\theta^{c} - T_{b}T_{a}\theta^{b}\right) \\
+	            &= T_{a} + ig\comm{T_{a}}{T_{b}}\theta^{b} \\
+	            &= T_{a} - gf_{abc}T_{c}\theta^{b},
+\end{align*}
+hence
+\begin{align*}
+	T_{a}(A\p)_{\mu}^{a} &= T_{a}A_{\mu}^{a} - gf_{abc}T_{c}\theta^{b}A_{\mu}^{a} + T_{a}\del{}{\mu}\theta^{a} \\
+	                     &= T_{a}\left(A_{\mu}^{a} + gf_{bca}\theta^{b}A_{\mu}^{c} + \del{}{\mu}\theta^{a}\right)
+\end{align*}
+and
+\begin{align*}
+	(A\p)_{\mu}^{a} = A_{\mu}^{a} + gf_{bca}\theta^{b}A_{\mu}^{c} + \del{}{\mu}\theta^{a}.
+\end{align*}
+We can invoke the adjoint representation, here denoted by elements with small $t$, to find
+\begin{align*}
+	(A\p)_{\mu}^{a} = A_{\mu}^{a} - ig(t_{b})_{ac}\theta^{b}A_{\mu}^{c} + \del{}{\mu}\theta^{a}.
+\end{align*}
+This is interesting, as it means that under global transformations, gauge fields always transform according to the adjoint representation.
+
+The gauge fields should be included in the Lagrangian as well. We choose the same form for the Lagrangian as we did for $\text{U}(1)$, but will need an expression for the field strength. We showed a commutation relation previously, and we take that to be defining for the field strength. That is,
+\begin{align*}
+	igT_{a}F_{\mu\nu}^{a} &= \comm{D_{\mu}}{D_{\nu}}.
+\end{align*}
+One of the derivative products is given by
+\begin{align*}
+	(\del{}{\mu} + igT_{a}A_{\mu}^{a})(\del{}{\nu} + igT_{b}A_{\nu}^{b}) &= \del{}{\mu}\del{}{\nu} + ig(\del{}{\mu}T_{a}A_{\nu}^{a} + T_{b}A_{\mu}^{b}\del{}{\nu}) - g^{2}T_{a}T_{b}A_{\mu}^{a}A_{\nu}^{b},
+\end{align*}
+hence
+\begin{align*}
+	\comm{D_{\mu}}{D_{\nu}} &= igT_{a}(\del{}{\mu}A_{\nu}^{a} + A_{\mu}^{a}\del{}{\nu} - \del{}{\nu}A_{\mu}^{a} - A_{\nu}^{a}\del{}{\mu}) - g^{2}A_{\mu}^{a}A_{\nu}^{b}\comm{T_{a}}{T_{b}} \\
+	                        &= igT_{a}(\del{}{\mu}(A_{\nu}^{a}) - \del{}{\nu}(A_{\mu}^{a})) - ig^{2}A_{\mu}^{a}A_{\nu}^{b}f_{abc}T_{c} \\
+	                        &= igT_{a}\left(\del{}{\mu}(A_{\nu}^{a}) - \del{}{\nu}(A_{\mu}^{a}) - gf_{bca}A_{\mu}^{b}A_{\nu}^{c}\right),
+\end{align*}
+hence
+\begin{align*}
+	F_{\mu\nu}^{a} = \del{}{\mu}(A_{\nu}^{a}) - \del{}{\nu}(A_{\mu}^{a}) - gf_{bca}A_{\mu}^{b}A_{\nu}^{c}.
+\end{align*}
+Alternatively we may write this as
+\begin{align*}
+	\textbf{F}_{\mu\nu} = T_{a}F^{a}_{\mu\nu} = \del{}{\mu}(\textbf{A}_{\nu}) - \del{}{\nu}(\textbf{A}_{\mu}) + ig\comm{\textbf{A}_{\mu}}{\textbf{A}_{\nu}}
+\end{align*}
+Let us now consider its gauge transformation properties, best demonstrated with the representation-dependent formalism. We have
+\begin{align*}
+	\textbf{F}_{\mu\nu}\p &= \del{}{\mu}\left(U\textbf{A}_{\nu}U\adj + \frac{i}{g}(\del{}{\nu}U)U\adj\right) - \del{}{\nu}\left(U\textbf{A}_{\mu}U\adj + \frac{i}{g}(\del{}{\mu}U)U\adj\right) + ig\comm{U\textbf{A}_{\mu}U\adj + \frac{i}{g}(\del{}{\mu}U)U\adj}{U\textbf{A}_{\nu}U\adj + \frac{i}{g}(\del{}{\nu}U)U\adj}.
+\end{align*}
+Woah, that is a lot of terms. We can eliminate a few of them, however, using the following results:
+\begin{align*}
+	&\comm{U\textbf{A}_{\mu}U\adj}{U\textbf{A}_{\nu}U\adj} = U\comm{\textbf{A}_{\mu}}{\textbf{A}_{\nu}}U\adj, \\
+	&\del{}{\mu}(UU\adj) = 0 \implies \del{}{\mu}(U\adj) = -U\adj\del{}{\mu}(U)U\adj.
+\end{align*}
+Next we have
+\begin{align*}
+	\del{}{\mu}\left(U\textbf{A}_{\nu}U\adj + \frac{i}{g}(\del{}{\nu}U)U\adj\right) &= \del{}{\mu}(U)\textbf{A}_{\nu}U\adj + U\del{}{\mu}(\textbf{A}_{\nu})U\adj - U\textbf{A}_{\nu}U\adj\del{}{\mu}(U)U\adj + \frac{i}{g}\left((\del{}{\mu}\del{}{\nu}U)U\adj + (\del{}{\nu}U)(\del{}{\mu}U\adj)\right) \\
+	&= \del{}{\mu}(U)\textbf{A}_{\nu}U\adj + U\del{}{\mu}(\textbf{A}_{\nu})U\adj - U\textbf{A}_{\nu}U\adj\del{}{\mu}(U)U\adj + \frac{i}{g}\left((\del{}{\mu}\del{}{\nu}U)U\adj - (\del{}{\nu}U)U\adj(\del{}{\mu}U)U\adj\right), \\
+	\comm{U\textbf{A}_{\mu}U\adj}{(\del{}{\nu}U)U\adj} &= U\textbf{A}_{\mu}U\adj(\del{}{\nu}U)U\adj - (\del{}{\nu}U)U\adj U\textbf{A}_{\mu}U\adj \\
+	&= U\textbf{A}_{\mu}U\adj(\del{}{\nu}U)U\adj - (\del{}{\nu}U)\textbf{A}_{\mu}U\adj, \\
+	\comm{(\del{}{\mu}U)U\adj}{(\del{}{\nu}U)U\adj} &= (\del{}{\mu}U)U\adj(\del{}{\nu}U)U\adj - (\del{}{\nu}U)U\adj(\del{}{\mu}U)U\adj.
+\end{align*}
+We can now look at the terms with and without gauge fields separately. The first add to
+\begin{align*}
+	 &\del{}{\mu}(U)\textbf{A}_{\nu}U\adj + U\del{}{\mu}(\textbf{A}_{\nu})U\adj - U\textbf{A}_{\nu}U\adj\del{}{\mu}(U)U\adj - \left(\del{}{\nu}(U)\textbf{A}_{\mu}U\adj + U\del{}{\nu}(\textbf{A}_{\mu})U\adj - U\textbf{A}_{\mu}U\adj\del{}{\nu}(U)U\adj\right) \\
+	-& \left(U\textbf{A}_{\mu}U\adj(\del{}{\nu}U)U\adj - (\del{}{\nu}U)\textbf{A}_{\mu}U\adj - \left(U\textbf{A}_{\nu}U\adj(\del{}{\mu}U)U\adj - (\del{}{\mu}U)\textbf{A}_{\nu}U\adj\right)\right) \\
+	=& U\left(\del{}{\mu}(\textbf{A}_{\nu}) - \del{}{\nu}(\textbf{A}_{\mu})\right)U\adj.
+\end{align*}
+Naturally the commutator also produces a term $U\comm{\textbf{A}_{\mu}}{\textbf{A}_{\nu}}U\adj$. The other terms add up to 
+\begin{align*}
+	&\frac{i}{g}\left((\del{}{\mu}\del{}{\nu}U)U\adj - (\del{}{\nu}U)U\adj(\del{}{\mu}U)U\adj - (\del{}{\nu}\del{}{\mu}U)U\adj + (\del{}{\mu}U)U\adj(\del{}{\nu}U)U\adj\right) - \frac{i}{g}\left((\del{}{\mu}U)U\adj(\del{}{\nu}U)U\adj - (\del{}{\nu}U)U\adj(\del{}{\mu}U)U\adj\right),
+\end{align*}
+which add up to zero. Thus we have
+\begin{align*}
+	\textbf{F}_{\mu\nu}\p = U\textbf{F}_{\mu\nu}U\adj.
+\end{align*}
+Constructing $\textbf{F}_{\mu\nu}\adj\textbf{F}^{\mu\nu}$ guarantees Lorentz invariance, but this object still has matrix structure, and it is not gauge invariant. We can, however, construct $\tr(\textbf{F}_{\mu\nu}\adj\textbf{F}^{\mu\nu})$, with tracing over the multiplet space, which is gauge invariant. We can write this as
+\begin{align*}
+	\tr(\textbf{F}_{\mu\nu}\adj\textbf{F}^{\mu\nu}) &= (F_{\mu\nu}^{a})\cc F^{b, \mu\nu}\tr(T_{a}T_{b}) \\
+	                                            &= C(F_{\mu\nu}^{a})\cc F^{b, \mu\nu}\delta_{ab} \\
+	                                            &= C(F_{\mu\nu}^{a})\cc F^{a, \mu\nu},
+\end{align*}
+hence we choose the free-field Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{4}(F_{\mu\nu}^{a})\cc F^{a, \mu\nu}.
+\end{align*}
+
+In general there could be mass terms of the form $A_{\mu}^{a}A^{\mu, a}$ in the Lagrangian, but it turns out that these are not gauge invariant. Thus, as long as the gauge symmetry is exact, the gauge bosons must be massless.
+
+The propagator for this kind of gauge field is generally not defined unless you specify a gauge. The Lagrangian has terms of the same form as in QED, but with some self-interaction terms as well. The free part is the same, however, meaning we can use a gauge fixing term
+\begin{align*}
+	\lag = -\frac{1}{2\xi}(\del{}{\mu}A^{\mu}_{a})\adj (\del{}{\nu}A^{\nu}_{a}).
+\end{align*}
+Now the propagator will be the same as in QED, as will other Feynman rules.
+
+Intrinsic to this kind of field theory is interactions of the gauge field with itself. These may be both cubic and quartic. Introducing $E_{\alpha\beta\gamma\delta} = g_{\alpha\gamma}g_{\beta\delta} - g_{\alpha\delta}g_{\beta\gamma}$ the Feynman rules are
+\begin{align*}
+	gf_{ab\overline{c}}\left(p^{\alpha}E_{\alpha\mu\nu\lambda} + k^{\alpha}E_{\alpha\nu\lambda\mu} + q^{\alpha}E_{\alpha\lambda\mu\nu}\right)
+\end{align*}
+for the cubic vertex and
+\begin{align*}
+	-ig^{2}\left(f_{ab\overline{e}}f_{cde}E_{\mu\nu\lambda\rho} + f_{ac\overline{e}}f_{dbe}E_{\mu\lambda\rho\nu} + f_{ad\overline{e}}f_{bce}E_{\mu\rho\nu\lambda}\right)
+\end{align*}
+for the quartic vertex.
+
+Let us now study the interactions of the gauge fields with matter. Taking the fermionic case first, the field multiplet $\Psi$ is described by
+\begin{align*}
+	\lag = \sum\limits_{i = 1}^{d_{R}}i\overline{\Psi}^{i}\fsl{\del{}{}}\Psi^{i} - m\overline{\Psi}^{i}\Psi^{i}.
+\end{align*}
+In terms of matrix notation we can write this as
+\begin{align*}
+	\lag = i\overline{\Psi}\fsl{\del{}{}}\Psi - m\overline{\Psi}\Psi.
+\end{align*}
+The Dirac matrices work on the individual fields in the multiplet, hence in this notation they are diagonal matrices. Replacing the partial derivative with the covariant derivative ensures gauge symmetry. Emerging from this Lagrangian is now an interaction term
+\begin{align*}
+	\lag_{\text{int}} = -g\overline{\Psi}\fsl{A}\Psi = -g\overline{\Psi}\gamma^{\mu}T_{a}\Psi A_{\mu}^{a}.
+\end{align*}
+This adds a vertex rule $-ig\gamma^{\mu}(T_{a})_{ij}$, where $ij$ are indices specifying the interacting fields.
+
+Next we consider interactions with scalars. The Lagrangian is
+\begin{align*}
+	\lag &= (D_{\mu}\Phi)\adj D^{\mu}\Phi - M^{2}\Phi\adj\Phi \\
+	     &= (\del{}{\mu}\Phi)\adj \del{\mu}{}\Phi + ig\left((\del{}{\mu}\Phi)\adj T_{a}A^{a, \mu}\Phi - \Phi\adj T_{a}\adj (A_{\mu}^{a})\adj\del{\mu}{}\Phi\right) + g^{2}\Phi\adj T_{a}\adj (A_{\mu}^{a})\adj T_{b}A^{b, \mu}\Phi - M^{2}\Phi\adj\Phi \\
+	     &= (\del{}{\mu}\Phi)\adj \del{\mu}{}\Phi + ig\left((\del{}{\mu}\Phi)\adj T_{a}A^{a, \mu}\Phi - \Phi\adj T_{a}\adj (A_{\mu}^{a})\adj\del{\mu}{}\Phi\right) + g^{2}g_{\mu\nu}\Phi\adj T_{a}\adj (A_{\mu}^{a})\adj T_{b}A_{\nu}^{b}\Phi - M^{2}\Phi\adj\Phi.
+\end{align*}
+We thus see that there are two kinds of vertices, one with two particles and one gauge bosons, and one with two particles and two gauge bosons. The corresponding Feynman rules are $-ig(p + p\p)_{\mu}(T_{a})_{ij}$ and $ig^{2}g_{\mu\nu}(T_{a}T_{b} + T_{b}T_{a})_{ij}$. Note that the structure of the generators dictates which particles can interact in both cases.
+
+\paragraph{Quantum Chromodynamics}
+Quantum chromodynamics is the theory of the strong nuclear force. It is a quantized \SU{3} gauge theory. The number 3 is due to the presence of 3 color charges. We choose \SU{3} rather than \SU{2}, despite the latter having a triplet representation because we need a triplet representation for both the quarks and antiquarks, but \SU{2} has only real representations.
+
+%TODO: Add something on Noether currents. See https://physics.stackexchange.com/questions/56886/why-is-color-conserved-in-qcd
+The gauge bosons come in eight forms. They are called gluons.
