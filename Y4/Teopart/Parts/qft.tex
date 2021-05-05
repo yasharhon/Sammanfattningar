@@ -474,10 +474,15 @@ The weak force started as an attempt to describe beta decay. The first attempt w
 
 To remedy the above, one could strengthen the analogy to QED by adding a propagator to the interaction. This would remove the four-fermion vertex, replacing it with vertices involving a vector boson. This boson must be heavy, as it has never been observed. The propagator generally takes the form
 \begin{align*}
-	\frac{-ig_{\mu\nu} - \frac{q_{\mu}q_{\nu}}{M^{2}}}{q^{2} - m^{2}}.
+	\frac{-ig_{\mu\nu} - \frac{q_{\mu}q_{\nu}}{M^{2}}}{q^{2} - M^{2} + iM\Gamma},
 \end{align*}
+where $\Gamma$ is the decay width of the boson.
 
-One important question is why the weak force is so weak. One way to understand this is to compare matrix elements with and without the mediating boson. The latter is of the form
+One important question is why the weak force is so weak. One way to understand this is to compare matrix elements with and without the mediating boson. With the vertex factor
+\begin{align*}
+	-\frac{ig_{\mu\nu}}{2\sqrt{2}}\gamma^{\mu}(1 - \gamma^{5}),
+\end{align*}
+the latter is of the form
 \begin{align*}
 	iM = i\frac{G}{\sqrt{2}}\left(\overline{u}_{3}\gamma^{\mu}(1 - \gamma^{5})u_{1}\right)\left(\overline{u}_{4}\gamma^{\mu}(1 - \gamma^{5})u_{2}\right),
 \end{align*}
@@ -490,3 +495,18 @@ and in the low-energy regime
 	\frac{G}{\sqrt{2}} = \frac{g^{2}}{8M^{2}},
 \end{align*}
 hence the heaviness of the gauge boson makes the effective interaction constant so small.
+
+\paragraph{Cabibo Mixing}
+While lepton generations generally do not mix, the same cannot be said for quark families. This is explained through Cabibo mixing. The idea is that while the up, charm and top quarks couple to the gauge bosons, the others do not. Instead primed versions of these quarks, related to the original ones by a unitary transformation, are coupled to the gauge bosons. The matrix is called the mixing matrix, and is parametrized by three angles and one phase. The consequence of this is that generation-mixing processes are suppressed.
+
+\paragraph{The Neutral Gauge Boson}
+The discussion has so far centered on the charged gauge boson, but there is a neutral one as well, with a vertex factor
+\begin{align*}
+	-\frac{ig_{\mu\nu}}{2\sqrt{2}}\gamma^{\mu}(c_{\text{V}}^{f} - c_{\text{A}}^{f}\gamma^{5}).
+\end{align*}
+The factors $c^{f}$ depend on the involved particles, and the two are generally not equal, meaning that the neutral boson mixes left and right chiral fields. Its propagator is the same as for the charged boson.
+
+A tricky part about this boson being neutral is that it will in certain cases compete with electromagnetic contributions, which are also mediated by a neutral boson. As the latter is much stronger at low energies, there are some difficulties in observing the $Z$ boson.
+
+\paragraph{Electroweak Unification}
+Pairing a lepton and its neutron in a doublet, we note that the vertex factor for an interaction vertex can be written in terms of this doublet, the gamma matrices and a Pauli matrix, which changes leptons to neutrinos and vice versa. Depending on which becomes which, the vertex factor is termed charge-raising or charge-lowering. We can also add the third Pauli matrix, corresponding to a neutral vertex. Now, because the vertex factors are now written in terms of generators of \SU{2}, the doublet may be taken to consist of fields acted on by a gauge group. The generators correspond to weak isospin. The neutral current we are talking about is not observable in itself, however, as it only couples fermions with the same chirality.
