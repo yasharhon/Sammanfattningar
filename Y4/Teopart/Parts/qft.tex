@@ -122,6 +122,105 @@ Using gamma gymnastics we know that $(\fsl{p} - m)(\fsl{p} + m) = p^{2} - m^{2}$
 	i\dirprop{}{}{p} = \frac{i(\fsl{p} + m)}{p^{2} - m^{2}}.
 \end{align*}
 
+\paragraph{Two-Body Scattering Processes}
+Consider a scattering process involving two incoming particles. We generally have
+\begin{align*}
+	\sigma = \frac{1}{4\sqrt{(p_{1}\cdot p_{2})^{2} - m_{1}^{2}m_{2}^{2}}}\left(\prod\limits_{i > 2}\integ[3]{}{}{\vb{p}_{i}}{}\frac{1}{2(2\pi)^{3}E_{i}}\right)(2\pi)^{4}\delta^{4}\left(p_{1} + p_{2} - \sum\limits_{i > 2}p_{i}\right)\abs{M}^{2}
+\end{align*}
+for a scattering process starting with two particles. In particular, for two outgoing particles we have
+\begin{align*}
+	\sigma = \frac{1}{4\sqrt{(p_{1}\cdot p_{2})^{2} - m_{1}^{2}m_{2}^{2}}}\frac{1}{4(2\pi)^{2}}\inte{}{}\dd[3]{\vb{p}_{3}}\dd[3]{\vb{p}_{4}}\frac{1}{E_{3}E_{4}}\delta^{4}\left(p_{1} + p_{2} - \sum\limits_{i > 2}p_{i}\right)\abs{M}^{2}.
+\end{align*}
+Let us first consider the prefactor. We have
+\begin{align*}
+	p_{1}\cdot p_{2} = \frac{1}{2}((p_{1} +  p_{2})^{2} - m_{1}^{2} - m_{2}^{2}) = \frac{1}{2}(s - m_{1}^{2} - m_{2}^{2}),
+\end{align*}
+hence
+\begin{align*}
+	(p_{1}\cdot p_{2})^{2} = \frac{1}{4}(s^{2} - 2sm_{1}^{2} - 2sm_{2}^{2} + 2m_{1}^{2}m_{2}^{2} + m_{1}^{4} + m_{2}^{4}).
+\end{align*}
+Specializing to the case of the incoming particles having identical masses $m$ we find
+\begin{align*}
+	(p_{1}\cdot p_{2})^{2} = \frac{1}{4}(s^{2} - 2sm^{2} - 2sm^{2} + 2m^{4} + m^{4} + m^{4}) = \frac{1}{4}(s^{2} - 4sm^{2} + 4m^{4}),
+\end{align*}
+hence the prefactor is
+\begin{align*}
+	\frac{1}{4\sqrt{\frac{1}{4}(s^{2} - 4sm^{2} + 4m^{4}) - m^{4}}} = \frac{1}{2\sqrt{s^{2} - 4sm^{2}}}.
+\end{align*}
+Specializing to the center-of-momentum frame we have
+\begin{align*}
+	p_{1} = (E, \vb{p}),\ p_{2} = (E, -\vb{p}),
+\end{align*}
+and thus $s = 4E^{2}$
+
+Let us first consider the prefactor. We have
+\begin{align*}
+	p_{1}\cdot p_{2} = E_{1}E_{2} - \vb{p}_{1}\cdot\vb{p}_{2},
+\end{align*}
+hence
+\begin{align*}
+	(p_{1}\cdot p_{2})^{2} = E_{1}^{2}E_{2}^{2} + (\vb{p}_{1}\cdot\vb{p}_{2})^{2} - 2E_{1}E_{2}\vb{p}_{1}\cdot\vb{p}_{2}.
+\end{align*}
+and
+\begin{align*}
+	(p_{1}\cdot p_{2})^{2} - m_{1}^{2}m_{2}^{2} &= E_{1}^{2}E_{2}^{2} + (\vb{p}_{1}\cdot\vb{p}_{2})^{2} - 2E_{1}E_{2}\vb{p}_{1}\cdot\vb{p}_{2} - (E_{1}^{2} - \abs{\vb{p}_{1}}^{2})(E_{2}^{2} - \abs{\vb{p}_{2}}^{2}) \\
+	&= (\vb{p}_{1}\cdot\vb{p}_{2})^{2} - 2E_{1}E_{2}\vb{p}_{1}\cdot\vb{p}_{2} + E_{1}^{2}\abs{\vb{p}_{2}}^{2} + E_{2}^{2}\abs{\vb{p}_{1}}^{2} - \abs{\vb{p}_{1}}^{2}\abs{\vb{p}_{2}}^{2} \\
+	&= E_{1}^{2}E_{2}^{2}\left(\left(\frac{\vb{p}_{1}}{E_{1}}\cdot\frac{\vb{p}_{2}}{E_{2}}\right)^{2} - 2\frac{\vb{p}_{1}}{E_{1}}\cdot\frac{\vb{p}_{2}}{E_{2}} + \abs{\frac{\vb{p}_{1}}{E_{1}}}^{2} + \abs{\frac{\vb{p}_{2}}{E_{2}}}^{2} - \abs{\frac{\vb{p}_{1}}{E_{1}}}^{2}\abs{\frac{\vb{p}_{2}}{E_{2}}}^{2}\right) \\
+	&= E_{1}^{2}E_{2}^{2}\left(\left(\frac{\vb{p}_{1}}{E_{1}}\cdot\frac{\vb{p}_{2}}{E_{2}}\right)^{2} + \abs{\frac{\vb{p}_{1}}{E_{1}} - \frac{\vb{p}_{2}}{E_{2}}}^{2} - \abs{\frac{\vb{p}_{1}}{E_{1}}}^{2}\abs{\frac{\vb{p}_{2}}{E_{2}}}^{2}\right).
+\end{align*}
+In particular, in the center-of-momentum frame we find
+\begin{align*}
+	(p_{1}\cdot p_{2})^{2} - m_{1}^{2}m_{2}^{2} &= E_{1}^{2}E_{2}^{2}\abs{\frac{\vb{p}_{1}}{E_{1}} - \frac{\vb{p}_{2}}{E_{2}}}^{2}= E_{1}^{2}E_{2}^{2}v_{\text{rel}}^{2}.
+\end{align*}
+In this frame we also have $s = (E_{1} + E_{2})^{2}$. Now, integrating out one 3-momentum we find
+\begin{align*}
+	\sigma &= \frac{1}{64\pi^{2}E_{1}E_{2}v_{\text{rel}}}\inte{}{}\dd[3]{\vb{p}_{3}}\frac{1}{E_{3}(\vb{p}_{3})E_{4}(\vb{p}_{1} + \vb{p}_{2} - \vb{p}_{3})}\delta\left(E_{1} + E_{2} - E_{3}(\vb{p}_{3}) - E_{4}(\vb{p}_{1} + \vb{p}_{2} - \vb{p}_{3})\right)\abs{M}^{2} \\
+	       &= \frac{1}{64\pi^{2}E_{1}E_{2}v_{\text{rel}}}\inte{}{}\dd[3]{\vb{p}_{3}}\frac{1}{E_{3}(\vb{p}_{3})E_{4}(-\vb{p}_{3})}\delta\left(E_{1} + E_{2} - E_{3}(\vb{p}_{3}) - E_{4}(-\vb{p}_{3})\right)\abs{M}^{2},
+\end{align*}
+where we have made the dependence on the various energies explicit. The energy is a function of the  magnitude of the momentum only, hence we can convert to spherical coordinates to find
+\begin{align*}
+	\dv{\sigma}{\Omega} &= \frac{1}{64\pi^{2}E_{1}E_{2}v_{\text{rel}}}\inte{0}{\infty}\dd{p_{3}}p_{3}^{2}\frac{1}{E_{3}(p_{3})E_{4}(p_{3})}\delta\left(\sqrt{s} - E_{3}(p_{3}) - E_{4}(p_{3})\right)\abs{M}^{2}.
+\end{align*}
+Take $f(p_{3}) = \sqrt{s} - E_{3}(p_{3}) - E_{4}(p_{3})$. We then find
+\begin{align*}
+	\dv{f}{p_{3}} = -\frac{2p_{3}}{2\sqrt{m_{3}^{2} + p_{3}^{2}}} - \frac{2p_{3}}{2\sqrt{m_{4}^{2} + p_{3}^{2}}} = -p_{3}\left(\frac{1}{E_{3}} + \frac{1}{E_{4}}\right).
+\end{align*}
+To complete this calculation we will need the values of the outgoing energies and momenta given the incoming ones. Conservation of energy implies
+\begin{align*}
+	\sqrt{m_{3}^{2} + p_{3}^{2}} + \sqrt{m_{4}^{2} + p_{3}^{2}} = \sqrt{s},
+\end{align*}
+which squares to
+\begin{align*}
+	m_{3}^{2} + p_{3}^{2} = s + m_{4}^{2} + p_{3}^{2} - 2\sqrt{sm_{4}^{2} + sp_{3}^{2}}.
+\end{align*}
+Rearranging we find
+\begin{align*}
+	E_{4} = \sqrt{m_{4}^{2} + p_{3}^{2}} = \frac{1}{2\sqrt{s}}(s + m_{4}^{2} - m_{3}^{2}).
+\end{align*}
+We then have
+\begin{align*}
+	E_{3} = \sqrt{s} - E_{3} = \frac{1}{2\sqrt{s}}(2s - s - m_{4}^{2} + m_{3}^{2}) = \frac{1}{2\sqrt{s}}(2s + m_{3}^{2} - m_{4}^{2}).
+\end{align*}
+The value of $p_{3}$ is given by
+\begin{align*}
+	m_{4}^{2} + p_{3}^{2} = \frac{1}{4s}(s^{2}+ 2sm_{4}^{2} - 2sm_{3}^{2} - 2m_{4}^{2}m_{3}^{2} + m_{4}^{4} + m_{3}^{4}),
+\end{align*}
+and thus
+\begin{align*}
+	p_{3} = \frac{1}{2\sqrt{s}}\sqrt{s^{2} - 2sm_{4}^{2} - 2sm_{3}^{2} - 2m_{4}^{2}m_{3}^{2} + m_{4}^{4} + m_{3}^{4}}.
+\end{align*}
+We then have
+\begin{align*}
+	\dv{\sigma}{\Omega} &= \frac{1}{64\pi^{2}E_{1}E_{2}v_{\text{rel}}}\frac{p_{3}^{2}}{E_{3}(p_{3})E_{4}(p_{3})}\frac{1}{p_{3}\left(\frac{1}{E_{3}} + \frac{1}{E_{4}}\right)}\abs{M}^{2} \\
+	                    &= \frac{1}{64\pi^{2}E_{1}E_{2}\abs{\frac{p_{1}}{E_{1}} + \frac{p_{1}}{E_{2}}}}\frac{p_{3}}{\left(E_{3} + E_{4}\right)}\abs{M}^{2} \\
+	                    &= \frac{1}{64\pi^{2}\sqrt{s}(E_{1} + E_{2})}\frac{p_{3}}{p_{1}}\abs{M}^{2} \\
+	                    &= \frac{1}{64\pi^{2}s}\frac{p_{3}}{p_{1}}\abs{M}^{2}.
+\end{align*}
+In particular, for elastic scattering processes we find
+\begin{align*}
+	\dv{\sigma}{\Omega} &= \frac{1}{64\pi^{2}s}\abs{M}^{2}.
+\end{align*}
+
 \paragraph{The Electromagnetic Field and its Complications}
 For a general gauge the Lagrangian for the electromagnetic field is
 \begin{align*}
@@ -276,6 +375,9 @@ Using the Mandelstam variables we write this as
 \begin{align*}
 	iM = ie^{2}\left(\frac{T_{1}}{t} - \frac{T_{2}}{u}\right).
 \end{align*}
+
+In a final amplitude, how do we handle spin? We typically assume the incoming particles to not be spin-polarized, hence we average over those. For the outgoing spins, we sum over them as we take them to be distinct contributions to the amplitude. As the spin channels can be separated out, this is all done on the level of matrix elements, i.e. in $\abs{M}^{2}$.
+
 Seeking the spin average of $\abs{M}^{2}$ we need to calculate spin sums of the products of the $T$s, which is handled using Casimir's trick. In the high energy regime, we can neglect the electron mass to find
 \begin{align*}
 	\sum\limits_{s}T_{1}\cc T_{1} &= \tr(\fsl{p}_{1}\gamma^{\mu}\fsl{p}_{3}\gamma^{\nu})\tr(\fsl{p}_{4}\gamma_{\mu}\fsl{p}_{2}\gamma_{\nu}) \\
@@ -370,10 +472,10 @@ One of the derivative products is given by
 hence
 \begin{align*}
 	\comm{D_{\mu}}{D_{\nu}} &= igT_{a}(\del{}{\mu}A_{\nu}^{a} + A_{\mu}^{a}\del{}{\nu} - \del{}{\nu}A_{\mu}^{a} - A_{\nu}^{a}\del{}{\mu}) - g^{2}A_{\mu}^{a}A_{\nu}^{b}\comm{T_{a}}{T_{b}} \\
-	                        &= igT_{a}(\del{}{\mu}(A_{\nu}^{a}) - \del{}{\nu}(A_{\mu}^{a})) - ig^{2}A_{\mu}^{a}A_{\nu}^{b}f_{abc}T_{c} \\
+	                        &= igT_{a}(\del{}{\mu}(A_{\nu}^{a}) + A_{\nu}^{a}\del{}{\mu}  + A_{\mu}^{a}\del{}{\nu} - \del{}{\nu}(A_{\mu}^{a}) - A_{\mu}^{a}\del{}{\nu} - A_{\nu}^{a}\del{}{\mu}) - ig^{2}A_{\mu}^{a}A_{\nu}^{b}f_{abc}T_{c} \\
 	                        &= igT_{a}\left(\del{}{\mu}(A_{\nu}^{a}) - \del{}{\nu}(A_{\mu}^{a}) - gf_{bca}A_{\mu}^{b}A_{\nu}^{c}\right),
 \end{align*}
-hence
+and
 \begin{align*}
 	F_{\mu\nu}^{a} = \del{}{\mu}(A_{\nu}^{a}) - \del{}{\nu}(A_{\mu}^{a}) - gf_{bca}A_{\mu}^{b}A_{\nu}^{c}.
 \end{align*}
@@ -508,5 +610,123 @@ The factors $c^{f}$ depend on the involved particles, and the two are generally 
 
 A tricky part about this boson being neutral is that it will in certain cases compete with electromagnetic contributions, which are also mediated by a neutral boson. As the latter is much stronger at low energies, there are some difficulties in observing the $Z$ boson.
 
+\paragraph{Spontaneous Symmetry Breaking}
+Consider a theory for a charged scalar field described by
+\begin{align*}
+	\lag = (\del{}{\mu}\phi)\cc\del{\mu}{}\phi - V(\phi\cc\phi).
+\end{align*}
+Evidently the Lagrangian has a $\text{U}(1)$ symmetry, but depending on the form of $V$ there might be more to this. For instance, consider
+\begin{align*}
+	V(\phi\cc\phi) = \mu^{2}\phi\cc\phi + \lambda(\phi\cc\phi)^{2}.
+\end{align*}
+For this Lagrangian to produce reasonable dynamics, $\lambda$ must be positive. There is no such restriction on $\mu^{2}$, however, beyond it being real. In fact, if it is negative we find that $V$ has a minimum for a solution $\expval{\phi}$ that satisfies
+\begin{align*}
+	\abs{\expval{\phi}} = \sqrt{-\frac{\mu^{2}}{2\lambda}} = \frac{v}{\sqrt{2}}.
+\end{align*}
+
+Let us now consider the dynamics of the field $\phi = \frac{1}{\sqrt{2}}(v + H(x) + i\zeta(x))$, where $H$ and $\zeta$ are fields representing small deviations from the minimum. Taking the equalities below to be up to  total derivatives we find
+\begin{align*}
+	\lag =& \frac{1}{2}\left(\del{}{\mu}H - i\del{}{\mu}\zeta\right)\left(\del{\mu}{}H + i\del{\mu}{}\zeta\right) - \frac{\mu^{2}}{2}\left((v + H)^{2} + \zeta^{2}\right) - \frac{\lambda}{4}\left((v + H)^{2} + \zeta^{2}\right)^{2} \\
+	     =& \frac{1}{2}\left(\del{}{\mu}H\del{\mu}{}H + \del{}{\mu}\zeta\del{\mu}{}\zeta\right) - \frac{\mu^{2}}{2}\left(v^{2} + H^{2} + 2vH + \zeta^{2}\right) - \frac{\lambda}{4}\left(v^{2} + H^{2} + 2vH + \zeta^{2}\right)^{2} \\
+	     =& \frac{1}{2}\left(\del{}{\mu}H\del{\mu}{}H + \del{}{\mu}\zeta\del{\mu}{}\zeta\right) + \frac{\lambda v^{2}}{2}\left(H^{2} + 2vH + \zeta^{2}\right) \\
+	      &- \frac{\lambda}{4}\left(6v^{2}H^{2} + 4v^{3}H + 2v^{2}\zeta^{2} + H^{4} + 4vH^{3} + 2H^{2}\zeta^{2} + 4vH\zeta^{2} + \zeta^{4}\right) \\
+	     =& \frac{1}{2}\left(\del{}{\mu}H\del{\mu}{}H + \del{}{\mu}\zeta\del{\mu}{}\zeta\right) + \frac{\lambda}{2}\left(v^{2}H^{2} + 2v^{3}H + v^{2}\zeta^{2} - 3v^{2}H^{2} - 2v^{3}H - v^{2}\zeta^{2} - 2vH^{3} \right. \\
+	      &- \left. H^{2}\zeta^{2} - 2vH\zeta^{2} - \frac{1}{2}H^{2} - \frac{1}{2}\zeta^{4}\right) \\
+	     =& \frac{1}{2}\left(\del{}{\mu}H\del{\mu}{}H + \del{}{\mu}\zeta\del{\mu}{}\zeta\right) - \frac{\lambda}{2}\left(2v^{2}H^{2} + 2vH^{3} + H^{2}\zeta^{2} + 2vH\zeta^{2} + \frac{1}{2}H^{4} + \frac{1}{2}\zeta^{4}\right) \\
+	     =& \frac{1}{2}\left(\del{}{\mu}H\del{\mu}{}H + \del{}{\mu}\zeta\del{\mu}{}\zeta\right) - \lambda\left(v^{2}H^{2} + vH^{3} + \frac{1}{2}H^{2}\zeta^{2} + vH\zeta^{2} + \frac{1}{4}H^{4} + \frac{1}{4}\zeta^{4}\right) \\
+	     =& \frac{1}{2}\left(\del{}{\mu}H\del{\mu}{}H + \del{}{\mu}\zeta\del{\mu}{}\zeta\right) - \lambda\left(v^{2}H^{2} + vH(H^{2} + \zeta^{2}) + \frac{1}{4}\left(H^{2} + \zeta^{2}\right)^{2}\right)
+\end{align*}
+The interaction term now contains two factors of $H$ that break the symmetry. Note also the appearance of a mass term for $H$, but not $\zeta$.
+
+What we see here is that while the Lagrangian itself may respect the symmetry, a particular realization of the symmetry may approach a minimum, thereby breaking the symmetry. Because the system finds minima of $V$ spontaneously, this mechanism is called spontaneous symmetry breaking.
+
+Let us study a non-Abelian theory in a similar way. We can construct such a theory by using $\phi\adj\phi$ in the previous Lagrangian. Considering fluctuations around a minimum where only $\phi_{1}$ is non-zero we find that the other fields appear in the exact same fashion, meaning that the full \SU{N} symmetry has been broken to \SU{N - 1}.
+
+We have thus far considered global symmetries, but what about local ones? Let us consider a system with a local $\text{U}(1)$ symmetry. The Lagrangian is
+\begin{align*}
+	\lag = (D_{\mu}\phi)\cc D^{\mu}\phi - V(\phi\cc\phi) - \frac{1}{4}F^{\mu\nu}F_{\mu\nu}.
+\end{align*}
+Supposing that the potential has a minimum of the same form as previously seen, the derivative terms will produce one factor
+\begin{align*}
+	\frac{1}{2}(D_{\mu}v)\cc D^{\mu}v = \frac{1}{2}v^{2}e^{2}A^{\mu}A_{\mu}.
+\end{align*}
+This is a mass term for the gauge fields, produced by the breaking of the local symmetry.
+
+It turns out that the $\zeta$ field can be eliminated for the case of local symmetries. To see this, consider the higher-order version
+\begin{align*}
+	\phi = \frac{1}{\sqrt{2}}(v + H)e^{-i\frac{\zeta}{v}}
+\end{align*}
+of the previously studied fluctuation. Because we have a local symmetry, the exponential factor can be removed, eliminating $\zeta$ from the Lagrangian. The field we removed in fact corresponds to the Goldstone boson. This is one way to view the gauge known as the unitary gauge.
+
+\paragraph{Goldstone's Theorem}
+Goldstone's theorem states that if a system breaks a symmetry with $n$ generators to one with $m$ generators, the theory has $n - m$ massless states. These are called Goldstone bosons.
+
 \paragraph{Electroweak Unification}
-Pairing a lepton and its neutron in a doublet, we note that the vertex factor for an interaction vertex can be written in terms of this doublet, the gamma matrices and a Pauli matrix, which changes leptons to neutrinos and vice versa. Depending on which becomes which, the vertex factor is termed charge-raising or charge-lowering. We can also add the third Pauli matrix, corresponding to a neutral vertex. Now, because the vertex factors are now written in terms of generators of \SU{2}, the doublet may be taken to consist of fields acted on by a gauge group. The generators correspond to weak isospin. The neutral current we are talking about is not observable in itself, however, as it only couples fermions with the same chirality.
+Physicists in the 20th century wanted to unite the electromagnetic and weak interactions into a single theory. The disparity in strength had already been explained by the difference in masses of the mediators, but this still left the question of why the photon was massless but the $W$ and $Z$ bosons were not. Furthermore, the QED vertex has pure vector structure, whereas the weak vertex also has an axial vector part. These were two challenges in uniting the two.
+
+To remedy this, we absorb the VA structure into the spinor, only considering the left-hand projection of the spinor from now on (this is the projection that appears in the interaction vertex). For antiparticles, we similarly consider the right-hand projection (which is still termed left-hand, as its absence from the Dirac sea behaves as being left-handed). Looking at the Dirac structure of a weak interaction vertex we have
+\begin{align*}
+	j_{\mu}^{-} &= \overline{\nu}\gamma_{\mu}\frac{1 - \gamma^{5}}{2}e \\
+	            &= \overline{\nu}\gamma_{\mu}\left(\frac{1 - \gamma^{5}}{2}\right)^{2}e \\
+	            &= \overline{\nu}\frac{1 + \gamma^{5}}{2}\gamma_{\mu}\frac{1 - \gamma^{5}}{2}e \\
+	            &= \overline{\nu}_{\text{L}}\gamma_{\mu}e_{\text{L}}.
+\end{align*}
+This is a vector coupling, but only between fields of the same handedness. The electromagnetic interaction can similarly be written as
+\begin{align*}
+	j_{\mu}^{\text{em}} &= -\left(\overline{e}_{\text{R}}\gamma_{\mu}e_{\text{R}} + \overline{e}_{\text{L}}\gamma_{\mu}e_{\text{L}}\right),
+\end{align*}
+with no cross terms as $\gamma^{5}$ squares to $1$. The factor of $-1$ comes from the electron charge.
+
+We can introduce a more compact notation by introducing the doublet $\chi_{\text{L}}$ of left-handed fields, with neutrinos or up-type quarks on the top. Introducing the raising and lowering matrices $\tau^{\pm}$, obtained from the Pauli matrices, the two charged weak interaction vertices are given by
+\begin{align*}
+	j_{\mu}^{\pm} &= \overline{\chi}_{\text{L}}\gamma_{\mu}\tau^{\pm}\chi_{\text{L}}.
+\end{align*}
+At this moment it might be tempting to introduce the neutral term
+\begin{align*}
+	j_{\mu}^{3} &= \frac{1}{2}\overline{\chi}_{\text{L}}\gamma_{\mu}\tau^{3}\chi_{\text{L}},
+\end{align*}
+and claim that this corresponds to the neutral current. This does not work, however, because we know that the $Z$ boson mixes chiralities, but this term does not. However, we see that the Pauli matrices generate some symmetry on this doublet. We elevate this to be a gauge symmetry by writing the interaction term as
+\begin{align*}
+	\lag_{\text{int}} = -\frac{1}{2}g\overline{\chi}_{\text{L}}\gamma^{\mu}\tau^{a}W_{\mu}^{a}\chi_{\text{L}}.
+\end{align*}
+The generators of the symmetry are the Pauli matrices, and we take them to be operators of a so-called weak isospin.
+
+What about right-handed particles and left-handed antiparticles? They are left untouched by this gauge, as they are placed in an isospin singlet. What does this mean? A good question, to be sure.
+
+To unify the theories, we are left with the two neutral gauge bosons, each corresponding to a neutral gauge field. The idea now is to introduce a new $\text{U}(1)$ symmetry generated by $\frac{1}{2}Y$, with a corresponding gauge field $B_{\mu}$. The corresponding conserved charge is termed hypercharge. In order for hypercharge to be conserved, particles in the same doublet must have the same hypercharge. The above then implies that
+\begin{align*}
+	Y = \alpha Q + \beta I_{\text{W}}^{3}.
+\end{align*}       
+As we know there are three gauge fields connected to hypercharge, we surmise that
+\begin{align*}
+	B_{\mu} = A_{\mu}\cos(\theta_{\text{W}}) - Z_{\mu}\sin(\theta_{\text{W}}),\ W_{\mu}^{3} = A_{\mu}\sin(\theta_{\text{W}}) + Z_{\mu}\cos(\theta_{\text{W}}),
+\end{align*}
+where $A_{\mu}$ and $Z_{\mu}$ are the gauge fields corresponding to the photon and the $Z$ boson and we have introduced a weak mixing angle $\theta_{\text{W}}$. What we are left with now is a $\SU{2}\times\text{U}(1)$ gauge group, as the two sets of generators commute.
+
+Let us now return to the electron-neutrino pair. Requiring the two to have the same hypercharge, we find
+\begin{align*}
+	-\alpha - \frac{1}{2}\beta = \frac{1}{2}\beta,
+\end{align*}
+hence we take $Y = 2(Q - I_{\text{W}}^{3})$ by convention. Certainly, if this is the case, then the corresponding current is
+\begin{align*}
+	j_{\mu}^{Y} &= 2\left(j_{\mu}^{\text{em}} - j_{\mu}^{3}\right) \\
+	            &= -2\left(\overline{e}_{\text{L}}\gamma_{\mu}e_{\text{L}} + \overline{e}_{\text{R}}\gamma_{\mu}e_{\text{R}}\right) -\left(\overline{\nu}_{\text{L}}\gamma_{\mu}\nu_{\text{L}} - \overline{e}_{\text{L}}\gamma_{\mu}e_{\text{L}}\right) \\
+	            &= -2\overline{e}_{\text{R}}\gamma_{\mu}e_{\text{R}} - \overline{\chi}_{\text{L}}\gamma_{\mu}\chi_{\text{L}}.
+\end{align*}
+We now have what we need to construct the Dirac field part of the Lagrangian without mass fields, which is given by
+\begin{align*}
+	\lag = i\left(\overline{\chi}_{\text{L}}\gamma^{\mu}D_{\mu}\chi_{\text{L}} + \overline{\chi}_{\text{R}}\gamma^{\mu}D_{\mu}\chi_{\text{R}}\right).
+\end{align*}
+
+This doesn't quite work, however, as we are still writing the Lagrangian using gauge symmetry. However, for the gauge bosons to be massive, gauge symmetry must be violated. The answer is to have a mechanism of spontaneous symmetry breaking. This is the Higgs mechanism.
+
+\paragraph{The Higgs Mechanism and Electroweak Unification}
+To provide Higgsness to the system we add a scalar doublet to the system, called the Higgs field, which transforms under the \SU{2} part of the gauge group. We use the potential
+\begin{align*}
+	V(x) = \mu^{2}x + \lambda x^{2},
+\end{align*}
+and introduce $v = \frac{\mu^{2}}{2\lambda}$. This adds coupling to the bosons of the weak force and allows for them to be massive. At the same time the gauge bosons of the $\text{U}(1)$ part will be left out to keep the photon massless.
+
+Choosing a particular minimum we are left with four degrees of freedom - three in a phase transformation and one in a shift. A gauge transformation will remove the former, leaving only the latter. This one appears with a mass terms, and turns out to correspond to the actual Higgs boson. This is analogous to the result from the unitary gauge, and is how this gauge manifests in this case.
+
+In addition to the mass terms, we will also pick up self-interaction terms of the gauge bosons.
