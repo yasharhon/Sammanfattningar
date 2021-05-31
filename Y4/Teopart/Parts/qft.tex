@@ -730,3 +730,167 @@ and introduce $v = \frac{\mu^{2}}{2\lambda}$. This adds coupling to the bosons o
 Choosing a particular minimum we are left with four degrees of freedom - three in a phase transformation and one in a shift. A gauge transformation will remove the former, leaving only the latter. This one appears with a mass terms, and turns out to correspond to the actual Higgs boson. This is analogous to the result from the unitary gauge, and is how this gauge manifests in this case.
 
 In addition to the mass terms, we will also pick up self-interaction terms of the gauge bosons.
+
+\paragraph{Tying Electroweak Unification Together}
+The purpose of this section will be to re-examine the total Lagrangian with the Higgs field, fermion fields and four gauge fields to rediscover all the important bits of the electromagnetic and weak forces. Note that we will only assume the existence of particular kinds of terms and the existence of a $\SU{2}\times \text{U}(1)$ symmetry. The fields we have are the doublet $\psi_{\ell, \text{L}},$ containing the left-handed neutrino and lepton fields, the right-handed lepton fields $\ell_{\text{R}}$, the field $\phi$ which has the broken symmetry, and the gauge fields.
+
+First, consider the gauge bosons. Their masses after spontaneous symmetry breaking originate on terms of the form
+\begin{align*}
+	(D_{\mu}\phi)\adj D^{\mu}\phi =& \frac{1}{2}\left(\left(\frac{ig}{2}\sigma^{a}W^{a}_{\mu} + ig\p Y_{\phi}B_{\mu}\right)\mqty[
+		0 \\
+		v
+	]\right)\adj\left(\left(\frac{ig}{2}\sigma^{a}W^{a, \mu} + ig\p Y_{\phi}B^{\mu}\right)\mqty[
+		0 \\
+		v
+	]\right) \\
+	=& \frac{1}{2}\left(\frac{ig}{2}\left(W^{1}_{\mu}\mqty[
+		v \\
+		0
+	] + W^{2}_{\mu}\mqty[
+		-iv \\
+		0
+	] + W^{3}_{\mu}\mqty[
+		0 \\
+		-v
+	]\right) + ig\p Y_{\phi}B_{\mu}\mqty[
+	0 \\
+	v
+	]\right)\adj\\
+	 &\cdot\left(\frac{ig}{2}\left(W^{1, \mu}\mqty[
+		v \\
+		0
+	] + W^{2, \mu}\mqty[
+		-iv \\
+		0
+	] + W^{3, \mu}\mqty[
+		0 \\
+		-v
+	]\right) + ig\p Y_{\phi}B_{\mu}\mqty[
+		0 \\
+		v
+	]\right) \\
+	=& \frac{v^{2}g^{2}}{8}\left(W_{\mu}^{1}W_{1, \mu} + W_{\mu}^{2}W_{2, \mu}\right) + \frac{v^{2}}{8}\left(2g\p Y_{\phi}B_{\mu} - gW^{3}_{\mu}\right)\left(2g\p Y_{\phi}B^{\mu} - gW^{3, \mu}\right) \\
+	=& \frac{v^{2}g^{2}}{8}\left(W_{\mu}^{1}W_{1, \mu} + W_{\mu}^{2}W_{2, \mu}\right) + \frac{v^{2}}{8}\mqty[
+		B_{\mu} & W^{3}_{\mu}
+	]\mqty[
+		4Y_{\phi}^{2}(g\p)^{2} & -2Y_{\phi}gg\p \\
+		-2Y_{\phi}gg\p         & g^{2}
+	]\mqty[
+		B^{\mu} \\
+		W^{3, \mu}
+	],
+\end{align*}
+where we have introduced the hypercharge $Y_{\phi}$ of the lower component of the Higgs field. The masses of the charged $W$ bosons are then identified as $\frac{vg}{2}$. Note that the actual bosons are $W^{\pm} = \frac{1}{\sqrt{2}}(W^{1} \pm iW^{2})$.
+
+To identify the masses of the neutral bosons, we need to diagonalize the matrix we find in the above. We do that by writing
+\begin{align*}
+	Z_{\mu} = \cos(\theta_{\text{W}})W_{\mu}^{3} - \sin(\theta_{\text{W}})B_{\mu},\ A_{\mu} = \sin(\theta_{\text{W}})W_{\mu}^{3} + \cos(\theta_{\text{W}})B_{\mu},
+\end{align*}
+which are the so-called mass eigenstates. We can invert the above to
+\begin{align*}
+	W_{\mu}^{3} = \cos(\theta_{\text{W}})Z_{\mu} + \sin(\theta_{\text{W}})A_{\mu},\ B_{\mu} = -\sin(\theta_{\text{W}})Z_{\mu} + \cos(\theta_{\text{W}})A_{\mu}.
+\end{align*}
+The eigenvalues of the mass matrix satisfy
+\begin{align*}
+	(\lambda - 4Y_{\phi^{2}}(g\p)^{2})(\lambda - g^{2}) - 4Y_{\phi^{2}}g^{2}(g\p)^{2} = 0,
+\end{align*}
+to which zero is clearly a solution. This means that the system retains a $\text{U}(1)$ symmetry after symmetry breaking, meaning that all fields have a $\text{U}(1)$ charge $Q$. The fact that this symmetry remains that $Q$ may be identified with the electric charge. Because the symmetry corresponding to this charge is unbroken by the Higgs field, we must have $Q_{\phi} = 0$. We use the convention
+\begin{align*}
+	Q = Y + I_{\text{W}}^{3}.
+\end{align*}
+For this to be true we must have $Y_{\phi} = \frac{1}{2}$.
+
+Associating the massless gauge boson with $A_{\mu}$, the requirement that this be an eigenvector with eigenvalue zero we find
+\begin{align*}
+	(g\p)^{2}\cos(\theta_{\text{W}}) - gg\p\sin(\theta_{\text{W}}) = 0,
+\end{align*}
+with solution
+\begin{align*}
+	\tan(\theta_{\text{W}}) = \frac{g\p}{g}.
+\end{align*}
+The other mass eigenvalue is $\frac{v^{2}(g^{2} + (g\p)^{2})}{8}$, which is the mass of the $Z$ boson.
+
+Lepton masses originate from terms of the form
+\begin{align*}
+	y_{\ell}\overline{\psi}_{\ell, \text{L}}\phi\ell_{\text{R}} + \text{h. c.}
+\end{align*}
+$\ell$ is now the field for a particular fermion. Spontaneous symmetry breaking breaks this to
+\begin{align*}
+	\frac{y_{\ell}}{\sqrt{2}}(v\overline{\ell}_{\text{L}}\ell_{\text{R}} + \overline{\ell}_{\text{L}}h\ell_{\text{R}}) + \text{h.c.}
+\end{align*}
+The first, together with its hermitian conjugate, becomes a mass term with mass $\frac{y_{\ell}v}{\sqrt{2}}$, while the second becomes an interaction term between the lepton and the Higgs boson.
+
+Couplings to gauge bosons originate in terms of the form
+\begin{align*}
+	i\overline{\psi}D_{\mu}\gamma^{\mu}\psi.
+\end{align*}
+We take the fermion field to be an eigenstate of weak isospin and hypercharge. Expanding the part with the neutral gauge field we find
+\begin{align*}
+	\lag \supset i\overline{\psi}\left(igT_{3}W_{\mu}^{3} + ig\p YB_{\mu}\right)\gamma^{\mu}\psi = -\overline{\psi}\left(gT_{3}W_{\mu}^{3} + g\p YB_{\mu}\right)\gamma^{\mu}\psi.
+\end{align*}
+Expressed in terms of the physical gauge fields we have
+\begin{align*}
+	\lag &\supset -\overline{\psi}\left(gT_{3}(\cos(\theta_{\text{W}})Z_{\mu} + \sin(\theta_{\text{W}})A_{\mu}) + g\p Y(-\sin(\theta_{\text{W}})Z_{\mu} + \cos(\theta_{\text{W}})A_{\mu})\right)\gamma^{\mu}\psi.
+\end{align*}
+Collecting the photon coupling terms we find
+\begin{align*}
+	\lag &\supset -A_{\mu}\overline{\psi}\left(g\sin(\theta_{\text{W}})T_{3} + g\p \cos(\theta_{\text{W}})Y\right)\gamma^{\mu}\psi \\
+	     &= -A_{\mu}g\sin(\theta_{\text{W}})\overline{\psi}\left(T_{3} + Y\right)\gamma^{\mu}\psi.
+\end{align*}
+This correspond to the electromagnetic interaction vertex provided we make the identification $e = g\sin(\theta_{\text{W}})$.
+
+Couplings to gauge bosons originate in terms of the form
+\begin{align*}
+	i\overline{\psi}_{\ell, \text{L}}D_{\mu}\gamma^{\mu}\psi_{\ell, \text{L}} + i\overline{\ell}_{\text{R}}D_{\mu}\gamma^{\mu}\ell_{\text{R}}.
+\end{align*}
+Let us focus on the couplings to the neutral bosons. First we establish that all left-handed fermions have charge $-1$, and thus hypercharge $Y = -\frac{1}{2}$, whereas neutrons have $Q = 0$ and $Y = -\frac{1}{2}$, and finally right-handed leptons have hypercharge $-1$. We find
+\begin{align*}
+	\lag \supset& -\overline{\psi}_{\ell, \text{L}}\gamma^{\mu}\left(\frac{1}{2}g\sigma^{3}W^{3}_{\mu} + g\p YB_{\mu}\right)\psi_{\ell, \text{L}} - \overline{\ell}_{\text{R}}\gamma^{\mu}\left(g\p B_{\mu}Y\right)\ell_{\text{R}} \\
+    =& -\mqty[
+		\overline{\nu}_{\ell, \text{L}} & \overline{\ell}_{\text{L}}
+	]\gamma^{\mu}\mqty[
+		\frac{1}{2}gW^{3}_{\mu} + Y_{\nu}g\p B_{\mu} & 0 \\
+		 0 & -\frac{1}{2}gW^{3}_{\mu} + Y_{\ell, \text{L}}g\p B_{\mu}
+	]\mqty[
+		\nu_{\ell, \text{L}} \\
+		\ell_{\text{L}}
+	] - Y_{\ell, \text{R}}g\p\overline{\ell}_{\text{R}}\gamma^{\mu}B_{\mu}\ell_{\text{R}} \\
+	=& -\overline{\nu}_{\ell, \text{L}}\gamma^{\mu}\left(\frac{g}{2}W^{3}_{\mu} + Y_{\nu}g\p B_{\mu}\right)\nu_{\ell, \text{L}} - \overline{\ell}_{\text{L}}\gamma^{\mu}\left(-\frac{g}{2}W^{3}_{\mu} + Y_{\ell, \text{L}}g\p B_{\mu}\right)\ell_{\text{L}} - Y_{\ell, \text{R}}g\p\overline{\ell}_{\text{R}}\gamma^{\mu}B_{\mu}\ell_{\text{R}} \\
+	=& -\overline{\nu}_{\ell, \text{L}}\gamma^{\mu}\left(\frac{g}{2}\left(\cos(\theta_{\text{W}})Z_{\mu} + \sin(\theta_{\text{W}})A_{\mu}\right) + Y_{\nu}g\p \left(-\sin(\theta_{\text{W}})Z_{\mu} + \cos(\theta_{\text{W}})A_{\mu}\right)\right)\nu_{\ell, \text{L}} \\
+	 &- \overline{\ell}_{\text{L}}\gamma^{\mu}\left(-\frac{g}{2}\left(\cos(\theta_{\text{W}})Z_{\mu} + \sin(\theta_{\text{W}})A_{\mu}\right) + Y_{\ell, \text{L}}g\p \left(-\sin(\theta_{\text{W}})Z_{\mu} + \cos(\theta_{\text{W}})A_{\mu}\right)\right)\ell_{\text{L}} \\
+	 &- Y_{\ell, \text{R}}g\p\overline{\ell}_{\text{R}}\gamma^{\mu}\left(-\sin(\theta_{\text{W}})Z_{\mu} + \cos(\theta_{\text{W}})A_{\mu}\right)\ell_{\text{R}}.
+\end{align*}
+Collecting interactions with the photon field first we find
+\begin{align*}
+	\lag \supset& -\overline{\nu}_{\ell, \text{L}}\gamma^{\mu}A_{\mu}\left(\frac{g}{2}\sin(\theta_{\text{W}}) + Y_{\nu}g\p\cos(\theta_{\text{W}})\right)\nu_{\ell, \text{L}} \\
+	&- \overline{\ell}_{\text{L}}\gamma^{\mu}A_{\mu}\left(-\frac{g}{2}\sin(\theta_{\text{W}}) + Y_{\ell, \text{L}}g\p \cos(\theta_{\text{W}})\right)\ell_{\text{L}} \\
+	&- Y_{\ell, \text{R}}g\p\overline{\ell}_{\text{R}}A_{\mu}\gamma^{\mu}\cos(\theta_{\text{W}})\ell_{\text{R}} \\
+	=& -Q_{\nu}e\overline{\nu}_{\ell, \text{L}}\gamma^{\mu}A_{\mu}\nu_{\ell, \text{L}} - eQ_{\ell}\overline{\ell}_{\text{L}}\gamma^{\mu}A_{\mu}\ell_{\text{L}} - eQ_{\ell}\overline{\ell}_{\text{R}}A_{\mu}\gamma^{\mu}\ell_{\text{R}},
+\end{align*}
+which are exactly the interaction terms we expect. Next, the interaction terms with the $Z$ boson are given by
+\begin{align*}
+	\lag \supset& -\overline{\nu}_{\ell, \text{L}}Z_{\mu}\gamma^{\mu}\left(\frac{g}{2}\cos(\theta_{\text{W}}) - Y_{\nu}g\p\sin(\theta_{\text{W}})\right)\nu_{\ell, \text{L}} \\
+	&- \overline{\ell}_{\text{L}}Z_{\mu}\gamma^{\mu}\left(-\frac{g}{2}\cos(\theta_{\text{W}}) - Y_{\ell, \text{L}}g\p\sin(\theta_{\text{W}})\right)\ell_{\text{L}} \\
+	&+ Y_{\ell, \text{R}}g\p\sin(\theta_{\text{W}})\overline{\ell}_{\text{R}}Z_{\mu}\gamma^{\mu}\ell_{\text{R}}.
+\end{align*}
+We can rewrite this somewhat by using
+\begin{align*}
+	\frac{1}{\cos(\theta_{\text{W}})} \sqrt{1 + \left(\frac{g\p}{g}\right)^{2}}.
+\end{align*}
+Extracting a factor of $\frac{g}{\cos(\theta_{\text{W}})}$ we find
+\begin{align*}
+	\lag \supset& -\frac{g}{\cos(\theta_{\text{W}})}\overline{\nu}_{\ell, \text{L}}Z_{\mu}\gamma^{\mu}\left(\frac{1}{2}\cos[2](\theta_{\text{W}}) - Y_{\nu}\frac{g\p}{g}\sin(\theta_{\text{W}})\cos(\theta_{\text{W}})\right)\nu_{\ell, \text{L}} \\
+	&- \frac{g}{\cos(\theta_{\text{W}})}\overline{\ell}_{\text{L}}Z_{\mu}\gamma^{\mu}\left(-\frac{1}{2}\cos[2](\theta_{\text{W}}) - Y_{\ell, \text{L}}\frac{g\p}{g}\sin(\theta_{\text{W}})\cos(\theta_{\text{W}})\right)\ell_{\text{L}} \\
+	&+ \frac{g}{\cos(\theta_{\text{W}})}\frac{g\p}{g}\sin(\theta_{\text{W}})\cos(\theta_{\text{W}})Y_{\ell, \text{R}}\overline{\ell}_{\text{R}}Z_{\mu}\gamma^{\mu}\ell_{\text{R}} \\
+	=& \sqrt{g^{2} + (g\p)^{2}}Z_{\mu}\left(-\overline{\nu}_{\ell, \text{L}}\gamma^{\mu}\left(\frac{1}{2} - \left(\frac{1}{2} + Y_{\nu}\right)\sin[2](\theta_{\text{W}})\right)\nu_{\ell, \text{L}} - \overline{\ell}_{\text{L}}\gamma^{\mu}\left(-\frac{1}{2} - \left(Y_{\ell, \text{L}} - \frac{1}{2}\right)\sin[2](\theta_{\text{W}})\right)\ell_{\text{L}} + \sin[2](\theta_{\text{W}})Y_{\ell, \text{R}}\overline{\ell}_{\text{R}}\gamma^{\mu}\ell_{\text{R}}\right) \\
+	=& \frac{\sqrt{g^{2} + (g\p)^{2}}}{2}Z_{\mu}\left(-\overline{\nu}_{\ell}\gamma^{\mu}\left(\frac{1}{2} - \left(\frac{1}{2} + Y_{\nu}\right)\sin[2](\theta_{\text{W}})\right)(1 - \gamma_{5})\nu_{\ell} - \overline{\ell}\gamma^{\mu}\left(-\frac{1}{2} - \left(Y_{\ell, \text{L}} - \frac{1}{2}\right)\sin[2](\theta_{\text{W}})\right)(1 - \gamma_{5})\ell \right. \\
+	 &\left. + \sin[2](\theta_{\text{W}})Y_{\ell, \text{R}}\overline{\ell}\gamma^{\mu}(1 + \gamma_{5})\ell\right) \\
+	=& \frac{\sqrt{g^{2} + (g\p)^{2}}}{2}Z_{\mu}\left(-\overline{\nu}_{\ell}\gamma^{\mu}\left(\frac{1}{2} - \left(\frac{1}{2} + Y_{\nu}\right)\sin[2](\theta_{\text{W}})\right)(1 - \gamma_{5})\nu_{\ell} \right. \\
+	 &- \left. \overline{\ell}\gamma^{\mu}\left(\left(-\frac{1}{2} - \left(Y_{\ell, \text{L}} - \frac{1}{2}\right)\sin[2](\theta_{\text{W}})\right)(1 - \gamma_{5}) - \sin[2](\theta_{\text{W}})Y_{\ell, \text{R}}(1 + \gamma_{5})\right)\ell \right) \\
+	=& \frac{\sqrt{g^{2} + (g\p)^{2}}}{2}Z_{\mu}\left(-\overline{\nu}_{\ell}\gamma^{\mu}\left(\frac{1}{2} - \left(\frac{1}{2} + Y_{\nu}\right)\sin[2](\theta_{\text{W}})\right)(1 - \gamma_{5})\nu_{\ell} \right. \\
+	 &- \left. \overline{\ell}\gamma^{\mu}\left(\left(-\frac{1}{2} - \left(Y_{\ell, \text{L}} - \frac{1}{2}\right)\sin[2](\theta_{\text{W}}) - \sin[2](\theta_{\text{W}})Y_{\ell, \text{R}}\right) - \left(-\frac{1}{2} - \left(Y_{\ell, \text{L}} - \frac{1}{2}\right)\sin[2](\theta_{\text{W}}) + \sin[2](\theta_{\text{W}})Y_{\ell, \text{R}}\right)\gamma_{5}\right)\ell\right).
+\end{align*}
+We could now extract the left-handed and right-handed spinor components for leptons, but let us instead investigate more closely why they look like they do. Looking at the electron, where this is more apparent, we see that the $-\frac{1}{2}$ appear as manifestations of weak isospin. In addition the two different factors preceding the sines are all the electric charge. Because the procedure of obtaining couplings will be the same for quarks, we may instantly conclude
+\begin{align*}
+	c_{\text{V}} = I_{\text{W}}^{3} - 2Q\sin[2](\theta_{\text{W}}),\ c_{\text{A}} = I_{\text{W}}^{3}.
+\end{align*}
