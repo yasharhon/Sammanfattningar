@@ -1,0 +1,200 @@
+\section{Useful Mathematics}
+
+\paragraph{The Jacobi Identity for Structure Constants}
+Applying the Jacobi identity we find
+\begin{align*}
+	\comm{X_{a}}{\comm{X_{b}}{X_{c}}} + \comm{X_{b}}{\comm{X_{c}}{X_{a}}} + \comm{X_{c}}{\comm{X_{a}}{X_{b}}} &= i\left(f_{bcd}\comm{X_{a}}{X_{d}} + f_{cad}\comm{X_{b}}{X_{d}} + f_{abd}\comm{X_{c}}{X_{d}}\right) \\
+                                      &= i^{2}\left(f_{bcd}f_{ade} + f_{cad}f_{bde} + f_{abd}f_{cde}\right)X_{e} = 0,
+\end{align*}
+which means
+\begin{align*}
+	f_{bcd}f_{ade} + f_{cad}f_{bde} + f_{abd}f_{cde} = 0.
+\end{align*}
+
+\paragraph{Structure Constant Representations}
+For a group, consider the structure constants
+\begin{align*}
+	\comm{X_{a}}{X_{b}} = if_{abc}X_{c}.
+\end{align*}
+Constructing the matrices
+\begin{align*}
+	(T_{a})_{bc} = -if_{abc}
+\end{align*}
+we find
+\begin{align*}
+	\comm{T_{a}}{T_{b}}_{cd} = -(f_{ace}f_{bed} - f_{bce}f_{aed}) = f_{cae}f_{bed} + f_{bce}f_{aed} = -f_{abe}f_{ced} = if_{abe}(T_{e})_{cd},
+\end{align*}
+and thus
+\begin{align*}
+	\comm{T_{a}}{T_{b}} = if_{abe}T_{e},
+\end{align*}
+meaning that the structure constants themselves provide a representation of the group. This is a real representation, i.e. is identical to its conjugate representation.
+
+\paragraph{A Closer Look at \SU{2}}
+The Lie algebra of \SU{2} is
+\begin{align*}
+	\comm{J_{i}}{J_{j}} = i\varepsilon_{ijk}J_{k}.
+\end{align*}
+Our goal is to block diagonalize the space on which elements in the group act, starting by looking at the generators. There are three generators, so we can only diagonalize the one. We choose $J_{3}$, which will net us the so-called spin representation. Taking the space to be finite dimensional (which in the context of angular momentum is explained by physical arguments), we consider the eigenstate $\ket{j, \alpha}$ with the highest eigenvalue $j$ of $J_{3}$. $\alpha$ contains other information, the existence of which is undetermined as of yet. Next we introduce the raising and lowering operators
+\begin{align*}
+	J_{\pm} = \frac{1}{\sqrt{2}}(J_{1} \pm iJ_{2}).
+\end{align*}
+We have
+\begin{align*}
+	&\comm{J_{+}}{J_{-}} = \frac{1}{2}i(-\comm{J_{1}}{J_{2}} + \comm{J_{2}}{J_{1}}) = J_{3}, \\
+	&\comm{J_{3}}{J_{\pm}} = \frac{1}{\sqrt{2}}(\comm{J_{3}}{J_{1}} \pm i\comm{J_{3}}{J_{2}}) = \frac{1}{\sqrt{2}}(\pm J_{1} + iJ_{2}) = \pm J_{\pm}.
+\end{align*}
+For a general eigenstate we find
+\begin{align*}
+	J_{3}J_{\pm}\ket{m, \alpha} = (\pm J_{\pm} + J_{\pm}J_{3})\ket{m, \alpha} = (m \pm 1)J_{\pm}\ket{m, \alpha},
+\end{align*}
+and the raising and lowering operators do indeed work as expected. This implies $J_{+}\ket{j, \alpha} = 0$. Furthermore, we have
+\begin{align*}
+	\mel{j, \beta}{J_{-}\adj J_{-}}{j, \alpha} &= \mel{j, \beta}{J_{+}J_{-}}{j, \alpha} \\
+                                               &= \mel{j, \beta}{J_{+}J_{-} - J_{-}J_{+}}{j, \alpha} \\
+                                               &= \mel{j, \beta}{\comm{J_{+}}{J_{-}}}{j, \alpha} \\
+                                               &= \mel{j, \beta}{J_{3}}{j, \alpha} \\
+                                               &= j\delta_{\alpha\beta},
+\end{align*}
+as we assume the $j$ states to be orthonormal. This implies that the raising and lowering operators preserve orthogonality in terms of the other quantum numbers. Introducing $N_{j} = \sqrt{j}$ we may thus write
+\begin{align*}
+	J_{-}\ket{j, \alpha} = N_{j}\ket{j - 1, \alpha}.
+\end{align*}
+Similarly we find
+\begin{align*}
+	J_{+}\ket{j - 1, \alpha} &= \frac{1}{N_{j}}J_{+}J_{-}\ket{j, \alpha} \\
+	                         &= \frac{1}{N_{j}}\comm{J_{+}}{J_{-}}\ket{j, \alpha} \\
+	                         &= N_{j}\ket{j, \alpha}.
+\end{align*}
+We generalize this to
+\begin{align*}
+	J_{-}\ket{m, \alpha} = N_{m}\ket{m - 1, \alpha},\ J_{+}\ket{m - 1, \alpha} = N_{m}\ket{m, \alpha}.
+\end{align*}
+These satisfy a recursion relation which we can find by writing
+\begin{align*}
+	N_{m}^{2} &= \mel{m, \alpha}{J_{+}J_{-}}{m, \alpha} \\
+	          &= \mel{m, \alpha}{\comm{J_{+}}{J_{-}} + J_{-}J_{+}}{m, \alpha} \\
+	          &= m + N_{m + 1}^{2}\braket{m + 1, \alpha}{m + 1, \alpha} \\
+	          &= m + N_{m + 1}^{2}.
+\end{align*}
+Repeating this we find
+\begin{align*}
+	N_{j - k}^{2} &= \sum\limits_{a = j - k}^{j}a \\
+	              &= \sum\limits_{n = 1}^{k + 1}j - k + n - 1 \\
+	              &= \frac{k + 1}{2}(2(j - k) + k) \\
+	              &= \frac{(2j - k)(k + 1)}{2} \\
+	              &= (j - (j - k) + 1)j - \frac{1}{2}(k + 1)k = \frac{1}{2}(k + 1)(2j - k),
+\end{align*}
+or
+\begin{align*}
+	N_{m} = \frac{1}{\sqrt{2}}\sqrt{(j - m + 1)(j + m)}.
+\end{align*}
+From this we can infer two things about the spectrum. First, by the assumption that Hilbert space is finite dimensional, there must exist a maximal number of lowerings $l$. This case should satisfy
+\begin{align*}
+	N_{j - l} = \frac{1}{\sqrt{2}}\sqrt{(l + 1)(2j - l)} = 0.
+\end{align*}
+As $l$ is an integer, the possible upper bounds of the spectrum must therefore be half-integer. Next, we can identify the limits of the eigenvalue spectrum: The upper limit corresponds to the fact that $N_{j + 1} = 0$. The lower limit comes from $N_{-j} = 0$, meaning the eigenstate at the bottom of the spectrum is $\ket{-j, \alpha}$. At this point we may ignore the other quantum numbers, as the representation we are working with breaks Hilbert space into invariant subspaces under \SU{2}. Or, rather, we will replace them simply by the value of $j$, which together with $m$ specifies the state. We now know that the dimension of each invariant Hilbert space is $2j + 1$.
+
+We can now work out the particulars of this representation by computing the matrix elements
+\begin{align*}
+	&\mel{j, m}{J_{3}}{j, m\p} = m\delta_{m, m\p}, \\
+	&\mel{j, m}{J_{+}}{j, m\p} = N_{m\p + 1}\delta_{m, m\p + 1} = \frac{1}{\sqrt{2}}\sqrt{(j - m\p)(j + m\p + 1)}\delta_{m, m\p + 1}, \\
+	&\mel{j, m}{J_{-}}{j, m\p} = N_{m\p}\delta_{m, m\p - 1} = \frac{1}{\sqrt{2}}\sqrt{(j - m\p + 1)(j + m\p)}\delta_{m, m\p - 1},
+\end{align*}
+the latter of which can be used to yield
+\begin{align*}
+	&\mel{j, m}{J_{1}}{j, m\p} = \frac{1}{2}\left(\sqrt{(j - m\p)(j + m\p + 1)}\delta_{m, m\p + 1} + \sqrt{(j - m\p + 1)(j + m\p)}\delta_{m, m\p - 1}\right), \\
+	&\mel{j, m}{J_{2}}{j, m\p} = -\frac{i}{2}\left(\sqrt{(j - m\p)(j + m\p + 1)}\delta_{m, m\p + 1} - \sqrt{(j - m\p + 1)(j + m\p)}\delta_{m, m\p - 1}\right).
+\end{align*}
+As an example, the representation on the $j = \frac{1}{2}$ subspace is
+\begin{align*}
+	J_{1} = \frac{1}{2}\mqty[
+		0 & 1 \\
+		1 & 0
+	],\ J_{2} = \frac{1}{2}\mqty[
+		0 & -i \\
+		i & 0
+	],\ J_{3} = \frac{1}{2}\mqty[
+		1 & 0 \\
+		0 & -1
+	].
+\end{align*}
+This is the simplest representation of \SU{2}, and is therefore called the fundamental representation. Another example is found on the $j = 1$ subspace, which yields
+\begin{align*}
+	J_{1} = \mqty[
+		0                  & \frac{1}{\sqrt{2}} & 0 \\
+		\frac{1}{\sqrt{2}} & 0                  & \frac{1}{\sqrt{2}} \\
+		0                  & \frac{1}{\sqrt{2}} & 0
+	],\ J_{2} = \mqty[
+		0                  & -\frac{i}{\sqrt{2}} & 0 \\
+		\frac{i}{\sqrt{2}} & 0                   & -\frac{i}{\sqrt{2}} \\
+		0                  & \frac{i}{\sqrt{2}}  & 0
+	],\ J_{3} = \mqty[
+		1 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & -1
+	].
+\end{align*}
+
+\paragraph{Tensor Product of \SU{2} Representations}
+Taking the tensor product of two angular momentum Hilbert spaces corresponds to creating a new space of eigenstates of either angular momentum operator. As we know, however, it is possible to diagonalize this Hilbert space in terms of another operator, namely the total angular momentum. As an example, for two $j = \frac{1}{2}$, the total Hilbert space may be written as the tensor product of two two-dimensional subspaces, or as the direct sum of the eigenspaces of the total angular momentum. The latter has two eigenspaces, one with dimension $3$ and one with dimension $1$. We often denote this in the ridiculous form
+\begin{align*}
+	2\otimes 2 = 3\oplus 1.
+\end{align*}
+
+\paragraph{Young Tableaux}
+Young tableaux are a useful tool for analyzing the structure of representations. I will present it in the context of \SU{3}, and therefore need to talk very briefly about that group.
+
+\SU{3} is generated by eight matrices $\frac{1}{2}\lambda_{a}$, which are normalized such that $\tr(\lambda_{a}\lambda_{b}) = 2\delta_{ab}$. Two of these commute, hence the group has rank 2.
+
+Corresponding to each representation of \SU{3} is a so-called conjugate representation, found by taking the complex conjugate of the first. This representation is denoted by a bar. The generators of this representation are $-\frac{1}{2}\lambda_{a}\cc$. This representation has not been brought up in the context of \SU{2} because it is equivalent to the ones we discussed. This equivalence occurs if there exists a matrix $\varepsilon$ which satisfies
+\begin{align*}
+	-\lambda_{a}\cc = \varepsilon\lambda_{a}\varepsilon^{-1}.
+\end{align*}
+An easy way to treat a conjugate representation with tensor notation is to treat the action of the original representation as acting on contravariant indices and the action of the conjugate representation as acting on covariant indices.
+
+Note that to each antisymmetric rank-$N - 1$ tensor in this representation there exists a vector according to
+\begin{align*}
+	t_{j} = \varepsilon_{i_{1}\dots i_{N - 1}J}T^{i_{1}\dots i_{N - 1}},
+\end{align*}
+hence we associate such tensors with the conjugate representation.
+
+The next idea would be to take the tensor product of such representations. Young tableaux are useful tools for treating just this. The basic idea is to represent each index with a box, according to \ytableaushort{{}}. As the fundamental representation acts on states with single indices, the single box thus represents the fundamental representations. Next, if you have multiple indices, symmetric indices are put in the same row and antisymmetric indices in the same column. The two look like
+\begin{align*}
+	\ydiagram{1, 1},\ \ydiagram{2}.
+\end{align*}
+Higher-rank diagrams are arranged such that the number of boxes in any row is equal to or less than the number of boxes in the rows above.
+
+The power of the Young tableaux is in computing tensor products of representations. This is done with the following steps:
+\begin{enumerate}
+	\item Draw tableaux corresponding to each representation.
+	\item Mark the boxes in the right tableau according to the row it is in.
+	\item Take one box at a time from the right tableau and attach it to the left one, making sure to respect the rules of the tableaux and not putting two boxes from the same row in the same column.
+	\item Discard columns of $N$ boxes.
+	\item For each possible unique combination, compute the direct sum.
+\end{enumerate}
+
+How many elements can there be in a column for a general \SU{N} tableau? The answer is $N - 1$, as there is only a single rank $N$ antisymmetric tensor - the Levi-Civita tensor - which looks the same in all frames and thus transforms analogously to a scalar.
+
+What is the dimensionality of the product representation corresponding to each tableau? To compute this we index each box in the tableau by a row number $j$ and a column number $k$. Next, for \SU{N} we compute the numbers
+\begin{align*}
+	A_{jk} = N + k - j,\ B_{jk} = n_{j} + m_{k}  + 1 - j - k
+\end{align*}
+for every box, where $n_{j}$ is the number of boxes in the row and $m_{k}$ is the number of boxes in the column. For a tableau, $B_{jk}$ can also be calculated by drawing an L with the corner in the box in question and the legs extending all the way down and to the right and counting the number of boxes in the L. By combinatorics it can somehow be shown that
+\begin{align*}
+	d = \prod\frac{A_{jk}}{B_{jk}}.
+\end{align*}
+
+Let us now do some examples. The first is a simple one, namely $3\otimes 3$. Using tableaux we have
+\begin{align*}
+	\ydiagram{1} \otimes \ydiagram{1} = \ydiagram{1, 1} \oplus \ydiagram{2}.
+\end{align*}
+The first tableau has dimension $3$ and the second part has dimension $6$. The first one corresponds to the conjugate representation, hence we find $3\otimes 3 = 6 \oplus 3\cc$. Next we study $3\cc\otimes 3$, which in tableau form is
+\begin{align*}
+	\ydiagram{1, 1} \otimes \ydiagram{1} = \ydiagram{2, 1} + \bullet,
+\end{align*}
+where the bullet signifies an empty tableau - in other words, a scalar. We thus find $3\cc\otimes 3 = 8\oplus 1$. Finally, let us do the more involved $3\otimes 3 \otimes 3$. Using our previous work we find
+\begin{align*}
+	\ydiagram{1} \otimes \ydiagram{1} \otimes \ydiagram{1} = \ydiagram{1} \otimes \left(\ydiagram{1, 1} \oplus \ydiagram{2}\right) = \ydiagram{2, 1} \oplus \bullet \oplus \ydiagram{3} \oplus \ydiagram{2, 1}.
+\end{align*}
+Note that the same tableau appears twice due to the direct sum. We thus find $3\otimes 3 \otimes 3 = 10 \oplus 8 \oplus 8 \oplus 1$.
