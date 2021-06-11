@@ -570,7 +570,7 @@ Rather than the contents of the multiplet, the conserved charges of such theorie
 \paragraph{Quantum Chromodynamics}
 Quantum chromodynamics is the theory of the strong nuclear force. It is a quantized \SU{3} gauge theory. The number 3 is due to the presence of 3 color charges. We choose \SU{3} rather than \SU{2}, despite the latter having a triplet representation because we need a triplet representation for both the quarks and antiquarks, but \SU{2} has only real representations.
 
-%TODO: Add something on Noether currents. See https://physics.stackexchange.com/questions/56886/why-is-color-conserved-in-qcd
+%Note https://physics.stackexchange.com/questions/56886/why-is-color-conserved-in-qcd
 The gauge bosons come in eight forms. They are called gluons. Unlike QED, QCD has multiple kinds of vertices as the gluons carry color charge. The one including fermions is exemplified as in figure \ref{fig:strong_vert_fer_ex}, and symbolizes an incoming up quark with blue colour charge interacting via a gluon and leaving the interaction with red colour charge. The gluon then carries one positive unit of red colour charge and one unit of negative red colour charge.
 
 \begin{figure}[!ht]
@@ -864,6 +864,8 @@ $\ell$ is now the field for a particular fermion. Spontaneous symmetry breaking 
 	\frac{y_{\ell}}{\sqrt{2}}(v\overline{\ell}_{\text{L}}\ell_{\text{R}} + \overline{\ell}_{\text{L}}h\ell_{\text{R}}) + \text{h.c.}
 \end{align*}
 The first, together with its hermitian conjugate, becomes a mass term with mass $\frac{y_{\ell}v}{\sqrt{2}}$, while the second becomes an interaction term between the lepton and the Higgs boson.
+
+Why do we need fermion mass terms to arise from spontaneous symmetry breaking? The answer is in the nature of the gauge group - because standard Dirac mass terms couple left-to-right, such mass terms will not be uncharged under the \SU{2} part of the gauge group. Also, because the gauge group transforms between neutrino and lepton fields, which have very different masses, one could not possibly expect gauge group invariance. The only way to preserve that is with the Higgs mechanism.
 
 Couplings to gauge bosons originate in terms of the form
 \begin{align*}
