@@ -1,0 +1,136 @@
+\section{Basic Concepts}
+
+\paragraph{The Path Integral Approach}
+We will now switch from canonical quantization to path integrals as our basis for quantum field theory. This has a few advantages:
+\begin{itemize}
+	\item It switches from the Hamiltonian to the Lagrangian, which can more easily be manifestly Lorentz invariant.
+	\item The switch to the Lagrangian allows for more aesthetic handling of Lagrangians with field derivatives.
+	\item It allows for better handling of non-Abelian gauge theories.
+\end{itemize}
+
+\paragraph{Path Integrals in Quantum Mechanics}
+Consider a system with Lagrangian
+\begin{align*}
+	\ham = \frac{p^{2}}{2m} + V(q).
+\end{align*}
+In the Heisenberg pictures, the $q$ operator is given by
+\begin{align*}
+	q(t) = e^{i\ham t}q(0)e^{-i\ham t},
+\end{align*}
+We study states of the form $\ket{q, t}$, which are eigenstates of $q(t)$ with eigenvalue $q$. We note that
+\begin{align*}
+	q(t)e^{i\ham t}\ket{q} = e^{i\ham t}qe^{-i\ham t}e^{i\ham t}\ket{q} = qe^{i\ham t}\ket{q},
+\end{align*}
+hence this is the form of the states we are considering. Eigenstates at reference time $t\p$ will be implicitly labelled when convenient.
+
+We might consider the amplitude of the system evolving from $q\p$ to $q^{\prime\prime}$ over some time. This is given by
+\begin{align*}
+	\braket{q^{\prime\prime}, t^{\prime\prime}}{q\p, t\p} = \mel{q^{\prime\prime}}{e^{-i\ham(t^{\prime\prime} - t\p)}}{q\p},
+\end{align*}
+which coincides with the expression in the Schrödinger picture. To introduce the path integral we will discretize the time interval into $N$ slices of width $\Delta$ and write
+\begin{align*}
+	\mel{q^{\prime\prime}}{e^{-i\ham(t^{\prime\prime} - t\p)}}{q\p} = \mel{q^{\prime\prime}}{e^{-i\ham\Delta}\dots e^{-i\ham\Delta}}{q\p}.
+\end{align*}
+Between each pair of time evolution operators we now place a completeness relation, reducing the problem to computing
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}}.
+\end{align*}
+The final value of the amplitude will be the product of all such factors from $0$ to $N$. We can now split the exponentials according to
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}} = \mel{q_{i + 1}}{e^{-i\Delta\frac{p^{2}}{2m}}e^{-i\Delta V(q)}e^{-\frac{1}{2}\Delta^{2}\comm{\frac{p^{2}}{2m}}{V(q)}}\dots}{q_{i}}.
+\end{align*}
+Due to our discretization we may now ignore the higher-order factors, leaving
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}} = \mel{q_{i + 1}}{e^{-i\Delta\frac{p^{2}}{2m}}e^{-i\Delta V(q)}}{q_{i}}.
+\end{align*}
+The first factor is easily dealt with. To handle the second, we introduce a new completeness relation such that
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}} &= e^{-i\Delta V(q_{i})}\integ{}{}{p}\mel{q_{i + 1}}{e^{-i\Delta\frac{p^{2}}{2m}}}{p}\braket{p}{q_{i}} \\
+	                                         &= e^{-i\Delta V(q_{i})}\integ{}{}{p}e^{-i\Delta\frac{p^{2}}{2m}}\braket{q_{i + 1}}{p}\braket{p}{q_{i}} \\
+	                                         &= e^{-i\Delta V(q_{i})}\integ{}{}{p}e^{-i\Delta\frac{p^{2}}{2m} + ip(q_{i + 1} - q_{i})} \\
+	                                         &= e^{-i\Delta V(q_{i})}\integ{}{}{p}e^{-i\frac{\Delta}{2m}\left(p - \frac{m}{\Delta}(q_{i + 1} - q_{i})\right)^{2}}e^{i\frac{m\Delta}{2}\left(\frac{q_{i + 1} - q_{i}}{\Delta}\right)^{2}} \\
+	                                         &= e^{i\Delta\left(\frac{1}{2}m\left(\frac{q_{i + 1} - q_{i}}{\Delta}\right)^{2} - V(q_{i})\right)}\integ{}{}{p}e^{-i\frac{\Delta}{2m}\left(p - \frac{m}{\Delta}(q_{i + 1} - q_{i})\right)^{2}}
+\end{align*}
+We will leave the integral as is, as it merely provides some normalization factor in the end. Dubbing it $A$ we find
+\begin{align*}
+	\braket{q^{\prime\prime}, t^{\prime\prime}}{q\p, t\p} &= \inte{}{}\dd{q}_{1}\dots\dd{q}_{N}A^{N}e^{i\Delta\left(\frac{1}{2}m\left(\frac{q_{1} - q\p}{\Delta}\right)^{2} - V(q\p)\right)}\dots e^{i\Delta\left(\frac{1}{2}m\left(\frac{q^{\prime\prime} - q_{N}}{\Delta}\right)^{2} - V(q_{N})\right)} \\
+	                                                      &= \inte{}{}\dd{q}_{1}\dots\dd{q}_{N}A^{N}e^{i\sum\limits_{i = 0}^{N}\Delta\left(\frac{1}{2}m\left(\frac{q_{i + 1} - q_{i}}{\Delta}\right)^{2} - V(q_{i})\right)}.
+\end{align*}
+Now comes the kicker: We let $N$ go to infinity and $\Delta$ to zero such that the sum in the exponent goes to an integral. In this limit we see that what is left is in fact the integral of the Lagrangian, or the action. The action of what, you ask? It's the action corresponding to a particular choice of all the intermediate $q$.
+
+The integration over an infinite set of such intermediate values corresponds to an integral over function space - over all possible functional forms of $q(t)$. This is what is termed the path integral. It is generally denoted as
+\begin{align*}
+	\pinte{}{x}.
+\end{align*}
+Renaming the normalization constant we therefore have
+\begin{align*}
+	\braket{q^{\prime\prime}, t^{\prime\prime}}{q\p, t\p} &= C\pinte{}{q}e^{iS}.
+\end{align*}
+
+One might ask whether the limit that defines the path integral really exists. Yes, one might very well ask that.
+
+\paragraph{Observables from Path Integrals}
+Let us now consider
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p}.
+\end{align*}
+We may consider the times to be correctly ordered for convenience, allowing us to remove the time ordering. Discretizing time and taking $t_{i} - t\p = k_{i}\Delta$ we can write
+\begin{align*}
+	q(t_{i + 1})q(t_{i}) &= e^{i\ham k_{i + 1}\Delta}qe^{-i\ham k_{i + 1}\Delta}e^{i\ham k_{i}\Delta}qe^{-i\ham k_{i}\Delta} = e^{i\ham k_{i + 1}\Delta}qe^{-i\ham (k_{i + 1} - k_{i})\Delta}qe^{-i\ham k_{i}\Delta}.
+\end{align*}
+Using completeness we have
+\begin{align*}
+	e^{-i\ham (k_{i + 1} - k_{i})\Delta} = \inte{}{}\dd{q_{k_{i } + 1}}\dots\dd{q_{k_{i + 1}}}\op{q_{k_{i + 1}}}e^{-i\ham \Delta}\dots\op{q_{k_{i} + 1}}e^{-i\ham \Delta},
+\end{align*}
+hence
+\begin{align*}
+	q(t_{i + 1})q(t_{i}) &= \inte{}{}\dd{q_{k_{i } + 1}}\dots\dd{q_{k_{i + 1}}}e^{i\ham k_{i + 1}\Delta}q\op{q_{k_{i + 1}}}e^{-i\ham \Delta}\dots\op{q_{k_{i} + 1}}e^{-i\ham \Delta}qe^{-i\ham k_{i}\Delta} \\
+	                     &= \inte{}{}\dd{q_{k_{i } + 1}}\dots\dd{q_{k_{i + 1}}}q_{k_{i + 1}}e^{i\ham k_{i + 1}\Delta}\op{q_{k_{i + 1}}}e^{-i\ham \Delta}\dots\op{q_{k_{i} + 1}}e^{-i\ham \Delta}qe^{-i\ham k_{i}\Delta}.
+\end{align*}
+On the left end we pair up $e^{-i\ham N\Delta}$ with $e^{i\ham k_{n}\Delta}$ and on the right end no modifications are needed, hence
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \inte{}{}\dd{q_{1}}\dots\dd{q_{N}}q_{k_{1}}\dots q_{k_{n}}\mel{q^{\prime\prime}}{e^{-i\ham \Delta}}{q_{N}}\dots \mel{q_{1}}{e^{-i\ham \Delta}}{q\p}.
+\end{align*}
+We can now recognize results from previously, and in the limit of infinitely fine discretization we obtain
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} = C\pinte{}{q}q(t_{n})\dots q(t_{1})e^{iS}.
+\end{align*}
+Note that the ordering in the integration is no longer important.
+
+%TODO: Show
+As a side note, an ad hoc argument for why the path integral converges can be found by going back to the discrete variant, performing a Wick rotation of the time step $\Delta$ and thus show that the amplitude of the contributions diverges exponentially as one strays from the path of least action.
+
+\paragraph{Green's Functions from Path Integrals}
+We can use the above to obtain the Green's function from path integrals. We recall that the Green's function is defined as
+\begin{align*}
+	G(t_{1}, \dots, t_{n}) = \frac{\expval{\torp q(t_{1})\dots q(t_{n})}{\Omega}}{\braket{\Omega}}.
+\end{align*}
+Here we  will use $t = 0$ as our reference. To get an expression in terms of the ground state we use completion to write
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \sum\limits_{n, m}\mel{q^{\prime\prime}}{e^{-i\ham t^{\prime\prime}}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\mel{m}{e^{i\ham t\p}}{q\p} \\
+	&= \sum\limits_{n, m}e^{i(E_{m}t\p - E_{n}t^{\prime\prime})}\braket{q^{\prime\prime}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\braket{m}{q\p}.
+\end{align*}
+We will now consider the limit of large times (which is what is relevant for QFT contexts anyway). We will also extend time to be complex. In summary we write
+\begin{align*}
+	t\p = -\tau(1 - i\varepsilon),\ t^{\prime\prime} = \tau(1 - i\varepsilon),
+\end{align*}
+where we take $\tau$ to be large and let $\varepsilon\to 0$ at the end of our calculations. Thus we have
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \sum\limits_{n, m}e^{-i\tau(1 - i\varepsilon)(E_{m} + E_{n})}\braket{q^{\prime\prime}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\braket{m}{q\p} \\
+	&= \sum\limits_{n, m}e^{-i\tau(E_{m} + E_{n})}e^{-\tau\varepsilon(E_{m} + E_{n})}\braket{q^{\prime\prime}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\braket{m}{q\p}.
+\end{align*}
+In the limit of large times the only contribution thus comes from the ground state, and we have
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \braket{q^{\prime\prime}}{\Omega}\braket{\Omega}{q\p}\mel{\Omega}{\torp q(t_{n})\dots q(t_{1})}{\Omega}.
+\end{align*}
+The left-hand side is now a path integral and the right-hand side is proportional to the Green's function. We thus have
+\begin{align*}
+	G(t_{1}, \dots, t_{n}) = \frac{\pinte{}{q}q(t_{n})\dots q(t_{1})e^{iS}}{\pinte{}{q}e^{iS}}.
+\end{align*}
+
+\paragraph{Path Integrals in Field Theories}
+In moving to field theory there is really nothing new that is introduced. To see this you could simply perform your field theory calculation on a lattice and reuse what we have done above. The eigenstates of $q$ are now replaced by eigenstates of the fields and times are replaced by points in spacetime. We thus arrive at
+\begin{align*}
+	G(x_{1}, \dots, x_{n}) = \frac{\pinte{}{\phi}\phi(t_{n})\dots \phi(x_{1})e^{iS}}{\pinte{}{\phi}e^{iS}}.
+\end{align*}
+The path integral is now over all possible forms of the field $\phi$ throughout spacetime.
