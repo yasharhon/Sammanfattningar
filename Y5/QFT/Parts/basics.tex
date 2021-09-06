@@ -134,3 +134,112 @@ In moving to field theory there is really nothing new that is introduced. To see
 	G(x_{1}, \dots, x_{n}) = \frac{\pinte{}{\phi}\phi(t_{n})\dots \phi(x_{1})e^{iS}}{\pinte{}{\phi}e^{iS}}.
 \end{align*}
 The path integral is now over all possible forms of the field $\phi$ throughout spacetime.
+
+\paragraph{The Generating Functional}
+The generating functional is defined as
+\begin{align*}
+	Z = \pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}.
+\end{align*}
+It is a functional of the extra field $J$. It evidently satisfies
+\begin{align*}
+	Z(0) = \pinte{}{\phi}e^{iS}.
+\end{align*}
+Furthermore it satisfies
+\begin{align*}
+	-i\var{Z} &= \pinte{}{\phi}\phi e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}\cdot\dd{\alpha}\dv{\alpha}\inte{}{}\dd[4]{x}\phi J \\
+	          &= \inte{}{}\dd[4]{x}\pinte{}{\phi}\phi e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}\cdot\dv{\alpha}\phi\var{J},
+\end{align*}
+hence
+\begin{align*}
+	-i\fdv{Z}{J} &= \pinte{}{\phi}\phi e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}\phi.
+\end{align*}
+Similarly we can apply more functional derivatives and consider specific points, setting $J = 0$ at the end, to compute correlation functions.
+
+\paragraph{The Generating Functional for a Free Scalar Field}
+Consider the non-interacting scalar field theory with Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2},
+\end{align*}
+taken with the field to approach zero at infinity. Before writing the generating functional, we rewrite the action as
+\begin{align*}
+	S &= \integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{-\frac{1}{2}\left(\del{}{\mu}\left(\phi\del{\mu}{}\phi\right) - \phi\del{}{\mu}\del{\mu}{}\phi\right) - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\dalem\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem - m^{2}\right)\phi}.
+\end{align*}
+Next we are going to use a clever trick by introducing the Klein-Gordon propagator $i\tilde{G} = \Delta$, which satisfies
+\begin{align*}
+	\left(\dalem - m^{2}\right)\tilde{G} = \delta^{4}(x - y).
+\end{align*}
+We then have
+\begin{align*}
+	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem\phi - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{\delta^{4}(x - y)J(y)}} \\
+	&= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem_{x} - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{J(y)\left(\dalem_{x} - m^{2}\right)\tilde{G}(x, y)}}.
+\end{align*}
+We could do some very neat completing of squares here, but that would require
+\begin{align*}
+	\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\left(\dalem_{x} - m^{2}\right)\phi} = \phi(x)J(x).
+\end{align*}
+To prove that we will perform some clever integration by parts. We have
+\begin{align*}
+	\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\dalem_{x}\phi} &= \integ[4]{}{}{y}{\del{}{\mu}\left(J(y)\tilde{G}(x, y)\del{\mu}{}\phi\right) - J(y)\del{}{\mu}\tilde{G}(x, y)\del{\mu}{}\phi} \\
+	&= -\integ[4]{}{}{y}{\del{\mu}{}(J(y)\del{}{\mu}\tilde{G}(x, y)\phi) - J(y)\phi\dalem_{x}\tilde{G}(x, y)} \\
+	&= \integ[4]{}{}{y}{J(y)\phi\dalem_{x}\tilde{G}(x, y)}.
+\end{align*}
+This completes the proof, and we thus have
+\begin{align*}
+	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} =& \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem_{x} - m^{2}\right)\phi \\
+	&+ \frac{1}{2}\left(\integ[4]{}{}{y}{\phi(x)J(y)\left(\dalem_{x} - m^{2}\right)\tilde{G}(x, y) + J(y)\tilde{G}(x, y)}\left(\dalem_{x} - m^{2}\right)\phi(x)\right)} \\
+	=& \frac{1}{2}\integ[4]{}{}{x}{\left(\phi + \integ[4]{}{}{y}{J(y)G(x, y)}\right)\left(\dalem_{x} - m^{2}\right)\left(\phi + \integ[4]{}{}{z}{J(z)G(x, z)}\right) \\
+	 &- \integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(\dalem_{x} - m^{2}\right)J(z)G(x, z)}}}.
+\end{align*}
+The final integral can be simplified as
+\begin{align*}
+	\integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(\dalem_{x} - m^{2}\right)J(z)G(x, z)}}} &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)J(z)\delta^{4}(x - z)}}} \\
+	                           &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)G(x, y)J(x)}}.
+\end{align*}
+Now define a new field
+\begin{align*}
+	\chi(x) = \phi(x) + \integ[4]{}{}{y}{J(y)G(x, y)}.
+\end{align*}
+This shift has no effect on the integration measure in the path integral, hence we have
+\begin{align*}
+	Z &= \pinte{}{\chi}e^{\frac{i}{2}\integ[4]{}{}{x}{\chi(x)\left(\dalem_{x} - m^{2}\right)\chi(y) - \integ[4]{}{}{y}{J(y)G(x, y)J(x)}}} \\
+	  &= N_{c}e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}}.
+\end{align*}
+
+Let's do a sanity check now, to be sure. We have
+\begin{align*}
+	&G(x_{1}, x_{2}) = \frac{1}{Z(0)}\left(-i\fdv{J(x_{1})}\right)\left(-i\fdv{J(x_{2})}\right)N_{c}e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}} \\
+	                =& \fdv{J(x_{1})}\left(\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)\delta^{4}(x - x_{2})}} + \frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{\delta^{4}(y - x_{2})\Delta(x, y)J(x)}}\right)e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}} \\
+	                =& \fdv{J(x_{1})}\left(\frac{1}{2}\integ[4]{}{}{y}{J(y)\Delta(x_{2}, y)} + \frac{1}{2}\integ[4]{}{}{x}{\Delta(x, x_{2})J(x)}\right)e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}}.
+\end{align*}
+We would in principle need to apply the product rule, but it is now obvious that only the term which applies the functional derivative to the non-exponential part will give a non-zero contribution, hence we find
+\begin{align*}
+	G(x_{1}, x_{2}) = \frac{1}{2}(\Delta(x_{1}, x_{2}) + \Delta(x_{2}, x_{1})),
+\end{align*}
+and using the fact that the propagator is symmetric under switching the two arguments we have
+\begin{align*}
+	G(x_{1}, x_{2}) = \Delta(x_{1}, x_{2}),
+\end{align*}
+as expected.
+
+\paragraph{The Generating Functional for an Interacting Scalar Field}
+Consider the interacting scalar field theory described by
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} - \frac{1}{4!}\lambda\phi^{4}.
+\end{align*}
+The generating functional is given by
+\begin{align*}
+	Z = \pinte{}{\phi}e^{i\left(S_{\text{free}} + \integ[4]{}{}{x}{\phi J - \frac{1}{4!}\lambda\phi^{4}}\right)}.
+\end{align*}
+We will be working in the framework of perturbation theory and will therefore at some point take the parameter $\lambda$ to be small. We prepare for that by performing a series expansion in $\lambda$ according to
+\begin{align*}
+	Z = \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\pinte{}{\phi}\left(\integ[4]{}{}{x}{\phi^{4}}\right)^{m}e^{i\left(S_{\text{free}} + \integ[4]{}{}{x}{\phi J}\right)}.
+\end{align*}
+Here comes the kicker: The fields can be brought down from the exponent by functional differentiation. Now, that differentiation has no dependence on $\phi$, hence we may extract it from the path integral to find
+\begin{align*}
+	Z &= \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\integ[4]{}{}{x}{\fdv[m]{J}\right)^{m}}\pinte{}{\phi}e^{i\left(S_{\text{free}} + \integ[4]{}{}{x}{\phi J}\right)} \\
+	  &= \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\integ[4]{}{}{x}{\fdv[m]{J}\right)^{m}}Z_{\text{free}}.
+\end{align*}
+This can be related to Feynman diagrams in a very straightforward way.
