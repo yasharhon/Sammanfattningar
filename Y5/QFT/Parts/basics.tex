@@ -164,38 +164,38 @@ taken with the field to approach zero at infinity. Before writing the generating
 \begin{align*}
 	S &= \integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}} \\
 	  &= \integ[4]{}{}{x}{-\frac{1}{2}\left(\del{}{\mu}\left(\phi\del{\mu}{}\phi\right) - \phi\del{}{\mu}\del{\mu}{}\phi\right) - \frac{1}{2}m^{2}\phi^{2}} \\
-	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\dalem\phi - \frac{1}{2}m^{2}\phi^{2}} \\
-	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem - m^{2}\right)\phi}.
+	  &= \integ[4]{}{}{x}{-\frac{1}{2}\phi\dalem\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem - m^{2}\right)\phi},
 \end{align*}
-Next we are going to use a clever trick by introducing the Klein-Gordon propagator $i\tilde{G} = \Delta$, which satisfies
+where we have introduced the d'Alembert operator $-\del{}{\mu}\del{\mu}{}$. Next we are going to use a clever trick by introducing the Klein-Gordon propagator $i\tilde{G} = \Delta$, which satisfies
 \begin{align*}
-	\left(\dalem - m^{2}\right)\tilde{G} = \delta^{4}(x - y).
+	\left(-\dalem - m^{2}\right)\tilde{G} = \delta^{4}(x - y).
 \end{align*}
 We then have
 \begin{align*}
-	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem\phi - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{\delta^{4}(x - y)J(y)}} \\
-	&= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem_{x} - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{J(y)\left(\dalem_{x} - m^{2}\right)\tilde{G}(x, y)}}.
+	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{\delta^{4}(x - y)J(y)}} \\
+	&= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem_{x} - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{J(y)\left(-\dalem_{x} - m^{2}\right)\tilde{G}(x, y)}}.
 \end{align*}
 We could do some very neat completing of squares here, but that would require
 \begin{align*}
-	\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\left(\dalem_{x} - m^{2}\right)\phi} = \phi(x)J(x).
+	\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\left(-\dalem_{x} - m^{2}\right)\phi} = \phi(x)J(x).
 \end{align*}
 To prove that we will perform some clever integration by parts. We have
 \begin{align*}
-	\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\dalem_{x}\phi} &= \integ[4]{}{}{y}{\del{}{\mu}\left(J(y)\tilde{G}(x, y)\del{\mu}{}\phi\right) - J(y)\del{}{\mu}\tilde{G}(x, y)\del{\mu}{}\phi} \\
-	&= -\integ[4]{}{}{y}{\del{\mu}{}(J(y)\del{}{\mu}\tilde{G}(x, y)\phi) - J(y)\phi\dalem_{x}\tilde{G}(x, y)} \\
-	&= \integ[4]{}{}{y}{J(y)\phi\dalem_{x}\tilde{G}(x, y)}.
+	-\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\dalem_{x}\phi} &= \integ[4]{}{}{y}{\del{}{\mu}\left(J(y)\tilde{G}(x, y)\del{\mu}{}\phi\right) - J(y)\del{}{\mu}\tilde{G}(x, y)\del{\mu}{}\phi} \\
+	&= -\integ[4]{}{}{y}{\del{\mu}{}(J(y)\del{}{\mu}\tilde{G}(x, y)\phi) + J(y)\phi\dalem_{x}\tilde{G}(x, y)} \\
+	&= -\integ[4]{}{}{y}{J(y)\phi\dalem_{x}\tilde{G}(x, y)}.
 \end{align*}
 This completes the proof, and we thus have
 \begin{align*}
-	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} =& \integ[4]{}{}{x}{\frac{1}{2}\phi\left(\dalem_{x} - m^{2}\right)\phi \\
-	&+ \frac{1}{2}\left(\integ[4]{}{}{y}{\phi(x)J(y)\left(\dalem_{x} - m^{2}\right)\tilde{G}(x, y) + J(y)\tilde{G}(x, y)}\left(\dalem_{x} - m^{2}\right)\phi(x)\right)} \\
-	=& \frac{1}{2}\integ[4]{}{}{x}{\left(\phi + \integ[4]{}{}{y}{J(y)G(x, y)}\right)\left(\dalem_{x} - m^{2}\right)\left(\phi + \integ[4]{}{}{z}{J(z)G(x, z)}\right) \\
-	 &- \integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(\dalem_{x} - m^{2}\right)J(z)G(x, z)}}}.
+	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} =& \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem_{x} - m^{2}\right)\phi \\
+	&+ \frac{1}{2}\left(\integ[4]{}{}{y}{\phi(x)J(y)\left(-\dalem_{x} - m^{2}\right)\tilde{G}(x, y) + J(y)\tilde{G}(x, y)}\left(-\dalem_{x} - m^{2}\right)\phi(x)\right)} \\
+	=& \frac{1}{2}\integ[4]{}{}{x}{\left(\phi + \integ[4]{}{}{y}{J(y)G(x, y)}\right)\left(-\dalem_{x} - m^{2}\right)\left(\phi + \integ[4]{}{}{z}{J(z)G(x, z)}\right) \\
+	 &- \integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(-\dalem_{x} - m^{2}\right)J(z)G(x, z)}}}.
 \end{align*}
 The final integral can be simplified as
 \begin{align*}
-	\integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(\dalem_{x} - m^{2}\right)J(z)G(x, z)}}} &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)J(z)\delta^{4}(x - z)}}} \\
+	\integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(-\dalem_{x} - m^{2}\right)J(z)G(x, z)}}} &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)J(z)\delta^{4}(x - z)}}} \\
 	                           &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)G(x, y)J(x)}}.
 \end{align*}
 Now define a new field
@@ -204,8 +204,8 @@ Now define a new field
 \end{align*}
 This shift has no effect on the integration measure in the path integral, hence we have
 \begin{align*}
-	Z &= \pinte{}{\chi}e^{\frac{i}{2}\integ[4]{}{}{x}{\chi(x)\left(\dalem_{x} - m^{2}\right)\chi(y) - \integ[4]{}{}{y}{J(y)G(x, y)J(x)}}} \\
-	  &= N_{c}e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}}.
+	Z &= \pinte{}{\chi}e^{\frac{i}{2}\integ[4]{}{}{x}{\chi(x)\left(-\dalem_{x} - m^{2}\right)\chi(y) - \integ[4]{}{}{y}{J(y)G(x, y)J(x)}}} \\
+	  &= Ne^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}}.
 \end{align*}
 
 Let's do a sanity check now, to be sure. We have
@@ -243,3 +243,118 @@ Here comes the kicker: The fields can be brought down from the exponent by funct
 	  &= \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\integ[4]{}{}{x}{\fdv[m]{J}\right)^{m}}Z_{\text{free}}.
 \end{align*}
 This can be related to Feynman diagrams in a very straightforward way.
+%TODO: Complete
+
+\paragraph{The Generating Functional in Momentum Space}
+Introducing the Fourier transform
+\begin{align*}
+	\phi(x) = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)e^{ikx},
+\end{align*}
+we can write the $n$-point correlation function as
+\begin{align*}
+	G(x_{1}, \dots, x_{n}) = \frac{1}{Z(0)}\pinte{}{\phi}e^{iS}\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\dots \frac{\dd[4]{k_{n}}}{(2\pi)^{4}}e^{i\sum\limits_{i}k_{i}x_{i}}\tilde{\phi}(k_{1})\dots \tilde{\phi}(k_{n}).
+\end{align*}
+Defining
+\begin{align*}
+	G(x_{1}, \dots, x_{n}) = \inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\dots \frac{\dd[4]{k_{n}}}{(2\pi)^{4}}e^{i\sum\limits_{i}k_{i}x_{i}}\tilde{G}(k_{1}, \dots, k_{n})
+\end{align*}
+we then see
+\begin{align*}
+	\tilde{G}(k_{1}, \dots, k_{n}) = \frac{1}{Z(0)}\pinte{}{\phi}e^{iS}\tilde{\phi}(k_{1})\dots \tilde{\phi}(k_{n}).
+\end{align*}
+To write this even more neatly we note that we could in principle switch the path integral to be over $\tilde{\phi}$. This will at most produce a dimensional factor which is equal in the numerator and denominator, provided that we can appropriately define the generating functional. Let us therefore do this.
+
+Consider the integral
+\begin{align*}
+	\inte{}{}\dd[4]{x}\phi(x)J(x) &= \inte{}{}\dd[4]{x}\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{i(k_{1}x + k_{2}x)}\tilde{\phi}(k_{1})\tilde{J}(k_{2}).
+\end{align*}
+The two integrals arise because we are considering two different functions with their own unique Fourier transforms. Performing the $x$ integration we find
+\begin{align*}
+	\inte{}{}\dd[4]{x}\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{i(k_{1}x + k_{2}x)}\tilde{\phi}(k_{1})\tilde{J}(k_{2}) &= \inte{}{}\frac{\dd[4]{k_{1}}\dd[4]{k_{2}}}{(2\pi)^{4}}\delta^{4}(k_{1} + k_{2})\tilde{\phi}(k_{1})\tilde{J}(k_{2}) \\
+	&= \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k).
+\end{align*}
+Note the structure of this result, as it will be reused regularly. Pending a rewrite of the action in terms of $\tilde{\phi}$ we have
+\begin{align*}
+	Z[J] &= \pinte{}{\phi}e^{i\left(S[\phi] + \inte{}{}\dd[4]{x}\phi J\right)} \\
+	     &= \pinte{}{\phi}e^{i\left(S[\tilde{\phi}] + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)}.
+\end{align*}
+The change of integration measure involves a dimensional factor, as previously stated, but because it will always be common for factors in a numerator and denominator, we may define
+\begin{align*}
+	Z[\tilde{J}] &= \pinte{}{\tilde{\phi}}e^{i\left(S[\tilde{\phi}] + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)}.
+\end{align*}
+This functional evidently satisfies
+\begin{align*}
+	\tilde{G}(k_{1}, \dots, k_{n}) = \frac{1}{Z[0]}\eval{\left(-i(2\pi)^{4}\fdv{\tilde{J}(k_{1})}\right)\dots\left(-i(2\pi)^{4}\fdv{\tilde{J}(k_{n})}\right)Z[\tilde{J}]}_{\tilde{J} = 0}.
+\end{align*}
+
+\paragraph{Momentum Space Generating Functional for a Free Scalar}
+We once again consider a system with Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}.
+\end{align*}
+The action can then be written as
+\begin{align*}
+	S &= \integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem - m^{2}\right)\phi} \\
+	  &= \frac{1}{2}\integ[4]{}{}{x}{\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{ik_{1}x}\tilde{\phi}(k_{1})\left(-\dalem - m^{2}\right)\left(e^{ik_{2}x}\tilde{\phi}(k_{2})\right)} \\
+	  &= \frac{1}{2}\integ[4]{}{}{x}{\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{ik_{1}x}\tilde{\phi}(k_{1})\left(-k_{2}^{2} - m^{2}\right)e^{ik_{2}x}\tilde{\phi}(k_{2})} \\
+	  &= -\frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(-k)\left(k^{2} + m^{2}\right)\tilde{\phi}(k).
+\end{align*}
+The integral in the exponent can once again, this time with a very straight-forward ompleting of the square, be written as
+\begin{align*}
+	 &\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}-\frac{1}{2}\tilde{\phi}(-k)\left(k^{2} + m^{2}\right)\tilde{\phi}(k) + \tilde{\phi}(k)\tilde{J}(-k) \\
+	=& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}-\frac{1}{2}\tilde{\phi}(-k)\left(k^{2} + m^{2}\right)\tilde{\phi}(k) + \frac{1}{2}(\tilde{\phi}(k)\tilde{J}(-k) + \tilde{\phi}(-k)\tilde{J}(k)) \\
+	=& -\frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\left(\tilde{\phi}(-k) - \frac{1}{k^{2} + m^{2}}\tilde{J}(-k)\right)\left(k^{2} + m^{2}\right)\left(\tilde{\phi}(k) - \frac{1}{k^{2} + m^{2}}\tilde{J}(k)\right) - \frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k).
+\end{align*}
+Defining
+\begin{align*}
+	\tilde{\chi} = \tilde{\phi}(k) - \frac{1}{k^{2} + m^{2}}\tilde{J}(k)
+\end{align*}
+and switching the integration measure we find
+\begin{align*}
+	\gf{\tilde{J}} &= Ne^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k)}.
+\end{align*}
+
+Let us once again perform a sanity check. We have
+\begin{align*}
+	\tilde{G}(k_{1}, k_{2}) &= \eval{-(2\pi)^{8}\fdv{\tilde{J}(k_{1})}\frac{i}{2(2\pi)^{4}}\left(\frac{1}{k_{2}^{2} + m^{2}}\tilde{J}(-k_{2}) + \frac{1}{k_{2}^{2} + m^{2}}\tilde{J}(-k_{2})\right)e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k)}}_{\tilde{J} = 0} \\
+	&= \eval{-i(2\pi)^{4}\fdv{\tilde{J}(k_{1})}\frac{1}{k_{2}^{2} + m^{2}}\tilde{J}(-k_{2})e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k)}}_{\tilde{J} = 0}.
+\end{align*}
+Once again the contribution from the second differentiation of the exponential can be ignored and we find
+\begin{align*}
+	\tilde{G}(k_{1}, k_{2}) &= -i(2\pi)^{4}\frac{1}{k_{2}^{2} + m^{2}}\delta^{4}(k_{1} + k_{2}).
+\end{align*}
+This is very similar to the momentum-space propagator, except that it only implicitly contains information about $G$ only being a function of the displacement between two points.
+
+\paragraph{Momentum Space Generating Functional for an Interacting Scalar}
+We now consider an interacting scalar field with Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} - \frac{1}{4!}\lambda\phi^{4}.
+\end{align*}
+The interacting part of the action can be rewritten as
+\begin{align*}
+	S &= -\frac{1}{4!}\lambda\integ[4]{}{}{x}{\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}\frac{\dd[4]{k_{3}}}{(2\pi)^{4}}\frac{\dd[4]{k_{4}}}{(2\pi)^{4}}\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4})e^{ix\sum\limits_{i}k_{i}}} \\
+	  &= -\frac{1}{4!}\lambda\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}\frac{\dd[4]{k_{3}}}{(2\pi)^{4}}\frac{\dd[4]{k_{4}}}{(2\pi)^{4}}\delta^{4}\left(\sum\limits_{i}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4}).
+\end{align*}
+Similar to the position space case we then have
+\begin{align*}
+	 &Z[\tilde{J}] \\
+	=& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\pinte{}{\tilde{\phi}}\left(\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}\frac{\dd[4]{k_{3}}}{(2\pi)^{4}}\frac{\dd[4]{k_{4}}}{(2\pi)^{4}}\delta^{4}\left(\sum\limits_{i}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4})\right)^{m}e^{i\left(S_{\text{free}} +  + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+	=& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}Z_{\text{free}}.
+\end{align*}
+This can also be used to derive Feynman rules.
+%TODO: Complete
+
+\paragraph{Multiple Scalar Fields}
+We now consider a system of multiple scalar fields $\phi^{(a)}$. We take them to be real scalar fields, hence
+\begin{align*}
+	\left(\tilde{\phi}^{(a)}\right)\cc(k) = \tilde{\phi}^{(a)}(-k).
+\end{align*}
+The most general action for such a field theory is
+\begin{align*}
+	S &= \frac{1}{2}\integ[4]{}{}{x}{\phi^{(a)}(x)D_{ab}\phi^{(b)}(x)} = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(-k)\tilde{M}_{ab}(k)\tilde{\phi}^{(b)}(k).
+\end{align*}
+$D$ is a matrix of differential operators and $\tilde{M}$ a matrix of functions. The latter can be symmetrized to
+\begin{align*}
+	S &= \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(-k)M_{ab}(k)\tilde{\phi}^{(b)}(k),\ M_{ab}(k) = \frac{1}{2}(\tilde{M}_{ab}(k) + \tilde{M}_{ba}(-k)).
+\end{align*}
