@@ -427,6 +427,24 @@ This means
 \begin{align*}
 	Z &= Ne^{-\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{a}(-k)M_{ac}^{-1}(-k)\tilde{J}_{c}(k)}.
 \end{align*}
-%TODO: Compute generator
+%TODO: Compute propagator
+
+We now see directly that the two-point correlation function is
+\begin{align*}
+	G_{ab}(k_{1}, k_{2}) = \frac{1}{2}(2\pi)^{4}\left(M_{ba}^{-1}(-k_{1}) + M_{ab}^{-1}(k_{1})\right)\delta(k_{1} + k_{2}).
+\end{align*}
+Note that it depends very directly on the existence of $M^{-1}$, which can turn out to cause issues, as will be seen.
 
 \paragraph{Failing to Quantize the Electromagnetic Field}
+The momentum space Lagrangian is
+\begin{align*}
+	\lag &= -\frac{1}{4}\left(k_{\mu}A_{\nu} - k_{\nu}A_{\mu}\right)\left(k^{\mu}A^{\nu} - k^{\nu}A^{\mu}\right) \\
+	     &= -\frac{1}{4}\left(A_{\nu}\left(k^{2}A^{\nu} - k_{\mu}k^{\nu}A^{\mu}\right) - A_{\nu}\left(k_{\mu}k^{\nu}A^{\mu} - k^{2}A^{\nu}\right)\right) \\
+	     &= \frac{1}{2}A_{\nu}\left(k^{\mu}k^{\nu}A_{\mu} - k^{2}A^{\nu}\right) \\
+	     &= \frac{1}{2}A_{\nu}\left(k^{\mu}k^{\nu} - k^{2}g^{\mu\nu}\right)A_{\mu}.
+\end{align*}
+This is a bit of a disaster, as $M$ always has at least one eigenvalue of zero. Namely, we have
+\begin{align*}
+	M^{\mu\nu}k_{\nu} = k^{\mu}k^{\nu}k_{\nu} - k^{2}g^{\mu\nu}k_{\nu} = 0.
+\end{align*}
+This means that $M^{-1}$ does not exist for any $k$. That scenario is a lot worse than for the Klein-Gordon equation, where $M^{-1}$ only didn't exist at the set of $k$ such that $k^{2} = -m^{2}$.
