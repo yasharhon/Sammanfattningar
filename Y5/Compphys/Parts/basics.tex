@@ -1,0 +1,24 @@
+\section{Basic Concepts}
+
+\paragraph{Molecular Dynamics}
+Molecular dynamics is a class of simulation based on simulating a collection of atoms as a set of material points which move according to Newton's laws and consider only forces that arise as interactions between two atoms.
+
+\paragraph{Equilibration}
+Equilibration is the process of using some scheme that fixes a certain set of quantities and running a molecular dynamics simulation until these quantities have stabilized to the desired value.
+
+\paragraph{The Radial Distribution Function}
+The radial distribution function is defined as
+\begin{align*}
+	g(r) = \frac{1}{\rho}\eval{\dv{N}{V}}_{r}.
+\end{align*}
+
+\paragraph{Verlet's Method}
+Euler's method does not respect the laws of physics. Instead we consider a different scheme, based on the Taylor expansions
+\begin{align*}
+	x_{n \pm 1} &= x_{n} \pm v_{n}\tau + \frac{1}{2}a_{n}\tau^{2}.
+\end{align*}
+This nets two equations
+\begin{align*}
+	v_{n} = \frac{x_{n + 1} - x_{n - 1}}{2\tau},\ x_{n + 1} = 2x_{n} - x_{n - 1} + a_{n}\tau^{2}.
+\end{align*}
+This integration scheme is called Verlet's scheme, or the leapfrog method. Note that it is not self-starting. The way that is usually solved is through integrating a single step from the initial conditions using Euler's method and proceeding with the Verlet scheme from there.
