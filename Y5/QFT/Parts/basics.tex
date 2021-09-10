@@ -1,5 +1,45 @@
 \section{Basic Concepts}
 
+\paragraph{All About Grassman Variables}
+Grassman variables $\theta_{i}$ are defined such that multiplication of two different variables anticommutes. This means that all functions of a set of Grassman variables can be written as
+\begin{align*}
+	F(\theta) = \sum\limits_{i = 0}^{n}\frac{1}{i!}A^{(i), j_{1}\dots j_{i}}\theta_{j_{1}}\dots\theta_{j_{i}},
+\end{align*}
+with summation over the indices $j$. The coefficients $A$ are completely antisymmetric.
+
+Functions of Grassman numbers are defined as even $A^{k} = 0$ for all even $k$ and similarly for odd functions. This implies that $FG = GF$ if either is even and $FG = -GF$ otherwise.
+
+We define derivatives with respect to Grassman variables as
+\begin{align*}
+	\pdv{\theta_{i}}(\theta_{j}) = \delta_{ij}.
+\end{align*}
+These derivatives anticommute. They satisfy the product rule
+\begin{align*}
+	\pdv{\theta_{i}}(FG) = \pdv{F}{\theta_{i}}{G} + (-1)^{\abs{F}}F\pdv{G}{\theta_{i}},
+\end{align*}
+where $\abs{F}$ is $1$ if $F$ is even and $0$ if $F$ is odd. For a composite function
+\begin{align*}
+	f(G(\theta)) &= \sum\limits_{n}f_{n}G^{n}(\theta),
+\end{align*}
+the chain rule
+\begin{align*}
+	\pdv{\theta_{i}} f(G(\theta)) &= \pdv{G}{\theta_{i}}\dv{f}{G}
+\end{align*}
+also applies.
+
+Integrals over Grassman variables are defined according to
+\begin{align*}
+	\inte{}{}\dd{\theta_{i}} = 0,\ \inte{}{}\dd{\theta_{i}}\theta_{j} = \delta_{ij}.
+\end{align*}
+This has the peculiar consequence
+\begin{align*}
+	\inte{}{}\dd{\theta_{i}}F(\theta) = \pdv{F}{\theta_{i}}.
+\end{align*}
+We know that all functions of Grassman variables can be factorized as $F(\theta) = A(\theta) + \theta_{i}B(\theta)$, where neither $A$ nor $B$ depend on $\theta_{i}$. This has the consequence that shifts in any one variable does not affect the integral. Scaling of variables does not work that way, however, as we saw that differentiation and integration has the same effect. This produces the general result
+\begin{align*}
+	\theta_{j} = A_{ij}\phi_{j}\implies \dd{\theta}_{1}\dots\dd{\theta}_{n} = \frac{1}{\det{A}}\dd{\phi}_{1}\dots\dd{\phi}_{n}.
+\end{align*}
+
 \paragraph{The Path Integral Approach}
 We will now switch from canonical quantization to path integrals as our basis for quantum field theory. This has a few advantages:
 \begin{itemize}
@@ -358,3 +398,35 @@ $D$ is a matrix of differential operators and $\tilde{M}$ a matrix of functions.
 \begin{align*}
 	S &= \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(-k)M_{ab}(k)\tilde{\phi}^{(b)}(k),\ M_{ab}(k) = \frac{1}{2}(\tilde{M}_{ab}(k) + \tilde{M}_{ba}(-k)).
 \end{align*}
+
+We can now go about finding a generating functional for this kind of system. We have
+\begin{align*}
+	Z &= \pinte{}{\phi^{a}}e^{iS + i\integ[4]{}{}{x}{\phi^{(a)}J_{a}}}
+\end{align*}
+in position space and
+\begin{align*}
+	Z &= \pinte{}{\tilde{\phi}^{a}}e^{iS + i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(k)\tilde{J}_{a}}(-k)
+\end{align*}
+in momentum space. The latter exponent can be handled the most easily, so we will do that one. We have
+\begin{align*}
+	S + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(k)\tilde{J}_{a}(-k) =& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\tilde{\phi}^{(a)}(-k)M_{ab}(k)\tilde{\phi}^{(b)}(k) + \tilde{\phi}^{(a)}(k)\tilde{J}_{a}(-k) \\
+	=& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\left(\tilde{\phi}^{(a)}(-k) + M_{ac}^{-1}(-k)\tilde{J}_{c}(-k)\right)M_{ab}(k)\left(\tilde{\phi}^{(b)}(k) + M_{bd}^{-1}(k)\tilde{J}_{d}(k)\right) \\
+	 &- \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}M_{ac}^{-1}(-k)\tilde{J}_{c}(k)M_{ab}(k)M_{bd}^{-1}(k)\tilde{J}_{d}(k) \\
+	=& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\tilde{\chi}^{(a)}(-k)M_{ab}(k)\tilde{\chi}^{(b)}(k) - \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}M_{ac}^{-1}(-k)\tilde{J}_{c}(-k)\delta_{ad}\tilde{J}_{d}(k) \\
+	=& \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\chi}^{(a)}(-k)M_{ab}(k)\tilde{\chi}^{(b)}(k) - \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{a}(-k)M_{ac}^{-1}(-k)\tilde{J}_{c}(k).
+\end{align*}
+To do this we have defined the new fields
+\begin{align*}
+	\tilde{\chi}^{(a)}(k) = \tilde{\phi}^{(a)}(k) + M_{ac}^{-1}(-k)\tilde{J}_{c}(k)
+\end{align*}
+and used the fact that
+\begin{align*}
+	M^{-1}(k) = (M^{T}(k))^{-1} = (M^{-1}(k))^{T}.
+\end{align*}
+This means
+\begin{align*}
+	Z &= Ne^{-\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{a}(-k)M_{ac}^{-1}(-k)\tilde{J}_{c}(k)}.
+\end{align*}
+%TODO: Compute generator
+
+\paragraph{Failing to Quantize the Electromagnetic Field}
