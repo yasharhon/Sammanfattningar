@@ -502,3 +502,48 @@ Consider a field theory with a Dirac field, a scalar field and an interaction te
 \begin{align*}
 	\lag = \lambda\overline{\psi}\psi\phi.
 \end{align*}
+
+\paragraph{A Go at Quantum Electrodynamics}
+Quantum electrodynamics starts with wanting to extend the global gauge symmetry of the free fermionic field to a local. This is done by replacing the derivative with
+\begin{align*}
+	D_{\mu} = \del{}{\mu} - iA_{\mu},
+\end{align*}
+where $A$ is the so-called gauge field. The full gauge transformation is
+\begin{align*}
+	\Psi\to e^{i\lambda(x)}\Psi,\ A_{\mu}\to A_{\mu} + \del{}{\mu}\lambda.
+\end{align*}
+For the field theory to work we now need to add terms describing $A$ to the action, starting with quadratic ones as these are the easiest. The quantity
+\begin{align*}
+	F_{\mu\nu} = \comm{D_{\mu}}{D_{\nu}}
+\end{align*}
+is gauge invariant, so we add
+\begin{align*}
+	\lag = -\frac{1}{4e^{2}}F_{\mu\nu}F^{\mu\nu}
+\end{align*}
+to the full Lagrangian. This doesn't work, however, as we end up with the momentum space action
+\begin{align*}
+	S = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}A_{\mu}\left(k^{\mu}k^{\nu} - k^{2}g^{\mu\nu}\right)A_{\nu},
+\end{align*}
+which was ill-defined. We will have to devise some workaround.
+
+The trick we will use is to for any $k$ construct a basis $e$ for spacetime such that $e^{(1)} = k$ and expand
+\begin{align*}
+	\tilde{A}_{\mu} = \sum\limits_{s}\tilde{B}^{(s)}(k)e_{\mu}^{(s)}(k).
+\end{align*}
+We will be interested in the expectation values of some set of observables, which can be written as
+\begin{align*}
+	\expval{\prod\limits_{i}O_{i}(k_{i})} &= \frac{\pinte{}{\tilde{A}}e^{iS}\prod\limits_{i}O_{i}(k_{i})}{\pinte{}{\tilde{A}}e^{iS}} \\
+	&= \frac{\inte{}{}\prod\limits_{s}\left[D\tilde{B}^{(s)}\right]e^{iS}\prod\limits_{i}O_{i}(k_{i})}{\inte{}{}\prod\limits_{s}\left[D\tilde{B}^{(s)}\right]e^{iS}}.
+\end{align*}
+The gauge transform can be written as
+\begin{align*}
+	\var{\tilde{A}_{\mu}} = \sum\limits_{s}\var{\tilde{B}}^{(s)}(k)e_{\mu}^{(s)}(k) = ik_{\mu}\tilde{\lambda},
+\end{align*}
+implying that the only non-zero variation of $B$ is $\var{\tilde{B}}^{(1)}(k) = i\tilde{\lambda}$. This is a very neat trick because it makes the gauge invariance of any observable easy to check - you just need to see if there is dependence on $\tilde{B}^{(1)}$ (something the fields themselves do not satisfy, hence why their expectation values are ill-defined). For any such set of observables $\tilde{B}^{(1)}$ can be integrated out in the numerator and denominator, giving us
+\begin{align*}
+	\expval{\prod\limits_{i}O_{i}(k_{i})} &= \frac{\inte{}{}\prod\limits_{s > 1}\left[D\tilde{B}^{(s)}\right]e^{iS}\prod\limits_{i}O_{i}(k_{i})}{\inte{}{}\prod\limits_{s > 1}\left[D\tilde{B}^{(s)}\right]e^{iS}}.
+\end{align*}
+Note that the action can now be written as
+\begin{align*}
+	S = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\sum\limits_{s, t > 1}\tilde{B}^{(s)}(-k)M^{(s, t)}(k)\tilde{B}^{(t)}(k).
+\end{align*}
