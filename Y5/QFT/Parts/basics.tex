@@ -17,7 +17,11 @@ These derivatives anticommute. They satisfy the product rule
 \begin{align*}
 	\pdv{\theta_{i}}(FG) = \pdv{F}{\theta_{i}}{G} + (-1)^{\abs{F}}F\pdv{G}{\theta_{i}},
 \end{align*}
-where $\abs{F}$ is $1$ if $F$ is even and $0$ if $F$ is odd. For a composite function
+where $\abs{F}$ is $1$ if $F$ is even and $0$ if $F$ is odd. Note that this implies the sign convention
+\begin{align*}
+	\pdv{\theta_{i}}\theta_{i}\theta_{j} = -\pdv{\theta_{i}}\theta_{j}\theta_{i}.
+\end{align*}
+For a composite function
 \begin{align*}
 	f(G(\theta)) &= \sum\limits_{n}f_{n}G^{n}(\theta),
 \end{align*}
@@ -37,8 +41,27 @@ This has the peculiar consequence
 \end{align*}
 We know that all functions of Grassman variables can be factorized as $F(\theta) = A(\theta) + \theta_{i}B(\theta)$, where neither $A$ nor $B$ depend on $\theta_{i}$. This has the consequence that shifts in any one variable does not affect the integral. Scaling of variables does not work that way, however, as we saw that differentiation and integration has the same effect. This produces the general result
 \begin{align*}
-	\theta_{j} = A_{ij}\phi_{j}\implies \dd{\theta}_{1}\dots\dd{\theta}_{n} = \frac{1}{\det{A}}\dd{\phi}_{1}\dots\dd{\phi}_{n}.
+	\theta_{j} = A_{ij}\phi_{j}\implies \dd{\theta}_{1}\dots\dd{\theta}_{n} = \frac{1}{\det(A)}\dd{\phi}_{1}\dots\dd{\phi}_{n}.
 \end{align*}
+
+The Dirac delta function is defined in this context such that it obeys the relation
+\begin{align*}
+	\inte{}{}\dd{\theta}_{i}F(\theta)\delta(\theta_{i}) = \eval{F}_{\theta_{i} = 0}.
+\end{align*}
+From what we have above we see that $\delta(\theta_{i}) = \theta_{i}$ satisfies this. This again has consequences of scaling the Dirac delta being different - more specifically
+\begin{align*}
+	\prod\limits_{i}\delta(A_{ij}\delta_{j}) = \det(A)\prod\limits_{i}\delta(\delta_{i}).
+\end{align*}
+
+Complex Grassman variables can also be defined according to
+\begin{align*}
+	\theta_{k} = \phi(k) + i\psi(k).
+\end{align*}
+Using the relations above we find
+\begin{align*}
+	\dd{\theta}_{k}\dd{\theta}_{k}\cc = i\dd{\phi}_{k}\dd{\psi}_{k}.
+\end{align*}
+%TODO: Show thing with Gaussian
 
 \paragraph{The Path Integral Approach}
 We will now switch from canonical quantization to path integrals as our basis for quantum field theory. This has a few advantages:
@@ -448,3 +471,34 @@ This is a bit of a disaster, as $M$ always has at least one eigenvalue of zero. 
 	M^{\mu\nu}k_{\nu} = k^{\mu}k^{\nu}k_{\nu} - k^{2}g^{\mu\nu}k_{\nu} = 0.
 \end{align*}
 This means that $M^{-1}$ does not exist for any $k$. That scenario is a lot worse than for the Klein-Gordon equation, where $M^{-1}$ only didn't exist at the set of $k$ such that $k^{2} = -m^{2}$.
+
+\paragraph{The Free Dirac Field}
+We will quantize Dirac fields by taking
+\begin{align*}
+	\psi(x) = \sum\limits_{i}\theta_{i}\phi_{i}(x),
+\end{align*}
+where the $\phi_{i}$ are an appropriate basis of functions and the $\theta_{i}$ are complex Grassman variables. We will pair the fields with the Dirac adjoint rather than the normal adjoint, which is allowed as the two are related by a unitary transform. The action is
+\begin{align*}
+	S = \integ[4]{}{}{x}{\overline{\psi}_{\alpha}\left(-\gamma^{\mu}\del{}{\mu} - m\right)_{\alpha\beta}\psi_{\beta}}
+\end{align*}
+in position space and
+\begin{align*}
+	S = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{\psi}}_{\alpha}(-k)\left(-\gamma^{\mu}k_{\mu} - m\right)_{\alpha\beta}\tilde{\psi}_{\beta}(k)
+\end{align*}
+in momentum space. The indices on the fields are Dirac indices. In the generating functional we pair the fields and their adjoints with fields $\tilde{J}$ and $\tilde{\overline{J}}$. According to our definition of derivatives with respect to Grassman variables we then find
+\begin{align*}
+	\expval{\tilde{\psi}_{\alpha_{1}}(k_{1})\dots\tilde{\psi}_{\alpha_{n}}(k_{n})\tilde{\overline{\psi}}_{\beta_{1}}(p_{1})\dots\tilde{\overline{\psi}}_{\beta_{n}}(p_{n})}{\Omega} = \prod\limits_{i}\left(-i(2\pi)^{4}\fdv{\tilde{\overline{J}}(k_{i})}\right)\prod\limits_{i}\left(i(2\pi)^{4}\fdv{\tilde{J}(p_{i})}\right)Z.
+\end{align*}
+%TODO: Show
+We can show that
+\begin{align*}
+	Z = Ne^{-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\alpha}(-k)(\fsl{k} - m)_{\alpha\beta}^{-1}\tilde{J}_{\beta}(k)},
+\end{align*}
+and from this recover familiar results.
+
+\paragraph{An Interacting Fermion Theory}
+%TODO: Expand
+Consider a field theory with a Dirac field, a scalar field and an interaction term
+\begin{align*}
+	\lag = \lambda\overline{\psi}\psi\phi.
+\end{align*}
