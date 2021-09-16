@@ -479,11 +479,11 @@ We will quantize Dirac fields by taking
 \end{align*}
 where the $\phi_{i}$ are an appropriate basis of functions and the $\theta_{i}$ are complex Grassman variables. We will pair the fields with the Dirac adjoint rather than the normal adjoint, which is allowed as the two are related by a unitary transform. The action is
 \begin{align*}
-	S = \integ[4]{}{}{x}{\overline{\psi}_{\alpha}\left(-\gamma^{\mu}\del{}{\mu} - m\right)_{\alpha\beta}\psi_{\beta}}
+	S = \integ[4]{}{}{x}{\overline{\psi}_{\alpha}\left(-i\gamma^{\mu}\del{}{\mu} - m\right)_{\alpha\beta}\psi_{\beta}}
 \end{align*}
 in position space and
 \begin{align*}
-	S = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{\psi}}_{\alpha}(-k)\left(-\gamma^{\mu}k_{\mu} - m\right)_{\alpha\beta}\tilde{\psi}_{\beta}(k)
+	S = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{\psi}}_{\alpha}(-k)\left(-i\gamma^{\mu}k_{\mu} - m\right)_{\alpha\beta}\tilde{\psi}_{\beta}(k)
 \end{align*}
 in momentum space. The indices on the fields are Dirac indices. In the generating functional we pair the fields and their adjoints with fields $\tilde{J}$ and $\tilde{\overline{J}}$. According to our definition of derivatives with respect to Grassman variables we then find
 \begin{align*}
@@ -546,4 +546,92 @@ implying that the only non-zero variation of $B$ is $\var{\tilde{B}}^{(1)}(k) = 
 Note that the action can now be written as
 \begin{align*}
 	S = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\sum\limits_{s, t > 1}\tilde{B}^{(s)}(-k)M^{(s, t)}(k)\tilde{B}^{(t)}(k).
+\end{align*}
+
+\paragraph{Gauge Theories}
+Consider some theory where the action contains derivatives of the field, and suppose that the theory has some global symmetry. From the theory of Lie groups we know that such symmetries can be specified in terms of a set of numbers combined with the generators of the Lie group. Now, what if these numbers were to be replaced by functions, making the symmetry local? This would make the symmetry into a so-called gauge symmetry. Dubbing the fields $\Psi$, the action of the symmetry produces the outcome
+\begin{align*}
+	\del{}{\mu}\Psi\to \del{}{\mu}(U\Psi) = \left(\del{}{\mu}U + u\del{}{\mu}\right)\Psi.
+\end{align*}
+If we want the local symmetry to be a symmetry of our theory, termed requiring gauge invariance, we are going to have to modify the derivative by introducing a covariant derivative
+\begin{align*}
+	D_{\mu} = \del{}{\mu} - iS_{\mu}.
+\end{align*}
+$S$ is a collection of space-dependent matrices, as we are generally working with a field theory with multiple fields. In order for this to work we will have to let these matrices transform along with the fields. The action of a gauge transformation then produces
+\begin{align*}
+	D_{\mu}\Psi &\to D_{\mu}\p\Psi\p = (\del{}{\mu} - iS_{\mu}\p)U\Psi \\
+	            &= (\del{}{\mu}U + U\del{}{\mu} - iS_{\mu}\p U)\Psi \\
+	            &= U(U^{-1}\del{}{\mu}U + \del{}{\mu} - iU^{-1}S_{\mu}\p U)\Psi.
+\end{align*}
+From this point on we will restrict ourselves to \SU{N} transformations, but many of the results are in fact reproducible for a general Lie group. Someone should probably do that. For the local symmetry to be a symmetry of the theory we require $D_{\mu}\p\Psi\p = UD_{\mu}\Psi$, which implies
+\begin{align*}
+	&U\adj\del{}{\mu}U - iU\adj S_{\mu}\p U = -iS_{\mu}, \\
+	&S_{\mu}\p = US_{\mu}U\adj - i(\del{}{\mu}U)U\adj.
+\end{align*}
+
+Can we impose any restrictions on the matrices $S$? We can write
+\begin{align*}
+	U = e^{i\theta^{a}(x)T_{a}},
+\end{align*}
+where $T_{a}$ are the generators of \SU{N} (traceless hermitian matrices). Looking at the action of the covariant derivative close to the identity transform we find
+\begin{align*}
+	D_{\mu}\p(U\Psi) &= \left(iT_{a}\del{}{\mu}\theta^{a} + (1 + i\theta^{a}(x)T_{a})\del{}{\mu} - iS_{\mu}\p(1 + i\theta^{a}(x)T_{a})\right)\Psi.
+\end{align*}
+Looking at this we notice that if we were to extract $U$, all that would be left in the matrix apart from the derivative would be the $S$ matrices and the generators and their products. The generators satisfy
+\begin{align*}
+	\comm{T_{a}}{T_{b}} = if_{ab}^{c}T_{c},
+\end{align*}
+which gives a vague indication that we should choose to expand the $S$ in terms of the generators. This means that the $S$ are traceless and hermitian. We have that
+\begin{align*}
+	(S_{\mu}\p)\adj = US_{\mu}\adj U\adj + iU(\del{}{\mu}U\adj).
+\end{align*}
+Because $U$ is unitary we have
+\begin{align*}
+	U(\del{}{\mu}U\adj) = -U\adj(\del{}{\mu}U),
+\end{align*}
+and hermitianity is thus guaranteed by the gauge transformation. Furthermore, as $\tr(\ln(U)) = \ln(\det(U))$ and $\det(U) = 1$ we have
+\begin{align*}
+	\del{}{\mu}\tr(\ln(U)) = \tr(U\adj\del{}{\mu}U) = 0.
+\end{align*}
+Because traces are invariant under unitary transformations and cyclic permutations of matrices, tracelessness is also preserved by the gauge transformation. All in all we are left with $N^{2} - 1$ degrees of freedom.
+
+Having established this, we can expand the matrices $S$ in terms of the so-called gauge fields $B$ according to
+\begin{align*}
+	S_{\mu} = B_{\mu}^{a}T_{a}.
+\end{align*}
+There are transformation rules associated with these fields as well. Writing
+\begin{align*}
+	UT_{b}U\adj = R_{b}^{a}T_{a},\ i(\del{}{\mu}U)U\adj = \alpha^{a}T_{a}
+\end{align*}
+we have
+\begin{align*}
+	(B\p)_{\mu}^{a} = B_{\mu}^{b}R_{b}^{a} - \alpha^{a}.
+\end{align*}
+
+Next we introduce the field strength. Noting that
+\begin{align*}
+	D_{\mu}D_{\nu} &= (\del{}{\mu} - iS_{\mu})(\del{}{\nu} - iS_{\nu}) \\
+	               &= \del{}{\mu}\del{}{\nu} - i\del{}{\mu}S_{\nu} - iS_{\mu}\del{}{\nu} - S_{\mu}S_{\nu} \\
+	               &= \del{}{\mu}\del{}{\nu} - i\left((\del{}{\mu}S_{\nu}) + S_{\nu}\del{}{\mu} + S_{\mu}\del{}{\nu}\right) - S_{\mu}S_{\nu},
+\end{align*}
+meaning
+\begin{align*}
+	\comm{D_{\mu}}{D_{\nu}} &= -i((\del{}{\mu}S_{\nu}) - (\del{}{\nu}S_{\mu})) - \comm{S_{\mu}}{S_{\nu}} \\
+	                        &= -i((\del{}{\mu}S_{\nu}) - (\del{}{\nu}S_{\mu}) + i\comm{S_{\mu}}{S_{\nu}}).
+\end{align*}
+We define the field strength tensor as
+\begin{align*}
+	G_{\mu\nu} = i\comm{D_{\mu}}{D_{\nu}}.
+\end{align*}
+Because the covariant derivatives satisfy $D_{\mu}\p\Psi\p = UD_{\mu}\Psi$ we have
+\begin{align*}
+	G_{\mu\nu}\p\Psi\p = UG_{\mu\nu}\Psi,
+\end{align*}
+hence
+\begin{align*}
+	G_{\mu\nu}\p = UG_{\mu\nu}U\adj.
+\end{align*}
+From this we can construct gauge invariant terms to be added to the action, and the full action is
+\begin{align*}
+	S = -\frac{1}{2g^{2}}\integ[4]{}{}{x}{\tr(G_{\mu\nu}G^{\mu\nu}) + \lag(\Psi, \del{}{}\to D)}.
 \end{align*}
