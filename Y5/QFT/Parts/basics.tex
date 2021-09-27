@@ -728,6 +728,7 @@ Note that the action can now be written as
 \end{align*}
 
 \paragraph{Gauge Theories}
+%TODO: Rework for coupling constants
 Consider some theory where the action contains derivatives of the field, and suppose that the theory has some global symmetry. From the theory of Lie groups we know that such symmetries can be specified in terms of a set of numbers combined with the generators of the Lie group. Now, what if these numbers were to be replaced by functions, making the symmetry local? This would make the symmetry into a so-called gauge symmetry. Dubbing the fields $\Psi$, the action of the symmetry produces the outcome
 \begin{align*}
 	\del{}{\mu}\Psi\to \del{}{\mu}(U\Psi) = \left(\del{}{\mu}U + u\del{}{\mu}\right)\Psi.
@@ -847,3 +848,72 @@ hence
 	R_{a}^{b}(U_{1}U_{2}) = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2}).
 \end{align*}
 This means that the object $R$ defines a representation of the Lie group. More specifically it is isomorphic to the adjoint representation.
+
+\paragraph{Quantizing Non-Abelian Gauge Theories}
+%TODO: Rename capital indices
+We proceed by working with a normalization such that
+\begin{align*}
+	\tr(T_{a}T_{b}) = \frac{1}{2}\delta_{ab}.
+\end{align*}
+The free action for a non-Abelian gauge theory is troublesome because it approaches the Maxwell action for small coupling constants, reviving all our previous problems with it. We will need to handle that.
+
+A key point is the claim that the problematic paths in function space are those corresponding to gauge equivalent fields. To remedy our issues we will therefore want to integrate over the sets of gauge equivalent fields, rather than all fields within each set. Each such set is called a gauge orbit and has a so-called representative. The set of representatives is called the gauge slice. At this point it is important to restrict ourselves to compact Lie groups, as this is necessary to ensure that the gauge slice crosses the orbits once. It is also important to ensure that the orbits are closed.
+
+We will be concerned with integrals of the form
+\begin{align*}
+	\frac{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}O(u)e^{iS(u)}}{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}e^{iS(u)}}.
+\end{align*}
+The $u_{i}$ are amplitudes for each representative. A gauge transformation manifests as a mapping $u\to F(u, \theta)$ (assumed to have a trivial Jacobian), where the $\theta$ are the parameters of the gauge transformation. We must have $n > m = N^{2} - 1$, where $N$ is the dimension of the multiplet, for some reason. Assuming both $S$ and $O$ to be gauge invariant, we can generate the gauge slice by introducing $H_{A}(u)$, which break gauge invariance, and constants $B_{A}$, which are somehow representatives of each gauge. The $A$ is some index running from $1$ to $m$. Defining $\sigma_{A} = H_{A}(F(u, \theta)) - B_{A}$, we clearly have
+\begin{align*}
+	\inte{}{}\prod\limits_{A = 1}^{m}\dd{\sigma_{A}}\delta(\sigma_{A}) = 1.
+\end{align*}
+We can switch this to an integral over $\theta$ instead to find
+\begin{align*}
+	\inte{}{}\prod\limits_{A = 1}^{m}\dd{\theta_{A}}\delta(H_{A}(F(u, \theta)) - B_{A})\det(\pdv{H(F(u, \theta))}{\theta}) = 1.
+\end{align*}
+
+We can now introduce this factor to the integrals we are considering. Choosing the $H$ such that each gauge slice is integrated over only once we are now looking at
+\begin{align*}
+	\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}O(u)e^{iS(u)}\inte{}{}\prod\limits_{A = 1}^{m}\dd{\theta_{A}}\delta(H_{A}(F(u, \theta)) - B_{A})\det(\pdv{H(F(u, \theta))}{\theta}).
+\end{align*}
+To proceed we need to study the Jacobian. The limit that defines the partial derivative contains
+\begin{align*}
+	H(F(u, \theta + \dd{\theta})) - H(F(u, \theta)).
+\end{align*}
+The group structure of the gauge transformation implies that
+\begin{align*}
+	H(F(H(F(u, \theta_{1})), \theta_{2})) = H(F(u, \theta_{3}))
+\end{align*}
+for some new parameters $\theta_{3}$. This means that we can write
+\begin{align*}
+	H(F(u, \theta + \dd{\theta})) - H(F(u, \theta)) = H(F(F(u, \theta), \var{\theta})) - H(F(u, \theta)) = \var{\theta}\eval{\pdv{H(F(F(u, \theta), \phi))}{\phi}}_{\phi = 0}.
+\end{align*}
+To go the final stretch we write
+\begin{align*}
+	\dd{\theta}_{A} = S_{AB}(\theta)\var{\theta_{C}}.
+\end{align*}
+$S$ is now the Jacobian of what is effectively a change of variables, and introducing $v = F(u, \theta)$ we are left with
+\begin{align*}
+	\inte{}{}\prod\limits_{A = 1}^{m}\dd{\theta_{A}}\det(S(\theta))\inte{}{}\prod\limits_{i = 1}^{n}\dd{v_{i}}O(v)e^{iS(v)}\delta(H_{A}(v) - B_{A})\eval{\det(\pdv{H(F(v, \phi))}{\phi})}_{\phi = 0}.
+\end{align*}
+The former part is now dependent only on $\theta$ and disappears during the division. How nice. The Dirac deltas can be handled by introducing factors of
+\begin{align*}
+	\inte{}{}\prod\limits_{A = 1}^{m}\dd{B_{A}}e^{-\frac{i}{2\alpha}\sum\limits_{B = 1}^{m}B_{B}^{2}},
+\end{align*}
+as the $B$s and $H$s should not impact the physics. Introducing this we find the relevant parts of the numerator to be
+\begin{align*}
+	\inte{}{}\prod\limits_{i = 1}^{n}\dd{v_{i}}O(v)e^{i\left(S(v) - \frac{1}{2\alpha}\sum\limits_{B = 1}^{m}H_{B}^{2}(v)\right)}\eval{\det(\pdv{H(F(v, \phi))}{\phi})}_{\phi = 0}.
+\end{align*}
+The functional determinant can in fact also be handled by introducing a set of Grassman variables $b_{A}$ and $c_{A}$, which satisfy
+\begin{align*}
+	\inte{}{}\prod\limits_{A = 1}^{m}\dd{b_{A}}\prod\limits_{B = 1}^{m}\dd{c_{B}}e^{-i\sum M_{CD}b_{C}c_{D}} \propto \det(M)
+\end{align*}
+for any matrix $M$.
+
+Let us now look at what we have. The integrals we are to perform are over the representatives of the gauges, which in the continuum limit should become path integrals over the gauge fields. Furthermore we have extended the exponent to contain two other terms, which we will add to the action. One is a gauge fixing term. The other describes the Grassman variables. These are Lorentz invariant, anti-commuting fields. What they will represent in the quantum theory is so-called Fadeev-Popov ghosts. They violate the spin-statistics theorem, but don't appear in our observables, making that not a problem. We are then left with expressions of the form
+\begin{align*}
+	\pinte{}{A}\pinte{}{b_{a}}\pinte{}{c_{b}}e^{iS_{\text{tot}}}O(A).
+\end{align*}
+
+%TODO: Complete
+Let us now consider the example of $H_{a} = \del{\mu}{}A_{\mu}^{a}$.
