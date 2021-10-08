@@ -1,0 +1,121 @@
+\section{Renormalization}
+
+\paragraph{Renormalization}
+Momentum-space integrals of propagators can have various sorts of divergences. One kind occurs when $k\to 0$, and is termed an infrared divergence. Another is ultraviolet divergences, which occurs at large $l$. As an example, consider
+\begin{align*}
+	I = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2} - i\epsilon}\frac{1}{(p_{1} + p_{2} + k)^{2} + m^{2} - i\epsilon}.
+\end{align*}
+Performing a Wick rotation  we find
+\begin{align*}
+	I = i\inte{}{}\frac{\dd[4]{l}}{(2\pi)^{4}}\frac{1}{\abs{l}^{2} + m^{2} - i\epsilon}\frac{1}{\abs{p_{1} + p_{2} + l}^{2} + m^{2} - i\epsilon}.
+\end{align*}
+Next we switch to polar coordinates, where we at large $l$ have
+\begin{align*}
+	\integ{0}{\infty}{r}{\frac{r^{3}\Omega_{3}}{r^{4}}}.
+\end{align*}
+Here we have introduced the solid angle
+\begin{align*}
+	\Omega_{D - 1} = \frac{2(\pi)^{\frac{D}{2}}}{\Gamma\left(\frac{D}{2}\right)}.
+\end{align*}
+The divergence of the integral is logarithmic. There are many similar cases, but of course not all loop diagrams are divergent. The set of techniques to remedy this issue is called renormalization.
+
+\paragraph{Regularization}
+Regularization methods are mathematical tricks to make contributions from Feynman diagrams finite.
+
+One set of techniques is to introduce a cutoff $\Lambda$ at infinity for your momentum space integrals which you take to be infinite at the end of your calculations. This scheme has a few drawbacks:
+\begin{itemize}
+	\item You lose Lorentz invariance.
+	\item You could find that the result depends on how you structure the diagram.
+\end{itemize}
+
+Another is dimensional regularization, where you extend your integral to arbitrary dimensionality and let it approach $4$ in the end by analytical continuation. From what we have seen it would appear that the integrals converge in lower dimensions. For an example we consider the general integral
+\begin{align*}
+	\inte{}{}\frac{\dd[D]{k}}{(2\pi)^{D}}\frac{1}{(k^{2} + c)^{\alpha}} \propto \integ{0}{\infty}{r}{\Omega{D - 1}\frac{r^{D - 1}}{(r^{2} + c)^{\alpha}}}.
+\end{align*}
+This integral converges for $D < 2\alpha$. Introducing a change of variables we find the right integral to be
+\begin{align*}
+	c^{\frac{D}{2} - \alpha}\frac{\Omega_{D - 1}}{(2\pi)^{D}}\integ{0}{\infty}{r}{(\rho^{2} + 1)^{-\alpha}\rho^{D - 1}} = c^{\frac{D}{2} - \alpha}\frac{\Omega_{D - 1}}{(2\pi)^{D}}\frac{\Gamma\left(\frac{D}{2}\right)\Gamma\left(\alpha - \frac{D}{2}\right)}{2\Gamma(\alpha)}.
+\end{align*}
+This integral diverges for $D = 2\alpha$.
+
+\paragraph{Renormalization - Again}
+Consider some field theory for the set of fields $\phi^{a}$ which has constants $g_{i}$. We are generally concerned with computing correlation functions, which will depend on the coordinates of the involved fields, as well as the constants and $\epsilon = 4 - D$, which is introduced during dimensional regularization. We now introduce renormalized fields denoted as $\phi^{a, \text{R}}$ and renormalized parameters $g_{i, \text{R}}$, which are functionals/functions of the old set. We take the renormalized fields to depend linearly on the original ones. The correlation functions for the renormalized fields are then products of correlation functions for the old fields. More specifically, writing
+\begin{align*}
+	\phi^{a} = \sum\limits_{b = 1}^{N}K_{b}^{a}(g_{\text{R}}, \epsilon)\phi^{b},\ g_{k} = F_{k}(g_{\ren}, \epsilon),
+\end{align*}
+we have
+\begin{align*}
+	\expval{\prod\limits_{i = 1}^{n}\phi^{a_{i}, \text{R}}} = \expval{\prod\limits_{i = 1}^{n}\left(\sum\limits_{b_{i} = 1}^{N}(K^{-1})_{b_{i}}^{a_{i}}(g_{\text{R}}, \epsilon)\phi^{b_{i}}\right)}.
+\end{align*}
+Employing a summation convention for the field indices we have
+\begin{align*}
+	\expval{\prod\limits_{i = 1}^{n}\phi^{a_{i}, \text{R}}} = \expval{\prod\limits_{i = 1}^{n}(K^{-1})_{b_{i}}^{a_{i}}(g_{\text{R}}, \epsilon)\phi^{b_{i}}} = \left(\prod\limits_{i = 1}^{n}(K^{-1})_{b_{i}}^{a_{i}}(g_{\text{R}}, \epsilon)\right)\expval{\prod\limits_{j = 1}^{n}\phi^{b_{j}}}.
+\end{align*}
+What we have on the right-hand side is then a sum of correlation functions in the non-renormalized theory.
+
+To lowest order we would expect the renormalization transforms to be trivial, hence we would have
+\begin{align*}
+	F_{k}(g_{\ren}, \epsilon) = g_{k, \ren} + G(g_{\ren}, \epsilon),\ K^{a}_{b}(g_{\ren}, \epsilon) = \kdelta{a}{b} + L^{a}_{b}(g_{\ren}, \epsilon).
+\end{align*}
+
+\paragraph{Renormalizing $\phi^{4}$ Theory}
+In $d$-dimensional $\phi^{4}$ theory, the fields will have mass dimension $\frac{d}{2} - 1$. This will imply that $m$ has mass dimension $1$ and $\lambda$ has mass dimension $4 - d = \epsilon$. To make $\lambda$ dimensionless we therefore introduce a mass scale and perform the transformation $\lambda\to\mu^{\epsilon}\lambda$. Next we redefine the field as
+\begin{align*}
+	\phi = \sqrt{\tilde{Z}_{\phi}(m_{\ren}, \lambda_{\ren}, \epsilon)}\phi_{\ren}
+\end{align*}
+and introduce renormalized parameters according to
+\begin{align*}
+	m = Z_{m}(m_{\ren}, \lambda_{\ren}, \epsilon)m_{\ren},\ \lambda = Z_{\lambda}(m_{\ren}, \lambda_{\ren}, \epsilon)\lambda_{\ren}.
+\end{align*}
+Because we have restrictions on the behavior of the transformations at a particular point, we can Taylor expand about this point. Now, in terms of these new objects we have
+\begin{align*}
+	S &= -\integ[d]{}{}{x}{\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi + \frac{1}{2}m^{2}\phi^{2} + \frac{\lambda}{4!}\phi^{4}} \\
+	  =& -\integ[d]{}{}{x}{\frac{1}{2}\tilde{Z}_{\phi}\del{}{\mu}\phi_{\ren}\del{\mu}{}\phi_{\ren} + \frac{1}{2}\tilde{Z}_{\phi}Z_{m}^{2}m_{\ren}^{2}\phi_{\ren}^{2} + Z_{\lambda}\tilde{Z}_{\phi}^{2}\frac{\lambda_{\ren}\mu^{\epsilon}}{4!}\phi_{\ren}^{4}}.
+\end{align*}
+We want to express this in terms of the non-trivial parts of our expansion, hence we write
+\begin{align*}
+	S =& -\integ[d]{}{}{x}{\frac{1}{2}\del{}{\mu}\phi_{\ren}\del{\mu}{}\phi_{\ren} + \frac{1}{2}m_{\ren}^{2}\phi_{\ren}^{2} + \frac{\lambda_{\ren}\mu^{\epsilon}}{4!}\phi_{\ren}^{4}} \\
+	   &- \integ[d]{}{}{x}{\frac{1}{2}(\tilde{Z}_{\phi} - 1)\del{}{\mu}\phi_{\ren}\del{\mu}{}\phi_{\ren} + \frac{1}{2}(\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2}\phi_{\ren}^{2} + (Z_{\lambda}\tilde{Z}_{\phi}^{2} - 1)\frac{\lambda_{\ren}\mu^{\epsilon}}{4!}\phi_{\ren}^{4}}.
+\end{align*}
+The new terms are called counter-terms, and we will use them to make the loop contributions finite.
+
+We will now consider the correlation function $\expval{\phi_{\ren}(p_{1})\phi_{\ren}(p_{2})}$. We will get one propagator term
+\begin{align*}
+	-(2\pi)^{d}\frac{i}{p_{1}^{2} + m_{\ren}^{2}}\delta^{d}(p_{1} + p_{2}).
+\end{align*}
+In addition we will have a first-order loop contribution given by
+\begin{align*}
+	-12i\frac{\lambda_{\ren}\mu^{\epsilon}}{4!}(2\pi)^{d}\delta^{d}(p_{1} + p_{2})\inte{}{}\frac{\dd[d]{l}}{(2\pi)^{d}}\frac{-i}{l^{2} + m_{\ren}^{2}}\frac{-i}{p_{1}^{2} + m_{\ren}^{2}}\frac{-i}{p_{2}^{2} + m_{\ren}^{2}}.
+\end{align*}
+Next, the first counter-term produces a term
+\begin{align*}
+	2\cdot (2\pi)^{d}\delta^{d}(p_{1} + p_{2})\frac{-i}{p_{1}^{2} + m_{\ren}^{2}}\frac{-i}{p_{2}^{2} + m_{\ren}^{2}}\cdot -i\left(-\frac{1}{2}(\tilde{Z}_{\phi} - 1)\cdot ip_{1, \mu}\cdot ip_{2}^{\mu} - \frac{1}{2}(\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2}\right).
+\end{align*}
+Adding up the two latter, inserting the integral and ignoring the trivial parts, we are left with
+\begin{align*}
+	-i\left((\tilde{Z}_{\phi} - 1)p_{1}^{2} - (\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2} + \frac{12\lambda_{\ren}\mu^{\epsilon}}{(4\pi)^{\frac{4 - \epsilon}{2}}}m_{\ren}^{\frac{4 - \epsilon}{2} - 1}\frac{\Gamma\left(1 - \frac{4 - \epsilon}{2}\right)}{\Gamma(1)}\right).
+\end{align*}
+After some manipulation we find this to be
+\begin{align*}
+	-i\left((\tilde{Z}_{\phi} - 1)p_{1}^{2} - (\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2} + \frac{12\lambda_{\ren}\mu^{\epsilon}}{(4\pi)^{\frac{4 - \epsilon}{2}}}m_{\ren}^{\frac{4 - \epsilon}{2} - 1}\frac{\Gamma\left(\frac{\epsilon}{2}\right)}{\left(\frac{\epsilon}{2} - 1\right)\Gamma(1)}\right).
+\end{align*}
+The divergency in the right-hand term comes by the gamma function part behaving as $-\frac{2}{\epsilon}$ close to the desired limit. To get a finite value we can first ignore first-order terms in $\tilde{Z}_{\phi}$. We can then choose
+\begin{align*}
+	Z_{m}^{2} = 1 + \frac{\lambda_{\ren}}{16\pi^{2}\epsilon}.
+\end{align*}
+
+Next we can consider a four-point correlation function. All loop diagrams with a single loop are handled according to the above. The diagram with a loop splitting two halves, however, is logarithmically divergent.
+
+\paragraph{Renormalizability}
+Suppose we were to add a set of interaction terms $g^{(n)}\phi^{n}$ to the theory. The mass dimension of the coupling constants will be $d - \frac{n}{2}(d - 2)$. These vertices will add higher-order Feynman diagrams to the $N$-point correlation functions. The terms added contain $N$ propagators for external lines, an overall momentum-conserving delta function and some other function of the external momenta termed $\Gamma^{(N)}$. It is generally given by
+\begin{align*}
+	\Gamma^{(N)} = \hat{\Gamma}^{(N)}\prod\limits_{s}(g^{(s)})^{n_{s}},
+\end{align*}
+where $n_{s}$ is the number of times the particular vertex contributes. It is in $\hat{\Gamma}$ that integrations over internal momenta are handled.
+
+The momentum space fields have dimension $\frac{1}{2}(d - 2) - d = -\frac{1}{2}(d + 2)$. The $N$-point momentum space correlation function has mass dimension $-\frac{N}{2}(d + 2)$. $\hat{\Gamma}$ then has a mass dimension of
+\begin{align*}
+	d_{\hat{\Gamma}} =& -\frac{N}{2}(d + 2) + 2N + d - \sum\limits_{s}n_{s}\left(d - \frac{s}{2}(d - 2)\right) \\
+	                 =& \frac{N}{2}(2 - d) + d - \sum\limits_{s}n_{s}\left(d - \frac{s}{2}(d - 2)\right).
+\end{align*}
+From what we have seen, it is clear that if $\hat{\Gamma}^{(n)}$ has a non-negative mass dimension, the diagram diverges.

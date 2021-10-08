@@ -1,0 +1,261 @@
+\section{Gauge Theory}
+
+\paragraph{A Go at Quantum Electrodynamics}
+Quantum electrodynamics starts with wanting to extend the global gauge symmetry of complex field theories to a local one. This is done by replacing the derivative with
+\begin{align*}
+D_{\mu} = \del{}{\mu} - ieA_{\mu},
+\end{align*}
+where $A$ is the so-called gauge field. The full gauge transformation is
+\begin{align*}
+\Psi\to e^{i\lambda(x)}\Psi,\ A_{\mu}\to A_{\mu} + \del{}{\mu}\lambda.
+\end{align*}
+For the field theory to work we now need to add terms describing $A$ to the action, starting with quadratic ones as these are the easiest. The quantity
+\begin{align*}
+F_{\mu\nu} = \comm{D_{\mu}}{D_{\nu}}
+\end{align*}
+is gauge invariant, so we add
+\begin{align*}
+\lag = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+\end{align*}
+to the full Lagrangian. This doesn't work, however, as we end up with the momentum space action
+\begin{align*}
+S = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}A_{\mu}\left(k^{\mu}k^{\nu} - k^{2}g^{\mu\nu}\right)A_{\nu},
+\end{align*}
+which was ill-defined. We will have to devise some workaround.
+
+The trick we will use is to for any $k$ construct a basis $e$ for spacetime such that $e^{(1)} = k$ and expand
+\begin{align*}
+\tilde{A}_{\mu} = \sum\limits_{s}\tilde{B}^{(s)}(k)e_{\mu}^{(s)}(k).
+\end{align*}
+We will be interested in the expectation values of some set of observables, which can be written as
+\begin{align*}
+\expval{\prod\limits_{i}O_{i}(k_{i})} &= \frac{\pinte{}{\tilde{A}}e^{iS}\prod\limits_{i}O_{i}(k_{i})}{\pinte{}{\tilde{A}}e^{iS}} \\
+&= \frac{\inte{}{}\prod\limits_{s}\left[D\tilde{B}^{(s)}\right]e^{iS}\prod\limits_{i}O_{i}(k_{i})}{\inte{}{}\prod\limits_{s}\left[D\tilde{B}^{(s)}\right]e^{iS}}.
+\end{align*}
+The gauge transform can be written as
+\begin{align*}
+\var{\tilde{A}_{\mu}} = \sum\limits_{s}\var{\tilde{B}}^{(s)}(k)e_{\mu}^{(s)}(k) = ik_{\mu}\tilde{\lambda},
+\end{align*}
+implying that the only non-zero variation of $B$ is $\var{\tilde{B}}^{(1)}(k) = i\tilde{\lambda}$. This is a very neat trick because it makes the gauge invariance of any observable easy to check - you just need to see if there is dependence on $\tilde{B}^{(1)}$ (something the fields themselves do not satisfy, hence why their expectation values are ill-defined). For any such set of observables $\tilde{B}^{(1)}$ can be integrated out in the numerator and denominator, giving us
+\begin{align*}
+\expval{\prod\limits_{i}O_{i}(k_{i})} &= \frac{\inte{}{}\prod\limits_{s > 1}\left[D\tilde{B}^{(s)}\right]e^{iS}\prod\limits_{i}O_{i}(k_{i})}{\inte{}{}\prod\limits_{s > 1}\left[D\tilde{B}^{(s)}\right]e^{iS}}.
+\end{align*}
+Note that the action can now be written as
+\begin{align*}
+S = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\sum\limits_{s, t > 1}\tilde{B}^{(s)}(-k)M^{(s, t)}(k)\tilde{B}^{(t)}(k).
+\end{align*}
+
+\paragraph{Gauge Theories}
+%TODO: Rework for coupling constants
+Consider some theory where the action contains derivatives of the field, and suppose that the theory has some global symmetry. From the theory of Lie groups we know that such symmetries can be specified in terms of a set of numbers combined with the generators of the Lie group. Now, what if these numbers were to be replaced by functions, making the symmetry local? This would make the symmetry into a so-called gauge symmetry. Dubbing the fields $\Psi$, the action of the symmetry produces the outcome
+\begin{align*}
+\del{}{\mu}\Psi\to \del{}{\mu}(U\Psi) = \left(\del{}{\mu}U + U\del{}{\mu}\right)\Psi.
+\end{align*}
+If we want the local symmetry to be a symmetry of our theory, termed requiring gauge invariance, we are going to have to modify the derivative by introducing a covariant derivative
+\begin{align*}
+D_{\mu} = \del{}{\mu} - igS_{\mu}.
+\end{align*}
+$S$ is a collection of space-dependent matrices, as we are generally working with a field theory with multiple fields, and $g$ is some coupling constant. In order for this to work we will have to let these matrices transform along with the fields. The action of a gauge transformation then produces
+\begin{align*}
+D_{\mu}\Psi &\to D_{\mu}\p\Psi\p = (\del{}{\mu} - igS_{\mu}\p)U\Psi \\
+&= (\del{}{\mu}U + U\del{}{\mu} - igS_{\mu}\p U)\Psi \\
+&= U(U^{-1}\del{}{\mu}U + \del{}{\mu} - igU^{-1}S_{\mu}\p U)\Psi.
+\end{align*}
+From this point on we will restrict ourselves to \SU{N} transformations, but many of the results are in fact reproducible for a general Lie group. Someone should probably do that. For the local symmetry to be a symmetry of the theory we require $D_{\mu}\p\Psi\p = UD_{\mu}\Psi$, which implies
+\begin{align*}
+&U\adj\del{}{\mu}U - igU\adj S_{\mu}\p U = -igS_{\mu}, \\
+&S_{\mu}\p = US_{\mu}U\adj - \frac{i}{g}(\del{}{\mu}U)U\adj.
+\end{align*}
+
+Can we impose any restrictions on the matrices $S$? We can write
+\begin{align*}
+U = e^{-i\theta^{a}(x)T_{a}},
+\end{align*}
+where $T_{a}$ are the generators of \SU{N} (traceless hermitian matrices). Looking at the action of the covariant derivative close to the identity transform we find
+\begin{align*}
+D_{\mu}\p(U\Psi) &= \left(-iT_{a}\del{}{\mu}\theta^{a} + (1 - i\theta^{a}(x)T_{a})\del{}{\mu} - igS_{\mu}\p(1 - i\theta^{a}(x)T_{a})\right)\Psi.
+\end{align*}
+Looking at this we notice that if we were to extract $U$, all that would be left in the matrix apart from the derivative would be the $S$ matrices, the generators and products of the two. The generators satisfy
+\begin{align*}
+\comm{T_{a}}{T_{b}} = i\srconst{ab}{c}T_{c},
+\end{align*}
+which gives a vague indication that we should choose to expand the $S$ in terms of the generators. This means that the $S$ are traceless and hermitian. We have that
+\begin{align*}
+(S_{\mu}\p)\adj = US_{\mu}\adj U\adj + \frac{i}{g}U(\del{}{\mu}U\adj).
+\end{align*}
+Because $U$ is unitary we have
+\begin{align*}
+U(\del{}{\mu}U\adj) = -U\adj(\del{}{\mu}U),
+\end{align*}
+and hermitianity is thus guaranteed by the gauge transformation. Furthermore, as $\tr(\ln(U)) = \ln(\det(U))$ and $\det(U) = 1$ we have
+\begin{align*}
+\del{}{\mu}\tr(\ln(U)) = \tr(U\adj\del{}{\mu}U) = 0.
+\end{align*}
+Because traces are invariant under unitary transformations and cyclic permutations of matrices, tracelessness is also preserved by the gauge transformation. All in all we are left with $N^{2} - 1$ degrees of freedom.
+
+Having established this, we can expand the matrices $S$ in terms of the so-called gauge fields $B$ according to
+\begin{align*}
+S_{\mu} = B_{\mu}^{a}T_{a}.
+\end{align*}
+There are transformation rules associated with these fields as well. Writing
+\begin{align*}
+UT_{b}U\adj = R_{b}^{a}T_{a},\ \frac{i}{g}(\del{}{\mu}U)U\adj = \alpha^{a}_{\mu}T_{a}
+\end{align*}
+we have
+\begin{align*}
+(B\p)_{\mu}^{a} = B_{\mu}^{b}R_{b}^{a} - \alpha^{a}_{\mu}.
+\end{align*}
+Of course we can be more explicit and write for an infinitesimal transformation
+\begin{align*}
+&\frac{i}{g}(\del{}{\mu}U)U\adj = \frac{1}{g}\del{}{\mu}\theta^{a}T_{a}(1 + i\theta^{a}T_{a}) \implies \alpha^{a}_{\mu} = \frac{1}{g}\del{}{\mu}\theta^{a}, \\
+&UT_{a}U\adj = (1 - i\theta^{b}T_{b})T_{a}(1 + i\theta^{c}T_{c}) \approx T_{a} - i\theta^{b}\comm{T_{b}}{T_{a}} \implies R_{a}^{b} = \kdelta{b}{a} + \theta^{c}\srconst{ca}{b}.
+\end{align*}
+This yields the transformation rule
+\begin{align*}
+(B\p)_{\mu}^{a} = B_{\mu}^{b}\left(\kdelta{a}{b} + \theta^{c}\srconst{cb}{a}\right) - \frac{1}{g}\del{}{\mu}\theta^{a} = B_{\mu}^{a} + \theta^{c}B_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\theta^{a}.
+\end{align*}
+
+Next we introduce the field strength. Noting that
+\begin{align*}
+D_{\mu}D_{\nu} &= (\del{}{\mu} - igS_{\mu})(\del{}{\nu} - igS_{\nu}) \\
+&= \del{}{\mu}\del{}{\nu} - ig\del{}{\mu}S_{\nu} - igS_{\mu}\del{}{\nu} - g^{2}S_{\mu}S_{\nu} \\
+&= \del{}{\mu}\del{}{\nu} - ig\left((\del{}{\mu}S_{\nu}) + S_{\nu}\del{}{\mu} + S_{\mu}\del{}{\nu}\right) - g^{2}S_{\mu}S_{\nu},
+\end{align*}
+this implies
+\begin{align*}
+\comm{D_{\mu}}{D_{\nu}} &= -ig((\del{}{\mu}S_{\nu}) - (\del{}{\nu}S_{\mu})) - g^{2}\comm{S_{\mu}}{S_{\nu}} \\
+&= -ig((\del{}{\mu}S_{\nu}) - (\del{}{\nu}S_{\mu}) - ig\comm{S_{\mu}}{S_{\nu}}).
+\end{align*}
+In terms of the gauge fields we have
+\begin{align*}
+\comm{D_{\mu}}{D_{\nu}} &= -ig\left((\del{}{\mu}B_{\nu}^{a})T_{a} - (\del{}{\nu}B_{\mu}^{a})T_{a} - igB_{\mu}^{a}B_{\nu}^{b}\comm{T_{a}}{T_{b}}\right) \\
+&= -ig\left((\del{}{\mu}B_{\nu}^{a}) - (\del{}{\nu}B_{\mu}^{a}) + gB_{\mu}^{b}B_{\nu}^{c}\srconst{bc}{a}\right)T_{a}.
+\end{align*}
+We define the field strength as
+\begin{align*}
+G_{\mu\nu} = i\comm{D_{\mu}}{D_{\nu}}.
+\end{align*}
+Evidently we can expand this in terms of the generators, meaning the field strength can be expressed in terms of the gauge fields as
+\begin{align*}
+G_{\mu\nu}^{a} = g\left((\del{}{\mu}B_{\nu}^{a}) - (\del{}{\nu}B_{\mu}^{a}) + gB_{\mu}^{b}B_{\nu}^{c}\srconst{bc}{a}\right).
+\end{align*}
+Because the covariant derivative satisfies $D_{\mu}\p\Psi\p = UD_{\mu}\Psi$ we have
+\begin{align*}
+G_{\mu\nu}\p\Psi\p = UG_{\mu\nu}\Psi,
+\end{align*}
+hence
+\begin{align*}
+G_{\mu\nu}\p = UG_{\mu\nu}U\adj.
+\end{align*}
+This directly gives us the transformation rules for the components as
+\begin{align*}
+(G\p)_{\mu\nu}^{a} = R_{b}^{a}G_{\mu\nu}^{b} = \left(\kdelta{a}{b} + \theta^{c}\srconst{cb}{a}\right)G_{\mu\nu}^{b} = G_{\mu\nu}^{a} + \theta^{c}G_{\mu\nu}^{b}\srconst{cb}{a}.
+\end{align*}
+
+From this we can construct gauge invariant terms to be added to the action, and the full action is
+\begin{align*}
+S = \integ[4]{}{}{x}{-\frac{1}{4g^{2}}\tr(G_{\mu\nu}G^{\mu\nu}) + \lag(\Psi, \del{}{}\to D)}.
+\end{align*}
+The factor $4g^{2}$ is merely a consequence of normalization.
+
+Before proceeding, let us consider some arbitrary representation of the gauge group. Denote the representation operation as $R$, with $R_{\text{A}}$ specifically being the representation of the Lie algebra. The representation operation is distributive and commutes with derivatives. Specifically, we consider the $R_{a}^{b}$. We have
+\begin{align*}
+U_{1}U_{2}T_{a}U_{2}\adj U_{1} = U_{1}R_{a}^{b}(U_{2})T_{b}U_{1}\adj = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2})T_{c},
+\end{align*}
+hence
+\begin{align*}
+R_{a}^{b}(U_{1}U_{2}) = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2}).
+\end{align*}
+This means that the object $R$ defines a representation of the Lie group. More specifically it is isomorphic to the adjoint representation.
+
+\paragraph{Quantizing Non-Abelian Gauge Theories}
+The free action for a non-Abelian gauge theory is troublesome because it approaches the Maxwell action for small coupling constants, reviving all our previous problems with it. We will need to handle that.
+
+A key point is the claim that the problematic paths in function space are those corresponding to gauge equivalent fields. To remedy our issues we will therefore want to integrate over the sets of gauge equivalent fields, rather than all fields within each set. Each such set is called a gauge orbit and has a so-called representative. The set of representatives is called the gauge slice. At this point it is important to restrict ourselves to compact Lie groups, as this is necessary to ensure that the gauge slice crosses the orbits once. It is also important to ensure that the orbits are closed.
+
+We will be concerned with integrals of the form
+\begin{align*}
+\frac{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}O(u)e^{iS(u)}}{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}e^{iS(u)}}.
+\end{align*}
+The $u_{i}$ are amplitudes for each representative at each lattice point. A local gauge transformation manifests as a mapping $u\to F(u, \theta)$ (assumed to have a trivial Jacobian), where the $\theta$ are the parameters of the gauge transformation. These are also on a lattice. Assuming both $S$ and $O$ to be gauge invariant, we can generate the gauge slice by introducing a set of functions $H_{A}(u)$, which break gauge invariance, and constants $B_{A}$, which are somehow representatives of each gauge. The $A$ is a gauge index for each lattice point, and we require that $n$ be greater than the number of values $m$ that $A$ can take, for some reason. Defining $\sigma_{A} = H_{A}(F(u, \theta)) - B_{A}$, we clearly have
+\begin{align*}
+\inte{}{}\prod\limits_{A = 1}^{m}\dd{\sigma_{A}}\delta(\sigma_{A}) = 1.
+\end{align*}
+We can switch this to an integral over $\theta$ instead to find
+\begin{align*}
+\inte{}{}\prod\limits_{A = 1}^{m}\dd{\theta_{A}}\delta(H_{A}(F(u, \theta)) - B_{A})\det(\pdv{H(F(u, \theta))}{\theta}) = 1.
+\end{align*}
+
+We can now introduce this factor to the integrals we are considering. Choosing the $H$ such that each gauge slice is integrated over only once we are now looking at
+\begin{align*}
+\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}O(u)e^{iS(u)}\inte{}{}\prod\limits_{A = 1}^{m}\dd{\theta_{A}}\delta(H_{A}(F(u, \theta)) - B_{A})\det(\pdv{H(F(u, \theta))}{\theta}).
+\end{align*}
+To proceed we need to study the Jacobian. The limit that defines the partial derivative contains
+\begin{align*}
+H(F(u, \theta + \dd{\theta})) - H(F(u, \theta)).
+\end{align*}
+The group structure of the gauge transformation implies that
+\begin{align*}
+H(F(F(u, \theta_{1}), \theta_{2})) = H(F(u, \theta_{3}))
+\end{align*}
+for some new parameters $\theta_{3}$. This means that we can write
+\begin{align*}
+H(F(u, \theta + \dd{\theta})) - H(F(u, \theta)) = H(F(F(u, \theta), \var{\theta})) - H(F(u, \theta)) = \var{\theta}\eval{\pdv{H(F(F(u, \theta), \phi))}{\phi}}_{\phi = 0}
+\end{align*}
+for some infinitesimal $\var{\theta}$. To go the final stretch we write
+\begin{align*}
+\dd{\theta}_{A} = \sum\limits_{B}S_{AB}(\theta)\var{\theta_{B}},
+\end{align*}
+which is valid in the infinitesimal regime. $S$ is now the Jacobian of what is effectively a change of variables, and introducing $v = F(u, \theta)$ we are left with
+\begin{align*}
+\inte{}{}\prod\limits_{A = 1}^{m}\dd{\theta_{A}}\det(S(\theta))\inte{}{}\prod\limits_{i = 1}^{n}\dd{v_{i}}O(v)e^{iS(v)}\delta(H_{A}(v) - B_{A})\eval{\det(\pdv{H(F(v, \phi))}{\phi})}_{\phi = 0}.
+\end{align*}
+The former part is now dependent only on $\theta$ and disappears during the division. How nice.
+
+The Dirac deltas can be handled by introducing factors of
+\begin{align*}
+\inte{}{}\prod\limits_{A = 1}^{m}\dd{B_{A}}e^{-\frac{i}{2\alpha}\sum\limits_{B = 1}^{m}B_{B}^{2}},
+\end{align*}
+as the $B$s and $H$s should not impact the physics. Introducing this and integrating out the $b$s we find the relevant parts of the numerator to be
+\begin{align*}
+\inte{}{}\prod\limits_{i = 1}^{n}\dd{v_{i}}O(v)e^{i\left(S(v) - \frac{1}{2\alpha}\sum\limits_{B = 1}^{m}H_{B}^{2}(v)\right)}\eval{\det(\pdv{H(F(v, \phi))}{\phi})}_{\phi = 0}.
+\end{align*}
+The functional determinant can in fact also be handled by introducing a set of Grassman variables $b_{A}$ and $c_{A}$, which satisfy
+\begin{align*}
+\inte{}{}\prod\limits_{A = 1}^{m}\dd{b_{A}}\prod\limits_{B = 1}^{m}\dd{c_{B}}e^{-i\sum\limits_{C, D} M_{CD}b_{C}c_{D}} \propto \det(M)
+\end{align*}
+for any matrix $M$. We are then left with
+\begin{align*}
+\inte{}{}\prod\limits_{i = 1}^{n}\dd{v_{i}}\prod\limits_{A = 1}^{m}\dd{b_{A}}\prod\limits_{B = 1}^{m}\dd{c_{B}}O(v)e^{i\left(S(v) - \frac{1}{2\alpha}\sum\limits_{C = 1}^{m}H_{C}^{2}(v) - \sum\limits_{D, E} \eval{\pdv{H(F(v, \phi))}{\phi}}_{\phi = 0, de}b_{D}c_{E}\right)}.
+\end{align*}
+
+Let us now look at what we have. The integrals we are to perform are over the representatives of the gauges, which in the continuum limit should become path integrals over the gauge fields. Furthermore we have extended the exponent to contain two other terms, which we will add to the action. One is a gauge fixing term, which in the continuum limit becomes
+\begin{align*}
+-\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{H_{a}^{2}(A(x))} = -\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{H_{a}^{2}(x)},
+\end{align*}
+where we have chosen a new convention. The other term describes the Grassman variables. These are Lorentz invariant, anti-commuting fields. What they will represent in the quantum theory is so-called Fadeev-Popov ghosts. They violate the spin-statistics theorem, but don't appear in our observables, making that not a problem. Their addition to the action is
+\begin{align*}
+- \sum\limits_{a, b}\integ[4]{}{}{x}{\integ[4]{}{}{y}{b_{a}(x)c_{b}(y)\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}}}.
+\end{align*}
+We are then left with expressions of the form
+\begin{align*}
+\pinte{}{A}\pinte{}{b_{a}}\pinte{}{c_{b}}e^{iS_{\text{tot}}}O(A).
+\end{align*}
+
+%TODO: Complete definition of functionals
+Let us now consider the example of $H_{a} = \del{\mu}{}A_{\mu}^{a}$. The gauge fixing term then becomes
+\begin{align*}
+-\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{\del{\mu}{}A_{\mu}^{a}\del{\nu}{}A_{\nu}^{a}}.
+\end{align*}
+To calculate the contribution from the ghosts, we write the full parametrized form of $H_{\phi}$ as
+\begin{align*}
+H_{\phi, a} = \del{\mu}{}\left(A_{\mu}^{a} + \phi^{c}A_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\phi^{a}\right) = \del{\mu}{}A_{\mu}^{a} + \srconst{cb}{a}\del{\mu}{}(\phi^{c}A_{\mu}^{b}) - \frac{1}{g}\dalem\phi^{a}.
+\end{align*}
+We then have
+\begin{align*}
+\var{H_{\phi, a}} = \srconst{cb}{a}\del{\mu}{}(\var{\phi^{c}}A_{\mu}^{b}) - \frac{1}{g}\dalem\var{\phi^{a}},
+\end{align*}
+and
+\begin{align*}
+\fdv{H_{a}(x)}{\phi_{b}(y)} = \delta_{ac}\srconst{cb}{a}\del{\mu}{}(\delta(x - y)A_{\mu}^{b}) - \frac{1}{g}\delta_{ab}\dalem\delta(x - y).
+\end{align*}

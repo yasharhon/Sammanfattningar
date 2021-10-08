@@ -1,0 +1,74 @@
+\section{Spontaneous Symmetry Breaking}
+
+\paragraph{Spontaneous Symmetry Breaking}
+We have seen that field theories that spontaneously break symmetries are important for formulating, for instance, the standard model of particle physics. Hence we wish to incorporate it into the path integral formulation of quantum mechanics.
+
+Let us first review the field theory concepts. As an example, consider a charged scalar field theory with Lagrangian
+\begin{align*}
+\lag = -\frac{1}{2}\del{}{\mu}\phi\adj\del{\mu}{}\phi - V(\phi\adj\phi).
+\end{align*}
+Evidently this field theory has a $\text{U}(1)$ symmetry. The symmetry group is a Lie group, which will be important. We will use
+\begin{align*}
+V(x) = -\mu^{2}x + \frac{\lambda}{4!}x^{2}.
+\end{align*}
+Note that this does not produce a conventional mass term for $\phi$. This potential has a minimum for
+\begin{align*}
+x = \frac{4!\mu^{2}}{2\lambda},
+\end{align*}
+and the presence of this minimum is what allows the system to spontaneously break the symmetry.
+
+We now wish to perform a change of fields to consider fluctuations about this minimum. The first we will need to do is pick a minimum, and we choose the real minimum
+\begin{align*}
+\phi = \phi_{0} = \sqrt{\frac{4!\mu^{2}}{2\lambda}}.
+\end{align*}
+Writing $\phi = \chi + \phi_{0}$ the potential term becomes
+\begin{align*}
+-\mu^{2}(\chi + \phi_{0})\adj(\chi + \phi_{0}) + \frac{\lambda}{4!}\left((\chi + \phi_{0})\adj(\chi + \phi_{0})\right)^{2}.
+\end{align*}
+Two things can be inferred from this. First, $\chi$ no longer has the $\text{U}(1)$ symmetry due to the potential term (it is preserved in the derivative term). Thus we say that the symmetry has been broken. Next we can look at the quadratic terms in the potential, which are given by
+\begin{align*}
+-\mu^{2}\chi\adj\chi + \frac{\lambda}{4!}\phi_{0}^{2}\cdot \left((\chi\adj)^{2} + \chi^{2} + 4\chi\adj\chi\right) = -\mu^{2}\abs{\chi}^{2} + \frac{\mu^{2}}{2}\cdot \left(2\Re(\chi^{2}) +  + 4\abs{\chi}^{2}\right).
+\end{align*}
+We have the convention
+\begin{align*}
+\chi = \frac{1}{\sqrt{2}}(\chi_{1} + i\chi_{2}),
+\end{align*}
+hence the quadratic terms add up to
+\begin{align*}
+-\frac{\mu^{2}}{2}(\chi_{1}^{2} + \chi_{2}^{2}) + \frac{\mu^{2}}{4}\cdot \left(2(\chi_{1}^{2} - \chi_{2}^{2}) +  + 4(\chi_{1}^{2} + \chi_{2}^{2})\right) &= -\frac{\mu^{2}}{2}(\chi_{1}^{2} + \chi_{2}^{2}) + \frac{\mu^{2}}{4}\cdot \left(6\chi_{1}^{2} + 2\chi_{2}^{2}\right) = \mu^{2}\chi_{1}^{2}.
+\end{align*}
+Thus, after symmetry breaking one of the modes has mass while the other does not. This is not a coincidence but instead an example of a more general result.
+
+\paragraph{Goldstone's Theorem}
+Consider some action and suppose that the symmetry group $G$ leaves it intact. We define unbroken group elements as elements that map a particular $\phi_{0}$ (the potential minimum is the one we are concerned with) to itself, and these form a subgroup $H$ of $G$. We can expand a particular unbroken element as
+\begin{align*}
+R(g) = 1 - i\theta^{a}T_{a}.
+\end{align*}
+The sum over $a$ generally runs over all $n_{G}$, but as $g\in H$ we only find that $n_{H}$ of the $\theta^{a}$, taken to be the first ones, are non-zero. Note that we assume that these generators then generate $H$, which is reasonable as we can otherwise change the basis for the generators. We use greek indices for the elements of $H$ and latin indices for the rest, and then have
+\begin{align*}
+(1 - i\theta^{\alpha}T_{\alpha})\phi_{0} = \phi_{0}\implies T_{\alpha}\phi_{0} = \phi_{0}.
+\end{align*}
+We are then left with $n_{G} - n_{H}$ ways to vary $\phi$ without changing the potential, hence this is the number of massless modes. This is the Goldstone theorem.
+
+\paragraph{Breaking Local Symmetries}
+For local symmetries we will need to introduce gauge bosons. Repeating the above procedure we find that the action will contain terms
+\begin{align*}
+(D_{\mu}\phi)\cc(D^{\mu}\phi) &= (\del{}{\mu}\chi)\cc(\del{\mu}{}\chi) + (-igA_{\mu}\chi)\cc(-igA_{\mu}\chi) + (D_{\mu}\chi)\cc(D^{\mu}\chi) + (D_{\mu}\chi)\cc(D^{\mu}\chi) \\
+&\dots = -2\sqrt{\frac{\mu^{2}}{\lambda}}gA_{\mu}\del{\mu}{}\chi_{2} + \frac{\mu^{2}}{\lambda}g^{2}A_{\mu}A^{\mu} + \text{cubic and quartic terms}.
+\end{align*}
+We can now perform a gauge transform to remove the kinetic term and leave only
+\begin{align*}
+\frac{1}{2}\del{}{\mu}\chi_{1}\del{\mu}{}\chi_{1} + \frac{\mu^{2}}{\lambda}g^{2}B_{\mu}B^{\mu}.
+\end{align*}
+The total action, however, has neither gauge fixing nor explicit gauge invariance. We will have to deal with that.
+
+In momentum space we can combine the quadratic terms in $B$ according to previous methods, with
+\begin{align*}
+M^{\mu\nu} = -k^{}g^{\mu\nu} + k^{\mu}k^{\nu} - g^{2}v^{2g^{\mu\nu}}.
+\end{align*}
+We then find the two-point momentum space correlation function to be
+\begin{align*}
+-(2\pi)^{4}\delta(k_{1} + k_{2})\frac{1}{k^{2} + g^{2}v^{2}}\left(g^{\mu\nu} + \frac{k^{\mu}k^{\nu}}{g^{2}v^{2}}\right).
+\end{align*}
+
+For $\chi_{2}$ we find that the matrix $M$ is identically zero. Yikes! We say that the gauge boson has eaten up this field in order to gain its mass. This happens as a consequence of gauge invariance. We need to solve that through gauge fixing.
