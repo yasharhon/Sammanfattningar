@@ -107,15 +107,43 @@ The divergency in the right-hand term comes by the gamma function part behaving 
 Next we can consider a four-point correlation function. All loop diagrams with a single loop are handled according to the above. The diagram with a loop splitting two halves, however, is logarithmically divergent.
 
 \paragraph{Renormalizability}
-Suppose we were to add a set of interaction terms $g^{(n)}\phi^{n}$ to the theory. The mass dimension of the coupling constants will be $d - \frac{n}{2}(d - 2)$. These vertices will add higher-order Feynman diagrams to the $N$-point correlation functions. The terms added contain $N$ propagators for external lines, an overall momentum-conserving delta function and some other function of the external momenta termed $\Gamma^{(N)}$. It is generally given by
+Consider a scalar field theory. Suppose we were to add a set of interaction terms with coupling constants $g^{(n, m)}$ to the theory, where $n$ is the number of fields and $m$ is the number of derivatives. The mass dimension of the coupling constants will be $d - \frac{n}{2}(d - 2) - m$. These vertices will add higher-order Feynman diagrams to the $N$-point correlation functions. The terms added contain $N$ propagators for external lines, an overall momentum-conserving delta function and some other function of the external momenta termed $\Gamma^{(N)}$. It is generally given by
 \begin{align*}
-	\Gamma^{(N)} = \hat{\Gamma}^{(N)}\prod\limits_{s}(g^{(s)})^{n_{s}},
+	\Gamma^{(N)} = \hat{\Gamma}^{(N)}\prod\limits_{n, m}(g^{(n, m)})^{f_{n, m}},
 \end{align*}
-where $n_{s}$ is the number of times the particular vertex contributes. It is in $\hat{\Gamma}$ that integrations over internal momenta are handled.
+where $f_{n, m}$ is the number of times the particular vertex contributes. It is in $\hat{\Gamma}$ that integrations over internal momenta are handled. From what we have seen, it is clear that if $\hat{\Gamma}^{(N)}$ has a non-negative mass dimension, the diagram diverges. We can now use this fact to determine a set of criteria for a theory to be renormalizable. 
 
-The momentum space fields have dimension $\frac{1}{2}(d - 2) - d = -\frac{1}{2}(d + 2)$. The $N$-point momentum space correlation function has mass dimension $-\frac{N}{2}(d + 2)$. $\hat{\Gamma}$ then has a mass dimension of
+The momentum space fields have dimension $\frac{1}{2}(d - 2) - d = -\frac{1}{2}(d + 2)$, hence the $N$-point momentum space correlation function has mass dimension $-\frac{N}{2}(d + 2)$. $\hat{\Gamma}$ then has a mass dimension of
 \begin{align*}
-	d_{\hat{\Gamma}} =& -\frac{N}{2}(d + 2) + 2N + d - \sum\limits_{s}n_{s}\left(d - \frac{s}{2}(d - 2)\right) \\
-	                 =& \frac{N}{2}(2 - d) + d - \sum\limits_{s}n_{s}\left(d - \frac{s}{2}(d - 2)\right).
+	d_{\hat{\Gamma}} =& -\frac{N}{2}(d + 2) + 2N + d - \sum\limits_{n, m}f_{n, m}\left(d - \frac{n}{2}(d - 2) - m\right) \\
+	                 =& \frac{N}{2}(2 - d) + d - \sum\limits_{n, m}f_{n, m}\left(d - \frac{n}{2}(d - 2) - m\right).
 \end{align*}
-From what we have seen, it is clear that if $\hat{\Gamma}^{(n)}$ has a non-negative mass dimension, the diagram diverges.
+From this it seems like if any one coupling constant has non-negative mass dimension, one could always conceive of a diagram at sufficiently high order that diverges. Hence we require
+\begin{align*}
+	d - \frac{n}{2}(d - 2) - m \geq 0
+\end{align*}
+for all $m, n$. Conversely, all terms that satisfy this can be included in the Lagrangian. The result is now that the set of diagrams that diverges is at least finite. Next, consider a particular diagram which is divergent to order $K$. Taylor expanding $\hat{\Gamma}$ we find that the successive terms in the Taylor expansion decrease in order of divergence - to $K - 1$, $K - 2$ and so on. This somehow implies that we must include all allowed $N$th order derivative terms with $m \leq K$. Finally the requirement that the theory satisfies symmetries is also included.
+
+\paragraph{Renormalization of Gauge Theories}
+Consider the example with the simple gauge fixer
+\begin{align*}
+	H_{a} = \del{\mu}{}A_{\mu}^{a}.
+\end{align*}
+The Lagrangian then becomes
+\begin{align*}
+	\frac{1}{2}g\srconst{ab}{c}A^{\mu}_{b}A^{\nu}_{c}(\del{}{\mu}A_{\nu}^{a} - \del{}{\nu}A_{\mu}^{a}) - \frac{1}{4}g^{2}\srconst{ab}{c}\srconst{ad}{e}A_{b, \mu}A_{c, \nu}A^{\mu}_{d}A^{\nu}_{e} + g\srconst{ab}{c}\del{\mu}{}b_{a}A_{c, \mu}c_{b}.
+\end{align*}
+As they are all dependent on the same coupling constants, the theory will generally only exist if the diagrams corresponding to these vertices are related.
+
+To study this we will need the BRST symmetry, which is a local gauge symmetry. It is defined to act on matter and gauge fields as a normal gauge transformation, except $\theta_{a}$ is replaced by $\xi c_{a}$, where $\xi$ is a Grassman variable. The gauge invariant part of the action is evidently unaffected by this transformation. Next, on the gauge fixing term it acts infinitesimally according to
+\begin{align*}
+	\delta_{\text{B}}S_{\text{gf}} = -\frac{1}{\alpha}\inte{}{}\dd[4]{x}\dd[4]{y}\eval{\fdv{H_{a}(x)}{\theta_{b}(y)}}_{\theta = 0}\xi c_{b}(y)H_{a}(x).
+\end{align*}
+Finally it acts on the ghost term according to
+\begin{align*}
+	\delta_{\text{B}}S_{\text{ghost}} = -\sum\limits_{a, b}\integ[4]{}{}{x}{\integ[4]{}{}{y}{\delta_{\text{B}}b_{a}(x)\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y) + b_{a}(x)\delta_{\text{B}}\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y) + b_{a}(x)\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}\delta_{\text{B}}c_{b}(y)}}.
+\end{align*}
+We note that we have not yet introduced a prescription to the BRST transformation of the ghost fields. Requiring a double BRST variation to be zero will, however, net you
+\begin{align*}
+	\delta_{\text{B}}b_{a} = -\frac{1}{\alpha}H_{a}\xi,\ \delta_{\text{B}}c_{a} = -\frac{1}{2}g\srconst{ab}{c}\xi c_{b}c_{c}.
+\end{align*}

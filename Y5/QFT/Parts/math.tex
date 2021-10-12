@@ -3,11 +3,11 @@
 \paragraph{All About Grassman Variables}
 Grassman variables $\theta_{i}$ are defined such that multiplication of two different variables anticommutes. This means that all functions of a set of Grassman variables can be written as
 \begin{align*}
-F(\theta) = \sum\limits_{i = 0}^{n}\frac{1}{i!}A^{(i), j_{1}\dots j_{i}}\theta_{j_{1}}\dots\theta_{j_{i}},
+	F(\theta) = \sum\limits_{i = 0}^{n}\frac{1}{i!}A^{(i), j_{1}\dots j_{i}}\theta_{j_{1}}\dots\theta_{j_{i}},
 \end{align*}
-with summation over the indices $j$. The coefficients $A$ are completely antisymmetric.
+with summation over the indices $j$. The coefficients $A$ are by definition completely antisymmetric.
 
-Functions of Grassman numbers are defined as even $A^{k} = 0$ for all even $k$ and similarly for odd functions. This implies that $FG = GF$ if either is even and $FG = -GF$ otherwise.
+Functions of Grassman numbers are defined as even if $A^{(k)} = 0$ for all even $k$ and similarly for odd functions. This implies that $FG = GF$ if either is even and $FG = -GF$ otherwise.
 
 We define derivatives with respect to Grassman variables as
 \begin{align*}
@@ -55,10 +55,15 @@ From what we have above we see that $\delta(\theta_{i}) = \theta_{i}$ satisfies 
 
 Complex Grassman variables can also be defined according to
 \begin{align*}
-\theta_{k} = \phi(k) + i\psi(k).
+	\theta_{k} = \frac{1}{\sqrt{2}}(\phi(k) + i\psi(k)).
 \end{align*}
 Using the relations above we find
 \begin{align*}
-\dd{\theta}_{k}\dd{\theta}_{k}\cc = i\dd{\phi}_{k}\dd{\psi}_{k}.
+	\dd{\theta}_{k}\dd{\theta}_{k}\cc = i\dd{\phi}_{k}\dd{\psi}_{k}.
 \end{align*}
-%TODO: Show thing with Gaussian
+
+Let us now get to what we really need: A Gaussian integral. We therefore consider
+\begin{align*}
+	\inte{}{}\dd{\theta}_{k}\dd{\theta}_{k}\cc e^{\theta\adj A\theta}.
+\end{align*}
+This integral is easily solved by diagonalizing $A$, transforming the variables with a corresponding unitary transform and switching to integrals over the real and complex part. We then find that this integral is proportional to $\det(A)$.

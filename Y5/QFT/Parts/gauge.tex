@@ -235,27 +235,27 @@ Let us now look at what we have. The integrals we are to perform are over the re
 \end{align*}
 where we have chosen a new convention. The other term describes the Grassman variables. These are Lorentz invariant, anti-commuting fields. What they will represent in the quantum theory is so-called Fadeev-Popov ghosts. They violate the spin-statistics theorem, but don't appear in our observables, making that not a problem. Their addition to the action is
 \begin{align*}
-- \sum\limits_{a, b}\integ[4]{}{}{x}{\integ[4]{}{}{y}{b_{a}(x)c_{b}(y)\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}}}.
+	-\sum\limits_{a, b}\integ[4]{}{}{x}{\integ[4]{}{}{y}{b_{a}(x)c_{b}(y)\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}}}.
 \end{align*}
 We are then left with expressions of the form
 \begin{align*}
-\pinte{}{A}\pinte{}{b_{a}}\pinte{}{c_{b}}e^{iS_{\text{tot}}}O(A).
+	\pinte{}{A}\pinte{}{b_{a}}\pinte{}{c_{b}}e^{iS_{\text{tot}}}O(A).
 \end{align*}
 
 %TODO: Complete definition of functionals
 Let us now consider the example of $H_{a} = \del{\mu}{}A_{\mu}^{a}$. The gauge fixing term then becomes
 \begin{align*}
--\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{\del{\mu}{}A_{\mu}^{a}\del{\nu}{}A_{\nu}^{a}}.
+	-\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{\del{\mu}{}A_{\mu}^{a}\del{\nu}{}A_{\nu}^{a}}.
 \end{align*}
 To calculate the contribution from the ghosts, we write the full parametrized form of $H_{\phi}$ as
 \begin{align*}
-H_{\phi, a} = \del{\mu}{}\left(A_{\mu}^{a} + \phi^{c}A_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\phi^{a}\right) = \del{\mu}{}A_{\mu}^{a} + \srconst{cb}{a}\del{\mu}{}(\phi^{c}A_{\mu}^{b}) - \frac{1}{g}\dalem\phi^{a}.
+	H_{\phi, a} = \del{\mu}{}\left(A_{\mu}^{a} + \phi^{c}A_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\phi^{a}\right) = \del{\mu}{}A_{\mu}^{a} + \srconst{cb}{a}\del{\mu}{}(\phi^{c}A_{\mu}^{b}) - \frac{1}{g}\dalem\phi^{a}.
 \end{align*}
 We then have
 \begin{align*}
-\var{H_{\phi, a}} = \srconst{cb}{a}\del{\mu}{}(\var{\phi^{c}}A_{\mu}^{b}) - \frac{1}{g}\dalem\var{\phi^{a}},
+	\var{H_{\phi, a}} = \srconst{cb}{a}\del{\mu}{}(\var{\phi^{c}}A_{\mu}^{b}) - \frac{1}{g}\dalem\var{\phi^{a}},
 \end{align*}
 and
 \begin{align*}
-\fdv{H_{a}(x)}{\phi_{b}(y)} = \delta_{ac}\srconst{cb}{a}\del{\mu}{}(\delta(x - y)A_{\mu}^{b}) - \frac{1}{g}\delta_{ab}\dalem\delta(x - y).
+	\fdv{H_{a}(x)}{\phi_{b}(y)} = \delta_{ac}\srconst{cb}{a}\del{\mu}{}(\delta(x - y)A_{\mu}^{b}) - \frac{1}{g}\delta_{ab}\dalem\delta(x - y).
 \end{align*}
