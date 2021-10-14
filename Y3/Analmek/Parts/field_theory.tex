@@ -345,13 +345,13 @@ hence this cannot be a symmetry of the Lagrangian. What can be done, however, is
 \end{align*}
 with functions $A_{\mu}$ which are transformed with the field according to $A_{\mu} \to A_{\mu} + \del{\mu}{\alpha}$. The Lagrangian
 \begin{align*}
-	\lag = D_{\mu}\phi D^{\mu}\cc{\phi} - V(\cc{\phi}\phi)
+	\lag = D_{\mu}\phi D^{\mu}\phi\cc - V(\phi\cc\phi)
 \end{align*}
 thus has such gauge transforms as a symmetry.
 
 This Lagrangian can also be coupled to the functions $A_{\mu}$ by adding the first term from the Maxwell theory Lagrangian with a coupling parameter $\lambda$, netting a new Lagrangian
 \begin{align*}
-	\lag = D_{\mu}\phi D^{\mu}\cc{\phi} - V(\cc{\phi}\phi) - \frac{1}{4\lambda^{2}}F_{\mu\nu}F^{\mu\nu}.
+	\lag = D_{\mu}\phi D^{\mu}\phi\cc - V(\phi\cc\phi) - \frac{1}{4\lambda^{2}}F_{\mu\nu}F^{\mu\nu}.
 \end{align*}
 This Lagrangian describes an electromagnetic field which is coupled to another field described by the Klein-Gordon equation.
 
@@ -386,12 +386,12 @@ To be somewhat more specific, consider a Lagrangian such as
 \end{align*}
 which is invariant under a transformation $\phi^{a} \to \psi^{a} = U_{b}^{a}\phi^{b}$. To obtain a criterion for the transformations such that this is invariant, note that
 \begin{align*}
-	\lag^{\prime} &= \del{\mu}{\cc{(U_{b}^{a}\phi^{b})}}\del[\mu]{}{U_{c}^{a}\phi^{c}} - V(\cc{(U_{b}^{a}\phi^{b})}U_{c}^{a}\phi^{c}) \\
-	              &= \cc{(U_{b}^{a})}U_{c}^{a}\del{\mu}{\cc{(\phi^{b})}}\del[\mu]{}{\phi^{c}} - V(\cc{(U_{b}^{a})}U_{c}^{a}\cc{(\phi^{b})}\phi^{c}).
+	\lag^{\prime} &= \del{}{\mu}{(U_{b}^{a}\phi^{b})\cc}\del{\mu}{}U_{c}^{a}\phi^{c} - V(\cc{(U_{b}^{a}\phi^{b})}U_{c}^{a}\phi^{c}) \\
+	              &= \cc{(U_{b}^{a})}U_{c}^{a}\del{}{\mu}(\phi^{b})\cc\del{\mu}{}\phi^{c} - V((U_{b}^{a})\cc U_{c}^{a}(\phi^{b})\cc\phi^{c}).
 \end{align*}
 Introducing the Hermitian conjugate of the transformation matrix, we have
 \begin{align*}
-	\lag^{\prime} &= (U^{\dagger})_{a}^{b}U_{c}^{a}\del{\mu}{\cc{(\phi^{b})}}\del[\mu]{}{\phi^{c}} - V((U^{\dagger})_{a}^{b}U_{c}^{a}\cc{(\phi^{b})}\phi^{c}).
+	\lag^{\prime} &= (U^{\dagger})_{a}^{b}U_{c}^{a}\del{}{\mu}(\phi^{b})\cc\del{\mu}{}\phi^{c} - V((U^{\dagger})_{a}^{b}U_{c}^{a}(\phi^{b})\cc\phi^{c}).
 \end{align*}
 One way (and, indeed, the only way as far as I can see) for this to be equal to the old Lagrangian is if $(U^{\dagger})_{a}^{b}U_{c}^{a} = \kdelta{c}{b}$, which is the definition of $U$ being unitary. The group of unitary matrices is non-Abelian, somewhat complicating the proceeding matters compared to what we have previously seen.
 

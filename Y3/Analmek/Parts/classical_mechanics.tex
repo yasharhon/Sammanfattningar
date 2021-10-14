@@ -74,19 +74,19 @@ Consider a particle with mass $m$ and charge $q$ in an external electromagnetic 
 \end{align*}
 In terms of the potentials we have
 \begin{align*}
-	\vb{E} = -\grad{\phi} - \del{t}{\vb{A}},\ \vb{B} = \curl{\vb{A}}
+	\vb{E} = -\grad{\phi} - \del{}{t}\vb{A},\ \vb{B} = \curl{\vb{A}}
 \end{align*}
 yielding
 \begin{align*}
-	m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{t}{\vb{A}} + \vb{v}\times(\curl{\vb{A}})\right).
+	m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{}{t}\vb{A} + \vb{v}\times(\curl{\vb{A}})\right).
 \end{align*}
 The components of the latter term are
-\begin{align}
-	V_{i} &= \leci{ijk}v_{j}\leci{kmn}\del{m}{A_{n}} \\
-	      &= \leci{kij}\leci{kmn}v_{j}\del{m}{A_{n}} \\
-	      &= (\kdelta{im}{}\kdelta{jn}{} - \kdelta{in}{}\kdelta{jm}{})v_{j}\del{m}{A_{n}} \\
-	      &= v_{j}\del{i}{A_{j}} - v_{j}\del{j}{A_{i}},
-\end{align}
+\begin{align*}
+	V_{i} &= \leci{}{ijk}v_{j}\leci{kmn}{}\del{}{m}A_{n} \\
+	      &= \leci{}{kij}\leci¥{kmn}v_{j}\del{}{m}A_{n} \\
+	      &= (\kdelta{im}{}\kdelta{jn}{} - \kdelta{in}{}\kdelta{jm}{})v_{j}\del{}{m}A_{n} \\
+	      &= v_{j}\del{}{i}A_{j} - v_{j}\del{}{j}A_{i},
+\end{align*}
 hence the magnetic term can be expanded to yield
 \begin{align*}
 	&m\dv{\vb{v}}{t} = q\left(-\grad{\phi} - \del{t}{\vb{A}} + \grad{(\vb{v}\cdot\vb{A})} - (\vb{v}\cdot\grad)\vb{A}\right) = q\left(-\grad{\phi} - \dv{\vb{A}}{t} + \grad{(\vb{v}\cdot\vb{A})}\right). \\

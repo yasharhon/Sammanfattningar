@@ -5,62 +5,20 @@
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
 
-\usepackage[arrowdel]{physics}
-\usepackage{tensor}
-\usepackage{pgffor}
+\input{./../../Mall/Aux/math.tex}
 
 % Structure and symbols
 \newcommand{\example}[1]{\subparagraph{Example: #1}}
-\newcommand{\nosum}{\ensuremath\ \text{(no sum)}}
-\newcommand{\R}{\mathbb{R}}
 \renewcommand{\O}[2]{\ensuremath{\text{O}(#1, #2)}}
-\newcommand{\SU}[1]{\ensuremath{\text{SU}(#1)}}
-\newcommand{\SO}[1]{\ensuremath{\text{SO}(#1)}}
-\newcommand{\GL}[1]{\ensuremath{\text{GL}(#1)}}
 
 % Math
-\newcommand{\cc}[1]{#1^{*}}
-\newcommand{\bound}[1]{\ensuremath{\partial #1}}
-\newcommand{\del}[3][]{\partial^{#1}_{#2}#3}
-\newcommand{\delp}[3][]{(\partial^{\prime})^{#1}_{#2}#3}
 \newcommand{\deval}[4][]{\eval{\dv[#1]{#2}{#3}}_{#4}}
-\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
 \newcommand{\vinteg}[4]{\int\limits_{#1}^{#2}\dd{\vb{#3}}\cdot #4}
 \newcommand{\minteg}[2]{\int\limits_{#1}#2}
 
-% Differential geometry and tensors
-\newcommand{\dcov}[2]{\grad_{#1}{#2}}
-\newcommand{\db}[1]{\vb{E}^{#1}}
-\newcommand{\tb}[1]{\vb{E}_{#1}}
-\newcommand{\kdelta}[2]{\tensor*{\delta}{_{#1}^{#2}}}
-\newcommand{\leci}[1]{\varepsilon_{#1}}
-\newcommand{\tenprod}[1]
-{
-	\foreach \variable [count = \count] in #1
-	{
-		\ifnum\count > 1
-			\otimes
-		\fi
-		\variable
-	}
-}
-\newcommand{\chris}[3]{\tensor*{\Gamma}{^{#1}_{#2#3}}}
-\newcommand{\ts}[2]{T_{#1}#2}
-\newcommand{\ds}[2]{T_{#1}^{\star}#2}
-\newcommand{\tbun}[1]{T#1}
-\newcommand{\lied}[2]{\ensuremath{\lag_{#1}#2}}
-\newcommand{\df}[1]{\ensuremath{d#1}}
-\newcommand{\puf}[2]{#1_{\star}#2}
-\newcommand{\pub}[2]{#1^{\star}#2}
-
 % Analytical mechanics
-\newcommand{\lag}{\ensuremath{\mathcal{L}}}
-\newcommand{\ham}{\ensuremath{\mathcal{H}}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\pob}[3][]{\left\{#2, #3\right\}_{#1}}
-
-% Field theory
-\newcommand{\bvar}[1]{\bar{\delta}#1}
 
 \title{Summary of SI2360 Analytical Mechanics and Classical Field Theory}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
