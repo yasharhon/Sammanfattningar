@@ -122,7 +122,11 @@ From this it seems like if any one coupling constant has non-negative mass dimen
 \begin{align*}
 	d - \frac{n}{2}(d - 2) - m \geq 0
 \end{align*}
-for all $m, n$. Conversely, all terms that satisfy this can be included in the Lagrangian. The result is now that the set of diagrams that diverges is at least finite. Next, consider a particular diagram which is divergent to order $K$. Taylor expanding $\hat{\Gamma}$ we find that the successive terms in the Taylor expansion decrease in order of divergence - to $K - 1$, $K - 2$ and so on. This somehow implies that we must include all allowed $N$th order derivative terms with $m \leq K$. Finally the requirement that the theory satisfies symmetries is also included.
+for all $m, n$. Conversely, all terms that satisfy this can be included in the Lagrangian. The result is now that the set of diagrams that diverges is at least finite.
+
+Next, consider a particular $N$-point diagram which is divergent to order $K$. Taylor expanding $\hat{\Gamma}$ we find that the successive terms in the Taylor expansion decrease in order of divergence - to $K - 1$, $K - 2$ and so on. In order for our theory to be renormalizable, we therefore need to add counterterms to our theory. The terms we will need to add are $N$-point interactons that are allowed according to the above criterion and contains up to $K$ derivatives.
+
+Finally the requirement that the theory satisfies symmetries is also included.
 
 \paragraph{Renormalization of Gauge Theories}
 Consider the example with the simple gauge fixer
@@ -135,7 +139,7 @@ The Lagrangian then becomes
 \end{align*}
 As they are all dependent on the same coupling constants, the theory will generally only exist if the diagrams corresponding to these vertices are related.
 
-To study this we will need the BRST symmetry, which is a local gauge symmetry. It is defined to act on matter and gauge fields as a normal gauge transformation, except $\theta_{a}$ is replaced by $\xi c_{a}$, where $\xi$ is a Grassman variable. The gauge invariant part of the action is evidently unaffected by this transformation. Next, on the gauge fixing term it acts infinitesimally according to
+What we see here is really the effect of symmetry - $\phi^{4}$ theory had a $\mathbb{Z}^{2}$ symmetry that implicitly guaranteed it to be renormalizable. The gauge symmetry built into gauge theories are, however, not enough to guarantee this. A symmetry that is good enough, however, is BRST symmetry. This is a local gauge symmetry defined such that it acts on matter and gauge fields as a normal gauge transformation, except $\theta_{a}$ is replaced by $\xi c_{a}$, where $\xi$ is a Grassman variable. The gauge invariant part of the action is evidently unaffected by this transformation. Next, on the gauge fixing term it acts infinitesimally according to
 \begin{align*}
 	\delta_{\text{B}}S_{\text{gf}} = -\frac{1}{\alpha}\inte{}{}\dd[4]{x}\dd[4]{y}\eval{\fdv{H_{a}(x)}{\theta_{b}(y)}}_{\theta = 0}\xi c_{b}(y)H_{a}(x).
 \end{align*}
@@ -147,3 +151,19 @@ We note that we have not yet introduced a prescription to the BRST transformatio
 \begin{align*}
 	\delta_{\text{B}}b_{a} = -\frac{1}{\alpha}H_{a}\xi,\ \delta_{\text{B}}c_{a} = -\frac{1}{2}g\srconst{ab}{c}\xi c_{b}c_{c}.
 \end{align*}
+
+We now introduce renormalization constants according to
+\begin{align*}
+	A_{\mu}^{a} = \sqrt{\tilde{Z}_{A}}A_{\mu, \ren}^{a},\ \psi = \sqrt{\tilde{Z}_{\psi}}\psi_{\ren},\ c_{a} = \sqrt{\tilde{Z}_{\text{ghost}}}c_{a, \ren},\ b_{a} = \sqrt{\tilde{Z}_{\text{ghost}}}b_{a, \ren},
+\end{align*}
+as well as 
+\begin{align*}
+	g = Z_{g}g_{\ren},\ m = Z_{m}m_{\ren},\ \alpha = Z_{\alpha}\alpha_{\ren}.
+\end{align*}
+
+\paragraph{The Renormalization Group}
+When performing renormalization transformations we generally introduce new parameters, for instance the mass scale. Note that one can always combine the renormalized and introduced parameters such that one reobtains the results from the non-renormalized theory. Mathematically, say for the theory describing a fermion field interacting with a non-Abelian gauge theory, we could require
+\begin{align*}
+	\mu\dv{g}{\mu} = 0,
+\end{align*}
+and similarly for the other parameters.
