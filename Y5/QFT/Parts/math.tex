@@ -33,29 +33,33 @@ also applies.
 
 Integrals over Grassman variables are defined according to
 \begin{align*}
-\inte{}{}\dd{\theta_{i}} = 0,\ \inte{}{}\dd{\theta_{i}}\theta_{j} = \delta_{ij}.
+	\inte{}{}\dd{\theta_{i}} = 0,\ \inte{}{}\dd{\theta_{i}}\theta_{j} = \delta_{ij}.
 \end{align*}
 This has the peculiar consequence
 \begin{align*}
-\inte{}{}\dd{\theta_{i}}F(\theta) = \pdv{F}{\theta_{i}}.
+	\inte{}{}\dd{\theta_{i}}F(\theta) = \pdv{F}{\theta_{i}}.
 \end{align*}
 We know that all functions of Grassman variables can be factorized as $F(\theta) = A(\theta) + \theta_{i}B(\theta)$, where neither $A$ nor $B$ depend on $\theta_{i}$. This has the consequence that shifts in any one variable does not affect the integral. Scaling of variables does not work that way, however, as we saw that differentiation and integration has the same effect. This produces the general result
 \begin{align*}
-\theta_{j} = A_{ij}\phi_{j}\implies \dd{\theta}_{1}\dots\dd{\theta}_{n} = \frac{1}{\det(A)}\dd{\phi}_{1}\dots\dd{\phi}_{n}.
+	\theta_{j} = A_{ij}\phi_{j}\implies \dd{\theta}_{1}\dots\dd{\theta}_{n} = \frac{1}{\det(A)}\dd{\phi}_{1}\dots\dd{\phi}_{n}.
+\end{align*}
+Similarly to the derivative, we need to introduce a convention for the sign of an integral over Grassman variables. The convention we choose is
+\begin{align*}
+	\inte{}{}\dd{\theta_{i}}\dd{\theta_{j}}\theta_{i}\theta_{j} = -1.
 \end{align*}
 
 The Dirac delta function is defined in this context such that it obeys the relation
 \begin{align*}
-\inte{}{}\dd{\theta}_{i}F(\theta)\delta(\theta_{i}) = \eval{F}_{\theta_{i} = 0}.
+	\inte{}{}\dd{\theta}_{i}F(\theta)\delta(\theta_{i}) = \eval{F}_{\theta_{i} = 0}.
 \end{align*}
 From what we have above we see that $\delta(\theta_{i}) = \theta_{i}$ satisfies this. This again has consequences of scaling the Dirac delta being different - more specifically
 \begin{align*}
-\prod\limits_{i}\delta(A_{ij}\delta_{j}) = \det(A)\prod\limits_{i}\delta(\delta_{i}).
+	\prod\limits_{i}\delta(A_{ij}\delta_{j}) = \det(A)\prod\limits_{i}\delta(\delta_{i}).
 \end{align*}
 
 Complex Grassman variables can also be defined according to
 \begin{align*}
-	\theta_{k} = \frac{1}{\sqrt{2}}(\phi(k) + i\psi(k)).
+	\theta_{k} = \frac{1}{\sqrt{2}}(\phi_{k} + i\psi_{k}).
 \end{align*}
 Using the relations above we find
 \begin{align*}
@@ -64,6 +68,26 @@ Using the relations above we find
 
 Let us now get to what we really need: A Gaussian integral. We therefore consider
 \begin{align*}
-	\inte{}{}\dd{\theta}_{k}\dd{\theta}_{k}\cc e^{\theta\adj A\theta}.
+	\inte{}{}\dd{\theta}_{k}\dd{\theta}_{k}\cc e^{\theta\adj A\theta},
 \end{align*}
-This integral is easily solved by diagonalizing $A$, transforming the variables with a corresponding unitary transform and switching to integrals over the real and complex part. We then find that this integral is proportional to $\det(A)$.
+where $A$ is by necessity antisymmetric. We first perform a unitary transformation to diagonalize $A$, yielding
+\begin{align*}
+	\inte{}{}\dd{\theta}_{k}\dd{\theta}_{k}\cc e^{\theta\adj A\theta} = \det(U)\det(U\cc)\inte{}{}\dd{\chi}_{k}\dd{\chi}_{k}\cc e^{\sum\limits_{k}a_{k}\chi\adj\chi} = \inte{}{}\dd{\chi}_{k}\dd{\chi}_{k}\cc e^{\sum\limits_{k}a_{k}\chi_{k}\adj\chi_{k}}.
+\end{align*}
+Expanding the exponential and using the properties of integrals over Grassman variables we find
+\begin{align*}
+	\inte{}{}\dd{\chi}_{k}\dd{\chi}_{k}\cc e^{\theta\adj A\theta} = \inte{}{}\dd{\chi}_{k}\dd{\chi}_{k}\cc \prod\limits_{k}a_{k}\chi_{k}\adj\chi_{k}.
+\end{align*}
+We can now perform a change of variables to real variables. Taking there to be $N$ complex variables in the initial integral we find
+\begin{align*}
+	\inte{}{}\dd{\theta}_{k}\dd{\theta}_{k}\cc e^{\theta\adj A\theta} &= \left(\frac{i}{2}\right)^{N}\det(A)\left(\inte{}{}\dd{\phi}\dd{\psi}\left(\phi - i\psi\right)\left(\phi + i\psi\right)\right)^{N} \\
+	&= \left(\frac{i}{2}\right)^{N}\det(A)\left(\inte{}{}\dd{\phi}\dd{\psi}i\left(\phi\psi - \psi\phi\right)\right)^{N} \\
+	&= \left(-1\right)^{N}\det(A)\left(\inte{}{}\dd{\phi}\dd{\psi}\phi\psi\right)^{N} \\
+	&= \det(A).
+\end{align*}
+
+\paragraph{Functional Determinants}
+A functional determinant is the determinant of an operator on functional space. This determinant satisfies the same properties as matrix determinants. We can use Grassman variables to write
+\begin{align*}
+	\det(D(x, y)) = \pinte{}{\overline{\psi}}\pinte{}{\psi}e^{i\inte{}{}\dd[4]{x}\dd[4]{y}\overline{\psi}(x)D(x, y)\psi(y)}.
+\end{align*}

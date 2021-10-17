@@ -9,7 +9,7 @@ We will now switch from canonical quantization to path integrals as our basis fo
 \end{itemize}
 
 \paragraph{Path Integrals in Quantum Mechanics}
-Consider a system with Lagrangian
+Consider a system with Hamiltonian
 \begin{align*}
 	\ham = \frac{p^{2}}{2m} + V(q).
 \end{align*}
@@ -146,14 +146,10 @@ It is a functional of the extra field $J$. It evidently satisfies
 \end{align*}
 Furthermore it satisfies
 \begin{align*}
-	-i\var{Z} &= \pinte{}{\phi}\phi e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}\cdot\dd{\alpha}\dv{\alpha}\inte{}{}\dd[4]{x}\phi J \\
-	          &= \inte{}{}\dd[4]{x}\pinte{}{\phi}\phi e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}\phi\var{J},
+	-i\fdv{Z}{J(x)} &= \pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[4]{y}\phi J\right)}\cdot\fdv{J(x)}\inte{}{}\dd[4]{y}\phi J \\
+	                &= \pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[4]{y}\phi J\right)}\inte{}{}\dd[4]{y}\phi\delta^{4}(x - y) \\
+	                &= \pinte{}{\phi}\phi(x)e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}.
 \end{align*}
-hence
-\begin{align*}
-	-i\fdv{Z}{J} &= \pinte{}{\phi}\phi e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}\phi.
-\end{align*}
-Similarly we can apply more functional derivatives and consider specific points, setting $J = 0$ at the end, to compute correlation functions.
 
 \paragraph{Wick's Theorem}
 Wick's theorem still applies in the context of path integrals - at least for free fields, and is in fact significantly easier to prove in my opinion. I attach my proof below.
@@ -525,12 +521,8 @@ The second-order term is somewhat more non-trivial due to the Dirac delta functi
 	\label{fig:first_order_bubble_fd}
 \end{figure}
 
-\paragraph{Multiple Scalar Fields}
-We now consider a system of multiple scalar fields $\phi^{(a)}$. We take them to be real scalar fields, hence
-\begin{align*}
-	\left(\tilde{\phi}^{(a)}\right)\cc(k) = \tilde{\phi}^{(a)}(-k).
-\end{align*}
-The most general action for such a field theory is
+\paragraph{Multiple Free Fields}
+We now consider a system of multiple free fields $\phi^{(a)}$. The most general action for such a field theory is
 \begin{align*}
 	S &= \frac{1}{2}\integ[4]{}{}{x}{\phi^{(a)}(x)D_{ab}\phi^{(b)}(x)} = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(-k)\tilde{M}_{ab}(k)\tilde{\phi}^{(b)}(k).
 \end{align*}

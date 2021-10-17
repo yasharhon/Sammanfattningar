@@ -171,11 +171,11 @@ This means that the object $R$ defines a representation of the Lie group. More s
 \paragraph{Quantizing Non-Abelian Gauge Theories}
 The free action for a non-Abelian gauge theory is troublesome because it approaches the Maxwell action for small coupling constants, reviving all our previous problems with it. We will need to handle that.
 
-A key point is the claim that the problematic paths in function space are those corresponding to gauge equivalent fields. To remedy our issues we will therefore want to integrate over the sets of gauge equivalent fields, rather than all fields within each set. Each such set is called a gauge orbit and has a so-called representative. The set of representatives is called the gauge slice. At this point it is important to restrict ourselves to compact Lie groups, as this is necessary to ensure that the gauge slice crosses the orbits once. It is also important to ensure that the orbits are closed.
+A key point is the claim that the problematic paths in function space are those corresponding to gauge equivalent fields. To remedy our issues we will therefore want to redefine the path integral such that we only integrate over the physically inequivalent fields, i.e. those that differ beyond a gauge transform. This corresponds to integrate over gauge equivalent sets of fields, rather than the fields themselves. These sets are called a gauge orbits, each having a so-called representative. The set of representatives is called the gauge slice. At this point it is important to restrict ourselves to compact Lie groups, as this is necessary to ensure that the gauge slice crosses the orbits once. It is also important to ensure that the orbits are closed.
 
 We will be concerned with integrals of the form
 \begin{align*}
-\frac{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}O(u)e^{iS(u)}}{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}e^{iS(u)}}.
+	\frac{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}O(u)e^{iS(u)}}{\inte{}{}\prod\limits_{i = 1}^{n}\dd{u_{i}}e^{iS(u)}}.
 \end{align*}
 The $u_{i}$ are amplitudes for each representative at each lattice point. A local gauge transformation manifests as a mapping $u\to F(u, \theta)$ (assumed to have a trivial Jacobian), where the $\theta$ are the parameters of the gauge transformation. These are also on a lattice. Assuming both $S$ and $O$ to be gauge invariant, we can generate the gauge slice by introducing a set of functions $H_{A}(u)$, which break gauge invariance, and constants $B_{A}$, which are somehow representatives of each gauge. The $A$ is a gauge index for each lattice point, and we require that $n$ be greater than the number of values $m$ that $A$ can take, for some reason. Defining $\sigma_{A} = H_{A}(F(u, \theta)) - B_{A}$, we clearly have
 \begin{align*}
@@ -242,7 +242,19 @@ We are then left with expressions of the form
 	\pinte{}{A}\pinte{}{b_{a}}\pinte{}{c_{b}}e^{iS_{\text{tot}}}O(A).
 \end{align*}
 
-%TODO: Complete definition of functionals
+Let us approach this from another direction. Suppose that we want to compute observables in a gauge defined by $H_{a}(A(x)) - B_{a}(x) = 0$. The generating functional
+\begin{align*}
+	Z = \pinte{}{A}e^{i\left(S + \integ[4]{}{}{x}{J^{\mu}_{a}A^{a}_{\mu}}\right)},
+\end{align*}
+from which observables are computed, is now modified by adding a factor
+\begin{align*}
+	1 = \pinte{}{\sigma}\prod\limits_{a, x}\delta(\sigma_{a}(x)) = \pinte{}{\phi}\prod\limits_{a, x}\delta(H_{a}(A(x)) - B_{a}(x))\det(\eval{\fdv{H^{a}(A(x))}{\phi(y)}}_{\phi = 0}).
+\end{align*}
+The evaluation at zero comes from the gauge condition being satisfied there. We then have
+\begin{align*}
+	Z = \pinte{}{A}\pinte{}{\phi}\det(\eval{\fdv{H^{a}}{\phi}}_{\phi = 0})e^{i\left(S + \integ[4]{}{}{x}{J^{\mu}_{a}A^{a}_{\mu}}\right)}\prod\limits_{a, x}\delta(H_{a}(A(x)) - B_{a}(x)).
+\end{align*}
+
 Let us now consider the example of $H_{a} = \del{\mu}{}A_{\mu}^{a}$. The gauge fixing term then becomes
 \begin{align*}
 	-\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{\del{\mu}{}A_{\mu}^{a}\del{\nu}{}A_{\nu}^{a}}.
@@ -252,10 +264,6 @@ To calculate the contribution from the ghosts, we write the full parametrized fo
 	H_{\phi, a} = \del{\mu}{}\left(A_{\mu}^{a} + \phi^{c}A_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\phi^{a}\right) = \del{\mu}{}A_{\mu}^{a} + \srconst{cb}{a}\del{\mu}{}(\phi^{c}A_{\mu}^{b}) - \frac{1}{g}\dalem\phi^{a}.
 \end{align*}
 We then have
-\begin{align*}
-	\var{H_{\phi, a}} = \srconst{cb}{a}\del{\mu}{}(\var{\phi^{c}}A_{\mu}^{b}) - \frac{1}{g}\dalem\var{\phi^{a}},
-\end{align*}
-and
 \begin{align*}
 	\fdv{H_{a}(x)}{\phi_{b}(y)} = \delta_{ac}\srconst{cb}{a}\del{\mu}{}(\delta(x - y)A_{\mu}^{b}) - \frac{1}{g}\delta_{ab}\dalem\delta(x - y).
 \end{align*}
