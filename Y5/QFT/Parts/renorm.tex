@@ -166,4 +166,23 @@ When performing renormalization transformations we generally introduce new param
 \begin{align*}
 	\mu\dv{g}{\mu} = 0,
 \end{align*}
-and similarly for the other parameters.
+and similarly for the other parameters. This will give you a condition on the renormalized constants of the form
+\begin{align*}
+	\mu\dv{g_{\ren}}{\mu} = \beta_{g},
+\end{align*}
+which defines the corresponding beta function. We can now define asymptotic freedom as $g$ decreasing with $\mu$. Its opposite is infrared freedom. Now, the correlation functions should be independent of $\mu$, hence we find
+\begin{align*}
+	\left(\mu\del{}{\mu} + \beta_{g}\del{}{g_{\ren}} + \beta_{\alpha}\del{}{\alpha_{\ren}} + \beta_{m}\del{}{m_{\ren}} \right)G(x_{1}, \dots, x_{n}) = 0.
+\end{align*}
+This is the Callen-Symanzik equation. Defining the differential operator to be $D$ find it suitable to introduce
+\begin{align*}
+	\gamma_{j} = \frac{1}{2}\sum\limits_{j}\frac{1}{\tilde{Z}_{j}}D\tilde{Z}_{j}.
+\end{align*}
+For our case we find
+\begin{align*}
+	\gamma_{j} = 2\beta_{g}\frac{A_{i}}{\epsilon}g_{\ren} + \frac{\beta_{\alpha}}{\epsilon}g_{\ren}\del{}{\alpha_{\ren}}A_{i} = -\frac{1}{2}A_{i}g_{\ren}^{2}.
+\end{align*}
+We then find
+\begin{align*}
+	(D + \sum\limits_{j}\gamma_{j})G_{\ren}(x_{1}, \dots, x_{n}) = 0.
+\end{align*}
