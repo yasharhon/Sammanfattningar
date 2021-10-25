@@ -507,14 +507,14 @@ The second-order term is somewhat more non-trivial due to the Dirac delta functi
 	}
 	\subfloat[Four mixed momenta.]{
 		\begin{tikzpicture}
-		\begin{feynman}
-		\vertex (a) at (0, 0);
-		\vertex (b) at (2, 0);
-		\diagram*{
-			(a) --[scalar, out = 45, in = 135] (b) --[scalar, out = -135, in = -45] (a),
-			(a) --[scalar, half left] (b) --[scalar, half left] (a),
-		};
-		\end{feynman}
+			\begin{feynman}
+				\vertex (a) at (0, 0);
+				\vertex (b) at (2, 0);
+				\diagram*{
+					(a) --[scalar, out = 45, in = 135] (b) --[scalar, out = -135, in = -45] (a),
+					(a) --[scalar, half left] (b) --[scalar, half left] (a),
+				};
+			\end{feynman}
 		\end{tikzpicture}
 	}
 	\caption{Feynman diagrams for the second-order term in the generating functional.}
