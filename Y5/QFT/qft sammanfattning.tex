@@ -1,0 +1,49 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\input{./../../Mall/Aux/math.tex}
+
+\newcommand{\gf}[1]{\ensuremath{Z\left[#1\right]}}
+\newcommand{\srconst}[2]{\ensuremath{\tensor{f}{_{#1}^{#2}}}}
+\newcommand{\ren}{\ensuremath{\text{R}}}
+
+\title{Summary of SI2410 Quantum Field Theory}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/math.tex}
+
+\input{./Parts/basics.tex}
+
+\input{./Parts/gauge.tex}
+
+\input{./Parts/ssb.tex}
+
+\input{./Parts/renorm.tex}
+
+\end{document}
