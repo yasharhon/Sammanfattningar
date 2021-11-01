@@ -1,0 +1,265 @@
+\section{Basic Concepts}
+
+\paragraph{Observables}
+An observable is a Hermitian operator whose orthonormal eigenvectors form a basis.
+
+\paragraph{The Postulates of Quantum Mechanics}
+The postulates of quantum mechanics are:
+\begin{itemize}
+	\item At any fixed time the state of a physical system is specified by a ket in Hilbert space.
+	\item Every measurable physical quantity corresponds to an observable on Hilbert space. The possible outcomes of a measurement are the eigenvalues of $A$.
+	\item The probability of measuring the value $a$ of operator $A$ in a normalized state $\ket{\Psi}$ is $P(a) = \expval{P_{a}}{\Psi}$, where $P_{a}$ is the projector onto the subspace corresponding to the eigenvalue $a$ given by $P_{a} = \dyad{a}{a}$ (possibly with a sum if the eigenspace is degenerate).
+	\item If a measurement of an observable $A$ gives an outcome $a$, the state of the system immediately after the measurement is the projection of the state onto the subspace with eigenvalue $a$.
+	\item The time evolution of a state is governed by the Schrödinger equation.
+	\item Physical states in a many-body system are either completely symmetric or completely anti-symmetric with respect to particle exchange (to be discussed later).
+\end{itemize}
+
+\paragraph{Consequences of the Probability Picture}
+The form of writing the projection operator implies $P(a) = \abs{\bra{a}\ket{\Psi}}^{2}$, or $P(a)\dd{a} = \abs{\bra{a}\ket{\Psi}}^{2}\dd{a}$ in the continuous case. In order for the probability interpretation to be consistent, i.e. for the sum of all probabilities to amount to $1$, it must hold that $\bra{\Psi}\ket{\Psi} = 1$.
+
+\paragraph{Expectation Values}
+Expectation values are given by
+\begin{align*}
+	\expval{A} = \sum aP(a) = \sum a\expval{P_{a}}{\Psi} = \bra{\Psi}\sum a\ket{a}\bra{a}\ket{\Psi} = \expval{A}{\Psi}.
+\end{align*}
+
+\paragraph{Physical States}
+Modifying a state by a phase factor $e^{i\alpha}$ does not change any expectation values.
+
+\paragraph{Pure and Mixed States}
+Pure states are states with a well-defined state vector. Mixed states are states wherein the state vector is not well-defined.
+
+\paragraph{Density Matrices}
+The density matrix is defined as
+\begin{align*}
+	\rho = \op{\Psi}{\Psi}
+\end{align*}
+for a pure state and
+\begin{align*}
+	\rho = \sum\limits_{j}P_{j}\op{\Psi_{j}}{\Psi_{j}}
+\end{align*}
+for a mixed state, where the $P_{j}$ are the probability that the state of the system is $\ket{\Psi_{j}}$. It satisfies:
+\begin{align*}
+	&\tr(\rho) = \sum\limits_{n}\expval{\rho}{n} = \sum\limits_{j}P_{j}\ev{\sum\limits_{n}\op{n}{n}}{\Psi_{j}} = \sum\limits_{j}P_{j}\braket{\Psi_{j}} = 1, \\
+	&\adj{\rho} = \rho, \\
+	&\expval{A} = \sum\limits_{n, m, j}p_{j}\braket{\Psi_{j}}{n}\mel{n}{A}{m}\braket{m}{\Psi_{j}} = \sum\limits_{n, m, j}\braket{m}{\Psi_{j}}\braket{\Psi_{j}}{n}\mel{n}{A}{m} = \sum\limits_{n, m}\mel{m}{\rho}{n}\mel{n}{A}{m} = \tr(\rho A).
+\end{align*}
+For a pure state we also obtain $\rho^{2} = \rho$, which is generally not true for a mixed state.
+
+\paragraph{The Time Evolution Operator}
+Consider the operator $u_{t'}(t)$ which evolves $\ket{\Psi(t')}$ to $\ket{\Psi(t)}$. Inserting it into the Schrödinger equation yields
+\begin{align*}
+	i\hbar\dv{t}u_{t^{\prime}}(t)\ket{\Psi(t^{\prime})} = Hu_{t^{\prime}}(t)\ket{\Psi(t^{\prime})}, \\
+	i\hbar\del{t}{u_{t^{\prime}}} = Hu_{t^{\prime}}(t).
+\end{align*}
+In the case of a time-independent Hamiltonian, the solution must be of the form $u_{t^{\prime}}(t) = u(t - t^{\prime})$, and the equation above can be integrated to yield
+\begin{align*}
+	u_{t^{\prime}}(t) = e^{-i\frac{t - t^{\prime}}{\hbar}H}.
+\end{align*}
+Hence $H$ generates time translation - at least in time-independent cases.
+
+\paragraph{Time Evolution of the Density Matrix}
+The time evolution of the density matrix is given by
+\begin{align*}
+	\rho(t) = \sum P_{i}u_{t_{0}}(t)\ket{\Psi_{i}}\bra{\Psi_{i}}\adj{u_{t_{0}}(t)} = u_{t_{0}}(t)\rho(t_{0})\adj{u_{t_{0}}(t)}.
+\end{align*}
+This implies
+\begin{align*}
+	i\hbar\dv{t}\rho = Hu_{t_{0}}(t)\rho(t_{0})\adj{u_{t_{0}}(t)} - u_{t_{0}}(t)\rho(t_{0})\adj{u_{t_{0}}(t)}H = H\rho(t) - \rho(t)H = \comm{H}{\rho}.
+\end{align*}
+
+\paragraph{The Heisenberg Equation}
+Heisenberg's outlook starts from preserving expectation values under time translations in such a way that all (total) time evolution is contained in the operators, arriving at the transformation rule
+\begin{align*}
+A_{\text{H}} = \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t).
+\end{align*}
+$A_{\text{H}}$ is the operator according to Heisenberg and $A_{\text{S}}$ is the operator according to Schrödinger. We now have
+\begin{align*}
+	i\hbar\dv{t}\expval{A_{\text{H}}} &= -\adj{u_{t_{0}}}(t)HA_{\text{S}}u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)A_{\text{S}}Hu_{t_{0}}(t) \\
+	                                  &= -\adj{u_{t_{0}}}(t)Hu_{t_{0}}(t)\adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + \adj{u_{t_{0}}}(t)A_{\text{S}}u_{t_{0}}(t)\adj{u_{t_{0}}}(t)Hu_{t_{0}}(t) \\
+	                                  &= -H_{\text{H}}A_{\text{H}} + \adj{u_{t_{0}}}(t)(i\hbar\del{t}{A_{\text{S}}})u_{t_{0}}(t) + A_{\text{H}}H_{\text{H}} \\
+	                                  &= -{H_{\text{H}}}\comm{A_{\text{H}}} + (i\hbar\del{t}{A_{\text{S}}})_{\text{H}}.
+\end{align*}
+
+\paragraph{Symmetries and Conserved Quantities}
+Suppose that there exists some unitary transformation $u = e^{-i\frac{\varepsilon}{\hbar}A}$ such that $\adj{u}Hu = H$. Expanding the symmetry yields
+\begin{align*}
+	\left(1 + i\frac{\varepsilon}{\hbar}A + \dots\right)H\left(1 - i\frac{\varepsilon}{\hbar}A + \dots\right) = H + i\frac{\varepsilon}{\hbar}(-HA + AH) + \dots = H + i\frac{\varepsilon}{\hbar}\comm{A}{H} + \dots = H,
+\end{align*}
+implying that $A$ and $H$ commute. Assuming $A$ to have no explicit time dependence, Heisenberg's equations yield that $\expval{A}$ is conserved. This is essentially a kind of Nöether's theorem in quantum mechanics.
+
+\paragraph{Density Matrices and Probabilities}
+Consider a Hilbert space spanned by some basis states $\ket{\vb{n}}$. If the system is described by the density matrix
+\begin{align*}
+	\rho = \sum\limits_{i}p_{i}\dyad{\psi_{i}},
+\end{align*}
+the probability that a measurement of $\vb{n}$ produces $\ket{m}$ is
+\begin{align*}
+	P(\vb{n} = \vb{m}) &= \sum\limits_{i}p_{i}P(\vb{n} = \vb{m}\mid\psi_{i}) \\
+	                   &= \sum\limits_{i}p_{i}\expval{P_{\vb{m}}}{\psi_{i}} \\
+	                   &= \sum\limits_{i}p_{i}\expval{P_{\vb{m}}}{\psi_{i}}\braket{\psi_{i}} \\
+	                   &= \tr(\rho P_{\vb{m}}).
+\end{align*}
+
+\paragraph{Space and Space Translation}
+We introduce the notion of space as a set of operators $x_{i}$ on the basis states. These operators are postulated to commute, as are their corresponding translations. The latter implies that their generators $k_{i}$ commute as well. These are essentially quantum analogues of the canonical Poisson brackets.
+
+\paragraph{The Momentum Operator}
+It turns out that the generators of space translations have a physical interpretation. To understand this, we note that the generating function of a spatial translation in classical mechanics is
+\begin{align*}
+	F(\vb{x}, \vb{P}) = \vb{x}\cdot\vb{P} + \vb{p}\cdot\vb{x},
+\end{align*}
+which contains one term generating the identity and one causing the translation. We are therefore prompted to guess that $k_{i} \propto p_{i}$. If this were to be true, the constant of proportionality according to de Broglie's hypothesis would be exactly $\hbar$, as expected. We thus arrive at the final analogue to the canonical Poisson brackets, namely
+\begin{align*}
+	\comm{x_{i}}{p_{j}} = i\hbar\delta_{ij}.
+\end{align*}
+One could of course have started with these as postulates instead, prompting a stronger analogy to classical mechanics. But the symmetry approach is nice too.
+
+\paragraph{Spatial Inversion}
+Let $\Pi$ be the spatial inversion operator, or parity operator, such that $\Pi\vb{x}\Pi^{-1} = -\vb{x}$. We then have
+\begin{align*}
+	\vb{x}\Pi\ket{\vb{x}^{\prime}} = -\Pi\vb{x}\ket{\vb{x}^{\prime}} = -\vb{x}^{\prime}\Pi\ket{\vb{x}^{\prime}},
+\end{align*}
+hence $\Pi\ket{\vb{x}^{\prime}} = \ket{-\vb{x}^{\prime}}$, as the phase provided by spatial inversion may be chosen freely. Next we have
+\begin{align*}
+	\Pi\Psi = \mel{\vb{x}}{\Pi}{\Psi} = \braket{-\vb{x}}{\Psi} = \Psi(-\vb{x}).
+\end{align*}
+Furthermore, as we chose the operator to provide no phase, we have $\Pi^{2} = 1$, hence $\Pi$ has eigenvalues $\pm 1$ and $\Pi^{-1} = \adj{\Pi} = \Pi$.
+
+The geometry of space implores us to require
+\begin{align*}
+	\Pi e^{-i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}} = e^{i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}}\Pi,
+\end{align*}
+namely a spatial translation followed by inversion is equal to inversion followed by an opposite translation. Expanding yields
+\begin{align*}
+	\Pi\left(1 -i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p}\right)\adj{\Pi} = 1 + i\frac{1}{\hbar}\var{\vb{x}}\cdot\vb{p},
+\end{align*}
+and we may therefore identify $\Pi\vb{p}\adj{\Pi} = -\vb{p}$.
+
+\paragraph{Inversion Symmetry and Selection Rules}
+Most observables are either even or odd under inversions, namely $\Pi A\Pi^{-1} = \pi_{A}A,\ \pi_{A} = \pm 1$. If we are working with states with definite parity, we have
+\begin{align*}
+	\mel{\Psi}{A}{\Phi} &= \pi_{A}\mel{\Psi}{\Pi A\Pi}{\Phi} \\
+	                    &= \pi_{A}\pi_{\Psi}\pi_{\Phi}\mel{\Psi}{A}{\Phi},
+\end{align*}
+meaning that this matrix element is zero if $\pi_{a}\pi_{\Psi}\pi_{\Phi} = -1$. This is an example of a so-called selection rule.
+
+\paragraph{Mirror Symmetries}
+Other discrete spatial symmetries exist. One example is mirror symmetry. This particular example may be written as a composition of an inversion and a rotation.
+
+\paragraph{Time Reversal}
+We will now proceed to define time reversal - or rather, motion reversal, which is what we really mean. To get a sense of what we want it to do, imagine a particle moving in some direction. Applying motion reversal to such a particle just flips its velocity. The fundamental property which defines this operation is therefore the following: For any state, we require that motion reversal followed by a small forward time step is equivalent to a small backward time step followed by time reversal (think of the particle, and see if this makes sense). In the language of quantum mechanics:
+\begin{align*}
+	\left(1 - \frac{it}{\hbar}H\right)T\ket{\Psi} = T\left(1 + \frac{it}{\hbar}H\right)\ket{\Psi},
+\end{align*}
+where $T$ is the time reversal operator. This is only true if $-iHT = TiH$.
+
+Why do I leave the $i$? It is because $T$ cannot be linear. Otherwise, we would have $TH = -HT$. Considering a particular eigenstate, we would then have
+\begin{align*}
+	HT\ket{n} = -TH\ket{n} = -E_{n}T\ket{n},
+\end{align*}
+namely, $T\ket{n}$ is an eigenstate with eigenvalue $-E_{n}$. This does not work in many cases, however - a free particle is a typical example of a system where the energy spectrum is non-negative. It can, however, be anti-linear, and if it is to represent a symmetry for certain systems, it must be anti-unitary. If this is true, then we have
+\begin{align*}
+	HT = TH.
+\end{align*}
+
+\paragraph{Observables Under Time Reversal}
+For an observable, time reversal changes the corresponding operator according to $A \to TAT^{-1}$, as $A$ must be Hermitian. We define evenness and oddness under time reversal the same as we did for parity, and from this a selection rule follows, this time as
+\begin{align*}
+	\mel{\beta}{A}{\alpha} = \pm\cc{\mel{\tilde{\beta}}{A}{\tilde{\alpha}}},
+\end{align*}
+where the tildes denote time-reversed states.
+
+Our intution tells us that position should be even and momentum odd under time reversal. We can show this by enforcing a stricter criterion, namely that time reversal preserve the canonical commutation relations. This requirement is reasonable because we expect that time reversed motion should also adhere to the laws of physics, which ought to happen if the canonical commutation relations are preserved. We have
+\begin{align*}
+	T\comm{x_{i}}{p_{j}}T^{-1} = -i\hbar\delta{ij}.
+\end{align*}
+For this to be satisfied, either position or momentum must be odd under time reversal.
+
+So which one is it? We can make a choice by requiring that translations and time reversal commute. This will lead to
+\begin{align*}
+	\left(1 - \frac{i}{\hbar}\vb{a}\cdot\vb{p}\right)T = T\left(1 - \frac{i}{\hbar}\vb{a}\cdot\vb{p}\right).
+\end{align*}
+The anti-linearity of $T$ yields
+\begin{align*}
+	-i\vb{a}\cdot\vb{p}T = iT\vb{a}\cdot\vb{p},
+\end{align*}
+or equivalently
+\begin{align*}
+	T\vb{p}T^{-1} = -\vb{p}.
+\end{align*}
+Note that no other answer could really immerge from this calculation - baked into the requirement that we started with was an implicit idea of position being invariant under time reversal.
+
+\paragraph{Propagators}
+The probability amplitude at some point $x$ at time $t$ is given by
+\begin{align*}
+	\Psi(x, t) = \braket{x}{\Psi(t)} = \mel{x}{u_{0}(t)}{\Psi(0)} = \integ{}{}{x^{\prime}}{\mel{x}{u_{0}(t)}{x^{\prime}}\braket{x^{\prime}}{\Psi(0)}}.
+\end{align*}
+Defining the propagator $G_{x^{\prime}, t^{\prime}}(x, t) = \mel{x}{u_{t^{\prime}}(t)}{x^{\prime}}$, we arrive at
+\begin{align*}
+	\Psi(x, t) = \integ{}{}{x^{\prime}}{G_{x^{\prime}, 0}(x, t)\braket{x^{\prime}}{\Psi(0)}} = \integ{}{}{x^{\prime}}{G_{x^{\prime}, 0}(x, t)\Psi(x^{\prime}, 0)}.
+\end{align*}
+Hence the propagator acts as a Green's function with respect to time, in some sense.
+
+\paragraph{Arriving at Path Integrals}
+The general propagator of some state is given by
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) = \sum\limits_{\gamma}G_{\gamma; x^{\prime}, t^{\prime}}(x, t),
+\end{align*}
+where the summation is performed over all possible paths $\gamma$ between the two points.
+
+Suppose now that the time evolution is divided into steps such that
+\begin{align*}
+	u_{t^{\prime}}(t) = \prod\limits_{k = 1}^{n}u_{t_{k - 1}}(t_{k}),\ t_{0} = t^{\prime},\ t_{n} = t,\ t_{k} - t_{k - 1} = \delta t.
+\end{align*}
+Then
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) = \mel**{x}{\prod\limits_{k = 1}^{n}u_{t_{k - 1}}(t_{k})}{x^{\prime}}.
+\end{align*}
+For every $k$ we now introduce an identity according to
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) &= \mel**{x}{\prod\limits_{k = 1}^{n}u_{t_{k - 1}}(t_{k})\integ{}{}{x_{k}}{\op{x_{k - 1}}{x_{k - 1}}}}{x^{\prime}} \\
+	                                 &= \mel**{x}{\prod\limits_{k = 1}^{n}\integ{}{}{x_{k}}{u_{t_{k - 1}}(t_{k})\op{x_{k - 1}}{x_{k - 1}}}}{x^{\prime}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}\mel{x_{k}}{u_{t_{k - 1}}(t_{k})}{x_{k - 1}}.
+\end{align*}
+The time translation operator has the form $u_{t_{k - 1}}(t_{k}) = e^{-i\frac{\Delta t}{\hbar}H}$. For a Hamiltonian of the form $H = \frac{p^{2}}{2m} + V(\vb{x})$, the terms do not necessarily commute. However, to second order we have
+\begin{align*}
+	e^{\alpha A}e^{\alpha B} &= \left(1 + \alpha A + \frac{1}{2}\alpha^{2}A^{2} + \dots\right)\left(1 + \alpha B + \frac{1}{2}\alpha^{2}B^{2} + \dots\right), \\
+	e^{\alpha(A + B)}  &= 1 + \alpha A + \alpha B + \frac{1}{2}\alpha^{2}(A^{2} + B^{2} + AB + BA) + \dots, \\
+	           &= e^{A}e^{B}\left(1 - \frac{1}{2}\alpha^{2}AB + \frac{1}{2}\alpha^{2}BA + \dots\right) \\
+	           &= e^{\alpha A}e^{\alpha B}e^{\frac{1}{2}\alpha^{2}\comm{A}{B}}.
+\end{align*}
+Ignoring the second-order term yields
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}\mel{x_{k}}{e^{-i\frac{\Delta t}{\hbar}(T + V)}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\mel{x_{k}}{e^{-i\frac{\Delta t}{\hbar}T}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\mel**{x_{k}}{e^{-i\frac{\Delta t}{\hbar}T}\integ{}{}{p_{k}}{\op{p_{k}}{p_{k}}}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\mel**{x_{k}}{\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{\hbar}T}\op{p_{k}}{p_{k}}}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{2m\hbar}p_{k}^{2}}\braket{x_{k}}{p_{k}}\braket{p_{k}}}{x_{k - 1}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{2m\hbar}p_{k}^{2}}\frac{1}{2\pi\hbar}e^{i\frac{p_{k}(x_{k} - x_{k - 1})}{\hbar}}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}e^{i\frac{m}{2\hbar\Delta t}(x_{k} - x_{k - 1})^{2}}\frac{1}{2\pi\hbar}\integ{}{}{p_{k}}{e^{-i\frac{\Delta t}{2m\hbar}\left(p_{k} - \frac{m}{\Delta t}(x_{k} - x_{k - 1})\right)^{2}}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}e^{i\frac{m}{2\hbar\Delta t}(x_{k} - x_{k - 1})^{2}}\sqrt{\frac{m}{2\pi^{2}\hbar\Delta ti}}\integ{}{}{v_{k}}{e^{-v_{k}^{2}}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}e^{-i\frac{\Delta t}{\hbar}V(x_{k - 1})}e^{i\frac{m}{2\hbar\Delta t}(x_{k} - x_{k - 1})^{2}}\sqrt{\frac{m}{2\pi\hbar\Delta ti}} \\
+	                                 &= \int\prod\limits_{k = 1}^{n}\dd{x_{k}}\sqrt{\frac{m}{2\pi\hbar\Delta ti}}e^{i\frac{1}{\hbar}\sum\limits_{k = 1}^{n}\left(\frac{1}{2}m\left(\frac{x_{k} - x_{k - 1}}{\Delta t}\right)^{2} - V(x_{k - 1})\right)\Delta t}.
+\end{align*}
+In the continuous limit the exponent becomes
+\begin{align*}
+	i\frac{1}{\hbar}\integ{}{}{t}{\frac{1}{2}m\dot{x}^{2} - V(x)} = i\frac{S}{\hbar}
+\end{align*}
+where $S$ is the action. The remaining factor, termed the measure, is
+\begin{align*}
+	D(x(t)) = \lim\limits_{\Delta t \to 0}\prod\limits_{k = 1}^{n}\dd{x_{k}}\sqrt{\frac{m}{2\pi\hbar\Delta ti}}.
+\end{align*}
+Finally the propagator is given by
+\begin{align*}
+	G_{x^{\prime}, t^{\prime}}(x, t) &= \int D(x(t))e^{-i\frac{S}{\hbar}}.
+\end{align*}
+This is termed the path integral.
+
+As a side note, if the action is large compared to $\hbar$, the action varies strongly, causing destructive interference from all paths except for the one such that
+\begin{align*}
+	\fdv{S}{x} = 0.
+\end{align*}
+This is Hamilton's principle, the fundamental postulate of classical mechanics.
+
+\paragraph{The Interaction Picture}

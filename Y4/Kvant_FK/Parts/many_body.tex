@@ -1,0 +1,197 @@
+\section{Quantum Mechanics for Many-Body Physics}
+
+\paragraph{Identical Particles}
+For different particles the total Hilbert space may be constructed as the tensor product of the Hilbert spaces describing the individual particles. For identical particles, swapping the states of the particles seems to produce a different states. This does not match with experiments, which indicate identical particles to be indistinguishable. Hence only parts of the total product space is physical.
+
+We introduce the permutation operator $P_{12}$ for two particles such that
+\begin{align*}
+	P_{12}\ket{\alpha}\otimes\ket{\beta} = \ket{\beta}\otimes\ket{\alpha}.
+\end{align*}
+This operator satisfies
+\begin{align*}
+	P_{12}^{2} = 1,\ \adj{P_{12}} = P_{12}.
+\end{align*}
+In addition, as identical particles are indistinguishable, it should not modify expectation values. Hence
+\begin{align*}
+	\expval{A}{\Psi} = \expval{\adj{P_{12}}AP_{12}}{\Psi} = \expval{P_{12}AP_{12}}{\Psi}.
+\end{align*}
+This implies that $P_{12}AP_{12} = A$ and that $P_{12}$ commutes with any operator. Furthermore, the permutation operator has eigenvalues $\pm 1$, hence we may change introduce basis states
+\begin{align*}
+	\ket{\alpha\beta}_{\text{S}} = \frac{1}{\sqrt{2}}(\ket{\alpha\beta} + \ket{\beta\alpha}),\ \ket{\alpha\beta}_{\text{A}} = \frac{1}{\sqrt{2}}(\ket{\alpha\beta} - \ket{\beta\alpha})
+\end{align*}
+and write Hilbert space as the direct sum of the subspaces spanned by these basis states.
+
+Similarly, for multiple particles we have states $\ket{\alpha_{1}, \alpha_{2}, \dots, \alpha_{N}}$ and introduce permutation operators $P_{ijk}$, which cyclically permute the corresponding particles. Such permutations constitute a non-Abelian discrete group, and its generators are permutations of two particles. For such operators we may also introduce a sign of a permutation, equal to $-1$ to the power of the number of generators involved. As the permutation operators do not commute, one cannot simultaneously diagonalize them. However, one can find subspaces of Hilbert space which are invariant under any permutation. These may be constructed from single product kets using the symmetrizer and antisymmetrizer, defined as
+\begin{align*}
+	S = \frac{1}{N!}\sum\limits_{p}P_{p},\ A = \frac{1}{N!}\sum\limits_{p}\text{sgn}(P)P_{p}.
+\end{align*}
+These operators are projectors, and are therefore their own squares. While they are self-adjoint, they do not add to the identity. Hence Hilbert space must be constructed as a direct sum of the eigenbases of $S$ and $A$, as well as other states.
+
+Note that on these subspaces, where the physical states exist according to our postulates, the permutation operators are multiples of identity. This explains why there is no observable corresponding to them.
+
+\paragraph{The Spin-Statistics Theorem}
+Particles with half-integer spins are called fermions, and particles with integer spins are called bosons.
+
+\paragraph{Many-Body Operators}
+Many-body operators may be constructed from adding single-particle operators or by adding operators containing interactions.
+
+\paragraph{Second Quantization}
+Rather than working with many-body wavefunctions, Slater determinants and the like, we will introduce a new formalism based on creation and annihilation operators for particles. This process is called second quantization.
+
+\paragraph{Fock Space}
+Let \F{N} denote the space of physical states for a many-body system of $N$ particles. Fock space is defined using these spaces according to
+\begin{align*}
+	\F{} = \bigoplus\limits_{n = 0}^{\infty}\F{n}.
+\end{align*}
+Basis states in any space \F{N} may now be re-labelled from individual quantum numbers to occupation numbers according to
+\begin{align*}
+	\ket{\alpha_{1}\alpha_{2}}_{\pm} = \ket{n_{\alpha_{1}} = 1, n_{\alpha_{2}} = 1, \dots}
+\end{align*}
+where the left-hand side is a symmetrized or antisymmetrized kets. For fermions any occupation number is either $0$ or $1$, whereas for bosons they may be any non-negative integer.
+
+\paragraph{Creation and Annihilation Operators}
+For fermions we define
+\begin{align*}
+	\adj{c_{\alpha}}\ket{0} = \ket{\alpha},\ c_{\alpha}\ket{0} = 0,\ \adj{c_{\alpha}}\adj{c_{\beta}}\ket{0} = \ket{\alpha, \beta}_{-} = -\adj{c_{\beta}}\adj{c_{\alpha}}\ket{0}.
+\end{align*}
+We would like to study the commutation relations between the creation operators. Starting with some state $\ket{\alpha_{1}, \dots, \alpha_{N}}_{-}$ we have
+\begin{align*}
+	\adj{c_{\alpha}}\adj{c_{\beta}}\ket{\alpha_{1}, \dots, \alpha_{N}}_{-} = \ket{\alpha, \beta, \alpha_{1}, \dots, \alpha_{N}}_{-} = -\adj{c_{\beta}}\adj{c_{\alpha}}\ket{\alpha_{1}, \dots, \alpha_{N}}_{-},
+\end{align*}
+implying that the two operators anti-commute. Thus the anti-symmetry of the state is incorporated into the operators. Hermitian conjugation yields that the annihilation operators also anti-commute. The anti-symmetry of the states also imply $(\adj{c_{\alpha}})^{2} = (c_{\alpha})^{2} = 0$. We can also show that $\adj{c_{\alpha}}c_{\beta} + \adj{c_{\beta}}c_{\alpha} = 0$.
+
+Next we have
+\begin{align*}
+	\adj{c_{\alpha}}c_{\alpha}\ket{0} = 0,\ c_{\alpha}\adj{c_{\alpha}}\ket{0} = \ket{0}.
+\end{align*}
+For any non-zero state we also have
+\begin{align*}
+	\adj{c_{\alpha}}c_{\alpha}\ket{\alpha, \alpha_{1}, \dots, \alpha_{N}}_{-} = \ket{\alpha, \alpha_{1}, \dots, \alpha_{N}}_{-},\ c_{\alpha}\adj{c_{\alpha}}\ket{\alpha, \alpha_{1}, \dots, \alpha_{N}}_{-} = 0, \\
+	(\adj{c_{\alpha}}c_{\alpha} + c_{\alpha}\adj{c_{\alpha}})\ket{\beta, \alpha_{1}, \dots, \alpha_{N}}_{-} = \ket{\beta, \alpha_{1}, \dots, \alpha_{N}}_{-},
+\end{align*}
+implying
+\begin{align*}
+	\acomm{\adj{c_{\alpha}}}{c_{\beta}} = \delta_{\alpha, \beta}.
+\end{align*}
+
+To create some particular state defined by some occupation numbers, we use the fact that
+\begin{align*}
+	\ket{n_{\alpha_{1}}, n_{\alpha_{2}}, \dots} = (\adj{c_{\alpha_{1}}})^{n_{\alpha_{1}}}(\adj{c_{\alpha_{2}}})^{n_{\alpha_{2}}}\dots\ket{0}.
+\end{align*}
+This expression also defines the order of the quantum numbers in the corresponding anti-symmetric state, which was previously unclear. We therefore generally have
+\begin{align*}
+	\adj{c_{\alpha_{i}}}\ket{n_{\alpha_{1}}, n_{\alpha_{2}}, \dots, 0, \dots} = (-1)^{\sum\limits_{j = 1}^{i - 1}n_{j}}\ket{n_{\alpha_{1}}, n_{\alpha_{2}}, \dots, 1, \dots},
+\end{align*}
+with a similar result for the annihilation operator.
+
+\paragraph{Number Operators}
+We next introduce number operators such that
+\begin{align*}
+	\hat{n}_{\alpha}\ket{n_{\alpha_{1}}, n_{\alpha_{2}}, \dots} = n_{\alpha}\ket{n_{\alpha_{1}}, n_{\alpha_{2}}, \dots}.
+\end{align*}
+We propose that $n_{\alpha} = \adj{c_{\alpha}}c_{\alpha}$. To verify this, we have
+\begin{align*}
+	\comm{\adj{c_{\alpha}}c_{\alpha}}{\adj{c_{\alpha}}} = \adj{c_{\alpha}}\acomm{c_{\alpha}}{\adj{c_{\alpha}}} - \acomm{\adj{c_{\alpha}}}{\adj{c_{\alpha}}}c_{\alpha} = \adj{c_{\alpha}},
+\end{align*}
+and similarly
+\begin{align*}
+	\comm{\adj{c_{\alpha}}c_{\alpha}}{c_{\alpha}} = -c_{\alpha}.
+\end{align*}
+Next we have
+\begin{align*}
+	n_{\alpha}^{2} = \adj{c_{\alpha}}(1 - \adj{c_{\alpha}}c_{\alpha})c_{\alpha} = n_{\alpha}.
+\end{align*}
+This implies that $n_{\alpha}$ has $0$ and $1$ as its eigenvalues, which is a good sign.
+
+The action of this operator on some state is given by
+\begin{align*}
+	n_{\alpha}\ket{\alpha} = \adj{c_{\alpha}}c_{\alpha}\adj{c_{\alpha}}\ket{0} = \adj{c_{\alpha}}(1 - \adj{c_{\alpha}}c_{\alpha})\ket{0} = \ket{\alpha}, \\
+	n_{\alpha}\ket{0} = 0,
+\end{align*}
+which is exactly what we wanted to show.
+
+We may now proceed to define a total number operator
+\begin{align*}
+	N = \sum\limits_{\alpha}n_{\alpha}.
+\end{align*}
+
+\paragraph{Creation and Annihilation Operators for Bosons}
+%TODO: Repeat procedure
+For bosons we may repeat the procedure to obtain
+\begin{align*}
+	\comm{\adj{b_{\alpha}}}{\adj{b_{\beta}}} = \comm{b_{\alpha}}{b_{\beta}} = 0,\ \comm{b_{\alpha}}{\adj{b_{\beta}}} = \delta_{\alpha, \beta}.
+\end{align*}
+The occupation number states are defined according to
+\begin{align*}
+	\ket{n_{\alpha_{1}}, n_{\alpha_{2}}, \dots} = (\adj{b_{\alpha_{1}}})^{n_{\alpha_{1}}}(\adj{b_{\alpha_{2}}})^{n_{\alpha_{2}}}\dots\ket{0}.
+\end{align*}
+The action of the operators add constants $\sqrt{n_{\alpha} + 1}$ and $\sqrt{n_{\alpha}}$ to the new states.
+
+\paragraph{Change of Basis}
+Consider some change of basis. We will do this generically, and thus write the creation and annihilation operators as $a$. We have
+%TODO: Clean up notation
+\begin{align*}
+	\adj{a_{\alpha^{\prime}}}\ket{0} = \ket{\alpha^{\prime}} = \sum\limits_{\alpha}\ket{\alpha}\braket{\alpha}{\alpha^{\prime}} = \sum\limits_{\alpha}\adj{a_{\alpha}}\ket{0}\braket{\alpha}{\alpha^{\prime}},
+\end{align*}
+which implies
+\begin{align*}
+	\adj{a_{\alpha^{\prime}}} = \sum\limits_{\alpha}\braket{\alpha}{\alpha^{\prime}}\adj{a_{\alpha}},\ a_{\alpha^{\prime}} = \sum\limits_{\alpha}\braket{\alpha^{\prime}}{\alpha}a_{\alpha}.
+\end{align*}
+%TODO: Show
+Such transformations preserve both the commutation relations and the total number operator.
+
+\paragraph{One-Body Operators}
+A one-body operator is of the form
+\begin{align*}
+	T 0 \sum T_{i},
+\end{align*}
+where $T_{i}$ operates on a single factor in the product state. Re-introducing the anti-symmetrization operator $A$, with which $T$ must commute, we have
+\begin{align*}
+	TA\ket{\alpha_{1}, \alpha_{2}, \dots} &= AT\ket{\alpha_{1}, \alpha_{2}, \dots} \\
+	                                      &= A\sum\limits_{i}\sum\limits_{\alpha, \beta}(T_{i})_{\alpha\beta}\braket{\beta}{\alpha_{i}}\ket{\alpha_{1}, \alpha_{2}, \dots, \alpha_{i - 1}, \alpha, \alpha_{i + 1}, \dots} \\
+	                                      &= \sum\limits_{\alpha, \beta}\sum\limits_{i}(T_{i})_{\alpha\beta}\delta_{\beta, \alpha_{i}}A\ket{\alpha_{1}, \alpha_{2}, \dots, \alpha_{i - 1}, \alpha, \alpha_{i + 1}, \dots} \\
+	                                      &= \sum\limits_{\alpha, \beta}\sum\limits_{i}(T_{i})_{\alpha\beta}\delta_{\beta, \alpha_{i}}\adj{c_{\alpha_{1}}}\adj{c_{\alpha_{2}}}\dots\adj{c_{\alpha_{i - 1}}}\adj{c_{\alpha}}\adj{c_{\alpha_{i + 1}}}\dots\ket{0} \\
+	                                      &= \sum\limits_{\alpha, \beta}\sum\limits_{i}(T_{i})_{\alpha\beta}\delta_{\beta, \alpha_{i}}\adj{c_{\alpha_{1}}}\adj{c_{\alpha_{2}}}\dots\adj{c_{\alpha_{i - 1}}}\adj{c_{\alpha}}c_{\alpha_{i}}\adj{c_{\alpha_{i}}}\adj{c_{\alpha_{i + 1}}}\dots\ket{0}.
+\end{align*}
+Neither operator in the product $\adj{c_{\alpha}}c_{\alpha_{i}}$ occur to the left of where it is found, hence these operators may be commuted through to the left. This also adds no sign due to the fact that we are moving two operators. Thus we obtain
+\begin{align*}
+	TA\ket{\alpha_{1}, \alpha_{2}, \dots} &= \sum\limits_{\alpha, \beta}\sum\limits_{i}(T_{i})_{\alpha\beta}\delta_{\beta, \alpha_{i}}\adj{c_{\alpha}}c_{\alpha_{i}}A\ket{\alpha_{1}, \alpha_{2}, \dots}.
+\end{align*}
+Assuming that all $T_{i}$ work the same on the individual bodies we have
+\begin{align*}
+	TA\ket{\alpha_{1}, \alpha_{2}, \dots} &= \sum\limits_{\alpha, \beta}T_{\alpha\beta}\sum\limits_{i}\delta_{\beta, \alpha_{i}}\adj{c_{\alpha}}c_{\alpha_{i}}A\ket{\alpha_{1}, \alpha_{2}, \dots}.
+\end{align*}
+Now, there are two cases which occur here: $\alpha_{i} = \beta$ or not. For the term where this is true we may switch the index of the annihilation operator. For the term where this is not true the annihilation operator will cause the corresponding contribution to be zero. Hence we have
+\begin{align*}
+	TA\ket{\alpha_{1}, \alpha_{2}, \dots} &= \sum\limits_{\alpha, \beta}T_{\alpha\beta}\adj{c_{\alpha}}c_{\beta}A\ket{\alpha_{1}, \alpha_{2}, \dots},
+\end{align*}
+and thus the operator identity
+\begin{align*}
+	T = \sum\limits_{\alpha, \beta}T_{\alpha\beta}\adj{c_{\alpha}}c_{\beta}.
+\end{align*}
+The expression is the same for bosons.
+
+\paragraph{Diagonalization of Two-Body Operators}
+We may always (I think) identify some change of basis caused by a unitary operator $u$ such that $T$ is diagonal. We thus have
+\begin{align*}
+	T &= \sum\limits_{\alpha, \beta, \gamma}((\adj{u})_{\alpha\gamma}\tilde{T}_{\gamma\gamma}u_{\gamma\beta})\adj{c_{\alpha}}c_{\beta} \\
+	  &= \sum\limits_{\alpha, \beta, \gamma}\tilde{T}_{\gamma\gamma}(\adj{u})_{\alpha\gamma}\adj{c_{\alpha}}u_{\gamma\beta}c_{\beta} \\
+	  &= \sum\limits_{\gamma}\tilde{T}_{\gamma\gamma}\adj{\tilde{c}_{\gamma}}\tilde{c}_{\beta}.
+\end{align*}
+
+\paragraph{Two-Body Operators}
+%TODO: Show
+As can be shown, the corresponding relation for two-body operators is
+\begin{align*}
+	T = \sum\limits_{\alpha, \beta, \gamma, \delta}T_{\alpha\beta\gamma\delta}\adj{c_{\alpha}}\adj{c_{\beta}}c_{\delta}c_{\gamma}.
+\end{align*}
+
+\paragraph{Quantum Field Operators}
+I make brief mention of quantum field operators, which are in essence everything we have seen performed in the coordinate basis. These may be written as
+\begin{align*}
+	\adj{\Psi}(\vb{r}) = \sum\limits_{\alpha}\braket{\alpha}{\vb{r}}\adj{a_{\alpha}} = \sum\limits_{\alpha}\cc{\Psi_{\alpha}}\adj{a_{\alpha}},\ \Psi(\vb{r}) = \sum\limits_{\alpha}\Psi_{\alpha}a_{\alpha}.
+\end{align*}
+The commutation (or anti-commutation) relation is
+\begin{align*}
+	\comm{\Psi(\vb{r})}{\adj{\Psi}(\vb{r}^{\prime})} = \sum\limits_{\alpha, \beta}\Psi_{\alpha}(\vb{r})\cc{\Psi_{\beta}}(\vb{r}^{\prime})\comm{c_{\alpha}}{\adj{c_{\beta}}} = \sum\limits_{\alpha}\Psi_{\alpha}(\vb{r})\cc{\Psi_{\alpha}}(\vb{r}^{\prime}) = \delta(\vb{r} - \vb{r}^{\prime}).
+\end{align*}

@@ -68,6 +68,42 @@ This map is also linear in all the $\vb{w}_{i}$. Next, given a rank $n - m$ tens
 \end{align*}
 This is a linear rank $n$ tensor.
 
+\paragraph{More General Tensors}
+To expand on the above, we first define tensors as we have discussed them of $(0, n)$ tensors. We now phrase the above as follows: Given a $(0, n +m)$ tensor $T$ and a $(0, m)$ tensor $\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}}$ we may construct the tensor
+\begin{align*}
+	(\tilde{T}(\tenprod{{\vb{w}_{1}, \dots, \vb{w}_{m}}}))(\vb{1}, \dots, \vb{n}) = T(\vb{w}_{1}, \dots, \vb{w}_{m}, \vb{1}, \dots, \vb{n}),
+\end{align*}
+which is $(0, m)$. These must needs be linear.
+
+Explicitly in terms of the contravariant tensor components we may construct such tensors as
+\begin{align*}
+	T = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\bigotimes\limits_{k = 1}^{n}\tb{a_{k}}\bigotimes\limits_{l = 1}^{m}\db{b_{l}}.
+\end{align*}
+The components of such a tensor are
+\begin{align*}
+	T(e^{a_{1}\dots a_{n}})\left(\tb{b_{1}}, \dots, \tb{b_{m}}\right) = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}e^{a_{1}\dots a_{n}}\left(\bigotimes\limits_{k = 1}^{n}\tb{c_{k}}\right)\bigotimes\limits_{l = 1}^{m}\tb{b_{l}}\left(\db{d_{1}}, \dots, \db{d_{m}}\right) = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}.
+\end{align*}
+
+Recalling the transformation rules
+\begin{align*}
+	(\tb{b})' = L_{b}^{a}\tb{a},\ L_{b}^{a} = \del[\prime]{b}{\chi^{a}}
+\end{align*}
+and
+\begin{align*}
+	(\db{b})' = K_{a}^{b}\db{a},\ K_{a}^{b} = \del{a}{(\chi')^{b}}
+\end{align*}
+we may obtain general transformation rules for a $(n, m)$ tensor. We first have
+\begin{align*}
+	(e^{\prime})^{a_{1}\dots a_{n}} = \bigotimes\limits_{k = 1}^{n}(\db{a_{k}})^{\prime} = \bigotimes\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\db{c_{k}} = \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)\bigotimes\limits_{k = 1}^{n}\db{c_{k}} = \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)e^{c_{1}\dots c_{n}}.
+\end{align*}
+This yields
+\begin{align*}
+	\tensor*{(T^{\prime})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= T((e^{\prime})^{a_{1}\dots a_{n}})\left((\tb{b_{1}})^{\prime}, \dots, (\tb{b_{m}})^{\prime}\right)\\
+	&= T\left(\left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)e^{c_{1}\dots c_{n}}\right)\left(\del[\prime]{b_{1}}{\chi^{d_{1}}}\tb{d_{1}}, \dots, \del[\prime]{b_{m}}{\chi^{d_{m}}}\tb{d_{m}}\right) \\
+	&= \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)\left(\prod\limits_{l = 1}^{m}\del[\prime]{b_{l}}{\chi^{d_{l}}}\right)T\left(e^{c_{1}\dots c_{n}}\right)\left(\tb{d_{1}}, \dots, \tb{d_{m}}\right) \\
+	&= \left(\prod\limits_{k = 1}^{n}\del{c_{k}}{(\chi')^{a_{k}}}\right)\left(\prod\limits_{l = 1}^{m}\del[\prime]{b_{l}}{\chi^{d_{l}}}\right)\tensor*{T}{^{c_{1}\dots c_{n}}_{d_{1}\dots d_{m}}}.
+\end{align*}
+
 \paragraph{Tensor Contraction}
 Given a complete set of vectors $\vb{v}_{i}$ and their dual $\vb{v}^{i}$ such that $\vb{v}_{i}\cdot\vb{v}^{i} = \kdelta{i}{j}$, the contraction $e_{12}T$ of two arguments of a rank $n$ tensor is the tensor of rank $n - 2$ satisfying
 \begin{align*}

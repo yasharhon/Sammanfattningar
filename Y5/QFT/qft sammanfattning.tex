@@ -1,19 +1,19 @@
 \documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
 \usepackage{hyperref}
 \usepackage[margin=0.5in]{geometry}
 
-\usepackage{slashed}
-\usepackage{tikz-feynman}
-\usepackage{simplewick}
+\usepackage{graphicx}
 \usepackage{subfig}
 
 \input{./../../Mall/Aux/math.tex}
 
-\newcommand{\pl}{^{(+)}}
-\newcommand{\mi}{^{(-)}}
-\newcommand{\nop}[1]{\ensuremath{:#1:}}
+\newcommand{\gf}[1]{\ensuremath{Z\left[#1\right]}}
+\newcommand{\srconst}[2]{\ensuremath{\tensor{f}{_{#1}^{#2}}}}
+\newcommand{\ren}{\ensuremath{\text{R}}}
 
-\title{Summary of SI2390 Relativistic Quantum Physics}
+\title{Summary of SI2410 Quantum Field Theory}
 \author{Yashar Honarmandi \\ yasharh@kth.se}
 \date{\today}
 
@@ -36,12 +36,14 @@
 
 \pagenumbering{arabic}
 
-\input{./Parts/sr.tex}
+\input{./Parts/math.tex}
 
 \input{./Parts/basics.tex}
 
-\input{./Parts/qft.tex}
+\input{./Parts/gauge.tex}
 
-\input{./Parts/pertur.tex}
+\input{./Parts/ssb.tex}
+
+\input{./Parts/renorm.tex}
 
 \end{document}

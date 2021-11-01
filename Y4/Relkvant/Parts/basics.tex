@@ -312,6 +312,31 @@ At this point we must return to the sign of $E$. The two former solutions blow u
 
 What is the interpretation of this? Dirac's first interpretation involved the so-called Dirac sea, but the current understanding is that the negative energy solutions represent antiparticle states with positive energy.
 
+Another way to handle this is the Feynman-Stuckelberg interpretation, which allows to keep the sign of the energy. This interpretation involves interpreting the negative energy solutions to be particles propagating backwards in time, corresponding to physical antiparticles with positive energy propagating forwards in time. These solution are found by changing the sign of $p$. The solution basis we choose is thus
+\begin{align*}
+	e^{-ipx}\mqty[
+		1 \\
+		0 \\
+		\frac{p_{z}}{p_{0} + m} \\
+		\frac{p_{x} + ip_{y}}{p_{0} + m}
+	],\ e^{-ipx}\mqty[
+		0 \\
+		1 \\
+		\frac{p_{x} - ip_{y}}{p_{0} + m} \\
+		-\frac{p_{z}}{p_{0} + m}
+	],\ e^{ipx}\mqty[
+		\frac{p_{z}}{p_{0} + m} \\
+		\frac{p_{x} + ip_{y}}{p_{0} + m} \\
+		1 \\
+		0
+	],\ e^{ipx}\mqty[
+		\frac{p_{x} - ip_{y}}{p_{0} + m} \\
+		-\frac{p_{z}}{p_{0} + m} \\
+		0 \\
+		1
+	].
+\end{align*}
+
 \paragraph{A Hamiltonian}
 As the plane-wave solutions have time-like 4-momenta, there is a corresponding rest frame. In this rest frame, the Hamiltonian, which is generally
 \begin{align*}
