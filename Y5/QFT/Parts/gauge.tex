@@ -49,122 +49,133 @@ S = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\sum\limits_{s, t > 1}\tilde
 %TODO: Rework for coupling constants
 Consider some theory where the action contains derivatives of the field, and suppose that the theory has some global symmetry. From the theory of Lie groups we know that such symmetries can be specified in terms of a set of numbers combined with the generators of the Lie group. Now, what if these numbers were to be replaced by functions, making the symmetry local? This would make the symmetry into a so-called gauge symmetry. Dubbing the fields $\Psi$, the action of the symmetry produces the outcome
 \begin{align*}
-\del{}{\mu}\Psi\to \del{}{\mu}(U\Psi) = \left(\del{}{\mu}U + U\del{}{\mu}\right)\Psi.
+	\del{}{\mu}\Psi\to \del{}{\mu}(U\Psi) = \left(\del{}{\mu}U + U\del{}{\mu}\right)\Psi.
 \end{align*}
 If we want the local symmetry to be a symmetry of our theory, termed requiring gauge invariance, we are going to have to modify the derivative by introducing a covariant derivative
 \begin{align*}
-D_{\mu} = \del{}{\mu} - igS_{\mu}.
+	D_{\mu} = \del{}{\mu} - igA_{\mu}.
 \end{align*}
-$S$ is a collection of space-dependent matrices, as we are generally working with a field theory with multiple fields, and $g$ is some coupling constant. In order for this to work we will have to let these matrices transform along with the fields. The action of a gauge transformation then produces
+$A$ is a collection of space-dependent matrices, as we are generally working with a field theory with multiple fields, and $g$ is some coupling constant. In order for this to work we will have to let these matrices transform along with the fields. The action of a gauge transformation then produces
 \begin{align*}
-D_{\mu}\Psi &\to D_{\mu}\p\Psi\p = (\del{}{\mu} - igS_{\mu}\p)U\Psi \\
-&= (\del{}{\mu}U + U\del{}{\mu} - igS_{\mu}\p U)\Psi \\
-&= U(U^{-1}\del{}{\mu}U + \del{}{\mu} - igU^{-1}S_{\mu}\p U)\Psi.
+	D_{\mu}\Psi &\to D_{\mu}\p\Psi\p = (\del{}{\mu} - igA_{\mu}\p)U\Psi \\
+                &= (\del{}{\mu}U + U\del{}{\mu} - igA_{\mu}\p U)\Psi \\
+	            &= U(U^{-1}\del{}{\mu}U + \del{}{\mu} - igU^{-1}A_{\mu}\p U)\Psi.
 \end{align*}
 From this point on we will restrict ourselves to \SU{N} transformations, but many of the results are in fact reproducible for a general Lie group. Someone should probably do that. For the local symmetry to be a symmetry of the theory we require $D_{\mu}\p\Psi\p = UD_{\mu}\Psi$, which implies
 \begin{align*}
-&U\adj\del{}{\mu}U - igU\adj S_{\mu}\p U = -igS_{\mu}, \\
-&S_{\mu}\p = US_{\mu}U\adj - \frac{i}{g}(\del{}{\mu}U)U\adj.
+	&U\adj\del{}{\mu}U - igU\adj A_{\mu}\p U = -igA_{\mu}, \\
+	&A_{\mu}\p = UA_{\mu}U\adj - \frac{i}{g}(\del{}{\mu}U)U\adj.
 \end{align*}
 
-Can we impose any restrictions on the matrices $S$? We can write
+Can we impose any restrictions on the matrices $A$? We can write
 \begin{align*}
-U = e^{-i\theta^{a}(x)T_{a}},
+	U = e^{-ig\theta^{a}(x)T_{a}},
 \end{align*}
 where $T_{a}$ are the generators of \SU{N} (traceless hermitian matrices). Looking at the action of the covariant derivative close to the identity transform we find
 \begin{align*}
-D_{\mu}\p(U\Psi) &= \left(-iT_{a}\del{}{\mu}\theta^{a} + (1 - i\theta^{a}(x)T_{a})\del{}{\mu} - igS_{\mu}\p(1 - i\theta^{a}(x)T_{a})\right)\Psi.
+	D_{\mu}\p(U\Psi) &= \left(-igT_{a}\del{}{\mu}\theta^{a} + (1 - ig\theta^{a}(x)T_{a})\del{}{\mu} - igA_{\mu}\p(1 - ig\theta^{a}(x)T_{a})\right)\Psi.
 \end{align*}
 Looking at this we notice that if we were to extract $U$, all that would be left in the matrix apart from the derivative would be the $S$ matrices, the generators and products of the two. The generators satisfy
 \begin{align*}
-\comm{T_{a}}{T_{b}} = i\srconst{ab}{c}T_{c},
+	\comm{T_{a}}{T_{b}} = i\srconst{ab}{c}T_{c},
 \end{align*}
 which gives a vague indication that we should choose to expand the $S$ in terms of the generators. This means that the $S$ are traceless and hermitian. We have that
 \begin{align*}
-(S_{\mu}\p)\adj = US_{\mu}\adj U\adj + \frac{i}{g}U(\del{}{\mu}U\adj).
+	(A_{\mu}\p)\adj = UA_{\mu}\adj U\adj + \frac{i}{g}U(\del{}{\mu}U\adj).
 \end{align*}
 Because $U$ is unitary we have
 \begin{align*}
-U(\del{}{\mu}U\adj) = -U\adj(\del{}{\mu}U),
+	U(\del{}{\mu}U\adj) = -U\adj(\del{}{\mu}U),
 \end{align*}
 and hermitianity is thus guaranteed by the gauge transformation. Furthermore, as $\tr(\ln(U)) = \ln(\det(U))$ and $\det(U) = 1$ we have
 \begin{align*}
-\del{}{\mu}\tr(\ln(U)) = \tr(U\adj\del{}{\mu}U) = 0.
+	\del{}{\mu}\tr(\ln(U)) = \tr(U\adj\del{}{\mu}U) = 0.
 \end{align*}
 Because traces are invariant under unitary transformations and cyclic permutations of matrices, tracelessness is also preserved by the gauge transformation. All in all we are left with $N^{2} - 1$ degrees of freedom.
 
-Having established this, we can expand the matrices $S$ in terms of the so-called gauge fields $B$ according to
+Having established this, we can expand the matrices $A$ in terms of the so-called gauge fields according to
 \begin{align*}
-S_{\mu} = B_{\mu}^{a}T_{a}.
+	A_{\mu} = A_{\mu}^{a}T_{a}.
 \end{align*}
 There are transformation rules associated with these fields as well. Writing
 \begin{align*}
-UT_{b}U\adj = R_{b}^{a}T_{a},\ \frac{i}{g}(\del{}{\mu}U)U\adj = \alpha^{a}_{\mu}T_{a}
+	UT_{b}U\adj = R_{b}^{a}T_{a},\ \frac{i}{g}(\del{}{\mu}U)U\adj = \alpha^{a}_{\mu}T_{a}
 \end{align*}
 we have
 \begin{align*}
-(B\p)_{\mu}^{a} = B_{\mu}^{b}R_{b}^{a} - \alpha^{a}_{\mu}.
+	(A\p)_{\mu}^{a} = A_{\mu}^{b}R_{b}^{a} - \alpha^{a}_{\mu}.
 \end{align*}
 Of course we can be more explicit and write for an infinitesimal transformation
 \begin{align*}
-&\frac{i}{g}(\del{}{\mu}U)U\adj = \frac{1}{g}\del{}{\mu}\theta^{a}T_{a}(1 + i\theta^{a}T_{a}) \implies \alpha^{a}_{\mu} = \frac{1}{g}\del{}{\mu}\theta^{a}, \\
-&UT_{a}U\adj = (1 - i\theta^{b}T_{b})T_{a}(1 + i\theta^{c}T_{c}) \approx T_{a} - i\theta^{b}\comm{T_{b}}{T_{a}} \implies R_{a}^{b} = \kdelta{b}{a} + \theta^{c}\srconst{ca}{b}.
+	&\frac{i}{g}(\del{}{\mu}U)U\adj = \del{}{\mu}\theta^{a}T_{a}(1 + ig\theta^{b}T_{b}) \implies \alpha^{a}_{\mu} = \del{}{\mu}\theta^{a}, \\
+	&UT_{a}U\adj = (1 - ig\theta^{b}T_{b})T_{a}(1 + ig\theta^{c}T_{c}) \approx T_{a} - ig\theta^{b}\comm{T_{b}}{T_{a}} \implies R_{a}^{b} = \kdelta{b}{a} + g\theta^{c}\srconst{ca}{b}.
 \end{align*}
 This yields the transformation rule
 \begin{align*}
-(B\p)_{\mu}^{a} = B_{\mu}^{b}\left(\kdelta{a}{b} + \theta^{c}\srconst{cb}{a}\right) - \frac{1}{g}\del{}{\mu}\theta^{a} = B_{\mu}^{a} + \theta^{c}B_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\theta^{a}.
+	(A\p)_{\mu}^{a} = A_{\mu}^{b}\left(\kdelta{a}{b} + g\theta^{c}\srconst{cb}{a}\right) - \del{}{\mu}\theta^{a} = A_{\mu}^{a} + g\theta^{c}A_{\mu}^{b}\srconst{cb}{a} - \del{}{\mu}\theta^{a}.
+\end{align*}
+It can be shown that the structure constants are fully antisymmetric, hence this can be written as
+\begin{align*}
+	(A\p)_{\mu}^{a} = A_{\mu}^{a} + g\theta_{c}A_{\mu}^{b}\srconst{ab}{c} - \del{}{\mu}\theta^{a}.
 \end{align*}
 
 Next we introduce the field strength. Noting that
 \begin{align*}
-D_{\mu}D_{\nu} &= (\del{}{\mu} - igS_{\mu})(\del{}{\nu} - igS_{\nu}) \\
-&= \del{}{\mu}\del{}{\nu} - ig\del{}{\mu}S_{\nu} - igS_{\mu}\del{}{\nu} - g^{2}S_{\mu}S_{\nu} \\
-&= \del{}{\mu}\del{}{\nu} - ig\left((\del{}{\mu}S_{\nu}) + S_{\nu}\del{}{\mu} + S_{\mu}\del{}{\nu}\right) - g^{2}S_{\mu}S_{\nu},
+	D_{\mu}D_{\nu} &= (\del{}{\mu} - igA_{\mu})(\del{}{\nu} - igA_{\nu}) \\
+                   &= \del{}{\mu}\del{}{\nu} - ig\del{}{\mu}A_{\nu} - igA_{\mu}\del{}{\nu} - g^{2}A_{\mu}A_{\nu} \\
+                   &= \del{}{\mu}\del{}{\nu} - ig\left((\del{}{\mu}A_{\nu}) + A_{\nu}\del{}{\mu} + A_{\mu}\del{}{\nu}\right) - g^{2}A_{\mu}A_{\nu},
 \end{align*}
 this implies
 \begin{align*}
-\comm{D_{\mu}}{D_{\nu}} &= -ig((\del{}{\mu}S_{\nu}) - (\del{}{\nu}S_{\mu})) - g^{2}\comm{S_{\mu}}{S_{\nu}} \\
-&= -ig((\del{}{\mu}S_{\nu}) - (\del{}{\nu}S_{\mu}) - ig\comm{S_{\mu}}{S_{\nu}}).
+	\comm{D_{\mu}}{D_{\nu}} &= -ig((\del{}{\mu}A_{\nu}) - (\del{}{\nu}A_{\mu})) - g^{2}\comm{A_{\mu}}{A_{\nu}} \\
+                            &= -ig((\del{}{\mu}A_{\nu}) - (\del{}{\nu}A_{\mu}) - ig\comm{A_{\mu}}{A_{\nu}}).
 \end{align*}
 In terms of the gauge fields we have
 \begin{align*}
-\comm{D_{\mu}}{D_{\nu}} &= -ig\left((\del{}{\mu}B_{\nu}^{a})T_{a} - (\del{}{\nu}B_{\mu}^{a})T_{a} - igB_{\mu}^{a}B_{\nu}^{b}\comm{T_{a}}{T_{b}}\right) \\
-&= -ig\left((\del{}{\mu}B_{\nu}^{a}) - (\del{}{\nu}B_{\mu}^{a}) + gB_{\mu}^{b}B_{\nu}^{c}\srconst{bc}{a}\right)T_{a}.
+	\comm{D_{\mu}}{D_{\nu}} &= -ig\left((\del{}{\mu}A_{\nu}^{a})T_{a} - (\del{}{\nu}A_{\mu}^{a})T_{a} - igA_{\mu}^{a}A_{\nu}^{b}\comm{T_{a}}{T_{b}}\right) \\
+	                        &= -ig\left((\del{}{\mu}A_{\nu}^{a}) - (\del{}{\nu}A_{\mu}^{a}) + gA_{\mu}^{b}A_{\nu}^{c}\srconst{bc}{a}\right)T_{a}.
 \end{align*}
 We define the field strength as
 \begin{align*}
-G_{\mu\nu} = i\comm{D_{\mu}}{D_{\nu}}.
+	G_{\mu\nu} = i\comm{D_{\mu}}{D_{\nu}}.
 \end{align*}
 Evidently we can expand this in terms of the generators, meaning the field strength can be expressed in terms of the gauge fields as
 \begin{align*}
-G_{\mu\nu}^{a} = g\left((\del{}{\mu}B_{\nu}^{a}) - (\del{}{\nu}B_{\mu}^{a}) + gB_{\mu}^{b}B_{\nu}^{c}\srconst{bc}{a}\right).
+	G_{\mu\nu}^{a} = g\left((\del{}{\mu}A_{\nu}^{a}) - (\del{}{\nu}A_{\mu}^{a}) + gA_{\mu}^{b}A_{\nu}^{c}\srconst{ab}{c}\right).
 \end{align*}
 Because the covariant derivative satisfies $D_{\mu}\p\Psi\p = UD_{\mu}\Psi$ we have
 \begin{align*}
-G_{\mu\nu}\p\Psi\p = UG_{\mu\nu}\Psi,
+	G_{\mu\nu}\p\Psi\p = UG_{\mu\nu}\Psi,
 \end{align*}
 hence
 \begin{align*}
-G_{\mu\nu}\p = UG_{\mu\nu}U\adj.
+	G_{\mu\nu}\p = UG_{\mu\nu}U\adj.
 \end{align*}
 This directly gives us the transformation rules for the components as
 \begin{align*}
-(G\p)_{\mu\nu}^{a} = R_{b}^{a}G_{\mu\nu}^{b} = \left(\kdelta{a}{b} + \theta^{c}\srconst{cb}{a}\right)G_{\mu\nu}^{b} = G_{\mu\nu}^{a} + \theta^{c}G_{\mu\nu}^{b}\srconst{cb}{a}.
+	(G\p)_{\mu\nu}^{a} = R_{b}^{a}G_{\mu\nu}^{b} = \left(\kdelta{a}{b} - g\theta^{c}\srconst{ab}{c}\right)G_{\mu\nu}^{b} = G_{\mu\nu}^{a} - b\theta^{c}G_{\mu\nu}^{b}\srconst{ab}{c}.
 \end{align*}
 
 From this we can construct gauge invariant terms to be added to the action, and the full action is
 \begin{align*}
-S = \integ[4]{}{}{x}{-\frac{1}{4g^{2}}\tr(G_{\mu\nu}G^{\mu\nu}) + \lag(\Psi, \del{}{}\to D)}.
+	S = \integ[4]{}{}{x}{-\frac{1}{2g^{2}}\tr(G_{\mu\nu}G^{\mu\nu}) + \lag(\Psi, \del{}{}\to D)}.
 \end{align*}
-The factor $4g^{2}$ is merely a consequence of normalization.
+The factor $2g^{2}$ is merely a consequence of normalization. We can rewrite this slightly by choosing
+\begin{align*}
+	\tr(T_{a}T_{b}) = \frac{1}{2}\kdelta{}{ab},
+\end{align*}
+which yields
+\begin{align*}
+	S = \integ[4]{}{}{x}{-\frac{1}{4g^{2}}G_{\mu\nu}^{a}G^{\mu\nu}_{a} + \lag(\Psi, \del{}{}\to D)}.
+\end{align*}
 
 Before proceeding, let us consider some arbitrary representation of the gauge group. Denote the representation operation as $R$, with $R_{\text{A}}$ specifically being the representation of the Lie algebra. The representation operation is distributive and commutes with derivatives. Specifically, we consider the $R_{a}^{b}$. We have
 \begin{align*}
-U_{1}U_{2}T_{a}U_{2}\adj U_{1} = U_{1}R_{a}^{b}(U_{2})T_{b}U_{1}\adj = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2})T_{c},
+	U_{1}U_{2}T_{a}U_{2}\adj U_{1} = U_{1}R_{a}^{b}(U_{2})T_{b}U_{1}\adj = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2})T_{c},
 \end{align*}
 hence
 \begin{align*}
-R_{a}^{b}(U_{1}U_{2}) = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2}).
+	R_{a}^{b}(U_{1}U_{2}) = R_{b}^{c}(U_{1})R_{a}^{b}(U_{2}).
 \end{align*}
 This means that the object $R$ defines a representation of the Lie group. More specifically it is isomorphic to the adjoint representation.
 
@@ -231,24 +242,25 @@ for any matrix $M$. We are then left with
 
 Let us now look at what we have. The integrals we are to perform are over the representatives of the gauges, which in the continuum limit should become path integrals over the gauge fields. Furthermore we have extended the exponent to contain two other terms, which we will add to the action. One is a gauge fixing term, which in the continuum limit becomes
 \begin{align*}
--\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{H_{a}^{2}(A(x))} = -\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{H_{a}^{2}(x)},
+	-\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{H_{a}^{2}(A(x))},
 \end{align*}
 where we have chosen a new convention. The other term describes the Grassman variables. These are Lorentz invariant, anti-commuting fields. What they will represent in the quantum theory is so-called Fadeev-Popov ghosts. They violate the spin-statistics theorem, but don't appear in our observables, making that not a problem. Their addition to the action is
 \begin{align*}
-	-\sum\limits_{a, b}\integ[4]{}{}{x}{\integ[4]{}{}{y}{b_{a}(x)c_{b}(y)\eval{\fdv{H_{a}(x)}{\phi_{b}(y)}}_{\phi = 0}}}.
+	-\sum\limits_{a, b}\integ[4]{}{}{x}{\integ[4]{}{}{y}{b_{a}(x)c_{b}(y)\eval{\fdv{H_{a}(A\p(x))}{\phi_{b}(y)}}_{\phi = 0}}}.
 \end{align*}
 We are then left with expressions of the form
 \begin{align*}
 	\pinte{}{A}\pinte{}{b_{a}}\pinte{}{c_{b}}e^{iS_{\text{tot}}}O(A).
 \end{align*}
 
+%TODO: Finish
 Let us approach this from another direction. Suppose that we want to compute observables in a gauge defined by $H_{a}(A(x)) - B_{a}(x) = 0$. The generating functional
 \begin{align*}
 	Z = \pinte{}{A}e^{i\left(S + \integ[4]{}{}{x}{J^{\mu}_{a}A^{a}_{\mu}}\right)},
 \end{align*}
 from which observables are computed, is now modified by adding a factor
 \begin{align*}
-	1 = \pinte{}{\sigma}\prod\limits_{a, x}\delta(\sigma_{a}(x)) = \pinte{}{\phi}\prod\limits_{a, x}\delta(H_{a}(A(x)) - B_{a}(x))\det(\eval{\fdv{H^{a}(A(x))}{\phi(y)}}_{\phi = 0}).
+	1 = \pinte{}{\sigma}\prod\limits_{a, x}\delta(\sigma_{a}(x)) = \pinte{}{\phi}\prod\limits_{a, x}\delta(H_{a}(A(x)) - B_{a}(x))\det(\eval{\fdv{H^{a}(A\p(x))}{\phi(y)}}_{\phi = 0}).
 \end{align*}
 The evaluation at zero comes from the gauge condition being satisfied there. We then have
 \begin{align*}
@@ -259,11 +271,11 @@ Let us now consider the example of $H_{a} = \del{\mu}{}A_{\mu}^{a}$. The gauge f
 \begin{align*}
 	-\frac{1}{2\alpha}\sum\limits_{a}\integ[4]{}{}{x}{\del{\mu}{}A_{\mu}^{a}\del{\nu}{}A_{\nu}^{a}}.
 \end{align*}
-To calculate the contribution from the ghosts, we write the full parametrized form of $H_{\phi}$ as
+To calculate the contribution from the ghosts, we write the full parametrized form of $H_{a}$ as
 \begin{align*}
-	H_{\phi, a} = \del{\mu}{}\left(A_{\mu}^{a} + \phi^{c}A_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\phi^{a}\right) = \del{\mu}{}A_{\mu}^{a} + \srconst{cb}{a}\del{\mu}{}(\phi^{c}A_{\mu}^{b}) - \frac{1}{g}\dalem\phi^{a}.
+	H_{a}(A\p) = \del{\mu}{}\left(A_{\mu}^{a} + \phi^{c}A_{\mu}^{b}\srconst{cb}{a} - \frac{1}{g}\del{}{\mu}\phi^{a}\right) = \del{\mu}{}A_{\mu}^{a} + \srconst{cb}{a}\del{\mu}{}(\phi^{c}A_{\mu}^{b}) - \frac{1}{g}\dalem\phi^{a}.
 \end{align*}
 We then have
 \begin{align*}
-	\fdv{H_{a}(x)}{\phi_{b}(y)} = \delta_{ac}\srconst{cb}{a}\del{\mu}{}(\delta(x - y)A_{\mu}^{b}) - \frac{1}{g}\delta_{ab}\dalem\delta(x - y).
+	\fdv{H_{a}(A\p(x))}{\phi_{b}(y)} = \delta_{ac}\srconst{cb}{a}\del{\mu}{}(\delta(x - y)A_{\mu}^{b}) - \frac{1}{g}\delta_{ab}\dalem\delta(x - y).
 \end{align*}

@@ -603,7 +603,16 @@ We can show that
 \begin{align*}
 	Z = Ne^{-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\alpha}(-k)(\fsl{k} - m)_{\alpha\beta}^{-1}\tilde{J}_{\beta}(k)},
 \end{align*}
-and from this recover familiar results.
+and from this recover familiar results. For instance, the two-point correlation function is
+\begin{align*}
+	G_{\alpha, \beta}(k_{1}, k_{2}) =& (2\pi)^{8}\fdv{\tilde{\overline{J}}(k_{1})}\left(-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\gamma}(-k)(\fsl{k} - m)_{\gamma\delta}^{-1}\kdelta{}{\beta\delta}\delta^{4}(k - k_{2})\right)e^{-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\alpha}(-k)(\fsl{k} - m)_{\alpha\beta}^{-1}\tilde{J}_{\beta}(k)}.
+\end{align*}
+The contributing term is
+\begin{align*}
+	G_{\alpha, \beta}(k_{1}, k_{2}) =& -i(2\pi)^{8}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\kdelta{}{\alpha\gamma}\delta^{4}(k + k_{1})(\fsl{k} - m)_{\gamma\delta}^{-1}\kdelta{}{\beta\delta}\delta^{4}(k - k_{2}) \\
+	=& -i(2\pi)^{4}\inte{}{}\dd[4]{k}\delta^{4}(k + k_{1})(\fsl{k} - m)_{\alpha\beta}^{-1}\delta^{4}(k - k_{2}) \\
+	=& -i(2\pi)^{4}(\fsl{k} - m)_{\alpha\beta}^{-1}\delta^{4}(k_{1} + k_{2}).
+\end{align*}
 
 \paragraph{An Interacting Fermion Theory}
 %TODO: Expand
