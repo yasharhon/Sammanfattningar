@@ -1,0 +1,65 @@
+\section{Basic Concepts}
+
+\paragraph{The Classical Hall Effect}
+Consider a slab of some conducting material. In the simple kinetic theory of electrons in a conductor the equation of motion is
+\begin{align*}
+	\expval{\dv{\vb{v}}{t}} + \frac{1}{\tau}\expval{\vb{v}} = \frac{1}{m}\vb{F}.
+\end{align*}
+Suppose now that the slab were to be immersed in an electric field $E\vb{e}_{x}$ and a magnetic field $B\vb{e}_{z}$. In the steady state we have
+\begin{align*}
+	\frac{1}{\tau}\expval{\vb{v}} = -\frac{e}{m}\left(\left(E + v_{y}B\right)\vb{e}_{x} + \left(E_{y} - v_{x}B\right)\vb{e}_{y}\right).
+\end{align*}
+We impose boundary conditions such that there is no net current flow in the $y$ direction. In the case of $B = 0$ we then find the conductivity $\sigma = \frac{ne^{2}\tau}{m}$. This will naturally also be the case for non-zero $B$ as $v_{y} = 0$ in the steady state. This also means that $v_{x} = -\frac{e\tau}{m}E$, and we find
+\begin{align*}
+	E_{y} = -\frac{e\tau}{m}EB.
+\end{align*}
+The steady-state current is now
+\begin{align*}
+	\vb{J} = -ne\expval{\vb{v}} = \frac{ne^{2}\tau}{m}\vb{E}.
+\end{align*}
+On tensor form we have
+\begin{align*}
+	E_{i} = \tensor{\rho}{_{i}^{j}}J_{j}.
+\end{align*}
+Evidently the resistivity tensor has diagonal components $\frac{1}{\sigma} = \frac{m}{ne^{2}\tau}$, but the addition of the magnetic field also provides an off-diagonal component
+\begin{align*}
+	\tensor{\rho}{_{y}^{x}} = -\frac{B}{ne}.
+\end{align*}
+This phenomenon is termed Hall resistance or the Hall effect. From this we define the Hall coefficient
+\begin{align*}
+	R_{\text{H}} = \frac{\tensor{\rho}{_{y}^{x}}}{B} = -\frac{1}{ne}.
+\end{align*}
+
+\paragraph{Failures of the Hall Effect}
+The predictions based on these calculations turned out to give correct predictions for many materials, but some materials exhibited a reverse Hall effect in having a positive Hall coefficient, a property unexplainable by these purely classical arguments. The key point here is the assumption that the charge carriers have negative charge, an assumption which turns out to not be true in all materials.
+
+\paragraph{The Bloch Theorem}
+The full Hamiltonian for a set of electrons in a crystal lattice is impossible to solve. Bloch's theorem is the statement that by simplifying the theory such that the electrons are moving in some effective potential, the states are given by
+\begin{align*}
+	\braket{\vb{r}}{\vb{k}} = u(\vb{r})e^{i\vb{k}\cdot\vb{r}},
+\end{align*}
+where $u$ has the same periodicity as the potential.
+
+\paragraph{The Tight Binding Approximation}
+The tight binding approximation is an approximative solution of the Schrödinger equation in  a periodic potential. It states that, given some solution of one element of the periodic potential, the full state is a superposition of solutions localized at each element in the periodic array. More specifically, it is the approximation
+\begin{align*}
+	\ket{\psi_{\vb{q}}} = \frac{1}{\sqrt{N}}\sum\limits_{j}e^{i\vb{q}\cdot\vb{R}_{j}}\ket{j},
+\end{align*}
+with the corresponding Bloch function
+\begin{align*}
+	u_{\vb{q}}(\vb{r}) = \frac{1}{\sqrt{N}}\sum\limits_{j}e^{-i\vb{q}\cdot(\vb{r} - \vb{R}_{j})}\phi_{0}(\vb{r} - \vb{R}_{j}),
+\end{align*}
+where
+\begin{align*}
+	\phi_{0}(\vb{r} - \vb{R}_{j}) = \braket{\vb{r}}{j}.
+\end{align*}
+
+To compute the energy of such states we will need matrix elements of these states. First we have
+\begin{align*}
+	\braket{\psi_{\vb{q}}} = \frac{1}{N}\sum\limits_{j, l}e^{i\vb{q}\cdot(\vb{R}_{j} - \vb{R}_{l})}\braket{l}{j} = \sum\limits_{j}e^{i\vb{q}\cdot\vb{R}_{j}}\braket{0}{j},
+\end{align*}
+which we dub $\eta(\vb{q})$. Now, because these states are eigenstates of the translation operator one can show that
+\begin{align*}
+	\braket{\psi_{\vb{q}}}{\psi_{\vb{k}}} = \eta(\vb{q})\delta^{3}(\vb{q} - \vb{k})_{\vb{G}},
+\end{align*}
+where the Dirac delta is up to a reciprocal lattice vector.
