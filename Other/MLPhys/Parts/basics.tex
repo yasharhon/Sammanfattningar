@@ -27,3 +27,56 @@ Machine learning is notoriously full of pitfalls. Great care must be taken in th
 \end{enumerate}
 
 See also \href{https://karpathy.github.io/2019/04/25/recipe/}{this article} for a well-known and detailed example of how one should think.
+
+\paragraph{Statistical Learning}
+Statistical learning is a framework in which the tools of statistics are used to describe and evaluate a machine learning algorithm.
+
+A useful starting point is the limit of large numbers, for which we can us the Markov density approximation
+\begin{align*}
+	P(X = x) \approx \frac{1}{N}\sum\limits_{l}\delta(x - x_{l}),
+\end{align*}
+which implies
+\begin{align*}
+	\expval{f(X)} \approx \frac{1}{N}\sum\limits_{l}f(x_{l}).
+\end{align*}
+This holds for identically distributed, independent realisation $x_{l}$ of $P(X = x)$.
+
+Given this, the input to the learner is the domain set $X$, points in which are numerical representations of the data, the label space $Y$, which contains the possible labels that can be ascribed to a point in $X$, and a set $S$ of pairs $(x, y)\in X\times Y$, which is a realization of the joint probability distribution $P(X = x, Y = y) = f(x, y)$. The output is a prediction rule $h: X\to Y$.
+
+We will need some way to assess the quality of $h$. This is done by introducing a loss function $L(h(x), y)$, which measures the ability of $h$ to predict $y$ given $x$. Next, we introduce the risk functional
+\begin{align*}
+	R(h) = \inte{}{}\dd{x}\dd{y}f(x, y)L(h(x), y) = \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)L(h(x), y),
+\end{align*}
+which measures the expected loss. Assuming a good choice of the loss function, the best choice of $h$ is taken to be the one that minimizes the risk. Such a predictor is called Bayes optimal.
+
+We take $f$ to be unknown, but assuming the training data to be sufficiently large we can construct a Markov density approximation for $f$. We then find
+\begin{align*}
+	R(h)\approx R_{S}(h) = \frac{1}{\abs{S}}\sum\limits_{i}\inte{}{}\dd{x}\dd{y}\delta(x - x_{i})\delta(y - y_{i})L(h(x), y) = \frac{1}{\abs{S}}\sum\limits_{i}L(h(x_{i}), y_{i}),
+\end{align*}
+which is the so-called empirical risk. We can now approximately identify an optimal choice of $h$ by minimizing this quantity. This process is called empirical risk minimization. The assumption that the class of hypotheses has a member that minimizes $R_{S}$ is the realizability assumption.
+
+\paragraph{Probability Terms of Relevance}
+A few terms of relevance are
+\begin{itemize}
+	\item accuracy, which is the fraction of predictions that is correct.
+	\item precision, which is the fraction of positive predictions that corresponds to true positives.
+	\item sensitivity, which is the fraction of true positive cases that is identified.
+	\item specificity, which is the fraction of negative predictions that corresponds to true negatives.
+\end{itemize}
+
+\paragraph{Probably Approximately Correct Learning}
+How wrong is the empirical approximation? It is clear that $R_{S}$ approaches $R$ in the limit of infinite sample sizes. For finite sample sizes, however, we can only make probabilistic statements. We introduce probably approximately correct (PAC) learning as follows: A hypothesis class $H$ is PAC learnable if there exists a number $m_{H}$ depending on two probabilities such that for every pair of probabilities $\epsilon, \delta$ and under the realizability assumption, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples, the algorithm returns a hypothesis that satisfies
+\begin{align*}
+	P(\abs{R(h) - R_{s}(h)} > \epsilon) < \delta.
+\end{align*}
+It turns out that in the case of a finite hypothesis class we have
+\begin{align*}
+	m_{H}(\epsilon, \delta) = \frac{1}{\epsilon}\left(\ln(\abs{H}) + \ln(\frac{1}{\delta})\right).
+\end{align*}
+Relaxing the realizability assumption in the so-called agnostic case we instead have
+\begin{align*}
+	m_{H}(\epsilon, \delta) = \frac{1}{2\epsilon^{2}}\left(\ln(\abs{H}) + \ln(\frac{2}{\delta})\right).
+\end{align*}
+
+\paragraph{The Confusion Matrix}
+The confusion matrix is a $2\times 2$ matrix for which the diagonal elements contain the true positives and negatives, the upper right contains the false positives and the lower left contains the false negatives.
