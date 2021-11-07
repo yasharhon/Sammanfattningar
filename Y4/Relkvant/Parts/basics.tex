@@ -164,12 +164,11 @@ The $\gamma^{\mu}$ satisfy
 	(\gamma^{\mu})\adj = \gamma^{0}\gamma^{\mu}\gamma^{0}.
 \end{align*}
 
-Defining the matrix $\gamma^{5} = i\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$, we find that it must be Hermitian.
-
-We also have
+Defining the matrix $\gamma^{5} = i\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3} = \frac{i}{4!}\varepsilon_{\mu\nu\rho\sigma}\gamma^{\mu}\gamma^{\nu}\gamma^{\rho}\gamma^{\sigma}$, we find that it must be Hermitian. We also have
 \begin{align*}
 	\acomm{\gamma^{5}}{\gamma^{\mu}} = 0.
 \end{align*}
+Note that the position of the index has no intrinsic meaning - we expect $\gamma^{5}$ to behave as the spatial components of a vector, hence $\gamma_{5} = -i\gamma_{0}\gamma_{1}\gamma_{2}\gamma_{3} = \gamma^{5}$.
 
 We have
 \begin{align*}
@@ -337,24 +336,19 @@ Another way to handle this is the Feynman-Stuckelberg interpretation, which allo
 	].
 \end{align*}
 
-\paragraph{A Hamiltonian}
-As the plane-wave solutions have time-like 4-momenta, there is a corresponding rest frame. In this rest frame, the Hamiltonian, which is generally
+\paragraph{The Free-Particle Hamiltonian}
+The Hamiltonian generates time translations in the relativistic context as well. In general, the Hamiltonian for a free particle is
 \begin{align*}
 	\ham = \beta m + \vb*{\alpha}\cdot\vb{p},
 \end{align*}
-reduces to
+or alternatively
+\begin{align*}
+	\ham = \gamma^{0}(m + \vb*{\gamma}\cdot\vb{p}).
+\end{align*}
+In the rest frame of a massive particle, this reduces to
 \begin{align*}
 	\ham = \beta m.
 \end{align*}
-Defining
-\begin{align*}
-	\vb*{\Sigma} =
-	\mqty[
-		\vb*{\sigma} & 0 \\
-		0            & \vb*{\sigma}
-	],
-\end{align*}
-we have $\comm{\ham}{\vb*{\Sigma}} = 0$.
 
 \paragraph{Lorentz Transformation of Spinors}
 Suppose that $\Psi$ is a solution to the Dirac equation. Under a Lorentz transform it should transform according to
@@ -416,6 +410,15 @@ The solution to this is
 \begin{align*}
 	\sigma_{\mu\nu} = \frac{i}{2}\comm{\gamma_{\mu}}{\gamma_{\nu}}.
 \end{align*}
+
+\paragraph{The Spin Operator}
+We have already studied the objects $J^{i}$, which satisfy the Lie algebra of \SU{2}, and may therefore be taken to correspond to angular momentum. As we saw above, the $\sigma_{\mu\nu}$ generate the Lorentz group represented on spinors, hence the operator
+\begin{align*}
+	\Sigma^{i} = \frac{1}{2}\varepsilon^{ijk}\sigma_{jk}
+\end{align*}
+is an angular momentum operator. Evidently it does not correspond to orbital angular momentum - in fact, as it operates on internal degrees of freedom, it must be the spin operator.
+
+Evidently $\beta$ commutes with all components of $\sigma$, as well as the momentum operator. However, as the generators of Lorentz transformations do not commute with the Hamiltonian, spin is not conserved.
 
 \paragraph{Charged Particles}
 When introducing charge, we employ the minimal coupling scheme. The Dirac equation then becomes
@@ -658,6 +661,7 @@ which defines the chiral projection operators
 \begin{align*}
 	P_{\pm} =  \frac{1}{2}(1 \pm \gamma^{5}).
 \end{align*}
+These apply to massive particles as well.
 
 Inserting a plane-wave solution $u_{p}e^{-ipx}$ we find for the negative-chirality part that
 \begin{align*}
@@ -673,23 +677,119 @@ with solutions $p^{0} = \pm\abs{\vb{p}}$. Similarly we find
 \end{align*}
 for the positive-chirality state, which has the same solution. The case $p^{0} = \abs{\vb{p}}$ is called a Weyl state, whereas the other case is called an anti-Weyl state.
 
-\paragraph{Helicity (and Chirality)}
-Helicity is defined as the scalar product between the 3-momentum and the spin. This definition holds for both massive and massless particles. States with parallel spin and 3-momentum are said to have right helicity, and the opposite is termed left helicity. Repeating the derivation we did for massless particles, we find
-\begin{align*}
-	\sigma^{\mu}p_{\mu}\Psi_{\text{R}} = m\Psi_{\text{L}},\ \tilde{\sigma}^{\mu}p_{\mu}\Psi_{1} = m\Psi_{\text{R}},
-\end{align*}
-where we now denote the lower and upper halves of the spinor with what will manifest as the helicity.
+We see that chirality is not conserved for massive particles, as the Hamiltonian in general has a term with a single Dirac matrix. It commutes with the generators of the Lorentz group, however, meaning that chirality is Lorentz invariant.
 
-For massless particles we now reconsider chirality in terms of helicity. For such particles, helicity manifests as left-chiral and right-chiral objects. Massless particles distinguish themselves in that the Dirac equation completely decouples the left- and right chiral parts, hence helicity is preserved by Lorentz transformations. Massive particles, by contrast, oscillate between the two, as indicated by the form of the Dirac equation.
-
-We now consider massless particle solutions, which satisfy $p^{0} = \abs{\vb{p}}$. We find
+The projection operators have some interesting properties. For instance, we have
 \begin{align*}
-	\frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}\Psi_{\text{R}} = \Psi_{\text{R}},\ \frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}\Psi_{\text{L}} = -\Psi_{\text{L}}.
+	\overline{\psi}_{\pm} = \psi\adj P_{\pm}\gamma^{0} = \psi\adj \gamma^{0}P_{\mp}.
 \end{align*}
-These states are thus eigenstates of the helicity operator
+Because $P_{+} + P_{-} = 1$ we find
+\begin{align*}
+	\overline{\psi}\psi = \overline{\psi}(P_{+} + P_{-})\psi.
+\end{align*}
+We also have $P_{\pm}^{2} = P_{\pm}$, hence we can invert what we did above to find
+\begin{align*}
+	\overline{\psi}\psi = \overline{\psi}_{+}\psi_{-} + \overline{\psi}_{-}\psi_{+}.
+\end{align*}
+
+\paragraph{Helicity}
+Helicity is defined as the scalar product between the spin and the direction of the 3-momentum - that is,
+\begin{align*}
+	h = \frac{\vb*{\Sigma}\cdot\vb{p}}{\abs{\vb{p}}}.
+\end{align*}
+States with helicity $1$ are said to have right helicity, and the opposite is termed left helicity.
+
+We stated earlier that spin is not conserved. Helicity, however, is. To see this, note that $\gamma^{0}$ commutes with $\sigma_{jk}$, and
+\begin{align*}
+	\comm{\sigma_{jk}p_{i}}{\gamma_{m}p^{m}} &= 2ip_{i}p^{m}(g_{mk}\gamma_{j} - g_{mj}\gamma_{k}) \\
+	                                         &= 2ip_{i}p^{m}(\delta_{mk}\gamma_{j} - \delta_{mj}\gamma_{k}).
+\end{align*}
+Contraction with the Levi-Civita tensor yields
+\begin{align*}
+	p_{i}p^{m}\varepsilon^{ijk}(\delta_{mk}\gamma_{j} - \delta_{mj}\gamma_{k}) &= p_{i}p_{m}\varepsilon^{ijm}\gamma_{j} - p_{i}p_{m}\varepsilon^{imk}\gamma_{k} = 0.
+\end{align*}
+Because momentum commutes with the Hamiltonian, helicity is conserved.
+
+We intuitively see that $h$ should have eigenvalues $\pm 1$, but let us show this more clearly. We have
+\begin{align*}
+	\varepsilon_{\alpha\beta\gamma\delta}\sigma^{\gamma\delta}\gamma_{5} &= \frac{i}{4!}\varepsilon_{\alpha\beta\gamma\delta}\sigma^{\gamma\delta}\varepsilon^{\mu\nu\rho\sigma}\gamma_{\mu}\gamma_{\nu}\gamma_{\rho}\gamma_{\sigma}.
+\end{align*}
+It must necessarily be that the indices in the rightmost Levi-Civita symbol are different, hence the involved Dirac matrices anticommute. The contraction of the Levi-Civita symbols produces a set of Kronecker deltas of the involved indices with antisymmetrization, but this antisymmetrization is countered by the Dirac matrices anticommuting. Thus we have
+\begin{align*}
+	\varepsilon_{\alpha\beta\gamma\delta}\sigma^{\gamma\delta}\gamma_{5} &= i\sigma^{\gamma\delta}\gamma_{\alpha}\gamma_{\beta}\gamma_{\gamma}\gamma_{\delta} \\
+	&= -i\sigma^{\gamma\delta}\sigma_{\alpha\beta}\sigma_{\gamma\delta} \\
+	&= 4i\sigma_{\alpha\beta}.
+\end{align*}
+This is somehow supposed to be
+\begin{align*}
+	\varepsilon_{\alpha\beta\gamma\delta}\sigma^{\gamma\delta}\gamma_{5} = 2i\sigma_{\alpha\beta}.
+\end{align*}
+From this we find
+\begin{align*}
+	\varepsilon^{\mu\nu\alpha\beta}\sigma_{\alpha\beta} &= -\frac{i}{2}\varepsilon^{\mu\nu\alpha\beta}\varepsilon_{\alpha\beta\gamma\delta}\sigma^{\gamma\delta}\gamma_{5} \\
+	&= -\frac{i}{2}\varepsilon^{\alpha\beta\mu\nu}\varepsilon_{\alpha\beta\gamma\delta}\sigma^{\gamma\delta}\gamma_{5} \\
+	&= 2i\sigma^{\mu\nu}\gamma_{5}.
+\end{align*}
+Using this we find
+\begin{align*}
+	\gamma_{\mu}\gamma_{\nu}\gamma_{5} &= (g_{\mu\nu} - i\sigma_{\mu\nu})\gamma_{5} \\ 
+	                                   &= g_{\mu\nu}\gamma_{5} - \frac{1}{2}\varepsilon_{\mu\nu\alpha\beta}\sigma^{\alpha\beta}.
+\end{align*}
+This means that
+\begin{align*}
+	\Sigma^{i} = -\frac{1}{2}\varepsilon^{0ijk}\sigma_{jk} = \gamma^{0}\gamma^{i}\gamma_{5},
+\end{align*}
+and
+\begin{align*}
+	\acomm{\Sigma_{i}}{\Sigma_{j}} &= \gamma_{0}\gamma_{i}\gamma_{5}\gamma_{0}\gamma_{j}\gamma_{5} + \gamma_{0}\gamma_{j}\gamma_{5}\gamma_{0}\gamma_{i}\gamma_{5} \\
+	                              &= -(\gamma_{0})_{2}(\gamma_{5})_{2}(\gamma_{i}\gamma_{j} + \gamma_{j}\gamma_{i}) \\
+	                              &= 2\delta_{ij}.
+\end{align*}
+This means that
+\begin{align*}
+	\Sigma_{i}p_{i}\Sigma_{j}p_{j} &= \frac{1}{2}\acomm{\Sigma_{i}}{\Sigma_{j}}p_{i}p_{j} \\
+	                               &= \abs{\vb{p}}^{2},
+\end{align*}
+and $h^{2} = 1$.
+
+\paragraph{Connecting Helicity and Chirality}
+We note that we generally constructed the spinor part of a free-particle solution as
+\begin{align*}
+	\psi_{\vb{p}} = N_{\vb{p}}\fsl{p}\chi_{\pm},
+\end{align*}
+where $N_{\vb{p}}$ is some normalization and $\chi_{\pm}$ is an eigenstate of $\gamma_{0}$. This may be written as
+\begin{align*}
+	\psi_{\vb{p}} &= N_{\vb{p}}(\gamma_{0}E_{\vb{p}} - \gamma_{i}p_{i})\chi_{\pm} \\
+	              &= N_{\vb{p}}(\eta E_{\vb{p}} - \abs{\vb{p}}\gamma_{i}n_{i})\chi_{\pm}.
+\end{align*}
+The action of the helicity operator is
+\begin{align*}
+	h\psi_{\vb{p}} &= \Sigma_{j}n_{j}\psi_{\vb{p}} \\ 
+	               &= \gamma_{0}\gamma_{j}\gamma_{5}n_{j}N_{\vb{p}}(\eta E_{\vb{p}} - \abs{\vb{p}}\gamma_{i}n_{i})\chi_{\pm} \\
+	               &= \gamma_{5}\gamma_{0}\gamma_{j}n_{j}N_{\vb{p}}(\eta E_{\vb{p}} - \abs{\vb{p}}\gamma_{i}n_{i})\chi_{\pm}.
+\end{align*}
+We have
+\begin{align*}
+	\gamma_{i}n_{i}\gamma_{j}n_{j} = \frac{1}{2}\acomm{\gamma_{i}}{\gamma_{j}}n_{i}n_{j} = -1,
+\end{align*}
+and thus
+\begin{align*}
+	h\psi_{\vb{p}} &= \gamma_{5}\gamma_{0}N_{\vb{p}}(\eta E_{\vb{p}}\gamma_{j}n_{j} + \abs{\vb{p}})\chi_{\pm} \\
+	               &= \gamma_{5}N_{\vb{p}}(\eta\abs{\vb{p}} - \eta^{2}E_{\vb{p}}\gamma_{j}n_{j})\chi_{\pm} \\
+	               &= \gamma_{5}N_{\vb{p}}(\eta\abs{\vb{p}} - E_{\vb{p}}\gamma_{j}n_{j})\chi_{\pm}.
+\end{align*}
+We note that this has the form of $\gamma_{5}$, the chirality operator, acting on some state. We thus have that chirality and helicity are the same if
+\begin{align*}
+	N_{\vb{p}}(\eta\abs{\vb{p}} - E_{\vb{p}}\gamma_{j}n_{j})\chi_{\pm} = N_{\vb{p}}(\eta E_{\vb{p}} - \abs{\vb{p}}\gamma_{i}n_{i})\chi_{\pm} \implies (\eta\abs{\vb{p}} - E_{\vb{p}}\gamma_{j}n_{j})\chi_{\pm} = (\eta E_{\vb{p}} - \abs{\vb{p}}\gamma_{i}n_{i})\chi_{\pm}.
+\end{align*}
+We see that the two are the same for massless particles.
+
+To study antiparticles, we note that according to the previous derivations,
+\begin{align*}
+	\frac{\vb*{\sigma}\cdot\vb{p}}{p^{0}}\Psi_{\text{R}} = \Psi_{\text{R}},\ \frac{\vb*{\sigma}\cdot\vb{p}}{p^{0}}\Psi_{\text{L}} = -\Psi_{\text{L}}.
+\end{align*}
+These states are thus eigenstates of the helicity operator, which on the left- and right chiral parts of the spinor manifests as
 \begin{align*}
 	h = \frac{\vb*{\sigma}\cdot\vb{p}}{\abs{\vb{p}}}.
 \end{align*}
-For antiparticles we instead have $p^{0} = -\abs{\vb{p}}$, hence right-handed antiparticles have negative helicity and vice versa.
-
-What does helicity mean? It can be shown that the helicity indicates whether the spin and momentum are parallel or anti-parallel.
+For particles we have $p^{0} = \abs{\vb{p}}$, hence chirality and helicity coincide. For antiparticles we instead have $p^{0} = -\abs{\vb{p}}$, hence right-handed antiparticles have negative helicity and vice versa.

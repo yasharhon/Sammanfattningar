@@ -180,34 +180,31 @@ This treatment is a bit unclear, so let us one-up it by computing the Lagrangian
 	 =& \frac{1}{2l}\integ{0}{l}{x}{\frac{1}{v^{2}}\sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}c_{n}c_{m}\left(\dot{a}_{n}(t)e^{ik_{n}x} + \dot{a}_{n}\cc(t)e^{-ik_{n}x}\right)\left(\dot{a}_{m}(t)e^{ik_{m}x} + \dot{a}_{m}\cc(t)e^{-ik_{,}x}\right) \\
 	  &- \sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}k_{n}k_{m}c_{n}c_{m}\left(a_{n}(t)e^{ik_{n}x} - a_{n}\cc(t)e^{-ik_{n}x}\right)\left(a_{m}(t)e^{ik_{m}x} - a_{m}\cc(t)e^{-ik_{m}x}\right)} \\
      =& \frac{1}{2l}\integ{0}{l}{x}{\sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}\frac{c_{n}c_{m}}{v^{2}}\left(\dot{a}_{n}\dot{a}_{m}e^{i(k_{n} + k_{m})x} + \dot{a}_{n}\dot{a}_{m}\cc e^{i(k_{n} - k_{m})x} + \dot{a}_{n}\cc\dot{a}_{m}e^{-i(k_{m} - k_{n})x} + \dot{a}_{n}\cc\dot{a}_{m}\cc e^{-i(k_{m} + k_{n})x}\right) \\
-      &- k_{n}k_{m}c_{n}c_{m}\left(a_{n}a_{m}e^{i(k_{n} + k_{m})x} - a_{n}a_{m}\cc e^{i(k_{n} - k_{m})x} - a_{m}a_{n}\cc e^{i(k_{m} - k_{n})x} + a_{n}\cc a_{m}\cc e^{-i(k_{n} + k_{m})x}\right)} \\
+      &- k_{n}k_{m}c_{n}c_{m}\left(a_{n}a_{m}e^{i(k_{n} + k_{m})x} - a_{n}a_{m}\cc e^{i(k_{n} - k_{m})x} - a_{n}\cc a_{m} e^{i(k_{m} - k_{n})x} + a_{n}\cc a_{m}\cc e^{-i(k_{n} + k_{m})x}\right)} \\
      =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\sum\limits_{m = -\infty}^{\infty}\frac{c_{n}c_{m}}{v^{2}}\left(\dot{a}_{n}\dot{a}_{m}\delta_{n, -m} + \dot{a}_{n}\dot{a}_{m}\cc\delta_{n, m} + \dot{a}_{n}\cc\dot{a}_{m}\delta_{n, m} + \dot{a}_{n}\cc\dot{a}_{m}\cc\delta_{n, -m}\right) \\
-      &- k_{n}k_{m}c_{n}c_{m}\left(a_{n}a_{m}\delta_{n, -m} - a_{n}a_{m}\cc\delta_{n, m} - a_{m}a_{n}\cc\delta_{n, m} + a_{n}\cc a_{m}\cc\delta_{n, -m}\right) \\
-     =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\frac{1}{v^{2}}\left(c_{n}c_{-n}\dot{a}_{n}\dot{a}_{-n} + 2c_{n}^{2}\dot{a}_{n}\dot{a}_{n}\cc + c_{n}c_{-n}\dot{a}_{n}\cc\dot{a}_{-n}\cc\right) - \left(k_{n}k_{-n}c_{n}c_{-n}a_{n}a_{-n} - 2k_{n}^{2}c_{n}^{2}a_{n}a_{n}\cc + k_{n}k_{-n}c_{n}c_{-n}a_{n}\cc a_{-n}\cc\right).
+      &- k_{n}k_{m}c_{n}c_{m}\left(a_{n}a_{m}\delta_{n, -m} - a_{n}a_{m}\cc\delta_{n, m} - a_{n}\cc a_{m}\delta_{n, m} + a_{n}\cc a_{m}\cc\delta_{n, -m}\right) \\
+     =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\frac{1}{v^{2}}\left(c_{n}c_{-n}\dot{a}_{n}\dot{a}_{-n} + c_{n}^{2}(\dot{a}_{n}\dot{a}_{n}\cc + \dot{a}_{n}\cc\dot{a}_{n}) + c_{n}c_{-n}\dot{a}_{n}\cc\dot{a}_{-n}\cc\right) \\
+      &- \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\left(k_{n}k_{-n}c_{n}c_{-n}a_{n}a_{-n} - k_{n}^{2}c_{n}^{2}(a_{n}a_{n}\cc + a_{n}\cc a_{n}) + k_{n}k_{-n}c_{n}c_{-n}a_{n}\cc a_{-n}\cc\right),
 \end{align*}
-Restricting ourselves to real solutions we find
+where we refrain from assuming the multiplication of coefficients with the complex conjugates to commute for reasons which will be shown. Restricting ourselves to real solutions we find
 \begin{align*}
 	a_{-n} = a_{n}\cc,\ c_{-n} = c_{n},
 \end{align*}
 and the Lagrangian may be written as
 \begin{align*}
-	L =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\frac{4c_{n}^{2}}{v^{2}}\dot{a}_{n}\dot{a}_{-n} - 4k_{n}^{2}c_{n}^{2}a_{n}a_{-n} = 4\sum\limits_{n = 0}^{\infty}\frac{c_{n}^{2}}{v^{2}}\dot{a}_{n}\dot{a}_{-n} - k_{n}^{2}c_{n}^{2}a_{n}a_{-n},
+	L =& \frac{1}{2}\sum\limits_{n = -\infty}^{\infty}\frac{2c_{n}^{2}}{v^{2}}(\dot{a}_{n}\dot{a}_{-n} + \dot{a}_{-n}\dot{a}_{n}) - 2k_{n}^{2}c_{n}^{2}(a_{n}a_{-n} + a_{-n}a_{n}) = 2\sum\limits_{n = 0}^{\infty}\frac{c_{n}^{2}}{v^{2}}(\dot{a}_{n}\dot{a}_{-n} + \dot{a}_{-n}\dot{a}_{n}) - k_{n}^{2}c_{n}^{2}(a_{n}a_{-n} + a_{-n}a_{n}),
 \end{align*}
-which is a Lagrangian in a set of discrete degrees of freedom. The corresponding canonical momenta are
+which is a Lagrangian in a set of discrete degrees of freedom. Using an ad-hoc construction where I multiply the momenta from both the left and right, the Hamiltonian is
 \begin{align*}
-	p_{\pm n} = \frac{4c_{n}^{2}}{v^{2}}\dot{a}_{\mp n},
-\end{align*}
-and the Hamiltonian is
-\begin{align*}
-	H = \sum\limits_{n = 0}^{\infty}\frac{4c_{n}^{2}}{v^{2}}\dot{a}_{\mp n} - 4\sum\limits_{n = 0}^{\infty}\frac{c_{n}^{2}}{v^{2}}\dot{a}_{n}\dot{a}_{-n} - k_{n}^{2}c_{n}^{2}a_{n}a_{-n} = 4\sum\limits_{n = 0}^{\infty}k_{n}^{2}c_{n}^{2}a_{n}a_{-n} = 4\sum\limits_{n = 0}^{\infty}k_{n}^{2}c_{n}^{2}a_{n}a_{n}\cc,
+	H = 2\sum\limits_{n = 0}^{\infty}k_{n}^{2}c_{n}^{2}(a_{n}a_{n}\cc + a_{n}\cc a_{n}),
 \end{align*}
 where we switched to the notation of complex conjugates to emphasize the distinctness of the degrees of freedom. We move the dimensionanlity away from the degrees of freedom by choosing
 \begin{align*}
-	c_{n}^{2} = \frac{v}{2k_{n}},
+	c_{n}^{2} = \frac{v}{\sqrt{2}k_{n}},
 \end{align*}
 yielding
 \begin{align*}
-	H = \sum\limits_{n = -\infty}^{\infty}vk_{n}a_{n}\cc a_{n} = \sum\limits_{n = -\infty}^{\infty}\omega_{n}a_{n}\cc a_{n}.
+	H = \sum\limits_{n = -\infty}^{\infty}vk_{n}(a_{n}a_{n}\cc + a_{n}\cc a_{n}) = \sum\limits_{n = -\infty}^{\infty}\omega_{n}(a_{n}a_{n}\cc + a_{n}\cc a_{n}).
 \end{align*}
 Introducing new canonical coordinates and momenta
 \begin{align*}
