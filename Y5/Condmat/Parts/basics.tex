@@ -54,7 +54,7 @@ where
 	\phi_{0}(\vb{r} - \vb{R}_{j}) = \braket{\vb{r}}{j}.
 \end{align*}
 
-To compute the energy of such states we will need matrix elements of these states. First we have
+To compute the energy of such states we will need inner products of these states. First we have
 \begin{align*}
 	\braket{\psi_{\vb{q}}} = \frac{1}{N}\sum\limits_{j, l}e^{i\vb{q}\cdot(\vb{R}_{j} - \vb{R}_{l})}\braket{l}{j} = \sum\limits_{j}e^{i\vb{q}\cdot\vb{R}_{j}}\braket{0}{j},
 \end{align*}
@@ -62,4 +62,115 @@ which we dub $\eta(\vb{q})$. Now, because these states are eigenstates of the tr
 \begin{align*}
 	\braket{\psi_{\vb{q}}}{\psi_{\vb{k}}} = \eta(\vb{q})\delta^{3}(\vb{q} - \vb{k})_{\vb{G}},
 \end{align*}
-where the Dirac delta is up to a reciprocal lattice vector.
+where the Dirac delta is up to a reciprocal lattice vector. Next, let us consider matrix elements of the Hamiltonian. Writing
+\begin{align*}
+	\ham = \frac{p^{2}}{2m} + \sum\limits_{j}V(\vb{r} - \vb{R}_{j})
+\end{align*}
+we have
+\begin{align*}
+	\ham\ket{i} = E_{0}\ket{i} + \left(\sum\limits_{j\neq i}V(\vb{r} - \vb{R}_{j})\right)\ket{i}.
+\end{align*}
+Denoting the operator in the last term as $\Delta V_{i}$ we note that it does not have $\ket{i}$ as an eigenvector. For a Bloch state we then find
+\begin{align*}
+	\mel{\psi_{\vb{q}}}{\ham}{\psi_{\vb{q}}} = E_{0}\eta(\vb{q}) + \frac{1}{N}\sum\limits_{j, k}e^{i\vb{q}\cdot(\vb{R}_{k} - \vb{R}_{j})}\mel{j}{\Delta V_{k}}{k}.
+\end{align*}
+Defining the right term as $\Lambda(\vb{q})$ we find
+\begin{align*}
+	E_{\vb{q}} = E_{0} + \frac{\Lambda(\vb{q})}{\eta(\vb{q})}.
+\end{align*}
+
+Approximating the atoms to be far apart we can neglect most contributions to $\eta$ by setting it to $1$. In this approximation we introduce a first non-trivial correction by first setting
+\begin{align*}
+	\braket{j}{k} = \zeta
+\end{align*}
+and
+\begin{align*}
+	\expval{\Delta V_{k}}{k} = \Delta E,\ \mel{j}{\Delta V_{k}}{k} = t_{0},
+\end{align*}
+where the off-diagonal expressions only hold for nearest neighbors. $t_{0}$ is called the transfer integral. We then have
+\begin{align*}
+	\Lambda(\vb{q}) = \Delta E + t_{0}\sum\limits_{\vb*{\delta}}e^{-i\vb{q}\cdot\vb*{\delta}},
+\end{align*}
+where the sum is over nearest-neighbor lattice vectors. A similar result holds for the overlap. We often normalize the term by extracting a factor $z$ from the sum, which is the coordination number, and write what is left as $\gamma(\vb{q})$. We then finally have
+\begin{align*}
+	E_{\vb{q}} = E_{0} + \frac{\Delta E + t_{0}z\gamma(\vb{q})}{1 + z\zeta\gamma(\vb{q})}.
+\end{align*}
+Evidently, then, the band width is $2t_{0}z$. Furthermore, we can use this to determine the curvature and thus an effective mass by expanding
+\begin{align*}
+	E_{\vb{q}} \approx E_{0} + \frac{\hbar^{2}}{2m}\vb{q}^{2}
+\end{align*}
+close to the minimum.
+
+\paragraph{Wannier Functions}
+Wannier functions are constructions of states that are orthogonal. For band $n$, the Wannier function centered around atom $j$ is
+\begin{align*}
+	\ket{\chi_{n, j}} = \frac{1}{\sqrt{N}}\sum\limits_{\vb{q}}e^{-i\vb{q}\cdot\vb{R}_{j}}\ket{\psi_{n, \vb{q}}}.
+\end{align*}
+The $\ket{\psi_{n, \vb{q}}}$ are the normalized Bloch states from the tight binding approximation. These distinguish themselves in being useful even if the tight binding approximation breaks down.
+
+\paragraph{Graphene}
+Graphene is a phase of carbon where it forms a single atomic layer with the atoms arranged in a honeycomb lattice. This can be represented as a triangular lattice with two atoms in the basis. We choose the lattice vectors $a\left(\frac{3}{2}, \pm\frac{\sqrt{3}}{2}\right)$ and the basis displacement vector $a(1, 0)$. Employing the tight-binding approximation with $E_{0} = 0$ we write the Hamiltonian as
+\begin{align*}
+	\ham = -t\sum\limits_{\expval{i, j}}\op{i}{j} + \op{j}{i},
+\end{align*}
+which is a sum over nearest neighbors. The fact that there are two atoms in the basis divides the lattice into two sublattices $A$ and $B$. The Bloch states are then
+\begin{align*}
+	\ket{\vb{q}, A} = \frac{1}{\sqrt{N}}\sum\limits_{j\in A}e^{i\vb{q}\cdot\vb{R}_{j}}\ket{j},
+\end{align*}
+with a similar state for the other sublattice. Neglecting overlap between neighboring wavefunctions we find
+\begin{align*}
+	\ham\ket{\vb{q}, A} =& -\frac{t}{\sqrt{N}}\left(\sum\limits_{\expval{i, j}}\op{i}{j} + \op{j}{i}\right)\sum\limits_{k\in A}e^{i\vb{q}\cdot\vb{R}_{k}}\ket{k} \\
+	                    =& -\frac{t}{\sqrt{N}}\sum\limits_{k\in A}\sum\limits_{j = \text{nn}(k)}e^{i\vb{q}\cdot\vb{R}_{k}}\ket{j} \\
+	                    =& -\frac{t}{\sqrt{N}}\sum\limits_{k\in A}\sum\limits_{j = \text{nn}(k)}e^{i\vb{q}\cdot(\vb{R}_{j} - \vb*{\delta}_{k\to j})}\ket{j} \\
+	                    =& -t\sum\limits_{\vb*{\delta}}e^{-i\vb{q}\cdot\vb*{\delta}}\ket{\vb{q}, B},
+\end{align*}
+and similarly
+\begin{align*}
+	\ham\ket{\vb{q}, B} =& -t\sum\limits_{\vb*{\delta}}e^{i\vb{q}\cdot\vb*{\delta}}\ket{\vb{q}, A}.
+\end{align*}
+We denote the prefactor as $-tf(\vb{q})$, and find that the Hamiltonian has eigenvalues $\pm t\abs{f(\vb{q})}$.
+
+Of note about the Brillouin zone of the triangular lattice, which is a hexagon, is that it only has one unique corner (and its opposite), as the others are related to these by a reciprocal lattice vector. Choosing, say, $\vb{K} = \frac{4\pi}{3\sqrt{3}a}\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$ and its opposite we have
+\begin{align*}
+	f(\vb{K}) = e^{i\frac{4\pi}{3\sqrt{3}}\frac{\sqrt{3}}{2}} + e^{i\frac{4\pi}{3\sqrt{3}}\left(-\frac{\sqrt{3}}{4} - \frac{\sqrt{3}}{4}\right)} + e^{i\frac{4\pi}{3\sqrt{3}}\left(-\frac{\sqrt{3}}{4} + \frac{\sqrt{3}}{4}\right)} = 2\cos(\frac{2\pi}{3}) + 1 = 0.
+\end{align*}
+Thus there is no band gap. Next we have
+\begin{align*}
+	\grad_{\vb{q}}f(\vb{q}) = i\sum\limits_{\vb*{\delta}}\vb*{\delta}e^{i\vb{q}\cdot\vb*{\delta}},
+\end{align*}
+and close to the corner we have
+\begin{align*}
+	f(\vb{q}) \approx& (\vb{q} - \vb{K})\cdot ia\left((1, 0)e^{i\frac{2\pi}{3}} + \left(-\frac{1}{2}, -\frac{\sqrt{3}}{2}\right)e^{-i\frac{2\pi}{3}} + \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right)\right) \\
+	                =& ia\left(k_{x}e^{i\frac{2\pi}{3}} + \left(-\frac{1}{2}k_{x} - \frac{\sqrt{3}}{2}k_{y}\right)e^{-i\frac{2\pi}{3}} - \frac{1}{2}k_{x} + \frac{\sqrt{3}}{2}k_{y}\right) \\
+	                =& ia\left(k_{x}\left(e^{i\frac{2\pi}{3}} - \frac{1}{2}e^{-i\frac{2\pi}{3}} - \frac{1}{2}\right) + k_{y}\left(-\frac{\sqrt{3}}{2}e^{-i\frac{2\pi}{3}} + \frac{\sqrt{3}}{2}\right)\right).
+\end{align*}
+This means that the dispersion is linear, a characteristic of solutions of the Dirac equation. This relation must be investigated further.
+
+To do this we must remedy the fact that $f$ does not share the periodicity of the reciprocal lattice due to the $\vb*{\delta}$ not being lattice vectors. However, by introducing
+\begin{align*}
+	\ket{\vb{q}, \tilde{B}} = ie^{-i\vb{q}\cdot\vb*{\delta}_{1}}\ket{\vb{q}, B},
+\end{align*}
+the same treatment results in the Hamiltonian containing a new function $\tilde{f}(\vb{q}) = ie^{-i\vb{q}\cdot\vb*{\delta}_{1}}f(\vb{q})$. This function has the periodicity of the reciprocal lattice. Writing
+\begin{align*}
+	\tilde{f}(\vb{q}) = i\left(1 + e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)} + e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)}\right),
+\end{align*}
+we have
+\begin{align*}
+	\grad_{\vb{q}}\tilde{f} =& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)}\right).
+\end{align*}
+As $\tilde{f}(\vb{K}) = 0$ we have
+\begin{align*}
+	\tilde{f}(\vb{K} + \vb{k}) \approx& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(-\frac{3}{4} + \frac{1}{4}\right)} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(-\frac{3}{4} - \frac{1}{4}\right)}\right)\cdot\vb{k} \\
+	=& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{-i\frac{2\pi}{3}} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{-i\frac{4\pi}{3}}\right)\cdot\vb{k} \\
+	=& -\sqrt{3}a\left(-\frac{\sqrt{3}}{2}\left(e^{-i\frac{2\pi}{3}} + e^{-i\frac{4\pi}{3}}\right), \frac{1}{2}\left(e^{-i\frac{2\pi}{3}} - e^{-i\frac{4\pi}{3}}\right)\right)\cdot\vb{k} \\
+	=& -\sqrt{3}a\left(-\sqrt{3}\cos(-\frac{2\pi}{3}), i\sin(-\frac{2\pi}{3})\right)\cdot\vb{k} \\
+	=& -\frac{3}{2}a\left(1, -i\right)\cdot\vb{k}.
+\end{align*}
+In the matrix form we can represent the Hamiltonian in this basis as
+\begin{align*}
+	\tilde{\ham} = \frac{3}{2}at\mqty[
+		0               & k_{x} - ik_{y} \\
+		k_{x} + ik_{y}  & 0 \\
+	] = v_{\text{F}}\vb*{\sigma}\cdot\vb{k}.
+\end{align*}
+This is an effective Hamiltonian for states close to the Brillouin zone boundary which is exactly the Dirac Hamiltonian in two dimensions. Doing the same around $-\vb{K}$ the Hamiltonian is $\tilde{\ham} = v_{\text{F}}(-\sigma_{x}k_{x} + \sigma_{y}k_{y})$. We can write this in a unified way by introducing a so-called valley degree-of-freedom index $\tau_{z} = \pm 1$.
