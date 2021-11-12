@@ -55,6 +55,17 @@ We take $f$ to be unknown, but assuming the training data to be sufficiently lar
 \end{align*}
 which is the so-called empirical risk. We can now approximately identify an optimal choice of $h$ by minimizing this quantity. This process is called empirical risk minimization. The assumption that the class of hypotheses has a member that minimizes $R_{S}$ is the realizability assumption.
 
+\paragraph{Bayes Optimal Predictors}
+The Bayes optimal predictor is a predictor which, given the probability distribution $P(y = y\given X = x)$, labels according to
+\begin{align*}
+	f(x) = 
+	\begin{cases}
+		1,\ P(y = y\given X = x) \geq \frac{1}{2}, \\
+		0,\ \text{otherwise}.
+	\end{cases}
+\end{align*}
+This predictor turns out to minimize the true loss.
+
 \paragraph{Probability Terms of Relevance}
 A few terms of relevance are
 \begin{itemize}
@@ -69,14 +80,42 @@ How wrong is the empirical approximation? It is clear that $R_{S}$ approaches $R
 \begin{align*}
 	P(\abs{R(h) - R_{s}(h)} > \epsilon) < \delta.
 \end{align*}
-It turns out that in the case of a finite hypothesis class we have
+It turns out that in the case of a finite hypothesis class, in the realizable case, we have
 \begin{align*}
 	m_{H}(\epsilon, \delta) = \frac{1}{\epsilon}\left(\ln(\abs{H}) + \ln(\frac{1}{\delta})\right).
 \end{align*}
-Relaxing the realizability assumption in the so-called agnostic case we instead have
+
+\paragraph{Agnostic PAC Learning}
+%TODO: Add more
+A hypothesis class is agnostically PAC learnable if there exists a number $m_{H}$ depending on two probabilities and a learning algorithm such that for every pair of probabilities $\epsilon, \delta$ and every distribution $P$ over $X\times Y$, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples from $P$, it holds that
+\begin{align*}
+	P(L(h_{S}) - \min L(h) \leq \varepsilon) \geq 1 - \delta.
+\end{align*}
+In this case we instead have
 \begin{align*}
 	m_{H}(\epsilon, \delta) = \frac{1}{2\epsilon^{2}}\left(\ln(\abs{H}) + \ln(\frac{2}{\delta})\right).
 \end{align*}
 
 \paragraph{The Confusion Matrix}
-The confusion matrix is a $2\times 2$ matrix for which the diagonal elements contain the true positives and negatives, the upper right contains the false positives and the lower left contains the false negatives.
+The confusion matrix is a $2\times 2$ matrix for which the diagonal elements contain the true positives and negatives, the upper right contains the false positives and the lower left contains the false negatives. There are also extension for more advanced classification problems.
+
+\paragraph{The No Free Lunch Theorem}
+It has been shown that if no assumptions are made about the data, there is no reason to prefer any particular machine learning model. In other words, there is no universal learner (combination of model and learning algorithm) that performs equally well for all problems. This is the no free lunch theorem.
+
+\paragraph{The Bias-Variance Tradeoff}
+In practical contexts, it will be important to validate the performance of your model on a separate dataset. The error on the training set, or in-sample error, is called the bias and represents the best possible performance of the model. The out-of sample error, which is the error on the validation set, is more representative of the true performance. It is equal to the sum of the asymptotic error and the so-called variance. The two generally approach each other as the amount of data increases, but the out-of-sample error is generally greater than the in-sample one.
+
+What happens if you increase model complexity? What will generally happen is that the bias will decrease and the variance will increase. The first happens because increasing complexity allows for capturing more nuances but leads to overfitting of the data. There is typically a sweet spot where the out-of-sample error is minimal.
+
+\paragraph{Linear Predictors}
+A linear predictor is an element of the hypothesis class with elements of the form
+\begin{align*}
+	h(x; w) = w^{T}x.
+\end{align*}
+
+\paragraph{Matrix Regularization}
+Consider the problem
+\begin{align*}
+	Ax = b.
+\end{align*}
+In the cases where $A$ is not invertible, we have to do some modification of the problem. This is called regularization.
