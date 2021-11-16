@@ -174,3 +174,135 @@ In the matrix form we can represent the Hamiltonian in this basis as
 	] = v_{\text{F}}\vb*{\sigma}\cdot\vb{k}.
 \end{align*}
 This is an effective Hamiltonian for states close to the Brillouin zone boundary which is exactly the Dirac Hamiltonian in two dimensions. Doing the same around $-\vb{K}$ the Hamiltonian is $\tilde{\ham} = v_{\text{F}}(-\sigma_{x}k_{x} + \sigma_{y}k_{y})$. We can write this in a unified way by introducing a so-called valley degree-of-freedom index $\tau_{z} = \pm 1$.
+
+\paragraph{Polyacetylene}
+Consider a one-dimensional chain with two atoms in the basis separated by a distance $a$ we have
+\begin{align*}
+	\gamma(q) = 2\cos(qa).
+\end{align*}
+By approximating $\zeta = 0$ and setting $E_{0} = 0$ we then find
+\begin{align*}
+	E_{q} = 2t\cos(qa).
+\end{align*}
+In the localized basis for the two atoms we have
+\begin{align*}
+	\ham = \mqty[
+		0          & -2t\cos(qa) \\
+		-2t\cos(qa) & 0
+	].
+\end{align*}
+There exists one unique Dirac point at $k_{0} = \frac{\pi}{2a}$, and close to this point we have $E_{q} \approx 2taq$, hence the Hamiltonian in terms of a small displacement $k$ from the Dirac point becomes $\ham \approx 2ta\sigma_{x}k$. This is the Dirac Hamiltonian in one dimension.
+
+Because only one Pauli matrix has been used, more possible non-trivial terms can be included by incorporating the Pauli matrices. The $\sigma_{z}$ term might represent some site difference. To obtain the other kind of term we suppose the hopping elements to have some directionality - that is, $t = t_{0} \pm \delta t$. The Hamiltonian then becomes
+\begin{align*}
+	\ham = \mqty[
+		0                                & -2t\cos(qa) - 2i\delta t\sin(qa) \\
+		-2t\cos(qa) + 2i\delta t\sin(qa) & 0
+	],
+\end{align*}
+and close to the Dirac point we have
+\begin{align*}
+	\ham \approx 2ta\sigma_{x}k + 2\delta t\sigma_{y}.
+\end{align*}
+This has the consequence of reducing the energy of the valence band - more specificallye we have
+\begin{align*}
+	\Delta E =& \frac{L}{2\pi}\inte{-\frac{\pi}{2a}}{\frac{\pi}{2a}}\dd{k}v_{\text{F}}\abs{k} - \sqrt{v_{\text{F}}^{2}k^{2} + m_{y}^{2} + m_{z}^{2}} \\
+	=& \frac{L}{\pi}\inte{0}{\frac{\pi}{2a}}\dd{k}v_{\text{F}}k - \sqrt{v_{\text{F}}^{2}k^{2} + m_{y}^{2} + m_{z}^{2}} \\
+	=& \frac{L}{2v_{\text{F}}\pi}\left(\left(\frac{v_{\text{F}}\pi}{2a}\right)^{2} - \frac{v_{\text{F}}\pi}{2a}\sqrt{\left(\frac{v_{\text{F}}\pi}{2a}\right)^{2} + m_{y}^{2} + m_{z}^{2}} - (m_{y}^{2} + m_{z}^{2})\ln(\frac{\sqrt{m_{y}^{2} + m_{z}^{2} + \left(\frac{v_{\text{F}}\pi}{2a}\right)^{2}} + \frac{v_{\text{F}}\pi}{2a}}{\sqrt{m_{y}^{2} + m_{z}^{2}}})\right),
+\end{align*}
+where we have introduced the Fermi velocity $v_{\text{F}} = 2ta$. Defining $m^{2} = m_{y}^{2} + m_{z}^{2}$ we find in the limit that $m$ becomes small that
+\begin{align*}
+	\Delta E \approx -\frac{Lm^{2}}{2v_{\text{F}}\pi}\ln(\frac{\sqrt{m_{y}^{2} + m_{z}^{2} + \left(\frac{v_{\text{F}}\pi}{2a}\right)^{2}} + \frac{v_{\text{F}}\pi}{2a}}{\sqrt{m_{y}^{2} + m_{z}^{2}}}) \approx -\frac{Lm^{2}}{2v_{\text{F}}\pi}\ln(\frac{v_{\text{F}}\pi}{\abs{m}a})
+\end{align*}
+, meaning there is a spontaneous tendency for the system to arrange itself such that this happens. This has the consequence of deforming the lattice, however, and a proper attempt will need to account for both of these effects at the same time.
+
+The Su-Schrieffer-Heeger model is an attempt to solve this. Its Hamiltonian is
+\begin{align*}
+	\ham = \sum\limits_{j}-t(u_{j + 1} - u_{j})(\op{j}{j + 1} + \op{j + 1}{j}) + \text{h.c.} + \frac{\lambda}{2}(u_{j + 1} - u_{j})^{2},
+\end{align*}
+where the degrees of freedom are the $u_{j}$ for the lattice points and the electronic states represented by kets. The hopping element $t$ now depends on the lattice structure. We can approximate
+\begin{align*}
+	t(u_{j + 1} - u_{j}) \approx t - \frac{\alpha}{2}(u_{j + 1} - u_{j})
+\end{align*}
+for small displacements. For the dimeric case we may choose coordinates such that $u_{j} = (-1)^{j}u$, hence $\delta t = \alpha u$. The total energy change for dimerization is then
+\begin{align*}
+	\Delta E\approx -\frac{Lm^{2}}{2v_{\text{F}}\pi}\ln(\frac{v_{\text{F}}\pi}{a\alpha \abs{u}}) + 2\lambda Nu^{2}.
+\end{align*}
+At small displacements the logarithmic term dominates, meaning dimerization still occurs spontaneously. This is known as Peierls instability.
+
+There was an implicit degeneracy in the above argument with respect to the directionality of the hopping term (or, equivalently, the sign of $\delta t$). This corresponds to the dimerization being possible in one of two ways. In excited states, these dimerized variants can be found in different domains of the polymer. Between two such regions is a so-called domain wall, called a soliton. To describe it we will need an energy functional describing the process of dimerization. By introducing the staggered displacement
+\begin{align*}
+	\phi_{j} = (-1)^{j}u_{j},
+\end{align*}
+which is just $\pm u$ in the ground states, we make the anzats
+\begin{align*}
+	E(\phi) = \inte{}{}\dd{x}\frac{1}{2}A\left(\dv{\phi}{x}\right)^{2} - B\phi^{2} + C\phi^{4}.
+\end{align*}
+We make the anzats such that there is a non-zero displacement in the ground state and such there is a degeneracy with respect to the sign of $\phi$. There must be $\phi$-dependent terms because the case of $\phi$ being constant does not correspond to a constant displacement of the chain. The Euler-Lagrange equation for this theory is
+\begin{align*}
+	-2B\phi + 4C\phi^{3} - A\dv[2]{\phi}{x} = 0.
+\end{align*}
+Notable is the existence of the ground state
+\begin{align*}
+	\phi = \pm\sqrt{\frac{B}{2C}}.
+\end{align*}
+To understand the behavior of such a system we can consider $x$ as a time parameter and $\phi$ as a coordinate for a particle in a potential $V(q) = Bq^{2} - Cq^{4}$. This potential has two maxima in the ground-state values of $\phi$ and there exists a solution which moves from one to the other asymptotically with respect to $x$. This solution is
+\begin{align*}
+	\phi = \sqrt{\frac{B}{2C}}\tanh(\sqrt{\frac{B}{A}}x).
+\end{align*}
+
+Looking back to the Dirac equation which emerged before dimerization, we see that we will have to extend it according to
+\begin{align*}
+	\ham = -i\sigma_{x}\dv{x} + m(x)\sigma_{y},
+\end{align*}
+where $m(x) = \alpha\phi(x)$ according to the Hamiltonian, assuming the ground-state energy to be zero. These then decouple, and the solutions in position space are
+\begin{align*}
+	\psi_{1} = c_{1}e^{\integ{0}{x}{y}{m(x)\phi(x)}},\ \psi_{2} = c_{2}e^{-\integ{0}{x}{y}{m(x)\phi(x)}}.
+\end{align*}
+For a soliton we must enforce $c_{1} = 0$, and similarly for an antisolition we enforce $c_{2} = 0$. It also turns out that there are no normalizable ground states unless $m$ changes sign somewhere. We define the topological charge
+\begin{align*}
+	Q = \frac{1}{2}\left(\text{sgn}(\infty) - \text{sgn}(-\infty)\right).
+\end{align*}
+It turns out that
+\begin{align*}
+	Q = N_{2} - N_{1},
+\end{align*}
+where $N_{1, 2}$ is the number of zero modes of each kind.
+
+Note that the Hamiltonian anticommutes with $\sigma_{z}$. This leads to $\sigma_{z}$ generating a so-called chiral symmetry. Its eigenstates thus come in pairs with opposite eigenvalues, except in the case where the eigenvalue is zero. This case thus applies to the unpaired bound state.
+
+\paragraph{Charged Particles in Magnetic Fields}
+For studying the quantum Hall effect we will need to study the physics of classical particles in magnetic fields. We recall that the Lagrangian is
+\begin{align*}
+	\lag = \frac{1}{2}m\dot{x}^{i}x_{i} - q\left(\phi(x) - \dot{x}^{i}A_{i}\right).
+\end{align*}
+The canonical momenta are
+\begin{align*}
+	p_{i} = \pdv{\lag}{\dot{x}^{i}} = m\dot{x}_{i} + qA_{i},
+\end{align*}
+hence the Hamiltonian is
+\begin{align*}
+	\ham =& p_{i}\dot{x}^{i} - \lag \\
+	     =& \frac{1}{m}p_{i}(p^{i} - qA^{i}) - \frac{1}{2m}(p^{i} - qA^{i})(p_{i} - qA_{i}) + q\left(\phi(x) - \frac{1}{m}(p^{i} - qA^{i})A_{i}\right) \\
+	     =& \frac{1}{2m}(p^{i} - qA^{i})(p_{i} - qA_{i}) + q\phi(x).
+\end{align*}
+Note that the canonical momenta are not the physical momenta.
+
+Consider now the case $\vb{B} = B\vb{e}_{z}$. A choice of $\vb{A}$ is then $\vb{A} = -xB\vb{e}_{y}$. For this case we find that all canonical momenta but $p_{y}$ are the physical momenta and
+\begin{align*}
+	\ham = \frac{1}{2m}\left(p_{x}^{2} + p_{z}^{2} + (p_{y} - eBx)^{2}\right) + q\phi(x).
+\end{align*}
+For $\phi = 0$ this problem is separable and we can construct eigenstates of the Hamiltonian by starting with eigenstates of $p_{y}$ and $p_{z}$. In $x$ we may then introduce
+\begin{align*}
+	\frac{1}{2}m\omega_{\text{c}}^{2} = \frac{1}{2m}\cdot e^{2}B^{2},\ x\p = x - \frac{p_{y}}{eB} = x - \frac{p_{y}}{\hbar}\ell^{2}.
+\end{align*}
+The resulting Hamiltonian is then that of a shifted harmonic oscillator. Its energy levels are
+\begin{align*}
+	E = \left(n + \frac{1}{2}\right)\hbar\omega_{\text{c}}.
+\end{align*}
+
+Fixing the other momenta we can try to impose periodic boundary conditions. While this cannot be done in all directions, we can still argue that because the solutions in the $x$ directions are Gaussian, the solutions can be considered to be confined. Restricting the problem to two dimensions, the set of solutions that are localized within the sample are those with $0 < k_{y} < \frac{L_{x}}{\ell^{2}}$. The degeneracy is then
+\begin{align*}
+	N \approx \frac{L_{y}}{2\pi}\inte{0}{\frac{L_{x}}{\ell^{2}}} = \frac{A}{2\pi\ell^{2}},
+\end{align*}
+which is the number of quanta of flux $\frac{2\pi\ell^{2}h}{e}$ contained in the sample. That is, every Landau level is paired with one flux quantum. What this means is that when the flux becomes an integer multiple of $2\pi\ell^{2}B$ one set of Landau will be filled and the one above will be empty.
