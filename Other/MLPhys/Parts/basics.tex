@@ -86,7 +86,6 @@ It turns out that in the case of a finite hypothesis class, in the realizable ca
 \end{align*}
 
 \paragraph{Agnostic PAC Learning}
-%TODO: Add more
 A hypothesis class is agnostically PAC learnable if there exists a number $m_{H}$ depending on two probabilities and a learning algorithm such that for every pair of probabilities $\epsilon, \delta$ and every distribution $P$ over $X\times Y$, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples from $P$, it holds that
 \begin{align*}
 	P(L(h_{S}) - \min L(h) \leq \varepsilon) \geq 1 - \delta.
@@ -102,15 +101,25 @@ The confusion matrix is a $2\times 2$ matrix for which the diagonal elements con
 \paragraph{The No Free Lunch Theorem}
 It has been shown that if no assumptions are made about the data, there is no reason to prefer any particular machine learning model. In other words, there is no universal learner (combination of model and learning algorithm) that performs equally well for all problems. This is the no free lunch theorem.
 
-\paragraph{The Bias-Variance Tradeoff}
-In practical contexts, it will be important to validate the performance of your model on a separate dataset. The error on the training set, or in-sample error, is called the bias and represents the best possible performance of the model. The out-of sample error, which is the error on the validation set, is more representative of the true performance. It is equal to the sum of the asymptotic error and the so-called variance. The two generally approach each other as the amount of data increases, but the out-of-sample error is generally greater than the in-sample one.
+\paragraph{The Bias-Complexity Tradeoff}
+The empirical risk can be divided into two terms. The first is the approximation error, which is equal to the minimal empirical risk within the chosen hypothesis class. The second is the estimation error, which is equal to the difference between the observed empirical risk and the approximation error. The former thus represents the limitations of the hypothesis class itself, while the latter represents the success of the algorithm in producing a hypothesis given the data.
 
-What happens if you increase model complexity? What will generally happen is that the bias will decrease and the variance will increase. The first happens because increasing complexity allows for capturing more nuances but leads to overfitting of the data. There is typically a sweet spot where the out-of-sample error is minimal.
+How can you change these? The solution to reduce the approximation error is to change the model. At some point one has to make the model more complicated, however, and it can be hard for a learning algorithm to identify a good hypothesis given the data. This is a tradeoff between the bias in the choice of hypothesis class and the complexity of the model.
+
+In practical contexts, it will be important to validate the performance of your model on a separate dataset. The bias-complexity tradeoff manifests here as a tradeoff between performance on the training and validation sets respectively. We here estimate the approximation error as the error on the training set and the estimation error as the error on the validation set. One typically optimizes with respect to the validation error to try to ensure generalizability.
 
 \paragraph{Linear Predictors}
 A linear predictor is an element of the hypothesis class with elements of the form
 \begin{align*}
-	h(x; w) = w^{T}x.
+	h(x; w, b) = f(w^{T}x + b),
+\end{align*}
+which can of course be shortened to
+\begin{align*}
+	h(x; w) = f(w^{T}x)
+\end{align*}
+by extending $x$ and $w$. An often-seen choice is the logistic function
+\begin{align*}
+	\sigma(s) = \frac{1}{e + e^{-s}}.
 \end{align*}
 
 \paragraph{Matrix Regularization}
@@ -119,3 +128,38 @@ Consider the problem
 	Ax = b.
 \end{align*}
 In the cases where $A$ is not invertible, we have to do some modification of the problem. This is called regularization.
+
+\paragraph{Classification and Cross-Entropy}
+Consider a classification problem with $N$ classes, and restrict your hypothesis class to some set of functions
+\begin{align*}
+	P(y^{n}\given x, w) = f_{w}^{n}(x)
+\end{align*}
+parametrized by the $w$. The likelihood of observing some given data set can be written
+\begin{align*}
+	L(\{y_{i}\}) = \prod\limits_{i}f_{w}^{n_{i}}(x_{i})\prod\limits_{n \neq n_{i}}(1 - f_{w}^{n}(x_{i})),\ y^{n_{i}} = 1,
+\end{align*}
+or more neatly,
+\begin{align*}
+	L(\{y_{i}\}) = \prod\limits_{i}\prod\limits_{n}(f_{w}^{n}(x_{i}))^{y_{i}^{n}}(1 - f_{w}^{n}(x_{i}))^{1 - y_{i}^{n}}.
+\end{align*}
+The log likelihood is
+\begin{align*}
+	\ln(L) = \sum\limits_{i}\sum\limits_{n}y_{i}^{n}\ln(f_{w}^{n}(x_{i})) + (1 - y_{i}^{n})\ln(1 - f_{w}^{n}(x_{i})),
+\end{align*}
+and its maximization is equivalent to minimizing the cross-entropy
+\begin{align*}
+	S = -\sum\limits_{i}\sum\limits_{n}y_{i}^{n}\ln(f_{w}^{n}(x_{i})) + (1 - y_{i}^{n})\ln(1 - f_{w}^{n}(x_{i})).
+\end{align*}
+
+\paragraph{Stochastic Gradient Descent}
+Gradient descent is a suboptimal way of minimizing a function, so we will instead opt for a different method.
+
+Suppose we divide our data into $\frac{M}{I}$ subsets indexed by a $k$. We denote each subset $B_{k}$. The empirical risk is then is then
+\begin{align*}
+	R_{S} = \sum\limits_{i\in B_{k}}l(x_{i}) + \sum\limits_{i\notin B_{k}}l(x_{i}).
+\end{align*}
+The former is the in-batch loss and the latter the error. Discarding the former we have
+\begin{align*}
+	\grad R_{S} \approx \sum\limits_{i\in B_{k}}\grad l(x_{i}).
+\end{align*}
+For iid batches this is an unbiased estimator of $\grad R_{S}$. The stochastic gradient descent algorithm thus involves doing one gradient descent per batch. Such a cycle is called an epoch. This is advantageous because it is faster and lessens the risk of getting stuck in local minima.
