@@ -326,6 +326,7 @@ Let us now add an electric field using $\phi = -Ex$. The choice of $\vb{A}$ is 
 This has an extra term in the peak position which, in the case of weak fields, can be taken to be evaluated at the center of the Landau level. This system also has a net current due to the recentering of the states. Note that the electric field lifts the degeneracy of the individual levels but introduces degeneracy between levels. States cannot decay between levels unless there exists disorder or phonons on which the states can scatter.
 
 \paragraph{The Integer Quantum Hall Effect}
+%TODO: Please fix this
 Suppose you were to make the sample finite by introducing a potential that screens off a region of space. We can surmise that
 \begin{align*}
 	\psi = \frac{1}{\sqrt{L_{y}}}e^{ik_{y}y}f_{k_{y}}(x)
@@ -343,3 +344,99 @@ where $n_{k_{y}}$ is the probability of a given state being occupied. In the lim
 	I = \frac{q}{\hbar}\Delta\mu,
 \end{align*}
 where $\Delta\mu$ is the change in chemical potential between either edge. Defining the Hall voltage according to $V_{\text{H}} = \frac{\Delta\mu}{q}$ we find $I = \frac{\nu q^{2}}{\hbar}V_{\text{H}}$, where we introduce the number $\nu$ of occupied Landau levels in the bulk.
+
+\paragraph{Berry Phase}
+Consider a Hamiltonian described by some set of parameters $R$, which may be time dependent. For each value of $R$ we have a set of eigenstates
+\begin{align*}
+	\ham(R)\ket{n(R)} = E_{n}(R)\ket{n(R)}.
+\end{align*}
+If the spectrum is discrete and non-degenerate for all $R$, the adiabatic theorem tells us that if $R$ is varied such that the Hamiltonian changes sufficiently slowly, a state which is initialized to an eigenstate at $t = 0$ will evolve to a corresponding eigenstate at a later time. In the general case we have
+\begin{align*}
+	\ket{\psi_{n}(t)} = e^{i\gamma_{n}(t)}e^{-\frac{i}{\hbar}\inte{0}{t}\dd{\tau} E_{n}(\tau)}\ket{n(R(t))}.
+\end{align*}
+If the Hamiltonian has explicit time dependence, the former factor is non-zero. Its exponent is the so-called Berry phase. Inserting this into the Schrödinger equation we find
+\begin{align*}
+	\ham\ket{\psi_{n}(t)} =& E_{n}\ket{\psi_{n}(t)} \\
+	=& i\hbar e^{i\gamma_{n}(t)}e^{-\frac{i}{\hbar}\inte{0}{t}\dd{\tau} E_{n}(\tau)}\left(i\dv{\gamma_{n}}{t}\ket{n(R(t))} - \frac{i}{\hbar}E_{n} \ket{n(R(t))} + \pdv{t}\ket{n(R(t))}\right),
+\end{align*}
+and taking the inner product with $\ket{\psi_{n}(t)}$ we have
+\begin{align*}
+	\dv{\gamma_{n}}{t}\ket{n(R(t))} = i\expval{\pdv{t}}{n(R(t))}.
+\end{align*}
+The solution is
+\begin{align*}
+	\gamma_{n} = i\inte{0}{t}\tau\expval{\pdv{\tau}}{n(R(\tau))}.
+\end{align*}
+Noting that
+\begin{align*}
+	\pdv{\tau}\ket{n(R(\tau))} =& \dv{R}{\tau}\cdot\grad_{R}\ket{n(R)}
+\end{align*}
+we can define the Berry connection
+\begin{align*}
+	A_{n} = i\expval{\grad_{R}}{n(R)}
+\end{align*}
+and find
+\begin{align*}
+	\gamma_{n} = i\inte{C}{}\dd{R}\cdot A_{n}.
+\end{align*}
+$C$ is now the orbit in parameter space traversed during the time evolution.
+
+Is the Berry phase really of interest? It might not seem so. Making a phase change
+\begin{align*}
+	\ket{n(R)}\to e^{i\zeta(R)}\ket{n(R)}
+\end{align*}
+we have
+\begin{align*}
+	A_{n}\to A_{n} - \grad_{R}\zeta.
+\end{align*}
+Thus we can apparently remove the Berry phase entirely. For closed orbits in parameter space, however, the Berry phase is independent of this transformation. Thus it might be an observable.
+
+\paragraph{The Aharanov-Bohm Effect}
+Consider two wires passing a region with a very localized magnetic field, one wire being wrapped around this region. This will turn out to be a case where the Berry phase has a physical consequence, as one can measure a quantum phase difference between electrons passing through either wire.
+
+To study this, we will consider a charged particle confined to some box with one corner at $\vb{R}_{0}$ by a potential $V(\vb{r} - \vb{R}_{0})$. We will study this by adiabatically moving the box around in space. If the box never enters the region with magnetic field, we may take
+\begin{align*}
+	\vb{A} = \frac{\Phi_{0}}{2\pi}\grad{\chi}.
+\end{align*}
+Supposing the ground state of the electron in the box is $\xi(\vb{r} - \vb{R}_{0})$ in the absence of the magnetic field, we can find a normalized eigenfunction $e^{i\phi}\xi(\vb{r} - \vb{R}_{0})$ by the gauge transformation anzats
+\begin{align*}
+	(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}).
+\end{align*}
+We find
+\begin{align*}
+	(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}) - \left(i\hbar\grad{\phi} + q\vb{A}\right)\xi(\vb{r} - \vb{R}_{0}),
+\end{align*}
+hence
+\begin{align*}
+	\phi = -\frac{q}{\hbar}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = -\frac{2\pi}{\Phi_{0}}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = \chi(\vb{R}_{0}) - \chi(\vb{r}).
+\end{align*}
+
+There is still an ambiguity in the choice of \chi, as well as the possibility to add an $\vb{R}_{0}$-dependent phase $\theta$ to the wavefunction. We now fix them by imposing that
+\begin{align*}
+	\psi(\vb{r}) = e^{i(\theta + \chi(\vb{R}_{0}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0})
+\end{align*}
+be real at some point $\vb*{\Delta}$ as measured within the box. Assuming $\xi$ to be real and positive at $\vb*{\Delta}$, we require
+\begin{align*}
+	\theta = \chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{R}_{0}),
+\end{align*}
+hence
+\begin{align*}
+	\psi(\vb{r}) = e^{i(\chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0}).
+\end{align*}
+
+How does this tie in to the Berry phase? $\vb{R}_{0}$ now plays the role of the parameters in the Hamiltonian. For the ground state we then have
+\begin{align*}
+	\vb{A} =& i\integ[3]{}{}{\vb{r}}{\psi\cc\grad_{\vb{R}_{0}}\psi} \\
+	       =& i\integ[3]{}{}{\vb{r}}{e^{-i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\left(ie^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + e^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})\right)} \\
+	       =& i\integ[3]{}{}{\vb{r}}{i\xi^{2}(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + \xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})} \\
+	       =& -\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}) + \frac{1}{2}i\integ[3]{}{}{\vb{r}}{\grad_{\vb{R}_{0}}\xi^{2}(\vb{r} - \vb{R}_{0})},
+\end{align*}
+having used the fact that the state is normalized. The latter term is the integral of a total derivative, which yields no contribution as the wavefunction vanishes at infinity. Thus, by slowly moving the electron we have
+\begin{align*}
+	\gamma = -\inte{}{}\dd{\vb{R}_{0}}\cdot\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}).
+\end{align*}
+Taking the displacement $\vb*{\Delta}$ to be small, the phase difference between two wires is thus
+\begin{align*}
+	\delta\phi = -\frac{2\pi\Phi}{\Phi_{0}},
+\end{align*}
+where $\Phi$ is the total enclosed flux. Note that at no point along the path of the electron did it have to interact with the magnetic field, and yet this phase difference arises. This effect is thus a pure quantum effect, and is termed the Aharanov-Bohm effect.
