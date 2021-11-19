@@ -163,3 +163,61 @@ The former is the in-batch loss and the latter the error. Discarding the former 
 	\grad R_{S} \approx \sum\limits_{i\in B_{k}}\grad l(x_{i}).
 \end{align*}
 For iid batches this is an unbiased estimator of $\grad R_{S}$. The stochastic gradient descent algorithm thus involves doing one gradient descent per batch. Such a cycle is called an epoch. This is advantageous because it is faster and lessens the risk of getting stuck in local minima.
+
+\paragraph{Neural Networks}
+Neural networks are elements in a very particular hypothesis class. They are conceptually inspired by neurons.
+
+The structure is as follows: The network consists of layers. Each layer consists of a set of neurons. The neurons are generally coupled to all neurons in the previous layers. Computationally, each neuron takes as input the set of values stored in each neuron. It then adds them using some weights and outputs the result when this weighted sum is input into some so-called activation function. We may thus illustrate the network as a directed graph, where each neuron is a node and there are edges connecting all nodes in adjacent layers. These edges are directed, such that there is only coupling one way.
+
+As an example, consider the simplest possible neural network, with one input layer and one output layer, the latter having only a single neuron. The input layer will then consist of all the elements in $x$ (as well as a $1$), and the neuron will first compute $\sum w_{i}x_{i} = w^{T}x$, and output $\sigma(w^{T}x)$.
+
+The power of neural networks lies in the fact that if the activation function is nonlinear, then the network can be used to perform nonlinear classification or regression tasks. The design of the network, however, is where the art lies.
+
+Neural networks need to be trained, of course. The algorithm for doing that is called back-propagation. To describe the mathematical basis we introduce a bit of notation. We let:
+\begin{itemize}
+	\item $V_{t}$ be the set of neurons in layer $t$.
+	\item $W_{t}$ be the weight matrix between $V_{t}$ and $V_{t + 1}$.
+	\item $k_{t}$ be the number of neurons in layer $t$.
+	\item $\vb{a}_{t}$ be the input to layer $t$.
+	\item $\vb{o}_{t}$ be the output from layer $t$.
+	\item $\vb*{\sigma}$ be the activation function applied element-wise to the output of one layer.
+\end{itemize}
+Clearly we have $\vb{a}_{t} = W_{t - 1}\vb{o}_{t - 1}$ and $\vb{o}_{t} = \vb*{\sigma}(\vb{a}_{t})$. The weights in any one layer appear exactly once in the output, so it would be beneficial to switch from a matrix notation in $W$ to a vector notation. To that end, introduce the matrix $O_{t - 1} = \text{diag}(\vb{o}_{t - 1}^{T})$ and $\vb{w}_{t - 1}$ the vector obtained when concatenating the rows of $W_{t - 1}$. It then follows that $O_{t - 1}\vb{w}_{t - 1} = W_{t - 1}\vb{o}_{t - 1}$. Now, we note that the loss function has a recursive structure - that is,
+\begin{align*}
+	L(\{W_{t}\}) =& L(\vb{o}_{T}) \\
+	             =& L(\vb*{\sigma}(\vb{a}_{T})) \\
+	             =& L(\vb*{\sigma}(W_{T - 1}\vb{o}_{T - 1})) \\
+	             =& \dots
+\end{align*}
+We can write this as $L = \ell_{t}\circ \vb*{\sigma}$ for some choice of $t$. $\ell_{t}$ thus acts as a subsystem loss function, handling the contributions to the loss from layers starting at $t$. We then have
+\begin{align*}
+	\grad_{\vb{w}_{t - 1}}L = \grad_{\vb*{\sigma}}\ell_{t}\pdv{\vb*{\sigma}}{\vb{w}_{t - 1}}.
+\end{align*}
+Because the activation function acts element-wise we have
+\begin{align*}
+	\pdv{\vb*{\sigma}}{\vb{w}_{t - 1}} = \text{diag}(\grad\sigma)\pdv{\vb{w}_{t - 1}}(O_{t - 1}\vb{w}_{t - 1}) = \text{diag}(\grad\sigma)O_{t - 1}.
+\end{align*}
+The first factor is to be evaluated at $\vb*{\sigma}(O_{t - 1}\vb{w}_{t - 1}) = \vb{o}_{t}$ and the second at $O_{t - 1}\vb{w}_{t - 1} = \vb{a}_{t}$. Thus we find
+\begin{align*}
+	\grad_{\vb{w}_{t - 1}}L = \grad_{\vb*{\sigma}}\ell_{t}(\vb{o}_{t})\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}.
+\end{align*}
+This is a vector comprised of the successive components of $\vb*{\delta}$, the derivatives of $\sigma$ and $\vb{o}_{t - 1}$. Thus, by computing $\vb{\delta}_{t}$ the derivative is known. We can do this in a recursive manner by noting that it is trivial for the outer layer. Next, as
+\begin{align*}
+	\ell_{t}(\vb{o}_{t}) = \ell_{t + 1}(\vb*{\sigma}(W_{t}\vb{o}_{t})),
+\end{align*}
+hence
+\begin{align*}
+	\grad\ell_{t}(\vb{o}_{t}) = \grad\ell_{t + 1}(\vb{o}_{t + 1})\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t},
+\end{align*}
+implying
+\begin{align*}
+	\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}.
+\end{align*}
+In this sense we propagate information back through the network. The algorithm is thus
+\begin{enumerate}
+	\item Start with $\vb{o}_{0} = \vb{x}$.
+	\item Compute $\vb{a}_{t} = W_{t - 1}\vb{o}_{t - 1}$ and $\vb{o}_{t} = \vb*{\sigma}(\vb{a}_{t})$ for each layer.
+	\item Set $\vb*{\delta}_{T} = \grad{L}(\vb{o}_{T})$.
+	\item Compute $\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}$ for each layer.
+	\item Set the partial derivative with respect to each set of weights to be $\vb*{\delta}_{t}\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}$.
+\end{enumerate}
