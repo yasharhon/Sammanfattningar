@@ -221,3 +221,16 @@ In this sense we propagate information back through the network. The algorithm i
 	\item Compute $\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}$ for each layer.
 	\item Set the partial derivative with respect to each set of weights to be $\vb*{\delta}_{t}\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}$.
 \end{enumerate}
+
+\paragraph{Problems With Training Neural Networks}
+A first problem with training neural networks is vanishing or exploding gradients. To illustrate it, consider a neural network with one neuron per layer. We then have
+\begin{align*}
+	\vb*{\delta}_{0}  = \vb*{\delta}_{L}\prod\limits_{l = 1}^{L}\text{diag}(\grad\sigma(\vb{a}_{l}))W_{l}.
+\end{align*}
+For a network with many layers the product can thus very quickly either diverge or drop to zero. Only if each factor is close to the identity will the gradients stay behaved. Beyond applying stochastic gradient descent, which is an implicit regularizer, there are other treatments of the gradient that can be performed to ensure that this holds.
+
+Another problem is that different weights can change such that they compensate for mistakes in other places in the neural networks. This is called co-adaption, and it is bad because such fixes are generally overfitted to the training data. This can be solved by using dropout.
+
+Next there is the problem that layer inputs change during training, requiring low learning rates. This can be somewhat circumvented by standardizing inputs.
+
+\paragraph{The Universal Approximation Theorem}
