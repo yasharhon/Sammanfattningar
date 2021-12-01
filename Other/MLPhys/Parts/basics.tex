@@ -234,3 +234,32 @@ Another problem is that different weights can change such that they compensate f
 Next there is the problem that layer inputs change during training, requiring low learning rates. This can be somewhat circumvented by standardizing inputs.
 
 \paragraph{The Universal Approximation Theorem}
+The universal approximation theorem is a statement about how closely we can approximate functions with neural networks. To prove it, consider a so-called feed-forward neural network with $L$ neurons in a single hidden layer. Its output is
+\begin{align*}
+	y(\vb{x}) = \sum\limits_{l = 0}^{L}\alpha_{l}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l}),
+\end{align*}
+where we have used some sigmoid activation function (this just means that $\sigma$ goes to $0$ and $1$ respectively at the two infinities). We also introduce the following definition: $\sigma$ is discriminatory for a measure $\mu\in M(l_{d})$ (this can for instance be a probability measure $\dd{\mu} = \dd{\vb{x}}P(\vb{x})$) if the fact that
+\begin{align*}
+	\inte{}{}\dd{\mu}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l}) = 0
+\end{align*}
+for all $\vb{w}_{l}, b_{l}$ implies that $\mu = 0$. This definition is useful because it tells us that discriminatory functions are non-destructive with respect to the metric - that is, they are indeed able to capture some of the information in the network.
+
+The theorem states the following: Let $l_{d}$ be the hypercube $[0, 1]^{d}$ and the space of real-valued continuous functions on $l_{d}$ be $C(l_{d})$. Let also $\sigma$ be a discriminatory function on $l_{d}$. Then, for every $\varepsilon > 0$ and function $f\in C(l_{d})$, there exists an integer $N$ and real $\alpha_{l}, b_{l}, \vb{w}_{l}$ for $l = 1, \dots, N$ such that the function
+\begin{align*}
+	G(\vb{x}) = \sum\limits_{l = 0}^{L}\alpha_{l}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l})
+\end{align*}
+satisfies
+\begin{align*}
+	\abs{G(\vb{x}) - f(\vb{x})} < \varepsilon\ \forall\ \vb{x}\in l_{d}.
+\end{align*}
+
+%TODO: Add proof
+To prove it, let $S$ be the set of functions of the form $G$. Clearly this is a linear subspace of $C(l_{d})$. To prove it, we will show that the closure of $S$ (the smallest closed set containing $S$) is all of $C(l_{d})$. Assuming the contrary, the closure of $S$ is instead some different subset $R$ of $C(l_{d})$. We have by the Hahn-Banach theorem that there is a bounded non-trivial linear functional $L$ of $C(l_{d})$ such that $L(R) = L(S) = 0$. This can be represented as
+\begin{align*}
+	L(h) = \inte{l_{d}}{}\dd{\mu}h(\vb{x})
+\end{align*}
+for some measure $\mu$ and all $h$. By our assumptions there must then exist a measure such that
+\begin{align*}
+	L(\sigma) = \inte{l_{d}}{}\dd{\mu}\sigma(w_{l}^{T}\vb{x} + b_{l}) = 0,
+\end{align*}
+but if $\sigma$ is discriminatory, then this is a contradiction. This implies that $R$ must indeed be $C(l_{d})$, completing the proof.
