@@ -263,3 +263,8 @@ for some measure $\mu$ and all $h$. By our assumptions there must then exist a m
 	L(\sigma) = \inte{l_{d}}{}\dd{\mu}\sigma(w_{l}^{T}\vb{x} + b_{l}) = 0,
 \end{align*}
 but if $\sigma$ is discriminatory, then this is a contradiction. This implies that $R$ must indeed be $C(l_{d})$, completing the proof.
+
+\paragraph{Convolutional Neural Networks}
+From the properties of eyesight, it appears that the brain processes visual data in small parcels. The processing is built up of simple tools, such as edge detectors and depth detectors. Notably only a small number of shapes form primitive visual objects. These properties should enter into the design of neural networks for image processing.
+
+Convolutional neural networks are based on these concepts. It uses a set of filters that are convolved with the image (swept over the image, with the local dot product being summed up) in so-called convolution layers. Beyond this, in order to get output you typically use some kind of pooling operation, which coarse-grains.
