@@ -182,7 +182,15 @@ In the matrix form we can represent the Hamiltonian in this basis as
 		k_{x} + ik_{y}  & 0 \\
 	] = v_{\text{F}}\vb*{\sigma}\cdot\vb{k}.
 \end{align*}
-This is an effective Hamiltonian for states close to the Brillouin zone boundary which is exactly the Dirac Hamiltonian in two dimensions. Doing the same around $-\vb{K}$ the Hamiltonian is $\tilde{\ham} = v_{\text{F}}(-\sigma_{x}k_{x} + \sigma_{y}k_{y})$. We can write this in a unified way by introducing a so-called valley degree-of-freedom index $\tau_{z} = \pm 1$.
+This is an effective Hamiltonian for states close to the Brillouin zone boundary which is exactly the Dirac Hamiltonian in two dimensions. A similar analysis about the other corner reveals
+\begin{align*}
+	\tilde{f}(\vb{K} + \vb{k}) \approx& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(\frac{3}{4} - \frac{1}{4}\right)} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(\frac{3}{4} + \frac{1}{4}\right)}\right)\cdot\vb{k} \\
+	=& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\frac{2\pi}{3}} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\frac{4\pi}{3}}\right)\cdot\vb{k} \\
+	=& -\sqrt{3}a\left(-\frac{\sqrt{3}}{2}\left(e^{i\frac{2\pi}{3}} + e^{i\frac{4\pi}{3}}\right), \frac{1}{2}\left(e^{i\frac{2\pi}{3}} - e^{i\frac{4\pi}{3}}\right)\right)\cdot\vb{k} \\
+	=& -\sqrt{3}a\left(-\sqrt{3}\cos(\frac{2\pi}{3}), i\sin(\frac{2\pi}{3})\right)\cdot\vb{k} \\
+	=& -\frac{3}{2}a\left(1, i\right)\cdot\vb{k}.
+\end{align*}
+Thus the Hamiltonian is $\tilde{\ham} = v_{\text{F}}(-\sigma_{x}k_{x} + \sigma_{y}k_{y})$. We can write this in a unified way by introducing a so-called valley degree-of-freedom index $\tau_{z} = \pm 1$.
 
 \paragraph{Polyacetylene}
 Consider a one-dimensional chain with two atoms in the basis separated by a distance $a$ we have
@@ -464,6 +472,48 @@ Taking the displacement $\vb*{\Delta}$ to be small, the phase difference between
 where $\Phi$ is the total enclosed flux. Note that at no point along the path of the electron did it have to interact with the magnetic field, and yet this phase difference arises. This effect is thus a pure quantum effect, and is termed the Aharanov-Bohm effect.
 
 \paragraph{Spin-$\frac{1}{2}$ Berry Phase}
+Consider a single spin $\frac{1}{2}$ in an external field. The Hamiltonian is
+\begin{align*}
+	\ham = h^{i}\sigma_{i}.
+\end{align*}
+Writing $\vb{h} = h(\sin(\theta)\cos(\phi),\ \sin(\theta)\sin(\phi), \cos(\theta))$, we note that the eigenstates are simultaneous eigenstates of the spin projection along the direction of $\vb{h}$. In the $\sigma_{3}$ basis they thus solve
+\begin{align*}
+	\mqty[
+		\cos(\theta) \mp 1 & \sin(\theta)\cos(\phi) - i\sin(\theta)\sin(\phi) \\
+		\sin(\theta)\cos(\phi) + i\sin(\theta)\sin(\phi) & -\cos(\theta) \mp 1
+	]\vb{x}_{\pm} = \vb{0}.
+\end{align*}
+The matrix can be simplified to
+\begin{align*}
+	\mqty[
+		\cos(\theta) \mp 1    & \sin(\theta)e^{-i\phi} \\
+		\sin(\theta)e^{i\phi} & -\cos(\theta) \mp 1
+	].
+\end{align*}
+The components then satisfy
+\begin{align*}
+	(\cos(\theta) \mp 1)x_{\pm, 1} =& -\sin(\theta)e^{-i\phi}x_{\pm, 2}.
+\end{align*}
+The eigenstates in this representation are then
+\begin{align*}
+	\ket{-} = \mqty[
+		-\sin(\frac{\theta}{2})e^{-i\phi} \\
+		\cos(\frac{\theta}{2})
+	],\ \ket{+} = \mqty[
+		\cos(\frac{\theta}{2})e^{-i\phi} \\
+		\sin(\frac{\theta}{2})
+	].
+\end{align*}
+While the eigenvalues depend on $h$, the structure of the states depend on $\theta$ and $\phi$, which parametrize $S^{2}$. For the ground state we then have
+\begin{align*}
+	&A_{-, \theta} = i\mel{-}{\del{}{\theta}}{-} = 0, \\
+	&A_{-, \phi} = i\mel{-}{\del{}{\phi}}{-} = i\left(-i\sin[2](\frac{\theta}{2})\right) = \sin[2](\frac{\theta}{2}).
+\end{align*}
+The Berry curvature is then
+\begin{align*}
+	\omega_{+, \theta\phi} = \frac{1}{2}\sin(\theta),
+\end{align*}
+and the Berry flux through a small surface is half the subtended solid angle.
 
 \paragraph{Berry Phase and Bloch Bands}
 A slight generalization of Bloch states can be made for systems in a uniform magnetic field. In a periodic potential the Hamiltonian is invariant under translations by lattice vectors. Generally, in a magnetic field, we have
@@ -570,7 +620,7 @@ Because we are integrating about a loop, this must be a multiple of $2\pi$ - in 
 \begin{align*}
 	\frac{1}{2\pi}\inte{}{}\dd[2]{\vb{k}}\omega_{n}(\vb{k})
 \end{align*}
-is an integer known as the first Chern number. This leads to the conductivity being quantized.
+is an integer known as the first Chern number $c_{n}$. This leads to the conductivity being quantized.
 
 \paragraph{The Haldane Model}
 The Haldane model is a simple model of two bands with non-zero Chern number. This is obtained by starting with a two-level model for the honeycomb lattice and opening a band gap and breaking time reversal symmetry. The Hamiltonian we use is
@@ -582,4 +632,276 @@ The Haldane model is a simple model of two bands with non-zero Chern number. Thi
 \end{align*}
 The eigenvalues are $\pm\sqrt{m^{2} + t^{2}\abs{f(\vb{k})}^{2}}$, using the same $f$ as for the honeycomb lattice. This opens up a band gap of size $2m$ at the corners of the Brillouin zone.
 
+To study the model, assume $m$ to be small. The Hamiltonian is
+\begin{align*}
+	\ham = v_{\text{F}}(\tau_{z}\sigma_{x}k_{x} + \sigma_{y}k_{y}) + m\sigma_{z}.
+\end{align*}
+This doesn't break time reversal symmetry, however, and cannot produce topologically non-trivial bands. To achieve this we add the $\tau_{z}$ to the mass term as well. This can be achieved by using a purely imaginary hopping amplitude internally in the sublattice.
+
+\paragraph{Weird Unexplained Stuff}
+Consider a two-dimensional electron gas on a cylindrical shell. Suppose that we add a magnetic flux through the pipe which is zero at $t = 0$ and $\Phi_{0}$ at $t = T$. The field along the original $y$-coordinate will then be
+\begin{align*}
+	E_{y} = \frac{1}{L_{y}}\dv{\Phi}{t}.
+\end{align*}
+The charge drift is
+\begin{align*}
+	-e\inte{0}{T}\dd{t}\inte{0}{L_{y}}\dd{y}J_{x} = \sigma_{n, xy}\Phi_{0} = C_{n}e.
+\end{align*}
+This means that the Hamiltonian is approximately flux independent.
+
 \paragraph{Superconductors}
+Superconductors distinguish themselves from ideal conductors in that they repel magnetic flux. This is their defining trait
+
+The first theory of superconductivity was a Ginzburg-Landau theory of the form
+\begin{align*}
+	F = \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}n(\grad{\theta} + q\vb{A})^{2} + \frac{1}{2}(\curl{\vb{A}})^{2}.
+\end{align*}
+The field $\theta$ is the phase of some complex field. An important feature of this model was exactly that the magnitude of the complex field did not enter. It was thought by Ginzburg and Landau that this field was related to the wavefunction somehow. By introducing a current
+\begin{align*}
+	\vb{J} = \frac{iq\gamma}{2}(\psi\cc\grad{\psi} - \psi\grad{\psi\cc}) - \gamma q^{2}\abs{\psi}^{2}\vb{A}
+\end{align*}
+and combining it with Maxwell's equation $\curl{\vb{B}} = \vb{J}$ and the requirement that $\abs{\psi}^{2} = n_{S}$ we find
+\begin{align*}
+	\curl{\vb{B}} = -n_{S}q\left(\grad{\theta} + \gamma q\vb{A}\right),
+\end{align*}
+and inserting this into the free energy we find
+\begin{align*}
+	F = \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}\frac{n}{n_{S}}\frac{1}{qn_{S}}(\curl{\vb{B}})^{2} + \frac{1}{2}\vb{B}^{2}.
+\end{align*}
+In the limit of $n\to n_{S}$ the field describing the minimum is given by the London equation
+\begin{align*}
+	\curl{\curl{\vb{B}}} + \frac{1}{\lambda^{2}}\vb{B} = \vb{0},
+\end{align*}
+with the London penetration depth $\lambda = \frac{1}{\sqrt{qn_{S}}}$. The solutions of this equation generally vanish quickly in the bulk, as do the corresponding currents. Thus the Meissner effect is reproduced.
+
+The next attempt used a full variation of $\psi$ with a free energy
+\begin{align*}
+	F = \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}\abs{(\grad{} + iq\vb{A})\psi}^{2} - a\abs{\psi}^{2} + \frac{1}{2}b\abs{\psi}^{4} + \frac{1}{2}(\curl{\vb{A}})^{2}.
+\end{align*}
+In the absence of external fields, the constant field that minimizes the free energy is
+\begin{align*}
+	\abs{\psi} = \sqrt{\frac{a}{b}}.
+\end{align*}
+In this state the system is superconducting. The condensation energy (density) of the superconductor is
+\begin{align*}
+	\Delta F = F(\abs{\psi} = 0) - F\left(\sqrt{\frac{a}{b}}\right) = \frac{1}{2}\frac{a^{2}}{b}.
+\end{align*}
+This can be expressed in terms of a critical magnetic field $H_{\text{c}} = \frac{a}{\sqrt{b}}$.
+
+Let us now study the configurations that minimize the free energy. Varying with respect to $\psi\cc$ we have
+\begin{align*}
+	\var{F} =& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}(\grad{} - iq\vb{A})\var{\psi\cc}\cdot(\grad{} + iq\vb{A})\psi + \left(b\abs{\psi}^{2}\psi - a\psi\right)\var{\psi\cc}.
+\end{align*}
+To shorten this slightly we define $\vb{v} = (\grad{} + iq\vb{A})\psi$, and find
+\begin{align*}
+	\var{F} =& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}\vb{v}\cdot\grad(\var{\psi\cc}) + \left(b\abs{\psi}^{2}\psi - a\psi - \frac{1}{2}iq\vb{v}\cdot\vb{A}\right)\var{\psi\cc}.
+\end{align*}
+Integrating by parts we find
+\begin{align*}
+	\var{F} =& \inte{}{}\dd[3]{\vb{r}}\left(b\abs{\psi}^{2}\psi - a\psi - \frac{1}{2}iq\vb{v}\cdot\vb{A} - \frac{1}{2}\div{\vb{v}}\right)\var{\psi\cc} + \frac{1}{2}\inte{}{}\dd{\vb{S}}\cdot\var{\psi\cc}\vb{v}.
+\end{align*}
+The surface term is zero if
+\begin{align*}
+	(\grad{} + iq\vb{A})\psi\cdot\vb{n} = 0
+\end{align*}
+on the surface of the superconductor. The remaining term is zero if
+\begin{align*}
+	b\abs{\psi}^{2}\psi - a\psi - \frac{1}{2}iq\vb{A}\cdot(\grad{} + iq\vb{A})\psi - \frac{1}{2}\div{(\grad{} + iq\vb{A})\psi} = 0.
+\end{align*}
+A slight rearrangement yields
+\begin{align*}
+	\frac{1}{2}(-i\grad{} + q\vb{A})^{2}\psi + b\abs{\psi}^{2}\psi - a\psi = 0.
+\end{align*}
+Next, to vary with respect to the magnetic field we write
+\begin{align*}
+	(\curl{\vb{A}})^{2} = T^{ijkm}\del{}{i}A_{j}\del{}{k}A_{m}
+\end{align*}
+and
+\begin{align*}
+	F =& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}g^{ij}(\del{}{i} - iqA_{i})\psi\cc(\del{}{j} + iqA_{j})\psi + \frac{1}{2}T^{ijkm}\del{}{i}A_{j}\del{}{k}A_{m}.
+\end{align*}
+We then have
+\begin{align*}
+	F =& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}g^{ij}\left(-iq\kdelta{k}{i}\psi\cc(\del{}{j} + iqA_{j})\psi + (\del{}{i} - iqA_{i})\psi\cc\cdot iq\kdelta{k}{j}\psi\right)\var{A_{k}} + \frac{1}{2}T^{ijkm}\left(\kdelta{n}{i}\kdelta{p}{j}\del{}{k}A_{m} + \kdelta{n}{k}\kdelta{p}{m}\del{}{i}A_{j}\right)\del{}{n}\var{A_{p}} \\
+	=& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}g^{ij}\left(-iq\psi\cc(\del{}{j} + iqA_{j})\psi\var{A_{i}} + (\del{}{i} - iqA_{i})\psi\cc\cdot iq\psi\var{A_{j}}\right) + T^{ijkm}\del{}{k}A_{m}\del{}{i}\var{A_{j}} \\
+	=& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}\left(-iq\psi\cc\var{\vb{A}}\cdot(\grad{} + iq\vb{A})\psi + iq\psi\var{\vb{A}}\cdot(\grad{} - iq\vb{A})\psi\cc\right) + \curl{\vb{A}}\cdot\curl{\var{\vb{A}}} \\
+	=& \inte{}{}\dd[3]{\vb{r}}\frac{1}{2}\left(iq(\psi\grad{\psi\cc} - \psi\cc\grad{\psi}) + 2q^{2}\abs{\psi}^{2}\vb{A} + 2\curl{\curl{\vb{A}}}\right)\cdot\var{\vb{A}} - \div(\vb{A}\cdot\var{\vb{A}}).
+\end{align*}
+When integrating the last term by parts, we take the variations to arise solely due to the superconductor. By moving the boundaries of integration to outside the superconductor, we should automatically have $\var{\vb{A}} = \vb{0}$ there, leaving boundary conditions for the magnetic field free. The equation of motion is then
+\begin{align*}
+	\frac{1}{2}iq(\psi\grad{\psi\cc} - \psi\cc\grad{\psi}) + q^{2}\abs{\psi}^{2}\vb{A} + \curl{\curl{\vb{A}}} = \vb{0}.
+\end{align*}
+This justifies our previous identification of the current.
+
+Allowing $\abs{\psi}$ to vary is in fact a fundamental aspect of the theory. To examine this, let us consider a superconductor in the region $x > 0$ with $\psi(0) = 0$ and $\psi\to\sqrt{\frac{a}{b}}$ at infinity. Inside the superconductor, the Meissner effect dictates $B = 0$. By choosing the gauge $\vb{A} = \vb{0}$ and rescaling in terms of $\xi = \frac{1}{2\sqrt{a}}$ and $\tilde{\psi} = \sqrt{\frac{b}{a}}\psi$, we find
+\begin{align*}
+	-2\xi^{2}\dv[2]{\tilde{\psi}}{x} - \tilde{\psi} + \tilde{\psi}^{3} = 0,
+\end{align*}
+with solution
+\begin{align*}
+	\tilde{\psi} = \tanh(-\frac{x}{2\xi}).
+\end{align*}
+Thus a completely new length scale enters the theory. Having identified the two relevant length scales, we note that $\frac{1}{\xi\lambda} = \frac{a^{2}}{b}$, hence we write the critical field as $H_{\text{c}} = \frac{\Phi_{0}}{4\pi\xi\lambda}$.
+
+\paragraph{Type 1 and 2 Superconductors}
+If $B = H_{\text{c}}$ outside the superconductor, the density of Gibbs free energy there is then
+\begin{align*}
+	G \to F_{\text{n}} - \frac{1}{2}H_{\text{c}}^{2}.
+\end{align*}
+We have here introduced $F_{\text{n}}$, which is the free energy in the absence of any fields. The positive term from the free energy is added to the negative one from the Legendre transform to produce this result. Inside the superconductor, where $B = 0$, we also have
+\begin{align*}
+	G \to F_{\text{n}} - \frac{1}{2}H_{\text{c}}^{2}.
+\end{align*}
+We then define the interface energy density as
+\begin{align*}
+	\sigma = \inte{-\infty}{\infty}\dd{x}G(x) - F(\psi = 0) + \frac{1}{2}H_{\text{c}}^{2} = \inte{-\infty}{\infty}\dd{x}-a\abs{\psi}^{2} + \frac{1}{2}b\abs{\psi}^{4} + \frac{1}{2}\abs{(\grad{} + iq\vb{A})\psi}^{2} + \frac{1}{2}\vb{B}^{2} - \vb{B}\cdot\vb{H}_{\text{c}} + \frac{1}{2}\vb{H}_{\text{c}}^{2}.
+\end{align*}
+We will have to analyze this in length scale limits by introducing $\kappa = \frac{\lambda}{\xi}$. In the case of $\xi \gg 1$, $\abs{\psi}$ recovers its equilibrium value quickly on relevant length scales. We can then neglect gradient terms to find
+\begin{align*}
+	\sigma \approx -\frac{1}{2}\lambda H_{\text{c}}^{2}.
+\end{align*}
+In the limit $\kappa \ll 1$, the field is instead what is screened on a small time scale, and the gradient terms dominate. We then have
+\begin{align*}
+	\sigma \approx \frac{a^{2}}{2b}\inte{-\infty}{\infty}\dd{x}\left(1 - \tilde{\psi}\right)^{2} + 4\xi^{2}\left(\dv{\tilde{\psi}}{x}\right)^{2},
+\end{align*}
+which can be estimated to be $\frac{1}{2}\xi H_{\text{c}}^{2}$. More specifically, substituting the solutions we find
+\begin{align*}
+	\sigma = \frac{4}{3}\xi H_{\text{c}}^{2}.
+\end{align*}
+The two differ in signs, and this is a defining line between superconductors of types 1 and 2.
+
+What is the significance of this difference? For the latter case, which is type-1, large flux-expelling domains are formed as the temperature is lowered in order to minimize the surface area. The other case, which is type-2, corresponds to the formation of small domains. The argument is that slightly below the critical field, free energy is increased by creating domains of the normal state, but decreased by creating more interface area. Being below the critical field, it must be favorable to keep at least some of the material superconducting, but at some point the energy reduction of making everything superconducting starts to dominate. This happens at the first critical field. Similarly there must be a second critical field determining when the normal state becomes stable.
+
+\paragraph{Vortices in Superconductors}
+Let us now consider a single vortex in a superconductor. We make the anzats
+\begin{align*}
+	\psi = \psi_{\infty}f(\rho)e^{i\phi}
+\end{align*}
+in cylindrical coordinates. Taking $B = 0$ and choosing $A = 0$, we have
+\begin{align*}
+	\inte{}{}\dd[3]{\vb{r}}\abs{\grad{\psi}}^{2} =& \psi_{\infty}^{2}L_{z}\inte{0}{d}\dd{\rho}\frac{2\pi f^{2}(\rho)}{\rho},
+\end{align*}
+which diverges logarithmically at infinity. This indicates that there is an infinite energy cost to creating such a vortex. The system can cancel this by introducing its own field to cancel currents at infinity. We find
+\begin{align*}
+	\vb{A} = -\frac{\Phi_{\text{S}}}{2\pi\rho}\vb*{\phi},
+\end{align*}
+where $\Phi_{\text{S}}$ is the superconducting flux quantum. It follows from this that the magnetic flux is quantized.
+
+Consider now a vortex in the type-2 case, and suppose it carries $N$ quanta of flux $\phi_{0}$. With axial symmetry we have
+\begin{align*}
+	\vb{A} = \frac{A(r)}{r}\vb{r}\times\vb{e}_{z}.
+\end{align*}
+The current is
+\begin{align*}
+	\vb{J} = -\frac{1}{\lambda^{2}}\left(\frac{1}{q}\grad{\theta} + \vb{A}\right),
+\end{align*}
+and because currents decay rapidly in the bulk, we must have
+\begin{align*}
+	A(r) \to -\frac{N}{qr}
+\end{align*}
+to ensure this. We then have
+\begin{align*}
+	\vb{B} + \lambda^{2}\curl{\curl{\vb{B}}} = \frac{\Phi_{0}}{2\pi}\curl{\grad{\theta}}.
+\end{align*}
+The right-hand side is in fact a distribution. We can show that
+\begin{align*}
+	\curl{\grad{\theta}} = 2\pi N\delta(\vb{r})\vb{e}_{z}.
+\end{align*}
+This will correspond to a divergent solution for $\vb{B}$ at the origin. Imposing a cutoff of $\abs{\psi}$ at $r = \xi$, however, we can estimate
+\begin{align*}
+	B(0) = \frac{\Phi}{2\pi\lambda^{2}}\ln(\frac{\lambda}{\xi}).
+\end{align*}
+This will lead us to the vortex energy
+\begin{align*}
+	E_{\text{v}} = \frac{1}{4\pi}\left(\frac{\Phi}{\lambda}\right)^{2}\ln(\frac{\lambda}{\xi}).
+\end{align*}
+We can from this estimate the lower critical field as
+\begin{align*}
+	H_{\text{c}, 1} = \frac{E_{\text{v}}}{\Phi_{0}}.
+\end{align*}
+
+\paragraph{BCS Theory}
+BCS theory is a microscopic theory of superconductivity. It is defined by the Hamiltonian
+\begin{align*}
+	\ham = \sum\limits_{\vb{k}, \sigma}\epsilon_{\vb{k}}n_{\vb{k}, \sigma} + \sum\limits_{\vb{k}, \vb{k}\p}V_{\vb{k}, \vb{k}\p}c_{\vb{k}, \uparrow}\adj c_{-\vb{k}, \downarrow}\adj c_{-\vb{k}\p, \downarrow}c_{\vb{k}\p, \uparrow},
+\end{align*}
+with the simple matrix element
+\begin{align*}
+	 = \begin{cases}
+		 -V_{0},\ \abs{\epsilon_{\vb{k}}} < \hbar\omega_{\text{D}}, \\
+		 0,\ \text{otherwise.}
+	 \end{cases}
+\end{align*}
+The Debye frequency enters here as a consequence of BCS theory incorporating electron-phonon interactions.
+
+This Hamiltonian can be mapped to a spin Hamiltonian by introducing operators
+\begin{align*}
+	S_{\vb{k}}^{z} = \frac{1}{2}(n_{\vb{k}, \uparrow} + n_{\vb{k}, \downarrow} - 1),\ S_{\vb{k}}^{+} = c_{\vb{k}, \uparrow}\adj c_{-\vb{k}, \downarrow}\adj,\ S_{\vb{k}}^{-} = c_{-\vb{k}, \downarrow}c_{\vb{k}, \uparrow}.
+\end{align*}
+The Hamiltonian can then be written as
+\begin{align*}
+	\ham =& \sum\limits_{\vb{k}}\epsilon_{\vb{k}}(2S_{\vb{k}}^{z} + 1) + \frac{1}{2}\sum\limits_{\vb{k}, \vb{k}\p}V_{\vb{k}, \vb{k}\p}(S_{\vb{k}}^{+}S_{\vb{k}\p}^{-} + S_{\vb{k}\p}^{+}S_{\vb{k}}^{-}) \\
+	     =& H_{0} + \sum\limits_{\vb{k}}h_{\vb{k}}S_{\vb{k}}^{z} + \sum\limits_{\vb{k}, \vb{k}\p}V_{\vb{k}, \vb{k}\p}(S_{\vb{k}}^{x}S_{\vb{k}\p}^{x} + S_{\vb{k}\p}^{y}S_{\vb{k}}^{y}),
+\end{align*}
+with $h_{\vb{k}} = -\epsilon_{\vb{k}}$. We also define states
+\begin{align*}
+	\ket{\downarrow}_{\vb{k}} = \ket{0},\ \ket{\uparrow}_{\vb{k}} = S_{\vb{k}}^{+}\ket{0}.
+\end{align*}
+
+We will study this problem in the mean-field limit, with $\vb{S}_{\vb{k}} = \expval{\vb{S}_{\vb{k}}} + \delta\vb{S}_{\vb{k}}$. In the mean-field limit we find
+\begin{align*}
+	\ham = -\sum\limits_{\vb{k}}\vb{B}_{\vb{k}}\cdot\vb{S}_{\vb{k}},\ \vb{B}_{\vb{k}} = -2\epsilon_{\vb{k}}\vb{e}_{z} - 2\sum\limits_{\vb{k}\p}V_{\vb{k}, \vb{k}\p}\expval{S_{\vb{k}}^{x}}\vb{e}_{x}.
+\end{align*}
+Introducing
+\begin{align*}
+	E_{\vb{k}} = \frac{1}{2}B_{\vb{k}} = \sqrt{\epsilon_{\vb{k}}^{2} + \Delta_{0}},\ \Delta_{0} = V_{0}\sum\limits_{\vb{k}}\expval{S_{\vb{k}}^{x}},
+\end{align*}
+we make the anzats that the ground state is
+\begin{align*}
+	\ket{\psi} = \bigotimes\limits_{\vb{k}}\left(u_{\vb{k}}\ket{\downarrow}_{\vb{k}} + v_{\vb{k}}\ket{\uparrow}_{\vb{k}}\right) = \left(\prod\limits_{\vb{k}}\left(u_{\vb{k}} + v_{\vb{k}}c_{\vb{k}, \uparrow}\adj c_{-\vb{k}, \downarrow}\adj\right)\right)\ket{0},
+\end{align*}
+with
+\begin{align*}
+	u_{\vb{k}} = \sin(\frac{\theta_{\vb{k}}}{2}) = \sqrt{\frac{1}{2}\left(1 + \frac{\varepsilon_{\vb{k}}}{E_{\vb{k}}}\right)},\ v_{\vb{k}} = \cos(\frac{\theta_{\vb{k}}}{2}) = \sqrt{\frac{1}{2}\left(1 - \frac{\varepsilon_{\vb{k}}}{E_{\vb{k}}}\right)}.
+\end{align*}
+Note that we can use the above to write
+\begin{align*}
+	\Delta_{0} = \frac{1}{2}V_{0}\sum\limits_{\vb{k}}\sin(\theta_{\vb{k}}) = \frac{1}{2}V_{0}\sum\limits_{\vb{k}}\frac{\Delta_{0}}{E_{\vb{k}}},
+\end{align*}
+where we here sum over $\vb{k}$ at distances $\hbar\omega_{\text{D}}$ from the Fermi energy, as these produce the main contribution. We then find
+\begin{align*}
+	D(0)V_{0}\sinh[-1](\frac{\hbar\omega_{\text{D}}}{\Delta_{0}}) = 1,
+\end{align*}
+implying
+\begin{align*}
+	\Delta_{0} \approx D(0)\hbar\omega_{\text{D}}e^{-\frac{1}{D(0)V_{0}}}.
+\end{align*}
+
+Next we try to compute the condensation energy. We have for the normal state
+\begin{align*}
+	\expval{T}_{\text{n}} = \sum\limits_{\vb{k}}2\epsilon_{\vb{k}},\ \expval{V}_{\text{n}} = \sum\limits_{\vb{k}, \vb{k}\p}V_{\vb{k}, \vb{k}\p}(S_{\vb{k}}^{x}S_{\vb{k}\p}^{x} + S_{\vb{k}\p}^{y}S_{\vb{k}}^{y}) = \frac{1}{2}\sum\limits_{\vb{k}, \vb{k}\p}V_{\vb{k}, \vb{k}\p}.
+\end{align*}
+For the superconducting state we have
+\begin{align*}
+	\expval{T}_{\text{n}} =& \sum\limits_{\vb{k}}2\epsilon_{\vb{k}}\abs{v_{\vb{k}}}^{2} = \sum\limits_{\vb{k}}\left(1 - \frac{\varepsilon_{\vb{k}}}{E_{\vb{k}}}\right), \\
+	\expval{V}_{\text{n}} =& \expval{V}_{\text{n}} - \sum\limits_{\vb{k} \neq \vb{k}\p}\expval{S_{\vb{k}}^{x}}\expval{S_{\vb{k}\p}^{x}} = \expval{V}_{\text{n}} - \sum\limits_{\vb{k}}\frac{\abs{\Delta_{0}}^{2}}{2E_{\vb{k}}}.
+\end{align*}
+The condensation energy is then
+\begin{align*}
+	\Delta E =& \sum\limits_{\vb{k}}\frac{\abs{\Delta_{0}}^{2}}{2E_{\vb{k}}} - \abs{\epsilon_{\vb{k}}}\left(1 - \frac{\abs{\epsilon_{\vb{k}}}}{E_{\vb{k}}}\right) \\
+	         =& \abs{\Delta_{0}}^{2}\sum\limits_{\vb{k}}\frac{1}{\varepsilon_{\vb{k}} + E_{\vb{k}}} - \frac{1}{2E_{\vb{k}}} \\
+	   \approx& 2D(0)\abs{\Delta_{0}}^{2}\inte{0}{\infty}\dd{x}\frac{1}{x + \sqrt{1 + x^{2}}} - \frac{1}{2\sqrt{1 + x^{2}}} = \frac{1}{2}D(0)\abs{\Delta_{0}}^{2}.
+\end{align*}
+
+Returning to the Hamiltonian in its full form, we can introduce a Bogolioubov transformation
+\begin{align*}
+	\alpha_{\vb{k}} = u_{\vb{k}}c_{\vb{k}, \uparrow} - v_{\vb{k}}c_{-\vb{k}, \downarrow}\adj,\ \beta_{\vb{k}} = u_{\vb{k}}c_{\vb{k}, \downarrow} + v_{\vb{k}}c_{-\vb{k}, \downarrow}\adj,
+\end{align*}
+which satisfy fermionic commutation relations if
+\begin{align*}
+	\abs{u_{\vb{k}}}^{2} + \abs{v_{\vb{k}}}^{2} = 1,\ u_{\vb{k}}\cc = u_{-\vb{k}},\ v_{\vb{k}}\cc = v_{-\vb{k}}.
+\end{align*}
+The mean-field Hamiltonian then becomes
+\begin{align*}
+	\ham = \sum\limits_{\vb{k}}E_{\vb{k}}(\alpha_{\vb{k}}\adj\alpha_{\vb{k}} + \beta_{\vb{k}}\adj\beta_{\vb{k}}).
+\end{align*}
