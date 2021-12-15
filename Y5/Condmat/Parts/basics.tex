@@ -905,3 +905,109 @@ The mean-field Hamiltonian then becomes
 \begin{align*}
 	\ham = \sum\limits_{\vb{k}}E_{\vb{k}}(\alpha_{\vb{k}}\adj\alpha_{\vb{k}} + \beta_{\vb{k}}\adj\beta_{\vb{k}}).
 \end{align*}
+
+Can we now explain why superconductors have zero resistance? A simplified explanation is to say that electron-phonon interactions cause scattering and thereby resistivity. Because electrons in a superconductor are pairwise correlated, this costs much more energy. A better explanation comes from returning to the Ginzburg-Landau theory. At finite temperatures some quasiparticles will be thermally created. We find
+\begin{align*}
+	\Delta(T) = V_{0}\sum\limits_{\vb{k}}\expval{c_{-\vb{k}, \downarrow}c_{\vb{k}, \uparrow}} = V_{0}\sum\limits_{\vb{k}}u_{\vb{k}}v_{\vb{k}}\expval{1 - \alpha_{\vb{k}}\adj \alpha_{\vb{k}}\adj - \beta_{\vb{k}}\adj \beta_{\vb{k}}\adj}.
+\end{align*}
+Inserting thermal dependence we somehow find
+\begin{align*}
+	\Delta(T) = V_{0}\sum\limits_{\vb{k}}
+\end{align*}
+The critical temperature is given by the self-consistency equation
+\begin{align*}
+	1 = V_{0}\sum\limits_{\vb{k}}\frac{\tanh(\frac{\beta\epsilon_{\vb{k}}}{2})}{2\epsilon_{\vb{k}}} = D(0)V_{0}\inte{.\hbar\omega_{\text{D}}}{\hbar\omega_{\text{D}}}\dd{\epsilon}\frac{\tanh(\frac{\beta\epsilon}{2})}{2\epsilon}.
+\end{align*}
+We can then show that this implies
+\begin{align*}
+	\frac{2\Delta_{0}}{kT_{\text{c}}} \approx 3.5.
+\end{align*}
+
+What happens if two superconductors with different phases are put into contact? The phase gradient will cause a current to flow. Defining a state $\ket{m}$ which describes $m$ Cooper pairs tunnelling from one side to the other we introduce the tunnelling Hamiltonian
+\begin{align*}
+	\ham = \frac{1}{2}E_{J}\sum\limits_{m}\op{m}{m + 1} + \op{m + 1}{m}.
+\end{align*}
+The prefactor is called the Josephson coupling. The eigenstates are
+\begin{align*}
+	\ket{\phi} = \sum\limits_{m}e^{im\phi}\ket{m},
+\end{align*}
+with eigenvalue $-E_{J}\cos(\phi)$. The corresponding current is
+\begin{align*}
+	I(\phi) = \frac{2e}{\hbar}E_{J}\sin(\phi).
+\end{align*}
+Defining the operator
+\begin{align*}
+	n = \sum\limits_{m}m\op{m},
+\end{align*}
+the equations of motion are
+\begin{align*}
+	I = 2e\dv{n}{t} = \frac{2ie}{\hbar}\comm{\ham}{n} = -i\frac{e}{\hbar}E_{J}\sum\limits_{m}\op{m}{m + 1} - \op{m + 1}{m}.
+\end{align*}
+The energy eigenstates are thus also eigenstates of the current, with eigenvalue $I_{C}\sin(\phi)$. If there is a voltage drop we should add a term $U = -2eVn$. We also find
+\begin{align*}
+	\del{}{t}\phi = \frac{2eV}{\hbar}.
+\end{align*}
+This is similar to the semi-classical relations for a wavepacket in a potential.
+
+\paragraph{The Bogolioubov-de Gennes Model}
+The Bogolioubov-de Gennes model is based on the Fermi-Hubbard model defined by
+\begin{align*}
+	\ham = -t\sum\limits_{\expval{i, j}, \sigma}c_{i, \sigma}\adj c_{j, \sigma}\adj + c_{j, \sigma}\adj c_{i, \sigma}\adj - U\sum\limits_{i}n_{j, \uparrow}n_{j, \downarrow} - \mu\sum\limits_{i}n_{i, \uparrow} + n_{i, \downarrow}.
+\end{align*}
+The sum in the middle is quartic in the creation and annihilation operators, which is unfortunate. We remedy this by using a mean-field approximation, in which we obtain a new interaction term
+\begin{align*}
+	\Delta = -\sum\limits_{i}\Delta_{i}c_{i, \uparrow}\adj c_{i, \downarrow}\adj + \Delta_{i}\cc c_{i, \downarrow}c_{i, \uparrow}.
+\end{align*}
+For self-consistency we much have
+\begin{align*}
+	\Delta_{i} = U\expval{c_{j, \downarrow}c_{j, \uparrow}}.
+\end{align*}
+Now consider a gauge transformation of the operators according to
+\begin{align*}
+	c(\vb{R})\to e^{-i\frac{e}{\hbar c}\chi(\vb{R})}c(\vb{R}).
+\end{align*}
+We then have
+\begin{align*}
+	\Delta(\vb{R})\to e^{-i\frac{2e}{\hbar c}\chi(\vb{R})}\Delta(\vb{R}),
+\end{align*}
+and $\Delta$ transforms as if it had double charge.
+
+The Chern-Simons Hamiltonian slightly generalizes the above to
+\begin{align*}
+	\Delta = -\sum\limits_{i, i}\Delta_{i, j}c_{i, \uparrow}\adj c_{j, \downarrow}\adj + \Delta_{i, j}\cc c_{j, \downarrow}c_{i, \uparrow}.
+\end{align*}
+In this case, the symmetry of the spin part of the state is opposite of the symmetry of the $\Delta_{i, j}$. Assuming translational invariance we can Fourier transform to find
+\begin{align*}
+	\Delta(\vb{k}) = \frac{1}{N}\sum\limits_{i}\Delta(\vb{R}_{i})e^{-i\vb{k}\cdot\vb{R}_{i}}.
+\end{align*}
+In the presence of on-site pairing $\Delta_{i, j} = \Delta\kdelta{}{ij}$ we find $\Delta(\vb{k}) = \Delta$.
+
+We are now ready to define the Bogolioubov-de Gennes Hamiltonian. It has a kinetic term
+\begin{align*}
+	H_{0} = \sum\limits_{i, j, \sigma}H_{0, i, j}c_{i, \sigma}\adj c_{i, \sigma},
+\end{align*}
+as well as a term $\Delta$. This can be neatly written in a matrix notation and the resulting matrix can be diagonalized, the corresponding eigenvectors being Bogolioubov transformed operators. Notable is the existence of an eigenvalue $-E$ for every eigenvalue $E$. If the latter has eigenvector $(u, v)$, then the former has an eigenvector $(\mp v\cc, u)$, where the sign is determined by the symmetry of $\Delta_{i, j}$.
+
+\paragraph{The Kitaev Chain}
+The Kitaev chain is a one-dimensional model in a similar vein to the above. The particles composing it are spinless fermions. Its Hamiltonian is
+\begin{align*}
+	\ham = -\sum\limits_{i}t(c_{i}\adj c_{i + 1} + c_{i + 1}\adj c_{i}) + \mu c_{j}\adj c_{j} + \Delta(c_{j}\adj c_{j + 1}\adj + c_{j + 1}c_{j}).
+\end{align*}
+In Fourier space it is
+\begin{align*}
+	\ham = \sum\limits_{k}\epsilon_{k}c_{k}\adj c_{k} - \Delta(k)c_{k}\adj c_{-k} - \Delta\cc(k)c_{-k}\adj c_{k},
+\end{align*}
+where $\epsilon_{k} = -2t\cos(k) - \mu$ in units where $a = 1$, and $\Delta(k) = i\sin(k)$. The energies are
+\begin{align*}
+	E_{k} = \sqrt{\epsilon_{k}^{2} + 4\abs{\Delta(k)}^{2}}.
+\end{align*}
+
+We can introduce the Majorana representation
+\begin{align*}
+	c_{j}\adj = \gamma_{2j} + \gamma_{2j + 1},
+\end{align*}
+for some new set of self-adjoint operators $\gamma$. Their commutation relations are $\acomm{\gamma_{i}}{\gamma_{j}} = \frac{1}{2}\kdelta{}{ij}$. In the particular case of $\mu = 0$ and $\Delta = t$ we find
+\begin{align*}
+	\ham = -4it\sum\limits_{i}\gamma_{2j - 1}\gamma_{2j},
+\end{align*}
+which is notably independent of $\gamma_{0}$ and $\gamma_{2N + 1}$.
