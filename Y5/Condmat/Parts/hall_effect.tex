@@ -1,0 +1,110 @@
+\section{The Hall Effect}
+
+\paragraph{The Classical Hall Effect}
+Consider a slab of some conducting material. In the simple kinetic theory of electrons in a conductor the equation of motion is
+\begin{align*}
+	\expval{\dv{\vb{v}}{t}} + \frac{1}{\tau}\expval{\vb{v}} = \frac{1}{m}\vb{F}.
+\end{align*}
+Suppose now that the slab were to be immersed in an electric field $E\vb{e}_{x}$ and a magnetic field $B\vb{e}_{z}$. In the steady state we have
+\begin{align*}
+	\frac{1}{\tau}\expval{\vb{v}} = -\frac{e}{m}\left(\left(E + v_{y}B\right)\vb{e}_{x} + \left(E_{y} - v_{x}B\right)\vb{e}_{y}\right).
+\end{align*}
+We impose boundary conditions such that there is no net current flow in the $y$ direction. In the case of $B = 0$ we then find the conductivity $\sigma = \frac{ne^{2}\tau}{m}$. This will naturally also be the case for non-zero $B$ as $v_{y} = 0$ in the steady state. This also means that $v_{x} = -\frac{e\tau}{m}E$, and we find
+\begin{align*}
+	E_{y} = -\frac{e\tau}{m}EB.
+\end{align*}
+The steady-state current is now
+\begin{align*}
+	\vb{J} = -ne\expval{\vb{v}} = \frac{ne^{2}\tau}{m}\vb{E}.
+\end{align*}
+On tensor form we have
+\begin{align*}
+	E_{i} = \tensor{\rho}{_{i}^{j}}J_{j}.
+\end{align*}
+Evidently the resistivity tensor has diagonal components $\frac{1}{\sigma} = \frac{m}{ne^{2}\tau}$, but the addition of the magnetic field also provides an off-diagonal component
+\begin{align*}
+	\tensor{\rho}{_{y}^{x}} = -\frac{B}{ne}.
+\end{align*}
+This phenomenon is termed Hall resistance or the Hall effect. From this we define the Hall coefficient
+\begin{align*}
+	R_{\text{H}} = \frac{\tensor{\rho}{_{y}^{x}}}{B} = -\frac{1}{ne}.
+\end{align*}
+
+\paragraph{Failures of the Hall Effect}
+The predictions based on these calculations turned out to give correct predictions for many materials, but some materials exhibited a reverse Hall effect in having a positive Hall coefficient, a property unexplainable by these purely classical arguments. The key point here is the assumption that the charge carriers have negative charge, an assumption which turns out to not be true in all materials.
+
+\paragraph{Charged Particles in Magnetic Fields}
+For studying the quantum Hall effect we will need to study the physics of classical particles in magnetic fields. We recall that the Lagrangian is
+\begin{align*}
+	\lag = \frac{1}{2}m\dot{x}^{i}x_{i} - q\left(\phi(x) - \dot{x}^{i}A_{i}\right).
+\end{align*}
+The canonical momenta are
+\begin{align*}
+	p_{i} = \pdv{\lag}{\dot{x}^{i}} = m\dot{x}_{i} + qA_{i},
+\end{align*}
+hence the Hamiltonian is
+\begin{align*}
+	\ham =& p_{i}\dot{x}^{i} - \lag \\
+	     =& \frac{1}{m}p_{i}(p^{i} - qA^{i}) - \frac{1}{2m}(p^{i} - qA^{i})(p_{i} - qA_{i}) + q\left(\phi(x) - \frac{1}{m}(p^{i} - qA^{i})A_{i}\right) \\
+	     =& \frac{1}{2m}(p^{i} - qA^{i})(p_{i} - qA_{i}) + q\phi(x).
+\end{align*}
+Note that the canonical momenta are not the physical momenta.
+
+Consider now a two-dimensional system with $\vb{B} = B\vb{e}_{z}$. A choice of $\vb{A}$ is then $\vb{A} = -xB\vb{e}_{y}$. For this case we find that $p_{x}$ is a component of the physical momentum and
+\begin{align*}
+	\ham = \frac{1}{2m}\left(p_{x}^{2} + (p_{y} + qBx)^{2}\right) + q\phi(x).
+\end{align*}
+For $\phi = 0$ this problem is separable and we can construct eigenstates of the Hamiltonian by starting with eigenstates of $p_{y}$. In $x$ we may then introduce
+\begin{align*}
+	\frac{1}{2}m\omega_{\text{c}}^{2} = \frac{1}{2m}\cdot q^{2}B^{2},\ x\p = x + \frac{p_{y}}{qB} = x \pm k_{y}\ell^{2},
+\end{align*}
+where we in the last step introduced the magnetic length $\ell = \sqrt{\frac{\hbar}{\abs{q}B}}$. The choice of sign depends on the charge of $q$, which we will take to be positive. The resulting Hamiltonian is then that of a shifted harmonic oscillator. Its energy levels are
+\begin{align*}
+	E = \left(n + \frac{1}{2}\right)\hbar\omega_{\text{c}}.
+\end{align*}
+
+We can now try to impose periodic boundary conditions. While this cannot be done in all directions, we can still argue that because the solutions in the $x$ directions are Gaussian, the solutions can be considered to be confined. The set of solutions that are localized within the sample are then those with $0 < k_{y} < \frac{L_{x}}{\ell^{2}}$. The degeneracy is then
+\begin{align*}
+	N \approx \frac{L_{y}}{2\pi}\inte{0}{\frac{L_{x}}{\ell^{2}}} = \frac{A}{2\pi\ell^{2}},
+\end{align*}
+which is the number of quanta of flux $\frac{2\pi\ell^{2}h}{q}$ contained in the sample. That is, every Landau level is paired with one flux quantum. What this means is that when the flux becomes an integer multiple of $2\pi\ell^{2}B$ one set of Landau will be filled and the one above will be empty.
+
+Evidently there is no current in the $x$-direction, but what about the $y$ direction? The solutions contain a factor $e^{ik_{y}y}$, so there might be some. We compute this by only considering the lowest Landau level, equivalent to assuming the energy separation to be large. The physical momentum being $P_{i} = p_{i} - qA_{i}$ we have
+\begin{align*}
+	I_{y} =& \inte{}{}\dd[2]{\vb{r}}\expval{J_{y}} \\
+	      =& \frac{qL_{y}}{m}\inte{-\infty}{\infty}\dd{x}\frac{1}{L_{y}}\sqrt{\frac{m\omega_{\text{c}}}{\pi\hbar}}e^{-ik_{y}y}e^{-\frac{m\omega_{\text{c}}}{2\hbar}(x + k_{y}\ell^{2})^{2}}(-i\hbar\del{}{y} + qBx)e^{ik_{y}y}e^{-\frac{m\omega_{\text{c}}}{2\hbar}(x + k_{y}\ell^{2})^{2}} \\
+	      =& q\sqrt{\frac{\omega_{\text{c}}}{\pi m\hbar}}\inte{-\infty}{\infty}\dd{x}(\hbar k_{y} + qBx)e^{-\frac{m\omega_{\text{c}}}{\hbar}(x + k_{y}\ell^{2})^{2}},
+\end{align*}
+which vanishes identically. This is not surprising as $k_{y}$ only determines the center of the harmonic oscillator.
+
+Let us now add an electric field using $\phi = -Ex$. The choice of $\vb{A}$ is still appropriate, and the Hamiltonian is
+\begin{align*}
+	\ham &= \frac{1}{2m}\left(p_{x}^{2} + (p_{y} + qBx)^{2}\right) - qEx \\
+	     &= \frac{1}{2m}\left(p_{x}^{2} + p_{y}^{2} + 2qBxp_{y} + q^{2}B^{2}x^{2} - 2mqEx\right) \\
+	     =& \frac{1}{2m}\left(p_{x}^{2} + \left(qBx + p_{y} - \frac{mE}{B}\right)^{2} - \left(p_{y} - \frac{mE}{B}\right)^{2} + p_{y}^{2}\right) \\
+	     =& \frac{1}{2m}p_{x}^{2} + \frac{1}{2}m\frac{q^{2}B^{2}}{m^{2}}\left(x + \frac{p_{y}}{qB} - \frac{mE}{qB^{2}}\right)^{2} - \frac{1}{2m}\left(\left(\frac{mE}{B}\right)^{2} - \frac{2p_{y}mE}{B}\right) \\
+	     =& \frac{1}{2m}p_{x}^{2} + \frac{1}{2}m\omega_{\text{c}}^{2}\left(x + k_{y}\ell^{2} - \frac{mE}{qB^{2}}\right)^{2} - \frac{1}{2}m\left(\frac{E}{B}\right)^{2} +  qE\left(k_{y}\ell^{2} - \frac{mE}{qB^{2}}\right).
+\end{align*}
+This has an extra term in the peak position which, in the case of weak fields, can be taken to be evaluated at the center of the Landau level. This system also has a net current due to the recentering of the states. Note that the electric field lifts the degeneracy of the individual levels but introduces degeneracy between levels. States cannot decay between levels unless there exists disorder or phonons on which the states can scatter.
+
+\paragraph{The Integer Quantum Hall Effect}
+%TODO: Please fix this
+Suppose you were to make the sample finite by introducing a potential that screens off a region of space. We can surmise that
+\begin{align*}
+	\psi = \frac{1}{\sqrt{L_{y}}}e^{ik_{y}y}f_{k_{y}}(x)
+\end{align*}
+for some set of functions $f_{k_{y}}$. The group velocity
+\begin{align*}
+	v_{y} = \frac{1}{\hbar}\pdv{E}{k_{y}} \approx \frac{\ell^{2}}{\hbar}\dv{V}{x}.
+\end{align*}
+By the confining nature of the potential the group velocity thus has different directions in either end of the sample. The net current is approximately
+\begin{align*}
+	I = \frac{q}{L_{y}}\inte{-\infty}{\infty}\frac{L_{y}}{2\pi\hbar}\dd{k_{y}}\pdv{E}{k_{y}}n_{k_{y}},
+\end{align*}
+where $n_{k_{y}}$ is the probability of a given state being occupied. In the limit of zero temperature we find
+\begin{align*}
+	I = \frac{q}{\hbar}\Delta\mu,
+\end{align*}
+where $\Delta\mu$ is the change in chemical potential between either edge. Defining the Hall voltage according to $V_{\text{H}} = \frac{\Delta\mu}{q}$ we find $I = \frac{\nu q^{2}}{\hbar}V_{\text{H}}$, where we introduce the number $\nu$ of occupied Landau levels in the bulk.
+
+\paragraph{Quantum Hall Effect - a Percolation Picture}
