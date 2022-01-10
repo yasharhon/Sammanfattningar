@@ -62,12 +62,17 @@ where we in the last step introduced the magnetic length $\ell = \sqrt{\frac{\hb
 \begin{align*}
 	E = \left(n + \frac{1}{2}\right)\hbar\omega_{\text{c}}.
 \end{align*}
+Note that each level is highly degenerate due to the $k_{y}$ freedom.
 
-We can now try to impose periodic boundary conditions. While this cannot be done in all directions, we can still argue that because the solutions in the $x$ directions are Gaussian, the solutions can be considered to be confined. The set of solutions that are localized within the sample are then those with $0 < k_{y} < \frac{L_{x}}{\ell^{2}}$. The degeneracy is then
+We can now try to confine the problem by imposing periodic boundary conditions. This can only be done in the $y$ direction due to the phase difference at either end in the $x$ direction, but because the solutions with respect to $x$ are Gaussian, the states can be considered to be confined. The set of states that are localized within the sample are then those with $0 < k_{y} < \frac{L_{x}}{\ell^{2}}$. With the $k_{y}$ spread evenly out at distances of $\frac{L_{y}}{2\pi}$ between neighboring values, the degeneracy of each energy level is then
 \begin{align*}
-	N \approx \frac{L_{y}}{2\pi}\inte{0}{\frac{L_{x}}{\ell^{2}}} = \frac{A}{2\pi\ell^{2}},
+	N \approx \frac{L_{y}}{2\pi}\cdot \frac{L_{x}}{\ell^{2}} = \frac{A}{2\pi\ell^{2}},
 \end{align*}
-which is the number of quanta of flux $\frac{2\pi\ell^{2}h}{q}$ contained in the sample. That is, every Landau level is paired with one flux quantum. What this means is that when the flux becomes an integer multiple of $2\pi\ell^{2}B$ one set of Landau will be filled and the one above will be empty.
+which is the number of quanta of flux $\frac{2\pi\ell^{2}h}{q}$ contained in the sample. That is, each state in every Landau level is paired with one flux quantum. Thus, introducing the filling factor
+\begin{align*}
+	\nu = \frac{N_{e}}{N_{\Phi}},
+\end{align*}
+which is the ratio of electrons in the sample to flux quanta, is an integer, the ground state of the system has the $\nu$ lowest Landau levels filled and all higher levels are empty, producing a band gap in the bulk.
 
 Evidently there is no current in the $x$-direction, but what about the $y$ direction? The solutions contain a factor $e^{ik_{y}y}$, so there might be some. We compute this by only considering the lowest Landau level, equivalent to assuming the energy separation to be large. The physical momentum being $P_{i} = p_{i} - qA_{i}$ we have
 \begin{align*}
@@ -77,34 +82,53 @@ Evidently there is no current in the $x$-direction, but what about the $y$ direc
 \end{align*}
 which vanishes identically. This is not surprising as $k_{y}$ only determines the center of the harmonic oscillator.
 
+\paragraph{Reobtaining the Classical Hall Effect}
 Let us now add an electric field using $\phi = -Ex$. The choice of $\vb{A}$ is still appropriate, and the Hamiltonian is
 \begin{align*}
 	\ham &= \frac{1}{2m}\left(p_{x}^{2} + (p_{y} + qBx)^{2}\right) - qEx \\
-	     &= \frac{1}{2m}\left(p_{x}^{2} + p_{y}^{2} + 2qBxp_{y} + q^{2}B^{2}x^{2} - 2mqEx\right) \\
-	     =& \frac{1}{2m}\left(p_{x}^{2} + \left(qBx + p_{y} - \frac{mE}{B}\right)^{2} - \left(p_{y} - \frac{mE}{B}\right)^{2} + p_{y}^{2}\right) \\
-	     =& \frac{1}{2m}p_{x}^{2} + \frac{1}{2}m\frac{q^{2}B^{2}}{m^{2}}\left(x + \frac{p_{y}}{qB} - \frac{mE}{qB^{2}}\right)^{2} - \frac{1}{2m}\left(\left(\frac{mE}{B}\right)^{2} - \frac{2p_{y}mE}{B}\right) \\
-	     =& \frac{1}{2m}p_{x}^{2} + \frac{1}{2}m\omega_{\text{c}}^{2}\left(x + k_{y}\ell^{2} - \frac{mE}{qB^{2}}\right)^{2} - \frac{1}{2}m\left(\frac{E}{B}\right)^{2} +  qE\left(k_{y}\ell^{2} - \frac{mE}{qB^{2}}\right).
+	     &= \frac{1}{2m}\left(p_{x}^{2} + p_{y}^{2} + 2qBxp_{y} + q^{2}B^{2}x^{2} - 2mqEx\right).
 \end{align*}
-This has an extra term in the peak position which, in the case of weak fields, can be taken to be evaluated at the center of the Landau level. This system also has a net current due to the recentering of the states. Note that the electric field lifts the degeneracy of the individual levels but introduces degeneracy between levels. States cannot decay between levels unless there exists disorder or phonons on which the states can scatter.
+This is still separable in the $y$ direction, so we reintroduce the magnetic length to find
+\begin{align*}
+	\ham =& \frac{1}{2m}\left(p_{x}^{2} + \left(qBx + p_{y} - \frac{mE}{B}\right)^{2} - \left(p_{y} - \frac{mE}{B}\right)^{2} + p_{y}^{2}\right) \\
+	     =& \frac{1}{2m}p_{x}^{2} + \frac{1}{2}m\omega_{\text{c}}^{2}\left(x + k_{y}\ell^{2} - \frac{mE}{qB^{2}}\right)^{2} - \frac{1}{2m}\left(\frac{m^{2}E^{2}}{B^{2}} - \frac{2mEp_{y}}{B}\right) \\
+	     =& \frac{1}{2m}p_{x}^{2} + \frac{1}{2}m\omega_{\text{c}}^{2}\left(x - X\right)^{2} + \frac{1}{2}m\left(\frac{E}{B}\right)^{2} - qEX,
+\end{align*}
+which is an oscillator Hamiltonian in the new peak position
+\begin{align*}
+	X = \frac{mE}{qB^{2}} - k_{y}\ell^{2}.
+\end{align*}
+Next there is a term that looks like a kinetic energy, which we will return to, and a linear term in the peak position. This term actually produces a non-trivial group velocity, as it depends on $k_{y}$, and we have
+\begin{align*}
+	v_{\text{g}} = \frac{1}{\hbar}\del{}{k_{y}}\epsilon_{k_{y}, n} = -\frac{qE}{\hbar}\cdot -\ell^{2} = \frac{E}{B}.
+\end{align*}
+Note that this implies the presence of a current in the $y$ direction. The kinetic energy term can thus be associated with the drift owed to the electric field. Thus we have recaptured the essential features of the classical Hall effect.
+
+Note that the electric field lifts the degeneracy of the individual levels but introduces degeneracy between levels. States cannot decay between levels unless there exists disorder or phonons on which the states can scatter.
 
 \paragraph{The Integer Quantum Hall Effect}
-%TODO: Please fix this
-Suppose you were to make the sample finite by introducing a potential that screens off a region of space. We can surmise that
+Suppose you were to make the sample finite by introducing a potential $V(x)$ that screens off a region of space. We can surmise that
 \begin{align*}
 	\psi = \frac{1}{\sqrt{L_{y}}}e^{ik_{y}y}f_{k_{y}}(x)
 \end{align*}
 for some set of functions $f_{k_{y}}$. The group velocity
 \begin{align*}
-	v_{y} = \frac{1}{\hbar}\pdv{E}{k_{y}} \approx \frac{\ell^{2}}{\hbar}\dv{V}{x}.
+	v_{y} = \frac{1}{\hbar}\del{}{k_{y}}E \approx \frac{\ell^{2}}{\hbar}\dv{V}{x}.
 \end{align*}
-By the confining nature of the potential the group velocity thus has different directions in either end of the sample. The net current is approximately
+By the confining nature of the potential the group velocity thus has different directions in either end of the sample. The semiclassical interpretation of this is that states in the bulk move in cyclotron motion and states on the edge bounce on the potential so as to move along the edge.
+
+The net current per Landau level is approximately
 \begin{align*}
-	I = \frac{q}{L_{y}}\inte{-\infty}{\infty}\frac{L_{y}}{2\pi\hbar}\dd{k_{y}}\pdv{E}{k_{y}}n_{k_{y}},
+	I = \frac{q}{L_{y}}\frac{L_{y}}{2\pi}\inte{-\infty}{\infty}\dd{k_{y}}\frac{1}{\hbar}\del{}{k_{y}}En_{k_{y}},
 \end{align*}
 where $n_{k_{y}}$ is the probability of a given state being occupied. In the limit of zero temperature we find
 \begin{align*}
-	I = \frac{q}{\hbar}\Delta\mu,
+	I = \frac{q}{h}\Delta\mu,
 \end{align*}
-where $\Delta\mu$ is the change in chemical potential between either edge. Defining the Hall voltage according to $V_{\text{H}} = \frac{\Delta\mu}{q}$ we find $I = \frac{\nu q^{2}}{\hbar}V_{\text{H}}$, where we introduce the number $\nu$ of occupied Landau levels in the bulk.
+where $\Delta\mu$ is the change in chemical potential between either edge. Defining the Hall voltage according to $V_{\text{H}} = \frac{\Delta\mu}{q}$ we find $I = \frac{\nu q^{2}}{\hbar}V_{\text{H}}$. This implies a quantized Hall resistivity.
+
+\paragraph{The Role of Disorder}
+The above is almost sufficient to explain the quantum Hall effect. While we have seen that the periodic vanishing of the band gap causes it, a perfect sample would only exhibit this effect momentarily. Instead the existence of defects creates states between the Landau levels that are occupied before the band gap vanishes again, causing the Hall resistance to persist across a range of magnetic fields.
 
 \paragraph{Quantum Hall Effect - a Percolation Picture}
+Using a semiclassical argument, we can also arrive at the quantum hall effect using a semiclassical argument. The idea is the following: Consider a semiconductor in a strong magnetic field and suppose there are some small impurities creating a randomly varying electric field. This will cause the semiconductor to have some potential landscape, and the states will be localized about contours of constant field. The filling of states will thus act as if the potential landscape is filled with water. At low filling most of the landscape is ``dry land'', and no current can propagate. As the filling factor increases, a first phase transition arises when the shoreline percolates to the other side. Successive increases in filling causes further phase transition, implying a quantized conductivity.

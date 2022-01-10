@@ -48,15 +48,15 @@ Thus we can apparently remove the Berry phase entirely. For closed orbits in par
 
 Due to Stokes' theorem the line integral of the Berry connection about some closed path is related to the surface integral of the differential of some antisymmetric tensor. That is, we can define the Berry curvature
 \begin{align*}
-\omega_{n, \mu\nu} = \del{}{\mu}A_{n, \nu} - \del{}{\nu}A_{n, \mu},
+	\omega_{n, \mu\nu} = \del{}{\mu}A_{n, \nu} - \del{}{\nu}A_{n, \mu},
 \end{align*}
 which satisfies
 \begin{align*}
-\inte{\bound{S}}{}\dd{R}\cdot A_{n} = \frac{1}{2}\inte{S}{}\dd{R_{\mu}}\wedge\dd{R_{\nu}}\omega_{n, \mu\nu}.
+	\inte{\bound{S}}{}\dd{R}\cdot A_{n} = \frac{1}{2}\inte{S}{}\dd{R_{\mu}}\wedge\dd{R_{\nu}}\omega_{n, \mu\nu}.
 \end{align*}
 In the particular case of three dimensions the Berry curvature can be expressed in terms of a pseudomagnetic field
 \begin{align*}
-\vb{b}_{n} = i\left(\grad_{\vb{R}}\ket{n(\vb{r})}\right)\adj\times\grad_{\vb{R}}\ket{n(\vb{r})}.
+	\vb{b}_{n} = i\left(\grad_{\vb{R}}\ket{n(\vb{r})}\right)\adj\times\grad_{\vb{R}}\ket{n(\vb{r})}.
 \end{align*}
 
 \paragraph{The Aharanov-Bohm Effect}
@@ -64,44 +64,44 @@ Consider two wires passing a region with a very localized magnetic field, one wi
 
 To study this, we will consider a charged particle confined to some box with one corner at $\vb{R}_{0}$ by a potential $V(\vb{r} - \vb{R}_{0})$. We will study this by adiabatically moving the box around in space. If the box never enters the region with magnetic field, we may take
 \begin{align*}
-\vb{A} = \frac{\Phi_{0}}{2\pi}\grad{\chi}.
+	\vb{A} = \frac{\Phi_{0}}{2\pi}\grad{\chi}.
 \end{align*}
 Supposing the ground state of the electron in the box is $\xi(\vb{r} - \vb{R}_{0})$ in the absence of the magnetic field, we can find a normalized eigenfunction $e^{i\phi}\xi(\vb{r} - \vb{R}_{0})$ by the gauge transformation anzats
 \begin{align*}
-(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}).
+	(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}).
 \end{align*}
 We find
 \begin{align*}
-(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}) - \left(i\hbar\grad{\phi} + q\vb{A}\right)\xi(\vb{r} - \vb{R}_{0}),
+	(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}) - \left(i\hbar\grad{\phi} + q\vb{A}\right)\xi(\vb{r} - \vb{R}_{0}),
 \end{align*}
 hence
 \begin{align*}
-\phi = -\frac{q}{\hbar}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = -\frac{2\pi}{\Phi_{0}}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = \chi(\vb{R}_{0}) - \chi(\vb{r}).
+	\phi = -\frac{q}{\hbar}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = -\frac{2\pi}{\Phi_{0}}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = \chi(\vb{R}_{0}) - \chi(\vb{r}).
 \end{align*}
 
-There is still an ambiguity in the choice of \chi, as well as the possibility to add an $\vb{R}_{0}$-dependent phase $\theta$ to the wavefunction. We now fix them by imposing that
+There is still an ambiguity in the choice of $\chi$, as well as the possibility to add an $\vb{R}_{0}$-dependent phase $\theta$ to the wavefunction. We now fix them by imposing that
 \begin{align*}
-\psi(\vb{r}) = e^{i(\theta + \chi(\vb{R}_{0}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0})
+	\psi(\vb{r}) = e^{i(\theta + \chi(\vb{R}_{0}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0})
 \end{align*}
 be real at some point $\vb*{\Delta}$ as measured within the box. Assuming $\xi$ to be real and positive at $\vb*{\Delta}$, we require
 \begin{align*}
-\theta = \chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{R}_{0}),
+	\theta = \chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{R}_{0}),
 \end{align*}
 hence
 \begin{align*}
-\psi(\vb{r}) = e^{i(\chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0}).
+	\psi(\vb{r}) = e^{i(\chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0}).
 \end{align*}
 
 How does this tie in to the Berry phase? $\vb{R}_{0}$ now plays the role of the parameters in the Hamiltonian. For the ground state we then have
 \begin{align*}
-\vb{A} =& i\integ[3]{}{}{\vb{r}}{\psi\cc\grad_{\vb{R}_{0}}\psi} \\
-=& i\integ[3]{}{}{\vb{r}}{e^{-i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\left(ie^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + e^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})\right)} \\
-=& i\integ[3]{}{}{\vb{r}}{i\xi^{2}(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + \xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})} \\
-=& -\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}) + \frac{1}{2}i\integ[3]{}{}{\vb{r}}{\grad_{\vb{R}_{0}}\xi^{2}(\vb{r} - \vb{R}_{0})},
+	\vb{A} =& i\integ[3]{}{}{\vb{r}}{\psi\cc\grad_{\vb{R}_{0}}\psi} \\
+	       =& i\integ[3]{}{}{\vb{r}}{e^{-i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\left(ie^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + e^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})\right)} \\
+	       =& i\integ[3]{}{}{\vb{r}}{i\xi^{2}(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + \xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})} \\
+	       =& -\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}) + \frac{1}{2}i\integ[3]{}{}{\vb{r}}{\grad_{\vb{R}_{0}}\xi^{2}(\vb{r} - \vb{R}_{0})},
 \end{align*}
 having used the fact that the state is normalized. The latter term is the integral of a total derivative, which yields no contribution as the wavefunction vanishes at infinity. Thus, by slowly moving the electron we have
 \begin{align*}
-\gamma = -\inte{}{}\dd{\vb{R}_{0}}\cdot\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}).
+	\gamma = -\inte{}{}\dd{\vb{R}_{0}}\cdot\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}).
 \end{align*}
 Taking the displacement $\vb*{\Delta}$ to be small, the phase difference between two wires is thus
 \begin{align*}
@@ -184,7 +184,11 @@ Consider now such a system in a weak uniform magnetic field. This gives rise to 
 \begin{align*}
 	\delta\ket{n, \vb{k}} = -q\vb{E}\cdot\sum\limits_{m, \vb{q}}\ket{m, \vb{q}}\frac{\mel{m, \vb{q}}{\vb{r}}{n, \vb{k}}}{E_{n, \vb{k}} - E_{m, \vb{q}}}.
 \end{align*}
-As the involved states are eigenstates of the Hamiltonian we can write this as matrix elements of $\comm{\vb{r}}{\ham}$. We have
+As the involved states are eigenstates of the Hamiltonian we have
+\begin{align*}
+	\mel{m, \vb{q}}{\vb{r}\ham}{n, \vb{k}} - \mel{m, \vb{q}}{\ham\vb{r}}{n, \vb{k}} = (E_{n, \vb{k}} - E_{m, \vb{q}})\mel{m, \vb{q}}{\vb{r}}{n, \vb{k}}.
+\end{align*}
+Because $\vb{A}$ is a function of position and $\comm{\vb{r}}{\vb{p}}$ is a multiple of identity we have
 \begin{align*}
 	\comm{\vb{r}}{\ham} = \frac{1}{2m}\comm{\vb{r}}{\vb{p}^{2}} = \frac{1}{2m}\left(\vb{p}\cdot\comm{\vb{r}}{\vb{p}} + \comm{\vb{r}}{\vb{p}}\cdot\vb{p}\right) = \frac{i\hbar}{m}\vb{p}.
 \end{align*}
@@ -192,6 +196,7 @@ We then find
 \begin{align*}
 	\delta\ket{n, \vb{k}} = -i\hbar q\vb{E}\cdot\sum\limits_{m, \vb{q}}\ket{m, \vb{q}}\frac{\mel{m, \vb{q}}{\vb{v}}{n, \vb{k}}}{(E_{n, \vb{k}} - E_{m, \vb{q}})^{2}}.
 \end{align*}
+
 When computing the matrix element, the contributions from different unit cells differ by a factor $e^{i(\vb{k} - \vb{q})\cdot\vb{R}}$. Thus they vanish unless $\vb{q} = \vb{k}$. We then have
 \begin{align*}
 	\delta\ket{u_{n, \vb{k}}} = -iq\vb{E}\cdot\sum\limits_{m\neq n}\ket{u_{m, \vb{k}}}\frac{\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
@@ -209,7 +214,7 @@ Its complex conjugate is
 \begin{align*}
 	\mel{\delta u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}} =&  iq\sum\limits_{m\neq n}\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}\vb{E}\cdot\frac{\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
 \end{align*}
-Thu
+Thus
 \begin{align*}
 	\vb{v}_{\text{a}}(n, \vb{k}) =& \frac{iq}{\hbar}\vb{E}\cdot\sum\limits_{m\neq n}\frac{\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}} - \mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
 \end{align*}
