@@ -7,7 +7,7 @@ Machine learning is the field of study that gives computers the ability to learn
 Supervised learning deals with labelled data, and the task is to correctly label unfamiliar data. The two main types of supervised learning problems are classification and regression.
 
 \paragraph{Unsupervised Learning}
-Unsupervised learning, bu contrast, deals with data that does not have labels. The task is generally to identify some patterns within the data. Examples of such problems include clustering, anomaly detection, pattern recognition and association mining.
+Unsupervised learning, by contrast, deals with data that does not have labels. The task is generally to identify some patterns within the data. Examples of such problems include clustering, anomaly detection, pattern recognition and association mining.
 
 \paragraph{Reinforcement Learning}
 Reinforcement learning is, loosely speaking, based on performing random explorations of prediction processes and learning from the output.
@@ -26,7 +26,20 @@ Machine learning is notoriously full of pitfalls. Great care must be taken in th
 	\item \textbf{Deploy.}
 \end{enumerate}
 
-See also \href{https://karpathy.github.io/2019/04/25/recipe/}{this article} for a well-known and detailed example of how one should think.
+See also \href{https://karpathy.github.io/2019/04/25/recipe/}{this article} for a well-known and detailed example of how one should think, here particularly in the context of neural networks.
+
+\paragraph{The No Free Lunch Theorem}
+It has been shown that if no assumptions are made about the data, there is no reason to prefer any particular machine learning model. In other words, there is no universal learner (combination of model and learning algorithm) that performs equally well for all problems. This is the no free lunch theorem.
+
+\paragraph{The Bias-Complexity Tradeoff}
+The empirical risk can be divided into two terms. The first is the approximation error, which is equal to the minimal empirical risk within the chosen hypothesis class. The second is the estimation error, which is equal to the difference between the observed empirical risk and the approximation error. The former thus represents the limitations of the hypothesis class itself, while the latter represents the success of the algorithm in producing a hypothesis given the data.
+
+How can you change these? The solution to reduce the approximation error is to change the model. At some point one has to make the model more complicated, however, and it can be hard for a learning algorithm to identify a good hypothesis without overfitting given the data. Thus the increased complexity increases the estimation error. This is a tradeoff between the error introduced by the choice of hypothesis class, called the bias, and the complexity of the model.
+
+In practical contexts, it will be important to validate the performance of your model on a separate dataset. The bias-complexity tradeoff manifests here as a tradeoff between performance on the training and validation sets respectively. We here estimate the approximation error as the error on the training set and the estimation error as the error on the validation set. One typically optimizes with respect to the validation error to try to ensure generalizability.
+
+\paragraph{The Curse of Dimensionality}
+As the number of features of the data increases, the amount of training data required to obtain generalizability grows exponentially.
 
 \paragraph{Statistical Learning}
 Statistical learning is a framework in which the tools of statistics are used to describe and evaluate a machine learning algorithm.
@@ -45,7 +58,7 @@ Given this, the input to the learner is the domain set $X$, points in which are 
 
 We will need some way to assess the quality of $h$. This is done by introducing a loss function $L(h(x), y)$, which measures the ability of $h$ to predict $y$ given $x$. Next, we introduce the risk functional
 \begin{align*}
-	R(h) = \inte{}{}\dd{x}\dd{y}f(x, y)L(h(x), y) = \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)L(h(x), y),
+	R(h) = \expval{L(h(x), y)} = \inte{}{}\dd{x}\dd{y}f(x, y)L(h(x), y) = \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)L(h(x), y),
 \end{align*}
 which measures the expected loss. Assuming a good choice of the loss function, the best choice of $h$ is taken to be the one that minimizes the risk. Such a predictor is called Bayes optimal.
 
@@ -56,29 +69,55 @@ We take $f$ to be unknown, but assuming the training data to be sufficiently lar
 which is the so-called empirical risk. We can now approximately identify an optimal choice of $h$ by minimizing this quantity. This process is called empirical risk minimization. The assumption that the class of hypotheses has a member that minimizes $R_{S}$ is the realizability assumption.
 
 \paragraph{Bayes Optimal Predictors}
-The Bayes optimal predictor is a predictor which, given the probability distribution $P(y = y\given X = x)$, labels according to
+The Bayes optimal predictor is the predictor that minimizes the empirical risk.
+
+As an example, for a classification problem, the Bayes optimal predictor is
 \begin{align*}
 	f(x) = 
 	\begin{cases}
-		1,\ P(y = y\given X = x) \geq \frac{1}{2}, \\
-		0,\ \text{otherwise}.
+		1,\ P(Y = y\given X = x) \geq \frac{1}{2}, \\
+		0,\ \text{otherwise},
 	\end{cases}
 \end{align*}
-This predictor turns out to minimize the true loss.
+where $P$ is the underlying labelling probability from which points are drawn.
+
+For another example, consider some regression problem with a square loss function. We have
+\begin{align*}
+	R(h) =& \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)(h(x) - y)^{2}.
+\end{align*}
+We then have
+\begin{align*}
+	\var{R} =& \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)2(h(x) - y)\cdot\varepsilon\delta(x - s) \\
+	        =& 2\varepsilon P(X = s)\inte{}{}\dd{y}P(Y = y\given X = s)(h(s) - y) \\
+	        =& 2\varepsilon P(X = s)\left(h(s) - \inte{}{}\dd{y}P(Y = y\given X = s)y\right),
+\end{align*}
+implying
+\begin{align*}
+	\fdv{R}{h(x)} = 2P(X = x)\left(h(x) - \inte{}{}\dd{y}P(Y = y\given X = x)y\right),
+\end{align*}
+and the Bayes optimal predictor is
+\begin{align*}
+	h(x) = \inte{}{}\dd{y}P(Y = y\given X = x)y = \expval{y}_{x}.
+\end{align*}
 
 \paragraph{Probability Terms of Relevance}
 A few terms of relevance are
 \begin{itemize}
-	\item accuracy, which is the fraction of predictions that is correct.
+	\item accuracy, which is the total fraction of predictions that is correct.
 	\item precision, which is the fraction of positive predictions that corresponds to true positives.
-	\item sensitivity, which is the fraction of true positive cases that is identified.
-	\item specificity, which is the fraction of negative predictions that corresponds to true negatives.
+	\item sensitivity, which is the fraction of actual positive cases that is identified.
+	\item specificity, which is the fraction of actual negative cases that is identified.
 \end{itemize}
 
+\paragraph{The Confusion Matrix}
+The confusion matrix is a $2\times 2$ matrix for which the diagonal elements contain the true positives and negatives, the upper right contains the false positives and the lower left contains the false negatives. Its trace is thus the accuracy, the precision is the top left divided by the left column, the sensitivity is the top left divided by the top row and the specificity is be the lower right divided by the bottom row. There are also extension for more advanced classification problems.
+
 \paragraph{Probably Approximately Correct Learning}
-How wrong is the empirical approximation? It is clear that $R_{S}$ approaches $R$ in the limit of infinite sample sizes. For finite sample sizes, however, we can only make probabilistic statements. We introduce probably approximately correct (PAC) learning as follows: A hypothesis class $H$ is PAC learnable if there exists a number $m_{H}$ depending on two probabilities such that for every pair of probabilities $\epsilon, \delta$ and under the realizability assumption, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples, the algorithm returns a hypothesis that satisfies
+How wrong is the empirical approximation? It is clear that $R_{S}$ approaches $R$ in the limit of infinite sample sizes. For finite sample sizes, however, we can only make probabilistic statements.
+
+We therefore introduce probably approximately correct (PAC) learning as follows: A hypothesis class $H$ is PAC learnable if there exists a number $m_{H}$ depending on two probabilities such that for every pair of probabilities $\epsilon, \delta$ and under the realizability assumption, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples, the algorithm returns a hypothesis $h_{S}$ that satisfies
 \begin{align*}
-	P(\abs{R(h) - R_{s}(h)} > \epsilon) < \delta.
+	P(R(h_{S}) - \min\limits_{H}R(h)\leq \epsilon) \geq 1 - \delta.
 \end{align*}
 It turns out that in the case of a finite hypothesis class, in the realizable case, we have
 \begin{align*}
@@ -86,30 +125,19 @@ It turns out that in the case of a finite hypothesis class, in the realizable ca
 \end{align*}
 
 \paragraph{Agnostic PAC Learning}
-A hypothesis class is agnostically PAC learnable if there exists a number $m_{H}$ depending on two probabilities and a learning algorithm such that for every pair of probabilities $\epsilon, \delta$ and every distribution $P$ over $X\times Y$, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples from $P$, it holds that
+A hypothesis class is agnostically PAC learnable if there exists a number $m_{H}$ depending on two probabilities and a learning algorithm such that for every pair of probabilities $\epsilon, \delta$ and every distribution $\rho$ over $X\times Y$, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples from $\rho$, it holds that
 \begin{align*}
-	P(L(h_{S}) - \min L(h) \leq \varepsilon) \geq 1 - \delta.
+	P(R_{S}(h_{S}) - \min\limits_{H}R(h) \leq \varepsilon) \geq 1 - \delta.
 \end{align*}
 In this case we instead have
 \begin{align*}
 	m_{H}(\epsilon, \delta) = \frac{1}{2\epsilon^{2}}\left(\ln(\abs{H}) + \ln(\frac{2}{\delta})\right).
 \end{align*}
 
-\paragraph{The Confusion Matrix}
-The confusion matrix is a $2\times 2$ matrix for which the diagonal elements contain the true positives and negatives, the upper right contains the false positives and the lower left contains the false negatives. There are also extension for more advanced classification problems.
-
-\paragraph{The No Free Lunch Theorem}
-It has been shown that if no assumptions are made about the data, there is no reason to prefer any particular machine learning model. In other words, there is no universal learner (combination of model and learning algorithm) that performs equally well for all problems. This is the no free lunch theorem.
-
-\paragraph{The Bias-Complexity Tradeoff}
-The empirical risk can be divided into two terms. The first is the approximation error, which is equal to the minimal empirical risk within the chosen hypothesis class. The second is the estimation error, which is equal to the difference between the observed empirical risk and the approximation error. The former thus represents the limitations of the hypothesis class itself, while the latter represents the success of the algorithm in producing a hypothesis given the data.
-
-How can you change these? The solution to reduce the approximation error is to change the model. At some point one has to make the model more complicated, however, and it can be hard for a learning algorithm to identify a good hypothesis given the data. This is a tradeoff between the bias in the choice of hypothesis class and the complexity of the model.
-
-In practical contexts, it will be important to validate the performance of your model on a separate dataset. The bias-complexity tradeoff manifests here as a tradeoff between performance on the training and validation sets respectively. We here estimate the approximation error as the error on the training set and the estimation error as the error on the validation set. One typically optimizes with respect to the validation error to try to ensure generalizability.
+How do the two concepts differ? Both make claims about how far off one is from the minimum of the true risk, making them somewhat similar. In the realizable case the definition states that if $H$ is PAC learnable, we can get arbitrarily close to the hypothesis that minimizes the true risk by adding more data to the algorithm. What is implied here is that $H$ must contain hypotheses that perform the labelling arbitrarily well. In the agnostic case we have no knowledge about $\rho$, hence there is no guarantee that we can label the data arbitrarily well. Instead we can only make probabilistic claims about how well we can perform when constraining ourselves to $H$.
 
 \paragraph{Linear Predictors}
-A linear predictor is an element of the hypothesis class with elements of the form
+A linear predictor is a hypothesis of the form
 \begin{align*}
 	h(x; w, b) = f(w^{T}x + b),
 \end{align*}
@@ -117,22 +145,12 @@ which can of course be shortened to
 \begin{align*}
 	h(x; w) = f(w^{T}x)
 \end{align*}
-by extending $x$ and $w$. An often-seen choice is the logistic function
-\begin{align*}
-	\sigma(s) = \frac{1}{e + e^{-s}}.
-\end{align*}
-
-\paragraph{Matrix Regularization}
-Consider the problem
-\begin{align*}
-	Ax = b.
-\end{align*}
-In the cases where $A$ is not invertible, we have to do some modification of the problem. This is called regularization.
+by extending $x$ and $w$.
 
 \paragraph{Classification and Cross-Entropy}
 Consider a classification problem with $N$ classes, and restrict your hypothesis class to some set of functions
 \begin{align*}
-	P(y^{n}\given x, w) = f_{w}^{n}(x)
+	P(Y^{n} = y^{n}\given x, w) = f_{w}^{n}(x),
 \end{align*}
 parametrized by the $w$. The likelihood of observing some given data set can be written
 \begin{align*}
@@ -158,266 +176,18 @@ Suppose we divide our data into $\frac{M}{I}$ subsets indexed by a $k$. We denot
 \begin{align*}
 	R_{S} = \sum\limits_{i\in B_{k}}l(x_{i}) + \sum\limits_{i\notin B_{k}}l(x_{i}).
 \end{align*}
-The former is the in-batch loss and the latter the error. Discarding the former we have
+The two terms are named the in-batch loss and the error. Discarding the former we have
 \begin{align*}
 	\grad R_{S} \approx \sum\limits_{i\in B_{k}}\grad l(x_{i}).
 \end{align*}
-For iid batches this is an unbiased estimator of $\grad R_{S}$. The stochastic gradient descent algorithm thus involves doing one gradient descent per batch. Such a cycle is called an epoch. This is advantageous because it is faster and lessens the risk of getting stuck in local minima.
+For iid batches this is an unbiased estimator of $\grad R_{S}$. The stochastic gradient descent algorithm thus involves doing one gradient descent per batch. A cycle through all batches is called an epoch. This is advantageous because it is faster and lessens the risk of getting stuck in local minima.
 
-\paragraph{Neural Networks}
-Neural networks are elements in a very particular hypothesis class. They are conceptually inspired by neurons.
-
-The structure is as follows: The network consists of layers. Each layer consists of a set of neurons. The neurons are generally coupled to all neurons in the previous layers. Computationally, each neuron takes as input the set of values stored in each neuron. It then adds them using some weights and outputs the result when this weighted sum is input into some so-called activation function. We may thus illustrate the network as a directed graph, where each neuron is a node and there are edges connecting all nodes in adjacent layers. These edges are directed, such that there is only coupling one way.
-
-As an example, consider the simplest possible neural network, with one input layer and one output layer, the latter having only a single neuron. The input layer will then consist of all the elements in $x$ (as well as a $1$), and the neuron will first compute $\sum w_{i}x_{i} = w^{T}x$, and output $\sigma(w^{T}x)$.
-
-The power of neural networks lies in the fact that if the activation function is nonlinear, then the network can be used to perform nonlinear classification or regression tasks. The design of the network, however, is where the art lies.
-
-Neural networks need to be trained, of course. The algorithm for doing that is called back-propagation. To describe the mathematical basis we introduce a bit of notation. We let:
-\begin{itemize}
-	\item $V_{t}$ be the set of neurons in layer $t$.
-	\item $W_{t}$ be the weight matrix between $V_{t}$ and $V_{t + 1}$.
-	\item $k_{t}$ be the number of neurons in layer $t$.
-	\item $\vb{a}_{t}$ be the input to layer $t$.
-	\item $\vb{o}_{t}$ be the output from layer $t$.
-	\item $\vb*{\sigma}$ be the activation function applied element-wise to the output of one layer.
-\end{itemize}
-Clearly we have $\vb{a}_{t} = W_{t - 1}\vb{o}_{t - 1}$ and $\vb{o}_{t} = \vb*{\sigma}(\vb{a}_{t})$. The weights in any one layer appear exactly once in the output, so it would be beneficial to switch from a matrix notation in $W$ to a vector notation. To that end, introduce the matrix $O_{t - 1} = \text{diag}(\vb{o}_{t - 1}^{T})$ and $\vb{w}_{t - 1}$ the vector obtained when concatenating the rows of $W_{t - 1}$. It then follows that $O_{t - 1}\vb{w}_{t - 1} = W_{t - 1}\vb{o}_{t - 1}$. Now, we note that the loss function has a recursive structure - that is,
+\paragraph{Matrix Regularization}
+Consider the matrix problem
 \begin{align*}
-	L(\{W_{t}\}) =& L(\vb{o}_{T}) \\
-	             =& L(\vb*{\sigma}(\vb{a}_{T})) \\
-	             =& L(\vb*{\sigma}(W_{T - 1}\vb{o}_{T - 1})) \\
-	             =& \dots
+	Ax = b.
 \end{align*}
-We can write this as $L = \ell_{t}\circ \vb*{\sigma}$ for some choice of $t$. $\ell_{t}$ thus acts as a subsystem loss function, handling the contributions to the loss from layers starting at $t$. We then have
-\begin{align*}
-	\grad_{\vb{w}_{t - 1}}L = \grad_{\vb*{\sigma}}\ell_{t}\pdv{\vb*{\sigma}}{\vb{w}_{t - 1}}.
-\end{align*}
-Because the activation function acts element-wise we have
-\begin{align*}
-	\pdv{\vb*{\sigma}}{\vb{w}_{t - 1}} = \text{diag}(\grad\sigma)\pdv{\vb{w}_{t - 1}}(O_{t - 1}\vb{w}_{t - 1}) = \text{diag}(\grad\sigma)O_{t - 1}.
-\end{align*}
-The first factor is to be evaluated at $\vb*{\sigma}(O_{t - 1}\vb{w}_{t - 1}) = \vb{o}_{t}$ and the second at $O_{t - 1}\vb{w}_{t - 1} = \vb{a}_{t}$. Thus we find
-\begin{align*}
-	\grad_{\vb{w}_{t - 1}}L = \grad_{\vb*{\sigma}}\ell_{t}(\vb{o}_{t})\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}.
-\end{align*}
-This is a vector comprised of the successive components of $\vb*{\delta}$, the derivatives of $\sigma$ and $\vb{o}_{t - 1}$. Thus, by computing $\vb{\delta}_{t}$ the derivative is known. We can do this in a recursive manner by noting that it is trivial for the outer layer. Next, as
-\begin{align*}
-	\ell_{t}(\vb{o}_{t}) = \ell_{t + 1}(\vb*{\sigma}(W_{t}\vb{o}_{t})),
-\end{align*}
-hence
-\begin{align*}
-	\grad\ell_{t}(\vb{o}_{t}) = \grad\ell_{t + 1}(\vb{o}_{t + 1})\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t},
-\end{align*}
-implying
-\begin{align*}
-	\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}.
-\end{align*}
-In this sense we propagate information back through the network. The algorithm is thus
-\begin{enumerate}
-	\item Start with $\vb{o}_{0} = \vb{x}$.
-	\item Compute $\vb{a}_{t} = W_{t - 1}\vb{o}_{t - 1}$ and $\vb{o}_{t} = \vb*{\sigma}(\vb{a}_{t})$ for each layer.
-	\item Set $\vb*{\delta}_{T} = \grad{L}(\vb{o}_{T})$.
-	\item Compute $\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}$ for each layer.
-	\item Set the partial derivative with respect to each set of weights to be $\vb*{\delta}_{t}\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}$.
-\end{enumerate}
+In the cases where $A$ is not invertible, we have to do some modification of the problem. This is called regularization.
 
-\paragraph{Problems With Training Neural Networks}
-A first problem with training neural networks is vanishing or exploding gradients. To illustrate it, consider a neural network with one neuron per layer. We then have
-\begin{align*}
-	\vb*{\delta}_{0}  = \vb*{\delta}_{L}\prod\limits_{l = 1}^{L}\text{diag}(\grad\sigma(\vb{a}_{l}))W_{l}.
-\end{align*}
-For a network with many layers the product can thus very quickly either diverge or drop to zero. Only if each factor is close to the identity will the gradients stay behaved. Beyond applying stochastic gradient descent, which is an implicit regularizer, there are other treatments of the gradient that can be performed to ensure that this holds.
-
-Another problem is that different weights can change such that they compensate for mistakes in other places in the neural networks. This is called co-adaption, and it is bad because such fixes are generally overfitted to the training data. This can be solved by using dropout.
-
-Next there is the problem that layer inputs change during training, requiring low learning rates. This can be somewhat circumvented by standardizing inputs.
-
-\paragraph{The Universal Approximation Theorem}
-The universal approximation theorem is a statement about how closely we can approximate functions with neural networks. To prove it, consider a so-called feed-forward neural network with $L$ neurons in a single hidden layer. Its output is
-\begin{align*}
-	y(\vb{x}) = \sum\limits_{l = 0}^{L}\alpha_{l}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l}),
-\end{align*}
-where we have used some sigmoid activation function (this just means that $\sigma$ goes to $0$ and $1$ respectively at the two infinities). We also introduce the following definition: $\sigma$ is discriminatory for a measure $\mu\in M(l_{d})$ (this can for instance be a probability measure $\dd{\mu} = \dd{\vb{x}}P(\vb{x})$) if the fact that
-\begin{align*}
-	\inte{}{}\dd{\mu}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l}) = 0
-\end{align*}
-for all $\vb{w}_{l}, b_{l}$ implies that $\mu = 0$. This definition is useful because it tells us that discriminatory functions are non-destructive with respect to the metric - that is, they are indeed able to capture some of the information in the network.
-
-The theorem states the following: Let $l_{d}$ be the hypercube $[0, 1]^{d}$ and the space of real-valued continuous functions on $l_{d}$ be $C(l_{d})$. Let also $\sigma$ be a discriminatory function on $l_{d}$. Then, for every $\varepsilon > 0$ and function $f\in C(l_{d})$, there exists an integer $N$ and real $\alpha_{l}, b_{l}, \vb{w}_{l}$ for $l = 1, \dots, N$ such that the function
-\begin{align*}
-	G(\vb{x}) = \sum\limits_{l = 0}^{L}\alpha_{l}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l})
-\end{align*}
-satisfies
-\begin{align*}
-	\abs{G(\vb{x}) - f(\vb{x})} < \varepsilon\ \forall\ \vb{x}\in l_{d}.
-\end{align*}
-
-%TODO: Add proof
-To prove it, let $S$ be the set of functions of the form $G$. Clearly this is a linear subspace of $C(l_{d})$. To prove it, we will show that the closure of $S$ (the smallest closed set containing $S$) is all of $C(l_{d})$. Assuming the contrary, the closure of $S$ is instead some different subset $R$ of $C(l_{d})$. We have by the Hahn-Banach theorem that there is a bounded non-trivial linear functional $L$ of $C(l_{d})$ such that $L(R) = L(S) = 0$. This can be represented as
-\begin{align*}
-	L(h) = \inte{l_{d}}{}\dd{\mu}h(\vb{x})
-\end{align*}
-for some measure $\mu$ and all $h$. By our assumptions there must then exist a measure such that
-\begin{align*}
-	L(\sigma) = \inte{l_{d}}{}\dd{\mu}\sigma(w_{l}^{T}\vb{x} + b_{l}) = 0,
-\end{align*}
-but if $\sigma$ is discriminatory, then this is a contradiction. This implies that $R$ must indeed be $C(l_{d})$, completing the proof.
-
-\paragraph{Convolutional Neural Networks}
-From the properties of eyesight, it appears that the brain processes visual data in small parcels. The processing is built up of simple tools, such as edge detectors and depth detectors. Notably only a small number of shapes form primitive visual objects. These properties should enter into the design of neural networks for image processing.
-
-Convolutional neural networks are based on these concepts. It uses a set of filters that are convolved with the image (swept over the image, with the local dot product being summed up) in so-called convolution layers. Beyond this, in order to get output you typically use some kind of pooling operation, which coarse-grains.
-
-\paragraph{The Curse of Dimensionality}
-As the number of features of the data increases, the amount of training data required to obtain generalizability grows exponentially.
-
-\paragraph{Dimensionality Reduction}
-Dimensionality reduction is a set of techniques for mapping features in data to a space of lower dimension. Good dimensionality reduction techniques preserve data variance.
-
-\paragraph{Fisher's Linear Discriminant}
-Fisher's linear discriminant is a dimensionality reduction technique based on the goal of finding a projection operation on the data such that class separation is maximized, the variance between classes is maximized and the class overlap is minimized through the reduction of in-class variance.
-
-For two classes in two dimensions we may take the projected means to be 
-\begin{align*}
-	m_{i} = w^{T}\mu_{i},
-\end{align*}
-where the $\mu_{i}$ are in-class means. The projected in-class variances are then
-\begin{align*}
-	\sigma_{i}^{2} = \frac{1}{N_{i}}\sum\limits_{n}(w^{T}x_{n}^{i} - m_{i})^{2}.
-\end{align*}
-The function we want to optimize is
-\begin{align*}
-	L(w) = \frac{(m_{2} - m_{1})^{2}}{\sigma_{1}^{2} + \sigma_{2}^{2}}.
-\end{align*}
-%TODO: Finish?
-
-\paragraph{Principal Component Analysis}
-Principle component analycis (PCA) is a dimensionality reduction based on finding high-variance directions in feature space and removing others. The underlying assumption is that valuable information is contained in directions with the largest variance.
-
-To study it, suppose the data is centered introduce the matrix $X^{T}$, the columns of which are the data points. The covariance matrix for the features is then
-\begin{align*}
-	\Sigma = \frac{1}{N - 1}X^{T}X.
-\end{align*}
-Because $\Sigma$ is symmetric, we can perform an eigenvalue decomposition. Denoting the eigenvector matrix as $V$ and the eigenvalue matrix as $\Lambda$, we say that the columns of $V$ define the principal directions. Next we discard directions with small variance, reducing the dimensionality from $p$ tp $\tilde{p}$, by introducing a projection matrix $\tilde{V}_{p}$ with dimension $p\times\tilde{p}$ and a new data matrix $\tilde{Y} = X\tilde{V}_{p}$. The columns of $\tilde{V}_{p}$ are the $\tilde{p}$ eigenvectors with largest eigenvalues. The percentage
-\begin{align*}
-	\eta_{i} = \frac{\lambda_{i}}{\sum\limits_{i}\lambda_{i}}.
-\end{align*}
-
-\paragraph{Stochastic Neighborhood Embedding}
-t-stochastic neighborhood embedding (t-SNE) is a technique meant for capturing different kinds of structure in data. It is non-parametric and, most notably, non-linear.
-
-We will need to introduce some ideas first. We can assign a probability distribution to the neighborhood of each data point. The probability that $x_{i}$ is the neighborhood of $x_{j}$ is given by
-\begin{align*}
-	P(x_{j}\given x_{i}) = \frac{e^{-\frac{\abs{x_{i} - x_{j}}}{2\sigma_{i}}}}{\sum\limits_{k\neq i}e^{-\frac{\abs{x_{i} - x_{k}}}{2\sigma_{i}}}}.
-\end{align*}
-We also define $p_{i\given j}$ to be the likelihood that $x_{i}$ is in the neighborhood of $x_{j}$ and take $p_{i\given i} = 0$. The $\sigma_{i}$ are determined by fixing the entropy
-\begin{align*}
-	H(p_{i}) = -\sum\limits_{j\neq i}p_{j\given i}\log_{2}(p_{j\given i}),
-\end{align*}
-or equivalently the perplexity $\Sigma = 2^{H(p_{i})}$. This will entail that points in dense regions have small $\sigma_{i}$. Outliers, however, contribute very weakly to all neighborhoods, making their assignment difficult. One can instead define a symmetrized distribution
-\begin{align*}
-	p(x_{j}\given x_{i}) = \frac{1}{2N}(P(x_{j}\given x_{i}) + P(x_{i}\given x_{j})),
-\end{align*}
-which is not vanishing.
-
-The idea of the method is to embed the high-dimensionality neighborhood into a lower-dimensional space in a way that preserves neighborhood relations. In this lower-dimensionality space, where the data points have coordinates $y_{i}$, we assign the probability distributions
-\begin{align*}
-	q(y_{j}\given y_{i}) = \frac{\frac{1}{1 + \abs{y_{j} - y_{i}}^{2}}}{\sum\limits_{k\neq i}\frac{1}{1 + \abs{y_{k} - y_{i}}^{2}}}.
-\end{align*}
-The method then matches the lower- and higher-dimensionality distributions by minimizing the Kullback-Leibler divergence
-\begin{align*}
-	D_{\text{KL}}(p, q) = \sum\limits_{i, j}p(x_{j}\given x_{i})\ln(\frac{p(x_{j}\given x_{i})}{q(y_{j}\given y_{i})}).
-\end{align*}
-
-While t-SNE is powerful, note that it can rotate data. The results are also stochastic. While the method preserves short-distance information, it also deforms scale. The method is also computationally expensive, its efficiency only recently being obtained at the time of writing.
-
-\paragraph{Clustering}
-Clustering algorithms are algorithms that classify data point. Good clustering outputs categorize similar data points into the same category and different data points into different categories. These requirements can be contradictory, a by-construction limitation of these methods.
-
-\paragraph{KMeans}
-Given a set of observations and a number $K$, KMeans divides the data into a set of $K$ clusters $X_{i}$. It does this by minimizing the cost function
-\begin{align*}
-	C(x, \mu) = \sum\limits_{i = 1}^{K}\sum\limits_{j\in X_{i}}d(x_{j}, \mu_{i}),
-\end{align*}
-where the $\mu_{i}$ is the in-cluster mean and $d$ is the metric function. This problem is NP-hard, so finding optimal solutions is computationally infeasible. Iterative solutions generally work well, but the output might differ from time to time. The iterative solutions are typically based on the following steps:
-\begin{enumerate}
-	\item perform some (typically randomized) initial assigment.
-	\item compute the in-sample means.
-	\item reassign data points according to which in-cluster mean they are closest to.
-	\item repeat from steps 2.
-\end{enumerate}
-One usually also repeats the procedure different times, choosing the run with the minimal cost function. 
-
-\paragraph{Agglomerative Clustering}
-Agglomerative clustering is a different approach to clustering. The idea is to start from small initial clusters and progressively merge them. The algorithm is:
-\begin{enumerate}
-	\item Create one cluster for each point.
-	\item Given some set of clusters, merge them to one by successively merging the two closest clusters according to some distance measure $d$.
-\end{enumerate}
-Popular distance measures include:
-\begin{itemize}
-	\item single-linkage, which measures the minimum distance between two elements in either cluster.
-	\item complete linkage, which measures the maximum distance between two elements in either cluster.
-	\item average linkage, which measures the average distance between two elements in either cluster.
-\end{itemize}
-
-\paragraph{DBSCAN}
-DBSCAN is a density-based clustering algorithm. It uses the notion of an $\epsilon$-neighborhood of a point, defined as the set of points at distance less than $\epsilon$ from the point in question. The algorithm defines a point as a core point if at least some number $n$ of points are in its $\epsilon$-neighborhood, $n$ being a parameter of the algorithm. Other points are density-reachable if they are in the $\epsilon$-neighborhood of a core point. The algorithm does the following while there are any unvisited points:
-\begin{enumerate}
-	\item Pick an unvisited point $x_{i}$.
-	\item Mark $x_{i}$ as visited.
-	\item If $x_{i}$ is a core point, find the set of density-reachable points from $x_{i}$. These now form a cluster.
-\end{enumerate}
-The cluster assignment is finally returned. Points without any assignment are considered to be noise. This has the power of not needing the number of clusters specified beforehand.
-
-\paragraph{Anomaly Detection}
-Mathematically we define
-\begin{align*}
-	P(x) = \alpha_{\text{nom}}P_{\text{nom}}(x) + \alpha_{\text{anom}}P_{\text{anom}}(x).
-\end{align*}
-Thus we have two different random processes generating nominal and anominal data. Detecting such data can be very useful in different contexts.
-
-A few approaches are available. The first is a static rule approach. Here one constructs a set of rules to identify anomalies and assume the 80-20 rule as a tool.  This is a very brittle approach. The second is a supervised anomaly detector. Here one trains a classifier to detect anomalies. This of course requires labelled training data. Another issue is that high accuracy is generally needed. Finally there is unsupervised anomaly detection, where one uses clustering assuming nominal data and does some posterior validation to detect the anomalies. This must be tested properly.
-
-Anomalies come in different forms. The first is point anomalies, where individual points are anomalous with respect to regular data. The second is context anomalies, where some context marks out data points as anomalous. The final is collective anomalies, where a collection of data points are anomalous together. Identifying this requires some notion of relations in the data. 
-
-\paragraph{Generative Models}
-The previously studied models have made no assumptions on the underlying distribution from which the data is generated, instead trying to learn some labelling probability conditioned on the data. Such models are called discriminative. The process of learning the underlying distribution generating the data is the goal of generative methods.
-
-More formally, the task is to learn some probability distribution $p_{\theta}(x)$ parametrized by $\theta$ that approximates the true generating distribution $P$. We first need to identify an appropriate loss function, and the Kullbach-Leibler divergence seems appropriate. However, it is not symmetric and does not satisfy the triangle inequality. We can instead construct the Jensen-Shannon divergence
-\begin{align*}
-	D_{\text{JS}} = \frac{1}{2}\left(D_{\text{KL}}\left(p, \frac{p + P}{2}\right) + D_{\text{KL}}\left(\frac{p + P}{2}, p\right)\right).
-\end{align*}
-
-Generative modelling marks a significant step towards proper artificial intelligence, the key aspect being that it takes the approach of learning the underlying distribution generating data. This has the flipside of creating more ethical issues, including the prevalence of fake information and issues with algorithms reinforcing inequality.
-
-\paragraph{Generative Adversarial Networks}
-A framework for training generative models is the Generative Adversarial Network (GAN), constructed around a two-player Nash game. The structure of this game is to have two artificial intelligences working together. The first is a generator that creates a fake sample generated from a choice of parameters in some latent space. The second is a discriminator that compares the fake samples to real samples and tries to determine which is the fake one. These are connected in a feedback loop such that they train together. The discriminator aims to achieve maximal loss on real images and minimal loss on fake images, corresponding to maximizing and minimizing the expectation values
-\begin{align*}
-	E_{P}(\ln(D(x))),\ E_{p_{\theta}}(\ln(1 - D(x))).
-\end{align*}
-The fake samples $x$ can be written as $x = G(z)$, where $z$ is an element in the underlying parameter space. The total loss function is then
-\begin{align*}
-	L(D, G) = \inte{}{}\dd{x}P(x)\ln(D(x)) + p_{\theta}\ln(1 - D(x)).
-\end{align*}
-Considering a small variation of $D$, we find that
-\begin{align*}
-	\var{L} = \inte{}{}\dd{x}\frac{P(x)}{D(x)} - \frac{p_{\theta}}{1 - D(x)},
-\end{align*}
-and the optimum is for
-\begin{align*}
-	D(x) = \frac{p_{\theta}(x)}{p_{\theta}(x) + P(x)}.
-\end{align*}
-The corresponding loss is $-2\ln(2)$.
-
-What does this loss function represent? We can write the Jensen-Shannon divergence as
-\begin{align*}
-	D_{\text{JS}} =& \frac{1}{2}\left(2\ln(2) + \inte{}{}\dd{x}P(x)\frac{P(x)}{P(x) + p_{\theta}(x)} + p_{\theta}(x)\frac{p_{\theta}(x)}{P(x) + p_{\theta}(x)}\right) \\
-	              =& \frac{1}{2}\left(\ln(4) + L(D\cc, G)\right).
-\end{align*}
-The GAN loss function is thus proportional to the Jensen-Shannon divergence when $D$ takes its optimum value $D\cc$.
-
-Why do such methods work, and why are they preferred over maximum likelihood methods? A key point is the asymmetry in the KL-divergence, which harshly punishes the filling-in of probability typically performed by maximum-likelihood methods. The symmetry of the JS-divergence makes the algorithm punish both adding weight where there is none and failing to add weight where there should be.
-
-The JS-divergence cannot be evaluated numerically, hence the alternative is to use an adversarial approach, as in the two-player Nash game. This ensures that the filling-out of weight is actually punished. The algorithm is to, given some batch of real and fake samples, update the discriminator by ascending along the gradient of total loss, and then updating the generator by descending along its gradient of total loss.
+\paragraph{Regularization Techniques}
+Similar to how matrix equations can require modification in cases where the matrix is ill-conditioned, machine learning can require modifications in cases where it is uncertain how one should perform some update step. An example is cases where the amount of data is small. Techniques to perform such modifications are called regularization techniques.
