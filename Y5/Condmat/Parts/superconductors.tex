@@ -90,10 +90,6 @@ Allowing $\abs{\psi}$ to vary is in fact a fundamental aspect of the theory. To 
 \end{align*}
 Introducing the new length scale $\xi = \frac{1}{2\sqrt{a}}$ we find
 \begin{align*}
-	a(\tilde{\psi}^{3} - \psi) - \frac{1}{2\xi^{2}}\dv[2]{\psi}{\alpha} = 0
-\end{align*}
-for some massless coordinate $\alpha$. Renaming this coordinate $x$ we arrive at
-\begin{align*}
 	-2\xi^{2}\dv[2]{\tilde{\psi}}{x} - \tilde{\psi} + \tilde{\psi}^{3} = 0,
 \end{align*}
 with solution
@@ -219,9 +215,10 @@ Ignoring higher-order fluctuation terms and shifting the zero-level of the Hamil
 \end{align*}
 We can now rotate the spin operators to write the Hamiltonian as
 \begin{align*}
-	\ham = -\sum\limits_{\vb{k}}\vb{B}_{\vb{k}}\cdot\vb{S}_{\vb{k}},\ \vb{B}_{\vb{k}} = -2\epsilon_{\vb{k}}\vb{e}_{z} - 2\sum\limits_{\vb{k}\p}V_{\vb{k}, \vb{k}\p}\expval{S_{\vb{k}}^{x}}\vb{e}_{x}.
+	\ham = -\sum\limits_{\vb{k}}\vb{B}_{\vb{k}}\cdot\vb{S}_{\vb{k}},\ \vb{B}_{\vb{k}} = -2\epsilon_{\vb{k}}\vb{e}_{z} - 2\sum\limits_{\vb{k}\p}V_{\vb{k}, \vb{k}\p}\expval{S_{\vb{k}\p}^{x}}\vb{e}_{x}.
 \end{align*}
 
+\paragraph{The Superconducting Ground State}
 Introducing
 \begin{align*}
 	E_{\vb{k}} = \frac{1}{2}B_{\vb{k}} = \sqrt{\epsilon_{\vb{k}}^{2} + \Delta_{0}},\ \Delta_{0} = -\sum\limits_{\vb{k}\p}V_{\vb{k}, \vb{k}\p}\expval{S_{\vb{k}}^{x}},
@@ -280,6 +277,7 @@ hence we have
 	u_{\vb{k}} = \sin(\frac{\theta_{\vb{k}}}{2}),\ v_{\vb{k}} = \cos(\frac{\theta_{\vb{k}}}{2}).
 \end{align*}
 
+\paragraph{The Gap in Superconductors}
 We now find
 \begin{align*}
 	\expval{S_{\vb{k}}^{x}} =& 2u_{\vb{k}}v_{\vb{k}} = \sin(\theta_{\vb{k}}),
@@ -297,6 +295,42 @@ implying
 	\Delta_{0} = \frac{\hbar\omega_{\text{D}}}{\sinh(\frac{1}{D(0)V_{0}})} \approx 2D(0)\hbar\omega_{\text{D}}e^{-\frac{1}{D(0)V_{0}}}.
 \end{align*}
 
+At finite temperature the superconductor will be found in its energy eigenstates beyond the ground state, which are not created by the electronic creation and annihilation operators. The set of operators that do create the excited energy eigenstates are found by introducing a Bogolioubov transformation
+\begin{align*}
+	\alpha_{\vb{k}} = u_{\vb{k}}c_{\vb{k}, \uparrow} - v_{\vb{k}}c_{-\vb{k}, \downarrow}\adj,\ \beta_{\vb{k}} = u_{\vb{k}}c_{\vb{k}, \downarrow} + v_{\vb{k}}c_{-\vb{k}, \downarrow}\adj,
+\end{align*}
+which satisfy fermionic commutation relations if
+\begin{align*}
+	\abs{u_{\vb{k}}}^{2} + \abs{v_{\vb{k}}}^{2} = 1,\ u_{\vb{k}}\cc = u_{-\vb{k}},\ v_{\vb{k}}\cc = v_{-\vb{k}}.
+\end{align*}
+The mean-field Hamiltonian then becomes
+\begin{align*}
+	\ham = \sum\limits_{\vb{k}}E_{\vb{k}}(\alpha_{\vb{k}}\adj\alpha_{\vb{k}} + \beta_{\vb{k}}\adj\beta_{\vb{k}}).
+\end{align*}
+%Can we now explain why superconductors have zero resistance? A simplified explanation is to say that electron-phonon interactions cause scattering and thereby resistivity. Because electrons in a superconductor are pairwise correlated, this costs much more energy. A better explanation comes from returning to the Ginzburg-Landau theory.
+
+At finite temperatures the energy gap is given by
+\begin{align*}
+	\Delta(T) = V_{0}\sum\limits_{\vb{k}}\expval{c_{-\vb{k}, \downarrow}c_{\vb{k}, \uparrow}} = V_{0}\sum\limits_{\vb{k}}u_{\vb{k}}v_{\vb{k}}\expval{1 - \alpha_{\vb{k}}\adj \alpha_{\vb{k}}\adj - \beta_{\vb{k}}\adj \beta_{\vb{k}}\adj}.
+\end{align*}
+Inserting thermal dependence we somehow find
+\begin{align*}
+	\Delta(T) = V_{0}\Delta(T)\sum\limits_{\vb{k}}\frac{1}{2E_{\vb{k}}}\tanh(\frac{\beta E_{\vb{k}}}{2}).
+\end{align*}
+Close to the critical temperature we expect the energy gap to vanish, yielding the self-consistency equation
+\begin{align*}
+	1 = V_{0}\sum\limits_{\vb{k}}\frac{\tanh(\frac{\beta\epsilon_{\vb{k}}}{2})}{2\epsilon_{\vb{k}}} \approx D(0)V_{0}\inte{.\hbar\omega_{\text{D}}}{\hbar\omega_{\text{D}}}\dd{\epsilon}\frac{\tanh(\frac{\beta\epsilon}{2})}{2\epsilon} = D(0)V_{0}\ln(A\hbar\omega_{\text{D}}\beta_{\text{c}}),
+\end{align*}
+or
+\begin{align*}
+	k_{\text{B}}T_{\text{c}} = A\hbar\omega_{\text{D}}e^{-\frac{1}{D(0)V_{0}}}.
+\end{align*}
+The new constant $A$ is a purely numerical one, approximately equal to $1.13$. Comparing this to the previous result for the energy gap we then find
+\begin{align*}
+	\frac{2\Delta_{0}}{kT_{\text{c}}} \approx 3.5.
+\end{align*}
+
+\paragraph{Superconductor Condensation Energy}
 Next we try to compute the condensation energy. We have for the normal state
 \begin{align*}
 	\expval{T}_{\text{n}} = \sum\limits_{\vb{k}}2\epsilon_{\vb{k}},\ \expval{V}_{\text{n}} = \sum\limits_{\vb{k}, \vb{k}\p}V_{\vb{k}, \vb{k}\p}(S_{\vb{k}}^{x}S_{\vb{k}\p}^{x} + S_{\vb{k}\p}^{y}S_{\vb{k}}^{y}) = \frac{1}{2}\sum\limits_{\vb{k}}V_{\vb{k}, \vb{k}},
@@ -311,37 +345,6 @@ The condensation energy is then
 	\Delta E =& \sum\limits_{\vb{k}}\frac{\abs{\Delta_{0}}^{2}}{2E_{\vb{k}}} - \abs{\epsilon_{\vb{k}}}\left(1 - \frac{\abs{\epsilon_{\vb{k}}}}{E_{\vb{k}}}\right) \\
 	         =& \abs{\Delta_{0}}^{2}\sum\limits_{\vb{k}}\frac{1}{\varepsilon_{\vb{k}} + E_{\vb{k}}} - \frac{1}{2E_{\vb{k}}} \\
 	   \approx& 2D(0)\abs{\Delta_{0}}^{2}\inte{0}{\infty}\dd{x}\frac{1}{x + \sqrt{1 + x^{2}}} - \frac{1}{2\sqrt{1 + x^{2}}} = \frac{1}{2}D(0)\abs{\Delta_{0}}^{2}.
-\end{align*}
-
-\paragraph{The Superconductivity of Superconductors}
-Returning to the Hamiltonian in its full form, we can introduce a Bogolioubov transformation
-\begin{align*}
-	\alpha_{\vb{k}} = u_{\vb{k}}c_{\vb{k}, \uparrow} - v_{\vb{k}}c_{-\vb{k}, \downarrow}\adj,\ \beta_{\vb{k}} = u_{\vb{k}}c_{\vb{k}, \downarrow} + v_{\vb{k}}c_{-\vb{k}, \downarrow}\adj,
-\end{align*}
-which satisfy fermionic commutation relations if
-\begin{align*}
-	\abs{u_{\vb{k}}}^{2} + \abs{v_{\vb{k}}}^{2} = 1,\ u_{\vb{k}}\cc = u_{-\vb{k}},\ v_{\vb{k}}\cc = v_{-\vb{k}}.
-\end{align*}
-The mean-field Hamiltonian then becomes
-\begin{align*}
-	\ham = \sum\limits_{\vb{k}}E_{\vb{k}}(\alpha_{\vb{k}}\adj\alpha_{\vb{k}} + \beta_{\vb{k}}\adj\beta_{\vb{k}}).
-\end{align*}
-
-Can we now explain why superconductors have zero resistance? A simplified explanation is to say that electron-phonon interactions cause scattering and thereby resistivity. Because electrons in a superconductor are pairwise correlated, this costs much more energy. A better explanation comes from returning to the Ginzburg-Landau theory. At finite temperatures some quasiparticles will be thermally created. We find
-\begin{align*}
-	\Delta(T) = V_{0}\sum\limits_{\vb{k}}\expval{c_{-\vb{k}, \downarrow}c_{\vb{k}, \uparrow}} = V_{0}\sum\limits_{\vb{k}}u_{\vb{k}}v_{\vb{k}}\expval{1 - \alpha_{\vb{k}}\adj \alpha_{\vb{k}}\adj - \beta_{\vb{k}}\adj \beta_{\vb{k}}\adj}.
-\end{align*}
-Inserting thermal dependence we somehow find
-\begin{align*}
-	\Delta(T) = V_{0}\sum\limits_{\vb{k}}
-\end{align*}
-The critical temperature is given by the self-consistency equation
-\begin{align*}
-	1 = V_{0}\sum\limits_{\vb{k}}\frac{\tanh(\frac{\beta\epsilon_{\vb{k}}}{2})}{2\epsilon_{\vb{k}}} = D(0)V_{0}\inte{.\hbar\omega_{\text{D}}}{\hbar\omega_{\text{D}}}\dd{\epsilon}\frac{\tanh(\frac{\beta\epsilon}{2})}{2\epsilon}.
-\end{align*}
-We can then show that this implies
-\begin{align*}
-	\frac{2\Delta_{0}}{kT_{\text{c}}} \approx 3.5.
 \end{align*}
 
 \paragraph{The Bogolioubov-de Gennes Model}

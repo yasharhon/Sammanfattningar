@@ -213,7 +213,7 @@ meaning there is a spontaneous tendency for the system to arrange itself such th
 \paragraph{The Su-Schrieffer-Heeger Model}
 The Su-Schrieffer-Heeger model is an attempt to account for the balance between lattice distortion and dimerization energy minimization. Its Hamiltonian is
 \begin{align*}
-	\ham = \sum\limits_{j}-t(u_{j + 1} - u_{j})(\op{j}{j + 1} + \op{j + 1}{j}) + \text{h.c.} + \frac{\lambda}{2}(u_{j + 1} - u_{j})^{2},
+	\ham = \sum\limits_{j}-t(u_{j + 1} - u_{j})(\op{j}{j + 1} + \op{j + 1}{j}) + \frac{\lambda}{2}(u_{j + 1} - u_{j})^{2},
 \end{align*}
 where the degrees of freedom are the $u_{j}$ for the lattice points and the electronic states represented by kets. The hopping element $t$ now depends on the lattice structure. We can approximate
 \begin{align*}
@@ -265,3 +265,12 @@ It turns out that
 where $N_{1, 2}$ is the number of zero modes of each kind.
 
 Note that the Hamiltonian anticommutes with $\sigma_{z}$. This leads to $\sigma_{z}$ generating a so-called chiral symmetry. Its eigenstates thus come in pairs with opposite eigenvalues, except in the case where the eigenvalue is zero. This case thus applies to the unpaired bound state.
+
+\paragraph{Fractionalization in the Su-Schrieffer-Heeger Model}
+At the domain wall there exists an atom not bonded to either side. The state localized here has zero energy. Because the number of electrons is fixed, the electron occupying this state must come from somewhere. However, due to the chiral symmetry, this state must come equally from the valence and conduction bands, meaning that half a state is removed from either. How can this be, and what does it mean?
+
+The answer turns out to depend on the particulars of the boundary conditions. Let us first consider periodic boundary conditions with an even number of atoms. This system only permits solitons and antisolitons in pairs. Because there now is one zero mode associated with each member of the pair, the total number of removed states is $2\frac{1}{2} = 1$.
+
+Next, consider periodic boundary conditions with an odd number of atoms. The total number of solitons and antisolitons must be odd. The number of unit cells in this system is a half-integer, so if each unit cell contributes one state, then this final half state must be absorbed by the extra soliton.
+
+Similar, though much more vague, arguments can be made for systems with open boundary conditions.
