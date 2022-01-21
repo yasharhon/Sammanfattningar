@@ -1,0 +1,193 @@
+\section{Basic Concepts}
+
+\paragraph{Machine Learning}
+Machine learning is the field of study that gives computers the ability to learn without explicit programming. A computer is said to learn from some experience $E$ with respekt to a task $T$ and a performance measure $P$ if its performance at $T$ as measured by $P$ increases with $E$.
+
+\paragraph{Supervised Learning}
+Supervised learning deals with labelled data, and the task is to correctly label unfamiliar data. The two main types of supervised learning problems are classification and regression.
+
+\paragraph{Unsupervised Learning}
+Unsupervised learning, by contrast, deals with data that does not have labels. The task is generally to identify some patterns within the data. Examples of such problems include clustering, anomaly detection, pattern recognition and association mining.
+
+\paragraph{Reinforcement Learning}
+Reinforcement learning is, loosely speaking, based on performing random explorations of prediction processes and learning from the output.
+
+\paragraph{A Note on Hardware}
+Machine learning benefits strongly from parallelization. This is one of the reasons why, despite CPUs having high clock speeds, GPUs are the preferred hardware for training algorithms.
+
+\paragraph{Using Machine Learning}
+Machine learning is notoriously full of pitfalls. Great care must be taken in the preparatory work and the process of creating and training the model. The general steps in the procedure are
+\begin{enumerate}
+	\item \textbf{Define the problem and plan.} Formulate good questions and assess whether a machine learning approach is adequate and necessary.
+	\item \textbf{Estimate the required computational resources.} Combined with economic aspects, this will determine the limits of the complexity of your model.
+	\item \textbf{Prepare data.} This step is crucial and will include identifying sources, data collection and preprocessing. Relevant questions to ask include whether you have enough data (a quintessential point) and whether the data is sufficiently diverse.
+	\item \textbf{Construct an appropriate model.}
+	\item \textbf{Test the model.}
+	\item \textbf{Deploy.}
+\end{enumerate}
+
+See also \href{https://karpathy.github.io/2019/04/25/recipe/}{this article} for a well-known and detailed example of how one should think, here particularly in the context of neural networks.
+
+\paragraph{The No Free Lunch Theorem}
+It has been shown that if no assumptions are made about the data, there is no reason to prefer any particular machine learning model. In other words, there is no universal learner (combination of model and learning algorithm) that performs equally well for all problems. This is the no free lunch theorem.
+
+\paragraph{The Bias-Complexity Tradeoff}
+The empirical risk can be divided into two terms. The first is the approximation error, which is equal to the minimal empirical risk within the chosen hypothesis class. The second is the estimation error, which is equal to the difference between the observed empirical risk and the approximation error. The former thus represents the limitations of the hypothesis class itself, while the latter represents the success of the algorithm in producing a hypothesis given the data.
+
+How can you change these? The solution to reduce the approximation error is to change the model. At some point one has to make the model more complicated, however, and it can be hard for a learning algorithm to identify a good hypothesis without overfitting given the data. Thus the increased complexity increases the estimation error. This is a tradeoff between the error introduced by the choice of hypothesis class, called the bias, and the complexity of the model.
+
+In practical contexts, it will be important to validate the performance of your model on a separate dataset. The bias-complexity tradeoff manifests here as a tradeoff between performance on the training and validation sets respectively. We here estimate the approximation error as the error on the training set and the estimation error as the error on the validation set. One typically optimizes with respect to the validation error to try to ensure generalizability.
+
+\paragraph{The Curse of Dimensionality}
+As the number of features of the data increases, the amount of training data required to obtain generalizability grows exponentially.
+
+\paragraph{Statistical Learning}
+Statistical learning is a framework in which the tools of statistics are used to describe and evaluate a machine learning algorithm.
+
+A useful starting point is the limit of large numbers, for which we can us the Markov density approximation
+\begin{align*}
+	P(X = x) \approx \frac{1}{N}\sum\limits_{l}\delta(x - x_{l}),
+\end{align*}
+which implies
+\begin{align*}
+	\expval{f(X)} \approx \frac{1}{N}\sum\limits_{l}f(x_{l}).
+\end{align*}
+This holds for identically distributed, independent realisation $x_{l}$ of $P(X = x)$.
+
+Given this, the input to the learner is the domain set $X$, points in which are numerical representations of the data, the label space $Y$, which contains the possible labels that can be ascribed to a point in $X$, and a set $S$ of pairs $(x, y)\in X\times Y$, which is a realization of the joint probability distribution $P(X = x, Y = y) = f(x, y)$. The output is a prediction rule $h: X\to Y$.
+
+We will need some way to assess the quality of $h$. This is done by introducing a loss function $L(h(x), y)$, which measures the ability of $h$ to predict $y$ given $x$. Next, we introduce the risk functional
+\begin{align*}
+	R(h) = \expval{L(h(x), y)} = \inte{}{}\dd{x}\dd{y}f(x, y)L(h(x), y) = \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)L(h(x), y),
+\end{align*}
+which measures the expected loss. Assuming a good choice of the loss function, the best choice of $h$ is taken to be the one that minimizes the risk. Such a predictor is called Bayes optimal.
+
+We take $f$ to be unknown, but assuming the training data to be sufficiently large we can construct a Markov density approximation for $f$. We then find
+\begin{align*}
+	R(h)\approx R_{S}(h) = \frac{1}{\abs{S}}\sum\limits_{i}\inte{}{}\dd{x}\dd{y}\delta(x - x_{i})\delta(y - y_{i})L(h(x), y) = \frac{1}{\abs{S}}\sum\limits_{i}L(h(x_{i}), y_{i}),
+\end{align*}
+which is the so-called empirical risk. We can now approximately identify an optimal choice of $h$ by minimizing this quantity. This process is called empirical risk minimization. The assumption that the class of hypotheses has a member that minimizes $R_{S}$ is the realizability assumption.
+
+\paragraph{Bayes Optimal Predictors}
+The Bayes optimal predictor is the predictor that minimizes the empirical risk.
+
+As an example, for a classification problem, the Bayes optimal predictor is
+\begin{align*}
+	f(x) = 
+	\begin{cases}
+		1,\ P(Y = y\given X = x) \geq \frac{1}{2}, \\
+		0,\ \text{otherwise},
+	\end{cases}
+\end{align*}
+where $P$ is the underlying labelling probability from which points are drawn.
+
+For another example, consider some regression problem with a square loss function. We have
+\begin{align*}
+	R(h) =& \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)(h(x) - y)^{2}.
+\end{align*}
+We then have
+\begin{align*}
+	\var{R} =& \inte{}{}\dd{x}P(X = x)\inte{}{}\dd{y}P(Y = y\given X = x)2(h(x) - y)\cdot\varepsilon\delta(x - s) \\
+	        =& 2\varepsilon P(X = s)\inte{}{}\dd{y}P(Y = y\given X = s)(h(s) - y) \\
+	        =& 2\varepsilon P(X = s)\left(h(s) - \inte{}{}\dd{y}P(Y = y\given X = s)y\right),
+\end{align*}
+implying
+\begin{align*}
+	\fdv{R}{h(x)} = 2P(X = x)\left(h(x) - \inte{}{}\dd{y}P(Y = y\given X = x)y\right),
+\end{align*}
+and the Bayes optimal predictor is
+\begin{align*}
+	h(x) = \inte{}{}\dd{y}P(Y = y\given X = x)y = \expval{y}_{x}.
+\end{align*}
+
+\paragraph{Probability Terms of Relevance}
+A few terms of relevance are
+\begin{itemize}
+	\item accuracy, which is the total fraction of predictions that is correct.
+	\item precision, which is the fraction of positive predictions that corresponds to true positives.
+	\item sensitivity, which is the fraction of actual positive cases that is identified.
+	\item specificity, which is the fraction of actual negative cases that is identified.
+\end{itemize}
+
+\paragraph{The Confusion Matrix}
+The confusion matrix is a $2\times 2$ matrix for which the diagonal elements contain the true positives and negatives, the upper right contains the false positives and the lower left contains the false negatives. Its trace is thus the accuracy, the precision is the top left divided by the left column, the sensitivity is the top left divided by the top row and the specificity is be the lower right divided by the bottom row. There are also extension for more advanced classification problems.
+
+\paragraph{Probably Approximately Correct Learning}
+How wrong is the empirical approximation? It is clear that $R_{S}$ approaches $R$ in the limit of infinite sample sizes. For finite sample sizes, however, we can only make probabilistic statements.
+
+We therefore introduce probably approximately correct (PAC) learning as follows: A hypothesis class $H$ is PAC learnable if there exists a number $m_{H}$ depending on two probabilities such that for every pair of probabilities $\epsilon, \delta$ and under the realizability assumption, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples, the algorithm returns a hypothesis $h_{S}$ that satisfies
+\begin{align*}
+	P(R(h_{S}) - \min\limits_{H}R(h)\leq \epsilon) \geq 1 - \delta.
+\end{align*}
+It turns out that in the case of a finite hypothesis class, in the realizable case, we have
+\begin{align*}
+	m_{H}(\epsilon, \delta) = \frac{1}{\epsilon}\left(\ln(\abs{H}) + \ln(\frac{1}{\delta})\right).
+\end{align*}
+
+\paragraph{Agnostic PAC Learning}
+A hypothesis class is agnostically PAC learnable if there exists a number $m_{H}$ depending on two probabilities and a learning algorithm such that for every pair of probabilities $\epsilon, \delta$ and every distribution $\rho$ over $X\times Y$, when running the learning algorithm with $m\geq m_{H}(\epsilon, \delta)$ iid samples from $\rho$, it holds that
+\begin{align*}
+	P(R_{S}(h_{S}) - \min\limits_{H}R(h) \leq \varepsilon) \geq 1 - \delta.
+\end{align*}
+In this case we instead have
+\begin{align*}
+	m_{H}(\epsilon, \delta) = \frac{1}{2\epsilon^{2}}\left(\ln(\abs{H}) + \ln(\frac{2}{\delta})\right).
+\end{align*}
+
+How do the two concepts differ? Both make claims about how far off one is from the minimum of the true risk, making them somewhat similar. In the realizable case the definition states that if $H$ is PAC learnable, we can get arbitrarily close to the hypothesis that minimizes the true risk by adding more data to the algorithm. What is implied here is that $H$ must contain hypotheses that perform the labelling arbitrarily well. In the agnostic case we have no knowledge about $\rho$, hence there is no guarantee that we can label the data arbitrarily well. Instead we can only make probabilistic claims about how well we can perform when constraining ourselves to $H$.
+
+\paragraph{Linear Predictors}
+A linear predictor is a hypothesis of the form
+\begin{align*}
+	h(x; w, b) = f(w^{T}x + b),
+\end{align*}
+which can of course be shortened to
+\begin{align*}
+	h(x; w) = f(w^{T}x)
+\end{align*}
+by extending $x$ and $w$.
+
+\paragraph{Classification and Cross-Entropy}
+Consider a classification problem with $N$ classes, and restrict your hypothesis class to some set of functions
+\begin{align*}
+	P(Y^{n} = y^{n}\given x, w) = f_{w}^{n}(x),
+\end{align*}
+parametrized by the $w$. The likelihood of observing some given data set can be written
+\begin{align*}
+	L(\{y_{i}\}) = \prod\limits_{i}f_{w}^{n_{i}}(x_{i})\prod\limits_{n \neq n_{i}}(1 - f_{w}^{n}(x_{i})),\ y^{n_{i}} = 1,
+\end{align*}
+or more neatly,
+\begin{align*}
+	L(\{y_{i}\}) = \prod\limits_{i}\prod\limits_{n}(f_{w}^{n}(x_{i}))^{y_{i}^{n}}(1 - f_{w}^{n}(x_{i}))^{1 - y_{i}^{n}}.
+\end{align*}
+The log likelihood is
+\begin{align*}
+	\ln(L) = \sum\limits_{i}\sum\limits_{n}y_{i}^{n}\ln(f_{w}^{n}(x_{i})) + (1 - y_{i}^{n})\ln(1 - f_{w}^{n}(x_{i})),
+\end{align*}
+and its maximization is equivalent to minimizing the cross-entropy
+\begin{align*}
+	S = -\sum\limits_{i}\sum\limits_{n}y_{i}^{n}\ln(f_{w}^{n}(x_{i})) + (1 - y_{i}^{n})\ln(1 - f_{w}^{n}(x_{i})).
+\end{align*}
+
+\paragraph{Stochastic Gradient Descent}
+Gradient descent is a suboptimal way of minimizing a function, so we will instead opt for a different method.
+
+Suppose we divide our data into $\frac{M}{I}$ subsets indexed by a $k$. We denote each subset $B_{k}$. The empirical risk is then is then
+\begin{align*}
+	R_{S} = \sum\limits_{i\in B_{k}}l(x_{i}) + \sum\limits_{i\notin B_{k}}l(x_{i}).
+\end{align*}
+The two terms are named the in-batch loss and the error. Discarding the former we have
+\begin{align*}
+	\grad R_{S} \approx \sum\limits_{i\in B_{k}}\grad l(x_{i}).
+\end{align*}
+For iid batches this is an unbiased estimator of $\grad R_{S}$. The stochastic gradient descent algorithm thus involves doing one gradient descent per batch. A cycle through all batches is called an epoch. This is advantageous because it is faster and lessens the risk of getting stuck in local minima.
+
+\paragraph{Matrix Regularization}
+Consider the matrix problem
+\begin{align*}
+	Ax = b.
+\end{align*}
+In the cases where $A$ is not invertible, we have to do some modification of the problem. This is called regularization.
+
+\paragraph{Regularization Techniques}
+Similar to how matrix equations can require modification in cases where the matrix is ill-conditioned, machine learning can require modifications in cases where it is uncertain how one should perform some update step. An example is cases where the amount of data is small. Techniques to perform such modifications are called regularization techniques.

@@ -1,0 +1,44 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\input{./../../Mall/Aux/math.tex}
+
+\newcommand{\given}{\ensuremath{\ \vert\ }}
+
+\title{Summary of FK7068 Machine Learning for Physicists and Astronomers}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/basics.tex}
+
+\input{./Parts/dimred.tex}
+
+\input{./Parts/nns.tex}
+
+\input{./Parts/unsuper.tex}
+
+\input{./Parts/gen.tex}
+
+\end{document}
