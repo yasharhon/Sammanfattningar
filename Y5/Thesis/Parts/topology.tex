@@ -1,0 +1,56 @@
+\section{Topology}
+
+\paragraph{Topological Spaces}
+Let $X$ be a set and $T = \{U_{i} | i\in I\}$ be a collection of subsets of $X$ ($I$ is some set of indices). The pair $(X, T)$ (sometimes we only explicitly write $X$) is defined as a topological space if
+\begin{itemize}
+	\item $\emptyset,\ X\in T$.
+	\item If $J$ is any subcollection of $I$, the family $\{U_{j} | j\in J\}$ satisfies
+	\begin{align*}
+		\bigcup\limits_{j\in J}U_{j}\in T.
+	\end{align*}
+	\item If $J$ is any finite subcollection of $I$, the family $\{U_{j} | j\in J\}$ satisfies
+	\begin{align*}
+		\bigcap\limits_{j\in J}U_{j}\in T.
+	\end{align*}
+\end{itemize}
+If the two satisfy the definition, we say that $T$ gives a topology to $X$. The $U_{i}$ are called its open sets.
+
+Two cases of little interest are $T = \{\emptyset,\ X\}$ and $T$ being the collection of all subsets of $X$. The two are called the trivial and discrete topologies respectively.
+
+\paragraph{Metrics}
+A metric is a map $d: X\times X\to \R$ that satisfies
+\begin{itemize}
+	\item $d(x, y) = d(y, x)$.
+	\item $d(x, x) \geq 0$, with equality applying if and only if $x = y$.
+	\item $d(x, y) + d(y, z) \geq d(x, )z$.
+\end{itemize}
+
+\paragraph{Metric Space}
+Suppose $X$ is endowed with a metric. The collection of open disks
+\begin{align*}
+	U_{\varepsilon} = \{x\in X | d(x, x_{0}) < \varepsilon\}
+\end{align*}
+then gives a topology to $X$ called the metric topology. The pair forms a metric space.
+
+\paragraph{Continuous Maps}
+A map between two topological spaces $X$ and $Y$ is continuous if its inverse maps an open set in $Y$ to an open set in $X$.
+
+\paragraph{Neighborhoods}
+$N$ is a neighborhood of $x$ if it is a subset of $X$ and $x$ belongs to at least one open set contained within $N$.
+
+\paragraph{Hausdorff Spaces}
+A topological space is a Hausdorff space if, for any two points $x, y$, there exists neighborhoods $U_{x}, U_{y}$ of the two points that do not intersect. This is an important type of topological space, as examples in physics are practically always within this category.
+
+\paragraph{Homeomorphisms}
+A homeomorphism (not to be confused with a homomorphism, however hard it may be) is a continuous map between two topological spaces with a continuous inverse. Two topological spaces are homeomorphic if there exists a homeomorphism between them.
+
+\paragraph{Homotopy Types}
+Two topological spaces belong to the same homotopy type if there exists a continuous map from one to the other. This is a more relaxed version of homeomorphicity, as we no longer require the map to be invertible.
+
+\paragraph{Donuts and Coffee Mugs}
+Homeomorphicity defines an equivalence relation between topological spaces. This means that we can define topological spaces into categories based on homeomorphicity.
+
+We are now in a position to introduce the poor man's notion of topology, which considers two bodies as equivalent if one can be deformed into the other without touching two parts of the surface or tearing a part of the body. These continuous deformations correspond to homeomorphisms, but we will try to keep the discussions more to the abstract.
+
+\paragraph{Topological Invariants}
+An important question pertaining to this division of topological spaces is what separates the different categories. One possible answer is so-called topological invariants, quantities which are invariant under homeomorphism. The issue with this answer is that the full set of topological invariants has not been identified, hence they can only be used to verify that two topological spaces belong to different categories.
