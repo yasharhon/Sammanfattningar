@@ -1,0 +1,58 @@
+\section{Basic Concepts}
+
+\paragraph{Molecular Dynamics}
+Molecular dynamics is a class of simulation based on simulating a collection of atoms as a set of material points which move according to Newton's laws and consider only forces that arise as interactions between two atoms.
+
+\paragraph{Equilibration}
+Equilibration is the process of using some scheme that fixes a certain set of quantities and running a molecular dynamics simulation until these quantities have stabilized to the desired value.
+
+\paragraph{The Radial Distribution Function}
+The radial distribution function is defined as
+\begin{align*}
+	g(r) = \frac{1}{\rho}\eval{\dv{N}{V}}_{r}.
+\end{align*}
+
+\paragraph{Verlet's Method}
+Euler's method does not respect the laws of physics. Instead we consider a different scheme, based on the Taylor expansions
+\begin{align*}
+	x_{n \pm 1} &= x_{n} \pm v_{n}\tau + \frac{1}{2}a_{n}\tau^{2}.
+\end{align*}
+This nets two equations
+\begin{align*}
+	v_{n} = \frac{x_{n + 1} - x_{n - 1}}{2\tau},\ x_{n + 1} = 2x_{n} - x_{n - 1} + a_{n}\tau^{2}.
+\end{align*}
+This integration scheme is called Verlet's scheme, or the leapfrog method. Note that it is not self-starting. The way that is usually solved is through integrating a single step from the initial conditions using Euler's method and proceeding with the Verlet scheme from there.
+
+\paragraph{Monte Carlo Integration}
+Monte Carlo integration is a method for performing integration in multiple dimensions. The process is the following:
+\begin{itemize}
+	\item Generate $n$ random points in $d$ dimensions.
+	\item For each point, if it within the domain of integration, add it to a list.
+\end{itemize}
+If the domain of integration can be enclosed in a $d$-dimensional box of volume $V$, the estimate of the integral is then
+\begin{align*}
+	\frac{V}{n}\sum f(x_{i}).
+\end{align*}
+
+\paragraph{The Metropolis Algorithm}
+Statistical mechanics is concerned with integrals of the form
+\begin{align*}
+	\frac{\inte{}{}\dd{x}f(x)p(x)}{\inte{}{}\dd{x}p(x)}.
+\end{align*}
+The idea of the Metropolis algorithm is to introduce a transition probability $T(x_{i}\to x_{j})$ and evolve our initial configuration according to $T$ such that we flow towards a sequence of points distributed according to $p$. A sufficient condition is the detailed balance condition
+\begin{align*}
+	p(x_{i})T(x_{i}\to x_{j}) = p(x_{j})T(x_{j}\to x_{i}).
+\end{align*}
+A simple choice which is often used is
+\begin{align*}
+	T(x_{i}\to x_{j}) = \min(1, \frac{p(x_{j})}{p(x_{i})}).
+\end{align*}
+The steps of the algorithm is then
+\begin{itemize}
+	\item From a given configuration, generate a new test configuration from a uniform random number generator.
+	\item Compute $w = \frac{p(x_{j})}{p(x_{i})}$.
+	\item If $w = 1$, accept the change. Otherwise, generate a random number $r$. If $w > r$, accept the change.
+	\item Update the configuration.
+\end{itemize}
+
+\paragraph{Random Walks}
