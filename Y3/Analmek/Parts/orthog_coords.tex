@@ -15,7 +15,7 @@ Based on the orthogonality conditions, we define the orthogonal basis vectors
 \end{align*}
 The normalization thus implies
 \begin{align*}
-	h_{a} = \sqrt{\sum\limits_{i}(\del{a}{x^{i}})^{2}}.
+	h_{a} = \sqrt{\sum\limits_{i}(\del{}{a}{x^{i}})^{2}}.
 \end{align*}
 
 \paragraph{Physical Components}
@@ -39,19 +39,19 @@ We see that the dual basis would have been an equally good starting point for de
 \paragraph{Line Integrals}
 Using our previous knowledge of rates of change along a curve, we have
 \begin{align*}
-	\vinteg{\Gamma}{}{r}{\vb{v}} &= \integ{\Gamma}{}{\chi^{a}}{\tb{a}\cdot\vb{v}} \\
-	                             &= \integ{\Gamma}{}{\tau}{\dot{\chi}^{a}\tb{a}\cdot\vb{v}} \\
-	                             &= \integ{\Gamma}{}{\tau}{\sum\limits_{a}\dot{\chi}^{a}h_{a}\tilde{v}_{a}}.
+	\vinteg{\Gamma}{}{r}{\vb{v}} &= \inte{\Gamma}{}\dd{\chi^{a}}{\tb{a}\cdot\vb{v}} \\
+	                             &= \inte{\Gamma}{}\dd{\tau}{\dot{\chi}^{a}\tb{a}\cdot\vb{v}} \\
+	                             &= \inte{\Gamma}{}\dd{\tau}{\sum\limits_{a}\dot{\chi}^{a}h_{a}\tilde{v}_{a}}.
 \end{align*}
 Specifically, when integrating along a $\chi^{c}$ coordinate line, we can use the coordinate as a parameter, yielding
 \begin{align*}
-	\vinteg{\Gamma}{}{r}{\vb{v}} = \integ{\Gamma}{}{\tau}{\dv{\chi^{a}}{\chi^{c}}\tb{a}\cdot\vb{v}} = \integ{\Gamma}{}{\chi^{c}}{h_{c}v_{c}}.
+	\vinteg{\Gamma}{}{r}{\vb{v}} = \inte{\Gamma}{}\dd{\tau}{\dv{\chi^{a}}{\chi^{c}}\tb{a}\cdot\vb{v}} = \inte{\Gamma}{}\dd{\chi^{c}}{h_{c}v_{c}}.
 \end{align*}
 
 \paragraph{Surface Integrals}
 Consider a coordinate level surface $S_{c}$. In three dimensions we have
 \begin{align*}
-	\dd{\vb{S}} &= \del{a}{\vb{r}}\times\del{b}{\vb{r}}\dd{\chi^{a}}\dd{\chi^{b}} \\
+	\dd{\vb{S}} &= \del{}{a}{\vb{r}}\times\del{}{b}{\vb{r}}\dd{\chi^{a}}\dd{\chi^{b}} \\
 	            &= h_{a}h_{b}\vb{e}_{a}\vb{e}_{b}\dd{\chi^{a}}\dd{\chi^{b}} \\
 	            &= \pm h_{a}h_{b}\dd{\chi^{a}}\dd{\chi^{b}}\vb{e}_{c}.
 \end{align*}

@@ -5,7 +5,7 @@ Classical field theory can be considered a limit of classical dynamics when the 
 \paragraph{Lagrangian Formulation of Field Theory}
 The Lagrangian in a field theory now becomes
 \begin{align*}
-	L = \integ[d]{}{}{\vb{r}}{\lag}
+	L = \inte{}{}\dd[d]{\vb{r}}\lag
 \end{align*}
 where $\lag$ is the Lagrangian density, which in general depends on all involved fields, their derivatives with respect to both space and time and space and time themselves. From this we can obtain the action, and extremize it to obtain the equations for the time evolution of the system. The equations of motion are of the form
 \begin{align*}
@@ -123,7 +123,7 @@ In the Hamiltonian formalism, we define the momentum density
 \end{align*}
 The Hamiltonian is now given by
 \begin{align*}
-	H = \integ[D]{}{}{\vb{r}}{\ham},
+	H = \inte{}{}\dd[D]{\vb{r}}\ham,
 \end{align*}
 where $\ham = \pi_{a}\del{t}{\phi^{a}} - \lag$. The Hamiltonian equations of motion become
 \begin{align*}
@@ -136,7 +136,7 @@ While the Hamiltonian formalism carries no issues with it in classical contexts,
 \paragraph{Poisson Brackets}
 Poisson brackets of two functionals on phase space are defined as
 \begin{align*}
-\pob{F}{G} = \integ[D]{}{}{\vb{r}}{\del{\phi}{F}\del{\pi}{G} - \del{\pi}{F}\del{\phi}{G}}
+	\pob{F}{G} = \inte{}{}\dd[D]{\vb{r}}{\del{\phi}{F}\del{\pi}{G} - \del{\pi}{F}\del{\phi}{G}}
 \end{align*}
 We can somehow show that
 \begin{align*}
@@ -182,21 +182,21 @@ Field theory also carries with it a version of Nöether's theorem, which will be
 
 Consider the action of a symmetry on a given system. The requirement on the action can be written as
 \begin{align*}
-	\integ{\Omega^{\prime}}{}{(x^{\prime})^{\mu}}{\lag^{\prime}} - \integ{\Omega}{}{x^{\mu}}{\lag} = \integ{\Omega}{}{x^{\mu}}{\del{\mu}{V^{\mu}}}.
+	\inte{\Omega^{\prime}}{}\dd{(x\p)^{\mu}}{\lag^{\prime}} - \inte{\Omega}{}\dd{x^{\mu}}{\lag} = \inte{\Omega}{}\dd{x^{\mu}}{\del{\mu}{V^{\mu}}}.
 \end{align*}
 The functional form of the Lagrangian density is unchanged, which also carries the consequence that the integration variables may be renamed. This yields
 \begin{align*}
-	\integ{\Omega^{\prime}}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu})} - \integ{\Omega}{}{x^{\mu}}{\lag(\phi^{a}, x^{\mu})} = \integ{\Omega}{}{x^{\mu}}{\del{\nu}{V^{\nu}}}.
+	\inte{\Omega^{\prime}}{}\dd{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu})} - \inte{\Omega}{}\dd{x^{\mu}}{\lag(\phi^{a}, x^{\mu})} = \inte{\Omega}{}\dd{x^{\mu}}{\del{\nu}{V^{\nu}}}.
 \end{align*}
 
 %TODO: Extend to multiple dimensions
 We reuse the argument from the previous proof, generalizing it (somehow) to multiple dimensions to obtain
 \begin{align*}
-	\integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu})} + \integ{S}{}{S_{\mu}}{\lag(\phi^{a}, x^{\mu})\var{x^{\mu}}} = \integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})},
+	\inte{\Omega}{}\dd{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu})} + \inte{S}{}\dd{S_{\mu}}{\lag(\phi^{a}, x^{\mu})\var{x^{\mu}}} = \inte{\Omega}{}\dd{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})},
 \end{align*}
 and thus
 \begin{align*}
-	\integ{\Omega}{}{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})} = \integ{\Omega}{}{x^{\mu}}{\del{\nu}{V^{\nu}}},
+	\inte{\Omega}{}\dd{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})} = \inte{\Omega}{}\dd{x^{\mu}}{\del{\nu}{V^{\nu}}},
 \end{align*}
 where $S$ is the boundary of $\Omega$ and we have made (hopefully proper) use of the $n$-dimensional divergence theorem. The difference in the first two terms can be expanded to first order as
 \begin{align*}
@@ -208,7 +208,7 @@ The use of the variation at a specific point is due to the fact that both Lagran
 \end{align*}
 Hence we have
 \begin{align*}
-	\integ{\Omega}{}{x^{\mu}}{\pdv{x^{\nu}}\left(\bvar{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}} - V^{\nu}\right)} = 0,
+	\inte{\Omega}{}\dd{x^{\mu}}{\pdv{x^{\nu}}\left(\bvar{\phi}^{a}\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}} - V^{\nu}\right)} = 0,
 \end{align*}
 which is already in the form of a conservation law for the quantities
 \begin{align*}
@@ -225,7 +225,7 @@ Next, we use the expansion
 \end{align*}
 to obtain
 \begin{align*}
-	\integ{\Omega}{}{x^{\mu}}{\pdv{x^{\nu}}\left((\var{\phi}^{a} - \del{\mu}{\phi^{a}}\var{x}^{\mu})\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}} - V^{\nu}\right)} = 0.
+	\inte{\Omega}{}\dd{x^{\mu}}{\pdv{x^{\nu}}\left((\var{\phi}^{a} - \del{\mu}{\phi^{a}}\var{x}^{\mu})\pdv{\lag}{(\del{\nu}{\phi^{a}})} + \lag\var{x^{\nu}} - V^{\nu}\right)} = 0.
 \end{align*}
 The argument extends arbitrarily to the interior of the integration domain, hence we must have
 \begin{align*}

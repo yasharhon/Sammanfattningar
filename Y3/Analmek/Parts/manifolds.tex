@@ -16,11 +16,11 @@ This argument seems to have one hole in it, namely that $S_{2}$ is implicitly em
 \paragraph{Tangent Vectors}
 Tangent vectors describe how scalar fields change with displacement along a curve. In Euclidean space the tangent basis was composed of derivatives with respect to the set of coordinates. In general curved spaces, we define
 \begin{align*}
-\tb{a} = \del{a}{}.
+	\tb{a} = \del{}{a}.
 \end{align*}
 Derivatives are linear operators, so at least the set of tangent bases span some vector space and it makes sense to call a derivative a vector. A general tangent vector is now
 \begin{align*}
-X = X^{a}\tb{a} = X^{a}\del{a}{}.
+	X = X^{a}\tb{a} = X^{a}\del{}{a}.
 \end{align*}
 These live in the tangent space $\ts{p}{M}$ of the manifold $M$ at the point $p$.
 
@@ -330,7 +330,7 @@ implying $D^{d}_{ab}g_{dc} = 0$. Multiplying by $g^{cf}$ yields $D^{f}_{ab} = 0$
 \paragraph{Curves of Minimal Length}
 As the metric defines length, we define the curve length as
 \begin{align*}
-	l_{\gamma} = \integ{\gamma}{}{s}{} = \integ{0}{1}{t}{\sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}}.
+	l_{\gamma} = \inte{\gamma}{}\dd{s}{} = \inte{0}{1}\dd{t}{\sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}}.
 \end{align*}
 Defining $\sqrt{\lag} = g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$, the curve that minimizes the distance between the start and end points satisfies
 \begin{align*}
@@ -450,11 +450,11 @@ and all Killing fields must satisfy this relation.
 \paragraph{Differential Forms}
 The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as
 \begin{align*}
-\bigwedge\limits_{k = 1}^{p}d\chi^{a_{k}} = \sum\limits_{\sigma\in S_{p}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p}d\chi^{a_{\sigma(k)}}.
+	\bigwedge\limits_{k = 1}^{p}d\chi^{a_{k}} = \sum\limits_{\sigma\in S_{p}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p}d\chi^{a_{\sigma(k)}}.
 \end{align*}
 Here $S_{p}$ is the set of permutations of $p$ elements. There exists
 \begin{align*}
-n_{p}^{N} = {N\choose k}
+	n_{p}^{N} = {N\choose k}
 \end{align*}
 basis elements. We note that the wedge product is antisymmetric under the exchange of two basis elements. Hence, once an ordering of indices has been chosen, any permutation will simply create a linearly dependent map.
 
@@ -481,11 +481,11 @@ which is exactly the form of a dual vector. Somehow this transforms as a tensor.
 \paragraph{Integration of Differential Forms}
 Consider a set of $p$ tangent vectors $X_{i}$. The corresponding coordinate displacements are $\dd{\chi_{i}^{a}} = X_{i}^{a}\dd{t_{i}}$, with no sum over $i$. We would now like to compute the $p$-dimensional volume defined by the $X_{i}$ and $\dd{t_{i}}$. We expect that if any of the $X_{i}$ are linearly dependent the volume should be zero. We also expect that the volume be linear in the $X_{i}$. This implies
 \begin{align*}
-\dd{V_{p}} = \omega(X_{1}, \dots, X_{p})\dd{t_{1}}\dots\dd{t_{p}}
+	\dd{V_{p}} = \omega(X_{1}, \dots, X_{p})\dd{t_{1}}\dots\dd{t_{p}}
 \end{align*}
 for some differential form $\omega$. We now define the integral over the $p$-volume $S$ over the $p$-form $\omega$ as
 \begin{align*}
-\minteg{S}{\omega} = \integ{}{}{t_{1}}{\dots \integ{}{}{t_{p}}{\omega(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p})}}.
+	\inte{S}{}{\omega} = \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p})}}.
 \end{align*}
 Here the $\gamma_{i}$ are the set of curves that span $S$, the dot symbolizes the derivative with respect to the individual curve parameters and the right-hand integration is performed over the appropriate set of parameter values.
 
@@ -496,10 +496,10 @@ To derive it, consider a $p + 1$-volume parametrized such that all $t_{i}$ range
 
 For some $p$-form $\omega$ and $p + 1$-volume $V$ we have
 \begin{align*}
-\minteg{V}{d\omega} &= \integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{d\omega(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
-&= \integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\left(\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\sum\limits_{\sigma\in S_{p + 1}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
-&= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\left(\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
-&= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\left(\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}},
+	\inte{V}{}\df{\omega} &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{d\omega(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
+	                      &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\sum\limits_{\sigma\in S_{p + 1}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
+	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
+	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}},
 \end{align*}
 where the latter follows from the cyclicity imposed by the summation. We have
 \begin{align*}
@@ -507,38 +507,38 @@ d\chi^{a_{\sigma(k)}}{\dot{\gamma}_{k}} = \dv{\chi^{a}}{t_{k}}\del{a}{\chi^{a_{\
 \end{align*}
 and thus
 \begin{align*}
-\minteg{V}{d\omega} &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{k}}{\chi^{a_{\sigma(k)}}}}} \\
-&= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}},
+	\inte{V}{}\df{\omega} &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{k}}{\chi^{a_{\sigma(k)}}}}} \\
+	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}},
 \end{align*}
 where we have once again utilized the cyclicity. Denote the integral inside the sum as $I(\sigma, \omega)$. We have
 \begin{align*}
-I(\sigma, \omega) &= \integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}} \\
-&= \integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\del{t_{\sigma(p + 1)}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}.
+	I(\sigma, \omega) &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}} \\
+	                  &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{t_{\sigma(p + 1)}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}.
 \end{align*}
 To proceed, we integrate by parts and obtain
 \begin{align*}
-I(\sigma, \omega) &= \eval{\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{-}}^{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{+}} - \integ{}{}{t_{1}}{\dots \integ{}{}{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\del{t_{\sigma(p + 1)}}{\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}},
+	I(\sigma, \omega) &= \eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{-}}^{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{+}} - \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\del{t_{\sigma(p + 1)}}{\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}},
 \end{align*}
 where the former terms contains no integration over $t_{\sigma(p + 1)}$, and is instead evaluated at the maximal and minimal values of $t_{\sigma(p + 1)}$ given the values of the other parameters.
 
 Let us proceed to simplify this. For starters, if $\sigma(p + 1) \neq p + 1$, the remaining integration in the first term is done over the boundary of $V_{p}$. Furthermore, there exists a $k$ such that $\sigma(k) = p + 1$, and as we are at the boundary of $V_{p}$ we must have
 \begin{align*}
-\del{t_{\sigma(k)}}{\chi^{a_{k}}} = 0.
+	\del{t_{\sigma(k)}}{\chi^{a_{k}}} = 0.
 \end{align*}
 Otherwise, the remaining integration domain is $V_{p}$. Next, the latter integral contains a sequence of terms proportional to
 \begin{align*}
-\del{t_{\sigma(p + 1)}}{\del{t_{\sigma(k)}}{\chi^{a_{k}}}},
+	\del{t_{\sigma(p + 1)}}{\del{t_{\sigma(k)}}{\chi^{a_{k}}}},
 \end{align*}
 which is symmetric with respect to exchanging $p + 1$ and $k$. These terms therefore cancel in the sum, and we are left with
 \begin{align*}
-\minteg{V}{d\omega} &= \sum\limits_{\sigma\in S_{p}}\frac{\text{sgn}(\sigma)}{p!}\eval{\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1} \\
-&= \eval{\integ{}{}{t_{1}}{\dots \integ{}{}{t_{p}}{\omega}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1}
+	\inte{V}{}\df{\omega} &= \sum\limits_{\sigma\in S_{p}}\frac{\text{sgn}(\sigma)}{p!}\eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1} \\
+	                      &= \eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1}
 \end{align*}
 where the condition that $\sigma(p + 1) = p + 1$ restricts the summation to $S_{p}$.
 
 The remaining integration domain is, as stated before, a parametrization of $V_{p}$, which at the extremal values of $t_{p + 1}$ must be at the boundary of $V$. The minus sign from the integral evaluation tells us that the integrals are taken with opposite orientation, meaning that together they indeed form an integration over the (closed) boundary of $V$. We thus arrive at Stokes' theorem,
 \begin{align*}
-\minteg{V}{d\omega} = \oint\limits_{\bound{V}}\omega.
+	\inte{V}{}\df{\omega} = \oint\limits_{\bound{V}}\omega.
 \end{align*}
 
 \example{Reobtaining Familiar Theorems}
@@ -546,7 +546,7 @@ Many familiar integration theorems are in fact consequences of Stokes' theorem. 
 
 We start with a $1$-form $d\omega$, which will be integrated over a $1$-dimensional volume, i.e. a curve. We have
 \begin{align*}
-\minteg{\gamma}{d\omega} = \omega(p) - \omega(q),
+	\inte{\gamma}{}\df{\omega} = \omega(p) - \omega(q),
 \end{align*}
 where $q$ and $p$ are the start and end points of $\gamma$. This is the analogue of integrating a vector field along a curve.
 
@@ -556,79 +556,79 @@ d\omega = \del{j}{\omega_{i}}d\chi^{j}\wedge d\chi^{i}.
 \end{align*}
 Using Cartesian coordinates and restricting ourselves to two dimensions we have
 \begin{align*}
-\df{\chi^{j}}\wedge\df{\chi^{i}}(\dot{\gamma}_{s}, \dot{\gamma}_{t})\dd{s}\dd{t} &= (\df{\chi^{j}}\otimes\df{\chi^{i}} - \df{\chi^{i}}\otimes\df{\chi^{j}})(\dot{\gamma}_{s}, \dot{\gamma}_{t})\dd{s}\dd{t} \\
-&= (\del{s}{\chi^{j}}\del{t}{\chi^{i}} - \del{s}{\chi^{i}}\del{t}{\chi^{j}})\dd{s}\dd{t} \\
-&= (\delta_{jk}\delta_{im} - \delta_{ik}\delta_{jm})\del{s}{\chi^{k}}\del{t}{\chi^{m}}\dd{s}\dd{t} \\
-&= \varepsilon_{jin}\varepsilon_{nkm}\del{s}{\chi^{k}}\del{t}{\chi^{m}}\dd{s}\dd{t} \\
-&= \varepsilon_{jik}\dd{S_{k}}.
+	\df{\chi^{j}}\wedge\df{\chi^{i}}(\dot{\gamma}_{s}, \dot{\gamma}_{t})\dd{s}\dd{t} &= (\df{\chi^{j}}\otimes\df{\chi^{i}} - \df{\chi^{i}}\otimes\df{\chi^{j}})(\dot{\gamma}_{s}, \dot{\gamma}_{t})\dd{s}\dd{t} \\
+	                                                                                 &= (\del{s}{\chi^{j}}\del{t}{\chi^{i}} - \del{s}{\chi^{i}}\del{t}{\chi^{j}})\dd{s}\dd{t} \\
+	                                                                                 &= (\delta_{jk}\delta_{im} - \delta_{ik}\delta_{jm})\del{s}{\chi^{k}}\del{t}{\chi^{m}}\dd{s}\dd{t} \\
+	                                                                                 &= \varepsilon_{jin}\varepsilon_{nkm}\del{s}{\chi^{k}}\del{t}{\chi^{m}}\dd{s}\dd{t} \\
+	                                                                                 &= \varepsilon_{jik}\dd{S_{k}}.
 \end{align*}
 Thus we have
 \begin{align*}
-\minteg{S}{d\omega} = \integ{S}{}{S_{k}}{\varepsilon_{ijk}\del{i}{\omega_{j}}} = \integ{S}{}{\vb{S}}{\cdot\curl{\vb*{\omega}}}.
+	\inte{S}{}\df{\omega} = \inte{S}{}\dd{S_{k}}{\varepsilon_{ijk}\del{i}{\omega_{j}}} = \inte{S}{}\dd{\vb{S}}{\cdot\curl{\vb*{\omega}}}.
 \end{align*}
 At the same time we have
 \begin{align*}
-\minteg{\bound{S}}{\omega} &= \integ{\bound{S}}{}{t}{\omega_{a}\df{\chi^{a}}(\dot{\gamma}_{t})} \\
-&= \integ{\bound{S}}{}{t}{\omega_{a}\dv{\chi^{a}}{t}} \\
-&= \integ{\bound{S}}{}{\vb{r}}{\cdot\vb*{\omega}},
+	\inte{\bound{S}}{}{\omega} &= \inte{\bound{S}}{}\dd{t}{\omega_{a}\df{\chi^{a}}(\dot{\gamma}_{t})} \\
+	                           &= \inte{\bound{S}}{}\dd{t}{\omega_{a}\dv{\chi^{a}}{t}} \\
+	                           &= \inte{\bound{S}}{}\dd{\vb{r}}{\cdot\vb*{\omega}},
 \end{align*}
 hence
 \begin{align*}
-\integ{S}{}{\vb{S}}{\cdot\curl{\vb*{\omega}}} = \integ{\bound{S}}{}{\vb{r}}{\cdot\vb*{\omega}},
+	\inte{S}{}\dd{\vb{S}}{\cdot\curl{\vb*{\omega}}} = \inte{\bound{S}}{}\dd{\vb{r}}{\cdot\vb*{\omega}},
 \end{align*}
 which is the more boring version of Stokes' theorem.
 
 Next we consider a $2$-form and its exterior derivative. We have
 \begin{align*}
-\minteg{V}{\df{\omega}} &= \frac{1}{2}\minteg{V}{\del{a}{\omega_{bc}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}}.
+	\inte{V}{}{\df{\omega}} &= \frac{1}{2}\inte{V}{}{\del{a}{\omega_{bc}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}}.
 \end{align*}
 As the components of $\omega$ may be chosen such that $\omega_{ab} = -\omega_{ba}$ we may write $\omega_{ab} = \varepsilon_{abc}\omega_{c}$ for some suitable (and arbitrary) choice of $\omega_{c}$. We thus have
 \begin{align*}
-\minteg{V}{\df{\omega}} &= \frac{1}{2}\minteg{V}{\varepsilon_{bcd}\del{a}{\omega_{d}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}} \\
-&= \frac{1}{2}\integ{}{}{x^{1}}{\integ{}{}{x^{2}}{\integ{}{}{x^{3}}{\varepsilon_{bcd}\varepsilon_{abc}\del{a}{\omega_{d}}}}} \\
-&= \frac{1}{2}\integ{}{}{x^{1}}{\integ{}{}{x^{2}}{\integ{}{}{x^{3}}{(\delta_{ad}\delta_{bb} - \delta_{ab}\delta_{bd})\del{a}{\omega_{d}}}}} \\
-&= \integ{}{}{x^{1}}{\integ{}{}{x^{2}}{\integ{}{}{x^{3}}{\del{a}{\omega_{a}}}}} \\
-&= \integ{}{}{x^{1}}{\integ{}{}{x^{2}}{\integ{}{}{x^{3}}{\div{\vb*{\omega}}}}}.
+	\inte{V}{}{\df{\omega}} &= \frac{1}{2}\inte{V}{}{\varepsilon_{bcd}\del{a}{\omega_{d}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}} \\
+	                        &= \frac{1}{2}\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\varepsilon_{bcd}\varepsilon_{abc}\del{a}{\omega_{d}}}}} \\
+	                        &= \frac{1}{2}\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{(\delta_{ad}\delta_{bb} - \delta_{ab}\delta_{bd})\del{a}{\omega_{d}}}}} \\
+	                        &= \inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\del{a}{\omega_{a}}}}} \\
+	                        &= \inte{}{}{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\div{\vb*{\omega}}}}}.
 \end{align*}
 At the same time we have
 \begin{align*}
-\minteg{\bound{V}}{\omega} &= \frac{1}{2}\minteg{\bound{V}}{\varepsilon_{ijk}\omega_{i}\df{\chi^{j}}\wedge\df{\chi^{k}}} \\
-&= \frac{1}{2}\integ{\bound{V}}{}{S_{m}}{\varepsilon_{ijk}\varepsilon_{jkm}\omega_{i}} \\
-&= \frac{1}{2}\integ{\bound{V}}{}{S_{m}}{(\delta_{im}\delta_{jj} - \delta_{ij}\delta_{jm})\omega_{i}} \\
-&= \integ{\bound{V}}{}{S_{i}}{\omega_{i}} \\
-&= \integ{\bound{V}}{}{\vb{S}}{\cdot\vb*{\omega}}.
+	\inte{\bound{V}}{}{\omega} &= \frac{1}{2}\inte{\bound{V}}{}{\varepsilon_{ijk}\omega_{i}\df{\chi^{j}}\wedge\df{\chi^{k}}} \\
+	                           &= \frac{1}{2}\inte{\bound{V}}{}\dd{S_{m}}{\varepsilon_{ijk}\varepsilon_{jkm}\omega_{i}} \\
+	                           &= \frac{1}{2}\inte{\bound{V}}{}\dd{S_{m}}{(\delta_{im}\delta_{jj} - \delta_{ij}\delta_{jm})\omega_{i}} \\
+	                           &= \inte{\bound{V}}{}\dd{S_{i}}{\omega_{i}} \\
+	                           &= \inte{\bound{V}}{}\dd{\vb{S}}{\cdot\vb*{\omega}}.
 \end{align*}
 Hence we have
 \begin{align*}
-\integ{}{}{x^{1}}{\integ{}{}{x^{2}}{\integ{}{}{x^{3}}{\div{\vb*{\omega}}}}} = \integ{\bound{V}}{}{\vb{S}}{\cdot\vb*{\omega}},
+	\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\div{\vb*{\omega}}}}} = \inte{\bound{V}}{}\dd{\vb{S}}{\cdot\vb*{\omega}},
 \end{align*}
 which is the divergence theorem.
 
 \example{The $n$-Dimensional Divergence Theorem}
 Let us generalize the latter to an $n$-dimensional case. Consider a $n - 1$-form and its exterior derivative. We have
 \begin{align*}
-	\minteg{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\minteg{V}{\del{a_{1}}{\omega_{a_{2}\dots a_{n}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}}.
+	\inte{V}{}{\df{\omega}} &= \frac{1}{(n - 1)!}\inte{V}{}{\del{a_{1}}{\omega_{a_{2}\dots a_{n}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}}.
 \end{align*}
 We may once again choose coordinates such that the components of $\omega$ are completely antisymmetric, yielding
 \begin{align*}
-	\minteg{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\minteg{V}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\del{a_{1}}{\omega_{a_{n + 1}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}} \\
-	                        &= \frac{1}{(n - 1)!}\integ[n]{}{}{x}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\varepsilon_{a_{1}\dots a_{n}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
-	                        &= \frac{1}{(n - 1)!}\integ[n]{}{}{x}{\varepsilon_{a_{2}\dots a_{n + 1}}\varepsilon_{a_{2}\dots a_{n}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}}.
+	\inte{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\inte{V}{}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\del{a_{1}}{\omega_{a_{n + 1}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}} \\
+	                      &= \frac{1}{(n - 1)!}\inte[n]{}{}\dd{x}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\varepsilon_{a_{1}\dots a_{n}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
+	                      &= \frac{1}{(n - 1)!}\inte[n]{}{}\dd{x}{\varepsilon_{a_{2}\dots a_{n + 1}}\varepsilon_{a_{2}\dots a_{n}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}}.
 \end{align*}
 Summing over all but the first and last index will give a factor $(n - 1)!$, as this is the number of permutations of $n - 1$ unique indices. The remaining product is non-zero only when the last indices are equal, and is in this case equal to $1$, hence
 \begin{align*}
-\minteg{V}{\df{\omega}} &= \integ[n]{}{}{x}{\delta_{a_{n + 1}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
-                        &= \integ[n]{}{}{x}{\del{a}{\omega_{a}}}.
+	\inte{V}{}{\df{\omega}} &= \inte[n]{}{}\dd{x}{\delta_{a_{n + 1}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
+	                        &= \inte[n]{}{}\dd{x}{\del{a}{\omega_{a}}}.
 \end{align*}
 
 At the same time we have
 \begin{align*}
-	\minteg{\bound{V}}{\omega} &= \frac{1}{(n - 1)!}\minteg{\bound{V}}{\varepsilon_{a_{1}\dots a_{n}}\omega_{a_{n}}\bigwedge\limits_{k = 1}^{n - 1}d\chi^{a_{k}}} \\
-	                           &= \frac{1}{(n - 1)!}\integ{\bound{V}}{}{S_{m}}{\varepsilon_{a_{1}\dots a_{n}}\varepsilon_{a_{1}\dots a_{n - 1}m}\omega_{a_{n}}} \\
-	                           &= \integ{\bound{V}}{}{S_{a}}{\omega_{a}}.
+	\inte{\bound{V}}{}{\omega} &= \frac{1}{(n - 1)!}\inte{\bound{V}}{\varepsilon_{a_{1}\dots a_{n}}\omega_{a_{n}}\bigwedge\limits_{k = 1}^{n - 1}d\chi^{a_{k}}} \\
+	                           &= \frac{1}{(n - 1)!}\inte{\bound{V}}{}\dd{S_{m}}{\varepsilon_{a_{1}\dots a_{n}}\varepsilon_{a_{1}\dots a_{n - 1}m}\omega_{a_{n}}} \\
+	                           &= \inte{\bound{V}}{}\dd{S_{a}}{\omega_{a}}.
 \end{align*}
 Hence we have
 \begin{align*}
-	\integ[n]{}{}{x}{\del{a}{\omega_{a}}} = \integ{\bound{V}}{}{S_{a}}{\omega_{a}},
+	\inte[n]{}{}\dd{x}{\del{a}{\omega_{a}}} = \inte{\bound{V}}{}\dd{S_{a}}{\omega_{a}},
 \end{align*}
 which is a generalization of the divergence theorem. Note that this only applies if the coordinates of the manifold are akin to Cartesian coordinates.

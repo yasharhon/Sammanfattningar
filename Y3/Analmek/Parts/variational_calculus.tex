@@ -48,18 +48,18 @@ What is a derivative with respect to a function? To answer this, recall that at 
 \paragraph{The Integral Functional}
 The integral functional is the functional
 \begin{align*}
-	S(q) = \integ{a}{b}{\tau}{F(q, \dot{q})},
+	S(q) = \inte{a}{b}\dd{\tau}{F(q, \dot{q})},
 \end{align*}
 and will be the subject matter of this text from now on.
 
 \paragraph{Solving the Variational Problem}
 We have now tried varying the functional around the extremum. Single-variable calculus gives the condition that $\dv{S}{\alpha} = 0$ at the extremum, which is equivalent to $\var{S} = 0$. In other words,
 \begin{align*}
-	\integ{a}{b}{\tau}{\del{q^{i}}{F}\var{q^{i}} + \del{\dot{q}^{i}}{F}\var{\dot{q}^{i}}} = 0.
+	\inte{a}{b}\dd{\tau}{\del{q^{i}}{F}\var{q^{i}} + \del{\dot{q}^{i}}{F}\var{\dot{q}^{i}}} = 0.
 \end{align*}
 We can integrate this by parts to obtain
 \begin{align*}
-	\left[\del{\dot{q}^{i}}{F}\var{q^{i}}\right]_{a}^{b} + \integ{a}{b}{\tau}{\left(\del{q^{i}}{F} - \dv{\tau}\del{\dot{q}^{i}}{F}\right)\var{q^{i}}} = 0.
+	\left[\del{\dot{q}^{i}}{F}\var{q^{i}}\right]_{a}^{b} + \inte{a}{b}\dd{\tau}{\left(\del{q^{i}}{F} - \dv{\tau}\del{\dot{q}^{i}}{F}\right)\var{q^{i}}} = 0.
 \end{align*}
 
 The first term from the integration by parts can be handled in two ways. If the variational problem has fixed boundary conditions, the families $q^{i}$ must have been chosen such that all functions in the family satisfy the boundary conditions. Thus the variations of these at the endpoints vanish. Otherwise, the two arising terms might be used as boundary conditions themselves (the need for this arises due to the problem in question being second-order, and thus requiring two conditions). As $q^{i}$ may be varied in any way possible, it is thus clear that when using these boundary terms as conditions, they must be set equal to zero.
@@ -79,7 +79,7 @@ What if the integrand also involves higher-order derivatives of the $q^{i}$? We 
 \paragraph{The Functional Derivative of the Integral Functional}
 For a variational problem with fixed boundary conditions we obtained
 \begin{align*}
-	\var{S} = \integ{a}{b}{\tau}{\left(\pdv{F}{q^{i}} - \dv{\tau}\pdv{F}{\dot{q}^{i}}\right)\var{q^{i}}}.
+	\var{S} = \inte{a}{b}\dd{\tau}{\left(\pdv{F}{q^{i}} - \dv{\tau}\pdv{F}{\dot{q}^{i}}\right)\var{q^{i}}}.
 \end{align*}
 The functional derivative is then
 \begin{align*}
