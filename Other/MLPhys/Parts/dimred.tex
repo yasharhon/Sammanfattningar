@@ -1,0 +1,87 @@
+\section{Dimensionality Reduction}
+Dimensionality reduction is a set of techniques for mapping features in data to a space of lower dimension. Good dimensionality reduction techniques preserve data variance.
+
+\paragraph{Fisher's Linear Discriminant}
+Fisher's linear discriminant is a dimensionality reduction technique based on the goal of finding a projection operation on the data such that class separation is maximized, the variance between classes is maximized and the class overlap is minimized through the reduction of in-class variance.
+
+For two classes in two dimensions, given some projection direction indicated by $w$, the projected means are
+\begin{align*}
+	m_{i} = w^{T}\mu_{i},
+\end{align*}
+where the $\mu_{i}$ are the full in-class means. The projected in-class variances are then
+\begin{align*}
+	\sigma_{i}^{2} = \frac{1}{N_{i}}\sum\limits_{n}(w^{T}x_{n}^{i} - m_{i})^{2}.
+\end{align*}
+The function we want to optimize is
+\begin{align*}
+	L(w) = \frac{(m_{2} - m_{1})^{2}}{\sigma_{1}^{2} + \sigma_{2}^{2}},
+\end{align*}
+as a large value of this function would indicate that the class separations along the given direction is much larger than the in-class variances.
+
+We have
+\begin{align*}
+	(m_{2} - m_{1})^{2} = w^{T}\left(\mu_{1} - \mu_{2}\right)\left(\mu_{1} - \mu_{2}\right)^{T}w = w^{T}S^{B}w,
+\end{align*}
+and
+\begin{align*}
+	\sigma_{1}^{2} + \sigma_{2}^{2} =& w^{T}\left(\frac{1}{N_{1}}\sum\limits_{n}(x_{n}^{1} - \mu_{1})(x_{n}^{1} - \mu_{1})^{T} + \frac{1}{N_{2}}\sum\limits_{n}(x_{n}^{2} - \mu_{2})(x_{n}^{2} - \mu_{2})^{T}\right)^{T}w \\
+	                                =& w^{T}\left(\expval{x^{1}(x^{1})^{T}} - \mu_{1}\mu_{1}^{T} + \expval{x^{2}(x^{2})^{T}} - \mu_{2}\mu_{2}^{T}\right)^{T}w \\
+	                                =& w^{T}S^{W}w.
+\end{align*}
+For a quadratic form we have
+\begin{align*}
+	\del{}{w_{k}}(A_{ij}w_{i}w_{j}) = A_{kj}w_{j} + A_{ik}w_{i} = 2A_{ki}w_{i},
+\end{align*}
+with the last step assuming $A$ to be symmetric without loss of generality. Thus we have
+\begin{align*}
+	\del{}{w_{k}}L = 2\frac{(w^{T}S^{W}wS^{B}_{ki} - w^{T}S^{B}wS^{W}_{ki})w_{i}}{(w^{T}S^{W}w)^{2}} = 2\frac{((\sigma_{1}^{2} + \sigma_{2}^{2})S^{B}_{ki} - (m_{2} - m_{1})^{2}S^{W}_{ki})w_{i}}{(\sigma_{1}^{2} + \sigma_{2}^{2})^{2}}.
+\end{align*}
+This implies
+\begin{align*}
+	((\sigma_{1}^{2} + \sigma_{2}^{2})S^{B}_{ki} - (m_{2} - m_{1})^{2}S^{W}_{ki})w_{i} = 0.
+\end{align*}
+In a matrix notation we have
+\begin{align*}
+	((\sigma_{1}^{2} + \sigma_{2}^{2})S^{B} - (m_{2} - m_{1})^{2}S^{W})w = 0.
+\end{align*}
+We note that any vector in the direction $\mu_{1} - \mu_{2}$ solves the equation, and this is the optimal choice.
+
+\paragraph{Principal Component Analysis}
+Principle component analycis (PCA) is a dimensionality reduction based on finding high-variance directions in feature space and removing others. The underlying assumption is that valuable information is contained in directions with the largest variance.
+
+To study it, suppose the data is centered and introduce the matrix $X^{T}$, the columns of which are the data points. The covariance matrix for the features is then
+\begin{align*}
+	\Sigma = \frac{1}{N - 1}X^{T}X.
+\end{align*}
+Because $\Sigma$ is symmetric, we can perform an eigenvalue decomposition. Denoting the eigenvector matrix as $V$ and the eigenvalue matrix as $\Lambda$, we say that the columns of $V$ define the principal directions. Next we discard directions with small variance, reducing the dimensionality from $p$ to $\tilde{p}$, by introducing a projection matrix $\tilde{V}_{p}$ with dimension $p\times\tilde{p}$ and a new data matrix $\tilde{Y} = X\tilde{V}_{p}$. The columns of $\tilde{V}_{p}$ are the $\tilde{p}$ eigenvectors with largest eigenvalues. The percentage
+\begin{align*}
+	\eta_{i} = \frac{\lambda_{i}}{\sum\limits_{i}\lambda_{i}}.
+\end{align*}
+
+\paragraph{Stochastic Neighborhood Embedding}
+t-stochastic neighborhood embedding (t-SNE) is a technique meant for capturing different kinds of structure in data. It is non-parametric and, most notably, non-linear.
+
+We will need to introduce some ideas first. We can assign a probability distribution to the neighborhood of each data point. The probability that $x_{i}$ is the neighborhood of $x_{j}$ is given by
+\begin{align*}
+	P(x_{j}\given x_{i}) = \frac{e^{-\frac{\abs{x_{i} - x_{j}}}{2\sigma_{i}}}}{\sum\limits_{k\neq i}e^{-\frac{\abs{x_{i} - x_{k}}}{2\sigma_{i}}}}.
+\end{align*}
+We also define $p_{i\given j}$ to be the likelihood that $x_{i}$ is in the neighborhood of $x_{j}$ and take $p_{i\given i} = 0$. The $\sigma_{i}$ are determined by fixing the entropy
+\begin{align*}
+	H(p_{i}) = -\sum\limits_{j\neq i}p_{j\given i}\log_{2}(p_{j\given i}),
+\end{align*}
+or equivalently the perplexity $\Sigma = 2^{H(p_{i})}$. This will entail that points in dense regions have small $\sigma_{i}$. Outliers, however, contribute very weakly to all neighborhoods, making their assignment difficult. One can instead define a symmetrized distribution
+\begin{align*}
+	p(x_{j}\given x_{i}) = \frac{1}{2N}(P(x_{j}\given x_{i}) + P(x_{i}\given x_{j})),
+\end{align*}
+which is not vanishing.
+
+The idea of the method is to embed the high-dimensionality neighborhood into a lower-dimensional space in a way that preserves neighborhood relations. In this lower-dimensionality space, where the data points have coordinates $y_{i}$, we assign the probability distributions
+\begin{align*}
+	q(y_{j}\given y_{i}) = \frac{\frac{1}{1 + \abs{y_{j} - y_{i}}^{2}}}{\sum\limits_{k\neq i}\frac{1}{1 + \abs{y_{k} - y_{i}}^{2}}}.
+\end{align*}
+The method then matches the lower- and higher-dimensionality distributions by minimizing the Kullback-Leibler divergence
+\begin{align*}
+	D_{\text{KL}}(p, q) = \sum\limits_{i, j}p(x_{j}\given x_{i})\ln(\frac{p(x_{j}\given x_{i})}{q(y_{j}\given y_{i})}).
+\end{align*}
+
+While t-SNE is powerful, note that it can rotate data. The results are also stochastic. While the method preserves short-distance information, it also deforms scale. The method is also computationally expensive, its efficiency only recently being obtained at the time of writing.

@@ -1,0 +1,51 @@
+\section{Unsupervised Learning Techniques}
+
+\paragraph{Clustering}
+Clustering algorithms are algorithms that classify data point. Good clustering outputs categorize similar data points into the same category and different data points into different categories. These requirements can be contradictory, a by-construction limitation of these methods.
+
+\paragraph{KMeans}
+Given a set of observations and a number $K$, KMeans divides the data into a set of $K$ clusters $X_{i}$. It does this by minimizing the cost function
+\begin{align*}
+C(x, \mu) = \sum\limits_{i = 1}^{K}\sum\limits_{j\in X_{i}}d(x_{j}, \mu_{i}),
+\end{align*}
+where the $\mu_{i}$ is the in-cluster mean and $d$ is the metric function. This problem is NP-hard, so finding optimal solutions is computationally infeasible. Iterative solutions generally work well, but the output might differ from time to time. The iterative solutions are typically based on the following steps:
+\begin{enumerate}
+	\item perform some (typically randomized) initial assigment.
+	\item compute the in-sample means.
+	\item reassign data points according to which in-cluster mean they are closest to.
+	\item repeat from steps 2.
+\end{enumerate}
+One usually also repeats the procedure different times, choosing the run with the minimal cost function. 
+
+\paragraph{Agglomerative Clustering}
+Agglomerative clustering is a different approach to clustering. The idea is to start from small initial clusters and progressively merge them. The algorithm is:
+\begin{enumerate}
+	\item Create one cluster for each point.
+	\item Given some set of clusters, merge them to one by successively merging the two closest clusters according to some distance measure $d$.
+\end{enumerate}
+Popular distance measures include:
+\begin{itemize}
+	\item single-linkage, which measures the minimum distance between two elements in either cluster.
+	\item complete linkage, which measures the maximum distance between two elements in either cluster.
+	\item average linkage, which measures the average distance between two elements in either cluster.
+\end{itemize}
+
+\paragraph{DBSCAN}
+DBSCAN is a density-based clustering algorithm. It uses the notion of an $\epsilon$-neighborhood of a point, defined as the set of points at distance less than $\epsilon$ from the point in question. The algorithm defines a point as a core point if at least some number $n$ of points are in its $\epsilon$-neighborhood, $n$ being a parameter of the algorithm. Other points are density-reachable if they are in the $\epsilon$-neighborhood of a core point. The algorithm does the following while there are any unvisited points:
+\begin{enumerate}
+	\item Pick an unvisited point $x_{i}$.
+	\item Mark $x_{i}$ as visited.
+	\item If $x_{i}$ is a core point, find the set of density-reachable points from $x_{i}$. These now form a cluster.
+\end{enumerate}
+The cluster assignment is finally returned. Points without any assignment are considered to be noise. This has the power of not needing the number of clusters specified beforehand.
+
+\paragraph{Anomaly Detection}
+Mathematically we define
+\begin{align*}
+	P(x) = \alpha_{\text{nom}}P_{\text{nom}}(x) + \alpha_{\text{anom}}P_{\text{anom}}(x).
+\end{align*}
+Thus we have two different random processes generating nominal and anominal data. Detecting such data can be very useful in different contexts.
+
+A few approaches are available. The first is a static rule approach. Here one constructs a set of rules to identify anomalies and assume the 80-20 rule as a tool.  This is a very brittle approach. The second is a supervised anomaly detector. Here one trains a classifier to detect anomalies. This of course requires labelled training data. Another issue is that high accuracy is generally needed. Finally there is unsupervised anomaly detection, where one uses clustering assuming nominal data and does some posterior validation to detect the anomalies. This must be tested properly.
+
+Anomalies come in different forms. The first is point anomalies, where individual points are anomalous with respect to regular data. The second is context anomalies, where some context marks out data points as anomalous. The final is collective anomalies, where a collection of data points are anomalous together. Identifying this requires some notion of relations in the data.

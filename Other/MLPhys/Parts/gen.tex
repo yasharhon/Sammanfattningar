@@ -1,0 +1,41 @@
+\section{Generative Models}
+
+\paragraph{The Idea Behind Generative Models}
+The previously studied models have made no assumptions on the underlying distribution from which the data is generated, instead trying to learn some labelling probability conditioned on the data. Such models are called discriminative. The process of learning the underlying distribution generating the data is the goal of generative methods.
+
+More formally, the task is to learn some probability distribution $p_{\theta}(x)$ parametrized by $\theta$ that approximates the true generating distribution $P$. We first need to identify an appropriate loss function, and the Kullbach-Leibler divergence seems appropriate. However, it is not symmetric and does not satisfy the triangle inequality. We can instead construct the Jensen-Shannon divergence
+\begin{align*}
+	D_{\text{JS}} = \frac{1}{2}\left(D_{\text{KL}}\left(p, \frac{p + P}{2}\right) + D_{\text{KL}}\left(\frac{p + P}{2}, p\right)\right).
+\end{align*}
+
+Generative modelling marks a significant step towards proper artificial intelligence, the key aspect being that it takes the approach of learning the underlying distribution generating data. This has the flipside of creating more ethical issues, including the prevalence of fake information and issues with algorithms reinforcing inequality.
+
+\paragraph{Generative Adversarial Networks}
+A framework for training generative models is the Generative Adversarial Network (GAN), constructed around a two-player Nash game. The structure of this game is to have two artificial intelligences working together. The first is a generator that creates a fake sample generated from a choice of parameters in some latent space. The second is a discriminator that compares the fake samples to real samples and tries to determine which is the fake one. These are connected in a feedback loop such that they train together. The discriminator aims to achieve maximal loss on real images and minimal loss on fake images, corresponding to maximizing and minimizing the expectation values
+\begin{align*}
+	E_{P}(\ln(D(x))),\ E_{p_{\theta}}(\ln(1 - D(x))).
+\end{align*}
+The fake samples $x$ can be written as $x = G(z)$, where $z$ is an element in the underlying parameter space. The total loss function is then
+\begin{align*}
+	L(D, G) = \inte{}{}\dd{x}P(x)\ln(D(x)) + p_{\theta}\ln(1 - D(x)).
+\end{align*}
+Considering a small variation of $D$, we find that
+\begin{align*}
+	\var{L} = \inte{}{}\dd{x}\frac{P(x)}{D(x)} - \frac{p_{\theta}}{1 - D(x)},
+\end{align*}
+and the optimum is for
+\begin{align*}
+	D(x) = \frac{p_{\theta}(x)}{p_{\theta}(x) + P(x)}.
+\end{align*}
+The corresponding loss is $-2\ln(2)$.
+
+What does this loss function represent? We can write the Jensen-Shannon divergence as
+\begin{align*}
+	D_{\text{JS}} =& \frac{1}{2}\left(2\ln(2) + \inte{}{}\dd{x}P(x)\frac{P(x)}{P(x) + p_{\theta}(x)} + p_{\theta}(x)\frac{p_{\theta}(x)}{P(x) + p_{\theta}(x)}\right) \\
+	              =& \frac{1}{2}\left(\ln(4) + L(D\cc, G)\right).
+\end{align*}
+The GAN loss function is thus proportional to the Jensen-Shannon divergence when $D$ takes its optimum value $D\cc$.
+
+Why do such methods work, and why are they preferred over maximum likelihood methods? A key point is the asymmetry in the KL-divergence, which harshly punishes the filling-in of probability typically performed by maximum-likelihood methods. The symmetry of the JS-divergence makes the algorithm punish both adding weight where there is none and failing to add weight where there should be.
+
+The JS-divergence cannot be evaluated numerically, hence the alternative is to use an adversarial approach, as in the two-player Nash game. This ensures that the filling-out of weight is actually punished. The algorithm is to, given some batch of real and fake samples, update the discriminator by ascending along the gradient of total loss, and then updating the generator by descending along its gradient of total loss.

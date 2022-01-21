@@ -1,0 +1,276 @@
+\section{Solid-State Systems and Effects}
+This section concerns systems that can be studied with more familiar solid-state theory.
+
+\paragraph{The Bloch Theorem}
+The full Hamiltonian for a set of electrons in a crystal lattice is impossible to solve. Bloch's theorem is the statement that by simplifying the theory such that the electrons are moving in some effective potential, the states are given by
+\begin{align*}
+	\psi_{n, \vb{k}} = \braket{\vb{r}}{n, \vb{k}} = u_{n, \vb{k}}(\vb{r})e^{i\vb{k}\cdot\vb{r}},
+\end{align*}
+where $u$ has the same periodicity as the potential. The wavevector $\vb{k}$ is confined to the first Brillouin zone and the index $n$ labels which band the state is in. One useful property of these states is that
+\begin{align*}
+	\mel{\vb{r}}{\ham}{n, \vb{k}} =& \left(\frac{1}{2m}\vb{p}^{2} + V(\vb{r})\right)u_{n, \vb{k}}(\vb{r})e^{i\vb{k}\cdot\vb{r}} \\
+	                              =& e^{i\vb{k}\cdot\vb{r}}\left(\frac{1}{2m}(\vb{p} + \hbar\vb{k})^{2} + V(\vb{r})\right)u_{n, \vb{k}}(\vb{r}),
+\end{align*}
+hence we may change the wavefunction basis to only include the Bloch functions and let the parameter $\vb{k}$ enter as a parameter in the Hamiltonian. The Feynman-Hellman theorem then states that
+\begin{align*}
+	\expval{\vb{v}}{n, \vb{k}} = \frac{1}{m}\expval{\vb{p} + \hbar\vb{k}}{u_{n, \vb{k}}} = \frac{1}{\hbar}\grad_{\vb{k}}E_{\vb{k}},
+\end{align*}
+where $E_{\vb{k}}$ is the energy eigenvalue associated with a given Bloch state.
+
+\paragraph{The Tight Binding Approximation}
+The tight binding approximation is an approximative solution of the Schrödinger equation in  a periodic potential. It states that, given some solution of one element of the periodic potential, the eigenbasis for the full Hamiltonian is a set of states localized at each element in the periodic array. More specifically, it is the approximation
+\begin{align*}
+	\ket{\psi_{\vb{q}}} = \frac{1}{\sqrt{N}}\sum\limits_{j}e^{i\vb{q}\cdot\vb{R}_{j}}\ket{j},
+\end{align*}
+with the corresponding Bloch function
+\begin{align*}
+	u_{\vb{q}}(\vb{r}) = \frac{1}{\sqrt{N}}\sum\limits_{j}e^{-i\vb{q}\cdot(\vb{r} - \vb{R}_{j})}\phi_{0}(\vb{r} - \vb{R}_{j}),
+\end{align*}
+where
+\begin{align*}
+	\phi_{0}(\vb{r} - \vb{R}_{j}) = \braket{\vb{r}}{j}.
+\end{align*}
+
+To compute the energy of such states we will need inner products of these states. First we have
+\begin{align*}
+	\braket{\psi_{\vb{q}}} = \frac{1}{N}\sum\limits_{j, l}e^{i\vb{q}\cdot(\vb{R}_{j} - \vb{R}_{l})}\braket{l}{j} = \sum\limits_{j}e^{i\vb{q}\cdot\vb{R}_{j}}\braket{0}{j},
+\end{align*}
+which we dub $\eta(\vb{q})$. Now, because these states are eigenstates of the translation operator one can show that
+\begin{align*}
+	\braket{\psi_{\vb{q}}}{\psi_{\vb{k}}} = \eta(\vb{q})\delta^{3}(\vb{q} - \vb{k})_{\vb{G}},
+\end{align*}
+where the Dirac delta is up to a reciprocal lattice vector. Next, let us consider matrix elements of the Hamiltonian. Writing
+\begin{align*}
+	\ham = \frac{p^{2}}{2m} + \sum\limits_{j}V(\vb{r} - \vb{R}_{j})
+\end{align*}
+we have
+\begin{align*}
+	\ham\ket{i} = E_{0}\ket{i} + \left(\sum\limits_{j\neq i}V(\vb{r} - \vb{R}_{j})\right)\ket{i}.
+\end{align*}
+Denoting the operator in the last term as $\Delta V_{i}$ we note that it does not have $\ket{i}$ as an eigenvector. For a Bloch state we then find
+\begin{align*}
+	\mel{\psi_{\vb{q}}}{\ham}{\psi_{\vb{q}}} = E_{0}\eta(\vb{q}) + \frac{1}{N}\sum\limits_{j, k}e^{i\vb{q}\cdot(\vb{R}_{k} - \vb{R}_{j})}\mel{j}{\Delta V_{k}}{k}.
+\end{align*}
+Defining the right term as $\Lambda(\vb{q})$ we find
+\begin{align*}
+	E_{\vb{q}} = E_{0} + \frac{\Lambda(\vb{q})}{\eta(\vb{q})}.
+\end{align*}
+
+Approximating the atoms to be far apart we can neglect most contributions to $\eta$ by setting it to $1$. In this approximation we introduce a first non-trivial correction by first setting
+\begin{align*}
+	\braket{j}{k} = \zeta
+\end{align*}
+and
+\begin{align*}
+	\expval{\Delta V_{k}}{k} = \Delta E,\ \mel{j}{\Delta V_{k}}{k} = t_{0},
+\end{align*}
+where the off-diagonal expressions only hold for nearest neighbors. $t_{0}$ is called the transfer integral. We then have
+\begin{align*}
+	\Lambda(\vb{q}) = \Delta E + t_{0}\sum\limits_{\vb*{\delta}}e^{-i\vb{q}\cdot\vb*{\delta}},
+\end{align*}
+where the sum is over nearest-neighbor lattice vectors. A similar result holds for the overlap. We often normalize the term by extracting a factor $z$ from the sum, which is the coordination number, and write what is left as $\gamma(\vb{q})$. We then finally have
+\begin{align*}
+	E_{\vb{q}} = E_{0} + \frac{\Delta E + t_{0}z\gamma(\vb{q})}{1 + z\zeta\gamma(\vb{q})}.
+\end{align*}
+Evidently, then, the band width is $2t_{0}z$. Furthermore, we can use this to determine the curvature and thus an effective mass by expanding
+\begin{align*}
+	E_{\vb{q}} \approx E_{0} + \frac{\hbar^{2}}{2m}\vb{q}^{2}
+\end{align*}
+close to the minimum.
+
+\paragraph{Wannier Functions}
+Wannier functions are constructions of states that are orthogonal. For band $n$, the Wannier function centered around atom $j$ is
+\begin{align*}
+	\ket{\chi_{n, j}} = \frac{1}{\sqrt{N}}\sum\limits_{\vb{q}}e^{-i\vb{q}\cdot\vb{R}_{j}}\ket{\psi_{n, \vb{q}}}.
+\end{align*}
+The $\ket{\psi_{n, \vb{q}}}$ are the normalized Bloch states from the tight binding approximation. These distinguish themselves in being useful even if the tight binding approximation breaks down. They are also orthogonal, as
+\begin{align*}
+	\braket{\chi_{n, i}}{\chi_{m, j}} =& \frac{1}{N}\sum\limits_{\vb{k}, \vb{q}}e^{i(\vb{k}\cdot\vb{R}_{i} - \vb{q}\cdot\vb{R}_{j})}\braket{\psi_{m, \vb{k}}}{\psi_{n, \vb{q}}} \\
+	                                  =& \frac{1}{N}\sum\limits_{\vb{k}, \vb{q}}e^{-i(\vb{k}\cdot\vb{R}_{i} - \vb{q}\cdot\vb{R}_{j})}\kdelta{}{mn}\kdelta{}{\vb{k}\vb{q}} \\
+	                                  =& \frac{1}{N}\kdelta{}{mn}\sum\limits_{\vb{k}}e^{-i\vb{k}\cdot(\vb{R}_{i} - \vb{R}_{j})}.
+\end{align*}
+Because each unit cell contributes one state and the complex exponential is rapidly oscillatory we have
+\begin{align*}
+	\braket{\chi_{n, i}}{\chi_{m, j}} = \kdelta{}{mn}\kdelta{}{ij}.
+\end{align*}
+
+\paragraph{Graphene}
+Graphene is a phase of carbon where the atoms arrange in a honeycomb lattice in a single atomic layer. This can be represented as a triangular lattice with two atoms in the basis. We choose the lattice vectors $a\left(\frac{3}{2}, \pm\frac{\sqrt{3}}{2}\right)$ and the basis displacement vector $a(1, 0)$. Employing the tight-binding approximation with $E_{0} = 0$ we write the Hamiltonian as
+\begin{align*}
+	\ham = -t\sum\limits_{\expval{i, j}}\op{i}{j} + \op{j}{i},
+\end{align*}
+which is a sum over nearest neighbors. The fact that there are two atoms in the basis divides the lattice into two sublattices $A$ and $B$. The Bloch states are then
+\begin{align*}
+	\ket{\vb{q}, A} = \frac{1}{\sqrt{N}}\sum\limits_{j\in A}e^{i\vb{q}\cdot\vb{R}_{j}}\ket{j},
+\end{align*}
+with a similar state for the other sublattice. Neglecting overlap between neighboring wavefunctions we find
+\begin{align*}
+	\ham\ket{\vb{q}, A} =& -\frac{t}{\sqrt{N}}\left(\sum\limits_{\expval{i, j}}\op{i}{j} + \op{j}{i}\right)\sum\limits_{k\in A}e^{i\vb{q}\cdot\vb{R}_{k}}\ket{k} \\
+	                    =& -\frac{t}{\sqrt{N}}\sum\limits_{k\in A}\sum\limits_{j = \text{nn}(k)}e^{i\vb{q}\cdot\vb{R}_{k}}\ket{j} \\
+	                    =& -\frac{t}{\sqrt{N}}\sum\limits_{k\in A}\sum\limits_{j = \text{nn}(k)}e^{i\vb{q}\cdot(\vb{R}_{j} - \vb*{\delta}_{k\to j})}\ket{j} \\ 
+	                    =& -t\sum\limits_{\vb*{\delta}}e^{-i\vb{q}\cdot\vb*{\delta}}\ket{\vb{q}, B},
+\end{align*}
+and similarly
+\begin{align*}
+	\ham\ket{\vb{q}, B} =& -t\sum\limits_{\vb*{\delta}}e^{i\vb{q}\cdot\vb*{\delta}}\ket{\vb{q}, A}.
+\end{align*}
+We denote the prefactor as $-tf(\vb{q})$, and find that the Hamiltonian has eigenvalues $\pm t\abs{f(\vb{q})}$.
+
+Of note about the Brillouin zone of the triangular lattice, which is a hexagon, is that it only has one unique corner (and its opposite), as the others are related to these by a reciprocal lattice vector. Choosing, say, $\vb{K} = \frac{4\pi}{3\sqrt{3}a}\left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right)$ and its opposite we have
+\begin{align*}
+	f(\vb{K}) = e^{i\frac{4\pi}{3\sqrt{3}}\frac{\sqrt{3}}{2}} + e^{i\frac{4\pi}{3\sqrt{3}}\left(-\frac{\sqrt{3}}{4} - \frac{\sqrt{3}}{4}\right)} + e^{i\frac{4\pi}{3\sqrt{3}}\left(-\frac{\sqrt{3}}{4} + \frac{\sqrt{3}}{4}\right)} = 2\cos(\frac{2\pi}{3}) + 1 = 0.
+\end{align*}
+Thus there is no band gap. Next we have
+\begin{align*}
+	\grad_{\vb{q}}f(\vb{q}) = i\sum\limits_{\vb*{\delta}}\vb*{\delta}e^{i\vb{q}\cdot\vb*{\delta}},
+\end{align*}
+and close to the corner we have
+\begin{align*}
+	f(\vb{q}) \approx& (\vb{q} - \vb{K})\cdot ia\left((1, 0)e^{i\frac{2\pi}{3}} + \left(-\frac{1}{2}, -\frac{\sqrt{3}}{2}\right)e^{-i\frac{2\pi}{3}} + \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right)\right) \\
+	                =& ia\left(k_{x}e^{i\frac{2\pi}{3}} + \left(-\frac{1}{2}k_{x} - \frac{\sqrt{3}}{2}k_{y}\right)e^{-i\frac{2\pi}{3}} - \frac{1}{2}k_{x} + \frac{\sqrt{3}}{2}k_{y}\right) \\
+	                =& ia\left(k_{x}\left(e^{i\frac{2\pi}{3}} - \frac{1}{2}e^{-i\frac{2\pi}{3}} - \frac{1}{2}\right) + k_{y}\left(-\frac{\sqrt{3}}{2}e^{-i\frac{2\pi}{3}} + \frac{\sqrt{3}}{2}\right)\right).
+\end{align*}
+This means that the dispersion is linear, a characteristic of solutions of the Dirac equation. This relation must be investigated further.
+
+To do this we must remedy the fact that $f$ does not share the periodicity of the reciprocal lattice due to the $\vb*{\delta}$ not being lattice vectors. However, by introducing
+\begin{align*}
+	\ket{\vb{q}, \tilde{B}} = ie^{-i\vb{q}\cdot\vb*{\delta}_{1}}\ket{\vb{q}, B},
+\end{align*}
+the same treatment results in the Hamiltonian containing a new function $\tilde{f}(\vb{q}) = ie^{-i\vb{q}\cdot\vb*{\delta}_{1}}f(\vb{q})$. This function has the periodicity of the reciprocal lattice. Writing
+\begin{align*}
+	\tilde{f}(\vb{q}) = i\left(1 + e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)} + e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)}\right),
+\end{align*}
+we have
+\begin{align*}
+	\grad_{\vb{q}}\tilde{f} =& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\vb{q}\cdot\sqrt{3}a\left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)}\right).
+\end{align*}
+As $\tilde{f}(\vb{K}) = 0$ we have
+\begin{align*}
+	\tilde{f}(\vb{K} + \vb{k}) \approx& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(-\frac{3}{4} + \frac{1}{4}\right)} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(-\frac{3}{4} - \frac{1}{4}\right)}\right)\cdot\vb{k} \\
+	                                 =& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{-i\frac{2\pi}{3}} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{-i\frac{4\pi}{3}}\right)\cdot\vb{k} \\
+	                                 =& -\sqrt{3}a\left(-\frac{\sqrt{3}}{2}\left(e^{-i\frac{2\pi}{3}} + e^{-i\frac{4\pi}{3}}\right), \frac{1}{2}\left(e^{-i\frac{2\pi}{3}} - e^{-i\frac{4\pi}{3}}\right)\right)\cdot\vb{k} \\
+	                                 =& -\sqrt{3}a\left(-\sqrt{3}\cos(-\frac{2\pi}{3}), i\sin(-\frac{2\pi}{3})\right)\cdot\vb{k} \\
+	                                 =& -\frac{3}{2}a\left(1, -i\right)\cdot\vb{k}.
+\end{align*}
+In the matrix form we can represent the Hamiltonian in this basis as
+\begin{align*}
+	\tilde{\ham} = \frac{3}{2}at\mqty[
+		0               & k_{x} - ik_{y} \\
+		k_{x} + ik_{y}  & 0 \\
+	] = v_{\text{F}}\vb*{\sigma}\cdot\vb{k}.
+\end{align*}
+This is an effective Hamiltonian for states close to the Brillouin zone boundary which is exactly the Dirac Hamiltonian in two dimensions. A similar analysis about the other corner reveals
+\begin{align*}
+	\tilde{f}(\vb{K} + \vb{k}) \approx& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(\frac{3}{4} - \frac{1}{4}\right)} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\frac{4\pi}{3}\left(\frac{3}{4} + \frac{1}{4}\right)}\right)\cdot\vb{k} \\
+	                                 =& -\sqrt{3}a\left(\left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)e^{i\frac{2\pi}{3}} + \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right)e^{i\frac{4\pi}{3}}\right)\cdot\vb{k} \\
+	                                 =& -\sqrt{3}a\left(-\frac{\sqrt{3}}{2}\left(e^{i\frac{2\pi}{3}} + e^{i\frac{4\pi}{3}}\right), \frac{1}{2}\left(e^{i\frac{2\pi}{3}} - e^{i\frac{4\pi}{3}}\right)\right)\cdot\vb{k} \\
+	                                 =& -\sqrt{3}a\left(-\sqrt{3}\cos(\frac{2\pi}{3}), i\sin(\frac{2\pi}{3})\right)\cdot\vb{k} \\
+	                                 =& -\frac{3}{2}a\left(1, i\right)\cdot\vb{k}.
+\end{align*}
+Thus the Hamiltonian is $\tilde{\ham} = v_{\text{F}}(-\sigma_{x}k_{x} + \sigma_{y}k_{y})$. We can write this in a unified way by introducing a so-called valley degree-of-freedom index $\tau_{z} = \pm 1$.
+
+\paragraph{Polyacetylene}
+Consider a one-dimensional chain with two atoms in the basis separated by a distance $a$, for which
+\begin{align*}
+	\gamma(q) = 2\cos(qa).
+\end{align*}
+By approximating $\zeta = 0$ and setting $E_{0} = 0$ we then find
+\begin{align*}
+	E_{q} = 2t\cos(qa).
+\end{align*}
+In the localized basis for the two atoms we have
+\begin{align*}
+	\ham = \mqty[
+		0          & -2t\cos(qa) \\
+		-2t\cos(qa) & 0
+	].
+\end{align*}
+There exists one unique Dirac point at $k_{0} = \frac{\pi}{2a}$, and close to this point we have $E_{q} \approx 2taq$, hence the Hamiltonian in terms of a small displacement $k$ from the Dirac point becomes $\ham \approx 2ta\sigma_{x}k$. This is the Dirac Hamiltonian in one dimension.
+
+Because only one Pauli matrix has been used, more possible non-trivial terms can be included by incorporating the Pauli matrices. The $\sigma_{z}$ term might represent some site difference. To obtain the other kind of term we suppose the hopping elements to have some directionality - that is, $t = t_{0} \pm \delta t$. The Hamiltonian then becomes
+\begin{align*}
+	\ham = \mqty[
+		0                                & -2t\cos(qa) - 2i\delta t\sin(qa) \\
+		-2t\cos(qa) + 2i\delta t\sin(qa) & 0
+	],
+\end{align*}
+and close to the Dirac point we have
+\begin{align*}
+	\ham \approx 2ta\sigma_{x}k + 2\delta t\sigma_{y}.
+\end{align*}
+This has the consequence of reducing the energy of the valence band - more specificallye we have
+\begin{align*}
+	\Delta E =& \frac{L}{2\pi}\inte{-\frac{\pi}{2a}}{\frac{\pi}{2a}}\dd{k}v_{\text{F}}\abs{k} - \sqrt{v_{\text{F}}^{2}k^{2} + m_{y}^{2} + m_{z}^{2}} \\
+	         =& \frac{L}{\pi}\inte{0}{\frac{\pi}{2a}}\dd{k}v_{\text{F}}k - \sqrt{v_{\text{F}}^{2}k^{2} + m_{y}^{2} + m_{z}^{2}} \\
+	         =& \frac{L}{2v_{\text{F}}\pi}\left(\left(\frac{v_{\text{F}}\pi}{2a}\right)^{2} - \frac{v_{\text{F}}\pi}{2a}\sqrt{\left(\frac{v_{\text{F}}\pi}{2a}\right)^{2} + m_{y}^{2} + m_{z}^{2}} - (m_{y}^{2} + m_{z}^{2})\ln(\frac{\sqrt{m_{y}^{2} + m_{z}^{2} + \left(\frac{v_{\text{F}}\pi}{2a}\right)^{2}} + \frac{v_{\text{F}}\pi}{2a}}{\sqrt{m_{y}^{2} + m_{z}^{2}}})\right),
+\end{align*}
+where we have introduced the Fermi velocity $v_{\text{F}} = 2ta$. Defining $m^{2} = m_{y}^{2} + m_{z}^{2}$ we find in the limit that $m$ becomes small that
+\begin{align*}
+	\Delta E \approx -\frac{Lm^{2}}{2v_{\text{F}}\pi}\ln(\frac{\sqrt{m_{y}^{2} + m_{z}^{2} + \left(\frac{v_{\text{F}}\pi}{2a}\right)^{2}} + \frac{v_{\text{F}}\pi}{2a}}{\sqrt{m_{y}^{2} + m_{z}^{2}}}) \approx -\frac{Lm^{2}}{2v_{\text{F}}\pi}\ln(\frac{v_{\text{F}}\pi}{\abs{m}a}),
+\end{align*}
+meaning there is a spontaneous tendency for the system to arrange itself such that this happens. This has the consequence of deforming the lattice, however, and a proper attempt will need to account for both of these effects at the same time.
+
+\paragraph{The Su-Schrieffer-Heeger Model}
+The Su-Schrieffer-Heeger model is an attempt to account for the balance between lattice distortion and dimerization energy minimization. Its Hamiltonian is
+\begin{align*}
+	\ham = \sum\limits_{j}-t(u_{j + 1} - u_{j})(\op{j}{j + 1} + \op{j + 1}{j}) + \frac{\lambda}{2}(u_{j + 1} - u_{j})^{2},
+\end{align*}
+where the degrees of freedom are the $u_{j}$ for the lattice points and the electronic states represented by kets. The hopping element $t$ now depends on the lattice structure. We can approximate
+\begin{align*}
+	t(u_{j + 1} - u_{j}) \approx t - \frac{\alpha}{2}(u_{j + 1} - u_{j})
+\end{align*}
+for small displacements. For the dimeric case we may choose coordinates such that $u_{j} = (-1)^{j}u$, hence $\delta t = \alpha u$. The total energy change for dimerization is then
+\begin{align*}
+	\Delta E\approx -\frac{Lm^{2}}{2v_{\text{F}}\pi}\ln(\frac{v_{\text{F}}\pi}{a\alpha \abs{u}}) + 2\lambda Nu^{2}.
+\end{align*}
+At small displacements the logarithmic term dominates, meaning dimerization still occurs spontaneously. This is known as Peierls instability.
+
+There was an implicit degeneracy in the above argument with respect to the directionality of the hopping term (or, equivalently, the sign of $\delta t$). This corresponds to the dimerization being possible in one of two ways. In excited states, these dimerized variants can be found in different domains of the polymer. Between two such regions is a so-called domain wall, called a soliton. To describe it we will need an energy functional describing the process of dimerization. By introducing the staggered displacement
+\begin{align*}
+	\phi_{j} = (-1)^{j}u_{j},
+\end{align*}
+which is just $\pm u$ in the ground states, we make the anzats
+\begin{align*}
+	E(\phi) = \inte{}{}\dd{x}\frac{1}{2}A\left(\dv{\phi}{x}\right)^{2} - B\phi^{2} + C\phi^{4}.
+\end{align*}
+We make the anzats such that there is a non-zero displacement in the ground state and such there is a degeneracy with respect to the sign of $\phi$. There must be $\phi$-dependent terms because the case of $\phi$ being constant does not correspond to a constant displacement of the chain. The Euler-Lagrange equation for this theory is
+\begin{align*}
+	-2B\phi + 4C\phi^{3} - A\dv[2]{\phi}{x} = 0.
+\end{align*}
+Notable is the existence of the ground state
+\begin{align*}
+	\phi = \pm\sqrt{\frac{B}{2C}}.
+\end{align*}
+To understand the behavior of such a system we can consider $x$ as a time parameter and $\phi$ as a coordinate for a particle in a potential $V(q) = Bq^{2} - Cq^{4}$. This potential has two maxima in the ground-state values of $\phi$ and there exists a solution which moves from one to the other asymptotically with respect to $x$. This solution is
+\begin{align*}
+	\phi = \sqrt{\frac{B}{2C}}\tanh(\sqrt{\frac{B}{A}}x).
+\end{align*}
+
+Looking back to the Dirac equation which emerged before dimerization, we see that we will have to extend it according to
+\begin{align*}
+	\ham = -i\sigma_{x}\dv{x} + m(x)\sigma_{y},
+\end{align*}
+where $m(x) = \alpha\phi(x)$ according to the Hamiltonian, assuming the ground-state energy to be zero. These then decouple, and the solutions in position space are
+\begin{align*}
+	\psi_{1} = c_{1}e^{\integ{0}{x}{y}{m(x)\phi(x)}},\ \psi_{2} = c_{2}e^{-\integ{0}{x}{y}{m(x)\phi(x)}}.
+\end{align*}
+For a soliton we must enforce $c_{1} = 0$, and similarly for an antisolition we enforce $c_{2} = 0$. It also turns out that there are no normalizable ground states unless $m$ changes sign somewhere. We define the topological charge
+\begin{align*}
+	Q = \frac{1}{2}\left(\text{sgn}(\infty) - \text{sgn}(-\infty)\right).
+\end{align*}
+It turns out that
+\begin{align*}
+	Q = N_{2} - N_{1},
+\end{align*}
+where $N_{1, 2}$ is the number of zero modes of each kind.
+
+Note that the Hamiltonian anticommutes with $\sigma_{z}$. This leads to $\sigma_{z}$ generating a so-called chiral symmetry. Its eigenstates thus come in pairs with opposite eigenvalues, except in the case where the eigenvalue is zero. This case thus applies to the unpaired bound state.
+
+\paragraph{Fractionalization in the Su-Schrieffer-Heeger Model}
+At the domain wall there exists an atom not bonded to either side. The state localized here has zero energy. Because the number of electrons is fixed, the electron occupying this state must come from somewhere. However, due to the chiral symmetry, this state must come equally from the valence and conduction bands, meaning that half a state is removed from either. How can this be, and what does it mean?
+
+The answer turns out to depend on the particulars of the boundary conditions. Let us first consider periodic boundary conditions with an even number of atoms. This system only permits solitons and antisolitons in pairs. Because there now is one zero mode associated with each member of the pair, the total number of removed states is $2\frac{1}{2} = 1$.
+
+Next, consider periodic boundary conditions with an odd number of atoms. The total number of solitons and antisolitons must be odd. The number of unit cells in this system is a half-integer, so if each unit cell contributes one state, then this final half state must be absorbed by the extra soliton.
+
+Similar, though much more vague, arguments can be made for systems with open boundary conditions.
