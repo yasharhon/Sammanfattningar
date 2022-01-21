@@ -1,0 +1,293 @@
+\section{Topology in Condensed Matter}
+
+\paragraph{Berry Phase}
+Consider a Hamiltonian described by some set of parameters $R$, which may be time dependent. For each value of $R$ we have a set of eigenstates
+\begin{align*}
+	\ham(R)\ket{n(R)} = E_{n}(R)\ket{n(R)}.
+\end{align*}
+If the spectrum is discrete and non-degenerate for all $R$, the adiabatic theorem tells us that if $R$ is varied such that the Hamiltonian changes sufficiently slowly, a state which is initialized to an eigenstate at $t = 0$ will evolve to a corresponding eigenstate at a later time. In the general case we have
+\begin{align*}
+	\ket{\psi_{n}(t)} = e^{i\gamma_{n}(t)}e^{-\frac{i}{\hbar}\inte{0}{t}\dd{\tau} E_{n}(\tau)}\ket{n(R(t))}.
+\end{align*}
+If the Hamiltonian has explicit time dependence, the former factor is different from unity. Its exponent is the so-called Berry phase. Inserting this into the Schrödinger equation we find
+\begin{align*}
+	\ham\ket{\psi_{n}(t)} =& E_{n}\ket{\psi_{n}(t)} \\
+	                      =& i\hbar e^{i\gamma_{n}(t)}e^{-\frac{i}{\hbar}\inte{0}{t}\dd{\tau} E_{n}(\tau)}\left(i\dv{\gamma_{n}}{t}\ket{n(R(t))} - \frac{i}{\hbar}E_{n} \ket{n(R(t))} + \pdv{t}\ket{n(R(t))}\right),
+\end{align*}
+and taking the inner product with $\ket{\psi_{n}(t)}$ we have
+\begin{align*}
+	\dv{\gamma_{n}}{t}\ket{n(R(t))} = i\expval{\pdv{t}}{n(R(t))}.
+\end{align*}
+The solution is
+\begin{align*}
+	\gamma_{n} = i\inte{0}{t}\dd{\tau}\expval{\pdv{\tau}}{n(R(\tau))}.
+\end{align*}
+Noting that
+\begin{align*}
+	\pdv{\tau}\ket{n(R(\tau))} =& \dv{R}{\tau}\cdot\grad_{R}\ket{n(R)}
+\end{align*}
+we can define the Berry connection
+\begin{align*}
+	A_{n} = i\expval{\grad_{R}}{n(R)}
+\end{align*}
+and find
+\begin{align*}
+	\gamma_{n} = i\inte{C}{}\dd{R}\cdot A_{n}.
+\end{align*}
+$C$ is now the orbit in parameter space traversed during the time evolution.
+
+Is the Berry phase really of interest? It might not seem so. Making a phase change
+\begin{align*}
+	\ket{n(R)}\to e^{i\zeta(R)}\ket{n(R)}
+\end{align*}
+we have
+\begin{align*}
+	A_{n}\to A_{n} - \grad_{R}\zeta.
+\end{align*}
+Thus we can apparently remove the Berry phase entirely. For closed orbits in parameter space, however, the Berry phase is independent of this transformation. Thus it might be of physical importance.
+
+Due to Stokes' theorem the line integral of the Berry connection about some closed path is related to the surface integral of the differential of some antisymmetric tensor. That is, we can define the Berry curvature
+\begin{align*}
+	\omega_{n, \mu\nu} = \del{}{\mu}A_{n, \nu} - \del{}{\nu}A_{n, \mu},
+\end{align*}
+which satisfies
+\begin{align*}
+	\inte{\bound{S}}{}\dd{R}\cdot A_{n} = \frac{1}{2}\inte{S}{}\dd{R_{\mu}}\wedge\dd{R_{\nu}}\omega_{n, \mu\nu}.
+\end{align*}
+In the particular case of three dimensions the Berry curvature can be expressed in terms of a pseudomagnetic field
+\begin{align*}
+	\vb{b}_{n} = i\left(\grad_{\vb{R}}\ket{n(\vb{r})}\right)\adj\times\grad_{\vb{R}}\ket{n(\vb{r})}.
+\end{align*}
+
+\paragraph{The Aharanov-Bohm Effect}
+Consider two wires passing a region with a very localized magnetic field, one wire being wrapped around this region. This will turn out to be a case where the Berry phase has a physical consequence, as one can measure a quantum phase difference between electrons passing through either wire.
+
+To study this, we will consider a charged particle confined to some box with one corner at $\vb{R}_{0}$ by a potential $V(\vb{r} - \vb{R}_{0})$. We will study this by adiabatically moving the box around in space. If the box never enters the region with magnetic field, we may take
+\begin{align*}
+	\vb{A} = \frac{\Phi_{0}}{2\pi}\grad{\chi}.
+\end{align*}
+Supposing the ground state of the electron in the box is $\xi(\vb{r} - \vb{R}_{0})$ in the absence of the magnetic field, we can find a normalized eigenfunction $e^{i\phi}\xi(\vb{r} - \vb{R}_{0})$ by the gauge transformation anzats
+\begin{align*}
+	(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}).
+\end{align*}
+We find
+\begin{align*}
+	(\vb{p} - q\vb{A})e^{i\phi}\xi(\vb{r} - \vb{R}_{0}) = e^{i\phi}\vb{p}\xi(\vb{r} - \vb{R}_{0}) - \left(i\hbar\grad{\phi} + q\vb{A}\right)\xi(\vb{r} - \vb{R}_{0}),
+\end{align*}
+hence
+\begin{align*}
+	\phi = -\frac{q}{\hbar}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = -\frac{2\pi}{\Phi_{0}}\inte{\vb{R}_{0}}{\vb{r}}\dd{\vb{r}\p}\cdot\vb{A} = \chi(\vb{R}_{0}) - \chi(\vb{r}).
+\end{align*}
+
+There is still an ambiguity in the choice of $\chi$, as well as the possibility to add an $\vb{R}_{0}$-dependent phase $\theta$ to the wavefunction. We now fix them by imposing that
+\begin{align*}
+	\psi(\vb{r}) = e^{i(\theta + \chi(\vb{R}_{0}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0})
+\end{align*}
+be real at some point $\vb*{\Delta}$ as measured within the box. Assuming $\xi$ to be real and positive at $\vb*{\Delta}$, we require
+\begin{align*}
+	\theta = \chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{R}_{0}),
+\end{align*}
+hence
+\begin{align*}
+	\psi(\vb{r}) = e^{i(\chi(\vb{R}_{0} + \vb*{\Delta}) - \chi(\vb{r}))}\xi(\vb{r} - \vb{R}_{0}).
+\end{align*}
+
+How does this tie in to the Berry phase? $\vb{R}_{0}$ now plays the role of the parameters in the Hamiltonian. For the ground state we then have
+\begin{align*}
+	\vb{A} =& i\integ[3]{}{}{\vb{r}}{\psi\cc\grad_{\vb{R}_{0}}\psi} \\
+	       =& i\integ[3]{}{}{\vb{r}}{e^{-i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\left(ie^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + e^{i\chi(\vb{R}_{0} + \vb*{\Delta})}\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})\right)} \\
+	       =& i\integ[3]{}{}{\vb{r}}{i\xi^{2}(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\chi(\vb{R}_{0} + \vb*{\Delta}) + \xi(\vb{r} - \vb{R}_{0})\grad_{\vb{R}_{0}}\xi(\vb{r} - \vb{R}_{0})} \\
+	       =& -\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}) + \frac{1}{2}i\integ[3]{}{}{\vb{r}}{\grad_{\vb{R}_{0}}\xi^{2}(\vb{r} - \vb{R}_{0})},
+\end{align*}
+having used the fact that the state is normalized. The latter term is the integral of a total derivative, which yields no contribution as the wavefunction vanishes at infinity. Thus, by slowly moving the electron we have
+\begin{align*}
+	\gamma = -\inte{}{}\dd{\vb{R}_{0}}\cdot\frac{2\pi}{\Phi_{0}}\vb{A}(\vb{R}_{0} + \vb*{\Delta}).
+\end{align*}
+Taking the displacement $\vb*{\Delta}$ to be small, the phase difference between two wires is thus
+\begin{align*}
+	\delta\phi = -2\pi\frac{\Phi}{\Phi_{0}},
+\end{align*}
+where $\Phi$ is the total enclosed flux. Note that at no point along the path of the electron did it have to interact with the magnetic field, and yet this phase difference arises. This effect is thus a pure quantum effect, and is termed the Aharanov-Bohm effect.
+
+\paragraph{Spin-$\frac{1}{2}$ Berry Phase}
+Consider a single spin $\frac{1}{2}$ in an external field. The Hamiltonian is
+\begin{align*}
+	\ham = h^{i}\sigma_{i}.
+\end{align*}
+Writing $\vb{h} = h(\sin(\theta)\cos(\phi),\ \sin(\theta)\sin(\phi), \cos(\theta))$, we note that the eigenstates are simultaneous eigenstates of the spin projection along the direction of $\vb{h}$. In the $\sigma_{3}$ basis they thus solve
+\begin{align*}
+	\mqty[
+		\cos(\theta) \mp 1 & \sin(\theta)\cos(\phi) - i\sin(\theta)\sin(\phi) \\
+		\sin(\theta)\cos(\phi) + i\sin(\theta)\sin(\phi) & -\cos(\theta) \mp 1
+	]\vb{x}_{\pm} = \vb{0}.
+\end{align*}
+The matrix can be simplified to
+\begin{align*}
+	\mqty[
+		\cos(\theta) \mp 1    & \sin(\theta)e^{-i\phi} \\
+		\sin(\theta)e^{i\phi} & -\cos(\theta) \mp 1
+	].
+\end{align*}
+The components then satisfy
+\begin{align*}
+	(\cos(\theta) \mp 1)x_{\pm, 1} =& -\sin(\theta)e^{-i\phi}x_{\pm, 2}.
+\end{align*}
+The eigenstates in this representation are then
+\begin{align*}
+	\ket{-} = \mqty[
+		-\sin(\frac{\theta}{2})e^{-i\phi} \\
+		\cos(\frac{\theta}{2})
+	],\ \ket{+} = \mqty[
+		\cos(\frac{\theta}{2})e^{-i\phi} \\
+		\sin(\frac{\theta}{2})
+	].
+\end{align*}
+While the eigenvalues depend on $h$, the structure of the states depend on $\theta$ and $\phi$, which parametrize $S^{2}$. For the ground state we then have
+\begin{align*}
+	&A_{-, \theta} = i\mel{-}{\del{}{\theta}}{-} = 0, \\
+	&A_{-, \phi} = i\mel{-}{\del{}{\phi}}{-} = i\left(-i\sin[2](\frac{\theta}{2})\right) = \sin[2](\frac{\theta}{2}).
+\end{align*}
+The Berry curvature is then
+\begin{align*}
+	\omega_{+, \theta\phi} = \frac{1}{2}\sin(\theta),
+\end{align*}
+and the Berry flux through a small surface is half the subtended solid angle.
+
+\paragraph{Berry Phase and Bloch Bands}
+A slight generalization of Bloch states can be made for systems in a uniform magnetic field. In a periodic potential the Hamiltonian is invariant under translations by lattice vectors. Generally, in a magnetic field, we have
+\begin{align*}
+	T_{\vb{a}}\ham T_{\vb{a}}\adj =& \frac{1}{2m}\left(\vb{p} - q\vb{A}(\vb{r} + \vb{a})\right)^{2} + V(\vb{r}).
+\end{align*}
+In a uniform field we have
+\begin{align*}
+	\vb{A}(\vb{r} + \vb{a}) - \vb{A}(\vb{r}) = \grad{f_{\vb{a}}}(\vb{r}).
+\end{align*}
+An extra gauge transformation $e^{i\phi_{\vb{a}}(\vb{r})}$ will certainly leave the potential invariant. We find
+\begin{align*}
+	\left(\vb{p} - q\vb{A}(\vb{r} + \vb{a})\right)e^{-i\phi_{\vb{a}}(\vb{r})} = e^{-i\phi_{\vb{a}}(\vb{r})}\left(\vb{p} - \grad{\phi_{\vb{a}}(\vb{r})} - q\vb{A}(\vb{r} + \vb{a})\right),
+\end{align*}
+so we require
+\begin{align*}
+	\grad{\phi_{\vb{a}}(\vb{r})} + q\vb{A}(\vb{r} + \vb{a}) = q\vb{A}(\vb{r}),
+\end{align*}
+with the solution
+\begin{align*}
+	\phi_{\vb{a}} = -qf_{\vb{a}}.
+\end{align*}
+The operator
+\begin{align*}
+	T_{\vb{a}} = e^{-iqf_{\vb{a}}(\vb{r})}e^{\frac{i}{\hbar}\vb{p}\cdot\vb{a}}
+\end{align*}
+thus leaves the Hamiltonian invariant. The Bloch basis is still applicable due to the translation symmetry of the system. Having established this we can now take $\vb{k}$ to be a parameter of the Hamiltonian in the Bloch basis.
+
+Consider now such a system in a weak uniform magnetic field. This gives rise to a perturbation term $-q\vb{E}\cdot\vb{r}$ in the Hamiltonian. The first-order change in the state is then
+\begin{align*}
+	\delta\ket{n, \vb{k}} = -q\vb{E}\cdot\sum\limits_{m, \vb{q}}\ket{m, \vb{q}}\frac{\mel{m, \vb{q}}{\vb{r}}{n, \vb{k}}}{E_{n, \vb{k}} - E_{m, \vb{q}}}.
+\end{align*}
+As the involved states are eigenstates of the Hamiltonian we have
+\begin{align*}
+	\mel{m, \vb{q}}{\vb{r}\ham}{n, \vb{k}} - \mel{m, \vb{q}}{\ham\vb{r}}{n, \vb{k}} = (E_{n, \vb{k}} - E_{m, \vb{q}})\mel{m, \vb{q}}{\vb{r}}{n, \vb{k}}.
+\end{align*}
+Because $\vb{A}$ is a function of position and $\comm{\vb{r}}{\vb{p}}$ is a multiple of identity we have
+\begin{align*}
+	\comm{\vb{r}}{\ham} = \frac{1}{2m}\comm{\vb{r}}{\vb{p}^{2}} = \frac{1}{2m}\left(\vb{p}\cdot\comm{\vb{r}}{\vb{p}} + \comm{\vb{r}}{\vb{p}}\cdot\vb{p}\right) = \frac{i\hbar}{m}\vb{p}.
+\end{align*}
+We then find
+\begin{align*}
+	\delta\ket{n, \vb{k}} = -i\hbar q\vb{E}\cdot\sum\limits_{m, \vb{q}}\ket{m, \vb{q}}\frac{\mel{m, \vb{q}}{\vb{v}}{n, \vb{k}}}{(E_{n, \vb{k}} - E_{m, \vb{q}})^{2}}.
+\end{align*}
+
+When computing the matrix element, the contributions from different unit cells differ by a factor $e^{i(\vb{k} - \vb{q})\cdot\vb{R}}$. Thus they vanish unless $\vb{q} = \vb{k}$. We then have
+\begin{align*}
+	\delta\ket{u_{n, \vb{k}}} = -iq\vb{E}\cdot\sum\limits_{m\neq n}\ket{u_{m, \vb{k}}}\frac{\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
+\end{align*}
+We then have to first order
+\begin{align*}
+	\expval{\vb{v}} =& \frac{1}{\hbar}\left(\expval{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}} + \frac{2}{\hbar}\Re(\mel{\delta u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}})\right) \\
+	                =& \frac{1}{\hbar}\grad_{\vb{k}}\epsilon_{n, \vb{k}} + \vb{v}_{\text{a}}(n, \vb{k}).
+\end{align*}
+The new term is called the anomalous velocity. We have
+\begin{align*}
+	\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{\delta u_{n, \vb{k}}} =&  -iq\sum\limits_{m\neq n}\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}\vb{E}\cdot\frac{\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
+\end{align*}
+Its complex conjugate is
+\begin{align*}
+	\mel{\delta u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}} =&  iq\sum\limits_{m\neq n}\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}\vb{E}\cdot\frac{\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
+\end{align*}
+Thus
+\begin{align*}
+	\vb{v}_{\text{a}}(n, \vb{k}) =& \frac{iq}{\hbar}\vb{E}\cdot\sum\limits_{m\neq n}\frac{\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}\mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}} - \mel{u_{m, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{n, \vb{k}}}\mel{u_{n, \vb{k}}}{\grad_{\vb{k}}\ham}{u_{m, \vb{k}}}}{(E_{n, \vb{k}} - E_{m, \vb{k}})^{2}}.
+\end{align*}
+It can be shown that the sum is equal to the Berry curvature, hence
+\begin{align*}
+	v_{\text{a}, i}(n, \vb{k}) =& \frac{iq}{\hbar}E^{j}\omega_{n, ji} = \frac{iq}{\hbar}\leci{}{ijk}E^{j}b_{n}^{k}.
+\end{align*}
+Noting that perturbation theory creates semiclassical motion, we can write
+\begin{align*}
+	\vb{v}_{\text{a}}(n, \vb{k}) = -\dv{\vb{k}}{t}\times\vb{b}_{n}.
+\end{align*}
+For a wave packet we can then show that
+\begin{align*}
+	\hbar\dv{\vb{R}}{t} = \grad_{\vb{k}}\epsilon_{n, \vb{k}} - \hbar\dv{\vb{k}}{t}\times\vb{b}_{n},\ \hbar\dv{\vb{k}}{t} = -\grad_{\vb{R}}V + q\dv{\vb{R}}{t}\times\vb{B}.
+\end{align*}
+Using this, we can consider the effect of time reversal. Evidently it reverses $\vb{v}$ and $\vb{k}$, which must imply $\vb{b}_{n}(\vb{k}) = -\vb{b}_{n}(-\vb{k})$. Under parity we instead have that $\vb{v}$, $\vb{k}$ and $\vb{E}$ are reversed, implying $\vb{b}_{n}(\vb{k}) = \vb{b}_{n}(-\vb{k})$. For a Hamiltonian with both symmetries, the Berry curvature must therefore be zero, and so must the anomalous velocity be.
+
+\paragraph{Quantization of Hall Conductance}
+In the presence of a magnetic field, time reversal symmetry in a semiconductor is broken. We have for a filled band
+\begin{align*}
+	\vb{J}_{n} = -\frac{e}{A}\sum\limits_{\vb{k}}\vb{v}_{\text{a}}(n, \vb{k}) = \sigma_{xy}^{n}\vb{e}_{z}\times\vb{E},
+\end{align*}
+allowing us to identify
+\begin{align*}
+	\sigma_{xy}^{n} = \frac{e^{2}}{\hbar A}\sum\limits_{\vb{k}}\vb{b}_{n}(\vb{k}) \approx \frac{e^{2}}{h}\inte{}{}\dd[2]{\vb{k}}b_{n}(\vb{k}),
+\end{align*}
+as the Berry curvature in this case always points in the $z$-direction. This is proportional to the total Berry curvature.
+
+To discuss the implications of this, we first introduce the result
+\begin{align*}
+	\frac{1}{2\pi}\inte{M}{}\dd{A}K = 2 - 2g_{M}
+\end{align*}
+for a closed two-dimensional surface. $K$ is the curvature of the surface and $g_{M}$ is its genus. In the case of the Berry curvature, the point $\vb{k} = \vb{0}$ may not be included in the parameter domain as the Hamiltonian is not gapped there, thus there are only two topologically distinct classes of parameter surfaces allowed. We have
+\begin{align*}
+	\frac{1}{2\pi}\inte{}{}\dd[2]{\vb{k}}\omega_{n}(\vb{k}) = \frac{1}{2\pi}\inte{}{}\dd{\vb{k}}\cdot\vb{A}_{n}(\vb{k}) = \frac{i}{2\pi}\inte{}{}\dd{\vb{k}}\cdot\inte{}{}\dd[2]{\vb{r}}u_{n, \vb{k}}\cc\grad_{\vb{k}}u_{n, \vb{k}}.
+\end{align*}
+Note that in two dimensions we can use the Berry curvature directly. The $\vb{k}$ integral is about the boundary of the first Brillouin zone. Now, because we consider a general system, it may be the case that opposite edges of the Brillouin zone differ by a phase factor. The Bloch function is generally modified according to
+\begin{align*}
+	u_{n, \vb{k}} = e^{-i(\theta_{n}(\vb{k}) + \vb{G}\cdot\vb{r})}u_{n, \vb{k} + \vb{G}}.
+\end{align*}
+If $\theta_{n}$ is independent of $\vb{k}$, the gradients at opposite edges are the same, meaning their contributions cancel. Assuming the Bloch functions to be normalized we find in the general case that
+\begin{align*}
+	\frac{1}{2\pi}\inte{}{}\dd[2]{\vb{k}}\omega_{n}(\vb{k}) = \frac{1}{2\pi}\inte{}{}\dd{\vb{k}}\cdot\grad_{\vb{k}}\theta_{n}.
+\end{align*}
+Because we are integrating about a loop, this must be a multiple of $2\pi$ - in other words,
+\begin{align*}
+	\frac{1}{2\pi}\inte{}{}\dd[2]{\vb{k}}\omega_{n}(\vb{k})
+\end{align*}
+is an integer known as the first Chern number $c_{n}$. This leads to the conductivity being quantized.
+
+\paragraph{The Haldane Model}
+The Haldane model is a simple model of two bands with non-zero Chern number. This is obtained by starting with a two-level model for the honeycomb lattice and opening a band gap and breaking time reversal symmetry. The Hamiltonian we use is
+\begin{align*}
+	\ham = \mqty[
+		m              & -tf(\vb{k}) \\
+		-tf\cc(\vb{k}) & -m
+	].
+\end{align*}
+The eigenvalues are $\pm\sqrt{m^{2} + t^{2}\abs{f(\vb{k})}^{2}}$, using the same $f$ as for the honeycomb lattice. This opens up a band gap of size $2m$ at the corners of the Brillouin zone.
+
+To study the model, assume $m$ to be small. The Hamiltonian is
+\begin{align*}
+	\ham = v_{\text{F}}(\tau_{z}\sigma_{x}k_{x} + \sigma_{y}k_{y}) + m\sigma_{z}.
+\end{align*}
+This doesn't break time reversal symmetry, however, and cannot produce topologically non-trivial bands. To achieve this we add the $\tau_{z}$ to the mass term as well. This can be achieved by using a purely imaginary hopping amplitude internally in the sublattice.
+
+\paragraph{Weird Unexplained Stuff}
+Consider a two-dimensional electron gas on a cylindrical shell. Suppose that we add a magnetic flux through the pipe which is zero at $t = 0$ and $\Phi_{0}$ at $t = T$. The field along the original $y$-coordinate will then be
+\begin{align*}
+	E_{y} = \frac{1}{L_{y}}\dv{\Phi}{t}.
+\end{align*}
+The charge drift is
+\begin{align*}
+	-e\inte{0}{T}\dd{t}\inte{0}{L_{y}}\dd{y}J_{x} = \sigma_{n, xy}\Phi_{0} = C_{n}e.
+\end{align*}
+This means that the Hamiltonian is approximately flux independent.
