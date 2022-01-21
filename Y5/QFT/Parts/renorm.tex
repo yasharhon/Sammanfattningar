@@ -1,0 +1,206 @@
+\section{Renormalization}
+
+\paragraph{Regularization}
+Regularization methods are mathematical tricks to make contributions from Feynman diagrams look finite.
+
+One set of techniques is to introduce a cutoff $\Lambda$ for your momentum space integrals which you take to be infinite at the end of your calculations. This scheme has a few drawbacks:
+\begin{itemize}
+	\item You lose Lorentz invariance.
+	\item You could find that the result depends on how you structure the diagram.
+\end{itemize}
+
+Another is dimensional regularization, where you extend your integral to arbitrary dimensionality and let it approach $4$ in the end by analytical continuation. The hope is that the integrals converge in lower dimensions. For an example we consider the general integral
+\begin{align*}
+	\inte{}{}\frac{\dd[D]{k}}{(2\pi)^{D}}\frac{1}{(k^{2} + c)^{\alpha}} \propto \integ{0}{\infty}{r}{\Omega{D - 1}\frac{r^{D - 1}}{(r^{2} + c)^{\alpha}}}.
+\end{align*}
+This integral converges for $D < 2\alpha$. Introducing a change of variables we find the right integral to be
+\begin{align*}
+	c^{\frac{D}{2} - \alpha}\frac{\Omega_{D - 1}}{(2\pi)^{D}}\integ{0}{\infty}{r}{(\rho^{2} + 1)^{-\alpha}\rho^{D - 1}} = c^{\frac{D}{2} - \alpha}\frac{\Omega_{D - 1}}{(2\pi)^{D}}\frac{\Gamma\left(\frac{D}{2}\right)\Gamma\left(\alpha - \frac{D}{2}\right)}{2\Gamma(\alpha)}.
+\end{align*}
+This integral diverges for $D = 2\alpha$, but it at least looks finite. That is the issue to be handled below.
+
+\paragraph{Renormalization}
+Consider some field theory for the set of fields $\phi^{a}$ which has constants $g_{i}$. We are generally concerned with computing correlation functions, which will depend on the coordinates of the involved fields, as well as the constants and $\epsilon = 4 - D$, which is introduced during dimensional regularization. We now introduce renormalized fields denoted as $\phi^{a}_{\text{R}}$ and renormalized parameters $g_{i, \text{R}}$, which are functionals/functions of the old set. We take the renormalized fields to depend linearly on the original ones. The correlation functions for the renormalized fields are then products of correlation functions for the old fields. More specifically, writing
+\begin{align*}
+	\phi^{a} = \sum\limits_{b = 1}^{N}K_{b}^{a}(g_{\text{R}}, \epsilon)\phi^{b},\ g_{k} = F_{k}(g_{\ren}, \epsilon),
+\end{align*}
+we have
+\begin{align*}
+	\expval{\prod\limits_{i = 1}^{n}\phi^{a_{i}, \text{R}}} = \expval{\prod\limits_{i = 1}^{n}\left(\sum\limits_{b_{i} = 1}^{N}(K^{-1})_{b_{i}}^{a_{i}}(g_{\text{R}}, \epsilon)\phi^{b_{i}}\right)}.
+\end{align*}
+Employing a summation convention for the field indices we have
+\begin{align*}
+	\expval{\prod\limits_{i = 1}^{n}\phi^{a_{i}, \text{R}}} = \expval{\prod\limits_{i = 1}^{n}(K^{-1})_{b_{i}}^{a_{i}}(g_{\text{R}}, \epsilon)\phi^{b_{i}}} = \left(\prod\limits_{i = 1}^{n}(K^{-1})_{b_{i}}^{a_{i}}(g_{\text{R}}, \epsilon)\right)\expval{\prod\limits_{j = 1}^{n}\phi^{b_{j}}}.
+\end{align*}
+What we have on the right-hand side is then a sum of correlation functions in the non-renormalized theory.
+
+To lowest order we would expect the renormalization transforms to be trivial, hence we would have
+\begin{align*}
+	F_{k}(g_{\ren}, \epsilon) = g_{k, \ren} + G(g_{\ren}, \epsilon),\ K^{a}_{b}(g_{\ren}, \epsilon) = \kdelta{a}{b} + L^{a}_{b}(g_{\ren}, \epsilon).
+\end{align*}
+
+\paragraph{Renormalizing $\phi^{4}$ Theory}
+In $d$-dimensional $\phi^{4}$ theory, the fields will have mass dimension $\frac{d}{2} - 1$. This will imply that $m$ has mass dimension $1$ and $\lambda$ has mass dimension $4 - d = \epsilon$. To make $\lambda$ dimensionless we therefore introduce a mass scale and perform the transformation $\lambda\to\mu^{\epsilon}\lambda$. Next we redefine the field as
+\begin{align*}
+	\phi = \sqrt{\tilde{Z}_{\phi}(m_{\ren}, \lambda_{\ren}, \epsilon)}\phi_{\ren}
+\end{align*}
+and introduce renormalized parameters according to
+\begin{align*}
+	m = Z_{m}(m_{\ren}, \lambda_{\ren}, \epsilon)m_{\ren},\ \lambda = Z_{\lambda}(m_{\ren}, \lambda_{\ren}, \epsilon)\lambda_{\ren}.
+\end{align*}
+Because we have restrictions on the behavior of the transformations at a particular point, we can Taylor expand about this point. Now, in terms of these new objects we have
+\begin{align*}
+	S &= -\integ[d]{}{}{x}{\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi + \frac{1}{2}m^{2}\phi^{2} + \frac{\lambda}{4!}\phi^{4}} \\
+	  =& -\integ[d]{}{}{x}{\frac{1}{2}\tilde{Z}_{\phi}\del{}{\mu}\phi_{\ren}\del{\mu}{}\phi_{\ren} + \frac{1}{2}\tilde{Z}_{\phi}Z_{m}^{2}m_{\ren}^{2}\phi_{\ren}^{2} + Z_{\lambda}\tilde{Z}_{\phi}^{2}\frac{\lambda_{\ren}\mu^{\epsilon}}{4!}\phi_{\ren}^{4}}.
+\end{align*}
+We want to express this in terms of the non-trivial parts of our expansion, hence we write
+\begin{align*}
+	S =& -\integ[d]{}{}{x}{\frac{1}{2}\del{}{\mu}\phi_{\ren}\del{\mu}{}\phi_{\ren} + \frac{1}{2}m_{\ren}^{2}\phi_{\ren}^{2} + \frac{\lambda_{\ren}\mu^{\epsilon}}{4!}\phi_{\ren}^{4}} \\
+	   &- \integ[d]{}{}{x}{\frac{1}{2}(\tilde{Z}_{\phi} - 1)\del{}{\mu}\phi_{\ren}\del{\mu}{}\phi_{\ren} + \frac{1}{2}(\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2}\phi_{\ren}^{2} + (Z_{\lambda}\tilde{Z}_{\phi}^{2} - 1)\frac{\lambda_{\ren}\mu^{\epsilon}}{4!}\phi_{\ren}^{4}}.
+\end{align*}
+The new terms are called counter-terms, and we will use them to make the loop contributions finite.
+
+We will now consider the correlation function $\expval{\phi_{\ren}(p_{1})\phi_{\ren}(p_{2})}$. We will get one propagator term
+\begin{align*}
+	-(2\pi)^{d}\frac{i}{p_{1}^{2} + m_{\ren}^{2}}\delta^{d}(p_{1} + p_{2}).
+\end{align*}
+In addition we will have a first-order loop contribution given by
+\begin{align*}
+	-12i\frac{\lambda_{\ren}\mu^{\epsilon}}{4!}(2\pi)^{d}\delta^{d}(p_{1} + p_{2})\inte{}{}\frac{\dd[d]{l}}{(2\pi)^{d}}\frac{-i}{l^{2} + m_{\ren}^{2}}\frac{-i}{p_{1}^{2} + m_{\ren}^{2}}\frac{-i}{p_{2}^{2} + m_{\ren}^{2}}.
+\end{align*}
+Next, the first counter-term produces a term
+\begin{align*}
+	2\cdot (2\pi)^{d}\delta^{d}(p_{1} + p_{2})\frac{-i}{p_{1}^{2} + m_{\ren}^{2}}\frac{-i}{p_{2}^{2} + m_{\ren}^{2}}\cdot -i\left(-\frac{1}{2}(\tilde{Z}_{\phi} - 1)\cdot ip_{1, \mu}\cdot ip_{2}^{\mu} - \frac{1}{2}(\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2}\right).
+\end{align*}
+Adding up the two latter, inserting the integral and ignoring the trivial parts, we are left with
+\begin{align*}
+	-i\left((\tilde{Z}_{\phi} - 1)p_{1}^{2} - (\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2} + \frac{12\lambda_{\ren}\mu^{\epsilon}}{(4\pi)^{\frac{4 - \epsilon}{2}}}m_{\ren}^{\frac{4 - \epsilon}{2} - 1}\frac{\Gamma\left(1 - \frac{4 - \epsilon}{2}\right)}{\Gamma(1)}\right).
+\end{align*}
+After some manipulation we find this to be
+\begin{align*}
+	-i\left((\tilde{Z}_{\phi} - 1)p_{1}^{2} - (\tilde{Z}_{\phi}Z_{m}^{2} - 1)m_{\ren}^{2} + \frac{12\lambda_{\ren}\mu^{\epsilon}}{(4\pi)^{\frac{4 - \epsilon}{2}}}m_{\ren}^{\frac{4 - \epsilon}{2} - 1}\frac{\Gamma\left(\frac{\epsilon}{2}\right)}{\left(\frac{\epsilon}{2} - 1\right)\Gamma(1)}\right).
+\end{align*}
+The divergency in the right-hand term comes by the gamma function part behaving as $-\frac{2}{\epsilon}$ close to the desired limit. To get a finite value we can first ignore first-order terms in $\tilde{Z}_{\phi}$. We can then choose
+\begin{align*}
+	Z_{m}^{2} = 1 + \frac{\lambda_{\ren}}{16\pi^{2}\epsilon}.
+\end{align*}
+
+Next we can consider a four-point correlation function. All loop diagrams with a single loop are handled according to the above. The diagram with a loop splitting two halves, however, is logarithmically divergent.
+
+\paragraph{Renormalizability}
+Consider a scalar field theory. Suppose we were to add a set of interaction terms with coupling constants $g^{(n, m)}$ to the theory, where $n$ is the number of fields and $m$ is the number of derivatives. The mass dimension of the coupling constants will be $d - \frac{n}{2}(d - 2) - m$. These vertices will add higher-order Feynman diagrams to the $N$-point correlation functions. The terms added contain $N$ propagators for external lines, an overall momentum-conserving delta function and some other function of the external momenta termed $\Gamma^{(N)}$. It is generally given by
+\begin{align*}
+	\Gamma^{(N)} = \hat{\Gamma}^{(N)}\prod\limits_{n, m}(g^{(n, m)})^{f_{n, m}},
+\end{align*}
+where $f_{n, m}$ is the number of times the particular vertex contributes. It is in $\hat{\Gamma}$ that integrations over internal momenta are handled. From what we have seen, it is clear that if $\hat{\Gamma}^{(N)}$ has a non-negative mass dimension, the diagram diverges. We can now use this fact to determine a set of criteria for a theory to be renormalizable. 
+
+The momentum space fields have dimension $\frac{1}{2}(d - 2) - d = -\frac{1}{2}(d + 2)$, hence the $N$-point momentum space correlation function has mass dimension $-\frac{N}{2}(d + 2)$. $\hat{\Gamma}$ then has a mass dimension of
+\begin{align*}
+	d_{\hat{\Gamma}} =& -\frac{N}{2}(d + 2) + 2N + d - \sum\limits_{n, m}f_{n, m}\left(d - \frac{n}{2}(d - 2) - m\right) \\
+	                 =& \frac{N}{2}(2 - d) + d - \sum\limits_{n, m}f_{n, m}\left(d - \frac{n}{2}(d - 2) - m\right).
+\end{align*}
+From this it seems like if any one coupling constant has non-negative mass dimension, one could always conceive of a diagram at sufficiently high order that diverges. Hence we require
+\begin{align*}
+	d - \frac{n}{2}(d - 2) - m \geq 0
+\end{align*}
+for all $m, n$. Conversely, all terms that satisfy this can be included in the Lagrangian. The result is now that the set of diagrams that diverges is at least finite.
+
+Next, consider a particular $N$-point diagram which is divergent to order $K$. Taylor expanding $\hat{\Gamma}$ we find that the successive terms in the Taylor expansion decrease in order of divergence - to $K - 1$, $K - 2$ and so on. In order for our theory to be renormalizable, we therefore need to add counterterms to our theory. The terms we will need to add are $N$-point interactons that are allowed according to the above criterion and contains up to $K$ derivatives.
+
+Finally the requirement that the theory satisfies symmetries is also included.
+
+\paragraph{Renormalization of Gauge Theories}
+Consider the example with the simple gauge fixer
+\begin{align*}
+	H_{a} = \del{\mu}{}A_{\mu}^{a}.
+\end{align*}
+The Lagrangian then becomes
+\begin{align*}
+	\frac{1}{2}g\srconst{ab}{c}A^{\mu}_{b}A^{\nu}_{c}(\del{}{\mu}A_{\nu}^{a} - \del{}{\nu}A_{\mu}^{a}) - \frac{1}{4}g^{2}\srconst{ab}{c}\srconst{ad}{e}A_{b, \mu}A_{c, \nu}A^{\mu}_{d}A^{\nu}_{e} + g\srconst{ab}{c}\del{\mu}{}b_{a}A_{c, \mu}c_{b}.
+\end{align*}
+As they are all dependent on the same coupling constants, the theory will generally only exist if the diagrams corresponding to these vertices are related.
+
+What we see here is really the effect of symmetry - $\phi^{4}$ theory had a $\mathbb{Z}^{2}$ symmetry that implicitly guaranteed it to be renormalizable. The gauge symmetry built into gauge theories are, however, not enough to guarantee this. A symmetry that is good enough, however, is BRST symmetry. This is a local gauge symmetry defined such that it acts on matter and gauge fields as a normal gauge transformation, except $\theta_{a}$ is replaced by $c_{a}$. The gauge invariant part of the action is evidently unaffected by this transformation as the ghost fields do not appear there. Next, on the gauge fixing term it acts infinitesimally according to
+\begin{align*}
+	\delta_{\text{B}}S_{\text{gf}} =&  -\frac{1}{\alpha}\inte{}{}\dd[4]{x}\dd[4]{y}\fdv{H_{a}(A(x))}{A_{\mu}^{b}(y)}\delta_{\text{B}}A_{\mu}^{b}(y)H_{a}(A(x)) \\
+	=& -\frac{1}{\alpha}\inte{}{}\dd[4]{x}\dd[4]{y}\dd[4]{z}H_{a}(A(x))\fdv{H_{a}(A(x))}{A_{\mu}^{b}(y)}\eval{\fdv{A_{\mu}^{b}(y)}{\phi_{c}(z)}}_{\phi = 0}c^{c}(z).
+\end{align*}
+Finally it acts on the ghost term according to
+\begin{align*}
+	\delta_{\text{B}}S_{\text{ghost}} =& -\inte{}{}\dd[4]{x}\dd[4]{y}\delta_{\text{B}}b_{a}(x)\eval{\fdv{H_{a}(A\p(x))}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y) + b_{a}(x)\delta_{\text{B}}\left(\eval{\fdv{H_{a}(A\p(x))}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y)\right) \\
+	=& -\inte{}{}\dd[4]{x}\dd[4]{y}\delta_{\text{B}}b_{a}(x)\eval{\fdv{H_{a}(A\p(x))}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y) + \inte{}{}\dd[4]{z}b_{a}(x)\delta_{\text{B}}\left(\eval{\fdv{H_{a}(A\p(x))}{A_{\nu}^{d}(z)}\fdv{A_{\nu}^{d}(z)}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y)\right) \\
+	=&  -\inte{}{}\dd[4]{x}\dd[4]{y}\delta_{\text{B}}b_{a}(x)\eval{\fdv{H_{a}(A\p(x))}{\phi_{b}(y)}}_{\phi = 0}c_{b}(y) + b_{a}(x)\delta_{\text{B}}\left(\fdv{H_{a}(A\p(x))}{A_{\nu}^{d}(y)}\delta_{\text{B}}A_{\nu}^{d}(y)\right).
+\end{align*}
+We still have some freedom in prescribing a BRST transformation. First, we note that the brackets in the last line contain a term that is proportional to the double BRST variation of the gauge fields, and setting this to be zero will produce a requirement on the BRST variation of one set of ghost fields. Explicitly we have
+\begin{align*}
+	\delta_{\text{B}}A_{\mu}^{a}(x) =& \inte{}{}\dd[4]{y}\left(\kdelta{b}{c}A_{\mu}^{d}(x)\srconst{ad}{c}\delta^{4}(x - y) - \frac{1}{g}\kdelta{ab}{}\del{}{\mu}\delta^{4}(x - y)\right)c_{b}(y) \\
+	=& A_{\mu}^{b}(x)\srconst{ab}{c}c_{c}(x) + \frac{1}{g}\del{}{\mu}c^{a}(x),
+\end{align*}
+hence
+\begin{align*}
+	\delta_{\text{B}}^{2}A_{\mu}^{a}(x) =& \delta_{\text{B}}A_{\mu}^{b}(x)\srconst{ab}{c}c_{c}(x) + A_{\mu}^{b}(x)\srconst{ab}{c}\delta_{\text{B}}c_{c}(x) + \frac{1}{g}\del{}{\mu}\delta_{\text{B}}c^{a}(x) \\
+	=& \left(A_{\mu}^{d}(x)\srconst{bd}{e}c_{e}(x) + \frac{1}{g}\del{}{\mu}c^{b}(x)\right)\srconst{ab}{c}c_{c}(x) + \left(\kdelta{ac}{}\frac{1}{g}\del{}{\mu} + A_{\mu}^{b}(x)\srconst{ab}{c}\right)\delta_{\text{B}}c_{c}(x) \\
+	=& A_{\mu}^{d}(x)\srconst{ab}{c}\srconst{bd}{e}c_{e}(x)c_{c}(x) + \frac{1}{g}\srconst{ab}{c}(\del{}{\mu}c^{b}(x))c_{c}(x) + \left(\kdelta{ac}{}\frac{1}{g}\del{}{\mu} + A_{\mu}^{b}(x)\srconst{ab}{c}\right)\delta_{\text{B}}c_{c}(x).
+\end{align*}
+The antisymmetry of the structure constants implies that
+\begin{align*}
+	\srconst{ab}{c}(\del{}{\mu}c^{b}(x))c_{c}(x) =& \frac{1}{2}\srconst{ab}{c}\left((\del{}{\mu}c^{b}(x))c_{c}(x) - (\del{}{\mu}c^{c}(x))c_{b}(x)\right) \\
+	=& \frac{1}{2}\srconst{ab}{c}\left((\del{}{\mu}c^{b}(x))c_{c}(x) + c_{b}(x)(\del{}{\mu}c^{c}(x))\right) \\
+	=& \frac{1}{2}\srconst{ab}{c}\del{}{\mu}(c^{b}(x)c_{c}(x)).
+\end{align*}
+Similarly, for the first term we have
+\begin{align*}
+	\srconst{ab}{c}\srconst{bd}{e}c_{e}(x)c_{c}(x) =& \srconst{ab}{c}\srconst{cd}{e}c_{d}(x)c_{b}(x) \\
+	=& \frac{1}{2}\left(\srconst{ab}{c}\srconst{cd}{e} - \srconst{ad}{c}\srconst{cb}{e}\right)c_{d}(x)c_{b}(x) \\
+	=& \frac{1}{2}\left(\srconst{ab}{c}\srconst{cd}{e} + \srconst{da}{c}\srconst{cb}{e}\right)c_{d}(x)c_{b}(x) \\
+	=& -\frac{1}{2}\srconst{ab}{c}\srconst{cd}{e}c_{d}(x)c_{b}(x)
+\end{align*}
+We then have
+\begin{align*}
+	\delta_{\text{B}}^{2}A_{\mu}^{a}(x) =& A_{\mu}^{c}(x)\srconst{ec}{d}\srconst{bd}{a}c_{e}(x)c_{b}(x) + \frac{1}{g}\srconst{bd}{a}\del{}{\mu}(c_{d}(x))c_{b}(x) + A_{\mu}^{d}(x)\srconst{bd}{a}\delta_{\text{B}}c_{b}(x) + \frac{1}{g}\del{}{\mu}(\delta_{\text{B}}c_{a}(x)) \\
+	=& -\frac{1}{2}A_{\mu}^{c}(x)\srconst{eb}{d}\srconst{cd}{a}c_{e}c_{b} - \frac{1}{2g}\srconst{bd}{a}\del{}{\mu}(c_{b}c_{d}) + A_{\mu}^{d}(x)\srconst{bd}{a}\delta_{\text{B}}c_{b}(x) + \frac{1}{g}\del{}{\mu}(\delta_{\text{B}}c_{a}(x))
+\end{align*}
+One way to solve the above is to separate the terms with different $g$ dependencies. First we want
+\begin{align*}
+	A_{\mu}^{d}(x)\srconst{bd}{a}\delta_{\text{B}}c_{b}(x) - \frac{1}{2}A_{\mu}^{d}(x)\srconst{eb}{c}\srconst{dc}{a}c_{e}c_{b} = 0
+\end{align*}
+
+We note that we have not yet introduced a prescription to the BRST transformation of the ghost fields. Requiring a double BRST variation to be zero will, however, net you
+\begin{align*}
+	\delta_{\text{B}}b_{a} = -\frac{1}{\alpha}H_{a}\xi,\ \delta_{\text{B}}c_{a} = -\frac{1}{2}g\srconst{ab}{c}\xi c_{b}c_{c}.
+\end{align*}
+
+We now introduce renormalization constants according to
+\begin{align*}
+	A_{\mu}^{a} = \sqrt{\tilde{Z}_{A}}A_{\mu, \ren}^{a},\ \psi = \sqrt{\tilde{Z}_{\psi}}\psi_{\ren},\ c_{a} = \sqrt{\tilde{Z}_{\text{ghost}}}c_{a, \ren},\ b_{a} = \sqrt{\tilde{Z}_{\text{ghost}}}b_{a, \ren},
+\end{align*}
+as well as 
+\begin{align*}
+	g = Z_{g}g_{\ren},\ m = Z_{m}m_{\ren},\ \alpha = Z_{\alpha}\alpha_{\ren}.
+\end{align*}
+
+\paragraph{The Callen-Symanzik Equation and Beta Functions}
+When performing renormalization transformations we generally introduce new parameters, for instance the mass scale. Note that one can always combine the renormalized and introduced parameters such that one reobtains the results from the non-renormalized theory. Mathematically, say for the theory describing a fermion field interacting with a non-Abelian gauge theory, we could require
+\begin{align*}
+	\mu\dv{g}{\mu} = 0,
+\end{align*}
+and similarly for the other parameters. This will give you a condition on the renormalized constants of the form
+\begin{align*}
+	\mu\dv{g_{\ren}}{\mu} = \beta_{g},
+\end{align*}
+which defines the corresponding beta function. We can now define asymptotic freedom as $g$ decreasing with $\mu$. Its opposite is infrared freedom. Now, the correlation functions should be independent of $\mu$, hence we find
+\begin{align*}
+	\left(\mu\del{}{\mu} + \beta_{g}\del{}{g_{\ren}} + \beta_{\alpha}\del{}{\alpha_{\ren}} + \beta_{m}\del{}{m_{\ren}} \right)G(x_{1}, \dots, x_{n}) = 0.
+\end{align*}
+This is the Callen-Symanzik equation. Defining the differential operator to be $D$ find it suitable to introduce
+\begin{align*}
+	\gamma_{j} = \frac{1}{2}\sum\limits_{j}\frac{1}{\tilde{Z}_{j}}D\tilde{Z}_{j}.
+\end{align*}
+For our case we find
+\begin{align*}
+	\gamma_{j} = 2\beta_{g}\frac{A_{i}}{\epsilon}g_{\ren} + \frac{\beta_{\alpha}}{\epsilon}g_{\ren}\del{}{\alpha_{\ren}}A_{i} = -\frac{1}{2}A_{i}g_{\ren}^{2}.
+\end{align*}
+We then find
+\begin{align*}
+	(D + \sum\limits_{j}\gamma_{j})G_{\ren}(x_{1}, \dots, x_{n}) = 0.
+\end{align*}

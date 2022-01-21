@@ -1,0 +1,190 @@
+\section{Useful Mathematics}
+
+\paragraph{Hilbert Space and Completeness} We will be working with states in some abstract vector space. For finite-dimensional spaces there are no issues and we may always identify a basis. For infinite-dimensional cases one might have convergence issues when trying to construct a state. We therefore impose the condition of completeness on the state space, namely that any infinite series of states in the space such that the infinite series has finite norm also belongs to the space. Such a space is called a Hilbert space.
+
+\paragraph{A Useful Commutation Relation}
+You might happen upon commutation relations of the form $\comm{f(A)}{B}$ show up. We would like to try to simplify it for the particular case where $\comm{A}{B} = C$, where $C$ is some operator commuting with $A$. To do this, we first study $\comm{A^{n}}{B}$ in a general case. We have
+\begin{align*}
+	\comm{A^{n}}{B} = A\comm{A^{n - 1}}{B} + \comm{A}{B}A^{n - 1},
+\end{align*}
+prompting us to find this commutator by induction. For $n = 2$ we have
+\begin{align*}
+	\comm{A^{2}}{B} = A\comm{A}{B} + \comm{A}{B}A.
+\end{align*}
+For $n = 3$ we obtain
+\begin{align*}
+	\comm{A^{3}}{B} = A\comm{A^{2}}{B} + \comm{A}{B}A^{2} = A(A\comm{A}{B} + \comm{A}{B}A) + \comm{A}{B}A^{2} = A^{2}\comm{A}{B} + A\comm{A}{B}A + \comm{A}{B}A^{2}.
+\end{align*}
+A suitable induction hypothesis looks to be
+\begin{align*}
+	\comm{A^{n}}{B} = \sum\limits_{k = 1}^{n}A^{n - k}\comm{A}{B}A^{k - 1}.
+\end{align*}
+Assuming it to be true, we have
+\begin{align*}
+	\comm{A^{n + 1}}{B} &= A\comm{A^{n}}{B} + \comm{A}{B}A^{n} \\
+	                    &= A\sum\limits_{k = 1}^{n}A^{n - k}\comm{A}{B}A^{k - 1} + \comm{A}{B}A^{n} \\
+	                    &= \sum\limits_{k = 1}^{n}A^{n + 1 - k}\comm{A}{B}A^{k - 1} + \comm{A}{B}A^{n} \\
+	                    &= \sum\limits_{k = 1}^{n + 1}A^{n + 1 - k}\comm{A}{B}A^{k - 1},
+\end{align*}
+proving the hypothesis by induction.
+
+Now we write
+\begin{align*}
+	f(A) = \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}A^{n}
+\end{align*}
+to obtain
+\begin{align*}
+	\comm{f(A)}{B} &= \comm{\sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}A^{n}}{B} \\
+	               &= \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}\comm{A^{n}}{B} \\
+	               &= \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}\sum\limits_{k = 1}^{n}A^{n - k}\comm{A}{B}A^{k - 1}.
+\end{align*}
+Assuming $\comm{A}{B}$ to commute with $A$, we have
+\begin{align*}
+	\comm{f(A)}{B} &= \sum\limits_{n = 0}^{\infty}\frac{1}{n!}f_{n}A^{n - 1}\comm{A}{B}\sum\limits_{k = 1}^{n} \\
+	               &= \comm{A}{B}\sum\limits_{n = 1}^{\infty}\frac{1}{(n - 1)!}f_{n}A^{n - 1} \\
+	               &= \comm{A}{B}\sum\limits_{m = 0}^{\infty}\frac{1}{m!}f_{m + 1}A^{m} \\
+	               &= \comm{A}{B}\dv{f}{A}.
+\end{align*}
+
+\paragraph{Symmetries on Hilbert Space}
+A symmetry on Hilbert space is a transformation that leaves all inner products unaltered.
+
+\paragraph{Wigner's Theorem}
+Wigner's theorem states that any operator that is a symmetry is either unitary or anti-unitary. An anti-unitary operator is an operator such that $\mel{\Phi}{\adj{U}U}{\Psi} = \braket{\Psi}{\Phi}$ and $U\adj{U} = 1$. The adjoint of such an operator is defined by $(U\ket{\Phi}, \ket{\Psi}) = (\adj{U}\ket{\Psi}, \ket{\Phi})$.
+
+\paragraph{Transformation of Operators}
+Consider a symmetry operator $u$. In order for this to be a symmetry, it must also act on all operators according to $A\to uA\adj{u}$.
+
+\paragraph{Continuous Symmetries}
+Continuous symmetries are found in two forms: One which operates on the coefficients of the state and one which operates on the basis vectors. Denoting some symmetry as $u_{\var{\theta}}$, which changes $\theta$ to $\var{\theta}$, we require symmetries to have the following properties:
+\begin{itemize}
+	\item $u_{\var{\theta_{1}}}u_{\var{\theta_{2}}} = u_{\var{\theta_{1}} + \var{\theta_{2}}}$.
+	\item $u_{\var{\theta}}^{-1} = u_{-\var{\theta}}$.
+	\item $\lim\limits_{\var{\theta} \to 0}u_{\var{\theta}} = 1$.
+\end{itemize}
+
+\paragraph{Generators of Continuous Symmetries}
+Continuous symmetry operators are smooth maps acting on a manifold - namely, Hilbert space. Hence we can use the language of Lie algebra to study them (if you know nothing about Lie algebra, pretend that I didn't write this and carry on. If you want some reference material, please look at my summary of SI2360). We expand the symmetry operator around the identity as
+\begin{align*}
+	u_{\var{\theta}} = 1 - i\var{\theta}T + \dots
+\end{align*}
+for some operator $T$. We have
+\begin{align*}
+	\adj{u_{\var{\theta}}}u_{\var{\theta}} = (1 + i\var{\theta}\adj{T})(1 - i\var{\theta}T) = 1 + i\var{\theta}\left(T - \adj{T}\right) + \dots,
+\end{align*}
+where we have ignored higher-order terms in $\var{\theta}$. The requirement that the symmetry be unitary yields $\adj{T} - T = 0$, and hence the generator $T$ is self-adjoint. By continuous application of this we obtain
+\begin{align*}
+	u_{\var{\theta}} = e^{-i\var{\theta}T}.
+\end{align*}
+This operator satisfies all of the above criteria for a continuous symmetry.
+
+\paragraph{Effect of Symmetries on Wavefunctions}
+Let $u_{\var{\theta}}$ act on $\theta$ and $\vb{x}$ be a vector containing any other parameters describing the basis. We have
+\begin{align*}
+	u_{\var{\theta}}\ket{\Psi} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{u_{\var{\theta}}\ket{\theta, \vb{x}}\braket{\theta, \vb{x}}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta + \var{\theta}, \vb{x}}\braket{\theta, \vb{x}}{\Psi}}} = \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\braket{\theta - \var{\theta}, \vb{x}}{\Psi}}},
+\end{align*}
+meaning that the symmetry transforms $\Psi(\theta, \vb{x})$ to $\Psi(\theta - \var{\theta}, \vb{x})$.
+
+Suppose instead that $\theta$ parametrizes the coefficients - in other words, $\ket{\Psi(\theta)} = \Psi(\theta, \vb{x})\ket{\vb{x}}$. In this case, the symmetry transforms the wavefunction to $\Psi(\theta + \var{\theta}, \vb{x})$.
+
+\paragraph{Commutation Relations Between Parameters and Generators}
+For a symmetry of the first kind, we use the transformation rule for operators to obtain commutation relations between parameters and their generators. More specifically, we require
+\begin{align*}
+	(1 - i\var{\theta}T)\theta(1 + i\var{\theta}T) = \theta + \var{\theta}
+\end{align*}
+to first order. The left-hand side is given by
+\begin{align*}
+	\theta + i\var{\theta}\theta T - i\var{\theta}(T\theta + i\var{\theta}T\theta T) = \theta + i\var{\theta}\comm{\theta}{T}
+\end{align*}
+to first order, implying
+\begin{align*}
+	i\comm{\theta}{T} = 1.
+\end{align*}
+
+\paragraph{Generators in the Operator Basis}
+We have
+\begin{align*}
+	\left(1 - i\var{\theta}T\right)\ket{\Psi} &= \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\mel{\theta, \vb{x}}{\left(1 - i\var{\theta}T\right)}{\Psi}}} \\
+	                                          &= \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\braket{\theta - \var{\theta}, \vb{x}}{\Psi}}} \\
+	                                          &= \integ{}{}{\vb{x}}{\integ{}{}{\theta}{\ket{\theta, \vb{x}}\left(\braket{\theta, \vb{x}}{\Psi} - \var{\theta}\del{\theta}{\braket{\theta, \vb{x}}{\Psi}}\right)}},
+\end{align*}
+implying
+\begin{align*}
+	\bra{\theta, \vb{x}}T = \frac{1}{i}\del{\theta}{}.
+\end{align*}
+
+\paragraph{Discrete Symmetries}
+A discrete symmetry is an operator for which the previously described machinery does not hold, namely a symmetry which is not parametrized by a continuous parameter.
+
+\paragraph{Complex Conjugation}
+The complex conjugation operator $K$ is defined as
+\begin{align*}
+	Kc\ket{\alpha} = \cc{c}K\ket{\alpha}.
+\end{align*}
+There is some ambiguity in terms of how this operator acts on the basis. To resolve this, we may choose a representation such that the Hilbert space is spanned by vectors with single ones. These vectors should not be affected by complex conjugation, hence
+\begin{align*}
+	K\ket{\alpha} = K\sum\limits_{a}\ket{a}\braket{a}{\alpha} = \sum\limits_{a}\braket{\alpha}{a}K\ket{a} = \sum\limits_{a}\braket{\alpha}{a}\ket{a}.
+\end{align*}
+The trade-off to this solution is that the action of this operator is only clearly specified once a basis has been chosen.
+
+\paragraph{Antiunitary Operators and Complex Conjucation}
+We claim that any antiunitary operator $\theta$ may be written as $\theta = UK$ for some unitary operator $U$. To show this, we show that this factorization is antiunitary and take $UK$ to be given. We first have
+\begin{align*}
+	\theta(c_{1}\ket{\alpha} + c_{2}\ket{\beta}) = U(\cc{c_{1}}K\ket{\alpha} + \cc{c_{2}}K\ket{\beta}) = \cc{c_{1}}UK\ket{\alpha} + \cc{c_{2}}UK\ket{\beta} = \cc{c_{1}}\theta\ket{\alpha} + \cc{c_{2}}\theta\ket{\beta},
+\end{align*}
+hence the given factorization is antilinear. To show antiunitarity, we work in ket space, as the ambiguity with respect to the basis makes it risky to work with bras. We have
+\begin{align*}
+	\theta\ket{\alpha} &= UK\sum\limits_{a}\ket{a}\braket{a}{\alpha}, \\
+	                   &= U\sum\limits_{a}\braket{\alpha}{a}K\ket{a} \\
+	                   &= \sum\limits_{a}\braket{\alpha}{a}U\ket{a}.
+\end{align*}
+Similarly, the bra corresponding to $\theta\ket{\beta}$ is
+\begin{align*}
+	\sum\limits_{a}\braket{a}{\beta}\bra{a}\adj{U}.
+\end{align*}
+The inner product between the two is
+\begin{align*}
+	\sum\limits_{a}\braket{a}{\beta}\bra{a}\adj{U}\sum\limits_{b}\braket{\alpha}{b}U\ket{b} = \sum\limits_{a}\sum\limits_{b}\braket{\alpha}{b}\braket{a}{\beta}\braket{a}\ket{b} = \sum\limits_{a}\braket{\alpha}{a}\braket{a}{\beta} = \braket{\alpha}{\beta},
+\end{align*}
+completing the proof.
+
+\paragraph{Anti-Unitary Operators and Expectation Values}
+Let $U$ be some anti-unitary operator and $A$ some operator. Then
+\begin{align*}
+	\mel{\beta}{A}{\alpha} = \mel{\tilde{\alpha}}{U\adj{A}U^{-1}}{\tilde{\beta}},
+\end{align*}
+where the tildes denote vectors acted upon by $U$.
+
+To prove this, let $\ket{\gamma} = \adj{A}\ket{\beta}$. Then
+\begin{align*}
+	\mel{\beta}{A}{\alpha} &= \braket{\gamma}{\alpha} \\
+	                       &= \braket{\tilde{\alpha}}{\tilde{\gamma}} \\
+	                       &= \mel{\tilde{\alpha}}{U\adj{A}}{\beta} \\
+	                       &= \mel{\tilde{\alpha}}{U\adj{A}U^{-1}U}{\beta} \\
+	                       &= \mel{\tilde{\alpha}}{U\adj{A}U^{-1}}{\tilde{\beta}}.
+\end{align*}
+
+\paragraph{Tensors}
+A tensor of rank $n$ is a multilinear map from $n$ vectors in some vector space to a scalar.
+
+It is clear that the set of tensors of some rank form a vector space, and so we would like to identify some basis for the space of tensors.
+
+\paragraph{Basis for $n = 1$}
+We start with rank $1$ tensors. The inner product is certainly a rank $1$ tensor according to the definition, and so we would like to use that. Now let the set of $v_{i}$ denote the set of orthonormal basis vectors for the space $V$. We then choose the basis
+\begin{align*}
+	e_{i}(v) = \bra{v_{i}}{v}
+\end{align*}
+as the basis for the set of rank $1$ tensors. This may also be denoted simply as the tensor $v_{i}$ (the confusion will disappear later).
+
+\paragraph{The Tensor Product}
+To find a basis for tensors of higher order, we first need to introduce the tensor product. We define it for rank $1$ tensors as
+\begin{align*}
+	s(v)\otimes t(w) = \braket{s}{v}\braket{t}{w}.
+\end{align*}
+The tensor product has allowed us to construct a rank $2$ tensor from two rank $1$ tensors. Repeatedly applying it allows us to construct tensors of any rank. The tensor product is also bilinear, in line with our definition.
+
+\paragraph{The Tensor Product of Operators}
+It follows naturally that
+\begin{align*}
+	(S\otimes T)(v\otimes w) = S(v)\otimes T(w).
+\end{align*}

@@ -1,0 +1,40 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+\input{./../../Mall/Aux/math.tex}
+
+\title{Summary of SI2600 Condensed Matter Theory}
+\author{Yashar Honarmandi \\ yasharh@kth.se}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{./Parts/abstract.tex}
+\end{abstract}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\input{./Parts/solid_state.tex}
+
+\input{./Parts/hall_effect.tex}
+
+\input{./Parts/topology.tex}
+
+\input{./Parts/superconductors.tex}
+
+\end{document}

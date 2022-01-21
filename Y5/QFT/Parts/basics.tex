@@ -1,0 +1,622 @@
+\section{Basic Concepts}
+
+\paragraph{The Path Integral Approach}
+We will now switch from canonical quantization to path integrals as our basis for quantum field theory. This has a few advantages:
+\begin{itemize}
+	\item It switches from the Hamiltonian to the Lagrangian, which can more easily be manifestly Lorentz invariant.
+	\item The switch to the Lagrangian allows for more aesthetic handling of Lagrangians with field derivatives.
+	\item It allows for better handling of non-Abelian gauge theories.
+\end{itemize}
+
+\paragraph{Path Integrals in Quantum Mechanics}
+Consider a system with Hamiltonian
+\begin{align*}
+	\ham = \frac{p^{2}}{2m} + V(q).
+\end{align*}
+In the Heisenberg pictures, the $q$ operator is given by
+\begin{align*}
+	q(t) = e^{i\ham t}q(0)e^{-i\ham t},
+\end{align*}
+We study states of the form $\ket{q, t}$, which are eigenstates of $q(t)$ with eigenvalue $q$. We note that
+\begin{align*}
+	q(t)e^{i\ham t}\ket{q} = e^{i\ham t}qe^{-i\ham t}e^{i\ham t}\ket{q} = qe^{i\ham t}\ket{q},
+\end{align*}
+hence this is the form of the states we are considering. Eigenstates at reference time $t\p$ will be implicitly labelled when convenient.
+
+We might consider the amplitude of the system evolving from $q\p$ to $q^{\prime\prime}$ over some time. This is given by
+\begin{align*}
+	\braket{q^{\prime\prime}, t^{\prime\prime}}{q\p, t\p} = \mel{q^{\prime\prime}}{e^{-i\ham(t^{\prime\prime} - t\p)}}{q\p},
+\end{align*}
+which coincides with the expression in the Schrödinger picture. To introduce the path integral we will discretize the time interval into $N$ slices of width $\Delta$ and write
+\begin{align*}
+	\mel{q^{\prime\prime}}{e^{-i\ham(t^{\prime\prime} - t\p)}}{q\p} = \mel{q^{\prime\prime}}{e^{-i\ham\Delta}\dots e^{-i\ham\Delta}}{q\p}.
+\end{align*}
+Between each pair of time evolution operators we now place a completeness relation, reducing the problem to computing
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}}.
+\end{align*}
+The final value of the amplitude will be the product of all such factors from $0$ to $N$. We can now split the exponentials according to
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}} = \mel{q_{i + 1}}{e^{-i\Delta\frac{p^{2}}{2m}}e^{-i\Delta V(q)}e^{-\frac{1}{2}\Delta^{2}\comm{\frac{p^{2}}{2m}}{V(q)}}\dots}{q_{i}}.
+\end{align*}
+Due to our discretization we may now ignore the higher-order factors, leaving
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}} = \mel{q_{i + 1}}{e^{-i\Delta\frac{p^{2}}{2m}}e^{-i\Delta V(q)}}{q_{i}}.
+\end{align*}
+The first factor is easily dealt with. To handle the second, we introduce a new completeness relation such that
+\begin{align*}
+	\mel{q_{i + 1}}{e^{-i\ham\Delta}}{q_{i}} &= e^{-i\Delta V(q_{i})}\integ{}{}{p}\mel{q_{i + 1}}{e^{-i\Delta\frac{p^{2}}{2m}}}{p}\braket{p}{q_{i}} \\
+	                                         &= e^{-i\Delta V(q_{i})}\integ{}{}{p}e^{-i\Delta\frac{p^{2}}{2m}}\braket{q_{i + 1}}{p}\braket{p}{q_{i}} \\
+	                                         &= e^{-i\Delta V(q_{i})}\integ{}{}{p}e^{-i\Delta\frac{p^{2}}{2m} + ip(q_{i + 1} - q_{i})} \\
+	                                         &= e^{-i\Delta V(q_{i})}\integ{}{}{p}e^{-i\frac{\Delta}{2m}\left(p - \frac{m}{\Delta}(q_{i + 1} - q_{i})\right)^{2}}e^{i\frac{m\Delta}{2}\left(\frac{q_{i + 1} - q_{i}}{\Delta}\right)^{2}} \\
+	                                         &= e^{i\Delta\left(\frac{1}{2}m\left(\frac{q_{i + 1} - q_{i}}{\Delta}\right)^{2} - V(q_{i})\right)}\integ{}{}{p}e^{-i\frac{\Delta}{2m}\left(p - \frac{m}{\Delta}(q_{i + 1} - q_{i})\right)^{2}}
+\end{align*}
+We will leave the integral as is, as it merely provides some normalization factor in the end. Dubbing it $A$ we find
+\begin{align*}
+	\braket{q^{\prime\prime}, t^{\prime\prime}}{q\p, t\p} &= \inte{}{}\dd{q}_{1}\dots\dd{q}_{N}A^{N}e^{i\Delta\left(\frac{1}{2}m\left(\frac{q_{1} - q\p}{\Delta}\right)^{2} - V(q\p)\right)}\dots e^{i\Delta\left(\frac{1}{2}m\left(\frac{q^{\prime\prime} - q_{N}}{\Delta}\right)^{2} - V(q_{N})\right)} \\
+	                                                      &= \inte{}{}\dd{q}_{1}\dots\dd{q}_{N}A^{N}e^{i\sum\limits_{i = 0}^{N}\Delta\left(\frac{1}{2}m\left(\frac{q_{i + 1} - q_{i}}{\Delta}\right)^{2} - V(q_{i})\right)}.
+\end{align*}
+Now comes the kicker: We let $N$ go to infinity and $\Delta$ to zero such that the sum in the exponent goes to an integral. In this limit we see that what is left is in fact the integral of the Lagrangian, or the action. The action of what, you ask? It's the action corresponding to a particular choice of all the intermediate $q$.
+
+The integration over an infinite set of such intermediate values corresponds to an integral over function space - over all possible functional forms of $q(t)$. This is what is termed the path integral. It is generally denoted as
+\begin{align*}
+	\pinte{}{x}.
+\end{align*}
+Renaming the normalization constant we therefore have
+\begin{align*}
+	\braket{q^{\prime\prime}, t^{\prime\prime}}{q\p, t\p} &= C\pinte{}{q}e^{iS}.
+\end{align*}
+
+One might ask whether the limit that defines the path integral really exists. Yes, one might very well ask that.
+
+\paragraph{Observables from Path Integrals}
+Let us now consider
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p}.
+\end{align*}
+We may consider the times to be correctly ordered for convenience, allowing us to remove the time ordering. Discretizing time and taking $t_{i} - t\p = k_{i}\Delta$ we can write
+\begin{align*}
+	q(t_{i + 1})q(t_{i}) &= e^{i\ham k_{i + 1}\Delta}qe^{-i\ham k_{i + 1}\Delta}e^{i\ham k_{i}\Delta}qe^{-i\ham k_{i}\Delta} = e^{i\ham k_{i + 1}\Delta}qe^{-i\ham (k_{i + 1} - k_{i})\Delta}qe^{-i\ham k_{i}\Delta}.
+\end{align*}
+Using completeness we have
+\begin{align*}
+	e^{-i\ham (k_{i + 1} - k_{i})\Delta} = \inte{}{}\dd{q_{k_{i } + 1}}\dots\dd{q_{k_{i + 1}}}\op{q_{k_{i + 1}}}e^{-i\ham \Delta}\dots\op{q_{k_{i} + 1}}e^{-i\ham \Delta},
+\end{align*}
+hence
+\begin{align*}
+	q(t_{i + 1})q(t_{i}) &= \inte{}{}\dd{q_{k_{i } + 1}}\dots\dd{q_{k_{i + 1}}}e^{i\ham k_{i + 1}\Delta}q\op{q_{k_{i + 1}}}e^{-i\ham \Delta}\dots\op{q_{k_{i} + 1}}e^{-i\ham \Delta}qe^{-i\ham k_{i}\Delta} \\
+	                     &= \inte{}{}\dd{q_{k_{i } + 1}}\dots\dd{q_{k_{i + 1}}}q_{k_{i + 1}}e^{i\ham k_{i + 1}\Delta}\op{q_{k_{i + 1}}}e^{-i\ham \Delta}\dots\op{q_{k_{i} + 1}}e^{-i\ham \Delta}qe^{-i\ham k_{i}\Delta}.
+\end{align*}
+On the left end we pair up $e^{-i\ham N\Delta}$ with $e^{i\ham k_{n}\Delta}$ and on the right end no modifications are needed, hence
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \inte{}{}\dd{q_{1}}\dots\dd{q_{N}}q_{k_{1}}\dots q_{k_{n}}\mel{q^{\prime\prime}}{e^{-i\ham \Delta}}{q_{N}}\dots \mel{q_{1}}{e^{-i\ham \Delta}}{q\p}.
+\end{align*}
+We can now recognize results from previously, and in the limit of infinitely fine discretization we obtain
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} = C\pinte{}{q}q(t_{n})\dots q(t_{1})e^{iS}.
+\end{align*}
+Note that the ordering in the integration is no longer important.
+
+%TODO: Show
+As a side note, an ad hoc argument for why the path integral converges can be found by going back to the discrete variant, performing a Wick rotation of the time step $\Delta$ and thus show that the amplitude of the contributions diverges exponentially as one strays from the path of least action.
+
+\paragraph{Green's Functions from Path Integrals}
+We can use the above to obtain the Green's function from path integrals. We recall that the Green's function is defined as
+\begin{align*}
+	G(t_{1}, \dots, t_{n}) = \frac{\expval{\torp q(t_{1})\dots q(t_{n})}{\Omega}}{\braket{\Omega}}.
+\end{align*}
+Here we  will use $t = 0$ as our reference. To get an expression in terms of the ground state we use completion to write
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \sum\limits_{n, m}\mel{q^{\prime\prime}}{e^{-i\ham t^{\prime\prime}}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\mel{m}{e^{i\ham t\p}}{q\p} \\
+	&= \sum\limits_{n, m}e^{i(E_{m}t\p - E_{n}t^{\prime\prime})}\braket{q^{\prime\prime}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\braket{m}{q\p}.
+\end{align*}
+We will now consider the limit of large times (which is what is relevant for QFT contexts anyway). We will also extend time to be complex. In summary we write
+\begin{align*}
+	t\p = -\tau(1 - i\varepsilon),\ t^{\prime\prime} = \tau(1 - i\varepsilon),
+\end{align*}
+where we take $\tau$ to be large and let $\varepsilon\to 0$ at the end of our calculations. Thus we have
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \sum\limits_{n, m}e^{-i\tau(1 - i\varepsilon)(E_{m} + E_{n})}\braket{q^{\prime\prime}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\braket{m}{q\p} \\
+	&= \sum\limits_{n, m}e^{-i\tau(E_{m} + E_{n})}e^{-\tau\varepsilon(E_{m} + E_{n})}\braket{q^{\prime\prime}}{n}\mel{n}{\torp q(t_{n})\dots q(t_{1})}{m}\braket{m}{q\p}.
+\end{align*}
+In the limit of large times the only contribution thus comes from the ground state, and we have
+\begin{align*}
+	\mel{q^{\prime\prime}, t^{\prime\prime}}{\torp q(t_{n})\dots q(t_{1})}{q\p, t\p} &= \braket{q^{\prime\prime}}{\Omega}\braket{\Omega}{q\p}\mel{\Omega}{\torp q(t_{n})\dots q(t_{1})}{\Omega}.
+\end{align*}
+The left-hand side is now a path integral and the right-hand side is proportional to the Green's function. We thus have
+\begin{align*}
+	G(t_{1}, \dots, t_{n}) = \frac{\pinte{}{q}q(t_{n})\dots q(t_{1})e^{iS}}{\pinte{}{q}e^{iS}}.
+\end{align*}
+
+\paragraph{Path Integrals in Field Theories}
+In moving to field theory there is really nothing new that is introduced. To see this you could simply perform your field theory calculation on a lattice and reuse what we have done above. The eigenstates of $q$ are now replaced by eigenstates of the fields and times are replaced by points in spacetime. We thus arrive at
+\begin{align*}
+	G(x_{1}, \dots, x_{n}) = \frac{\pinte{}{\phi}\phi(t_{n})\dots \phi(x_{1})e^{iS}}{\pinte{}{\phi}e^{iS}}.
+\end{align*}
+The path integral is now over all possible forms of the field $\phi$ throughout spacetime.
+
+\paragraph{The Generating Functional}
+The generating functional is defined as
+\begin{align*}
+	Z = \pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}.
+\end{align*}
+It is a functional of the extra field $J$. It evidently satisfies
+\begin{align*}
+	Z(0) = \pinte{}{\phi}e^{iS}.
+\end{align*}
+Furthermore it satisfies
+\begin{align*}
+	-i\fdv{Z}{J(x)} &= \pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[4]{y}\phi J\right)}\cdot\fdv{J(x)}\inte{}{}\dd[4]{y}\phi J \\
+	                &= \pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[4]{y}\phi J\right)}\inte{}{}\dd[4]{y}\phi\delta^{4}(x - y) \\
+	                &= \pinte{}{\phi}\phi(x)e^{i\left(S + \inte{}{}\dd[4]{x}\phi J\right)}.
+\end{align*}
+
+\paragraph{Wick's Theorem}
+Wick's theorem still applies in the context of path integrals - at least for free fields, and is in fact significantly easier to prove in my opinion. I attach my proof below.
+
+We assume the following:
+\begin{itemize}
+	\item We can write $Z[J] = Ce^{f(J)}$. This is reasonable due to the definition of the generating functional.
+	\item $f$ and all first-order derivatives vanish identically for $J = 0$.
+	\item $f$ is at most quadratic in $J$. This is reasonable for the field theories we study.
+\end{itemize}
+The task at hand is computing some sequence of functional derivatives of $Z$ with respect to $J$ and evaluating at $J = 0$. Because functional differentiation is linear, we will omit the $C$ for the moment. At some point in the sequence of derivatives, any one term will have two types of factors: derivatives of $f$ and $e^{f(J)}$. The derivatives that follow in the sequence act schematically according to the product rule, meaning that each term spawns a set of new ones where the derivative has acted on one particular factor of either kind. From this we can identify two distinct types of changes from one term to the next, and the scheme can be illustrated as in figure \ref{fig:deriv_graph}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{./Images/deriv_graph.eps}
+	\caption{Illustration of the differentiation scheme.}
+	\label{fig:deriv_graph}
+\end{figure}
+
+The tree starts with $e^{f(J)}$ at the very top. From there, the derivatives produce a series of terms, one with derivatives of $e^{f(J)}$ and the rest with derivatives of the already present derivatives of $f$. The former is represented by nodes to the right and the latter by nodes to the right. Moving down the tree corresponds to starting with some term, represented by a node, and following the term generated by differentiating a particular factor in that term. For example, there are no factors in front of $e^{f(J)}$ in the beginning, so the tree starts only with a step to the right. In figure \ref{fig:deriv_graph} we see a path that has thus far only included steps to the right, and therefore contains $k - 1$ factors of derivatives of $f$, as well as $e^{f}$. We therefore have $k - 1$ left nodes corresponding to terms with derivatives of these factors, as well as a right node corresponding to the term which has an extra derivative of $f$.
+
+Now, to see the effect of steps in this graph we can perform it explicitly for a sequence of two steps. Supposing we differentiate with respect to $J_{m_{1}}$ and $J_{m_{2}}$, with the $m_{i}$ being some indices, we have
+\begin{align*}
+	\fdv{J_{m_{2}}}\fdv{J_{m_{1}}}Z[J] &= \fdv{J_{m_{2}}}\left(e^{f(J)}\fdv{f}{J_{m_{1}}}\right) \\
+	                                   &= e^{f(J)}\fdv{J_{m_{2}}}\fdv{J_{m_{1}}}f + e^{f(J)}\fdv{f}{J_{m_{2}}}\fdv{f}{J_{m_{1}}}.
+\end{align*}
+We see that the expression in the bracket in the first line corresponds to there only being a step to the right at the top. From there a derivative of $f$ is produced, so there is exactly one step available to the left and one to the right. These are represented by the left and right terms in the second row.
+
+Three things are now noteworthy with the expression we have arrived at. Firstly, note that the combination of one step left and then one right leaves us with a factor with a second-order derivative of $f$. According to our assumptions, higher-order derivatives of this factor are identically zero, meaning the possibility of a subsequent left step is not present. In other words, each left step corresponds to children nodes having one less left step available than its parent. Next, note both that the term produced from the double right step has two left steps available, one for each factor, confirming a previous claim. Finally, if this were to be the full sequence of derivatives to be computed before setting $J = 0$, only the left term will net a contribution. This is not a coincidence, and in fact it must be that the only nodes at the end of the graph that produce a contribution are those that are reached with an equal amount of right and left steps. This is also very useful, as it indicates directly to us which terms we need to consider.
+
+What is produced from these combinations of left and right steps? To illustrate this, we may add a left step to the term produced by the double right step above. There are two possible left steps from that node, which produces the two terms
+\begin{align*}
+	e^{f(J)}\fdv{f}{J_{m_{1}}}\fdv{J_{m_{3}}}\fdv{J_{m_{2}}}f + e^{f(J)}\fdv{f}{J_{m_{2}}}\fdv{J_{m_{3}}}\fdv{J_{m_{1}}}f.
+\end{align*}
+We see that the two right steps produced two first-order derivatives, and the left steps produce the two possible combinations of derivatives with respect to $J_{m_{3}}$ and the other two variables. From this we can infer that the terms that produce non-zero contributions will each contain a set of factors
+\begin{align*}
+	\fdv{J_{m_{i}}}\fdv{J_{m_{j}}}f
+\end{align*}
+such that each $m_{i}$ appears exactly once in the full product, and the terms will combine such that all possible pairings of $m_{i}$ and $m_{j}$ are found. For example, in the case of a fourth-order derivative there will be three terms, generated by the pairings according to
+\begin{align*}
+	&(1, 2), (3, 4) \to \left(\fdv{J_{m_{1}}}\fdv{J_{m_{2}}}f\right)\left(\fdv{J_{m_{3}}}\fdv{J_{m_{4}}}f\right), \\
+	&(1, 3), (4, 2) \to \left(\fdv{J_{m_{1}}}\fdv{J_{m_{3}}}f\right)\left(\fdv{J_{m_{4}}}\fdv{J_{m_{2}}}f\right), \\
+	&(1, 4), (2, 3) \to \left(\fdv{J_{m_{1}}}\fdv{J_{m_{4}}}f\right)\left(\fdv{J_{m_{2}}}\fdv{J_{m_{3}}}f\right).
+\end{align*}
+This completes the proof, and what remains to be specified is the values that the second-order functional derivatives take. The final value will also be scaled by the constant $C$.
+
+\paragraph{The Generating Functional for a Free Scalar Field}
+Consider the non-interacting scalar field theory with Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2},
+\end{align*}
+taken with the field to approach zero at infinity. Before writing the generating functional, we rewrite the action as
+\begin{align*}
+	S &= \integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{-\frac{1}{2}\left(\del{}{\mu}\left(\phi\del{\mu}{}\phi\right) - \phi\del{}{\mu}\del{\mu}{}\phi\right) - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{-\frac{1}{2}\phi\dalem\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem - m^{2}\right)\phi},
+\end{align*}
+where we have introduced the d'Alembert operator $-\del{}{\mu}\del{\mu}{}$. Next we are going to use a clever trick by introducing the Klein-Gordon propagator $i\tilde{G} = \Delta$, which satisfies
+\begin{align*}
+	\left(-\dalem - m^{2}\right)\tilde{G} = \delta^{4}(x - y).
+\end{align*}
+We then have
+\begin{align*}
+	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{\delta^{4}(x - y)J(y)}} \\
+	&= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem_{x} - m^{2}\right)\phi + \phi\integ[4]{}{}{y}{J(y)\left(-\dalem_{x} - m^{2}\right)\tilde{G}(x, y)}}.
+\end{align*}
+We could do some very neat completing of squares here, but that would require
+\begin{align*}
+	\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\left(-\dalem_{x} - m^{2}\right)\phi} = \phi(x)J(x).
+\end{align*}
+To prove that we will perform some clever integration by parts. We have
+\begin{align*}
+	-\integ[4]{}{}{y}{J(y)\tilde{G}(x, y)\dalem_{x}\phi} &= \integ[4]{}{}{y}{\del{}{\mu}\left(J(y)\tilde{G}(x, y)\del{\mu}{}\phi\right) - J(y)\del{}{\mu}\tilde{G}(x, y)\del{\mu}{}\phi} \\
+	&= -\integ[4]{}{}{y}{\del{\mu}{}(J(y)\del{}{\mu}\tilde{G}(x, y)\phi) + J(y)\phi\dalem_{x}\tilde{G}(x, y)} \\
+	&= -\integ[4]{}{}{y}{J(y)\phi\dalem_{x}\tilde{G}(x, y)}.
+\end{align*}
+This completes the proof, and we thus have
+\begin{align*}
+	\integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} + \phi J} =& \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem_{x} - m^{2}\right)\phi \\
+	&+ \frac{1}{2}\left(\integ[4]{}{}{y}{\phi(x)J(y)\left(-\dalem_{x} - m^{2}\right)\tilde{G}(x, y) + J(y)\tilde{G}(x, y)}\left(-\dalem_{x} - m^{2}\right)\phi(x)\right)} \\
+	=& \frac{1}{2}\integ[4]{}{}{x}{\left(\phi + \integ[4]{}{}{y}{J(y)G(x, y)}\right)\left(-\dalem_{x} - m^{2}\right)\left(\phi + \integ[4]{}{}{z}{J(z)G(x, z)}\right) \\
+	 &- \integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(-\dalem_{x} - m^{2}\right)J(z)G(x, z)}}}.
+\end{align*}
+The final integral can be simplified as
+\begin{align*}
+	\integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)\left(-\dalem_{x} - m^{2}\right)J(z)G(x, z)}}} &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{\integ[4]{}{}{z}{J(y)G(x, y)J(z)\delta^{4}(x - z)}}} \\
+	                           &= \integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)G(x, y)J(x)}}.
+\end{align*}
+Now define a new field
+\begin{align*}
+	\chi(x) = \phi(x) + \integ[4]{}{}{y}{J(y)G(x, y)}.
+\end{align*}
+This shift has no effect on the integration measure in the path integral, hence we have
+\begin{align*}
+	Z &= \pinte{}{\chi}e^{\frac{i}{2}\integ[4]{}{}{x}{\chi(x)\left(-\dalem_{x} - m^{2}\right)\chi(y) - \integ[4]{}{}{y}{J(y)G(x, y)J(x)}}} \\
+	  &= Ne^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}}.
+\end{align*}
+
+Let's do a sanity check now, to be sure. We have
+\begin{align*}
+	&G(x_{1}, x_{2}) = \frac{1}{Z(0)}\left(-i\fdv{J(x_{1})}\right)\left(-i\fdv{J(x_{2})}\right)N_{c}e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}} \\
+	                =& \fdv{J(x_{1})}\left(\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)\delta^{4}(x - x_{2})}} + \frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{\delta^{4}(y - x_{2})\Delta(x, y)J(x)}}\right)e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}} \\
+	                =& \fdv{J(x_{1})}\left(\frac{1}{2}\integ[4]{}{}{y}{J(y)\Delta(x_{2}, y)} + \frac{1}{2}\integ[4]{}{}{x}{\Delta(x, x_{2})J(x)}\right)e^{-\frac{1}{2}\integ[4]{}{}{x}{\integ[4]{}{}{y}{J(y)\Delta(x, y)J(x)}}}.
+\end{align*}
+We would in principle need to apply the product rule, but it is now obvious that only the term which applies the functional derivative to the non-exponential part will give a non-zero contribution, hence we find
+\begin{align*}
+	G(x_{1}, x_{2}) = \frac{1}{2}(\Delta(x_{1}, x_{2}) + \Delta(x_{2}, x_{1})),
+\end{align*}
+and using the fact that the propagator is symmetric under switching the two arguments we have
+\begin{align*}
+	G(x_{1}, x_{2}) = \Delta(x_{1}, x_{2}),
+\end{align*}
+as expected.
+
+As a side note, the Feynman diagram for this process is shown in figure \ref{fig:free_scalar_fd}.
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a1) at (0, 0) {$x_{1}$};
+			\vertex (a2) at (3, 0) {$x_{2}$};
+			\diagram*{
+				(a1) --[scalar] (a2),
+			};
+		\end{feynman}
+	\end{tikzpicture}
+	\caption{Feynman diagram for the two-point correlation function for a free scalar.}
+	\label{fig:free_scalar_fd}
+\end{figure}
+
+\paragraph{The Generating Functional for an Interacting Scalar Field}
+Consider the interacting scalar field theory described by
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} - \frac{1}{4!}\lambda\phi^{4}.
+\end{align*}
+The generating functional is given by
+\begin{align*}
+	Z = \pinte{}{\phi}e^{i\left(S_{\text{free}} + \integ[4]{}{}{x}{\phi J - \frac{1}{4!}\lambda\phi^{4}}\right)}.
+\end{align*}
+We will be working in the framework of perturbation theory and will therefore at some point take the parameter $\lambda$ to be small. We prepare for that by performing a series expansion in $\lambda$ according to
+\begin{align*}
+	Z = \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\pinte{}{\phi}\left(\integ[4]{}{}{x}{\phi^{4}}\right)^{m}e^{i\left(S_{\text{free}} + \integ[4]{}{}{x}{\phi J}\right)}.
+\end{align*}
+Here comes the kicker: The fields can be brought down from the exponent by functional differentiation. Now, that differentiation has no dependence on $\phi$, hence we may extract it from the path integral to find
+\begin{align*}
+	Z &= \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\integ[4]{}{}{x}{\left(-i\fdv{J(x)}\right)^{4}}\right)^{m}\pinte{}{\phi}e^{i\left(S_{\text{free}} + \integ[4]{}{}{x}{\phi J}\right)} \\
+	  &= \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\integ[4]{}{}{x}{\left(-i\fdv{J(x)}\right)^{4}}\right)^{m}Z_{\text{free}}.
+\end{align*}
+This can be related to Feynman diagrams in a very straightforward way.
+%TODO: Complete
+
+\paragraph{The Generating Functional in Momentum Space}
+Introducing the Fourier transform
+\begin{align*}
+	\phi(x) = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)e^{ikx},
+\end{align*}
+we can write the $n$-point correlation function as
+\begin{align*}
+	G(x_{1}, \dots, x_{n}) = \frac{1}{Z(0)}\pinte{}{\phi}e^{iS}\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\dots \frac{\dd[4]{k_{n}}}{(2\pi)^{4}}e^{i\sum\limits_{i}k_{i}x_{i}}\tilde{\phi}(k_{1})\dots \tilde{\phi}(k_{n}).
+\end{align*}
+Defining
+\begin{align*}
+	G(x_{1}, \dots, x_{n}) = \inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\dots \frac{\dd[4]{k_{n}}}{(2\pi)^{4}}e^{i\sum\limits_{i}k_{i}x_{i}}\tilde{G}(k_{1}, \dots, k_{n})
+\end{align*}
+we then see
+\begin{align*}
+	\tilde{G}(k_{1}, \dots, k_{n}) = \frac{1}{Z(0)}\pinte{}{\phi}e^{iS}\tilde{\phi}(k_{1})\dots \tilde{\phi}(k_{n}).
+\end{align*}
+To write this even more neatly we note that we could in principle switch the path integral to be over $\tilde{\phi}$. This will at most produce a dimensional factor which is equal in the numerator and denominator, provided that we can appropriately define the generating functional. Let us therefore do this.
+
+Consider the integral
+\begin{align*}
+	\inte{}{}\dd[4]{x}\phi(x)J(x) &= \inte{}{}\dd[4]{x}\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{i(k_{1}x + k_{2}x)}\tilde{\phi}(k_{1})\tilde{J}(k_{2}).
+\end{align*}
+The two integrals arise because we are considering two different functions with their own unique Fourier transforms. Performing the $x$ integration we find
+\begin{align*}
+	\inte{}{}\dd[4]{x}\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{i(k_{1}x + k_{2}x)}\tilde{\phi}(k_{1})\tilde{J}(k_{2}) &= \inte{}{}\frac{\dd[4]{k_{1}}\dd[4]{k_{2}}}{(2\pi)^{4}}\delta^{4}(k_{1} + k_{2})\tilde{\phi}(k_{1})\tilde{J}(k_{2}) \\
+	&= \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k).
+\end{align*}
+Note the structure of this result, as it will be reused regularly. Pending a rewrite of the action in terms of $\tilde{\phi}$ we have
+\begin{align*}
+	Z[J] &= \pinte{}{\phi}e^{i\left(S[\phi] + \inte{}{}\dd[4]{x}\phi J\right)} \\
+	     &= \pinte{}{\phi}e^{i\left(S[\tilde{\phi}] + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)}.
+\end{align*}
+The change of integration measure involves a dimensional factor, as previously stated, but because it will always be common for factors in a numerator and denominator, we may define
+\begin{align*}
+	Z[\tilde{J}] &= \pinte{}{\tilde{\phi}}e^{i\left(S[\tilde{\phi}] + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)}.
+\end{align*}
+This functional evidently satisfies
+\begin{align*}
+	\tilde{G}(k_{1}, \dots, k_{n}) = \frac{1}{Z[0]}\eval{\left(-i(2\pi)^{4}\fdv{\tilde{J}(-k_{1})}\right)\dots\left(-i(2\pi)^{4}\fdv{\tilde{J}(-k_{n})}\right)Z[\tilde{J}]}_{\tilde{J} = 0}.
+\end{align*}
+%TODO: Propagate correction
+
+\paragraph{Momentum Space Generating Functional for a Free Scalar}
+We once again consider a system with Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}.
+\end{align*}
+The action can then be written as
+\begin{align*}
+	S &= \integ[4]{}{}{x}{-\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2}} \\
+	  &= \integ[4]{}{}{x}{\frac{1}{2}\phi\left(-\dalem - m^{2}\right)\phi} \\
+	  &= \frac{1}{2}\integ[4]{}{}{x}{\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{ik_{1}x}\tilde{\phi}(k_{1})\left(-\dalem - m^{2}\right)\left(e^{ik_{2}x}\tilde{\phi}(k_{2})\right)} \\
+	  &= \frac{1}{2}\integ[4]{}{}{x}{\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}e^{ik_{1}x}\tilde{\phi}(k_{1})\left(-k_{2}^{2} - m^{2}\right)e^{ik_{2}x}\tilde{\phi}(k_{2})} \\
+	  &= -\frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(-k)\left(k^{2} + m^{2}\right)\tilde{\phi}(k).
+\end{align*}
+The integral in the exponent can once again, this time with a very straight-forward ompleting of the square, be written as
+\begin{align*}
+	 &\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}-\frac{1}{2}\tilde{\phi}(-k)\left(k^{2} + m^{2}\right)\tilde{\phi}(k) + \tilde{\phi}(k)\tilde{J}(-k) \\
+	=& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}-\frac{1}{2}\tilde{\phi}(-k)\left(k^{2} + m^{2}\right)\tilde{\phi}(k) + \frac{1}{2}(\tilde{\phi}(k)\tilde{J}(-k) + \tilde{\phi}(-k)\tilde{J}(k)) \\
+	=& -\frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\left(\tilde{\phi}(-k) - \frac{1}{k^{2} + m^{2}}\tilde{J}(-k)\right)\left(k^{2} + m^{2}\right)\left(\tilde{\phi}(k) - \frac{1}{k^{2} + m^{2}}\tilde{J}(k)\right) - \frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k).
+\end{align*}
+Defining
+\begin{align*}
+	\tilde{\chi} = \tilde{\phi}(k) - \frac{1}{k^{2} + m^{2}}\tilde{J}(k)
+\end{align*}
+and switching the integration measure we find
+\begin{align*}
+	\gf{\tilde{J}} &= Ne^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k)}.
+\end{align*}
+
+Let us once again perform a sanity check. We have
+\begin{align*}
+	\tilde{G}(k_{1}, k_{2}) &= \eval{-(2\pi)^{8}\fdv{\tilde{J}(k_{1})}\frac{i}{2(2\pi)^{4}}\left(\frac{1}{k_{2}^{2} + m^{2}}\tilde{J}(-k_{2}) + \frac{1}{k_{2}^{2} + m^{2}}\tilde{J}(-k_{2})\right)e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k)}}_{\tilde{J} = 0} \\
+	&= \eval{-i(2\pi)^{4}\fdv{\tilde{J}(k_{1})}\frac{1}{k_{2}^{2} + m^{2}}\tilde{J}(-k_{2})e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2}}\tilde{J}(k)\tilde{J}(-k)}}_{\tilde{J} = 0}.
+\end{align*}
+Once again the contribution from the second differentiation of the exponential can be ignored and we find
+\begin{align*}
+	\tilde{G}(k_{1}, k_{2}) &= -i(2\pi)^{4}\frac{1}{k_{2}^{2} + m^{2}}\delta^{4}(k_{1} + k_{2}).
+\end{align*}
+This is very similar to the momentum-space propagator, except that it only implicitly contains information about $G$ only being a function of the displacement between two points.
+
+\paragraph{Momentum Space Generating Functional for an Interacting Scalar}
+We now consider an interacting scalar field with Lagrangian
+\begin{align*}
+	\lag = -\frac{1}{2}\del{}{\mu}\phi\del{\mu}{}\phi - \frac{1}{2}m^{2}\phi^{2} - \frac{1}{4!}\lambda\phi^{4}.
+\end{align*}
+The interacting part of the action can be rewritten as
+\begin{align*}
+	S &= -\frac{1}{4!}\lambda\integ[4]{}{}{x}{\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}\frac{\dd[4]{k_{3}}}{(2\pi)^{4}}\frac{\dd[4]{k_{4}}}{(2\pi)^{4}}\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4})e^{ix\sum\limits_{i}k_{i}}} \\
+	  &= -\frac{1}{4!}\lambda\inte{}{}\frac{\dd[4]{k_{1}}}{(2\pi)^{4}}\frac{\dd[4]{k_{2}}}{(2\pi)^{4}}\frac{\dd[4]{k_{3}}}{(2\pi)^{4}}\frac{\dd[4]{k_{4}}}{(2\pi)^{4}}\delta^{4}\left(\sum\limits_{i}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4}).
+\end{align*}
+Similar to the position space case we then have
+\begin{align*}
+	&Z[\tilde{J}] \\
+   =& \pinte{}{\phi}e^{i\left(-\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\tilde{\phi}(k)\left(-k^{2} + m^{2}\right)\tilde{\phi}(-k) - \frac{\lambda}{4!}\inte{}{}\frac{\dd[4]{k}_{1}}{(2\pi)^{4}}\frac{\dd[4]{k}_{2}}{(2\pi)^{4}}\frac{\dd[4]{k}_{3}}{(2\pi)^{4}}\frac{\dd[4]{k}_{4}}{(2\pi)^{4}}\delta^{4}\left(\sum\limits_{i = 1}^{4}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4}) + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+   =& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m} \\
+    &\cdot\pinte{}{\tilde{\phi}}\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4})\right)^{m}e^{i\left(S_{\text{free}} + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+   =& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m} \\
+    &\cdot\pinte{}{\tilde{\phi}}\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)(-(2\pi)^{4}i)^{4}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}\right)^{m}e^{i\left(S_{\text{free}} + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+   =& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m} \\
+    &\cdot\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)(-(2\pi)^{4}i)^{4}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}\right)^{m}\pinte{}{\tilde{\phi}}e^{i\left(S_{\text{free}} + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+   =& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)(-(2\pi)^{4}i)^{4}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}\right)^{m}Z_{\text{free}}[\tilde{J}].
+\end{align*}
+This can also be used to derive Feynman rules.
+%TODO: Complete
+
+Once again we start with the momentum space generating functional
+\begin{align*}
+Z[\tilde{J}] = Ne^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2} + i\epsilon}\tilde{J}(k)\tilde{J}(-k)},
+\end{align*}
+which was derived in class. We can now series expand the generating functional for the interacting case according to
+\begin{align*}
+&Z[\tilde{J}] \\
+=& \pinte{}{\phi}e^{i\left(-\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\tilde{\phi}(k)\left(-k^{2} + m^{2}\right)\tilde{\phi}(-k) - \frac{\lambda}{4!}\inte{}{}\frac{\dd[4]{k}_{1}}{(2\pi)^{4}}\frac{\dd[4]{k}_{2}}{(2\pi)^{4}}\frac{\dd[4]{k}_{3}}{(2\pi)^{4}}\frac{\dd[4]{k}_{4}}{(2\pi)^{4}}\delta^{4}\left(\sum\limits_{i = 1}^{4}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4}) + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+=& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m} \\
+&\cdot\pinte{}{\tilde{\phi}}\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)\tilde{\phi}(k_{1})\tilde{\phi}(k_{2})\tilde{\phi}(k_{3})\tilde{\phi}(k_{4})\right)^{m}e^{i\left(S_{\text{free}} + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+=& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m} \\
+&\cdot\pinte{}{\tilde{\phi}}\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)(-(2\pi)^{4}i)^{4}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}\right)^{m}e^{i\left(S_{\text{free}} + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+=& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m} \\
+&\cdot\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)(-(2\pi)^{4}i)^{4}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}\right)^{m}\pinte{}{\tilde{\phi}}e^{i\left(S_{\text{free}} + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}(k)\tilde{J}(-k)\right)} \\
+=& \sum\limits_{m = 0}^{\infty}\frac{1}{m!}\left(-\frac{i\lambda}{4!}\right)^{m}\left(\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)(-(2\pi)^{4}i)^{4}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}\fdv{\tilde{J}(k_{3})}\fdv{\tilde{J}(k_{4})}\right)^{m}Z_{\text{free}}[\tilde{J}].
+\end{align*}
+
+The functional derivatives can be handled using Wick's theorem, provided we compute the second-order functional derivatives. We have
+\begin{align*}
+&(2\pi)^{8}(-i)^{2}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}Z_{\text{free}} \\
+=& -i(2\pi)^{8}\fdv{\tilde{J}(k_{1})}\frac{N}{2}\left(\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2} + i\epsilon}\left(\delta^{4}(k - k_{2})\tilde{J}(-k) + J(k)\delta^{4}(k + k_{2})\right)\right)e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2} + i\epsilon}\tilde{J}(k)\tilde{J}(-k)} \\
+=& -i(2\pi)^{4}\frac{N}{2}\fdv{\tilde{J}(k_{1})}\frac{1}{k_{2}^{2} + m^{2} + i\epsilon}\left(\tilde{J}(-k_{2}) + J(-k_{2})\right)e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2} + i\epsilon}\tilde{J}(k)\tilde{J}(-k)} \\
+=& -i(2\pi)^{4}\frac{N}{2}\left(\frac{2}{k_{2}^{2} + m^{2} + i\epsilon}\delta^{4}(k_{1} + k_{2}) + \frac{2}{k_{1}^{2} + m^{2} + i\epsilon}\frac{2i}{k_{2}^{2} + m^{2} + i\epsilon}\tilde{J}(-k_{1})\tilde{J}(-k_{2})\right)e^{\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{k^{2} + m^{2} + i\epsilon}\tilde{J}(k)\tilde{J}(-k)},
+\end{align*}
+and evaluation at $\tilde{J} = 0$ yields the result
+\begin{align*}
+\eval{(2\pi)^{8}(-i)^{2}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}Z_{\text{free}}}_{\tilde{J} = 0} = -i(2\pi)^{4}N\frac{1}{k_{2}^{2} + m^{2} + i\epsilon}\delta^{4}(k_{1} + k_{2}).
+\end{align*}
+We write this as
+\begin{align*}
+\eval{(2\pi)^{8}(-i)^{2}\fdv{\tilde{J}(k_{1})}\fdv{\tilde{J}(k_{2})}Z_{\text{free}}}_{\tilde{J} = 0} = N\Delta(k_{1}, k_{2}).
+\end{align*}
+
+In order to compute the $4$-point correlation function to order $2$ in $\lambda$ we will first need the generating functional itself to order $2$. The zeroth-order term is trivial. Using Wick's theorem, the first-order term is
+\begin{align*}
+-\frac{iN\lambda}{4!}\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)\left(\Delta(k_{1}, k_{2})\Delta(k_{3}, k_{4}) + \Delta(k_{1}, k_{3})\Delta(k_{4}, k_{2}) + \Delta(k_{1}, k_{4})\Delta(k_{2}, k_{3})\right).
+\end{align*}
+Of course these are all identical, as there is no significance in the labelling of the momenta. Hence the first-order term is
+\begin{align*}
+-3\frac{iN\lambda}{4!}\inte{}{}\left(\prod\limits_{j = 1}^{4}\frac{\dd[4]{k_{i}}}{(2\pi)^{4}}\right)\delta^{4}\left(\sum\limits_{i}k_{i}\right)\Delta(k_{1}, k_{2})\Delta(k_{3}, k_{4}).
+\end{align*}
+Diagrammatically this is represented in figure \ref{fig:first_order_bubble_fd}.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+	\begin{feynman}
+	\vertex (a) at (0, 0);
+	\vertex (b) at (-2, 0);
+	\vertex (c) at (2, 0);
+	\diagram*{
+		(a) --[scalar, out = 45, in = 90] (c) --[scalar, out = -90, in = -45] (a),
+		(a) --[scalar, out = 135, in = 90] (b) --[scalar, out = -90, in = -135] (a),
+	};
+	\end{feynman}
+	\end{tikzpicture}
+	\caption{Feynman diagram for the first-order term in the generating functional.}
+	\label{fig:first_order_bubble_fd}
+\end{figure}
+
+The second-order term is somewhat more non-trivial due to the Dirac delta function, dividing the momenta into two classes. We can, however, classify the cases in terms of how many momenta are mixed in the arguments of $\Delta$. They are represented by the Feynman diagrams in figure
+
+\begin{figure}[!ht]
+	\centering
+	\subfloat[No mixing.]{
+		\begin{tikzpicture}
+		\begin{feynman}
+		\vertex (a) at (0, 0);
+		\vertex (b) at (-2, 0);
+		\vertex (c) at (2, 0);
+		\vertex (a1) at (5, 0);
+		\vertex (b1) at (3, 0);
+		\vertex (c1) at (7, 0);
+		\diagram*{
+			(a) --[scalar, out = 45, in = 90] (c) --[scalar, out = -90, in = -45] (a),
+			(a) --[scalar, out = 135, in = 90] (b) --[scalar, out = -90, in = -135] (a),
+			(a1) --[scalar, out = 45, in = 90] (c1) --[scalar, out = -90, in = -45] (a1),
+			(a1) --[scalar, out = 135, in = 90] (b1) --[scalar, out = -90, in = -135] (a1),
+		};
+		\end{feynman}
+		\end{tikzpicture}
+	} \\
+	\subfloat[Two mixed momenta.]{
+		\begin{tikzpicture}
+		\begin{feynman}
+		\vertex (a) at (0, 0);
+		\vertex (b) at (-2, 0);
+		\vertex (c) at (2, 0);
+		\vertex (d) at (4, 0);
+		\diagram*{
+			(a) --[scalar, out = 45, in = 135] (c) --[scalar, out = 45, in = 90] (d) --[scalar, out = -90, in = -45] (c) --[scalar, out = -135, in = -45] (a),
+			(a) --[scalar, out = 135, in = 90] (b) --[scalar, out = -90, in = -135] (a),
+		};
+		\end{feynman}
+		\end{tikzpicture}
+	}
+	\subfloat[Four mixed momenta.]{
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (a) at (0, 0);
+				\vertex (b) at (2, 0);
+				\diagram*{
+					(a) --[scalar, out = 45, in = 135] (b) --[scalar, out = -135, in = -45] (a),
+					(a) --[scalar, half left] (b) --[scalar, half left] (a),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+	}
+	\caption{Feynman diagrams for the second-order term in the generating functional.}
+	\label{fig:first_order_bubble_fd}
+\end{figure}
+
+\paragraph{Multiple Free Fields}
+We now consider a system of multiple free fields $\phi^{(a)}$. The most general action for such a field theory is
+\begin{align*}
+	S &= \frac{1}{2}\integ[4]{}{}{x}{\phi^{(a)}(x)D_{ab}\phi^{(b)}(x)} = \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(-k)\tilde{M}_{ab}(k)\tilde{\phi}^{(b)}(k).
+\end{align*}
+$D$ is a matrix of differential operators and $\tilde{M}$ a matrix of functions. The latter can be symmetrized to
+\begin{align*}
+	S &= \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(-k)M_{ab}(k)\tilde{\phi}^{(b)}(k),\ M_{ab}(k) = \frac{1}{2}(\tilde{M}_{ab}(k) + \tilde{M}_{ba}(-k)).
+\end{align*}
+
+We can now go about finding a generating functional for this kind of system. We have
+\begin{align*}
+	Z &= \pinte{}{\phi^{a}}e^{iS + i\integ[4]{}{}{x}{\phi^{(a)}J_{a}}}
+\end{align*}
+in position space and
+\begin{align*}
+	Z &= \pinte{}{\tilde{\phi}^{a}}e^{iS + i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(k)\tilde{J}_{a}}(-k)
+\end{align*}
+in momentum space. The latter exponent can be handled the most easily, so we will do that one. We have
+\begin{align*}
+	S + \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\phi}^{(a)}(k)\tilde{J}_{a}(-k) =& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\tilde{\phi}^{(a)}(-k)M_{ab}(k)\tilde{\phi}^{(b)}(k) + \tilde{\phi}^{(a)}(k)\tilde{J}_{a}(-k) \\
+	=& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\left(\tilde{\phi}^{(a)}(-k) + M_{ac}^{-1}(-k)\tilde{J}_{c}(-k)\right)M_{ab}(k)\left(\tilde{\phi}^{(b)}(k) + M_{bd}^{-1}(k)\tilde{J}_{d}(k)\right) \\
+	 &- \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}M_{ac}^{-1}(-k)\tilde{J}_{c}(k)M_{ab}(k)M_{bd}^{-1}(k)\tilde{J}_{d}(k) \\
+	=& \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}\tilde{\chi}^{(a)}(-k)M_{ab}(k)\tilde{\chi}^{(b)}(k) - \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\frac{1}{2}M_{ac}^{-1}(-k)\tilde{J}_{c}(-k)\delta_{ad}\tilde{J}_{d}(k) \\
+	=& \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\chi}^{(a)}(-k)M_{ab}(k)\tilde{\chi}^{(b)}(k) - \frac{1}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{a}(-k)M_{ac}^{-1}(-k)\tilde{J}_{c}(k).
+\end{align*}
+To do this we have defined the new fields
+\begin{align*}
+	\tilde{\chi}^{(a)}(k) = \tilde{\phi}^{(a)}(k) + M_{ac}^{-1}(-k)\tilde{J}_{c}(k)
+\end{align*}
+and used the fact that
+\begin{align*}
+	M^{-1}(k) = (M^{T}(k))^{-1} = (M^{-1}(k))^{T}.
+\end{align*}
+This means
+\begin{align*}
+	Z &= Ne^{-\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{a}(-k)M_{ac}^{-1}(-k)\tilde{J}_{c}(k)}.
+\end{align*}
+The propagator is then
+\begin{align*}
+	G_{ab}(k_{1}, k_{2}) =& -(2\pi)^{8}\fdv{\tilde{J}_{a}(k_{1})}\left(-\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\delta_{bc}\delta^{4}(k + k_{2})M_{cd}^{-1}(-k)\tilde{J}_{d}(k) \right. \\
+	&- \left. \frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{c}(-k)M_{cd}^{-1}(-k)\delta_{bd}\delta^{4}(k - k_{2})\right)e^{-\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{c}(-k)M_{cd}^{-1}(-k)\tilde{J}_{d}(k)} \\
+	=& \frac{(2\pi)^{4}i}{2}\fdv{\tilde{J}_{a}(k_{1})}\left(M_{bd}^{-1}(k_{2})\tilde{J}_{d}(-k_{2}) + \tilde{J}_{c}(-k_{2})M_{cb}^{-1}(-k_{2})\right)e^{-\frac{i}{2}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{J}_{c}(-k)M_{cd}^{-1}(-k)\tilde{J}_{d}(k)} \\
+	=& \frac{(2\pi)^{4}i}{2}\left(M_{ba}^{-1}(k_{2}) + M_{ab}^{-1}(-k_{2})\right)\delta^{4}(k_{1} + k_{2}).
+\end{align*}
+
+\paragraph{Failing to Quantize the Electromagnetic Field}
+The momentum space Lagrangian is
+\begin{align*}
+	\lag &= -\frac{1}{4}\left(k_{\mu}A_{\nu} - k_{\nu}A_{\mu}\right)\left(k^{\mu}A^{\nu} - k^{\nu}A^{\mu}\right) \\
+	     &= -\frac{1}{4}\left(A_{\nu}\left(k^{2}A^{\nu} - k_{\mu}k^{\nu}A^{\mu}\right) - A_{\nu}\left(k_{\mu}k^{\nu}A^{\mu} - k^{2}A^{\nu}\right)\right) \\
+	     &= \frac{1}{2}A_{\nu}\left(k^{\mu}k^{\nu}A_{\mu} - k^{2}A^{\nu}\right) \\
+	     &= \frac{1}{2}A_{\nu}\left(k^{\mu}k^{\nu} - k^{2}g^{\mu\nu}\right)A_{\mu}.
+\end{align*}
+This is a bit of a disaster, as $M$ always has at least one eigenvalue of zero. Namely, we have
+\begin{align*}
+	M^{\mu\nu}k_{\nu} = k^{\mu}k^{\nu}k_{\nu} - k^{2}g^{\mu\nu}k_{\nu} = 0.
+\end{align*}
+This means that $M^{-1}$ does not exist for any $k$. That scenario is a lot worse than for the Klein-Gordon equation, where $M^{-1}$ only didn't exist at the set of $k$ such that $k^{2} = -m^{2}$.
+
+\paragraph{The Free Dirac Field}
+We will quantize Dirac fields by taking
+\begin{align*}
+	\psi(x) = \sum\limits_{i}\theta_{i}\phi_{i}(x),
+\end{align*}
+where the $\phi_{i}$ are an appropriate basis of functions and the $\theta_{i}$ are complex Grassman variables. We will pair the fields with the Dirac adjoint rather than the normal adjoint, which is allowed as the two are related by a unitary transform. The action is
+\begin{align*}
+	S = \integ[4]{}{}{x}{\overline{\psi}_{\alpha}\left(-i\gamma^{\mu}\del{}{\mu} - m\right)_{\alpha\beta}\psi_{\beta}}
+\end{align*}
+in position space and
+\begin{align*}
+	S = \inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{\psi}}_{\alpha}(-k)\left(\gamma^{\mu}k_{\mu} - m\right)_{\alpha\beta}\tilde{\psi}_{\beta}(k)
+\end{align*}
+in momentum space. The indices on the fields are Dirac indices. In the generating functional we pair the fields and their adjoints with fields $\tilde{J}$ and $\tilde{\overline{J}}$. According to our definition of derivatives with respect to Grassman variables we then find
+\begin{align*}
+	\expval{\tilde{\psi}_{\alpha_{1}}(k_{1})\dots\tilde{\psi}_{\alpha_{n}}(k_{n})\tilde{\overline{\psi}}_{\beta_{1}}(p_{1})\dots\tilde{\overline{\psi}}_{\beta_{n}}(p_{n})}{\Omega} = \prod\limits_{i}\left(-i(2\pi)^{4}\fdv{\tilde{\overline{J}}(k_{i})}\right)\prod\limits_{i}\left(i(2\pi)^{4}\fdv{\tilde{J}(p_{i})}\right)Z.
+\end{align*}
+%TODO: Show
+We can show that
+\begin{align*}
+	Z = Ne^{-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\alpha}(-k)(\fsl{k} - m)_{\alpha\beta}^{-1}\tilde{J}_{\beta}(k)},
+\end{align*}
+and from this recover familiar results. For instance, the two-point correlation function is
+\begin{align*}
+	G_{\alpha, \beta}(k_{1}, k_{2}) =& (2\pi)^{8}\fdv{\tilde{\overline{J}}(k_{1})}\left(-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\gamma}(-k)(\fsl{k} - m)_{\gamma\delta}^{-1}\kdelta{}{\beta\delta}\delta^{4}(k - k_{2})\right)e^{-i\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\tilde{\overline{J}}_{\alpha}(-k)(\fsl{k} - m)_{\alpha\beta}^{-1}\tilde{J}_{\beta}(k)}.
+\end{align*}
+The contributing term is
+\begin{align*}
+	G_{\alpha, \beta}(k_{1}, k_{2}) =& -i(2\pi)^{8}\inte{}{}\frac{\dd[4]{k}}{(2\pi)^{4}}\kdelta{}{\alpha\gamma}\delta^{4}(k + k_{1})(\fsl{k} - m)_{\gamma\delta}^{-1}\kdelta{}{\beta\delta}\delta^{4}(k - k_{2}) \\
+	=& -i(2\pi)^{4}\inte{}{}\dd[4]{k}\delta^{4}(k + k_{1})(\fsl{k} - m)_{\alpha\beta}^{-1}\delta^{4}(k - k_{2}) \\
+	=& -i(2\pi)^{4}(\fsl{k} - m)_{\alpha\beta}^{-1}\delta^{4}(k_{1} + k_{2}).
+\end{align*}
+
+\paragraph{An Interacting Fermion Theory}
+%TODO: Expand
+Consider a field theory with a Dirac field, a scalar field and an interaction term
+\begin{align*}
+	\lag = \lambda\overline{\psi}\psi\phi.
+\end{align*}

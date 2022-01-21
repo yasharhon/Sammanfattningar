@@ -1,0 +1,177 @@
+\section{Cosmology}
+
+\paragraph{The Cosmological Principle}
+The cosmological principle states that the universe is homogenous and isotropic. As a consequence, the spatial part of the universe must be maximally symmetric, meaning that it has $6$ Killing fields.
+
+\paragraph{Possible Metrics}
+Given the cosmological principle, there are three possible choices of manifold describing simultaneities. We will describe all of them using polar coordinates, hence they will all have a spatial metric of the form $\dd{\Sigma}^{2} = \dd{r}^{2} + s^{2}(r)\dd{\Omega}^{2}$. These are:
+\begin{itemize}
+	\item the $3$-sphere, with $s(r) = \frac{1}{k}\sin(kr)$.
+	\item flat Euclidean space, with $s(r) = r$.
+	\item a hyperbolic surface, with $s(r) = \frac{1}{k}\sinh(kr)$.
+\end{itemize}
+
+We will treat this options generally and introduce the spacetime interval $\dd{s}^{2} = \dd{t}^{2} - a^{2}(t)\dd{\Sigma}^{2}$. This defines the Robertson-Walker (RW) universe. The factor $a(t)$ is called the scale factor. A similar factor could in principle be found in front of the time interval, but can be eliminated by a change of variables.
+
+\paragraph{The Friedman-Lemaitre-Robertson-Walker Universe}
+The FLRW universe assumes the universe to be filled with an ideal fluid. For the universe to be homogenous and isotropic, this would require $\rho$ and $p$ to be functions of time only. We will also use the general equation of state $p = w\rho$ as an assumption. It can be shown that $w = 0$ for dust and $w = \frac{1}{3}$ for radiation. In order to not break isotropy, the fluid rest frame must also coincide with that of a comoving observer - in other words, we must have $U = \del{t}{}$. The goal of this section is to find a set of equations describing the evolution of such a universe.
+
+We will need the Christoffel symbols of the RW metric. As the metric is diagonal in the chosen coordinates, the contravariant components of the metric are simply the reciprocals of the covariant ones and we have the familiar
+\begin{align*}
+	\chris{\sigma}{\mu}{\nu} = \frac{1}{2g_{\sigma\sigma}}(\del{\nu}{g_{\mu\sigma}} + \del{\mu}{g_{\sigma\nu}} - \del{\sigma}{g_{\mu\nu}}),\ \text{no sum over $\sigma$.}
+\end{align*}
+Furthermore, we can deduce the following:
+\begin{itemize}
+	\item The time component of the metric is constant, hence the \chris{t}{t}{\mu}, \chris{\mu}{t}{t} and \chris{t}{\mu}{t} are all zero.
+	\item The radial independence of the radial component implies that \chris{r}{r}{r} is zero.
+	\item As the metric is diagonal, all symbols with three different indices are zero.
+	\item The angle independence of the time and radial components implies $\chris{r}{r}{\theta} = \chris{r}{\theta}{r} = \chris{r}{r}{\phi} = \chris{r}{\phi}{r} = \chris{\theta}{r}{r} = \chris{\phi}{r}{r} = 0$.
+	\item As the metric is independent of $\phi$, we must have $\chris{\theta}{\theta}{\phi} = \chris{\theta}{\phi}{\theta} = \chris{\phi}{\theta}{\theta} = \chris{\phi}{\phi}{\phi} = 0$.
+	\item $\chris{\theta}{\theta}{\theta} = 0$ as the $\theta$ component is independent of $\theta$.
+\end{itemize}
+The possibly non-zero Christoffel symbols are therefore
+\begin{align*}
+	&\chris{t}{r}{r} = aa\p,\ \chris{t}{\theta}{\theta} = \frac{1}{2}s^{2}aa\p,\ \chris{t}{\phi}{\phi} = \frac{1}{2}s^{2}\sin[2](\theta)aa\p,\ \chris{r}{r}{t} = \chris{r}{t}{r} = -\frac{1}{2a^{2}}\cdot -2aa\p = \frac{a\p}{a},\ \chris{r}{\theta}{\theta} = \frac{1}{2a^{2}}\cdot -2a^{2}ss\p = -ss\p, \\
+	&\chris{r}{\phi}{\phi} = \frac{1}{2a^{2}}\cdot -2a^{2}\sin[2](\theta)ss\p = -\sin[2](\theta)ss\p,\ \chris{\theta}{t}{\theta} = \chris{\theta}{\theta}{t} = \frac{1}{2a^{2}s^{2}}s^{2}aa\p = \frac{a\p}{a},\  \chris{\theta}{r}{\theta} = \chris{\theta}{\theta}{r} = \frac{1}{2a^{2}s^{2}}a^{2}ss\p = \frac{s\p}{s}, \\
+	&\chris{\theta}{\phi}{\phi} = -\frac{1}{2a^{2}s^{2}}\cdot 2a^{2}s^{2}\sin(\theta)\cos(\theta) = -\sin(\theta)\cos(\theta),\ \chris{\phi}{t}{\phi} = \chris{\phi}{\phi}{t} = \frac{1}{2a^{2}s^{2}\sin[2](\theta)}\cdot 2s^{2}\sin[2](\theta)aa\p = \frac{a\p}{a}, \\
+	&\chris{\phi}{r}{\phi} = \chris{\phi}{\phi}{r} = \frac{1}{2a^{2}s^{2}\sin[2](\theta)}\cdot 2a^{2}\sin[2](\theta)ss\p = \frac{s\p}{s},\ \chris{\phi}{\theta}{\phi} = \chris{\phi}{\phi}{\theta} = \frac{1}{2a^{2}s^{2}\sin[2](\theta)}\cdot 2a^{2}s^{2}\sin(\theta)\cos(\theta) = \cot(\theta).
+\end{align*}
+
+Next we need the components of the Ricci tensor. Due to the diagonality of the metric we only need the diagonal components, and somehow we only need one time component and one spatial component. We thus have
+\begin{align*}
+	R_{tt} &= \del{\alpha}{\chris{\alpha}{t}{t}} - \del{t}{\chris{\alpha}{\alpha}{t}} + \chris{\beta}{t}{t}\chris{\alpha}{\alpha}{\beta} - \chris{\beta}{\alpha}{t}\chris{\alpha}{t}{\beta} \\
+	       &=  -\del{t}{\chris{\alpha}{\alpha}{t}} - \chris{\beta}{\alpha}{t}\chris{\alpha}{\beta}{t}, \\
+	R_{rr} &= \del{\alpha}{\chris{\alpha}{r}{r}} - \del{r}{\chris{\alpha}{\alpha}{r}} + \chris{\beta}{r}{r}\chris{\alpha}{\alpha}{\beta} - \chris{\beta}{\alpha}{r}\chris{\alpha}{r}{\beta} \\
+	       &= \del{t}{\chris{t}{r}{r}} - \del{r}{\chris{\alpha}{\alpha}{r}} + \chris{t}{r}{r}\chris{\alpha}{\alpha}{t} - \chris{\beta}{\alpha}{r}\chris{\alpha}{\beta}{r}.
+\end{align*}
+Summing over the $\beta$ in the last terms only produces a contribution when $\alpha = \beta$ or $\beta$ is equal to the third index. Abusing notation we therefore find
+\begin{align*}
+	R_{tt} &= -\del{t}{\left(\chris{r}{r}{t} + \chris{\theta}{\theta}{t} + \chris{\phi}{\phi}{t}\right)} - \chris{\alpha}{\alpha}{t}\chris{\alpha}{\alpha}{t} - \chris{t}{\alpha}{t}\chris{\alpha}{t}{t} - \chris{\alpha}{t}{t}\chris{t}{\alpha}{t} \\
+	       &= -\del{t}{\left(3\frac{a\p}{a}\right)} - 3\left(\frac{a\p}{a}\right)^{2} \\
+	       &= -\frac{3}{a^{2}}(a\pp a - (a\p)^{2} + (a\p)^{2}) \\
+	       &= -3\frac{a\pp}{a}, \\
+	R_{rr} &= \del{t}{\chris{t}{r}{r}} - \del{r}{(\chris{\theta}{\theta}{r} + \chris{\phi}{\phi}{r})} + \chris{t}{r}{r}\chris{\alpha}{\alpha}{t} - \chris{\alpha}{\alpha}{r}\chris{\alpha}{\alpha}{r} - \chris{r}{\alpha}{r}\chris{\alpha}{r}{r} - \chris{\alpha}{r}{r}\chris{r}{\alpha}{r} \\
+	       &= \del{t}{(aa\p)} - 2\del{r}{\frac{s\p}{s}} + 3aa\p\frac{a\p}{a} - 2\left(\frac{s\p}{s}\right)^{2} - 2(a\p)^{2} \\
+	       &= (a\p)^{2} + aa\pp - 2\frac{ss\pp - (s\p)^{2}}{s^{2}} + 3(a\p)^{2} - 2\left(\frac{s\p}{s}\right)^{2}- 2(a\p)^{2} \\
+	       &= 2(a\p)^{2} + aa\pp - 2\frac{s\pp}{s}.
+\end{align*}
+
+Next we study the energy-momentum tensor. As $\dcov{\mu}{G^{\mu\nu}} = 0$, it must hold that $\dcov{\mu}{T^{\mu\nu}} = 0$. As the fluid moves along geodesics, implying $\dcov{U}{U} = 0$, and the connection is metric compatible we find
+\begin{align*}
+	\dcov{\mu}{T^{\mu\nu}} &= \dcov{\mu}{((\rho_{0} + p)U^{\mu}U^{\nu} - pg^{\mu\nu})} \\
+	                       &= U^{\mu}U^{\nu}\dcov{\mu}{(\rho_{0} + p)} + (\rho_{0} + p)\dcov{\mu}{(U^{\mu}U^{\nu})} - p\dcov{\mu}{g^{\mu\nu}} - g^{\mu\nu}\dcov{\mu}{p} \\
+	                       &= U^{\mu}U^{\nu}\del{\mu}{(\rho_{0} + p)} + (\rho_{0} + p)(U^{\mu}\dcov{\mu}{U^{\nu}} + U^{\nu}\dcov{\mu}{U^{\mu}}) - g^{\mu\nu}\del{\mu}{p} \\
+	                       &= U^{\mu}U^{\nu}\del{\mu}{(\rho_{0} + p)} + (\rho_{0} + p)(\dcov{U}{U^{\nu}} + U^{\nu}\dcov{\mu}{U^{\mu}}) - g^{\mu\nu}\del{\mu}{p} \\
+	                       &= U^{\mu}U^{\nu}\del{\mu}{(\rho_{0} + p)} + (\rho_{0} + p)U^{\nu}\dcov{\mu}{U^{\mu}} - g^{\mu\nu}\del{\mu}{p} = 0.
+\end{align*}
+By assumption the only non-trivial case is $\nu = 0$, for which we find
+\begin{align*}
+	U^{\mu}U^{t}\del{\mu}{(\rho_{0} + p)} + (\rho + p)U^{t}\dcov{\mu}{U^{\mu}} - g^{\mu t}\del{\mu}{p} &= \rho\p + p\p + (\rho_{0} + p)U^{\alpha}\chris{\mu}{\mu}{\alpha} - p\p \\
+	               &= \rho\p + p\p + (\rho + p)\chris{\mu}{\mu}{t} - p\p \\
+	               &= \rho\p + (\rho + p)\cdot 3\frac{a\p}{a} \\
+	               &= \rho\p + (1 + w)\cdot 3\frac{a\p}{a}\rho = 0.
+\end{align*}
+We can integrate this to find $\rho\propto a^{-3(1 + w)}$. This must hold in a universe consistent with the previously developed theory. Next the trace of the energy-momentum tensor is
+\begin{align*}
+	\tensor{T}{^{\mu}_{\mu}} &= (\rho + p)U^{\mu}U_{\mu} - p\kdelta{\mu}{\mu} = \rho - 3p.
+\end{align*}
+
+All is ready to write up the Einstein field equations, here in the alternative form. We have
+\begin{align*}
+	R_{tt} &= -3\frac{a\pp}{a} \\
+	       &= 8\pi G\left(T_{tt} - \frac{1}{2}g_{tt}\tensor{T}{^{\mu}_{\mu}}\right) = 8\pi G\left((\rho + p)U_{t}^{2} - pg_{tt} - \frac{1}{2}(\rho - 3p)\right) = 4\pi G\left(2\rho - \rho + 3p\right) = 4\pi G(\rho + 3p), \\
+	R_{rr} &= 2(a\p)^{2} + aa\pp - 2\frac{s\pp}{s} \\
+	       &= 8\pi G\left(T_{rr} - \frac{1}{2}g_{rr}\tensor{T}{^{\mu}_{\mu}}\right) = 8\pi G\left(-pg_{rr} + \frac{1}{2}a^{2}(\rho - 3p)\right) = 4\pi G\left(2pa^{2} + a^{2}(\rho - 3p)\right) = 4\pi Ga^{2}(\rho - p).
+\end{align*}
+Defining the Hubble parameter $H = \frac{a\p}{a}$ we may rewrite the above as the Friedmann equations
+\begin{align*}
+	\frac{a\pp}{a} &= -\frac{4\pi}{3}G(\rho + 3p), \\
+	H^{2}          &= 2\pi G(\rho - p) - \frac{1}{2}\frac{a\pp}{a} + \frac{s\pp}{sa^{2}} = 2\pi G(\rho - p) + \frac{2\pi}{3}G(\rho + 3p) + \frac{s\pp}{sa^{2}} = \frac{8\pi}{3}G\rho + \frac{s\pp}{sa^{2}}.
+\end{align*}
+We may obtain an even nicer form by noting that all the relevant $s$ are eigenfunctions of double differentiation with eigenvalues $\pm k^{2}$ and $0$. We may thus define the curvature parameter $\kappa = -\frac{s\pp}{s}$, which has the value $0$ for flat space, $k^{2}$ for a sphere and $-k^{2}$ for a hyperboloid. We then obtain
+\begin{align*}
+	\frac{a\pp}{a} &= -\frac{4\pi}{3}G(\rho + 3p), \\
+	H^{2}          &= \frac{8\pi}{3}G\rho - \frac{\kappa}{a^{2}}.
+\end{align*}
+
+\paragraph{A Note on Multi-Component Ideal Fluids}
+In order to study a universe composed of multiple kinds of ideal fluids we will need to use an energy-momentum tensor of the form
+\begin{align*}
+	T = \sum\limits_{i}T_{i},
+\end{align*}
+where each term is of the form of an ideal fluid with a particular density and pressure. The statement that the divergence of the energy-momentum tensor is in fact a statement about conservation of energy and momentum, hence it must apply to each of the terms of the sum if the corresponding fluids are non-interacting. This implies that
+\begin{align*}
+	\rho_{i} \propto a^{-3(1 + w_{i})}
+\end{align*}
+for all the fluids individually. The Friedmann equations may now be written as
+\begin{align*}
+	\frac{a\pp}{a} &= -\frac{4\pi}{3}G\sum\limits_{i}(\rho_{i} + 3p_{i}), \\
+	H^{2}          &=  - \frac{\kappa}{a^{2}} + \frac{8\pi}{3}G\sum\limits_{i}\rho_{i}.
+\end{align*}
+
+\paragraph{The Big Bang}
+As we saw above, we have $\frac{\ddot{a}}{a} \propto -(\rho + 3p)$. Today we observe that $\dot{a} > 0$. Assuming $\rho + 3p > 0$ we have $\ddot{a} < 0$, hence $\dot{a}$ must have been greater in the past. The general shape of $a$ thus implies that there exists a time when $a$ was equal to zero. The time at which this changed, defined to be $t = 0$, is termed the Big Bang.
+
+\paragraph{Cosmological Redshift}
+Consider two comoving observers in a RW universe. We may choose our coordinates such that they are connected by a purely radial path. Supposing that a light signal is sent from one to the other, that light signal satisfies
+\begin{align*}
+	\dd{t} = a(t)\dd{r}.
+\end{align*}
+We may integrate this to find
+\begin{align*}
+	r_{2} - r_{1} = \integ{t_{1}}{t_{2}}{t}{\frac{1}{a(t)}}.
+\end{align*}
+A similar relation will hold for the next pulse of the signal, implying
+\begin{align*}
+	\integ{t_{1}}{t_{2}}{t}{\frac{1}{a(t)}} = \integ{t_{1} + \var{t_{1}}}{t_{2} + \var{t_{2}}}{t}{\frac{1}{a(t)}},
+\end{align*}
+which can be rearranged to
+\begin{align*}
+	\integ{t_{2}}{t_{2} + \var{t_{2}}}{t}{\frac{1}{a(t)}} - \integ{t_{1}}{t_{1} + \var{t_{1}}}{t}{\frac{1}{a(t)}} = 0.
+\end{align*}
+Assuming the frequency of the light to be high, we may linearize the above. By assumption we have $f_{i} \propto \frac{1}{\var{t_{i}}}$, and the Doppler shift is thus given by
+\begin{align*}
+	\frac{f_{2}}{f_{1}} = \frac{a(t_{1})}{a(t_{2})}.
+\end{align*}
+
+\paragraph{The Cosmological Redshift}
+We define the cosmological redshift as follows: Choosing comoving coordinates such that $a(t_{0}) = 1$, we introduce the redshift
+\begin{align*}
+	z = \frac{f_{0}}{f} - 1.
+\end{align*}
+According to the previous example we have
+\begin{align*}
+	z = \frac{1}{a(t)} - 1 \implies a(t) = \frac{1}{1 + z}.
+\end{align*}
+for some previous time $t$. The redshift thus acts as a stand-in for cosmological time, larger redshifts corresponding to earlier times.
+
+\paragraph{Evolution of the Universe}
+From the Friedmann equations we see that if the density of the ideal fluid is equal to a critical value $\rho_{\text{c}} = \frac{3H^{2}}{8\pi G}$, we find $\kappa = 0$, implying that the universe is flat. Introducing the density parameter $\Omega = \frac{\rho}{\rho_{\text{c}}}$ one of the Friedmann equations may be written as
+\begin{align*}
+	\sum\limits_{i}\Omega_{i} + \Omega_{\kappa} = 1,\ \Omega_{\kappa} = -\frac{\kappa}{H^{2}a^{2}}.
+\end{align*}
+In particular, for a flat universe where we define $a(t_{0}) = 1$ we may reuse one previous solution to write
+\begin{align*}
+	H^{2} = \left(\frac{\dot{a}}{a}\right)^{2} = \frac{8\pi}{3}G\sum\limits_{i}\rho_{0, i}a^{-3(w_{i} + 1)},
+\end{align*}
+where the densities are all evaluated at $t_{0}$.
+
+\paragraph{Accelerating Expansion and Cosmological Constant}
+The universe has been found to have accelerating expansion. Furthermore, there is evidence for the existence of an energy component of the universe corresponding to $w = -1$ and $\rho$ constant. This component is called the cosmological constant and is a kind of dark energy.
+
+\paragraph{Cosmological Inflation}
+The Big Bang model has some problems. One is the existence of a singularity of the metric at the time of the Big Bang. A second is the high degree of flatness of the universe. Finally there is the high degree of homogeneity of the universe.
+
+To elaborate, one of the Friedmann equations may be written as
+\begin{align*}
+	-\kappa = H^{2}a^{2} - \frac{8\pi G}{3}Ga^{2}\rho = \frac{8\pi G}{3}a^{2}\left(\rho_{\text{c}} - \rho\right) = \frac{8\pi G}{3}a^{2}\rho\left(\frac{1}{\Omega} - 1\right)
+\end{align*}
+If the universe is dominated by an ideal fluid, we use the fact that $\rho\propto a^{-3(1 + w)}$ to write this as
+\begin{align*}
+	1 - \frac{1}{\Omega} \propto a^{1 + 3w}.
+\end{align*}
+This means that if $w > -\frac{1}{3}$ then $1 - \frac{1}{\Omega}$, and thus the curvature of the universe, increases with time. As the universe is currently very flat, $1 - \frac{1}{\Omega}$ must have been close to $1$ shortly after the Big Bang, and the universe must have been even flatter.
+
+Furthermore, when studying the cosmic microwave background, regions that are not in causal contact are very close in temperature. This requires explanation.
+
+Cosmological inflation is an attempt at explaining the above. It posits that shortly after the Big Bang there was a rapid expansion dominated by an ideal fluid with $w < -\frac{1}{3}$. It solves the flatness problem by driving $1 - \frac{1}{\Omega}$ towards $0$ at these early times. It also solves the problem of homogeneity by allowing the previously described regions to be causally connected at early times, before being separated by expansion. This inflation would of course have to be stopped, a problem that can be solved by dynamic inflation.

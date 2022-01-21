@@ -1,0 +1,91 @@
+\section{Unsupervised Learning Techniques}
+
+\paragraph{Clustering}
+Clustering algorithms are algorithms that classify data point. Good clustering outputs categorize similar data points into the same category and different data points into different categories. These requirements can be contradictory, a by-construction limitation of these methods.
+
+\paragraph{KMeans}
+Given a set of observations and a number $K$, KMeans divides the data into a set of $K$ clusters $X_{i}$. It does this by minimizing the cost function
+\begin{align*}
+C(x, \mu) = \sum\limits_{i = 1}^{K}\sum\limits_{j\in X_{i}}d(x_{j}, \mu_{i}),
+\end{align*}
+where the $\mu_{i}$ is the in-cluster mean and $d$ is the metric function. This problem is NP-hard, so finding optimal solutions is computationally infeasible. Iterative solutions generally work well, but the output might differ from time to time. The iterative solutions are typically based on the following steps:
+\begin{enumerate}
+	\item perform some (typically randomized) initial assigment.
+	\item compute the in-sample means.
+	\item reassign data points according to which in-cluster mean they are closest to.
+	\item repeat from steps 2.
+\end{enumerate}
+One usually also repeats the procedure different times, choosing the run with the minimal cost function. 
+
+\paragraph{Agglomerative Clustering}
+Agglomerative clustering is a different approach to clustering. The idea is to start from small initial clusters and progressively merge them. The algorithm is:
+\begin{enumerate}
+	\item Create one cluster for each point.
+	\item Given some set of clusters, merge them to one by successively merging the two closest clusters according to some distance measure $d$.
+\end{enumerate}
+Popular distance measures include:
+\begin{itemize}
+	\item single-linkage, which measures the minimum distance between two elements in either cluster.
+	\item complete linkage, which measures the maximum distance between two elements in either cluster.
+	\item average linkage, which measures the average distance between two elements in either cluster.
+\end{itemize}
+
+\paragraph{DBSCAN}
+DBSCAN is a density-based clustering algorithm. It uses the notion of an $\epsilon$-neighborhood of a point, defined as the set of points at distance less than $\epsilon$ from the point in question. The algorithm defines a point as a core point if at least some number $n$ of points are in its $\epsilon$-neighborhood, $n$ being a parameter of the algorithm. Other points are density-reachable if they are in the $\epsilon$-neighborhood of a core point. The algorithm does the following while there are any unvisited points:
+\begin{enumerate}
+	\item Pick an unvisited point $x_{i}$.
+	\item Mark $x_{i}$ as visited.
+	\item If $x_{i}$ is a core point, find the set of density-reachable points from $x_{i}$. These now form a cluster.
+\end{enumerate}
+The cluster assignment is finally returned. Points without any assignment are considered to be noise. This has the power of not needing the number of clusters specified beforehand.
+
+\paragraph{Anomaly Detection}
+Mathematically we define
+\begin{align*}
+	P(x) = \alpha_{\text{nom}}P_{\text{nom}}(x) + \alpha_{\text{anom}}P_{\text{anom}}(x).
+\end{align*}
+Thus we have two different random processes generating nominal and anominal data. Detecting such data can be very useful in different contexts.
+
+A few approaches are available. The first is a static rule approach. Here one constructs a set of rules to identify anomalies and assume the 80-20 rule as a tool.  This is a very brittle approach. The second is a supervised anomaly detector. Here one trains a classifier to detect anomalies. This of course requires labelled training data. Another issue is that high accuracy is generally needed. Finally there is unsupervised anomaly detection, where one uses clustering assuming nominal data and does some posterior validation to detect the anomalies. This must be tested properly.
+
+Anomalies come in different forms. The first is point anomalies, where individual points are anomalous with respect to regular data. The second is context anomalies, where some context marks out data points as anomalous. The final is collective anomalies, where a collection of data points are anomalous together. Identifying this requires some notion of relations in the data.
+
+\paragraph{The Idea Behind Generative Models}
+The previously studied models have made no assumptions on the underlying distribution from which the data is generated, instead trying to learn some labelling probability conditioned on the data. Such models are called discriminative. The process of learning the underlying distribution generating the data is the goal of generative methods.
+
+More formally, the task is to learn some probability distribution $p_{\theta}(x)$ parametrized by $\theta$ that approximates the true generating distribution $P$. We first need to identify an appropriate loss function, and the Kullbach-Leibler divergence seems appropriate. However, it is not symmetric and does not satisfy the triangle inequality. We can instead construct the Jensen-Shannon divergence
+\begin{align*}
+	D_{\text{JS}} = \frac{1}{2}\left(D_{\text{KL}}\left(p, \frac{p + P}{2}\right) + D_{\text{KL}}\left(\frac{p + P}{2}, p\right)\right).
+\end{align*}
+
+Generative modelling marks a significant step towards proper artificial intelligence, the key aspect being that it takes the approach of learning the underlying distribution generating data. This has the flipside of creating more ethical issues, including the prevalence of fake information and issues with algorithms reinforcing inequality.
+
+\paragraph{Generative Adversarial Networks}
+A framework for training generative models is the Generative Adversarial Network (GAN), constructed around a two-player Nash game. The structure of this game is to have two artificial intelligences working together. The first is a generator that creates a fake sample generated from a choice of parameters in some latent space. The second is a discriminator that compares the fake samples to real samples and tries to determine which is the fake one. These are connected in a feedback loop such that they train together. The discriminator aims to achieve maximal loss on real images and minimal loss on fake images, corresponding to maximizing and minimizing the expectation values
+\begin{align*}
+	E_{P}(\ln(D(x))),\ E_{p_{\theta}}(\ln(1 - D(x))).
+\end{align*}
+The fake samples $x$ can be written as $x = G(z)$, where $z$ is an element in the underlying parameter space. The total loss function is then
+\begin{align*}
+	L(D, G) = \inte{}{}\dd{x}P(x)\ln(D(x)) + p_{\theta}\ln(1 - D(x)).
+\end{align*}
+Considering a small variation of $D$, we find that
+\begin{align*}
+	\var{L} = \inte{}{}\dd{x}\frac{P(x)}{D(x)} - \frac{p_{\theta}}{1 - D(x)},
+\end{align*}
+and the optimum is for
+\begin{align*}
+	D(x) = \frac{p_{\theta}(x)}{p_{\theta}(x) + P(x)}.
+\end{align*}
+The corresponding loss is $-2\ln(2)$.
+
+What does this loss function represent? We can write the Jensen-Shannon divergence as
+\begin{align*}
+	D_{\text{JS}} =& \frac{1}{2}\left(2\ln(2) + \inte{}{}\dd{x}P(x)\frac{P(x)}{P(x) + p_{\theta}(x)} + p_{\theta}(x)\frac{p_{\theta}(x)}{P(x) + p_{\theta}(x)}\right) \\
+	=& \frac{1}{2}\left(\ln(4) + L(D\cc, G)\right).
+\end{align*}
+The GAN loss function is thus proportional to the Jensen-Shannon divergence when $D$ takes its optimum value $D\cc$.
+
+Why do such methods work, and why are they preferred over maximum likelihood methods? A key point is the asymmetry in the KL-divergence, which harshly punishes the filling-in of probability typically performed by maximum-likelihood methods. The symmetry of the JS-divergence makes the algorithm punish both adding weight where there is none and failing to add weight where there should be.
+
+The JS-divergence cannot be evaluated numerically, hence the alternative is to use an adversarial approach, as in the two-player Nash game. This ensures that the filling-out of weight is actually punished. The algorithm is to, given some batch of real and fake samples, update the discriminator by ascending along the gradient of total loss, and then updating the generator by descending along its gradient of total loss.

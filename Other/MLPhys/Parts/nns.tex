@@ -1,0 +1,105 @@
+\section{Neural Networks}
+
+\paragraph{The Concept of Neural Networks}
+Neural networks are elements in a very particular hypothesis class. They are conceptually inspired by neurons.
+
+The structure is as follows: The network consists of layers. Each layer consists of a set of neurons. The neurons are generally coupled to all neurons in the previous layers. Computationally, each neuron takes as input the set of values stored in each neuron. It then adds them using some weights and outputs the result when this weighted sum is input into some so-called activation function. We may thus illustrate the network as a directed graph, where each neuron is a node and there are edges connecting all nodes in adjacent layers. These edges are directed, such that there is only coupling one way.
+
+As an example, consider the simplest possible neural network, with one input layer and one output layer, the latter having only a single neuron. The input layer will then consist of all the elements in $x$ (as well as a $1$), and the neuron will first compute $\sum w_{i}x_{i} = w^{T}x$, and output $\sigma(w^{T}x)$.
+
+The power of neural networks lies in the fact that if the activation function is nonlinear, then the network can be used to perform nonlinear classification or regression tasks. The design of the network, however, is where the art lies.
+
+Neural networks need to be trained, of course. The algorithm for doing that is called back-propagation. To describe the mathematical basis we introduce a bit of notation. We let:
+\begin{itemize}
+	\item $V_{t}$ be the set of neurons in layer $t$.
+	\item $W_{t}$ be the weight matrix between $V_{t}$ and $V_{t + 1}$.
+	\item $k_{t}$ be the number of neurons in layer $t$.
+	\item $\vb{a}_{t}$ be the input to layer $t$.
+	\item $\vb{o}_{t}$ be the output from layer $t$.
+	\item $\vb*{\sigma}$ be the activation function applied element-wise to the output of one layer.
+\end{itemize}
+Clearly we have $\vb{a}_{t} = W_{t - 1}\vb{o}_{t - 1}$ and $\vb{o}_{t} = \vb*{\sigma}(\vb{a}_{t})$. The weights in any one layer appear exactly once in the output, so it would be beneficial to switch from a matrix notation in $W$ to a vector notation. To that end, introduce the matrix $O_{t - 1} = \text{diag}(\vb{o}_{t - 1}^{T})$ and $\vb{w}_{t - 1}$ the vector obtained when concatenating the rows of $W_{t - 1}$. It then follows that $O_{t - 1}\vb{w}_{t - 1} = W_{t - 1}\vb{o}_{t - 1}$. Now, we note that the loss function has a recursive structure - that is,
+\begin{align*}
+	L(\{W_{t}\}) =& L(\vb{o}_{T}) \\
+	             =& L(\vb*{\sigma}(\vb{a}_{T})) \\
+	             =& L(\vb*{\sigma}(W_{T - 1}\vb{o}_{T - 1})) \\
+	             =& \dots
+\end{align*}
+We can write this as $L = \ell_{t}\circ \vb*{\sigma}$ for some choice of $t$. $\ell_{t}$ thus acts as a subsystem loss function, handling the contributions to the loss from layers starting at $t$. We then have
+\begin{align*}
+	\grad_{\vb{w}_{t - 1}}L = \grad_{\vb*{\sigma}}\ell_{t}\pdv{\vb*{\sigma}}{\vb{w}_{t - 1}}.
+\end{align*}
+Because the activation function acts element-wise we have
+\begin{align*}
+	\pdv{\vb*{\sigma}}{\vb{w}_{t - 1}} = \text{diag}(\grad\sigma)\pdv{\vb{w}_{t - 1}}(O_{t - 1}\vb{w}_{t - 1}) = \text{diag}(\grad\sigma)O_{t - 1}.
+\end{align*}
+The first factor is to be evaluated at $\vb*{\sigma}(O_{t - 1}\vb{w}_{t - 1}) = \vb{o}_{t}$ and the second at $O_{t - 1}\vb{w}_{t - 1} = \vb{a}_{t}$. Thus we find
+\begin{align*}
+	\grad_{\vb{w}_{t - 1}}L = \grad_{\vb*{\sigma}}\ell_{t}(\vb{o}_{t})\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}.
+\end{align*}
+This is a vector comprised of the successive components of $\vb*{\delta}$, the derivatives of $\sigma$ and $\vb{o}_{t - 1}$. Thus, by computing $\vb{\delta}_{t}$ the derivative is known. We can do this in a recursive manner by noting that it is trivial for the outer layer. Next, as
+\begin{align*}
+	\ell_{t}(\vb{o}_{t}) = \ell_{t + 1}(\vb*{\sigma}(W_{t}\vb{o}_{t})),
+\end{align*}
+hence
+\begin{align*}
+	\grad\ell_{t}(\vb{o}_{t}) = \grad\ell_{t + 1}(\vb{o}_{t + 1})\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t},
+\end{align*}
+implying
+\begin{align*}
+	\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}.
+\end{align*}
+In this sense we propagate information back through the network. The algorithm is thus
+\begin{enumerate}
+	\item Start with $\vb{o}_{0} = \vb{x}$.
+	\item Compute $\vb{a}_{t} = W_{t - 1}\vb{o}_{t - 1}$ and $\vb{o}_{t} = \vb*{\sigma}(\vb{a}_{t})$ for each layer.
+	\item Set $\vb*{\delta}_{T} = \grad{L}(\vb{o}_{T})$.
+	\item Compute $\vb*{\delta}_{t} = \vb*{\delta}_{t + 1}\text{diag}(\grad\sigma(\vb{a}_{t + 1}))W_{t}$ for each layer.
+	\item Set the partial derivative with respect to each set of weights to be $\vb*{\delta}_{t}\text{diag}(\grad\sigma(\vb{a}_{t}))O_{t - 1}$.
+\end{enumerate}
+
+\paragraph{Problems With Training Neural Networks}
+A first problem with training neural networks is vanishing or exploding gradients. To illustrate it, consider a neural network with one neuron per layer. We then have
+\begin{align*}
+	\vb*{\delta}_{0}  = \vb*{\delta}_{L}\prod\limits_{l = 1}^{L}\text{diag}(\grad\sigma(\vb{a}_{l}))W_{l}.
+\end{align*}
+For a network with many layers the product can thus very quickly either diverge or drop to zero. Only if each factor is close to the identity will the gradients stay behaved. Beyond applying stochastic gradient descent, which is an implicit regularizer, there are other treatments of the gradient that can be performed to ensure that this holds.
+
+Another problem is that different weights can change such that they compensate for mistakes in other places in the neural networks. This is called co-adaption, and it is bad because such fixes are generally overfitted to the training data. This can be solved by using dropout.
+
+Next there is the problem that layer inputs change during training, requiring low learning rates. This can be somewhat circumvented by standardizing inputs.
+
+\paragraph{The Universal Approximation Theorem}
+The universal approximation theorem is a statement about how closely we can approximate functions with neural networks. To prove it, consider a so-called feed-forward neural network with $L$ neurons in a single hidden layer. Its output is
+\begin{align*}
+	y(\vb{x}) = \sum\limits_{l = 0}^{L}\alpha_{l}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l}),
+\end{align*}
+where we have used some sigmoid activation function (this just means that $\sigma$ goes to $0$ and $1$ respectively at the two infinities). We also introduce the following definition: $\sigma$ is discriminatory for a measure $\mu\in M(l_{d})$ (this can for instance be a probability measure $\dd{\mu} = \dd{\vb{x}}P(\vb{x})$) if the fact that
+\begin{align*}
+	\inte{}{}\dd{\mu}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l}) = 0
+\end{align*}
+for all $\vb{w}_{l}, b_{l}$ implies that $\mu = 0$. This definition is useful because it tells us that discriminatory functions are non-destructive with respect to the metric - that is, they are indeed able to capture some of the information in the network.
+
+The theorem states the following: Let $l_{d}$ be the hypercube $[0, 1]^{d}$ and the space of real-valued continuous functions on $l_{d}$ be $C(l_{d})$. Let also $\sigma$ be a discriminatory function on $l_{d}$. Then, for every $\varepsilon > 0$ and function $f\in C(l_{d})$, there exists an integer $N$ and real $\alpha_{l}, b_{l}, \vb{w}_{l}$ for $l = 1, \dots, N$ such that the function
+\begin{align*}
+	G(\vb{x}) = \sum\limits_{l = 0}^{N}\alpha_{l}\sigma(\vb{w}_{l}^{T}\vb{x} + b_{l})
+\end{align*}
+satisfies
+\begin{align*}
+	\abs{G(\vb{x}) - f(\vb{x})} < \varepsilon\ \forall\ \vb{x}\in l_{d}.
+\end{align*}
+
+To prove it, let $S$ be the set of functions of the form $G$. Clearly this is a linear subspace of $C(l_{d})$. To prove it, we will show that the closure of $S$ (the smallest closed set containing $S$) is all of $C(l_{d})$. Assuming the contrary, the closure of $S$ is instead some different subset $R$ of $C(l_{d})$. We have by the Hahn-Banach theorem that there is a bounded non-trivial linear functional $L$ of $C(l_{d})$ such that $L(R) = L(S) = 0$. This can be represented as
+\begin{align*}
+	L(h) = \inte{l_{d}}{}\dd{\mu}h(\vb{x})
+\end{align*}
+for some measure $\mu$ and all $h$. By our assumptions there must then exist a measure such that
+\begin{align*}
+	L(\sigma) = \inte{l_{d}}{}\dd{\mu}\sigma(w_{l}^{T}\vb{x} + b_{l}) = 0,
+\end{align*}
+but if $\sigma$ is discriminatory, then this is a contradiction. This implies that $R$ must indeed be $C(l_{d})$, completing the proof.
+
+\paragraph{Convolutional Neural Networks}
+From the properties of eyesight, it appears that the brain processes visual data in small parcels. The processing is built up of simple tools, such as edge detectors and depth detectors. Notably only a small number of shapes form primitive visual objects. These properties should enter into the design of neural networks for image processing.
+
+Convolutional neural networks are based on these concepts. It uses a set of filters that are convolved with the image (swept over the image, with the local dot product being summed up) in so-called convolution layers. Beyond this, in order to get output you typically use some kind of pooling operation, which coarse-grains.

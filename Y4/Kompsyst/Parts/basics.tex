@@ -1,0 +1,354 @@
+\section{Basic Concepts}
+
+\paragraph{What is a Complex System?}
+A complex system is a dynamical system characterized by at least one of the following:
+\begin{itemize}
+	\item Nonlinearity.
+	\item High sensitivity to initial conditions - the butterfly effect.
+	\item The existence of bifurcations.
+	\item Emergent phenomena - the formation of patterns in the solution.
+	\item Feedback.
+	\item Dissipation.
+\end{itemize}
+
+\paragraph{The Interesting Aspects of Complex Systems}
+The interesting aspects of complex systems are
+\begin{itemize}
+	\item long-term behaviour.
+	\item dependence on initial conditions.
+	\item parameter dependence.
+\end{itemize}
+
+\paragraph{Autonomous Systems}
+An autonomous system is described by
+\begin{align*}
+	\dv{\vb{x}}{t} = \vb{f}(\vb{x})
+\end{align*}
+where $\vb{x}$ is the state vector of the system.
+
+This is of course not a restriction to first-order systems, as all systems may be written in this form. It is neither a restriction to $f$ being independent of $t$, as one in this case can simply extend $\vb{x}$ to contain $t$.
+
+\paragraph{Deterministic Systems}
+A deterministic system is a system without random noise. Such systems are entirely specified by $\vb{f}$ and an initial condition.
+
+\paragraph{Conservative and Dissipative Systems}
+Conservative systems satisfy $\div{\vb{f}} = 0$. Dissipative systems satisfy $\div{\vb{f}} < 0$.
+
+\paragraph{Orbits}
+An orbit is a solution to an autonomous system corresponding to some particular initial value. The set of all orbits is the set of flow lines of $\vb{f}$. Because the position in phase space fully determines the future solution, flow lines never cross.
+
+\paragraph{Fixed Points}
+A fixed point is a point that satisfies $\vb{f}(\vb{x}) = \vb{0}$. Close to such points, non-zero first derivatives produce exponential behaviour locally and first derivatives equal to zero produce evolution slower than exponential.
+
+\paragraph{Stability}
+A fixed point is stable if it attracts the flow in a neighbourhood around it and unstable if it repels the flow.
+
+\paragraph{Lyapunov Stability}
+A fixed point is Lyuapunov stable if all trajectories that start sufficiently close to it remain close to it for all $t$.
+
+\paragraph{Asymptotic Stability}
+A fixed point is asymptotically stable if it is Lyapunov stable and all orbits that start sufficiently close to the fixed point approach it as $t\to\infty$.
+
+\paragraph{Bifurcations}
+A bifurcation is a qualitative in the structure of $\vb{f}$ as some parameter is varied.
+
+\paragraph{Uniqueness of Solutions}
+The weakest condition for the existence and uniqueness of a solution to
+\begin{align*}
+	\dv{\vb{x}}{t} = \vb{f}(\vb{x}),\ \vb{x}(t_{0}) = \vb{x}_{0}
+\end{align*}
+in a finite time interval around $t_{0}$, which we will assume to hold, is the Lipschitz condition
+\begin{align*}
+	\abs{\vb{f}(\vb{x}) - \vb{f}(\vb{y})} \leq \kappa\abs{\vb{x} - \vb{y}}
+\end{align*}
+for some finite $\kappa$. This entails that $\vb{f}$ should be continuous and have piecewise continuous derivatives. If this condition holds, the solution is continuous in $\vb{x}_{0}$.
+
+\paragraph{Periodic Motion}
+For a system with a one-dimensional phase space, periodic motion is impossible on the real line or a subset of it. It is possible, however, on spaces with different topologies, such as a circle.
+
+\paragraph{Numerical Integration}
+Numerical integration methods are based around the Taylor expansion
+\begin{align*}
+	\vb{x}(t + \Delta t) = \vb{x}(t) + \eval{\dv{\vb{x}}{t}}_{t}\Delta t + \frac{1}{2!}\eval{\dv[2]{\vb{x}}{t}}_{t}(\Delta t)^{2} + \dots
+\end{align*}
+and specific schemes are usually obtained by truncating this expansion.
+
+\paragraph{The Forward Euler Method}
+The forward Euler method is obtained by truncating at the second step. For an autonomous system we have
+\begin{align*}
+	\vb{x}(t + \Delta t) = \vb{x}(t) + \vb{f}(t)\Delta t.
+\end{align*}
+The error in each step is of ordet $(\Delta t)^{2}$, and the total error after $N$ steps, which integrate a time $\tau$ forward, is of order $N(\Delta t)^{2} = \tau\Delta t$. Note that this is equivalent to the approximation
+\begin{align*}
+	\eval{\dv{\vb{x}}{t}}_{t} = \frac{1}{\Delta t}(\vb{x}(t + \Delta t) - \vb{x}(t)).
+\end{align*}
+
+\paragraph{Runge-Kutta Schemes}
+An improved scheme starts with
+\begin{align*}
+	\frac{1}{\Delta t}(\vb{x}(t + \Delta t) - \vb{x}(t)) = \eval{\dv{\vb{x}}{t}}_{t + \frac{1}{2}\Delta t} = \vb{f}\left(t + \frac{1}{2}\Delta t\right) = \vb{f}\left(\vb{x}(t) + \frac{1}{2}\Delta t\vb{f}\left(\vb{x}(t)\right)\right) = \vb{f}\left(\vb{x}(t)\right) + \frac{1}{2}\Delta t\vb{f}\p(\vb{x}(t))\vb{f}\left(\vb{x}(t)\right) + \dots
+\end{align*}
+From this we devise the second-order Runge-Kutta method
+\begin{align*}
+	\vb{k}_{1} = \Delta t\vb{f}\left(\vb{x}(t)\right),\ \vb{k}_{2} = \Delta t\vb{f}\left(\vb{x}(t) + \frac{1}{2}\vb{k}_{1}\right),\ \vb{x}(t + \Delta t) = \vb{x}(t) + \vb{k}_{2}.
+\end{align*}
+Similarly there is a fourth-order scheme
+\begin{align*}
+	\vb{k}_{1} = \Delta t\vb{f}\left(\vb{x}(t)\right),\ \vb{k}_{2} = \Delta t\vb{f}\left(\vb{x}(t) + \frac{1}{2}\vb{k}_{1}\right),\ \vb{k}_{3} = \Delta t\vb{f}\left(\vb{x}(t) + \frac{1}{2}\vb{k}_{2}\right),\ \vb{k}_{4} = \Delta t\vb{f}\left(\vb{x}(t) + \vb{k}_{3}\right), \\
+	\vb{x}(t + \Delta t) = \vb{x}(t) + \frac{1}{6}\left(\vb{k}_{1} + 2\vb{k}_{2} + 2\vb{k}_{3} + \vb{k}_{4}\right),
+\end{align*}
+with an accumulated error of order $(\Delta t)^{4}$.
+
+\paragraph{Symplectic Methods}
+Symplectic methods are numerical integration schemes that respect conservation laws.
+
+\paragraph{The Flow Map}
+The flow map is a map on phase space which takes a given point and time evolves it. It is denoted $\phi_{t}$. By construction it satisfies
+\begin{align*}
+	\phi_{t + s} = \phi_{t}\circ\phi_{s},\ \phi_{t}^{-1} = \phi_{-t}.
+\end{align*}
+In addition we have
+\begin{align*}
+	\dv{\vb{x}}{t} = \eval{\dv{\phi_{t}}{t}}_{\vb{x}_{0}} = \vb{f}\circ\phi_{t}(\vb{x}_{0}),
+\end{align*}
+which means
+\begin{align*}
+	\dv{\phi_{t}}{t} = \vb{f}\circ\phi_{t}.
+\end{align*}
+
+\paragraph{Time Reversal}
+Applying time reversal to a system involves introducing a variable $\tilde{t} = -t$. The time reversed solution is
+\begin{align*}
+	\vb{x}(\tilde{t}) = \phi_{-\tilde{t}}(\vb{x}_{0}),
+\end{align*}
+and satisfies
+\begin{align*}
+	\dv{\vb{x}(\tilde{t})}{\tilde{t}} = \dv{\tilde{t}}\phi_{-\tilde{t}}(\vb{x}_{0}) = -\dv{(-\tilde{t})}\phi_{-\tilde{t}}(\vb{x}_{0}) = -\vb{f}(\vb{x}(\tilde{t})).
+\end{align*}
+
+\paragraph{Time Reversal Invariance}
+A system with time reversal invariance changes sign in the odd-indexed components of the state under time reversal, and thus satisfies
+\begin{align*}
+	\dv{\vb{x}(\tilde{t})}{\tilde{t}} = \vb{f}(\vb{x}(\tilde{t})).
+\end{align*}
+
+\paragraph{Invariant Sets}
+An invariant set is a subset $S$ of phase space such that $S = \phi_{t}(S)\ \forall\ t$.
+
+\paragraph{Attractors and Repellors}
+An attractor is a compact subset $A$ which
+\begin{itemize}
+	\item is invariant.
+	\item has an open neighbourhood $U$ contracted onto it, i.e. an open neighbourhood $U$ such that if $\vb{x}_{0}\in U$ then the distance between $\vb{x}(t)$ and $A$ approaches zero as $t\to\infty$. The largest such $U$ is called $A$'s basin of attraction.
+	\item is minimal. i.e. cannot be decomposed into non-overlapping invariant sets.
+\end{itemize}
+A repellor is an attractor for the time-reversed system.
+
+\paragraph{Phase Space Contraction}
+Consider a small volume $\dd{V_{0}}$ around $\vb{x}_{0}$ at $t = 0$. At a later time $t$ the same volume is given by
+\begin{align*}
+	\dd{V} = \abs{\det(M)}\dd{V_{0}},\ M_{ij} = \pdv{\phi_{t}^{i}}{x_{0}^{j}} = \pdv{\phi_{t}^{i}}{x_{0}^{j}}.
+\end{align*}
+Next we want to study the relative rate of volume change, given by
+\begin{align*}
+	\frac{1}{\dd{V}}\dv{\dd{V}}{t} = \dv{t}\ln(\dd{V}) = \dv{t}\ln(\abs{\det(M)}).
+\end{align*}
+To compute the right-hand side we use the fact that
+\begin{align*}
+	\ln(\det(M)) = \tr(\ln(M)).
+\end{align*}
+We thus have
+\begin{align*}
+	\frac{1}{\dd{V}}\dv{\dd{V}}{t} &= \tr(M^{-1}\dv{M}{t}) \\
+	                               &= \sum\limits_{i, j}\pdv{x_{0}^{j}}{\phi_{t}^{i}}\pdv{\dot{\phi}_{t}^{i}}{x_{0}^{j}} \\
+	                               &= \sum\limits_{i}\pdv{\dot{\phi}_{t}^{i}}{\phi_{t}^{i}} \\
+	                               &= \sum\limits_{i}\del{}{x^{i}}f^{i} = \div{\vb{f}}.
+\end{align*}
+
+\paragraph{Linear Stability Analysis}
+Close to a fixed point we may linearize a problem as
+\begin{align*}
+	\dv{\Delta\vb{x}}{t} = \eval{\pdv{\vb{f}}{\vb{x}}}_{\vb{x} = \vb{x}^{\star}}\Delta\vb{x},
+\end{align*}
+assuming the right-hand side matrix to be non-zero. Analysis in this way is called linear stability analysis, and is very powerful because it allows us to characterize the fixed point in terms of stability directly from the character of this matrix.
+
+More specifically the solutions close to such fixed points is a linear combination of eigenvectors multiplied by $e^{\lambda_{i}t}$ for the corresponding eigenvalue $\lambda_{i}$. These eigenvalues are called the characteristic exponents. I will now briefly describe the different cases that may be found, assuming diagonalizability.
+
+The first set of cases corresponds to all eigenvalues being real. If they are all positive the solution must radiate from the fixed point, and the fixed point is unstable. If they are all negative the solutions move inwards towards the fixed point, which is stable. If they have mixed signs we have saddle-node behaviour, where solutions flow in towards, then out from, the fixed point. This case is generally termed unstable.
+
+The second set of cases corresponds to there being complex eigenvalues. We study flows in real space, hence complex eigenvalues appear in conjugate pairs. This means that there are three cases. If the real part is zero, solutions circulate around the fixed point, which is neutrally stable. If the real part is non-zero, its sign will make the solutions spiral either out or in relative to the fixed point. Inwards spirals correspond to stable fixed points and outwards spirals correspond to unstable fixed points.
+
+The third case is when the matrix is not diagonalizable. This case still produces exponential behaviour, but the exact analysis is somewhat more intricate.
+
+\paragraph{Phase Space Contraction Close to Fixed Points}
+Close to a fixed point we find
+\begin{align*}
+	\div{\vb{f}} = \sum\limits_{i}\lambda_{i},
+\end{align*}
+where the $\lambda_{i}$ are eigenvalues of the matrix for the linearized problem.
+
+\paragraph{Hyperbolic Fixed Points}
+A hyperbolic fixed point has characteristic exponents with non-zero real part.
+
+\paragraph{The Harmon-Grobman Theorem}
+The Harmon-Grobman theorem states that for every hyperbolic fixed point there exists a homeomorphism - a one-to-one map with a continuous inverse - which maps orbits of the non-linear problem to orbits of the linearized problem.
+
+\paragraph{Stable and Unstable Manifolds}
+For a hyperbolic fixed point $\vb{x}^{\star}$ the stable manifold is the set $W_{\text{S}}$ of points which converge to $\vb{x}^{\star}$ as $t\to\infty$. Similarly the unstable manifold $W_{\text{U}}$ is the set of points which converge to $\vb{x}^{\star}$ as $t\to -\infty$. These are both invariant sets.
+
+\paragraph{Limit Cycles}
+A limit cycle is an isolated closed orbits.
+
+\paragraph{Lyapunov Functions}
+A Lyapunov function is a function $V$ such that
+\begin{itemize}
+	\item $V(\vb{x}) > 0$ for all $\vb{x} \neq \vb{x}^{\star}$.
+	\item $V(\vb{x}^{\star}) = 0$.
+	\item $\dot{V} < 0$ along all solutions everywhere where $\vb{x} \neq \vb{x}^{\star}$.
+\end{itemize}
+Such a function will have a minimum at $\vb{x}^{\star}$.
+
+\paragraph{Limit Cycles}
+A limit cycle is an orbit which is approached by at least one other orbit as at infinite times.
+
+\paragraph{The Poincare-Bendixon Theorem}
+Suppose that
+\begin{itemize}
+	\item $R$ is a closed, bounded set.
+	\item $\vb{f}$ is continuously differentiable.
+	\item $R$ contains no fixed points.
+	\item there exists an orbit $C$ confined in $R$.
+\end{itemize}
+Then either $C$ is a closed orbit or it spirals towards a closed orbit. In other words, the system has a limit cycle.
+
+\paragraph{The Appearance of Bifurcations}
+As hyperbolic fixed points are structurally stable, bifurcations can only arise if the real part of an eigenvalue changes sign.
+
+\paragraph{Types of Bifurcations}
+Bifurcations come in many forms. Some of them include:
+\begin{itemize}
+	\item saddle-node bifurcations, where a pair of one stable and one unstable fixed point is formed.
+	\item transcritical bifurcations, where a switch happens from a stable fixed point being parameter-independent and an unstable fixed point being parameter-dependent, to the opposite.
+	\item supercritical pitchforks, where a stable fixed point branches into two stable fixed points and one unstable fixed point.
+	\item subcritical pitchforks, where an unstable fixed point branches into two unstable fixed points and one stable fixed point.
+	\item subcritical Hopf bifurcations, where a limit cycle exists along with a repelling set which disappears.
+	\item infinite period bifurcations, where the period of some motion diverges.
+	\item homoclinic bifurcations, where a limit cycle swells until it crosses a saddle point and no longer corresponds to a periodic orbit.
+\end{itemize}
+
+\paragraph{Reaction-Diffusion Systems}
+Consider a system described by a state $\vb{x}(\vb{r}, t)$ with some dependence on an extended underlying space which satisfies
+\begin{align*}
+	\dot{\vb{x}} = \vb{f}(\vb{x}) + D\laplacian{\vb{x}},
+\end{align*}
+where $D$ is a diagonal matrix. Such systems are called reaction-diffusion systems.
+
+Their treatment is generally difficult, but one trick can be employed: If the diffusion-free system has a fixed point, one can linearize around this fixed point to find
+\begin{align*}
+	\delta\dot{\vb{x}} = J\delta\vb{x} + D\laplacian{\delta\vb{x}}.
+\end{align*}
+Fourier expansion according to
+\begin{align*}
+	\delta\vb{x} = \sum\limits_{\vb{k}}\vb{x}_{\vb{k}}e^{i\vb{k}\cdot\vb{r}}
+\end{align*}
+yields
+\begin{align*}
+	\dot{\delta\vb{x}}_{\vb{k}} = J\vb{x}_{\vb{k}} + D\abs{k}^{2}\vb{x}_{\vb{k}},
+\end{align*}
+which is a system that can be solved using the previously developed techniques.
+
+\paragraph{The Stability of Limit Cycles}
+The stability of limit cycles is difficult to analyze using the previously developed techniques. For instance, an issue with linearization is the choice of point around which to linearize. Instead, for systems with periodic orbits we will consider the sequence $\vb{x}_{k} = \vb{x}(k\tau)$, where $\tau$ is the period of the limit cycle. An important issue, then, is to determine this period and ascertain whether it is the same as for neighbouring orbits.
+
+\paragraph{Poincare Maps}
+The trick of Poincare maps is a theoretical circumvention of the above issue. For an $n$-dimensional system, introduce a $n - 1$-dimensional surface $S$ which is crossed by the flow lines and consider the sequence of intersections $\vb{x}_{k}$ (with positive orientation). The Poincare map is the map that satisfies $\vb{x}_{k + 1} = P(\vb{x}_{k})$. By identifying this map and considering its fixed points, limit cycles can be identified.
+
+\paragraph{Linear Stability of Iterated Maps}
+Consider some system with an iterated map $P$ which has a fixed point $\vb{x}^{\star}$. Near this fixed point we can linearize to find
+\begin{align*}
+	\delta\dot{\vb{x}}_{k} = J\delta\vb{x}_{k},\ J_{ij} = \eval{\del{}{x_{j}}P_{i}}_{\vb{x} = \vb{x}^{\star}}.
+\end{align*}
+If this holds in every step, the dependence is as $J^{k}$ with respect to the initial value, and the $k$-th step scales as $\lambda^{k}$ with respect to the initial conditions, where $\lambda$ are the eigenvalues of $J$. This holds even if $J$ is not diagonalizable. This means that the stability of the fixed points is dictated more or less as in previously discussed cases.
+
+\paragraph{Chaos}
+Chaos is a general term for aperiodic long-term behavior in a deterministic system with high sensitivity to the initial condition.
+
+\paragraph{Lyapunov Exponents}
+In general for a chaotic system, given two initial conditions separated by a small displacement $\delta\vb{x}(t)$, we have
+\begin{align*}
+	\abs{\delta\vb{x}(t)} \approx \abs{\delta\vb{x}(0)}e^{\lambda t}
+\end{align*}
+for short times. $\lambda$ is the largest Lyapunov exponent.
+
+Given the Lyapunov exponent, the time interval in which the system can be predicted with error $\varepsilon$ is of order
+\begin{align*}
+	t = \frac{1}{\lambda}\ln(\frac{\varepsilon}{\abs{\delta\vb{x}(0)}}).
+\end{align*}
+
+\paragraph{Calculating Lyapunov Exponents}
+We can define a local Lyapunov exponent according to
+\begin{align*}
+	\lambda(\vb{x}_{0}) = \lim\limits_{t\to\infty}\lim\limits_{\delta\vb{x}_{0}\to \vb{0}}ln(\frac{\abs{\delta\vb{x}(t)}}{\abs{\delta\vb{x}_{0}}}).
+\end{align*}
+Note the order of the limits, as we must generally ensure closeness before we start time evolving to guarantee convergence. Note that it also has some directional dependence - generally, an $n$-dimensional system has $n$ Lyapunov exponents. These are typically the same within the same basin of attraction, and thus form a global characteristic of the system.
+
+Let us now consider an iterated map $\vb{x}_{n + 1} = F(\vb{x}_{n})$. The linearized system is characterized by a matrix
+\begin{align*}
+	M = \prod\limits_{k = 0}^{n - 1}J(\vb{x}_{k}),
+\end{align*}
+where $J$ is the Jacobian of $F$. Inserting this into the above formula we find
+\begin{align*}
+	\lambda_{i} = \lim\limits_{k\to\infty}\frac{1}{2k}\ln(M^{T}M).
+\end{align*}
+
+Next we consider a proper dynamical system described by a vector field $\vb{f}$ with Jacobian $J$. Any solution is described by the flow map $\phi_{t}$, with Jacobian $M$. Given this we find
+\begin{align*}
+	\delta\dot{\vb{x}} = \dot{M}(\vb{x}_{0}, t)\delta\vb{x}_{0},\ \delta\dot{\vb{x}} = J(\vb{x}_{0}, t)\delta\vb{x},
+\end{align*}
+hence
+\begin{align*}
+	\dot{M}(\vb{x}_{0}, t)\delta\vb{x}_{0} = J(\vb{x}_{0}, t)M(\vb{x}_{0}, t)\delta\vb{x}_{0}.
+\end{align*}
+Formally the solution for $M$ is
+\begin{align*}
+	M(\vb{x}, t) = \torp e^{\integ[]{0}{t}{t}{J(\vb{x}(t), t)}}.
+\end{align*}
+The Lyapunov exponents, in turn, are eigenvalues of
+\begin{align*}
+	\lim\limits_{t\to\infty}\frac{1}{2t}M(\vb{x}, t)^{T}M(\vb{x}, t).
+\end{align*}
+
+To solve this in practice, one could extend the state to include either the small displacement vector or $M$. The exponential increase can quickly cause overflow, however. To mitigate this, one could integrate over a short time and then rescale the small displacement.
+
+\paragraph{Properties of Lyapunov Exponents}
+In general it can be shown that
+\begin{align*}
+	\lim\limits_{t\to\infty}\frac{1}{t}\integ{0}{t}{t}{\div{\vb{f}}(\vb{x}(t))} = \sum\limits_{i = 1}^{n}\lambda_{i}.
+\end{align*}
+The left-hand sum is then zero for a conservative system and negative for a dissipative system. Chaotic systems have at least one positive Lyapunov exponent. For a dynamical system one of the Lyapunov exponents is zero, corresponding to motion along the trajectory.
+
+\paragraph{Strange Attractors}
+A strange attractor is an attractor that exhibits sensitive dependence on the initial condition. It is often a fractal set.
+
+\paragraph{Fractal Dimension}
+Fractal dimension is a quantity describing the geometry of the fractal. Unlike the dimension of other sets, it is not necessarily an integer. There are many ways to define this number.
+
+One definition is the so-called similarity dimension, possibly the Haussdorf dimension, which applies well to self-similar fractals. Given that a scaling by a factor $r$ increases the number of copies of the fractal by a factor $m$, the Haussdorf dimension is defined according to $m = r^{-d}$. 
+
+The next is the box-counting dimension, which asserts that if the fractal can be covered by $N$ boxes of side length $\varepsilon$, then
+\begin{align*}
+	d = \lim\limits_{\varepsilon\to 0}\frac{\ln(N)}{\ln(\frac{1}{\varepsilon})}.
+\end{align*}
+
+Next is the pointwise dimension, more useful for objects of interest to us. To study it, consider a point $\vb{x}$ on a fractal $A$, and let $N_{\vb{x}}(\varepsilon)$ be the number of points on $A$ inside of a ball of radius $\varepsilon$ around $\vb{x}$. The pointwise dimension is defined according to $N_{\vb{x}}(\varepsilon) \propto \varepsilon^{d}$.
+
+There is also the correlation distance, found by computing the average $C(\varepsilon)$ of $N_{x}(\varepsilon)$ over $A$ and defining the dimension according to $C(\varepsilon) \propto \varepsilon^{d}$.
+
+Finally there is the Renyi dimension. To compute it, one first divides the fractal into boxes with side length $\varepsilon$ and computes the density $\rho_{i}$ of points in each box. The dimension, characterized by a number $q$, is then given by
+\begin{align*}
+	d_{q} = \frac{1}{q - 1}\lim\limits_{\varepsilon\to 0}\frac{\ln(\sum\limits_{i}\rho_{i}^{q})}{\ln(\varepsilon)}.
+\end{align*}
+Particular values of $q$ turn out to correspond to other concepts of dimension.
+
+\paragraph{Multifractals}
+A multifractal is a fractal with varying dimension across it. For such a fractal we may consider subsets $S_{\alpha}$ of points where the dimension is $\alpha$. These may themselves be fractals with dimension $f(\alpha)$. The function $f$ is called the multifractal spectrum.

@@ -9,20 +9,118 @@ where the summation is performed over all of phase space.
 
 \subsection{The Microcanonical Ensemble}
 
+\paragraph{The Multiplicity}
+There are two ways of working with the microcanonical ensemble: One is to use the probability distribution $\rho = c\delta(H - E)$, where $H$ is the Hamiltonian. The second, which allows us to more easily extend the arguments to quantum systems, is to allow a tolerance $\delta E$ in energy upwards from $E$ and use a uniform probability distribution in this region. In either case, we now introduce the multiplicity of a given macrostate as
+\begin{align*}
+	\Omega = \frac{1}{h^{dn}N!}\integ[dN]{E < H < E + \delta E}{}{x}{},
+\end{align*}
+where $x$ is a phase space position variable. The approach that we have used allows $\Omega$ to be a continuous function of the total energy even for quantum systems, which have discrete, closely-spaced energy levels.
+
+The factor $h$ is some factor with dimension $pq$ in classical context, but will be revealed to be Planck's constant. The factor $N!$ accounts for the fact that the particles are indistinguishable.
+
+\paragraph{Distinguishability}
+For indistinguishable particles, an the need for the factor $N!$ is due to overcounting of states where two or more particles have different energies. For such states, switching the places of two such particles produces the same state. The overcounting is by a factor of $n!$, where $n$ is the number of particles with different energies. However, if states where two or more particles have the same energy can be ignored, we can solve the overcounting problem by accounting for the degeneracy of the remaining states by divding by $N!$.
+
+But hold on! In classical mechanics, the equations of motions themselves imply that all particles are distinguishable. After all, any set of positions and momenta are directly connected to a single particle. How can the issue of distinguishability be relevant? The answer is that in the beginning, this factor was added ad hoc in order to guarantee that the entropy would be extensive. At its heart, however, the idea of indistinguishable particles is quantum mechanical. This could be taken as an early sign of the strong connection between statistical physics and quantum mechanics.
+
+\paragraph{The Statistical Basis For Entropy}
+To connect the microscopic picture to thermodynamics, we need Boltzmann's famous definition of entropy, given by
+\begin{align*}
+	S = \kb\ln{\Omega}.
+\end{align*}
+An ad hoc way of arriving at this result is to consider the entropy as a function of the multiplicity. Supposing that we have a system comprised of two non-correlated parts, the extensivity of the entropy yields
+\begin{align*}
+	S = S_{1} + S_{2}.
+\end{align*}
+Now, the total multiplicity is $\Omega = \Omega_{1}\Omega_{2}$, so requiring the entropy to be extensive takes the form
+\begin{align*}
+	S(\Omega_{1}\Omega_{2}) = S(\Omega_{1}) + S(\Omega_{2}).
+\end{align*}
+A simple choice of entropy function is thus to choose one among the elementary functions. The function which does this is the natural logarithm. The Boltzmann constant is now introduced as the constant of proportionality required to give $S$ a dimension.
+
+\paragraph{Entropy and Probability}
+Consider a system with $N$ available microstates, all equally likely and indistinguishable by experiment. These are divided into groups called to macrostates, distinguishable by experiment, with $n_{i}$ microstates in each macrostate. We have
+\begin{align*}
+	\sum n_{i} = N,
+\end{align*}
+and the probability of finding the system in a particular macrostate is thus
+\begin{align*}
+	P_{i} = \frac{n_{i}}{N}.
+\end{align*}
+The total entropy is $S_{\text{tot}} = \kb\ln{N}$, but cannot be measured as the microstates are indistinguishable. Nevertheless, as entropy is extensive, the total entropy is a sum of the freedom to explore the microstates for a given macrostate and the freedom to explore the different macrostates, i.e.
+\begin{align*}
+	S_{\text{tot}} = S + S_{\text{micro}}.
+\end{align*}
+The entropy due to exploring microstates is an expectation value over the different macrostates of the entropy, given by
+\begin{align*}
+	S_{\text{micro}} = \sum P_{i}S_{i} = \kb\sum P_{i}\ln{n_{i}}.
+\end{align*}
+This yields
+\begin{align*}
+	S &= S_{\text{tot}} - S_{\text{micro}} \\
+      &= \kb\ln{N} - \kb\sum P_{i}\ln{n_{i}} \\
+      &= \kb\sum P_{i}\left(\ln{N} - \ln{n_{i}}\right) \\
+      &= -\kb\sum P_{i}\ln{P_{i}}.
+\end{align*}
+This expression might be useful in some contexts.
+
+\paragraph{The Ideal Gas}
+
 \subsection{The Canonical Ensemble}
+
+\paragraph{Temperature Balance From Microscopic Arguments}
+Consider two isolated systems in contact. The total energy and multiplicity is given by
+\begin{align*}
+	E = E_{1} + E_{2},\ \Omega \propto \integ{E < E_{\text{T}} < E + \delta E}{}{E_{\text{T}}}{\integ{-\infty}}{E_{\text{T}}}{E_{1}}{\Omega_{2}(E_{\text{T}} - E_{1})\Omega_{1}(E_{1})}.
+\end{align*}
+This function is often sharply peaked around some particular $E_{1}$, as both multiplicities are rapidly increasing functions. Hence the total entropy is
+\begin{align*}
+	S_{1 + 2}(E, E_{1}) = S_{1}(E_{1}) + S_{2}(E - E_{1}).
+\end{align*}
+The peak value corresponds to a maximal entropy. Differentiating with respect to $E_{1}$ gives
+\begin{align*}
+	\pdv{S_{1 + 2}}{E_{1}}                 &= \dv{S_{1}}{E_{1}} + \dv{S_{2}}{E_{2}}\dv{E_{2}}{E_{1}} = \dv{S_{1}}{E_{1}} - \dv{S_{2}}{E_{2}},
+\end{align*}
+and using the thermodynamic definition of temperature we obtain
+\begin{align*}
+	\frac{1}{T_{1}} = \frac{1}{T_{2}}.
+\end{align*}
+
+\paragraph{The Boltzmann Distribution}
+Consider again the previously described situation such that system $2$ is much larger than system $1$. We have
+\begin{align*}
+	p(E_{1})\dd{E_{1}} = \frac{\Omega_{2}(E - E_{1})\Omega_{1}(E_{1})}{\integ{}{}{E_{1}}{\Omega_{2}(E - E_{1})\Omega_{1}(E_{1})}}\dd{E_{1}}.
+\end{align*}
+The entropy is extensive, hence we have
+\begin{align*}
+	\Omega_{2}(E - E_{1}) = e^{\frac{S_{2}(E - E_{1})}{\kb}}.
+\end{align*}
+The entropy may be expanded in a series as
+\begin{align*}
+	S_{2}(E - E_{1}) &= S_{2}(E) - \pdv{S_{2}}{E}E_{1} + \frac{1}{2}\pdv[2]{S_{2}}{E}E_{1}^{2} + \dots \\
+	                 &= S_{2}(E) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}}\fix{\pdv{E}\left(T\right)}{V_{2}, N_{2}}E_{1}^{2} + \dots \\
+	                 &= S_{2}(E) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}C_{2}}E_{1}^{2} + \dots
+\end{align*}
+As system $2$ is very large, the higher-order terms may be neglected, yielding
+\begin{align*}
+	\Omega_{2}(E - E_{1}) = Ce^{-\frac{E_{1}}{\kb T}}.
+\end{align*}
+Finally we obtain
+\begin{align*}
+	p(E_{1})\dd{E_{1}} = \frac{Ce^{-\frac{E_{1}}{\kb T}}\Omega_{1}(E_{1})}{\integ{}{}{E_{1}}{Ce^{-\frac{E_{1}}{\kb T}}\Omega_{1}(E_{1})}}\dd{E_{1}}.
+\end{align*}
+This is the Boltzmann distribution.
 
 \paragraph{The Partition Function}
 The partition function is defined as
 \begin{align*}
+	Z = \integ{}{}{E_{1}}{Ce^{-\beta E_{1}}\Omega_{1}(E_{1})},
+\end{align*}
+where the $E_{i}$ are possible values of the energy (or, rather, the Hamiltonian) and we now formally introduce $\beta = \frac{1}{\kb T}$. An equivalent definition is
+\begin{align*}
 	Z = \sum e^{-\beta E_{i}},
 \end{align*}
-where the $E_{i}$ are possible values of the energy (or, rather, the Hamiltonian) and we now formally introduce $\beta = \frac{1}{\kb T}$. The summation is performed over all of phase space.
-
-\paragraph{Probability}
-Combining our knowledge we obtain
-\begin{align*}
-	P_{i} = \frac{1}{Z}e^{-\beta E_{i}}.
-\end{align*}
+where the summation is performed over all of phase space.
 
 \paragraph{Properties of the Partition Function}
 Suppose that the Hamiltonian is redefined by adding a constant. We then obtain
@@ -49,12 +147,28 @@ For distinguishable particles (distinguished by, for instance, spatial separatio
 \begin{align*}
 	Z_{N} = Z_{1}^{N}.
 \end{align*}
-However, for indistinguishable particles, an issue arises due to overcounting of states where two or more particles have different energies. This overcounting is by a factor of $n!$, where $n$ is the number of particles occupying different states, as switching the $n$ particles around does not yield a new state. However, if states where two or more particles have the same energy can be ignored, we can solve the overcounting problem by accounting for the degeneracy of the remaining states according to
+For indistinguishable particles we instead have
 \begin{align*}
 	Z_{N} = \frac{Z_{1}^{N}}{N!}.
 \end{align*}
 
-But hold on! In classical mechanics, the equations of motions themselves imply that all particles are distinguishable. After all, any set of positions and momenta are directly connected to a single particle. How can the issue of distinguishability be relevant? The answer is that in the beginning, this factor was added ad hoc in order to guarantee that the entropy would be extensive. At its heart, however, the idea of indistinguishable particles is quantum mechanical. This could be taken as an early sign of the strong connection between statistical physics and quantum mechanics.
+\paragraph{Helmholtz Free Energy}
+The probability distribution may be written as
+\begin{align*}
+	p(E) \propto e^{-\beta(E - TS(E))}.
+\end{align*}
+A large system is overwhelmingly likely found in the state that maximizes the probability, namely the state such that the exponent is maximal. Expanding around this minimum yields
+\begin{align*}
+	-\beta(E - TS(E)) \approx -\beta(\expval{E} - TS(\expval{E})) + \frac{1}{2\kb}(E - \expval{E})^{2}\pdv[2]{S}{E} + \dots
+\end{align*}
+The partition function may now be written as
+\begin{align*}
+	Z = e^{-\beta(\expval{E} - TS(\expval{E}))}\integ{}{}{E}{Ce^{\frac{1}{2\kb}(E - \expval{E})^{2}\pdv[2]{S}{E}(E - \expval{E})^{2} + \dots}} = \sqrt{2\pi\kb T^{2}C}e^{-\beta(\expval{E} - TS(\expval{E}))}.
+\end{align*}
+Its logarithm contains one term which grows much slower than the others, and may thus be ignored. Hence we have
+\begin{align*}
+	-\kb T\ln{Z} = \expval{E} - TS(\expval{E}) = F.
+\end{align*}
 
 \paragraph{Internal Energy}
 In a statistical context, we define the internal energy as $U = \expval{E}$. We have
@@ -66,26 +180,6 @@ In a statistical context, we define the internal energy as $U = \expval{E}$. We 
 Alternatively, in terms of temperature,
 \begin{align*}
 	U = -\pdv{\ln{Z}}{T}\pdv{T}{\beta} = \frac{1}{\kb\beta^{2}}\pdv{\ln{Z}}{T} = \kb T^{2}\pdv{\ln{Z}}{T}.
-\end{align*}
-
-\paragraph{Entropy}
-We have
-\begin{align*}
-	\ln{P_{i}} = -\beta E_{i} - \ln{Z}.
-\end{align*}
-The definition of entropy from probability thus implies
-\begin{align*}
-	S = -\kb\sum P_{i}\ln{P_{i}} = \kb\sum P_{i}(\beta E_{i} + \ln{Z}) = \kb\ln{Z} + \frac{U}{T}.
-\end{align*}
-
-\paragraph{Helmholtz Free Energy}
-We have
-\begin{align*}
-	F = U - TS = U - \frac{1}{\kb\beta}S = U - U - \frac{1}{\beta}\ln{Z} = -\frac{1}{\beta}\ln{Z},
-\end{align*}
-or
-\begin{align*}
-	Z = e^{-\beta F}.
 \end{align*}
 
 \paragraph{Heat Capacity}
@@ -198,15 +292,104 @@ To understand this we have to study diatomic gases with quantum mechanics. We fi
 
 \subsection{The Grand Canonical Ensemble}
 
+\paragraph{The Grand Canonical Probability Distribution}
+The derivation performed to obtain the canonical partition function was not unique to that transformation. The microcanonical ensemble is specified only in terms of extensive variables, but a switch could be made to any number of intensive variables. This will be demonstrated for the grand canonical ensemble, where the number of particles in a system is allowed to vary.
+
+To show this, consider two systems in contact such that they may exchange energy and particles only between themselves. The total multiplicity is given by
+\begin{align*}
+	\Omega \propto \sum\limits_{N_{1} = 0}^{N}\integ{E < E_{\text{T}} < E + \delta E}{}{E_{\text{T}}}{\integ{-\infty}}{E_{\text{T}}}{E_{1}}{\Omega_{2}(E_{\text{T}} - E_{1}, N - N_{1})\Omega_{1}(E_{1}, N_{1})}.
+\end{align*}
+This function is often sharply peaked around some particular $E_{1}$ and $N_{1}$. Hence the total entropy is
+\begin{align*}
+	S_{1 + 2}(E_{\text{T}}, E_{1}, N, N_{1}) = S_{1}(E_{1}, N_{1}) + S_{2}(E_{\text{T}} - E_{1}, N - N_{1}).
+\end{align*}
+The peak value corresponds to a maximal entropy. Differentiating with respect to $E_{1}$ gives
+\begin{align*}
+	\pdv{S_{1 + 2}}{E_{1}} = \pdv{S_{1}}{E_{1}} + \pdv{S_{2}}{E_{2}}\dv{E_{2}}{E_{1}} = \pdv{S_{1}}{E_{1}} - \pdv{S_{2}}{E_{2}} = 0,\ \frac{1}{T_{1}} = \frac{1}{T_{2}}.
+\end{align*}
+Similarly, with respect to the number of particles we have
+\begin{align*}
+	\pdv{S_{1 + 2}}{N_{1}} = \pdv{S_{1}}{N_{1}} + \pdv{S_{2}}{N_{2}}\dv{N_{2}}{N_{1}} = \pdv{S_{1}}{N_{1}} - \pdv{S_{2}}{N_{2}} = 0,\ \pdv{S_{1}}{N_{1}} = \pdv{S_{2}}{N_{2}}.
+\end{align*}
+The first and second laws of thermodynamics yield
+\begin{align*}
+	\dd{U} = T\dd{S} + \mu\dd{N}.
+\end{align*}
+The derivatives with respect to numbers are taken such that energy is fixed. Hence we have
+\begin{align*}
+	T\fix{\pdv{S}{N}}{U} + \mu = 0,\ \fix{\pdv{S}{N}}{U} = -\frac{\mu}{T}
+\end{align*}
+and the equilibrium condition
+\begin{align*}
+	\frac{\mu_{1}}{T_{1}} = \frac{\mu_{2}}{T_{2}}.
+\end{align*}
+
+Suppose now that system $2$ is much larger than system $1$. We have
+\begin{align*}
+	p(E_{1}, N_{1})\dd{E_{1}} = \frac{\Omega_{2}(E - E_{1}, N - N_{1})\Omega_{1}(E_{1}, N_{1})}{\sum\limits_{N_{1} = 0}^{N}\integ{}{}{E_{1}}{\Omega_{2}(E - E_{1}, N - N_{1})\Omega_{1}(E_{1}, N_{1})}}\dd{E_{1}}.
+\end{align*}
+The entropy is extensive, hence we have
+\begin{align*}
+	\Omega_{2}(E - E_{1}) = e^{\frac{S_{2}(E - E_{1}, N - N_{1})}{\kb}}.
+\end{align*}
+This may be expanded in a series as
+\begin{align*}
+	S_{2}(E - E_{1}) &= S_{2}(E, N) - \pdv{S_{2}}{E}E_{1} + \frac{1}{2}\pdv[2]{S_{2}}{E}E_{1}^{2} - \pdv{S_{2}}{N}N_{1} + \frac{1}{2}\pdv[2]{S_{2}}{N}N_{1}^{2} + \dots \\
+	                  &= S_{2}(E, N) - \frac{1}{T}E_{1} - \frac{1}{2}\frac{1}{T^{2}}\fix{\pdv{T}{E}}{N_{2}}E_{1}^{2} + \frac{\mu}{T}N_{1} + \frac{1}{2}\fix{\pdv{E}\left(-\frac{\mu}{T}\right)}{T_{2}}N_{1}^{2} + \dots \\
+	                  &= S_{2}(E, N) - \frac{1}{T}(E_{1} - \mu N_{1}) - \frac{1}{2T}\left(\frac{1}{C_{2}T}E_{1}^{2} + \fix{\pdv{\mu}{E}}{T_{2}}N_{1}^{2}\right) + \dots
+\end{align*}
+As system $2$ is very large, the higher-order terms may be neglected, yielding
+\begin{align*}
+	\Omega_{2}(E - E_{1}, N - N_{1}) = e^{\frac{1}{\kb}\left(S_{2}(E, N) - \frac{1}{T}(E_{1} - \mu N_{1})\right)} = Ce^{-\frac{1}{\kb T}(E_{1} - \mu N_{1})}.
+\end{align*}
+Finally we obtain
+\begin{align*}
+	p(E_{1}, N_{1})\dd{E_{1}} = \frac{e^{-\frac{1}{\kb T}(E_{1} - \mu N_{1})}\Omega_{1}(E_{1}, N_{1})}{\sum\limits_{N_{1} = 0}^{N}\integ{}{}{E_{1}}{e^{-\frac{1}{\kb T}(E_{1} - \mu N_{1})}\Omega_{1}(E_{1}, N_{1})}}\dd{E_{1}}.
+\end{align*}
+This is the grand canonical probability distribution, sometimes termed the Gibbs distribution.
+
 \paragraph{The Grand Canonical Partition Function}
-For a system which may exchange energy and particles with its surroundings, we define the grand canonical partition function
+The grand canonical partition function is defined as
 \begin{align*}
-	\Z = \sum e^{-\beta(E_{i} - \mu N_{i})},
+	\Z = \sum\limits_{N = 0}^{\infty}\integ{}{}{E}{e^{-\beta(E - \mu N)}\Omega_{1}(E, N)}.
 \end{align*}
-which may be written as
+The number of particles in the system and reservoir is typically very large and large $N$ add small terms to the sum, hence it may be extended to infinity. This may also be written as
 \begin{align*}
-	\Z = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z_{N}.
+	\Z = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}\integ{}{}{E}{e^{-\beta E}\Omega_{1}(E, N)} = \sum\limits_{N = 0}^{\infty}e^{\beta\mu N}Z_{N}.
 \end{align*}
+
+\paragraph{The Grand Potential}
+The probability distribution may be written as
+\begin{align*}
+	p(E, N) \propto e^{-\beta(E - TS - \mu N)}.
+\end{align*}
+A large system is overwhelmingly likely to be found in the state that maximizes the exponent. Expanding around this maximum yields
+\begin{align*}
+	-\beta(E - TS - \mu N) \approx& -\beta(\expval{E} - T\expval{S} - \mu \expval{N}) \\
+	                              &+ \frac{1}{2}\left(\fix{\pdv[2]{E}\left(-\beta(E - TS - \mu N)\right)}{N}(E - \expval{E})^{2} +  \fix{\pdv[2]{N}\left(-\beta(E - TS - \mu N)\right)}{E}(N - \expval{N})^{2}\right) \\
+	                              &+ \pdv{}{E}{N}\left(-\beta(E - TS - \mu N)\right)(E - \expval{E})(N - \expval{N}).
+\end{align*}
+Letting $\vb{w}$ be a vector containing the fluctuations and $H_{\GP}$ the Hessian matrix of the grand potential with the given restrictions, the higher-order terms take the form of a quadratic form. The grand canonical partition function is thus
+\begin{align*}
+	\Z &= \sum\limits_{N = 0}^{\infty}\integ{}{}{E}{e^{-\beta(\expval{\GP}) + \frac{1}{2}\vb{w}^{T}H_{\GP}\vb{w}}} \\
+	   &= e^{-\beta\expval{\GP}}\sum\limits_{N = 0}^{\infty}\integ{}{}{E}{e^{-\frac{1}{2}\beta\vb{w}^{T}H_{\GP}\vb{w}}}.
+\end{align*}
+The total exponent must be negative definite, hence $\Z$ converges. To compute it, the sum may be approximated as an integral. A change of variables yields
+\begin{align*}
+	\Z \propto e^{-\beta\expval{\GP}}\sqrt{\frac{1}{\beta^{2}\lambda_{1}\lambda_{2}}},
+\end{align*}
+where $\lambda_{i}$ are the eigenvalues of $H_{\GP}$. These are equal to the determinant of $H_{\GP}$, hence we have
+\begin{align*}
+	\ln(\Z) = C - \beta\expval{\GP} + \ln(\frac{\kb}{E_{0}\sqrt{\fix{\pdv[2]{S}{E}}{N}\fix{\pdv[2]{S}{N}}{E} - \left(\pdv{S}{E}{N}\right)^{2}}}).
+\end{align*}
+Entropy is extensive, hence the argument of the logarithm can at most be proportional to $N$. In the thermodynamic limit we thus have
+\begin{align*}
+	\GP = -\kb T\ln(Z).
+\end{align*}
+
+An important point is that this procedure, apart from the summation over $N$ instead of integration, applies to any case where you want to switch from controlling an extensive variable to the conjugate intensive variable. The only special case is the one where $T$ is controlled instead of $U$, but that case has been handled explicitly.
+
+%TODO: Fluctuations in extensive variable
 
 \paragraph{Fugacity}
 We now introduce the often-occuring fugacity

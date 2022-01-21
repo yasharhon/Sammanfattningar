@@ -1,0 +1,171 @@
+\section{Basic Concepts}
+
+\paragraph{The Standard Model}
+The standard model is a quantum field theory with the gauge group $\SU{3}\times\SU{2}\times\text{U}(1)$. It is comprised of
+\begin{itemize}
+	\item quarks and leptons, represented by Dirac matter fields.
+	\item gauge bosons - spin $1$ bosons that mediate the fundamental forces.
+	\item the Higgs boson, represented by a scalar field.
+\end{itemize}
+
+\paragraph{Elementary Particles}
+An elementary particle is a particle without substructure. It is these that comprise the standard model.
+
+\paragraph{Quarks and Leptons}
+The fermions comprising the standard model come in two kinds: quarks and leptons. Each fermion also has an antiparticle. Quarks and leptons are found in six variations - so-called flavors.
+
+The quarks have colour charge red, green or blue, which is involved in the strong interaction. In nature they are not found as free particles, but are either joined with an antiquark to create a meson, or joined with two other quarks to make a baryon. In general, combinations of quarks are called hadrons. Leptons, by contrast, have no colour charge.
+
+Both quarks and leptons may have electric charge, and they all have spin and interact with the weak interaction. They are also divided into three so-called generations.
+
+\paragraph{The Fundamental Forces}
+The fundamental forces are the strong and weak nuclear interactions, the electromagnetic interaction and the gravitational interactions. Only the three former have a corresponding quantum field theory, hence this discussion (and in fact the standard model itself at time of writing) will be restricted to those.
+
+An important aspect about the strong force is the fact that its coupling constant is rolling - that is, it varies in space. It is very large at distances comparable to those of nuclei, but very small at the scale of an individual nucleon. This means, for instance, that quarks in a proton are virtually free within the proton, but that the proton itself is stable.
+
+\paragraph{Internal Quantum Numbers of Antiparticles}
+Below we will discuss a number of internal symmetries of particles. These are all flipped in antiparticles.
+
+\paragraph{Isospin}
+Early particle physicists, noting the very similar masses of the proton and neutron and studying nuclear energy levels, conjectured the existence of a symmetry of nuclei under swapping of the two. This symmetry would then need to be respected by the strong force. More specifically, they wrote the state of each nucleon as a proton-neutron doublet which transforms under action by \SU{2}. The generators of this transformation are called components of isospin. We will do a similar thing, but for quarks instead.
+
+\paragraph{The Eightfold Way}
+
+\paragraph{Parity}
+Parity is a discrete symmetry which corresponds to spatial inversion. Strong and electromagnetic interactions respect parity, but weak interactions do not.
+
+Tensor quantities can generally change sign under parity. We call scalars that preserve signs just that - scalars, whereas scalars that change sign are pseudoscalars. Vectors that change sign under parity are indeed vectors, whereas vectors that keep their sign are called axial vectors.
+
+It turns out that the ground states of hadrons are eigenstates of the parity operator. It also turns out that the parity of fermions (taken to be positive) is opposite to that of their antiparticles, whereas they are the sames for bosons. In addition to the intrinsic parity of a particle, their orbital angular momentum also provides parity - more specifically, a factor of $(-1)^{l}$.
+
+\paragraph{Chirality and Helicity}
+As has been discussed in other summaries, helicity and chirality depend on the combination of spin and momentum. It turns out that helicity is frame-dependent, but chirality is intrinsic to the particle. Furthermore, some particles are only found with certain chiralities.
+
+\paragraph{Going From Particles to Antiparticles}
+Consider the particle and antiparticle states
+\begin{align*}
+	e^{-ipx}\mqty[
+		1 \\
+		0 \\
+		\frac{p_{x} - ip_{y}}{p_{0} + m} \\
+		-\frac{p_{	z}}{p_{0} + m}
+	],\ e^{ipx}\mqty[
+		\frac{p_{z}}{p_{0} + m} \\
+		\frac{p_{x} + ip_{y}}{p_{0} + m} \\
+		1 \\
+		0
+	].
+\end{align*}
+We will try to devise a transformation between the two. The exponent is flipped by complex conjugation, so that will have to be included. Next we need a transformation matrix which is block off-diagonal. The lower left block being
+\begin{align*}
+	\mqty[
+		0  & 1 \\
+		-1 & 0
+	] = -i\sigma^{2}
+\end{align*}
+will get the job done. The upper right block should similarly be $i\sigma^{2}$, meaning that the total matrix should be $-i\gamma^{2}$. The transformation is thus
+\begin{align*}
+	\Psi\p = -i\gamma^{2}\Psi\cc.
+\end{align*}
+This also reveals the need for complex conjugation in changing between and antiparticles.
+
+\paragraph{Charge Conjugation}
+Charge conjugation is a discrete symmetry which corresponds to changing all internal quantum numbers of a state, creating a corresponding antiparticle. It is written as
+\begin{align*}
+	C\ket{p} = \ket{\bar{p}}.
+\end{align*}
+It is respected by the strong and electromagnetic interactions, but not the weak one.
+
+In particular, for fermions we can use the transformation rule we derived on the Dirac equation with minimal coupling. For the particle we have
+\begin{align*}
+	\gamma^{\mu}(\del{}{\mu} - ieA_{\mu})\Psi + im\Psi = 0.
+\end{align*}
+For the antiparticle we have
+\begin{align*}
+	-i\gamma^{2}(\gamma^{\mu})\cc(\del{}{\mu} + ieA_{\mu})\Psi\cc - i\gamma^{2}\cdot -im\Psi\cc = -i\gamma^{2}(\gamma^{\mu})\cc(\del{}{\mu} + ieA_{\mu})\Psi\cc - m\gamma^{2}\Psi\cc = 0.
+\end{align*}
+In the Dirac representation the only matrix that is changed by complex conjugation is $\gamma^{2}$, which changes sign. All the other gamma matrices anticommute, and for $\gamma^{2}$ we can simply reshuffle the complex conjugation to find
+\begin{align*}
+	\gamma^{\mu}(\del{}{\mu} + ieA_{\mu})\cdot i\gamma^{2}\Psi\cc + im\cdot i\gamma^{2}\Psi\cc = 0.
+\end{align*}
+This implies
+\begin{align*}
+	C\Psi = i\gamma^{2}\Psi\cc.
+\end{align*}
+
+Such symmetries can be used to determine possible reactions. A trivial example is $\pi^{0} \to \gamma + \gamma$, which balances charge conjugation, whereas $\pi^{0} \to \gamma + \gamma + \gamma$ does not, hence only the former is allowed.
+
+\paragraph{Transformation of Antiquark Isospin}
+We know that quark doublets transform under \SU{2}. An antiquark doublet, however, is related to the complex conjugate of the quark doublet. The complex conjugate itself does not transform the same way as the original doublet - more specifically, we have
+\begin{align*}
+	(\phi\p)\cc = e^{\frac{i}{2}\theta_{i}I_{i}\cc}\phi\cc,
+\end{align*}
+which is the wrong transformation rule. We therefore need to write the antiparticle doublet as $\varepsilon\phi\cc$, and choose $\varepsilon$ such that
+\begin{align*}
+	\varepsilon e^{\frac{i}{2}\theta_{i}I_{i}\cc} = e^{-\frac{i}{2}\theta_{i}I_{i}}\varepsilon,
+\end{align*}
+which produces the correct transformation rule. Expanding each side around the identity we find
+\begin{align*}
+	\varepsilon I_{i}\cc = -I_{i}\varepsilon.
+\end{align*}
+We can choose the fundamental representation, which leaves $I_{1}$ and $I_{3}$ invariant. Choosing $\varepsilon\propto\sigma_{2}$ the corresponding relations work out. This would also make the final relation work out. One choice is $\varepsilon = i\sigma_{2}$. In terms of the up and down quark we denote the two states
+\begin{align*}
+	\phi = \mqty[
+		u \\
+		d
+	],\ \hat{\phi} = \mqty[
+		\hat{d} \\
+		-\hat{u}
+	].
+\end{align*}
+With this we can construct mesons as eigenstates of total isospin.
+
+\paragraph{$CP$}
+$CP$ is the combination of charge conjugation and parity. This combination of symmetries allows for the theory to contain more reactions. For instance, consider
+\begin{align*}
+	\pi^{+} \to \mu^{+} + \nu_{\mu}.
+\end{align*}
+This reaction works provided that the muon and the neutrino have opposite helicities. A parity transformation, however, will reverse all helicities, producing a left-handed muon, which is impossible. Similarly, charge conjugation of this reaction involves a right-handed antineutrino, which is also not allowed. The combined $CP$ symmetry, however, produces the reaction
+\begin{align*}
+	\pi^{-} \to \mu^{-} + \bar{\nu}_{\mu},
+\end{align*}
+where the antineutrino is left-handed, which is allowed. The hope of particle physicists was that the weak force respected $CP$.
+
+\paragraph{$CP$ and Neutral Kaons}
+Requiring $CP$ invariance of physics had some peculiar consequences for decays of the neutral kaon. Because the kaon is a parity eigenstate with eigenvalue $-1$ and has an antiparticle, requiring $CP$ invariance would entail that the observed states would be
+\begin{align*}
+	K_{1} = \frac{1}{\sqrt{2}}(K^{0} - \overline{K}^{0}),\ K_{2} = \frac{1}{\sqrt{2}}(K^{0} + \overline{K}^{0}),
+\end{align*}
+with $CP$ eigenvalues of $1$ and $-1$ respectively. The kaon decays into two or three neutral pions, each contributing $C = 1$ and $P = -1$. This means that $K_{1}$ decays into two pions and $K_{2}$ to three. Because the former releases more energy, it happens faster. Thus, a beam of neutral kaons, which initially consists an even superposition of the $CP$ eigenstates, will after some distance consist of only $K_{2}$. This was indeed what was found in experiments.
+
+As an aside, this raises a question of what real particles are - after all, kaons are produced as eigenstates of strangeness, $K^{0}$ and $\overline{K}^{0}$, by the strong force, but decay to leave $CP$ eigenstates. Which is the real particle? Being familiar with quantum mechanics, the answer is obvious when you think about it - neither! What we call particles are merely basis states in Fock space, and there is no inherent superiority in any choice of basis.
+
+\paragraph{$CP$ Violation}
+The story doesn't quite end there, though - some $2\pi$ decays were still found after a pretty long distance. This is an indication of $CP$ violation.
+
+Furthermore, the decay of the kaon can produce leptons too - one process producing an electron, and one producing a positron. $CP$ violation would entail that the two should be found in equal amounts, but in fact electrons are produced slightly more often. This is fascinating - because physics does not respect $CP$, processes can exist that favor matter over antimatter. This could explain the domination of matter in the universe.
+
+\paragraph{Time Reversal}
+Time reversal - or rather, motion reversal - is a discrete symmetry corresponding to running a process backwards. It is respected by the strong and electromagnetic interactions. It is hard to test it for the weak interaction.
+
+\paragraph{$CPT$}
+$CPT$ is a combination of the discrete symmetries we have studied.
+
+We can use it to draw conclusions about time reversal. Because quantum field theory is based on $CPT$ invariance and $CP$ is violated by the weak interaction, we expect $T$ to be violated as well in order for $CPT$ to be respected.
+
+\paragraph{Conservation Laws for Reactions}
+The following conservation laws apply for reactions in particle physics, in addition to kinematic laws:
+\begin{itemize}
+	\item Electric charge. This is a symmetry respected by all fundamental interactions.
+	\item Color charge. Only the strong interaction is at all concerned with it, and the strong interaction has a corresponding symmetry.
+	\item Baryon number. All primitive vertices conserves the number of quarks, hence the number of quarks is conserved. However, quarks are only found as baryons, with quark number 3, and mesons, with quark number 0, hence we might equally well consider the number of baryons.
+	\item Lepton number. Strong interactions do not include leptons, and electromagnetic interactions only couple lepton fields and quark fields. Weak interactions can change the type of lepton, but if a lepton goes in, another always comes out.
+	\item Generational lepton number. In addition to the above, generational lepton numbers are conserved in most processes, as the electromagnetic force only couples leptonic fields of the same generation and the weak force does the same in most cases.
+	\item Flavor. Strong and electromagnetic interactions are not concerned with flavor, but the weak interaction does not respect it.
+	\item Strangeness, which is the number of strange quarks minus the number of strange antiquarks. This is not respected by weak interactions.
+\end{itemize}
+
+How do we tell which fundamental force is at play? A rule of thumb is that if photons are produced, it is the electromagnetic force, and if neutrinos are produced, it is the weak force.
+
+\paragraph{The Quark Model}
+The quark model is a simplified model which only considers the up, down and strange quarks, combining them into a triplet which transforms under \SU{3}. Taking the generators to be $\frac{\lambda_{a}}{2}$, the generators of transformations on the antiparticle states is $-\frac{\lambda_{a}\cc}{2}$. We denote the particle representation as $3$ and the antiparticle representation as $\bar{3}$.
