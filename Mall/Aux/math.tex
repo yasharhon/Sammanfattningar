@@ -14,28 +14,28 @@
 \newcommand{\p}{\ensuremath{^{\prime}}}
 \newcommand{\cc}{\ensuremath{^{\star}}}
 \newcommand{\adj}{\ensuremath{^{\dagger}}}
+
+% Group theory
 \renewcommand{\O}[1]{\ensuremath{\text{O}(#1)}}
 \newcommand{\SU}[1]{\ensuremath{\text{SU}(#1)}}
 \newcommand{\SO}[1]{\ensuremath{\text{SO}(#1)}}
 \newcommand{\GL}[1]{\ensuremath{\text{GL}(#1)}}
+\newcommand{\srconst}[2]{\ensuremath{\tensor{f}{_{#1}^{#2}}}}
 
 % Calculus
 \newcommand{\bound}[1]{\ensuremath{\partial #1}}
 \newcommand{\del}[2]{\ensuremath{\partial^{#1}_{#2}}}
 \newcommand{\delp}[2][]{\ensuremath{(\partial^{\prime})^{#1}_{#2}}}
-\newcommand{\padd}[1]{\ensuremath{\left[D#1\right]}}
 \newcommand{\cdel}[2]{\ensuremath{D^{#1}_{#2}}}
 \newcommand{\delsw}[2]{\ensuremath{\overleftrightarrow{\partial^{#1}_{#2}}}}
 \newcommand{\dalem}{\ensuremath{\square}}
 \newcommand{\inte}[2]{\int\limits_{#1}^{#2}}
-\newcommand{\integ}[5][]{\int\limits_{#2}^{#3}\dd[#1]{#4}#5}
-\newcommand{\pinte}[2]{\ensuremath{\int\limits_{#1}\padd{#2}}}
 
-% Variational calculus
+% Functional calculus
 \newcommand{\bvar}[1]{\bar{\delta}#1}
-
-% Functional integration
-\newcommand{\finteg}[4]{\ensuremath{\int\limits_{#1}\text{D}\left[#2(#3)\right]#4}}
+\newcommand{\padd}[1]{\ensuremath{\left[\text{D}#1\right]}}
+\newcommand{\finteg}[4]{\ensuremath{\int\limits_{#1}\left[\padd{#2(#3)}\right]#4}}
+\newcommand{\pinte}[2]{\ensuremath{\int\limits_{#1}\padd{#2}}}
 
 % Differential geometry and tensors
 \newcommand{\dcov}[2]{\grad_{#1}{#2}}
@@ -61,6 +61,9 @@
 \newcommand{\df}[1]{\ensuremath{d#1}}
 \newcommand{\puf}[2]{#1_{\star}#2}
 \newcommand{\pub}[2]{#1^{\star}#2}
+
+% Physics symbols
+\newcommand{\kb}{\ensuremath{k_{\text{B}}}}
 
 % Classical mechanics
 \newcommand{\lag}{\ensuremath{\mathcal{L}}}
