@@ -266,7 +266,7 @@ Because we are integrating about a loop, this must be a multiple of $2\pi$ - in 
 is an integer known as the first Chern number $c_{n}$. This leads to the conductivity being quantized.
 
 \paragraph{The Haldane Model}
-The Haldane model is a simple model of two bands with non-zero Chern number. This is obtained by starting with a two-level model for the honeycomb lattice and opening a band gap and breaking time reversal symmetry. The Hamiltonian we use is
+The Haldane model is a simple model of two bands with non-zero Chern number. This model cannot have parity or time reversal symmetry, as motion in a magnetic field does not respect these symmetries. The model is obtained by starting with a two-level model for the honeycomb lattice and opening a band gap and breaking time reversal symmetry. The Hamiltonian we use is
 \begin{align*}
 	\ham = \mqty[
 		m              & -tf(\vb{k}) \\
@@ -279,7 +279,7 @@ To study the model, assume $m$ to be small. The Hamiltonian is
 \begin{align*}
 	\ham = v_{\text{F}}(\tau_{z}\sigma_{x}k_{x} + \sigma_{y}k_{y}) + m\sigma_{z}.
 \end{align*}
-This doesn't break time reversal symmetry, however, and cannot produce topologically non-trivial bands. To achieve this we add the $\tau_{z}$ to the mass term as well. This can be achieved by using a purely imaginary hopping amplitude internally in the sublattice.
+This doesn't break time reversal symmetry, however, and cannot produce topologically non-trivial bands. By instead adding a purely imaginary hopping amplitude within the sublattices, we add the $\tau_{z}$ to the mass term as well, breaking time reversal symmetry.
 
 \paragraph{Weird Unexplained Stuff}
 Consider a two-dimensional electron gas on a cylindrical shell. Suppose that we add a magnetic flux through the pipe which is zero at $t = 0$ and $\Phi_{0}$ at $t = T$. The field along the original $y$-coordinate will then be
