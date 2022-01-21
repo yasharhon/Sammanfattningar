@@ -6,14 +6,14 @@ In Lagrangian mechanics, configuration space is the space of all possible config
 \paragraph{Hamilton's Principle}
 Hamilton's principle replaces Newton's laws as the fundamental law of nature that is postulated in order to start off the theory. To formulate it, we first define the action of a system over time as
 \begin{align*}
-	S = \integ{}{}{t}{\lag},
+	S = \inte{}{}{t}\dd{\lag},
 \end{align*}
 where $\lag$ is the Lagrangian. Hamilton's principle states that for the motion of the system in configuration space, $\var{S} = 0$.
 
 \paragraph{Lagrange's Equations of Motion}
 Hamilton's principle can be expressed as
 \begin{align*}
-	\var{S} = \integ{}{}{t}{\var{\lag}} = \integ{}{}{t}{\left(\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag}\right)\var{q^{a}}} = 0.
+	\var{S} = \inte{}{}\dd{t}{\var{\lag}} = \inte{}{}\dd{t}{\left(\del{q^{a}}{\lag} - \dv{t}\del{\dot{q}^{a}}{\lag}\right)\var{q^{a}}} = 0.
 \end{align*}
 The equations of motion of the system are thus of the form
 \begin{align*}
@@ -181,7 +181,7 @@ serving as an example of how the Legendre transform works. This implies that the
 
 Alternatively, we could obtain this from Hamilton's principle. The action is given by
 \begin{align*}
-	S = \integ{}{}{t}{p_{i}\dot{q}^{i} - \ham},
+	S = \inte{}{}\dd{t}{p_{i}\dot{q}^{i} - \ham},
 \end{align*}
 the extremization of which is a variational problem in the coordinates, momenta and their time derivatives. The equations of motion yield
 \begin{align*}
@@ -308,11 +308,11 @@ Thus the stated criterion is sufficient. Assuming this yields that it is necessa
 \paragraph{Generators of Canonical Transforms}
 As both the old and new phase space variables must obey Hamilton's equations, they both satisfy the principle of least action. The action is given by
 \begin{align*}
-	S = \integ{}{}{t}{p_{i}\dot{q}_{i} - \ham}
+	S = \inte{}{}\dd{t}{p_{i}\dot{q}_{i} - \ham}
 \end{align*}
 in the old variables and
 \begin{align*}
-	\integ{}{}{t}{P_{i}\dot{Q}_{i} - H},
+	\inte{}{}\dd{t}{P_{i}\dot{Q}_{i} - H},
 \end{align*}
 in the new variables. One way for the two to be extremal at the same time is if
 \begin{align*}
@@ -379,23 +379,23 @@ Noether's theorem relates quasi-symmetries of physical systems to conservation l
 %TODO: Explain better
 To prove it, we must first convert the definitions we have to local form. The new coordinates are given by $Q_{i}(\tau) = q_{i}(t) + \var{q_{i}}(\tau)$, and thus mix up the time, which we have to fix. By the definition of a quasi-symmetry, we have
 \begin{align*}
-	\integ{t_{1} + \var{t_{1}}}{t_{2} + \var{t_{2}}}{\tau}{\lag(Q_{i}, \tau)} - \integ{t_{1}}{t_{2}}{t}{\lag(q_{i}, t)} = \integ{t_{1}}{t_{2}}{t}{\dv{F}{t}},
+	\inte{t_{1} + \var{t_{1}}}{t_{2} + \var{t_{2}}}\dd{\tau}{\lag(Q_{i}, \tau)} - \inte{t_{1}}{t_{2}}\dd{t}{\lag(q_{i}, t)} = \inte{t_{1}}{t_{2}}\dd{t}{\dv{F}{t}},
 \end{align*}
 for some function $F$. This is of the form
 \begin{align*}
-	\integ{a + \var{a}}{b + \var{b}}{x'}{f + \var{f}} - \integ{a}{b}{x}{f} = c.
+	\inte{a + \var{a}}{b + \var{b}}\dd{x'}{f + \var{f}} - \inte{a}{b}\dd{x}{f} = c.
 \end{align*}
 This can be rewritten as
 \begin{align*}
-	\integ{a + \var{a}}{b + \var{b}}{x}{\var{f}} + \integ{b}{b + \var{b}}{x}{f} - \integ{a}{a + \var{a}}{x}{f} = c.
+	\inte{a + \var{a}}{b + \var{b}}\dd{x}{\var{f}} + \inte{b}{b + \var{b}}\dd{x}{f} - \inte{a}{a + \var{a}}\dd{x}{f} = c.
 \end{align*}
 The terms containing an integral of a variation over an interval containing a variation will be of order greater than one, and may thus be ignored. In addition, the two latter integrals may be linearized to obtain
 \begin{align*}
-	f(b)\var{b} - f(a)\var{a} + \integ{a}{b}{x}{\var{f}} = \integ{a}{b}{x}{\var{f} + \dv{x}(f\var{x})} = c.
+	f(b)\var{b} - f(a)\var{a} + \inte{a}{b}\dd{x}{\var{f}} = \inte{a}{b}\dd{x}{\var{f} + \dv{x}(f\var{x})} = c.
 \end{align*}
 Hence, we have
 \begin{align*}
-	\integ{t_{1}}{t_{2}}{\tau}{\lag(Q_{i}, t) - \lag(q_{i}, t) + \dv{t}(\lag(q_{i}, t)\var{t}) - F} = 0.
+	\inte{t_{1}}{t_{2}}\dd{\tau}{\lag(Q_{i}, t) - \lag(q_{i}, t) + \dv{t}(\lag(q_{i}, t)\var{t}) - F} = 0.
 \end{align*}
 This completes the conversion of time.
 
@@ -409,7 +409,7 @@ where we have introduced $\bvar{q^{a}} = \var{q^{a}}(t)$. Using the equations of
 \end{align*}
 Hence we have
 \begin{align*}
-	\integ{t_{1}}{t_{2}}{\tau}{\dv{t}\left(\lag(q_{i}, t)\var{t} + \bvar{q^{a}}\del{\dot{q}^{a}}{\lag}\right) - F} = 0.
+	\inte{t_{1}}{t_{2}}\dd{\tau}{\dv{t}\left(\lag(q_{i}, t)\var{t} + \bvar{q^{a}}\del{\dot{q}^{a}}{\lag}\right) - F} = 0.
 \end{align*}
 
 Finally, we have to first order
@@ -418,7 +418,7 @@ Finally, we have to first order
 \end{align*}
 yielding
 \begin{align*}
-	\integ{t_{1}}{t_{2}}{\tau}{\dv{t}\left(\lag\var{t} + (\var{q^{a}} - \dot{q^{a}}\var{t})\del{\dot{q}^{a}}{\lag} - F\right)} = 0.
+	\inte{t_{1}}{t_{2}}\dd{\tau}{\dv{t}\left(\lag\var{t} + (\var{q^{a}} - \dot{q^{a}}\var{t})\del{\dot{q}^{a}}{\lag} - F\right)} = 0.
 \end{align*}
 The time interval in consideration may now be taken to be arbitrarily small, hence we must have that
 \begin{align*}
@@ -483,9 +483,9 @@ We see that these symmetries define a group.
 \example{A Particle in a Moving Potential}
 Consider a particle in a potential $V = V(\vb{x} - \vb{v}t)$, where $\vb{v}$ is constant. The symmetry $\var{\vb{x}} = \vb{v}\var{t}$ with $\var{t}$ as a constant seems like it should be a symmetry of such a system. The transformed action is
 \begin{align*}
-	S^{\prime} &= \integ{t_{0} + \var{t}}{t_{1} + \var{t}}{t^{\prime}}{\frac{1}{2}m(\dot{\vb{x}}^{\prime})^{2} - V(\vb{x}^{\prime} - \vb{v}t^{\prime})} \\
-	           &= \integ{t_{0} + \var{t}}{t_{1} + \var{t}}{t^{\prime}}{\frac{1}{2}m\dot{\vb{x}}^{2} - V(\vb{x} + \vb{v}\var{t} - \vb{v}(t + \var{t}))} \\
-	           &= \integ{t_{0}}{t_{1}}{t}{\frac{1}{2}m\dot{\vb{x}}^{2} - V(\vb{x} - \vb{v}t)} \\
+	S^{\prime} &= \inte{t_{0} + \var{t}}{t_{1} + \var{t}}\dd{t^{\prime}}{\frac{1}{2}m(\dot{\vb{x}}^{\prime})^{2} - V(\vb{x}^{\prime} - \vb{v}t^{\prime})} \\
+	           &= \inte{t_{0} + \var{t}}{t_{1} + \var{t}}\dd{t^{\prime}}{\frac{1}{2}m\dot{\vb{x}}^{2} - V(\vb{x} + \vb{v}\var{t} - \vb{v}(t + \var{t}))} \\
+	           &= \inte{t_{0}}{t_{1}}\dd{t}{\frac{1}{2}m\dot{\vb{x}}^{2} - V(\vb{x} - \vb{v}t)} \\
 	           &= S,
 \end{align*}
 hence the transformation is indeed a symmetry of the system. The corresponding conserved quantity is
@@ -645,24 +645,24 @@ Solving this for the derivative yields
 \end{align*}
 $X$ is now given by integrating. The action is thus
 \begin{align*}
-	S = \integ{x_{0}}{x}{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha(t - t_{0}) + T(t_{0}) + X(x_{0}).
+	S = \inte{x_{0}}{x}\dd{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha(t - t_{0}) + T(t_{0}) + X(x_{0}).
 \end{align*}
 Constant terms in the action are of course of no physical significance, and so we are free to set these to zero. We thus write
 \begin{align*}
-	S = \integ{x_{0}}{x}{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha t.
+	S = \inte{x_{0}}{x}\dd{y}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}} - \alpha t.
 \end{align*}
 We note that the action only depends on one integration constant $\alpha$. This is therefore the canonical momentum $P$.
 
 The next step is to compute the generalized (old) coordinates and momenta. To do this, we use the properties of the generator. We have
 \begin{align*}
-	Q &= \beta = \del{P}{S} = \del{\alpha}{S} = \integ{x_{0}}{x}{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t, \\
+	Q &= \beta = \del{P}{S} = \del{\alpha}{S} = \inte{x_{0}}{x}\dd{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t, \\
 	p &= \del{x}{S} = \sqrt{2m\alpha - m^{2}\omega^{2}x^{2}},
 \end{align*}
 where we have redubbed $Q$ to the constant of motion $\beta$. In theory we now have a sufficient amount of equations to solve the system, as the relation for $Q$ can be inverted to give $q$ over time, and this will in turn give $p$. In this particular case, this can be done analytically, as
 \begin{align*}
-	\beta &= \integ{x_{0}}{x}{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t \\
-	      &= \sqrt{\frac{m}{2\alpha}}\integ{x_{0}}{x}{y}{\frac{1}{\sqrt{1 - \frac{m\omega^{2}y^{2}}{2\alpha}}}} - t \\
-	      &= \frac{1}{\omega}\integ{s_{0}}{s(x)}{s}{\frac{1}{\sqrt{1 - s^{2}}}} - t \\
+	\beta &= \inte{x_{0}}{x}\dd{y}{\frac{m}{\sqrt{2m\alpha - m^{2}\omega^{2}y^{2}}}} - t \\
+	      &= \sqrt{\frac{m}{2\alpha}}\inte{x_{0}}{x}\dd{y}{\frac{1}{\sqrt{1 - \frac{m\omega^{2}y^{2}}{2\alpha}}}} - t \\
+	      &= \frac{1}{\omega}\inte{s_{0}}{s(x)}\dd{s}{\frac{1}{\sqrt{1 - s^{2}}}} - t \\
 	      &= \frac{1}{\omega}(\arcsin{s(x)} - \arcsin{s_{0}}) - t \\
 	      &= \frac{1}{\omega}\left(\arcsin(\sqrt{\frac{m}{2\alpha}}\omega x) - \arcsin(\sqrt{\frac{m}{2\alpha}}\omega x_{0})\right) - t.
 \end{align*}
@@ -698,26 +698,26 @@ This set of coordinates and momenta is called action-angle variables.
 \paragraph{Action-Angle Variables}
 The action-angle variables of a system is the set of generalized coordinates $\theta^{i}$ and generalized momenta $I_{i}$ such that the Hamiltonian only depends on the generalized momenta. The claim is that the generalized momenta are
 \begin{align*}
-	I_{i} = \frac{1}{2\pi}\integ{\gamma_{i}}{}{q^{j}}{p_{j}},
+	I_{i} = \frac{1}{2\pi}\inte{\gamma_{i}}{}\dd{q^{j}}{p_{j}},
 \end{align*}
 where the integration is performed twice over the set of available coordinates in phase space, i.e. over the period of the motion.
 
 \example{The Harmonic Oscillator}
 Consider a harmonic oscillator with energy $E$. In this case we have the one action-angle momentum
 \begin{align*}
-	I = \frac{1}{2\pi}\integ{}{}{q}{p}.
+	I = \frac{1}{2\pi}\inte{}{}\dd{q}{p}.
 \end{align*}
 The momentum can be re-expressed in terms of the coordinate to obtain
 \begin{align*}
-	I = \frac{1}{2\pi}\integ{}{}{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}}.
+	I = \frac{1}{2\pi}\inte{}{}\dd{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}}.
 \end{align*}
 The extremal values of the coordinate are $\pm\sqrt{\frac{2E}{m\omega^{2}}}$, yielding
 \begin{align*}
-	I &= \frac{1}{\pi}\integ{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}} \\
-	  &= \frac{\sqrt{2mE}}{\pi}\integ{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}{q}{\sqrt{1 - \frac{m\omega^{2}}{2E}q^{2}}} \\
-	  &= \frac{\sqrt{2mE}}{\pi}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{\sqrt{\frac{2E}{m\omega^{2}}}\cos{x}\sqrt{1 - \sin[2](x)}} \\
-	  &= \frac{2E}{\pi\omega}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{\cos[2](x)} \\
-	  &= \frac{E}{\pi\omega}\integ{-\frac{\pi}{2}}{\frac{\pi}{2}}{x}{1 + \cos{2x}} \\
+	I &= \frac{1}{\pi}\inte{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}\dd{q}{\sqrt{2m\left(E - \frac{1}{2}m\omega^{2}q^{2}\right)}} \\
+	  &= \frac{\sqrt{2mE}}{\pi}\inte{-\sqrt{\frac{2E}{m\omega^{2}}}}{\sqrt{\frac{2E}{m\omega^{2}}}}\dd{q}{\sqrt{1 - \frac{m\omega^{2}}{2E}q^{2}}} \\
+	  &= \frac{\sqrt{2mE}}{\pi}\inte{-\frac{\pi}{2}}{\frac{\pi}{2}}\dd{x}{\sqrt{\frac{2E}{m\omega^{2}}}\cos{x}\sqrt{1 - \sin[2](x)}} \\
+	  &= \frac{2E}{\pi\omega}\inte{-\frac{\pi}{2}}{\frac{\pi}{2}}\dd{x}{\cos[2](x)} \\
+	  &= \frac{E}{\pi\omega}\inte{-\frac{\pi}{2}}{\frac{\pi}{2}}\dd{x}{1 + \cos{2x}} \\
 	  &= \frac{E}{\omega}.
 \end{align*}
 In other words, the Hamiltonian in the new variables is $H = \omega I$, and the frequency of the corresponding coordinate is simply $\omega$.

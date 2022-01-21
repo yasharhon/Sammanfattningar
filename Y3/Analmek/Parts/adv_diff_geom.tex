@@ -34,7 +34,7 @@ Likewise, the covariant components are
 \paragraph{Christoffel Symbols}
 When computing the derivative of a vector quantity, one must account both for the change in the quantity itself and the change in the basis vectors. We define the Christoffel symbols according to
 \begin{align*}
-	\del{b}{\tb{a}} = \chris{c}{b}{a}\tb{c}.
+	\del{}{b}{\tb{a}} = \chris{c}{b}{a}\tb{c}.
 \end{align*}
 These can be computed according to
 \begin{align*}
@@ -42,7 +42,7 @@ These can be computed according to
 \end{align*}
 Note that
 \begin{align*}
-	\del{a}{\tb{b}} = \del{a}{\del{b}{\vb{r}}} = \del{b}{\del{a}{\vb{r}}} = \del{b}{\tb{a}},
+	\del{}{a}{\tb{b}} = \del{}{a}{\del{}{b}{\vb{r}}} = \del{}{b}{\del{}{a}{\vb{r}}} = \del{}{b}{\tb{a}},
 \end{align*}
 which implies
 \begin{align*}
@@ -52,17 +52,17 @@ which implies
 Do the Christoffel symbols define a tensor? Clearly they do not. One simple counterexample is when converting from Cartesian coordinates to any non-trivial coordinate system. In Cartesian coordinates all Christoffel symbols are zero, and no linear combination of these could possibly produce non-zero values. There is a transformation rule, however. To find it, we study
 \begin{align*}
 	\tensor{(\Gamma^{\prime})}{^{a}_{bc}} &= (\db{a})^{\prime}\cdot\del[\prime]{b}{(\tb{c})^{\prime}} \\
-	                                      &= \del{d}{(\chi')^{a}}\db{d}\cdot\del[\prime]{b}{(\del[\prime]{c}{\chi^{f}}\tb{f})} \\
-	                                      &= \del{d}{(\chi')^{a}}\db{d}\cdot(\tb{f}\del[\prime]{b}{\del[\prime]{c}{\chi^{f}}} + \del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\tb{f}}) \\
-	                                      &= \del{d}{(\chi')^{a}}(\kdelta{f}{d}\del[\prime]{b}{\del[\prime]{c}{\chi^{f}}} + \del[\prime]{c}{\chi^{f}}\db{d}\cdot\del[\prime]{b}{\chi^{g}}\del{g}{\tb{f}}) \\
-	                                      &= \del{d}{(\chi')^{a}}(\del[\prime]{b}{\del[\prime]{c}{\chi^{d}}} + \del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\chi^{g}}\chris{d}{g}{f}) \\
-	                                      &= \del{d}{(\chi')^{a}}\del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\chi^{g}}\chris{d}{g}{f} + \del{d}{(\chi')^{a}}\del[\prime]{b}{\del[\prime]{c}{\chi^{d}}}.
+	                                      &= \del{}{d}{(\chi')^{a}}\db{d}\cdot\del[\prime]{b}{(\del[\prime]{c}{\chi^{f}}\tb{f})} \\
+	                                      &= \del{}{d}{(\chi')^{a}}\db{d}\cdot(\tb{f}\del[\prime]{b}{\del[\prime]{c}{\chi^{f}}} + \del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\tb{f}}) \\
+	                                      &= \del{}{d}{(\chi')^{a}}(\kdelta{f}{d}\del[\prime]{b}{\del[\prime]{c}{\chi^{f}}} + \del[\prime]{c}{\chi^{f}}\db{d}\cdot\del[\prime]{b}{\chi^{g}}\del{}{g}{\tb{f}}) \\
+	                                      &= \del{}{d}{(\chi')^{a}}(\del[\prime]{b}{\del[\prime]{c}{\chi^{d}}} + \del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\chi^{g}}\chris{d}{g}{f}) \\
+	                                      &= \del{}{d}{(\chi')^{a}}\del[\prime]{c}{\chi^{f}}\del[\prime]{b}{\chi^{g}}\chris{d}{g}{f} + \del{}{d}{(\chi')^{a}}\del[\prime]{b}{\del[\prime]{c}{\chi^{d}}}.
 \end{align*}
 
 \example{Christoffel Symbols in Polar Coordinates}
 To compute these, we need partial derivative of the basis vectors. We have
 \begin{align*}
-	\del{r}{\tb{r}} = \vb{0},\ \del{\phi}{\tb{r}} = \del{r}{\tb{\phi}} = \frac{1}{r}\tb{\phi},\ \del{\phi}{\tb{\phi}} = -r\tb{r}.
+	\del{}{r}{\tb{r}} = \vb{0},\ \del{}{\phi}{\tb{r}} = \del{}{r}{\tb{\phi}} = \frac{1}{r}\tb{\phi},\ \del{}{\phi}{\tb{\phi}} = -r\tb{r}.
 \end{align*}
 We thus obtain
 \begin{align*}
@@ -72,37 +72,37 @@ We thus obtain
 \paragraph{Covariant Derivatives}
 The partial derivate of $\vb{v} = v^{a}\tb{a}$ with respect to $\chi^{a}$ is given by
 \begin{align*}
-	\del{a}{\vb{v}} = \tb{b}\del{a}{v^{b}} + v^{b}\del{a}{\tb{b}} = \tb{b}\del{a}{v^{b}} + v^{b}\chris{c}{a}{b}\tb{c}.
+	\del{}{a}{\vb{v}} = \tb{b}\del{}{a}{v^{b}} + v^{b}\del{}{a}{\tb{b}} = \tb{b}\del{}{a}{v^{b}} + v^{b}\chris{c}{a}{b}\tb{c}.
 \end{align*}
 Renaming the summation indices yields
 \begin{align*}
-	\del{a}{\vb{v}} = \tb{b}(\del{a}{v^{b}} + v^{c}\chris{b}{a}{c}),
+	\del{}{a}{\vb{v}} = \tb{b}(\del{}{a}{v^{b}} + v^{c}\chris{b}{a}{c}),
 \end{align*}
 which contains one term from the change in the coordinates and one term from the change in basis.
 
 Realizing that derivatives of vector quantities must take both of these into account in order to transform like a tensor, we would like to define a differentiation operation that takes both of these to account when differentiating vector components. This is the covariant derivative. We define its action on contravariant vector components as
 \begin{align*}
-	\dcov{a}{v^{b}} = \del{a}{v^{b}} + v^{c}\chris{b}{a}{c},
+	\dcov{a}{v^{b}} = \del{}{a}{v^{b}} + v^{c}\chris{b}{a}{c},
 \end{align*}
 such that
 \begin{align*}
-	\del{a}{\vb{v}} = E_{b}\dcov{a}{v^{a}}.
+	\del{}{a}{\vb{v}} = E_{b}\dcov{a}{v^{a}}.
 \end{align*}
 In a similar fashion we would like to define its action on covariant vector components. To do this, we use the fact that
 \begin{align*}
-	\del{a}{(\tb{b}\cdot\db{c})} = \del{a}{\kdelta{b}{c}} = 0.
+	\del{}{a}{(\tb{b}\cdot\db{c})} = \del{}{a}{\kdelta{b}{c}} = 0.
 \end{align*}
 The product rule yields
 \begin{align*}
-	\tb{b}\cdot\del{a}{\db{c}} + \db{c}\cdot\del{a}{\tb{b}} = \tb{b}\cdot\del{a}{\db{c}} + \db{c}\cdot\chris{d}{a}{b}\tb{d} = \tb{b}\cdot\del{a}{\db{c}} + \kdelta{d}{c}\cdot\chris{d}{a}{b} = \tb{b}\cdot\del{a}{\db{c}} + \chris{c}{a}{b},
+	\tb{b}\cdot\del{}{a}{\db{c}} + \db{c}\cdot\del{}{a}{\tb{b}} = \tb{b}\cdot\del{}{a}{\db{c}} + \db{c}\cdot\chris{d}{a}{b}\tb{d} = \tb{b}\cdot\del{}{a}{\db{c}} + \kdelta{d}{c}\cdot\chris{d}{a}{b} = \tb{b}\cdot\del{}{a}{\db{c}} + \chris{c}{a}{b},
 \end{align*}
 which implies
 \begin{align*}
-	\del{a}{\db{c}} = -\chris{c}{a}{b}\db{b}.
+	\del{}{a}{\db{c}} = -\chris{c}{a}{b}\db{b}.
 \end{align*}
 Repeating the steps above now yields
 \begin{align*}
-	\dcov{a}{v_{b}} = \del{a}{v_{b}} - \chris{c}{a}{b}v_{c}.
+	\dcov{a}{v_{b}} = \del{}{a}{v_{b}} - \chris{c}{a}{b}v_{c}.
 \end{align*}
 
 \paragraph{Covariant Derivatives of Tensor Fields}
@@ -112,24 +112,24 @@ Next we study the derivatives of a tensor field
 \end{align*}
 The tensor basis element differentiates according to the product rule, but with multiplication replaced by the tensor product. Hence
 \begin{align*}
-	\del{a}{\tau} &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}} \\
-	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\left(\sum\limits_{k = 1}^{n}\chris{c_{k}}{a}{a_{k}}\tensor*{e}{^{b_{1}\dots b_{m}}_{c_{1}\dots c_{n}}} - \sum\limits_{l = 1}^{m}\chris{b_{l}}{a}{d_{l}}\tensor*{e}{^{d_{1}\dots d_{m}}_{a_{1}\dots a_{n}}}\right) \\
-	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
-	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\left(\del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}\right).
+	\del{}{a}{\tau} &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{}{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a}{\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}} \\
+	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{}{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\left(\sum\limits_{k = 1}^{n}\chris{c_{k}}{a}{a_{k}}\tensor*{e}{^{b_{1}\dots b_{m}}_{c_{1}\dots c_{n}}} - \sum\limits_{l = 1}^{m}\chris{b_{l}}{a}{d_{l}}\tensor*{e}{^{d_{1}\dots d_{m}}_{a_{1}\dots a_{n}}}\right) \\
+	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\del{}{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	              &= \tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}\left(\del{}{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}\right).
 \end{align*}
 We thus define
 \begin{align*}
-	\dcov{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} = \del{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}.
+	\dcov{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} = \del{}{a}{\tensor*{\tau}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{k = 1}^{n}\tensor*{\tau}{^{c_{1}\dots c_{n}}_{b_{1}\dots b_{m}}}\chris{a_{k}}{a}{c_{k}} - \sum\limits_{l = 1}^{m}\tensor*{\tau}{^{a_{1}\dots a_{n}}_{d_{1}\dots d_{m}}}\chris{d_{l}}{a}{b_{l}}.
 \end{align*}
 
 \paragraph{The Gradient of a Tensor Field}
 Based on the above, the directional derivative of a tensor field is
 \begin{align*}
-	\grad_{\vb{n}}{\tau} = n^{a}\del{a}{\tau}.
+	\grad_{\vb{n}}{\tau} = n^{a}\del{}{a}{\tau}.
 \end{align*}
 This is equal to the contraction of $\vb{n}$ with the object
 \begin{align*}
-	\grad{\tau} = \db{c}\otimes\del{c}{\tau},
+	\grad{\tau} = \db{c}\otimes\del{}{c}{\tau},
 \end{align*}
 which is defined as the gradient of $\tau$. More explicitly, we have
 \begin{align*}
@@ -140,21 +140,21 @@ It has the interesting property of having a rank one higher than $\tau$, which m
 \paragraph{Christoffel Symbols and the Metric}
 The derivatives of the metric tensor are given by
 \begin{align*}
-	\del{c}{g_{ab}} = \tb{a}\cdot\del{c}{\tb{b}} + \tb{b}\cdot\del{c}{\tb{a}} = \tb{a}\cdot\chris{d}{c}{b}\tb{d} + \tb{b}\cdot\chris{d}{c}{a}\tb{d} = \chris{d}{c}{b}g_{ad} + \chris{d}{c}{a}g_{bd}.
+	\del{}{c}{g_{ab}} = \tb{a}\cdot\del{}{c}{\tb{b}} + \tb{b}\cdot\del{}{c}{\tb{a}} = \tb{a}\cdot\chris{d}{c}{b}\tb{d} + \tb{b}\cdot\chris{d}{c}{a}\tb{d} = \chris{d}{c}{b}g_{ad} + \chris{d}{c}{a}g_{bd}.
 \end{align*}
 Multiplying by $g^{ea}$ and summing over $a$ yields
 \begin{align*}
-	g^{ea}\del{c}{g_{ab}} = \chris{d}{c}{b}g_{ad}g^{ea} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{d}{c}{b}g_{da}g^{ae} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{e}{c}{b} + \chris{d}{c}{a}g_{bd}g^{ea}.
+	g^{ea}\del{}{c}{g_{ab}} = \chris{d}{c}{b}g_{ad}g^{ea} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{d}{c}{b}g_{da}g^{ae} + \chris{d}{c}{a}g_{bd}g^{ea} = \chris{e}{c}{b} + \chris{d}{c}{a}g_{bd}g^{ea}.
 \end{align*}
 The hope is that this can be used to obtain an expression for the Christoffel symbols. To try to do that, we will compare this to the expression obtained by switching $c$ and $b$. This expression is
 \begin{align*}
-	g^{ea}\del{b}{g_{ac}} = \chris{e}{b}{c} + \chris{d}{b}{a}g_{cd}g^{ea} = \chris{e}{c}{b} + \chris{d}{b}{a}g_{cd}g^{ea},
+	g^{ea}\del{}{b}{g_{ac}} = \chris{e}{b}{c} + \chris{d}{b}{a}g_{cd}g^{ea} = \chris{e}{c}{b} + \chris{d}{b}{a}g_{cd}g^{ea},
 \end{align*}
 yielding
 \begin{align*}
-	\chris{e}{c}{b} &= \frac{1}{2}\left(g^{ea}\del{c}{g_{ab}} + g^{ea}\del{b}{g_{ac}} - \chris{d}{c}{a}g_{bd}g^{ea} - \chris{d}{b}{a}g_{cd}g^{ea}\right) \\
-	                &= \frac{1}{2}g^{ea}\left(\del{c}{g_{ab}} + \del{b}{g_{ac}} - \chris{d}{a}{c}g_{bd} - \chris{d}{a}{c}g_{cd}\right) \\
-	                &= \frac{1}{2}g^{ea}\left(\del{c}{g_{ab}} + \del{b}{g_{ac}} - \del{a}{g_{bc}}\right).
+	\chris{e}{c}{b} &= \frac{1}{2}\left(g^{ea}\del{}{c}{g_{ab}} + g^{ea}\del{}{b}{g_{ac}} - \chris{d}{c}{a}g_{bd}g^{ea} - \chris{d}{b}{a}g_{cd}g^{ea}\right) \\
+	                &= \frac{1}{2}g^{ea}\left(\del{}{c}{g_{ab}} + \del{}{b}{g_{ac}} - \chris{d}{a}{c}g_{bd} - \chris{d}{a}{c}g_{cd}\right) \\
+	                &= \frac{1}{2}g^{ea}\left(\del{}{c}{g_{ab}} + \del{}{b}{g_{ac}} - \del{}{a}{g_{bc}}\right).
 \end{align*}
 
 \paragraph{Curve Length}
@@ -164,37 +164,37 @@ Consider some curve parametrized by $t$, and let $\dot{\vb{\gamma}}$ denote its 
 \end{align*}
 The curve length is now given by
 \begin{align*}
-	L = \integ{}{}{t}{\sqrt{g_{ab}\dot{\chi^{a}}\dot{\chi^{b}}}}.
+	L = \inte{}{}\dd{t}{\sqrt{g_{ab}\dot{\chi^{a}}\dot{\chi^{b}}}}.
 \end{align*}
 
 \paragraph{Geodesics}
 A geodesic is a curve that extremises the curve length between two points. From variational calculus, it is known that such curves satisfy the Euler-Lagrange equations, and we would like a differential equation that describes such a curve. By defining $\mathcal{L} = \sqrt{g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}}$, the Euler-Lagrange equations for the curve length becomes
 \begin{align*}
-	\del{\chi^{a}}{\mathcal{L}} - \dv{t}\del{\dot{\chi}^{a}}{\mathcal{L}} = 0.
+	\del{}{\chi^{a}}{\mathcal{L}} - \dv{t}\del{}{\dot{\chi}^{a}}{\mathcal{L}} = 0.
 \end{align*}
 The Euler-Lagrange equation thus becomes
 \begin{align*}
-	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}g_{bc}(\dot{\chi}^{b}\kdelta{a}{c} + \dot{\chi}^{c}\kdelta{a}{b})\right) = 0, \\
-	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}(g_{ba}\dot{\chi}^{b} + g_{ac}\dot{\chi}^{c}\right) = 0, \\
-	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \dv{t}\left(\frac{1}{\mathcal{L}}g_{ac}\dot{\chi}^{c}\right) = 0.
+	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{}{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}g_{bc}(\dot{\chi}^{b}\kdelta{a}{c} + \dot{\chi}^{c}\kdelta{a}{b})\right) = 0, \\
+	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{}{a}{g_{bc}} - \dv{t}\left(\frac{1}{2\mathcal{L}}(g_{ba}\dot{\chi}^{b} + g_{ac}\dot{\chi}^{c}\right) = 0, \\
+	&\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{}{a}{g_{bc}} - \dv{t}\left(\frac{1}{\mathcal{L}}g_{ac}\dot{\chi}^{c}\right) = 0.
 \end{align*}
 Expanding the time derivative yields
 \begin{align*}
-	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \frac{1}{\mathcal{L}}\dv{t}(g_{ac}\dot{\chi}^{c}) + g_{ac}\dot{\chi}^{c}\frac{1}{\mathcal{L}^{2}}\dv{\lag}{t} = \frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{a}{g_{bc}} - \frac{1}{\lag}\dv{t}(g_{ac}\dot{\chi}^{c}) + \frac{1}{\lag}g_{ac}\dot{\chi}^{c}\dv{\ln{\lag}}{t} = 0.
+	\frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{}{a}{g_{bc}} - \frac{1}{\mathcal{L}}\dv{t}(g_{ac}\dot{\chi}^{c}) + g_{ac}\dot{\chi}^{c}\frac{1}{\mathcal{L}^{2}}\dv{\lag}{t} = \frac{1}{2\mathcal{L}}\dot{\chi}^{b}\dot{\chi}^{c}\del{}{a}{g_{bc}} - \frac{1}{\lag}\dv{t}(g_{ac}\dot{\chi}^{c}) + \frac{1}{\lag}g_{ac}\dot{\chi}^{c}\dv{\ln{\lag}}{t} = 0.
 \end{align*}
 The curve may be reparametrized such that $\lag$ is equal to $1$ everywhere, yielding
 \begin{align*}
-	\frac{1}{2\mathcal{L}}\left(\dot{\chi}^{a}\dot{\chi}^{b}\del{c}{g_{ab}} - \dv{t}(2\dot{\chi}^{a}g_{ac})\right) = 0.
+	\frac{1}{2\mathcal{L}}\left(\dot{\chi}^{a}\dot{\chi}^{b}\del{}{c}{g_{ab}} - \dv{t}(2\dot{\chi}^{a}g_{ac})\right) = 0.
 \end{align*}
 We note that the expression in the paranthesis is the Euler-Lagrange equation for the integral of $\mathcal{L}^{2}$, a nice fact for the future. Expanding the derivative yields
 \begin{align*}
-	\frac{1}{\mathcal{L}}\left(\frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}\del{c}{g_{ab}} - g_{ac}\ddot{\chi}^{a} - \dot{\chi}^{a}\dot{\chi}^{b}\del{b}{g_{ac}}\right) = 0.
+	\frac{1}{\mathcal{L}}\left(\frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}\del{}{c}{g_{ab}} - g_{ac}\ddot{\chi}^{a} - \dot{\chi}^{a}\dot{\chi}^{b}\del{}{b}{g_{ac}}\right) = 0.
 \end{align*}
 To remove the metric from the second derivative, we multiply by $-g^{cd}\mathcal{L}$ to obtain
 \begin{align*}
-	&g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(2\del{b}{g_{ac}} - \del{c}{g_{ab}}) = 0, \\
-	&g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{bc}} - \del{c}{g_{ab}}) = 0, \\
-	&\ddot{\chi}^{d} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{b}{g_{ac}} + \del{a}{g_{bc}} - \del{c}{g_{ab}}) = 0.
+	&g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(2\del{}{b}{g_{ac}} - \del{}{c}{g_{ab}}) = 0, \\
+	&g_{ac}g^{cd}\ddot{\chi}^{a} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{}{b}{g_{ac}} + \del{}{a}{g_{bc}} - \del{}{c}{g_{ab}}) = 0, \\
+	&\ddot{\chi}^{d} + \frac{1}{2}\dot{\chi}^{a}\dot{\chi}^{b}g^{cd}(\del{}{b}{g_{ac}} + \del{}{a}{g_{bc}} - \del{}{c}{g_{ab}}) = 0.
 \end{align*}
 This is the geodesic equation. It may alternatively be written in terms of the Christoffel symbols as
 \begin{align*}
@@ -218,10 +218,10 @@ and
 \paragraph{Christoffel Symbols and the Geodesic Equation}
 Consider a straight line with a tangent vector of constant magnitude. In euclidean space, this is a geodesic. This curve satisfies
 \begin{align*}
-	\vb{0} = \dv{\dot{\vb*{\gamma}}}{t} = (\dot{\vb*{\gamma}}\cdot\grad)\dot{\vb*{\gamma}} = \dot{\chi}^{a}\del{a}{\dot{\vb*{\gamma}}} = \dot{\chi}^{a}(\dcov{a}{\dot{\chi}^{d}})\tb{d} = (\dot{\chi}^{a}\del{a}{\dot{\chi}^{d}} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{d}{a}{c})\tb{d}.
+	\vb{0} = \dv{\dot{\vb*{\gamma}}}{t} = (\dot{\vb*{\gamma}}\cdot\grad)\dot{\vb*{\gamma}} = \dot{\chi}^{a}\del{}{a}{\dot{\vb*{\gamma}}} = \dot{\chi}^{a}(\dcov{a}{\dot{\chi}^{d}})\tb{d} = (\dot{\chi}^{a}\del{}{a}{\dot{\chi}^{d}} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{d}{a}{c})\tb{d}.
 \end{align*}
 Comparing this to the geodesic equation yields
 \begin{align*}
-	\chris{d}{a}{b} = \frac{1}{2}g^{dc}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}).
+	\chris{d}{a}{b} = \frac{1}{2}g^{dc}(\del{}{b}{g_{ac}} + \del{}{a}{g_{cb}} - \del{}{c}{g_{ab}}).
 \end{align*}
 A better approach would have been to go through the derivation of the geodesic equation again, identifying the Christoffel symbols as you go, but I am not sure if that is what I did in the previous paragraph. In any case we have already obtained this result.
