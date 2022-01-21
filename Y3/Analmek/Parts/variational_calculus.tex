@@ -1,14 +1,31 @@
 \section{Variational Calculus}
 
 \paragraph{Functionals}
-A functional is a mapping from a function space to (real) numbers. The most general functional is composed of two components: One which takes a function in some function space and maps it to a function in another (these two spaces might, but need not, coincide), and one that takes a function in the second space and maps it to a number.
+A functional is a mapping from a function space to (real) numbers. The most general functional is composed of two components: One which takes a function in some function space and maps it to a function in another (these two spaces might, but need not, coincide), named a function map until a better term comes along, and one that takes a function in the second space and maps it to a number.
+
+\paragraph{Variations of Functions and Functionals}
+We will need some notion of derivatives of functionals with respect to their arguments. To express this in a way that is manageable with our knowledge of mathematics, we will transform the functional to a function of one variable. We do this by considering paths in function space parametrized by some parameter $\alpha$. Letting $\phi_{\alpha}$ be the function we find at the point of path corresponding to a particular $\alpha$, the variation of a function is then defined as
+\begin{align*}
+	\var{\phi} = \lim\limits_{\epsilon\to 0}\frac{\phi_{\alpha + \epsilon} - \phi_{\alpha}}{\epsilon} =  \dv{\phi_{\alpha}}{\alpha}\dd{\alpha},
+\end{align*}
+and similarly
+\begin{align*}
+	\var{S} = \lim\limits_{\epsilon\to 0}S(\phi_{\alpha + \epsilon}) - S(\phi_{\alpha}).
+\end{align*}
+Note that the variation of a function behaves as a derivative, one which commutes with derivatives of $\phi$ with respect to its arguments.
 
 \paragraph{Functional Derivatives}
-We will be concerned with optimizing functionals, hence we need some notion of derivatives of functionals with respect to their arguments. To express this in a way that is manageable with our knowledge of mathematics, we will transform the functional to a function of one variable. We do this by considering paths in function space parametrized by some parameter $\alpha$ and define the functional derivative as a directional derivative along that path. The paths of interest will be those where the shift is by some Dirac delta function. More explicitly, for a functional $S(\phi)$ we define
+More interesting are functional derivatives, defined as a directional derivative along that path. The paths of interest will be those where the shift is by some Dirac delta function. More explicitly, for a functional $S(\phi)$ we define
 \begin{align*}
-	\eval{\fdv{S}{\phi}}_{\phi = \phi_{\alpha}} = \lim\limits_{\epsilon\to 0}\frac{S(\phi_{\alpha + \epsilon}) - S(\phi_{\alpha})}{\epsilon}.
+	\eval{\fdv{S}{\phi}}_{\phi = \phi_{\alpha}} = \lim\limits_{\epsilon\to 0}\frac{S(\phi_{\alpha + \epsilon}) - S(\phi_{\alpha})}{\epsilon}
 \end{align*}
-For a functional depending on multiple fields, we compute the functional derivative along a path where only one function is varied. A similar thing may be done for a function map.
+along a general path $\phi = \phi_{\alpha}$. The particular paths $\phi_{\alpha} = \phi + \alpha\delta(x - x_{0})$ define
+\begin{align*}
+	\fdv{S}{\phi(x_{0})}.
+\end{align*}
+For a functional depending on multiple fields, we compute the functional derivative along a path where only one function is varied. A similar thing may be done for a function map. Note that this 
+
+What does this correspond to in more familiar terms? Suppose that you divide the domain of $\phi$ into a lattice and approximate $S$ by some function of the value of $\phi$ at the different points on the lattice. This is a function of multiple variables, and the functional derivative then becomes a directional derivative in these variables. The Dirac delta function path becomes a derivative along a path parallel to a particular axis. This provides an extra significance to this derivative, and it will turn out that it is the most useful one.
 
 Because we have reduced the problem to a single-variable calculus one, theorems such as the chain rule still apply. We therefore only really need to calculate the functional derivative of a few basic function maps. Let us thus consider the function map
 \begin{align*}
@@ -16,34 +33,22 @@ Because we have reduced the problem to a single-variable calculus one, theorems 
 \end{align*}
 By our previous claim the only sensible definition is
 \begin{align*}
-	\fdv{\lag(\phi^{a})(x)}{\phi^{b}(y)} = \delta_{ab}(\del{}{\mu})^{n}\delta^{d}(x - y).
+	\fdv{\lag(\phi^{a})(x)}{\phi^{b}(y)} = \delta_{ab}(\del{}{\mu})^{n}\delta(x - y).
 \end{align*}
 This can now be used to compute all sorts of functional derivatives.
 
+In these functional derivatives will appear the partial derivative of a function map with respect to a function. What in god's name is that? And what about a derivative with respect to a derivative? And should the derivative with respect to a derivative not contain some information about the derivative of the function the derivative of which we are differentiating with respect to? These are all very good and somewhat complex questions.
+
+Mathematically, it is somewhat beyond me to give a proper answer. But physically, we can think of it the following way: The function $\phi$, as we will see later, will represent the path of the system, and $\tau$ will be replaced with the time $t$. As such, by varying $\phi$ we vary the path of the system, and by varying $\phi$ we vary the velocity with which the system traverses the path. What we are doing with variational calculus is testing out an infinite number of paths to find the extremum of the action, and surely we must both try out different paths and traverse them with different velocities in order to find the extremum. That is why the functions and their derivatives can be treated separately.
+
+What is a derivative of a function map with respect to a function? To answer this, recall that at every point $\tau$, the functions are just numbers. When studying the variation of a functional, we are in truth studying its dependence on $\alpha$. In order to do this, the chain rule states that we must first compute an outer partial derivative, which is exactly what the derivative with respect to a function is. This can in turn be indirectly translated to say something about how the functional changes when the function is varied.
+
 \paragraph{Functional Optimization}
-Consider a function (or set of functions) $q$ and some functional $S$ of those $q$. Describe the $q$ such that $S$ has an extremum.
+Consider a function (or set of functions) $q$ and some functional $S$ of those $q$. The task of functional optimization is the identification of the $q$ that extremize $S$.
 
 What kinds of problems are interesting? Problems containing arbitrarily high derivatives of $q$ are of course important. Problems with $q$ having fixed value at the boundary, different kinds of boundary conditions, no boundary conditions or even with a functional as a boundary condition are also of interest. However, to introduce the involved techniques, we will first be studying problems of the above form.
 
-\paragraph{The Variation of a Function}
-We define
-\begin{align*}
-	\var{q} = \deval{q}{\alpha}{0}\dd{\alpha}..
-\end{align*}
-
-\paragraph{The Variation of a Functional}
-We now in a similar way define the variation of a functional as
-\begin{align*}
-	\var{S} = \deval{S}{\alpha}{0}\dd{\alpha}.
-\end{align*}
-
-We see that the variation operation behaves exactly like a derivative, and according to the definition, it commutes with all other derivatives that may be involved, assuming sufficient smoothness. These results will therefore be used without further argument.
-
-In these functional derivatives will appear the partial derivative of a function map with respect to a function. What in god's name is that? And what about a derivative with respect to a derivative? And should the derivative with respect to a derivative not contain some information about the derivative of the function the derivative of which we are differentiating with respect to? These are all very good and somewhat complex questions.
-
-Mathematically, it is somewhat beyond me to give a proper answer. But physically, we can think of it the following way: The functions $q^{i}$, as we will see later, will represent the path of the system, and $\tau$ will be replaced with the time $t$. As such, by varying $q^{i}$ we vary the path of the system, and by varying $\dot{q}^{i}$ we vary the velocity with which the system traverses the path. What we are doing with variational calculus is testing out an infinite number of paths to find the extremum of the action, and surely we must both try out different paths and traverse them with different velocities in order to find the extremum. That is why the functions and their derivatives can be treated separately.
-
-What is a derivative with respect to a function? To answer this, recall that at every point $\tau$, the functions are just numbers. When studying the variation of a functional, we are in truth studying its dependence on $\alpha$. In order to do this, the chain rule states that we must first compute an outer partial derivative, which is exactly what the derivative with respect to a function is. This can in turn be indirectly translated to say something about how the functional changes when the function is varied.
+\paragraph{Functional Determinants}
 
 \paragraph{The Integral Functional}
 The integral functional is the functional

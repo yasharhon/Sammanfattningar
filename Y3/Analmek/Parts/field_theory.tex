@@ -23,7 +23,7 @@ A string has the Lagrangian density
 \end{align*}
 The equation of motion is
 \begin{align*}
-	0 - \rho\del[2]{t}{\phi} + T\del[2]{i}{\phi} = 0,
+	0 - \rho\del{2}{t}{\phi} + T\del{2}{i}{\phi} = 0,
 \end{align*}
 which is the wave equation.
 
@@ -34,11 +34,11 @@ The Klein-Gordon Lagrangian density is
 \end{align*}
 The equation of motion is
 \begin{align*}
-	-m^{2}\phi - \frac{1}{c^{2}}\del[2]{t}{\phi} + \del[2]{i}{\phi} = 0,
+	-m^{2}\phi - \frac{1}{c^{2}}\del{2}{t}{\phi} + \del{2}{i}{\phi} = 0,
 \end{align*}
 or alternatively
 \begin{align*}
-	\del{}{\mu}{\del[\mu]{}{\phi}} + m^{2}\phi = 0.
+	\del{}{\mu}{\del{\mu}{}{\phi}} + m^{2}\phi = 0.
 \end{align*}
 
 \example{Galilei Non-Invariance of the Wave Equation}
@@ -110,8 +110,8 @@ which is a Maxwell equation if $F^{i 0} = \frac{1}{c}E^{i}$. Let's try to show t
 \begin{align*}
 	F^{i0} &= g^{i\alpha}g^{0\beta}(\del{}{\alpha}{A_{\beta}} - \del{}{\beta}{A_{\alpha}}) \\
 	       &= g^{i\alpha}(\frac{1}{c}\del{}{\alpha}{\phi} - \del{}{0}{A_{\alpha}}) \\
-	       &= \frac{1}{c}\del[i]{}{\phi} - \del{}{0}{A^{i}} \\
-	       &= \frac{1}{c}\left(\del[i]{}{\phi} - \del{}{t}{A^{i}}\right) \\
+	       &= \frac{1}{c}\del{i}{}{\phi} - \del{}{0}{A^{i}} \\
+	       &= \frac{1}{c}\left(\del{i}{}{\phi} - \del{}{t}{A^{i}}\right) \\
 	       &= \frac{1}{c}E^{i}.
 \end{align*}
 
@@ -292,7 +292,7 @@ Lorentz boosts can be treated similarly by introducing $\gamma = \cosh(\lambda)$
 For a small boost such that it is a symmetry of the Lagrangian, we have $\var{x^{0}} = - x^{1},\ \var{x^{1}} = -x^{0}$ and the Nöether current
 \begin{align*}
 	J^{\nu} &= -\left(\del{}{0}{\phi^{a}}\pdv{\lag}{(\del{}{\nu}{\phi^{a}})} - \kdelta{0}{\nu}\lag\right)x^{1} - \left(\del{}{1}{\phi^{a}}\pdv{\lag}{(\del{}{\nu}{\phi^{a}})} - \kdelta{1}{\nu}\lag\right)x^{0} \\
-	        &= -\left(\del[0]{}{\phi^{a}}\pdv{\lag}{(\del{}{\nu}{\phi^{a}})} - \eta^{\nu 0}\lag\right)x^{1} - \left(-\del[1]{}{\phi^{a}}\pdv{\lag}{(\del{}{\nu}{\phi^{a}})} + \eta^{\nu 1}\lag\right)x^{0} \\
+	        &= -\left(\del{0}{}{\phi^{a}}\pdv{\lag}{(\del{}{\nu}{\phi^{a}})} - \eta^{\nu 0}\lag\right)x^{1} - \left(-\del{1}{}{\phi^{a}}\pdv{\lag}{(\del{}{\nu}{\phi^{a}})} + \eta^{\nu 1}\lag\right)x^{0} \\
 	        &= \Theta^{\nu 1}x^{0} - \Theta^{\nu 0}x^{1} \\
 	        &= M^{\nu;01},
 \end{align*}
@@ -329,9 +329,9 @@ As a side note, what happens if the fields also enter into the Lagrangian? This 
 \end{align*}
 In this case, the gauge transformation yields
 \begin{align*}
-	\lag \to \lag + j_{\mu}\del[\mu]{}{\alpha} = \lag + \del[\mu]{}{\alpha j_{\mu}} - \alpha\del[\mu]{}{j_{\mu}}.
+	\lag \to \lag + j_{\mu}\del{\mu}{}{\alpha} = \lag + \del{\mu}{}{\alpha j_{\mu}} - \alpha\del{\mu}{}{j_{\mu}}.
 \end{align*}
-The middle term does not affect the equations of motion and thus can be ignored. For the gauge transformation to be a symmetry of the Lagrangian, we must therefore have $\del[\mu]{}{j_{\mu}}$, which was necessary for the Maxwell equations to be consistent to begin with.
+The middle term does not affect the equations of motion and thus can be ignored. For the gauge transformation to be a symmetry of the Lagrangian, we must therefore have $\del{\mu}{}{j_{\mu}} = 0$, which was necessary for the Maxwell equations to be consistent to begin with.
 
 \example{Gauge Transformations of Complex Klein-Gordon Theory and Connections to Maxwell Theory}
 Complex Klein-Gordon theory is already invariant under multiplication of the field by a constant $e^{i\alpha}$. This cannot immediately be extended to $\alpha$ being a function, as the derivatives (when treated strictly as operators on the field) transform with it according to
@@ -361,13 +361,13 @@ The previously demonstrated method is typical for theories whose symmetries cont
 \end{align*}
 we obtain the Lagrangian
 \begin{align*}
-	\lag = \frac{\hbar^{2}}{2m}(\del{}{i}{\cc{\psi}} - iqa_{i}\cc{\psi})(\del[i]{}{\psi} + iqa^{i}\psi) + V\cc{\psi}\psi + \frac{\hbar c}{2i}(\cc{\psi}(\del{}{0}{\psi} + iqa_{0}\psi) - \psi(\del{}{0}{\cc{\psi}} - iqa_{0}\cc{\psi})),
+	\lag = \frac{\hbar^{2}}{2m}(\del{}{i}{\cc{\psi}} - iqa_{i}\cc{\psi})(\del{i}{}{\psi} + iqa^{i}\psi) + V\cc{\psi}\psi + \frac{\hbar c}{2i}(\cc{\psi}(\del{}{0}{\psi} + iqa_{0}\psi) - \psi(\del{}{0}{\cc{\psi}} - iqa_{0}\cc{\psi})),
 \end{align*}
 where we have changed the sign of the gauge field when the complex conjugate is involved. The equations of motion for $\cc{\psi}$ are
 \begin{align*}
-	0 &= -\frac{\hbar^{2}}{2m}iqa_{i}(\del[i]{}{\psi} - iqa^{i}\psi) + V\psi + \frac{\hbar c}{2i}(\del{}{0}{\psi} + iqa_{0}\psi + iqa_{0}\psi) - \del{}{0}{\frac{\hbar c}{2i}( - \psi)} - \del{}{i}{\frac{\hbar^{2}}{2m}(\del[i]{}{\psi} + iqa^{i}\psi)}, \\
-	0 &= -\frac{\hbar^{2}}{2m}(\del{}{i}{\del[i]{}{\psi}} - \del{}{i}{iqa^{i}\psi} - iqa_{i}\del[i]{}{\psi} - q^{2}a_{i}a^{i}\psi) + V\psi + \frac{\hbar c}{i}\del{}{0}{\psi} + \hbar cqa_{0}\psi, \\
-	i\hbar\del{}{t}{\psi} &= -\frac{\hbar^{2}}{2m}(\del{}{i}{\del[i]{}{\psi}} + \del{}{i}{iqa^{i}\psi} + iqa_{i}\del[i]{}{\psi} + q^{2}a_{i}a^{i}\psi) + (V + \hbar cqa_{0})\psi.
+	0 &= -\frac{\hbar^{2}}{2m}iqa_{i}(\del{i}{}{\psi} - iqa^{i}\psi) + V\psi + \frac{\hbar c}{2i}(\del{}{0}{\psi} + iqa_{0}\psi + iqa_{0}\psi) - \del{}{0}{\frac{\hbar c}{2i}( - \psi)} - \del{}{i}{\frac{\hbar^{2}}{2m}(\del{i}{}{\psi} + iqa^{i}\psi)}, \\
+	0 &= -\frac{\hbar^{2}}{2m}(\del{}{i}{\del{i}{}{\psi}} - \del{}{i}{iqa^{i}\psi} - iqa_{i}\del{i}{}{\psi} - q^{2}a_{i}a^{i}\psi) + V\psi + \frac{\hbar c}{i}\del{}{0}{\psi} + \hbar cqa_{0}\psi, \\
+	i\hbar\del{}{t}{\psi} &= -\frac{\hbar^{2}}{2m}(\del{}{i}{\del{i}{}{\psi}} + \del{}{i}{iqa^{i}\psi} + iqa_{i}\del{i}{}{\psi} + q^{2}a_{i}a^{i}\psi) + (V + \hbar cqa_{0})\psi.
 \end{align*}
 Introducing $p_{i} = \frac{\hbar}{i}\del{}{i}{}$ and identifying $A_{i} = \hbar a_{i}$, we have
 \begin{align*}
@@ -381,7 +381,7 @@ Similar principles can also be applied to field theories which depend on multipl
 
 To be somewhat more specific, consider a Lagrangian such as
 \begin{align*}
-	\lag = \del{}{\mu}{\cc{(\phi^{a})}}\del[\mu]{}{\phi^{a}} - V(\cc{(\phi^{a})}\phi^{a}),
+	\lag = \del{}{\mu}{\cc{(\phi^{a})}}\del{\mu}{}{\phi^{a}} - V((\phi^{a})\cc\phi^{a}),
 \end{align*}
 which is invariant under a transformation $\phi^{a} \to \psi^{a} = U_{b}^{a}\phi^{b}$. To obtain a criterion for the transformations such that this is invariant, note that
 \begin{align*}
@@ -396,13 +396,13 @@ One way (and, indeed, the only way as far as I can see) for this to be equal to 
 
 As a side note, I include a vector notation for this Lagrangian, that being
 \begin{align*}
-	\lag = \del{}{\mu}{(\vb*{\phi})^{\dagger}}\del[\mu]{}{\vb*{\phi}} - V((\vb*{\phi})^{\dagger}\vb*{\phi}),
+	\lag = \del{}{\mu}{(\vb*{\phi})^{\dagger}}\del{\mu}{}{\vb*{\phi}} - V((\vb*{\phi})^{\dagger}\vb*{\phi}),
 \end{align*}
 with which the symmetry under the action of $U$ is more clear.
 
 We would like to extend the set of symmetries to position-dependent unitary matrices. This will affect the derivative term according to
 \begin{align*}
-	\del[\mu]{}{U\vb*{\phi}} = U\del[\mu]{}{\vb*{\phi}} + (\del[\mu]{}{U})\vb*{\phi} = U(\del[\mu]{}{} + U^{\dagger}(\del[\mu]{}{U}))\vb*{\phi}.
+	\del{\mu}{U\vb*{\phi}} = U\del{\mu}{}{\vb*{\phi}} + (\del{\mu}{}{U})\vb*{\phi} = U(\del{\mu}{}{} + U^{\dagger}(\del{\mu}{}{U}))\vb*{\phi}.
 \end{align*}
 To remove this new term, we add a gauge field $A_{\mu}$, where each component is a matrix, and transform the derivative according to
 \begin{align*}
