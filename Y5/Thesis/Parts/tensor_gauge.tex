@@ -1,0 +1,131 @@
+\section{Tensor Gauge Theories}
+
+\paragraph{Important Aspects}
+
+\paragraph{Noether's Theorem For Higher-Order Problems}
+Noether's theorem as proved in previous summaries is restricted to field theories up to first order in the derivatives. To study these theories we will need a version that works on higher-order theories too.
+
+We may follow a previous derivation up to a certain point. Assuming that
+\begin{align*}
+	\inte{\Omega^{\prime}}{}\dd{(x\p)^{\mu}}{\lag^{\prime}} - \inte{\Omega}{}\dd{x^{\mu}}{\lag} = \inte{\Omega}{}\dd{x^{\mu}}{\del{}{\mu}{V^{\mu}}}
+\end{align*}
+for some particular variational transform, we have
+\begin{align*}
+	\inte{\Omega}{}\dd{x^{\mu}}{\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) + \pdv{x^{\nu}}(\lag(\phi^{a}, x^{\mu})\var{x^{\nu}})} = \inte{\Omega}{}\dd{x^{\mu}}{\del{}{\nu}{V^{\nu}}}.
+\end{align*}
+The two first terms can now be expanded according to
+\begin{align*}
+	\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) =& \pdv{\lag}{\phi^{a}}\bvar{\phi^{a}} + \pdv{\lag}{\del{}{\mu}\phi^{a}}\bvar{\del{}{\mu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\bvar{\del{}{\mu}\del{}{\nu}\phi^{a}}.
+\end{align*}
+Using the equations of motion and the fact that barred variations commute with derivatives, we have
+\begin{align*}
+	\lag((\phi^{\prime})^{a}, x^{\mu}) - \lag(\phi^{a}, x^{\mu}) =& \left(\del{}{\mu}\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\mu}\del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right)\bvar{\phi^{a}} + \pdv{\lag}{\del{}{\mu}\phi^{a}}\del{}{\mu}\bvar{\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\mu}\del{}{\nu}\bvar{\phi^{a}} \\
+	=& \del{}{\mu}\left(\pdv{\lag}{\del{}{\mu}\phi^{a}}\bvar{\phi^{a}}\right)  - \del{}{\mu}\del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\bvar{\phi^{a}} + \del{}{\mu}\left(\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\bvar{\phi^{a}}\right) - \del{}{\mu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\bvar{\phi^{a}} \\
+	=& \del{}{\mu}\left(\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\right)\bvar{\phi^{a}}\right)  - \del{}{\mu}\del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\bvar{\phi^{a}} \\
+	 &- \del{}{\nu}\left(\del{}{\mu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\bvar{\phi^{a}}\right) + \del{}{\nu}\del{}{\mu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\bvar{\phi^{a}} \\
+	=& \del{}{\mu}\left(\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right)\bvar{\phi^{a}}\right).
+\end{align*}
+This nets us
+\begin{align*}
+	\inte{\Omega}{}\dd{x}{\del{}{\mu}\left(\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right)\bvar{\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\bvar{\phi^{a}} + \lag\var{x^{\mu}} - V^{\mu}\right)} = 0.
+\end{align*}
+
+Using the expansion of the full variation we can write this as
+\begin{align*}
+	 &\inte{\Omega}{}\dd{x}\del{}{\mu}\left(\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right)\left(\var{\phi^{a}} - \del{}{\rho}\phi^{a}\var{x^{\rho}}\right) + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\left(\var{\phi^{a}} - \del{}{\rho}\phi^{a}\var{x^{\rho}}\right) + \lag\var{x^{\mu}} - V^{\mu}\right) \\
+	=& \inte{\Omega}{}\dd{x}\del{}{\mu}\left(\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\right)\var{\phi^{a}} - \del{}{\rho}\phi^{a}\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right)\var{x^{\rho}} \right. \\
+	 &- \left. \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\left(\del{}{\nu}\del{}{\rho}\phi^{a} + \del{}{\rho}\phi^{a}\del{}{\nu}\right)\var{x^{\rho}} + \lag\var{x^{\mu}} - V^{\mu}\right) \\
+	=& \inte{\Omega}{}\dd{x}\del{}{\mu}\left(\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\right)\var{\phi^{a}} \right. \\
+	 &+ \left. \left(\lag\kdelta{\mu}{\rho} - \del{}{\rho}\phi^{a}\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right) - \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\left(\del{}{\nu}\del{}{\rho}\phi^{a} + \del{}{\rho}\phi^{a}\del{}{\nu}\right)\right)\var{x^{\rho}} - V^{\mu}\right) = 0.
+\end{align*}
+The full conserved current is then
+\begin{align*}
+	j^{\mu} =& \left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\right)\var{\phi^{a}} \\
+	         &+ \left(\lag\kdelta{\mu}{\rho} - \del{}{\rho}\phi^{a}\left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\right) - \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\left(\del{}{\nu}\del{}{\rho}\phi^{a} + \del{}{\rho}\phi^{a}\del{}{\nu}\right)\right)\var{x^{\rho}} - V^{\mu}.
+\end{align*}
+
+\paragraph{A First Theory in 2D}
+The first theory we will study is defined by the Lagrangian
+\begin{align*}
+	\lag = \frac{1}{2}\mu_{0}(\del{}{0}\phi)^{2} - \frac{1}{2\mu}(\del{}{x}\del{}{y}\phi)^{2},
+\end{align*}
+which we can symmetrize to
+\begin{align*}
+	\lag = \frac{1}{2}\mu_{0}(\del{}{0}\phi)^{2} - \frac{1}{8\mu}(\del{}{x}\del{}{y}\phi + \del{}{y}\del{}{x}\phi)^{2}.
+\end{align*}
+The equation of motion is
+\begin{align*}
+	\mu_{0}\del{2}{0}\phi + \frac{1}{4\mu}\left(\del{}{x}\del{}{y}(\del{}{x}\del{}{y}\phi + \del{}{y}\del{}{x}\phi) + \del{}{y}\del{}{x}(\del{}{x}\del{}{y}\phi + \del{}{y}\del{}{x}\phi)\right) = \mu_{0}\del{2}{0}\phi + \frac{1}{\mu}\del{2}{x}\del{2}{y}\phi = 0.
+\end{align*}
+Note the minus sign appearing in the term originating from derivatives of order 2.
+
+Assuming $\mu$ and $\mu_{0}$ to be constant parameters of the theory, there exists a symmetry $\var{\phi} = f(x) + g(y)$. The full Noether current is
+\begin{align*}
+	j^{\mu} =& \left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\right)\var{\phi^{a}}.
+\end{align*}
+Its Noether charge is
+\begin{align*}
+	j^{0} = \mu_{0}(f + g)\del{0}{}\phi,
+\end{align*}
+and its current is
+\begin{align*}
+	j^{x} =& -(f + g)\del{}{y}\left(-\frac{1}{4\mu}(\del{}{x}\del{}{y}\phi + \del{}{y}\del{}{x}\phi)\right) - \frac{1}{4\mu}(\del{}{x}\del{}{y}\phi + \del{}{y}\del{}{x}\phi)g\p = \frac{1}{2\mu}\left((f + g)\del{}{y}\del{y}{}\del{x}{}\phi - g\p\del{x}{}\del{y}{}\phi\right), \\
+	j^{y} =& \frac{1}{2\mu}\left((f + g)\del{}{x}\del{x}{}\del{y}{}\phi - f\p\del{x}{}\del{y}{}\phi\right).
+\end{align*}
+The continuity equation is thus
+\begin{align*}
+	\del{}{0}j^{0} + \del{}{x}j^{x} + \del{}{y}j^{y} = 0.
+\end{align*}
+Note that the non-trivial contributions to the space components arise from the derivatives of the first terms acting on the field part. There is a factor $f + g$ which arises in both the charge and these terms in the current, hence we conclude that
+\begin{align*}
+	\del{}{0}J^{0} + \del{}{x}J^{x} + \del{}{y}J^{y} = 0
+\end{align*}
+for
+\begin{align*}
+	J^{0} = \mu_{0}\del{0}{}\phi,\ J^{x} = \frac{1}{2\mu}\del{}{y}\del{y}{}\del{x}{}\phi,\ J^{y} = \frac{1}{2\mu}\del{}{x}\del{x}{}\del{y}{}\phi.
+\end{align*}
+
+It will later be argued that the first derivatives of $\phi$ are not well-defined, meaning that the current will not be well-defined (although the continuity equation will still be). Therefore it will be desirable to write the current in terms of higher-order derivatives of the field. To that end, we note that the symmetry that produces the above current has one term with a derivative guaranteed to be factored out. More specifically, the family of indices that appear to a second order has a term proportional to
+\begin{align*}
+	J^{\mu} =& -\del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}} = -\del{}{\nu}J^{\mu\nu}.
+\end{align*}
+The symmetrized version of the theory has
+\begin{align*}
+	J^{xy} = J^{yx} = -\frac{1}{2\mu}\del{x}{}\del{y}{}\phi.
+\end{align*}
+We thus have
+\begin{align*}
+	\del{}{0}J^{0} = \del{}{x}\del{}{y}(J^{xy} + J^{y}).
+\end{align*}
+We are definitely arriving at something interesting here, so let us try to generalize the above.
+
+Consider a system with a Lagrangian such that some set of indices appear only to first order and the other only to second order. The second-order indices are assumed to appear symmetrically. Suppose next that there exists a family of quasisymmetries satisfying
+\begin{itemize}
+	\item the fields are varied in a way that does not depend on themselves.
+	\item the variation depends only on the second-order coordinates.
+	\item the coordinates themselves are not varied.
+\end{itemize}
+The corresponding Noether current is
+\begin{align*}
+	j^{\mu} =& \left(\pdv{\lag}{\del{}{\mu}\phi^{a}} - \del{}{\nu}\pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}} + \pdv{\lag}{\del{}{\mu}\del{}{\nu}\phi^{a}}\del{}{\nu}\right)\var{\phi^{a}} - V^{\mu}.
+\end{align*}
+For the family of first order indices only the first and last terms are non-trivial, and we write them as
+\begin{align*}
+	j^{\mu} = J^{\mu}\var{\phi^{a}} - V^{\mu}.
+\end{align*}
+For the family of second-order indices we have two distinct contributions
+\begin{align*}
+	j^{\mu} = J^{\mu\nu}\del{}{\nu}\var{\phi^{a}} - \var{\phi^{a}}\del{}{\nu}J^{\mu\nu}.
+\end{align*}
+Introducing implicit summation over the two disjoint categories of indices, the continuity equation now reads
+\begin{align*}
+	\del{}{\mu}j^{\mu} + \del{}{\mu}\left(J^{\mu\nu}\del{}{\nu}\var{\phi^{a}} - \var{\phi^{a}}\del{}{\nu}J^{\mu\nu}\right) = 0.
+\end{align*}
+Expanding the bracket we find
+\begin{align*}
+	\del{}{\mu}(J^{\mu}\var{\phi^{a}}) + \del{}{\mu}J^{\mu\nu}\del{}{\nu}\var{\phi^{a}} + J^{\mu\nu}\del{}{\mu}\del{}{\nu}\var{\phi^{a}} - \del{}{\mu}\var{\phi^{a}}\del{}{\nu}J^{\mu\nu} - \var{\phi^{a}}\del{}{\mu}\del{}{\nu}J^{\mu\nu} = 0,
+\end{align*}
+which can be simplified to
+\begin{align*}
+	\var{\phi^{a}}\del{}{\mu}J^{\mu} - \del{}{\mu}V^{\mu} + J^{\mu\nu}\del{}{\mu}\del{}{\nu}\var{\phi^{a}} - \var{\phi^{a}}\del{}{\mu}\del{}{\nu}J^{\mu\nu} = 0.
+\end{align*}
