@@ -1,0 +1,193 @@
+\section{Differential Geometry}
+
+\paragraph{Differential Forms}
+The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as
+\begin{align*}
+	\bigwedge\limits_{k = 1}^{p}d\chi^{\mu_{k}} = \sum\limits_{\sigma\in S_{p}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p}d\chi^{\mu_{\sigma(k)}}.
+\end{align*}
+Here $S_{p}$ is the set of permutations of $p$ elements. There exists
+\begin{align*}
+	n_{p}^{N} = {N\choose k}
+\end{align*}
+basis elements. We note that the wedge product is antisymmetric under the exchange of two basis elements. Hence, once an ordering of indices has been chosen, any permutation will simply create a linearly dependent map.
+
+Consider now some antisymmetric tensor $\omega$. Introducing the antisymmetrizer
+\begin{align*}
+	\bigotimes_{k = 1}^{p}d\chi^{[\mu_{\sigma(k)}]} = \frac{1}{p!}\sum\limits_{\sigma\in S_{p}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p}d\chi^{\mu_{\sigma(k)}},
+\end{align*}
+the symmetry yields
+\begin{align*}
+	\omega = \omega_{\mu_{1}\dots \mu_{p}}\bigotimes_{k = 1}^{p}d\chi^{\mu_{\sigma(k)}} = \omega_{\mu_{1}\dots \mu_{p}}\bigotimes_{k = 1}^{p}d\chi^{[\mu_{\sigma(k)}]} = \frac{1}{p!}\omega_{\mu_{1}\dots \mu_{p}}\bigwedge\limits_{k = 1}^{p}d\chi^{\mu_{k}}.
+\end{align*}
+In other words, we can antisymmetrize the components of $\omega$ to write it as a differential form.
+
+\paragraph{The Exterior Derivative}
+We define the exterior derivative of a differential form according to
+\begin{align*}
+	d\omega = \frac{1}{p!}\del{}{\mu_{1}}\omega_{\mu_{2}\dots \mu_{p + 1}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{\mu_{k}},
+\end{align*}
+which is a $p + 1$-form.
+
+\paragraph{Matrix-Valued Differential Forms}
+A matrix-valued differential form is a differential form whose components are matrices. For these we need to define a slightly different wedge product according to
+\begin{align*}
+	\tensor{(A\wedge B)}{^{a}_{b}} = \tensor{A}{^{a}_{c}}\wedge\tensor{B}{^{c}_{b}}.
+\end{align*}
+In words, its components are found by computing the matrix product of the corresponding components of $A$ and $B$, but using the wedge product instead of the normal multiplication. The output of this is then a new matrix-valued differential form. Their exterior derivatives are defined as for normal differential forms. We will use greek indices for the differential form structure and latin indices for the matrix structure.
+
+\paragraph{Non-Abelian Gauge Theory - an Example}
+We define the field strength 2-form
+\begin{align*}
+	F = \df{A} + A^{2},
+\end{align*}
+where we now suppress wedge products, as tensor products will not appear. By definition we have
+\begin{align*}
+	A^{2} = (A_{\mu}\df{\chi^{\mu}})\wedge(A_{\nu}\df{\chi^{\nu}}) = \frac{1}{2}(A_{\mu}A_{\nu} - A_{\nu}A_{\mu})\df{\chi^{\mu}}\df{\chi^{\nu}} = \frac{1}{2}\comm{A_{\mu}}{A_{\nu}}\df{\chi^{\mu}}\df{\chi^{\nu}}.
+\end{align*}
+Now, $F$ is a differential form, meaning we can write $F = \frac{1}{2}F_{\mu\nu}\df{\chi^{\mu}}\df{\chi^{\nu}}$. As for $\df{A}$ we have
+\begin{align*}
+	\df{A} = \del{}{\mu}A_{\nu}\df{\chi^{\mu}}\df{\chi^{\nu}} = \frac{1}{2}(\del{}{\mu}A_{\nu} - \del{}{\nu}A_{\mu})\df{\chi^{\mu}}\df{\chi^{\nu}},
+\end{align*}
+where we in the last step explicitly antisymmetrized the result. Thus we have
+\begin{align*}
+	F_{\mu\nu} = \del{}{\mu}A_{\nu} - \del{}{\nu}A_{\mu} + \comm{A_{\mu}}{A_{\nu}}.
+\end{align*}
+
+Next, defining the gauge covariant derivative
+\begin{align*}
+	\grad_{\mu} = \del{}{\mu} + A_{\mu}.
+\end{align*}
+We then have
+\begin{align*}
+	\comm{\grad_{\mu}}{\grad_{\nu}} =& \comm{\del{}{\mu}}{\del{}{\nu}} + \comm{A_{\mu}}{A_{\nu}} + \comm{\del{}{\mu}}{A_{\nu}} - \comm{\del{}{\nu}}{A_{\mu}}.
+\end{align*}
+For the first commutator, all components have the same matrix structure, so they commute. For the last two terms we will need to use the product rule to find
+\begin{align*}
+	\comm{\del{}{\mu}}{A_{\nu}} = \del{}{\mu}A_{\nu} - A_{\nu}\del{}{\mu} = (\del{}{\mu}A_{\nu}) + A_{\nu}\del{}{\mu} - A_{\nu}\del{}{\mu} = (\del{}{\mu}A_{\nu}),
+\end{align*}
+with the brackets highlighting the terms that are self-contained and do not act as operators. Thus we have
+\begin{align*}
+	\comm{\grad_{\mu}}{\grad_{\nu}} = (\del{}{\mu}A_{\nu}) - (\del{}{\nu}A_{\mu}) + \comm{A_{\mu}}{A_{\nu}} = F_{\mu\nu}.
+\end{align*}
+Next, for two vector fields we have
+\begin{align*}
+	F(X, Y) =& \frac{1}{2}\comm{\grad_{\mu}}{\grad_{\nu}}\df{\chi^{\mu}}(X)\df{\chi^{\nu}}(Y) = \frac{1}{2}\comm{\grad_{\mu}}{\grad_{\nu}}(X^{\mu}Y^{\nu} - X^{\nu}Y^{\mu}).
+\end{align*}
+We have
+\begin{align*}
+	\grad_{\rho}X^{\mu}Y^{\nu} = \del{}{\rho}X^{\mu}Y^{\nu} + A_{\rho}(X^{\mu}Y^{\nu}) = Y^{\nu}\del{}{\rho}(X^{\mu}) + X^{\mu}\del{}{\rho}(Y^{\nu}) + X^{\mu}Y^{\nu}\del{}{\rho} + A_{\rho}X^{\mu}Y^{\nu},
+\end{align*}
+and in particular
+\begin{align*}
+	\grad_{\nu}X^{\mu}Y^{\nu} =& Y^{\nu}\del{}{\nu}(X^{\mu}) + X^{\mu}\del{}{\nu}(Y^{\nu}) + X^{\mu}Y^{\nu}\del{}{\nu} + A_{\nu}X^{\mu}Y^{\nu} = Y^{\nu}\del{}{\nu}(X^{\mu}) + X^{\mu}\del{}{\nu}(Y^{\nu}) + X^{\mu}\grad_{Y}, \\
+	\grad_{\mu}X^{\mu}Y^{\nu} =& Y^{\nu}\del{}{\mu}(X^{\mu}) + X^{\mu}\del{}{\mu}(Y^{\nu}) + Y^{\nu}\grad_{X}.
+\end{align*}
+Thus we have
+\begin{align*}
+	\grad_{\mu}\grad_{\nu}X^{\mu}Y^{\nu} =& \del{}{\mu}Y^{\nu}\del{}{\nu}(X^{\mu}) + \del{}{\mu}X^{\mu}\del{}{\nu}(Y^{\nu}) + \del{}{\mu}X^{\mu}\grad_{Y} + A_{\mu}X^{\mu}\grad_{Y} \\
+	=& \del{}{\mu}Y^{\nu}\del{}{\nu}(X^{\mu}) + \del{}{\mu}X^{\mu}\del{}{\nu}(Y^{\nu}) + (\del{}{\mu}X^{\mu})\grad_{Y} + \grad_{X}\grad_{Y}, \\
+	\grad_{\nu}\grad_{\mu}X^{\mu}Y^{\nu} =& \del{}{\nu}Y^{\nu}\del{}{\mu}(X^{\mu}) + \del{}{\nu}X^{\mu}\del{}{\mu}(Y^{\nu}) + (\del{}{\nu}Y^{\nu})\grad_{X} + \grad_{Y}\grad_{X}
+\end{align*}
+The final result is found by first computing the difference of the above. One then notes down the result of swapping $X$ and $Y$ in that difference and subtracting that from what you have. First, the two connections net their commutator. The lone connections are found twice after the subtaction. Next, for the other terms the derivative can act on either factor or move to the right. The two former have terms with opposite sign cancelling them, and
+\begin{align*}
+	\comm{\grad_{\mu}}{\grad_{\nu}}(X^{\mu}Y^{\nu} - X^{\nu}Y^{\mu}) =& 2\comm{\grad_{X}}{\grad_{Y}} + 2\left((\del{}{\mu}X^{\mu})\grad_{Y} - (\del{}{\nu}Y^{\nu})\grad_{X}\right) \\
+	&+ 2(Y^{\nu}(\del{}{\nu}X^{\mu}) + X^{\mu}(\del{}{\nu}Y^{\nu}))\del{}{\mu} - 2(Y^{\nu}(\del{}{\mu}X^{\mu}) + X^{\mu}(\del{}{\mu}Y^{\nu}))\del{}{\nu} \\
+	=& 2\comm{\grad_{X}}{\grad_{Y}} + 2\left((\del{}{\mu}X^{\mu})\grad_{Y} - (\del{}{\nu}Y^{\nu})\grad_{X}\right) \\
+	 &+ 2\comm{Y}{X}^{\mu}\del{}{\mu} + 2(X^{\mu}(\del{}{\nu}Y^{\nu})\del{}{\mu} - Y^{\nu}(\del{}{\mu}X^{\mu})\del{}{\nu}) \\
+	=& 2\comm{\grad_{X}}{\grad_{Y}} + 2\left((\del{}{\mu}X^{\mu})Y^{\nu}A_{\nu} - (\del{}{\nu}Y^{\nu})X^{\mu}A_{\mu}\right) + 2\comm{Y}{X}^{\mu}\del{}{\mu} \\
+	=& 2\left(\comm{\grad_{X}}{\grad_{Y}} + \comm{Y}{X}^{\mu}A_{\mu} + \comm{Y}{X}^{\mu}\del{}{\mu}\right),
+\end{align*}
+and thus
+\begin{align*}
+	F(X, Y) = \comm{\grad_{X}}{\grad_{Y}} - \grad_{\comm{X}{Y}}.
+\end{align*}
+
+As for the exterior derivative of the field strength, we have
+\begin{align*}
+	\df{F} =& \frac{1}{2}\del{}{\mu}F_{\nu\rho}\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}} \\
+	=& \frac{1}{2}\left(\del{}{\mu}(A_{\nu}A_{\rho}) - \del{}{\mu}(A_{\rho}A_{\nu})\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}} \\
+	=& \frac{1}{2}\left(\del{}{\mu}(A_{\nu})A_{\rho} + A_{\nu}\del{}{\mu}(A_{\rho}) - \del{}{\mu}(A_{\rho})A_{\nu} - A_{\rho}\del{}{\mu}(A_{\nu})\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}},
+\end{align*}
+as we have for any differential form $F$ that $\df{\df{F}} = \del{}{\mu}\del{}{\nu}F_{I}\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{I}} = 0$, using the notation $I$ to refer to some set of indices. Now, by comparison we have
+\begin{align*}
+	FA - AF = \frac{1}{2}\comm{F_{\mu\nu}}{A_{\rho}}\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}} = \frac{1}{2}\left(F_{\mu\nu}A_{\rho} - A_{\mu}F_{\nu\rho}\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}},
+\end{align*}
+using the properties of the indices under cyclic permutation. We find
+\begin{align*}
+	F_{\mu\nu}A_{\rho} - A_{\mu}F_{\nu\rho} =& \left(\del{}{\mu}A_{\nu} - \del{}{\nu}A_{\mu} + \comm{A_{\mu}}{A_{\nu}}\right)A_{\rho} - A_{\mu}\left(\del{}{\nu}A_{\rho} - \del{}{\rho}A_{\nu} + \comm{A_{\nu}}{A_{\rho}}\right) \\
+	=& \del{}{\mu}(A_{\nu})A_{\rho} - \del{}{\nu}(A_{\mu})A_{\rho} - A_{\mu}\del{}{\nu}A_{\rho} + A_{\mu}\del{}{\rho}A_{\nu},
+\end{align*}
+and permuting indices cyclically we find
+\begin{align*}
+	\df{F} + AF - FA = 0,
+\end{align*}
+which is a so-called Bianchi identity.
+
+Next we study the form $F^{2}$. We have
+\begin{align*}
+	\df{F^{2}} = \df{(F)}F + F\df{F} = (FA - AF)F + F(FA - AF).
+\end{align*}
+Computing the trace of this involves computing the trace of objects of the form
+\begin{align*}
+	F_{\mu_{1}\mu_{2}}A_{\mu_{3}}F_{\mu_{4}\mu_{5}}\bigwedge\limits_{i = 1}^{5}\df{\chi^{\mu_{i}}}.
+\end{align*}
+We note that if the first factor of $F$ can be moved to the right in the trace, we will have shown that it is zero. Traces are invariant under cyclic permutation of matrices, so we can certainly move the components themselves. As for the differential forms, moving the first and second ones to the right requires either passing through $3$ others, providing no net sign and yielding
+\begin{align*}
+	\tr(\df{F^{2}}) = \df{\tr(F^{2})} = 0.
+\end{align*}
+
+Similarly we may consider the form $F^{n}$. Its trace is
+\begin{align*}
+	\df{\tr(F^{n})} = n\tr(F^{n - 1}\df{F}) = n\tr(F^{n - 1}(FA - AF)).
+\end{align*}
+By the exact same argument we must have
+\begin{align*}
+	\df{\tr(F^{n})} = 0.
+\end{align*}
+Alternatively, let us prove that
+\begin{align*}
+	\df{F^{n}} = F^{n}A - AF^{n}.
+\end{align*}
+Evidently it holds for $n = 1$. Next, assuming it to hold for some particular $n$, it follows that
+\begin{align*}
+	\df{F^{n + 1}} =& \df{(F^{n})}F + F^{n}\df{F} \\
+	               =& (F^{n}A - AF^{n})F + F^{n}(FA - AF) \\
+	               =& F^{n + 1}A - AF^{n + 1},
+\end{align*}
+completing the proof. Using the properties of the trace and the cyclic permutivity of the indices, we reobtain the same result.
+
+The form $F^{2}$ is of some more interest. We have
+\begin{align*}
+	F^{2} = (\df{A})^{2} + A^{2}\df{A} + \df{(A)}A^{2} + A^{4}.
+\end{align*}
+Let us compute its trace. The last term is the easiest to handle as it is a contraction of a symmetric matrix product with an antisymmetric differential form, and is thus zero. Antisymmetrizing the components does not help due to the trace, which allows you to cyclically permute the matrices without changing the sign. Antisymmetrizing they start with the opposite sign of another term related to the first one by cyclic permutation, and it must be zero. As for the others we have
+\begin{align*}
+	\tr((\df{A})^{2} + A^{2}\df{A} + \df{(A)}A^{2}) =& \tr(\df{(A\df{A})} + \frac{2}{3}(A^{2}\df{A} + \df{(A)}A^{2} + A\df{(A)}A)) \\
+	=& \tr(\df{(A\df{A})} + \frac{2}{3}\df{A^{3}}) \\
+	=& \df{\tr((A\df{A}) + \frac{2}{3}A^{3})}.
+\end{align*}
+
+Let us finally investigate the topological invariance of integrals of $F^{2}$. Under a small deformation of $A$, we have
+\begin{align*}
+	\var{\tr(F^{n})} =& n\tr(F^{n - 1}\var{F}) \\
+	                 =& n\left(\tr(F^{n - 1}\df{\var{A}}) + \tr(F^{n - 1}\var{A}A) + \tr(F^{n - 1}A\var{A})\right) \\
+	                 =& n\left(\tr(F^{n - 1}\df{\var{A}}) - \tr(AF^{n - 1}\var{A}) + \tr(F^{n - 1}A\var{A})\right) \\
+	                 =& n\tr(\df{F^{n - 1}\var{A}}).
+\end{align*}
+
+\paragraph{Integration of Differential Forms}
+Consider a set of $p$ tangent vectors $X_{i}$. The corresponding coordinate displacements are $\dd{\chi_{i}^{a}} = X_{i}^{a}\dd{t_{i}}$, with no sum over $i$. We would now like to compute the $p$-dimensional volume defined by the $X_{i}$ and $\dd{t_{i}}$. We expect that if any of the $X_{i}$ are linearly dependent the volume should be zero. We also expect that the volume be linear in the $X_{i}$. This implies
+\begin{align*}
+	\dd{V_{p}} = \omega(X_{1}, \dots, X_{p})\dd{t_{1}}\dots\dd{t_{p}}
+\end{align*}
+for some differential form $\omega$. We now define the integral over the $p$-volume $S$ over the $p$-form $\omega$ as
+\begin{align*}
+	\inte{S}{}{\omega} = \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p})}}.
+\end{align*}
+Here the $\gamma_{i}$ are the set of curves that span $S$, the dot symbolizes the derivative with respect to the individual curve parameters and the right-hand integration is performed over the appropriate set of parameter values.
+
+\paragraph{Stokes' Theorem}
+Stokes' theorem relates the integral of a differential form $d\omega$ over some subset $V$ of a manifold to an integral over $\bound{V}$ of another differential form. It states that
+\begin{align*}
+	\inte{V}{}\df{\omega} = \oint\limits_{\bound{V}}\omega.
+\end{align*}
