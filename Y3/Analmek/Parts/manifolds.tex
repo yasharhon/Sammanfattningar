@@ -26,45 +26,45 @@ These live in the tangent space $\ts{p}{M}$ of the manifold $M$ at the point $p$
 
 To get more of a sense of how this can be related to vectors, consider the directional derivative
 \begin{align*}
-\grad_{\vb{n}} = \vb{n}\cdot\grad = n^{a}\del{a}{}.
+	\grad_{\vb{n}} = \vb{n}\cdot\grad = n^{a}\del{}{a}.
 \end{align*}
 When applied to Euclidean space, there is a direct correspondence between $\vb{n}$ and the directional derivative, as $\grad_{\vb{n}}{\vb{x}} = \vb{n}$. For more general manifolds, tangent vectors are defined to be directional derivatives. Note that this definition carries with it the same dependence on position as was previously warned about.
 
 Tangent vectors transform according to
 \begin{align*}
-X^{a}\del{a}{} = X^{a}\del{a}{(\chi^{\prime})^{b}}\del[\prime]{b}{},
+	X^{a}\del{}{a} = X^{a}\del{}{a}{(\chi^{\prime})^{b}}\delp{b},
 \end{align*}
 implying the transformation rule
 \begin{align*}
-(X^{\prime})^{a} = \del{b}{(\chi^{\prime})^{a}}X^{b},
+	(X^{\prime})^{a} = \del{}{b}{(\chi^{\prime})^{a}}X^{b},
 \end{align*}
 which is the same as the transformation rule for contravariant vector components in Euclidean space.
 
 \paragraph{Dual Vectors}
 To define dual vectors, we first introduce the dual space as the set of all linear operations from the tangent space to real numbers. This is also a vector space. The basis for the space is defined such that
 \begin{align*}
-\db{a}(\del{b}{}) = \kdelta{b}{a}.
+	\db{a}(\del{}{b}) = \kdelta{a}{b}.
 \end{align*}
 
 In Euclidean space the dual basis was constructed from the gradient. The only concept here that carries over to manifolds is a definition based on small changes in the coordinates. More specifically, for any smooth scalar field $f$ we define a dual vector field according to
 \begin{align*}
-df(X) = Xf = X^{a}\del{a}{f}
+	\df{f}(X) = Xf = X^{a}\del{}{a}{f}
 \end{align*}
 and call it the differential. This has a similar structure to an inner product if the dual vector field has components $df_{a} = \del{a}{f}$. These components correspond to those of the gradient in Euclidean space. The basis we desire is $\db{a} = d\chi^{a}$. These live in the dual space $\ds{p}{M}$ of the manifold $M$ at the point $p$.
 
 The dual basis satisfies satisfies
 \begin{align*}
-d\chi^{a}(\del{b}{}) = \del{b}{\chi^{a}} = \kdelta{b}{a},
+	\df{\chi^{a}}(\del{}{b}) = \del{}{b}{\chi^{a}} = \kdelta{b}{a},
 \end{align*}
 as expected. Using this, we obtain
 \begin{align*}
-df = (\del{a}{f})d\chi^{a},
+	\df{f} = (\del{a}{f})\df{\chi^{a}},
 \end{align*}
 which at least looks like the differential of a function.
 
 The components transform according to
 \begin{align*}
-\del{a}{f} = \del[\prime]{b}{f}\del{a}{(\chi^{\prime})^{b}},
+	\del{}{a}f = \delp{b}f\del{}{a}{(\chi^{\prime})^{b}},
 \end{align*}
 which is the transformation rule for covariant vector components.
 
@@ -79,20 +79,20 @@ The tangent bundle of a manifold is defined as $TM = \bigcup\limits_{p}\ts{p}{M}
 We may for a fixed $s$ define the function $\gamma_{sX}(p) = \gamma_{X}(p, s)$, which maps $M$ to itself.
 
 \paragraph{Pushforwards and Pullbacks}
-Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M_{1}}$ as $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
+Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M_{1}}$ by $f$ as the map $\ts{p}{M_{1}}\to\ts{p}{M_{2}}$ such that $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
 
 \paragraph{Tangents and the Pushforward}
-$f$ maps the cooordinates $\chi^{a}$ of $M_{1}$ to the coordinates $\eta^{\mu}$ of $M_{2}$. By definition we have
+Taking $f$ to map the cooordinates $\chi^{a}$ of $M_{1}$ to the coordinates $\eta^{\mu}$ of $M_{2}$, we have by definition that
 \begin{align*}
-(\puf{f}{V})\phi &= V(\pub{f}{\phi}) \\
-&= V^{a}\del{a}{(\phi\circ f)} \\
-&= V^{a}\del{\mu}{\phi}\del{a}{\eta^{\mu}},
+	(\puf{f}{V})\phi &= V(\pub{f}{\phi}) \\
+	                 &= V^{a}\del{}{a}{(\phi\circ f)} \\
+	                 &= V^{a}\del{}{a}{f^{\mu}}\del{}{\mu}{\phi},
 \end{align*}
-meaning $\puf{f}{V} = V^{a}\del{a}{\eta^{\mu}}\del{\mu}{}$.
+meaning $\puf{f}{V} = V^{a}\del{}{a}f^{\mu}\del{}{\mu}$.
 
-How do we interpret this? Consider some curve $\gamma$ in $M_{1}$ which is mapped to a curve $\alpha$ $M_{2}$ by $f$. If $V$ is the tangent of $\gamma$ at some particular point, we have
+How do we interpret this? Consider some curve $\gamma$ in $M_{1}$ which is mapped to a curve $\alpha$ in $M_{2}$ by $f$. If $V$ is the tangent of $\gamma$ at some particular point, we have
 \begin{align*}
-\dot{\alpha} = \dot{\eta^{\mu}}\del{\mu}{} = \del{a}{\eta^{\mu}}\dot{\chi^{a}}\del{\mu}{} = \del{a}{\eta^{\mu}}V^{a}\del{\mu}{},
+	\dot{\alpha} = \dot{f^{\mu}}\del{}{\mu} = \del{}{a}{f^{\mu}}\dot{\chi^{a}}\del{}{\mu} = V^{a}\del{}{a}{f^{\mu}}\del{}{\mu},
 \end{align*}
 meaning that the pushforward of a tangent by $f$ is the tangent of the curve produced by $f$.
 
@@ -101,9 +101,18 @@ We can now define the pullback of a $(0, m)$ tensor on $M_{2}$ according to
 \begin{align*}
 	\pub{f}{\omega}(V_{1}, \dots, V_{m}) = \omega(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}).
 \end{align*}
+Its components are
+\begin{align*}
+	\tensor{(\pub{f}{\omega})}{_{a_{1}\dots a_{m}}} =& \omega_{\mu_{1}\dots\mu_{m}}\prod\limits_{i = 1}^{m}\del{}{a_{i}}{f^{\mu_{i}}}.
+\end{align*}
+
 If $f$ is a bijection we may also define the more general pullback of a $(n, m)$ tensor on $M_{2}$ as
 \begin{align*}
 	\pub{f}{T}(V_{1}, \dots, V_{m}, \omega_{1}, \dots, \omega_{n}) = T(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}, \pub{(f^{-1})}{\omega_{1}}, \dots, \pub{(f^{-1})}{\omega_{n}}).
+\end{align*}
+Its components are
+\begin{align*}
+	\tensor*{(\pub{f}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} = T^{\mu_{1}\dots \mu_{n}}_{\nu_{1}\dots\nu_{m}}\prod\limits_{i = 1}^{m}\del{}{a_{i}}f^{\nu_{i}}\prod\limits_{j = 1}^{n}\del{}{\mu_{j}}(f^{-1})^{b_{j}}.
 \end{align*}
 
 \paragraph{The Lie Derivative}
@@ -115,18 +124,18 @@ For a tensor field $T$ we define the Lie derivative in the $X$-direction as
 \paragraph{An Expression for the Lie Derivative}
 As the definition of the Lie derivative is similar to that of the usual derivative, it follows that it is linear in its argument and satisfies the product rule, where the product in question is now the tensor product. This means that we can find a general expression for the Lie derivative of a tensor field by considering its action on tangent and dual vectors.
 
-First, for scalars we simply have $\lied{X}{f} = X^{a}\del{a}{f}$.
+First, for scalars we simply have $\lied{X}{f} = X^{a}\del{}{a}{f}$.
 
-When studying the effect on tangent vectors we will have to be extra careful. Let $\gamma_{\varepsilon X}$ map $p$ to $q$, and let $\eval{Y}_{p}(\omega) = \eval{Y^{a}}_{p}\eval{\del{a}{\omega}}_{p}$ to clarify at what point we are working. To first order in $\varepsilon$ we then have
+When studying the effect on tangent vectors we will have to be extra careful. Let $\gamma_{\varepsilon X}$ map $p$ to $q$, and let $\eval{Y}_{p}(\omega) = \eval{Y^{a}}_{p}\eval{\del{}{a}{\omega}}_{p}$ to clarify at what point we are working. To first order in $\varepsilon$ we then have
 \begin{align*}
 	\eval{\pub{\gamma_{\varepsilon X}}{Y}}_{q}(\omega) &= \eval{Y}_{q}(\pub{\gamma_{-\varepsilon X}}{\omega}) \\
-	                                                   &= \eval{Y^{a}}_{q}\eval{\del{a}{(\omega\circ\gamma_{-\varepsilon X})}}_{q} \\
-	                                                   &\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\right) \eval{\del{c}{\omega}}_{\gamma_{-\varepsilon X}(q)}\eval{\del{a}{(\gamma_{-\varepsilon X})^{c}}}_{q} \\
-	                                                   &\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\right) \left(\kdelta{a}{c} - \varepsilon\del{a}{X^{c}}\right)\eval{\del{c}{\omega}}_{p} \\
-	                                                   &\approx \left(\kdelta{a}{c}\eval{Y^{a}}_{p} + \varepsilon\kdelta{a}{c}\eval{ X^{b}\del{b}{Y^{a}}}_{p} - \varepsilon\del{a}{X^{c}}\eval{Y^{a}}_{p}\right)\eval{\del{c}{\omega}}_{p} \\
-	                                                   &= \eval{Y^{a}}_{p}\eval{\del{a}{\omega}}_{p} + \varepsilon\eval{ X^{b}\del{b}{Y^{a}}}_{p}\eval{\del{a}{\omega}}_{p} - \eval{Y^{a}}_{p}\varepsilon\del{a}{X^{c}}\eval{\del{c}{\omega}}_{p},
+	                                                   &= \eval{Y^{a}}_{q}\eval{\del{}{a}{(\omega\circ\gamma_{-\varepsilon X})}}_{q} \\
+	                                                   &\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{}{b}{Y^{a}}}_{p}\right) \eval{\del{}{c}{\omega}}_{\gamma_{-\varepsilon X}(q)}\eval{\del{}{a}{(\gamma_{-\varepsilon X})^{c}}}_{q} \\
+	                                                   &\approx \left(\eval{Y^{a}}_{p} + \varepsilon\eval{ X^{b}\del{}{b}{Y^{a}}}_{p}\right) \left(\kdelta{a}{c} - \varepsilon\del{}{a}{X^{c}}\right)\eval{\del{}{c}{\omega}}_{p} \\
+	                                                   &\approx \left(\kdelta{a}{c}\eval{Y^{a}}_{p} + \varepsilon\kdelta{a}{c}\eval{ X^{b}\del{}{b}{Y^{a}}}_{p} - \varepsilon\del{}{a}{X^{c}}\eval{Y^{a}}_{p}\right)\eval{\del{}{c}{\omega}}_{p} \\
+	                                                   &= \eval{Y^{a}}_{p}\eval{\del{}{a}{\omega}}_{p} + \varepsilon\eval{ X^{b}\del{}{b}{Y^{a}}}_{p}\eval{\del{}{a}{\omega}}_{p} - \eval{Y^{a}}_{p}\varepsilon\del{}{a}{X^{c}}\eval{\del{}{c}{\omega}}_{p},
 \end{align*}
-and thus $\lied{X}{Y} = \comm{X}{Y}$. In particular, we have $\lied{X}{\del{a}{}} = -(\del{a}{X^{b}})\del{b}{}$.
+and thus $\lied{X}{Y} = \comm{X}{Y}$. In particular, we have $\lied{X}{\del{}{a}{}} = -(\del{}{a}{X^{b}})\del{}{b}{}$.
 
 To find the Lie derivative of dual vectors, we will prove that the Lie derivative respects contradiction. This is evidently the case if the pullback does, so we will consider the pullback of the function $\omega_{a}V^{a}$. Introducing the isomorphism $f: \chi^{a}\to\eta^{\mu}$, where we use latin letters in the new coordinates to distinguish the two, we have
 \begin{align*}
@@ -134,31 +143,31 @@ To find the Lie derivative of dual vectors, we will prove that the Lie derivativ
 \end{align*}
 Next we have, by definition, $\pub{f}{\omega}(U) = \omega(\puf{f}{U})$, and by a previously obtained relation we find
 \begin{align*}
-	(\pub{f}{\omega})_{a} = \omega_{\mu}\del{a}{\eta^{\mu}}.
+	(\pub{f}{\omega})_{a} = \omega_{\mu}\del{}{a}{\eta^{\mu}}.
 \end{align*}
-Finally we have by definition $\pub{f}{V}(\gamma) = V(\pub{(f^{-1})}{\gamma})$. As has been reasoned above, we have $(\pub{(f^{-1})}{\gamma})_{\mu} = \gamma_{a}\del{\mu}{\chi^{a}}$, this implies $\pub{f}{V}(\gamma) = V^{\mu}\gamma_{a}\del{\mu}{\chi^{a}}$, and finally
+Finally we have by definition $\pub{f}{V}(\gamma) = V(\pub{(f^{-1})}{\gamma})$. As has been reasoned above, we have $(\pub{(f^{-1})}{\gamma})_{\mu} = \gamma_{a}\del{}{\mu}{\chi^{a}}$, this implies $\pub{f}{V}(\gamma) = V^{\mu}\gamma_{a}\del{}{\mu}{\chi^{a}}$, and finally
 \begin{align*}
-	(\pub{f}{V})^{a} = V^{\mu}\del{\mu}{\chi^{a}}.
+	(\pub{f}{V})^{a} = V^{\mu}\del{}{\mu}{\chi^{a}}.
 \end{align*}
 Putting this together we have
 \begin{align*}
-	\pub{f}{V}(\pub{f}{\omega}) = \omega_{\mu}\del{a}{\eta^{\mu}}V^{\nu}\del{\nu}{\chi^{a}} = \omega_{\mu}V^{\mu}.
+	\pub{f}{V}(\pub{f}{\omega}) = \omega_{\mu}\del{}{a}{\eta^{\mu}}V^{\nu}\del{}{\nu}{\chi^{a}} = \omega_{\mu}V^{\mu}.
 \end{align*}
 Thus the pullback respects contraction, and so must the Lie derivative. This implies
 \begin{align*}
 	\lied{X}{\omega(Y)} &= (\lied{X}{\omega})(Y) + \omega(\lied{X}{Y}) \\
-	                    &= (\lied{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\del{b}{Y^{a}} - Y^{b}\del{b}{X^{a}}).
+	                    &= (\lied{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\del{}{b}{Y^{a}} - Y^{b}\del{}{b}{X^{a}}).
 \end{align*}
-As the left-hand side is simply equal to $X^{a}\del{a}{(\omega_{b}Y^{b})}$, we obtain
+As the left-hand side is simply equal to $X^{a}\del{}{a}{(\omega_{b}Y^{b})}$, we obtain
 \begin{align*}
-	(\lied{X}{\omega})_{a}Y^{a} &= X^{a}\del{a}{(\omega_{b}Y^{b})} - \omega_{b}X^{a}\del{a}{Y^{b}} + \omega_{a}Y^{b}\del{b}{X^{a}} \\
-&= Y^{a}X^{b}\del{b}{\omega_{a}} + \omega_{b}Y^{a}\del{a}{X^{b}},
+	(\lied{X}{\omega})_{a}Y^{a} &= X^{a}\del{}{a}{(\omega_{b}Y^{b})} - \omega_{b}X^{a}\del{}{a}{Y^{b}} + \omega_{a}Y^{b}\del{}{b}{X^{a}} \\
+&= Y^{a}X^{b}\del{}{b}{\omega_{a}} + \omega_{b}Y^{a}\del{}{a}{X^{b}},
 \end{align*}
 and thus
 \begin{align*}
-	(\lied{X}{\omega})_{a} &= X^{b}\del{b}{\omega_{a}} + \omega_{b}\del{a}{X^{b}}.
+	(\lied{X}{\omega})_{a} &= X^{b}\del{}{b}{\omega_{a}} + \omega_{b}\del{}{a}{X^{b}}.
 \end{align*}
-In particular, we have $\lied{X}{\df{\chi^{a}}} = \del{c}{X^{a}}\df{\chi^{c}}$.
+In particular, we have $\lied{X}{\df{\chi^{a}}} = \del{}{c}{X^{a}}\df{\chi^{c}}$.
 
 We are now ready to compute the Lie derivative of a tensor. Writing
 \begin{align*}
@@ -167,24 +176,24 @@ We are now ready to compute the Lie derivative of a tensor. Writing
 the product rule implies
 \begin{align*}
 	\lied{X}{T} &= (\lied{X}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}})\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\lied{X}{\tensor*{e}{_{a_{i}}}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\lied{X}{\tensor*{e}{^{b_{j}}}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
-	            &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes \del{a_{i}}{X^{a}}\tensor*{e}{_{a}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes \del{a}{X^{b_{j}}}\tensor*{e}{^{a}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
-	            &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a_{i}}{X^{a}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{a}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{b_{j}}}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{a}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}}.
+	            &= X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes \del{}{a_{i}}{X^{a}}\tensor*{e}{_{a}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes \del{}{a}{X^{b_{j}}}\tensor*{e}{^{a}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            &= X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a_{i}}{X^{a}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{a}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a}{X^{b_{j}}}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{a}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}}.
 \end{align*}
 There are no free indices, so we may switch the places of the numbered indices and $a$ to obtain
 \begin{align*}
-	\lied{X}{T} =& X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{a_{i}}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} \\
-	             &+ \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{b_{j}}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
-	            =& \left(X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}\right)\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
+	\lied{X}{T} =& X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a}{X^{a_{i}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{a_{i}}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} \\
+	             &+ \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{}{b_{j}}{X^{a}}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{b_{j}}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            =& \left(X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{}{b_{j}}{X^{a}}\right)\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
 \end{align*}
 allowing us to identify
 \begin{align*}
-	\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{b_{j}}{X^{a}}.
+	\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{}{b_{j}}{X^{a}}.
 \end{align*}
 
 \paragraph{Connections}
 A connection is an operator on a tensor space that satisfies the following:
 \begin{itemize}
-	\item $\dcov{X}{f} = Xf = X^{a}\del{a}{f}$ for a scalar field $f$.
+	\item $\dcov{X}{f} = Xf = X^{a}\del{}{a}{f}$ for a scalar field $f$.
 	\item $\dcov{X + Y}{T} = \dcov{X}{T} + \dcov{Y}{T}$.
 	\item $\dcov{fX}{T} = f\dcov{X}{T}$.
 	\item $\dcov{X}{(TS)} = (\dcov{X}{T})S + T\dcov{X}{S}$.
@@ -198,7 +207,7 @@ On a manifold, a connection is specified by choosing $n$ independent vectors $X_
 where the expansion coefficients are called connection coefficients or Christoffel symbols. There is no unique way to do this, as the connection then depends on the choice of vectors.
 
 \paragraph{The Connection of a Tensor Field}
-Specify the connection according to $\dcov{\del{a}{}}{\del{b}{}} = \chris{c}{a}{b}\del{c}{}$. For a tensor
+Specify the connection according to $\dcov{\del{}{a}{}}{\del{}{b}{}} = \chris{c}{a}{b}\del{}{c}{}$. For a tensor
 \begin{align*}
 	T = \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}}
 \end{align*}
@@ -209,32 +218,32 @@ we find using the product rule
 To proceed we will need to require that the connection respect contraction, yielding
 \begin{align*}
 	\dcov{X}{\omega(Y)} &= \dcov{X}{\omega}(Y) + \omega(\dcov{X}{Y}) \\
-	                    &= (\dcov{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\dcov{b}{(Y^{c}\del{c}{})})^{a} \\
-	                    &= (X^{b}\dcov{b}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}(\del{b}{Y^{c}}\del{c}{} + Y^{c}\chris{d}{b}{c}\del{d}{}))^{a} \\
-	                    &= X^{b}(\dcov{b}{\omega})_{a}Y^{a} + \omega_{a}X^{b}\del{b}{Y^{a}} + \omega_{a}X^{b}Y^{c}\chris{a}{b}{c}.
+	                    &= (\dcov{X}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}\dcov{b}{(Y^{c}\del{}{c}{})})^{a} \\
+	                    &= (X^{b}\dcov{b}{\omega})_{a}Y^{a} + \omega_{a}(X^{b}(\del{}{b}{Y^{c}}\del{}{c}{} + Y^{c}\chris{d}{b}{c}\del{}{d}{}))^{a} \\
+	                    &= X^{b}(\dcov{b}{\omega})_{a}Y^{a} + \omega_{a}X^{b}\del{}{b}{Y^{a}} + \omega_{a}X^{b}Y^{c}\chris{a}{b}{c}.
 \end{align*}
 On the other side we have
 \begin{align*}
-	\dcov{X}{\omega(Y)} = X^{a}(Y^{b}\del{a}{\omega_{b}} + \omega_{b}\del{a}{Y^{b}}),
+	\dcov{X}{\omega(Y)} = X^{a}(Y^{b}\del{}{a}{\omega_{b}} + \omega_{b}\del{}{a}{Y^{b}}),
 \end{align*}
 implying
 \begin{align*}
-	Y^{a}X^{b}(\dcov{b}{\omega})_{a} &= X^{a}(Y^{b}\del{a}{\omega_{b}} + \omega_{b}\del{a}{Y^{b}}) - \omega_{a}X^{b}\del{b}{Y^{a}} - \omega_{a}X^{b}Y^{c}\chris{a}{b}{c} \\
-	                                 &= Y^{a}X^{b}\del{b}{\omega_{a}} - Y^{a}X^{b}\omega_{c}\chris{c}{b}{a},
+	Y^{a}X^{b}(\dcov{b}{\omega})_{a} &= X^{a}(Y^{b}\del{}{a}{\omega_{b}} + \omega_{b}\del{}{a}{Y^{b}}) - \omega_{a}X^{b}\del{}{b}{Y^{a}} - \omega_{a}X^{b}Y^{c}\chris{a}{b}{c} \\
+	                                 &= Y^{a}X^{b}\del{}{b}{\omega_{a}} - Y^{a}X^{b}\omega_{c}\chris{c}{b}{a},
 \end{align*}
 and as this must be true for all $X$ and $Y$ we have
 \begin{align*}
-	\dcov{b}{\omega} &= (\del{b}{\omega_{a}} - \omega_{c}\chris{c}{b}{a})\df{\chi^{a}}.
+	\dcov{b}{\omega} &= (\del{}{b}{\omega_{a}} - \omega_{c}\chris{c}{b}{a})\df{\chi^{a}}.
 \end{align*}
 
 We now proceed according to
 \begin{align*}
-	\dcov{X}{T} =& X^{a}\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}X^{a}\chris{b}{a}{a_{i}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{b}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} - \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}X^{a}\chris{b_{j}}{a}{b}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{b}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
-	            =& X^{a}\left(\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right)\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
+	\dcov{X}{T} =& X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}} + \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{i = 1}^{n}X^{a}\chris{b}{a}{a_{i}}\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{i - 1}}}\otimes\tensor*{e}{_{b}}\otimes\tensor*{e}{_{a_{i + 1}\dots a_{n}}} - \tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}\sum\limits_{j = 1}^{m}X^{a}\chris{b_{j}}{a}{b}\tensor*{e}{^{b_{1}\dots b_{j - 1}}}\otimes\tensor*{e}{^{b}}\otimes\tensor*{e}{^{b_{j + 1}\dots b_{m}}_{a_{1}\dots a_{n}}} \\
+	            =& X^{a}\left(\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right)\tensor*{e}{^{b_{1}\dots b_{m}}_{a_{1}\dots a_{n}}},
 \end{align*}
 and we recognize
 \begin{align*}
-	\tensor*{(\dcov{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\left(\del{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right).
+	\tensor*{(\dcov{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\left(\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} + \sum\limits_{i = 1}^{n}\chris{a_{i}}{a}{b}\tensor*{T}{^{a_{1}\dots a_{i - 1}ba_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}} - \sum\limits_{j = 1}^{m}\chris{b}{a}{b_{j}}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{j - 1}bb_{j + 1}\dots b_{m}}}\right).
 \end{align*}
 
 \paragraph{Parallel Transport}
@@ -246,10 +255,10 @@ This allows us to define the parallel transport as the vector field that solves 
 
 In particular, using the properties of the connection we find
 \begin{align*}
-	\dcov{\dot{\gamma}}{X} &= \dcov{\dot{\chi}^{a}\del{a}{}}{X^{c}\del{c}{}} \\
-	                       &= \dot{\chi}^{a}\dcov{a}{X^{c}\del{c}{}} \\
-	                       &= \dot{\chi}^{a}((\dcov{a}{X^{c}})\del{c}{} + X^{c}\dcov{a}{\del{c}{}}) \\
-	                       &= \dot{\chi}^{a}(\del{a}{X^{b}} + X^{c}\chris{b}{a}{c})\del{b}{}.
+	\dcov{\dot{\gamma}}{X} &= \dcov{\dot{\chi}^{a}\del{}{a}{}}{X^{c}\del{}{c}{}} \\
+	                       &= \dot{\chi}^{a}\dcov{a}{X^{c}\del{}{c}{}} \\
+	                       &= \dot{\chi}^{a}((\dcov{a}{X^{c}})\del{}{c}{} + X^{c}\dcov{a}{\del{}{c}{}}) \\
+	                       &= \dot{\chi}^{a}(\del{}{a}{X^{b}} + X^{c}\chris{b}{a}{c})\del{}{b}{}.
 \end{align*}
 
 \paragraph{Geodesics and the Geodesic Equation}
@@ -257,7 +266,7 @@ A geodesic is defined as a curve with a tangent vector that is parallel along it
 
 By definition a geodesic satisfies
 \begin{align*}
-	\dcov{\dot{\gamma}}{\dot{\gamma}} = \dot{\chi}^{a}(\del{a}{\dot{\chi}^{b}} + \dot{\chi}^{c}\chris{b}{a}{c})\del{b}{} = (\ddot{\chi}^{b} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{b}{a}{c})\del{b}{} = 0,
+	\dcov{\dot{\gamma}}{\dot{\gamma}} = \dot{\chi}^{a}(\del{}{a}{\dot{\chi}^{b}} + \dot{\chi}^{c}\chris{b}{a}{c})\del{}{b}{} = (\ddot{\chi}^{b} + \dot{\chi}^{a}\dot{\chi}^{c}\chris{b}{a}{c})\del{}{b}{} = 0,
 \end{align*}
 and thus
 \begin{align*}
@@ -272,9 +281,9 @@ The torsion tensor is a $(1, 2)$ tensor defined as
 \end{align*}
 To find its components, we note that
 \begin{align*}
-	T_{ab} = T(\del{a}{}, \del{b}{}) &= \dcov{a}{\del{b}{}} - \dcov{b}{\del{a}{}} - \comm{\del{a}{}}{\del{b}{}} \\
-	                                 &= \chris{c}{a}{b}\del{c}{} - \chris{c}{b}{a}\del{c}{} - (\del{a}{\del{b}{}} - \del{b}{\del{a}{}}) \\
-	                                 &= (\chris{c}{a}{b} - \chris{c}{b}{a})\del{c}{},
+	T_{ab} = T(\del{}{a}{}, \del{}{b}{}) &= \dcov{a}{\del{}{b}{}} - \dcov{b}{\del{}{a}{}} - \comm{\del{}{a}{}}{\del{}{b}{}} \\
+	                                 &= \chris{c}{a}{b}\del{}{c}{} - \chris{c}{b}{a}\del{}{c}{} - (\del{}{a}{\del{}{b}{}} - \del{}{b}{\del{}{a}{}}) \\
+	                                 &= (\chris{c}{a}{b} - \chris{c}{b}{a})\del{}{c}{},
 \end{align*}
 implying
 \begin{align*}
@@ -288,15 +297,15 @@ Consider some vector $Z$ parallel transported along a small closed loop. The par
 \end{align*}
 We define $R(X, Y)Z$ as the Riemann curvature tensor. It is a $(1, 3)$ tensor. Its components are defined by
 \begin{align*}
-	R(\del{a}{}, \del{b}{})\del{c}{} &= \tensor{R}{^{d}_{cab}}\del{d}{} \\
-	                                 &= \dcov{a}{\dcov{b}{\del{c}{}}} - \dcov{b}{\dcov{a}{\del{c}{}}} \\
-	                                 &= \dcov{a}{\chris{f}{b}{c}\del{f}{}} - \dcov{b}{\chris{f}{a}{c}\del{f}{}} \\
-	                                 &= (\dcov{a}{\chris{f}{b}{c}})\del{f}{} + \chris{f}{b}{c}\dcov{a}{\del{f}{}} - (\dcov{b}{\chris{f}{a}{c}})\del{f}{} - \chris{f}{a}{c}\dcov{b}{\del{f}{}} \\
-	                                 &= (\del{a}{\chris{d}{b}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \del{b}{\chris{d}{a}{c}} - \chris{f}{a}{c}\chris{d}{b}{f})\del{d}{}, 
+	R(\del{}{a}{}, \del{}{b}{})\del{}{c}{} &= \tensor{R}{^{d}_{cab}}\del{}{d}{} \\
+	                                 &= \dcov{a}{\dcov{b}{\del{}{c}{}}} - \dcov{b}{\dcov{a}{\del{}{c}{}}} \\
+	                                 &= \dcov{a}{\chris{f}{b}{c}\del{}{f}{}} - \dcov{b}{\chris{f}{a}{c}\del{}{f}{}} \\
+	                                 &= (\dcov{a}{\chris{f}{b}{c}})\del{}{f}{} + \chris{f}{b}{c}\dcov{a}{\del{}{f}{}} - (\dcov{b}{\chris{f}{a}{c}})\del{}{f}{} - \chris{f}{a}{c}\dcov{b}{\del{}{f}{}} \\
+	                                 &= (\del{}{a}{\chris{d}{b}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \del{}{b}{\chris{d}{a}{c}} - \chris{f}{a}{c}\chris{d}{b}{f})\del{}{d}{}, 
 \end{align*}
 and thus
 \begin{align*}
-	\tensor{R}{^{d}_{cab}} = \del{a}{\chris{d}{b}{c}} - \del{b}{\chris{d}{a}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
+	\tensor{R}{^{d}_{cab}} = \del{}{a}{\chris{d}{b}{c}} - \del{}{b}{\chris{d}{a}{c}} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
 \end{align*}
 Note the placements of the indices.
 
@@ -311,7 +320,7 @@ For any manifold with some metric there exists a unique connection that is both 
 
 To prove that it is unique, suppose that there exists two different metric compatible connections with connection coefficients $\chris{c}{a}{b}$ and $C^{c}_{ab}$. For the connection to be metric compatible, we must have $(\dcov{a}{g})_{bc} = 0$ for both connections, and thus
 \begin{align*}
-	\del{a}{g_{bc}} - \chris{d}{a}{b}g_{dc} - \chris{d}{a}{c}g_{bd} = 0,\ \del{a}{g_{bc}} - C^{d}_{ab}g_{dc} - C^{d}_{ac}g_{bd} = 0,
+	\del{}{a}{g_{bc}} - \chris{d}{a}{b}g_{dc} - \chris{d}{a}{c}g_{bd} = 0,\ \del{}{a}{g_{bc}} - C^{d}_{ab}g_{dc} - C^{d}_{ac}g_{bd} = 0,
 \end{align*}
 and we find
 \begin{align*}
@@ -334,36 +343,36 @@ As the metric defines length, we define the curve length as
 \end{align*}
 Defining $\sqrt{\lag} = g_{ab}\dot{\chi}^{a}\dot{\chi}^{b}$, the curve that minimizes the distance between the start and end points satisfies
 \begin{align*}
-	\del{a}{\sqrt{\lag}} - \dv{t}\pdv{\sqrt{\lag}}{\dot{\chi}^{a}} = \frac{1}{2\sqrt{\lag}}\left(\del{a}{\lag} - \sqrt{\lag}\dv{t}\left(\frac{1}{\sqrt{\lag}}\pdv{\lag}{\dot{\chi}^{a}}\right)\right) = 0.
+	\del{}{a}{\sqrt{\lag}} - \dv{t}\pdv{\sqrt{\lag}}{\dot{\chi}^{a}} = \frac{1}{2\sqrt{\lag}}\left(\del{}{a}{\lag} - \sqrt{\lag}\dv{t}\left(\frac{1}{\sqrt{\lag}}\pdv{\lag}{\dot{\chi}^{a}}\right)\right) = 0.
 \end{align*}
 One can always choose a parametrization such that $\sqrt{\lag} = 1$ (the arc length parametrization is one example), yielding
 \begin{align*}
-	\frac{1}{2\sqrt{\lag}}\left(\del{a}{\lag} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}}\right) = 0,
+	\frac{1}{2\sqrt{\lag}}\left(\del{}{a}{\lag} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}}\right) = 0,
 \end{align*}
 which is equivalent to extremizing the integral of $\lag$. In terms of the coordinate functions we thus have
 \begin{align*}
-	\del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}} = \del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - \dv{t}(2g_{ab}\dot{\chi}^{b}) = \del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - 2g_{ab}\ddot{\chi}^{b} - 2\del{c}{g_{ab}}\dot{\chi}^{b}\dot{\chi}^{c} = 0.
+	\del{}{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - \dv{t}\pdv{\lag}{\dot{\chi}^{a}} = \del{}{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - \dv{t}(2g_{ab}\dot{\chi}^{b}) = \del{}{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} - 2g_{ab}\ddot{\chi}^{b} - 2\del{}{c}{g_{ab}}\dot{\chi}^{b}\dot{\chi}^{c} = 0.
 \end{align*}
 Multiplying by $-\frac{1}{2}g^{da}$ we find
 \begin{align*}
-	g^{da}g_{ab}\ddot{\chi}^{b} - \frac{1}{2}g^{da}\del{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} + g^{da}\del{c}{g_{ab}}\dot{\chi}^{b}\dot{\chi}^{c} = \ddot{\chi}^{d} + \frac{1}{2}g^{da}(2\del{c}{g_{ab}} - \del{a}{g_{bc}})\dot{\chi}^{b}\dot{\chi}^{c} = 0.
+	g^{da}g_{ab}\ddot{\chi}^{b} - \frac{1}{2}g^{da}\del{}{a}{g_{bc}}\dot{\chi}^{b}\dot{\chi}^{c} + g^{da}\del{}{c}{g_{ab}}\dot{\chi}^{b}\dot{\chi}^{c} = \ddot{\chi}^{d} + \frac{1}{2}g^{da}(2\del{}{c}{g_{ab}} - \del{}{a}{g_{bc}})\dot{\chi}^{b}\dot{\chi}^{c} = 0.
 \end{align*}
 Renaming indices for convenience we find
 \begin{align*}
-	\ddot{\chi}^{b} + \frac{1}{2}g^{bd}(2\del{c}{g_{da}} - \del{d}{g_{ac}})\dot{\chi}^{a}\dot{\chi}^{c} = 0.
+	\ddot{\chi}^{b} + \frac{1}{2}g^{bd}(2\del{}{c}{g_{da}} - \del{}{d}{g_{ac}})\dot{\chi}^{a}\dot{\chi}^{c} = 0.
 \end{align*}
 
 \paragraph{Geodesics and Minimum-Length Curves}
 Geodesics and curves of minimal length coincide if
 \begin{align*}
-	\chris{b}{a}{c} = \frac{1}{2}g^{bd}(2\del{c}{g_{da}} - \del{d}{g_{ac}}).
+	\chris{b}{a}{c} = \frac{1}{2}g^{bd}(2\del{}{c}{g_{da}} - \del{}{d}{g_{ac}}).
 \end{align*}
 As the above identification is done based on a quantity that is symmetric in the lower indices, we cannot find any information about the antisymmetric part of the connection coefficients from this.
 
 \paragraph{The Levi-Civita Connection and Geodesics}
 The connection coefficients (or Christoffel symbols) defined by the Levi-Civita connection are symmetric due to the torsion being zero. This implies
 \begin{align*}
-	\chris{d}{a}{b} = \frac{1}{2}(\chris{d}{a}{b} + \chris{d}{b}{a}) = \frac{1}{4}g^{dc}(2\del{b}{g_{ca}} - \del{c}{g_{ab}} + 2\del{a}{g_{cb}} - \del{c}{g_{ba}}) = \frac{1}{2}g^{dc}(\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}}).
+	\chris{d}{a}{b} = \frac{1}{2}(\chris{d}{a}{b} + \chris{d}{b}{a}) = \frac{1}{4}g^{dc}(2\del{}{b}{g_{ca}} - \del{}{c}{g_{ab}} + 2\del{}{a}{g_{cb}} - \del{}{c}{g_{ba}}) = \frac{1}{2}g^{dc}(\del{}{b}{g_{ac}} + \del{}{a}{g_{cb}} - \del{}{c}{g_{ab}}).
 \end{align*}
 
 \paragraph{The Induced Metric}
@@ -372,32 +381,32 @@ Given some immersion $f$ of $M_{1}$ into $M_{2}$ and supposing that the metric $
 \paragraph{Components of the Induced Metric}
 Suppose that there is an immersion $f: \chi^{a}\to\eta^{\mu}$ of one manifold into another, and that the metric is $g$ in the outer manifold. By definition the induced metric satisfies $\tilde{g}(U, V) = \pub{f}{g}(U, V) = g(\puf{f}{U}, \puf{f}{V})$, implying
 \begin{align*}
-	\tilde{g}_{ab}U^{a}V^{b} = g_{\mu\nu}U^{a}\del{a}{\eta^{\mu}}V^{b}\del{b}{\eta^{\nu}},
+	\tilde{g}_{ab}U^{a}V^{b} = g_{\mu\nu}U^{a}\del{}{a}{\eta^{\mu}}V^{b}\del{}{b}{\eta^{\nu}},
 \end{align*}
 and as this is true for any pair of vectors we recognize
 \begin{align*}
-	\tilde{g}_{ab} = g_{\mu\nu}\del{a}{\eta^{\mu}}\del{b}{\eta^{\nu}}.
+	\tilde{g}_{ab} = g_{\mu\nu}\del{}{a}{\eta^{\mu}}\del{}{b}{\eta^{\nu}}.
 \end{align*}
 
 \example{A Function Surface In Euclidean Space}
 Consider a surface $\chi^{n} = h(\chi^{\mu})$, where $h$ is independent of $\chi^{n}$, and suppose that we know the metric in these coordinates. This surface is a manifold with the $\chi^{\mu}$ being a natural choice of coordinates, and there is also a natural choice of immersion. All derivatives of the new coordinates reduce to Kronecker deltas for all but the last coordinates. For the final coordinate we find
 \begin{align*}
-	\del{a}{\eta^{n}} = \del{a}{h},
+	\del{}{a}{\eta^{n}} = \del{}{a}{h},
 \end{align*}
 implying
 \begin{align*}
-	\tilde{g}_{ab} = g_{ab} + g_{nn}\del{a}{h}\del{b}{h}.
+	\tilde{g}_{ab} = g_{ab} + g_{nn}\del{}{a}{h}\del{}{b}{h}.
 \end{align*}
 In particular, if choosing Cartesian coordinates we find
 \begin{align*}
-	\dd{s}^{2} = \sum\limits_{a}(1 + (\del{i}{h})^{2})(\dd{x}^{i})^{2},
+	\dd{s}^{2} = \sum\limits_{a}(1 + (\del{}{i}{h})^{2})(\dd{x}^{i})^{2},
 \end{align*}
 which is the expected result.
 
 \paragraph{Curvature and the Metric}
 Using a Levi-Civita connection, we can write the curvature as
 \begin{align*}
-	\tensor{R}{^{d}_{cab}} =& \frac{1}{2}\del{a}{\left(g^{df}(\del{c}{g_{bf}} + \del{b}{g_{fc}} - \del{f}{g_{bc}})\right)} - \frac{1}{2}\del{b}{\left(g^{df}(\del{c}{g_{af}} + \del{a}{g_{fc}} - \del{f}{g_{ac}})\right)} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
+	\tensor{R}{^{d}_{cab}} =& \frac{1}{2}\del{}{a}{\left(g^{df}(\del{}{c}{g_{bf}} + \del{}{b}{g_{fc}} - \del{}{f}{g_{bc}})\right)} - \frac{1}{2}\del{}{b}{\left(g^{df}(\del{}{c}{g_{af}} + \del{}{a}{g_{fc}} - \del{}{f}{g_{ac}})\right)} + \chris{f}{b}{c}\chris{d}{a}{f} - \chris{f}{a}{c}\chris{d}{b}{f}.
 \end{align*}
 We may then introduce the contravariant curvature components
 %d to m
@@ -406,9 +415,9 @@ We may then introduce the contravariant curvature components
 %b to d
 \begin{align*}
 	R_{abcd} &= g_{am}\tensor{R}{^{m}_{bcd}} \\
-	         &= g_{am}\left(\frac{1}{2}\del{c}{\left(g^{mf}(\del{b}{g_{df}} + \del{d}{g_{fb}} - \del{f}{g_{db}})\right)} - \frac{1}{2}\del{d}{\left(g^{mf}(\del{b}{g_{cf}} + \del{c}{g_{fb}} - \del{f}{g_{cb}})\right)} + \chris{f}{d}{b}\chris{m}{c}{f} - \chris{f}{c}{b}\chris{m}{d}{f}\right) \\
-	         &= g_{am}\left(\frac{1}{2}\del{c}{\left(g^{mf}(\del{b}{g_{df}} + \del{d}{g_{fb}} - \del{f}{g_{db}})\right)} - \frac{1}{2}\del{d}{\left(g^{mf}(\del{b}{g_{cf}} + \del{c}{g_{fb}} - \del{f}{g_{cb}})\right)}\right) + g_{am}\left(\chris{f}{d}{b}\chris{m}{c}{f} - \chris{f}{c}{b}\chris{m}{d}{f}\right) \\
-	R_{abcd} &= \frac{1}{2}\left(\del{a}{\del{d}{g_{bc}}} + \del{b}{\del{c}{g_{ad}}} - \del{a}{\del{c}{g_{bd}}} - \del{b}{\del{d}{g_{ac}}}\right) + g_{fh}(\chris{f}{b}{c}\chris{h}{a}{d} - \chris{f}{b}{d}\chris{h}{a}{c}).
+	         &= g_{am}\left(\frac{1}{2}\del{}{c}{\left(g^{mf}(\del{}{b}{g_{df}} + \del{}{d}{g_{fb}} - \del{}{f}{g_{db}})\right)} - \frac{1}{2}\del{}{d}{\left(g^{mf}(\del{}{b}{g_{cf}} + \del{}{c}{g_{fb}} - \del{}{f}{g_{cb}})\right)} + \chris{f}{d}{b}\chris{m}{c}{f} - \chris{f}{c}{b}\chris{m}{d}{f}\right) \\
+	         &= g_{am}\left(\frac{1}{2}\del{}{c}{\left(g^{mf}(\del{}{b}{g_{df}} + \del{}{d}{g_{fb}} - \del{}{f}{g_{db}})\right)} - \frac{1}{2}\del{}{d}{\left(g^{mf}(\del{}{b}{g_{cf}} + \del{}{c}{g_{fb}} - \del{}{f}{g_{cb}})\right)}\right) + g_{am}\left(\chris{f}{d}{b}\chris{m}{c}{f} - \chris{f}{c}{b}\chris{m}{d}{f}\right) \\
+	R_{abcd} &= \frac{1}{2}\left(\del{}{a}{\del{}{d}{g_{bc}}} + \del{}{b}{\del{}{c}{g_{ad}}} - \del{}{a}{\del{}{c}{g_{bd}}} - \del{}{b}{\del{}{d}{g_{ac}}}\right) + g_{fh}(\chris{f}{b}{c}\chris{h}{a}{d} - \chris{f}{b}{d}\chris{h}{a}{c}).
 \end{align*}
 We find $R_{abcd} = R_{cdab} = -R_{abdc} = -R_{bacd}$. In addition, the curvature satisfies the Bianchi identity $R(X, Y)Z + R(Y, Z)X + R(Z, X)Y = 0$, implying $R_{abcd} + R_{acdb} + R_{adbc} = 0$, meaning that the total number of independent components is $\frac{1}{12}n^{2}(n^{2} - 1)$.
 
@@ -427,21 +436,21 @@ $K$ is a Killing field (be careful looking this up on the internet) if $\lied{K}
 \paragraph{The Lie Derivative with Killing Fields}
 Let $K$ be a Killing field. We then obtain
 \begin{align*}
-	\lied{K}{g_{ab}} &= K^{c}\del{c}{g_{ab}} + g_{ac}\del{b}{K^{c}} + g_{cb}\del{a}{K^{c}}.
+	\lied{K}{g_{ab}} &= K^{c}\del{}{c}{g_{ab}} + g_{ac}\del{}{b}{K^{c}} + g_{cb}\del{}{a}{K^{c}}.
 \end{align*}
 Using the Levi-Civita connection we find
 \begin{align*}
-	\del{b}{g_{ac}} + \del{a}{g_{cb}} - \del{c}{g_{ab}} = 2g_{cd}\chris{d}{a}{b},
+	\del{}{b}{g_{ac}} + \del{}{a}{g_{cb}} - \del{}{c}{g_{ab}} = 2g_{cd}\chris{d}{a}{b},
 \end{align*}
 hence
 \begin{align*}
-	\del{c}{g_{ab}} = g_{bd}\chris{d}{a}{c} + g_{ad}\chris{d}{b}{c},
+	\del{}{c}{g_{ab}} = g_{bd}\chris{d}{a}{c} + g_{ad}\chris{d}{b}{c},
 \end{align*}
 yielding
 \begin{align*}
-	\lied{K}{g_{ab}} &= K^{c}(\chris{d}{a}{c}g_{bd} + \chris{d}{b}{c}g_{ad}) + g_{ac}\del{b}{K^{c}} + g_{cb}\del{a}{K^{c}} \\
-	                 &= g_{cb}(K^{d}\chris{c}{a}{d} + \del{a}{K^{c}}) + g_{ac}(K^{d}\chris{c}{b}{d} + \del{b}{K^{c}}) \\
-	                 &= g_{cb}(\del{a}{K^{c}} + K^{d}\chris{c}{d}{a}) + g_{ac}(\del{b}{K^{c}} + K^{d}\chris{c}{d}{b}) \\
+	\lied{K}{g_{ab}} &= K^{c}(\chris{d}{a}{c}g_{bd} + \chris{d}{b}{c}g_{ad}) + g_{ac}\del{}{b}{K^{c}} + g_{cb}\del{}{a}{K^{c}} \\
+	                 &= g_{cb}(K^{d}\chris{c}{a}{d} + \del{}{a}{K^{c}}) + g_{ac}(K^{d}\chris{c}{b}{d} + \del{}{b}{K^{c}}) \\
+	                 &= g_{cb}(\del{}{a}{K^{c}} + K^{d}\chris{c}{d}{a}) + g_{ac}(\del{}{b}{K^{c}} + K^{d}\chris{c}{d}{b}) \\
 	                 &= g_{cb}\dcov{a}{K^{c}} + g_{ac}\dcov{b}{K^{c}} \\
 	                 &= \dcov{b}{K_{a}} + \dcov{a}{K_{b}} = 0,
 \end{align*}
@@ -470,11 +479,11 @@ the symmetry yields
 \paragraph{The Exterior Derivative}
 We define the exterior derivative of a differential form according to
 \begin{align*}
-	d\omega = \frac{1}{p!}\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{a_{k}},
+	d\omega = \frac{1}{p!}\del{}{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{a_{k}},
 \end{align*}
 which is a $p + 1$-form. This notation makes sense, as at least in the case of a $0$-form, we obtain
 \begin{align*}
-	d\omega = \del{a}{\omega}d\chi^{a},
+	d\omega = \del{}{a}{\omega}d\chi^{a},
 \end{align*}
 which is exactly the form of a dual vector. Somehow this transforms as a tensor.
 
@@ -497,41 +506,41 @@ To derive it, consider a $p + 1$-volume parametrized such that all $t_{i}$ range
 For some $p$-form $\omega$ and $p + 1$-volume $V$ we have
 \begin{align*}
 	\inte{V}{}\df{\omega} &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{d\omega(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
-	                      &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\sum\limits_{\sigma\in S_{p + 1}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
-	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
-	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}},
+	                      &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{}{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\sum\limits_{\sigma\in S_{p + 1}}\text{sgn}(\sigma)\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
+	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{}{a_{1}}{\omega_{a_{2}\dots a_{p + 1}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}} \\
+	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\left(\del{}{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\bigotimes_{k = 1}^{p + 1}d\chi^{a_{\sigma(k)}}\right)(\dot{\gamma}_{1},\dots, \dot{\gamma}_{p + 1})}},
 \end{align*}
 where the latter follows from the cyclicity imposed by the summation. We have
 \begin{align*}
-d\chi^{a_{\sigma(k)}}{\dot{\gamma}_{k}} = \dv{\chi^{a}}{t_{k}}\del{a}{\chi^{a_{\sigma(k)}}} = \dv{\chi^{a_{\sigma(k)}}}{t_{k}},
+d\chi^{a_{\sigma(k)}}{\dot{\gamma}_{k}} = \dv{\chi^{a}}{t_{k}}\del{}{a}{\chi^{a_{\sigma(k)}}} = \dv{\chi^{a_{\sigma(k)}}}{t_{k}},
 \end{align*}
 and thus
 \begin{align*}
-	\inte{V}{}\df{\omega} &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{k}}{\chi^{a_{\sigma(k)}}}}} \\
-	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}},
+	\inte{V}{}\df{\omega} &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{}{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{}{t_{k}}{\chi^{a_{\sigma(k)}}}}} \\
+	                      &= \sum\limits_{\sigma\in S_{p + 1}}\frac{\text{sgn}(\sigma)}{p!}\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{}{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}}},
 \end{align*}
 where we have once again utilized the cyclicity. Denote the integral inside the sum as $I(\sigma, \omega)$. We have
 \begin{align*}
-	I(\sigma, \omega) &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}} \\
-	                  &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{t_{\sigma(p + 1)}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}.
+	I(\sigma, \omega) &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{}{a_{p + 1}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p + 1}\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}}} \\
+	                  &= \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\del{}{t_{\sigma(p + 1)}}{\omega_{a_{1}\dots a_{p}}}\prod\limits_{k = 1}^{p}\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}}}.
 \end{align*}
 To proceed, we integrate by parts and obtain
 \begin{align*}
-	I(\sigma, \omega) &= \eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{-}}^{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{+}} - \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\del{t_{\sigma(p + 1)}}{\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}},
+	I(\sigma, \omega) &= \eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{-}}^{t_{\sigma(p + 1)} = t_{\sigma(p + 1)}^{+}} - \inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p + 1}}{\omega_{a_{1}\dots a_{p}}\del{}{t_{\sigma(p + 1)}}{\prod\limits_{k = 1}^{p}\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}}}},
 \end{align*}
 where the former terms contains no integration over $t_{\sigma(p + 1)}$, and is instead evaluated at the maximal and minimal values of $t_{\sigma(p + 1)}$ given the values of the other parameters.
 
 Let us proceed to simplify this. For starters, if $\sigma(p + 1) \neq p + 1$, the remaining integration in the first term is done over the boundary of $V_{p}$. Furthermore, there exists a $k$ such that $\sigma(k) = p + 1$, and as we are at the boundary of $V_{p}$ we must have
 \begin{align*}
-	\del{t_{\sigma(k)}}{\chi^{a_{k}}} = 0.
+	\del{}{t_{\sigma(k)}}{\chi^{a_{k}}} = 0.
 \end{align*}
 Otherwise, the remaining integration domain is $V_{p}$. Next, the latter integral contains a sequence of terms proportional to
 \begin{align*}
-	\del{t_{\sigma(p + 1)}}{\del{t_{\sigma(k)}}{\chi^{a_{k}}}},
+	\del{}{t_{\sigma(p + 1)}}{\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}},
 \end{align*}
 which is symmetric with respect to exchanging $p + 1$ and $k$. These terms therefore cancel in the sum, and we are left with
 \begin{align*}
-	\inte{V}{}\df{\omega} &= \sum\limits_{\sigma\in S_{p}}\frac{\text{sgn}(\sigma)}{p!}\eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1} \\
+	\inte{V}{}\df{\omega} &= \sum\limits_{\sigma\in S_{p}}\frac{\text{sgn}(\sigma)}{p!}\eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega_{a_{1}\dots a_{p}}\prod\limits_{k = 1}^{p}\del{}{t_{\sigma(k)}}{\chi^{a_{k}}}}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1} \\
 	                      &= \eval{\inte{}{}\dd{t_{1}}{\dots \inte{}{}\dd{t_{p}}{\omega}}}_{t_{\sigma(p + 1)} = 0}^{t_{\sigma(p + 1)} = 1}
 \end{align*}
 where the condition that $\sigma(p + 1) = p + 1$ restricts the summation to $S_{p}$.
@@ -552,19 +561,19 @@ where $q$ and $p$ are the start and end points of $\gamma$. This is the analogue
 
 Next, we consider a $2$-form written as the exterior derivative of a $1$-form. Writing $\omega = \omega_{i}d\chi^{i}$ we have
 \begin{align*}
-d\omega = \del{j}{\omega_{i}}d\chi^{j}\wedge d\chi^{i}.
+d\omega = \del{}{j}{\omega_{i}}d\chi^{j}\wedge d\chi^{i}.
 \end{align*}
 Using Cartesian coordinates and restricting ourselves to two dimensions we have
 \begin{align*}
 	\df{\chi^{j}}\wedge\df{\chi^{i}}(\dot{\gamma}_{s}, \dot{\gamma}_{t})\dd{s}\dd{t} &= (\df{\chi^{j}}\otimes\df{\chi^{i}} - \df{\chi^{i}}\otimes\df{\chi^{j}})(\dot{\gamma}_{s}, \dot{\gamma}_{t})\dd{s}\dd{t} \\
-	                                                                                 &= (\del{s}{\chi^{j}}\del{t}{\chi^{i}} - \del{s}{\chi^{i}}\del{t}{\chi^{j}})\dd{s}\dd{t} \\
-	                                                                                 &= (\delta_{jk}\delta_{im} - \delta_{ik}\delta_{jm})\del{s}{\chi^{k}}\del{t}{\chi^{m}}\dd{s}\dd{t} \\
-	                                                                                 &= \varepsilon_{jin}\varepsilon_{nkm}\del{s}{\chi^{k}}\del{t}{\chi^{m}}\dd{s}\dd{t} \\
+	                                                                                 &= (\del{}{s}{\chi^{j}}\del{}{t}{\chi^{i}} - \del{}{s}{\chi^{i}}\del{}{t}{\chi^{j}})\dd{s}\dd{t} \\
+	                                                                                 &= (\del{}ta_{jk}\del{}ta_{im} - \del{}ta_{ik}\del{}ta_{jm})\del{}{s}{\chi^{k}}\del{}{t}{\chi^{m}}\dd{s}\dd{t} \\
+	                                                                                 &= \varepsilon_{jin}\varepsilon_{nkm}\del{}{s}{\chi^{k}}\del{}{t}{\chi^{m}}\dd{s}\dd{t} \\
 	                                                                                 &= \varepsilon_{jik}\dd{S_{k}}.
 \end{align*}
 Thus we have
 \begin{align*}
-	\inte{S}{}\df{\omega} = \inte{S}{}\dd{S_{k}}{\varepsilon_{ijk}\del{i}{\omega_{j}}} = \inte{S}{}\dd{\vb{S}}{\cdot\curl{\vb*{\omega}}}.
+	\inte{S}{}\df{\omega} = \inte{S}{}\dd{S_{k}}{\varepsilon_{ijk}\del{}{i}{\omega_{j}}} = \inte{S}{}\dd{\vb{S}}{\cdot\curl{\vb*{\omega}}}.
 \end{align*}
 At the same time we have
 \begin{align*}
@@ -580,21 +589,21 @@ which is the more boring version of Stokes' theorem.
 
 Next we consider a $2$-form and its exterior derivative. We have
 \begin{align*}
-	\inte{V}{}{\df{\omega}} &= \frac{1}{2}\inte{V}{}{\del{a}{\omega_{bc}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}}.
+	\inte{V}{}{\df{\omega}} &= \frac{1}{2}\inte{V}{}{\del{}{a}{\omega_{bc}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}}.
 \end{align*}
 As the components of $\omega$ may be chosen such that $\omega_{ab} = -\omega_{ba}$ we may write $\omega_{ab} = \varepsilon_{abc}\omega_{c}$ for some suitable (and arbitrary) choice of $\omega_{c}$. We thus have
 \begin{align*}
-	\inte{V}{}{\df{\omega}} &= \frac{1}{2}\inte{V}{}{\varepsilon_{bcd}\del{a}{\omega_{d}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}} \\
-	                        &= \frac{1}{2}\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\varepsilon_{bcd}\varepsilon_{abc}\del{a}{\omega_{d}}}}} \\
-	                        &= \frac{1}{2}\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{(\delta_{ad}\delta_{bb} - \delta_{ab}\delta_{bd})\del{a}{\omega_{d}}}}} \\
-	                        &= \inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\del{a}{\omega_{a}}}}} \\
+	\inte{V}{}{\df{\omega}} &= \frac{1}{2}\inte{V}{}{\varepsilon_{bcd}\del{}{a}{\omega_{d}}\df{\chi^{a}}\wedge\df{\chi^{b}}\wedge\df{\chi^{c}}} \\
+	                        &= \frac{1}{2}\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\varepsilon_{bcd}\varepsilon_{abc}\del{}{a}{\omega_{d}}}}} \\
+	                        &= \frac{1}{2}\inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{(\del{}ta_{ad}\del{}ta_{bb} - \del{}ta_{ab}\del{}ta_{bd})\del{}{a}{\omega_{d}}}}} \\
+	                        &= \inte{}{}\dd{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\del{}{a}{\omega_{a}}}}} \\
 	                        &= \inte{}{}{x^{1}}{\inte{}{}\dd{x^{2}}{\inte{}{}\dd{x^{3}}{\div{\vb*{\omega}}}}}.
 \end{align*}
 At the same time we have
 \begin{align*}
 	\inte{\bound{V}}{}{\omega} &= \frac{1}{2}\inte{\bound{V}}{}{\varepsilon_{ijk}\omega_{i}\df{\chi^{j}}\wedge\df{\chi^{k}}} \\
 	                           &= \frac{1}{2}\inte{\bound{V}}{}\dd{S_{m}}{\varepsilon_{ijk}\varepsilon_{jkm}\omega_{i}} \\
-	                           &= \frac{1}{2}\inte{\bound{V}}{}\dd{S_{m}}{(\delta_{im}\delta_{jj} - \delta_{ij}\delta_{jm})\omega_{i}} \\
+	                           &= \frac{1}{2}\inte{\bound{V}}{}\dd{S_{m}}{(\del{}ta_{im}\del{}ta_{jj} - \del{}ta_{ij}\del{}ta_{jm})\omega_{i}} \\
 	                           &= \inte{\bound{V}}{}\dd{S_{i}}{\omega_{i}} \\
 	                           &= \inte{\bound{V}}{}\dd{\vb{S}}{\cdot\vb*{\omega}}.
 \end{align*}
@@ -607,18 +616,18 @@ which is the divergence theorem.
 \example{The $n$-Dimensional Divergence Theorem}
 Let us generalize the latter to an $n$-dimensional case. Consider a $n - 1$-form and its exterior derivative. We have
 \begin{align*}
-	\inte{V}{}{\df{\omega}} &= \frac{1}{(n - 1)!}\inte{V}{}{\del{a_{1}}{\omega_{a_{2}\dots a_{n}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}}.
+	\inte{V}{}{\df{\omega}} &= \frac{1}{(n - 1)!}\inte{V}{}{\del{}{a_{1}}{\omega_{a_{2}\dots a_{n}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}}.
 \end{align*}
 We may once again choose coordinates such that the components of $\omega$ are completely antisymmetric, yielding
 \begin{align*}
-	\inte{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\inte{V}{}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\del{a_{1}}{\omega_{a_{n + 1}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}} \\
-	                      &= \frac{1}{(n - 1)!}\inte[n]{}{}\dd{x}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\varepsilon_{a_{1}\dots a_{n}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
-	                      &= \frac{1}{(n - 1)!}\inte[n]{}{}\dd{x}{\varepsilon_{a_{2}\dots a_{n + 1}}\varepsilon_{a_{2}\dots a_{n}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}}.
+	\inte{V}{\df{\omega}} &= \frac{1}{(n - 1)!}\inte{V}{}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\del{}{a_{1}}{\omega_{a_{n + 1}}}\bigwedge\limits_{k = 1}^{n}d\chi^{a_{k}}} \\
+	                      &= \frac{1}{(n - 1)!}\inte[n]{}{}\dd{x}{\varepsilon_{a_{2}\dots a_{n}a_{n + 1}}\varepsilon_{a_{1}\dots a_{n}}\del{}{a_{1}}{\omega_{a_{n + 1}}}} \\
+	                      &= \frac{1}{(n - 1)!}\inte[n]{}{}\dd{x}{\varepsilon_{a_{2}\dots a_{n + 1}}\varepsilon_{a_{2}\dots a_{n}a_{1}}\del{}{a_{1}}{\omega_{a_{n + 1}}}}.
 \end{align*}
 Summing over all but the first and last index will give a factor $(n - 1)!$, as this is the number of permutations of $n - 1$ unique indices. The remaining product is non-zero only when the last indices are equal, and is in this case equal to $1$, hence
 \begin{align*}
-	\inte{V}{}{\df{\omega}} &= \inte[n]{}{}\dd{x}{\delta_{a_{n + 1}a_{1}}\del{a_{1}}{\omega_{a_{n + 1}}}} \\
-	                        &= \inte[n]{}{}\dd{x}{\del{a}{\omega_{a}}}.
+	\inte{V}{}{\df{\omega}} &= \inte[n]{}{}\dd{x}{\del{}ta_{a_{n + 1}a_{1}}\del{}{a_{1}}{\omega_{a_{n + 1}}}} \\
+	                        &= \inte[n]{}{}\dd{x}{\del{}{a}{\omega_{a}}}.
 \end{align*}
 
 At the same time we have
@@ -629,6 +638,6 @@ At the same time we have
 \end{align*}
 Hence we have
 \begin{align*}
-	\inte[n]{}{}\dd{x}{\del{a}{\omega_{a}}} = \inte{\bound{V}}{}\dd{S_{a}}{\omega_{a}},
+	\inte[n]{}{}\dd{x}{\del{}{a}{\omega_{a}}} = \inte{\bound{V}}{}\dd{S_{a}}{\omega_{a}},
 \end{align*}
 which is a generalization of the divergence theorem. Note that this only applies if the coordinates of the manifold are akin to Cartesian coordinates.
