@@ -25,7 +25,7 @@ A metric is a map $d: X\times X\to \R$ that satisfies
 	\item $d(x, y) + d(y, z) \geq d(x, )z$.
 \end{itemize}
 
-\paragraph{Metric Space}
+\paragraph{Metric Spaces}
 Suppose $X$ is endowed with a metric. The collection of open disks
 \begin{align*}
 	U_{\varepsilon} = \{x\in X | d(x, x_{0}) < \varepsilon\}
@@ -54,3 +54,14 @@ We are now in a position to introduce the poor man's notion of topology, which c
 
 \paragraph{Topological Invariants}
 An important question pertaining to this division of topological spaces is what separates the different categories. One possible answer is so-called topological invariants, quantities which are invariant under homeomorphism. The issue with this answer is that the full set of topological invariants has not been identified, hence they can only be used to verify that two topological spaces belong to different categories.
+
+\paragraph{Subgroups and Equivalence}
+Let $H$ be a subgroup of an (Abelian) group $G$. We say that $x$ and $y$ are equivalent if
+\begin{align*}
+	x - y\in H.
+\end{align*}
+The addition operation is the group operation, a smart choice of notation as $G$ is Abelian. We denote the corresponding equivalence class as $[x]$ and the set of all such classes is the quotient space $\frac{G}{H}$. From this we have a natural operation
+\begin{align*}
+	[x] + [y] = [x + y]
+\end{align*}
+on the quotient space.

@@ -1,4 +1,14 @@
-\section{Differential Geometry}
+\section{Mathematical Prior}
+
+\paragraph{The Residue Theorem}
+The residue theorem states that for a function $f(z)$ with a pole of order $n$ at $z_{0}$, the integral of $f$ about a positively oriented contour around $z_{0}$ satisfies
+\begin{align*}
+	\oint\frac{\dd{z}}{2\pi i}f(z) = \text{Res}(f, z_{0}),
+\end{align*}
+with
+\begin{align*}
+	\text{Res}(f, z_{0}) = \frac{1}{(n - 1)!}\lim\limits_{z\to z_{0}}\dv[n - 1]{z}\left((z - z_{0})^{n}f(z)\right).
+\end{align*}
 
 \paragraph{Differential Forms}
 The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as
@@ -93,7 +103,7 @@ The final result is found by first computing the difference of the above. One th
 	\comm{\grad_{\mu}}{\grad_{\nu}}(X^{\mu}Y^{\nu} - X^{\nu}Y^{\mu}) =& 2\comm{\grad_{X}}{\grad_{Y}} + 2\left((\del{}{\mu}X^{\mu})\grad_{Y} - (\del{}{\nu}Y^{\nu})\grad_{X}\right) \\
 	&+ 2(Y^{\nu}(\del{}{\nu}X^{\mu}) + X^{\mu}(\del{}{\nu}Y^{\nu}))\del{}{\mu} - 2(Y^{\nu}(\del{}{\mu}X^{\mu}) + X^{\mu}(\del{}{\mu}Y^{\nu}))\del{}{\nu} \\
 	=& 2\comm{\grad_{X}}{\grad_{Y}} + 2\left((\del{}{\mu}X^{\mu})\grad_{Y} - (\del{}{\nu}Y^{\nu})\grad_{X}\right) \\
-	 &+ 2\comm{Y}{X}^{\mu}\del{}{\mu} + 2(X^{\mu}(\del{}{\nu}Y^{\nu})\del{}{\mu} - Y^{\nu}(\del{}{\mu}X^{\mu})\del{}{\nu}) \\
+	&+ 2\comm{Y}{X}^{\mu}\del{}{\mu} + 2(X^{\mu}(\del{}{\nu}Y^{\nu})\del{}{\mu} - Y^{\nu}(\del{}{\mu}X^{\mu})\del{}{\nu}) \\
 	=& 2\comm{\grad_{X}}{\grad_{Y}} + 2\left((\del{}{\mu}X^{\mu})Y^{\nu}A_{\nu} - (\del{}{\nu}Y^{\nu})X^{\mu}A_{\mu}\right) + 2\comm{Y}{X}^{\mu}\del{}{\mu} \\
 	=& 2\left(\comm{\grad_{X}}{\grad_{Y}} + \comm{Y}{X}^{\mu}A_{\mu} + \comm{Y}{X}^{\mu}\del{}{\mu}\right),
 \end{align*}
@@ -105,8 +115,8 @@ and thus
 As for the exterior derivative of the field strength, we have
 \begin{align*}
 	\df{F} =& \frac{1}{2}\del{}{\mu}F_{\nu\rho}\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}} \\
-	=& \frac{1}{2}\left(\del{}{\mu}(A_{\nu}A_{\rho}) - \del{}{\mu}(A_{\rho}A_{\nu})\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}} \\
-	=& \frac{1}{2}\left(\del{}{\mu}(A_{\nu})A_{\rho} + A_{\nu}\del{}{\mu}(A_{\rho}) - \del{}{\mu}(A_{\rho})A_{\nu} - A_{\rho}\del{}{\mu}(A_{\nu})\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}},
+	       =& \frac{1}{2}\left(\del{}{\mu}(A_{\nu}A_{\rho}) - \del{}{\mu}(A_{\rho}A_{\nu})\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}} \\
+	       =& \frac{1}{2}\left(\del{}{\mu}(A_{\nu})A_{\rho} + A_{\nu}\del{}{\mu}(A_{\rho}) - \del{}{\mu}(A_{\rho})A_{\nu} - A_{\rho}\del{}{\mu}(A_{\nu})\right)\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{\rho}},
 \end{align*}
 as we have for any differential form $F$ that $\df{\df{F}} = \del{}{\mu}\del{}{\nu}F_{I}\df{\chi^{\mu}}\df{\chi^{\nu}}\df{\chi^{I}} = 0$, using the notation $I$ to refer to some set of indices. Now, by comparison we have
 \begin{align*}
@@ -115,7 +125,7 @@ as we have for any differential form $F$ that $\df{\df{F}} = \del{}{\mu}\del{}{\
 using the properties of the indices under cyclic permutation. We find
 \begin{align*}
 	F_{\mu\nu}A_{\rho} - A_{\mu}F_{\nu\rho} =& \left(\del{}{\mu}A_{\nu} - \del{}{\nu}A_{\mu} + \comm{A_{\mu}}{A_{\nu}}\right)A_{\rho} - A_{\mu}\left(\del{}{\nu}A_{\rho} - \del{}{\rho}A_{\nu} + \comm{A_{\nu}}{A_{\rho}}\right) \\
-	=& \del{}{\mu}(A_{\nu})A_{\rho} - \del{}{\nu}(A_{\mu})A_{\rho} - A_{\mu}\del{}{\nu}A_{\rho} + A_{\mu}\del{}{\rho}A_{\nu},
+	                                        =& \del{}{\mu}(A_{\nu})A_{\rho} - \del{}{\nu}(A_{\mu})A_{\rho} - A_{\mu}\del{}{\nu}A_{\rho} + A_{\mu}\del{}{\rho}A_{\nu},
 \end{align*}
 and permuting indices cyclically we find
 \begin{align*}
@@ -163,8 +173,8 @@ The form $F^{2}$ is of some more interest. We have
 Let us compute its trace. The last term is the easiest to handle as it is a contraction of a symmetric matrix product with an antisymmetric differential form, and is thus zero. Antisymmetrizing the components does not help due to the trace, which allows you to cyclically permute the matrices without changing the sign. Antisymmetrizing they start with the opposite sign of another term related to the first one by cyclic permutation, and it must be zero. As for the others we have
 \begin{align*}
 	\tr((\df{A})^{2} + A^{2}\df{A} + \df{(A)}A^{2}) =& \tr(\df{(A\df{A})} + \frac{2}{3}(A^{2}\df{A} + \df{(A)}A^{2} + A\df{(A)}A)) \\
-	=& \tr(\df{(A\df{A})} + \frac{2}{3}\df{A^{3}}) \\
-	=& \df{\tr((A\df{A}) + \frac{2}{3}A^{3})}.
+	                                                =& \tr(\df{(A\df{A})} + \frac{2}{3}\df{A^{3}}) \\
+	                                                =& \df{\tr((A\df{A}) + \frac{2}{3}A^{3})}.
 \end{align*}
 
 Let us finally investigate the topological invariance of integrals of $F^{2}$. Under a small deformation of $A$, we have
