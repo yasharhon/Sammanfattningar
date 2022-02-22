@@ -1,0 +1,574 @@
+\section{Quantum Pumps}
+
+\paragraph{Berry Phase, Connection and Curvature}
+Consider a system with a Hamiltonian and eigenstates parametrized by some set of parameters $\chi$ - that is, we have for each value of $\chi$ a set of eigenstates
+\begin{align*}
+	\ham(\chi)\ket{n(\chi)} = E_{n}(\chi)\ket{n(\chi)}.
+\end{align*}
+The adiabatic theorem tells us that if $R$ is varied such that the Hamiltonian changes sufficiently slowly, a state which is initialized to an eigenstate at $t = 0$ will evolve to a corresponding eigenstate at a later time. In the general case we have
+\begin{align*}
+	\ket{\psi_{n}(t)} = e^{i\gamma_{n}(t)}e^{-\frac{i}{\hbar}\inte{0}{t}\dd{\tau} E_{n}(\tau)}\ket{n(\chi(t))}.
+\end{align*}
+The former factor is the complex exponential of the so-called Berry phase. Inserting this into the Schrödinger equation we find
+\begin{align*}
+	\gamma_{n} = i\inte{0}{t}\dd{\tau}\expval{\pdv{\tau}}{n(\chi(\tau))}.
+\end{align*}
+Noting that
+\begin{align*}
+	\pdv{\tau}\ket{n(\chi(\tau))} =& \dv{R}{\tau}\cdot\grad_{R}\ket{\chi(R)},
+\end{align*}
+we can define the Berry connection
+\begin{align*}
+	A_{n} = i\expval{\grad_{\chi}}{n(\chi)}
+\end{align*}
+and find
+\begin{align*}
+	\gamma_{n} = i\inte{C}{}\dd{\chi}\cdot A_{n}.
+\end{align*}
+$C$ is the orbit in parameter space traversed during the time evolution.
+
+In a slightly more sophisticated manner, the Berry connection may be taken to be a 1-form
+\begin{align*}
+	A_{n} = i\bra{n(R)}\del{}{\mu}{\ket{n(R)}}\df{\chi^{\mu}}.
+\end{align*}
+Due to Stokes' theorem, the line integral of the Berry connection about some closed path is related to the surface integral of its exterior derivative, termed the Berry curvature. Its components are
+\begin{align*}
+	\Omega^{(2)}_{n, \mu\nu} = \del{}{\mu}A_{n, \nu} - \del{}{\nu}A_{n, \mu},
+\end{align*}
+and we have
+\begin{align*}
+	\inte{\bound{S}}{}A_{n} = \frac{1}{2}\inte{S}{}\dd{\chi^{\mu}}\wedge\dd{\chi^{\nu}}\Omega^{(2)}_{n, \mu\nu}.
+\end{align*}
+
+\paragraph{A More Sophisticated Definition}
+From this point on we switch to the more compact notation
+\begin{align*}
+	\del{}{\mu}\ket{n} = \ket{\del{}{\mu}n}
+\end{align*}
+and suppress the parameter dependence. The Berry curvature is given by
+\begin{align*}
+	\Omega^{(2)} = \df{A_{n}} = \frac{1}{2}(\del{}{\mu}A_{n, \nu} - \del{}{\nu}A_{n, \mu})\df{\chi^{\mu}}\wedge\df{\chi^{\nu}},
+\end{align*}
+and we find
+\begin{align*}
+	\Omega^{(2)}_{\mu\nu} = i\left(\braket{\del{}{\mu}n}{\del{}{\nu}n} + \braket{n}{\del{}{\mu}\del{}{\nu}n} - \braket{\del{}{\nu}n}{\del{}{\mu}n} - \braket{n}{\del{}{\nu}\del{}{\mu}n}\right) = i\left(\braket{\del{}{\mu}n}{\del{}{\nu}n} - \braket{\del{}{\nu}n}{\del{}{\mu}n}\right).
+\end{align*}
+This can be expressed without derivatives of the state. To do that we differentiate the eigenvalue expression to yield
+\begin{align*}
+	\del{}{\mu}\ham\ket{n} + \ham\ket{\del{}{\mu}n} = \del{}{\mu}E_{n}\ket{n} + E_{n}\ket{\del{}{\mu}n}.
+\end{align*}
+Using the orthogonality of the eigenstates, we have for some $n\neq m$ that
+\begin{align*}
+	\mel{m}{\del{}{\mu}\ham}{n} = (E_{n} - E_{m})\braket{m}{\del{}{\mu}n}.
+\end{align*}
+We can now solve for the inner product on the left-hand side and its complex conjugate, as well as sum over $m$, to find
+\begin{align*}
+	\Omega^{(2)}_{\mu\nu} = i\sum\limits_{m\neq n}\frac{\mel{n}{\del{}{\mu}\ham}{m}\mel{m}{\del{}{\nu}\ham}{n} - \text{c.c}}{(E_{n} - E_{m})^{2}}.
+\end{align*}
+
+Finally we introduce a third definition
+\begin{align*}
+	\Omega^{(2)} = \frac{i}{2}\oint\frac{\dd{z}}{2\pi i}\tr(G\df{\ham}G^{2}\df{\ham}).
+\end{align*}
+$G$ is given by $(z - \ham)^{-1}$ and the integral is a counter-clockwise contour integral around the energy of the state in consideration. There is also the appearance of the exterior derivative of the Hamiltonian.
+
+Does this correspond to our previous notion of the Berry curvature? To investigate, let us rewrite the above operators as
+\begin{align*}
+	\ham = \sum\limits_{n}E_{n}\op{n},\ G = \sum\limits_{n}\frac{1}{z - E_{n}}\op{n}.
+\end{align*}
+Next we note that
+\begin{align*}
+	G\df{G^{-1}} = -\df{G}G^{-1} = -G\df{\ham},
+\end{align*}
+hence
+\begin{align*}
+	G\df{G^{-1}}G\df{G^{-1}}G = G\df{\ham}G\df{\ham}G,
+\end{align*}
+and by cyclic permutation we have
+\begin{align*}
+	\tr(G\df{G^{-1}}G\df{G^{-1}}G) =& \tr(G\df{\ham}G\df{\ham}G) \\
+	=& \tr(G\del{}{\mu}\ham G\del{}{\nu}\ham G)\df{\chi^{\mu}}\df{\chi^{\nu}} \\
+	=& \tr(G\del{}{\nu}\ham G^{2}\del{}{\mu}\ham)\df{\chi^{\mu}}\df{\chi^{\nu}} \\
+	=& -\tr(G\df{\ham}G^{2}\df{\ham}).
+\end{align*}
+
+As a warmup to the final computation, consider a case where the spectrum is parameter-independent.  In the eigenbasis of the Hamiltonian we generally have
+\begin{align*}
+	\df{G^{-1}} =& \sum\limits_{n}\left(-\del{}{\mu}E_{n}\op{n} + (z - E_{n})\left(\op{\del{}{\mu}n}{n} + \op{n}{\del{}{\mu}n}\right)\right)\df{\chi^{\mu}}, \\
+	\df{G}      =& \sum\limits_{n}\left(\frac{\del{}{\mu}E_{n}}{(z - E_{n})^{2}}\op{n} + \frac{1}{z - E_{n}}\left(\op{\del{}{\mu}n}{n} + \op{n}{\del{}{\mu}n}\right)\right)\df{\chi^{\mu}},
+\end{align*}
+and thus in this case
+\begin{align*}
+	G\df{G^{-1}}G\df{G^{-1}}G =& \sum\frac{(z - E_{2})(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\op{1}\left(\op{\del{}{\mu}2}{2} + \op{2}{\del{}{\mu}2}\right)\op{3}\left(\op{\del{}{\nu}4}{4} + \op{4}{\del{}{\nu}4}\right)\op{5}e^{\mu\nu},
+\end{align*}
+where the natural numbers are summed over and we abbreviate the differential form basis vector. Multiplying this out we have
+\begin{align*}
+	G\df{G^{-1}}G\df{G^{-1}}G = \sum&\frac{(z - E_{2})(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\ket{1}\left(\braket{1}{\del{}{\mu}2}\kdelta{}{23} + \kdelta{}{12}\braket{\del{}{\mu}2}{3}\right)\left(\braket{3}{\del{}{\nu}4}\kdelta{}{45} + \kdelta{}{34}\braket{\del{}{\nu}4}{5}\right)\bra{5}e^{\mu\nu} \\
+	= \sum&\ket{1}\left(\frac{(z - E_{2})(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\braket{1}{\del{}{\mu}2}\kdelta{}{23}\braket{3}{\del{}{\nu}4}\kdelta{}{45} \right. \\
+	&+ \left. \frac{(z - E_{2})(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\braket{1}{\del{}{\mu}2}\kdelta{}{23}\kdelta{}{34}\braket{\del{}{\nu}4}{5} \right. \\
+	&+ \left. \frac{(z - E_{2})(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\kdelta{}{12}\braket{\del{}{\mu}2}{3}\braket{3}{\del{}{\nu}4}\kdelta{}{45} \right. \\
+	&+ \left. \frac{(z - E_{2})(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\kdelta{}{12}\braket{\del{}{\mu}2}{3}\kdelta{}{34}\braket{\del{}{\nu}4}{5}\right)\bra{5}e^{\mu\nu} \\
+	= \sum&\ket{1}\left(\frac{1}{z - E_{1}}\braket{1}{\del{}{\mu}2}\braket{2}{\del{}{\nu}4}\bra{4} + \frac{z - E_{2}}{(z - E_{1})(z - E_{5})}\braket{1}{\del{}{\mu}2}\braket{\del{}{\nu}2}{5}\bra{5} \right. \\
+	&+ \left. \frac{1}{z - E_{3}}\braket{\del{}{\mu}1}{3}\braket{3}{\del{}{\nu}4}\bra{4} + \frac{1}{z - E_{5}}\braket{\del{}{\mu}1}{3}\braket{\del{}{\nu}3}{5}\bra{5}\right)e^{\mu\nu},
+\end{align*}
+and
+\begin{align*}
+	\tr(G\df{G^{-1}}G\df{G^{-1}}G) =& \sum\left(\frac{1}{z - E_{1}}\braket{1}{\del{}{\mu}2}\braket{2}{\del{}{\nu}4}\braket{4}{1} + \frac{z - E_{2}}{(z - E_{1})(z - E_{5})}\braket{1}{\del{}{\mu}2}\braket{\del{}{\nu}2}{5}\braket{5}{1} \right. \\
+	&+ \left. \frac{1}{z - E_{3}}\braket{\del{}{\mu}1}{3}\braket{3}{\del{}{\nu}4}\braket{4}{1} + \frac{1}{z - E_{5}}\braket{\del{}{\mu}1}{3}\braket{\del{}{\nu}3}{5}\braket{5}{1}\right)e^{\mu\nu} \\
+	1=& \sum\left(\frac{1}{z - E_{1}}\braket{1}{\del{}{\mu}2}\braket{2}{\del{}{\nu}4}\kdelta{}{41} + \frac{z - E_{2}}{(z - E_{1})(z - E_{5})}\braket{1}{\del{}{\mu}2}\braket{\del{}{\nu}2}{5}\kdelta{}{51} \right. \\
+	&+ \left. \frac{1}{z - E_{3}}\braket{\del{}{\mu}1}{3}\braket{3}{\del{}{\nu}4}\kdelta{}{41} + \frac{1}{z - E_{5}}\braket{\del{}{\mu}1}{3}\braket{\del{}{\nu}3}{5}\kdelta{}{51}\right)e^{\mu\nu} \\
+	=& \sum\left(\frac{1}{z - E_{1}}\braket{1}{\del{}{\mu}2}\braket{2}{\del{}{\nu}1} + \frac{z - E_{2}}{(z - E_{1})^{2}}\braket{1}{\del{}{\mu}2}\braket{\del{}{\nu}2}{1} \right. \\
+	&+ \left. \frac{1}{z - E_{3}}\braket{\del{}{\mu}1}{3}\braket{3}{\del{}{\nu}1} + \frac{1}{z - E_{1}}\braket{\del{}{\mu}1}{3}\braket{\del{}{\nu}3}{1}\right)e^{\mu\nu}.
+\end{align*}
+Let us now perform the contour integral about a particular energy $E_{n}$. All of them are equal to 1 if and only if $n$ is equal to the index that appears in the denominator, hence
+\begin{align*}
+	\Omega^{(2)} =& -\frac{i}{2}\sum\left(\braket{n}{\del{}{\mu}1}\braket{1}{\del{}{\nu}n} + \braket{n}{\del{}{\mu}1}\braket{\del{}{\nu}1}{n} + \braket{\del{}{\mu}1}{n}\braket{n}{\del{}{\nu}1} + \braket{\del{}{\mu}n}{1}\braket{\del{}{\nu}1}{n}\right)e^{\mu\nu} \\
+	=& -\frac{i}{2}\sum\left(-\braket{\del{}{\mu}n}{1}\braket{1}{\del{}{\nu}n} + \braket{\del{}{\mu}n}{1}\braket{1}{\del{}{\nu}n} + \braket{1}{\del{}{\mu}n}\braket{\del{}{\nu}n}{1} - \braket{\del{}{\mu}n}{1}\braket{1}{\del{}{\nu}n}\right)e^{\mu\nu} \\
+	=& \frac{i}{2}\left(\braket{\del{}{\mu}n}{\del{}{\nu}n} - \braket{\del{}{\nu}n}{\del{}{\mu}n}\right)e^{\mu\nu},
+\end{align*}
+and thus
+\begin{align*}
+	\Omega^{(2)}_{\mu\nu} = i\left(\braket{\del{}{\mu}n}{\del{}{\nu}n} - \braket{\del{}{\nu}n}{\del{}{\mu}n}\right).
+\end{align*}
+
+Let us now go to the general case. It will contain an operator product
+\begin{align*}
+	 &\op{1}\left(-\del{}{\mu}E_{2}\op{2} + (z - E_{2})\left(\op{\del{}{\mu}2}{2} + \op{2}{\del{}{\mu}2}\right)\right)\op{3}\left(-\del{}{\nu}E_{4}\op{4} + (z - E_{4})\left(\op{\del{}{\nu}4}{4} + \op{4}{\del{}{\nu}4}\right)\right)\op{5} \\
+	=& \ket{1}\left(-\del{}{\mu}E_{2}\kdelta{}{12}\kdelta{}{23} + (z - E_{2})\left(\braket{1}{\del{}{\mu}2}\kdelta{}{23} + \kdelta{}{12}\braket{\del{}{\mu}2}{3}\right)\right)\left(-\del{}{\nu}E_{4}\kdelta{}{34}\kdelta{}{45} + (z - E_{4})\left(\braket{3}{\del{}{\nu}4}\kdelta{}{45} + \kdelta{}{34}\braket{\del{}{\nu}4}{5}\right)\right)\bra{5},
+\end{align*}
+and the trace will turn this to
+\begin{align*}
+	\left(-\del{}{\mu}E_{2}\kdelta{}{12}\kdelta{}{23} + (z - E_{2})\left(\braket{1}{\del{}{\mu}2}\kdelta{}{23} + \kdelta{}{12}\braket{\del{}{\mu}2}{3}\right)\right)\left(-\del{}{\nu}E_{4}\kdelta{}{34}\kdelta{}{45} + (z - E_{4})\left(\braket{3}{\del{}{\nu}4}\kdelta{}{45} + \kdelta{}{34}\braket{\del{}{\nu}4}{5}\right)\right)\kdelta{}{15}.
+\end{align*}
+Each bracket has three terms, so let us denote their products (after adding the extra factors) as $a_{ij}$, with $i$ and $j$ denoting which terms from each of the brackets are multiplied. We know that when tracing $a_{22} + a_{23} + a_{32} + a_{33}$, we get the result. We will thus have completed the proof if we can show that the others yield no net contribution. First we have
+\begin{align*}
+	\sum a_{11} =& \sum\frac{1}{(z - E_{1})(z - E_{3})(z - E_{5})}\left(-\del{}{\mu}E_{2}\kdelta{}{12}\kdelta{}{23}\right)\left(-\del{}{\nu}E_{4}\kdelta{}{34}\kdelta{}{45}\right)\kdelta{}{15}e^{\mu\nu} \\
+	            =& \sum\frac{\del{}{\mu}(E_{2})\del{}{\nu}(E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\kdelta{}{12}\kdelta{}{23}\kdelta{}{34}\kdelta{}{45}\kdelta{}{15}e^{\mu\nu} \\
+	            =& \sum\frac{\del{}{\mu}(E_{1})\del{}{\nu}(E_{1})}{(z - E_{1})^{3}}e^{\mu\nu}.
+\end{align*}
+This is identically zero as it contains a contraction of symmetric components with the antisymmetric differential form basis. As for the others we have
+\begin{align*}
+	\sum a_{12} =& -\sum\frac{\del{}{\mu}E_{2}(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\kdelta{}{12}\kdelta{}{23}\braket{3}{\del{}{\nu}4}\kdelta{}{45}\kdelta{}{15}e^{\mu\nu} = -\sum\frac{\del{}{\mu}E_{1}}{(z - E_{1})^{2}}\braket{1}{\del{}{\nu}1}e^{\mu\nu}, \\
+	\sum a_{13} =& -\sum\frac{\del{}{\mu}E_{2}(z - E_{4})}{(z - E_{1})(z - E_{3})(z - E_{5})}\kdelta{}{12}\kdelta{}{23}\kdelta{}{34}\braket{\del{}{\nu}4}{5}\kdelta{}{15}e^{\mu\nu} = -\sum\frac{\del{}{\mu}E_{1}}{(z - E_{1})^{2}}\braket{\del{}{\nu}1}{1}e^{\mu\nu}, \\
+	\sum a_{21} =& -\sum\frac{\del{}{\nu}E_{4}(z - E_{2})}{(z - E_{1})(z - E_{3})(z - E_{5})}\braket{1}{\del{}{\mu}2}\kdelta{}{23}\kdelta{}{34}\kdelta{}{45}\kdelta{}{15}e^{\mu\nu} = -\sum\frac{\del{}{\nu}E_{1}}{(z - E_{1})^{2}}\braket{1}{\del{}{\mu}1}e^{\mu\nu}, \\
+	\sum a_{31} =& -\sum\frac{\del{}{\nu}E_{4}(z - E_{2})}{(z - E_{1})(z - E_{3})(z - E_{5})}\kdelta{}{12}\braket{\del{}{\mu}2}{3}\kdelta{}{34}\kdelta{}{45}\kdelta{}{15}e^{\mu\nu} = -\sum\frac{\del{}{\nu}E_{1}}{(z - E_{1})^{2}}\braket{\del{}{\mu}1}{1}e^{\mu\nu},
+\end{align*}
+and these all cancel each other exactly, completing the proof.
+
+\paragraph{Properties of Parametrized States}
+We will now derive some useful properties of derivatives of states of parametrized systems. Because orthogonality is preserved we have
+\begin{align*}
+	\del{}{\mu}\braket{m}{n} = \braket{\del{}{\mu}m}{n} + \braket{m}{\del{}{\mu}n} = 0.
+\end{align*}
+Because the identity is also preserved we have
+\begin{align*}
+	\sum\op{\del{}{\mu}n}{n} + \op{n}{\del{}{\mu}n} = 0.
+\end{align*}
+
+\paragraph{The Single Spin}
+Consider a single spin-$\frac{1}{2}$ in an external field of length $1$. The Hamiltonian is
+\begin{align*}
+	\ham = h_{x}\sigma_{x} + h_{y}\sigma_{y} + h_{z}\sigma_{z},
+\end{align*}
+with the external field being restricted in length. With respect to the $\sigma_{z}$ eigenstates at $\theta = \phi = 0$, which are of course angle-independent, we have
+\begin{align}
+	\ket{\downarrow}_{\theta, \phi} = \mqty[
+		-\sin(\frac{\theta}{2})e^{-i\phi} \\
+		\cos(\frac{\theta}{2})
+	],\ \ket{\uparrow}_{\theta, \phi} = \mqty[
+		\cos(\frac{\theta}{2})e^{-i\phi} \\
+		\sin(\frac{\theta}{2})
+	],
+	\label{eq:spin_angle_states}
+\end{align}
+and thus
+\begin{align*}
+	A_{-, \theta} = 0,\ A_{-, \phi} = \sin[2](\frac{\theta}{2}),\ A_{+, \theta} = 0,\ A_{+, \phi} = \cos[2](\frac{\theta}{2}).
+\end{align*}
+The Berry curvature is then
+\begin{align*}
+	\Omega^{(2)}_{\pm, \theta\phi} = \mp\frac{1}{2}\sin(\theta).
+\end{align*}
+This implies that the Berry phase induced after an adiabatic cycle is equal to half the subtended solid angle.
+
+\paragraph{Higher Berry Curvature and the KS Invariant}
+For an infinite $1d$ system, $\Omega^{(2)}$ might diverge. A convergent quantity might instead be found by splitting the Hamiltonian into a sum of local terms working at a finite range, i.e.
+\begin{align*}
+	\ham = \sum\limits_{p\in\mathbb{Z}}\ham_{p}.
+\end{align*}
+The quantity
+\begin{align*}
+	F^{(2)}_{pq} = \frac{i}{2}\oint\frac{\dd{z}}{2\pi i}\tr(G\df{\ham_{p}}G^{2}\df{\ham_{q}})
+\end{align*}
+then decays exponentially with respect to $\abs{p - q}$ if the Hamiltonian is gapped, and is thus well-defined. Next we can construct the two-form
+\begin{align*}
+	F^{(2)}_{q} = \sum\limits_{p\in\mathbb{Z}}F^{(2)}_{pq} = \frac{i}{2}\oint\frac{\dd{z}}{2\pi i}\tr(G\df{\ham}G^{2}\df{\ham_{q}}).
+\end{align*}
+Its exterior derivative is given by
+\begin{align*}
+	\df{F^{(2)}_{q}} = \sum\limits_{p\in\mathbb{Z}}F^{(3)}_{pq}.
+\end{align*}
+We have
+\begin{align*}
+	 &\del{}{\rho}(G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q})e^{\rho\mu\nu} \\
+	=& \left(\del{}{\rho}G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\rho}\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}\del{}{\rho}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}G^{2}\del{}{\rho}\del{}{\nu}\ham_{q}\right)e^{\rho\mu\nu} \\
+	=& \left(\del{}{\rho}G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}(\del{}{\rho}GG + G\del{}{\rho}G)\del{}{\nu}\ham_{q}\right)e^{\rho\mu\nu} \\
+	=& \left(\del{}{\rho}\ham G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}(G\del{}{\rho}\ham G^{2} + G^{2}\del{}{\rho}\ham G)\del{}{\nu}\ham_{q}\right)e^{\rho\mu\nu} \\
+	=& \left(\del{}{\rho}\ham G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}(G\del{}{\rho}\ham G^{2} + G^{2}\del{}{\rho}\ham G)\del{}{\nu}\ham_{q}\right)e^{\rho\mu\nu} \\
+	=& \left(\del{}{\rho}\ham G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}G\del{}{\rho}\ham G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}G^{2}\del{}{\rho}\ham G\del{}{\nu}\ham_{q}\right)e^{\rho\mu\nu},
+\end{align*}
+and thus
+\begin{align*}
+	 &\tr(\del{}{\rho}(G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q}))e^{\rho\mu\nu} \\
+	=& \tr(\del{}{\rho}\ham G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}G\del{}{\rho}\ham G^{2}\del{}{\nu}\ham_{q} + G\del{}{\mu}\ham_{p}G^{2}\del{}{\rho}\ham G\del{}{\nu}\ham_{q})e^{\rho\mu\nu} \\
+	=& \tr(\del{}{\rho}\ham G\del{}{\mu}\ham_{p}G^{2}\del{}{\nu}\ham_{q} - G\del{}{\rho}\ham G^{2}\del{}{\mu}\ham_{q}G\del{}{\nu}\ham_{p} + G\del{}{\mu}\ham_{p}G^{2}\del{}{\rho}\ham G\del{}{\nu}\ham_{q})e^{\rho\mu\nu}.
+\end{align*}
+Somehow we are to find
+\begin{align*}
+	F^{(3)}_{pq} = \frac{i}{6}\oint\frac{\dd{z}}{2\pi i}\tr(G^{2}\df{\ham}G\df{\ham_{p}}G\df{\ham_{q}} - G\df{\ham}G^{2}\df{\ham_{p}}G\df{\ham_{q}}) - (p \leftrightarrow q).
+\end{align*}
+
+To compute this we expand in eigenstates of the Hamiltonian according to
+\begin{align*}
+	G^{2}\df{\ham}G\df{\ham_{p}}G\df{\ham_{q}} =& \sum\frac{\op{1}\op{2}\df{\ham}\op{3}\df{\ham_{p}}\op{4}\df{\ham_{q}}}{(z - E_{1})(z - E_{2})(z - E_{3})(z - E_{4})} \\
+	=& \sum\frac{\op{1}\df{\ham}\op{2}\df{\ham_{p}}\op{3}\df{\ham_{q}}}{(z - E_{1})^{2}(z - E_{2})(z - E_{3})}.
+\end{align*}
+Let us now compute the contour integral around the ground state. The contributions from where only one number is zero is
+\begin{align*}
+	\sum &-\op{0}\df{\ham}\op{2}\df{\ham_{p}}\op{3}\df{\ham_{q}}\left(\frac{1}{(E_{0} - E_{2})^{2}(E_{0} - E_{3})} + \frac{1}{(E_{0} - E_{2})(E_{0} - E_{3})^{2}}\right) \\
+	&+ \frac{\op{1}\df{\ham}\op{0}\df{\ham_{p}}\op{3}\df{\ham_{q}}}{(E_{0} - E_{1})^{2}(E_{0} - E_{3})} + \frac{\op{1}\df{\ham}\op{2}\df{\ham_{p}}\op{0}\df{\ham_{q}}}{(E_{0} - E_{1})^{2}(E_{0} - E_{2})}.
+\end{align*}
+Introducing
+\begin{align*}
+	G_{0} = \sum\limits_{n\neq 0}\frac{1}{E_{0} - E_{n}}\op{n},
+\end{align*}
+this can be written as
+\begin{align*}
+	&-\op{0}\left(\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{q}} + \df{\ham}G_{0}\df{\ham_{p}}G_{0}^{2}\df{\ham_{q}}\right) + G_{0}^{2}\df{\ham}\op{0}\df{\ham_{p}}G_{0}\df{\ham_{q}} + G_{0}^{2}\df{\ham}G_{0}\df{\ham_{p}}\op{0}\df{\ham_{q}}.
+\end{align*}
+Similarly, when two of the numbers are zero we get the contribution
+\begin{align*}
+	 &\sum\frac{1}{2}\left(2\frac{\op{0}\df{\ham}\op{0}\df{\ham_{p}}\op{3}\df{\ham_{q}}}{(E_{0} - E_{3})^{3}} + 2\frac{\op{0}\df{\ham}\op{2}\df{\ham_{p}}\op{0}\df{\ham_{q}}}{(E_{0} - E_{2})^{3}}\right) - 2\frac{\op{1}\df{\ham}\op{0}\df{\ham_{p}}\op{0}\df{\ham_{q}}}{(E_{0} - E_{1})^{3}} \\
+	=& \op{0}\df{\ham}\op{0}\df{\ham_{p}}G_{0}^{3}\df{\ham_{q}} + \op{0}\df{\ham}G_{0}^{3}\df{\ham_{p}}\op{0}\df{\ham_{q}} - 2G_{0}^{3}\df{\ham}\op{0}\df{\ham_{p}}\op{0}\df{\ham_{q}}.
+\end{align*}
+Finally, if none or all of them are zero there is no contribution. Next, we have
+\begin{align*}
+	G\df{\ham}G^{2}\df{\ham_{p}}G\df{\ham_{q}} =& \sum\frac{\op{1}\df{\ham}\op{2}\df{\ham_{p}}\op{3}\df{\ham_{q}}}{(z - E_{1})(z - E_{2})^{2}(z - E_{3})}.
+\end{align*}
+The contributions after computing the contour integral are
+\begin{align*}
+	\sum &-\op{1}\df{\ham}\op{0}\df{\ham_{p}}\op{3}\df{\ham_{q}}\left(\frac{1}{(E_{0} - E_{1})^{2}(E_{0} - E_{3})} + \frac{1}{(E_{0} - E_{1})(E_{0} - E_{3})^{2}}\right) \\
+	&+ \frac{\op{0}\df{\ham}\op{2}\df{\ham_{p}}\op{3}\df{\ham_{q}}}{(E_{0} - E_{2})^{2}(E_{0} - E_{3})} + \frac{\op{1}\df{\ham}\op{2}\df{\ham_{p}}\op{0}\df{\ham_{q}}}{(E_{0} - E_{1})(E_{0} - E_{2})^{2}} \\
+	=& -G_{0}^{2}\df{\ham}\op{0}\df{\ham_{p}}G_{0}\df{\ham_{q}} - G_{0}\df{\ham}\op{0}\df{\ham_{p}}G_{0}^{2}\df{\ham_{q}} + \op{0}\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{q}} + G_{0}\df{\ham}G_{0}^{2}\df{\ham_{p}}\op{0}\df{\ham_{q}}
+\end{align*}
+when one number is zero and
+\begin{align*}
+	 &\sum\frac{1}{2}\left(2\frac{\op{0}\df{\ham}\op{0}\df{\ham_{p}}\op{3}\df{\ham_{q}}}{(E_{0} - E_{3})^{3}} + 2\frac{\op{1}\df{\ham}\op{0}\df{\ham_{p}}\op{0}\df{\ham_{q}}}{(E_{0} - E_{1})^{3}}\right) - 2\frac{\op{0}\df{\ham}\op{2}\df{\ham_{p}}\op{0}\df{\ham_{q}}}{(E_{0} - E_{2})^{2}} \\
+	=& \op{0}\df{\ham}\op{0}\df{\ham_{p}}G_{0}^{3}\df{\ham_{q}} + G_{0}^{3}\df{\ham}\op{0}\df{\ham_{p}}\op{0}\df{\ham_{q}} - 2\op{0}\df{\ham}G_{0}^{3}\df{\ham_{p}}\op{0}\df{\ham_{q}}
+\end{align*}
+when two are. The final result is thus
+\begin{align*}
+	F^{(3)}_{pq} = \frac{i}{6}&\left(-\expval{\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{q}}} - \expval{\df{\ham}G_{0}\df{\ham_{p}}G_{0}^{2}\df{\ham_{q}}} + \expval{\df{\ham_{p}}G_{0}\df{\ham_{q}}G_{0}^{2}\df{\ham}} \right. \\
+	&+ \left. \expval{\df{\ham_{q}}G_{0}^{2}\df{\ham}G_{0}\df{\ham_{p}}} + \expval{\df{\ham}}\expval{\df{\ham_{p}}G_{0}^{3}\df{\ham_{q}}} + \expval{\df{\ham}G_{0}^{3}\df{\ham_{p}}}\expval{\df{\ham_{q}}} \right. \\
+	&- \left. 2\expval{\df{\ham_{q}}G_{0}^{3}\df{\ham}}\expval{\df{\ham_{p}}} + \expval{\df{\ham_{p}}G_{0}\df{\ham_{q}}G_{0}^{2}\df{\ham}} + \expval{\df{\ham_{p}}G_{0}^{2}\df{\ham_{q}}G_{0}\df{\ham}} \right. \\
+	&- \left. \expval{\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{q}}} - \expval{\df{\ham_{q}}G_{0}\df{\ham}G_{0}^{2}\df{\ham_{p}}} - \expval{\df{\ham}}\expval{\df{\ham_{p}}G_{0}^{3}\df{\ham_{q}}} \right. \\
+	&- \left. \expval{\df{\ham_{p}}}\expval{\df{\ham_{q}}G_{0}^{3}\df{\ham}} + 2\expval{\df{\ham}G_{0}^{3}\df{\ham_{p}}}\expval{\df{\ham_{q}}}\right) - (p \leftrightarrow q) \\
+	= \frac{i}{6}&\left(-2\expval{\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{q}}} - \expval{\df{\ham}G_{0}\df{\ham_{p}}G_{0}^{2}\df{\ham_{q}}} + 2\expval{\df{\ham_{p}}G_{0}\df{\ham_{q}}G_{0}^{2}\df{\ham}} \right. \\
+	&+ \left. \expval{\df{\ham_{p}}G_{0}^{2}\df{\ham_{q}}G_{0}\df{\ham}} + \expval{\df{\ham_{q}}G_{0}^{2}\df{\ham}G_{0}\df{\ham_{p}}} - \expval{\df{\ham_{q}}G_{0}\df{\ham}G_{0}^{2}\df{\ham_{p}}} \right. \\
+	&+ \left. 3\expval{\df{\ham}G_{0}^{3}\df{\ham_{p}}}\expval{\df{\ham_{q}}} - 3\expval{\df{\ham_{q}}G_{0}^{3}\df{\ham}}\expval{\df{\ham_{p}}}\right) - (p \leftrightarrow q),
+\end{align*}
+where all the expectation values are computed in the ground state.
+
+This quantity is somewhat difficult to manage, but one can reduce it somewhat. First, states excited outside of the support of $\ham_{p}$ and $\ham_{q}$ do not contribute, as they are orthogonal to the ground state and can pass through $\ham_{p}$ and $\ham_{q}$, as well as their exterior derivatives. By a similar token, $F^{(3)}_{pq}$ is non-zero only if $\ham_{p}$ and $\ham_{q}$ have overlapping support. This also implies that the only terms in the Hamiltonian that contribute are the ones with support overlapping with both $\ham_{p}$ and $\ham_{q}$.
+
+Using these quantities we can construct a 3-form Berry curvature
+\begin{align*}
+	\Omega^{(3)}(f) = \frac{1}{2}\sum\limits_{p, q\in\mathbb{Z}}F^{(3)}_{pq}(f(q) - f(p)).
+\end{align*}
+$f$ is some sigmoid function, its particular shape turning out to be unimportant. A simple choice is $f(p) = \Theta(p - a)$ for some $a\in\mathbb{Z} + \frac{1}{2}$. For this particular choice we have
+\begin{align*}
+	\Omega^{(3)}(f) =& \frac{1}{2}\sum\limits_{p, q\in\mathbb{Z}}F^{(3)}_{pq}(\Theta(q - a) - \Theta(p - a)) \\
+	                =& \frac{1}{2}\sum\limits_{p\in\mathbb{Z},\ q > a}F^{(3)}_{pq}(1 - \Theta(p - a)) - \frac{1}{2}\sum\limits_{p\in\mathbb{Z},\ q < a}F^{(3)}_{pq}\Theta(p - a) \\
+	                =& \frac{1}{2}\sum\limits_{p < a,\ q > a}F^{(3)}_{pq} - \frac{1}{2}\sum\limits_{p > a,\ q < a}F^{(3)}_{pq} \\
+	                =& \sum\limits_{p < a,\ q > a}F^{(3)}_{pq},
+\end{align*}
+using the antisymmetry of $F^{(3)}_{pq}$.
+
+Finally we can define the KS invariant
+\begin{align*}
+	Q_{\text{KS}} = \inte{}{}\Omega^{(3)}(f),
+\end{align*}
+which is performed over the full parameter space of the Hamiltonian. This is a topological invariant.
+
+\paragraph{The Dimerized Spin Chain}
+Consider an infinite spin chain with Hamiltonian
+\begin{align*}
+	\ham_{1d} = \sum\limits_{p\in\mathbb{Z}}\ham^{1}_{p}(w) + \sum\limits_{p\in 2\mathbb{Z} + 1}\ham^{2, +}_{p, p + 1}(w) + \sum\limits_{p\in 2\mathbb{Z}}\ham^{2, -}_{p, p + 1}(w).
+\end{align*}
+The parameter takes values on $S^{3}$. There are three kinds of terms here. The first is
+\begin{align*}
+	\ham^{1}_{p}(w) = (-1)^{p}(w_{1}\sigma_{p}^{1} + w_{2}\sigma_{p}^{2}+ w_{3}\sigma_{p}^{3}),
+\end{align*}
+which is some fluctuating on-site term. The two others are
+\begin{align*}
+	\ham^{2, \pm}_{p, p + 1}(w) = g^{\pm}(w)\sum\limits_{\mu = 1, 2, 3}\sigma_{p}^{\mu}\sigma_{p + 1}^{\mu},
+\end{align*}
+with two functions
+\begin{align*}
+	g^{+}(w) = \begin{cases}
+		w_{4},\ 0\leq w_{4} \leq 1, \\
+		0,\ \text{otherwise},
+	\end{cases}
+	g^{-}(w) = \begin{cases}
+		-w_{4},\ -1\leq w_{4} \leq 0, \\
+		0,\ \text{otherwise}.
+	\end{cases}
+\end{align*}
+This type of interaction defines five distinct regimes:
+\begin{itemize}
+	\item $w_{4} = 1$, where there is only odd-even bonding.
+	\item $0 < w_{4} < 1$, where there is odd-even bonding and on-site interactions.
+	\item $w_{4} = 0$, where there is only on-site interaction.
+	\item $-1 < w_{4} < 0$, where there is even-odd bonding and on-site interactions.
+	\item $w_{4} = 1$, where there is only even-odd bonding.
+\end{itemize}
+
+To compute the 3-form Berry curvature and KS invariant, we rewrite the Hamiltonian as a sum of local terms. These are
+\begin{align*}
+	\ham_{p}(w) = \ham^{1}_{p}(w) + x\ham^{2, \pm}_{p, p + 1}(w) + (1 - x)\ham^{2, \mp}_{p - 1, p}(w).
+\end{align*}
+The top sign is for odd $p$. The new parameter $x$ is an extra control parameter, taken to be fixed. Its introduction is an explicit representation of the ambiguity of the choice of local terms.
+
+For the sigmoid function $f$ we choose a Heaviside function, this time leaving us with two variants - $f$ with $a\in 2\mathbb{Z} - \frac{1}{2}$ and $f\p$ with $a\in 2\mathbb{Z} + \frac{1}{2}$. To see how they differ, consider the regime $w_{4} > 0$. In this case $f$ splits the dimer in two and $f\p$ switches on between two dimers.
+
+Because the local terms in the Hamiltonian only interact at range $1$ in either direction, the eigenstates of the system for any parameter choice are product states over each dimer. This means
+\begin{align*}
+	\Omega^{(3)}(f) = \Omega^{(3)}(f\p) = F^{(3)}_{a - \frac{1}{2}, a + \frac{1}{2}},
+\end{align*}
+with the particular choice of $a$ distinguishing the two cases. $\Omega^{(3)}(f)$ is only non-trivial if the sites $a \pm \frac{1}{2}$ belong to the same dimer, hence $\Omega^{(3)}(f) = 0$ unless $w_{4} > 0$ and $\Omega^{(3)}(f\p) = 0$ unless $w_{4} < 0$.
+
+We will need to diagonalize the dimer, so we first transform the basis from an angle-independent one into one parallel with the Zeeman field using a unitary operator $U$. This transforms states according to $\ket{\psi}\to \ket{\psi}_{\theta, \phi} = U\ket{\psi}$ and any operator according to $A\to a = UAU\adj$, the explicit angle dependence having been removed from the left-hand side of both equalities. The small-letter notation will be useful for clarification when a matrix representation is invoked. Having applied this transformation we choose simultaneous eigenstates of $S_{z, p}\p + S_{z, p + 1}\p$ and $(S_{p}\p + S_{p + 1}\p)^{2}$, which are also eigenstates of $(S_{p}\p)^{2}$ and $(S_{p + 1}\p)^{2}$. The vector appearing in the Zeeman term has length $\sqrt{1 - w_{4}^{2}}$, meaning
+\begin{align*}
+	h_{p} = -2\sqrt{1 - w_{4}^{2}}S_{z, p}\p + 4xw_{4}S_{p}\p\cdot S_{p + 1}\p,\ h_{p + 1} = 2\sqrt{1 - w_{4}^{2}}S_{z, p + 1} + 4(1 - x)w_{4}S_{p}\p\cdot S_{p + 1}\p
+\end{align*}
+for $p = a - \frac{1}{2}$. Furthermore, as
+\begin{align*}
+	S_{p}\p\cdot S_{p + 1}\p = \frac{1}{2}((S_{p}\p + S_{p + 1}\p)^{2} - (S_{p}\p)^{2} - (S_{p + 1}\p)^{2}),
+\end{align*}
+we have
+\begin{align*}
+	h_{p} &= -\sqrt{1 - w_{4}^{2}}\mqty[
+		1 & 0 & 0  & 0 \\
+		0 & 0 & 0  & 1 \\
+		0 & 0 & -1 & 0 \\
+		0 & 1 & 0  & 0 
+	] + 2xw_{4}\mqty[
+		\frac{1}{2} & 0           & 0 & 0 \\
+		0           & \frac{1}{2} & 0 & 0 \\
+		0           & 0           & \frac{1}{2} & 0 \\
+		0           & 0           & 0           & -\frac{3}{2} 
+	], \\
+	h_{p + 1} &= \sqrt{1 - w_{4}^{2}}\mqty[
+		1 & 0  & 0  & 0 \\
+		0 & 0  & 0  & -1 \\
+		0 & 0  & -1 & 0 \\
+		0 & -1 & 0  & 0 
+	] + (1 - x)w_{4}\mqty[
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & -3
+	]
+\end{align*}
+in the eigenbasis of total spin, and the total dimer Hamiltonian is
+\begin{align*}
+	h = w_{4}\mqty[
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & -3
+	] - 2\sqrt{1 - w_{4}^{2}}\mqty[
+		0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 
+	].
+\end{align*}
+The eigenstates $\ket{1, 1}$ and $\ket{1, -1}$ are still eigenstates of the total Hamiltonian, with energy $w_{4}$. In addition there are two eigenstates found by diagonalizing
+\begin{align*}
+	\mqty[
+		w_{4}                  & -2\sqrt{1 - w_{4}^{2}} \\
+		-2\sqrt{1 - w_{4}^{2}} & -3w_{4}
+	].
+\end{align*}
+The energies are $\pm 2 - w_{4}$, with eigenstates
+\begin{align*}
+	\frac{1}{\sqrt{2}}\mqty[
+		-\sqrt{1 + w_{4}} & \sqrt{1 - w_{4}} \\
+		\sqrt{1 - w_{4}}  & \sqrt{1 + w_{4}}
+	].
+\end{align*}
+
+We proceed by introducing hyperspherical coordinates
+\begin{align*}
+	w_{1} = \sin(\alpha)\cos(\theta),\ w_{2} = \sin(\alpha)\sin(\theta)\cos(\phi),\ w_{3} = \sin(\alpha)\sin(\theta)\sin(\phi),\ w_{4} = \cos(\alpha),
+\end{align*}
+for which we have
+\begin{align*}
+	h_{p} &= -\sin(\alpha)\mqty[
+		1 & 0 & 0  & 0 \\
+		0 & 0 & 0  & 1 \\
+		0 & 0 & -1 & 0 \\
+		0 & 1 & 0  & 0 
+	] + x\cos(\alpha)\mqty[
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & -3
+	], \\
+	h_{p + 1} &= \sin(\alpha)\mqty[
+		1 & 0  & 0  & 0 \\
+		0 & 0  & 0  & -1 \\
+		0 & 0  & -1 & 0 \\
+		0 & -1 & 0  & 0 
+	] + (1 - x)\cos(\alpha)\mqty[
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & -3
+	], \\
+	h_{p} + h_{p + 1} =& h = \cos(\alpha)\mqty[
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & -3
+	] - 2\sin(\alpha)\mqty[
+		0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 
+	].
+\end{align*}
+The eigenstates of individual spin are given in equation \ref{eq:spin_angle_states}, and we then have
+\begin{align*}
+	\ket{1, 1}_{\theta, \phi} &= \mqty[
+		\cos[2](\frac{\theta}{2})e^{-2i\phi} \\
+		\frac{1}{\sqrt{2}}\sin(\theta)e^{-i\phi} \\
+		\sin[2](\frac{\theta}{2}) \\
+		0
+	],\ \ket{1, 0}_{\theta, \phi} = \mqty[
+		-\frac{1}{\sqrt{2}}\sin(\theta)e^{-2i\phi} \\
+		\cos(\theta)e^{-i\phi} \\
+		\frac{1}{\sqrt{2}}\sin(\theta) \\
+		0
+	],\ \ket{1, -1}_{\theta, \phi} &= \mqty[
+		\sin[2](\frac{\theta}{2})e^{-2i\phi} \\
+		-\frac{1}{\sqrt{2}}\sin(\theta)e^{-i\phi} \\
+		\cos[2](\frac{\theta}{2}) \\
+		0
+	],\ \ket{0, 0}_{\theta, \phi} = \mqty[
+		0 \\
+		0 \\
+		0 \\
+		e^{-i\phi}
+	]
+\end{align*}
+with respect to the total spin basis for $\theta = \phi = 0$. We can then explicitly write
+\begin{align*}
+	U = \mqty[
+		\cos[2](\frac{\theta}{2})e^{-2i\phi} & -\frac{1}{\sqrt{2}}\sin(\theta)e^{-2i\phi} & \sin[2](\frac{\theta}{2})e^{-2i\phi} & 0 \\
+		\frac{1}{\sqrt{2}}\sin(\theta)e^{-i\phi} & \cos(\theta)e^{-i\phi} & -\frac{1}{\sqrt{2}}\sin(\theta)e^{-i\phi} & 0 \\
+		\sin[2](\frac{\theta}{2}) & \frac{1}{\sqrt{2}}\sin(\theta) & \cos[2](\frac{\theta}{2}) & 0 \\
+		0 & 0 & 0 & e^{-i\phi}
+	].
+\end{align*}
+
+Let us also derive an expression for $G_{0}$. The eigenstates of the Hamiltonian in the angle-dependent basis are
+\begin{align*}
+	v_{-2 - \cos(\alpha)} = \frac{1}{\sqrt{2}}\mqty[
+		0 \\
+		\sqrt{1 - \cos(\alpha)} \\
+		0 \\
+		\sqrt{1 + \cos(\alpha)}
+	],\ v_{\cos(\alpha), 1} = \mqty[
+		1 \\
+		0 \\
+		0 \\
+		0
+	],\ v_{\cos(\alpha), 2} = \mqty[
+		0 \\
+		0 \\
+		1 \\
+		0
+	],\ v_{2 - \cos(\alpha)} = \frac{1}{\sqrt{2}}\mqty[
+		0 \\
+		-\sqrt{1 + \cos(\alpha)} \\
+		0 \\
+		\sqrt{1 - \cos(\alpha)}
+	].
+\end{align*}
+Forming these into a matrix $V$ and computing $VDV^{-1}$ for
+\begin{align*}
+	D =& \mqty[
+		-\frac{1}{2(1 + \cos(\alpha))} & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 \\
+		0 & 0 & -\frac{1}{2(1 + \cos(\alpha))} & 0 \\
+		0 & 0 & 0 & -\frac{1}{4}
+	]
+\end{align*}
+nets us
+\begin{align*}
+	g_{0} =  \mqty[
+		-\frac{1}{2(1 + \cos(\alpha))} & 0 & 0 & 0 \\
+		0 & -\frac{1}{8}(1 + \cos(\alpha)) & 0 & \frac{1}{8}\sin(\alpha) \\
+		0 & 0 & -\frac{1}{2(1 + \cos(\alpha))} & 0 \\
+		0 & \frac{1}{8}\sin(\alpha) & 0 & -\frac{1}{8}(1 - \cos(\alpha))
+	].
+\end{align*}
+
+The three angles are now neatly separated, as $\phi$ and $\theta$ only enter in $U$ and $\alpha$ only enters in the combination of eigenstates after $U$ has been applied. Using the explicit formula we then have
+\begin{align*}
+	F^{(3)}_{p, p + 1} =& \frac{i}{6}\left(-2\expval{\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{p + 1}}} - \expval{\df{\ham}G_{0}\df{\ham_{p}}G_{0}^{2}\df{\ham_{p + 1}}} + 2\expval{\df{\ham_{p}}G_{0}\df{\ham_{p + 1}}G_{0}^{2}\df{\ham}} \right. \\
+	&+ \left. \expval{\df{\ham_{p}}G_{0}^{2}\df{\ham_{p + 1}}G_{0}\df{\ham}} + \expval{\df{\ham_{p + 1}}G_{0}^{2}\df{\ham}G_{0}\df{\ham_{p}}} - \expval{\df{\ham_{p + 1}}G_{0}\df{\ham}G_{0}^{2}\df{\ham_{p}}} \right. \\
+	&+ \left. 3\expval{\df{\ham}G_{0}^{3}\df{\ham_{p}}}\expval{\df{\ham_{p + 1}}} - 3\expval{\df{\ham_{p + 1}}G_{0}^{3}\df{\ham}}\expval{\df{\ham_{p}}}\right) - (p \leftrightarrow p + 1).
+\end{align*}
+In order to get non-trivial results, we must compute these expectation values in an angle-dependent basis. To that end, we note that all the operators involved only depend on $\alpha$ in the angle-dependent basis. We then write $A = U\adj aU$ and consider its expectation value in some angle-dependent state $\ket{\psi} = U\adj\ket{\psi}_{\theta, \phi}$. We then have
+\begin{align*}
+	\expval{A}{\psi} = \expval{UU\adj aUU\adj}{\psi}_{\theta, \phi} = \expval{a}{\psi}_{\theta, \phi}.
+\end{align*}
+This means, for instance, that
+\begin{align*}
+	\expval{\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{p + 1}}} =& \expval{U(\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{p + 1}})_{\theta, \phi}U\adj}_{\theta, \phi} \\
+	=& \expval{U\df{(U\adj hU)}U\adj g_{0}^{2}U\df{(U\adj h_{p}U)}U\adj g_{0}U\df{(U\adj h_{p + 1}U)}U\adj}_{\theta, \phi}
+\end{align*}
+
+By antisymmetry we may compute any component of this form, so we choose $F^{(3)}_{p, p + 1, \alpha\theta\phi}$, for which the two latter terms vanish.
+
+This is going to take some time, so let's start. We have
+\begin{align*}
+	 &\expval{\df{\ham}G_{0}^{2}\df{\ham_{p}}G_{0}\df{\ham_{p + 1}}} \\
+	=& -\frac{i}{64}\cos(\theta)\left(\cos(\alpha)-1\right) \left(2 \sin(\alpha)\cos[2](\alpha) - 2\cos[3](\alpha) - 5 \sin(\alpha)\cos(\alpha) + 3\cos(\alpha)^{2} + \sin(\alpha) + 4\cos(\alpha) + 3\right)
+\end{align*}
+
+Using the explicit formula above we somehow find
+\begin{align*}
+	\Omega^{(3)}_{\alpha\theta\phi} = \frac{1}{2}(2 + \cos(\alpha))\tan[2](\frac{\alpha}{2})\sin(\theta)
+\end{align*}
+for $0 < \alpha < \frac{\pi}{2}$. We then have
+\begin{align*}
+	Q_{\text{KS}} =& \inte{S^{3}}{}\Omega^{(3)}_{\alpha\theta\phi} = \frac{1}{2}\inte{0}{\frac{\pi}{2}}\inte{0}{\pi}\inte{0}{2\pi}\dd{\alpha}\dd{\theta}\dd{\phi}(2 + \cos(\alpha))\tan[2](\frac{\alpha}{2})\sin(\theta) \\
+	              =& 2\pi\inte{0}{\frac{\pi}{2}}\dd{\alpha}(2 + \cos(\alpha))\tan[2](\frac{\alpha}{2}) = 2\pi.
+\end{align*}
+
+What if we were to use a different sigmoid? Swapping to $f\p$, which is zero for $w_{4} > 0$. Elsewhere we find
+\begin{align*}
+	\Omega^{(3)}_{\alpha\theta\phi} = \frac{1}{2}(2 - \cos(\alpha))\cot[2](\frac{\alpha}{2})\sin(\theta),
+\end{align*}
+and thus
+\begin{align*}
+	Q_{\text{KS}} =& 2\pi\inte{\frac{\pi}{2}}{\pi}\dd{\alpha}(2 - \cos(\alpha))\cot[2](\frac{\alpha}{2}) \\
+	              =& -2\pi\inte{\frac{\pi}{2}}{0}\dd{\beta}(2 - \cos(\pi - \beta))\cot[2](\frac{\pi - \beta}{2}) \\
+	              =& 2\pi\inte{0}{\frac{\pi}{2}}\dd{\beta}(2 + \cos(\beta))\tan[2](\frac{\beta}{2}) \\
+	              =& 2\pi,
+\end{align*}
+and indeed the choice of sigmoid was irrelevant.
