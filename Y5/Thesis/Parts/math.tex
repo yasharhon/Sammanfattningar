@@ -10,6 +10,27 @@ with
 	\text{Res}(f, z_{0}) = \frac{1}{(n - 1)!}\lim\limits_{z\to z_{0}}\dv[n - 1]{z}\left((z - z_{0})^{n}f(z)\right).
 \end{align*}
 
+\paragraph{Pushforwards and Pullbacks}
+Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M_{1}}$ by $f$ as the map $\ts{p}{M_{1}}\to\ts{p}{M_{2}}$ such that $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
+
+We can also define the pullback of a $(0, m)$ tensor on $M_{2}$ by $f$ according to
+\begin{align*}
+	\pub{f}{\omega}(V_{1}, \dots, V_{m}) = \omega(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}).
+\end{align*}
+Its components are
+\begin{align*}
+	\tensor{(\pub{f}{\omega})}{_{a_{1}\dots a_{m}}} =& \omega_{\mu_{1}\dots\mu_{m}}\prod\limits_{i = 1}^{m}\del{}{a_{i}}{f^{\mu_{i}}}.
+\end{align*}
+
+Finally, if $f$ is a bijection we may also define the more general pullback of a $(n, m)$ tensor on $M_{2}$ as
+\begin{align*}
+	\pub{f}{T}(V_{1}, \dots, V_{m}, \omega_{1}, \dots, \omega_{n}) = T(\puf{f}{V_{1}}, \dots, \puf{f}{V_{m}}, \pub{(f^{-1})}{\omega_{1}}, \dots, \pub{(f^{-1})}{\omega_{n}}).
+\end{align*}
+Its components are
+\begin{align*}
+	\tensor*{(\pub{f}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} = T^{\mu_{1}\dots \mu_{n}}_{\nu_{1}\dots\nu_{m}}\prod\limits_{i = 1}^{m}\del{}{a_{i}}f^{\nu_{i}}\prod\limits_{j = 1}^{n}\del{}{\mu_{j}}(f^{-1})^{b_{j}}.
+\end{align*}
+
 \paragraph{Differential Forms}
 The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as
 \begin{align*}
@@ -37,6 +58,17 @@ We define the exterior derivative of a differential form according to
 	d\omega = \frac{1}{p!}\del{}{\mu_{1}}\omega_{\mu_{2}\dots \mu_{p + 1}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{\mu_{k}},
 \end{align*}
 which is a $p + 1$-form.
+
+\paragraph{Interior Multiplication}
+The interior multiplication of a differential form with a vector is defined as
+\begin{align*}
+	i_{X}\omega(\dots) = \omega(X, \dots).
+\end{align*}
+Its action on a 0-form is defined to yield zero. In index notation it is the contration of the first index of $\omega$ by $X$. It satisfies
+\begin{align*}
+	i_{X}(\eta\wedge\omega) = i_{X}(\eta)\wedge\omega + (-1)^{p}\eta\wedge(i_{X}\omega),
+\end{align*}
+where $p$ is the degree of $\eta$.
 
 \paragraph{Matrix-Valued Differential Forms}
 A matrix-valued differential form is a differential form whose components are matrices. For these we need to define a slightly different wedge product according to
