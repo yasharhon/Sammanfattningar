@@ -52,12 +52,67 @@ the symmetry yields
 \end{align*}
 In other words, we can antisymmetrize the components of $\omega$ to write it as a differential form.
 
+Two important classes of differential forms are exact and closed forms. An exact form is the exterior derivative of another, while a closed form has zero external derivative.
+
 \paragraph{The Exterior Derivative}
 We define the exterior derivative of a differential form according to
 \begin{align*}
 	d\omega = \frac{1}{p!}\del{}{\mu_{1}}\omega_{\mu_{2}\dots \mu_{p + 1}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{\mu_{k}},
 \end{align*}
 which is a $p + 1$-form.
+
+\paragraph{Differential Forms and Pullbacks}
+We will now briefly show some properties of differential forms related to the pullback.
+
+The first is, for two maps $f: M_{1}\to M_{2}$ and $g: M_{2}\to M_{3}$, that
+\begin{align*}
+	(\pub{(g\circ f)}{\omega})(X_{1}, \dots, X_{n}) =& \omega(\puf{(g\circ f)}{X_{1}}, \dots, \puf{(g\circ f)}{X_{n}}),
+\end{align*}
+with $\omega$ being an $n$-form on $M_{3}$ and $X_{i}$ vectors on $M_{1}$. For a vector we have
+\begin{align*}
+	(\puf{(g\circ f)}{X})(\phi) = X(\pub{(g\circ f)}{\phi}) = X(\phi\circ(g\circ f)).
+\end{align*}
+As function compositions are associative, this implies
+\begin{align}
+	\puf{(g\circ f)}{X} = \puf{g}{\puf{f}{X}},
+\end{align}
+and thus
+\begin{align*}
+	(\pub{(g\circ f)}{\omega})(X_{1}, \dots, X_{n}) =& \omega(\puf{g}{\puf{f}{X_{1}}}, \dots, \puf{g}{\puf{f}{X_{n}}}) \\
+	=& \pub{g}{\omega}(\puf{f}{X_{1}}, \dots, \puf{f}{X_{n}}) \\
+	=& \pub{f}{\pub{g}{\omega}}(X_{1}, \dots, X_{n}),
+\end{align*}
+and thus $\pub{(g\circ f)}{} = \pub{f}{}\circ\pub{g}{}$.
+
+Next,
+\begin{align*}
+	\pub{f}{(\omega\wedge\eta)}(X_{1}, \dots, X_{n}, X_{n + 1}, \dots, X_{n + m}) =& \omega(\puf{f}{X_{1}}, \dots, \puf{f}{X_{n}})\wedge\eta(\puf{f}{X_{n + 1}}, \dots, \puf{f}{X_{n + m}}) \\
+	=& \pub{f}{\omega}(X_{1}, \dots, X_{n})\wedge\pub{f}{\eta}(X_{n + 1}, \dots, X_{n + m}),
+\end{align*}
+and thus $\pub{f}{(\omega\wedge\eta)} = \pub{f}{\omega}\wedge\pub{f}{\eta}$.
+
+This can be used to study
+\begin{align*}
+	\pub{f}{\left(\phi\df{\psi_{1}}\wedge\dots\wedge\df{\psi_{n}}\right)} =& \pub{f}{\phi}\cdot\pub{f}{(\df{\psi_{1}}\wedge\dots\wedge\df{\psi_{n}})}.
+\end{align*}
+We have
+\begin{align*}
+	\pub{f}{\df{\psi}}(X) = \df{\psi}(\puf{f}{X}) = (\puf{f}{X})(\psi) = X(\puf{f}{\psi}) = X(\psi\circ f) = \df{(\psi\circ f)}(X),
+\end{align*}
+and thus $\pub{f}{\df{\psi}} = \df{(\psi\circ f)}$, implying
+\begin{align*}
+	\pub{f}{\left(\phi\df{\psi_{1}}\wedge\dots\wedge\df{\psi_{n}}\right)} =& (\phi\circ f)\df{(\psi_{1}\circ f)}\wedge\dots\wedge\df{(\psi_{n}\circ f)}.
+\end{align*}
+
+A final important property comes from studying
+\begin{align*}
+	\pub{f}{(\df{\omega})} =& \pub{f}{\left(\frac{1}{n!}\del{}{\mu_{1}}\omega_{\mu_{2}\dots\mu_{n + 1}}\df{\chi^{\mu_{2}}}\wedge\dots\wedge\df{\chi^{\mu_{n + 1}}}\right)} \\
+	=& \df{\left(\frac{1}{n!}\omega_{\mu_{2}\dots\mu_{n + 1}}\circ f\right)}\df{(\chi^{\mu_{2}}\circ f)}\wedge\dots\wedge\df{(\chi^{\mu_{n  +1}}\circ f)}.
+\end{align*}
+The pullback of the $1$-forms nets you basis vectors in the manifold to which you pull back, and thus you have
+\begin{align*}
+	\pub{f}{(\df{\omega})} =& \df{(\pub{f}{\omega})}.
+\end{align*}
 
 \paragraph{Interior Multiplication}
 The interior multiplication of a differential form with a vector is defined as
