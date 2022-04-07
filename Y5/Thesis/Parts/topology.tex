@@ -44,8 +44,25 @@ A topological space is a Hausdorff space if, for any two points $x, y$, there ex
 \paragraph{Homeomorphisms}
 A homeomorphism (not to be confused with a homomorphism, however hard it may be) is a continuous map between two topological spaces with a continuous inverse. Two topological spaces are homeomorphic if there exists a homeomorphism between them.
 
+A specific case if homeomorphicity is diffeomorphicity, which applies between two manifolds between which there is a smooth map.
+
 \paragraph{Homotopy Types}
 Two topological spaces belong to the same homotopy type if there exists a continuous map from one to the other. This is a more relaxed version of homeomorphicity, as we no longer require the map to be invertible.
+
+\paragraph{Retractability}
+A domain $\Omega$ is retractable to $O$ if there exists a smooth map $\phi_{t}$ on $\Omega$ parametrized by $t$ such that $\phi_{1}(x) = x$ and $\phi_{0}(x) = O$.
+
+\paragraph{Inverting the Exterior Derivative}
+It holds that $\df{}^{2} = 0$, and thus one might believe that for every form $\omega$ such that $\df{\omega} = 0$ there exists a form $\chi$ such that $\omega = \df{\chi}$. This will, however, turn out to depend on the topological properties of the underlying space.
+
+Assuming the underlying space to be retractable to $O$, we have $\pub{\phi_{1}}{\omega} = \omega$ and $\pub{\phi_{0}}{\omega} = 0$. Define $\eta$ to be the vector tangential to the coordinate flow as $t$ is varied. The fact that $\df{\omega} = 0$ implies that $\df{\pub{\phi_{t}}{\omega}} = 0$, and one can show that $\dv{t}\pub{\phi_{t}}{\omega} = \lied{\eta}{(\pub{\phi_{t}}{\omega})}$. We then have
+\begin{align*}
+	\lied{\eta}{(\pub{\phi_{t}}{\omega})} = (i_{\eta}\df{} + \df{}i_{\eta})(\pub{\phi_{t}}{\omega}) = \df{(i_{\eta}(\pub{\phi_{t}}{\omega}))}.
+\end{align*}
+Integrating with respect to $t$ we finally find
+\begin{align*}
+	\omega = \df{\inte{0}{1}\dd{t}i_{\eta}(\pub{\phi_{t}}{\omega})}.
+\end{align*}
 
 \paragraph{Donuts and Coffee Mugs}
 Homeomorphicity defines an equivalence relation between topological spaces. This means that we can define topological spaces into categories based on homeomorphicity.
@@ -65,3 +82,16 @@ The addition operation is the group operation, a smart choice of notation as $G$
 	[x] + [y] = [x + y]
 \end{align*}
 on the quotient space.
+
+\paragraph{Homotopy and Homotopy Classes}
+Consider maps between two manifolds. Maps that can be continuously deformed into each other are said to be homotopic. This concept is related to that of homeomorphicity, and as such there exists topological invariants for such maps too. These divide maps into homotopy classes. A particular case is $\pi_{n}(M)$, which is the set of homotopy classes of maps from $S^{n}$ to $M$.
+
+\paragraph{Homology}
+The homology of a topological space is a set of topological invariants of the space, represented by its homology groups $H_{0}(M), H_{1}(M), \dots$
+
+\paragraph{Cohomology}
+To define (de Rham) cohomology, we first introduce the set of closed $r$-forms $Z^{r}(M)$ and the set of exact $r$-forms $B^{r}(M)$. The cohomology group is then
+\begin{align*}
+	H^{r}(M) = \frac{Z^{r}(M)}{B^{r}(M)}.
+\end{align*}
+This divides up the forms in $Z^{r}(M)$ into classes which differ by an exact form.
