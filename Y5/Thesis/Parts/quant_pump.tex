@@ -1,5 +1,8 @@
 \section{Quantum Pumps}
 
+\paragraph{Quantum Phases}
+Quantum phases are low-temperature phases of matter. For parametrized system, the existence of quantum fluctuations entails that these systems exhibit phase transitions, realized by varying parameters of the Hamiltonian. The phase transition describes an abrupt change in the ground state.
+
 \paragraph{Berry Phase, Connection and Curvature}
 Consider a system with a Hamiltonian and eigenstates parametrized by some set of parameters $\chi$ - that is, we have for each value of $\chi$ a set of eigenstates
 \begin{align*}
@@ -39,6 +42,9 @@ and we have
 \begin{align*}
 	\inte{\bound{S}}{}A_{n} = \frac{1}{2}\inte{S}{}\dd{\chi^{\mu}}\wedge\dd{\chi^{\nu}}\Omega^{(2)}_{n, \mu\nu}.
 \end{align*}
+
+\paragraph{Applications of the Above}
+What is the use of the Berry connection and curvature? From the point of view of computing responses in quantum systems, the answer might seem to be not much. More broadly, however, it turns out that the Berry curvature in particular is useful in characterizing systems. The idea is as follows: An important assumption of the above arguments is the existence of a non-degenerate and gapped ground state for all parameter values. If the integral $\Omega^{(2)}$ over some closed surface is zero, it follows by Stokes' theorem that there are no degeneracy points enclosed by the surface, as $\Omega^{(2)}$ is closed everywhere. As such, the Berry curvature can be used to detect degeneracy points. It also turns out that the degeneracy points are stable under deformations of the Hamiltonian, as integrals of the Berry curvature are quantized.
 
 \paragraph{A More Sophisticated Definition}
 From this point on we switch to the more compact notation
@@ -575,370 +581,8 @@ and thus
 \end{align*}
 and indeed the choice of sigmoid was irrelevant.
 
-\paragraph{Effective Actions}
-To define the effective action, we first introduce
-\begin{align*}
-	E[J] = i\ln(Z),
-\end{align*}
-where $Z$ is the generating functional of some quantum filed theory. $E$ is essentially a measure of the vacuum energy as a function of the source $J$. There is also a strong analogy to statistical mechanics at play, with $Z$ playing the role of the partition function and $E$ the role of the Helmholtz free energy. Its functional derivatives are given by
-\begin{align*}
-	\fdv{E}{J(x)} = \frac{i}{Z}\fdv{Z}{J(x)} = -\frac{\pinte{}{\phi}\phi(x)e^{i\left(S + \inte{}{}\dd[d]{y}J(y)\phi(y)\right)}}{\pinte{}{\phi}e^{i\left(S + \inte{}{}\dd[d]{y}J(y)\phi(y)\right)}}.
-\end{align*}
-In analogy with statistical mechanics, this can be considered a classical vacuum expectation value in the presence of a source, hence we term it $\phi_{\text{cl}}(x)$. Its evaluation at $J = 0$ nets us the familiar correlation function. In analogy with statistical mechanics we can now perform a Legendre transform according to
-\begin{align*}
-	\Gamma[\phi_{\text{cl}}] = -E[J] - \inte{}{}\dd[d]{x}\phi_{\text{cl}}(x)J(x).
-\end{align*}
-The quantity $\Gamma$ is the effective action. Note that $E$ and $\Gamma$ coincide for $J = 0$.
-
-The whole point of introducing these quantities in this manner is to connect it to something familiar: Feynman diagrams. As we have noted, the first functional derivative produces $-\expval{\phi}$. The second can be shown to be given by
-\begin{align*}
-	\fdv{J(x)}\fdv{J(y)}E = -i\left(\expval{\phi(x)\phi(y)} - \expval{\phi(x)}\expval{\phi(y)}\right).
-\end{align*}
-Thus the unconnected Feynman diagrams are explicitly removed in this case, where they contribute to the generating functional. The general result is
-\begin{align*}
-	\left(\prod\limits_{i = 1}^{n}\fdv{J(x_{i})}\right)E = i^{n + 1}\expval{\prod\limits_{i = 1}^{n}\phi(x_{i})}_{\text{conn}},
-\end{align*}
-which will be useful for computing terms in the effective action.
-
-One can also introduce a partial effective action, where only some fields are integrated out. This is the case that is important to us. It also turns out that the systematics of computing traces in this case are equivalent to connected Feynman diagrams. We will see more of this when studying concrete examples.
-
-\paragraph{Theories With Topological Response}
-We will now consider some field theories with background fields. The effective actions of these theories contain topological terms, which are metric-independent. 
-
-The first is the $1 + 1$-dimensional theory
-\begin{align*}
-	\lag = -i\overline{\psi}\left(\fsl{\del{}{}} + M_{1} + iM_{2}\gamma^{01}\right)\psi.
-\end{align*}
-The two masses are taken to be slowly varying background fields, which are also taken to be on a circle. Imposing this we note that
-\begin{align*}
-	(\gamma^{01})^{2} = 1 \implies e^{i\phi\gamma^{01}} = \cos(\phi) + i\sin(\phi)\gamma^{01},
-\end{align*}
-and thus
-\begin{align*}
-	M_{1} + iM_{2}\gamma^{01} = M\left(\cos(\alpha) + i\sin(\alpha)\gamma^{01}\right) = Me^{i\alpha\gamma^{01}},
-\end{align*}
-with $M$ and $\alpha$ being the magnitude and argument of the complex number $M_{1} + iM_{2}$ (note that hermiticity implies that both parameters be real). Finally, coupling the fermion field to a gauge field, the full Lagrangian for this theory is
-\begin{align*}
-	\lag = -i\overline{\psi}\left(\fsl{D} + Me^{i\alpha\gamma^{01}}\right)\psi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu}.
-\end{align*}
-To compute the effective action, we integrate out the fermion and perform a perturbation expansion treating $\fsl{D} + Me^{i\alpha\gamma^{01}}$ as a perturbed version of $\fsl{\del{}{}} + M$. The effective action for the gauge field is
-\begin{align*}
-	\Gamma =& -i\ln(\det(-i\left(\fsl{D} + Me^{i\alpha\gamma^{01}}\right))) + \inte{}{}\dd[2]{x}-\frac{1}{4}F_{\mu\nu}F^{\mu\nu} \\
-	       =& -i\tr(\ln(-i\left(\fsl{D} + Me^{i\alpha\gamma^{01}}\right))) + \inte{}{}\dd[2]{x}-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}.
-\end{align*}
-The trace can be computed by summing over some basis with respect to both the field and Dirac structures. In particular, the new term is
-\begin{align*}
-	-i\tr(\ln(-i\left(\fsl{D} + Me^{i\alpha\gamma^{01}}\right))) \approx& 	-i\tr(\ln(-i\left(\fsl{\del{}{}} + M\right)\left(1 + \frac{\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}\right))) \\
-	=& C_{0} - i\tr(\ln(1 + \frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M})) \\
-	\approx& C_{0} - i\tr(\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M} - \frac{1}{2}\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}).
-\end{align*}
-Let us first compute the inverse of the denominator. We have
-\begin{align*}
-	(\fsl{\del{}{}} + M)(\fsl{\del{}{}} - M) = \fsl{\del{}{}}^{2} - M^{2} = \del{2}{} - M^{2} \implies \frac{1}{\fsl{\del{}{}} + M} = \frac{\fsl{\del{}{}} - M}{\del{2}{} - M^{2}}.
-\end{align*}
-Computing the trace in momentum space, applying the correspondence principle $p = -i\del{}{}$ and using the systematics of Feynman diagrams we find
-\begin{align*}
-	 &-i\tr(-ie\frac{\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M} - \frac{1}{2}\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}) \\
-	=& -i\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\tr(\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}) + \frac{i}{2}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{p_{3}}}{(2\pi)^{2}}\frac{\dd[2]{p_{4}}}{(2\pi)^{2}}\tr(\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}\frac{-ie\fsl{A} + iM\alpha\gamma^{01}}{\fsl{\del{}{}} + M}) \\
-	=& -i\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\tr(\frac{i\fsl{p_{1}} - M}{-p_{1}^{2} - M^{2}}(-ie\fsl{A}(p_{2}) + iM\alpha(p_{2})\gamma^{01}))\delta_{p_{1} + p_{2}} \\
-	 &+ \frac{i}{2}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{p_{3}}}{(2\pi)^{2}}\frac{\dd[2]{p_{4}}}{(2\pi)^{2}}\tr(\frac{i\fsl{p_{1}} - M}{-p_{1}^{2} - M^{2}}(-ie\fsl{A}(p_{2}) + iM\alpha(p_{2})\gamma^{01})\frac{i\fsl{p_{3}} - M}{-p_{3}^{2} - M^{2}}(-ie\fsl{A}(p_{4}) + iM\alpha(p_{4})\gamma^{01})) \\
-	 &\cdot\delta_{p_{2} + p_{1} + p_{3}}\delta_{-p_{1} - p_{3} + p_{4}} \\
-	=& -\frac{i}{(2\pi)^{2}}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\tr(\frac{i\fsl{p_{1}} - M}{-p_{1}^{2} - M^{2}}(-ie\fsl{A}(-p_{1}) + iM\alpha(-p_{1})\gamma^{01})) \\
-	 &+ \frac{i}{2(2\pi)^{2}}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{p_{3}}}{(2\pi)^{2}}\tr(\frac{i\fsl{p_{1}} - M}{-p_{1}^{2} - M^{2}}(-ie\fsl{A}(p_{2}) + iM\alpha(p_{2})\gamma^{01})\frac{i\fsl{p_{3}} - M}{-p_{3}^{2} - M^{2}}(-ie\fsl{A}(p_{1} + p_{3}) + iM\alpha(p_{1} + p_{3})\gamma^{01})) \\
-	 &\cdot\delta_{p_{2} + p_{1} + p_{3}} \\
-	=& -\frac{i}{(2\pi)^{2}}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\tr(\frac{i\fsl{p_{1}} - M}{-p_{1}^{2} - M^{2}}(-ie\fsl{A}(-p_{1}) + iM\alpha(-p_{1})\gamma^{01})) \\
-	 &+ \frac{i}{2(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\tr(\frac{i\fsl{p_{1}} - M}{-p_{1}^{2} - M^{2}}(-ie\fsl{A}(p_{2}) + iM\alpha(p_{2})\gamma^{01})\frac{i(-\fsl{p_{2}} - \fsl{p_{1}}) - M}{-(-p_{2} - p_{1})^{2} - M^{2}}(-ie\fsl{A}(-p_{2}) + iM\alpha(-p_{2})\gamma^{01})).
-\end{align*}
-This can alternatively be illustrated using the Feynman diagram in figure \ref{fig:second_order_fd}.
-
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\begin{feynman}
-			\vertex (a) at (0, 0);
-			\vertex (b) at (2, 0);
-			\vertex (c) at (4, 0);
-			\vertex (d) at (6, 0);
-			\diagram*{
-				(a) --[scalar, momentum = $k$] (b) --[fermion, half left, rmomentum = $p$] (c) --[scalar, rmomentum = $-k$] (d),
-				(c) --[fermion, half left, momentum = $-p - k$] (b),
-			};
-		\end{feynman}
-	\end{tikzpicture}
-	\caption{Feynman diagram for the second-order term in the effective action.}
-	\label{fig:second_order_fd}
-\end{figure}
-
-The second line produces the lowest-order topological terms. There we need only consider the case where the number of Dirac matrices is even, as the odd-numbered cases vanish when tracing the matrices. These terms are
-\begin{align*}
-	&\frac{i}{2(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{i\fsl{p} - M}{-p^{2} - M^{2}}(-ie\fsl{A}(k) + iM\alpha(k)\gamma^{01})\frac{i(-\fsl{p} - \fsl{k}) - M}{-(p - k)^{2} - M^{2}}(-ie\fsl{A}(-k) + iM\alpha(-k)\gamma^{01})) \\
-	\supset& \frac{e}{2(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{i\fsl{p} - M}{-p^{2} - M^{2}}\fsl{A}(k)\frac{i(-\fsl{p} - \fsl{k}) - M}{-(-p - k)^{2} - M^{2}}iM\alpha(-k)\gamma^{01}) \\
-	&+ \frac{e}{2(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{i\fsl{p} - M}{-p^{2} - M^{2}}iM\alpha(k)\gamma^{01}\frac{i(-\fsl{p} - \fsl{k}) - M}{-(-p - k)^{2} - M^{2}}\fsl{A}(-k)) \\
-	=& \frac{ieM}{2(2\pi)^{4}}\left(\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\alpha(-k)A_{\mu}(k)\tr(\frac{i\fsl{p} - M}{-p^{2} - M^{2}}\gamma^{\mu}\frac{i(-\fsl{p} - \fsl{k}) - M}{-(-p - k)^{2} - M^{2}}\gamma^{01}) \right. \\
-	 &+ \left. \inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\alpha(k)A_{\mu}(-k)\tr(\frac{i\fsl{p} - M}{-p^{2} - M^{2}}\gamma^{01}\frac{i(-\fsl{p} - \fsl{k}) - M}{-(-p - k)^{2} - M^{2}}\gamma^{\mu})\right) \\
-	\supset& -\frac{ieM}{2(2\pi)^{4}}\left(\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\frac{\alpha(-k)A_{\mu}(k)}{(-p^{2} - M^{2})(-(-p - k)^{2} - M^{2})}\tr(\left(i\fsl{p}\gamma^{\mu}M + M\gamma^{\mu}i(-\fsl{p} - \fsl{k})\right)\gamma^{01}) \right. \\
-	 &+ \left. \frac{\alpha(k)A_{\mu}(-k)}{(-p^{2} - M^{2})(-(-p - k)^{2} - M^{2})}\tr(\left(i\fsl{p}\gamma^{01}M + M\gamma^{01}i(-\fsl{p} - \fsl{k})\right)\gamma^{\mu})\right) \\
-	=& \frac{eM^{2}}{2(2\pi)^{4}}\left(\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\frac{\alpha(-k)A_{\mu}(k)}{(-p^{2} - M^{2})(-(-p - k)^{2} - M^{2})}\tr(\fsl{p}\gamma^{\mu}\gamma^{01} + \gamma^{\mu}(-\fsl{p} - \fsl{k})\gamma^{01}) \right. \\
-	 &+ \left. \frac{\alpha(k)A_{\mu}(-k)}{(-p_{1}^{2} - M^{2})(-(-p - k_{1})^{2} - M^{2})}\tr(\fsl{p}\gamma^{01}\gamma^{\mu} + \gamma^{01}(-\fsl{p} - \fsl{k})\gamma^{\mu})\right) \\
-	=& \frac{eM^{2}}{2(2\pi)^{4}}\left(\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\frac{\alpha(-k)A_{\mu}(k)}{(-p^{2} - M^{2})(-(-p - k)^{2} - M^{2})}\tr(p_{\nu}\gamma^{\nu}\gamma^{\mu}\gamma^{01} + (-p - k)_{\nu}\gamma^{\mu}\gamma^{\nu}\gamma^{01}) \right. \\
-	 &+ \left. \frac{\alpha(k)A_{\mu}(-k)}{(-p^{2} - M^{2})(-(-p - k)^{2} - M^{2})}\tr(p_{\nu}\gamma^{\nu}\gamma^{01}\gamma^{\mu} + (-p - k)_{\nu}\gamma^{01}\gamma^{\nu}\gamma^{\mu})\right).
-\end{align*}
-Because we take the mass fields to be slowly varying, we can remove all contributions over order 1 in $\frac{k}{p}$. Inverting the $k$-integral in the second term leaves us with
-\begin{align*}
-	 &\frac{eM^{2}}{2(2\pi)^{4}}\left(\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\frac{\alpha(-k)A_{\mu}(k)}{(-p^{2} - M^{2})^{2}}\tr(p_{\nu}\gamma^{\nu}\gamma^{\mu}\gamma^{01} - (p + k)_{\nu}\gamma^{\mu}\gamma^{\nu}\gamma^{01} + p_{\nu}\gamma^{\nu}\gamma^{01}\gamma^{\mu} + (-p + k)_{\nu}\gamma^{01}\gamma^{\nu}\gamma^{\mu})\right) \\
-	=& -\frac{eM^{2}}{(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\frac{\alpha(-k)k_{\nu}A_{\mu}(k)}{(-p^{2} - M^{2})^{2}}\tr(\gamma^{\mu}\gamma^{\nu}\gamma^{01}) \\
-	=& -\frac{2eM^{2}}{(2\pi)^{4}}\inte{}{}\frac{\dd[2]{k}}{(2\pi)^{2}}\varepsilon^{\mu\nu}\alpha(-k)k_{\nu}A_{\mu}(k)\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{1}{(p^{2} + M^{2})^{2}}.
-\end{align*}
-Let us consider the innermost integral. Performing a Wick rotation and a substitution we have
-\begin{align*}
-	\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{1}{(p^{2} + M^{2})^{2}} =& \frac{1}{M^{2}}\inte{}{}\frac{\dd[2]{q}}{(2\pi)^{2}}\frac{1}{(-q_{0}^{2} + q_{1}^{2} + 1)^{2}} \\
-	=& \frac{i}{M^{2}}\inte{}{}\frac{\dd[2]{\ell}}{(2\pi)^{2}}\frac{1}{(\ell_{0}^{2} + \ell_{1}^{2} + 1)^{2}} \\
-	=& \frac{i}{2\pi M^{2}}\inte{0}{\infty}\dd{r}\frac{r}{(r^{2} + 1)^{2}} \\
-	=& -\frac{i}{2\pi M^{2}}\eval{\frac{1}{2(r^{2} + 1)}}_{0}^{\infty} \\
-	=& \frac{i}{4\pi M^{2}}.
-\end{align*}
-Let us also note the general result
-\begin{align*}
-	\inte{}{}\frac{\dd[d]{p}}{(2\pi)^{d}}\frac{(p^{2})^{a}}{(p^{2} + \Delta)^{b}} = \frac{\Gamma\left(b - a - \frac{d}{2}\right)\Gamma\left(a + \frac{d}{2}\right)}{(4\pi)^{\frac{d}{2}}\Gamma\left(b\right)\Gamma\left(\frac{d}{2}\right)}\Delta^{a + \frac{d}{2} - b}.
-\end{align*}
-The final expression for the momentum space effective action is then
-\begin{align*}
-	\Gamma = -\frac{ie}{2\pi(2\pi)^{4}}\inte{}{}\frac{\dd[2]{k}}{(2\pi)^{2}}\varepsilon^{\mu\nu}\alpha(-k)k_{\nu}A_{\mu}(k),
-\end{align*}
-and switching to real space we have
-\begin{align*}
-	\Gamma = \frac{e}{2\pi(2\pi)^{4}}\inte{}{}\dd[2]{x}\varepsilon^{\mu\nu}\alpha\del{}{\mu}A_{\nu} = \frac{e}{2\pi(2\pi)^{4}}\inte{}{}\alpha F.
-\end{align*}
-The normalization in this step is likely off - namely, the vertices should probably provide a factor of $(2\pi)^{2}$ each. Absorbing the coupling constant into the gauge field (which modifies the free term) as well, the effective action should be
-\begin{align*}
-	\Gamma = \frac{1}{2\pi}\inte{}{}\alpha F.
-\end{align*}
-
-Another model one could study is
-\begin{align*}
-	\lag = -i\overline{\Psi}(\fsl{\del{}{}} + M_{0} + i\gamma^{01}M_{i}\sigma^{i})\Psi,
-\end{align*}
-where the Pauli matrices acts in flavor space and the other Dirac matrices act on the Dirac structure. The $M$ take values on $S^{3}$ at any point in spacetime. The effective action is then
-\begin{align*}
-	\Gamma =& -i\ln(\det(-i(\fsl{\del{}{}} + M_{0} + i\gamma^{01}M_{i}\sigma^{i}))) \\
-	       =& -i\tr(\ln(-i(\fsl{\del{}{}} + M_{0} + i\gamma^{01}M_{i}\sigma^{i}))) \\
-	       =& -i\tr(\ln(-i(\fsl{\del{}{}} + M_{0})\left(1 + \frac{i\gamma^{01}M_{i}\sigma^{i}}{\fsl{\del{}{}} + M_{0}}\right))) \\
-	       =& C_{0} - i\tr(\ln(1 + \frac{i\gamma^{01}M_{i}\sigma^{i}}{\fsl{\del{}{}} + M_{0}})).
-\end{align*}
-The relevant parts are
-\begin{align*}
-	\Gamma =& -i\tr(\frac{i\gamma^{01}M_{i}\sigma^{i}}{\fsl{\del{}{}} + M_{0}} - \frac{1}{2}\frac{i\gamma^{01}M_{i}\sigma^{i}}{\fsl{\del{}{}} + M_{0}}\frac{i\gamma^{01}M_{i}\sigma^{i}}{\fsl{\del{}{}} + M_{0}}) \\
-	       =& -i\tr(\frac{\fsl{\del{}{}} - M_{0}}{\del{2}{} - M_{0}^{2}}i\gamma^{01}M_{i}\sigma^{i} - \frac{1}{2}\frac{\fsl{\del{}{}} - M_{0}}{\del{2}{} - M_{0}^{2}}i\gamma^{01}M_{i}\sigma^{i}\frac{\fsl{\del{}{}} - M_{0}}{\del{2}{} - M_{0}^{2}}i\gamma^{01}M_{j}\sigma^{j}) \\
-	       =& -\frac{i}{(2\pi)^{2}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\tr(\frac{i\fsl{p} - M_{0}}{-p^{2} - M_{0}^{2}}i\gamma^{01}M_{i}(p)\sigma^{i}) \\
-	        &- \frac{i}{2(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{-i\fsl{k} - M_{0}}{-k^{2} - M_{0}^{2}}\gamma^{01}M_{i}(p)\sigma^{i}\frac{-i(\fsl{k} - \fsl{p}) - M_{0}}{-(k - p)^{2} - M_{0}^{2}}\gamma^{01}M_{j}(-p)\sigma^{j}).
-\end{align*}
-The first-order term should be trivial. The topological term should thus arise from
-\begin{align*}
-	\Gamma =& \frac{i}{2(2\pi)^{4}}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\frac{M_{i}(p)M_{j}(-p)}{(-k^{2} - M_{0}^{2})(-(k - p)^{2} - M_{0}^{2})}\tr(\fsl{k}\gamma^{01}\sigma^{i}(\fsl{k} - \fsl{p})\gamma^{01}\sigma^{j}) \\
-	=&
-\end{align*}
-The new term in the action contains
-\begin{align*}
-	\inte{X}{}\pub{\phi}{\omega},
-\end{align*}
-where $X$ is spacetime and $\omega$ satisfies $\df{\omega} = 2\pi\text{Vol}(S^{3})$, the latter being the volume form on $S^{3}$ normalized to volume 1. This volume form is what is of interest.
-
-A final model to study in one dimension is
-\begin{align*}
-	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M_{0}(x) + \sum\limits_{a = 2, 3, 5}iM_{a}(x)\gamma^{a}\right)\Psi
-\end{align*}
-for background mass fields. Confining the mass fields to $S^{3}$ we may write the above as
-\begin{align*}
-	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M\left(\cos(\alpha) + i\sin(\alpha)\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}\right)\right)\Psi,\ \sum\limits_{a = 2, 3, 5}m_{a}^{2} = 1.
-\end{align*}
-We once again employ the perturbation approach to write the effective action as
-\begin{align*}
-	\Gamma =& -i\ln(\det(-i\left(\fsl{\del{}{}} + M\left(\cos(\alpha) + i\sin(\alpha)\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}\right)\right))) \\
-	       =& -i\tr(\ln(-i\left(\fsl{\del{}{}} + M\left(\cos(\alpha) + i\sin(\alpha)\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}\right)\right))) \\
-	 \approx& -i\tr(\ln(-i(\fsl{\del{}{}} + M)\left(1 + \frac{i\alpha\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\right))) \\
-	       =& C_{0} - i\tr(\ln(1 + \frac{i\alpha\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}}{\fsl{\del{}{}} + M})).
-z\end{align*}
-Because we are working with all Dirac matrices, we note that the only shot at obtaining a topological term is to consider a third-order term in the expansion. The Feynman diagram is shown in figure \ref{fig:third_order_fd}.
-
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\begin{feynman}
-			\vertex (a) at (0, 0);
-			\vertex (b) at (2, 0);
-			\vertex (c) at (4.6, 1);
-			\vertex (d) at (5.9, 1.5);
-			\vertex (e) at (4.6, -1);
-			\vertex (f) at (5.9, -1.5);
-			\diagram*{
-				(a) --[scalar, momentum = $p$] (b) --[fermion, out = 90, in = 135, rmomentum = $k_{1}$] (c) --[scalar, rmomentum = $k_{2}$] (d),
-				(f) --[scalar, momentum = $-p - k_{2}$] (e) --[fermion, out = -135, in = -90, momentum = $-k_{1} - p$] (b),
-				(c) --[fermion, out = -45, in = 45, momentum = $k_{2} - k_{1}$] (e),
-			};
-		\end{feynman}
-	\end{tikzpicture}
-	\caption{Feynman diagram for the third-order term in the effective action.}
-	\label{fig:third_order_fd}
-\end{figure}
-
-This is given by
-\begin{align*}
-	\Gamma =& -\frac{i}{3}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{1}}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}\tr(\frac{i\alpha\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\frac{i\alpha\sum\limits_{b = 2, 3, 5}m_{b}\gamma^{b}}{\fsl{\del{}{}} + M}\frac{i\alpha\sum\limits_{c = 2, 3, 5}m_{c}\gamma^{c}}{\fsl{\del{}{}} + M}) \\
-	       =& -\frac{1}{3}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{1}}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}} \\
-	        &\cdot\sum\limits_{a, b, c = 2, 3, 5}\alpha m_{a}(p)\alpha m_{b}(k_{2})\alpha m_{c}(-p - k_{2})\tr(\frac{i\fsl{k_{1}} - M}{-k_{1}^{2} - M^{2}}\gamma^{a}\frac{i(-\fsl{k_{1}} - \fsl{p}) - M}{-(-k_{1} - p)^{2} - M^{2}}\gamma^{b}\frac{i(\fsl{k_{2}} - \fsl{k_{1}}) - M}{-(k_{2} - k_{1})^{2} - M^{2}}\gamma^{c}) \\
-	       =& -\frac{1}{3}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{1}}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p)M_{b}(k_{2})M_{c}(-p - k_{2})}{(-k_{1}^{2} - M^{2})(-(-k_{1} - p)^{2} - M^{2})(-(k_{2} - k_{1})^{2} - M^{2})} \\
-	        &\cdot\tr((i\fsl{k_{1}} - M)\gamma^{a}(i(-\fsl{k_{1}} - \fsl{p}) - M)\gamma^{b}(i(\fsl{k_{2}} - \fsl{k_{1}}) - M)\gamma^{c}).
-\end{align*}
-The topological term corresponds to exactly one of $a, b, c$ being 5 and one of the numerators in the fraction being a mass. For example, setting $a = 5$ nets you
-\begin{align*}
-	 &-M\left(\tr(\gamma^{5}(-\fsl{k_{1}} - \fsl{p})\gamma^{b}(\fsl{k_{2}} - \fsl{k_{1}})\gamma^{c} + \fsl{k_{1}}\gamma^{5}\gamma^{b}(\fsl{k_{2}} - \fsl{k_{1}})\gamma^{c} + \fsl{k_{1}}\gamma^{5}(-\fsl{k_{1}} - \fsl{p})\gamma^{b}\gamma^{c})\right) \\
-	=& -M\left(\tr((-k_{1} - p)_{\mu}(k_{2} - k_{1})_{\nu}\gamma^{5}\gamma^{\mu}\gamma^{b}\gamma^{\nu}\gamma^{c} + k_{1, \mu}(k_{2} - k_{1})_{\nu}\gamma^{\mu}\gamma^{5}\gamma^{b}\gamma^{\nu}\gamma^{c} + k_{1, \mu}(-k_{1} - p)_{\nu}\gamma^{\mu}\gamma^{5}\gamma^{\nu}\gamma^{b}\gamma^{c})\right) \\
-	=& -M\left(\tr(-(-k_{1} - p)_{\mu}(k_{2} - k_{1})_{\nu}\gamma^{\mu}\gamma^{\nu}\gamma^{b}\gamma^{c}\gamma^{5} - k_{1, \mu}(k_{2} - k_{1})_{\nu}\gamma^{\nu}\gamma^{\mu}\gamma^{b}\gamma^{c}\gamma^{5} + k_{1, \mu}(-k_{1} - p)_{\nu}\gamma^{\nu}\gamma^{\mu}\gamma^{b}\gamma^{c}\gamma^{5})\right) \\
-	=& -M\left(-(-k_{1} - p)_{\mu}(k_{2} - k_{1})_{\nu}\varepsilon^{\mu\nu bc} - k_{1, \mu}(k_{2} - k_{1})_{\nu}\varepsilon^{\nu\mu bc} + k_{1, \mu}(-k_{1} - p)_{\nu}\varepsilon^{\nu\mu bc}\right) \\
-	=& -M\varepsilon^{\mu\nu bc}\left(-(-k_{1} - p)_{\mu}(k_{2} - k_{1})_{\nu} + k_{1, \mu}(k_{2} - k_{1})_{\nu} - k_{1, \mu}(-k_{1} - p)_{\nu}\right) \\
-	=&  -M\varepsilon^{\mu\nu bc}\left(-(-k_{1} - p)_{\mu}(k_{2} - k_{1})_{\nu} - k_{1, \mu}(-k_{2} - p)_{\nu}\right).
-\end{align*}
-Approximating $k_{1}$ to be much larger than the other momenta, the second term produces no contribution. Left is
-\begin{align*}
-	\Gamma \supset& -\frac{M}{3}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu bc}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{1}}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}M_{5}(p)\frac{M_{b}(k_{2})M_{c}(-p - k_{2})(-k_{1} - p)_{\mu}(k_{2} - k_{1})_{\nu}}{(-k_{1}^{2} - M^{2})(-(-k_{1} - p)^{2} - M^{2})(-(k_{2} - k_{1})^{2} - M^{2})}.
-\end{align*}
-One term is symmetric in $\mu$ and $\nu$ and two are linear in $k_{1}$, meaning the only surviving term should be
-\begin{align*}
-	\Gamma \supset& \frac{M}{3}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu bc}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{1}}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}M_{5}(p)\frac{M_{b}(k_{2})M_{c}(-p - k_{2})p_{\mu}k_{2, \nu}}{(-k_{1}^{2} - M^{2})(-(-k_{1} - p)^{2} - M^{2})(-(k_{2} - k_{1})^{2} - M^{2})} \\
-	       \approx& -\sum\limits_{b, c = 2, 3}\frac{M}{3}\varepsilon^{\mu\nu bc}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}p_{\mu}M_{5}(p)k_{2, \nu}M_{b}(k_{2})M_{c}(-p - k_{2})\inte{}{}\frac{\dd[2]{k_{1}}}{(2\pi)^{2}}\frac{1}{(k_{1}^{2} + M^{2})^{3}} \\
-	             =& -\frac{1}{3M^{3}}\frac{\Gamma\left(\frac{5}{2}\right)\Gamma\left(\frac{1}{2}\right)}{2\sqrt{\pi}\Gamma\left(3\right)\Gamma\left(\frac{1}{2}\right)}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu bc}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}p_{\mu}M_{5}(p)k_{2, \nu}M_{b}(k_{2})M_{c}(-p - k_{2}) \\
-	             =& -\frac{1}{3M^{3}}\frac{3}{16}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu bc}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\frac{\dd[2]{k_{2}}}{(2\pi)^{2}}p_{\mu}M_{5}(p)k_{2, \nu}M_{b}(k_{2})M_{c}(-p - k_{2}).
-\end{align*}
-Using the facts that the values of $b, c$ are disjoint from those of $\mu, \nu$, allo we have that the real space term is
-\begin{align*}
-	\Gamma \supset \frac{1}{16M^{3}}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu}\varepsilon^{bc}\inte{}{}\dd[2]{x}M_{c}\del{}{\mu}M_{5}\del{}{\nu}M_{b}.
-\end{align*}
-
-To understand the systematics of the above calculations, let us adopt aliases for the momenta and write the integrand as
-\begin{align*}
-	 &\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p)M_{b}(k_{2})M_{c}(-p - k_{2})}{(-k_{1}^{2} - M^{2})(-(-k_{1} - p)^{2} - M^{2})(-(k_{2} - k_{1})^{2} - M^{2})} \\
-	 &\cdot\tr((i\fsl{k_{1}} - M)\gamma^{a}(i(-\fsl{k_{1}} - \fsl{p}) - M)\gamma^{b}(i(\fsl{k_{2}} - \fsl{k_{1}}) - M)\gamma^{c}) \\
-	=& \sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(u_{1})M_{b}(u_{2})M_{c}(u_{3})}{(-v_{1}^{2} - M^{2})(-v_{2}^{2} - M^{2})(-v_{3}^{2} - M^{2})}\tr((i\fsl{v_{1}} - M)\gamma^{a}(i\fsl{v_{2}} - M)\gamma^{b}(i\fsl{v_{3}} - M)\gamma^{c}).
-\end{align*}
-Because $v_{1}$ is explicitly integrated over, we can deduce some more restrictions on the necessary considerations to identify topological terms. In addition to fixing exactly one latin index to $5$ we may also take the first factor to be the one contributing the factor $M$. Thus this factor amounts to
-\begin{align*}
-	 &Mv_{2, \mu}v_{3, \nu}\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(u_{1})M_{b}(u_{2})M_{c}(u_{3})}{(-v_{1}^{2} - M^{2})(-v_{2}^{2} - M^{2})(-v_{3}^{2} - M^{2})}\tr(\gamma^{a}\gamma^{\mu}\gamma^{b}\gamma^{\nu}\gamma^{c}) \\
-	=& Mv_{2, \mu}v_{3, \nu}\sum\limits_{b, c = 2, 3}\frac{M_{5}(u_{1})M_{b}(u_{2})M_{c}(u_{3})\varepsilon^{\mu b\nu c} + M_{a}(u_{1})M_{5}(u_{2})M_{c}(u_{3})\varepsilon^{\nu c\mu b} + M_{a}(u_{1})M_{b}(u_{2})M_{5}(u_{3})\varepsilon^{\mu b\nu c}}{(-v_{1}^{2} - M^{2})(-v_{2}^{2} - M^{2})(-v_{3}^{2} - M^{2})} \\
-	=& -Mv_{2, \mu}v_{3, \nu}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu bc}\frac{M_{5}(u_{1})M_{b}(u_{2})M_{c}(u_{3}) - M_{b}(u_{1})M_{5}(u_{2})M_{c}(u_{3}) + M_{b}(u_{1})M_{c}(u_{2})M_{5}(u_{3})}{(-v_{1}^{2} - M^{2})(-v_{2}^{2} - M^{2})(-v_{3}^{2} - M^{2})}.
-\end{align*}
-To proceed we use the relations
-\begin{align*}
-	v_{2} = -v_{1} - u_{1},\ v_{3} = u_{2} - v_{1},
-\end{align*}
-which follow from the definition, to write the above as
-\begin{align*}
-	 &M\varepsilon^{\mu\nu}(v_{1} + u_{1})_{\mu}(u_{2} - v_{1})_{\nu}\sum\limits_{b, c = 2, 3}\varepsilon^{bc}\frac{M_{5}(u_{1})M_{b}(u_{2})M_{c}(u_{3}) - M_{b}(u_{1})M_{5}(u_{2})M_{c}(u_{3}) + M_{b}(u_{1})M_{c}(u_{2})M_{5}(u_{3})}{(-v_{1}^{2} - M^{2})(-v_{2}^{2} - M^{2})(-v_{3}^{2} - M^{2})}.
-\end{align*}
-Once again we are left with only the contribution
-\begin{align*}
-	M\varepsilon^{\mu\nu}u_{1, \mu}u_{2, \nu}\sum\limits_{b, c = 2, 3}\varepsilon^{bc}\frac{M_{5}(u_{1})M_{b}(u_{2})M_{c}(u_{3}) - M_{b}(u_{1})M_{5}(u_{2})M_{c}(u_{3}) + M_{b}(u_{1})M_{c}(u_{2})M_{5}(u_{3})}{(-v_{1}^{2} - M^{2})(-v_{2}^{2} - M^{2})(-v_{3}^{2} - M^{2})},
-\end{align*}
-which in real space is proportional to
-\begin{align*}
-	\varepsilon^{\mu\nu}\sum\limits_{b, c = 2, 3}\varepsilon^{bc}\left(M_{c}\del{}{\mu}M_{5}\del{}{\nu}M_{b} - M_{c}\del{}{\mu}M_{b}\del{}{\nu}M_{5} + M_{5}\del{}{\mu}M_{b}\del{}{\nu}M_{c}\right).
-\end{align*}
-Constants of proportionality are the same, hence the full topological term is
-\begin{align*}
-	\Gamma =& \frac{1}{16M^{3}}\sum\limits_{b, c = 2, 3}\inte{}{}\dd[2]{x}\varepsilon^{\mu\nu}\varepsilon^{bc}\left(M_{c}\del{}{\mu}M_{5}\del{}{\nu}M_{b} - M_{c}\del{}{\mu}M_{b}\del{}{\nu}M_{5} + M_{5}\del{}{\mu}M_{b}\del{}{\nu}M_{c}\right) \\
-	       =& \frac{1}{16M^{3}}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\dd[2]{x}\varepsilon^{\mu\nu}\varepsilon^{abc}M_{a}\del{}{\mu}M_{b}\del{}{\nu}M_{c}.
-\end{align*}
-We can take this one step further by taking the mass fields to be a map from spacetime to $S^{3}$ and introducing the 2-form $\omega$ with components $\omega_{ab} = \varepsilon_{cab}M^{a}$ to write the above as
-\begin{align*}
-	\Gamma = \frac{1}{16M^{3}}\inte{}{}\pub{M}{\omega},
-\end{align*}
-with the integral still being over spacetime.
-
-Let us study $\omega$ more closely. Its exterior derivative is
-\begin{align*}
-	\df{\omega} =& \frac{1}{2}\del{}{d}\varepsilon_{cab}M^{c}e^{dab} = \frac{1}{2}\varepsilon_{dab}e^{dab},
-\end{align*}
-which is almost the volume form on $S^{3}$.
-
-\paragraph{A New Model}
-The models studied above have connected $d$-dimensional systems to response terms described by integrals of $d + 1$-forms. Let us consider spatial dimension $1$ and introduce a mass matrix
-\begin{align*}
-	M = M_{0} + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}.
-\end{align*}
-The matrices $\Gamma$ represent a Clifford algebra and act in flavor space, and we take the mass fields to lie on $S^{5}$. The Lagrangian of the model is
-\begin{align*}
-	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M\right)\Psi = -i\overline{\Psi}\left(\fsl{\del{}{}} + M_{0} + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}\right)\Psi.
-\end{align*}
-The effective action is
-\begin{align*}
-	\Gamma =& -i\ln(\det(-i\left(\fsl{\del{}{}} + M_{0} + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}\right))) \\
-	       =& -i\tr(\ln(-i\left(\fsl{\del{}{}} + M_{0} + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}\right))) \\
-	       =& C_{0} - i\tr(\ln(1 + \frac{m + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}}{\fsl{\del{}{}} + M})) \\
-	       =& C_{0} - i\tr(\ln(1 + \frac{(\fsl{\del{}{}} - M)\left(m + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}\right)}{\del{2}{} - M^{2}})),
-\end{align*}
-where we have introduced the mass perturbation $m = M_{0} - M$, with $M$ being a fixed mass scale parameter. The topological term comes from the fifth-order expansion, with the Feynman diagram shown in figure
-
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-	\begin{feynman}
-	\vertex (a) at (-6, 0);
-	\vertex (a1) at (-2, 0);
-	\vertex (b) at (-1.86, 5.7);
-	\vertex (b1) at (-0.62, 1.9);
-	\vertex (c) at (4.8, 3.6);
-	\vertex (c1) at (1.62, 1.18);
-	\vertex (d) at (4.8, -3.6);
-	\vertex (d1) at (1.62, -1.18);
-	\vertex (e) at (-1.86, -5.7);
-	\vertex (e1) at (-0.62, -1.9);
-	\diagram*{
-		(a) --[scalar, momentum = $p_{1}$] (a1) --[fermion, momentum = $k$] (b1) --[scalar, rmomentum = $p_{2}$] (b),
-		(c) --[scalar, momentum = $p_{3}$] (c1) --[fermion, momentum = $p_{2} + p_{3} + k$] (d1) --[scalar, rmomentum = $p_{4}$] (d),
-		(b1) --[fermion, momentum = $p_{2} + k$] (c1),
-		(d1) --[fermion, momentum = $p_{2} + p_{3} + p_{3} + k$] (e1) --[scalar, rmomentum' = $-p_{1} - p_{2} - p_{3} - p_{4}$] (e),
-		(e1) --[fermion, momentum = $-p_{1} + k$] (a1),
-	};
-	\end{feynman}
-	\end{tikzpicture}
-	\caption{Feynman diagram for the third-order term in the effective action.}
-	\label{fig:fifth_order_fd}
-\end{figure}
-
-This translates to
-\begin{align*}
-	\Gamma =&  -\frac{i}{5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\dots\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\left(\frac{(\fsl{\del{}{}} - M)\left(m + i\gamma^{01}\sum\limits_{l = 1}^{5}M_{l}\Gamma^{l}\right)}{\del{2}{} - M^{2}}\right)^{5}) \\
-	\supset&  \frac{1}{5}\sum\limits_{l_{i} = 1}^{5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\dots\frac{\dd[2]{k}}{(2\pi)^{2}}\text{tr}\left(\frac{(i\fsl{k} - M)\gamma^{01}M_{l_{1}}\Gamma^{l_{1}}}{-k^{2} - M^{2}}\frac{(i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{01}M_{l_{2}}\Gamma^{l_{2}}}{-(p_{2} + k)^{2} - M^{2}}\frac{(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{k}) - M)\gamma^{01}M_{l_{3}}\Gamma^{l_{3}}}{-(p_{2} + p_{3} + k)^{2} - M^{2}} \right. \\
-	&\cdot \left.\frac{(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{p}_{4} + \fsl{k}) - M)\gamma^{01}M_{l_{4}}\Gamma^{l_{4}}}{-(p_{2} + p_{3} + p_{4} + k)^{2} - M^{2}}\frac{(i(-\fsl{p}_{1} + \fsl{k}) - M)\gamma^{01}M_{l_{5}}\Gamma^{l_{5}}}{(-p_{1} + k)^{2} - M^{2}}\right).
-\end{align*}
-Let us now consider the contents of the trace. We are looking for topological terms, which appear in the presence of all $\Gamma$ and all $\gamma$ appearing exactly once. At this point we can therefore note that the topological term can be related to a $2$-form. This is an intrinsic limitation of the theory.
-
-The matrices will produce a Levi-Civita tensor, meaning any contributions of orders $1$ or $2$ in $k$ will vanish. As such the topological term is given by
-\begin{align*}
-	\Gamma \supset& -\frac{M}{5}\sum\limits_{l_{i} = 1}^{5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\dots\frac{\dd[2]{k}}{(2\pi)^{2}}\text{tr}\left(\frac{M_{l_{1}}\Gamma^{l_{1}}}{-k^{2} - M^{2}}\frac{(i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{01}M_{l_{2}}\Gamma^{l_{2}}}{-(p_{2} + k)^{2} - M^{2}}\frac{(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{k}) - M)\gamma^{01}M_{l_{3}}\Gamma^{l_{3}}}{-(p_{2} + p_{3} + k)^{2} - M^{2}} \right. \\
-	&\cdot \left.\frac{(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{p}_{4} + \fsl{k}) - M)\gamma^{01}M_{l_{4}}\Gamma^{l_{4}}}{-(p_{2} + p_{3} + p_{4} + k)^{2} - M^{2}}\frac{(i(-\fsl{p}_{1} + \fsl{k}) - M)M_{l_{5}}\Gamma^{l_{5}}}{(-p_{1} + k)^{2} - M^{2}}\right).
-\end{align*}
-The contents of the trace are
-\begin{align*}
-	&\tr(\Gamma^{l_{1}}(i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{01}\Gamma^{l_{2}}(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{k}) - M)\gamma^{01}\Gamma^{l_{3}}(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{p}_{4} + \fsl{k}) - M)\gamma^{01}\Gamma^{l_{4}}(i(-\fsl{p}_{1} + \fsl{k}) - M)\Gamma^{l_{5}}) \\
-	=& \tr(\Gamma^{l_{1}}\Gamma^{l_{2}}\Gamma^{l_{3}}\Gamma^{l_{4}}\Gamma^{l_{5}})\tr((i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{01}(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{k}) - M)\gamma^{01}(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{p}_{4} + \fsl{k}) - M)\gamma^{01}(i(-\fsl{p}_{1} + \fsl{k}) - M)),
-\end{align*}
-exploiting the product structure of the operators. The remaining trace gives a contribution to the topological term according to
-\begin{align*}
-	-M^{3}\tr((i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{01}(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{k}) - M)\gamma^{01}(i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{p}_{4} + \fsl{k}) - M)\gamma^{01}(i(-\fsl{p}_{1} + \fsl{k}) - M))
-\end{align*}
-
-What if we were to add coupling to a gauge field too? The effective action would be
-\begin{align*}
-	\Gamma =& -i\tr(\ln(1 + \frac{ie\fsl{A} + i\sum\limits_{a = 2, 3, 5}M_{a}\gamma^{a}}{\fsl{\del{}{}} + M})).
-\end{align*}
-The structure of the Feynman diagram is identical, hence the trace part of the effective action is
-\begin{align*}
-	-i\tr((i\fsl{k_{1}} - M)(e\fsl{A} + M_{a}\gamma^{a})(i(-\fsl{k_{1}} - \fsl{p}) - M)(e\fsl{A} + M_{b}\gamma^{a})(i(\fsl{k_{2}} - \fsl{k_{1}}) - M)(e\fsl{A} + M_{c}\gamma^{c})).
-\end{align*}
-Because all of the latin-indiced Dirac matrices are needed, however, the gauge field does not appear in any topological terms.
-
 \paragraph{Dimensional Reduction in Topological Insulators}
-Topological insulators are generally described by some fermion model. Two classes of such models are A and AIII. The two are defined by not respecting time reversal and charge conjugation as symmetries. In addition, AIII has some unitary operator that anticommutes with the Hamiltonian, also known as having a chiral symmetry. The existence of the chiral symmetry implies symmetry of the energy spectrum about the Fermi level.
+Topological insulators are generally described by some fermion model. Two classes of such models are A and AIII. The two are defined by not respecting time reversal and charge conjugation as symmetries. In addition, AIII has some unitary operator $\Gamma$ that anticommutes with the Hamiltonian, also known as having a chiral symmetry. The existence of the chiral symmetry implies symmetry of the energy spectrum about the Fermi level.
 
 It turns out that every model of class A in even spatial dimension can be related to a model of class AIII in one lower dimension. The process of relating the two is termed dimensional reduction. The scheme is as follows: Start with a Dirac model in $d = 2n + 2$ dimensions given by
 \begin{align*}
@@ -954,17 +598,41 @@ The Berry curvature is then $F = \df{A} + A^{2}$. Models in class A in $d = 2n +
 \begin{align*}
 	\text{ch}_{n + 1}(F) = \frac{1}{(n + 1)!}\tr(\left(\frac{iF}{2\pi}\right)^{n + 1}),
 \end{align*}
-as well as its integral, called the Chern number. To introduce a similar concept for class AIII, we first introduce the projection matrix $P(k)$ onto the occupied bands and $Q = 1 - 2P$. The chiral symmetry somehow implies that the $Q$ matrix can be written as
+as well as its integral, called the Chern number. The Chern character is the exterior derivative of the $2(n + 1) - 1$th Chern-Simons form, defined as
+\begin{align*}
+	Q_{2n + 1} = \frac{1}{n!}\left(\frac{i}{2\pi}\right)^{n + 1}\inte{0}{1}\dd{t}\tr(AF_{t}^{n}),\ F_{t} = t\df{A} + t^{2}A^{2} = tF + (t^{2} - t)A^{2}.
+\end{align*}
+Note that the Chern-Simons form is not gauge invariant. Instead, for a gauge transformation
+\begin{align*}
+	A\p = g^{-1}Ag + g^{-1}\df{g},\ F\p = g^{-1}Fg,
+\end{align*}
+we have
+\begin{align*}
+	Q_{2n + 1}\p =& \frac{1}{n!}\left(\frac{i}{2\pi}\right)^{n + 1}\inte{0}{1}\dd{t}\tr(\left(g^{-1}Ag + g^{-1}\df{g}\right)\left(tg^{-1}Fg + (t^{2} - t)(g^{-1}Ag + g^{-1}\df{g})^{2}\right)^{n}) \\
+	             =& \frac{1}{n!}\left(\frac{i}{2\pi}\right)^{n + 1}\inte{0}{1}\dd{t}\tr(\left(g^{-1}Ag + g^{-1}\df{g}\right)\left(tg^{-1}Fg + (t^{2} - t)(g^{-1}A^{2}g + g^{-1}A\df{g} +  + g^{-1}\df{g}g^{-1}Ag + g^{-1}\df{g}g^{-1}\df{g})\right)^{n})
+\end{align*}
+One term here is of course $Q_{2n + 1}$. The other is the result of setting $A = g^{-1}\df{g}$ and $F = 0$ in the Chern-Simons form. The remaining terms are the exterior derivative of some $2n$-form, somehow.
+
+To introduce a similar concept for class AIII, we first introduce the projection matrix $P(k)$ onto the occupied bands and $Q = 1 - 2P$. The chiral symmetry somehow implies that the $Q$ matrix can be written as
 \begin{align*}
 	Q = \mqty[
 		0     & q \\
 		q\adj & 0
 	],
 \end{align*}
-with $q$ being a unitary matrix. We can now introduce the winding number for a model in AIII and $d = 2n + 1$ as
+with $q$ being a unitary matrix, in the basis where $\Gamma$ is diagonal. We can now introduce the winding number for a model in AIII and $d = 2n + 1$ as
 \begin{align*}
 	\nu_{2n + 1} = \inte{}{}\omega_{2n + 1}(q),\ \omega_{2n + 1}(q) = \frac{(-1)^{n}n!}{(2n + 1)!}\left(\frac{i}{2\pi}\right)^{n + 1}\tr((q^{-1}\df{q})^{2n + 1}).
 \end{align*}
+The Chern-Simons forms define a characteristic class on odd-dimensional manifolds, meaning we can use them to characterize systems. We therefore introduce the Chern-Simons invariant
+\begin{align*}
+	\text{CS}_{2n + 1} = \inte{}{}Q_{2n + 1},
+\end{align*}
+with the integral being over the first Brillouin zone. Returning to the issue of gauge invariance, evaluating the Chern-Simons form at $g^{-1}\df{g}$ gives the same result as the winding number evaluated at $g$. The winding number is an integer which in this case measures the winding $g$ about the Brillouin zone. Note that $\pi_{\text{BZ}}(U(N)) = \mathbb{Z}$. It therefore follows that the Wilson loop
+\begin{align*}
+	W_{2n + 1} = e^{2\pi i\text{CS}_{2n + 1}}
+\end{align*}
+is gauge invariant.
 
 Let us move on to a more specific example. The simplest would be starting in $d = 2$ with the Hamiltonian
 \begin{align*}
@@ -1033,6 +701,73 @@ Approximating the integral over the first Brillouin zone to an integral over all
 	              =& \frac{m}{4\pi\abs{m}}\frac{4\pi^{2}\Gamma\left(\frac{1}{2}\right)\Gamma\left(1\right)}{4\pi\Gamma\left(\frac{3}{2}\right)\Gamma\left(1\right)} \\
 	              =& \frac{m}{2\abs{m}}\frac{\Gamma\left(\frac{1}{2}\right)}{\Gamma\left(\frac{3}{2}\right)} \\
 	              =& \frac{m}{2\abs{m}}.
+\end{align*}
+
+Setting $k_{y} = 0$ instead nets us a model in class AIII. To define a topological invariant for this model we reparametrize it and switch form such that the Hamiltonian is
+\begin{align*}
+	\ham = k_{x}\sigma_{x} - m\sigma_{y}.
+\end{align*}
+The eigenstates are
+\begin{align*}
+	\ket{u^{-}(k)} = \frac{1}{\sqrt{2}\lambda}\mqty[
+		-k_{x} - im \\
+		\lambda
+	],\ \ket{u^{+}(k)} = \frac{1}{\sqrt{2}\lambda}\mqty[
+		k_{x} + im \\
+		\lambda
+	]..
+\end{align*}
+The projection operator onto occupied states is therefore
+\begin{align*}
+	P = \frac{1}{2}\mqty[
+		1                           & \frac{-k_{x} - im}{\lambda} \\
+		\frac{-k_{x} + im}{\lambda} & 1
+	],
+\end{align*}
+from which we find
+\begin{align*}
+	Q = \frac{1}{\lambda}\mqty[
+		0          & k_{x} + im \\
+		k_{x} - im & 0
+	].
+\end{align*}
+The Hamiltonian commutes with $\sigma_{z}$, which is diagonal in the chosen basis, and thus we find
+\begin{align*}
+	q = \frac{k_{x} + im}{\lambda}.
+\end{align*}
+The winding number is given by the form
+\begin{align*}
+	\omega_{1} =& \frac{i}{2\pi}\tr(q^{-1}\df{q}) \\
+	           =& \frac{i}{2\pi}\frac{\lambda}{k_{x} + im}\left(\frac{1}{\lambda} - \frac{(k_{x} + im)k_{x}}{\lambda^{3}}\right)\df{k_{x}} \\
+	           =& \frac{i}{2\pi}\frac{k_{x} - im}{\lambda}\frac{\lambda^{2} - (k_{x} + im)k_{x}}{\lambda^{3}}\df{k_{x}} \\
+	           =& \frac{im}{2\pi}\frac{k_{x} - im}{\lambda}\frac{m - ik_{x}}{\lambda^{3}}\df{k_{x}} \\
+	           =& \frac{m}{2\pi}\frac{(k_{x} - im)(k_{x} + im)}{\lambda^{4}}\df{k_{x}} \\
+	           =& \frac{m}{2\pi\lambda^{2}}\df{k_{x}},
+\end{align*}
+and we have
+\begin{align*}
+	\nu_{1} =& \inte{}{}\omega_{1} \\
+	        =& \inte{-\infty}{\infty}\dd{k_{x}}\frac{m}{2\pi\lambda^{2}} \\
+	        =& m\frac{\Gamma\left(\frac{1}{2}\right)^{2}}{2\sqrt{\pi}\Gamma\left(1\right)\Gamma\left(\frac{1}{2}\right)}(m^{2})^{-\frac{1}{2}} \\
+	        =& \frac{m}{2\abs{m}}.
+\end{align*}
+To compute the Chern-Simons invariant, we need the Berry connection for the occupied states. Reusing a previous calculation we find
+\begin{align*}
+	A =& -\frac{im}{2\lambda^{2}}\df{k_{x}}.
+\end{align*}
+The Chern-Simons form is then given by
+\begin{align*}
+	Q_{1} = \frac{i}{2\pi}\inte{0}{1}\dd{t}\tr(A) = \frac{i}{2\pi}\tr(A),
+\end{align*}
+and the Chern-Simons invariant is
+\begin{align*}
+	\text{CS}_{1} =& \inte{}{}Q_{1} \\
+	              =& \frac{1}{2\pi}\inte{-\infty}{\infty}\dd{k_{x}}\frac{m}{2\lambda^{2}} \\
+	              =& \frac{m}{4\abs{m}}.
+\end{align*}
+This is half the winding number, and this is in fact not a coincidence. The Wilson loop is then given by
+\begin{align*}
+	W = e^{\pm i\frac{\pi}{2}}.
 \end{align*}
 
 \paragraph{Summary of Articles}
