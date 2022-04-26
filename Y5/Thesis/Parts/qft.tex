@@ -33,6 +33,22 @@ One can also introduce a partial effective action, where only some fields are in
 
 An ad hoc argument for why one can use Feynman diagrams as we do is the following: The effective action will typically involve some series in operators. Introducing a position space basis implies that one starts and ends at the same place. From there one can start to split up the operators with more and more identities added. Fourier transforming nets you diagrams with loops.
 
+More specifically, we are concerned with field theories of the form
+\begin{align*}
+	\lag = -\overline{\psi}(\fsl{\del{}{}} + m + O)\psi,
+\end{align*}
+with $O$ not containing derivatives. Integrating out the fermions, the general expression will be
+\begin{align*}
+	\Gamma = -i\ln(\det(\fsl{\del{}{}} + m + O)) = -i\tr(\ln(\fsl{\del{}{}} + m + O)) = C_{0} - i\tr(\ln(1 + \frac{O}{\fsl{\del{}{}} + m})).
+\end{align*}
+Finding particular terms in the effective action amounts to expanding the logarithm. The trace amounts to both a trace over the matrix structure of the operators. For some particular expansion we can do that by introducing a complete position basis, yielding
+\begin{align*}
+	\Gamma \supset& \frac{(-1)^{n + 1}}{n}\inte{}{}\dd[4]{x}\tr(\expval{\left(\frac{O}{\fsl{\del{}{}} + m}\right)^{n}}{x}) \\
+	             =& \frac{(-1)^{n + 1}}{n}\inte{}{}\dd[4]{x}\tr(\expval{\left(\frac{O}{\fsl{\del{}{}} + m}\right)^{n - 1}\frac{1}{\fsl{\del{}{}} + m}}{x}O(x)) \\
+	             =& \frac{(-1)^{n + 1}}{n}\inte{}{}\dd[4]{x}\dd[4]{y}\tr(\bra{x}\left(\frac{O}{\fsl{\del{}{}} + m}\right)^{n - 1}\op{y}\frac{1}{\fsl{\del{}{}} + m}\ket{x}O(x)).
+\end{align*}
+Iterating the process reveals a structure where the $O$s fix positions and the propagator-like factor moves the coordinate from one place to the next. This can be systematized as a Feynman diagram with one central loop and external grounded lines. Fourier transforming causes momentum conservation at each vertex, and will be the way to proceed.
+
 \paragraph{Theories With Topological Response}
 We will now consider some field theories with background fields. The effective actions of these theories contain topological terms, which are metric-independent. The significance of this metric-independence is that correlation functions, and therefore the theory, is stable under deformations of spacetime or generalized coordinate transformations. It also implies that all correlations lengths are zero.
 
@@ -40,10 +56,10 @@ The scheme for constructing such theories was laid out by Abanov and Wiegmann. T
 \begin{align*}
 	V^{(l)} = \begin{cases}
 		\sum\limits_{i = 1}^{l}V_{i}\Gamma^{(l)}_{i},\ &l = 2n + 1, \\
-		V_{l} + i\gamma_{5}\sum\limits_{i = 1}^{l - 1}V_{i}\Gamma^{(l - 1)}_{i},\ &l = 2n,
+		V_{l} + i\gamma_{5}\sum\limits_{i = 1}^{l - 1}V_{i}\Gamma^{(l - 1)}_{i},\ &l = 2n.
 	\end{cases}
 \end{align*}
-with the parametrization $V_{l} = \cos(\nu)$ for some constant $\nu$. Abanov and Wiegmann confine the $V$ to some unit sphere, which we will refrain from doing, and so we can simply set $V_{l} = 1$. $\gamma_{5}$ is $i^{\frac{d - 1}{2}}$ times the product of all Dirac matrices working on Dirac structure, distinguished from the $\Gamma_{i}$, which work in flavor space. Models with mass terms on $S^{d}$ in $d + 1$ dimensions are now given by
+$\gamma_{5}$ is $i^{\frac{d - 1}{2}}$ times the product of all Dirac matrices working on Dirac structure, distinguished from the $\Gamma_{i}$, which work in flavor space. Models with mass terms on $S^{d}$ in $d + 1$ dimensions are now given by
 \begin{align*}
 	\lag = -i\overline{\psi}(\fsl{\del{}{}} + MV^{(d + 1)})\psi,
 \end{align*}
@@ -51,7 +67,7 @@ and models with mass terms on $S^{d + 1}$ are given by
 \begin{align*}
 	\lag = -i\overline{\psi}(\fsl{\del{}{}} + MV^{(d + 3)})\psi.
 \end{align*}
-These two classes will be termed A and B. We have also introduced an overall mass scale $M$. Note that the confinement to a manifold is performed by the restriction of $V$. The models we will study are particular examples of this construction, as well as some modified versions. The essential property of the Dirac matrices is
+For this latter case we set $V_{l} = \cos(\nu)$ for some constant $\nu$. Abanov and Wiegmann confine the $V$ to some unit sphere, which we will refrain from doing, and so we can simply set $V_{l} = 1$. These two classes will be termed A and B. We have also introduced an overall mass scale $M$. Note that the confinement to a manifold is performed by the restriction of $V$. The models we will study are particular examples of this construction, as well as some modified versions. The essential property of the Dirac matrices is
 \begin{align*}
 	\tr(\gamma^{\mu_{1}}\dots\gamma^{\mu_{d + 1}}\gamma_{5}) = -i^{\frac{d - 1}{2}}\left(-2\right)^{\frac{d + 1}{2}}\varepsilon^{\mu_{1}\dots\mu_{d + 1}}
 \end{align*}
@@ -306,13 +322,13 @@ A counterpoint to the above is that this model does not explicitly apply transfo
 
 Let us also consider two models in two dimensions. The first is
 \begin{align*}
-	\lag = -i\overline{\psi}\left(\fsl{D} + M + \sum\limits_{a = 1}^{3}M^{a}\Gamma_{a}^{(3)}\right)\psi.
+	\lag = -i\overline{\psi}\left(\fsl{D} + \sum\limits_{a = 1}^{3}M^{a}\Gamma_{a}^{(3)}\right)\psi.
 \end{align*}
 The effective action is
 \begin{align*}
-	\Gamma = -i\tr(\ln(1 + \frac{-i\fsl{A} + \sum\limits_{a = 1}^{3}iM^{a}\Gamma_{a}^{(3)}}{\fsl{\del{}{}} + M})).
+	\Gamma = -i\tr(\ln(1 + \frac{-M - i\fsl{A} + \sum\limits_{a = 1}^{3}iM^{a}\Gamma_{a}^{(3)}}{\fsl{\del{}{}} + M})).
 \end{align*}
-There are two topological terms here, corresponding to figures \ref{fig:third_order_fd} and \ref{fig:fourth_order_1d_fd}. Concentrating on the latter, which contains the gauge field, it is given by
+The topological term, which contains the gauge field, corresponds to figure \ref{fig:fourth_order_1d_fd} (to lowest order). We may drop the term proportional to the identity, and the effective action is given by
 \begin{align*}
 	\Gamma =& \frac{i}{4}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{3}}\frac{\dd[2]{p_{2}}}{(2\pi)^{3}}\frac{\dd[2]{p_{3}}}{(2\pi)^{3}}\frac{\dd[2]{k}}{(2\pi)^{3}}\tr\left(\frac{-\fsl{A} + \sum\limits_{a = 1}^{3}M^{a}\Gamma_{a}^{(3)}}{\fsl{\del{}{}} + M}\frac{-\fsl{A} + \sum\limits_{b = 1}^{3}M^{b}\Gamma_{b}^{(3)}}{\fsl{\del{}{}} + M}\frac{-\fsl{A} + \sum\limits_{c = 1}^{3}M^{c}\Gamma_{c}^{(3)}}{\fsl{\del{}{}} + M}\frac{-\fsl{A} + \sum\limits_{d = 1}^{3}M^{d}\Gamma_{d}^{(3)}}{\fsl{\del{}{}} + M}\right) \\
 	=& \frac{i}{4}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{3}}\frac{\dd[2]{p_{2}}}{(2\pi)^{3}}\frac{\dd[2]{p_{3}}}{(2\pi)^{3}}\frac{\dd[2]{k}}{(2\pi)^{3}}\tr\left(\left(-\fsl{A}(p_{1}) + \sum\limits_{a = 1}^{3}M^{a}(p_{1})\Gamma_{a}^{(3)}\right)\frac{i\fsl{k} - M}{-k^{2} - M^{2}}\right. \\
@@ -336,9 +352,9 @@ This is the point at which we can still generalize. At a glance it might seem li
 The next is identical to the previous due to the $k_{1}$ not contributing. Third is
 \begin{align*}
 	\tr((i\fsl{k}_{2} - M)\gamma^{\mu}(i\fsl{k}_{3} - M)(i\fsl{k}_{4} - M)) =& M\tr(\fsl{k}_{2}\gamma^{\mu}\fsl{k}_{3} + \gamma^{\mu}\fsl{k}_{3}\fsl{k}_{4} + \fsl{k}_{2}\gamma^{\mu}\fsl{k}_{4}) \\
-	=& 2M\varepsilon^{\mu\nu\rho}\tr(-k_{2, \nu}k_{3, \rho} + k_{3, \nu}k_{4, \rho} - k_{2, \nu}k_{4, \rho}) \\
-	=& 2M\varepsilon^{\mu\nu\rho}\tr(-p_{2, \nu}p_{3, \rho} + p_{2, \nu}(p_{3, \rho} + p_{4, \rho}) + p_{3, \nu}(p_{2, \rho} + p_{4, \rho}) - p_{2, \nu}(p_{3, \rho} + p_{4, \rho})) \\
-	=& 2M\varepsilon^{\mu\nu\rho}\tr(p_{3, \nu}p_{4, \rho} - 2p_{2, \nu}p_{3, \rho}).
+	=& 2M\varepsilon^{\mu\nu\rho}(-k_{2, \nu}k_{3, \rho} + k_{3, \nu}k_{4, \rho} - k_{2, \nu}k_{4, \rho}) \\
+	=& 2M\varepsilon^{\mu\nu\rho}(-p_{2, \nu}p_{3, \rho} + p_{2, \nu}(p_{3, \rho} + p_{4, \rho}) + p_{3, \nu}(p_{2, \rho} + p_{4, \rho}) - p_{2, \nu}(p_{3, \rho} + p_{4, \rho})) \\
+	=& 2M\varepsilon^{\mu\nu\rho}(p_{3, \nu}p_{4, \rho} - 2p_{2, \nu}p_{3, \rho}).
 \end{align*}
 Finally there is
 \begin{align*}
@@ -347,7 +363,63 @@ Finally there is
 	=& 2M\varepsilon^{\mu\nu\rho}\left(p_{2, \nu}p_{3, \rho} - p_{2, \nu}(p_{3, \rho} + p_{4, \rho}) - p_{2, \nu}(p_{3, \rho} + p_{4, \rho}) - p_{3, \nu}(p_{2, \rho} + p_{4, \rho})\right) \\
 	=& 2M\varepsilon^{\mu\nu\rho}\left(-2p_{2, \nu}p_{4, \rho} - p_{3, \nu}p_{2, \rho} - p_{3, \nu}p_{4, \rho}\right).
 \end{align*}
-Adding them all together we find
+At this point we may integrate $k$ out, and the rest of the effective action is
+\begin{align*}
+	\frac{i}{4}\inte{}{}\frac{\dd[2]{k}}{(2\pi)^{3}}\frac{1}{(-k^{2} - M^{2})^{4}} =& i\frac{\Gamma\left(4 - \frac{3}{2}\right)\Gamma\left(\frac{3}{2}\right)}{(4\pi)^{\frac{3}{2}}\Gamma\left(4\right)\Gamma\left(\frac{3}{2}\right)}M^{2\left(\frac{3}{2} - 4\right)} = -\frac{3\sqrt{\pi}}{24(4\pi)^{\frac{3}{2}}}M^{-5} = -\frac{1}{64\pi M^{5}}.
+\end{align*}
+All that remains is sorting out the terms from the trace. Each one is preceded by a factor $-2M^{2}\varepsilon^{\mu\nu\rho}\varepsilon_{abc}$, and the correspondence principle translates the remainder to
+\begin{align*}
+	   &A_{\mu}(p_{1})M^{a}(p_{2})M^{b}(p_{3})M^{c}(p_{4})\left(2p_{2, \nu}(p_{3, \rho} + p_{4, \rho}) + p_{3, \nu}p_{4, \rho}\right) \\
+	\to& -2A_{\mu}\del{}{\nu}M^{a}(M^{b}\del{}{\rho}M^{c} + \del{}{\rho}M^{b}M^{c}) - A_{\mu}M^{a}\del{}{\nu}M^{b}\del{}{\rho}M^{c}, \\
+	   &M^{a}(p_{1})A_{\mu}(p_{2})M^{b}(p_{3})M^{c}(p_{4})\left(2p_{2, \nu}(p_{3, \rho} + p_{4, \rho}) + p_{3, \nu}p_{4, \rho}\right) \\
+	\to& -2M^{a}\del{}{\nu}A_{\mu}(\del{}{\rho}M^{b}M^{c} + M^{b}\del{}{\rho}M^{c}) - M^{a}A_{\mu}\del{}{\nu}M^{b}\del{}{\rho}M^{c}, \\
+	   &M^{a}(p_{1})M^{b}(p_{2})A_{\mu}(p_{3})M^{c}(p_{4})(p_{3, \nu}p_{4, \rho} - 2p_{2, \nu}p_{3, \rho}) \\
+	\to& -M^{a}M^{b}\del{}{\nu}A_{\mu}\del{}{\rho}M^{c} + 2M^{a}\del{}{\nu}M^{b}\del{}{\rho}A_{\mu}M^{c}, \\
+	   &M^{a}(p_{1})M^{b}(p_{2})M^{c}(p_{3})A_{\mu}(p_{4})\left(-2p_{2, \nu}p_{4, \rho} - p_{3, \nu}p_{2, \rho} - p_{3, \nu}p_{4, \rho}\right) \\
+	\to& 2M^{a}\del{}{\nu}M^{b}M^{c}\del{}{\rho}A_{\mu} + M^{a}\del{}{\rho}M^{b}\del{}{\nu}M^{c}A_{\mu} + M^{a}M^{b}\del{}{\nu}M^{c}\del{}{\rho}A_{\mu}.
+\end{align*}
+The only terms surviving contraction with the mass field Levi-Civita are those with two derivatives on the mass fields. The final effective action is then
+\begin{align*}
+	\Gamma =& \frac{1}{32\pi}\varepsilon^{\mu\nu\rho}\varepsilon_{abc}\inte{}{}\dd[3]{x}A_{\mu}\left(M^{a}\del{}{\rho}M^{b}\del{}{\nu}M^{c} - M^{a}\del{}{\nu}M^{b}\del{}{\rho}M^{c} - 2\del{}{\nu}M^{a}(M^{b}\del{}{\rho}M^{c} + \del{}{\rho}M^{b}M^{c}) - M^{a}\del{}{\nu}M^{b}\del{}{\rho}M^{c}\right) \\
+	=& \frac{3}{32\pi}\varepsilon^{\mu\nu\rho}\varepsilon_{abc}\inte{}{}\dd[3]{x}A_{\mu}M^{a}\del{}{\rho}M^{b}\del{}{\nu}M^{c}.
+\end{align*}
+
+The next model is
+\begin{align*}
+	\lag = -i\overline{\psi}\left(\fsl{\del{}{}} + M\Gamma_{5} + \sum\limits_{a = 1}^{4}M^{a}\Gamma_{a}\right)\psi.
+\end{align*}
+The effective action is given by
+\begin{align*}
+	\Gamma =& -i\tr(\ln(1 + \frac{-M + M_{0}\Gamma_{5} + \sum\limits_{a = 1}^{4}M^{a}\Gamma_{a}}{\fsl{\del{}{}} + M}))
+\end{align*}
+The topological term corresponds to figure \ref{fig:fifth_order_fd} to lowest order, and is given by
+\begin{align*}
+	\Gamma =& -\frac{i}{5}\inte{}{}\frac{\dd[3]{p}_{1}}{(2\pi)^{3}}\frac{\dd[3]{p}_{2}}{(2\pi)^{3}}\frac{\dd[3]{p}_{3}}{(2\pi)^{3}}\frac{\dd[3]{p}_{4}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\tr\left(\frac{-M + M_{0}\Gamma_{5} + \sum\limits_{a = 1}^{4}M^{a}\Gamma_{a}}{i\fsl{k} + M}\frac{-M + M_{0}\Gamma_{5} + \sum\limits_{b = 1}^{4}M^{b}\Gamma_{b}}{i(\fsl{p}_{2} + \fsl{k}) + M} \right. \\
+	&\cdot\left.\frac{-M + M_{0}\Gamma_{5} + \sum\limits_{c = 1}^{4}M^{c}\Gamma_{c}}{i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{k}) + M}\frac{-M + M_{0}\Gamma_{5} + \sum\limits_{d = 1}^{4}M^{d}\Gamma_{d}}{i(\fsl{p}_{2} + \fsl{p}_{3} + \fsl{p}_{4} + \fsl{k}) + M}\frac{-M + M_{0}\Gamma_{5} + \sum\limits_{e = 1}^{4}M^{e}\Gamma_{e}}{i(-\fsl{p}_{1} + \fsl{k}) + M}\right).
+\end{align*}
+The traces over isospace and Dirac structure decouple, so we can take them one at a time. Adopting shorthand, the Dirac structure trace is
+\begin{align*}
+	 &\tr((i\fsl{k}_{1} - M)(i\fsl{k}_{2} - M)(i\fsl{k}_{3} - M)(i\fsl{k}_{4} - M)(i\fsl{k}_{5} - M)) \\
+	=& -M\tr((i\fsl{k}_{2} - M)(i\fsl{k}_{3} - M)(i\fsl{k}_{4} - M)(i\fsl{k}_{5} - M)) \\
+	=& -iM^{2}\tr(\fsl{k}_{2}\fsl{k}_{3}\fsl{k}_{4} + \fsl{k}_{2}\fsl{k}_{3}\fsl{k}_{5} + \fsl{k}_{2}\fsl{k}_{4}\fsl{k}_{5} + \fsl{k}_{3}\fsl{k}_{4}\fsl{k}_{5}) \\
+	=& -2iM^{2}\varepsilon^{\mu\nu\rho}\tr(k_{2, \mu}k_{3, \nu}k_{4, \rho} + k_{2, \mu}k_{3, \nu}k_{5, \rho} + k_{2, \mu}k_{4, \nu}k_{5, \rho} + k_{3, \mu}k_{4, \nu}k_{5, \rho}) \\
+	=& -2iM^{2}\varepsilon^{\mu\nu\rho}\tr(p_{2, \mu}p_{3, \nu}p_{4, \rho} + p_{2, \mu}p_{3, \nu}(p_{4} + p_{5})_{\rho} + p_{2, \mu}(p_{3} + p_{4})_{\nu}p_{5, \rho} + (p_{2} + p_{3})_{\mu}p_{4, \nu}p_{5, \rho}) \\
+	=& -2iM^{2}\varepsilon^{\mu\nu\rho}\tr(2p_{2, \mu}p_{3, \nu}p_{4, \rho} + 2p_{2, \mu}p_{3, \nu}p_{5, \rho} + 2p_{2, \mu}p_{4, \nu}p_{5, \rho} + p_{3, \mu}p_{4, \nu}p_{5, \rho}).
+\end{align*}
+Next is the isospace trace, which will amount to five terms depending on the placement of the $\Gamma^{5}$ with different momenta as arguments. The result is
+\begin{align*}
+	&M_{0}\varepsilon_{abcd}\left(M^{a}(p_{1})M^{b}(p_{2})M^{c}(p_{3})M^{d}(p_{4}) - M^{a}(p_{1})M^{b}(p_{2})M^{c}(p_{3})M^{d}(p_{5}) \right. \\
+	&+ M^{a}(p_{1})M^{b}(p_{2})M^{c}(p_{4})M^{d}(p_{5})- \left. M^{a}(p_{1})M^{b}(p_{3})M^{c}(p_{4})M^{d}(p_{5}) + M^{a}(p_{2})M^{b}(p_{3})M^{c}(p_{4})M^{d}(p_{5})\right).
+\end{align*}
+Combining the factors, only leaving in the momenta appearing as arguments, and applying the correspondence principle, these combine to
+\begin{align*}
+	&2M^{2}M_{0}\varepsilon^{\mu\nu\rho}\varepsilon_{abcd}\left(2M^{a}\del{}{\mu}M^{b}\del{}{\nu}M^{c}\del{}{\rho}M^{d} - 2M^{a}\del{}{\mu}M^{b}\del{}{\nu}M^{c}\del{}{\rho}M^{d} \right. \\
+	&+ \left. 2M^{a}\del{}{\mu}M^{b}\del{}{\nu}M^{c}\del{}{\rho}M^{d} - M^{a}\del{}{\mu}M^{b}\del{}{\nu}M^{c}\del{}{\rho}M^{d} + M^{a}(p_{2})M^{b}(p_{3})M^{c}(p_{4})M^{d}(p_{5})\right)
+\end{align*}
+In the long-wavelength limit, the remaining factors are
+\begin{align*}
+	-\frac{i}{5}\inte{}{}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{1}{(-k^{2} - M^{2})^{5}} = \frac{1}{5}\frac{\Gamma\left(5 - \frac{3}{2}\right)\Gamma\left(\frac{3}{2}\right)}{(4\pi)^{\frac{3}{2}}\Gamma\left(5\right)\Gamma\left(\frac{3}{2}\right)}M^{2\left(\frac{3}{2} - 5\right)} = \frac{1}{512\pi M^{7}}.
+\end{align*}
 
 \paragraph{A New Model}
 The models studied above have connected $d$-dimensional systems to response terms described by integrals of up to $d + 1$-forms. To relate the study of these theories to the higher Berry curvature, we will instead need to find a response term described by the integral of a $d + 2$-form. Let us consider spatial dimension $1$ and introduce mass terms according to
@@ -425,3 +497,21 @@ Thus far we have seen that the effective actions in class B involve the pullback
 The form $\df{\omega}$ is then a $d + 2$-form which plays the role of the higher Berry curvature.
 
 A first question is whether $\df{\omega}$ exists. Certainly the containment of mass fields in class B to $S^{d + 1}$ implies that the answer is no. There are, however, two possible ways to solve that. The first, as proposed by Abanov and Wiegmann, is to simply not confine the mass fields at all. The alternative, which is what is done by Hsin et al, is to extend the usual mass term to a field. The consequence of this choice is that the response terms we have considered are lowest-order terms in the mass perturbation $M_{0}(x) - M$.
+
+\paragraph{For Apoorv}
+Consider a theory of the form
+\begin{align*}
+	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M\right)\Psi = -i\overline{\Psi}\left(\fsl{\del{}{}} + M_{0} + i\gamma^{01}\sum\limits_{l}M_{l}\Gamma^{l}\right)\Psi.
+\end{align*}
+The restriction to a manifold of appropriate dimension can be done by choosing $l$ to be in some appropriate range and setting one mass field to be constant. We are looking for topological response terms, found by integrating out the fermions and looking for metric-independent terms. This is a qualitative account of what kinds of terms emerge from this procedure.
+
+The order of expansion necessary to obtain such a term must be odd due to the $\gamma^{01}$. The metric-independent term must contain a Levi-Civita symbol, prompting us to look for antisymmetric quantities in the mass indices too. Hence all mass fields will appear exactly once. The uncontracted spacetime indices will correspond to derivatives acting on the mass fields. We can therefore infer that the general structure of the terms will be
+\begin{align*}
+	\Gamma =& \inte{}{}\varepsilon^{\mu\nu}\varepsilon_{abc}m^{a}\del{}{\mu}m^{b}\del{}{\nu}m^{c} = \inte{}{}\pub{m}{\omega},
+\end{align*}
+with $\omega$ being a $2$-form.
+
+We can now qualitatively discuss some scenarios. The addition of spacetime dimensions adds more derivatives and the addition of mass fields adds more of those. For example, four mass terms will net you a term like
+\begin{align*}
+	\Gamma =& \inte{}{}\varepsilon^{\mu\nu}\varepsilon_{abcd}m^{a}m^{b}\del{}{\mu}m^{c}\del{}{\nu}m^{d}.
+\end{align*}
