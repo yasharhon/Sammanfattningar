@@ -49,21 +49,6 @@ A specific case if homeomorphicity is diffeomorphicity, which applies between tw
 \paragraph{Homotopy Types}
 Two topological spaces belong to the same homotopy type if there exists a continuous map from one to the other. This is a more relaxed version of homeomorphicity, as we no longer require the map to be invertible.
 
-\paragraph{Retractability}
-A domain $\Omega$ is retractable to $O$ if there exists a smooth map $\phi_{t}$ on $\Omega$ parametrized by $t$ such that $\phi_{1}(x) = x$ and $\phi_{0}(x) = O$.
-
-\paragraph{Inverting the Exterior Derivative}
-It holds that $\df{}^{2} = 0$, and thus one might believe that for every form $\omega$ such that $\df{\omega} = 0$ there exists a form $\chi$ such that $\omega = \df{\chi}$. This will, however, turn out to depend on the topological properties of the underlying space.
-
-Assuming the underlying space to be retractable to $O$, we have $\pub{\phi_{1}}{\omega} = \omega$ and $\pub{\phi_{0}}{\omega} = 0$. Define $\eta$ to be the vector tangential to the coordinate flow as $t$ is varied. The fact that $\df{\omega} = 0$ implies that $\df{\pub{\phi_{t}}{\omega}} = 0$, and one can show that $\dv{t}\pub{\phi_{t}}{\omega} = \lied{\eta}{(\pub{\phi_{t}}{\omega})}$. We then have
-\begin{align*}
-	\lied{\eta}{(\pub{\phi_{t}}{\omega})} = (i_{\eta}\df{} + \df{}i_{\eta})(\pub{\phi_{t}}{\omega}) = \df{(i_{\eta}(\pub{\phi_{t}}{\omega}))}.
-\end{align*}
-Integrating with respect to $t$ we finally find
-\begin{align*}
-	\omega = \df{\inte{0}{1}\dd{t}i_{\eta}(\pub{\phi_{t}}{\omega})}.
-\end{align*}
-
 \paragraph{Donuts and Coffee Mugs}
 Homeomorphicity defines an equivalence relation between topological spaces. This means that we can define topological spaces into categories based on homeomorphicity.
 
@@ -72,26 +57,62 @@ We are now in a position to introduce the poor man's notion of topology, which c
 \paragraph{Topological Invariants}
 An important question pertaining to this division of topological spaces is what separates the different categories. One possible answer is so-called topological invariants, quantities which are invariant under homeomorphism. The issue with this answer is that the full set of topological invariants has not been identified, hence they can only be used to verify that two topological spaces belong to different categories.
 
-\paragraph{Subgroups and Equivalence}
-Let $H$ be a subgroup of an (Abelian) group $G$. We say that $x$ and $y$ are equivalent if
-\begin{align*}
-	x - y\in H.
-\end{align*}
-The addition operation is the group operation, a smart choice of notation as $G$ is Abelian. We denote the corresponding equivalence class as $[x]$ and the set of all such classes is the quotient space $\frac{G}{H}$. From this we have a natural operation
-\begin{align*}
-	[x] + [y] = [x + y]
-\end{align*}
-on the quotient space.
-
 \paragraph{Homotopy and Homotopy Classes}
 Consider maps between two manifolds. Maps that can be continuously deformed into each other are said to be homotopic. This concept is related to that of homeomorphicity, and as such there exists topological invariants for such maps too. These divide maps into homotopy classes. A particular case is $\pi_{n}(M)$, which is the set of homotopy classes of maps from $S^{n}$ to $M$.
 
+\paragraph{Chain Complices}
+A chain complex is a doubly infinite sequence of mathematical objects related in a chain by a structure-preserving map $\del{}{}$. The structure is thus
+\begin{align*}
+	\dots C_{p - 1} \xrightarrow{\del{}{p + 1}} C_{p 1} \xrightarrow{\del{}{p - 1}} C_{p + 1} \dots
+\end{align*}
+The maps satisfy $\del{}{p - 1}\del{}{p} = 0$.
+
 \paragraph{Homology}
-The homology of a topological space is a set of topological invariants of the space, represented by its homology groups $H_{0}(M), H_{1}(M), \dots$
+Restricting ourselves to manifolds, consider the boundary operator as a link between manifolds of different dimension, creating a chain complex. The $n$th homology group is then defined as
+\begin{align*}
+	H_{n} = \ker(\del{}{n}) / \text{im}(\del{}{n + 1}).
+\end{align*}
+Alternatively, by defining $\ker(\del{}{n}) = Z_{n}$ and $\text{im}(\del{}{n + 1}) = B_{n}$, we can write this as
+\begin{align*}
+	H_{n} = Z_{n} / B_{n}.
+\end{align*}
+Its elements are homology classes, which are isomorphic to manifolds which themselves are boundaries of different manifolds.
 
 \paragraph{Cohomology}
 To define (de Rham) cohomology, we first introduce the set of closed $r$-forms $Z^{r}(M)$ and the set of exact $r$-forms $B^{r}(M)$. The cohomology group is then
 \begin{align*}
 	H^{r}(M) = \frac{Z^{r}(M)}{B^{r}(M)}.
 \end{align*}
-This divides up the forms in $Z^{r}(M)$ into classes which differ by an exact form.
+This divides up the forms in $Z^{r}(M)$ into classes which differ by an exact form. Two forms belonging to the same class are cohomologous.
+
+\paragraph{Relating Homology and Cohomology}
+What is so co about cohomology? Note that differential forms and manifolds fit very naturally into the language of chain complices - namely, the exterior derivative relates forms of different rank in a chain (forms with too many or a negative number of indices are identically zero), and the boundary operator relates manifolds of different dimension in a chain. The integral of a form over a manifold then induces the product
+\begin{align*}
+	\braket{\omega}{M} = \inte{M}{}\omega.
+\end{align*}
+Stokes' theorem then reads $\braket{\df{\omega}}{M} = \braket{\omega}{\bound{M}}$. By defining the pairing with a sum of manifolds to be a sum of the integrals over the two manifolds, the pairing is bilinear, and we then have for $\omega\in Z^{n}$ and $M\in Z_{n}$ that
+\begin{align*}
+	\braket{\omega + \df{\chi}}{M + \bound{N}} =& \braket{\omega + \df{\chi}}{M} + \braket{\omega + \df{\chi}}{\bound{N}} \\
+	=& \braket{\omega}{M} + \braket{\df{\chi}}{M} + \braket{\df{(\omega + \df{\chi})}}{N} \\
+	=& \braket{\omega}{M} + \braket{\chi}{\bound{M}} \\
+	=& \braket{\omega}{M}.
+\end{align*}
+This pairing then splits up its result depending on what representative of the homology and cohomology classes are fed into it. This also means, in some sense, that $H^{n}$ belongs to the dual space of $H_{n}$. There are some subtleties to completely identifying the two as each other, however.
+
+\paragraph{Retractability}
+A domain $\Omega$ is retractable to $O$ if there exists a smooth map $\phi_{t}$ on $\Omega$ parametrized by $t$ such that $\phi_{1}(x) = x$ and $\phi_{0}(x) = O$.
+
+\paragraph{Inverting the Exterior Derivative}
+It holds that $\df{}^{2} = 0$, and thus one might believe that for every form $\omega$ such that $\df{\omega} = 0$ there exists a form $\chi$ such that $\omega = \df{\chi}$. This will, however, turn out to depend on the topological properties of the underlying space.
+
+Assuming the underlying space to be retractable to $O$, we have $\pub{\phi_{1}}{\omega} = \omega$ and $\pub{\phi_{0}}{\omega} = 0$ for some closed form $\omega$. Define $\eta$ to be the vector tangential to the coordinate flow as $t$ is varied. The fact that $\df{\omega} = 0$ implies that $\df{\pub{\phi_{t}}{\omega}} = 0$. By the definition of the Lie derivative we have $\dv{t}\pub{\phi_{t}}{\omega} = \lied{\eta}{(\pub{\phi_{t}}{\omega})}$. We then have
+\begin{align*}
+	\lied{\eta}{(\pub{\phi_{t}}{\omega})} = (i_{\eta}\df{} + \df{}i_{\eta})(\pub{\phi_{t}}{\omega}) = \df{(i_{\eta}(\pub{\phi_{t}}{\omega}))}.
+\end{align*}
+Integrating with respect to $t$ we finally find
+\begin{align*}
+	\omega = \df{\inte{0}{1}\dd{t}i_{\eta}(\pub{\phi_{t}}{\omega})},
+\end{align*}
+and we have thus solved the problem. In the case of spaces which are not retractible, there are simple counterexamples to be found. One example would be $\sin(\theta)\df{\theta}\df{\phi}$ on $S^{2}$.
+
+In the language of cohomology we can phrase this very concisely. If some form $\omega$ is the exterior derivative of another, it must follow that it is cohomologous to the zero form. This implies that if the exterior derivative is invertible, then $H^{r}(M) = \{0\}$.
