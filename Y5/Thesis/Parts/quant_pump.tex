@@ -43,9 +43,6 @@ and we have
 	\inte{\bound{S}}{}A_{n} = \frac{1}{2}\inte{S}{}\dd{\chi^{\mu}}\wedge\dd{\chi^{\nu}}\Omega^{(2)}_{n, \mu\nu}.
 \end{align*}
 
-\paragraph{Applications of the Above}
-What is the use of the Berry connection and curvature? From the point of view of computing responses in quantum systems, the answer might seem to be not much. More broadly, however, it turns out that the Berry curvature in particular is useful in characterizing systems. The idea is as follows: An important assumption of the above arguments is the existence of a non-degenerate and gapped ground state for all parameter values. If the integral $\Omega^{(2)}$ over some closed surface is zero, it follows by Stokes' theorem that there are no degeneracy points enclosed by the surface, as $\Omega^{(2)}$ is closed everywhere. As such, the Berry curvature can be used to detect degeneracy points. It also turns out that the degeneracy points are stable under deformations of the Hamiltonian, as integrals of the Berry curvature are quantized.
-
 \paragraph{A More Sophisticated Definition}
 From this point on we switch to the more compact notation
 \begin{align*}
@@ -171,12 +168,15 @@ Because the identity is also preserved we have
 	\sum\op{\del{}{\mu}n}{n} + \op{n}{\del{}{\mu}n} = 0.
 \end{align*}
 
-\paragraph{The Single Spin}
-Consider a single spin-$\frac{1}{2}$ in an external field of length $1$. The Hamiltonian is
+\paragraph{Applications of the Above}
+What is the use of the Berry connection and curvature? From the point of view of computing responses in quantum systems, the answer might seem to be not much. More broadly, however, it turns out that the Berry curvature in particular is useful in characterizing systems. The idea is as follows: An important assumption of the above arguments is the existence of a non-degenerate and gapped ground state for all parameter values. If the integral $\Omega^{(2)}$ over some closed surface is zero, it follows by Stokes' theorem that there are no degeneracy points enclosed by the surface, as $\Omega^{(2)}$ is closed everywhere. As such, the Berry curvature can be used to detect degeneracy points. It also turns out that the degeneracy points are stable under deformations of the Hamiltonian, as integrals of the Berry curvature are quantized.
+
+\paragraph{The Single Spin - an Example}
+Consider a single spin-$\frac{1}{2}$ in an external field. The Hamiltonian is
 \begin{align*}
-	\ham = h_{x}\sigma_{x} + h_{y}\sigma_{y} + h_{z}\sigma_{z},
+	\ham = h_{x}\sigma_{x} + h_{y}\sigma_{y} + h_{z}\sigma_{z}.
 \end{align*}
-with the external field being restricted in length. With respect to the $\sigma_{z}$ eigenstates at $\theta = \phi = 0$, which are of course angle-independent, we have
+With respect to the $\sigma_{z}$ eigenstates at $\theta = \phi = 0$, which are of course angle-independent, we have
 \begin{align}
 	\ket{\downarrow}_{\theta, \phi} = \mqty[
 		-\sin(\frac{\theta}{2})e^{-i\phi} \\
@@ -196,6 +196,8 @@ The Berry curvature is then
 	\Omega^{(2)}_{\pm, \theta\phi} = \mp\frac{1}{2}\sin(\theta).
 \end{align*}
 This implies that the Berry phase induced after an adiabatic cycle is equal to half the subtended solid angle.
+
+This example is brought up time after time in this context, but rarely elaborated upon. It was the first example considered in the field, as Berry used it in his first paper describing the Berry phase, lending it some credibility, but the addition of the Berry curvature, and in particular its integral over all of $S^{2}$, is a later invention. Its significance is never stated, but still high, as the Berry curvature is, in a sense, produced by the degeneracy point at the origin. This shows both the value of the Berry curvature as a way to probe unknown parts of the phase diagram of a system and its use for creating topological invariants to classify systems.
 
 \paragraph{Higher Berry Curvature and the KS Invariant}
 For an infinite $1d$ system, $\Omega^{(2)}$ might diverge. A convergent quantity might instead be found by splitting the Hamiltonian into a sum of local terms working at a finite range, i.e.
@@ -304,7 +306,7 @@ Finally we can define the KS invariant
 \begin{align*}
 	Q_{\text{KS}} = \inte{}{}\Omega^{(3)}(f),
 \end{align*}
-which is performed over the full parameter space of the Hamiltonian. This is a topological invariant.
+with integration over the full parameter space of the Hamiltonian. This is a topological invariant.
 
 \paragraph{The Dimerized Spin Chain}
 Consider an infinite spin chain with Hamiltonian
@@ -580,6 +582,110 @@ and thus
 	              =& 2\pi,
 \end{align*}
 and indeed the choice of sigmoid was irrelevant.
+
+\paragraph{Higher Berry Curvature in Arbitrary Dimensions}
+We will construct higher Berry curvatures for lattice models in arbitrary dimensions by means of the language of chain complices. The links will be comprised of objects $A_{p_{0}\dots p_{n}}$, called $n$-chains, which depend on $n + 1$ points on a lattice $\Lambda$, are antisymmetric under permutations of the points and decay exponentially away from the diagonal $p_{0} = \dots = p_{n}$. These belong to the space $C_{n}(\Lambda)$. The map linking the chains is defined as
+\begin{align*}
+	(\del{}{}A)_{p_{1}\dots p_{n}} = \sum\limits_{p_{0}\in\Lambda}A_{p_{0}\dots p_{n}}.
+\end{align*}
+Dual to this we introduce $n$-cochains, which are functions $\alpha(p_{0}, \dots, p_{n})$ that depend on $n + 1$ lattice points, are antisymmetric under permutations and have the following property: When restricted to any $\delta$-neighborhood of the diagonal, it vanishes when any of the points is outside some finite set. These belong to the space $C^{n}(\Lambda)$.
+
+Having defined the two, we introduce the pairing
+\begin{align*}
+	\braket{A}{\alpha} = \frac{1}{(n + 1)!}\sum\limits_{p_{0}, \dots, p_{n}}A_{p_{0}, \dots, p_{n}}\alpha(p_{0}, \dots, p_{n}).
+\end{align*}
+The cochains are linked by an operator $\delta$ which satisfies $\delta^{2} = 0$ and
+\begin{align*}
+	\braket{A}{\delta\alpha} = \braket{\del{}{}A}{\alpha},\ A\in C_{n},\ \alpha\in C^{n - 1}.
+\end{align*}
+To identify it, we write explicitly
+\begin{align*}
+	\braket{\del{}{}A}{\alpha} = \frac{1}{n!}\sum\limits_{p_{1}, \dots, p_{n}}\left(\sum\limits_{p_{0}}A_{p_{0}, \dots, p_{n}}\right)\alpha(p_{1}, \dots, p_{n}).
+\end{align*}
+We want to factorize this as a sum containing $A$ itself and some other object, so to do that, let us consider a simple example, namely $n = 1$. We have
+\begin{align*}
+	\sum\limits_{p_{1}, p_{2}}A_{p_{1}, p_{2}}\alpha(p_{2}) = \frac{1}{2}\sum\limits_{p_{1}, p_{2}}A_{p_{1}, p_{2}}\alpha(p_{2}) - A_{p_{2}, p_{1}}\alpha(p_{2}) = \frac{1}{2}\sum\limits_{p_{1}, p_{2}}A_{p_{1}, p_{2}}(\alpha(p_{2}) - \alpha(p_{1})).
+\end{align*}
+What we have achieved with this rewrite is pairing $A$ with an element of $C^{1}$, as the cochain now has dependence on two points. Performing a similar process for higher $n$ we find
+\begin{align*}
+	\delta\alpha(p_{0}, \dots, p_{n}) = \sum\limits_{i = 0}^{n}(-1)^{i}\alpha(p_{0}, \dots, p_{j - 1}, p_{j + 1}, \dots, p_{n}).
+\end{align*}
+
+The chains also have an exterior product, defined as
+\begin{align*}
+	\alpha\cup\gamma(p_{0}, \dots, p_{n + m}) = \frac{1}{(n + m + 1)!}\sum\limits_{\sigma\in S_{n + m + 1}}(-1)^{\text{sgn}(\sigma)}\alpha(p_{\sigma(0)}, \dots, p_{\sigma(n)})\gamma(p_{\sigma(n)}, \dots, p_{\sigma(n + m)}).
+\end{align*}
+It satisfies
+\begin{align*}
+	\alpha\cup\gamma = (-1)^{nm}\gamma\cup\alpha,\ \delta(\alpha\cup\gamma) = \delta\alpha\cup\gamma + (-1)^{n}\alpha\cup\delta\gamma.
+\end{align*}
+
+We now have the mathematical machinery to define the higher Berry curvature. Partially by inspiration from the calculation in $d = 1$, the starting point will be $n - 2$-chains $F^{(n)}$, which are valued in $n$-forms. From some starting point, these forms are defined by the descent equation
+\begin{align*}
+	\df{F^{(n)}} = \del{}{}F^{(n + 1)}.
+\end{align*}
+To construct a higher Berry curvature, we will need to contract these with some $n -2$-cochain - in other words, we will use some construction of the form
+\begin{align*}
+	\Omega^{(d + 2)} = \braket{F^{(d + 2)}}{\alpha}.
+\end{align*}
+The matching of numbers makes sense, as for $d = 0$ we want a 2-form (higher) Berry curvature with underlying dependence on at most one lattice point. We will also be interested in a higher KS invariant
+\begin{align*}
+	\inte{}{}\Omega^{(d + 2)}.
+\end{align*}
+The details of this construction may be of importance, so let us discuss the topological properties of the above. Under a deformation of the parameter manifold, the requirement that the KS invariant be conserved implies that $\Omega^{(d + 2)}$ must be closed. For the general construction above we have
+\begin{align*}
+	\df{\braket{F^{(d + 2)}}{\alpha}} = \braket{\df{F^{(d + 2)}}}{\alpha} = \braket{\del{}{}F^{(d + 3)}}{\alpha} = \braket{F^{(d + 3)}}{\delta\alpha}.
+\end{align*}
+The requirement that $\Omega^{(d + 2)}$ be closed thus implies that $\alpha$ must be closed. On the other hand, assuming $\alpha$ to be exact we have
+\begin{align*}
+	\Omega^{(d + 2)} = \braket{F^{(d + 2)}}{\delta\gamma} = \braket{\del{}{}F^{(d + 2)}}{\gamma} = \braket{\df{F^{(d + 1)}}}{\gamma} = \df{\braket{F^{(d + 1)}}{\gamma}},
+\end{align*}
+and as such the KS invariant is trivial. We thus see the importance of the cohomology of the cochain complex. It can be shown that the $n$th cohomology of the cochain complex is isomorphic to the $n$th cohomology of $R^{d}$. The latter is non-trivial for $n = d$ only, and is one-dimensional in this case. The significance of this result is twofold. First, it is the final nail in the coffin for $F^{(d + 2)}$ being a $d$-chain. Second, it dictates that we may construct the higher Berry curvature by choosing any one generator of $C^{d}$.
+
+Let us now finish the construction. To arrive at a sensible definition, the starting point we choose is
+\begin{align*}
+	F^{(2)}_{p} = \frac{i}{2}\oint\frac{\dd{z}}{2\pi i}\tr(G\df{\ham}G^{2}\df{\ham_{p}}).
+\end{align*}
+Next we introduce functions $f_{i}$, some particular choice of sigmoid functions each depending the coordinate $x^{i}(p)$ of some lattice point $p$. The higher Berry curvature is then defined as
+\begin{align*}
+	\Omega^{(d + 2)} = \braket{F^{(d + 2)}}{\delta f_{1}\cup\dots\cup\delta f_{d}}.
+\end{align*}
+
+Before looking at some properties of the higher Berry curvature, let us first verify that this construction is sensible. We will do this by considering the two simplest examples. The first example is $d = 0$, for which the higher Berry curvature is
+\begin{align*}
+	\Omega^{(2)} = \braket{F^{(2)}}{1},
+\end{align*}
+as there is no lattice for $d = 0$. Evaluating this we find
+\begin{align*}
+	\Omega^{(2)} = \frac{i}{2}\oint\frac{\dd{z}}{2\pi i}\tr(G\df{\ham}G^{2}\df{\ham}),
+\end{align*}
+and the definition is consistent with the usual Berry curvature. Note also that $\Omega^{(2)} = \df{A} = \del{}{}F^{(2)}$, and so the Berry connection is the true start.
+
+Next, for $d = 1$ we introduce the sigmoid functions $f$ and form a 1-cochain according to
+\begin{align*}
+	\delta f(p, q) = f(p) - f(q).
+\end{align*}
+The 1-chain for this case is $F^{(3)}$, which satisfies $\df{F^{(2)}} = \del{}{}F^{(3)}$. The higher Berry curvature for this case is
+\begin{align*}
+	\Omega^{(3)} = \braket{F^{(3)}}{\delta f} = \frac{1}{2}\sum\limits_{p, q}F_{pq}^{(3)}(f(p) - f(q)),
+\end{align*}
+which is the same result as we previously arrived at.
+
+Finally we investigate some properties of the higher Berry curvature. Firstly, it is closed, as
+\begin{align*}
+	\df{\Omega^{(d + 2)}} =& \braket{\df{F^{(d + 2)}}}{\delta f_{1}\cup\dots\cup\delta f_{d}} \\
+	                      =& \braket{\del{}{}F^{(d + 3)}}{\delta f_{1}\cup\dots\cup\delta f_{d}} \\
+	                      =& \braket{F^{(d + 3)}}{\delta(\delta f_{1}\cup\dots\cup\delta f_{d})} \\
+	                      =& 0.
+\end{align*}
+Its cohomology class is also invariant under shifts by some compactly supported function. To show this, note that
+\begin{align*}
+	\braket{F^{(d + 2)}}{\delta g\cup f_{2}\cup\dots\cup\delta f_{d}} =& \braket{F^{(d + 2)}}{\delta(g\cup f_{2}\cup\dots\cup\delta f_{d})} \\
+	=& \braket{\del{}{}F^{(d + 2)}}{g\cup f_{2}\cup\dots\cup\delta f_{d}} \\
+	=& \braket{\df{F^{(d + 2)}}}{g\cup f_{2}\cup\dots\cup\delta f_{d}} \\
+	=& \df{\braket{F^{(d + 2)}}{g\cup f_{2}\cup\dots\cup\delta f_{d}}}.
+\end{align*}
+As such, the exact choice of sigmoid is irrelevant.
 
 \paragraph{Dimensional Reduction in Topological Insulators}
 Topological insulators are generally described by some fermion model. Two classes of such models are A and AIII. The two are defined by not respecting time reversal and charge conjugation as symmetries. In addition, AIII has some unitary operator $\Gamma$ that anticommutes with the Hamiltonian, also known as having a chiral symmetry. The existence of the chiral symmetry implies symmetry of the energy spectrum about the Fermi level.
