@@ -10,6 +10,16 @@ with
 	\text{Res}(f, z_{0}) = \frac{1}{(n - 1)!}\lim\limits_{z\to z_{0}}\dv[n - 1]{z}\left((z - z_{0})^{n}f(z)\right).
 \end{align*}
 
+\paragraph{The Lie Derivative}
+For a tensor field $T$ we define the Lie derivative in the $X$-direction as
+\begin{align*}
+	\lied{X}{T} = \lim\limits_{\varepsilon\to 0}\frac{1}{\varepsilon}\left(\pub{\gamma_{\varepsilon X}}{T} - T\right).
+\end{align*}
+As the definition is similar to that of the usual derivative, it follows that it is linear in its argument and satisfies the product rule, where the product in question is now the tensor product. We have
+\begin{align*}
+	\tensor*{(\lied{X}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} &= X^{a}\del{}{a}{\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}}} - \sum\limits_{i = 1}^{n}\tensor*{T}{^{a_{1}\dots a_{i - 1}aa_{i + 1}\dots a_{n}}_{b_{1}\dots b_{m}}}\del{}{a}{X^{a_{i}}} + \sum\limits_{j = 1}^{m}\tensor*{T}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{i - 1}ab_{i + 1}\dots b_{m}}}\del{}{b_{j}}{X^{a}}.
+\end{align*}
+
 \paragraph{Pushforwards and Pullbacks}
 Consider some function $f$ which maps a manifold $M_{1}$ to another manifold $M_{2}$, as well as a function $g: M_{2}\to\R$. We then define the pullback of $g$ to $M_{1}$ by $f$ as $\pub{f}{g} = g\circ f$. We also define the pushforward of a vector $V\in\ts{p}{M_{1}}$ by $f$ as the map $\ts{p}{M_{1}}\to\ts{p}{M_{2}}$ such that $(\puf{f}{V})\phi = V(\pub{f}{\phi})$.
 
@@ -28,8 +38,31 @@ Finally, if $f$ is a bijection we may also define the more general pullback of a
 \end{align*}
 Its components are
 \begin{align*}
-	\tensor*{(\pub{f}{T})}{^{a_{1}\dots a_{n}}_{b_{1}\dots b_{m}}} = T^{\mu_{1}\dots \mu_{n}}_{\nu_{1}\dots\nu_{m}}\prod\limits_{i = 1}^{m}\del{}{a_{i}}f^{\nu_{i}}\prod\limits_{j = 1}^{n}\del{}{\mu_{j}}(f^{-1})^{b_{j}}.
+	\tensor*{(\pub{f}{T})}{^{b_{1}\dots b_{n}}_{a_{1}\dots a_{m}}} = T^{\mu_{1}\dots \mu_{n}}_{\nu_{1}\dots\nu_{m}}\prod\limits_{i = 1}^{m}\del{}{a_{i}}f^{\nu_{i}}\prod\limits_{j = 1}^{n}\del{}{\mu_{j}}(f^{-1})^{b_{j}}.
 \end{align*}
+
+\paragraph{Properties of the Pullback}
+One important property of the pullback is its symmetry preservation. To study it, it will be sufficient to study the pullback of a $(0, 2)$ tensor, as the proof generalizes to an arbitrary number of indices.
+
+We have
+\begin{align*}
+	\tensor*{(\pub{f}{T})}{_{ab}} \pm \tensor*{(\pub{f}{T})}{_{ba}} =& T_{\mu\nu}\del{}{a}f^{\mu}\del{}{b}f^{\nu} \pm T_{\mu\nu}\del{}{b}f^{\mu}\del{}{a}f^{\nu} \\
+	=& (T_{\mu\nu} \pm T_{\nu\mu})\del{}{b}f^{\mu}\del{}{a}f^{\nu},
+\end{align*}
+which implies that (anti)symmetry is preserved by the pullback. The important property is that the pullback is linear in the tensor that is pulled back, and as such the argument generalizes to (anti)symmetry with respect to an arbitrary number of indices.
+
+\paragraph{Embeddings and Immersions}
+Consider two manifolds $M$ and $N$ connected by a map $f$. $f$ induces both the pullback and pushforward, at least when restricted to tangent and dual vectors, and it turns out that if one of these is invertible, so is the other. If $f$ induces an invertible pushforward and pullback is called an immersion of $M$ into $N$, and if $f$ is itself invertible, it is called an embedding of $M$ into $N$. The image $f(M)$ is then called a submanifold of $N$.
+
+One noteworthy thing about embeddings is the induction of tensors through them, the metric being a great example. We have
+\begin{align*}
+	\tilde{g}_{ab} = (\pub{f}{g})_{ab} = g_{\mu\nu}\del{}{a}f^{\mu}\del{}{b}f^{\nu},
+\end{align*}
+and so the length element is
+\begin{align*}
+	\dd{\tilde{s}}^{2} = \tilde{g}_{ab}\dd{x^{a}}\dd{x^{b}} = g_{\mu\nu}\del{}{a}f^{\mu}\del{}{b}f^{\nu}\dd{x^{a}}\dd{x^{b}} = g_{\mu\nu}\dd{y^{\mu}}\dd{y^{\nu}} = \dd{s}^{2}.
+\end{align*}
+That is, this induced metric preserves the notion of length under the mapping.
 
 \paragraph{Differential Forms}
 The set of $p$-forms, or differential forms, is the set of $(0, p)$ tensors that are completely antisymmetric. They are constructed using the wedge product, defined as
@@ -59,7 +92,11 @@ We define the exterior derivative of a differential form according to
 \begin{align*}
 	d\omega = \frac{1}{p!}\del{}{\mu_{1}}\omega_{\mu_{2}\dots \mu_{p + 1}}\bigwedge\limits_{k = 1}^{p + 1}d\chi^{\mu_{k}},
 \end{align*}
-which is a $p + 1$-form.
+which is a $p + 1$-form. By its nature this is an antiderivative - that is,
+\begin{align*}
+	\df{(a\wedge b)} = \df{a}\wedge b + (-1)^{p}a\wedge\df{b},
+\end{align*}
+where $p$ is the rank of $a$.
 
 \paragraph{Differential Forms and Pullbacks}
 We will now briefly show some properties of differential forms related to the pullback.
@@ -123,7 +160,71 @@ Its action on a 0-form is defined to yield zero. In index notation it is the con
 \begin{align*}
 	i_{X}(\eta\wedge\omega) = i_{X}(\eta)\wedge\omega + (-1)^{p}\eta\wedge(i_{X}\omega),
 \end{align*}
-where $p$ is the degree of $\eta$.
+where $p$ is the rank of $\eta$.
+
+\paragraph{The Infinitesimal Homotopy Relation}
+The infinitesimal homotopy relation relates the Lie derivative and the interior product. We will prove it by induction. First, for a 1-form, we have
+\begin{align*}
+	\df{(i_{X}\omega)} + i_{X}\df{\omega} =& \del{}{a}(X^{b}\omega_{b})\df{\chi^{a}} + \del{}{a}\omega_{b}\df{\chi^{a}}(X)\wedge\df{\chi^{b}} \\
+	=& X^{b}\del{}{a}\omega_{b}\df{\chi^{a}} + \del{}{a}(X^{b})\omega_{b}\df{\chi^{a}} + \del{}{b}\omega_{a}\df{\chi^{b}}(X)\wedge\df{\chi^{a}} \\
+	=& \left(X^{b}\del{}{a}\omega_{b} + \del{}{a}(X^{b})\omega_{b} + X^{b}\del{}{b}\omega_{a} - X^{b}\del{}{a}\omega_{b}\right)\df{\chi^{a}} \\
+	=& \left(\del{}{a}(X^{b})\omega_{b} + X^{b}\del{}{b}\omega_{a}	\right)\df{\chi^{a}} \\
+	=& \lied{X}{\omega}.
+\end{align*}
+We can see that this applies for 0-forms as well, as the first term will not be present in that case due to $i_{x}f = 0$ by definition. Finally, using the product rule we have
+\begin{align*}
+	\df{(i_{X}(\omega\wedge\eta))} + i_{X}\df{(\omega\wedge\eta)} =& \df{(i_{X}\omega\wedge\eta + (-1)^{p}\omega\wedge i_{X}\eta)} + i_{X}(\df{\omega}\wedge\eta + (-1)^{p}\omega\wedge\df{\eta}) \\
+	=& \df{(i_{X}\omega)}\wedge\eta + (-1)^{p - 1}i_{X}\omega\wedge\df{\eta} + (-1)^{p}(\df{\omega}\wedge i_{X}\eta + (-1)^{p}\omega\wedge\df{(i_{X}\eta)}) \\
+	 &+ i_{X}(\df{\omega})\wedge\eta + (-1)^{p + 1}\df{\omega}\wedge i_{X}\eta + (-1)^{p}(i_{X}\omega\wedge\df{\eta} + (-1)^{p}\omega\wedge i_{X}(\df{\eta})) \\
+	=& (\df{(i_{X}\omega)} + i_{X}(\df{\omega}))\wedge\eta + (-1)^{p}\omega\wedge(\df{(i_{X}\eta)} + i_{X}(\df{\eta})).
+\end{align*}
+What we have shown here is that this operator follows the product rule under the wedge product. As it applies for 1-forms and 0-forms, from which higher forms can be constructed, it follows that
+\begin{align*}
+	\lied{X}{\omega} = \df{(i_{X}\omega)} + i_{X}\df{\omega}
+\end{align*}
+for any differential form.
+
+\paragraph{The Volume Form}
+The metric gives a notion of distance, and therefore a notion of volume. This is what we will discuss now. That volume is described by a differential form follows from our notion of orientation of volumes and surfaces in two and three dimensions. As such, the volume form $\eta$ should be of the form
+\begin{align*}
+	\eta = f(\chi)\df{\chi^{1}}\wedge\dots\wedge\df{\chi^{n}}.
+\end{align*}
+The form of $f$ is as of yet unknown.
+
+Let us consider real space first. In three dimensions we have
+\begin{align*}
+	\dd{V} = \varepsilon_{ijk}\del{}{1}r^{i}\del{}{2}r^{j}\del{}{3}r^{k}\dd{\chi^{1}}\dd{\chi^{2}}\dd{\chi^{3}},
+\end{align*}
+with the Cartesian position vector $\vb{r}(\chi)$ acting as the embedding of coordinate space in $\R^{3}$. The prefactor for the differential must be proportional to $\varepsilon_{123}$ by matching with the chase where $\chi^{i} = r^{i}$, and because the metric in $\R^{3}$ is diagonal with elements $1$, the rest must be equal to $\sqrt{\det(g)}$. We thus infer
+\begin{align*}
+	\eta = \phi(\chi)\sqrt{\det(g)}\df{\chi^{1}}\wedge\dots\wedge\df{\chi^{n}}.
+\end{align*}
+To identify $\phi$, we consider orthogonal coordinates. In this case the metric is diagonal with elements $h_{i}^{2}$. On the other hand we expect a small cube spanned by vectors $X_{a} = \dd{t}\del{}{a}$ to have volume equal to $\dd{t}^{n}h_{1}\dots h_{n}$, and thus we must have $\phi = 1$. Thus the volume form is
+\begin{align*}
+	\eta = \sqrt{\det(g)}\df{\chi^{1}}\wedge\dots\wedge\df{\chi^{n}}.
+\end{align*}
+
+The volume of a manifold is slightly less trivial to define, but we can do it if the manifold is embedded by $f$ in some manifold with a volume form (the typical case is a manifold defined by a surface in real space). The idea we start with is flux. For a surface in real space, assuming the surface to be parametrized by $s^{i}$ and have tangent vectors $\dot{\gamma}_{i}\dd{s^{i}}$ (no sum) starting at a point and extending to some region limited by variations $\dd{s^{i}}$, the flux of a field $F$ is known to be equal to the volume spanned by $F$ and the tangents. This suggests that
+\begin{align*}
+	\dd{\Phi} = \eta(F, \dot{\gamma}_{1}\dd{s^{1}}, \dots, \dot{\gamma}_{n - 1}\dd{s^{n - 1}}) = i_{J}\eta(\dot{\gamma}_{1}\dd{s^{1}}, \dots, \dot{\gamma}_{n - 1}\dd{s^{n - 1}}).
+\end{align*}
+In particular, the volume can be computed using the flux of a field normal to the surface with unit length. Dubbing this field $\nu$ the volume form of the manifold is then
+\begin{align*}
+	\tilde{\eta} = \pub{f}{(i_{\nu}\eta)}.
+\end{align*}
+
+Let us now consider the exactness and closedness of the volume form. First of all, the volume form is not exact globally on a compact manifold (one without a boundary). Assuming the contrary, i.e. $\dd{\alpha} = \eta$, we find
+\begin{align*}
+	\inte{M}{}\eta = \inte{\bound{M}}{}\alpha.
+\end{align*}
+The left-hand side ought to be non-zero by construction, but the right-hand side clearly is, making the contradiction clear. A way to make this more flexible is to split $M$ into two parts, and we then have
+\begin{align*}
+	\inte{M}{}\eta = \inte{M_{1}}{}\eta + \inte{M_{2}}{}\eta.
+\end{align*}
+Assuming exactness on each half we have
+\begin{align*}
+	\inte{M}{}\eta = \inte{\bound{M_{1}}}{}\alpha_{1} + \inte{\bound{M_{2}}}{}\alpha_{2} = \inte{\bound{M_{1}}}{}\alpha_{1} - \alpha_{2}.
+\end{align*}
 
 \paragraph{Matrix-Valued Differential Forms}
 A matrix-valued differential form is a differential form whose components are matrices. For these we need to define a slightly different wedge product according to
