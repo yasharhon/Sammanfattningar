@@ -116,3 +116,162 @@ Integrating with respect to $t$ we finally find
 and we have thus solved the problem. In the case of spaces which are not retractible, there are simple counterexamples to be found. One example would be $\sin(\theta)\df{\theta}\df{\phi}$ on $S^{2}$.
 
 In the language of cohomology we can phrase this very concisely. If some form $\omega$ is the exterior derivative of another, it must follow that it is cohomologous to the zero form. This implies that if the exterior derivative is invertible, then $H^{r}(M) = \{0\}$.
+
+\paragraph{Deligne-Beilinson Cohomology}
+To define Deligne-Beilinson cohomology, we first need some other concepts. First, a fiber bundle is a structure $(E, B, \pi, F)$, with $E, B$ and $F$ being topological spaces and $\pi: E\to B$ a surjection. $B$ is called the base and $F$ the fiber. A principal bundle is a special case of a fiber bundle where $F$ is a (Lie) group.
+
+Consider now some manifold $M$, an open cover $\{U_{\alpha}\}_{\alpha\in I}$ and a principal bundle $P(M, \text{U}(1))$. The bundle at different points is related by a transfer function, which generally is a homomorphism of the group onto itself, and in this case is given by
+\begin{align*}
+	g_{\alpha\beta} = e^{2\pi i\Lambda_{\alpha\beta}},
+\end{align*}
+with $\Lambda_{\alpha\beta}$ being some smooth function on $U_{\alpha}\cap U_{\beta}$. For consistency we require $g_{\alpha\beta}g_{\beta\gamma}g_{\gamma\alpha} = 1$, translating to
+\begin{align*}
+	\Lambda_{\alpha\beta} + \Lambda_{\beta\gamma} + \Lambda_{\gamma\alpha} = n_{\alpha\beta\gamma}\in\mathbb{Z}.
+\end{align*}
+These numbers tautologically satisfy
+\begin{align*}
+	n_{\beta\gamma\delta} - n_{\alpha\gamma\delta} + n_{\alpha\beta\delta} - n_{\alpha\beta\gamma} = 0.
+\end{align*}
+Built into this is an ambiguity found by the replacement
+\begin{align*}
+	g_{\alpha\beta} \to h_{\alpha}g_{\alpha\beta}h_{\beta}^{-1}\implies \Lambda_{\alpha\beta} \to \Lambda_{\alpha\beta} + \xi_{\alpha} - \xi_{\beta}.
+\end{align*}
+
+We can now introduce a U(1) connection on $M$ as a set of local 1-forms $A_{\alpha}$ such that
+\begin{align*}
+	A_{\beta} - A_{\alpha} = \df{\Lambda_{\alpha\beta}}.
+\end{align*}
+Combining the connection with the other objects to one tuple $\mathbf{A} = (A_{\alpha}, \Lambda_{\alpha\beta}, n_{\alpha\beta\gamma})$, called a DB cocycle, we can also define operators $\delta$ mapping its components to objects defined on higher-order overlaps according to
+\begin{align*}
+	(\delta_{0}A)_{\alpha\beta}             &= A_{\beta} - A_{\alpha} = \df[0]{\Lambda_{\alpha\beta}}, \\
+	(\delta_{1}\Lambda)_{\alpha\beta\gamma} &= \Lambda_{\beta\gamma} - \Lambda_{\alpha\gamma} + \Lambda_{\alpha\beta} = \df[-1]{n_{\alpha\beta\gamma}}, \\
+	(\delta_{2}n)_{\alpha\beta\gamma\delta}  &= n_{\beta\gamma\delta} - n_{\alpha\gamma\delta} + n_{\alpha\beta\delta} - n_{\alpha\beta\gamma} = 0.
+\end{align*}
+Note the extension of the exterior derivative to be an extension of numbers to functions. The generalization of the operator $\delta$ to quantities defined on intersections of higher degree is
+\begin{align*}
+	(\delta_{n}A)_{i_{0}\dots i_{n}} = A_{i_{1}\dots i_{n}} + \sum\limits_{j = 1}^{n - 1}(-1)^{j}A_{i_{0}\dots i_{j - 1}i_{j + 1}\dots i_{n}} + (-1)^{n}A_{i_{0}\dots i_{n - 1}}.
+\end{align*}
+It holds that $\delta_{n + 1}\delta_{n} = 0$. To prove that this is the case, consider some index sequence of length $n - 1$. In the sum appearing after $\delta_{n + 1}$, this sequence appears exactly twice, each time split by some other index. Denote the number of steps by which this split moves between the terms as $k$. If $k$ is odd, the terms appear with the same sign. To find the terms containing only the desired sequence, we now evaulate the underlying sum. Because $k$ is odd and one index has already been removed, these two contributions must therefore cancel. If $k$ is instead odd, the argument is identical upon permuting a few words.
+
+The ambiguities in the components of $\mathbf{A}$ can be summarized as an invariance under
+\begin{align*}
+	A_{\alpha}            &\to A_{\alpha} + \df[0]{\xi_{\alpha}}, \\
+	\Lambda_{\alpha\beta} &\to \Lambda_{\alpha\beta} + \xi_{\beta} - \xi_{\gamma} - \df{m_{\alpha\beta}} = \Lambda_{\alpha\beta} + (\delta_{0}\xi)_{\alpha\beta} - \df[-1]{m_{\alpha\beta}}, \\
+	n_{\alpha\beta\gamma} &\to n_{\alpha\beta\gamma} - m_{\beta\gamma} + m_{\alpha\gamma} - m_{\alpha\beta} = n_{\alpha\beta\gamma} - (\delta_{1}m)_{\alpha\beta\gamma}.
+\end{align*}
+This is very similar to a gauge transformation, which is a key motivation for developing this framework. By introducing operators $\delta_{n}$ and $\df[n]{}$ acting on the appropriate components of $\mathbf{A}$, the ambiguity and connection between the components can be written as
+\begin{align*}
+	D_{1, 1}\mathbf{A} = 0,\ \mathbf{A} \to \mathbf{A} + D_{0, 1}\Xi,
+\end{align*}
+with
+\begin{align*}
+	D_{1, 1} = (\delta_{0} + 0) - (\delta_{1} + \df[0]{}) + (\delta_{2} + \df[-1]{}),\ D_{0, 1} = (\delta_{0} + \df[0]{}) - (\delta_{1} + \df[-1]{}),
+\end{align*}
+and $\Xi$ containing a number and a 0-form. $D_{0, 1}\Xi$ is called a DB coboundary. The indexation is defined as such: the second index specifies the order of the exterior derivative at which one truncates to 0 and the first index specifies the degree of the overlap on which the corresponding object lives. In our case, $D_{1, 1}$ means that it acts on objects with 1-forms defined on a degree-1 overlap and $D_{1, 1}$ means that it acts on objects with functions defined on a degree-1 overlap.
+
+Considering the composition of these operators, we have
+\begin{align*}
+	D_{1, 1}D_{0, 1}\Xi =& D_{1, 1}D_{0, 1}\mqty[
+		\xi_{\alpha} \\
+		m_{\alpha\beta}
+	] = D_{1, 1}\mqty[
+		\df[0]{\xi_{\alpha}} \\
+		(\delta_{0}\xi)_{\alpha\beta} - \df[-1]{m}_{\alpha\beta} \\
+		-(\delta_{1}m)_{\alpha\beta\gamma}
+	] \\
+	=& \mqty[
+		0 \\
+		(\delta_{0}\df[0]{\xi})_{\alpha\beta} - \df[0]\left(\delta_{0}\xi - \df[-1]m\right)_{\alpha\beta} \\
+		-(\delta_{1}(\delta_{0}\xi - \df[-1]m))_{\alpha\beta\gamma} - (\df[-1]\delta_{1}m)_{\alpha\beta\gamma} \\
+		-(\delta_{2}\delta_{1}m)_{\alpha\beta\gamma}
+	] \\
+	=& \mqty[
+		0 \\
+		(\delta_{0}\df[0]{\xi})_{\alpha\beta} - \df[0]\left(\delta_{0}\xi\right)_{\alpha\beta} \\
+		(\delta_{1}\df[-1]m)_{\alpha\beta\gamma} - (\df[-1]\delta_{1}m)_{\alpha\beta\gamma} \\
+		0
+	],
+\end{align*}
+As the exterior derivative commutes with $\delta$, this must identically vanish. The cohomology group, which gives a gauge slice, is then given by
+\begin{align*}
+	H_{D}^{1, 1} = \text{ker}(D_{1, 1}) / \text{im}(D_{0, 1}).
+\end{align*}
+
+We are interested in the integral of field strengths corresponding to this construction. To that end, decompose some $p$-cycle as $C^{p} = \sum\limits_{i_{0}}l_{i_{0}}^{p}$, where each $l_{i}^{p}\subset U_{i}$. There is a boundary operator on each of these given by
+\begin{align*}
+	\bound{l_{i_{0}}^{p}} = \sum\limits_{i_{1}}l_{i_{1}i_{0}}^{p - 1} - l_{i_{0}i_{1}}^{p - 1}.
+\end{align*}
+To this belongs the idea that the decomposition is ordered - that is, $l_{ij} = 0$ if $i > j$. The generalization of this is
+\begin{align*}
+	\bound{l_{i_{0}\dots i_{k}}^{p - k}} = \sum\limits_{i_{k + 1}}\left(l_{i_{k + 1}i_{0}\dots i_{k}}^{p - k - 1} + (-1)^{k + 1}l_{i_{0}\dots i_{k}i_{k + 1}}^{p - k - 1} + \sum\limits_{j = 1}^{k}(-1)^{j}l_{i_{0}\dots i_{j - 1}i_{k + 1}i_{j}\dots i_{k}}^{p - k - 1}\right).
+\end{align*}
+The minus sign describes the orientation. We then have
+\begin{align*}
+	\inte{C^{2}}{}\df A =& \sum\limits_{i_{0}}\inte{l_{i_{0}}^{2}}{}\df A_{i_{0}} = \sum\limits_{i_{0}}\inte{\bound{l_{i_{0}}^{2}}}{}A_{i_{0}} = \sum\limits_{i_{0}, i_{1}}\inte{l_{i_{1}i_{0}}^{1}}{}A_{i_{0}} - \inte{l_{i_{0}i_{1}}^{1}}{}A_{i_{0}}.
+\end{align*}
+To see how this works out, consider a specific pair $i_{0}, i_{1}$. They will each contribute such an integral exactly once and with opposite sign, and thus
+\begin{align*}
+	\inte{C^{2}}{}\df A =& \sum\limits_{i_{0}, i_{1}}\inte{l_{i_{0}i_{1}}^{1}}{}A_{i_{1}} - A_{i_{0}} = \sum\limits_{i_{0}, i_{1}}\inte{l_{i_{0}i_{1}}^{1}}{}\df\Lambda_{i_{0}i_{1}} = \sum\limits_{i_{0}, i_{1}}\inte{\bound{l_{i_{0}i_{1}}^{1}}}{}\Lambda_{i_{0}i_{1}} = \sum\limits_{i_{0}, i_{1}, i_{2}}\left(\inte{l_{i_{2}i_{0}i_{1}}^{0}}{} - \inte{l_{i_{0}i_{2}i_{1}}^{0}}{} + \inte{l_{i_{0}i_{1}i_{2}}^{0}}{}\right)\Lambda_{i_{0}i_{1}}.
+\end{align*}
+Handling this is slightly more involved. While all indices are freely summed over, the only contributions are found when one of the indices in the integration domains are an ordered sequence. We see that this corresponds to the exact same process of index removal with alternating signs as found in the definition of $\delta$, and thus
+\begin{align*}
+	\inte{C^{2}}{}\df A =& \sum\limits_{i_{0}, i_{1}, i_{2}}\inte{l_{i_{0}i_{1}i_{2}}^{0}}{}\df n_{i_{0}i_{1}i_{2}} = \sum\limits_{i_{0}, i_{1}, i_{2}}n_{i_{0}i_{1}i_{2}},
+\end{align*}
+and so the total field strength is quantized.
+
+To introduce so-called higher order gauge fields, one generalizes the above procedure. While this can be done to obtain $H_{D}^{p, q}$ for any $p$ and $q$, we will only need to consider the case of $p = q$. We then introduce DB cocycles as tuples
+\begin{align*}
+	\omega = \left(\omega_{\alpha_{0}}^{(0, p)}, \dots, \omega_{\alpha_{0}\dots\alpha_{p}}^{(p, 0)}, n_{\alpha_{0}\dots\alpha_{p + 1}}^{p + 1, -1}\right).
+\end{align*}
+Each $\omega_{\alpha_{0}\dots\alpha_{k}}^{(k, p - k)}$ is a $p - k$-form defined on overlaps of degree $k + 1$ related to the next element by
+\begin{align*}
+	(\delta_{k}\omega^{(k, p - k)})_{\alpha_{0}\dots\alpha_{k}} = \df[p - k - 1]\omega_{\alpha_{0}\dots\alpha_{k}}^{(k + 1, p - k - 1)},
+\end{align*}
+and are thus annihilated by
+\begin{align*}
+	D_{p, p} = (\delta_{0} + 0) + \sum\limits_{k = 1}^{p + 1}(-1)^{k}(\delta_{k} + \df[p - k]).
+\end{align*}
+The coboundaries form the image of
+\begin{align*}
+	D_{p - 1, p} = \sum\limits_{k = 0}^{p}(-1)^{k}(\delta_{k} + \df[p - k - 1]).
+\end{align*}
+The quotient of the kernel of the first by the image of the second yields the cohomology group $H_{D}^{p}$.
+
+A particular case to consider is 2-form gauge fields. The gauge transformation manifests as a shift by something in the image of
+\begin{align*}
+	D_{1, 2} = \delta_{0} + \df[1] - (\delta_{1} + \df[0]) + \delta_{2} + \df[-1].
+\end{align*}
+We have
+\begin{align*}
+	D_{1, 2}\mqty[
+		\xi_{\alpha} \\
+		\phi_{\alpha\beta} \\
+		m_{\alpha\beta\gamma}
+	] = \mqty[
+		\df[1]\xi_{\alpha} \\
+		(\delta_{0}\xi)_{\alpha\beta} - \df[0]\phi_{\alpha\beta} \\
+		-(\delta_{1}\phi)_{\alpha\beta\gamma} + \df[-1]m_{\alpha\beta\gamma} \\
+		(\delta_{2}m)_{\alpha\beta\gamma\delta}
+	],
+\end{align*}
+and so the generalized gauge transformation for a 2-form gauge field $(\omega, A, \Lambda, n)$ is
+\begin{align*}
+	\omega_{\alpha} \to& \omega_{\alpha}^{(2)} + \df[1]\xi_{\alpha}, \\
+	A_{\alpha\beta} \to& A_{\alpha\beta} - \xi_{\beta} + \xi_{\alpha} - \df[0]\phi_{\alpha\beta}, \\
+	\Lambda_{\alpha\beta\gamma} \to& \Lambda_{\alpha\beta\gamma} - \phi_{\beta\gamma} + \phi_{\alpha\gamma} - \phi_{\alpha\beta} + \df[-1]m_{\alpha\beta\gamma}, \\
+	n_{\alpha\beta\gamma\delta} \to& n_{\alpha\beta\gamma\delta} + m_{\beta\gamma\delta} - m_{\alpha\gamma\delta} + m_{\alpha\beta\delta} - m_{\alpha\beta\gamma}.
+\end{align*}
+
+Let us also consider the corresponding integral of the field strength. We have
+\begin{align*}
+	\inte{C^{3}}{}\df\omega =& \sum\limits_{i_{0}}\inte{l_{i_{0}}^{2}}{}\df\omega_{i_{0}} = \sum\limits_{i_{0}}\inte{\bound{l_{i_{0}}^{2}}}{}A_{i_{0}} = \sum\limits_{i_{0}, i_{1}}\inte{l_{i_{1}i_{0}}^{1}}{}A_{i_{0}} - \inte{l_{i_{0}i_{1}}^{1}}{}A_{i_{0}}.
+\end{align*}
+The proof above generalizes without changes, and so
+\begin{align*}
+	\inte{C^{3}}{}\df\omega =& \sum\limits_{i_{0}, i_{1}, i_{2}}\inte{l_{i_{0}i_{1}i_{2}}^{1}}{}\df\Lambda_{i_{0}i_{1}i_{2}} = \sum\limits_{i_{0}, i_{1}, i_{2}, i_{3}}\left(\inte{l_{i_{3}i_{0}i_{1}i_{2}}^{0}}{} - \inte{l_{i_{0}i_{3}i_{1}i_{2}}^{0}}{} + \inte{l_{i_{0}i_{1}i_{3}i_{2}}^{0}}{} - \inte{l_{i_{0}i_{1}i_{2}i_{3}}^{0}}{}\right)\Lambda_{i_{0}i_{1}i_{2}}.
+\end{align*}
+The argument previously used is identical, and so
+\begin{align*}
+	\inte{C^{3}}{}\df\omega = \sum\limits_{i_{0}, i_{1}, i_{2}, i_{3}}\inte{l_{i_{0}i_{1}i_{2}i_{3}}^{0}}{}(\delta_{2}\Lambda)_{i_{0}i_{1}i_{2}i_{3}} = \sum\limits_{i_{0}, i_{1}, i_{2}, i_{3}}\inte{l_{i_{0}i_{1}i_{2}i_{3}}^{0}}{}\df[-1]n_{i_{0}i_{1}i_{2}i_{3}} = \sum\limits_{i_{0}, i_{1}, i_{2}, i_{3}}n_{i_{0}i_{1}i_{2}i_{3}},
+\end{align*}
+which is valued in integers.
