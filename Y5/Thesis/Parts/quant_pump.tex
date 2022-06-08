@@ -199,6 +199,60 @@ This implies that the Berry phase induced after an adiabatic cycle is equal to h
 
 This example is brought up time after time in this context, but rarely elaborated upon. It was the first example considered in the field, as Berry used it in his first paper describing the Berry phase, lending it some credibility, but the addition of the Berry curvature, and in particular its integral over all of $S^{2}$, is a later invention. Its significance is never stated, but still high, as the Berry curvature is, in a sense, produced by the degeneracy point at the origin. This shows both the value of the Berry curvature as a way to probe unknown parts of the phase diagram of a system and its use for creating topological invariants to classify systems.
 
+\paragraph{The Quantum Hall Effect}
+Consider a two-dimensional electron gas in an external electromagnetic field. If the magnetic field is constant, there exists a generalized translation operator which commutes with the Hamiltonian, and we can thus introduce Bloch functions according to
+\begin{align*}
+	\psi_{n, \vb{k}} = e^{i\vb{k}\cdot\vb{r}}u_{n, \vb{k}}(\vb{r}).
+\end{align*}
+These are eigenfunctions of the Hamiltonian
+\begin{align*}
+	H = \frac{1}{2m}\left(\vb{p} + \hbar\vb{k} + \vb{A}(\vb{r})\right)^{2} + V(\vb{r}),
+\end{align*}
+with energies $E_{n}(\vb{k})$. The current carried in this system is proportional to the expectation value
+\begin{align*}
+	\frac{1}{m}\expval{\vb{v}}{\psi_{n, \vb{k}}} = \frac{1}{\hbar}\expval{\grad_{\vb{k}}H}{u_{n, \vb{k}}}.
+\end{align*}
+Let us study this by bringing it into the framework of parametrized systems. More specifically, let us study the expectation values of generalized velocity operators
+\begin{align*}
+	V_{\mu} = \del{}{\mu}\ham.
+\end{align*}
+To that end, we consider states $\ket{\phi_{n}}$ that remain close to, but not identical to, the instantaneous eigenstate $\ket{n}$, and write it as
+\begin{align*}
+	\ket{\phi_{n}(t)} = e^{-i\inte{0}{t}\dd{\tau}E_{n}(\tau)}\ket{\tilde{\phi}_{n}}.
+\end{align*}
+We then find
+\begin{align*}
+	\ham\ket{\phi_{n}} =& e^{-i\inte{0}{t}\dd{\tau} E_{n}(\tau)}\ham\ket{\tilde{\phi}_{n}} \\
+	=& e^{-i\inte{0}{t}\dd{\tau} E_{n}(\tau)}\left(E_{n} + i\del{}{t}\right)\ket{\tilde{\phi}_{n}},
+\end{align*}
+and thus
+\begin{align*}
+	\del{}{\mu}\ham\ket{\tilde{\phi}_{n}} =& \del{}{\mu}\left(E_{n} + i\del{}{t}\right)\ket{\tilde{\phi}_{n}} + \left(E_{n} - \ham\right)\del{}{\mu}\ket{\tilde{\phi}_{n}}.
+\end{align*}
+Because the Hamiltonian contains no time derivatives, it may equally well be computed with $\ket{\phi_{n}(t)}$ and $\ket{\tilde{\phi}_{n}}$, and we then have
+\begin{align*}
+	\expval{V_{\mu}}_{n} =& \del{}{\mu}E_{n} + \mel{\tilde{\phi}_{n}}{i\del{}{\mu}\del{}{t}}{\tilde{\phi}_{n}} + \mel{\tilde{\phi}_{n}}{\left(E_{n} - \ham\right)\del{}{\mu}}{\tilde{\phi}_{n}} \\
+	                     =& \del{}{\mu}E_{n} + i\left(\mel{\tilde{\phi}_{n}}{\del{}{\mu}\del{}{t}}{\tilde{\phi}_{n}} + \del{}{t}\left(\bra{\tilde{\phi}_{n}}\right)\del{}{\mu}\ket{\tilde{\phi}_{n}}\right).
+\end{align*}
+The first term will correspond to the usual Bloch drift velocity, and the remaining terms are corrections due to the parametrized nature of the system. To work the corrections out, we use the fact that
+\begin{align*}
+	\mel{\tilde{\phi}_{n}}{i\del{}{t}}{\tilde{\phi}_{n}} = \mel{\tilde{\phi}_{n}}{(\ham - E_{n})}{\tilde{\phi}_{n}}
+\end{align*}
+is negligible in the adiabatic limit, yielding
+\begin{align*}
+	\expval{V_{\mu}}_{n} =& \del{}{\mu}E_{n} + i\left(\del{}{t}\left(\bra{\tilde{\phi}_{n}}\right)\del{}{\mu}\ket{\tilde{\phi}_{n}} - \del{}{\mu}\left(\bra{\tilde{\phi}_{n}}\right)\del{}{t}\ket{\tilde{\phi}_{n}}\right).
+\end{align*}
+Furthermore, as the time dependence only manifests through the time-dependent parameters, one can expand the time derivative and obtain in the adiabatic limit
+\begin{align*}
+	\expval{V_{\mu}}_{n} =& \del{}{\mu}E_{n} + i\dv{R^{\nu}}{t}\left(\del{}{\nu}\left(\bra{\tilde{\phi}_{n}}\right)\del{}{\mu}\ket{\tilde{\phi}_{n}} - \del{}{\mu}\left(\bra{\tilde{\phi}_{n}}\right)\del{}{\nu}\ket{\tilde{\phi}_{n}}\right) \\
+	=& \del{}{\mu}E_{n} - \Omega^{(2)}_{\mu\nu}\dv{R^{\nu}}{t}.
+\end{align*}
+In particular, for Bloch electrons we have $\dv{\vb{k}}{t} = -e\vb{E}$, and the total correction to the conductivity is
+\begin{align*}
+	\vb{J} \propto \vb{E}\times\inte{}{}\vb*{\Omega}^{(2)}.
+\end{align*}
+This is a Hall-style contribution, and the quantization of the total Berry curvature produces the integer quantum Hall effect.
+
 \paragraph{Higher Berry Curvature and the KS Invariant}
 For an infinite $1d$ system, $\Omega^{(2)}$ might diverge. A convergent quantity might instead be found by splitting the Hamiltonian into a sum of local terms working at a finite range, i.e.
 \begin{align*}
