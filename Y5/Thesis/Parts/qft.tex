@@ -51,6 +51,96 @@ This yields
 \end{align*}
 In other words, the effective action has one term given by the usual action evaluated at the configuration in question, one from the logarithm of the determinant of $\Delta$ and a set of terms obtained from bubble diagrams with $\Delta^{-1}$ as the propagator and $S_{\text{lin}}$ and $S_{\text{int}}$ containing interactions. Now, the above seems to imply the existence of tadpoles in the effective action, but due to the condition on the current these cancel exactly. This means that all Feynman diagrams contributing to the effective action are 1-particle irreducible - that is, cannot be split into two by cutting a single line.
 
+\paragraph{Notes on Convention}
+We will be considering fermionic models in arbitrary dimensions, and for this we will need Dirac matrices. These satisfy
+\begin{align*}
+	\tr(\gamma^{\mu_{1}}\dots\gamma^{\mu_{d + 1}}\gamma_{5}) = -i^{\frac{d - 1}{2}}\left(-2\right)^{\frac{d + 1}{2}}\varepsilon^{\mu_{1}\dots\mu_{d + 1}}
+\end{align*}
+in odd-dimensional space and
+\begin{align*}
+	\tr(\gamma^{\mu_{1}}\dots\gamma^{\mu_{d + 1}}) =  -i^{\frac{d}{2} - 1}\left(-2\right)^{\frac{d}{2}}\varepsilon^{\mu_{1}\dots\mu_{d + 1}}
+\end{align*}
+in even-dimensional space. We will also need hermitian variants of these, found by adding a factor of $-i$, and we then find
+\begin{align*}
+	\tr(\Gamma_{a_{1}}^{(l)}\dots\Gamma_{a_{l}}^{(l)}) =  i^{\frac{l - 1}{2}}\left(-2\right)^{\frac{l - 1}{2}}\varepsilon_{a_{1}\dots a_{l}}.
+\end{align*}
+
+We will also need to perform loop integrals. By performing a Wick rotation we find
+\begin{align*}
+	\inte{}{}\frac{\dd[d + 1]{k}}{(2\pi)^{d}}\frac{(k^{2})^{a}}{(k^{2} + \Delta)^{b}} = i\frac{\Gamma\left(b - a - \frac{d + 1}{2}\right)\Gamma\left(a + \frac{d + 1}{2}\right)}{(4\pi)^{\frac{d + 1}{2}}\Gamma\left(b\right)\Gamma\left(\frac{d + 1}{2}\right)}\Delta^{a + \frac{d + 1}{2} - b}.
+\end{align*}
+
+\paragraph{The Quantum Hall Effect}
+We will obtain the quantum Hall effect as an effective theory of a fermionic model given in $2 + 1$ dimensions by
+\begin{align*}
+	\lag = \overline{\psi}(\fsl{D} + M)\psi,
+\end{align*}
+with a slowly-varying background gauge field. The effective action is given by
+\begin{align*}
+	\Gamma = -i\ln(\det(\fsl{D} + M)) = -i\tr(\ln(\fsl{D} + m)) = C_{0} - i\tr(\ln(1 + \frac{i\fsl{A}}{\fsl{\del{}{}} + M})),
+\end{align*}
+having absorbed the coupling constant into the gauge field. The term in the expansion we are looking for is of order 2, with momentum prescription given in figure \ref{fig:qhe_fd}. Note that the photon lines in this figure are grounded to the background fields.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a) at (0, 0);
+			\vertex (b) at (2, 0);
+			\vertex (c) at (4, 0);
+			\vertex (d) at (6, 0);
+			\diagram*{
+				(a) --[photon, momentum = $p$] (b) --[fermion, half left, momentum = $k$] (c) --[photon, rmomentum = $-p$] (d),
+				(c) --[fermion, half left, momentum = $-p + k$] (b),
+			};
+		\end{feynman}
+	\end{tikzpicture}
+	\caption{Feynman diagram for the second-order term in the effective action.}
+	\label{fig:qhe_fd}
+\end{figure}
+
+Thus we have
+\begin{align*}
+	\Gamma \supset& \frac{i}{2}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\tr(\frac{1}{i\gamma^{\mu}k_{\mu} + M}\cdot -i\gamma^{\nu}A_{\nu}(-p)\frac{1}{i\gamma^{\rho}(-p + k)_{\rho} + M}\cdot -i\gamma^{\sigma}A_{\sigma}(p)) \\
+	             =& -\frac{i}{2}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{A_{\nu}(-p)A_{\sigma}(p)}{(-k^{2} - M^{2})(-(-p + k)^{2} - M^{2})}\tr((i\gamma^{\mu}k_{\mu} - M)\gamma^{\nu}(i\gamma^{\rho}(-p + k)_{\rho} - M)\gamma^{\sigma}).
+\end{align*}
+In the long-wavelength limit we truncate all terms of higher order than 1 in $\frac{p}{k}$. This makes the integrand even in $k$, yielding
+\begin{align*}
+	\Gamma =& -\frac{i}{2}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{A_{\nu}(-p)A_{\sigma}(p)}{(k^{2} + M^{2})^{2}}\tr((i\gamma^{\mu}k_{\mu} - M)\gamma^{\nu}(i\gamma^{\rho}(-p + k)_{\rho} - M)\gamma^{\sigma}).
+\end{align*}
+This produces three terms depending on how many Dirac matrices are included in the trace. Including two matrices is trivial, as the loop integral converges in this case. The case of four matrices is of interest, as it produces a divergent term. This case is given by
+\begin{align*}
+	\Gamma \supset& \frac{i}{2}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{k_{\mu}A_{\nu}(-p)(-p + k)_{\rho}A_{\sigma}(p)}{(k^{2} + M^{2})^{2}}\tr(\gamma^{\mu}\gamma^{\nu}\gamma^{\rho}\gamma^{\sigma}) \\
+	             =& 2i\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{k_{\mu}A_{\nu}(-p)(-p + k)_{\rho}A_{\sigma}(p)}{(k^{2} + M^{2})^{2}}\left(g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}\right),
+\end{align*}
+and the middle term in particular is given by
+\begin{align*}
+	\Gamma \supset& -2i\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}A^{\mu}(-p)A_{\mu}(p)\inte{}{}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{k^{2}}{(k^{2} + M^{2})^{2}}.
+\end{align*}
+This loop integral is divergent, and can be regularized using a Pauli-Villars regularizer. This is done by introducing a new term where the fermion propagator is replaced according to
+\begin{align*}
+	\frac{1}{i\gamma^{\mu}k_{\mu} + M} \to \frac{1}{i\gamma^{\mu}k_{\mu} + M} - \frac{1}{i\gamma^{\mu}k_{\mu} + \Lambda},
+\end{align*}
+with $\Lambda$ being some regularizer to be increased to infinity at the end of the calculation. The final term in the effective action, which is the one of interest, is given by
+\begin{align*}
+	\Gamma \supset& \frac{M}{2}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{A_{\nu}(-p)p_{\rho}A_{\sigma}(p)}{(k^{2} + M^{2})^{2}}\tr(\gamma^{\nu}\gamma^{\rho}\gamma^{\sigma}) \\
+	             =& \frac{iM\Gamma\left(\frac{1}{2}\right)}{8\pi^{\frac{3}{2}}\abs{M}}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\varepsilon^{\mu\nu\rho}A_{\mu}(-p)p_{\nu}A_{\rho}(p) \\
+	             =& \frac{M}{8\pi\abs{M}}\inte{}{}\dd[3]{x}\varepsilon^{\mu\nu\rho}A_{\mu}\del{}{\nu}A_{\rho}.
+\end{align*}
+Adding the regularizer yields
+\begin{align*}
+	\Gamma = \frac{1}{8\pi}\left(\frac{M}{\abs{M}} + \frac{\Lambda}{\abs{\Lambda}}\right)\inte{}{}\dd[3]{x}\varepsilon^{\mu\nu\rho}A_{\mu}\del{}{\nu}A_{\rho}.
+\end{align*}
+The corresponding current is given by
+\begin{align*}
+	J^{\mu} = \fdv{\Gamma}{A_{\mu}} = \frac{1}{8\pi}\left(\frac{M}{\abs{M}} - \frac{\Lambda}{\abs{\Lambda}}\right)\left(\varepsilon^{\mu\nu\rho}\del{}{\nu}A_{\rho} - \del{}{\nu}\left(-\varepsilon^{\mu\nu\rho}A_{\rho}\right)\right) = \frac{1}{4\pi}\left(\frac{M}{\abs{M}} - \frac{\Lambda}{\abs{\Lambda}}\right)\varepsilon^{\mu\nu\rho}\del{}{\nu}A_{\rho},
+\end{align*}
+and in particular, in the limit of $\Lambda \to -\infty$,
+\begin{align*}
+	J^{i} = \frac{1}{2\pi}\varepsilon^{ij}\left(-\del{}{0}A_{j} + \del{}{j}A_{0}\right) = -\frac{1}{2\pi}\varepsilon^{ij}E_{j},
+\end{align*}
+which also reproduces the Hall effect.
+
 \paragraph{Theories With Topological Response}
 We will now consider some field theories with auxillary fields. The effective actions of these theories contain topological terms, which are metric-independent. The significance of this metric-independence is that correlation functions, and therefore the theory, is stable under deformations of spacetime or generalized coordinate transformations. It also implies that all correlations lengths are zero.
 
@@ -94,19 +184,6 @@ The Dirac equation is
 The corresponding Hamiltonian is given by
 \begin{align*}
 	\ham = i\alpha^{i}\del{}{i} + \beta Mm^{(l)} = \beta(\alpha^{i}p_{i} + Mm^{(l)}).
-\end{align*}
-
-The essential property of the Dirac matrices is
-\begin{align*}
-	\tr(\gamma^{\mu_{1}}\dots\gamma^{\mu_{d + 1}}\gamma_{5}) = -i^{\frac{d - 1}{2}}\left(-2\right)^{\frac{d + 1}{2}}\varepsilon^{\mu_{1}\dots\mu_{d + 1}}
-\end{align*}
-in odd-dimensional space and
-\begin{align*}
-	\tr(\gamma^{\mu_{1}}\dots\gamma^{\mu_{d + 1}}) =  -i^{\frac{d}{2} - 1}\left(-2\right)^{\frac{d}{2}}\varepsilon^{\mu_{1}\dots\mu_{d + 1}}
-\end{align*}
-in even-dimensional space. For the matrices appearing in the mass terms we must add a factor $-i$ to ensure hermiticity, and we then find
-\begin{align*}
-	\tr(\Gamma_{a_{1}}^{(l)}\dots\Gamma_{a_{l}}^{(l)}) =  i^{\frac{l - 1}{2}}\left(-2\right)^{\frac{l - 1}{2}}\varepsilon_{a_{1}\dots a_{l}}.
 \end{align*}
 
 \paragraph{Some Examples}
