@@ -277,10 +277,6 @@ Let us consider the innermost integral. Performing a Wick rotation and a substit
 	=& -\frac{i}{2\pi M^{2}}\eval{\frac{1}{2(r^{2} + 1)}}_{0}^{\infty} \\
 	=& \frac{i}{4\pi M^{2}}.
 \end{align*}
-Let us also note the general result
-\begin{align*}
-	\inte{}{}\frac{\dd[d + 1]{k}}{(2\pi)^{d}}\frac{(k^{2})^{a}}{(k^{2} + \Delta)^{b}} = i\frac{\Gamma\left(b - a - \frac{d + 1}{2}\right)\Gamma\left(a + \frac{d + 1}{2}\right)}{(4\pi)^{\frac{d + 1}{2}}\Gamma\left(b\right)\Gamma\left(\frac{d + 1}{2}\right)}\Delta^{a + \frac{d + 1}{2} - b}.
-\end{align*}
 The final expression for the momentum space effective action is then
 \begin{align*}
 	\Gamma = -\frac{i}{2\pi}\inte{}{}\frac{\dd[2]{p}}{(2\pi)^{2}}\varepsilon^{\mu\nu}\alpha(-p)p_{\nu}A_{\mu}(p),
@@ -291,7 +287,7 @@ and switching to real space we have
 \end{align*}
 The $\alpha$ appearing here is of course only the prefactor for $\gamma_{5}$, and so we can infer the true structure of this term to be
 \begin{align*}
-	\Gamma = \frac{1}{2\pi}\inte{}{}\sin(\alpha)F.
+	\Gamma = \frac{1}{2\pi}\inte{}{}\sin(\alpha)\wedge F.
 \end{align*}
 
 At this point we can also note the existence of terms involving $1 - \cos(\alpha)$, as the full effective action is
@@ -302,12 +298,16 @@ As such, the above procedure can be extended to higher order. The result will be
 
 Another model to study in one dimension is
 \begin{align*}
-	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M + \sum\limits_{a = 2, 3, 5}iM_{a}(x)\gamma^{a}\right)\Psi.
+	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M\left(1 + \sum\limits_{a = 2, 3, 5}im_{a}(x)\gamma^{a}\right)\right)\Psi.
 \end{align*}
-This is an example of a model from class B. We once again employ the perturbation approach to write the effective action as
+This is an example of a model from class B which can be realized as
 \begin{align*}
-	\Gamma =& -i\tr(\ln(-i(\fsl{\del{}{}} + M)\left(1 + \frac{i\sum\limits_{a = 2, 3, 5}M_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\right))) \\
-	       =& C_{0} - i\tr(\ln(1 + \frac{i\sum\limits_{a = 2, 3, 5}M_{a}\gamma^{a}}{\fsl{\del{}{}} + M})).
+	\lag = -i\overline{\Psi}\left(\fsl{\del{}{}} + M\left(1 + i\gamma_{5}\sum\limits_{a = 2, 3, 5}m^{a}(x)\Gamma_{a}^{(3)}\right)\right)\Psi.
+\end{align*}
+We once again employ the perturbation approach to write the effective action as
+\begin{align*}
+	\Gamma =& -i\tr(\ln(-i(\fsl{\del{}{}} + M)\left(1 + \frac{iM\sum\limits_{a = 2, 3, 5},_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\right))) \\
+	       =& C_{0} - i\tr(\ln(1 + \frac{i\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}}{\fsl{\del{}{}} + M})).
 \end{align*}
 Because we are working with all Dirac matrices, we note that the only shot at obtaining a topological term is to consider a term of (at least) order three in the expansion. The Feynman diagram is shown in figure \ref{fig:third_order_fd}.
 
@@ -334,58 +334,41 @@ Because we are working with all Dirac matrices, we note that the only shot at ob
 
 This term is given by
 \begin{align*}
-	\Gamma =& -\frac{i}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{i\sum\limits_{a = 2, 3, 5}M_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\frac{i\sum\limits_{b = 2, 3, 5}M_{b}\gamma^{b}}{\fsl{\del{}{}} + M}\frac{i\sum\limits_{c = 2, 3, 5}M_{c}\gamma^{c}}{\fsl{\del{}{}} + M}) \\
-	       =& -\frac{1}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}} \\
-	        &\cdot\sum\limits_{a, b, c = 2, 3, 5}M_{a}(p_{1})M_{b}(p_{2})M_{c}(-p_{1} - p_{2})\tr(\gamma^{a}\frac{i\fsl{k} - M}{-k^{2} - M^{2}}\gamma^{b}\frac{i(\fsl{p}_{2} + \fsl{k}) - M}{-(p_{2} + k)^{2} - M^{2}}\gamma^{c}\frac{i(-\fsl{p}_{1} + \fsl{k}) - M}{-(-p_{1} + k)^{2} - M^{2}}) \\
-	       =& -\frac{1}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(-p_{1} - p_{2})}{(-k^{2} - M^{2})(-(p_{2} + k)^{2} - M^{2})(-(-p_{1} + k)^{2} - M^{2})} \\
+	\Gamma =& -\frac{iM^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{i\sum\limits_{a = 2, 3, 5}m_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\frac{i\sum\limits_{b = 2, 3, 5}m_{b}\gamma^{b}}{\fsl{\del{}{}} + M}\frac{i\sum\limits_{c = 2, 3, 5}m_{c}\gamma^{c}}{\fsl{\del{}{}} + M}) \\
+	       =& -\frac{M^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}} \\
+	        &\cdot\sum\limits_{a, b, c = 2, 3, 5}m_{a}(p_{1})m_{b}(p_{2})m_{c}(-p_{1} - p_{2})\tr(\gamma^{a}\frac{i\fsl{k} - M}{-k^{2} - M^{2}}\gamma^{b}\frac{i(\fsl{p}_{2} + \fsl{k}) - M}{-(p_{2} + k)^{2} - M^{2}}\gamma^{c}\frac{i(-\fsl{p}_{1} + \fsl{k}) - M}{-(-p_{1} + k)^{2} - M^{2}}) \\
+	       =& -\frac{M^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\sum\limits_{a, b, c = 2, 3, 5}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(-p_{1} - p_{2})}{(-k^{2} - M^{2})(-(p_{2} + k)^{2} - M^{2})(-(-p_{1} + k)^{2} - M^{2})} \\
 	        &\cdot\tr(\gamma^{a}(i\fsl{k} - M)\gamma^{b}(i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{c}(i(-\fsl{p}_{1} + \fsl{k}) - M)).
 \end{align*}
-The topological term corresponds to exactly one of $a, b, c$ being 5 and one of the numerators in the fraction being a mass. We immediately note that because of the antisymmetry inherent in the topological term and the fact that $k$ is explicitly integrated over, this must be the first factor. We can also ignore terms of any order in $k_{\mu}$. Setting $a = 5$ as an example nets you
-\begin{align*}
-	  M\tr(\gamma^{5}\gamma^{b}(\fsl{p}_{2} + \fsl{k})\gamma^{c}(-\fsl{p}_{1} + \fsl{k})) =& -M\tr((\fsl{p}_{2} + \fsl{k})(-\fsl{p}_{1} + \fsl{k})\gamma^{b}\gamma^{c}\gamma^{5}) \\
-	  =& 4iM(p_{2} + k)_{\mu}(-p_{1} + k)_{\nu}\varepsilon^{\mu\nu bc} \\
-	  =& -4iMp_{2, \mu}p_{1, \nu}\varepsilon^{\mu\nu bc}.
-\end{align*}
-In the long-wavelength limit the effective action is
-\begin{align*}
-	\Gamma \supset& \frac{4iM}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\varepsilon^{\mu\nu bc}\sum\limits_{b, c = 2, 3}\frac{p_{2, \mu}p_{1, \nu}M_{5}(p_{1})M_{b}(p_{2})M_{c}(-p_{1} - p_{2})}{(-k^{2} - M^{2})^{3}} \\
-	             =& -\frac{4M}{3}\frac{\Gamma\left(2\right)\Gamma\left(1\right)}{4\pi\Gamma\left(3\right)\Gamma\left(1\right)}M^{-4}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{\mu\nu bc}\sum\limits_{b, c = 2, 3}p_{2, \mu}p_{1, \nu}M_{5}(p_{1})M_{b}(p_{2})M_{c}(-p_{1} - p_{2}) \\
-	             =& -\frac{1}{6\pi M^{3}}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{\mu\nu bc}\sum\limits_{b, c = 2, 3}p_{2, \mu}p_{1, \nu}M_{5}(p_{1})M_{b}(p_{2})M_{c}(-p_{1} - p_{2}).
-\end{align*}
-Using the facts that the values of $b, c$ are disjoint from those of $\mu, \nu$, we have that the real space term is
-\begin{align*}
-	\Gamma \supset \frac{1}{6\pi M^{3}}\sum\limits_{b, c = 2, 3}\varepsilon^{\mu\nu}\varepsilon^{bc}\inte{}{}\dd[2]{x}M_{c}\del{}{\mu}M_{b}\del{}{\nu}M_{5}.
-\end{align*}
 
-To understand the systematics of the above calculations, let us adopt aliases for the momenta and write the integrand as
+The above calculation can be systematized by adopting aliases for the momenta and writing the integrand as
 \begin{align*}
-	 &\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(-p_{1} - p_{2})}{(-k^{2} - M^{2})(-(p_{2} + k)^{2} - M^{2})(-(-p_{1} + k)^{2} - M^{2})} \\
+	 &\sum\limits_{a, b, c = 2, 3, 5}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(-p_{1} - p_{2})}{(-k^{2} - M^{2})(-(p_{2} + k)^{2} - M^{2})(-(-p_{1} + k)^{2} - M^{2})} \\
 	 &\cdot\tr(\gamma^{a}(i\fsl{k} - M)\gamma^{b}(i(\fsl{p}_{2} + \fsl{k}) - M)\gamma^{c}(i(-\fsl{p}_{1} + \fsl{k}) - M)) \\
-	=& \sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}\tr(\gamma^{a}(i\fsl{k_{1}} - M)\gamma^{b}(i\fsl{k_{2}} - M)\gamma^{c}(i\fsl{k_{3}} - M)).
+	=& \sum\limits_{a, b, c = 2, 3, 5}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}\tr(\gamma^{a}(i\fsl{k_{1}} - M)\gamma^{b}(i\fsl{k_{2}} - M)\gamma^{c}(i\fsl{k_{3}} - M)).
 \end{align*}
 These vectors satisfy
 \begin{align*}
 	\sum\limits_{i = 1}^{3}p_{i} = 0,\ k_{i} = k_{1} + \sum\limits_{j > 1}^{i}p_{j}.
 \end{align*}
-Because $k_{1}$ is explicitly integrated over and we anticipate the appearance of the Levi-Civita symbol, we can make the identification
+The topological term corresponds to exactly one of the numerators in the propagator being a mass. We immediately note that because of the antisymmetry inherent in the topological term and the fact that $k_{1}$ is explicitly integrated over, this must be the first factor. We can also ignore terms of any order in $k_{1, \mu}$. Because $k_{1}$ is explicitly integrated over and we anticipate the appearance of the Levi-Civita symbol, we can make the identification
 \begin{align*}
 	k_{i, \mu}k_{j, \nu} \to \sum\limits_{\alpha > 1}^{i}\sum\limits_{\beta > 1, \beta \neq \alpha}^{j}p_{\alpha, \mu}p_{\beta, \nu}.
 \end{align*}
 This implies that including the momentum from the first factor adds a zero, hence in addition to fixing exactly one latin index to $5$ we may also take the first factor to be the one contributing the factor $M$. Thus the above amounts to
 \begin{align*}
-	 &Mk_{2, \mu}k_{3, \nu}\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}\tr(\gamma^{a}\gamma^{b}\gamma^{\mu}\gamma^{c}\gamma^{\nu}) \\
-	=& -Mp_{2, \mu}p_{3, \nu}\sum\limits_{a, b, c = 2, 3, 5}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}\tr(\gamma^{\mu}\gamma^{\nu}\gamma^{a}\gamma^{b}\gamma^{c}) \\
-	=& 4iMp_{2, \mu}p_{3, \nu}\sum\limits_{a, b = 2, 3}\varepsilon^{\mu\nu ab}\frac{M_{5}(p_{1})M_{a}(p_{2})M_{b}(p_{3}) - M_{a}(p_{1})M_{5}(p_{2})M_{b}(p_{3}) + M_{a}(p_{1})M_{b}(p_{2})M_{5}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})} \\
-	=& 4iMp_{2, \mu}p_{3, \nu}\varepsilon^{\mu\nu}\sum\limits_{a, b = 2, 3, 5}\varepsilon^{abc}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}.
+	 &Mk_{2, \mu}k_{3, \nu}\sum\limits_{a, b, c = 2, 3, 5}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}\tr(\gamma^{a}\gamma^{b}\gamma^{\mu}\gamma^{c}\gamma^{\nu}) \\
+	=& -Mp_{2, \mu}p_{3, \nu}\sum\limits_{a, b, c = 2, 3, 5}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}\tr(\gamma^{\mu}\gamma^{\nu}\gamma^{a}\gamma^{b}\gamma^{c}) \\
+	=& 4iMp_{2, \mu}p_{3, \nu}\varepsilon^{\mu\nu}\sum\limits_{a, b = 2, 3, 5}\varepsilon^{abc}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})}.
 \end{align*}
 We then find
 \begin{align*}
-	\Gamma =& -\frac{1}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\cdot 4iMp_{2, \mu}p_{3, \nu}\varepsilon^{\mu\nu}\sum\limits_{a, b = 2, 3, 5}\varepsilon^{abc}\frac{M_{a}(p_{1})M_{b}(p_{2})M_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})} \\
-	       =& -\frac{4M}{3}\frac{1}{8\pi M^{4}}\sum\limits_{a, b = 2, 3, 5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{\mu\nu}\varepsilon^{abc}M_{a}(p_{1})p_{2, \mu}M_{b}(p_{2})p_{3, \nu}M_{c}(p_{3}),
+	\Gamma =& -\frac{M^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\cdot 4iMp_{2, \mu}p_{3, \nu}\varepsilon^{\mu\nu}\sum\limits_{a, b = 2, 3, 5}\varepsilon^{abc}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(-k_{1}^{2} - M^{2})(-k_{2}^{2} - M^{2})(-k_{3}^{2} - M^{2})} \\
+	       =& -\frac{4M^{4}}{3}\frac{1}{8\pi M^{4}}\sum\limits_{a, b = 2, 3, 5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{\mu\nu}\varepsilon^{abc}m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3}),
 \end{align*}
 and the full topological term is then
 \begin{align*}
-	\Gamma =& \frac{1}{6\pi M^{3}}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\dd[2]{x}\varepsilon^{\mu\nu}\varepsilon^{abc}M_{a}\del{}{\mu}M_{b}\del{}{\nu}M_{c}.
+	\Gamma =& \frac{1}{6\pi M^{3}}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\dd[2]{x}\varepsilon^{\mu\nu}\varepsilon^{abc}m_{a}\del{}{\mu}m_{b}\del{}{\nu}m_{c}.
 \end{align*}
 We can take this one step further by taking the mass fields to be a map from spacetime to some manifold without the mass scale and introducing the 2-form $\omega$ with components $\omega_{ab} = \frac{1}{6\pi}\varepsilon_{cab}m^{c}$ to write the above as
 \begin{align*}
@@ -393,6 +376,24 @@ We can take this one step further by taking the mass fields to be a map from spa
 \end{align*}
 
 At this point we can make some notes about the topological terms for all models in class B. In any topological term, all mass fields appear exactly once, as do momenta with each index. The Feynman diagrams also have identical shape, as we will see later. This will produce the pullback of a $d + 1$-form, the components of which are linear in the fields, in the effective action.
+
+Let us reproduce this topological term using the other Lagrangian. We have
+\begin{align*}
+	\Gamma =& -\frac{iM^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\tr(\frac{i\gamma_{5}\sum\limits_{a = 2, 3, 5}m^{a}\Gamma_{a}^{(3)}}{\fsl{\del{}{}} + M}\frac{i\gamma_{5}\sum\limits_{b = 2, 3, 5}m^{b}\Gamma_{b}^{(3)}}{\fsl{\del{}{}} + M}\frac{i\gamma_{5}\sum\limits_{c = 2, 3, 5}m^{c}\Gamma_{c}^{(3)}}{\fsl{\del{}{}} + M}) \\
+	       =& -\frac{M^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}} \\
+	        &\cdot\sum\limits_{a, b, c = 2, 3, 5}m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})\tr(\gamma_{5}\frac{i\fsl{k}_{1} - M}{-k_{1}^{2} - M^{2}}\gamma_{5}\frac{i\fsl{k}_{2} - M}{-k_{2}^{2} - M^{2}}\gamma_{5}\frac{i\fsl{k}_{3} - M}{-k_{3}^{2} - M^{2}})\tr(\Gamma_{a}^{(3)}\Gamma_{b}^{(3)}\Gamma_{c}^{(3)}) \\
+	       =& \frac{M^{3}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\sum\limits_{a, b, c = 2, 3, 5}
+	       \frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(k_{1}^{2} + M^{2})(k_{2}^{2} + M^{2})(k_{3}^{2} + M^{2})} \\
+	        &\cdot\tr(\gamma_{5}(i\fsl{k}_{1} - M)\gamma_{5}(i\fsl{k}_{2} - M)\gamma_{5}(i\fsl{k}_{3} - M))\cdot -2i\varepsilon^{abc} \\
+	 \approx& -\frac{2iM^{4}}{3}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\frac{\dd[2]{k}}{(2\pi)^{2}}\sum\limits_{a, b, c = 2, 3, 5}\frac{\varepsilon^{abc}m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})}{(k_{1}^{2} + M^{2})^{3}}\tr(\fsl{k}_{2}\gamma_{5}\fsl{k}_{3}) \\
+	       =& -\frac{2M^{4}}{3}\frac{\Gamma\left(2\right)}{4\pi\Gamma\left(3\right)M^{4}}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{abc}m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3})\tr(\gamma^{\mu}\gamma^{\nu}\gamma_{5}) \\
+	       =& -\frac{1}{12\pi}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{abc}m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3})\cdot 2\varepsilon^{\mu\nu} \\
+	       =& -\frac{1}{6\pi}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\frac{\dd[2]{p_{1}}}{(2\pi)^{2}}\frac{\dd[2]{p_{2}}}{(2\pi)^{2}}\varepsilon^{\mu\nu}\varepsilon^{abc}m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3}),
+\end{align*}
+which in real space is equal to
+\begin{align*}
+	\Gamma = \frac{1}{6\pi}\sum\limits_{a, b, c = 2, 3, 5}\inte{}{}\dd[2]{x}\varepsilon^{\mu\nu}\varepsilon^{abc}m_{a}\del{}{\mu}m_{b}\del{}{\nu}m_{c}.
+\end{align*}
 
 Let us demonstrate the appearance of all mass fields in one dimension. To that end we consider the theory
 \begin{align*}
@@ -726,6 +727,23 @@ The contents of the trace are
 \end{align*}
 exploiting the product structure of the operators. The case where all Dirac matrices appear exactly once correspond to exactly two momenta appearing, meaning this topological term too will have a pullback of a 2-form onto spacetime.
 
+\paragraph{A new Attempt at Even Dimensions}
+Okay, so there were too many anticommuting matrices in the models in two dimensions. Let us try to remedy that by introducing models
+\begin{align*}
+	\lag = -\overline{\psi}\left(\fsl{\del{}{}} + M\left(1 + i\sum\limits_{a = 3}^{6}m^{a}\gamma_{a}\right)\right)\psi.
+\end{align*}
+The masses are now confined to $S^{3}$. The topological term corresponds to \ref{fig:fourth_order_1d_fd}, and is given by
+\begin{align*}
+	\Gamma \supset& \frac{iM^{4}}{4}\inte{}{}\frac{\dd[3]{p_{1}}}{(2\pi)^{3}}\frac{\dd[3]{p_{2}}}{(2\pi)^{3}}\frac{\dd[3]{p_{3}}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\tr\left(\frac{im_{a}\gamma^{a}}{\fsl{\del{}{}} + M}\frac{im_{b}\gamma^{b}}{\fsl{\del{}{}} + M}\frac{im^{c}\gamma_{c}}{\fsl{\del{}{}} + M}\frac{im^{d}\gamma_{d}}{\fsl{\del{}{}} + M}\right) \\
+	=& \frac{iM^{4}}{4}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{1}{\prod\limits_{i = 1}^{4}(-k_{i}^{2} - M^{2})}\tr\left(m_{a}(p_{1})\gamma^{a}(i\gamma^{\mu}k_{1, \mu} - M)m_{b}(p_{2})\gamma^{b}(i\gamma^{\nu}k_{2, \nu} - M) \right. \\
+	 &\cdot \left. m_{c}(p_{3})\gamma^{c}(i\gamma^{\rho}k_{3, \rho} - M)m_{d}(p_{4})\gamma^{d}(i\gamma^{\sigma}k_{4, \sigma} - M)\right) \\
+	=& -\frac{M^{5}}{4}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{m_{a}(p_{1})m_{b}(p_{2})m_{c}(p_{3})m_{d}(p_{4})}{\prod\limits_{i = 1}^{4}(k_{i}^{2} + M^{2})}k_{2, \mu}k_{3, \nu}k_{4, \rho}\tr(\gamma^{a}\gamma^{b}\gamma^{\mu}\gamma^{c}\gamma^{\nu}\gamma^{d}\gamma^{\rho}) \\
+	=& \frac{M^{5}}{4}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}\frac{m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3})p_{4, \rho}m_{d}(p_{4})}{(k^{2} + M^{2})^{2}}\tr(\gamma^{\mu}\gamma^{\nu}\gamma^{\rho}\gamma^{a}\gamma^{b}\gamma^{c}\gamma^{d}) \\
+	=& \frac{M^{5}}{4}\cdot i\frac{\Gamma\left(\frac{5}{2}\right)}{(4\pi)^{\frac{3}{2}}\Gamma\left(4\right)M^{5}}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\frac{\dd[3]{k}}{(2\pi)^{3}}m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3})p_{4, \rho}m_{d}(p_{4})\cdot -i^{2}(-2)^{3}\varepsilon^{\mu\nu\rho abcd} \\
+	=& -\frac{i}{32\pi}\inte{}{}\frac{\dd[3]{p}}{(2\pi)^{3}}\varepsilon^{\mu\nu\rho}\varepsilon^{abcd}m_{a}(p_{1})p_{2, \mu}m_{b}(p_{2})p_{3, \nu}m_{c}(p_{3})p_{4, \rho}m_{d}(p_{4}) \\
+	=& \frac{1}{32\pi}\inte{}{}\dd[3]{x}\varepsilon^{\mu\nu\rho}\varepsilon^{abcd}m_{a}\del{}{\mu}m_{b}\del{}{\nu}m_{c}\del{}{\rho}m_{d}.
+\end{align*}
+
 \paragraph{Extending to Synthetic Dimensions}
 Thus far we have seen that the effective actions in class B involve the pullback of a $d + 1$-form. To relate this to the higher Berry curvature, we can imagine the following: If we can write spacetime as the boundary of some other manifold $Y$ and extend the mass fields to $Y$, then Stokes' theorem allows us to write
 \begin{align*}
@@ -735,7 +753,7 @@ The form $\df{\omega}$ is then a $d + 2$-form which plays the role of the higher
 
 A first question is whether $\df{\omega}$ exists. Certainly the containment of mass fields in class B to $S^{d + 1}$ implies that the answer is no. There are, however, two possible ways to solve that. The first, as proposed by Abanov and Wiegmann, is to simply not confine the mass fields at all. The alternative, which is what is done by Hsin et al, is to extend the usual mass term to a field. The consequence of this choice is that the response terms we have considered are lowest-order terms in the mass perturbation $M_{0}(x) - M$.
 
-\paragraph{Technical Stuff}
+\paragraph{Extension Schemes}
 We will consider some slightly different theories next. The construction is as follows: Suppose spacetime is some manifold $X$. We can then construct a higher manifold by assuming $X$ to be the boundaries of two different manifold $Y_{\pm}$. Extending spacetime with a synthetic time-like dimension to produce the manifold $Y_{L} = X\times I$, the full manifold on which the theory lives is
 \begin{align*}
 	Y = \overline{Y}_{-}\cup Y_{L}\cup Y_{+}.
@@ -970,4 +988,9 @@ Thus the effective action is
 with
 \begin{align*}
 	\omega = -\frac{1}{60\pi^{2}}\varepsilon_{abcde}m^{a}\df{m^{b}}\df{m^{c}}\df{m^{d}}\df{m^{e}}.
+\end{align*}
+
+%TODO: Extend the below Lagrangian
+\begin{align*}
+	\lag = -\overline{\psi}\left(\fsl{\del{}{}} + M\left(1 + i\sum\limits_{a = 3}^{6}m^{a}\gamma_{a}\right)\right)\psi.
 \end{align*}
