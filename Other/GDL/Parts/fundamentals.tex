@@ -1,4 +1,15 @@
 \section{Fundamental Concepts}
 
 \paragraph{Supervised Learning}
-Supervised learning deals with sets of iid observations $(x_{i}, y_{i})$. The first element is called the data and the second is called the label, and these live in data space $\mathcal{X}$ and label space $\mathcal{Y}$ respectively. The data and labels are connected by a probability distribution $P$ defined on $\mathcal{X}\times\mathcal{Y}$.
+Supervised learning deals with sets of iid observations $(x_{i}, y_{i})$. The first element is called the data and the second is called the label, and these live in data space $\mathcal{X}$ and label space $\mathcal{Y}$ respectively. The data and labels are sampled from a probability distribution $P$ defined on $\mathcal{X}\times\mathcal{Y}$.
+
+Furthermore, the labels are generated from the data by some unknown function $f$, the estimation of which is the goal of supervised learning. The estimate is chosen from some parametrized class $\mathcal{F}$, which consists of members $f_{\theta}$. The performance of each choice is evaluated based on expected performance on samples from $P$ as measured by a loss function $L$. That is, the performance $\mathcal{R}(\tilde{f})$ is given by
+\begin{align}
+  \mathcal{R}(\tilde{f}) = \expval{L(\tilde{f}(X), f(X))}_{P}.
+\end{align}
+
+\paragraph{The Curse of Dimensionality}
+The curse of dimensionality refers to the set of phenomena where obtaining an adequateand regular fit to a dataset generally requires a number of samples that increases exponentially with the data dimensionality. Given that many machine learning applications concern high-dimensional data, this is a serious obstacle to doing machine learning.
+
+\paragraph{Breaking the Curse}
+Neural networks can break the curse of dimensionality by imposing sparsity on the weights, thus providing regularity. This comes, however, at the cost of making assumptions about the target function, which is undesirable. Geometric deep learning can instead provide a different source of regularity by analyzing structure and geometry in the data.
