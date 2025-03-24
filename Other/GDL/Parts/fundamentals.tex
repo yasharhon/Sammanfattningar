@@ -15,12 +15,12 @@ The curse of dimensionality refers to the set of phenomena where obtaining an ad
 Neural networks can break the curse of dimensionality by imposing sparsity on the weights, thus providing regularity. This comes, however, at the cost of making assumptions about the target function, which is undesirable. Geometric deep learning can instead provide a different source of regularity by analyzing structure and geometry in the data.
 
 \paragraph{The Geometry of Data}
-To start analysing data in terms of geometry, we will decouple the signal domain as follows: We take it that the data domain $\mathcal{X}$ is composed of some domain $\Omega$ and some signal which maps points in $\Omega$ to some other domain $\mathcal{C}$. That is,
+To start analysing data in terms of geometry, we will decouple the data domain as follows: We take it that $\mathcal{X}$ is composed of some domain $\Omega$ and some signal which maps points in $\Omega$ to some other domain $\mathcal{C}$. That is,
 \begin{align}
   \mathcal{X} = \mathcal{X}(\Omega, \mathcal{C}) = \left\{x: \Omega\to\mathcal{C}\right\}.
 \end{align}
 
-The canon example for this is an $m\times n$-size RGB image. In this cse we would have $\Omega = \mathbb{Z}_{m}\times\mathbb{Z}_{n}$ and $\mathcal{C} = \mathbb{R}^{3}$ (or some other three-dimensional domain). In that case, a particular piece of data (a specific image) is a particular signal which describes how you need to distribute your RGB values to form a particular image.
+The canon example for this is an $m\times n$-size RGB image. In this case we would have $\Omega = \mathbb{Z}_{m}\times\mathbb{Z}_{n}$ and $\mathcal{C} = \mathbb{R}^{3}$ (or some other three-dimensional domain). In that case, a particular piece of data (a specific image) is a particular signal which describes how you need to distribute your RGB values to form a particular image.
 
 The purpose of doing this is to separate out the geometry of the data. When considering for instance mirror or translation symmetry in an image, that only applies to the spatial part of the image, not the color part. Another thing it achieves is to separate out a part with the structure of a vector space. For instance, we can define an inner product between the RGB values of two different pixels to determine whether they are similar. Adding a measure $\mu$ on $\Omega$, we can extend that to define an inner product between signals according to
 \begin{align}
@@ -33,3 +33,27 @@ There are two principles which we will refer to as our geometric priors: symmetr
 Symmetry will here refer to the physical notion of symmetry, and thus include both discrete and continuous symmetries. Separating out the geometric part $\Omega$ of the data domain allows us to work directly with its symmetries.
 
 Scale separation is the notion that phenomena at different scales can be treated separately. For instance, returning to the image analogy, scale separation entails that instead of always treating the minutia of a sample image, we can apply coarse-graining operations such as pooling without losing essential information.
+
+\paragraph{Symmetry}
+A symmetry is a transformation that leaves some property of the object it acts on invariant. These generally constitute a group.
+
+\paragraph{Symmetry and Data}
+Relevant to us is symmetry as it pertains to data. Acting on the domain it is defined as a mapping $\Omega\to\Omega$ with a particular symmetry group element $\mathfrak{g}$ as a parameter in a way that preserves group closure. The new element is denoted as $u\to\mathfrak{g}.u$ and closure gives that subsequent action by another group element $\mathfrak{h}$ maps to $(\mathfrak{h}\mathfrak{g}).u$. Examples here include translations or rotations of $\Omega$.
+
+A group acting on $\Omega$ has a natural action on signals on $\Omega$. Denoting such a signal as $f$ we define
+\begin{align}
+  (\mathfrak{g}.f)(u) = f(\mathfrak{g}^{-1}u).
+\end{align}
+This definition satisfies closure. An example would be rotating images on a pixel grid. Note that this definition is linear in $f$, and so any group has a representation on the signal output space. That is,
+\begin{align}
+  (\mathfrak{g}.f)(u) = \rho(\mathfrak{g})f(u).
+\end{align}
+
+What is the distinction between the two? It is quite subtle, and you need to keep the domain and the signal separate. One way to imagine it is as follows: Suppose that you want to rotate a square image $90\degree$ clockwise. How do you go about it? One way to do it is to fix the pixels and rotate the grind counter-clockwise. Another way to do it is to rotate the pixels while fixing the grid. These two possibilities represent the two different cases respectively.
+
+\paragraph{Invariants and Equivariants}
+A function $f: \mathcal{X}(\Omega)\to\mathcal{Y}$ is invariant under a group $\mathfrak{G}$ if $f(\mathfrak{g}.x) = f(x)\forall\mathfrak{g}\in\mathfrak{G}$.
+
+A function $f: \mathcal{X}(\Omega)\to\mathcal{X}(\Omega)$ may have another property, namely equivariance. This is defined as $f$ satisfying $f(\mathfrak{g}.x) = \mathfrak{g}.f(x)\forall\mathfrak{g}\in\mathfrak{G}$.
+
+What are some examples of these two properties? Translation invariance is a typical example of the former. Given an image classification problem, the true label function is invariant under translations of the image, and so are convolutional neural networks that try to approximate it. Shift equivariance is found in the layers of a convolutional neural network, which typically have linear activation functions and thereby change in the same way as the input on a group action. This shift equivariance is broken by pooling layers in between.
