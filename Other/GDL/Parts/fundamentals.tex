@@ -57,3 +57,10 @@ A function $f: \mathcal{X}(\Omega)\to\mathcal{Y}$ is invariant under a group $\m
 A function $f: \mathcal{X}(\Omega)\to\mathcal{X}(\Omega)$ may have another property, namely equivariance. This is defined as $f$ satisfying $f(\mathfrak{g}.x) = \mathfrak{g}.f(x)\forall\mathfrak{g}\in\mathfrak{G}$.
 
 What are some examples of these two properties? Translation invariance is a typical example of the former. Given an image classification problem, the true label function is invariant under translations of the image, and so are convolutional neural networks that try to approximate it. Shift equivariance is found in the layers of a convolutional neural network, which typically have linear activation functions and thereby change in the same way as the input on a group action. This shift equivariance is broken by pooling layers in between.
+
+\paragraph{Useful Map Types}
+A bijection is an invertible map from some domain $\Omega$ that preserves its structure. For a general domain, there are no subcategories (or rather, subgroups) contained within.
+
+If $\Omega$ is a topoligical space, we may introduce homeomorphisms, which are continuous bijections. If $\Omega$ is also a differentiable manifold, we may introduce diffeomorphisms, which are differentiable bijections.
+
+These maps preserve varying degrees of structure. In particular, symmetries are automorphisms.
